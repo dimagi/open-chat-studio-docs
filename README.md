@@ -24,3 +24,12 @@ Assuming you've already cloned this repository:
     ```shell
     uv run mkdocs serve
     ```
+
+
+## Documentation
+
+These docs are made using [MkDocs](https://www.mkdocs.org/) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/).
+
+### Writing
+
+See the [MkDocs documentation](https://www.mkdocs.org/user-guide/writing-your-docs/) for how to write documentation.
