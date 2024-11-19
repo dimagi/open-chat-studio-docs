@@ -1,1 +1,5 @@
-site_name: My Docs
+site_name: Open Chat Studio Documentation
+#site_url:
+theme:
+  name: material
+copyright: Copyright &copy; 2024 Dimagi
