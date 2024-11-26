@@ -3,3 +3,8 @@ site_name: Open Chat Studio Documentation
 theme:
   name: material
 copyright: Copyright &copy; 2024 Dimagi
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
