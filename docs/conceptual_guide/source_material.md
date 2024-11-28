@@ -14,5 +14,5 @@ Source Material is a feature that allows you to provide specific content, inform
 
 #### See also
 - [prompt variables](./prompt_variables.md)
-- [Adding Source Material](../how-to/adding_source_material.md)
+- [Add a knowldege base](../how-to/add_a_knowledge_base.md)
 
