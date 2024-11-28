@@ -6,7 +6,7 @@ Prompt variables are a great way to make your prompt dynamic or tailored to the 
 
 The following variables are currently supported:
 
-- `{source_material}` - The [source material](conceptual_guide/source_meterial.md) linked to your bot.
+- `{source_material}` - The [source material](../how-to/adding_source_material.md) linked to your bot.
 - `{participant_data}` - Data available for this participant.
 - `{current_datetime}` - The current date and time.
 
