@@ -5,18 +5,22 @@ Versioning is now enabled by default for all projects on Open Chat Studio. This 
 ## Terms
 OCS uses the following terms:
 
-* **Working copy**. This is the version of the chatbot that exists when you click the edit button on the experiment. It can also be considered a `draft` or that it has "unsaved changes".
+* **Unreleased Version*. This is the version of the chatbot that exists when you click the edit button on the experiment. It can also be considered a `draft` or that it has "unsaved changes".
 
-* **Deployed version**. This is the version that users will interact with through the web, WhatsApp or any other configured channel--including the public link.
+* **Published Version*. This is the version that users will interact with through the web, WhatsApp or any other configured channel--including the public link.
+
+!!! info "A note version functionality"
+    Once a version is made, it cannot be edited or modified. This ensures that the your users' experience remains stable even if the authors may be changing the unrealeased version.
 
 
-!!! warning "Chatting to the working copy"
+!!! warning "Chatting to the unreleased version"
 
-    The only way to chat to the working copy is through the experiment edit screen.
-    Only bot authors can chat to the working copy as it is not available through channels.
-    This is a change in the default behavior of the platform as prior to versioning, all
-    channels chatted to the working copy at all times. 
+    To chat to the unreleased version, navigate to the Exoerimetn home page and click on the speech bubble icon at the top right corner of the page. There, a drop down will say either "Unreleased Version" or "Published Version". Select the Unreleased Version, and that will open a web chat. Only bot authors can chat to the unreleased version as it is not available through channels.This is a change in the default behavior of the platform as prior to versioning, all channels chatted to the unreleased version at all times.
 
-    It is on the near-term roadmap to add support for chatting to a specific version (deployed 
-    or not), as well as the working copy, through the API to support external evaluation of 
-    the chatbot.
+#### Changing the Published Version
+The published version can be selected from any released version of the experiment. To modify which version is the published version:
+
+- select "View Details" of the version
+- press the "Set as Published Version" button at the button of the modal
+
+Alternatively, when a new version is being created, it can be set as the published version by marking the checkbox "Set as Published Version." Only one version can be the published verion at a time.
