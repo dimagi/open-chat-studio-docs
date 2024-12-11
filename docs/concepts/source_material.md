@@ -13,6 +13,5 @@ Source Material is a feature that allows you to provide specific content, inform
 - Organization and Structure: Well-organized Source Materials make it easier for the chatbot to retrieve and use the information. It's useful to structure your content in a clear, concise manner, with appropriate labels for different sections. 
 
 #### See also
-- [prompt variables](./prompt_variables.md)
-- [Add a knowldege base](../how-to/add_a_knowledge_base.md)
-
+- [Prompt variables](./prompt_variables.md)
+- [Add a_knowledge base](../how-to/add_a_knowledge_base.md)
