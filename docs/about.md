@@ -18,14 +18,3 @@ large" in its name refers to the extensive volume of data it has been trained on
 enabling it to handle complex language tasks.
 
 (The definition above was authored by the famous LLM that powers ChatGPT: GPT-4 developed by OpenAI).
-
-# Which Large Language Models are supported by Open Chat Studio?
-
-Open Chat Studio is developed to support a range of LLMs. The platform is designed to be flexible and can work with any
-LLM that has an API. The platform is currently supports all the models provided by the following APIs:
-
-* [OpenAI](https://platform.openai.com/docs/models)
-* [Azure OpenAi](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=python-secure%2Cglobal-standard%2Cstandard-chat-completions)
-* [Anthropic](https://docs.anthropic.com/en/docs/about-claude/models_)
-* [Groq](https://console.groq.com/docs/models)
-* [Perplexity](https://docs.perplexity.ai/guides/model-cards)
