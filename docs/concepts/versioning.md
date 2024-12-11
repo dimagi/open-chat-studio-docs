@@ -5,9 +5,9 @@ Versioning is now enabled by default for all projects on Open Chat Studio. This 
 ## Terms
 OCS uses the following terms:
 
-* **Unreleased Version*. This is the version of the chatbot that exists when you click the edit button on the experiment. It can also be considered a `draft` or that it has "unsaved changes".
+* *Unreleased Version*. This is the version of the chatbot that exists when you click the edit button on the experiment. It can also be considered a `draft` or that it has "unsaved changes".
 
-* **Published Version*. This is the version that users will interact with through the web, WhatsApp or any other configured channel--including the public link.
+* *Published Version*. This is the version that users will interact with through the web, WhatsApp or any other configured channel--including the public link.
 
 !!! info "A note version functionality"
     Once a version is made, it cannot be edited or modified. This ensures that the users' experience remains stable even if the authors may be changing the unrealeased version.
@@ -20,7 +20,7 @@ OCS uses the following terms:
 #### Changing the Published Version
 The published version can be selected from any released version of the experiment. To modify which version is the published version:
 
-- select "View Details" of the version
-- press the "Set as Published Version" button at the button of the modal
+- Select "View Details" of the version
+- Press the "Set as Published Version" button at the button of the dialog box.
 
-Alternatively, when a new version is being created, it can be set as the published version by marking the checkbox "Set as Published Version." Only one version can be the published verion at a time.
+Alternatively, when a new version is being created, it can be set as the published version by marking the checkbox "Set as Published Version." Only one version can be the published version at a time.
