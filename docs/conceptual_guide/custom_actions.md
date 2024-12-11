@@ -5,23 +5,26 @@ This feature allows you to extend the functionality of your bot by integrating i
 
 This feature is analogous to the OpenAI's [GPT Actions](https://platform.openai.com/docs/actions/introduction) feature.
 
-## How to Create a Custom Action
+## Custom Action Fields
 
-Before you start you will need to create an Authentication Provider for your Custom Action to use (unless the API
-you are using does not require authentication). You can do this by navigating to the `Authentication Providers` section
+### Authentication Provider
+
+Before you create a Custom Action will need to create an Authentication Provider for your action to use (unless the API
+you are using does not require authentication). You can do this by navigating to the [Authentication Providers][auth_providers] section
 in Team Settings and creating a new Authentication Provider.
 
-Now you can create your Custom Action:
+[auth_providers]: ../team-configuration/authentication-providers.md
 
-1. Navigate to the `Custom Actions` section in Team Settings and create a new Custom Action.
+### Base URL
 
-    When completing the form, you will need to provide the `Base URL` of the external service you want to communicate with
-    as well as the [OpenAPI Schema](https://swagger.io/specification/). You should be able to get this from
-    the service you want to connect to. For example, the default location for the schema for [FastAPI](https://fastapi.tiangolo.com/)
-    is `/openapi.json` (https://fastapi.tiangolo.com/tutorial/first-steps/#openapi-and-json-schema).
+This is the URL of the external service you want to communicate with. For example: `https://www.example.com`. Only HTTPS URLs
+are supported.
 
+### API Schema
 
-2. Once you have created the Custom Action it will appear in your Experiment configuration as under the 'Tools' tab.
+This is a JSON or YAML [OpenAPI Schema](https://swagger.io/specification/) document.
+
+You should be able to get this from the service you want to connect to. For example, the default location for the schema for [FastAPI](https://fastapi.tiangolo.com/) services is `/openapi.json` (https://fastapi.tiangolo.com/tutorial/first-steps/#openapi-and-json-schema).
 
 ## How Custom Actions work
 
