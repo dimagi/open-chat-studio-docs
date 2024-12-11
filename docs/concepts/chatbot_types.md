@@ -16,12 +16,15 @@ Bots configured in this way have all the basic features (memory, source material
 ## Assistant
 Assistant bots make use of OpenAI’s [Assistants][4]. The main advantage of using Assistants is that your bot get’s access to the OpenAI tools:
 
-### [Code Interpreter][5]
+### Code Interpreter
 This allows the bot to write and execute code to accomplish tasks.
 
-### [File Search][6]
+For more information see the [OpenAI docs][5].
+
+### File Search
 This allows the bot to search and reference information provided in uploaded files. Unless your bot needs either of these capabilities, you should use a Base Language Model type bot.
 
+For more information see the [OpenAI docs][6].
 
 ## Pipeline
 This is a beta feature that has not yet been fully released. Pipelines allow you to create more complex bots by defining a ‘graph’ of nodes. Each message to the bot is processed by the graph to produce a final output.
