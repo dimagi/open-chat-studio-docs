@@ -1,3 +1,7 @@
+---
+hide:
+  - navigation
+---
 # Overview
 
 Dimagi is developing Open Chat Studio (OCS) as an easy-to-use, open source platform for rapidly prototyping and testing

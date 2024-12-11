@@ -29,8 +29,8 @@ To add knowldege to your assistant, you must upload files to serve as the source
 ### See also
 - [Source Material][source_material_concept]
 
-[source_material_concept]: ../conceptual_guide/source_material.md
-[prompt_variables_concept]: ../conceptual_guide/prompt_variables.md
+[source_material_concept]: ../concepts/source_material.md
+[prompt_variables_concept]: ../concepts/prompt_variables.md
 [assistants]: https://platform.openai.com/docs/assistants/overview
 [file_search]: https://platform.openai.com/docs/assistants/tools/file-search
 [code_interpreter]: https://platform.openai.com/docs/assistants/tools/code-interpreter

@@ -1,3 +1,9 @@
+---
+hide:
+  - navigation
+  - toc
+---
+
 # Open Chat Studio
 
 This is the home page for all documentation related to [Open Chat Studio](https://github.com/dimagi/open-chat-studio).
