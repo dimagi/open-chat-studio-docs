@@ -20,7 +20,7 @@ You are a friendly bot. Be sure to reference the source material before answerin
 ```
 
 ## Assistant
-To add knowldege to your assistant, you must upload files to serve as the source material. When creating or editing your assistant, select the *file_search* or *code_interpreter* checkboxes to allow the assistant to read files.
+To add knowledge to your assistant, you must upload files to serve as the source material. When creating or editing your assistant, select the *file_search* or *code_interpreter* checkboxes to allow the assistant to read files.
 
 - [File search][file_search]: This allows the bot to search and reference information provided in uploaded files.
 - [Code Interpreter][code_interpreter]: This allows the bot to write and execute code to accomplish tasks.
