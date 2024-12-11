@@ -5,10 +5,6 @@ provide a centralized location to manage the credentials and tokens required to 
 
 These credentials are used by features like [Custom Actions](/conceptual_guide/custom_actions/).
 
-## How to Create an Authentication Provider
-
-You can create and manage providers in the `Authentication Providers` section of Team Settings page.
-
 ## Authentication Provider Types
 
 Open Chat Studio supports various different authentication types. You should select the type that matches the API
