@@ -10,8 +10,7 @@ OCS uses the following terms:
 * *Published Version*. This is the version that users will interact with through the web, WhatsApp or any other configured channel--including the public link.
 
 !!! info "A note version functionality"
-    Once a version is made, it cannot be edited or modified. This ensures that the users' experience remains stable even if the authors may be changing the unrealeased version.
-
+    Once a version is made, it cannot be edited or modified. This ensures that the users' experience remains stable even if the authors may be changing the unreleased version.
 
 !!! warning "Chatting to the unreleased version"
 
