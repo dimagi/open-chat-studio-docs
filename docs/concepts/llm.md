@@ -1,8 +1,8 @@
 ---
-title: Large Language Models
+title: Large Language Model
 ---
 
-# LLMs (Large Language Models)
+# Large Language Models (LLMs)
 An *LLM* is a type of artificial intelligence model trained on vast amounts of text data. It can generate human-like text, answer questions, and perform various language-based tasks. Examples include OpenAI's GPT models.
 When building chatbots, an LLM powers the chatbot's ability to understand and respond to user inputs, effectively acting as the brain behind your chatbot.
 
