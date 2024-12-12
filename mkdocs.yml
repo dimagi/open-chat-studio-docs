@@ -41,5 +41,6 @@ nav:
         - concepts/versioning.md
         - concepts/custom_actions.md
       - Team:
+          - concepts/team/index.md
           - concepts/authentication-providers.md
   - About: about.md
