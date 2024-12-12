@@ -10,7 +10,7 @@ There are three different types of chatbots that you can build in Open Chat Stud
 
 This kind of bot is the most commonly used and simple to configure. It is backed the standard language model APIs such as OpenAI’s [chat completions API][1], Anthropic’s [messages API][2] or Google’s [Gemeni API][3].
 
-Bots configured in this way have all the basic features (memory, source material etc.) and can also use some of the advanced features like Scheduling and Reminders.
+Bots are configured in this way have all the basic features (memory, source material etc.) and can also use some of the advanced features like Scheduling and Reminders.
 
 
 ## Assistant
