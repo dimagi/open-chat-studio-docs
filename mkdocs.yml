@@ -33,10 +33,13 @@ nav:
       - how-to/remote_api.md
   - Concepts:
       - concepts/index.md
-      - concepts/llm.md
-      - concepts/chatbot_types.md
-      - concepts/prompt_variables.md
-      - concepts/source_material.md
-      - concepts/versioning.md
-      - concepts/custom_actions.md
+      - Experiments:
+        - concepts/llm.md
+        - concepts/chatbot_types.md
+        - concepts/prompt_variables.md
+        - concepts/source_material.md
+        - concepts/versioning.md
+        - concepts/custom_actions.md
+      - Team:
+          - concepts/authentication-providers.md
   - About: about.md
