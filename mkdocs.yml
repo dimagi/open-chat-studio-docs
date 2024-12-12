@@ -1,9 +1,46 @@
 site_name: Open Chat Studio Documentation
+site_url: https://dimagi.github.io/open-chat-studio-docs/
 theme:
   name: material
+  features:
+    - header.autohide
+    - navigation.expand
+    - navigation.footer
+    - navigation.indexes
+    - navigation.instant
+    - navigation.prune
+    - navigation.sections
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.tracking
+    - navigation.top
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
 copyright: Copyright &copy; 2024 Dimagi
 
 markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+
+nav:
+  - Home: index.md
+  - How-to Guides:
+      - how-to/index.md
+      - how-to/add_a_knowledge_base.md
+      - how-to/remote_api.md
+  - Concepts:
+      - concepts/index.md
+      - Experiments:
+        - concepts/experiment/index.md
+        - concepts/llm.md
+        - concepts/prompt_variables.md
+        - concepts/source_material.md
+        - concepts/versioning.md
+        - concepts/custom_actions.md
+      - Team:
+          - concepts/team/index.md
+          - concepts/authentication-providers.md
+  - About: about.md
