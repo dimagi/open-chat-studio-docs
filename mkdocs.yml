@@ -30,6 +30,7 @@ nav:
   - How-to Guides:
       - how-to/index.md
       - how-to/add_a_knowledge_base.md
+      - how-to/remote_api.md
   - Concepts:
       - concepts/index.md
       - concepts/llm.md
@@ -37,4 +38,5 @@ nav:
       - concepts/prompt_variables.md
       - concepts/source_material.md
       - concepts/versioning.md
+      - concepts/custom_actions.md
   - About: about.md
