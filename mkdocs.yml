@@ -34,8 +34,8 @@ nav:
   - Concepts:
       - concepts/index.md
       - Experiments:
+        - concepts/experiment/index.md
         - concepts/llm.md
-        - concepts/chatbot_types.md
         - concepts/prompt_variables.md
         - concepts/source_material.md
         - concepts/versioning.md
