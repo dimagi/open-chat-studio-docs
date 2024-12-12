@@ -17,8 +17,8 @@ There is a set of global configuration that can be set at the team level. This i
 - LLM Service Providers
 - Speech Service Providers
 - Messaging Providers
-- [Authentication Providers](./authentication-providers.md)
-- [Custom Actions](./custom_actions.md)
+- [Authentication Providers](../authentication-providers.md)
+- [Custom Actions](../custom_actions.md)
 - Tracing providers
 
 <!--- TODO: user management -->
