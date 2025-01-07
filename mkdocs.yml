@@ -22,6 +22,7 @@ copyright: Copyright &copy; 2024 Dimagi
 
 markdown_extensions:
   - admonition
+  - attr_list
   - pymdownx.details
   - pymdownx.superfences
 
@@ -37,6 +38,7 @@ nav:
       - Experiments:
         - concepts/experiment/index.md
         - concepts/llm.md
+        - concepts/participant_data.md
         - concepts/prompt_variables.md
         - concepts/source_material.md
         - concepts/versioning.md
