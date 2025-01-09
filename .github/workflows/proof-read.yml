@@ -13,5 +13,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Required to write a PR review
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_API_MODEL: 'gpt-4o-mini'
-          file-pattern: '\\.md$'
+          file-pattern: '\.md$'
           prompt-prefix: 'Your task is to review pull requests for the documentation of Open Chat Studio.'
