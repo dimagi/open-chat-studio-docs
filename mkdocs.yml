@@ -43,6 +43,7 @@ nav:
         - concepts/source_material.md
         - concepts/versioning.md
         - concepts/custom_actions.md
+        - concepts/consent.md
       - Team:
           - concepts/team/index.md
           - concepts/authentication-providers.md
