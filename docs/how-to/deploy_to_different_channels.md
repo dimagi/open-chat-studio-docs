@@ -39,12 +39,12 @@ The web channel uses the web interface and is enabled by default for all bots.
 ## Slack
 - Choose the channel mode.
 - If you chose to link a specific channel, enter the name of the Slack channel you want your bot to be available on.
-- Once the channel is linked, you'll be able to chat to it using the `@Dimagi Bots` reference.
+- Once the channel is linked, you will be able to chat with it using the `@Dimagi Bots` reference.
 
 
-[1]: https://flowxo.com/how-to-create-a-bot-for-telegram-short-and-simple-guide-for-beginners/
+[1]: https://flowxo.com/how-to-create-a-bot-for-Telegram-short-and-simple-guide-for-beginners/
 [2]: ../concepts/messaging_providers.md
 [3]: https://www.twilio.com/docs/WhatsApp/api#configuring-inbound-message-webhooks
 [4]: https://www.twilio.com/docs/conversations/Facebook-messenger#setting-up-the-Facebook-messenger-channel
-[5]: https://core.telegram.org/bots/features#:~:text=/setjoingroups%20%E2%80%93%20toggle%20whether%20your%20bot%20can%20be%20added%20to%20groups%20or%20not.%20All%20bots%20must%20be%20able%20to%20process%20direct%20messages%2C%20but%20if%20your%20bot%20was%20not%20designed%20to%20work%20in%20groups%2C%20you%20can%20disable%20this.
+[5]: https://core.Telegram.org/bots/features#:~:text=/setjoingroups%20%E2%80%93%20toggle%20whether%20your%20bot%20can%20be%20added%20to%20groups%20or%20not.%20All%20bots%20must%20be%20able%20to%20process%20direct%20messages%2C%20but%20if%20your%20bot%20was%20not%20designed%20to%20work%20in%20groups%2C%20you%20can%20disable%20this.
 [6]: ./configure_providers.md

@@ -11,7 +11,6 @@ Below is a list of supported providers and their integrated platforms in OCS:
 - Turn.io
     - WhatsApp
 - Slack
-    - Slack
 <!-- - SureAhdere
     - SureAdhere -->
 
