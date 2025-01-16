@@ -2,7 +2,7 @@
 
 To enable users to interact with your bot through external social media platforms and similar services, OCS integrates with various [messaging providers][1]. This integration allows you to deploy your bot to external platforms. Once a platform is linked to your bot, users can communicate with it through that platform. In OCS, the term "channel" is synonymous with "platform."
 
-### Current supported channels are
+The currently supported channels are:
 - Telegram
 WhatsApp
 - Facebook Messenger
