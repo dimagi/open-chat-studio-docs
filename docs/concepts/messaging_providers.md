@@ -10,10 +10,10 @@ Below is a list of supported providers and the platforms they integrate with tha
     - Facebook Messenger
 - Turn.io
     - Whatsapp
-- SureAhdere
-    - SureAdhere
 - Slack
     - Slack
+<!-- - SureAhdere
+    - SureAdhere -->
 
 ## See also
 - [Configure a messaging provider](../how-to/configure_providers.md)

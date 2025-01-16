@@ -6,12 +6,9 @@ To enable users to interact with your bot through external social media platform
 - Telegram
 - Whatsapp
 - Facebook Messenger
-- SureAdhere
+<!-- - SureAdhere -->
 - Slack
 - API
-
-!!! info "The web channel"
-    Although the web channel is not an external platform, it is still considered a channel through which users can interact with your bot.
 
 #### See also
 - [Deploying your bot to different channels](../how-to/deploy_to_different_channels.md)
