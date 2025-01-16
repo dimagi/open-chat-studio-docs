@@ -6,7 +6,10 @@ Messaging providers offer access to communication platforms such as WhatsApp, Fa
 Below is a list of supported providers and the platforms they integrate with that are supported by OCS:
 
 - Twilio
-    - WhatsApp
+    - Whatsapp
+    - Facebook Messenger
+- Turn.io
+    - Whatsapp
 - Slack
     - Slack
 <!-- - SureAhdere
