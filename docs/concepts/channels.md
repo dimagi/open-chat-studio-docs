@@ -4,7 +4,7 @@ To enable users to interact with your bot through external social media platform
 
 ### Current supported channels are
 - Telegram
-- Whatsapp
+WhatsApp
 - Facebook Messenger
 <!-- - SureAdhere -->
 - Slack
