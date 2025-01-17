@@ -13,6 +13,22 @@ To link a channel to your bot:
 ## Web
 The web channel uses the web interface and is enabled by default for all bots.
 
+## API
+The API is enabled by default for all bots. To access the API, you need an API key, which can be obtained by navigating to [your profile][7].
+
+### Authentication methods
+#### X-API-KEY header
+```shell
+X-API-KEY: your-api-key-here
+```
+
+#### Bearer Authentication
+```shell
+Authorization: Bearer your-api-key-here
+```
+
+For details on available endpoints, refer to the [API Documentation][8].
+
 ## Telegram
 - Follow [this guide][1] to create a Telegram bot.
 - Copy the bot token and paste it into the form on OCS. It will look something like this: `4839574812:AAFD39kkdpWt3ywyRZergyOLMaJhac60qc`.
@@ -48,3 +64,5 @@ The web channel uses the web interface and is enabled by default for all bots.
 [4]: https://www.twilio.com/docs/conversations/Facebook-messenger#setting-up-the-Facebook-messenger-channel
 [5]: https://core.Telegram.org/bots/features#:~:text=/setjoingroups%20%E2%80%93%20toggle%20whether%20your%20bot%20can%20be%20added%20to%20groups%20or%20not.%20All%20bots%20must%20be%20able%20to%20process%20direct%20messages%2C%20but%20if%20your%20bot%20was%20not%20designed%20to%20work%20in%20groups%2C%20you%20can%20disable%20this.
 [6]: ./configure_providers.md
+[7]: https://chatbots.dimagi.com/users/profile/
+[8]: https://chatbots.dimagi.com/api/docs/
