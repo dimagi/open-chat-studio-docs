@@ -10,24 +10,8 @@ To link a channel to your bot:
 - Once the provider is set up, navigate to your bot on OCS and click the plus icon in the "Channels" section.
 - Choose your channel and complete the form. Follow the guide below to get the required information for each channel.
 
-## Web
+## Web and API
 The web channel uses the web interface and is enabled by default for all bots.
-
-## API
-The API is enabled by default for all bots. To access the API, you need an API key, which can be obtained by navigating to [your profile][7].
-
-### Authentication methods
-#### X-API-KEY header
-```shell
-X-API-KEY: your-api-key-here
-```
-
-#### Bearer Authentication
-```shell
-Authorization: Bearer your-api-key-here
-```
-
-For details on available endpoints, refer to the [API Documentation][8].
 
 ## Telegram
 - Follow [this guide][1] to create a Telegram bot.
