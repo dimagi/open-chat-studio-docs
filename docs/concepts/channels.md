@@ -9,7 +9,7 @@ The currently supported channels are:
 - Facebook Messenger
 - Slack
 - API
-<!-- - SureAdhere -->
+- SureAdhere
 
 #### See also
 - [Deploying your bot to different channels](../how-to/deploy_to_different_channels.md)

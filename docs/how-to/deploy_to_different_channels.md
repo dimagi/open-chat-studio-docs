@@ -33,13 +33,17 @@ The web channel uses the web interface and is enabled by default for all bots.
     It is assumed that you already have a Facebook page and a Twilio account with the Facebook page linked. Follow [this guide][4] if this is not the case.
 
 - Add the ID of your Facebook page.
-- After you submit the form, you will be provided with a webhook URL. Copy this URL and navigate back to your provider's settings.
+- After you submit the form, you will be provided with a webhook URL. Copy this URL and navigate back to your provider's settings to configure it with this URL.
     - For Twilio, edit your Facebook page settings and paste the URL into the "Webhook URL for incoming messages" field.
 
 ## Slack
 - Choose the channel mode.
 - If you chose to link a specific channel, enter the name of the Slack channel you want your bot to be available on.
 - Once the channel is linked, you will be able to chat with it using the `@Dimagi Bots` reference.
+
+## SureAdhere
+- Enter the Tenant ID that would have been provided to you when setting up your SureAdhere account.
+- After you submit the form, you will be provided with a webhook URL. Copy this URL and navigate back to your provider's settings to configure it with this URL.
 
 
 [1]: https://flowxo.com/how-to-create-a-bot-for-Telegram-short-and-simple-guide-for-beginners/
