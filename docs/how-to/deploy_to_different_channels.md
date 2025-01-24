@@ -19,7 +19,7 @@ The web channel uses the web interface and is enabled by default for all bots. L
 
 
 !!! info "Note"
-    Depending on your usecase, you probably want to disable group joins for your bot on Telegram. To achieve this, use the [setjoingroups][5] setting in BotFather.
+    Depending on your usecase, you probably want to disable group joins for your bot on Telegram. Since your telegram bot is public, anyone can add it to a group, which could end up costing you a lot. To achieve this, use the [setjoingroups][5] setting in BotFather.
 
 ## WhatsApp
 - Add your WhatsApp number to the form.
@@ -46,7 +46,7 @@ The web channel uses the web interface and is enabled by default for all bots. L
 - After you submit the form, you will be provided with a webhook URL. Copy this URL and navigate back to your provider's settings to configure it with this URL.
 
 
-[1]: https://flowxo.com/how-to-create-a-bot-for-Telegram-short-and-simple-guide-for-beginners/
+[1]: https://core.telegram.org/bots#how-do-i-create-a-bot
 [2]: ../concepts/messaging_providers.md
 [3]: https://www.twilio.com/docs/WhatsApp/api#configuring-inbound-message-webhooks
 [4]: https://www.twilio.com/docs/conversations/Facebook-messenger#setting-up-the-Facebook-messenger-channel
