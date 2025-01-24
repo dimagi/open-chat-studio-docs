@@ -33,6 +33,9 @@ nav:
       - how-to/add_a_knowledge_base.md
       - how-to/remote_api.md
       - how-to/global_search.md
+      - how-to/deploy_to_different_channels.md
+      - how-to/configure_providers.md
+      - how-to/api_access.md
   - Concepts:
       - concepts/index.md
       - Experiments:
@@ -44,7 +47,9 @@ nav:
         - concepts/versioning.md
         - concepts/custom_actions.md
         - concepts/consent.md
+        - concepts/channels.md
       - Team:
           - concepts/team/index.md
           - concepts/authentication-providers.md
+          - concepts/messaging_providers.md
   - About: about.md

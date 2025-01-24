@@ -44,5 +44,5 @@ Tada! There you have a new released version! You will be directed back the exper
 If you click on the webchat button, for an unpublished version, there will be a banner indication that it's the unpublished version, and which version it is:
 ![Create Experiment Version View](images/version_web_chat.png)
 
-For this demo, I released a few more versions for this experiment and also changed the published version. To easily see which is the published version for the experiment, look right of the experiment name at the top of the experiment home screen at the icon in green. For this example, you'll see "v2" which indicates that the version 2 is the published version. You will also be able to see in the table looking at the published verion row for the checkmark.
+For this demo, I released a few more versions for this experiment and also changed the published version. To easily see which is the published version for the experiment, look right of the experiment name at the top of the experiment home screen at the icon in green. For this example, you will see "v2" which indicates that the version 2 is the published version. You will also be able to see in the table looking at the published verion row for the checkmark.
 ![Create Experiment Version View](images/version_table_after.png)
