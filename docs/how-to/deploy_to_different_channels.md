@@ -11,7 +11,7 @@ To link a channel to your bot:
 - Choose your channel and complete the form. Follow the guide below to get the required information for each channel.
 
 ## Web and API
-The web channel uses the web interface and is enabled by default for all bots.
+The web channel uses the web interface and is enabled by default for all bots. Likewise, all bots can be accessed via the APIs.
 
 ## Telegram
 - Follow [this guide][1] to create a Telegram bot.
