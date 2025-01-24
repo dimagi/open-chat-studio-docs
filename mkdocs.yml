@@ -35,6 +35,7 @@ nav:
       - how-to/global_search.md
       - how-to/deploy_to_different_channels.md
       - how-to/configure_providers.md
+      - how-to/api_access.md
   - Concepts:
       - concepts/index.md
       - Experiments:

@@ -11,7 +11,7 @@ To link a channel to your bot:
 - Choose your channel and complete the form. Follow the guide below to get the required information for each channel.
 
 ## Web and API
-The web channel uses the web interface and is enabled by default for all bots. Likewise, all bots can be accessed via the APIs.
+The web channel uses the web interface and is enabled by default for all bots. Likewise, all bots can be accessed via the [APIs][api].
 
 ## Telegram
 - Follow [this guide][1] to create a Telegram bot.
@@ -54,3 +54,4 @@ The web channel uses the web interface and is enabled by default for all bots. L
 [6]: ./configure_providers.md
 [7]: https://chatbots.dimagi.com/users/profile/
 [8]: https://chatbots.dimagi.com/api/docs/
+[api]: ./api_access.md
