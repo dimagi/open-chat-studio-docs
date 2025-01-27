@@ -44,13 +44,13 @@ Tada! There you have a new released version! You will be directed back the exper
 If you click on the webchat button, for an unpublished version, there will be a banner indication that it's the unpublished version, and which version it is:
 ![Create Experiment Version View](images/version_web_chat.png)
 
-For this demo, I released a few more versions for this experiment and also changed the published version. To easily see which is the published version for the experiment, look right of the experiment name at the top of the experiment home screen at the icon in green. For this example, you'll see "v2" which indicates that the version 2 is the published version. You will also be able to see in the table looking at the published verion row for the checkmark.
+For this demo, I released a few more versions for this experiment and also changed the published version. To easily see which is the published version for the experiment, look right of the experiment name at the top of the experiment home screen at the icon in green. For this example, you'll see "v2" which indicates that the version 2 is the published version. You will also be able to see in the table looking at the published version row for the checkmark.
 ![Create Experiment Version View](images/version_table_after.png)
 
 
 !!! info "Versioning experiments that use OpenAI Assistants"
-    Can this be done? Yes! When an experiment is released that has an OpenAI Assistant, there is no additional configuration required. However, please note that a read-only copy of the OpenAI Assistant is made in Open Chat Studio (see in the Assistants tab) and also in OpenAI. This includes all reference files. The exisiting OpenAI Assistant prior to creating the the version will still be available and be able to be modified in the unreleased experiment version.
+    Can this be done? Yes! When an experiment is released that has an OpenAI Assistant, there is no additional configuration required. However, please note that a read-only copy of the OpenAI Assistant is made in Open Chat Studio (see in the Assistants tab) and also in OpenAI. This includes all reference files. The existing OpenAI Assistant prior to creating the the version will still be available and be able to be modified in the unreleased experiment version.
 
 !!! warning "Modifying Assistants in OpenAI referenced by released versions"
 
-    As mentioned above, the copied assistant will be read-only in OCS, however, in OpenAI changes can still be made to that copy of the assistant. *We recommend advising you team to not modify this assistant if it references a released version.* This can cause unexpected behavior to the version and to its end users. To insure that the released version acts as expected this assistant should remain as-is.
+    As mentioned above, the copied assistant will be read-only in OCS, however, in OpenAI changes can still be made to that copy of the assistant. *We recommend advising your team to not modify this assistant if it references a released version.* This can cause unexpected behavior to the version and to its end users. To ensure that the released version acts as expected this assistant should remain as-is.
