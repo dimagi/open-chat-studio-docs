@@ -4,8 +4,8 @@ Participant data is the information that is collected from participants during t
 
 Participant data is unique to each combination of channel platform, channel identifier and experiment. This means that
 the data for each bot may be different. For example, if the same person interacts with two different bots over the same
-channel e.g. whatsapp, the data for each bot will be different. Furthermore, if the same person interacts with the same
-bot over two different channels e.g. whatsapp and telegram, the data for each channel will be different.
+channel e.g. WhatsApp, the data for each bot will be different. Furthermore, if the same person interacts with the same
+bot over two different channels e.g. WhatsApp and Telegram, the data for each channel will be different.
 
 The reason for this is to ensure that the data is only accessible to the bot that it is intended for and because there
 is no way for the system to know whether the same person is interacting with the bot on different channels.
@@ -115,7 +115,7 @@ data:
 
 ```json
 {
-  "platform": "Name of the channel platform e.g. whatsapp, telegram etc.",
+  "platform": "Name of the channel platform e.g. WhatsApp, Telegram etc.",
   "identifier": "ID of the participant on the specified platform",
   "name": "Optional name for the participant",
   "data": [
