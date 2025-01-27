@@ -9,7 +9,7 @@ OCS uses the following terms:
 
 * *Published Version*. This is the version that users will interact with through the web, WhatsApp or any other configured channel--including the public link.
 
-!!! info "A note version functionality"
+!!! info "A note on version functionality"
     Once a version is made, it cannot be edited or modified. This ensures that the users' experience remains stable even if the authors may be changing the unreleased version.
 
 !!! warning "Chatting to the unreleased version"
@@ -46,3 +46,11 @@ If you click on the webchat button, for an unpublished version, there will be a 
 
 For this demo, I released a few more versions for this experiment and also changed the published version. To easily see which is the published version for the experiment, look right of the experiment name at the top of the experiment home screen at the icon in green. For this example, you'll see "v2" which indicates that the version 2 is the published version. You will also be able to see in the table looking at the published verion row for the checkmark.
 ![Create Experiment Version View](images/version_table_after.png)
+
+
+!!! info "Versioning experiments that use OpenAI Assistants"
+    Can this be done? Yes! When an experiment is released that has an OpenAI Assistant, there is no additional configuration required. However, please note that a read-only copy of the OpenAI Assistant is made in Open Chat Studio (see in the Assistants tab) and also in OpenAI. This includes all reference files. The exisiting OpenAI Assistant prior to creating the the version will still be available and be able to be modified in the unreleased experiment version.
+
+!!! warning "Modifying Assistants in OpenAI referenced by released versions"
+
+    As mentioned above, the copied assistant will be read-only in OCS, however, in OpenAI changes can still be made to that copy of the assistant. *We recommend advising you team to not modify this assistant if it references a released version.* This can cause unexpected behavior to the version and to its end users. To insure that the released version acts as expected this assistant should remain as-is.
