@@ -34,7 +34,7 @@ This allows the bot to search and reference information provided in uploaded fil
 For more information see the [OpenAI docs][6].
 
 ### Pipeline
-This is a beta feature that has not yet been fully released. Pipelines allow you to create more complex bots by defining a ‘graph’ of nodes. Each message to the bot is processed by the graph to produce a final output.
+[Pipelines](../pipelines/index.md) allow you to create more complex bots by defining a ‘graph’ of nodes. Each message to the bot is processed by the graph to produce a final output.
 
 This can be useful if you want to build a complex bot that performs different tasks depending on the user’s request. Generally, trying to make a single bot prompt do multiple functions doesn’t work well so it is better to create multiple prompts for each task and then combine them using a Pipeline. This is similar to the Multi-bot setup but allows more flexibility and complexity.
 

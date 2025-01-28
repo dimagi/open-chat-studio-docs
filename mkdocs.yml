@@ -20,11 +20,20 @@ theme:
     - toc.follow
 copyright: Copyright &copy; 2024 Dimagi
 
+extra_css:
+  - assets/extra.css
+
 markdown_extensions:
   - admonition
   - attr_list
+  - md_in_html
+  - pymdownx.blocks.caption
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
 
 nav:
   - Home: index.md
@@ -48,6 +57,9 @@ nav:
         - concepts/custom_actions.md
         - concepts/consent.md
         - concepts/channels.md
+      - Pipelines:
+        - concepts/pipelines/index.md
+        - concepts/pipelines/nodes.md
       - Team:
           - concepts/team/index.md
           - concepts/authentication-providers.md
