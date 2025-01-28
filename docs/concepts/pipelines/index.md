@@ -26,7 +26,7 @@ graph LR
 
 Each time a user sends a message to the bot, the pipeline is executed and the final output is sent back to the user.
 
-Each 'step' in a pipeline is called a 'node' and pipelines can have multiple nodes. To learn more about the the different
+Each 'step' in a pipeline is called a 'node' and pipelines can have multiple nodes. To learn more about the different
 types of nodes that can be used in a pipeline, see the [node types](nodes.md) documentation.
 
 ## Advanced Example
