@@ -14,7 +14,7 @@ The `outputs` listed by the node are the available classification labels. These 
 
 !!! info "Best practices for configuring a LLM Router"
 
-    It is advisable to use the [Node history mode](history.md#node) for a LLM Router to avoid unintentionally supply few-shot examples to the node of an incorrect output format.
+    It is advisable to use the [Node history mode](history.md#node) for an LLM Router to avoid unintentionally supplying few-shot examples to the node with an incorrect output format.
 
 ## Static Router
 Routes the input to a linked node using the participant data or temporary state of the pipeline.
