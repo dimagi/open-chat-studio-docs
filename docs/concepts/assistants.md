@@ -1,15 +1,15 @@
 # OpenAI Assistants
 
 ## Syncing with OpenAI
-The sync status with OpenAI is automatically checked each time a user visits the edit screen of an assistant. If the assistant in OCS has the identical configurations and files with the assistant in Open AI, the an in-sync status will appear under the assistant id:
+The in-sync status with OpenAI is automatically checked each time a user visits the edit screen of an assistant. If the assistant in OCS has the identical configurations and files with the assistant in Open AI, the an in-sync status will appear under the assistant id:
 ![In Sync Status](images/open_ai_assistant_in_sync_status.png)
 
-Otherwise, a warning will be displayed explaining what is out of sync. For example, in the image below, there are files uploaded in OpenAI that are not uploaded in OCS. This may result in unexpected behavior from the assistant. To resolve, upload the listed files in the the edit screen.
+Otherwise, a warning will be displayed explaining what is out of sync. For example, in the image below, there are files uploaded in OpenAI that are not uploaded in OCS. This may result in unexpected behavior from the assistant. To resolve, upload the listed files in the edit screen.
 ![Sync Warning](images/open_ai_assistant_out_of_sync_warning.png)
 
 !!! warning "Assistants in versioned experiments"
 
-    Although an assistant cannot be modified in OCS once an experiment is released that references that assistant, it can still be modified in OpenAI. A new assistant in OpenAI will be created at the time of the experiment's release, and *it's recommend not modifying that assistant to maintain the expected funcationalty of the released experiment*.
+    Although an assistant cannot be modified in OCS once an experiment is released that references that assistant, it can still be modified in OpenAI. A new assistant in OpenAI will be created at the time of the experiment's release, and *it is recommended not to modify that assistant to maintain the expected functionality of the released experiment*.
 
 
 ## Archiving
