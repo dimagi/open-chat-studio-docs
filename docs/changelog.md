@@ -5,6 +5,25 @@ hide:
 
 # Changelog
 
+## Jan 29, 2025:
+
+* **CHANGE** Improved pipeline validation logic and display of errors.
+* **CHANGE** Improve the changes UI when creating a new experiment version to show the details of referenced objects (e.g. pipelines, assistants, etc).
+* **CHANGE** Tag UI improvements to make it easier to add and remove tags from chats and messages.
+
+* **NEW** Chatbot versioning released. See the [documentation](concepts/versioning.md) for more information.
+* **NEW** New nodes added to [Pipelines](concepts/pipelines/index.md).
+    * [Python Node](concepts/pipelines/nodes.md#python-node): Allows you to run Python code in the pipeline.
+    * [OpenAI Assistant Node](concepts/pipelines/nodes.md#assistant): Allows you to use an OpenAI Assistant in the pipeline.
+    * [Static Router Node](concepts/pipelines/nodes.md#static-router): Allows you to route messages to different nodes based on a static mapping.
+* **NEW** Pipelines can now be tested via the edit UI. This does not currently support history or participant data.
+* **NEW** "Trigger Bot Message" API endpoint. This allows you to send a prompt to a bot which will trigger a message to the specified user. See the [API documentation](https://chatbots.dimagi.com/api/docs/#tag/Channels/operation/trigger_bot_message) for more information.
+* **NEW** [Custom Actions](concepts/custom_actions.md) allow bots to connect to external APIs and services.
+* **NEW** The web chat UI now supports :thumbsup: and :thumbsdown: reactions to bot messages. These reactions are saved as tags on the message.
+
+
+<!-- commcare connect integration -->
+
 ## Dec 12, 2024:
 
 * **NEW** When an experiment is in “debug mode”, errors will be shown to the user in the chat UI.
