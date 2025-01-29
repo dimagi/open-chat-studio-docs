@@ -60,6 +60,7 @@ nav:
       - Pipelines:
         - concepts/pipelines/index.md
         - concepts/pipelines/nodes.md
+        - concepts/pipelines/history.md
       - Team:
           - concepts/team/index.md
           - concepts/authentication-providers.md
