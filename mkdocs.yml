@@ -66,5 +66,5 @@ nav:
           - concepts/authentication-providers.md
           - concepts/messaging_providers.md
       - Assistants:
-          - concepts/concepts/assistants.md
+          - concepts/assistants.md
   - About: about.md
