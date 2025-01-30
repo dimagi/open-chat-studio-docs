@@ -1,4 +1,4 @@
-This page provides an overview of how to utilise surveys in your OCS chatbot. 
+This page provides an overview of how to utilize surveys in your OCS chatbot.
 
 ### What are Surveys on Open Chat Studio?
 
