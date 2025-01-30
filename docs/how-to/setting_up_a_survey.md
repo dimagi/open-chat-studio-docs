@@ -53,7 +53,7 @@ When you click on "Get Link", you'll get a link that looks something like:
 
 > https://docs.google.com/forms/some/uri/viewform?usp=pp_url&entry.1118764343=participant&entry.791635770=session&entry.784126073=experiment
 
-Replace the sections in the url as follows:
+Replace the sections in the URL as follows:
 
 - participant -> {participant_id}
 - session -> {session_id}
