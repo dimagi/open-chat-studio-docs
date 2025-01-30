@@ -32,7 +32,7 @@ Name: This is a name for you or your team members on OCS to identify different s
 **Example**
 > Before starting the experiment, we ask that you complete a short survey. Please click on the survey link, fill it out, and, when you have finished, select the checkbox to confirm you have completed it. Survey link: {survey_link}. 
 
-If you'd like to include both a pre- and post-survey, carry out the process above twice, one for each survey. 
+If you would like to include both a pre-survey and a post-survey, repeat the above process for each survey.
 
 ### Final Step
 
