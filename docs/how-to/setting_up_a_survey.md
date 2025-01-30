@@ -59,7 +59,7 @@ Replace the sections in the URL as follows:
 - session -> {session_id}
 - experiment -> {experiment_id}
 
-So that it looks something like this
+This will result in a link that looks like this:
 
 > https://docs.google.com/forms/some/uri/viewform?usp=pp_url&entry.1118764343={participant_id}&entry.791635770={session_id}&entry.784126073={experiment_id}
 
