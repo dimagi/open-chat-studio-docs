@@ -25,7 +25,7 @@ The very first step is to create a survey and generate a web link for that surve
 
 #### Select "Add New". 
 
-- Name:  This is a name for you / your team members on OCS to identify between different surveys you may create. Note that the users of your chatbot will not be able to see this survey name. 
+Name: This is a name for you or your team members on OCS to identify different surveys.
 - URL: Add the URL of your survey. 
 - Confirmation text: This is the text a user sees when they see the link to the survey, before they begin to use the chatbot. You can edit this text as you'd like. Here, it's also important to add the following text such that the bot knows to reference the URL you've added: Survey link: {survey_link}. 
 
