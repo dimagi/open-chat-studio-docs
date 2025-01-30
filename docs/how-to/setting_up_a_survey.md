@@ -4,7 +4,7 @@ This page provides an overview of how to utilize surveys in your OCS chatbot.
 
 The Surveys feature allows chatbot makers to give users a link to a Google form (or any other link to a survey), both at the start and end of an OCS chatbot web session. 
 
-**Note**: If you create a chatbot experiment, add pre- and/or post-surveys and deploy the bot on WhatsApp or Telegram, users will not be able to see the links to the survey or provide responses.  If you deploy your OCS chatbot on WhatsApp or Telegram but would still like to capture pre- or post-survey questions, options include: 
+If you deploy your OCS chatbot on WhatsApp or Telegram, users will not be able to see the survey links or submit responses.
 
 - Incorporating survey questions in your prompt and structuring the prompt such that the chatbot starts and ends with questions as you would like it to. 
 - Sending users links to a Google form or other kind of survey directly, before or after providing them with the link to the chatbot. 
