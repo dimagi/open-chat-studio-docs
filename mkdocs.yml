@@ -68,5 +68,7 @@ nav:
           - concepts/team/index.md
           - concepts/authentication-providers.md
           - concepts/messaging_providers.md
+      - Assistants:
+          - concepts/assistants.md
   - Changelog: changelog.md
   - About: about.md
