@@ -45,6 +45,7 @@ nav:
       - how-to/deploy_to_different_channels.md
       - how-to/configure_providers.md
       - how-to/api_access.md
+      - how-to/setting_up_a_survey.md
   - Concepts:
       - concepts/index.md
       - Experiments:
