@@ -35,7 +35,7 @@ hide:
 * **NEW** Added the ability to toggle whether responses should include source citations in the case of assistant based
   experiments. To toggle this, you’ll need to have the “assistant” type selected in the experiment’s edit screen, then
   go
-  to the “Advanced” tab. There you will see a “Citations enabled” setting. When this is setting is “off”, no citations
+  to the “Advanced” tab. There you will see a “Citations enabled” setting. When this setting is “off”, no citations
   will
   be present in the response.
 
@@ -45,7 +45,7 @@ hide:
   the chat
   session.
 
-* **NEW** Added a new “debug mode” for experiments. When an experiment is in debug mode, the user will be able to see
+* **NEW** Added a new “debug mode” for experiments. When an experiment is in debug mode, the user will be able to see.
 
 ## Aug 16, 2024:
 
@@ -99,7 +99,7 @@ hide:
 * **NEW** Participant data extraction through pipelines.
   You need the “Pipelines” feature flag enabled.
   Usage information can be found here.
-* **BUG** Normalize numbers when adding or updating a whatsapp channel. This help to avoid accidentally creating
+* **BUG** Normalize numbers when adding or updating a whatsapp channel. This helps to avoid accidentally creating
   another whatsapp channel with the same number that is in a different format.
 * **BUG** Verify Telegram token when adding a telegram channel
 
@@ -157,7 +157,7 @@ hide:
     * Users can now choose which tools to give to the bot to use.
     * Previously this was obscured by a single “tools enabled” checkbox which - when enabled - gave the bot all the tools that existed at that time.
     * Tools include: One-off Reminder, Recurring Reminder and Schedule Update
-    * One-off Reminder: This allows the bot to create a one time reminder message for some time in the future.
+    * One-off Reminder: This allows the bot to create a one-time reminder message for some time in the future.
     * Recurring Reminder: This allows the bot to create recurring reminder messages.
     * Schedule Update: This allows the bot to update existing scheduled messages. Please note that this tool cannot update reminders created with the one-off and recurring reminder tools, since those are legacy tools using a different framework. Future work will fix this.
 * **CHANGE** When and error occurs during the processing of a user message, the bot will tell the user that something went
