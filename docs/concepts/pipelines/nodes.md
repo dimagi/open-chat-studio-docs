@@ -29,7 +29,7 @@ Runs Python code.
 Renders a [Jinja](https://jinja.palletsprojects.com/en/stable/templates/) template.
 
 ## Email
-Send the input to the list of addresses provided.
+Send the input to the specified list of email addresses. This node acts as a passthrough, meaning the output will be identical to the input, allowing it to be used in a pipeline without affecting the conversation.
 
 ## Extract Structured Data
 Extract structured data from the input.
