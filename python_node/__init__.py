@@ -6,13 +6,13 @@ from typing import Any
 
 def get_participant_data() -> dict:
     """
-    Returns the current [participant's data](../../participant_data/){:target="_blank"} as a dictionary.
+    Returns the current [participant's data](../participant_data.md){:target="_blank"} as a dictionary.
     """
 
 
 def set_participant_data(data: dict) -> None:
     """
-    Updates the current [participant's data](../../participant_data/){:target="_blank"} with the provided dictionary.
+    Updates the current [participant's data](../participant_data.md){:target="_blank"} with the provided dictionary.
     This will overwrite any existing data.
     """
 
