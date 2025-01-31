@@ -32,7 +32,7 @@ Renders a [Jinja](https://jinja.palletsprojects.com/en/stable/templates/) templa
 Send the input to the specified list of email addresses. This node acts as a passthrough, meaning the output will be identical to the input, allowing it to be used in a pipeline without affecting the conversation.
 
 ## Extract Structured Data
-Extract structured data from the input.
+Extract structured data from the input. This node acts as a passthrough, meaning the output will be identical to the input, allowing it to be used in a pipeline without affecting the conversation.
 
 
 ## Update Participant Data
