@@ -21,6 +21,8 @@ def get_temp_state_key(key_name: str) -> str | None:
     """
     Returns the value of the temporary state key with the given name.
     If the key does not exist, it returns `None`.
+
+    See also: [Temporary State](./#temporary-state)
     """
 
 
@@ -28,4 +30,6 @@ def set_temp_state_key(key_name: str, data: Any) -> None:
     """
     Sets the value of the temporary state key with the given name to the provided data.
     This will override any existing data for the key.
+
+    See also: [Temporary State](./#temporary-state)
     """
