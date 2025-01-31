@@ -23,7 +23,29 @@ Routes the input to a linked node using the participant data or temporary state 
 Uses an OpenAI assistant to respond to the input.
 
 ## Python Node
-Runs Python code.
+The Python node allows the bot builder to execute custom Python code to perform logic, data processing, or other tasks.
+
+All the code must be encapsulated in a `main` function, which takes the node input as a string and returns a string to pass to the next node.
+The `main` function must also accept arbitrary keyword arguments to support future features. Here is an example of what the code might look like:
+
+```python
+def main(input, **kwargs) -> str:
+    # Put your code here
+    return input
+```
+
+The `input` parameter is a string that contains the input to the node. The return value of the function is a string that will be passed to the next node in the pipeline.
+
+The `kwargs` parameter is currently unused, but it is included to support future features that may require additional arguments to be passed to the function (though it is required to be present in the function signature).
+
+### Utility Functions
+
+The Python node provides a set of utility functions that can be used to interact with the user's data and the pipeline state.
+
+#### ::: python_node.get_participant_data
+#### ::: python_node.set_participant_data
+#### ::: python_node.get_temp_state_key
+#### ::: python_node.set_temp_state_key
 
 ## Template
 Renders a [Jinja](https://jinja.palletsprojects.com/en/stable/templates/) template.
