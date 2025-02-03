@@ -5,6 +5,10 @@ hide:
 
 # Changelog
 
+## Feb 3, 2025:
+
+* **CHANGE** Enhanced the participants filter in the experiment sessions view to support multiple participants. This allows you to export chats for selected participants only.
+
 ## Jan 29, 2025:
 
 * **CHANGE** Improved pipeline validation logic and display of errors.
