@@ -38,6 +38,22 @@ markdown_extensions:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
+plugins:
+- mkdocstrings:
+    enabled: true
+    default_handler: python
+    handlers:
+      python:
+        options:
+          paths: [src]
+          heading_level: 3
+          show_root_full_path: false
+          show_root_heading: true
+          show_signature: true
+          show_signature_annotations: true
+          show_source: false
+          show_symbol_type_heading: true
+
 nav:
   - Home: index.md
   - How-to Guides:
@@ -73,3 +89,6 @@ nav:
           - concepts/assistants.md
   - Changelog: changelog.md
   - About: about.md
+
+watch:
+- python_node
