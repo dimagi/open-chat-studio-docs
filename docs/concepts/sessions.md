@@ -43,7 +43,7 @@ On the **Web** channel, users can have **anonymous sessions**, where:
 
 ## Resetting Sessions
 
-For **Single-Session Channels** like **WhatsApp** and **Telegram**, the current session continues indefinitely. However, sessions can be reset either manually by the user or automatically using Events or the API. When a session is reset:
+For **Single-Session Channels** like **WhatsApp** and **Telegram**, the current session continues indefinitely. However, sessions can be reset either manually by the user or automatically using [Events](events.md) or the API. When a session is reset:
 
 - The current session is marked as completed.
 - A new session is started with a fresh history.
@@ -58,7 +58,7 @@ The chat user can manually reset the session (start a new session) by sending th
 
 There are two ways to automatically reset a session:
 
-- **Events**: You can configure an event to end the current session when the event is triggered. This will not create a new session automatically however if the user sends a message after the session is ended, a new session will be created.
+- **Events**: You can configure an event to end the current session when the event is triggered. This will not create a new session automatically however if the user sends a message after the session is ended, a new session will be created. See [Events](events.md).
 - **API**: When using the [Trigger Bot Message](https://chatbots.dimagi.com/api/docs/#tag/Channels/operation/trigger_bot_message) API you can set `"start_new_session": true` which will end the current session and start a new one before messaging the user.
 
 By structuring sessions in this way, Open Chat Studio ensures privacy-conscious, context-aware, and seamless interactions across different communication channels.

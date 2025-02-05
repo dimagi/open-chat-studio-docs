@@ -86,7 +86,7 @@ update the data using Python code as part of any pipeline.
 
 ### Events
 
-You can also update the participant data using events. This is useful if you want to update the data based on the
+You can also update the participant data using [events](events.md). This is useful if you want to update the data based on the
 context of the conversation. This method also allows you to specify the schema for the data that is being updated.
 
 An example of this is extracting tasks from the conversation history using a timeout event. The event could be
