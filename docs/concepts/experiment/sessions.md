@@ -48,7 +48,7 @@ For **Single-Session Channels** like **WhatsApp** and **Telegram**, the current 
 - Ends the current session.
 - Starts a new session.
 
-This means that, except for participant data, the bot 'forgets' all details of the previous conversation—including the fact that it even took place.
+This means that, aside from participant data, the bot loses all information about the previous conversation — including the fact that it even took place.
 
 
 
