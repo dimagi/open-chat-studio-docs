@@ -14,7 +14,7 @@ For API-based sessions, a new API call to the [create experiment session endpoin
 Since these channels are inherently single-threaded, only a single session can be active at any given time. Once a session ends, any new message will start a new session, even though the participant can still see previous messages on their side.
 
 ### How sessions are ended
-Sessions are ended either manually, or automatically using timeout triggers.
+Sessions are ended either manually or automatically using timeout triggers.
 <!-- Link timeout triggers to events / timeout_triggers page -->
 
 #### Web channel
