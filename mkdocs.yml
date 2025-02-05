@@ -82,6 +82,7 @@ nav:
       - concepts/index.md
       - Experiments:
         - concepts/experiment/index.md
+        - concepts/experiment/sessions.md
         - concepts/llm.md
         - concepts/participant_data.md
         - concepts/prompt_variables.md
