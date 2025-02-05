@@ -43,7 +43,7 @@ the [How-to guides](../how-to/index.md).
 : Messaging providers hold the configuration required to send messages to users on a specific channel.
 
 [Participant Data](participant_data.md)
-: Data that persists across sessions and is tied to the same \`User, Channel, Chatbot\` scope. It helps retain long-term user preferences and contextual information beyond a single session.
+: Data that persists across sessions and is tied to the same `User, Channel, Chatbot` scope. It helps retain long-term user preferences and contextual information beyond a single session.
 
 [Pipelines](pipelines/index.md)
 : A pipeline is a way to build a bot by combining one or more steps together.
@@ -55,7 +55,7 @@ the [How-to guides](../how-to/index.md).
 : The scope of conversations between a user and a chatbot within a specific channel. Sessions are isolated, ensuring data privacy and contextual continuity for the duration of an interaction.
 
 [Source Material](source_material.md)
-: Additional information that can be included in the bot prompt using the \`{source_material}\` prompt variable.
+: Additional information that can be included in the bot prompt using the `{source_material}` prompt variable.
 
 [Versions](versioning.md)
 : The ability to create and manage different versions of a chatbot.
