@@ -109,3 +109,8 @@ nav:
 
 watch:
 - python_node
+
+extra_javascript:
+  - path: https://unpkg.com/open-chat-studio-widget@0.1.0/dist/open-chat-studio-widget/open-chat-studio-widget.esm.js
+    type: module
+    async: true

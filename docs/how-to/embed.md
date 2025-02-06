@@ -4,6 +4,10 @@
 
 Open Chat Studio provides two methods for embedding a chatbot into your website: using the Chat Component or an iframe. This guide covers both approaches.
 
+Here is a demo of using the chat component:
+
+<open-chat-studio-widget visible="false" boturl="https://chatbots.dimagi.com/a/dimagi/experiments/e/dc2c0c98-d655-4042-b184-7a7a2ecb2954/embed/start/" button-text="Chat Demo"></open-chat-studio-widget>
+
 ## Prerequisites
 
 Before embedding, you must create a bot in Open Chat Studio.
