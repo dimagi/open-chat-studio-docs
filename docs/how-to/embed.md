@@ -1,31 +1,93 @@
-# Embedding a Bot 
+# Embedding a Bot
 
-Open Chat Studio allows you to easily embed a chatbot into your website, providing visitors with instant interaction and support. Follow this guide to integrate a bot into your site.
+## Overview
 
-## Step 1: Get Your Embed Code
+Open Chat Studio provides two methods for embedding a chatbot into your website: using the Chat Component or an iframe. This guide covers both approaches.
 
-1. **Log in** to Open Chat Studio.
-2. Navigate to the **Experiment** you want to embed.
-3. Click on the :fontawesome-regular-window-maximize: **Web** channel and select :fontawesome-solid-share-nodes: **Share**
-4. Copy the provided embed code snippet.
+## Prerequisites
 
-## Step 2: Add the Embed Code to Your Website
+Before embedding, you must create a bot in Open Chat Studio.
 
-### If You Have a Website Builder (e.g., Wix, WordPress, Squarespace)
+## Method 1: Using the Chat Component
 
-1. Open your website editor.
-2. Find the option to add an **HTML or Code Block**.
-3. Paste the embed code into the block.
-4. Save and publish your changes.
+### Installation Steps
 
-### If You Have a Static HTML Website
+1. Add the widget script to your site's `<head>` section:
 
-1. Open the HTML file of your website in a text editor.
-2. Locate the `<body>` section where you want the chat widget to appear.
-3. Paste the embed code just before the closing `</body>` tag.
-4. Save the file and upload it to your web hosting service.
+```html
+<script type='module' src='https://unpkg.com/open-chat-studio-widget@0.1.0/dist/open-chat-studio-widget/open-chat-studio-widget.esm.js'></script>
+```
 
-## Step 3: Test the Chatbot
+2. Obtaining Embed Code
+
+   1. **Log in** to Open Chat Studio.
+   2. Navigate to the **Experiment** you wish to embed.
+   3. Click on the :fontawesome-regular-window-maximize: **Web** channel and select :fontawesome-solid-share-nodes: **Share**
+   4. Copy the provided embed code snippet.
+
+
+3. Insert the widget where you want the chat button.
+
+The embed code snippet should look something like this:
+
+```html
+<open-chat-studio-widget 
+  visible="false" 
+  boturl="https://chatbots.dimagi.com/...." 
+  button-text="Let's Chat">
+</open-chat-studio-widget>
+```
+
+### Customization
+
+Customize the widget using CSS and CSS variables:
+
+```html
+<style>
+  open-chat-studio-widget {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    --button-background-color: blue;
+    --button-background-color-hover: black;
+    --button-text-color: white;
+    --button-text-color-hover: yellow;
+  }
+</style>
+<open-chat-studio-widget 
+  visible="false" 
+  boturl="...."
+  button-text="👋">
+</open-chat-studio-widget>
+```
+
+## Method 2: Embedding via iframe
+
+1. Get Your Embed Code
+
+   1. **Log in** to Open Chat Studio.
+   2. Navigate to the **Experiment** you want to embed.
+   3. Click on the :fontawesome-regular-window-maximize: **Web** channel and select :fontawesome-solid-share-nodes: **Share**
+   4. Copy the provided embed code snippet.
+
+
+2. Add the Embed Code to Your Website
+
+   #### If You Have a Website Builder (e.g., Wix, WordPress, Squarespace)
+   
+   1. Open your website editor.
+   2. Find the option to add an **HTML or Code Block**.
+   3. Paste the embed code into the block.
+   4. Save and publish your changes.
+
+   #### If You Have a Static HTML Website
+
+   1. Open the HTML file of your website in a text editor.
+   2. Locate the `<body>` section where you want the chat widget to appear.
+   3. Paste the embed code just before the closing `</body>` tag.
+   4. Save the file and upload it to your web hosting service.
+
+## Test the Chatbot
 
 1. Open your website in a web browser.
 2. Ensure the chatbot appears and functions as expected.
