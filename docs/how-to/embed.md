@@ -5,7 +5,7 @@ Open Chat Studio allows you to easily embed a chatbot into your website, providi
 ## Step 1: Get Your Embed Code
 
 1. **Log in** to Open Chat Studio.
-2. Navigate to the **Experiment** you wish to embed.
+2. Navigate to the **Experiment** you want to embed.
 3. Click on the :fontawesome-regular-window-maximize: **Web** channel and select :fontawesome-solid-share-nodes: **Share**
 4. Copy the provided embed code snippet.
 
