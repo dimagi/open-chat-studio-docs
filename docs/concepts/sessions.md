@@ -9,7 +9,7 @@ Chat sessions in Open Chat Studio define the scope of conversations between a us
 A session is uniquely defined by:
 
 - **User**: The individual engaging with the chatbot.
-- **Channel**: The platform through which the chat occurs (e.g., WhatsApp, Telegram, Web, Slack).
+- **Channel**: The platform through which the chat occurs (e.g., WhatsApp, Telegram, Web, Slack). See [channels](channels.md).
 - **Chatbot**: The specific chatbot handling the conversation.
 
 Each session is independent, meaning:
@@ -28,7 +28,7 @@ Each session is independent, meaning:
 
 ## Participant Data
 
-Outside of session-specific data, Open Chat Studio maintains **participant data**, which:
+Aside from session-specific data, Open Chat Studio maintains [participant data](participant_data.md), which:
 
 - Persists across sessions.
 - Is tied to the same `User, Channel, Chatbot` scope.
@@ -43,13 +43,22 @@ On the **Web** channel, users can have **anonymous sessions**, where:
 
 ## Resetting Sessions
 
-For **Single-Session Channels** like **WhatsApp** and **Telegram**, the current session continues indefinitely unless the user sends the `/reset` command. This command:
+For **Single-Session Channels** like **WhatsApp** and **Telegram**, the current session continues indefinitely. However, sessions can be reset either manually by the user or automatically using [Events](events.md) or the API. When a session is reset:
 
-- Ends the current session.
-- Starts a new session.
+- The current session is marked as completed.
+- A new session is started with a fresh history.
 
 This means that, aside from participant data, the bot loses all information about the previous conversation — including the fact that it even took place.
 
+### Manual resets
 
+The chat user can manually reset the session (start a new session) by sending the `/reset` command. This command is available on all channels except **Web** and **Slack**.
+
+### Automatic resets
+
+There are two ways to automatically reset a session:
+
+- **Events**: You can configure an event to end the current session when the event is triggered. This will not automatically create a new session; however, if the user sends a message after the session is ended, a new session will be created. See [Events](events.md).
+- **API**: When using the [Trigger Bot Message](https://chatbots.dimagi.com/api/docs/#tag/Channels/operation/trigger_bot_message) API, you can set `"start_new_session": true`, which will end the current session and start a new one before messaging the user.
 
 By structuring sessions in this way, Open Chat Studio ensures privacy-conscious, context-aware, and seamless interactions across different communication channels.

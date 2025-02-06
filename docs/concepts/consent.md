@@ -1,4 +1,4 @@
-# Understanding Consent Forms
+# Consent Forms
 
 Consent forms allow chatbot makers to provide context to chatbot users on how their data will be used, and who to contact regarding any concerns. Consent forms are displayed to users before they start interacting with the chatbot.
 
