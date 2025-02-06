@@ -100,6 +100,7 @@ Customize the widget using CSS and CSS variables:
 ## Troubleshooting
 
 If the chatbot does not appear:
+
 - Ensure you copied and pasted the embed code correctly.
 - Clear your browser cache and refresh the page.
 - Check that your website allows embedding external scripts.
