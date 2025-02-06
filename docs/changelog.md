@@ -7,6 +7,7 @@ hide:
 
 ## Feb 2025:
 
+* **NEW** Chatbots can now be embedded into external websites. See the [documentation](how-to/embed.md) for more information.
 * **CHANGE** Enhanced the participants filter in the experiment sessions view to support multiple participants. This allows you to export chats for selected participants only.
 * **CHANGE** Consent forms have become optional. If no consent form is configured then the user will not be prompted to accept a consent form before starting a chat. Pre- and post-surveys are still displayed if there are any configured.
 
