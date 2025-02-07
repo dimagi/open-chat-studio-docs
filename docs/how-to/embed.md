@@ -29,7 +29,6 @@ Before embedding, you must create a bot in Open Chat Studio.
       3. Click on the :fontawesome-regular-window-maximize: **Web** channel and select :fontawesome-solid-share-nodes: **Share**
       4. Copy the provided embed code snippet.
 
-
 3. Insert the widget where you want the chat button.
 
       The embed code snippet should look something like this:
@@ -38,7 +37,9 @@ Before embedding, you must create a bot in Open Chat Studio.
       <open-chat-studio-widget 
         visible="false" 
         bot-url="https://chatbots.dimagi.com/...." 
-        button-text="Let's Chat">
+        button-text="Let's Chat"
+        position="right"
+        expanded="false">
       </open-chat-studio-widget>
       ```
 
