@@ -28,7 +28,7 @@ The very first step is to create a survey and generate a web link for that surve
 
 - Name: This is a name for you or your team members on OCS to identify different surveys.
 - URL: Add the URL of your survey. 
-- Confirmation text: This is the text a user sees when they see the link to the survey, before they begin to use the chatbot. You can edit this text as you'd like. Here, it's also important to add "{survey_link}" where you would like to show the URL to your survey.
+- Confirmation text: This is the text a user sees when they see the link to the survey, before they begin to use the chatbot. You can edit this text as you'd like. Here, it's also important to add `{survey_link}` where you would like to show the URL to your survey.
 
 **Example**
 > Before starting the experiment, we ask that you complete a short survey. Please click on the survey link, fill it out, and, when you have finished, select the checkbox to confirm you have completed it. Survey link: {survey_link}. 
