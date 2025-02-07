@@ -66,6 +66,8 @@ Customize the widget using CSS and CSS variables:
 </open-chat-studio-widget>
 ```
 
+For more details see https://www.npmjs.com/package/open-chat-studio-widget
+
 ## Method 2: Embedding via iframe
 
 1. Get Your Embed Code
