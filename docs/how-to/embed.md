@@ -37,7 +37,7 @@ Before embedding, you must create a bot in Open Chat Studio.
       ```html
       <open-chat-studio-widget 
         visible="false" 
-        boturl="https://chatbots.dimagi.com/...." 
+        bot-url="https://chatbots.dimagi.com/...." 
         button-text="Let's Chat">
       </open-chat-studio-widget>
       ```
@@ -60,7 +60,7 @@ Customize the widget using CSS and CSS variables:
 </style>
 <open-chat-studio-widget 
   visible="false" 
-  boturl="...."
+  bot-url="...."
   button-text="👋">
 </open-chat-studio-widget>
 ```
