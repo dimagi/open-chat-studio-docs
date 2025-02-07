@@ -6,7 +6,7 @@ Open Chat Studio provides two methods for embedding a chatbot into your website:
 
 Here is a demo of using the chat component:
 
-<open-chat-studio-widget visible="false" boturl="https://chatbots.dimagi.com/a/dimagi/experiments/e/dc2c0c98-d655-4042-b184-7a7a2ecb2954/embed/start/" button-text="Chat Demo"></open-chat-studio-widget>
+<open-chat-studio-widget visible="false" bot-url="https://chatbots.dimagi.com/a/dimagi/experiments/e/dc2c0c98-d655-4042-b184-7a7a2ecb2954/embed/start/" button-text="Chat Demo"></open-chat-studio-widget>
 
 ## Prerequisites
 
@@ -19,7 +19,7 @@ Before embedding, you must create a bot in Open Chat Studio.
 1. Add the widget script to your site's `<head>` section:
    
       ```html
-      <script type='module' src='https://unpkg.com/open-chat-studio-widget@0.1.0/dist/open-chat-studio-widget/open-chat-studio-widget.esm.js'></script>
+      <script type='module' src='https://unpkg.com/open-chat-studio-widget@0.2.0/dist/open-chat-studio-widget/open-chat-studio-widget.esm.js'></script>
       ```
 
 2. Obtaining Embed Code
@@ -29,7 +29,6 @@ Before embedding, you must create a bot in Open Chat Studio.
       3. Click on the :fontawesome-regular-window-maximize: **Web** channel and select :fontawesome-solid-share-nodes: **Share**
       4. Copy the provided embed code snippet.
 
-
 3. Insert the widget where you want the chat button.
 
       The embed code snippet should look something like this:
@@ -37,8 +36,10 @@ Before embedding, you must create a bot in Open Chat Studio.
       ```html
       <open-chat-studio-widget 
         visible="false" 
-        boturl="https://chatbots.dimagi.com/...." 
-        button-text="Let's Chat">
+        bot-url="https://chatbots.dimagi.com/...." 
+        button-text="Let's Chat"
+        position="right"
+        expanded="false">
       </open-chat-studio-widget>
       ```
 
@@ -60,10 +61,12 @@ Customize the widget using CSS and CSS variables:
 </style>
 <open-chat-studio-widget 
   visible="false" 
-  boturl="...."
+  bot-url="...."
   button-text="👋">
 </open-chat-studio-widget>
 ```
+
+For more details, see [Open Chat Studio Widget on npm](https://www.npmjs.com/package/open-chat-studio-widget)
 
 ## Method 2: Embedding via iframe
 
