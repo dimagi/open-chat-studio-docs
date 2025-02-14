@@ -5,8 +5,10 @@ hide:
 
 # Changelog
 
-## Feb 15, 2025:
 
+## Feb 14, 2025:
+
+* **BUG** Fixed an issue where the citations enabled toggle on an assistant node showed that it was disabled when the node was just added, where in reality it was actually enabled.
 * **CHANGE** Update the embeddable chat widget to better support mobile devices & allow more customization of the styles. 
 
 ## Feb 06, 2025:
