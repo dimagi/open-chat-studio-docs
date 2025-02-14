@@ -5,7 +5,11 @@ hide:
 
 # Changelog
 
-## Feb 2025:
+## Feb 15, 2025:
+
+* **CHANGE** Update the embeddable chat widget to better support mobile devices & allow more customization of the styles. 
+
+## Feb 06, 2025:
 
 * **NEW** Chatbots can now be embedded into external websites. See the [documentation](how-to/embed.md) for more information.
 * **CHANGE** Enhanced the participants filter in the experiment sessions view to support multiple participants. This allows you to export chats for selected participants only.
