@@ -1,3 +1,7 @@
 .mermaid {
     text-align: center;
  }
+
+.highlight pre {
+    z-index: -1;
+}
