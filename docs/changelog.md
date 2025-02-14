@@ -5,6 +5,9 @@ hide:
 
 # Changelog
 
+## Feb 14, 2025:
+* **BUG** Fixed an issue where the citations enabled toggle on an assistant node showed that it was disabled when the node was just added, where in reality it was actually enabled.
+
 ## Feb 2025:
 
 * **NEW** Chatbots can now be embedded into external websites. See the [documentation](how-to/embed.md) for more information.
