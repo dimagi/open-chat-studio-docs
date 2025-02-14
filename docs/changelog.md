@@ -10,6 +10,7 @@ hide:
 
 * **BUG** Fixed an issue where the citations enabled toggle on an assistant node showed that it was disabled when the node was just added, where in reality it was actually enabled.
 * **CHANGE** Update the embeddable chat widget to better support mobile devices & allow more customization of the styles. 
+* **CHANGE** Allow pipeline bots to toggle conversational consent.
 
 ## Feb 06, 2025:
 
