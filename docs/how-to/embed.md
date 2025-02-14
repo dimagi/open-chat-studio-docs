@@ -19,7 +19,7 @@ Before embedding, you must create a bot in Open Chat Studio.
 1. Add the widget script to your site's `<head>` section:
    
       ```html
-      <script type='module' src='https://unpkg.com/open-chat-studio-widget@0.2.0/dist/open-chat-studio-widget/open-chat-studio-widget.esm.js'></script>
+      <script type='module' src='https://unpkg.com/open-chat-studio-widget@0.3.0/dist/open-chat-studio-widget/open-chat-studio-widget.esm.js'></script>
       ```
 
 2. Obtaining Embed Code
@@ -66,6 +66,20 @@ Customize the widget using CSS and CSS variables:
 </open-chat-studio-widget>
 ```
 
+#### Z-Index
+
+If the chatbot appears below other elements on the page you can increase the `z-index` of the chatbot by setting the `--chat-z-index` CSS variable. The default value is `50`.
+
+```html
+<style>
+  open-chat-studio-widget {
+    --chat-z-index: 1000;
+  }
+</style>
+```
+
+In some cases it may also be necessary to reduce the z-index of other elements on the page.
+
 For more details, see [Open Chat Studio Widget on npm](https://www.npmjs.com/package/open-chat-studio-widget)
 
 ## Method 2: Embedding via iframe
@@ -76,7 +90,6 @@ For more details, see [Open Chat Studio Widget on npm](https://www.npmjs.com/pac
       2. Navigate to the **Experiment** you want to embed.
       3. Click on the :fontawesome-regular-window-maximize: **Web** channel and select :fontawesome-solid-share-nodes: **Share**
       4. Copy the provided embed code snippet.
-
 
 2. Add the Embed Code to Your Website
 
