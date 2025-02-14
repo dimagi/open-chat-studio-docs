@@ -5,10 +5,13 @@ hide:
 
 # Changelog
 
-## Feb 14, 2025:
-* **BUG** Fixed an issue where the citations enabled toggle on an assistant node showed that it was disabled when the node was just added, where in reality it was actually enabled.
 
-## Feb 2025:
+## Feb 14, 2025:
+
+* **BUG** Fixed an issue where the citations enabled toggle on an assistant node showed that it was disabled when the node was just added, where in reality it was actually enabled.
+* **CHANGE** Update the embeddable chat widget to better support mobile devices & allow more customization of the styles. 
+
+## Feb 06, 2025:
 
 * **NEW** Chatbots can now be embedded into external websites. See the [documentation](how-to/embed.md) for more information.
 * **CHANGE** Enhanced the participants filter in the experiment sessions view to support multiple participants. This allows you to export chats for selected participants only.
