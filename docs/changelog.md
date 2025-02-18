@@ -5,9 +5,10 @@ hide:
 
 # Changelog
 
-
 ## Feb 18, 2025:
+
 * **CHANGE** Pipelines are now sorted by name in ascending order in both the pipelines table and dropdown list on the experiment edit page.
+* **CHANGE** Allow unauthenticated users (public chat users) to access attachments in their chats.
 
 ## Feb 14, 2025:
 
