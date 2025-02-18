@@ -5,6 +5,9 @@ hide:
 
 # Changelog
 
+## Feb 18, 2025:
+
+* **CHANGE** Allow unauthenticated users (public chat users) to access attachments in their chats.
 
 ## Feb 14, 2025:
 
