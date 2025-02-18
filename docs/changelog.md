@@ -6,6 +6,9 @@ hide:
 # Changelog
 
 
+## Feb 18, 2025:
+* **CHANGE** Pipelines are now sorted by name in ascending order in both the pipelines table and dropdown list on the experiment edit page.
+
 ## Feb 14, 2025:
 
 * **BUG** Fixed an issue where the citations enabled toggle on an assistant node showed that it was disabled when the node was just added, where in reality it was actually enabled.
