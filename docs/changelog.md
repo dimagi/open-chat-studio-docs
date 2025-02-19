@@ -5,6 +5,10 @@ hide:
 
 # Changelog
 
+## Feb 19, 2025
+
+* **NEW**: Add support [Deepseek](https://api-docs.deepseek.com/quick_start/pricing) models.
+
 ## Feb 18, 2025:
 
 * **CHANGE** Pipelines are now sorted by name in ascending order in both the pipelines table and dropdown list on the experiment edit page.
