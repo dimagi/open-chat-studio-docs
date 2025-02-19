@@ -18,13 +18,14 @@ When building chatbots, an LLM powers the chatbot's ability to understand and re
 ## Which Large Language Models are supported by Open Chat Studio?
 
 Open Chat Studio is developed to support a range of LLMs. The platform is designed to be flexible and can work with any
-LLM that has an API. The platform is currently supports all the models provided by the following APIs:
+LLM that has an API. The platform currently supports all the models provided by the following APIs:
 
 * [OpenAI](https://platform.openai.com/docs/models)
 * [Azure OpenAi](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=python-secure%2Cglobal-standard%2Cstandard-chat-completions)
 * [Anthropic](https://docs.anthropic.com/en/docs/about-claude/models_)
 * [Groq](https://console.groq.com/docs/models)
 * [Perplexity](https://docs.perplexity.ai/guides/model-cards)
+* [Deepseek](https://api-docs.deepseek.com/quick_start/pricing)
 
 ## Model Configuration Parameters
 
