@@ -8,7 +8,9 @@ hide:
 ## Feb 19, 2025
 
 * **NEW**: Add support [Deepseek](https://api-docs.deepseek.com/quick_start/pricing) models.
+* **NEW**: Added theme toggle in the navbar which allows switching between dark and light theme. 
 * **CHANGE** The experiment description can now include markdown formatting which will be rendered when it is displayed on the public chatbot pages (the consent page and the pre-survey page).
+* **CHANGE** All markdown links in the chatbot now open in a new tab.
 
 ## Feb 18, 2025:
 
