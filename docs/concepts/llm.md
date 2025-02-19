@@ -25,6 +25,7 @@ LLM that has an API. The platform is currently supports all the models provided 
 * [Anthropic](https://docs.anthropic.com/en/docs/about-claude/models_)
 * [Groq](https://console.groq.com/docs/models)
 * [Perplexity](https://docs.perplexity.ai/guides/model-cards)
+* [Deepseek](https://api-docs.deepseek.com/quick_start/pricing)
 
 ## Model Configuration Parameters
 
