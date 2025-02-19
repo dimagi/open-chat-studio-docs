@@ -5,6 +5,10 @@ hide:
 
 # Changelog
 
+## Feb 19, 2025
+
+* **CHANGE** The experiment description can now include markdown formatting which will be rendered when it is displayed on the public chatbot pages (the consent page and the pre-survey page).
+
 ## Feb 18, 2025:
 
 * **CHANGE** Pipelines are now sorted by name in ascending order in both the pipelines table and dropdown list on the experiment edit page.
