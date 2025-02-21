@@ -107,6 +107,7 @@ content = attachment.read_text()
 
     * Text files (this includes files like CSV, JSON etc)
     * PDF files
+    * docx files
 
     Other file types can still be uploaded to assistants but the Python Node is not able to read the file contents using the `read_text()` method on the attachment.
 
