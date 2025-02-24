@@ -57,5 +57,8 @@ the [How-to guides](../how-to/index.md).
 [Source Material](source_material.md)
 : Additional information that can be included in the bot prompt using the `{source_material}` prompt variable.
 
+[Tracing Provider](tracing_providers.md)
+: Tracing providers hold the configuration required to send traces to the tracing provider.
+
 [Versions](versioning.md)
 : The ability to create and manage different versions of a chatbot.
