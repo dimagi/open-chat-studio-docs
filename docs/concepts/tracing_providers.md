@@ -1,6 +1,6 @@
 # Tracing Providers
 
-LLM tracing involves capturing a model's output and decision-making process. Tracing providers offer platforms to visualize and analyze these traces, aiding bot developers in understanding their model's behavior.
+LLM tracing involves capturing a model's output and decision-making process. Tracing providers offer platforms to visualize and analyze these traces, aiding bot developers in understanding their chatbot's behavior.
 
 Open Chat Studio (OCS) has built-in support for the following providers:
 
