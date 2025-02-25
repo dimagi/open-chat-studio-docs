@@ -103,6 +103,7 @@ nav:
           - concepts/authentication-providers.md
           - concepts/messaging_providers.md
           - concepts/tracing_providers.md
+          - concepts/groups.md
       - Assistants:
           - concepts/assistants.md
   - Changelog: changelog.md
