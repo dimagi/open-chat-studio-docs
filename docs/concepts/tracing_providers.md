@@ -4,8 +4,8 @@ LLM tracing involves capturing a model's output and decision-making process. Tra
 
 Open Chat Studio (OCS) has built-in support for the following providers:
 
-- [LangFuse](langfuse)
-- [LangSmith](langsmith)
+- [LangFuse][langfuse]
+- [LangSmith][langsmith]
 
 
 Tracing will automatically begin with the next conversation after configuring a tracing provider.
