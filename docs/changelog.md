@@ -5,6 +5,9 @@ hide:
 
 # Changelog
 
+## Feb 25, 2025
+* **BUG** Fixed an issue where OpenAI's API message limit was reached before summarizing the conversation.
+
 ## Feb 24, 2025
 * **NEW** `.docx` attachments can now be read in the code node.
 
