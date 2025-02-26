@@ -1,12 +1,7 @@
 .mermaid {
     text-align: center;
- }
-
-.highlight pre {
-    z-index: -1;
 }
 
-.md-sidebar--secondary {
-    /* lower z-index to prevent overlay with chat widget on the embedding page */
-    z-index: -1;
+open-chat-studio-widget {
+    --chat-z-index: 10;
 }

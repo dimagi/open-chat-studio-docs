@@ -40,10 +40,9 @@ The `kwargs` parameter is currently unused, but it is included to support future
 
 !!! warning
 
-    All the code must be encapsulated in a `main` function. You can write other functions but they must be within the scope of the `main` function.
-    For example:
+    All the code must be encapsulated in a `main` function. You can write other functions but they must be within the scope of the `main` function. For example:
 
-    ```
+    ``` py
     def main(input. **kwargs):
         def important(arg):
             return arg + "!"
