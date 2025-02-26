@@ -5,8 +5,14 @@ hide:
 
 # Changelog
 
+## Feb 26, 2025
+* **BUG** Fixed an issue where the prompt used to generate ad-hoc bot messages were being saved in the chat history as a user message.
+
 ## Feb 25, 2025
 * **BUG** Fixed an issue where OpenAI's API message limit was reached before summarizing the conversation.
+* **NEW** The Assistants UI now displays the number of uploaded files for code interpreter and file search
+* **NEW** Bots will now inform users when something goes wrong while generating a message
+* **BUG** Fixed an issue where empty responses caused the bot to malfunction. These responses are now saved as an AI message
 
 ## Feb 24, 2025
 * **NEW** `.docx` attachments can now be read in the code node.
