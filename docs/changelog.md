@@ -7,6 +7,9 @@ hide:
 
 ## Feb 25, 2025
 * **BUG** Fixed an issue where OpenAI's API message limit was reached before summarizing the conversation.
+* **NEW** Assistants UI shows the number of uploaded files for code interpreter and file search
+* **NEW** Bots will now inform users when something goes wrong while generating a message
+* **BUG** Fixed empty responses breaking the bot. These responses are now saved as an AI message
 
 ## Feb 24, 2025
 * **NEW** `.docx` attachments can now be read in the code node.
