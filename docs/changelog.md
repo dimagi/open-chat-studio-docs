@@ -17,7 +17,7 @@ hide:
 
 ## Feb 24, 2025
 * **NEW** `.docx` attachments can now be read in the code node.
-* **BUG** Prevent event messgaing loops by restricting the event options when "a new bot message is received" is selected. This is a followup to the celery issues on Feb 7, 2025.
+* **BUG** Prevent event messaging loops by restricting the event options when "a new bot message is received" is selected. This is a followup to the celery issues on Feb 7, 2025.
 
 ## Feb 21, 2025
 
