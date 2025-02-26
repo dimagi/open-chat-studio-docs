@@ -7,6 +7,7 @@ hide:
 
 ## Feb 26, 2025
 * **BUG** Fixed an issue where the prompt used to generate ad-hoc bot messages were being saved in the chat history as a user message.
+* **BUG** Restores ability to create event for the bot to summarize the conversation.
 
 ## Feb 25, 2025
 * **BUG** Fixed an issue where OpenAI's API message limit was reached before summarizing the conversation.
@@ -16,6 +17,7 @@ hide:
 
 ## Feb 24, 2025
 * **NEW** `.docx` attachments can now be read in the code node.
+* **BUG** Prevent event messaging loops by restricting the event options when "a new bot message is received" is selected. This is a followup to the celery issues on Feb 7, 2025.
 
 ## Feb 21, 2025
 
@@ -27,6 +29,7 @@ hide:
 * **NEW**: Added theme toggle in the navbar which allows switching between dark and light theme. 
 * **CHANGE** The experiment description can now include markdown formatting which will be rendered when it is displayed on the public chatbot pages (the consent page and the pre-survey page).
 * **CHANGE** All markdown links in the chatbot now open in a new tab.
+* **NEW**: Team deletion modal allows user to select the subset of uses to asynchronously send a team deletion email: just the deleting user, all team admins, all team members.
 
 ## Feb 18, 2025:
 
