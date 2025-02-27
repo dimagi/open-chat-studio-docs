@@ -5,6 +5,9 @@ hide:
 
 # Changelog
 
+## Feb 27, 2025
+* **NEW** The `random` python module is now available in the code node.
+
 ## Feb 26, 2025
 * **BUG** Fixed an issue where the prompt used to generate ad-hoc bot messages were being saved in the chat history as a user message.
 * **BUG** Fixed an issue with the code node causing the pipeline to not load.
