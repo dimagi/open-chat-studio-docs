@@ -19,7 +19,7 @@ Before embedding, you must create a bot in Open Chat Studio.
 1. Add the widget script to your site's `<head>` section:
    
       ```html
-      <script type='module' src='https://unpkg.com/open-chat-studio-widget@0.3.0/dist/open-chat-studio-widget/open-chat-studio-widget.esm.js'></script>
+      <script type='module' src='https://unpkg.com/open-chat-studio-widget@0.3.1/dist/open-chat-studio-widget/open-chat-studio-widget.esm.js' async></script>
       ```
 
 2. Obtaining Embed Code
