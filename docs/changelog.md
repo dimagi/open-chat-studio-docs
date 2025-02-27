@@ -7,6 +7,7 @@ hide:
 
 ## Feb 26, 2025
 * **BUG** Fixed an issue where the prompt used to generate ad-hoc bot messages were being saved in the chat history as a user message.
+* **BUG** Fixed an issue with the code node causing the pipeline to not load.
 * **BUG** Restores ability to create event for the bot to summarize the conversation.
 
 ## Feb 25, 2025
