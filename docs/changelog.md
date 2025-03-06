@@ -10,6 +10,12 @@ hide:
 * **BUG** Fix an error when reading `docx` files: "There is no item named '...' in the archive".
 * **BUG** Fix a bug with pipelines which resulted in the bot generating a new scheduled message every time a scheduled message is triggered.
 
+## Mar 5, 2025
+* **NEW** Participant global data can be get & set in the Python Node.
+
+## Mar 5, 2025
+* **CHANGE** UI update: Add "(upload file)" text behind title of Code Interpreter Files and File Search Files for clairty to upload files in both locations if desired.
+
 ## Feb 27, 2025
 * **NEW** The `random` Python module is now available in the Python Node.
 
