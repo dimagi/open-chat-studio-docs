@@ -7,7 +7,7 @@ hide:
 
 ## Mar 6, 2025
 
-* **BUG** Fix error reading `docx` files ("There is no item named '...' in the archive")
+* **BUG** Fix and error when reading `docx` files: "There is no item named '...' in the archive"
 
 ## Feb 27, 2025
 * **NEW** The `random` Python module is now available in the Python Node.
