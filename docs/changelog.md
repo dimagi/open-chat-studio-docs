@@ -8,6 +8,8 @@ hide:
 ## Mar 6, 2025
 
 * **BUG** Fix and error when reading `docx` files: "There is no item named '...' in the archive"
+* **NEW** Chat completions and new API message endpoints now support a version parameter (vN) to specify the working version of the experiment.
+* **NEW** Added a button in the versions table to copy the API URL, including the working version of the experiment.
 
 ## Feb 27, 2025
 * **NEW** The `random` Python module is now available in the Python Node.
