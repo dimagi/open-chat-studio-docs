@@ -7,7 +7,8 @@ hide:
 
 ## Mar 6, 2025
 
-* **BUG** Fix and error when reading `docx` files: "There is no item named '...' in the archive"
+* **BUG** Fix an error when reading `docx` files: "There is no item named '...' in the archive".
+* **BUG** Fix a bug with pipelines which resulted in the bot generating a new scheduled message every time a scheduled message is triggerd.
 
 ## Feb 27, 2025
 * **NEW** The `random` Python module is now available in the Python Node.
