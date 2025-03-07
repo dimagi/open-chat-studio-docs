@@ -7,13 +7,14 @@ hide:
 
 ## Mar 6, 2025
 
+* **NEW** The [Chat Completions API](https://chatbots.dimagi.com/api/docs/#tag/OpenAI) and [New Message API](https://chatbots.dimagi.com/api/docs/#tag/Channels/operation/new_api_message_versioned) endpoints now support a version parameter (`vN`) to specify the working version of the experiment.
+* **NEW** Added a button in the versions table to copy the API URL for each version of the experiment.
 * **BUG** Fix an error when reading `docx` files: "There is no item named '...' in the archive".
 * **BUG** Fix a bug with pipelines which resulted in the bot generating a new scheduled message every time a scheduled message is triggered.
 
 ## Mar 5, 2025
-* **NEW** Participant global data can be get & set in the Python Node.
 
-## Mar 5, 2025
+* **NEW** Participant global data can be get & set in the Python Node.
 * **CHANGE** UI update: Add "(upload file)" text behind title of Code Interpreter Files and File Search Files for clairty to upload files in both locations if desired.
 
 ## Feb 27, 2025
