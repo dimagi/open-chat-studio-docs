@@ -5,6 +5,10 @@ hide:
 
 # Changelog
 
+## Mar 7, 2025
+
+* **NEW** Scheduled messages for chat participants can now be cancelled via the participant's details page.
+
 ## Mar 6, 2025
 
 * **NEW** The [Chat Completions API](https://chatbots.dimagi.com/api/docs/#tag/OpenAI) and [New Message API](https://chatbots.dimagi.com/api/docs/#tag/Channels/operation/new_api_message_versioned) endpoints now support a version parameter (`vN`) to specify the working version of the experiment.
