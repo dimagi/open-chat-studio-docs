@@ -6,7 +6,7 @@ hide:
 # Changelog
 
 ## Mar 11, 2025
-* **BUG** Upgrade Langfuse library that fixes an issue that causes bots with Langfuse tracing enabled to not respond.
+* **BUG** Upgrade the Langfuse library to fix an issue where bots with Langfuse tracing is not responsive.
 
 ## Mar 7, 2025
 
