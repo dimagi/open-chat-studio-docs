@@ -5,6 +5,9 @@ hide:
 
 # Changelog
 
+## Mar 11, 2025
+* **BUG** Upgrade the Langfuse library to fix an issue where bots with Langfuse tracing is not responsive.
+
 ## Mar 7, 2025
 
 * **NEW** Scheduled messages for chat participants can now be cancelled via the participant's details page.
