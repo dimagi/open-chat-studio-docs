@@ -6,6 +6,9 @@ hide:
 # Changelog
 
 ## Mar 11, 2025
+* **NEW** Experiment Sessions table gains a new filter widget to replace the existing search bars which allows seaching on all and multiple columns.
+
+## Mar 11, 2025
 * **BUG** Upgrade the Langfuse library to fix an issue where bots with Langfuse tracing is not responsive.
 
 ## Mar 7, 2025
