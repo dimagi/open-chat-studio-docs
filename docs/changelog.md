@@ -5,6 +5,9 @@ hide:
 
 # Changelog
 
+## Mar 17, 2025
+* **BUG** Fix a bug where pipelines with tracing and assistant nodes is not working.
+
 ## Mar 11, 2025
 * **NEW** Experiment Sessions table gains a new filter widget to replace the existing search bars which allows seaching on all and multiple columns.
 
