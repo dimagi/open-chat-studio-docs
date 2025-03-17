@@ -54,9 +54,9 @@ You can access specific parts of the data using the following prompt variables:
 Other than using the prompt variable described above, there are also various pipeline nodes which allow you to access
 the participant data:
 
-<!-- TODO: add link to node docs -->
-
 * Python node: This node allows you to access the participant data using Python code.
+
+For more information, see the [node documentation](pipelines/nodes.md).
 
 ## System properties
 
@@ -82,7 +82,7 @@ Both the "Update Participant Data Node" and the "Python Node" can be used to mak
 Update participant data" node is primarily used in conjunction with events (see below). The "Python Node" can be used to
 update the data using Python code as part of any pipeline.
 
-<!-- TODO: add link to node docs -->
+For more information, see the [node documentation](pipelines/nodes.md).
 
 ### Events
 
