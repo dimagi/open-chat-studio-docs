@@ -24,7 +24,7 @@ Uses an OpenAI assistant to respond to the input.
 
 ## Python Node
 The Python node allows the bot builder to execute custom Python code to perform logic, data processing, or other tasks.
-    
+
 The code **must** define a `main` function which takes the node input as a string and returns a string to pass to the next node.
 The `main` function must also accept arbitrary keyword arguments to support future features. Here is an example of what the code might look like:
 
@@ -56,6 +56,7 @@ The Python node provides a set of utility functions that can be used to interact
 
 #### ::: python_node.get_participant_data
 #### ::: python_node.set_participant_data
+#### ::: python_node.get_participant_schedules
 #### ::: python_node.get_temp_state_key
 #### ::: python_node.set_temp_state_key
 
@@ -131,7 +132,6 @@ Send the input to the specified list of email addresses. This node acts as a pas
 
 ## Extract Structured Data
 Extract structured data from the input. This node acts as a passthrough, meaning the output will be identical to the input, allowing it to be used in a pipeline without affecting the conversation.
-
 
 ## Update Participant Data
 Extract structured data and save it as participant data.

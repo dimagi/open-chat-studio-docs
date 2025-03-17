@@ -16,6 +16,11 @@ def set_participant_data(data: dict) -> None:
     This will overwrite any existing data.
     """
 
+def get_participant_schedules(self) -> list:
+    """
+    Returns all active scheduled messages for the participant in the current experiment session.
+    """
+
 
 def get_temp_state_key(key_name: str) -> str | None:
     """
