@@ -58,6 +58,8 @@ the participant data:
 
 For more information, see the [node documentation](pipelines/nodes.md).
 
+* Python node: This node allows you to access the participant data using Python code.
+
 ## System properties
 
 There is only one system property that is set automatically by the system and only if the user interacts with a bot via
