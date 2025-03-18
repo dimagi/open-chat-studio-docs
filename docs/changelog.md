@@ -6,6 +6,9 @@ hide:
 # Changelog
 
 ## Mar 17, 2025
+* **BUG** Allow using the `{participant_data}` and other prompt variables in Router Node prompts.
+
+## Mar 17, 2025
 * **NEW** Access to participant's schedules from the python node added via the get_participant_schedules helper function.
 
 * **BUG** Fix a bug where pipelines with tracing and assistant nodes is not working.
