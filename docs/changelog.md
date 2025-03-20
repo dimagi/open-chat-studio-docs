@@ -5,6 +5,9 @@ hide:
 
 # Changelog
 
+## Mar 20, 2025
+* **BUG** Exclude 'thinking' messages from OpenAI assistant responses. Only the final message from the assistant will be shown.
+
 ## Mar 17, 2025
 * **NEW** Access to participant's schedules from the python node added via the get_participant_schedules helper function.
 
