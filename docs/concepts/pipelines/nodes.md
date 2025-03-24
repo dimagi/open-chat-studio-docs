@@ -59,6 +59,8 @@ The Python node provides a set of utility functions that can be used to interact
 #### ::: python_node.get_participant_schedules
 #### ::: python_node.get_temp_state_key
 #### ::: python_node.set_temp_state_key
+#### ::: python_node.get_session_state_key
+#### ::: python_node.set_session_state_key
 
 ### Temporary State
 The Python node can also access and modify the temporary state of the pipeline. The temporary state is a dictionary that is unique to each run of the pipeline (each new message from the user) and is not stored between sessions.
@@ -89,6 +91,11 @@ Here is an example of a temporary state dictionary:
     "my_custom_key": "my_custom_value",
 }
 ```
+
+### Session State
+The Python node can also access and modify the state of the participant's session. This state is a dictionary that is scoped to each session that the user might have with the bot.
+
+The session state can be accessed and modified using the [get_session_state_key](#python_node.get_session_state_key) and [set_session_state_key](#python_node.set_session_state_key) utility functions.
 
 ### Attachments
 
