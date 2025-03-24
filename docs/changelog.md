@@ -273,3 +273,12 @@ hide:
     * Currently we have to create it manually through the admin dashboard, but a near future release will include a dedicated page to view/edit participant data.
     * Please note that participant data is experiment specific, meaning that data we have for a participant in one
 experiment may not be the same for the next experiment.
+
+## Mar 11, 2025
+
+* **NEW** Updated Render Template node context
+    * The RenderTemplate node supports flexible input context handling by processing the messages field in the state. 
+    * This enhancement allows the node to dynamically update the context with data from dictionaries or strings. 
+    * If the input message is a dictionary, its key-value pairs are added to the context. 
+    * If the input message is a string, it updates the input field in the context.
+    * This functionality ensures that the template node can access and render content dynamically based on participant details, pipeline temp state, and other input data without needing an additional Code Node for configuration.

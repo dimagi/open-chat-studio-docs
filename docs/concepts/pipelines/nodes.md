@@ -127,6 +127,29 @@ content = attachment.read_text()
 ## Template
 Renders a [Jinja](https://jinja.palletsprojects.com/en/stable/templates/) template.
 
+The RenderTemplate node ensures that the template node can access and render content dynamically based on 
+participant details, pipeline temp state, and other input data without needing an additional Code Node for configuration.
+
+### Sample State
+`{
+  "state": {
+    "messages": [
+      {"user_name": "Alice", "user_city": "Wonderland"},
+      "This is a custom welcome message."
+    ]
+  }
+}`
+
+### Sample Template
+`Hello {{ user_name }},  
+Welcome to {{ user_city }}!  
+Message: {{ input }}
+`
+### Sample Output
+`Hello Alice,  
+Welcome to Wonderland!  
+Message: This is a custom welcome message.
+
 ## Email
 Send the input to the specified list of email addresses. This node acts as a passthrough, meaning the output will be identical to the input, allowing it to be used in a pipeline without affecting the conversation.
 
