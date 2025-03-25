@@ -127,29 +127,52 @@ content = attachment.read_text()
 ## Template
 Renders a [Jinja](https://jinja.palletsprojects.com/en/stable/templates/) template.
 
-The RenderTemplate node ensures that the template node can access and render content dynamically based on 
-participant details, pipeline temp state, and other input data without needing an additional Code Node for configuration.
+The RenderTemplate node ensures that the template node can access and render content dynamically based on participant details, pipeline temporary state, participant data, participant schedules, and the node’s input. This eliminates the need for an additional Code Node to configure the context.
+
+### Available Template Variables
+The following variables are available in the template context:
+
+| Key                     | Description                                    | Type   |
+|-------------------------|------------------------------------------------|--------|
+| `input`                 | The input to the node                          | String |
+| `temp_state`            | Pipeline temporary state                       | Dict   |
+| `participant_details`   | Participant details (`identifier`, `platform`) | Dict   |
+| `participant_data`      | Participant data for this session              | Dict   |
+| `participant_schedules` | Participant schedule data                      | List   |
 
 ### Sample State
-`{
-  "state": {
-    "messages": [
-      {"user_name": "Alice", "user_city": "Wonderland"},
-      "This is a custom welcome message."
-    ]
-  }
+`json
+{
+  "experiment_session": {
+    "participant": {
+      "identifier": "participant_123",
+      "platform": "web"
+    }
+  },
+  "messages": ["Cycling"],
+  "temp_state": {
+    "my_key": "example_key"
+  },
+  "pipeline_version": 1,
+  "outputs": {}
 }`
 
 ### Sample Template
-`Hello {{ user_name }},  
-Welcome to {{ user_city }}!  
-Message: {{ input }}
+`Input: {{ input }}
+Temp State Key: {{ temp_state.my_key }}
+Participant ID: {{ participant_details.identifier }}
+Participant Platform: {{ participant_details.platform }}
+Participant Data: {{ participant_data.custom_key }}
+Schedules: {{ participant_schedules }}
 `
 ### Sample Output
-`Hello Alice,  
-Welcome to Wonderland!  
-Message: This is a custom welcome message.
-
+`Input: Cycling
+Temp State Key: example_key
+Participant ID: participant_123
+Participant Platform: web
+Participant Data: custom_value
+Schedules: []
+`
 ## Email
 Send the input to the specified list of email addresses. This node acts as a passthrough, meaning the output will be identical to the input, allowing it to be used in a pipeline without affecting the conversation.
 

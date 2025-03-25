@@ -277,8 +277,11 @@ experiment may not be the same for the next experiment.
 ## Mar 11, 2025
 
 * **NEW** Updated Render Template node context
-    * The RenderTemplate node supports flexible input context handling by processing the messages field in the state. 
-    * This enhancement allows the node to dynamically update the context with data from dictionaries or strings. 
-    * If the input message is a dictionary, its key-value pairs are added to the context. 
-    * If the input message is a string, it updates the input field in the context.
-    * This functionality ensures that the template node can access and render content dynamically based on participant details, pipeline temp state, and other input data without needing an additional Code Node for configuration.
+    * The RenderTemplate node now provides more context for Jinja templates, allowing dynamic rendering without an additional Code Node.
+    * The template context includes the following variables:
+      - `input`: The node’s input (string).
+      - `temp_state`: Pipeline temporary state (dict).
+      - `participant_details`: Participant details with `identifier` and `platform` keys (dict).
+      - `participant_data`: Participant data for the session, sourced from `ParticipantDataProxy` (dict).
+      - `participant_schedules`: Participant schedule data (list).
+    * This enhancement enables templates to access participant details, pipeline state, and other session data directly, improving flexibility for nodes like `SendEmail`.
