@@ -5,7 +5,7 @@ hide:
 
 # Changelog
 
-## Mar 24, 2025
+## Mar 25, 2025
 * **NEW** Added a new state that is scoped to the participant's session and can be read and written to using a code node. See the section on [session state](./concepts/pipelines/nodes.md#session-state) for more information.
 
 ## Mar 20, 2025
@@ -15,6 +15,8 @@ hide:
 * **NEW** Access to participant's schedules from the python node added via the get_participant_schedules helper function.
 
 * **BUG** Fix a bug where pipelines with tracing and assistant nodes is not working.
+
+* **BUG** Allow using the `{participant_data}` and other prompt variables in Router Node prompts.
 
 ## Mar 11, 2025
 * **NEW** Experiment Sessions table gains a new filter widget to replace the existing search bars which allows seaching on all and multiple columns.
