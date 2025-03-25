@@ -278,3 +278,15 @@ hide:
     * Currently we have to create it manually through the admin dashboard, but a near future release will include a dedicated page to view/edit participant data.
     * Please note that participant data is experiment specific, meaning that data we have for a participant in one
 experiment may not be the same for the next experiment.
+
+## Mar 11, 2025
+
+* **NEW** Updated Render Template node context
+    * The RenderTemplate node now provides more context for Jinja templates, allowing dynamic rendering without an additional Code Node.
+    * The template context includes the following variables:
+      - `input`: The node’s input (string).
+      - `temp_state`: Pipeline temporary state (dict).
+      - `participant_details`: Participant details with `identifier` and `platform` keys (dict).
+      - `participant_data`: Participant data
+      - `participant_schedules`: Participant schedule data (list).
+    * This enhancement enables templates to access participant details, pipeline state, and other session data directly, improving flexibility for nodes like `SendEmail`.
