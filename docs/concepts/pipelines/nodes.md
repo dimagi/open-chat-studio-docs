@@ -137,7 +137,7 @@ The following variables are available in the template context:
 | `input`                 | The input to the node                          | String |
 | `temp_state`            | Pipeline temporary state                       | Dict   |
 | `participant_details`   | Participant details (`identifier`, `platform`) | Dict   |
-| `participant_data`      | Participant data for this session              | Dict   |
+| `participant_data`      | Participant data                               | Dict   |
 | `participant_schedules` | Participant schedule data                      | List   |
 
 ### Sample State

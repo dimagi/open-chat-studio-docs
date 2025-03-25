@@ -282,6 +282,6 @@ experiment may not be the same for the next experiment.
       - `input`: The node’s input (string).
       - `temp_state`: Pipeline temporary state (dict).
       - `participant_details`: Participant details with `identifier` and `platform` keys (dict).
-      - `participant_data`: Participant data for the session, sourced from `ParticipantDataProxy` (dict).
+      - `participant_data`: Participant data
       - `participant_schedules`: Participant schedule data (list).
     * This enhancement enables templates to access participant details, pipeline state, and other session data directly, improving flexibility for nodes like `SendEmail`.
