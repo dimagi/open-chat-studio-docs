@@ -5,6 +5,12 @@ hide:
 
 # Changelog
 
+## Mar 24, 2025
+* **NEW** Added a new state that is scoped to the participant's session and can be read and written to using a code node. See the section on [session state](./concepts/pipelines/nodes.md#session-state) for more information.
+
+## Mar 20, 2025
+* **BUG** Exclude 'thinking' messages from OpenAI assistant responses. Only the final message from the assistant will be shown.
+
 ## Mar 17, 2025
 * **BUG** Allow using the `{participant_data}` and other prompt variables in Router Node prompts.
 
