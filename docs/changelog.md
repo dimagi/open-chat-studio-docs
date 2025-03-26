@@ -5,6 +5,9 @@ hide:
 
 # Changelog
 
+## Mar 26, 2025
+* **BUG** Resolved an issue preventing users from creating timeout events.
+
 ## Mar 25, 2025
 * **NEW** Added a new state that is scoped to the participant's session and can be read and written to using a code node. See the section on [session state](./concepts/pipelines/nodes.md#session-state) for more information.
 
