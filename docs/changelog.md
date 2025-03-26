@@ -10,7 +10,7 @@ hide:
 
 * **BUG** Can now download sessions with API key via 'Generate Export' button on Experiment Session page
 
-* **NEW** Adds 'does not contains' to participant filter in sessions filter widget
+Adds 'does not contain' to participant filter in sessions filter widget
 
 * **BUG** API toggle updates automatically without modifying the filter widget
 
