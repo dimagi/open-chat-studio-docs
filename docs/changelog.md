@@ -8,6 +8,12 @@ hide:
 ## Mar 26, 2025
 * **BUG** Resolved an issue preventing users from creating timeout events.
 
+* **BUG** Can now download sessions with API key via 'Generate Export' button on Experiment Session page
+
+Adds 'does not contain' to participant filter in sessions filter widget
+
+* **BUG** API toggle updates automatically without modifying the filter widget
+
 ## Mar 25, 2025
 * **NEW** Added a new state that is scoped to the participant's session and can be read and written to using a code node. See the section on [session state](./concepts/pipelines/nodes.md#session-state) for more information.
 
