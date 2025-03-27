@@ -5,6 +5,10 @@ hide:
 
 # Changelog
 
+## Mar 27, 2205
+* **NEW** Allow chatbot builders to configure whether files referenced by assistants as citations can be downloaded.
+* **NEW** Improve citation link rendering using footnotes.
+
 ## Mar 26, 2025
 * **BUG** Resolved an issue preventing users from creating timeout events.
 
