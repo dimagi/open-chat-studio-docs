@@ -17,7 +17,11 @@ The `outputs` listed by the node are the available classification labels. These 
     It is advisable to use the [Node history mode](history.md#node) for an LLM Router to avoid unintentionally supplying few-shot examples to the node with an incorrect output format.
 
 ## Static Router
-Routes the input to a linked node using the participant data or temporary state of the pipeline.
+Routes the input to a linked node using one of the following data sources:
+
+* Participant Data
+* Temporary State
+* Session State
 
 ## Assistant
 Uses an OpenAI assistant to respond to the input.
