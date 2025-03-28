@@ -5,6 +5,9 @@ hide:
 
 # Changelog
 
+## Mar 28, 2025
+* **NEW** Added support for the static router to read from the session state
+
 ## Mar 26, 2025
 * **BUG** Resolved an issue preventing users from creating timeout events.
 
