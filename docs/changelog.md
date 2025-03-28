@@ -4,11 +4,15 @@ hide:
 ---
 
 # Changelog
+## April 3, 2025
+* **NEW** Added suport for the static router to read from the session state
+
 ## April 1, 2025
 * **BUG** Deselecting source material in a pipeline node no longer reports an error.
 
 ## Mar 31 2025
 ** NEW ** Page pagination added to chat transcript message list view for sessions with over 100 chats. 100 chats per page.
+
 ## Mar 26, 2025
 * **BUG** Resolved an issue preventing users from creating timeout events.
 
