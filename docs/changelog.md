@@ -4,6 +4,8 @@ hide:
 ---
 
 # Changelog
+## Mar 31, 2025
+* **BUG** Deselecting source material in a pipeline node no longer reports an error.
 
 ## Mar 26, 2025
 * **BUG** Resolved an issue preventing users from creating timeout events.
