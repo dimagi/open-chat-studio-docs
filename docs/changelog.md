@@ -75,7 +75,7 @@ Adds 'does not contain' to participant filter in sessions filter widget
 ## Feb 19, 2025
 
 * **NEW**: Add support [Deepseek](https://api-docs.deepseek.com/quick_start/pricing) models.
-* **NEW**: Added theme toggle in the navbar which allows switching between dark and light theme. 
+* **NEW**: Added theme toggle in the navbar which allows switching between dark and light theme.
 * **CHANGE** The experiment description can now include markdown formatting which will be rendered when it is displayed on the public chatbot pages (the consent page and the pre-survey page).
 * **CHANGE** All markdown links in the chatbot now open in a new tab.
 * **NEW**: Team deletion modal allows user to select the subset of uses to asynchronously send a team deletion email: just the deleting user, all team admins, all team members.
@@ -88,7 +88,7 @@ Adds 'does not contain' to participant filter in sessions filter widget
 ## Feb 14, 2025:
 
 * **BUG** Fixed an issue where the citations enabled toggle on an assistant node showed that it was disabled when the node was just added, where in reality it was actually enabled.
-* **CHANGE** Update the embeddable chat widget to better support mobile devices & allow more customization of the styles. 
+* **CHANGE** Update the embeddable chat widget to better support mobile devices & allow more customization of the styles.
 * **CHANGE** Allow pipeline bots to toggle conversational consent.
 
 ## Feb 06, 2025:
@@ -265,7 +265,7 @@ Adds 'does not contain' to participant filter in sessions filter widget
 ## May 15, 2024
 
 * **CHANGE** Experiment search improvements
-    * The search string will be used to search for experiments by name first, then by description 
+    * The search string will be used to search for experiments by name first, then by description
 * **NEW** OpenChatStudio API: A few endpoints are exposed to allow chatting to a bot using the API
 
 ## May 10, 2024
