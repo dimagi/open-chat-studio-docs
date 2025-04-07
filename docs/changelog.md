@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## April 7, 2025
+* **BUG** Fixed an issue where if custom actions are removed from a node, it resulted in an error when creating a new version
+
 ## April 3, 2025
 * **NEW** Added suport for the static router to read from the session state
 
