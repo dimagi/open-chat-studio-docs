@@ -4,8 +4,11 @@ hide:
 ---
 
 # Changelog
+## April 7, 2025
+* **BUG** Fixed an issue where if custom actions are removed from a node, it resulted in an error when creating a new version
+
 ## April 3, 2025
-* **NEW** Added suport for the static router to read from the session state
+* **NEW** Added support for the static router to read from the session state
 
 ## April 1, 2025
 * **BUG** Deselecting source material in a pipeline node no longer reports an error.
