@@ -9,6 +9,7 @@ The following variables are currently supported:
 - `{source_material}` - The [source material](../how-to/add_a_knowledge_base.md) linked to your bot.
 - `{participant_data}` - Information specific to this participant, bot and channel. See [here][participant_data] for more information. 
 - `{current_datetime}` - This refers to the date and time at which the response is generated.
+- `{media}` - This refers to the linked [media collection](./media_collections.md). This is only supported in pipelines.
 
 !!! info "Localizing injected datetime"
     The injected datetime will be localized to the participant's timezone if it exists in their participant data. When a participant uses the web UI, their browser's timezone will automatically be saved to their participant data.

@@ -4,6 +4,8 @@ hide:
 ---
 
 # Changelog
+## April 10, 2025
+* **NEW** Bots can now send multimedia files to users using the [Collections feature](./concepts/media_collections.md).
 
 ## April 7, 2025
 * **BUG** Fixed an issue where if custom actions are removed from a node, it resulted in an error when creating a new version
