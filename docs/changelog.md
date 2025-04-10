@@ -4,6 +4,7 @@ hide:
 ---
 
 # Changelog
+
 ## April 7, 2025
 * **BUG** Fixed an issue where if custom actions are removed from a node, it resulted in an error when creating a new version
 
@@ -17,6 +18,10 @@ hide:
 ** NEW ** Page pagination added to chat transcript message list view for sessions with over 100 chats. 100 chats per page.
 
 ## Mar 27, 2025
+* **NEW** History modes added for chat history compression
+  * **Summarize**: Summarizes older messages when token count exceeds the limit.
+  * **Truncate Tokens**: Removes older messages to stay within token limits.
+  * **Max History Length**: Retains only the last N messages.
 * **NEW** Allow chatbot builders to configure whether files referenced by assistants as citations can be downloaded.
 * **NEW** Improve citation link rendering using footnotes.
 
