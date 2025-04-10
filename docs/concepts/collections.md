@@ -32,7 +32,7 @@ The location in the prompt where these summaries are included is defined by the 
 
 Here’s an example of how file details appear in the system prompt:
 ```
-You are a friendly assitant. Here's some files that you can attach to your responses when you think the user will benefit from it:
+You are a friendly assistant. Here's some files that you can attach to your responses when you think the user will benefit from it:
 {media}
 ```
 becomes
