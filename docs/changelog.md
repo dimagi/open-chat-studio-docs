@@ -4,11 +4,26 @@ hide:
 ---
 
 # Changelog
+
+## April 7, 2025
+* **BUG** Fixed an issue where if custom actions are removed from a node, it resulted in an error when creating a new version
+
+## April 3, 2025
+* **NEW** Added support for the static router to read from the session state
+
+## April 1, 2025
+* **BUG** Deselecting source material in a pipeline node no longer reports an error.
+
+## Mar 31 2025
+** NEW ** Page pagination added to chat transcript message list view for sessions with over 100 chats. 100 chats per page.
+
 ## Mar 27, 2025
 * **NEW** History modes added for chat history compression
   * **Summarize**: Summarizes older messages when token count exceeds the limit.
   * **Truncate Tokens**: Removes older messages to stay within token limits.
   * **Max History Length**: Retains only the last N messages.
+* **NEW** Allow chatbot builders to configure whether files referenced by assistants as citations can be downloaded.
+* **NEW** Improve citation link rendering using footnotes.
 
 ## Mar 26, 2025
 * **BUG** Resolved an issue preventing users from creating timeout events.
@@ -79,7 +94,7 @@ Adds 'does not contain' to participant filter in sessions filter widget
 ## Feb 19, 2025
 
 * **NEW**: Add support [Deepseek](https://api-docs.deepseek.com/quick_start/pricing) models.
-* **NEW**: Added theme toggle in the navbar which allows switching between dark and light theme. 
+* **NEW**: Added theme toggle in the navbar which allows switching between dark and light theme.
 * **CHANGE** The experiment description can now include markdown formatting which will be rendered when it is displayed on the public chatbot pages (the consent page and the pre-survey page).
 * **CHANGE** All markdown links in the chatbot now open in a new tab.
 * **NEW**: Team deletion modal allows user to select the subset of uses to asynchronously send a team deletion email: just the deleting user, all team admins, all team members.
@@ -92,7 +107,7 @@ Adds 'does not contain' to participant filter in sessions filter widget
 ## Feb 14, 2025:
 
 * **BUG** Fixed an issue where the citations enabled toggle on an assistant node showed that it was disabled when the node was just added, where in reality it was actually enabled.
-* **CHANGE** Update the embeddable chat widget to better support mobile devices & allow more customization of the styles. 
+* **CHANGE** Update the embeddable chat widget to better support mobile devices & allow more customization of the styles.
 * **CHANGE** Allow pipeline bots to toggle conversational consent.
 
 ## Feb 06, 2025:
@@ -269,7 +284,7 @@ Adds 'does not contain' to participant filter in sessions filter widget
 ## May 15, 2024
 
 * **CHANGE** Experiment search improvements
-    * The search string will be used to search for experiments by name first, then by description 
+    * The search string will be used to search for experiments by name first, then by description
 * **NEW** OpenChatStudio API: A few endpoints are exposed to allow chatting to a bot using the API
 
 ## May 10, 2024
