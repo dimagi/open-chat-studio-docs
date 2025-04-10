@@ -1,4 +1,4 @@
-# Collections
+# Media Collections
 
 !!! info "Collections are only supported with pipeline bots"
 !!! info "Collections are currently behind a Feature Flag that can be enabled for your team on request"
@@ -28,7 +28,7 @@ When you create a collection and upload files to it, you'll be prompted to add a
 
 Additionally, OCS automatically provides the bot with a tool that enables it to attach files to its responses.
 
-The location in the prompt where these summaries are included is defined by the `{media}` prompt variable.
+The location in the prompt where these summaries are included is defined by the [{media} prompt variable](./prompt_variables.md).
 
 Here’s an example of how file details appear in the system prompt:
 ```
