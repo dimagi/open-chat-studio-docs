@@ -16,6 +16,10 @@ hide:
 ## Mar 31 2025
 ** NEW ** Page pagination added to chat transcript message list view for sessions with over 100 chats. 100 chats per page.
 
+## Mar 27, 2025
+* **NEW** Allow chatbot builders to configure whether files referenced by assistants as citations can be downloaded.
+* **NEW** Improve citation link rendering using footnotes.
+
 ## Mar 26, 2025
 * **BUG** Resolved an issue preventing users from creating timeout events.
 
