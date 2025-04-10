@@ -9,7 +9,7 @@ hide:
   * **Summarize**: Summarizes older messages when token count exceeds the limit.
   * **Truncate Tokens**: Removes older messages to stay within token limits.
   * **Max History Length**: Retains only the last N messages.
-* **NEW** Default value for max token limit added for Summarize and Truncate Tokens history modes.
+
 ## Mar 26, 2025
 * **BUG** Resolved an issue preventing users from creating timeout events.
 
