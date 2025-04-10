@@ -95,6 +95,7 @@ nav:
         - concepts/channels.md
         - concepts/events.md
         - concepts/tags.md
+        - concepts/collections.md
       - Pipelines:
         - concepts/pipelines/index.md
         - concepts/pipelines/nodes.md
