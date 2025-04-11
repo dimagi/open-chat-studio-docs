@@ -5,6 +5,9 @@ hide:
 
 # Changelog
 
+## April 11, 2025
+* **BUG** Fixed the `{participant_data}` prompt variable which was missing the participants scheduled messages.
+
 ## April 10, 2025
 * **NEW** Bots can now send multimedia files to users using the [Collections feature](./concepts/media_collections.md).
 * **BUG** Fixed reminder messages not appearing in web chats.
