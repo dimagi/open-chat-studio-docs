@@ -59,8 +59,8 @@ By default, attachments are sent as download links appended to the bot's message
 #### Multimedia-supported channels
 Channels that support sending multimedia files will receive each attachment as a separate message, following the bot's initial response. If a file type is not supported by the channel, or the file size exceeds the allowed limit, a download link will be appended to the bot's message instead. These channels support sending multimedia files:
 
-* API (See the [API documentation](https://chatbots.dimagi.com/api/docs/#tag/Channels/operation/new_api_message) for more information)
-* WhatsApp (Twilio Provider)
+* API - See the [API documentation](https://chatbots.dimagi.com/api/docs/#tag/Channels/operation/new_api_message) for more information
+* WhatsApp (Twilio Provider) - Consult the [Twilio docs][twilio_docs] for supported file types.
 
 
 
@@ -74,3 +74,4 @@ After your collection has been created and populated with files, you can link it
 
 
 [llm_node]: ./pipelines/nodes.md
+[twilio_docs]: https://www.twilio.com/docs/whatsapp/guidance-whatsapp-media-messages
