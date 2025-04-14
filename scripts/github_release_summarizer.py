@@ -1,4 +1,11 @@
 #!/usr/bin/env python3
+
+# /// script
+# dependencies = [
+#   "requests",
+#   "anthropic",
+# ]
+# ///
 """
 GitHub Release Summary Generator
 
