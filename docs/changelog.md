@@ -6,8 +6,10 @@ hide:
 # Changelog
 
 ## Apr 15, 2025
-
 * **NEW** Record and display the source of chats that originate from an [embedded chat widget](./how-to/embed.md).
+
+## Apr 11, 2025
+* **BUG** Fixed the `{participant_data}` prompt variable which was missing the participants scheduled messages.
 
 ## Apr 10, 2025
 * **NEW** Bots can now send multimedia files to users using the [Collections feature](./concepts/media_collections.md).
