@@ -52,7 +52,7 @@ The Truncate Tokens option removes older messages when a token limit is reached,
  _**Token Limit**_: Sets the maximum number of tokens before truncation occurs. When this threshold is reached, the system will remove older messages to reduce token count.
 
 ### Max History Length
-The Max History Length option always limits history to a fixed number of the most recent messages, regardless of token count. The chat history will always be truncated to the last N messages.
+the last N (where N is the specified number) messages.
 
 **Input field**
  _**Max History Length**_: Specifies how many of the most recent messages to keep in the history. Only this number of messages will be sent to the LLM.
