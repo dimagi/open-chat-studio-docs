@@ -31,4 +31,30 @@ The final history mode is called `Named` and allows you to specify a specific, n
 
 The most common use case to this will be when we have multiple parallel nodes after an [LLM Router](nodes.md#llm-router). In the [Advanced Pipelines Example](index.md#advanced-example), the general, quiz, and roleplay LLM nodes would all likely use the same shared history, giving each node visibility into the larger conversation.
 
-Note that for this particular example, each of the nodes could use a `Global` history to achieve the same thing. However, if there was a translation or formatting node at before the final `output`, then the `Named` history mode would enable the interim nodes to share a history in the original language / formatting. 
+Note that for this particular example, each of the nodes could use a `Global` history to achieve the same thing. However, if there was a translation or formatting node at before the final `output`, then the `Named` history mode would enable the interim nodes to share a history in the original language / formatting.
+
+## History Compression Management Options
+
+In addition to the basic history modes, pipeline authors have access to advanced history management options. These controls appear after selecting a basic history mode (No History, Node, Global, or Named) and help optimize token usage and conversation length.
+
+The UI presents a "History Mode" dropdown with three options:
+
+### Summarize
+The Summarize option compresses history when it exceeds a token limit by summarizing older messages while preserving more recent ones. If the token count exceeds the limit, older messages will be summarized while keeping the last few messages intact.
+
+**Input field**
+ _**Token Limit**_: Sets the maximum number of tokens before summarization occurs. When this threshold is reached, the system will summarize older messages to reduce token count.
+
+### Truncate Tokens
+The Truncate Tokens option removes older messages when a token limit is reached, ensuring the total token count stays below a specified threshold. If the token count exceeds the limit, older messages will be removed until the token count is below the limit.
+
+**Input field**
+ _**Token Limit**_: Sets the maximum number of tokens before truncation occurs. When this threshold is reached, the system will remove older messages to reduce token count.
+
+### Max History Length
+The Max History Length option always limits history to a fixed number of the most recent messages, regardless of token count. The chat history will always be truncated to the last N messages.
+
+**Input field**
+ _**Max History Length**_: Specifies how many of the most recent messages to keep in the history. Only this number of messages will be sent to the LLM.
+
+These history management options help pipeline authors balance context preservation with performance and cost considerations, particularly for long-running conversations or complex applications.
