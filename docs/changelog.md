@@ -4,6 +4,8 @@ hide:
 ---
 
 # Changelog
+## Apr 21, 2025
+**BUG** Fixed an issue where session messages would sometimes not load.
 
 ## Apr 15, 2025
 * **NEW** Record and display the source of chats that originate from an [embedded chat widget](./how-to/embed.md).
