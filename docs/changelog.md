@@ -5,6 +5,7 @@ hide:
 
 # Changelog
 ## Apr 21, 2025
+**NEW** We now only support the participant_data prompt variable for routers.
 **BUG** Fixed an issue where session messages would sometimes not load.
 
 ## Apr 15, 2025
