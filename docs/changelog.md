@@ -4,6 +4,8 @@ hide:
 ---
 
 # Changelog
+## Apr 22, 2025
+**NEW** Added a checkbox in both LLMRouter and StaticRouter nodes to tag output messages with the selected route keyword.
 ## Apr 21, 2025
 **NEW** We now only support the participant_data prompt variable for routers.
 **BUG** Fixed an issue where session messages would sometimes not load.
