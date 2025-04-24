@@ -5,7 +5,8 @@ hide:
 
 # Changelog
 ## Apr 22, 2025
-**NEW** Added a checkbox in both LLMRouter and StaticRouter nodes to tag output messages with the selected route keyword.
+**NEW** Router nodes in pipelines can be configured to tag output messages with the node name and the route that was selected. This is useful for understanding the flow of messages through the pipeline.
+
 ## Apr 21, 2025
 **NEW** We now only support the participant_data prompt variable for routers.
 **BUG** Fixed an issue where session messages would sometimes not load.
