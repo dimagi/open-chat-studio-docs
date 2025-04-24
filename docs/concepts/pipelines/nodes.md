@@ -26,11 +26,28 @@ The `outputs` listed by the node are the available classification labels. These 
     It is advisable to use the [Node history mode](history.md#node) for an LLM Router to avoid unintentionally supplying few-shot examples to the node with an incorrect output format.
 
 ### Static Router
-Routes the input to a linked node using one of the following data sources:
+The Static Router node allows you to route the input to one of the linked nodes based on the value of a specific key in the data source. This is useful if you want your bot to behave differently depending on the value of a specific key in the data source.
 
-* Participant Data
-* Temporary State
-* Session State
+The data source can be any of the following:
+
+* [Participant Data](../participant_data.md)
+* [Session State](#session-state)
+* [Temporary State](#temporary-state)
+
+The key should be a name of a field in the data source and supports selecting nested fields via the `<field>.<subfield>` syntax. For example, if the data source is a JSON object with the following structure:
+
+```json
+{
+    "user": {
+        "name": "John",
+        "age": 30
+    }
+}
+```
+
+You can select the `name` field using the key `user.name` and the `age` field using the key `user.age`.
+
+If the field is not present in the data source, the router will not route the input to the first linked node.
 
 ## Assistant
 Uses an OpenAI assistant to respond to the input.
