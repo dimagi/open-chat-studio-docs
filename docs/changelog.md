@@ -8,6 +8,8 @@ hide:
 ## Apr 25, 2025
 * **NEW** Pipeline bots can now configure surveys and voice settings.
 
+* **NEW** Default keyword can be configured by user on router nodes in pipelines.
+
 ## Apr 22, 2025
 * **NEW** Router nodes in pipelines can be configured to tag output messages with the node name and the route that was selected. This is useful for understanding the flow of messages through the pipeline.
 
