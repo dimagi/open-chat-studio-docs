@@ -4,12 +4,16 @@ hide:
 ---
 
 # Changelog
+
+## Apr 25, 2025
+* **NEW** Pipeline bots can now configure surveys and voice settings.
+
 ## Apr 22, 2025
-**NEW** Router nodes in pipelines can be configured to tag output messages with the node name and the route that was selected. This is useful for understanding the flow of messages through the pipeline.
+* **NEW** Router nodes in pipelines can be configured to tag output messages with the node name and the route that was selected. This is useful for understanding the flow of messages through the pipeline.
 
 ## Apr 21, 2025
-**NEW** We now only support the participant_data prompt variable for routers.
-**BUG** Fixed an issue where session messages would sometimes not load.
+* **NEW** We now only support the participant_data prompt variable for routers.
+* **BUG** Fixed an issue where session messages would sometimes not load.
 
 ## Apr 15, 2025
 * **NEW** Record and display the source of chats that originate from an [embedded chat widget](./how-to/embed.md).
