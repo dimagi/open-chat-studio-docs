@@ -9,7 +9,7 @@ hide:
 * **NEW** Pipeline bots can now configure surveys and voice settings.
 
 * **NEW** Default keyword can be configured by user on router nodes in pipelines.
-* **BUG** Fixed switching between different experiments in participants data view
+* **BUG** Fixed switching between different experiments in participants data view.
 
 ## Apr 22, 2025
 * **NEW** Router nodes in pipelines can be configured to tag output messages with the node name and the route that was selected. This is useful for understanding the flow of messages through the pipeline.
