@@ -5,6 +5,9 @@ hide:
 
 # Changelog
 
+## Apr 29, 2025
+* **BUG** Fixed an issue where users are unable to view archived experiments / chatbots.
+
 ## Apr 25, 2025
 * **NEW** Pipeline bots can now configure surveys and voice settings.
 
