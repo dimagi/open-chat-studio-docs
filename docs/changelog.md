@@ -5,7 +5,7 @@ hide:
 
 # Changelog
 
-## Apr 25, 2025
+## Apr 29, 2025
 * **BUG** Fixed an issue where users are unable to view archived experiments / chatbots.
 
 ## Apr 25, 2025
