@@ -7,7 +7,7 @@ hide:
 
 ## Apr 29, 2025
 * **BUG** Fixed an issue where users are unable to view archived experiments / chatbots.
-* **NEW** The session creation endpoint now supports passing state. Additionally, the state of an existing session can also be updated.
+* **NEW** The session creation endpoint now supports passing state. Additionally, the state of an existing session can also be updated via the [update state](https://chatbots.dimagi.com/api/docs/#tag/Experiment-Sessions/operation/session_update_state) endpoint.
 
 ## Apr 25, 2025
 * **NEW** Pipeline bots can now configure surveys and voice settings.
