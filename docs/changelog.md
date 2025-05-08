@@ -8,11 +8,13 @@ hide:
 ## Apr 29, 2025
 * **BUG** Fixed an issue where users are unable to view archived experiments / chatbots.
 * **NEW** Dark mode support for the chat UI.
+* **NEW** The session creation endpoint now supports passing state. Additionally, the state of an existing session can also be updated via the [update state](https://chatbots.dimagi.com/api/docs/#tag/Experiment-Sessions/operation/session_update_state) endpoint.
 
 ## Apr 25, 2025
 * **NEW** Pipeline bots can now configure surveys and voice settings.
 
 * **NEW** Default keyword can be configured by user on router nodes in pipelines.
+* **BUG** Fixed switching between different experiments in participants data view.
 
 ## Apr 22, 2025
 * **NEW** Router nodes in pipelines can be configured to tag output messages with the node name and the route that was selected. This is useful for understanding the flow of messages through the pipeline.

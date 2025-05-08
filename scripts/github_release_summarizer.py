@@ -145,7 +145,10 @@ Based on this information, create a concise but comprehensive summary of the cha
 Focus on new features, improvements, bug fixes, and breaking changes.
 Organize the summary into clear sections:
 - Start with an overall summary of the release
-- Then add the following sections: New Features, Improvements, Bug Fixes
+- Then add the following sections to categorize the changes:
+  - New Features (tagged with 'NEW' in the changelog)
+  - Improvements (tagged with 'CHANGE' in the changelog)
+  - Bug Fixes (tagged with 'BUG' in the changelog)
 
 Format the output in {'markdown' if output_format == 'markdown' else 'plain text'}.
 """
