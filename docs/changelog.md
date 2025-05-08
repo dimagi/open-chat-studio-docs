@@ -5,6 +5,9 @@ hide:
 
 # Changelog
 
+## May 8, 2025
+* **BUG** Ensure that chatbot [events](./concepts/events.md) and scheduled messages utilize parameters from the published version of the chatbot.
+
 ## May 7, 2025
 * **NEW** Link from chatbot version details to a read only view of a pipeline
 * **NEW** Tag user messages which are not processed due to an unsupported message type
