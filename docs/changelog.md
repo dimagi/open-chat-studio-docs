@@ -5,6 +5,11 @@ hide:
 
 # Changelog
 
+## May 7, 2025
+* **NEW** Link from chatbot version details to a read only view of a pipeline
+* **NEW** Tag user messages which are not processed due to an unsupported message type
+* **BUG** Correctly fire the 'participant joined' event for participants that already have sessions with other chatbots
+
 ## Apr 29, 2025
 * **BUG** Fixed an issue where users are unable to view archived experiments / chatbots.
 * **NEW** Dark mode support for the chat UI.
