@@ -10,7 +10,7 @@ hide:
 * **CHANGE** Trace spans for pipeline nodes are now named according to the node name and not the node ID. This makes it easier to understand traces.
 
 ## May 9, 2025
-* **NEW** Chatbot configurations can now be dupicated to create exact copies of the chatbot.
+* **NEW** Chatbot configurations can now be duplicated to create exact copies of the chatbot.
 
 ## May 8, 2025
 * **BUG** Ensure that chatbot [events](./concepts/events.md) and scheduled messages utilize parameters from the published version of the chatbot.
