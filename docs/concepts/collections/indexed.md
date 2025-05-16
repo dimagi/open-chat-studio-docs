@@ -22,7 +22,7 @@ In OCS, indexed collections are managed through LLM services like OpenAI. When c
 ## Chunking and Optimization
 When you upload a document to an index, it’s broken up into smaller parts called chunks. These chunks are then converted into vectors and stored in the index. Chunking is a key part of how RAG works, as it affects how accurately the model can retrieve relevant information.
 
-In most cases, it will not be necessary to have to change the default chunking strategy, but you’ll have the option to customize the chunking strategy for each set of uploaded files:
+In most cases, it will not be necessary to change the default chunking strategy, but you’ll have the option to customize the chunking strategy for each set of uploaded files:
 
 - Chunk size – how large each chunk is (in tokens)
 - Chunk overlap – how much each chunk overlaps with the next, to preserve context
@@ -32,7 +32,7 @@ Choosing the right chunking strategy can improve retrieval accuracy, especially 
 !!! info "This flexibility helps tailor the index to your use case—whether it’s short notes or long, complex reports."
 
 ## Supported file types
-Supported files are dictated by the select provider:
+Supported files are determined by the select provider:
 
 - OpenAI - See the [OpenAI docs](https://platform.openai.com/docs/assistants/tools/file-search/supported-files#supported-files)
 
