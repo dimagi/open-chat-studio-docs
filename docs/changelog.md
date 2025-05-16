@@ -6,6 +6,7 @@ hide:
 # Changelog
 ## May 16, 2025
 * **NEW** Added support for [indexed collections](./concepts/collections/indexed.md) to support RAG use cases.
+* **CHANGE** When using an OpenAI Assistant with a chatbot that has tracing enabled, a new event will be posted to the tracing provider with all the Assistant details. This makes it easier to see which assistant is being called.
 
 ## May 15, 2025
 * **NEW** (UI) LLM provider names are now displayed in the dropdown menu on LLM nodes, making it easier to distinguish between providers of the same type.
