@@ -12,6 +12,7 @@ hide:
 * **NEW** (UI) LLM provider names are now displayed in the dropdown menu on LLM nodes, making it easier to distinguish between providers of the same type.
 * **NEW** The background color for pipeline nodes can be changed.
 * **CHANGE** Trace spans for pipeline nodes are now named according to the node name and not the node ID. This makes it easier to understand traces.
+* **NEW** Pipeline routing information is now exposed in pipeline state and can be easily accessed via 3 new helper functions in the PythonNode: get_selected_route, get_node_path, get_all_routes.
 
 ## May 9, 2025
 * **NEW** Chatbot configurations can now be duplicated to create exact copies of the chatbot.
