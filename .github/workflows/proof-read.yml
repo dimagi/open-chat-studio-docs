@@ -12,11 +12,17 @@ jobs:
     runs-on: ubuntu-latest
     name: Proofread PRs
     steps:
-      - name: Proofread PR
-        uses: snopoke/proof-reader-ai@configure-action
+      - name: Checkout code
+        uses: actions/checkout@v4
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Required to write a PR review
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_API_MODEL: 'gpt-4o-mini'
-          file-pattern: '\.md$'
-          prompt-prefix: 'Your task is to review pull requests for the documentation of Open Chat Studio.'
+          fetch-depth: 0
+
+      - name: Run Code Review with Claude
+        id: code-review
+        uses: anthropics/claude-code-action@beta
+        with:
+          direct_prompt: |
+            Review the documentation changes in this pull request. Focus on spelling and grammar.
+            Suggest improvements where appropriate.
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
