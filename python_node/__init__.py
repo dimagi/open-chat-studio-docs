@@ -55,3 +55,22 @@ def set_session_state_key(key_name: str, data: Any) -> None:
 
     See also: [Session State](./#session-state)
     """
+
+def get_selected_route(router_node_name: str) -> str | None:
+	"""
+    Returns the route selected by a specific router node with the given name.
+    If the node does not exist or has no route defined, it returns `None`.
+    """
+
+def get_node_path(node_name: str) -> list | None:
+	"""
+    Returns a list containing the sequence of nodes leading to the target node.
+    If the node is not found in the pipeline path, returns a list containing
+    only the specified node name.
+    """
+
+def get_all_routes() -> dict:
+	"""
+    Returns a dictionary containing all routing decisions in the pipeline.
+    The keys are the node names and the values are the routes chosen by each node.
+    """

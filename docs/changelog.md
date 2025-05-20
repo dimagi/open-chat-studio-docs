@@ -4,12 +4,44 @@ hide:
 ---
 
 # Changelog
+## May 16, 2025
+* **NEW** Added support for [indexed collections](./concepts/collections/indexed.md) to support RAG use cases.
+* **CHANGE** When using an OpenAI Assistant with a chatbot that has tracing enabled, a new event will be posted to the tracing provider with all the Assistant details. This makes it easier to see which assistant is being called.
+
+## May 15, 2025
+* **NEW** (UI) LLM provider names are now displayed in the dropdown menu on LLM nodes, making it easier to distinguish between providers of the same type.
+* **NEW** The background color for pipeline nodes can be changed.
+* **CHANGE** Trace spans for pipeline nodes are now named according to the node name and not the node ID. This makes it easier to understand traces.
+* **NEW** Pipeline routing information is now exposed in pipeline state and can be easily accessed via 3 new helper functions in the PythonNode: get_selected_route, get_node_path, get_all_routes.
+
+## May 9, 2025
+* **NEW** Chatbot configurations can now be duplicated to create exact copies of the chatbot.
+
+## May 8, 2025
+* **BUG** Ensure that chatbot [events](./concepts/events.md) and scheduled messages utilize parameters from the published version of the chatbot.
+
+## May 7, 2025
+* **NEW** Link from chatbot version details to a read only view of a pipeline
+* **NEW** Tag user messages which are not processed due to an unsupported message type
+* **BUG** Correctly fire the 'participant joined' event for participants that already have sessions with other chatbots
+
+## Apr 29, 2025
+* **BUG** Fixed an issue where users are unable to view archived experiments / chatbots.
+* **NEW** Dark mode support for the chat UI.
+* **NEW** The session creation endpoint now supports passing state. Additionally, the state of an existing session can also be updated via the [update state](https://chatbots.dimagi.com/api/docs/#tag/Experiment-Sessions/operation/session_update_state) endpoint.
+
+## Apr 25, 2025
+* **NEW** Pipeline bots can now configure surveys and voice settings.
+
+* **NEW** Default keyword can be configured by user on router nodes in pipelines.
+* **BUG** Fixed switching between different experiments in participants data view.
+
 ## Apr 22, 2025
-**NEW** Router nodes in pipelines can be configured to tag output messages with the node name and the route that was selected. This is useful for understanding the flow of messages through the pipeline.
+* **NEW** Router nodes in pipelines can be configured to tag output messages with the node name and the route that was selected. This is useful for understanding the flow of messages through the pipeline.
 
 ## Apr 21, 2025
-**NEW** We now only support the participant_data prompt variable for routers.
-**BUG** Fixed an issue where session messages would sometimes not load.
+* **NEW** We now only support the participant_data prompt variable for routers.
+* **BUG** Fixed an issue where session messages would sometimes not load.
 
 ## Apr 15, 2025
 * **NEW** Record and display the source of chats that originate from an [embedded chat widget](./how-to/embed.md).

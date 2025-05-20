@@ -70,4 +70,5 @@ jobs:
             --tag "${{ env.RELEASE_TAG }}" \
             --name "${{ env.RELEASE_NAME }}" \
             --target "${{ env.TARGET_BRANCH || 'main' }}" \
-            --model "claude-3-5-haiku-20241022"
+            --model "claude-3-5-haiku-20241022" \
+            --draft

@@ -29,6 +29,11 @@ This allows the bot to write and execute code to accomplish tasks.
 For more information see the [OpenAI docs][5].
 
 #### File Search
+!!! warning 
+
+    The functionality described here is planned to be replaced by [Indexed Collections][indexed-collections] in the future. It’s recommended to start using Indexed Collections instead to ensure forward compatibility.
+
+
 This allows the bot to search and reference information provided in uploaded files. Unless your bot needs either of these capabilities, you should use a Base Language Model type bot.
 
 For more information see the [OpenAI docs][6].
@@ -45,3 +50,4 @@ This can be useful if you want to build a complex bot that performs different ta
 [4]: https://platform.openai.com/docs/assistants/overview
 [5]: https://platform.openai.com/docs/assistants/tools/code-interpreter
 [6]: https://platform.openai.com/docs/assistants/tools/file-search
+[indexed-collections]: ../collections/indexed.md
