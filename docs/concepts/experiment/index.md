@@ -4,7 +4,7 @@ An 'Experiment' is the current name used in Open Chat Studio to refer to a 'chat
 
 An Experiment links all the configuration and data for a chatbot including user sessions, data, actions etc.
 
-!!! warning "Deprecation Warnig"
+!!! warning "Deprecation Warning"
 
     The term will be phased out as we fully adopt 'Chatbots' instead. Bot building will shift from the current 'form-based' method to primarily using the pipeline approach. All existing experiments will be smoothly migrated with adequate notice, and users can contact the Dimagi team for assistance during this transition with any questions.
 
