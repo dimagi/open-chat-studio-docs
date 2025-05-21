@@ -6,7 +6,7 @@ An Experiment links all the configuration and data for a chatbot including user 
 
 !!! warning "Deprecation Warnig"
 
-    The term will be phased out as we fully adopt 'Chatbots' instead. Bot creation will shift from the current 'form-based' method to primarily using the pipeline approach. All existing experiments will be smoothly migrated with adequate notice, and users can contact the Dimagi team for assistance during this transition.
+    The term will be phased out as we fully adopt 'Chatbots' instead. Bot building will shift from the current 'form-based' method to primarily using the pipeline approach. All existing experiments will be smoothly migrated with adequate notice, and users can contact the Dimagi team for assistance during this transition.
 
 ## Experiment Types
 

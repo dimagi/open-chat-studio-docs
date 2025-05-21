@@ -5,7 +5,7 @@
     We're excited to announce that Pipelines is now being rolled out across Open Chat Studio. This new feature will transform how you build and manage chatbots with several key improvements:
 
     - **Simplified Workflow**: Pipelines introduces a cleaner, more intuitive interface for building chatbots
-    - **Streamlined Bot Creation**: We're transitioning from the 'form-based' approach to make Pipelines the primary (and eventually only) method for bot creation
+    - **Streamlined Bot Building**: We're transitioning from the 'form-based' approach to make Pipelines the primary (and eventually only) method for bot building
     - **Seamless Transition**: All existing experiments will continue to work without disruption during this rollout
     - **Full Support Available**: The Dimagi team is ready to provide help and support as you explore this new feature
 
