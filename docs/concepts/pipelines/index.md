@@ -4,7 +4,7 @@ A pipeline is a way to build a bot by combining one or more steps together.
 
 !!! info "Pipelines are the future"
 
-    Pipelines are currently becoming the default way to build bots in Open Chat Studio. They are a superset of existing functionality, enabling complex safety layers, routing and conditionals. The transition is now underway, and we're providing communication as we begin phasing out other bot building approaches. The Dimagi team is available for support during this transition.
+    Pipelines are currently becoming the default way to build bots in Open Chat Studio. They are a superset of existing functionality, enabling complex safety layers, routing and conditionals. The transition is now underway, and we're providing communication as we begin phasing out other bot building approaches. The Dimagi team is available for support during this transition with any questions.
 
 Here is an example of a very simple pipeline that uses an LLM to respond to the users input. This pipeline has a
 single step that uses the LLM to generate a response.
