@@ -13,6 +13,6 @@
 
 
 ### Pipeline
-[Pipelines](../pipelines/index.md) allow you to create more complex bots by defining a ‘graph’ (in the computer science sense) of nodes. You can think of this graph as a workflow that flows from input to output. Each message to the bot is processed by the graph to produce a final output. A single response from the chatbot will be one successful path through the graph from the input node to the output node.
+[Pipelines](../pipelines/index.md) lets you build more advanced bots by defining a graph—a network of connected nodes representing different steps in a workflow. You can think of this graph as a flowchart that starts with user input and ends with the bot’s response. Each message sent to the bot follows a specific path through the graph to generate the final output.
 
-This can be useful if you want to build a complex bot that performs different tasks depending on the user’s request. Generally, trying to make a single bot prompt do multiple functions doesn’t work well so it is better to create multiple prompts for each task and then combine them using a Pipeline. This is similar to the Multi-bot setup but allows more flexibility and complexity.
+This approach is especially useful when you want your bot to handle different types of tasks based on the user’s request. Instead of forcing a single prompt to do everything (which can lead to more testing and building time), it’s better to create separate prompts for each function and link them together using a Pipeline. This concept is similar to the Multi-bot setup but offers greater flexibility and complexity.
