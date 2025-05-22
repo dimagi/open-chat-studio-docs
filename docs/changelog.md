@@ -6,6 +6,8 @@ hide:
 # Changelog
 ## May 22, 2025
 * **CHANGE** API update: The [list experiments](https://chatbots.dimagi.com/api/docs/#tag/Experiments/operation/experiment_list) endpoint now returns **only unreleased experiments** in the top-level response. A new `versions` key has been added to each experiment, containing all version of that experiment.
+* **NEW** [Collections](./concepts/collections/index.md) are now generally available for all users who are using
+pipelines
 
 ## May 16, 2025
 * **NEW** Added support for [indexed collections](./concepts/collections/indexed.md) to support RAG use cases.
