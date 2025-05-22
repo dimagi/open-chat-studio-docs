@@ -1,7 +1,6 @@
 # Collections
 
 !!! info "Collections are only supported with pipeline bots"
-!!! info "Collections are currently behind a Feature Flag that can be enabled for your team on request"
 
 A collection in OCS refers to a collection of files. There are two types of collections:
 

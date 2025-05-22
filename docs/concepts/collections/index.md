@@ -1,12 +1,11 @@
 # Collections
 
 !!! info "Collections are only supported with pipeline bots"
-!!! info "Collections are currently behind a Feature Flag that can be enabled for your team on request"
 
 A collection in OCS refers to a collection of files. There are two types of collections:
 
 - [Media collection](./media.md)
-- [Indexed Collection (for RAG applications)](./indexes.md)
+- [Indexed Collection (for RAG applications)](./indexed.md)
 
 
 ## Adding a collection to a bot
