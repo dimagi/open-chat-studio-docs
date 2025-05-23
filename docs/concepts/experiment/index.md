@@ -1,9 +1,12 @@
 # Experiments
 
-An 'Experiment' is the current name used in Open Chat Studio to refer to a 'chatbot'. The name may change in the
-future.
+An 'Experiment' is the current name used in Open Chat Studio to refer to a 'chatbot'. This will soon be a legacy term as we transition fully to the term ['Chatbots'](../chatbots/index.md).
 
 An Experiment links all the configuration and data for a chatbot including user sessions, data, actions etc.
+
+!!! warning "Deprecation Warning"
+
+    The term will be phased out as we fully adopt 'Chatbots' instead. Bot building will shift from the current 'form-based' method to primarily using the pipeline approach. All existing experiments will be smoothly migrated with adequate notice, and users can contact the Dimagi team for assistance during this transition with any questions.
 
 ## Experiment Types
 
@@ -29,7 +32,7 @@ This allows the bot to write and execute code to accomplish tasks.
 For more information see the [OpenAI docs][5].
 
 #### File Search
-!!! warning 
+!!! warning
 
     The functionality described here is planned to be replaced by [Indexed Collections][indexed-collections] in the future. It’s recommended to start using Indexed Collections instead to ensure forward compatibility.
 

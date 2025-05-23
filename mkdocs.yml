@@ -58,7 +58,7 @@ plugins:
     default_handler: python
     handlers:
       python:
-        options:
+        options.extra:
           paths: [src]
           heading_level: 3
           show_root_full_path: false
@@ -82,10 +82,12 @@ nav:
       - how-to/embed.md
   - Concepts:
       - concepts/index.md
+      - Chatbots:
+        - concepts/chatbots/index.md
       - Experiments:
+        - concepts/llm.md
         - concepts/experiment/index.md
         - concepts/sessions.md
-        - concepts/llm.md
         - concepts/participant_data.md
         - concepts/prompt_variables.md
         - concepts/source_material.md
