@@ -6,7 +6,7 @@
 A collection in OCS refers to a collection of files. There are two types of collections:
 
 - [Media collection](./media.md)
-- [Indexed Collection (for RAG applications)](./indexes.md)
+- [Indexed Collection (for RAG applications)](./indexed.md)
 
 
 ## Adding a collection to a bot
@@ -38,5 +38,5 @@ Channels that support sending multimedia files will receive each attachment as a
 * WhatsApp (Twilio Provider) - Consult the [Twilio docs][twilio_docs] for supported file types.
 
 
-[llm_node]: ./pipelines/nodes.md
+[llm_node]: ../pipelines/nodes.md
 [twilio_docs]: https://www.twilio.com/docs/whatsapp/guidance-whatsapp-media-messages
