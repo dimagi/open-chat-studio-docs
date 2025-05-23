@@ -1,6 +1,6 @@
 # Experiments
 
-An 'Experiment' is the current name used in Open Chat Studio to refer to a 'chatbot'. This will soon be a legacy term as we transition fully to the term 'Chatbots.'
+An 'Experiment' is the current name used in Open Chat Studio to refer to a 'chatbot'. This will soon be a legacy term as we transition fully to the term ['Chatbots'](../chatbots/index.md).
 
 An Experiment links all the configuration and data for a chatbot including user sessions, data, actions etc.
 
