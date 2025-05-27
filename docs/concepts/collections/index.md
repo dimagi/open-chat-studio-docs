@@ -37,5 +37,5 @@ Channels that support sending multimedia files will receive each attachment as a
 * WhatsApp (Twilio Provider) - Consult the [Twilio docs][twilio_docs] for supported file types.
 
 
-[llm_node]: ./pipelines/nodes.md
+[llm_node]: ../pipelines/nodes.md
 [twilio_docs]: https://www.twilio.com/docs/whatsapp/guidance-whatsapp-media-messages
