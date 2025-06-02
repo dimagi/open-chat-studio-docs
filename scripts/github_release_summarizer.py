@@ -231,7 +231,8 @@ def main():
         print(f"Warning: Could not fetch file diffs: {e}")
 
     if not changelog_diff:
-        sys.exit("No changelog diffs found.")
+        print("No changelog diffs found.")
+        return
 
     # Generate summary using LLM
     summary = generate_llm_summary(
