@@ -5,6 +5,7 @@ hide:
 
 # Changelog
 ## Jun 3, 2025
+* **NEW** Added support for filtering Chatbot sessions by relative date ranges. This adds the `range` operator as a filter option for date parameters with options such as `1 hour`, `1 day`. In addition, a top level filter is added which allows quick filtering of Chatbot sessions by 'Last Message' field.
 * **CHANGE** For teams with Chatbots enabled, the default landing page will now be "Chatbots" replacing "Experiments"
 
 ## May 22, 2025
