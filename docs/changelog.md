@@ -4,6 +4,10 @@ hide:
 ---
 
 # Changelog
+## June 3, 2025
+* **NEW** Added a date range filter dropdown to filter sessions by last_message using relative ranges like past 1 hour, 1 day, 7 days, etc.
+* **NEW** Added support for range operator on timestamp columns to filter data by relative date ranges like past 1 hour, 1 day, 7 days, etc.
+
 ## May 22, 2025
 * **CHANGE** API update: The [list experiments](https://chatbots.dimagi.com/api/docs/#tag/Experiments/operation/experiment_list) endpoint now returns **only unreleased experiments** in the top-level response. A new `versions` key has been added to each experiment, containing all version of that experiment.
 * **NEW** [Collections](./concepts/collections/index.md) are now generally available for all users who are using
