@@ -5,7 +5,7 @@ hide:
 
 # Changelog
 ## Jun 3, 2025
-* **CHANGE** For teams with Chatbots enabled, the default landing pages will now be "Chatbots" replacing "Experiments"
+* **CHANGE** For teams with Chatbots enabled, the default landing page will now be "Chatbots" replacing "Experiments"
 
 ## May 22, 2025
 * **CHANGE** API update: The [list experiments](https://chatbots.dimagi.com/api/docs/#tag/Experiments/operation/experiment_list) endpoint now returns **only unreleased experiments** in the top-level response. A new `versions` key has been added to each experiment, containing all version of that experiment.
