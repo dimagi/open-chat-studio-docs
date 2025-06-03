@@ -5,7 +5,7 @@ hide:
 
 # Changelog
 ## June 3, 2025
-* **NEW** Added support for filtering Chatbot sessions by relative date ranges. This adds the `range` operator as a filter option for date parameters and with options such as `1 hour`, `1 day`. In addition, a top level filter is added which allows quick filtering of Chatbot sessions by 'Last Message' field.
+* **NEW** Added support for filtering Chatbot sessions by relative date ranges. This adds the `range` operator as a filter option for date parameters with options such as `1 hour`, `1 day`. In addition, a top level filter is added which allows quick filtering of Chatbot sessions by 'Last Message' field.
 
 ## May 22, 2025
 * **CHANGE** API update: The [list experiments](https://chatbots.dimagi.com/api/docs/#tag/Experiments/operation/experiment_list) endpoint now returns **only unreleased experiments** in the top-level response. A new `versions` key has been added to each experiment, containing all version of that experiment.
