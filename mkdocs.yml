@@ -84,6 +84,7 @@ nav:
       - concepts/index.md
       - Chatbots:
         - concepts/chatbots/index.md
+        - concepts/chatbots/rollout_faq.md
       - Experiments:
         - concepts/experiment/index.md
         - concepts/sessions.md

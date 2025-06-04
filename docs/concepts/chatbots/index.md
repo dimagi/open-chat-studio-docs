@@ -7,11 +7,17 @@
     The term 'Experiment' will be phased out as we fully adopt 'Chatbots' instead. Bot building will shift from the current 'form-based' method to primarily using the pipeline approach. All existing experiments will continue to work without disruption during this rollout.
 
     Some key improvements include:
+
     - **Simplified Workflow**: Chatbots introduces a cleaner, more intuitive interface for building chatbots
+
     - **Streamlined Bot Building**: We're transitioning from the 'form-based' approach to make pipelines the primary (and eventually only) method for bot building
+
     - **Enhanced Features**: The new system allows building more bots with greater flexibility and complexity.
-    - **Enhanced Features**: Chatbots includes features that are not availble to legacy 'Experiments' including:
+
+    - **Enhanced Features**: Chatbots includes features that are not available to legacy 'Experiments' including:
         - LLM tools such as 'web search', 'code interpreter', and 'file search'
+
+    For more information check out out our [FAQ page](../chatbots/rollout_faq.md)
 
 
 ## What is a Chatbot?
