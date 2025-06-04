@@ -14,10 +14,10 @@
 
     - **Enhanced Features**: The new system allows building more bots with greater flexibility and complexity.
 
-    - **Enhanced Features**: Chatbots includes features that are not availble to legacy 'Experiments' including:
+    - **Enhanced Features**: Chatbots includes features that are not available to legacy 'Experiments' including:
         - LLM tools such as 'web search', 'code interpreter', and 'file search'
 
-    For more information checkout out our [FAQ page](../chatbots/rollout_faq.md)
+    For more information check out out our [FAQ page](../chatbots/rollout_faq.md)
 
 
 ## What is a Chatbot?
