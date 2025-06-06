@@ -12,6 +12,8 @@ When you want your bot's responses to be grounded in your uploaded documents.
 
 If you’ve used the OpenAI Assistants’ [file search][file-search] capability in OCS, you’ve already interacted with an index behind the scenes.
 
+!!! tip "TIP: You can create an indexed collection from an OpenAI assistant that uses file search by clicking the `Create from assistant` button"
+
 In OCS, indexed collections are managed through LLM services like OpenAI. When creating an indexed collection, you’ll select the LLM provider responsible for hosting and querying that index.
 
 
