@@ -79,7 +79,7 @@ pipelines
 * **BUG** Deselecting source material in a pipeline node no longer reports an error.
 
 ## Mar 31 2025
-** NEW ** Page pagination added to chat transcript message list view for sessions with over 100 chats. 100 chats per page.
+* **NEW** Page pagination added to chat transcript message list view for sessions with over 100 chats. 100 chats per page.
 
 ## Mar 27, 2025
 * **NEW** History modes added for chat history compression
