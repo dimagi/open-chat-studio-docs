@@ -4,6 +4,10 @@ hide:
 ---
 
 # Changelog
+## Jun 11, 2025
+* **CHANGE** Performance improvements to the versioning process.
+* **CHANGE** Updated text diff widget for the "Create new version" page which preserves the original text formatting.
+
 ## Jun 4, 2025
 * **NEW** Added the ability to create an indexed collection from an OpenAI assistant that uses File Search.
 
