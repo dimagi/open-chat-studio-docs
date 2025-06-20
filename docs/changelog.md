@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Jun 20, 2025
+* **NEW** Add a new [tool](../concepts/tools/) that will end the current chat session when called.
+
 ## Jun 19, 2025
 * **BUG** Fixed an issue where chunked messages send via Twilio arrives out-of-order at the user.
 
