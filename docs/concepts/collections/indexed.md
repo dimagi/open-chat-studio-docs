@@ -26,7 +26,7 @@ Remote indexes are hosted and managed by an LLM provider. Files and index config
 - OpenAI
 
 ### Supported file types
-Supported files are determined by the select provider:
+Supported files are determined by the selected provider:
 
 - OpenAI - See the [OpenAI docs](https://platform.openai.com/docs/assistants/tools/file-search/supported-files#supported-files)
 
