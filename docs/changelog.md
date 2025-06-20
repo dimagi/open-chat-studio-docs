@@ -4,6 +4,10 @@ hide:
 ---
 
 # Changelog
+## Jun 19, 2025
+* **BUG** Fixed an issue where chunked messages send via Twilio arrives out-of-order at the user.
+
+
 ## Jun 11, 2025
 * **CHANGE** Performance improvements to the versioning process.
 * **CHANGE** Updated text diff widget for the "Create new version" page which preserves the original text formatting.
