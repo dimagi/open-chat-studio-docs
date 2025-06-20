@@ -22,31 +22,6 @@ contains the data for the participant. You can use this data to personalize the 
 can use the participant's name to personalize the greeting. For more information on prompt variables
 see [here][prompt_variables].
 
-Subsets of the data can be accessed using dot notation. For example, if you have a participant data object that looks
-like this:
-
-```json
-{
-  "name": "John Doe",
-  "address": {
-    "street": "123 Main St"
-  },
-  "tasks": [
-    {
-      "name": "Fix the roof"
-    }
-  ]
-}
-```
-
-You can access specific parts of the data using the following prompt variables:
-
-```
-{participant_data.name}
-{participant_data.address.street}
-{participant_data.tasks[0].name}  # lists are zero-indexed
-```
-
 [prompt_variables]: ../concepts/prompt_variables.md
 
 ### Pipeline Nodes
@@ -68,20 +43,18 @@ for localizing datetime variables in prompts.
 
 ## Updating participant data
 
-You can manually update the participant data using the Web UI. Participant data can also be updated dynamically using
-the methods described below.
+You can manually update the participant data using the Web UI. Participant data can also be updated dynamically using the methods described below.
 
-### Bot Tools
+### Tools
 
-Open Chat Studio provides a tool that allows bots to update the participant data. This tool is available in the "Tools"
+Open Chat Studio provides a [tool](tools/index.md) that allows bots to update the participant data. This tool is available in the "Tools"
 tab of the experiment edit page.
 
 Making this tool available to a bot allows it to update the data in real time as the user is interacting with the bot.
 
-### Pipelines
+### Pipelines Nodes
 
-Both the "Update Participant Data Node" and the "Python Node" can be used to make updates to participant data. The "
-Update participant data" node is primarily used in conjunction with events (see below). The "Python Node" can be used to
+Both the "Update Participant Data Node" and the "Python Node" can be used to make updates to participant data. The "Update participant data" node is primarily used in conjunction with events (see below). The "Python Node" can be used to
 update the data using Python code as part of any pipeline.
 
 For more information, see the [node documentation](pipelines/nodes.md).
