@@ -17,7 +17,7 @@ The following variables are currently supported:
     The injected datetime will be localized to the participant's timezone if it exists in their participant data. When a participant uses the web UI, their browser's timezone will automatically be saved to their participant data.
 
 !!! info "A note on prompt caching"
-    Some LLM providers like OpenAI, use a technique called "prompt caching" to reduce latency and costs (See [here][prompt_caching]). This happens automatically. However, caching is only effective for static data i.e. data that does not change. To take full advantage of this caching mechanism, you should place prompt variables near the end of your prompt whenever possible
+    Some LLM providers, like OpenAI, use a technique called "prompt caching" to reduce latency and costs (See [here][prompt_caching]). This happens automatically. However, caching is only effective for static data, i.e. data that does not change. To take full advantage of this caching mechanism, you should place prompt variables near the end of your prompt whenever possible
 
 [participant_data]: ../concepts/participant_data.md
 [prompt_caching]: https://platform.openai.com/docs/guides/prompt-caching
