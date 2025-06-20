@@ -7,6 +7,7 @@ hide:
 ## Jun 20, 2025
 * **NEW** Add a new [tool](concepts/tools/index.md) that will end the current chat session when called.
 * **NEW** Prompts can now reference pipeline temporary state and session state by using [prompt variables](concepts/prompt_variables.md).
+* **NEW** Added support for OCS hosted indexes. See [indexed collections](./concepts/collections/indexed.md) for more details.
 
 ## Jun 19, 2025
 * **BUG** Fixed an issue where chunked messages sent via Twilio arrive out-of-order at the user.
