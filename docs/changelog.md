@@ -5,7 +5,8 @@ hide:
 
 # Changelog
 ## Jun 20, 2025
-* **NEW** Add a new [tool](../concepts/tools/) that will end the current chat session when called.
+* **NEW** Add a new [tool](concepts/tools/index.md) that will end the current chat session when called.
+* **NEW** Prompts can now reference pipeline temporary state and session state by using [prompt variables](concepts/prompt_variables.md).
 
 ## Jun 19, 2025
 * **BUG** Fixed an issue where chunked messages send via Twilio arrives out-of-order at the user.
