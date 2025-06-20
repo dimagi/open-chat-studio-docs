@@ -4,9 +4,12 @@ hide:
 ---
 
 # Changelog
-## Jun 19, 2025
-* **BUG** Fixed an issue where chunked messages send via Twilio arrives out-of-order at the user.
+## Jun 20, 2025
+* **NEW** Add a new [tool](concepts/tools/index.md) that will end the current chat session when called.
+* **NEW** Prompts can now reference pipeline temporary state and session state by using [prompt variables](concepts/prompt_variables.md).
 
+## Jun 19, 2025
+* **BUG** Fixed an issue where chunked messages sent via Twilio arrive out-of-order at the user.
 
 ## Jun 11, 2025
 * **CHANGE** Performance improvements to the versioning process.

@@ -98,6 +98,7 @@ nav:
         - concepts/channels.md
         - concepts/events.md
         - concepts/tags.md
+        - concepts/tools/index.md
       - Collections:
         - concepts/collections/index.md
         - concepts/collections/media.md
