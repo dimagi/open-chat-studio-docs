@@ -4,6 +4,10 @@ hide:
 ---
 
 # Changelog
+## Jun 23, 2025
+* **BUG** Fixed an issue with file citations where cited files are not always showing up as being cited.
+
+
 ## Jun 20, 2025
 * **NEW** Add a new [tool](concepts/tools/index.md) that will end the current chat session when called.
 * **NEW** Prompts can now reference pipeline temporary state and session state by using [prompt variables](concepts/prompt_variables.md).
