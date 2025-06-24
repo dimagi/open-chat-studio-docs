@@ -94,6 +94,8 @@ The Python node provides a set of utility functions that can be used to interact
 #### ::: python_node.get_selected_route
 #### ::: python_node.get_node_path
 #### ::: python_node.get_all_routes
+#### ::: python_node.add_message_tag
+#### ::: python_node.add_session_tag
 
 ### Temporary State
 The Python node can also access and modify the temporary state of the pipeline. The temporary state is a dictionary that is unique to each run of the pipeline (each new message from the user) and is not stored between sessions.
