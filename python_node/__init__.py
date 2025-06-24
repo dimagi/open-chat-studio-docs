@@ -86,4 +86,4 @@ def add_message_tag(tag_name: str):
 
 
 def add_session_tag(tag_name: str):
-    """Adds the tag to the chat session. To add multiple tags, call this function multiple times."""
+    """Adds a tag to the chat session. To add multiple tags, call this function multiple times."""
