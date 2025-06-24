@@ -4,9 +4,11 @@ hide:
 ---
 
 # Changelog
+## Jun 24, 2025
+* **NEW** Message and session tags can now be added from Python Nodes using the [`add_message_tag`](concepts/pipelines/nodes.md#python_node.add_message_tag) and [`add_session_tag`](concepts/pipelines/nodes.md#python_node.add_session_tag) functions.
+
 ## Jun 23, 2025
 * **BUG** Fixed an issue with file citations where cited files are not always showing up as being cited.
-
 
 ## Jun 20, 2025
 * **NEW** Add a new [tool](concepts/tools/index.md) that will end the current chat session when called.
