@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Jun 26, 2025
+* **BUG** Fixed versioning not working properly with safety layers.
+
 ## Jun 24, 2025
 * **NEW** Message and session tags can now be added from Python Nodes using the [`add_message_tag`](concepts/pipelines/nodes.md#python_node.add_message_tag) and [`add_session_tag`](concepts/pipelines/nodes.md#python_node.add_session_tag) functions.
 
