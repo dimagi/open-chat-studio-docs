@@ -7,6 +7,7 @@ hide:
 ## Jun 27, 2025
 * **BUG** Fix attachment download link in chat transcript view.
 * **NEW** Display image attachments in chat transcript view
+* **BUG** Fix banner dismissal so they stay dismissed between page navigations.
 
 ## Jun 26, 2025
 * **BUG** Fixed versioning not working properly with safety layers.
