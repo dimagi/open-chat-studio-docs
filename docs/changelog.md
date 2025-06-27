@@ -4,7 +4,7 @@ hide:
 ---
 
 # Changelog
-## Jun 27k 2025
+## Jun 27, 2025
 * **BUG** Fix attachment download link in chat transcript view.
 * **NEW** Display image attachments in chat transcript view
 
