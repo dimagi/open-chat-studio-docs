@@ -1,7 +1,11 @@
 # Node Types
 
+!!! note Examples
+
+    See [cookbook](../../how-to/workflow_cookbook.md) for example usage. 
+
 ## LLM
-Uses an LLM to respond to the input.
+Use an LLM to respond to the node input. This node can be configured with a prompt to give the LLM instructions on how to respond. It can also be configured to use [tools](../tools/index.md) which enable to do perform additional actions. 
 
 ## Routers
 
@@ -98,7 +102,7 @@ The Python node provides a set of utility functions that can be used to interact
 #### ::: python_node.add_session_tag
 #### ::: python_node.get_node_output
 #### ::: python_node.require_node_outputs
-#### ::: python_node.abort_pipeline
+#### ::: python_node.abort_with_message
 
 ### Temporary State
 The Python node can also access and modify the temporary state of the pipeline. The temporary state is a dictionary that is unique to each run of the pipeline (each new message from the user) and is not stored between sessions.

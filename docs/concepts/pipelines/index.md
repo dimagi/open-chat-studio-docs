@@ -100,3 +100,14 @@ flowchart LR
 
 !!! warning
     Cycles in pipelines are not supported.
+
+
+<div class="grid cards" markdown>
+
+-   :material-hexagon-multiple-outline:{ .lg .middle } __More Example Workflows__
+
+    ---
+
+    [:octicons-arrow-right-24: Workflow Cookbook](../../how-to/workflow_cookbook.md)
+
+</div>

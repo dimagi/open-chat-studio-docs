@@ -95,7 +95,7 @@ def get_node_output(node_name: str) -> Any:
     """
 
 
-def abort_pipeline(message, tag_name: str = None) -> None:
+def abort_with_message(message, tag_name: str = None) -> None:
     """Calling this will terminate the pipeline execution. No further nodes will get executed in
     any branch of the pipeline graph.
 
