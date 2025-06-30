@@ -4,6 +4,7 @@ repo_url: https://github.com/dimagi/open-chat-studio-docs
 edit_uri: edit/main/docs/
 theme:
   name: material
+  logo: assets/logo.png
   features:
     - header.autohide
     - navigation.expand
