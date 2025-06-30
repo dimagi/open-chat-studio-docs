@@ -4,9 +4,12 @@ hide:
 ---
 
 # Changelog
+## Jun 30, 2025
+* **BUG** Fix speech to text feature so that transcribed text is returned from the STT service.
+
 ## Jun 27, 2025
 * **BUG** Fix attachment download link in chat transcript view.
-* **NEW** Display image attachments in chat transcript view
+* **NEW** Display image attachments in chat transcript view.
 * **BUG** Fix banners so they stay dismissed between page navigations.
 
 ## Jun 26, 2025
