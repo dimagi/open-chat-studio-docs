@@ -36,10 +36,6 @@ types of nodes that can be used in a pipeline, see the [node types](nodes.md) do
 
 ## Pipeline Execution
 
-Here's a simplified version for user-facing documentation:
-
-**How LangGraph Executes Your Application**
-
 Open Chat Studio  runs your application in organized steps. Think of it like a well-coordinated team where different parts of your application (pipeline **nodes**) communicate through shared **channels** (pipeline edges / connections).
 
 Here's how each step works:

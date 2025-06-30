@@ -5,6 +5,11 @@ hide:
 
 # Changelog
 ## Jun 30, 2025
+* **NEW** Pipelines now support parallel execution. Read more about the [pipeline execution model](concepts/pipelines/index.md#pipeline-execution).
+* **NEW** New tools added to [PythonNode](concepts/pipelines/nodes.md#python-node) to support parallel execution:
+    * [get_node_output](concepts/pipelines/nodes.md#python_node.get_node_output)
+    * [abort_with_message](concepts/pipelines/nodes.md#python_node.abort_with_message)
+    * [require_node_outputs](concepts/pipelines/nodes.md#python_node.require_node_outputs)
 * **BUG** Fix speech to text feature so that transcribed text is returned from the STT service.
 
 ## Jun 27, 2025
