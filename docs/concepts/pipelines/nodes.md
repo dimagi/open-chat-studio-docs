@@ -5,7 +5,7 @@
     See [cookbook](../../how-to/workflow_cookbook.md) for example usage. 
 
 ## LLM
-Use an LLM to respond to the node input. This node can be configured with a prompt to give the LLM instructions on how to respond. It can also be configured to use [tools](../tools/index.md) which enable to do perform additional actions. 
+Use an LLM to respond to the node input. This node can be configured with a prompt to give the LLM instructions on how to respond. It can also be configured to use [tools](../tools/index.md) which enable it to perform additional actions. 
 
 ## Routers
 
@@ -77,7 +77,7 @@ The `kwargs` parameter is currently unused, but it is included to support future
     All the code must be encapsulated in a `main` function. You can write other functions but they must be within the scope of the `main` function. For example:
 
     ``` py
-    def main(input. **kwargs):
+    def main(input, **kwargs):
         def important(arg):
             return arg + "!"
 

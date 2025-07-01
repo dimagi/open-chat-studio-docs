@@ -71,7 +71,7 @@ flowchart LR
 ```
 
 ### Multiple outputs
-Connecting multiple outputs from one node (e.g. a router node) to the output of another node is allowed. If more than one of the outputs from the node has a value, the first one will be passed to the next node as input.
+Connecting multiple outputs from one node (e.g. a router node) to the output of another node is allowed. If more than one of the outputs from the node have a value, the first one will be passed to the next node as input.
 
 ```mermaid
 flowchart LR

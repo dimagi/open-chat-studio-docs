@@ -17,7 +17,7 @@ def set_participant_data(data: dict) -> None:
     """
 
 
-def get_participant_schedules(self) -> list:
+def get_participant_schedules() -> list:
     """
     Returns all active scheduled messages for the participant in the current experiment session.
     """
@@ -120,6 +120,6 @@ def require_node_outputs(*node_names):
     ```python
     def main(input, **kwargs):
         require_node_outputs("nodeA", "nodeB")
-        return get_node_output("nodeA) + get_node_output("nodeB")
+        return get_node_output("nodeA") + get_node_output("nodeB")
     ```
     """
