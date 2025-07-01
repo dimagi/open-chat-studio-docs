@@ -1,8 +1,10 @@
 site_name: Open Chat Studio Documentation
 site_url: https://docs.openchatstudio.com
-repo_url: https://github.com/dimagi/open-chat-studio
+repo_url: https://github.com/dimagi/open-chat-studio-docs
+edit_uri: edit/main/docs/
 theme:
   name: material
+  logo: assets/logo.png
   features:
     - header.autohide
     - navigation.expand
@@ -19,6 +21,8 @@ theme:
     - search.share
     - search.suggest
     - toc.follow
+    - content.action.edit
+    - content.action.view
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -72,6 +76,7 @@ nav:
   - Home: index.md
   - How-to Guides:
       - how-to/index.md
+      - how-to/workflow_cookbook.md
       - how-to/add_a_knowledge_base.md
       - how-to/remote_api.md
       - how-to/global_search.md

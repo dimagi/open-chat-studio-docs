@@ -17,7 +17,7 @@ def set_participant_data(data: dict) -> None:
     """
 
 
-def get_participant_schedules(self) -> list:
+def get_participant_schedules() -> list:
     """
     Returns all active scheduled messages for the participant in the current experiment session.
     """
@@ -87,3 +87,39 @@ def add_message_tag(tag_name: str):
 
 def add_session_tag(tag_name: str):
     """Adds a tag to the chat session. To add multiple tags, call this function multiple times."""
+
+
+def get_node_output(node_name: str) -> Any:
+    """Returns the output of the specified node if it has been executed.
+    If the node has not been executed, it returns `None`.
+    """
+
+
+def abort_with_message(message, tag_name: str = None) -> None:
+    """Calling this will terminate the pipeline execution. No further nodes will get executed in
+    any branch of the pipeline graph.
+
+    The message provided will be used to notify the user about the reason for the termination.
+    If a tag name is provided, it will be used to tag the output message.
+
+    ```python
+    # Abort pipeline with custom message
+    if safety_violation_detected:
+        abort_with_message("Content policy violation detected")
+    ```
+    """
+
+
+def require_node_outputs(*node_names):
+    """This function is used to ensure that the specified nodes have been executed and their outputs
+    are available in the pipeline's state. If any of the specified nodes have not been executed,
+    the node will not execute and the pipeline will wait for the required nodes to complete.
+
+    This should be called at the start of the main function.
+
+    ```python
+    def main(input, **kwargs):
+        require_node_outputs("nodeA", "nodeB")
+        return get_node_output("nodeA") + get_node_output("nodeB")
+    ```
+    """

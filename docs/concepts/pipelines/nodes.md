@@ -1,7 +1,11 @@
 # Node Types
 
+!!! note Examples
+
+    See [cookbook](../../how-to/workflow_cookbook.md) for example usage. 
+
 ## LLM
-Uses an LLM to respond to the input.
+Use an LLM to respond to the node input. This node can be configured with a prompt to give the LLM instructions on how to respond. It can also be configured to use [tools](../tools/index.md) which enable it to perform additional actions. 
 
 ## Routers
 
@@ -14,10 +18,6 @@ The format of the tag is `<node_name>:<route_name>` where `<route_name>` is the 
 
 ### LLM Router
 Routes the input to one of the linked nodes using an LLM. In this case, the LLM acts as a classifier using the prompt provided to classify an incoming message into a set of discrete categories that allow messages to be routed.
-
-!!! info "Constrained outputs"
-
-    Currently the LLM Router node does not enforce constrained outputs, however, in the very near future, they will. This will be accomplished using a strict `json_mode` (for supporting models) that ensure that the LLM only generates one of the valid classification labels.
 
 The `outputs` listed by the node are the available classification labels. These should match the classification categories specified in your prompt. They can be adjusted through the `Advanced` settings for the node. The top output, which is prepended by a blue `*` is the default label. In the event that the LLM generates a response outside of the specified `outputs`, the route with the default label will be taken.
 
@@ -73,7 +73,7 @@ The `kwargs` parameter is currently unused, but it is included to support future
     All the code must be encapsulated in a `main` function. You can write other functions but they must be within the scope of the `main` function. For example:
 
     ``` py
-    def main(input. **kwargs):
+    def main(input, **kwargs):
         def important(arg):
             return arg + "!"
 
@@ -96,6 +96,9 @@ The Python node provides a set of utility functions that can be used to interact
 #### ::: python_node.get_all_routes
 #### ::: python_node.add_message_tag
 #### ::: python_node.add_session_tag
+#### ::: python_node.get_node_output
+#### ::: python_node.require_node_outputs
+#### ::: python_node.abort_with_message
 
 ### Temporary State
 The Python node can also access and modify the temporary state of the pipeline. The temporary state is a dictionary that is unique to each run of the pipeline (each new message from the user) and is not stored between sessions.

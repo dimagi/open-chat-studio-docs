@@ -1,6 +1,10 @@
-# Open Chat Studio Docs
+[![](docs/assets/logo.png)](https://github.com/dimagi/open-chat-studio)
 
-## Quickstart
+This repository contains the user documentation for [Open Chat Studio](https://github.com/dimagi/open-chat-studio).
+
+Open Chat Studio is a platform for building, deploying, and evaluating AI-powered chat applications. It provides tools for working with various LLMs (Language Learning Models), creating chatbots, managing conversations, and integrating with different messaging platforms.
+
+## Docs Quickstart
 
 Assuming you've already cloned this repository:
 
@@ -24,11 +28,6 @@ Assuming you've already cloned this repository:
     ```shell
     uv run mkdocs serve
     ```
-
-
-## Documentation
-
-These docs are made using [MkDocs](https://www.mkdocs.org/) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/).
 
 ### Writing
 
