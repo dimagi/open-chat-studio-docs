@@ -19,7 +19,7 @@
 
     **Self-Managed Rollout**: Team administrators can now control feature flags for their teams, allowing for more granular control over when new features are enabled. This means teams can adopt the Chatbots feature at their own pace rather than following a global rollout schedule.
 
-    For more information check out out our [FAQ page](../chatbots/rollout_faq.md)
+    For more information check out our [FAQ page](../chatbots/rollout_faq.md)
 
 
 ## What is a Chatbot?
