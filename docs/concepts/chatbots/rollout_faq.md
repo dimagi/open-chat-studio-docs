@@ -13,3 +13,21 @@ Different from an Experiment, the settings have been moved to a tab on the Chatb
   <figcaption>The settings tab</figcaption>
 </figure>
 Here, you are able to modify name, description, voice, tracing, consent, surveys, participant allowlist, and seed message.
+
+### How can I control feature rollouts for my team?
+Team administrators can manage the chatbot feature for their team.
+
+To access feature flag management:
+
+1. Navigate to your team's settings page
+2. Click on the "Manage Feature Flags" button
+
+<figure markdown="span">
+  ![Chatbot Settings](../../assets/images/manage_flags_button.png)
+  <figcaption>Feature Flag Management</figcaption>
+</figure>
+
+<figure markdown="span">
+  ![Chatbot Settings](../../assets/images/manage_flags_page.png)
+  <figcaption>Feature Flag Management Page</figcaption>
+</figure>
