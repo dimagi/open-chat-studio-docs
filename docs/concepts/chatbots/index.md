@@ -17,6 +17,8 @@
     - **Enhanced Features**: Chatbots includes features that are not available to legacy 'Experiments' including:
         - LLM tools such as 'web search', 'code interpreter', and 'file search'
 
+    **Self-Managed Rollout**: Team administrators can now control feature flags for their teams, allowing for more granular control over when new features are enabled. This means teams can adopt the Chatbots feature at their own pace rather than following a global rollout schedule.
+
     For more information check out out our [FAQ page](../chatbots/rollout_faq.md)
 
 

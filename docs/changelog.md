@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Jul 3, 2025
+* **NEW** Allow team admins to manage specific feature flags. See [Chatbots FAQ](concepts/chatbots/rollout_faq.md#how-can-i-control-feature-rollouts-for-my-team).
+
 ## Jun 30, 2025
 * **NEW** Pipelines now support parallel execution. Read more about the [pipeline execution model](concepts/pipelines/index.md#pipeline-execution).
 * **NEW** New tools added to [PythonNode](concepts/pipelines/nodes.md#python-node) to support parallel execution:
