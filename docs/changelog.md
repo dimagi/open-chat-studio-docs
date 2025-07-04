@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Jul 4, 2025
+* **NEW** When using a [local index](concepts/collections/indexed.md#local-index), files that were used to generate responses are now attached to the response.
+
 ## Jul 3, 2025
 * **NEW** Allow team admins to manage specific feature flags. See [Chatbots FAQ](concepts/chatbots/rollout_faq.md#how-can-i-control-feature-rollouts-for-my-team).
 
