@@ -4,9 +4,11 @@ hide:
 ---
 
 # Changelog
+## Jul 4, 2025
+* **NEW** When using a [local index](concepts/collections/indexed.md#local-index), files that were used to generate responses are now attached to the response.
+
 ## Jun 26, 2025
 * **BUG** Fixed versioning not working properly with safety layers.
-* **NEW** When using a [local index](concepts/collections/indexed.md#local-index), files that were used to generate responses are now attached to the response.
 
 ## Jun 24, 2025
 * **NEW** Message and session tags can now be added from Python Nodes using the [`add_message_tag`](concepts/pipelines/nodes.md#python_node.add_message_tag) and [`add_session_tag`](concepts/pipelines/nodes.md#python_node.add_session_tag) functions.
