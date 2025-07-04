@@ -7,6 +7,22 @@ hide:
 ## Jul 4, 2025
 * **NEW** When using a [local index](concepts/collections/indexed.md#local-index), files that were used to generate responses are now attached to the response.
 
+## Jul 3, 2025
+* **NEW** Allow team admins to manage specific feature flags. See [Chatbots FAQ](concepts/chatbots/rollout_faq.md#how-can-i-control-feature-rollouts-for-my-team).
+
+## Jun 30, 2025
+* **NEW** Pipelines now support parallel execution. Read more about the [pipeline execution model](concepts/pipelines/index.md#pipeline-execution).
+* **NEW** New tools added to [PythonNode](concepts/pipelines/nodes.md#python-node) to support parallel execution:
+    * [get_node_output](concepts/pipelines/nodes.md#python_node.get_node_output)
+    * [abort_with_message](concepts/pipelines/nodes.md#python_node.abort_with_message)
+    * [require_node_outputs](concepts/pipelines/nodes.md#python_node.require_node_outputs)
+* **BUG** Fix speech to text feature so that transcribed text is returned from the STT service.
+
+## Jun 27, 2025
+* **BUG** Fix attachment download link in chat transcript view.
+* **NEW** Display image attachments in chat transcript view.
+* **BUG** Fix banners so they stay dismissed between page navigations.
+
 ## Jun 26, 2025
 * **BUG** Fixed versioning not working properly with safety layers.
 
