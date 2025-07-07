@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Jul 5, 2025
+* **BUG** Fixed an issue with pipeline dragging and improved robustness for non-editable pipelines.
+
 ## Jul 4, 2025
 * **NEW** When using a [local index](concepts/collections/indexed.md#local-index), files that were used to generate responses are now attached to the response.
 
