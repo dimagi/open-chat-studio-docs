@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Jul 10, 2025
+* **CHANGE** Indexed collections will only show llm providers that has embedding models configured.
+
 ## Jul 5, 2025
 * **BUG** Fixed an issue with pipeline dragging and improved robustness for non-editable pipelines.
 
