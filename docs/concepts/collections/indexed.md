@@ -12,7 +12,7 @@ When you want your bot's responses to be grounded in your uploaded documents.
 
 If you’ve used the OpenAI Assistants’ [file search][file-search] capability in OCS, you’ve already interacted with an index behind the scenes.
 
-!!! tip "TIP: You can create an indexed collection from an OpenAI assistant that uses file search by clicking the `Create from assistant` button"
+!!! tip "Consult the [migration guide][migration-guide] if you have assistants that you want to replace with indexed collections."
 
 In OCS, there are two types of indexes:
 
@@ -23,7 +23,7 @@ In OCS, there are two types of indexes:
 Remote indexes are hosted and managed by an LLM provider. Files and index configuration are uploaded to the provider, which maintains and manages the index. The embedding model used to create file embeddings is selected by the provider.
 
 ### Supported providers
-- OpenAI
+- OpenAI (using the [responses API](https://platform.openai.com/docs/api-reference/responses))
 
 ### Supported file types
 Supported files are determined by the selected provider:
@@ -62,5 +62,5 @@ Choosing the right chunking strategy can improve retrieval accuracy, especially 
 
 !!! info "This flexibility helps tailor the index to your use case—whether it’s short notes or long, complex reports."
 
-
 [file-search]: ../experiment/index.md#file-search
+[migration-guide]: ../../how-to/migrate_from_assistant_to_collection.md
