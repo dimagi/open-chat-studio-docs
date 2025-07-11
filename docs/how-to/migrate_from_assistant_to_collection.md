@@ -13,11 +13,11 @@ If you've been using the "file search" tool in an assistant and want more flexib
 
 ## Step 1: Create the Collection
 
-Click on the **“Collections”** tab in the sidebar. Instead of selecting “Add New”, click **“Create from Assistant.”**
+Click on the **“Collections”** tab in the sidebar. Instead of selecting “Add New”, click **“Create from Assistant”**.
 
 - Select the assistant you'd like to migrate.
 - Give your new collection a name.
-- Click **“Create Collection.”**
+- Click **“Create Collection”**.
 
 ### What Happens Behind the Scenes?
 
