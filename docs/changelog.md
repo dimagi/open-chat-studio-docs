@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Jul 11, 2025
+* **NEW** File referencing can now be disabled for indexed collections.
+
 ## Jul 10, 2025
 * **CHANGE** Indexed collections will only show llm providers that has embedding models configured.
 
