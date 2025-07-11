@@ -82,6 +82,32 @@ In some cases it may also be necessary to reduce the z-index of other elements o
 
 For more details, see [Open Chat Studio Widget on npm](https://www.npmjs.com/package/open-chat-studio-widget)
 
+#### Welcome Messages and Starter Questions
+```html
+<open-chat-studio-widget
+ welcome-messages='["Hi! Welcome to our support chat.", "How can I assist you today?"]'
+ starter-questions='[
+   "I need technical support",
+   "Tell me about pricing",
+   "Schedule a demo",
+   "Contact sales team"
+ ]'>
+</open-chat-studio-widget>
+```
+**Welcome Messages**: Enhance user experience by displaying personalized greeting messages when the chat opens. These messages appear as bot messages at the beginning of the conversation. Welcome messages are perfect for:
+- Greeting users and introducing your bot's capabilities
+- Providing context about what kind of help is available
+- Creating a warm, engaging first impression
+
+Pass welcome messages as a JSON array string. Each message appears as a separate bot message bubble.
+
+**Starter Questions**: Accelerate user engagement with pre-defined clickable questions that address common queries. These starter questions help users quickly find what they're looking for without having to type which improves the user experience. Starter questions are ideal for:
+- Highlighting your most frequently asked questions
+- Guiding users toward key features or information
+- Improving accessibility for users who prefer clicking over typing
+
+These questions appear as blue-outlined buttons aligned to the right (similar to user messages), making it clear they're user actions. When clicked, they automatically send that question as a user message, initiating the conversation flow. The starter questions disappear after the user clicks one or starts typing their own message, keeping the interface clean and focused.
+
 ## Method 2: Embedding via iframe
 
 1. Get Your Embed Code
