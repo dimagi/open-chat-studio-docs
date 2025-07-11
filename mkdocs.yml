@@ -85,6 +85,7 @@ nav:
       - how-to/api_access.md
       - how-to/setting_up_a_survey.md
       - how-to/embed.md
+      - how-to/migrate_from_assistant_to_collection.md
   - Concepts:
       - concepts/index.md
       - Chatbots:
