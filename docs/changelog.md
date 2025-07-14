@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Jul 14, 2025
+* **BUG** Fixed an issue where session and message tags were not displaying in the participant session details view.
+
 ## Jul 10, 2025
 * **CHANGE** Indexed collections will only show llm providers that has embedding models configured.
 
