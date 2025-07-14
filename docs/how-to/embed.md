@@ -85,13 +85,13 @@ For more details, see [Open Chat Studio Widget on npm](https://www.npmjs.com/pac
 #### Welcome Messages and Starter Questions
 ```html
 <open-chat-studio-widget
- welcome-messages='["Hi! Welcome to our support chat.", "How can I assist you today?"]'
- starter-questions='[
-   "I need technical support",
-   "Tell me about pricing",
-   "Schedule a demo",
-   "Contact sales team"
- ]'>
+	welcome-messages="['Hi! Welcome to our support chat.', 'How can I assist you today?']"
+ starter-questions="[
+   'I need technical support',
+   'Tell me about pricing',
+   'Schedule a demo',
+   'Contact sales team'
+ ]">
 </open-chat-studio-widget>
 ```
 **Welcome Messages**: Enhance user experience by displaying personalized greeting messages when the chat opens. These messages appear as bot messages at the beginning of the conversation. Welcome messages are perfect for:
