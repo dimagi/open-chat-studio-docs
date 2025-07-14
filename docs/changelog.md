@@ -5,6 +5,7 @@ hide:
 
 # Changelog
 ## Jul 14, 2025
+* **CHANGE** File index status now updates in real-time. Users no longer need to reload to see the latest status.
 * **BUG** Fixed an issue where session and message tags were not displaying in the participant session details view.
 
 ## Jul 10, 2025
