@@ -9,8 +9,8 @@ hide:
 * **BUG** Fixed an issue where session and message tags were not displaying in the participant session details view.
 
 ## Jul 10, 2025
-* **NEW** Added ability to translate chat transcript to a new language from the chat transcript view page via a "Translate" button.
-* **CHANGE** Chat widget can be dragged across the window rather than in set positions.
+* **NEW** Added the ability to translate chat transcripts to a new language from the chat transcript view page via a "Translate" button.
+* **CHANGE** Chat widget can be dragged across the window rather than being limited to set positions.
 
 ## Jul 10, 2025
 * **CHANGE** Indexed collections will only show llm providers that has embedding models configured.
