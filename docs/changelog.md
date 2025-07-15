@@ -6,6 +6,7 @@ hide:
 # Changelog
 ## Jul 15, 2025
 * **NEW** File referencing can now be disabled for indexed collections.
+* **NEW** Added a tool that allows users to explore their local indexed collections by querying the collection with natural language.
 
 ## Jul 14, 2025
 * **CHANGE** File index status now updates in real-time. Users no longer need to reload to see the latest status.
