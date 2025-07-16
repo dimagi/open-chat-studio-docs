@@ -42,6 +42,72 @@ In some cases it may also be necessary to reduce the z-index of other elements o
 
 For more details, see [Open Chat Studio Widget on npm](https://www.npmjs.com/package/open-chat-studio-widget)
 
+## Button Customization
+
+### Button Text
+
+Control whether your chat button displays text alongside an icon:
+
+```html
+<open-chat-studio-widget
+  button-text="Chat with us">
+</open-chat-studio-widget>
+```
+Behavior:
+
+- When button-text is provided, the button displays both an icon and text
+- When button-text is empty or not provided, only an icon is shown
+
+### Button Shape
+Customize the shape of your chat button:
+```html
+<open-chat-studio-widget
+  button-shape="round">
+</open-chat-studio-widget>
+```
+Available Shapes:
+
+- **round** - Circular button
+- **square** - Rectangular button with rounded corners
+
+
+### Custom Icon
+Replace the default chat icon with your own:
+```html
+<open-chat-studio-widget
+  icon-url="https://your-domain.com/custom-chat-icon.svg">
+</open-chat-studio-widget>
+```
+
+If no icon-url is provided, the default Open Chat Studio logo is used
+
+### Complete Button Examples
+Icon-only round button:
+
+```html
+<open-chat-studio-widget
+  button-shape="round"
+  icon-url="https://your-domain.com/chat-icon.svg">
+</open-chat-studio-widget>
+```
+Text button with custom icon:
+
+```html
+<open-chat-studio-widget
+  button-text="Need Help?"
+  button-shape="square"
+  icon-url="https://your-domain.com/support-icon.svg">
+</open-chat-studio-widget>
+```
+Simple text button with default icon:
+
+```html
+<open-chat-studio-widget
+  button-text="Chat Now"
+  button-shape="round">
+</open-chat-studio-widget>
+```
+
 #### Welcome Messages and Starter Questions
 ```html
 <open-chat-studio-widget
@@ -71,13 +137,15 @@ These questions appear as blue-outlined buttons aligned to the right (similar to
 
 
 #### Attributes List
-
-| Attribute | Description | Required |
-|-----------|-------------|----------|
-| `bot-url` | URL to your chatbot | Yes |
-| `visible` | Initial visibility state | No |
-| `button-text` | Text on chat button | No |
-| `position` | Widget position | No |
-| `expanded` | Initial expanded state | No |
-| `welcome-messages` | JSON array of welcome messages | No |
-| `starter-questions` | JSON array of starter questions | No |
+| Attribute | Description | Required | Default |
+|-----------|-------------|----------|---------|
+| `chatbot-id` | ID of the chatbot to connect to | Yes | - |
+| `api-base-url` | Base URL for the API | No | `https://chatbots.dimagi.com` |
+| `button-text` | Text to display on chat button | No | - |
+| `button-shape` | Shape of chat button (`round` or `square`) | No | `square` |
+| `icon-url` | URL of custom icon for chat button | No | Default OCS logo |
+| `visible` | Initial visibility state | No | `false` |
+| `position` | Widget position (`left`, `center`, or `right`) | No | `right` |
+| `expanded` | Initial expanded state | No | `false` |
+| `welcome-messages` | JSON array of welcome messages | No | - |
+| `starter-questions` | JSON array of starter questions | No | - |
