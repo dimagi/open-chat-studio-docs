@@ -70,7 +70,110 @@ Then in the LLM node prompt you could use the [**temp_state**][prompt_vars] to i
 The current category is {temp_state.category}
 ```
 
+## Allow users to upload files
+
+This workflow allows users (participants) to upload files that your chatbot can process and analyze.
+
+### Supported file types
+- txt
+- pdf
+- csv
+- json
+- html
+- docx
+- xlsx
+- xls
+- outlook
+- pptx
+
+### Setup Steps
+
+1. **Enable file uploads**: In your chatbot settings, enable the "File uploads enabled" option
+2. **Create a Python Node**: Use a Python node to read and process the uploaded file contents from the [temporary state][temp_state] - specifically from the [attachments][attachments] key.
+3. **Pass to LLM**: Either return the user input along with the file contents directly to the LLM node, or save the file contents to the temporary state and inject them into your LLM prompt
+
+### Workflow Structure
+
+```mermaid
+flowchart TD
+    start["start"] --> PythonNode
+    PythonNode --> LLM
+    LLM --> __end__(["<p>end</p>"])
+
+     start:::first
+     __end__:::last
+```
+
+**Python Node Implementation:**
+
+*Option 1: Single File Processing*
+Process only the first uploaded file:
+
+```python
+def main(input: str, **kwargs) -> str: 
+    # Get uploaded files from temp state
+    attachments = get_temp_state_key("attachments")
+    if not attachments:
+        return input
+    
+    # Read the first file's content
+    file_content = attachments[0].read_text()
+    set_temp_state_key("file_contents", file_content)
+    
+    return input
+```
+
+*Option 2: Multiple Files Processing*
+Process all uploaded files:
+
+```python
+def main(input: str, **kwargs) -> str: 
+    # Get uploaded files from temp state
+    attachments = get_temp_state_key("attachments")
+    if not attachments:
+        return input
+    
+    # Read all files and combine their contents
+    all_file_contents = []
+    for i, attachment in enumerate(attachments):
+        file_content = attachment.read_text()
+        filename = attachment.name if hasattr(attachment, 'name') else f"File {i+1}"
+        all_file_contents.append(f"## {filename}\n{file_content}")
+    
+    # Save combined contents to temp state
+    combined_contents = "\n\n".join(all_file_contents)
+    set_temp_state_key("file_contents", combined_contents)
+    
+    return input
+```
+
+In these examples, the Python node reads the uploaded file(s) and saves their contents to the temp state under the key "file_contents". The user's original input is passed through unchanged to the LLM node. 
+
+**LLM Node Configuration:**
+
+Configure your LLM node to utilize the uploaded file contents by injecting them into the prompt using temp state variables.
+
+*Basic Prompt Template:*
+```
+You are a helpful assistant. Answer the user's query as best you can.
+
+Here are some file contents that you should consider when generating your answer:
+
+## File Contents
+{temp_state.file_contents}
+
+User Query: {input}
+
+Instructions:
+- If the file contents are empty or not provided, inform the user that no files were uploaded
+- Base your response on both the file contents and the user's query
+- Be specific about what you found in the uploaded files
+- If you cannot find relevant information in the files, clearly state this
+```
+
 [abort]: ../concepts/pipelines/nodes.md#python_node.abort_with_message
 [python]: ../concepts/pipelines/nodes.md#python_node
 [router]: ../concepts/pipelines/nodes.md#llm-router
 [prompt_vars]: ../concepts/prompt_variables.md
+[temp_state]: ../concepts/pipelines/nodes.md#temporary-state
+[attachments]: ../concepts/pipelines/nodes.md#attachments
