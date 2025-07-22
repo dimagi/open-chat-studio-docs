@@ -70,7 +70,7 @@ Then in the LLM node prompt you could use the [**temp_state**][prompt_vars] to i
 The current category is {temp_state.category}
 ```
 
-## Allow users to upload files
+## Reading user uploaded files
 
 This workflow allows users (participants) to upload files that your chatbot can process and analyze.
 
