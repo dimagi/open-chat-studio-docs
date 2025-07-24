@@ -163,13 +163,13 @@ content = attachment.read_text()
 #### Supported File Types
 The Python node currently only supports reading the contents of the following file types:
 
-- Plain text formats (txt, csv, html, json, xml, etc.)
-- pdf
-- docx
-- xlsx
-- xls
-- outlook
-- pptx
+- Plain text formats (TXT, CSV, HTML, JSON, XML, etc.)
+- PDF
+- DOCX
+- XLSX
+- XLS
+- Outlook
+- PPTX
 
 Other file types can still be uploaded to assistants but the Python Node is not able to read the file contents using the `read_text()` method on the attachment.
 
