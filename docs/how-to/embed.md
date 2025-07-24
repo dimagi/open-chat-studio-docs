@@ -6,7 +6,8 @@ Open Chat Studio provides two methods for embedding a chatbot into your website:
 
 Here is a demo of using the chat component:
 
-<open-chat-studio-widget visible="false" bot-url="https://chatbots.dimagi.com/a/dimagi/experiments/e/dc2c0c98-d655-4042-b184-7a7a2ecb2954/embed/start/" button-text="Chat Demo"></open-chat-studio-widget>
+<open-chat-studio-widget visible="false" bot-url="https://chatbots.dimagi.com/a/dimagi/experiments/e/dc2c0c98-d655-4042-b184-7a7a2ecb2954/embed/start/" button-text="Chat Demo" welcome-messages="['Hi! Welcome to our support chat.']"
+ starter-questions="['Tell me about pricing', 'Schedule a demo']"></open-chat-studio-widget>
 
 ## Prerequisites
 
@@ -32,14 +33,16 @@ Before embedding, you must create a bot in Open Chat Studio.
 3. Insert the widget where you want the chat button.
 
       The embed code snippet should look something like this:
-      
+
       ```html
-      <open-chat-studio-widget 
-        visible="false" 
-        bot-url="https://chatbots.dimagi.com/...." 
+      <open-chat-studio-widget
+        visible="false"
+        bot-url="https://chatbots.dimagi.com/...."
         button-text="Let's Chat"
         position="right"
-        expanded="false">
+        expanded="false"
+        welcome-messages="['Hi! Welcome to our support chat.']"
+        starter-questions="['Tell me about pricing', 'Schedule a demo']">
       </open-chat-studio-widget>
       ```
 
@@ -81,6 +84,34 @@ If the chatbot appears below other elements on the page you can increase the `z-
 In some cases it may also be necessary to reduce the z-index of other elements on the page.
 
 For more details, see [Open Chat Studio Widget on npm](https://www.npmjs.com/package/open-chat-studio-widget)
+
+#### Welcome Messages and Starter Questions
+```html
+<open-chat-studio-widget
+ welcome-messages="['Hi! Welcome to our support chat.', 'How can I assist you today?']"
+ starter-questions="[
+   'I need technical support',
+   'Tell me about pricing',
+   'Schedule a demo',
+   'Contact sales team'
+ ]">
+</open-chat-studio-widget>
+```
+**Welcome Messages**: Enhance user experience by displaying personalized greeting messages when the chat opens. These messages appear as bot messages at the beginning of the conversation. Welcome messages are perfect for:
+- Greeting users and introducing your bot's capabilities
+- Providing context about what kind of help is available
+- Creating a warm, engaging first impression
+
+Pass welcome messages as a JSON array string. Each message appears as a separate bot message bubble.
+
+**Starter Questions**: Accelerate user engagement with pre-defined clickable questions that address common queries. These starter questions help users quickly find what they're looking for without having to type which improves the user experience. Starter questions are ideal for:
+- Highlighting your most frequently asked questions
+- Guiding users toward key features or information
+- Improving accessibility for users who prefer clicking over typing
+
+These questions appear as blue-outlined buttons aligned to the right (similar to user messages), making it clear they're user actions. When clicked, they automatically send that question as a user message, initiating the conversation flow. The starter questions disappear after the user clicks one or starts typing their own message, keeping the interface clean and focused.
+
+To see how this feature looks, follow the demo presented outlined on this page.
 
 ## Method 2: Embedding via iframe
 
