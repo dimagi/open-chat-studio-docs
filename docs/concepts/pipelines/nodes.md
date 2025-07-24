@@ -160,14 +160,18 @@ attachment = Attachment(
 content = attachment.read_text()
 ```
 
-!!! warning "Attachment file types"
-    The Python node currently only supports reading the contents of the following file types:
+#### Supported File Types
+The Python node currently only supports reading the contents of the following file types:
 
-    * Text files (this includes files like CSV, JSON etc)
-    * PDF files
-    * docx files
+- Plain text formats (txt, csv, html, json, xml, etc.)
+- pdf
+- docx
+- xlsx
+- xls
+- outlook
+- pptx
 
-    Other file types can still be uploaded to assistants but the Python Node is not able to read the file contents using the `read_text()` method on the attachment.
+Other file types can still be uploaded to assistants but the Python Node is not able to read the file contents using the `read_text()` method on the attachment.
 
 ## Template
 Renders a [Jinja](https://jinja.palletsprojects.com/en/stable/templates/) template.

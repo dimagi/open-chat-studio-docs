@@ -72,19 +72,7 @@ The current category is {temp_state.category}
 
 ## Reading user uploaded files
 
-This workflow allows users (participants) to upload files that your chatbot can process and analyze.
-
-### Supported file types
-- txt
-- pdf
-- csv
-- json
-- html
-- docx
-- xlsx
-- xls
-- outlook
-- pptx
+This workflow allows users (participants) to upload files that your chatbot can process and analyze. Supported file types are listed [here][code_node_supported_file_types].
 
 ### Setup Steps
 
@@ -177,3 +165,4 @@ Instructions:
 [prompt_vars]: ../concepts/prompt_variables.md
 [temp_state]: ../concepts/pipelines/nodes.md#temporary-state
 [attachments]: ../concepts/pipelines/nodes.md#attachments
+[code_node_supported_file_types]: ../concepts/pipelines/nodes.md#supported-file-types
