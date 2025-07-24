@@ -163,7 +163,7 @@ content = attachment.read_text()
 #### Supported File Types
 The Python node currently only supports reading the contents of the following file types:
 
-- Plain text formats (TXT, CSV, HTML, JSON, XML, etc.)
+- Text-based formats (TXT, CSV, HTML, JSON, XML, etc.)
 - PDF
 - DOCX
 - XLSX
