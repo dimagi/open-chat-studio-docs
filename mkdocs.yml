@@ -123,6 +123,7 @@ nav:
       - Chat Widget:
           - concepts/chat_widget/index.md
           - concepts/chat_widget/widget_customization.md
+          - concepts/chat_widget/upgrade_guide.md
   - Changelog: changelog.md
   - About: about.md
 
