@@ -6,7 +6,8 @@ Open Chat Studio provides two methods for embedding a chatbot into your website:
 
 Here is a demo of using the chat component:
 
-<open-chat-studio-widget visible="false" bot-url="https://chatbots.dimagi.com/a/dimagi/experiments/e/dc2c0c98-d655-4042-b184-7a7a2ecb2954/embed/start/" button-text="Chat Demo"></open-chat-studio-widget>
+<open-chat-studio-widget visible="false" bot-url="https://chatbots.dimagi.com/a/dimagi/experiments/e/dc2c0c98-d655-4042-b184-7a7a2ecb2954/embed/start/" button-text="Chat Demo" welcome-messages="['Hi! Welcome to our support chat.']"
+ starter-questions="['Tell me about pricing', 'Schedule a demo']"></open-chat-studio-widget>
 
 ## Prerequisites
 
@@ -32,55 +33,36 @@ Before embedding, you must create a bot in Open Chat Studio.
 3. Insert the widget where you want the chat button.
 
       The embed code snippet should look something like this:
-      
+
       ```html
-      <open-chat-studio-widget 
-        visible="false" 
-        bot-url="https://chatbots.dimagi.com/...." 
+      <open-chat-studio-widget
+        visible="false"
+        bot-url="https://chatbots.dimagi.com/...."
         button-text="Let's Chat"
         position="right"
-        expanded="false">
+        expanded="false"
+        welcome-messages="['Hi! Welcome to our support chat.']"
+        starter-questions="['Tell me about pricing', 'Schedule a demo']">
       </open-chat-studio-widget>
       ```
 
-### Customization
+### Basic Customization
 
-Customize the widget using CSS and CSS variables:
+You can customize the widget appearance with CSS variables. For a complete list of customization options, see [Widget Customization Guide](../concepts/chat_widget/widget_customization.md).
 
 ```html
 <style>
   open-chat-studio-widget {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
     --button-background-color: blue;
-    --button-background-color-hover: black;
     --button-text-color: white;
-    --button-text-color-hover: yellow;
   }
 </style>
-<open-chat-studio-widget 
-  visible="false" 
+<open-chat-studio-widget
+  visible="false"
   bot-url="...."
   button-text="👋">
 </open-chat-studio-widget>
 ```
-
-#### Z-Index
-
-If the chatbot appears below other elements on the page you can increase the `z-index` of the chatbot by setting the `--chat-z-index` CSS variable. The default value is `50`.
-
-```html
-<style>
-  open-chat-studio-widget {
-    --chat-z-index: 1000;
-  }
-</style>
-```
-
-In some cases it may also be necessary to reduce the z-index of other elements on the page.
-
-For more details, see [Open Chat Studio Widget on npm](https://www.npmjs.com/package/open-chat-studio-widget)
 
 ## Method 2: Embedding via iframe
 
