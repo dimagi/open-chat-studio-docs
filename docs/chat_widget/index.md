@@ -11,25 +11,63 @@ The Open Chat Studio Widget is a customizable chat component that allows you to 
 - **Starter Questions**: Guide users with pre-defined clickable questions
 - **Responsive Design**: Works seamlessly across desktop and mobile devices
 
+<div class="grid cards" markdown>
+
+-   :octicons-gear-16:{ .lg .middle } [View the reference docs](widget_customization.md)
+-   ::octicons-list-unordered-16:{ .lg .middle } [Changelog and upgrade info](changelog.md)
+
+</div>
+
 ## Quick Demo
 
-<open-chat-studio-widget visible="false" bot-url="https://chatbots.dimagi.com/a/dimagi/experiments/e/dc2c0c98-d655-4042-b184-7a7a2ecb2954/embed/start/" button-text="Chat Demo" welcome-messages="['Hi! Welcome to our support chat.']" starter-questions="['Tell me about pricing', 'Schedule a demo']"></open-chat-studio-widget>
+<open-chat-studio-widget 
+    visible="false"
+    chatbot-id="dc2c0c98-d655-4042-b184-7a7a2ecb2954"
+    button-text="OCS Demo Bot" 
+    welcome-messages="['Hi! Welcome to our support chat.']" 
+    starter-questions="['What is OCS?', 'How do create a bot?']"></open-chat-studio-widget>
 
 ## Getting Started
 
-### 1. Embed Your Bot
-Learn how to add the chat widget to your website using either the component method or iframe approach.
+Before embedding, you must create a bot in Open Chat Studio.
 
-[**→ How to Embed Guide**](../../how-to/embed.md)
+1. Add the widget script to your site's `<head>` section:
+   
+      ```html
+      <script type='module' src='https://unpkg.com/open-chat-studio-widget@0.4.0/dist/open-chat-studio-widget/open-chat-studio-widget.esm.js' async></script>
+      ```
 
-### 2. Customize Your Widget
-Personalize the appearance and behavior of your chat widget to match your brand and improve user experience.
+2. Obtaining Embed Code
 
-[**→ Widget Customization Guide**](./widget_customization.md)
+      1. **Log in** to Open Chat Studio.
+      2. Navigate to the **Experiment** you wish to embed.
+      3. Click on the :fontawesome-regular-window-maximize: **Web** channel and select :fontawesome-solid-share-nodes: **Share**
+      4. Copy the provided embed code snippet.
 
-## Quick Start
+3. Insert the widget where you want the chat button.
 
-1. **Create a bot** in Open Chat Studio
-2. **Add the script** to your website's `<head>`:
-   ```html
-   <script type='module' src='https://unpkg.com/open-chat-studio-widget@0.3.1/dist/open-chat-studio-widget/open-chat-studio-widget.esm.js' async></script>
+      The embed code snippet should look something like this:
+
+      ```html
+      <open-chat-studio-widget
+        visible="false"
+        bot-url="https://chatbots.dimagi.com/...."
+        button-text="Let's Chat"
+        position="right"
+        expanded="false">
+      </open-chat-studio-widget>
+      ```
+
+## Test the Chatbot
+
+1. Open your website in a web browser.
+2. Ensure the chatbot appears and functions as expected.
+3. Try sending a message to confirm it responds correctly.
+
+## Troubleshooting
+
+If the chatbot does not appear:
+
+- Ensure you copied and pasted the embed code correctly.
+- Clear your browser cache and refresh the page.
+- Check that your website allows embedding external scripts.

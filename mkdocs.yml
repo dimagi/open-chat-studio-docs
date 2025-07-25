@@ -23,6 +23,7 @@ theme:
     - toc.follow
     - content.action.edit
     - content.action.view
+    - content.code.annotate
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -54,6 +55,13 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
 
 plugins:
 - search
@@ -84,7 +92,6 @@ nav:
       - how-to/configure_providers.md
       - how-to/api_access.md
       - how-to/setting_up_a_survey.md
-      - how-to/embed.md
   - Concepts:
       - concepts/index.md
       - Chatbots:
@@ -122,8 +129,8 @@ nav:
           - concepts/assistants.md
   - Chat Widget:
     - chat_widget/index.md
-    - chat_widget/widget_customization.md
-    - chat_widget/upgrade_guide.md
+    - chat_widget/reference.md
+    - chat_widget/changelog.md
   - Changelog: changelog.md
   - About: about.md
 
@@ -131,6 +138,6 @@ watch:
 - python_node
 
 extra_javascript:
-  - path: https://unpkg.com/open-chat-studio-widget@0.3.1/dist/open-chat-studio-widget/open-chat-studio-widget.esm.js
+  - path: https://unpkg.com/open-chat-studio-widget@0.4.0/dist/open-chat-studio-widget/open-chat-studio-widget.esm.js
     type: module
     async: true
