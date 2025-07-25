@@ -120,10 +120,10 @@ nav:
           - concepts/groups.md
       - Assistants:
           - concepts/assistants.md
-      - Chat Widget:
-          - concepts/chat_widget/index.md
-          - concepts/chat_widget/widget_customization.md
-          - concepts/chat_widget/upgrade_guide.md
+  - Chat Widget:
+    - chat_widget/index.md
+    - chat_widget/widget_customization.md
+    - chat_widget/upgrade_guide.md
   - Changelog: changelog.md
   - About: about.md
 

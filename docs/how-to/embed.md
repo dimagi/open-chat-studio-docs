@@ -48,7 +48,7 @@ Before embedding, you must create a bot in Open Chat Studio.
 
 ### Basic Customization
 
-You can customize the widget appearance with CSS variables. For a complete list of customization options, see [Widget Customization Guide](../concepts/chat_widget/widget_customization.md).
+You can customize the widget appearance with CSS variables. For a complete list of customization options, see [Widget Customization Guide](../chat_widget/widget_customization.md).
 
 ```html
 <style>

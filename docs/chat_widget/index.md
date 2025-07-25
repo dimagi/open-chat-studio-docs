@@ -10,7 +10,6 @@ The Open Chat Studio Widget is a customizable chat component that allows you to 
 - **Welcome Messages**: Greet users with personalized messages
 - **Starter Questions**: Guide users with pre-defined clickable questions
 - **Responsive Design**: Works seamlessly across desktop and mobile devices
-- **Z-index Management**: Proper layering with other page elements
 
 ## Quick Demo
 
