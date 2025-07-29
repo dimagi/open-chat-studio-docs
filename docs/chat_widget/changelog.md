@@ -37,7 +37,7 @@ Check your current HTML implementation and compare it with the [latest propertie
     * Desktop users can now drag the chat window to reposition it
 * [Button Customization](reference.md#button-customization)
     * You can now set a button icon and change the button shape
-* [Welcome Messages](reference.md#welcome-messages) & [Starter Questions](#starter-questions)
+* [Welcome Messages](reference.md#welcome-messages) & [Starter Questions](reference.md#starter-questions)
     * Display welcome messages when the chat opens
     * Provide clickable starter questions to help users get started
     * Both support rich markdown formatting

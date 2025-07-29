@@ -129,7 +129,7 @@ pipelines
 * **BUG** Fixed an issue where session messages would sometimes not load.
 
 ## Apr 15, 2025
-* **NEW** Record and display the source of chats that originate from an [embedded chat widget](chat_widget).
+* **NEW** Record and display the source of chats that originate from an [embedded chat widget](chat_widget/index.md).
 
 ## Apr 11, 2025
 * **BUG** Fixed the `{participant_data}` prompt variable which was missing the participants scheduled messages.
@@ -245,7 +245,7 @@ Adds 'does not contain' to participant filter in sessions filter widget
 
 ## Feb 06, 2025:
 
-* **NEW** Chatbots can now be embedded into external websites. See the [documentation](chat_widget) for more information.
+* **NEW** Chatbots can now be embedded into external websites. See the [documentation](chat_widget/index.md) for more information.
 * **CHANGE** Enhanced the participants filter in the experiment sessions view to support multiple participants. This allows you to export chats for selected participants only.
 * **CHANGE** Consent forms have become optional. If no consent form is configured then the user will not be prompted to accept a consent form before starting a chat. Pre- and post-surveys are still displayed if there are any configured.
 

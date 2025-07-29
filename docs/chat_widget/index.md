@@ -13,7 +13,7 @@ The Open Chat Studio Widget is a customizable chat component that allows you to 
 
 <div class="grid cards" markdown>
 
--   :octicons-gear-16:{ .lg .middle } [View the reference docs](widget_customization.md)
+-   :octicons-gear-16:{ .lg .middle } [View the reference docs](reference.md)
 -   ::octicons-list-unordered-16:{ .lg .middle } [Changelog and upgrade info](changelog.md)
 
 </div>
