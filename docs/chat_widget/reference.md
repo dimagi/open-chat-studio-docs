@@ -107,19 +107,33 @@ open-chat-studio-widget {
 }
 ```
 
-In some cases it may also be necessary to reduce the z-index of other elements on the page.
+In some cases, it may also be necessary to reduce the z-index of other elements on the page.
+
+## Persistent Sessions
+
+By default, the widget will save the chat messages in the browser local storage. This allows users to continue sessions after reloading the page or navigating to a new page. In addition to automatic session expiration, the user can also use the 'new chat' button to start a new session.
+
+To disable this feature, set the `persistent-session="false"` attribute on the widget element.
+
+The session data is set to expire after 24 hours. This is also configurable by using the `persistent-session-expire` attribute. The value is interpreted as *"the number of minutes since the last message before the session expires"*. Setting this attribute to `0` will disable the expiration entirely.
+
+!!! note
+
+    The session persistence is associated with the `chatbot-id`. If the `chatbot-id` changes, any previous session data will be ignored.
 
 ## :material-clipboard-list: Properties Reference
 
-| Property            | Type      | Default                         | Description                                                   |
-|---------------------|-----------|---------------------------------|---------------------------------------------------------------|
-| `chatbot-id`        | `string`  | -                               | Your chatbot ID (required)                                    |
-| `api-base-url`      | `string`  | `"https://chatbots.dimagi.com"` | API base URL                                                  |
-| `button-text`       | `string`  | `"Chat"`                        | Button display text                                           |
-| `button-shape`      | `string`  | `square`                        | Button Shape (`"round"` \| `"square"`)                        |
-| `icon-url`          | `string`  | The OCS logo                    | URL to button icon                                            |
-| `visible`           | `boolean` | `false`                         | Show widget on load                                           |
-| `expanded`          | `boolean` | `false`                         | Initial expanded state                                        |
-| `position`          | `string`  | `"right"`                       | Initial widget position (`"left"` \| `"center"` \| `"right"`) |
-| `welcome-messages`  | `string`  | `undefined`                     | JSON array of welcome messages                                |
-| `starter-questions` | `string`  | `undefined`                     | JSON array of clickable starter questions                     |
+| Property                    | Type      | Default                         | Description                                                                                                                       |
+|-----------------------------|-----------|---------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|
+| `chatbot-id`                | `string`  | -                               | Your chatbot ID (required)                                                                                                        |
+| `api-base-url`              | `string`  | `"https://chatbots.dimagi.com"` | API base URL                                                                                                                      |
+| `button-text`               | `string`  | `"Chat"`                        | Button display text                                                                                                               |
+| `button-shape`              | `string`  | `square`                        | Button Shape (`"round"` \| `"square"`)                                                                                            |
+| `icon-url`                  | `string`  | The OCS logo                    | URL to button icon                                                                                                                |
+| `visible`                   | `boolean` | `false`                         | Show widget on load                                                                                                               |
+| `expanded`                  | `boolean` | `false`                         | Initial expanded state                                                                                                            |
+| `position`                  | `string`  | `"right"`                       | Initial widget position (`"left"` \| `"center"` \| `"right"`)                                                                     |
+| `welcome-messages`          | `string`  | `undefined`                     | JSON array of welcome messages                                                                                                    |
+| `starter-questions`         | `string`  | `undefined`                     | JSON array of clickable starter questions                                                                                         |
+| `persistent-session`        | `boolean` | `true`                          | Whether to persist session data to local storage to allow resuming previous conversations after page reload.                      |
+| `persistent-session-expire` | `number`  | `1440` (24 hours)               | Minutes since the most recent message after which the session data in local storage will expire. Set this to `0` to never expire. |
