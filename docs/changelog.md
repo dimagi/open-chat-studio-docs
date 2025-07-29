@@ -4,6 +4,15 @@ hide:
 ---
 
 # Changelog
+
+## TODO
+* **NEW** Chat Widget v1.4.0 released. This represents a major rewrite of the widget with significant improvements and new features. See the [widget changelog](chat_widget/changelog.md#v040) for full details.
+    * Enhanced Mobile Experience
+    * Draggable Chat Window
+    * Button Customization
+    * Welcome Messages & Starter Questions
+    * Session persistence across page loads
+
 ## Jul 17, 2025
 * **NEW** Added support for reading xls, xlsx, pptx, and Outlook files using the code node.
 

@@ -41,7 +41,7 @@ Check your current HTML implementation and compare it with the [latest propertie
     * Display welcome messages when the chat opens
     * Provide clickable starter questions to help users get started
     * Both support rich markdown formatting
-* Persistent sessions
+* [Session persistence](reference.md#persistent-sessions) across page loads
     * Store session data in browser local storage to allow resuming sessions across page loads. 
 
 #### Upgrading from 0.3.x
