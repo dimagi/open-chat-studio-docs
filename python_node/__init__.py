@@ -28,6 +28,11 @@ def append_to_participant_data_key(key_name: str, data: any) -> None:
     If the value at the key is not a list, it will be converted to a list containing the provided value.
     """
 
+def increment_participant_data_key(key_name: str, data: any) -> None:
+    """
+    Increments the value at the [participant's data](../participant_data.md){:target="_blank"} key with the specified value
+    """
+
 def get_participant_schedules() -> list:
     """
     Returns all active scheduled messages for the participant in the current experiment session.

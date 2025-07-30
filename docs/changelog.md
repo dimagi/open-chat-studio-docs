@@ -5,7 +5,8 @@ hide:
 
 # Changelog
 ## Jul 30, 2025
-* **NEW** Added `set_participant_data_key` and `append_to_participant_data_key` utility methods to the code node.
+* **NEW** Added `set_participant_data_key`, `append_to_participant_data_key` and `increment_participant_data_key` utility methods to the code node.
+* **NEW** Added LLM tools to append to and incremet a counter in the participant data.
 
 ## Jul 29, 2025
 * **BUG** Fixed an issue where certain files could not be deleted from local indexes.
