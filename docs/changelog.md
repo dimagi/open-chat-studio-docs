@@ -4,6 +4,16 @@ hide:
 ---
 
 # Changelog
+
+## Jul 30, 2025
+* **NEW** Chat Widget v1.4.0 released. This represents a major rewrite of the widget with significant improvements and new features. See the [widget changelog](chat_widget/changelog.md#v040) for full details.
+    * Enhanced Mobile Experience
+    * Draggable Chat Window
+    * Button Customization
+    * Fullscreen mode
+    * Welcome Messages & Starter Questions
+    * Session persistence across page loads
+
 ## Jul 29, 2025
 * **BUG** Fixed an issue where certain files could not be deleted from local indexes.
 * **NEW** Added support for the `gemini-embedding-001` embedding model. Users can now use this embedding model with local indexes.
@@ -124,7 +134,7 @@ pipelines
 * **BUG** Fixed an issue where session messages would sometimes not load.
 
 ## Apr 15, 2025
-* **NEW** Record and display the source of chats that originate from an [embedded chat widget](./how-to/embed.md).
+* **NEW** Record and display the source of chats that originate from an [embedded chat widget](chat_widget/index.md).
 
 ## Apr 11, 2025
 * **BUG** Fixed the `{participant_data}` prompt variable which was missing the participants scheduled messages.
@@ -240,7 +250,7 @@ Adds 'does not contain' to participant filter in sessions filter widget
 
 ## Feb 06, 2025:
 
-* **NEW** Chatbots can now be embedded into external websites. See the [documentation](how-to/embed.md) for more information.
+* **NEW** Chatbots can now be embedded into external websites. See the [documentation](chat_widget/index.md) for more information.
 * **CHANGE** Enhanced the participants filter in the experiment sessions view to support multiple participants. This allows you to export chats for selected participants only.
 * **CHANGE** Consent forms have become optional. If no consent form is configured then the user will not be prompted to accept a consent form before starting a chat. Pre- and post-surveys are still displayed if there are any configured.
 
