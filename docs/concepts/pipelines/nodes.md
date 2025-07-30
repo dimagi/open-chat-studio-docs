@@ -86,6 +86,8 @@ The Python node provides a set of utility functions that can be used to interact
 
 #### ::: python_node.get_participant_data
 #### ::: python_node.set_participant_data
+#### ::: python_node.set_participant_data_key
+#### ::: python_node.append_to_participant_data_key
 #### ::: python_node.get_participant_schedules
 #### ::: python_node.get_temp_state_key
 #### ::: python_node.set_temp_state_key

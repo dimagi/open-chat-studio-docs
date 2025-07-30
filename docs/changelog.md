@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Jul 30, 2025
+* **NEW** Added `set_participant_data_key` and `append_to_participant_data_key` utility methods to the code node.
+
 ## Jul 29, 2025
 * **BUG** Fixed an issue where certain files could not be deleted from local indexes.
 * **NEW** Added support for the `gemini-embedding-001` embedding model. Users can now use this embedding model with local indexes.
