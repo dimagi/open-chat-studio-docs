@@ -6,7 +6,7 @@ hide:
 # Changelog
 
 ## Jul 30, 2025
-* **NEW** Chat Widget v1.4.0 released. This represents a major rewrite of the widget with significant improvements and new features. See the [widget changelog](chat_widget/changelog.md#v040) for full details.
+* **NEW** Chat Widget v1.4.1 released. This represents a major rewrite of the widget with significant improvements and new features. See the [widget changelog](chat_widget/changelog.md#v040) for full details.
     * Enhanced Mobile Experience
     * Draggable Chat Window
     * Button Customization
