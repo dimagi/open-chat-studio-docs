@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block footer %}
+  {{ super() }}
+  <open-chat-studio-widget
+    visible="false"
+    chatbot-id="cdec8c04-ff39-4175-bffb-f7d872e2eb3a"
+    button-text="Ask me!"></open-chat-studio-widget>
+{% endblock %}

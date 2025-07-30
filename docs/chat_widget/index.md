@@ -18,15 +18,6 @@ The Open Chat Studio Widget is a customizable chat component that allows you to 
 
 </div>
 
-## Quick Demo
-
-<open-chat-studio-widget 
-    visible="false"
-    chatbot-id="dc2c0c98-d655-4042-b184-7a7a2ecb2954"
-    button-text="OCS Demo Bot" 
-    welcome-messages="['Hi! Welcome to our support chat.']" 
-    starter-questions="['What is OCS?', 'How do create a bot?']"></open-chat-studio-widget>
-
 ## Getting Started
 
 Before embedding, you must create a bot in Open Chat Studio.

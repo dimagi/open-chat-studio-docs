@@ -5,6 +5,7 @@ edit_uri: edit/main/docs/
 theme:
   name: material
   logo: assets/logo.png
+  custom_dir: overrides
   features:
     - header.autohide
     - navigation.expand
