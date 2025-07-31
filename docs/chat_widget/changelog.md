@@ -22,13 +22,26 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 ## Changelog
 
+### v0.4.1
+
+* Improved styling.
+* Replaced 'expand' with 'fullscreen' mode.
+
+#### Attribute changes
+
+**Added**
+
+* `allow-full-screen`: Allow the user to make the chat window full screen. 
+
+**Removed**
+
+* `expanded`
+
 ### v0.4.0
 
 !!! warning
 
-    This is a full rebuild of the widget and includes breaking changes. See the [updgrade guide](#upgrading-from-03x) for details.
-
-#### Updates
+    This is a full rebuild of the widget and includes breaking changes. See the [upgrade guide](#upgrading-from-03x) for details.
 
 * Enhanced Mobile Experience
     * Improved responsive design for mobile devices

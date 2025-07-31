@@ -9,7 +9,7 @@ hide:
 * **NEW** Added LLM tools to append to and incremet a counter in the participant data.
 
 ## Jul 30, 2025
-* **NEW** Chat Widget v1.4.0 released. This represents a major rewrite of the widget with significant improvements and new features. See the [widget changelog](chat_widget/changelog.md#v040) for full details.
+* **NEW** Chat Widget v1.4 released. This represents a major rewrite of the widget with significant improvements and new features. See the [widget changelog](chat_widget/changelog.md) for full details.
     * Enhanced Mobile Experience
     * Draggable Chat Window
     * Button Customization
