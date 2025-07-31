@@ -17,6 +17,22 @@ def set_participant_data(data: dict) -> None:
     """
 
 
+def set_participant_data_key(key_name: str, data: any) -> None:
+    """
+    Updates the current [participant's data](../participant_data.md){:target="_blank"} with the provided value at the specified key.
+    """
+
+def append_to_participant_data_key(key_name: str, data: any) -> None:
+    """
+    Appends the provided value to the [participant's data](../participant_data.md){:target="_blank"} at the specified key.
+    If the value at the key is not a list, it will be converted to a list containing the provided value.
+    """
+
+def increment_participant_data_key(key_name: str, data: any) -> None:
+    """
+    Increments the value at the [participant's data](../participant_data.md){:target="_blank"} key with the specified value
+    """
+
 def get_participant_schedules() -> list:
     """
     Returns all active scheduled messages for the participant in the current experiment session.

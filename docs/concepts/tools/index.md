@@ -21,5 +21,11 @@ Move Reminder Date
 Update Participant Data
 : Allows the bot to make changes to the [participant data](../participant_data.md)
 
+Append to Participant Data
+: Allows the bot to append a value to a specified key in the [participant data](../participant_data.md)
+
+Increment Participant Data
+: Allows the bot to increment the value at a specified key in the [participant data](../participant_data.md)
+
 End Session
 : Allows the bot to end the current [session](../sessions.md)
