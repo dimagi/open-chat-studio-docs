@@ -41,7 +41,7 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 !!! warning
 
-    This is a full rebuild of the widget and includes breaking changes. See the [updgrade guide](#upgrading-from-03x) for details.
+    This is a full rebuild of the widget and includes breaking changes. See the [upgrade guide](#upgrading-from-03x) for details.
 
 * Enhanced Mobile Experience
     * Improved responsive design for mobile devices
