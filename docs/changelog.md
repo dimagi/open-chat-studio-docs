@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Aug 4, 2025
+* **BUG** Fixed an issue with versioning when using a collection where it would always show new changes.
+
 ## Jul 31, 2025
 * **NEW** Added `set_participant_data_key`, `append_to_participant_data_key` and `increment_participant_data_key` utility methods to the code node.
 * **NEW** Added LLM tools to append to and incremet a counter in the participant data.
