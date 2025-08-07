@@ -15,7 +15,7 @@ Control whether your chat button displays text alongside an icon:
 ```
 Behavior:
 
-- When button-text is provided, the button displays both an icon and text
+- When button-text is provided, the button displays both icon and text
 - When button-text is empty or not provided, only an icon is shown
 
 ### :material-shape: Button Shape
@@ -30,6 +30,7 @@ Available Shapes:
 - **round** - Circular button
 - **square** - Rectangular button with rounded corners
 
+For further customization of the appearance, see [CSS Styling](styling.md)
 
 ### Custom Icon
 Replace the default chat icon with your own:
@@ -39,7 +40,23 @@ Replace the default chat icon with your own:
 </open-chat-studio-widget>
 ```
 
-If no icon-url is provided, the default Open Chat Studio logo is used
+If no icon-url is provided, the default Open Chat Studio logo is used.
+
+### Button position
+
+Customize the button position using CSS variables or a CSS class attached to the widget element:
+
+```css
+open-chat-studio-widget {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+}
+```
+
+<div class="grid cards" markdown>
+-   :simple-css:{ .sm .middle } See [CSS Styling](styling.md) for more customization options.
+</div>
 
 ## :material-hand-wave: Welcome Messages
 
@@ -78,36 +95,6 @@ These questions appear as blue-outlined buttons aligned to the right (similar to
  ]">
 </open-chat-studio-widget>
 ```
-
-## :simple-css: CSS Styling
-
-### Colors and Appearance
-
-Customize the widget using CSS variables:
-
-```css
-open-chat-studio-widget {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    --button-background-color: blue;
-    --button-background-color-hover: black;
-    --button-text-color: white;
-    --button-text-color-hover: yellow;
-}
-```
-
-### Z-Index
-
-If the chatbot appears below other elements on the page you can increase the `z-index` of the chatbot by setting the `--chat-z-index` CSS variable. The default value is `50`.
-
-```css
-open-chat-studio-widget {
-    --chat-z-index: 100;
-}
-```
-
-In some cases, it may also be necessary to reduce the z-index of other elements on the page.
 
 ## Persistent Sessions
 

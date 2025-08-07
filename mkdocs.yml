@@ -68,6 +68,8 @@ markdown_extensions:
 
 plugins:
 - search
+- macros:
+    render_by_default: false
 - mkdocstrings:
     enabled: true
     default_handler: python
@@ -134,6 +136,7 @@ nav:
   - Chat Widget:
     - chat_widget/index.md
     - chat_widget/reference.md
+    - chat_widget/styling.md
     - chat_widget/changelog.md
   - Changelog: changelog.md
   - About: about.md
@@ -142,7 +145,7 @@ watch:
 - python_node
 
 extra_javascript:
-  - path: https://unpkg.com/open-chat-studio-widget@0.4.1/dist/open-chat-studio-widget/open-chat-studio-widget.esm.js
+  - path: https://unpkg.com/open-chat-studio-widget@0.4.2/dist/open-chat-studio-widget/open-chat-studio-widget.esm.js
     type: module
     async: true
   - path: ./assets/javascript/widget.js
