@@ -4,6 +4,10 @@ hide:
 ---
 
 # Changelog
+
+## Aug 7, 2025
+* **CHANGE** Allow full customization of the chat widget appearance via additional [CSS variables](chat_widget/styling.md).
+
 ## Aug 4, 2025
 * **BUG** Fixed an issue with versioning when using a collection where it would always show new changes.
 

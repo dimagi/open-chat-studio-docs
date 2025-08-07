@@ -22,6 +22,10 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 ## Changelog
 
+### v0.4.2
+
+* Fully configurable styling via CSS properties
+
 ### v0.4.1
 
 * Improved styling.

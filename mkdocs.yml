@@ -68,6 +68,8 @@ markdown_extensions:
 
 plugins:
 - search
+- macros:
+    render_by_default: false
 - mkdocstrings:
     enabled: true
     default_handler: python
@@ -134,6 +136,7 @@ nav:
   - Chat Widget:
     - chat_widget/index.md
     - chat_widget/reference.md
+    - chat_widget/styling.md
     - chat_widget/changelog.md
   - Changelog: changelog.md
   - About: about.md
