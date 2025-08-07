@@ -15,7 +15,7 @@ Control whether your chat button displays text alongside an icon:
 ```
 Behavior:
 
-- When button-text is provided, the button displays both an icon and text
+- When button-text is provided, the button displays both icon and text
 - When button-text is empty or not provided, only an icon is shown
 
 ### :material-shape: Button Shape
@@ -40,7 +40,7 @@ Replace the default chat icon with your own:
 </open-chat-studio-widget>
 ```
 
-If no icon-url is provided, the default Open Chat Studio logo is used
+If no icon-url is provided, the default Open Chat Studio logo is used.
 
 ### Button position
 

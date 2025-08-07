@@ -30,7 +30,7 @@ open-chat-studio-widget {
 }
 ```
 
-Use the following CSS variables to style the appearance of the button.
+Use the following CSS variables to style the button appearance.
 
 | Name                              | Description                                                    |
 |-----------------------------------|----------------------------------------------------------------|
@@ -55,7 +55,7 @@ Use the following CSS variables to style the appearance of the button.
 | `--chat-window-font-size`    | Default font size for text in the chat window (0.875rem)   |
 | `--chat-window-font-size-sm` | Font size for small text in the chat window (0.75rem)      |
 | `--chat-window-shadow-color` | Chat window shadow color (rgba(0, 0, 0, 0.1))              |
-| `--container-padding`        | General container padding (1rem) Button Variables          |
+| `--container-padding`        | General container padding (1rem)                           |
 
 ## Header
 
