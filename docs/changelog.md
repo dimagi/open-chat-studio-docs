@@ -6,7 +6,7 @@ hide:
 # Changelog
 
 ## Aug 11, 2025
-* **CHANGE** Multi-select filters not have a "Select All" and "Clear All" option buttons located at the top of the dropdowns.
+* **CHANGE** Multi-select filters now have "Select All" and "Clear All" option buttons located at the top of the dropdowns.
 
 
 ## Aug 7, 2025
