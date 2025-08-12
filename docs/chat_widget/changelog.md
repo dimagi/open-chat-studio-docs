@@ -22,6 +22,12 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 ## Changelog
 
+### v0.4.3
+
+* Fix markdown styling
+* Allow customizing the chat window width and height
+* Change size units from `rem` to `em`
+
 ### v0.4.2
 
 * Fully configurable styling via CSS properties.
