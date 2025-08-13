@@ -2,10 +2,12 @@
 
 {% block footer %}
   {{ super() }}
-  <!-- disable full screen because the widget goes underneath the header -->
+  <!-- styling in assets/extra.css -->
+  <!-- see also assets/javascript/widget.js for welcome messages and starter questions -->
   <open-chat-studio-widget
     visible="false"
     chatbot-id="cdec8c04-ff39-4175-bffb-f7d872e2eb3a"
     button-text="Ask me!"
+    header-text="Docs Bot"
     allow-full-screen="true"></open-chat-studio-widget>
 {% endblock %}
