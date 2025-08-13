@@ -57,16 +57,17 @@ Use the following CSS variables to style the button appearance.
     All font sizes and some margins / padding are relative to the widget element's font size which can be set using the `--chat-window-font-size` variable.
 
  
-| Name                         | Description                                                |
-|------------------------------|------------------------------------------------------------|
-| `--chat-window-width`        | Chat window height in pixels (450px)                       |
-| `--chat-window-height`       | Chat window height in pixels or percent (60%)              |
-| `--chat-window-bg-color`     | Chat window background color {{ color_swatch('#ffffff') }} |
-| `--chat-window-border-color` | Chat window border color {{ color_swatch('#d1d5db') }}     |
-| `--chat-window-font-size`    | Default font size for text in the chat window (0.875em)    |
-| `--chat-window-font-size-sm` | Font size for small text in the chat window (0.75em)       |
-| `--chat-window-shadow-color` | Chat window shadow color (rgba(0, 0, 0, 0.1))              |
-| `--container-padding`        | General container padding (1em)                            |
+| Name                              | Description                                                |
+|-----------------------------------|------------------------------------------------------------|
+| `--chat-window-width`             | Chat window height in pixels (25%)                         |
+| `--chat-window-height`            | Chat window width in pixels or percent (60%)               |
+| `--chat-window-fullscreen-width`  | Chat window fullscreen width in pixels or percent (80%)    |
+| `--chat-window-bg-color`          | Chat window background color {{ color_swatch('#ffffff') }} |
+| `--chat-window-border-color`      | Chat window border color {{ color_swatch('#d1d5db') }}     |
+| `--chat-window-font-size`         | Default font size for text in the chat window (0.875em)    |
+| `--chat-window-font-size-sm`      | Font size for small text in the chat window (0.75em)       |
+| `--chat-window-shadow-color`      | Chat window shadow color (rgba(0, 0, 0, 0.1))              |
+| `--container-padding`             | General container padding (1em)                            |
 
 ## Header
 
@@ -148,7 +149,7 @@ By default, the Markdown code colours are relative to the respective message tex
 | `--code-bg-assistant-color`     | Code background in assistant messages {{color_swatch_plain('#f2f3f5') }}<br/>(--message-assistant-bg-color + 50% white) |
 | `--code-border-assistant-color` | Code border in assistant messages {{color_swatch_plain('#ced0d4')}}<br/>(--message-assistant-bg-color + 10% black)      |
 | `--code-text-assistant-color`   | Code text color in assistant messages {{color_swatch_plain('#1f2937')}}<br/>(--message-assistant-text-color)            |
-| `--code-bg-user-color`          | Code background in user messages{{color_swatch_plain('#629bf8')}}<br/>(--message-user-bg-color + 20% white)             |
+| `--code-bg-user-color`          | Code background in user messages {{color_swatch_plain('#629bf8')}}<br/>(--message-user-bg-color + 20% white)            |
 | `--code-border-user-color`      | Code border in user messages {{color_swatch_plain('#3575dd')}}<br/>(--message-user-bg-color + 20% black)                |
 | `--code-text-user-color`        | Code text color in user messages {{color_swatch_plain('#ffffff')}}<br/>(--message-user-text-color)                      |
 

@@ -25,8 +25,12 @@ Check your current HTML implementation and compare it with the [latest propertie
 ### v0.4.3
 
 * Fix markdown styling
-* Allow customizing the chat window width and height
-* Change size units from `rem` to `em`
+* Allow customizing the chat window width and height using the following CSS vars:
+    * `--chat-window-width` 
+    * `--chat-window-height` 
+    * `--chat-window-fullscreen-width`
+    * See the [styling guide](./styling.md#chat-window) for details.
+* Change size units from `rem` to `em`.
 
 ### v0.4.2
 
