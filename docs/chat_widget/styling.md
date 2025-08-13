@@ -79,7 +79,7 @@ Use the following CSS variables to style the button appearance.
 | `--header-button-icon-size`      | Icon size for buttons in the header (1.5em)                     |
 | `--header-font-size`             | Header font size (1em)                                          |
 | `--header-text-color`            | Color for the text in the header {{ color_swatch('#525762') }}  |
-| `--header-text-font-size`        | Font size for the text in the header (--header-font-size)       |
+| `--header-text-font-size`        | Font size for the text in the header (1em)                      |
 | `--header-padding`               | Header padding (0.5em)                                          |
 
 ## Messages
