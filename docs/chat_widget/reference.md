@@ -119,6 +119,7 @@ The session data is set to expire after 24 hours. This is also configurable by u
 | `icon-url`                  | `string`  | The OCS logo                    | URL to button icon                                                                                                                |
 | `visible`                   | `boolean` | `false`                         | Show widget on load                                                                                                               |
 | `position`                  | `string`  | `"right"`                       | Initial widget position (`"left"` \| `"center"` \| `"right"`)                                                                     |
+| `header-text`               | `string`  | `undefined`                     | Text to place in the window header                                                                                                |
 | `welcome-messages`          | `string`  | `undefined`                     | JSON array of welcome messages                                                                                                    |
 | `starter-questions`         | `string`  | `undefined`                     | JSON array of clickable starter questions                                                                                         |
 | `persistent-session`        | `boolean` | `true`                          | Whether to persist session data to local storage to allow resuming previous conversations after page reload.                      |
