@@ -8,12 +8,14 @@ hide:
 ## Aug 11, 2025
 * **CHANGE** Multi-select filters now have "Select All" and "Clear All" option buttons located at the top of the dropdowns.
 
-
 ## Aug 7, 2025
 * **CHANGE** Allow full customization of the chat widget appearance via additional [CSS variables](chat_widget/styling.md).
 
 ## Aug 4, 2025
 * **BUG** Fixed an issue with versioning when using a collection where it would always show new changes.
+
+## Aug 1, 2025
+* **NEW** Display the list of all tags used in a session at the top of the session transcript. Clicking on a tag filters the transcript.
 
 ## Jul 31, 2025
 * **NEW** Added `set_participant_data_key`, `append_to_participant_data_key` and `increment_participant_data_key` utility methods to the code node.
