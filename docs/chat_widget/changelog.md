@@ -24,7 +24,7 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 ### v0.4.4
 
-* Merge with & height vars:
+* Merge width & height vars:
     * `--button-icon-width`, `--button-icon-height` -> `--button-icon-size` 
 * Fix launch button styling.
     * Correctly apply font size and borders.

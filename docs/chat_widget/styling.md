@@ -57,7 +57,7 @@ Use the following CSS variables to style the button appearance.
  
 | Name                              | Description                                                |
 |-----------------------------------|------------------------------------------------------------|
-| `--chat-window-width`             | Chat window height in pixels (25%)                         |
+| `--chat-window-width`             | Chat window height in pixels or percent (25%)              |
 | `--chat-window-height`            | Chat window width in pixels or percent (60%)               |
 | `--chat-window-fullscreen-width`  | Chat window fullscreen width in pixels or percent (80%)    |
 | `--chat-window-bg-color`          | Chat window background color {{ color_swatch('#ffffff') }} |
