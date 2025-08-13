@@ -1,3 +1,9 @@
 .mermaid {
     text-align: center;
 }
+
+open-chat-studio-widget {
+    --chat-window-font-size: 0.7rem;
+    --button-font-size: 0.7rem;
+    z-index: 9999;
+}
