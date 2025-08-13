@@ -43,10 +43,8 @@ Use the following CSS variables to style the button appearance.
 | `--button-border-color`           | Button border color {{ color_swatch('#6b7280') }}              |
 | `--button-border-color-hover`     | Button border color on hover {{ color_swatch('#374151') }}     |
 | `--button-font-size`              | Button text font size (0.875em)                                |
-| `--button-icon-height`            | Button icon height (1.5em)                                     |
-| `--button-icon-width`             | Button icon width (1.5em)                                      |
+| `--button-icon-size`              | Button icon size (1.5em)                                       |
 | `--button-padding`                | Button padding (0.75em)                                        |
-| `--button-padding-sm`             | Small button padding (0.375em)                                 |
 | `--button-text-color`             | Button text color {{ color_swatch('#111827') }}                |
 | `--button-text-color-hover`       | Button text color on hover {{ color_swatch('#1d4ed8') }}       |
 
@@ -54,7 +52,7 @@ Use the following CSS variables to style the button appearance.
 
 !!! tip Relative Sizes
 
-    All font sizes and some margins / padding are relative to the widget element's font size which can be set using the `--chat-window-font-size` variable.
+    All font sizes and some margins / padding are relative to the widget element's font size which can be set using the `--chat-window-font-size` and `--button-font-size` variables.
 
  
 | Name                              | Description                                                |
@@ -78,9 +76,11 @@ Use the following CSS variables to style the button appearance.
 | `--header-border-color`          | Header border color {{ color_swatch('#f3f4f6') }}               |
 | `--header-button-bg-hover-color` | Header button background on hover {{ color_swatch('#f3f4f6') }} |
 | `--header-button-text-color`     | Header button text color {{ color_swatch('#6b7280') }}          |
+| `--header-font-size`             | Header font size (1em)                                          |
+| `--header-button-icon-size`      | Icon size for buttons in the header (1.5em)                     |
 | `--header-padding`               | Header padding (0.5em)                                          |
 
-### Messages
+## Messages
 
 | Name                                  | Description                                                      |
 |---------------------------------------|------------------------------------------------------------------|

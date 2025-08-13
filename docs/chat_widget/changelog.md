@@ -22,6 +22,16 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 ## Changelog
 
+### v0.4.4
+
+* Merge with & height vars:
+    * `--button-icon-width`, `--button-icon-height` -> `--button-icon-size` 
+* Fix launch button styling.
+    * Correctly apply font size and borders.
+* Add variables to control header font and icon size:
+    * `--header-font-size` 
+    * `--header-button-icon-size` 
+
 ### v0.4.3
 
 * Fix markdown styling
