@@ -31,6 +31,8 @@ Check your current HTML implementation and compare it with the [latest propertie
 * Add variables to control header font and icon size:
     * `--header-font-size` 
     * `--header-button-icon-size` 
+* Support for placing text in the window header using the `header-text`.
+    * User `--header-text-font-size` and `--header-text-color` to style it independently of the other header elements. 
 
 ### v0.4.3
 

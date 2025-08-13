@@ -76,8 +76,10 @@ Use the following CSS variables to style the button appearance.
 | `--header-border-color`          | Header border color {{ color_swatch('#f3f4f6') }}               |
 | `--header-button-bg-hover-color` | Header button background on hover {{ color_swatch('#f3f4f6') }} |
 | `--header-button-text-color`     | Header button text color {{ color_swatch('#6b7280') }}          |
-| `--header-font-size`             | Header font size (1em)                                          |
 | `--header-button-icon-size`      | Icon size for buttons in the header (1.5em)                     |
+| `--header-font-size`             | Header font size (1em)                                          |
+| `--header-text-color`            | Color for the text in the header {{ color_swatch('#525762') }}  |
+| `--header-text-font-size`        | Font size for the text in the header (--header-font-size)       |
 | `--header-padding`               | Header padding (0.5em)                                          |
 
 ## Messages
