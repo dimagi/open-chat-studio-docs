@@ -7,6 +7,7 @@ hide:
 
 ## Aug 14, 2025
 * **CHANGE** Added `page_size` parameter to list APIs to allow overriding the default page size (100). The max page size is 1500.
+* **CHANGE** Added `experiment` parameter to the session list APIs to allow filtering by experiment ID.
 
 ## Aug 11, 2025
 * **CHANGE** Multi-select filters now have "Select All" and "Clear All" option buttons located at the top of the dropdowns.
