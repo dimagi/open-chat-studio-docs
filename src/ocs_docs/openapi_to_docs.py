@@ -3,7 +3,7 @@
 OpenAPI Schema to Markdown Documentation Converter
 
 This module provides functionality to convert OpenAPI 3.x schemas into
-self-contained markdown documents for each API endpoint.
+self-contained text documents for each group of APIs (grouped by tag).
 """
 
 import json
@@ -74,7 +74,7 @@ class OpenAPIToMarkdownConverter:
             "base_url": servers[0].get("url", "") if servers else "",
         }
 
-    def convert_to_markdown_files(self, output_dir: str | Path = "api_docs") -> list[str]:
+    def convert_to_text_files(self, output_dir: str | Path = "api_docs") -> list[str]:
         """
         Convert OpenAPI schema to markdown files grouped by tags.
 
@@ -93,9 +93,9 @@ class OpenAPIToMarkdownConverter:
         generated_files = []
         for tag, endpoints in tag_groups.items():
             filename = self._generate_tag_filename(tag)
-            file_path = output_path / f"{filename}.md"
+            file_path = output_path / f"{filename}.txt"
 
-            markdown_content = self._generate_tag_markdown(tag, endpoints)
+            markdown_content = self._generate_tag_documentation(tag, endpoints)
 
             file_path.write_text(markdown_content, encoding="utf-8")
             generated_files.append(str(file_path))
@@ -148,7 +148,7 @@ class OpenAPIToMarkdownConverter:
         # Ensure filename is clean
         return re.sub(r"[^a-zA-Z0-9_-]", "_", base_name)
 
-    def _generate_tag_markdown(self, tag: str, endpoints: list[dict[str, Any]]) -> str:
+    def _generate_tag_documentation(self, tag: str, endpoints: list[dict[str, Any]]) -> str:
         """Generate markdown documentation for all endpoints in a tag."""
         lines = []
 
@@ -580,7 +580,7 @@ def convert_openapi_to_markdown(
         List of generated file paths
     """
     converter = OpenAPIToMarkdownConverter(schema_path)
-    return converter.convert_to_markdown_files(output_dir)
+    return converter.convert_to_text_files(output_dir)
 
 
 if __name__ == "__main__":

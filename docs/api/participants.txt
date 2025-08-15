@@ -1,0 +1,27 @@
+API: Dimagi Chatbots v1
+Description: Experiments with AI, GPT and LLMs
+
+TAG: Participants
+
+ENDPOINTS:
+
+POST /api/participants
+  Summary: Update Participant Data
+  Request Body:
+    Content: application/json
+    Schema: ParticipantDataUpdateRequest
+  Responses:
+    200: No response body
+
+SCHEMAS:
+
+ParticipantDataUpdateRequest:
+  - identifier: string (required)
+  - name: string
+  - platform: Unknown
+  - data: array of ParticipantExperimentData (required)
+
+SECURITY:
+- API Key authentication (header: X-api-key)
+- API Key authentication (cookie: sessionid)
+- HTTP bearer authentication

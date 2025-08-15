@@ -318,7 +318,7 @@ wheels = [
 [[package]]
 name = "ocs-docs"
 version = "0.1.0"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
     { name = "mkdocs-macros-plugin" },
     { name = "mkdocs-material" },

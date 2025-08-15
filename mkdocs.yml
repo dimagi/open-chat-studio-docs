@@ -68,7 +68,10 @@ markdown_extensions:
 
 plugins:
 - search
-- api_docs
+- api_docs:
+    openapi_schema_url: "https://chatbots.dimagi.com/api/schema"
+    output_schema_path: "api_schema.yml"
+    output_dir: api
 - macros:
     render_by_default: false
 - mkdocstrings:
@@ -134,6 +137,7 @@ nav:
           - concepts/groups.md
       - Assistants:
           - concepts/assistants.md
+      - API: api/index.md
   - Chat Widget:
     - chat_widget/index.md
     - chat_widget/reference.md
@@ -143,7 +147,7 @@ nav:
   - About: about.md
 
 watch:
-- src
+- src/python_node
 
 extra_javascript:
   - path: https://unpkg.com/open-chat-studio-widget@0.4.4/dist/open-chat-studio-widget/open-chat-studio-widget.esm.js

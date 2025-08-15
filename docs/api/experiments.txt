@@ -1,0 +1,44 @@
+API: Dimagi Chatbots v1
+Description: Experiments with AI, GPT and LLMs
+
+TAG: Experiments
+
+ENDPOINTS:
+
+GET /api/experiments/
+  Summary: List Experiments
+  Parameters:
+    - cursor (query, string (optional)): The pagination cursor value.
+    - page_size (query, integer (optional)): Number of results to return per page.
+  Responses:
+    200: 
+      Content: application/json
+      Schema: PaginatedExperimentList
+
+GET /api/experiments/{id}/
+  Summary: Retrieve Experiment
+  Parameters:
+    - id (path, string (required)): Experiment ID
+  Responses:
+    200: 
+      Content: application/json
+      Schema: Experiment
+
+SCHEMAS:
+
+Experiment:
+  - id: string (required)
+  - name: string (required)
+  - url: string (required)
+  - version_number: integer
+  - versions: array of ExperimentVersion (required)
+
+PaginatedExperimentList:
+  - next: string
+  - previous: string
+  - results: array of Experiment (required)
+
+SECURITY:
+- API Key authentication (header: X-api-key)
+- API Key authentication (cookie: sessionid)
+- HTTP bearer authentication
