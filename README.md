@@ -32,3 +32,12 @@ Assuming you've already cloned this repository:
 ### Writing
 
 See the [MkDocs documentation](https://www.mkdocs.org/user-guide/writing-your-docs/) for how to write documentation.
+
+
+### API docs
+
+This project includes a plugin for generating API docs from an OpenAPI schema.
+
+See `src/ocs_docs/api_docs_plugin.py`.
+
+The plugin will rebuild the docs when there is a change to the API schema downloaded from the schema URL. To force a rebuild, delete the `api_schema.yml` file.
