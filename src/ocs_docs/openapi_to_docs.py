@@ -13,6 +13,11 @@ from typing import Any
 
 import yaml
 
+# Constants
+HTTP_METHODS = {"get", "post", "put", "patch", "delete", "options", "head"}
+JSON_EXTENSIONS = {".json"}
+YAML_EXTENSIONS = {".yaml", ".yml"}
+
 
 class OpenAPIToMarkdownConverter:
     """Converts OpenAPI schemas to markdown documentation."""
@@ -44,22 +49,17 @@ class OpenAPIToMarkdownConverter:
             except json.JSONDecodeError:
                 try:
                     return yaml.safe_load(str(schema_path))
-                except yaml.YAMLError:
-                    raise ValueError("Invalid schema: not a valid file path, JSON, or YAML") from None
+                except yaml.YAMLError as e:
+                    raise ValueError("Invalid schema: not a valid file path, JSON, or YAML") from e
 
         # Load from file
         content = path.read_text(encoding="utf-8")
-
-        if path.suffix.lower() in [".yaml", ".yml"]:
-            return yaml.safe_load(content)
-        elif path.suffix.lower() == ".json":
+        
+        # Try JSON first, then YAML as fallback
+        try:
             return json.loads(content)
-        else:
-            # Try to auto-detect format
-            try:
-                return json.loads(content)
-            except json.JSONDecodeError:
-                return yaml.safe_load(content)
+        except json.JSONDecodeError:
+            return yaml.safe_load(content)
 
     def _extract_base_info(self) -> dict[str, Any]:
         """Extract basic API information from schema."""
@@ -114,7 +114,7 @@ class OpenAPIToMarkdownConverter:
 
         for path, path_item in paths.items():
             for method, operation in path_item.items():
-                if method.lower() in ["get", "post", "put", "patch", "delete", "options", "head"]:
+                if method.lower() in HTTP_METHODS:
                     tags = operation.get("tags", ["Untagged"])
 
                     # Handle endpoints with multiple tags
@@ -133,20 +133,6 @@ class OpenAPIToMarkdownConverter:
         clean_tag = re.sub(r"[^a-zA-Z0-9_-]", "_", tag.lower())
         clean_tag = re.sub(r"_+", "_", clean_tag)
         return clean_tag.strip("_")
-
-    def _generate_filename(self, method: str, path: str, operation: dict[str, Any]) -> str:
-        """Generate a clean filename for the endpoint (legacy method)."""
-        # Use operationId if available, otherwise generate from method and path
-        if "operationId" in operation:
-            base_name = operation["operationId"]
-        else:
-            # Clean up path and combine with method
-            clean_path = re.sub(r"[^a-zA-Z0-9_-]", "_", path.strip("/"))
-            clean_path = re.sub(r"_+", "_", clean_path)
-            base_name = f"{method.lower()}_{clean_path}"
-
-        # Ensure filename is clean
-        return re.sub(r"[^a-zA-Z0-9_-]", "_", base_name)
 
     def _generate_tag_documentation(self, tag: str, endpoints: list[dict[str, Any]]) -> str:
         """Generate markdown documentation for all endpoints in a tag."""
@@ -281,18 +267,6 @@ class OpenAPIToMarkdownConverter:
                         lines.append(f"      Schema: {schema_ref}")
 
         return lines
-
-    def _get_parameter_type(self, param: dict[str, Any]) -> str:
-        """Extract and format parameter type information."""
-        schema = param.get("schema", {})
-        param_type = schema.get("type", "string")
-
-        if schema.get("format"):
-            return f"{param_type} ({schema['format']})"
-        elif schema.get("enum"):
-            return f"enum: {', '.join(map(str, schema['enum']))}"
-        else:
-            return param_type
 
     def _get_parameter_type_minified(self, param: dict[str, Any]) -> str:
         """Extract simplified parameter type information."""
@@ -436,134 +410,6 @@ class OpenAPIToMarkdownConverter:
             type_info.append(f"({', '.join(constraints)})")
 
         return " ".join(type_info)
-
-    def _format_schema_detailed(
-        self, schema: dict[str, Any], indent: int = 0, visited_refs: set | None = None
-    ) -> list[str]:
-        """Format a JSON schema into readable markdown with full type definitions."""
-        if visited_refs is None:
-            visited_refs = set()
-
-        lines = []
-        prefix = "  " * indent
-
-        # Handle $ref
-        if "$ref" in schema:
-            ref = schema["$ref"]
-            if ref in visited_refs:
-                # Prevent infinite recursion
-                lines.append(f"{prefix}**Type:** {ref.split('/')[-1]} (circular reference)")
-                return lines
-
-            visited_refs.add(ref)
-            resolved_schema = self._resolve_ref(ref)
-            if resolved_schema:
-                schema_name = ref.split("/")[-1]
-                lines.append(f"{prefix}**Schema:** `{schema_name}`")
-                lines.append("")
-                nested_lines = self._format_schema(resolved_schema, indent, visited_refs.copy())
-                lines.extend(nested_lines)
-            else:
-                lines.append(f"{prefix}**Type:** {ref} (unresolved reference)")
-            return lines
-
-        schema_type = schema.get("type")
-
-        # Add type and constraints info
-        type_info = self._get_type_info(schema)
-        lines.append(f"{prefix}**Type:** `{type_info}`")
-
-        # Add description
-        if schema.get("description"):
-            lines.append(f"{prefix}**Description:** {schema['description']}")
-
-        # Add default value
-        if "default" in schema:
-            lines.append(f"{prefix}**Default:** `{json.dumps(schema['default'])}`")
-
-        # Add example
-        if "example" in schema:
-            lines.append(f"{prefix}**Example:** `{json.dumps(schema['example'])}`")
-
-        lines.append("")
-
-        # Handle object properties
-        if schema_type == "object":
-            properties = schema.get("properties", {})
-            required = schema.get("required", [])
-            additional_props = schema.get("additionalProperties")
-
-            if properties:
-                lines.append(f"{prefix}**Properties:**")
-                lines.append("")
-
-                # Create table for properties
-                lines.append(f"{prefix}| Property | Type | Required | Description |")
-                lines.append(f"{prefix}|----------|------|----------|-------------|")
-
-                for prop_name, prop_schema in properties.items():
-                    is_required = prop_name in required
-                    req_marker = "✓" if is_required else ""
-                    prop_type = self._get_type_info(prop_schema)
-                    description = prop_schema.get("description", "").replace("\n", " ")[:100]
-                    if len(prop_schema.get("description", "")) > 100:
-                        description += "..."
-
-                    lines.append(f"{prefix}| `{prop_name}` | {prop_type} | {req_marker} | {description} |")
-
-                lines.append("")
-
-                # Detailed property schemas for complex types
-                for prop_name, prop_schema in properties.items():
-                    if prop_schema.get("type") in ["object", "array"] or "$ref" in prop_schema:
-                        lines.append(f"{prefix}#### `{prop_name}` Details")
-                        lines.append("")
-                        nested_lines = self._format_schema(prop_schema, indent + 1, visited_refs.copy())
-                        lines.extend(nested_lines)
-
-            if additional_props is not None:
-                if additional_props is True:
-                    lines.append(f"{prefix}**Additional Properties:** Allowed")
-                elif additional_props is False:
-                    lines.append(f"{prefix}**Additional Properties:** Not allowed")
-                else:
-                    lines.append(f"{prefix}**Additional Properties:**")
-                    lines.append("")
-                    nested_lines = self._format_schema(additional_props, indent + 1, visited_refs.copy())
-                    lines.extend(nested_lines)
-                lines.append("")
-
-        # Handle array items
-        elif schema_type == "array":
-            items = schema.get("items", {})
-            if items:
-                lines.append(f"{prefix}**Array Items:**")
-                lines.append("")
-                nested_lines = self._format_schema(items, indent + 1, visited_refs.copy())
-                lines.extend(nested_lines)
-
-            # Array constraints
-            if "minItems" in schema:
-                lines.append(f"{prefix}**Minimum Items:** {schema['minItems']}")
-            if "maxItems" in schema:
-                lines.append(f"{prefix}**Maximum Items:** {schema['maxItems']}")
-            if schema.get("uniqueItems"):
-                lines.append(f"{prefix}**Unique Items:** Yes")
-
-            lines.append("")
-
-        # Handle oneOf, anyOf, allOf
-        for keyword in ["oneOf", "anyOf", "allOf"]:
-            if keyword in schema:
-                lines.append(f"{prefix}**{keyword.title()}:**")
-                lines.append("")
-                for i, sub_schema in enumerate(schema[keyword]):
-                    lines.append(f"{prefix}**Option {i + 1}:**")
-                    nested_lines = self._format_schema(sub_schema, indent + 1, visited_refs.copy())
-                    lines.extend(nested_lines)
-                lines.append("")
-
-        return lines
 
 
 def convert_openapi_to_markdown(
