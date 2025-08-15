@@ -1,0 +1,95 @@
+API: Dimagi Chatbots v1
+Description: Experiments with AI, GPT and LLMs
+
+TAG: Chat
+Description: 
+                The Chat API is designed to be used for integrating chatbots into external systems.
+            
+
+ENDPOINTS:
+
+GET /api/chat/{session_id}/{task_id}/poll/
+  Summary: Poll for task updates
+  Parameters:
+    - session_id (path, string (required)): Session ID
+    - task_id (path, string (required)): Check on the status of a specific task
+  Responses:
+    200: 
+      Content: application/json
+      Schema: ChatTaskPoll
+    500: 
+      Content: application/json
+      Schema: ChatTaskPollError
+
+POST /api/chat/{session_id}/message/
+  Summary: Send a message to a chat session
+  Parameters:
+    - session_id (path, string (required)): Session ID
+  Request Body:
+    Content: application/json
+    Schema: ChatSendMessageRequest
+  Responses:
+    202: 
+      Content: application/json
+      Schema: ChatSendMessageResponse
+
+GET /api/chat/{session_id}/poll/
+  Summary: Poll for new messages in a chat session. Do not poll more than once every 30 seconds
+  Description: Poll for new messages in a chat session
+  Parameters:
+    - limit (query, integer (optional)): Maximum number of messages to return (default: 50)
+    - session_id (path, string (required)): Session ID
+    - since (query, string (optional)): Only return messages after this timestamp
+  Responses:
+    200: 
+      Content: application/json
+      Schema: ChatPollResponse
+
+POST /api/chat/start/
+  Summary: Start a new chat session for a widget
+  Request Body:
+    Content: application/json
+    Schema: ChatStartSessionRequest
+  Responses:
+    201: 
+      Content: application/json
+      Schema: ChatStartSessionResponse
+
+SCHEMAS:
+
+ChatPollResponse:
+  - messages: array of Message (required)
+  - has_more: boolean (required)
+  - session_status: Unknown (required)
+
+ChatSendMessageRequest:
+  - message: string (required)
+
+ChatSendMessageResponse:
+  - task_id: string (required)
+  - status: Unknown (required)
+  - error: string
+
+ChatStartSessionRequest:
+  - chatbot_id: string (required)
+  - session_data: object
+  - participant_remote_id: string
+  - participant_name: string
+
+ChatStartSessionResponse:
+  - session_id: string (required)
+  - chatbot: Unknown (required)
+  - participant: Unknown (required)
+  - seed_message_task_id: string (required)
+
+ChatTaskPoll:
+  - message: Message
+  - status: ChatTaskPollStatusEnum
+
+ChatTaskPollError:
+  - error: string
+
+SECURITY:
+- API Key authentication (header: X-api-key)
+- API Key authentication (cookie: sessionid)
+- HTTP bearer authentication
