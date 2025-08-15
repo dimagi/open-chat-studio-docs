@@ -2,7 +2,7 @@
 
 This repository contains the user documentation for [Open Chat Studio](https://github.com/dimagi/open-chat-studio).
 
-Open Chat Studio is a platform for building, deploying, and evaluating AI-powered chat applications. It provides tools for working with various LLMs (Language Learning Models), creating chatbots, managing conversations, and integrating with different messaging platforms.
+Open Chat Studio is a platform for building, deploying, and evaluating AI-powered chat applications. It provides tools for working with various LLMs (Large Language Models), creating chatbots, managing conversations, and integrating with different messaging platforms.
 
 ## Docs Quickstart
 
@@ -36,7 +36,7 @@ See the [MkDocs documentation](https://www.mkdocs.org/user-guide/writing-your-do
 
 ### API docs
 
-This project includes a plugin for generating API docs from an OpenAPI schema.
+This project includes a plugin for generating API docs from the OCS OpenAPI schema.
 
 See `src/ocs_docs/api_docs_plugin.py`.
 
