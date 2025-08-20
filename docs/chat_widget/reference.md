@@ -96,6 +96,27 @@ These questions appear as blue-outlined buttons aligned to the right (similar to
 </open-chat-studio-widget>
 ```
 
+## :material-chat-plus: New Chat Confirmation
+When users have an active conversation and click the "new chat" button, a confirmation dialog appears to prevent accidental loss of conversation history. You can customize the message displayed in this confirmation dialog:
+
+```html
+<open-chat-studio-widget
+ new-chat-confirmation-message="Are you sure you want to start a new conversation?">
+</open-chat-studio-widget>
+```
+
+Default behavior:
+
+- Shows confirmation dialog with the message: "Starting a new chat will clear your current conversation. Continue?"
+- Users can either "Cancel" to keep their current chat or "Continue" to start fresh
+- The dialog only appears when there's an existing conversation with messages
+
+Customization options:
+
+- Customize the confirmation message text to match your brand voice
+- Style the dialog appearance using CSS variables (see CSS Styling)
+
+
 ## Persistent Sessions
 
 By default, the widget will save the chat messages in the browser local storage. This allows users to continue sessions after reloading the page or navigating to a new page. In addition to automatic session expiration, the user can also use the 'new chat' button to start a new session.
@@ -122,6 +143,7 @@ The session data is set to expire after 24 hours. This is also configurable by u
 | `header-text`               | `string`  | `undefined`                     | Text to place in the window header                                                                                                |
 | `welcome-messages`          | `string`  | `undefined`                     | JSON array of welcome messages                                                                                                    |
 | `starter-questions`         | `string`  | `undefined`                     | JSON array of clickable starter questions                                                                                         |
+| `new-chat-confirmation-message` | `string` | `"Starting a new chat will clear your current conversation. Continue?"` | The message to display in the new chat confirmation dialog |
 | `persistent-session`        | `boolean` | `true`                          | Whether to persist session data to local storage to allow resuming previous conversations after page reload.                      |
 | `persistent-session-expire` | `number`  | `1440` (24 hours)               | Minutes since the most recent message after which the session data in local storage will expire. Set this to `0` to never expire. |
 | `allow-full-screen`         | `boolean` | `true`                          | Allow the user to make the chat window full screen.                                                                               |

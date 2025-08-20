@@ -108,6 +108,24 @@ Use the following CSS variables to style the button appearance.
 | `--starter-question-padding`            | Starter question padding (0.75em)                                  |
 | `--starter-question-text-color`         | Starter question text color {{ color_swatch('#3b82f6') }}          |
 
+## Confirmation dialog
+| Name                                    | Description                                                        |
+|-----------------------------------------|--------------------------------------------------------------------|
+| `--confirmation-overlay-bg-color`       | Confirmation dialog overlay background color (rgba(0, 0, 0, 0.5)) |
+| `--confirmation-dialog-bg-color`        | Confirmation dialog background color (uses --chat-window-bg-color)  |
+| `--confirmation-dialog-border-color`    | Confirmation dialog border color (uses --chat-window-border-color) |
+| `--confirmation-dialog-shadow-color`    | Confirmation dialog shadow color (uses --chat-window-shadow-color) |
+| `--confirmation-title-color`            | Confirmation dialog title text color {{ color_swatch('#111827') }} |
+| `--confirmation-title-font-size`        | Confirmation dialog title font size (1.125em)                     |
+| `--confirmation-message-color`          | Confirmation dialog message text color (uses --loading-text-color) |
+| `--confirmation-message-font-size`      | Confirmation dialog message font size (1em)                       |
+| `--confirmation-button-cancel-bg-color` | Cancel button background color (uses --button-background-color-hover) |
+| `--confirmation-button-cancel-bg-hover-color` | Cancel button background on hover {{ color_swatch('#e5e7eb') }} |
+| `--confirmation-button-cancel-text-color` | Cancel button text color (uses --header-button-text-color) |
+| `--confirmation-button-confirm-bg-color` | Confirm button background color (uses --error-text-color) |
+| `--confirmation-button-confirm-bg-hover-color` | Confirm button background on hover (uses --error-text-color) |
+| `--confirmation-button-confirm-text-color` | Confirm button text color (uses --send-button-text-color) |
+
 ## Input bar
 
 | Name                          | Description                                                |
