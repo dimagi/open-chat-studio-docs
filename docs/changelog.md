@@ -4,6 +4,8 @@ hide:
 ---
 
 # Changelog
+## Aug 20, 2025
+* **NEW** Added read-only API key permissions. All API keys (new and existing) default to read-only. Enable write permissions by checking "Allow Write" when creating a new API key.
 
 ## Aug 14, 2025
 * **CHANGE** Added `page_size` parameter to list APIs to allow overriding the default page size (100). The maximum page size is 1500.
