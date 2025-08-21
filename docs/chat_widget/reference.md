@@ -123,7 +123,7 @@ Customize the message displayed while the assistant is preparing a response. Thi
 
 ```html
 <open-chat-studio-widget
-     typing-indicator-text="AI is thinking...">
+     typing-indicator-text="AI is thinking">
 </open-chat-studio-widget>
 ```
 
