@@ -10,7 +10,9 @@ import json
 import re
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlparse
 
+import requests
 import yaml
 
 # Constants
@@ -27,7 +29,7 @@ class OpenAPIToMarkdownConverter:
         Initialize the converter with an OpenAPI schema.
 
         Args:
-            schema: OpenAPI schema as JSON/YAML string, dict, or file path
+            schema: OpenAPI schema as JSON/YAML string, dict, file path, or URL
         """
         if isinstance(schema, str | Path):
             self.schema = self._load_schema(schema)
@@ -39,27 +41,41 @@ class OpenAPIToMarkdownConverter:
         self.schemas = self.components.get("schemas", {})
 
     def _load_schema(self, schema_path: str | Path) -> dict[str, Any]:
-        """Load OpenAPI schema from file path or URL string."""
-        path = Path(schema_path)
-
-        if not path.exists():
-            # Try to parse as JSON/YAML string
-            try:
-                return json.loads(str(schema_path))
-            except json.JSONDecodeError:
-                try:
-                    return yaml.safe_load(str(schema_path))
-                except yaml.YAMLError as e:
-                    raise ValueError("Invalid schema: not a valid file path, JSON, or YAML") from e
-
-        # Load from file
-        content = path.read_text(encoding="utf-8")
+        """Load OpenAPI schema from file path, URL, or string content."""
+        schema_str = str(schema_path)
         
-        # Try JSON first, then YAML as fallback
+        # Check if it's a URL
+        parsed_url = urlparse(schema_str)
+        if parsed_url.scheme in ('http', 'https'):
+            try:
+                response = requests.get(schema_str, timeout=30)
+                response.raise_for_status()
+                content = response.text
+            except requests.RequestException as e:
+                raise ValueError(f"Failed to fetch schema from URL: {e}") from e
+        else:
+            # Try as file path first
+            path = Path(schema_path)
+            if path.exists():
+                content = path.read_text(encoding="utf-8")
+            else:
+                # Try to parse as JSON/YAML string
+                try:
+                    return json.loads(schema_str)
+                except json.JSONDecodeError:
+                    try:
+                        return yaml.safe_load(schema_str)
+                    except yaml.YAMLError as e:
+                        raise ValueError("Invalid schema: not a valid file path, URL, JSON, or YAML") from e
+        
+        # Parse the content (from file or URL)
         try:
             return json.loads(content)
         except json.JSONDecodeError:
-            return yaml.safe_load(content)
+            try:
+                return yaml.safe_load(content)
+            except yaml.YAMLError as e:
+                raise ValueError("Invalid schema content: not valid JSON or YAML") from e
 
     def _extract_base_info(self) -> dict[str, Any]:
         """Extract basic API information from schema."""
@@ -419,7 +435,7 @@ def convert_openapi_to_markdown(
     Convenience function to convert OpenAPI schema to markdown files.
 
     Args:
-        schema_path: Path to OpenAPI schema file, schema dict, or schema string
+        schema_path: Path to OpenAPI schema file, URL, schema dict, or schema string
         output_dir: Directory to save markdown files
 
     Returns:
@@ -433,7 +449,7 @@ if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser(description="Convert OpenAPI schema to markdown documentation")
-    parser.add_argument("schema", help="Path to OpenAPI schema file (JSON or YAML)")
+    parser.add_argument("schema", help="Path to OpenAPI schema file, URL, or schema content (JSON or YAML)")
     parser.add_argument("-o", "--output", default="api_docs", help="Output directory for markdown files")
 
     args = parser.parse_args()

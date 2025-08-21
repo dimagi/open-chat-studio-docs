@@ -68,10 +68,6 @@ markdown_extensions:
 
 plugins:
 - search
-- api_docs:
-    openapi_schema_url: "https://chatbots.dimagi.com/api/schema"
-    output_schema_path: "api_schema.yml"
-    output_dir: api
 - macros:
     render_by_default: false
 - mkdocstrings:
