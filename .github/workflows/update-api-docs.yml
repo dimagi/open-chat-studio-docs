@@ -34,7 +34,7 @@ jobs:
         run: uv sync
 
       - name: Generate API documentation
-        run: uv run python src/ocs_docs/openapi_to_docs.py https://chatbots.dimagi.com/api/schema -o docs/api/
+        run: uv run python src/ocs_docs/openapi_to_docs.py https://raw.githubusercontent.com/dimagi/open-chat-studio/refs/heads/main/api-schema.yml -o docs/api/
 
       - name: Check for changes
         id: check_changes
