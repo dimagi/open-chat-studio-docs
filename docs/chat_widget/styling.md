@@ -54,16 +54,16 @@ Use the following CSS variables to style the button appearance.
     All font sizes and some margins / padding are relative to the widget element's font size which can be set using the `--chat-window-font-size` and `--button-font-size` variables.
 
  
-| Name                              | Description                                                |
-|-----------------------------------|------------------------------------------------------------|
-| `--chat-window-width`             | Chat window height in pixels or percent (25%)              |
-| `--chat-window-height`            | Chat window width in pixels or percent (60%)               |
-| `--chat-window-fullscreen-width`  | Chat window fullscreen width in pixels or percent (80%)    |
-| `--chat-window-bg-color`          | Chat window background color {{ color_swatch('#ffffff') }} |
-| `--chat-window-border-color`      | Chat window border color {{ color_swatch('#d1d5db') }}     |
-| `--chat-window-font-size`         | Default font size for text in the chat window (0.875em)    |
-| `--chat-window-font-size-sm`      | Font size for small text in the chat window (0.75em)       |
-| `--chat-window-shadow-color`      | Chat window shadow color (rgba(0, 0, 0, 0.1))              |
+| Name                              | Description                                                       |
+|-----------------------------------|-------------------------------------------------------------------|
+| `--chat-window-width`             | Chat window height in pixels or percent (25%)                     |
+| `--chat-window-height`            | Chat window width in pixels or percent (60%)                      |
+| `--chat-window-fullscreen-width`  | Chat window fullscreen width in pixels or percent (80%)           |
+| `--chat-window-bg-color`          | Chat window background color {{ color_swatch('#ffffff') }}        |
+| `--chat-window-border-color`      | Chat window border color {{ color_swatch('#d1d5db') }}            |
+| `--chat-window-font-size`         | Default font size for text in the chat window (0.875em)           |
+| `--chat-window-font-size-sm`      | Font size for small text in the chat window (0.75em)              |
+| `--chat-window-shadow-color`      | Chat window shadow color {{ color_swatch('rgba(0, 0, 0, 0.1)') }} |
 
 ## Header
 
@@ -81,19 +81,19 @@ Use the following CSS variables to style the button appearance.
 
 ## Messages
 
-| Name                                  | Description                                                      |
-|---------------------------------------|------------------------------------------------------------------|
-| `--message-assistant-bg-color`        | Assistant message background color {{ color_swatch('#eae7e8') }} |
-| `--message-assistant-text-color`      | Assistant message text color (--message-user-text-color)         |
-| `--message-assistant-link-color`      | Assistant message text color (--message-user-link-color)         |
-| `--message-system-bg-color`           | System message background color {{ color_swatch('#fbe4f8') }}    |
-| `--message-system-text-color`         | System message text color (--message-user-text-color)            |
-| `--message-system-link-color`         | System message text color (--message-user-link-color)            |
-| `--message-timestamp-assistant-color` | Assistant message timestamp color (rgba(75, 85, 99, 0.7))        |
-| `--message-timestamp-color`           | User message timestamp color (rgba(255, 255, 255, 0.7))          |
-| `--message-user-bg-color`             | User message background color {{ color_swatch('#e4edfb') }}      |
-| `--message-user-text-color`           | User message text color {{ color_swatch('#1f2937') }}            |
-| `--message-user-link-color`           | User message link color {{ color_swatch('#155dfc') }}            |
+| Name                                  | Description                                                                   |
+|---------------------------------------|-------------------------------------------------------------------------------|
+| `--message-user-bg-color`             | User message background color {{ color_swatch('#e4edfb') }}                   |
+| `--message-user-text-color`           | User message text color {{ color_swatch('#1f2937') }}                         |
+| `--message-user-link-color`           | User message link color {{ color_swatch('#155dfc') }}                         |
+| `--message-assistant-bg-color`        | Assistant message background color {{ color_swatch('#eae7e8') }}              |
+| `--message-assistant-text-color`      | Assistant message text color (--message-user-text-color)                      |
+| `--message-assistant-link-color`      | Assistant message text color (--message-user-link-color)                      |
+| `--message-system-bg-color`           | System message background color {{ color_swatch('#fbe4f8') }}                 |
+| `--message-system-text-color`         | System message text color (--message-user-text-color)                         |
+| `--message-system-link-color`         | System message text color (--message-user-link-color)                         |
+| `--message-timestamp-assistant-color` | Assistant message timestamp color {{ color_swatch('rgba(75, 85, 99, 0.7)') }} |
+| `--message-timestamp-color`           | User message timestamp color {{ color_swatch('rgba(255, 255, 255, 0.7)') }}   |
 
 ## Starter question
 
@@ -106,22 +106,22 @@ Use the following CSS variables to style the button appearance.
 | `--starter-question-text-color`         | Starter question text color {{ color_swatch('#3b82f6') }}          |
 
 ## Confirmation dialog
-| Name                                           | Description                                                           |
-|------------------------------------------------|-----------------------------------------------------------------------|
-| `--confirmation-overlay-bg-color`              | Confirmation dialog overlay background color (rgba(0, 0, 0, 0.5))     |
-| `--confirmation-dialog-bg-color`               | Confirmation dialog background color (uses --chat-window-bg-color)    |
-| `--confirmation-dialog-border-color`           | Confirmation dialog border color (uses --chat-window-border-color)    |
-| `--confirmation-dialog-shadow-color`           | Confirmation dialog shadow color (uses --chat-window-shadow-color)    |
-| `--confirmation-title-color`                   | Confirmation dialog title text color {{ color_swatch('#111827') }}    |
-| `--confirmation-title-font-size`               | Confirmation dialog title font size (1.125em)                         |
-| `--confirmation-message-color`                 | Confirmation dialog message text color (uses --loading-text-color)    |
-| `--confirmation-message-font-size`             | Confirmation dialog message font size (1em)                           |
-| `--confirmation-button-cancel-bg-color`        | Cancel button background color (uses --button-background-color-hover) |
-| `--confirmation-button-cancel-bg-hover-color`  | Cancel button background on hover {{ color_swatch('#e5e7eb') }}       |
-| `--confirmation-button-cancel-text-color`      | Cancel button text color (uses --header-button-text-color)            |
-| `--confirmation-button-confirm-bg-color`       | Confirm button background color (uses --error-text-color)             |
-| `--confirmation-button-confirm-bg-hover-color` | Confirm button background on hover (uses --error-text-color)          |
-| `--confirmation-button-confirm-text-color`     | Confirm button text color (uses --send-button-text-color)             |
+| Name                                           | Description                                                                           |
+|------------------------------------------------|---------------------------------------------------------------------------------------|
+| `--confirmation-overlay-bg-color`              | Confirmation dialog overlay background color {{ color_swatch('rgba(0, 0, 0, 0.5)') }} |
+| `--confirmation-dialog-bg-color`               | Confirmation dialog background color (uses --chat-window-bg-color)                    |
+| `--confirmation-dialog-border-color`           | Confirmation dialog border color (uses --chat-window-border-color)                    |
+| `--confirmation-dialog-shadow-color`           | Confirmation dialog shadow color (uses --chat-window-shadow-color)                    |
+| `--confirmation-title-color`                   | Confirmation dialog title text color {{ color_swatch('#111827') }}                    |
+| `--confirmation-title-font-size`               | Confirmation dialog title font size (1.125em)                                         |
+| `--confirmation-message-color`                 | Confirmation dialog message text color (uses --loading-text-color)                    |
+| `--confirmation-message-font-size`             | Confirmation dialog message font size (1em)                                           |
+| `--confirmation-button-cancel-bg-color`        | Cancel button background color (uses --button-background-color-hover)                 |
+| `--confirmation-button-cancel-bg-hover-color`  | Cancel button background on hover {{ color_swatch('#e5e7eb') }}                       |
+| `--confirmation-button-cancel-text-color`      | Cancel button text color (uses --header-button-text-color)                            |
+| `--confirmation-button-confirm-bg-color`       | Confirm button background color (uses --error-text-color)                             |
+| `--confirmation-button-confirm-bg-hover-color` | Confirm button background on hover (uses --error-text-color)                          |
+| `--confirmation-button-confirm-text-color`     | Confirm button text color (uses --send-button-text-color)                             |
 
 ## Input bar
 
