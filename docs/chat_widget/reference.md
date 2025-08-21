@@ -117,6 +117,24 @@ Customization options:
 - Style the dialog appearance using CSS variables (see CSS Styling)
 
 
+## :material-robot-excited: Typing Indicator
+
+Customize the message displayed while the assistant is preparing a response. This helps set user expectations and can match your brand's personality.
+
+```html
+<open-chat-studio-widget
+     typing-indicator-text="AI is thinking">
+</open-chat-studio-widget>
+```
+
+The typing indicator appears with animated dots and a progress bar to provide visual feedback during response generation.
+
+Styling:
+- Text color is controlled by `--loading-text-color`
+- Font size uses `--chat-window-font-size-sm`
+- See [CSS Styling](styling.md#loading-indicators) for customization options
+
+
 ## Persistent Sessions
 
 By default, the widget will save the chat messages in the browser local storage. This allows users to continue sessions after reloading the page or navigating to a new page. In addition to automatic session expiration, the user can also use the 'new chat' button to start a new session.
@@ -147,3 +165,4 @@ The session data is set to expire after 24 hours. This is also configurable by u
 | `persistent-session`        | `boolean` | `true`                          | Whether to persist session data to local storage to allow resuming previous conversations after page reload.                      |
 | `persistent-session-expire` | `number`  | `1440` (24 hours)               | Minutes since the most recent message after which the session data in local storage will expire. Set this to `0` to never expire. |
 | `allow-full-screen`         | `boolean` | `true`                          | Allow the user to make the chat window full screen.                                                                               |
+| `typing-indicator-text`         | `string`  | `"Preparing response"`          | Text displayed while the assistant is typing/preparing a response    |
