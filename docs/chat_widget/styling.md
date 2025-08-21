@@ -8,7 +8,7 @@ render_macros: true
 {%- endmacro %}
 
 {% macro color_swatch_plain(value) -%}
-    <span style="background-color: {{ value }}; display: inline-block; width: 15px; height: 15px; border: 1px solid #ccc; border-radius: 4px;"></span>
+    <span style="background-color: {{ value }}; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span>
 {%- endmacro %}
 
 
