@@ -125,7 +125,6 @@ Customize the message displayed while the assistant is preparing a response. Thi
 <open-chat-studio-widget
      typing-indicator-text="AI is thinking...">
 </open-chat-studio-widget>
-
 ```
 
 The typing indicator appears with animated dots and a progress bar to provide visual feedback during response generation.
