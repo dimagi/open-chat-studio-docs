@@ -36,8 +36,10 @@ See the [MkDocs documentation](https://www.mkdocs.org/user-guide/writing-your-do
 
 ### API docs
 
-This project includes a plugin for generating API docs from the OCS OpenAPI schema.
+API docs are generated automatically based on the OpenAPI schema. This is done using the `src/ocs_docs/openapi_to_docs.py` utility.
 
-See `src/ocs_docs/api_docs_plugin.py`.
+```bash
+python src/ocs_docs/openapi_to_docs.py https://chatbots.dimagi.com/api/schema -o docs/api
+```
 
-The plugin will rebuild the docs when there is a change to the API schema downloaded from the schema URL. To force a rebuild, delete the `api_schema.yml` file.
+This utility is used in the `update-api-docs` GitHub action.
