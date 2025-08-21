@@ -27,7 +27,7 @@ POST /api/chat/{session_id}/message/
     - session_id (path, string (required)): Session ID
   Request Body:
     Content: application/json
-    Schema: ChatSendMessageRequest
+    Schema: ChatSendMessageRequestWithAttachments
   Responses:
     202: 
       Content: application/json
@@ -44,6 +44,18 @@ GET /api/chat/{session_id}/poll/
     200: 
       Content: application/json
       Schema: ChatPollResponse
+
+POST /api/chat/{session_id}/upload/
+  Summary: Upload files for a chat message
+  Parameters:
+    - session_id (path, string (required)): Session ID
+  Request Body:
+    Content: multipart/form-data
+    Schema: ChatUploadFileRequest
+  Responses:
+    201: 
+      Content: application/json
+      Schema: ChatUploadFileResponse
 
 POST /api/chat/start/
   Summary: Start a new chat session for a widget
@@ -62,8 +74,9 @@ ChatPollResponse:
   - has_more: boolean (required)
   - session_status: Unknown (required)
 
-ChatSendMessageRequest:
+ChatSendMessageRequestWithAttachments:
   - message: string (required)
+  - attachment_ids: array of integer
 
 ChatSendMessageResponse:
   - task_id: string (required)
@@ -88,6 +101,12 @@ ChatTaskPoll:
 
 ChatTaskPollError:
   - error: string
+
+ChatUploadFileRequest:
+  - files: array of string (required)
+
+ChatUploadFileResponse:
+  - files: array of UploadedFile (required)
 
 SECURITY:
 - API Key authentication (header: X-api-key)
