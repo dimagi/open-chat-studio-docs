@@ -133,7 +133,6 @@ Styling:
 - Text color is controlled by `--loading-text-color`
 - Font size uses `--chat-window-font-size-sm`
 - See [CSS Styling](styling.md#loading-indicators) for customization options
-```
 
 
 ## Persistent Sessions
