@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Aug 21, 2025
+* **NEW** Added a voice selection field to the LLM node to override the global STT setting. This field is only visible when a voice provider is configured for the bot.
+
 ## Aug 20, 2025
 * **NEW** Added read-only API key permissions. All API keys (new and existing) default to read-only. Enable write permissions by checking "Allow Write" when creating a new API key.
 
