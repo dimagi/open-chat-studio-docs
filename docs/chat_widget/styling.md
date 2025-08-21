@@ -83,14 +83,17 @@ Use the following CSS variables to style the button appearance.
 
 | Name                                  | Description                                                      |
 |---------------------------------------|------------------------------------------------------------------|
-| `--message-assistant-bg-color`        | Assistant message background color {{ color_swatch('#e5e7eb') }} |
-| `--message-assistant-text-color`      | Assistant message text color {{ color_swatch('#1f2937') }}       |
-| `--message-system-bg-color`           | System message background color {{ color_swatch('#f3f4f6') }}    |
-| `--message-system-text-color`         | System message text color {{ color_swatch('#4b5563') }}          |
+| `--message-assistant-bg-color`        | Assistant message background color {{ color_swatch('#eae7e8') }} |
+| `--message-assistant-text-color`      | Assistant message text color (--message-user-text-color)         |
+| `--message-assistant-link-color`      | Assistant message text color (--message-user-link-color)         |
+| `--message-system-bg-color`           | System message background color {{ color_swatch('#fbe4f8') }}    |
+| `--message-system-text-color`         | System message text color (--message-user-text-color)            |
+| `--message-system-link-color`         | System message text color (--message-user-link-color)            |
 | `--message-timestamp-assistant-color` | Assistant message timestamp color (rgba(75, 85, 99, 0.7))        |
 | `--message-timestamp-color`           | User message timestamp color (rgba(255, 255, 255, 0.7))          |
-| `--message-user-bg-color`             | User message background color {{ color_swatch('#3b82f6') }}      |
-| `--message-user-text-color`           | User message text color {{ color_swatch('#ffffff') }}            |
+| `--message-user-bg-color`             | User message background color {{ color_swatch('#e4edfb') }}      |
+| `--message-user-text-color`           | User message text color {{ color_swatch('#1f2937') }}            |
+| `--message-user-link-color`           | User message link color {{ color_swatch('#155dfc') }}            |
 
 ## Starter question
 
