@@ -44,7 +44,6 @@ Use the following CSS variables to style the button appearance.
 | `--button-border-color-hover`     | Button border color on hover {{ color_swatch('#374151') }}     |
 | `--button-font-size`              | Button text font size (0.875em)                                |
 | `--button-icon-size`              | Button icon size (1.5em)                                       |
-| `--button-padding`                | Button padding (0.75em)                                        |
 | `--button-text-color`             | Button text color {{ color_swatch('#111827') }}                |
 | `--button-text-color-hover`       | Button text color on hover {{ color_swatch('#1d4ed8') }}       |
 
@@ -65,7 +64,6 @@ Use the following CSS variables to style the button appearance.
 | `--chat-window-font-size`         | Default font size for text in the chat window (0.875em)    |
 | `--chat-window-font-size-sm`      | Font size for small text in the chat window (0.75em)       |
 | `--chat-window-shadow-color`      | Chat window shadow color (rgba(0, 0, 0, 0.1))              |
-| `--container-padding`             | General container padding (1em)                            |
 
 ## Header
 
@@ -80,7 +78,6 @@ Use the following CSS variables to style the button appearance.
 | `--header-font-size`             | Header font size (1em)                                          |
 | `--header-text-color`            | Color for the text in the header {{ color_swatch('#525762') }}  |
 | `--header-text-font-size`        | Font size for the text in the header (1em)                      |
-| `--header-padding`               | Header padding (0.5em)                                          |
 
 ## Messages
 
@@ -88,8 +85,6 @@ Use the following CSS variables to style the button appearance.
 |---------------------------------------|------------------------------------------------------------------|
 | `--message-assistant-bg-color`        | Assistant message background color {{ color_swatch('#e5e7eb') }} |
 | `--message-assistant-text-color`      | Assistant message text color {{ color_swatch('#1f2937') }}       |
-| `--message-padding-x`                 | Message horizontal padding (1em)                                 |
-| `--message-padding-y`                 | Message vertical padding (0.5em)                                 |
 | `--message-system-bg-color`           | System message background color {{ color_swatch('#f3f4f6') }}    |
 | `--message-system-text-color`         | System message text color {{ color_swatch('#4b5563') }}          |
 | `--message-timestamp-assistant-color` | Assistant message timestamp color (rgba(75, 85, 99, 0.7))        |
@@ -105,7 +100,6 @@ Use the following CSS variables to style the button appearance.
 | `--starter-question-bg-hover-color`     | Starter question background on hover {{ color_swatch('#eff6ff') }} |
 | `--starter-question-border-color`       | Starter question border color {{ color_swatch('#3b82f6') }}        |
 | `--starter-question-border-hover-color` | Starter question border on hover {{ color_swatch('#2563eb') }}     |
-| `--starter-question-padding`            | Starter question padding (0.75em)                                  |
 | `--starter-question-text-color`         | Starter question text color {{ color_swatch('#3b82f6') }}          |
 
 ## Confirmation dialog
@@ -135,8 +129,6 @@ Use the following CSS variables to style the button appearance.
 | `--input-outline-focus-color` | Input field focus ring color {{ color_swatch('#3b82f6') }} |
 | `--input-placeholder-color`   | Input placeholder text color {{ color_swatch('#6b7280') }} |
 | `--input-text-color`          | Input text color {{ color_swatch('#111827') }}             |
-| `--input-textarea-padding-x`  | Input textarea horizontal padding (0.75em)                 |
-| `--input-textarea-padding-y`  | Input textarea vertical padding (0.5em)                    |
 
 ## Send button
 
@@ -145,8 +137,6 @@ Use the following CSS variables to style the button appearance.
 | `--send-button-bg-color`            | Send button background color {{ color_swatch('#3b82f6') }}         |
 | `--send-button-bg-disabled-color`   | Send button background when disabled {{ color_swatch('#d1d5db') }} |
 | `--send-button-bg-hover-color`      | Send button background on hover {{ color_swatch('#2563eb') }}      |
-| `--send-button-padding-x`           | Send button horizontal padding (1em)                               |
-| `--send-button-padding-y`           | Send button vertical padding (0.5em)                               |
 | `--send-button-text-color`          | Send button text color {{ color_swatch('#ffffff') }}               |
 | `--send-button-text-disabled-color` | Send button text when disabled {{ color_swatch('#6b7280') }}       |
 
@@ -177,7 +167,6 @@ By default, the Markdown code colours are relative to the respective message tex
 
 | Name                      | Description                                    |
 |---------------------------|------------------------------------------------|
-| `--error-message-padding` | Error message padding (0.5em)                  |
 | `--error-text-color`      | Error text color {{ color_swatch('#ef4444') }} |
 
 
