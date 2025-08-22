@@ -22,6 +22,10 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 ## Changelog
 
+### v0.4.7
+
+* Fix regression in font size consistency.
+
 ### v0.4.6
 
 * Add support for sending messages with attachments.
