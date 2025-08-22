@@ -133,6 +133,25 @@ Use the following CSS variables to style the button appearance.
 | `--input-placeholder-color`   | Input placeholder text color {{ color_swatch('#6b7280') }} |
 | `--input-text-color`          | Input text color {{ color_swatch('#111827') }}             |
 
+## File Attachments
+
+| Name                                           | Description                                                                |
+|------------------------------------------------|----------------------------------------------------------------------------|
+| `--file-attachment-button-bg-color`            | Attach file button background color (transparent)                          |
+| `--file-attachment-button-bg-hover-color`      | Attach file button background hover color (--header-button-bg-hover-color) |
+| `--file-attachment-button-text-color`          | Attach file button text color (--header-button-text-color)                 |
+| `--file-attachment-button-text-disabled-color` | Attach file button disabled text color (--send-button-text-disabled-color) |
+| `--selected-file-bg-color`                     | Selected file item background color (--message-system-bg-color)            |
+| `--selected-file-font-size`                    | Selected file item font size (--chat-window-font-size-sm)                  |
+| `--selected-file-icon-size`                    | Selected file item icon size (1.25em)                                      |
+| `--selected-file-name-color`                   | Selected file name color (--message-assistant-text-color)                  |
+| `--selected-file-remove-icon-color`            | Selected file remove icon color (--error-text-color)                       |
+| `--selected-file-remove-icon-hover-color`      | Selected file remove icon hover {{ color_swatch('#dc2626') }}              |
+| `--selected-file-size-color`                   | Selected file size display color (--input-placeholder-color)               |
+| `--selected-files-bg-color`                    | Selected files container background color (--chat-window-bg-color)         |
+| `--selected-files-border-color`                | Selected files container border color (--header-border-color)              |
+| `--message-attachment-icon-size`               | Message attachment icon size (1em)                                         |
+
 ## Send button
 
 | Name                                | Description                                                        |
@@ -168,9 +187,10 @@ By default, the Markdown code colours are relative to the respective message tex
 
 ## Error message
 
-| Name                      | Description                                    |
-|---------------------------|------------------------------------------------|
-| `--error-text-color`      | Error text color {{ color_swatch('#ef4444') }} |
+| Name                   | Description                                      |
+|------------------------|--------------------------------------------------|
+| `--error-text-color`   | Error text color {{ color_swatch('#ef4444') }}   |
+| `--success-text-color` | Success text color {{ color_swatch('#10b981') }} |
 
 
 ## Z-Index

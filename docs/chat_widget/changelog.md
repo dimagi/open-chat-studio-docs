@@ -22,6 +22,29 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 ## Changelog
 
+### v0.4.6
+
+* Add support for sending messages with attachments.
+  * Enabled by setting `allow-attachments="true"`
+  * * See the [file attachments](styling.md#file-attachments) section in the style guide for available CSS properties.
+* Update the 'Start a new session' icon.
+* Add a confirmation dialog when starting a new chat.
+  * Customize the text using the `new-chat-confirmation-message` attribute.
+  * See the [confirmation dialog](styling.md#confirmation-dialog) section in the style guide for available CSS properties.
+* Customize the typing indicator text using the `typing-indicator-text` attribute.
+* Update message background and text colors.
+  * See the [messages](styling.md#messages) section of the style guide.
+* Update link CSS styling.
+  * New properties `--message-user-link-color`, `--message-assistant-link-color`, `--message-system-link-color`.
+* Removed unnecessary CSS properties for padding (`--*-padding*`).
+* Added `--success-text-color` CSS property.
+* Error handling improvements.
+* Fix full screen mode layout.
+
+### v0.4.5
+
+* Internal API changes
+
 ### v0.4.4
 
 * Merge width & height vars:

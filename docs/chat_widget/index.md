@@ -9,6 +9,7 @@ The Open Chat Studio Widget is a customizable chat component that allows you to 
 - **Custom Styling**: Match your brand with CSS variables and custom themes
 - **Welcome Messages**: Greet users with personalized messages
 - **Starter Questions**: Guide users with pre-defined clickable questions
+- **File Uploads**: Allow users to attach files to their messages
 - **Responsive Design**: Works seamlessly across desktop and mobile devices
 
 <div class="grid cards" markdown>
@@ -25,7 +26,7 @@ Before embedding, you must create a bot in Open Chat Studio.
 1. Add the widget script to your site's `<head>` section:
    
       ```html
-      <script type='module' src='https://unpkg.com/open-chat-studio-widget@0.4.3/dist/open-chat-studio-widget/open-chat-studio-widget.esm.js' async></script>
+      <script type='module' src='https://unpkg.com/open-chat-studio-widget@0.4.6/dist/open-chat-studio-widget/open-chat-studio-widget.esm.js' async></script>
       ```
 
 2. Obtaining Embed Code
