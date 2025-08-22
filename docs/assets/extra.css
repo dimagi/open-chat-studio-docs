@@ -3,8 +3,7 @@
 }
 
 open-chat-studio-widget {
-    --chat-window-font-size: 0.8rem;
+    --chat-window-font-size: 0.7rem;
     --button-font-size: 0.7rem;
-    --message-user-bg-color: #4051b5;
     z-index: 9999;
 }
