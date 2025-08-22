@@ -30,7 +30,7 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 * Add support for sending messages with attachments.
   * Enabled by setting `allow-attachments="true"`
-  * * See the [file attachments](styling.md#file-attachments) section in the style guide for available CSS properties.
+  * See the [file attachments](styling.md#file-attachments) section in the style guide for available CSS properties.
 * Update the 'Start a new session' icon.
 * Add a confirmation dialog when starting a new chat.
   * Customize the text using the `new-chat-confirmation-message` attribute.
@@ -59,7 +59,7 @@ Check your current HTML implementation and compare it with the [latest propertie
     * `--header-font-size` 
     * `--header-button-icon-size` 
 * Support for placing text in the window header using the `header-text`.
-    * User `--header-text-font-size` and `--header-text-color` to style it independently of the other header elements. 
+    * Use `--header-text-font-size` and `--header-text-color` to style it independently of the other header elements. 
 
 ### v0.4.3
 
