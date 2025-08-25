@@ -96,6 +96,49 @@ These questions appear as blue-outlined buttons aligned to the right (similar to
 </open-chat-studio-widget>
 ```
 
+## :material-paperclip: File Attachments
+Enable users to send files along with their messages. This feature is perfect for support scenarios where users need to share screenshots, documents, or other files.
+
+```html
+<open-chat-studio-widget
+ allow-attachments="true">
+</open-chat-studio-widget>
+```
+### Supported File Types
+
+#### Documents:
+- Text files: .txt
+- PDF documents: .pdf
+- Microsoft Word: .doc, .docx
+- Microsoft Excel: .xls, .xlsx
+- Spreadsheets: .csv
+
+#### Images:
+- Common formats: .jpg, .jpeg, .png, .gif, .bmp, .webp
+- Vector graphics: .svg
+
+#### Media:
+- Video files: .mp4, .mov, .avi
+- Audio files: .mp3, .wav
+
+### File Size Limits
+
+- Maximum file size: 50MB per individual file
+- Maximum total size: 50MB for all files combined in a single message
+- Multiple files: Users can attach multiple files as long as the total doesn't exceed 50MB
+
+### User Experience
+
+1. Users click the paperclip icon next to the send button to select files
+2. Selected files appear in a preview area above the input field
+3. Files show name, size, and upload status
+4. Users can remove files before sending by clicking the X button
+5. Error messages appear for unsupported file types or files exceeding size limits
+6. Files are uploaded when the message is sent
+
+
+See [CSS Styling](styling.md#file-attachments) for customization options
+
 ## :material-chat-plus: New Chat Confirmation
 When users have an active conversation and click the "new chat" button, a confirmation dialog appears to prevent accidental loss of conversation history. You can customize the message displayed in this confirmation dialog:
 
