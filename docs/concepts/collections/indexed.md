@@ -68,29 +68,28 @@ Choosing the right chunking strategy can improve retrieval accuracy, especially 
 
 In addition to manually uploading documents to a collection, you can also configure document sources from which Open Chat Studio will automatically load and index documents.
 
-The primary advantage of document sources over manual uploads is that Open Chat Studio can check for updates periodically which prevents
-you from having to update them manually.
+The primary advantage of document sources over manual uploads is that Open Chat Studio can check for updates periodically, which eliminates the need for manual updates.
 
 The following document source types are currently supported:
 
 ### :simple-confluence: Confluence
 
-Load pages from a Confluence site. Pages can be filtered using the space key, label, CQL or individual page IDs.
+Load pages from a Confluence site. Pages can be filtered using the space key, label, CQL, or individual page IDs.
 
 **Authentication**
 
-Use a [Basic Auth](../authentication-providers.md#basic-auth) authentication provider with your Atlassian username and set the password to your API Key.
+Use a [Basic Auth](../authentication-providers.md#basic-auth) authentication provider with your Atlassian username and use your API Key as the password.
 
 **Configuration**
 
-| Field     | Description                                                                |
-|-----------|----------------------------------------------------------------------------|
-| Site URL  | The URL of the Confluence site (e.g. https://yoursite.atlassiant.net/wiki) |
-| Max Pages | The maximum number of pages to load                                        |
-| Space Key | Load pages from this space                                                 |
-| Label     | Load pages with this label                                                 |
-| CQL       | CQL query to use to search for pages to load                               |
-| Page IDs  | Load only these specific pages                                             |
+| Field     | Description                                                               |
+|-----------|---------------------------------------------------------------------------|
+| Site URL  | The URL of the Confluence site (e.g. https://yoursite.atlassian.net/wiki) |
+| Max Pages | The maximum number of pages to load                                       |
+| Space Key | Load pages from this space                                                |
+| Label     | Load pages with this label                                                |
+| CQL       | CQL query to use to search for pages to load                              |
+| Page IDs  | Load only these specific pages                                            |
 
 !!! note
 
@@ -108,7 +107,7 @@ Use a [Bearer Token](../authentication-providers.md#bearer-token) authentication
 
 | Field          | Description                                                          |
 |----------------|----------------------------------------------------------------------|
-| Repository URL | GitHub repository URL (e.g., https://github.com/user/repo)           |
+| Repository URL | GitHub repository URL (e.g. https://github.com/user/repo)            |
 | Branch         | Git branch to sync from                                              |
 | File Pattern   | File patterns to include. Prefix with '!' to exclude matching files. |
 | Path Filter    | Optional path prefix to filter files (e.g., docs/)                   |
