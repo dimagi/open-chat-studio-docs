@@ -58,6 +58,101 @@ open-chat-studio-widget {
 -   :simple-css:{ .sm .middle } See [CSS Styling](styling.md) for more customization options.
 </div>
 
+## :material-account: User Identification
+Control how users are identified across chat sessions to enable personalized experiences and session continuity.
+### Overview
+The chat widget uses user identification to:
+
+- Maintain chat history across page reloads and different visits
+- Separate conversations for different users on shared devices
+- Personalize interactions with user names and context
+- Enable analytics and user tracking in your chat system
+
+### Basic Implementation
+Anonymous Users (Default)
+```html
+<open-chat-studio-widget
+  chatbot-id="your-chatbot-id">
+</open-chat-studio-widget>
+```
+Identified Users
+```html
+<open-chat-studio-widget
+  chatbot-id="your-chatbot-id"
+  user-id="user_12345"
+  user-name="Sarah Johnson">
+</open-chat-studio-widget>
+```
+### Auto-Generated User IDs
+
+When no user-id is provided, the widget automatically creates a unique identifier:
+
+- Format: ocs:{timestamp}_{random-string}
+- Example: ocs:1703123456789_a7x9k2m8f
+- Storage: Saved in browser's localStorage as ocs-user-id
+- Security: Uses crypto.getRandomValues() for randomness
+
+Persistence Behavior:
+
+- Same browser/device: ID persists across sessions
+- Different browser/device: Gets new auto-generated ID
+- Incognito mode: New ID that's cleared when session ends
+
+
+### Session Impact
+
+| Scenario                        | Behavior   |
+|---------------------------------|-----------|
+| Same `user-id`                 | Restores previous chat history |
+| Different `user-id`                 | Starts fresh session for new user |
+| No `user-id` (auto-generated)          | Restores on same browser only |
+| `user-id` changes                 | Switches to different user's session |
+
+### Dynamic User Management
+Update user identification when authentication state changes:
+```javascript
+function updateChatUser(user) {
+  const widget = document.querySelector('open-chat-studio-widget');
+
+  if (user) {
+    widget.setAttribute('user-id', user.id);
+    widget.setAttribute('user-name', user.name);
+  } else {
+    widget.removeAttribute('user-id');
+    widget.removeAttribute('user-name');
+  }
+}
+```
+
+!!! warning "Privacy Best Practices"
+	- Use internal user IDs rather than emails or sensitive data
+	- Auto-generated IDs are not personally identifiable
+	- Consider your privacy policy for chat data retention
+	- Allow users to clear their data if required by regulations
+
+	Recommended:
+	```html
+		<!-- ✅ Good: Internal database ID -->
+		user-id="user_12345"
+		user-name="John Doe"
+		<!-- ❌ Avoid: Sensitive information -->
+		user-id="john.doe@company.com"
+	```
+
+
+### Troubleshooting
+Chat history not restoring:
+
+- Ensure user-id is consistent across sessions
+- Check that localStorage is not being cleared
+- Verify persistent-session="true" is set (default)
+
+Multiple users seeing each other's chats:
+
+- Always provide unique user-id for each user
+- Clear session data when users switch:
+
+
 ## :material-hand-wave: Welcome Messages
 
 Enhance user experience by displaying personalized greeting messages when the chat opens. These messages appear as bot messages at the beginning of the conversation. Welcome messages are perfect for:
