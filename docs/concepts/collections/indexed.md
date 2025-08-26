@@ -64,3 +64,18 @@ Choosing the right chunking strategy can improve retrieval accuracy, especially 
 
 [file-search]: ../experiment/index.md#file-search
 [migration-guide]: ../../how-to/migrate_from_assistant_to_collection.md
+
+## Document Sources
+
+In addition to manually uploading documents to a collection, you can also configure document sources from which Open Chat Studio will automatically load and index documents.
+
+The primary advantage of document sources over manual uploads is that Open Chat Studio can check for updates periodically which prevents
+you from having to update them manually.
+
+The following document source types are currently supported:
+
+Confluence
+: Load pages from a Confluence site. Pages can be filtered using the space key, label, CQL or individual page IDs.
+
+GitHub
+: Load pages from a GitHub repository. Files can be filtered by path and by matching patterns against the filenames.
