@@ -293,43 +293,43 @@ The session data is set to expire after 24 hours. This is also configurable by u
 
 ### Core Configuration
 
-| Property | Type | Required | Default | Description |
-|----------|------|----------|---------|-------------|
-| `chatbot-id` | `string` | **REQUIRED** | - | Your chatbot ID from Open Chat Studio<br/>**Example:** `"183312ac-cbe5-4c91-9e7b-d9df96b088e4"` |
-| `api-base-url` | `string` | Optional | `"https://chatbots.dimagi.com"` | API base URL for your Open Chat Studio instance<br/>**Example:** `"https://your-domain.com"` |
+| Property | Type | Required | Default | Description | Example |
+|----------|------|----------|---------|-------------|---------|
+| `chatbot-id` | `string` | **REQUIRED** | - | Your chatbot ID from Open Chat Studio | `"183312ac-cbe5-4c91-9e7b-d9df96b088e4"` |
+| `api-base-url` | `string` | Optional | `"https://chatbots.dimagi.com"` | API base URL for your Open Chat Studio instance | `"https://your-domain.com"` |
 
 ### Button & UI Customization
 
-| Property | Type | Required | Default | Validation | Description |
-|----------|------|----------|---------|------------|-------------|
-| `button-text` | `string` | Optional | `undefined` | Max 50 chars | Button display text. If empty, shows icon only<br/>**Example:** `"Need Help?"` |
-| `button-shape` | `string` | Optional | `"square"` | `"round"` \| `"square"` | Button shape style<br/>**Example:** `"round"` for circular button |
-| `icon-url` | `string` | Optional | OCS default logo | Valid URL | Custom icon for the chat button<br/>**Example:** `"https://yoursite.com/chat-icon.svg"` |
-| `visible` | `boolean` | Optional | `false` | `true` \| `false` | Show widget immediately on page load<br/>**Example:** `"true"` to auto-open |
-| `position` | `string` | Optional | `"right"` | `"left"` \| `"center"` \| `"right"` | Initial widget position on screen<br/>**Example:** `"left"` for left side placement |
-| `header-text` | `string` | Optional | `undefined` | Max 100 chars | Text displayed in chat window header<br/>**Example:** `"Customer Support"` |
+| Property | Type | Required | Default | Validation | Description | Example |
+|----------|------|----------|---------|------------|-------------|---------|
+| `button-text` | `string` | Optional | `undefined` | Max 50 chars | Button display text. If empty, shows icon only | `"Need Help?"` |
+| `button-shape` | `string` | Optional | `"square"` | `"round"` \| `"square"` | Button shape style | `"round"` for circular button |
+| `icon-url` | `string` | Optional | OCS default logo | Valid URL | Custom icon for the chat button | `"https://yoursite.com/chat-icon.svg"` |
+| `visible` | `boolean` | Optional | `false` | `true` \| `false` | Show widget immediately on page load | `"true"` to auto-open |
+| `position` | `string` | Optional | `"right"` | `"left"` \| `"center"` \| `"right"` | Initial widget position on screen | `"left"` for left side placement |
+| `header-text` | `string` | Optional | `undefined` | Max 100 chars | Text displayed in chat window header | `"Customer Support"` |
 
 ### User Management
 
-| Property | Type | Required | Default | Validation | Description |
-|----------|------|----------|---------|------------|-------------|
-| `user-id` | `string` | Optional | Auto-generated | Alphanumeric + underscore/dash | Unique user identifier for session continuity<br/>**Example:** `"user_12345"` or `"customer@email.com"`<br/>**Auto-format:** `ocs:1703123456789_a7x9k2m8f` |
-| `user-name` | `string` | Optional | `undefined` | Max 200 chars | Display name sent to chat API for personalization<br/>**Example:** `"John Smith"` or `"Customer #12345"` |
+| Property | Type | Required | Default | Validation | Description | Example |
+|----------|------|----------|---------|------------|-------------|---------|
+| `user-id` | `string` | Optional | Auto-generated | Alphanumeric + underscore/dash | Unique user identifier for session continuity<br/>**Auto-format:** `ocs:1703123456789_a7x9k2m8f` | `"user_12345"` or `"customer@email.com"` |
+| `user-name` | `string` | Optional | `undefined` | Max 200 chars | Display name sent to chat API for personalization | `"John Smith"` or `"Customer #12345"` |
 
 ### Chat Behavior & Sessions
 
-| Property | Type | Required | Default | Validation | Description |
-|----------|------|----------|---------|------------|-------------|
-| `persistent-session` | `boolean` | Optional | `true` | `true` \| `false` | Save chat history in browser localStorage<br/>**Example:** `"false"` to disable session saving |
-| `persistent-session-expire` | `number` | Optional | `1440` (24 hours) | 0-43200 (30 days) | Minutes before session expires<br/>**Example:** `720` for 12 hours, `0` for never expire |
-| `allow-full-screen` | `boolean` | Optional | `true` | `true` \| `false` | Enable fullscreen mode button<br/>**Example:** `"false"` to hide fullscreen option |
-| `allow-attachments` | `boolean` | Optional | `false` | `true` \| `false` | Enable file upload functionality<br/>**Limits:** 50MB per file, 50MB total per message |
+| Property | Type | Required | Default | Validation | Description | Example |
+|----------|------|----------|---------|------------|-------------|---------|
+| `persistent-session` | `boolean` | Optional | `true` | `true` \| `false` | Save chat history in browser localStorage | `"false"` to disable session saving |
+| `persistent-session-expire` | `number` | Optional | `1440` (24 hours) | 0-43200 (30 days) | Minutes before session expires | `720` for 12 hours, `0` for never expire |
+| `allow-full-screen` | `boolean` | Optional | `true` | `true` \| `false` | Enable fullscreen mode button | `"false"` to hide fullscreen option |
+| `allow-attachments` | `boolean` | Optional | `false` | `true` \| `false` | Enable file upload functionality<br/>**Limits:** 50MB per file, 50MB total per message | `"true"` to enable file uploads |
 
 ### Messages & Content
 
-| Property | Type | Required | Default | Validation | Description |
-|----------|------|----------|---------|------------|-------------|
-| `welcome-messages` | `string` | Optional | `undefined` | Valid JSON array | Welcome messages shown when chat opens<br/>**Format:** `'["Message 1", "Message 2"]'`<br/>**Example:** `'["Welcome!", "How can I help?"]'`<br/>**Max:** 5 messages, 500 chars each |
-| `starter-questions` | `string` | Optional | `undefined` | Valid JSON array | Clickable question buttons to start conversation<br/>**Format:** `'["Question 1", "Question 2"]'`<br/>**Example:** `'["Check my order", "Technical support"]'`<br/>**Max:** 6 questions, 100 chars each |
-| `typing-indicator-text` | `string` | Optional | `"Preparing response"` | Max 50 chars | Text shown while bot is typing<br/>**Example:** `"AI is thinking..."` |
-| `new-chat-confirmation-message` | `string` | Optional | `"Starting a new chat will clear your current conversation. Continue?"` | Max 200 chars | Confirmation dialog text for new chat button<br/>**Example:** `"Start over? Your current chat will be lost."` |
+| Property | Type | Required | Default | Validation | Description | Example |
+|----------|------|----------|---------|------------|-------------|---------|
+| `welcome-messages` | `string` | Optional | `undefined` | Valid JSON array<br/>**Max:** 5 messages, 500 chars each | Welcome messages shown when chat opens<br/>**Format:** `'["Message 1", "Message 2"]'` | `'["Welcome!", "How can I help?"]'` |
+| `starter-questions` | `string` | Optional | `undefined` | Valid JSON array<br/>**Max:** 6 questions, 100 chars each | Clickable question buttons to start conversation<br/>**Format:** `'["Question 1", "Question 2"]'` | `'["Check my order", "Technical support"]'` |
+| `typing-indicator-text` | `string` | Optional | `"Preparing response"` | Max 50 chars | Text shown while bot is typing | `"AI is thinking..."` |
+| `new-chat-confirmation-message` | `string` | Optional | `"Starting a new chat will clear your current conversation. Continue?"` | Max 200 chars | Confirmation dialog text for new chat button | `"Start over? Your current chat will be lost."` |
