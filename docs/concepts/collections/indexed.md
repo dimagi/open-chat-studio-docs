@@ -8,7 +8,7 @@ When you want your bot's responses to be grounded in your uploaded documents.
 !!! note "Definition"
     **Retrieval-Augmented Generation** (RAG) is a technique where a language model retrieves relevant information from a set of documents to ground its answers in real data. Instead of relying solely on its built-in knowledge, the model uses indexes—specialized databases that store document content as vectors (numerical representations of meaning). This makes it easy for the model to find and use the most relevant parts of your uploaded files when answering questions.
 
-!!! warning "Indexed collections will replace OpenAI Assistants" file search functionality in the future`
+!!! warning "Indexed collections will replace OpenAI Assistants' file search functionality in the future"
 
 If you’ve used the OpenAI Assistants’ [file search][file-search] capability in OCS, you’ve already interacted with an index behind the scenes.
 
