@@ -279,11 +279,15 @@ By default, the widget will save the chat messages in the browser local storage.
 
 To disable this feature, set the `persistent-session="false"` attribute on the widget element.
 
+!!! note
+
+    The session persistence is associated with the `chatbot-id`. If the `chatbot-id` changes, any previous session data will be ignored.
+
 The session data is set to expire after 24 hours. This is also configurable by using the `persistent-session-expire` attribute. The value is interpreted as *"the number of minutes since the last message before the session expires"*. Setting this attribute to `0` will disable the expiration entirely.
 
 !!! note
 
-    The session persistence is associated with the `chatbot-id`. If the `chatbot-id` changes, any previous session data will be ignored.
+    Session persistence works in conjunction with [User Identification](#user-identification). Different users will have separate persistent sessions.
 
 ## :material-clipboard-list: Properties Reference
 
