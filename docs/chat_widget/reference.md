@@ -96,15 +96,6 @@ Persistence Behavior:
 - Incognito mode: New ID that's cleared when session ends
 
 
-### Session Impact
-
-| Scenario                        | Behavior   |
-|---------------------------------|-----------|
-| Same `user-id`                 | Restores previous chat history |
-| Different `user-id`                 | Starts fresh session for new user |
-| No `user-id` (auto-generated)          | Restores on same browser only |
-| `user-id` changes                 | Switches to different user's session |
-
 ### Dynamic User Management
 Update user identification when authentication state changes:
 ```javascript
