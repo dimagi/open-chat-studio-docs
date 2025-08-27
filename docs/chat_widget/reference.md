@@ -118,21 +118,6 @@ function updateChatUser(user) {
 }
 ```
 
-!!! warning "Privacy Best Practices"
-	- Use internal user IDs rather than emails or sensitive data
-	- Auto-generated IDs are not personally identifiable
-	- Consider your privacy policy for chat data retention
-	- Allow users to clear their data if required by regulations
-
-	Recommended:
-	```html
-		<!-- ✅ Good: Internal database ID -->
-		user-id="user_12345"
-		user-name="John Doe"
-		<!-- ❌ Avoid: Sensitive information -->
-		user-id="john.doe@company.com"
-	```
-
 
 ### Troubleshooting
 Chat history not restoring:
