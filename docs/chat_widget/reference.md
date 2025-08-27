@@ -118,20 +118,6 @@ function updateChatUser(user) {
 }
 ```
 
-
-### Troubleshooting
-Chat history not restoring:
-
-- Ensure user-id is consistent across sessions
-- Check that localStorage is not being cleared
-- Verify persistent-session="true" is set (default)
-
-Multiple users seeing each other's chats:
-
-- Always provide unique user-id for each user
-- Clear session data when users switch:
-
-
 ## :material-hand-wave: Welcome Messages
 
 Enhance user experience by displaying personalized greeting messages when the chat opens. These messages appear as bot messages at the beginning of the conversation. Welcome messages are perfect for:
