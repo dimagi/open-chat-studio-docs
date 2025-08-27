@@ -1,5 +1,5 @@
 ---
-title: How to Migrate Your Assistant to an Indexed Collection
+title: Migrate Assistants
 ---
 
 !!! tip "Make sure you're familiar with the different types of [Collections][collections] before continuing."

@@ -63,4 +63,4 @@ Choosing the right chunking strategy can improve retrieval accuracy, especially 
 !!! info "This flexibility helps tailor the index to your use case—whether it’s short notes or long, complex reports."
 
 [file-search]: ../experiment/index.md#file-search
-[migration-guide]: ../../how-to/migrate_from_assistant_to_collection.md
+[migration-guide]: ../../how-to/assistants_migration.md
