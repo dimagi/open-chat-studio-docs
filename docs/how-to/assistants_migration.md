@@ -2,7 +2,7 @@
 title: Migrate Assistants
 ---
 
-OpenAI have [deprecated](https://platform.openai.com/docs/deprecations#2025-08-20-assistants-api) Assistants and will completely remove support on 2026-08-26.
+OpenAI has [deprecated](https://platform.openai.com/docs/deprecations#2025-08-20-assistants-api) Assistants and will completely remove support on 2026-08-26.
 
 Open Chat Studio supports all the features of Assistants in alternative ways as shown in the table below:
 
@@ -36,7 +36,7 @@ To use OpenAI's code interpreter tool without using Assistants:
 
 ### Step 1: Create the Collection
 
-Click on the **"Collections"** tab in the sidebar. Instead of selecting "Add New", click **"Create from Assistant"**.
+Click on the **"Collections"** tab in the sidebar and click the **"Create from Assistant"** button in the top right.
 
 - Select the assistant you'd like to migrate.
 - Give your new collection a name.

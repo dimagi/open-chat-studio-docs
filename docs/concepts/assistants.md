@@ -2,12 +2,12 @@
 
 !!! warning "Deprecation Warning"
 
-    OpenAI have [deprecated](https://platform.openai.com/docs/deprecations#2025-08-20-assistants-api) Assistants and will completely remove support on 2026-08-26.
+    OpenAI has [deprecated](https://platform.openai.com/docs/deprecations#2025-08-20-assistants-api) Assistants and will completely remove support on 2026-08-26.
 
     Open Chat Studio supports all the features of Assistants in other ways. To find out about migrating away from Assistants see the [migration guide](../how-to/assistants_migration.md).
 
 ## Syncing with OpenAI
-The in-sync status with OpenAI is automatically checked each time a user visits the edit screen of an assistant. If the assistant in OCS has the identical configurations and files with the assistant in Open AI, the an in-sync status will appear under the assistant id:
+The in-sync status with OpenAI is automatically checked each time a user visits the edit screen of an assistant. If the assistant in OCS has the identical configurations and files with the assistant in OpenAI, then an in-sync status will appear under the assistant id:
 ![In Sync Status](images/open_ai_assistant_in_sync_status.png)
 
 Otherwise, a warning will be displayed explaining what is out of sync. For example, in the image below, there are files uploaded in OpenAI that are not uploaded in OCS. This may result in unexpected behavior from the assistant. To resolve, upload the listed files in the edit screen.

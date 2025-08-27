@@ -134,7 +134,7 @@ In addition to the tools provided by Open Chat Studio, some LLM providers have t
 
 * Execute code to analyse data, generate graphs etc.
 * See https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/code-execution-tool
-* :octicons-x-circle-24:{ .red } Supported by OCS
+* :octicons-x-circle-24:{ .red } Not supported by OCS
 
 ### Gemini tools
 
@@ -142,10 +142,10 @@ In addition to the tools provided by Open Chat Studio, some LLM providers have t
 
 * Search the web and pass the results to the LLM.
 * See https://ai.google.dev/gemini-api/docs/google-search
-* :octicons-x-circle-24:{ .red } Supported by OCS
+* :octicons-x-circle-24:{ .red } Not supported by OCS
 
 #### Code Execution { #gemini-code-execution }
 
 * Execute code to analyse data, generate graphs etc.
 * See https://ai.google.dev/gemini-api/docs/code-execution
-* :octicons-x-circle-24:{ .red } Supported by OCS
+* :octicons-x-circle-24:{ .red } Not supported by OCS
