@@ -112,11 +112,8 @@ function updateChatUser(user) {
   const widget = document.querySelector('open-chat-studio-widget');
 
   if (user) {
-    widget.setAttribute('user-id', user.id);
-    widget.setAttribute('user-name', user.name);
-  } else {
-    widget.removeAttribute('user-id');
-    widget.removeAttribute('user-name');
+    widget.userId = user.id;
+    widget.userName = user.name;
   }
 }
 ```
