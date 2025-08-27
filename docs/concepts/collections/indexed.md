@@ -10,9 +10,9 @@ When you want your bot's responses to be grounded in your uploaded documents.
 
 !!! warning "Indexed collections will replace OpenAI Assistants' file search functionality in the future"
 
-If you’ve used the OpenAI Assistants’ [file search][file-search] capability in OCS, you’ve already interacted with an index behind the scenes.
+    Consult the [migration guide][migration-guide] if you have assistants that you want to replace with indexed collections.
 
-!!! tip "Consult the [migration guide][migration-guide] if you have assistants that you want to replace with indexed collections."
+If you’ve used the OpenAI Assistants’ [file search][file-search] capability in OCS, you’ve already interacted with an index behind the scenes.
 
 In OCS, there are two types of indexes:
 
