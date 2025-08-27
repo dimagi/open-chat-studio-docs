@@ -84,7 +84,9 @@ End the current chat [session](../sessions.md). This will mark the session as co
 * Name: `end-session`
 * Arguments: (none)
 
-## System tools
+## Internal tools
+
+The following tools are used internally by Open Chat Studio and enabled / disabled automatically depending on the chatbot configuration.
 
 **Attach Media**
 
@@ -101,3 +103,49 @@ Allows the bot to search indexed collections when a collection is configured.
 * Name: `file-search`
 * Arguments:
   * `query`: A natural language query to search for relevant information in the documents.
+
+## LLM Provider Tools
+
+In addition to the tools provided by Open Chat Studio, some LLM providers have their own set of tools which are executed interally by the provider.
+
+### OpenAI tools
+
+#### Web Search { #openai-web-search }
+
+* Search the web and pass the results to the LLM.
+* See https://platform.openai.com/docs/guides/tools-web-search
+* :material-check-circle-outline:{ .green } Supported by OCS
+
+#### Code Interpreter { #openai-code-interpreter }
+
+* Execute code to analyse data, generate graphs etc.
+* See https://platform.openai.com/docs/guides/tools-code-interpreter
+* :material-check-circle-outline:{ .green } Supported by OCS
+
+### Anthropic tools
+
+#### Web Search { #anthropic-web-search }
+
+* Search the web and pass the results to the LLM.
+* See https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/web-search-tool
+* :material-check-circle-outline:{ .green } Supported by OCS
+
+#### Code Execution { #anthropic-code-execution }
+
+* Execute code to analyse data, generate graphs etc.
+* See https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/code-execution-tool
+* :octicons-x-circle-24:{ .red } Supported by OCS
+
+### Gemini tools
+
+#### Grounding with search { #gemini-web-search }
+
+* Search the web and pass the results to the LLM.
+* See https://ai.google.dev/gemini-api/docs/google-search
+* :octicons-x-circle-24:{ .red } Supported by OCS
+
+#### Code Execution { #gemini-code-execution }
+
+* Execute code to analyse data, generate graphs etc.
+* See https://ai.google.dev/gemini-api/docs/code-execution
+* :octicons-x-circle-24:{ .red } Supported by OCS
