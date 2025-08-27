@@ -87,10 +87,7 @@ Identified Users
 
 When no user-id is provided, the widget automatically creates a unique identifier:
 
-- Format: ocs:{timestamp}_{random-string}
 - Example: ocs:1703123456789_a7x9k2m8f
-- Storage: Saved in browser's localStorage as ocs-user-id
-- Security: Uses crypto.getRandomValues() for randomness
 
 Persistence Behavior:
 
