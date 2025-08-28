@@ -7,3 +7,12 @@ open-chat-studio-widget {
     --button-font-size: 0.7rem;
     z-index: 9999;
 }
+
+
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}

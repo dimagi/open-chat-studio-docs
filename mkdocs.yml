@@ -65,6 +65,8 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+  - toc:
+      permalink: true
 
 plugins:
 - search
@@ -97,7 +99,7 @@ nav:
       - how-to/configure_providers.md
       - how-to/api_access.md
       - how-to/setting_up_a_survey.md
-      - how-to/migrate_from_assistant_to_collection.md
+      - how-to/assistants_migration.md
   - Concepts:
       - concepts/index.md
       - Chatbots:
