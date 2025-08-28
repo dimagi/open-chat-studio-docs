@@ -43,7 +43,7 @@ Before embedding, you must create a bot in Open Chat Studio.
       ```html
       <open-chat-studio-widget
         visible="false"
-        bot-url="https://chatbots.dimagi.com/...."
+        chatbot-id="{CHATBOT_ID}"
         button-text="Let's Chat"
         position="right"
         expanded="false">
