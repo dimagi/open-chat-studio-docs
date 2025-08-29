@@ -28,6 +28,16 @@ deploying chatbots created using Large Language Models (LLMs).
 
 * **View and Download Data:** View and export the data from interactions with your chatbots, formatted In CSV.
 
+<div class="grid cards" markdown>
+
+-   :material-clock-fast:{ .lg .middle } [__Quickstart Guide__](how-to/first_chatbot.md)
+-   :material-chat-question:{ .lg .middle } [__What is a Chatbot?__](concepts/chatbots/index.md#what-is-a-chatbot)
+-   :octicons-gear-24:{ .lg .middle } [__Configuring your Team__](concepts/team/index.md)
+-   :octicons-ai-model-24:{ .lg .middle } [__What is an LLM?__](concepts/llm.md)
+-   :material-whatsapp:{ .lg .middle } [__Deploying your bot__](how-to/deploy_to_different_channels.md)
+
+</div>
+
 ## How do I use Open Chat Studio?
 
 You can host your own instance of Open Chat Studio, or use the hosted version
