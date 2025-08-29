@@ -91,6 +91,7 @@ nav:
   - Home: index.md
   - How-to Guides:
       - how-to/index.md
+      - how-to/first_chatbot.md
       - how-to/workflow_cookbook.md
       - how-to/add_a_knowledge_base.md
       - how-to/remote_api.md
