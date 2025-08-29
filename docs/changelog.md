@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Aug 29, 2025
+* **CHANGE** Remove the default "API" filter applied to the chatbot session tables.
+
 ## Aug 21, 2025
 * **NEW** Added a voice selection field to the LLM node to override the global STT setting. This field is only visible when a voice provider is configured for the bot.
 
