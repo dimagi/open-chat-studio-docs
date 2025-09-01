@@ -18,7 +18,7 @@ the [How-to guides](../how-to/index.md).
 : A chatbot that uses OpenAI\`s Assistant API. Assistants can write and execute code and search and reference
   information in uploaded files.
 
-[Authentication Provider](authentication-providers.md)
+[Authentication Provider](team/authentication_providers.md)
 : Authentication providers allow you to authenticate with external systems to access data or services.
 
 [Channel](channels.md)
@@ -39,7 +39,7 @@ the [How-to guides](../how-to/index.md).
 [Large Language Models (LLMs)](llm.md)
 : Large language models are a type of AI model that can generate human-like text, images and audio.
 
-[Messaging Provider](messaging_providers.md)
+[Messaging Provider](team/messaging_providers.md)
 : Messaging providers hold the configuration required to send messages to users on a specific channel.
 
 [Participant Data](participant_data.md)
@@ -57,7 +57,7 @@ the [How-to guides](../how-to/index.md).
 [Source Material](source_material.md)
 : Additional information that can be included in the bot prompt using the `{source_material}` prompt variable.
 
-[Tracing Provider](tracing_providers.md)
+[Tracing Provider](team/tracing_providers.md)
 : Tracing providers hold the configuration required to send traces to the tracing provider.
 
 [Versions](versioning.md)

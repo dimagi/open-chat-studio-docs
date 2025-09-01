@@ -11,7 +11,7 @@ Open Chat Studio (OCS) has built-in support for the following providers:
 Tracing will automatically begin with the next conversation after configuring a tracing provider.
 
 ## See also
-- [Configure a provider](../how-to/configure_providers.md)
+- [Configure a provider](../../how-to/configure_providers.md)
 
 
 [langfuse]: https://langfuse.com/docs

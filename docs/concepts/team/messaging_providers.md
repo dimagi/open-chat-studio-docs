@@ -14,4 +14,4 @@ Below is a list of supported providers and their integrated platforms in OCS:
 - SureAhdere
 
 ## See also
-- [Configure a messaging provider](../how-to/configure_providers.md)
+- [Configure a messaging provider](../../how-to/configure_providers.md)

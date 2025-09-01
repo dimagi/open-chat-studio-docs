@@ -29,7 +29,7 @@ The final history mode is called `Named` and allows you to specify a specific, n
     If there are multiple nodes serially that use the same `Named` history, then each node will add to the history. In the case of serial nodes, this will result in multiple new history entries for every processed user message.
 
 
-The most common use case to this will be when we have multiple parallel nodes after an [LLM Router](nodes.md#llm-router). In the [Advanced Pipelines Example](index.md#advanced-example), the general, quiz, and roleplay LLM nodes would all likely use the same shared history, giving each node visibility into the larger conversation.
+The most common use case to this will be when we have multiple parallel nodes after an [LLM Router](nodes.md#llm-router). In the [Advanced Pipelines Example](../../how-to/workflow_cookbook.md#split-bot-into-multiple-smaller-bots), the general, quiz, and roleplay LLM nodes would all likely use the same shared history, giving each node visibility into the larger conversation.
 
 Note that for this particular example, each of the nodes could use a `Global` history to achieve the same thing. However, if there was a translation or formatting node at before the final `output`, then the `Named` history mode would enable the interim nodes to share a history in the original language / formatting.
 
