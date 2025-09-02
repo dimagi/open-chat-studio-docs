@@ -13,7 +13,7 @@ Before you create a Custom Action will need to create an Authentication Provider
 you are using does not require authentication). You can do this by navigating to the [Authentication Providers][auth_providers] section
 in Team Settings and creating a new Authentication Provider.
 
-[auth_providers]: ../concepts/authentication-providers.md
+[auth_providers]: team/authentication_providers.md
 
 ### Base URL
 

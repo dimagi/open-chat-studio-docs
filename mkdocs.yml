@@ -130,10 +130,11 @@ nav:
         - concepts/pipelines/history.md
       - Team:
           - concepts/team/index.md
-          - concepts/authentication-providers.md
-          - concepts/messaging_providers.md
-          - concepts/tracing_providers.md
-          - concepts/groups.md
+          - concepts/team/llm_providers.md
+          - concepts/team/authentication_providers.md
+          - concepts/team/messaging_providers.md
+          - concepts/team/tracing_providers.md
+          - concepts/team/groups.md
       - Assistants:
           - concepts/assistants.md
       - API: api/index.md

@@ -169,7 +169,7 @@ pipelines
 * **BUG** Fixed the `{participant_data}` prompt variable which was missing the participants scheduled messages.
 
 ## Apr 10, 2025
-* **NEW** Bots can now send multimedia files to users using the [Collections feature](./concepts/media_collections.md).
+* **NEW** Bots can now send multimedia files to users using the [Collections feature](./concepts/collections/media.md).
 * **BUG** Fixed reminder messages not appearing in web chats.
 
 ## Apr 7, 2025

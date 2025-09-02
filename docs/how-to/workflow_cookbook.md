@@ -160,7 +160,7 @@ Instructions:
 ```
 
 [abort]: ../concepts/pipelines/nodes.md#python_node.abort_with_message
-[python]: ../concepts/pipelines/nodes.md#python_node
+[python]: ../concepts/pipelines/nodes.md#python-node
 [router]: ../concepts/pipelines/nodes.md#llm-router
 [prompt_vars]: ../concepts/prompt_variables.md
 [temp_state]: ../concepts/pipelines/nodes.md#temporary-state

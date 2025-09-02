@@ -78,7 +78,7 @@ Load pages from a Confluence site. Pages can be filtered using the space key, la
 
 **Authentication**
 
-Use a [Basic Auth](../authentication-providers.md#basic-auth) authentication provider with your Atlassian username and use your API Key as the password.
+Use a [Basic Auth](../team/authentication_providers.md#basic-auth) authentication provider with your Atlassian username and use your API Key as the password.
 
 **Configuration**
 
@@ -101,7 +101,7 @@ Load pages from a GitHub repository. Files can be filtered by path and by matchi
 
 **Authentication**
 
-Use a [Bearer Token](../authentication-providers.md#bearer-token) authentication provider.
+Use a [Bearer Token](../team/authentication_providers.md#bearer-token) authentication provider.
 
 **Configuration**
 

@@ -47,7 +47,7 @@ The web channel uses the web interface and is enabled by default for all bots. L
 
 
 [1]: https://core.telegram.org/bots#how-do-i-create-a-bot
-[2]: ../concepts/messaging_providers.md
+[2]: ../concepts/team/messaging_providers.md
 [3]: https://www.twilio.com/docs/WhatsApp/api#configuring-inbound-message-webhooks
 [4]: https://www.twilio.com/docs/conversations/Facebook-messenger#setting-up-the-Facebook-messenger-channel
 [5]: https://core.Telegram.org/bots/features#:~:text=/setjoingroups%20%E2%80%93%20toggle%20whether%20your%20bot%20can%20be%20added%20to%20groups%20or%20not.%20All%20bots%20must%20be%20able%20to%20process%20direct%20messages%2C%20but%20if%20your%20bot%20was%20not%20designed%20to%20work%20in%20groups%2C%20you%20can%20disable%20this.

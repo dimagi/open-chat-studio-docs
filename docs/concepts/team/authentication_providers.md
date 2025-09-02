@@ -3,7 +3,7 @@
 Authentication Providers are used to authenticate with external services via HTTP API calls. Authentication Providers
 provide a centralized location to manage the credentials and tokens required to authenticate with external services.
 
-These credentials are used by features like [Custom Actions](../concepts/custom_actions.md).
+These credentials are used by features like [Custom Actions](../custom_actions.md).
 
 ## Authentication Provider Types
 
