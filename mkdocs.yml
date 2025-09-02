@@ -130,6 +130,7 @@ nav:
         - concepts/pipelines/history.md
       - Team:
           - concepts/team/index.md
+          - concepts/team/llm_providers.md
           - concepts/team/authentication_providers.md
           - concepts/team/messaging_providers.md
           - concepts/team/tracing_providers.md
