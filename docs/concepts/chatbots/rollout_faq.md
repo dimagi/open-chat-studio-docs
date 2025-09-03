@@ -6,7 +6,7 @@ Now - September 10th: Team admins can enable the Chatbot Feature Flag for their 
 
 September 10th: Chatbot Feature Flag is enabled for all teams
 
-October 1st: All legacy experiments are migrated to chatbots. Pipeline experiments are filterd out from the pipeline table.
+October 1st: All legacy experiments are migrated to chatbots. Pipeline experiments are filtered out from the pipeline table.
 
 
 
