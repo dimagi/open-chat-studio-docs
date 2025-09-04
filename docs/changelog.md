@@ -5,7 +5,7 @@ hide:
 
 # Changelog
 ## Sept 4, 2025
-* **BUG** Fix user invitation flow where email case doesn't match.
+* **BUG** Fix user invitation flow where email case doesn't match the registered email.
 
 ## Aug 29, 2025
 * **CHANGE** Remove the default "API" filter applied to the chatbot session tables.
