@@ -4,41 +4,27 @@ Learn how to customize the Open Chat Studio widget to match your brand and impro
 
 ## Button Customization
 
-### :material-text: Button Text
-
-Control whether your chat button displays text alongside an icon:
+The widget button can be customized using the following properties:
 
 ```html
 <open-chat-studio-widget
-  button-text="Chat with us">
+  button-text="Chat with us"
+  button-shape="round"
+  icon-url="https://your-domain.com/custom-chat-icon.svg">
 </open-chat-studio-widget>
 ```
-Behavior:
+
+**Button Text**
 
 - When button-text is provided, the button displays both icon and text
 - When button-text is empty or not provided, only an icon is shown
 
-### :material-shape: Button Shape
-Customize the shape of your chat button:
-```html
-<open-chat-studio-widget
-  button-shape="round">
-</open-chat-studio-widget>
-```
-Available Shapes:
+**Button Shape**
 
 - **round** - Circular button
 - **square** - Rectangular button with rounded corners
 
-For further customization of the appearance, see [CSS Styling](styling.md)
-
-### Custom Icon
-Replace the default chat icon with your own:
-```html
-<open-chat-studio-widget
-  icon-url="https://your-domain.com/custom-chat-icon.svg">
-</open-chat-studio-widget>
-```
+**Icon URL**
 
 If no icon-url is provided, the default Open Chat Studio logo is used.
 
@@ -224,6 +210,7 @@ Customize the message displayed while the assistant is preparing a response. Thi
 The typing indicator appears with animated dots and a progress bar to provide visual feedback during response generation.
 
 Styling:
+
 - Text color is controlled by `--loading-text-color`
 - Font size uses `--chat-window-font-size-sm`
 - See [CSS Styling](styling.md#loading-indicators) for customization options

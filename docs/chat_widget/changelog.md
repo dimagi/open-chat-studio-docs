@@ -22,6 +22,12 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 ## Changelog
 
+### v0.4.8
+
+* Fix horizontal scrollbar styling.
+* Improve scrolling behavior for new messages.
+* Scroll to bottom when loading the window.
+
 ### v0.4.7
 
 * Fix regression in font size consistency.
