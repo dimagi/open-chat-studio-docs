@@ -4,6 +4,10 @@ hide:
 ---
 
 # Changelog
+
+## Sept 12, 2025
+* **CHANGE** Deprecate Assistant Nodes. See the [migration documentation](how-to/assistants_migration.md) for more details.
+
 ## Sept 4, 2025
 * **BUG** Fix user invitation flow where email case doesn't match the registered email.
 
