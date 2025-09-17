@@ -137,6 +137,10 @@ nav:
           - concepts/team/groups.md
       - Assistants:
           - concepts/assistants.md
+      - Evaluations:
+        - concepts/evaluations/index.md
+        - concepts/evaluations/dataset.md
+        - concepts/evaluations/evaluators.md
       - API: api/index.md
   - Chat Widget:
     - chat_widget/index.md

@@ -30,6 +30,9 @@ the [How-to guides](../how-to/index.md).
 [Custom Actions](custom_actions.md)
 : Custom actions are a way to extend the functionality of the bot by integrating with external systems via HTTP APIs.
 
+[Evaluations](evaluations/index.md)
+: Evaluations is a testing system for measuring chatbot performance against different metrics.
+
 [Events](events.md)
 : Events are a way to trigger actions in the bot based on specific conditions.
 
