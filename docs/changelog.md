@@ -7,6 +7,7 @@ hide:
 
 ## Sept 19, 2025
 * **MIGRATION** All [Experiments](concepts/experiments/index.md) have been migrated to [chatbots](concepts/chatbots/index.md).
+* **NEW** Add filtering capabilities to the participant table.
 
 ## Sept 12, 2025
 * **CHANGE** Deprecate Assistant Nodes. See the [migration documentation](how-to/assistants_migration.md) for more details.
