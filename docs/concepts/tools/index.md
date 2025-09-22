@@ -6,6 +6,14 @@ Open Chat Studio provides a number of built-in tools as well as the ability to a
 
 The current set of built-in tools are listed below. If you need to refer to the tool in a prompt, use the tool's name directly e.g. `update-user-data`.
 
+**Calculator**
+
+Allows to bot to do mathematical calculations reliably.
+
+* Name: `calculator`
+* Arguments:
+  * `expression`: The mathematical expression to evaluate.
+
 **Recurring reminders**
 
 Allows the bot to schedule recurring reminders for the participant.
