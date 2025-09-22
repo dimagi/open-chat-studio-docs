@@ -6,7 +6,7 @@ hide:
 # Changelog
 
 ## Sept 22, 2025
-* **NEW** A 'calculator' tool has been added to the LLM node to allow bots to perform mathematical calculations consistenty and reliably.
+* **NEW** A 'calculator' tool has been added to the LLM node to allow bots to perform mathematical calculations consistently and reliably.
 
 ## Sept 19, 2025
 * **MIGRATION** All [Experiments](concepts/experiments/index.md) have been migrated to [chatbots](concepts/chatbots/index.md).
