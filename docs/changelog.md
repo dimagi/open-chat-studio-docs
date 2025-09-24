@@ -5,6 +5,9 @@ hide:
 
 # Changelog
 
+## Sept 24, 2025
+* **NEW** Added a view where all sessions accross all chatbots are shown and can be filtered.
+
 ## Sept 19, 2025
 * **MIGRATION** All [Experiments](concepts/experiments/index.md) have been migrated to [chatbots](concepts/chatbots/index.md).
 
