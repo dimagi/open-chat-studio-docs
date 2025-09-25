@@ -5,6 +5,11 @@ hide:
 
 # Changelog
 
+## Sept 25, 2025
+* **BUG** Fixed and issue where participant identifiers for the connect channel was not treated as case insensitive.
+* **BUG** Fixed and issue with the dashboard filters not updating date filters correctly.
+
+
 ## Sept 24, 2025
 * **NEW** Added a view where all sessions across all chatbots are shown and can be filtered.
 
