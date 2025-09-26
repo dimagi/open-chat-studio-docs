@@ -5,6 +5,9 @@ hide:
 
 # Changelog
 
+## Sept 26, 2025
+* **NEW** Participant import and export functionality has been added to the Participant list page.
+
 ## Sept 25, 2025
 * **BUG** Fixed an issue where participant identifiers for the connect channel were not treated as case insensitive.
 * **BUG** Fixed an issue with the dashboard filters not updating date filters correctly.
