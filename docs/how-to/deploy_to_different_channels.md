@@ -22,10 +22,33 @@ The web channel uses the web interface and is enabled by default for all bots. L
     Depending on your usecase, you probably want to disable group joins for your bot on Telegram. Since your telegram bot is public, anyone can add it to a group, which could end up costing you a lot. To achieve this, use the [setjoingroups][5] setting in BotFather.
 
 ## WhatsApp
-- Add your WhatsApp number to the form.
-- After you submit the form, you will be provided with a webhook URL. Copy this URL and paste it in the 'webhook url' input at your provider. You can also get this URL by clicking on your WhatsApp channel again.
-    - For Twilio, see [this page][3]
-    - For Turn.io, go to your settings -> API & Webhooks -> Add a webhook and paste the OCS webhook URL
+
+### Setting Up Your WhatsApp Channel
+
+1. **Add your WhatsApp number to the form** in the Open Chat Studio channels section.
+
+2. **Configure the webhook URL in your provider:**
+
+   The webhook URL is always: `https://chatbots.dimagi.com/channels/whatsapp/incoming_message`
+
+   This URL is the same for all WhatsApp chatbots and channels on Open Chat Studio.
+
+### Provider-Specific Configuration
+
+#### For New WhatsApp Numbers
+If you're setting up a brand new WhatsApp number, you'll need:
+- Admin access to your Twilio/Turn.io account
+- To register the number with Meta/WhatsApp
+- To configure the webhook URL in your provider settings
+
+#### For Existing WhatsApp Numbers
+If you're reusing an existing WhatsApp number that was previously configured for Open Chat Studio:
+- **No additional webhook configuration needed** - the number is already set up to forward messages to Open Chat Studio
+- Simply add the number to your bot's channels in Open Chat Studio
+
+#### Provider Instructions
+- **For Twilio:** See [this page][3] to configure the webhook URL in your messaging service
+- **For Turn.io:** Go to Settings → API & Webhooks → Add a webhook and paste the OCS webhook URL
 
 
 ## Facebook Messenger
