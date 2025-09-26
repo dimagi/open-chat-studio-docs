@@ -1,17 +1,19 @@
 # Participant Data
 
-Participant data is the information that is collected from participants during their interactions with the system.
+Participant data is the information collected from participants during their interactions with the system.
 
-Participant data is unique to each combination of channel platform, channel identifier and experiment. This means that
+Participant data is unique to each combination of channel platform, channel identifier and chatbot. This means that
 the data for each bot may be different. For example, if the same person interacts with two different bots over the same
 channel e.g. WhatsApp, the data for each bot will be different. Furthermore, if the same person interacts with the same
 bot over two different channels e.g. WhatsApp and Telegram, the data for each channel will be different.
 
-The reason for this is to ensure that the data is only accessible to the bot that it is intended for and because there
+The reason for this is to ensure that the data is only accessible to the bot that it is intended for. There
 is no way for the system to know whether the same person is interacting with the bot on different channels.
 
 Participant data can be viewed and edited on the "Participant Details" page. This page can be accessed by clicking on
-the participant's name in the list of participants on the "Participants" page.
+the participant's name in the list of participants on the "Participants" list page.
+
+You can also export and import participant data from the "Participants" list page.
 
 ## Using participant data
 
