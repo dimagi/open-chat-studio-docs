@@ -5,6 +5,9 @@ hide:
 
 # Changelog
 
+## Sept 26, 2025
+* **CHANGE** Update the 'attach-media' tool used by [Media Collections](concepts/collections/media.md) to allow attaching multiple files at a time (up to a maximum of 5).
+
 ## Sept 25, 2025
 * **BUG** Fixed an issue where participant identifiers for the connect channel were not treated as case insensitive.
 * **BUG** Fixed an issue with the dashboard filters not updating date filters correctly.
