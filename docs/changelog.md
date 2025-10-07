@@ -10,6 +10,7 @@ hide:
 * **CHANGE** Removed the `Experiments` and `Safety Layers` sidebar entries. This is part of the migration from [Experiments](concepts/experiment/index.md) to [Chatbots](concepts/chatbots/index.md).
 
 ## Sept 26, 2025
+* **NEW** Participant import and export functionality has been added to the Participant list page.
 * **CHANGE** Update the 'attach-media' tool used by [Media Collections](concepts/collections/media.md) to allow attaching multiple files at a time (up to a maximum of 5).
 
 ## Sept 25, 2025

@@ -6,7 +6,9 @@ Open Chat Studio provides a number of built-in tools as well as the ability to a
 
 The current set of built-in tools are listed below. If you need to refer to the tool in a prompt, use the tool's name directly e.g. `update-user-data`.
 
-**Calculator**
+## User configurable tools
+
+### Calculator
 
 Allows to bot to do mathematical calculations reliably.
 
@@ -14,7 +16,7 @@ Allows to bot to do mathematical calculations reliably.
 * Arguments:
   * `expression`: The mathematical expression to evaluate.
 
-**Recurring reminders**
+### Recurring reminders
 
 Allows the bot to schedule recurring reminders for the participant.
 
@@ -28,7 +30,7 @@ Allows the bot to schedule recurring reminders for the participant.
   * `datetime_end`: The date of the last reminder in ISO 8601 format (optional).
   * `repetitions`: The number of messages to send before stopping (optional).
 
-**One-off Reminder**
+### One-off Reminder
 
 Allows the bot to schedule once-off reminders for the participant.
 
@@ -38,7 +40,7 @@ Allows the bot to schedule once-off reminders for the participant.
   * `message`: The reminder message
   * `schedule_name`: The name for this reminder
 
-**Delete Reminder**
+### Delete Reminder
 
 Allows the bot to delete existing reminders (either once-off or recurring)
 
@@ -46,7 +48,7 @@ Allows the bot to delete existing reminders (either once-off or recurring)
 * Arguments:
   * `message_id`: The ID of the scheduled message to delete.
 
-**Move Reminder Date**
+### Move Reminder Date
 
 Allows the bot to update the reminder date
 
@@ -58,7 +60,7 @@ Allows the bot to update the reminder date
   * `minute`: The new minute of the hour.
   * `specified_date`: A specific date to re-schedule the message for in ISO 8601 format
 
-**Update Participant Data**
+### Update Participant Data
 
 Allows the bot to make changes to the [participant data](../participant_data.md)
 
@@ -67,7 +69,7 @@ Allows the bot to make changes to the [participant data](../participant_data.md)
   * `key`: The key in the user data to update.
   * `value`: The new value of the user data.
 
-**Append to Participant Data**
+### Append to Participant Data
 
 Append a value to [participant data](../participant_data.md) at a specific key. This will convert any existing value to a list and append the new value to the end of the list. Use this tool to track lists of items e.g. questions asked.
 
@@ -76,7 +78,7 @@ Append a value to [participant data](../participant_data.md) at a specific key. 
   * `key`: The key in the user data to append to.
   * `value`: The value to append.
 
-**Increment Counter**
+### Increment Counter
 
 Increment the value of a counter. The counter is stored in [participant data](../participant_data.md) with the key `_counter_{counter_name}`.
 
@@ -85,7 +87,7 @@ Increment the value of a counter. The counter is stored in [participant data](..
   * `counter`: The name of the counter to increment.
   * `value`: Integer value to increment the counter by (defaults to 1).
 
-**End Session**
+### End Session
 
 End the current chat [session](../sessions.md). This will mark the session as completed. New messages will result in a new session being created.
 
@@ -96,7 +98,7 @@ End the current chat [session](../sessions.md). This will mark the session as co
 
 The following tools are used internally by Open Chat Studio and enabled / disabled automatically depending on the chatbot configuration.
 
-**Attach Media**
+### Attach Media
 
 Allows the bot to attach media when a media collection is configured. 
 
@@ -104,7 +106,7 @@ Allows the bot to attach media when a media collection is configured.
 * Arguments:
   * `file_id`: The ID of the media file to attach.
 
-**File Search**
+### File Search
 
 Allows the bot to search indexed collections when a collection is configured.
 
