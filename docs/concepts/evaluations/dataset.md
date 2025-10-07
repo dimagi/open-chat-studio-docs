@@ -15,7 +15,7 @@ Datasets can be created by cloning an existing session, manually created in the 
 
 ### Cloning a session
 
-When cloning a session, dataset messages are created automatically from messages from past conversations, including chat history and metadata. Selecting multiple sessions from the list will clone all the message from those sessions.
+When cloning a session, dataset messages are created automatically from messages from past conversations, including chat history and metadata. Selecting multiple sessions from the list will clone all the message from those sessions. Selecting "filtered messages" will only clone the messages that match the filter parameters. Selecting "All messages" will clone all the messages in that session.
 
 Messages that are cloned from a session will be "connected" to their actual message in OCS, and you will be able to follow links back to their original conversation when viewing the output of an evaluator. However, modifying or updating a cloned message will break this link.
 
