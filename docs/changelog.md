@@ -6,6 +6,7 @@ hide:
 # Changelog
 
 ## Oct 7, 2025
+* **NEW** Users can now create datasets from individual message pairs that match the filter parameters, rather than being limited to importing entire sessions.
 * **BUG** Fixed an issue where the evaluation run page would sometimes get stuck.
 * **CHANGE** Removed the `Experiments` and `Safety Layers` sidebar entries. This is part of the migration from [Experiments](concepts/experiment/index.md) to [Chatbots](concepts/chatbots/index.md).
 
