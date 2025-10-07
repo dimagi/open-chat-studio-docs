@@ -5,6 +5,9 @@ hide:
 
 # Changelog
 
+## Oct 7, 2025
+* **CHANGE** Removed the `Experiments` and `Safety Layers` sidebar entries. This is part of the migration from [Experiments](concepts/experiment/index.md) to [Chatbots](concepts/chatbots/index.md).
+
 ## Sept 25, 2025
 * **BUG** Fixed an issue where participant identifiers for the connect channel were not treated as case insensitive.
 * **BUG** Fixed an issue with the dashboard filters not updating date filters correctly.
@@ -16,7 +19,7 @@ hide:
 * **NEW** A 'calculator' tool has been added to the LLM node to allow bots to perform mathematical calculations consistently and reliably.
 
 ## Sept 19, 2025
-* **MIGRATION** All [Experiments](concepts/experiments/index.md) have been migrated to [chatbots](concepts/chatbots/index.md).
+* **MIGRATION** All [Experiments](concepts/experiment/index.md) have been migrated to [chatbots](concepts/chatbots/index.md).
 * **NEW** Add filtering capabilities to the participant table.
 
 ## Sept 12, 2025
