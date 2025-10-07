@@ -1,0 +1,109 @@
+API: Dimagi Chatbots v1
+Description: Experiments with AI, GPT and LLMs
+
+TAG: Experiment Sessions
+
+ENDPOINTS:
+
+GET /api/sessions/
+  Summary: List Experiment Sessions
+  Parameters:
+    - cursor (query, string (optional)): The pagination cursor value.
+    - experiment (query, string (optional)): Experiment ID to filter sessions by
+    - ordering (query, string (optional)): Which field to use when ordering the results.
+    - page_size (query, integer (optional)): Number of results to return per page.
+    - tags (query, string (optional)): A list of session tags (comma separated) to filter the results by
+    - versions (query, string (optional)): Experiment versions (comma separated) to filter sessions by
+  Responses:
+    200: 
+      Content: application/json
+      Schema: PaginatedExperimentSessionList
+
+POST /api/sessions/
+  Summary: Create Experiment Session
+  Request Body:
+    Content: application/json
+    Schema: ExperimentSessionCreate
+  Responses:
+    201: 
+      Content: application/json
+      Schema: ExperimentSession
+
+GET /api/sessions/{id}/
+  Summary: Retrieve Experiment Session
+  Description: 
+Retrieve the details of an session. This includes the messages exchanged during the session ordered
+by the creation date.
+
+  Parameters:
+    - id (path, string (required)): ID of the session
+  Responses:
+    200: 
+      Content: application/json
+      Schema: ExperimentSessionWithMessages
+
+POST /api/sessions/{id}/end_experiment_session/
+  Summary: End Experiment Session
+  Parameters:
+    - id (path, string (required)): ID of the session
+  Responses:
+    200: No response body
+
+PATCH /api/sessions/{id}/update_state/
+  Summary: Update Experiment Session State
+  Parameters:
+    - id (path, string (required)): ID of the session
+  Request Body:
+    Content: application/json
+    Schema: Patchedupdate_state_serializer
+  Responses:
+    200: 
+      Content: application/json
+      Schema: update_state_response
+
+SCHEMAS:
+
+ExperimentSession:
+  - url: string (required)
+  - id: string (required)
+  - team: Unknown (required)
+  - experiment: Unknown (required)
+  - participant: Unknown (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - tags: array of string (required)
+
+ExperimentSessionCreate:
+  - url: string (required)
+  - experiment: string (required)
+  - participant: string
+  - messages: array of Message
+  - state: object
+
+ExperimentSessionWithMessages:
+  - url: string (required)
+  - id: string (required)
+  - team: Unknown (required)
+  - experiment: Unknown (required)
+  - participant: Unknown (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - messages: array of Message (required)
+  - tags: array of string (required)
+
+PaginatedExperimentSessionList:
+  - next: string
+  - previous: string
+  - results: array of ExperimentSession (required)
+
+Patchedupdate_state_serializer:
+  - state: object
+
+update_state_response:
+  - success: boolean (required)
+  - state: object (required)
+
+SECURITY:
+- API Key authentication (header: X-api-key)
+- API Key authentication (cookie: sessionid)
+- HTTP bearer authentication
