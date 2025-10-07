@@ -6,6 +6,7 @@ hide:
 # Changelog
 
 ## Oct 7, 2025
+* **BUG** Fixed an issue where the evaluation run page would sometimes get stuck.
 * **CHANGE** Removed the `Experiments` and `Safety Layers` sidebar entries. This is part of the migration from [Experiments](concepts/experiment/index.md) to [Chatbots](concepts/chatbots/index.md).
 
 ## Sept 25, 2025
