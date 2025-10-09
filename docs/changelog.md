@@ -4,6 +4,8 @@ hide:
 ---
 
 # Changelog
+## Oct 9, 2025
+* **BUG** The dynamic filter widget will now update the available versions to match those of the selected chatbot(s).
 
 ## Oct 7, 2025
 * **NEW** Users can now create datasets from individual message pairs that match the filter parameters, rather than being limited to importing entire sessions.
