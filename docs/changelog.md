@@ -4,6 +4,8 @@ hide:
 ---
 
 # Changelog
+## Oct 15, 2025
+* **NEW** Participants can now be removed.
 
 ## Oct 7, 2025
 * **NEW** Users can now create datasets from individual message pairs that match the filter parameters, rather than being limited to importing entire sessions.
