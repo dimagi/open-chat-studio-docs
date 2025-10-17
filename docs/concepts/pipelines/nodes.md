@@ -184,6 +184,29 @@ Other file types can still be uploaded to assistants but the Python Node is not 
 ## Template
 Renders a [Jinja](https://jinja.palletsprojects.com/en/stable/templates/) template.
 
+## Available Template Variables
+The following variables are available in the template context:
+
+| Key                     | Description                                                          | Type            |
+|-------------------------|----------------------------------------------------------------------|-----------------|
+| `input`                 | The input to the node                                                | String          |
+| `node_inputs`           | The list of all inputs to the node in the case of parallel workflows | List of strings |
+| `temp_state`            | Pipeline temporary state                                             | Dict            |
+| `session_state`         | Session state                                                        | Dict            |
+| `participant_details`   | Participant details (`identifier`, `platform`)                       | Dict            |
+| `participant_data`      | Participant data                                                     | Dict            |
+| `participant_schedules` | Participant schedule data                                            | List            |
+
+### Sample Template
+```
+Input: {{ input }}
+Temp State Key: {{ temp_state.my_key }}
+Participant ID: {{ participant_details.identifier }}
+Participant Platform: {{ participant_details.platform }}
+Participant Data: {{ participant_data.custom_key }}
+Schedules: {{ participant_schedules }}
+```
+
 ## Email
 Send the input to the specified list of email addresses. This node acts as a passthrough, meaning the output will be identical to the input, allowing it to be used in a pipeline without affecting the conversation.
 
