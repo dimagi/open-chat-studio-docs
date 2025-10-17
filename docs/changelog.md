@@ -70,7 +70,7 @@ hide:
 
 ## Jul 31, 2025
 * **NEW** Added `set_participant_data_key`, `append_to_participant_data_key` and `increment_participant_data_key` utility methods to the code node.
-* **NEW** Added LLM tools to append to and incremet a counter in the participant data.
+* **NEW** Added LLM tools to append to and increment a counter in the participant data.
 
 ## Jul 30, 2025
 * **NEW** Chat Widget v1.4 released. This represents a major rewrite of the widget with significant improvements and new features. See the [widget changelog](chat_widget/changelog.md) for full details.

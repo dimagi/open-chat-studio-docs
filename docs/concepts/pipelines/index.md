@@ -50,4 +50,4 @@ Here's how each step works:
 
 This process repeats until either all work is complete or a step limit is reached. This approach ensures your application runs efficiently while maintaining predictable behavior.
 
-See [Parallel Pipelines](./parallel.md) for information about running nodes in paralle.
+See [Parallel Pipelines](./parallel.md) for information about running nodes in parallel.
