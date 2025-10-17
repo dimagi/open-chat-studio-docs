@@ -4,6 +4,12 @@ hide:
 ---
 
 # Changelog
+
+## Oct 17, 2025
+* **CHANGE** Fix edge case errors for pipelines with parallel workflows. 
+* **CHANGE** Make all node inputs available to Python Nodes and Render Template nodes via the `node_inputs` argument.
+* **NEW** Introduce [wait_for_next_input](concepts/pipelines/nodes.md#python_node.wait_for_next_input) Python Node function for advanced parallel flow control. 
+
 ## Oct 15, 2025
 * **NEW** Participants can now be removed.
 

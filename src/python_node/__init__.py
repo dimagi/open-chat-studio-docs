@@ -139,3 +139,21 @@ def require_node_outputs(*node_names):
         return get_node_output("nodeA") + get_node_output("nodeB")
     ```
     """
+
+
+def wait_for_next_input():
+    """Advanced utility that will abort the current execution when not all inputs have been received.
+    This is only useful in cases where the workflow has parallel branches which might result in the node being
+    executed more than once.
+
+    This is similar to `require_node_outputs` but useful where some node outputs may be optional.
+
+    ```python
+    def main(input, **kwargs):
+        a = get_node_output("a")
+        b = get_node_output("b")
+        if not a and not b:
+            wait_for_next_input()
+        # do something with a or b
+    ```
+    """
