@@ -8,6 +8,15 @@ flowchart LR
     LLM2 --> out
 ```
 
+!!! warning "Limitations"
+    **Cycles**
+    
+    Configurations that result in cycles (recursive loops) are not supported.
+
+    **Multiple Exectuion**
+    
+    In cases where the branches of a workflow do not have the same number of nodes and then merge, nodes after the merge will be executed more than once without special handling. See the section below on [Uneven Banches](#uneven-branches)
+
 ## Dangling nodes
 Nodes without connected outputs (dangling nodes) are supported and will execute in turn. The outputs of these nodes will still be recorded in the pipeline state.
 
@@ -62,7 +71,9 @@ The execution steps are as follows:
 
 Notice how `NodeD` gets executed twice. The first time `NodeD` runs it will have the output from `NodeC` as it's input. The 2nd time it runs it will have both the outputs from `NodeB` and `NodeC` as its inputs.
 
-To manage this challenge, you can use a `PythonNode` with some utility functions:
+To understand why this happens you need to understand the [execution model](index.md#pipeline-execution).
+
+You can manage this challenge by using a `PythonNode` with some utility functions:
 
 * `require_node_outputs`: This function will abort any node run if all the requested data is not available.
 * `wait_for_next_input`: This is a lower level function that can be used when `require_node_outputs` isn't suitable.
@@ -89,12 +100,6 @@ def main(input, **kwargs):
         wait_for_next_input()
     return f"{b}\n{c}"
 ```
-
-## Cycles
-
-!!! warning
-    Cycles in pipelines are not supported.
-
 
 <div class="grid cards" markdown>
 
