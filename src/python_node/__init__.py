@@ -92,8 +92,10 @@ def get_node_path(node_name: str) -> list | None:
 
 def get_all_routes() -> dict:
     """
-    Returns a dictionary containing all routing decisions in the pipeline.
-    The keys are the node names and the values are the routes chosen by each node.
+    Returns a dictionary containing all routing decisions made in the pipeline up to the current node.
+    The keys are the node names and the values are the route keywords chosen by each router node.
+
+    Note that in parallel workflows only the most recent route for a particular node will be returned.
     """
 
 
