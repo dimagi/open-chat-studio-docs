@@ -32,7 +32,7 @@ Check your current HTML implementation and compare it with the [latest propertie
     * Content properties (`button-text`, `header-text`, `welcome-messages`, `starter-questions`, `typing-indicator-text`) can be overridden in translation files
 
 #### Deprecation Warnings
-* The following HTML text attributes are now deprecated will be removed in a future major release. You should migrate these to use the new translation system:
+* The following HTML text attributes are now deprecated and will be removed in a future major release. You should migrate these to use the new translation system:
     * `header-text` -> `headerText` translation key
     * `typing-indicator-text` -> `typeMessage` translation key
     * `new-chat-confirmation-message` -> `startNewChatMessage` translation key

@@ -114,7 +114,7 @@ Pass welcome messages as a JSON array string. Each message appears as a separate
 
 ## :material-folder-question: Starter Questions
 
-Accelerate user engagement with pre-defined clickable questions that address common queries. These starter questions help users quickly find what they're looking for without having to type which improves the user experience. Starter questions are ideal for:
+Accelerate user engagement with pre-defined clickable questions that address common queries. These starter questions help users quickly find what they're looking for without having to type, which improves the user experience. Starter questions are ideal for:
 
 - Highlighting your most frequently asked questions
 - Guiding users toward key features or information
@@ -261,7 +261,7 @@ The widget uses the following priority order for text content:
 
 1. **Custom translations from `translations-url`** (highest priority)
 2. **Built-in language translations** (if `language` is specified)
-   3. **HTML attributes** (fallback for backward compatibility - ⚠️ **DEPRECATED**)
+3. **HTML attributes** (fallback for backward compatibility - ⚠️ **DEPRECATED**)
 4. **English defaults** (lowest priority)
 
 !!! warning "Deprecation Notice"
