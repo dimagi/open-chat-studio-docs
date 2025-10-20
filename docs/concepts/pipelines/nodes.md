@@ -200,6 +200,7 @@ The following variables are available in the template context:
 ### Sample Template
 ```
 Input: {{ input }}
+Node Inputs: {{ node_inputs }}
 Temp State Key: {{ temp_state.my_key }}
 Participant ID: {{ participant_details.identifier }}
 Participant Platform: {{ participant_details.platform }}
