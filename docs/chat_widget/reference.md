@@ -176,6 +176,100 @@ Enable users to send files along with their messages. This feature is perfect fo
 
 See [CSS Styling](styling.md#file-attachments) for customization options
 
+## :material-translate: Internationalization
+
+The chat widget supports multiple languages and custom translations for all UI text elements.
+
+### Built-in Language Support
+
+The widget includes built-in translations for the following languages:
+
+- **English** (`en`) - Default
+- **Spanish** (`es`)
+- **French** (`fr`)
+- **Arabic** (`ar`)
+- **Hindi** (`hi`)
+- **Italian** (`ita`)
+- **Portuguese** (`por`)
+- **Swahili** (`sw`)
+- **Ukrainian** (`uk`)
+
+```html
+<open-chat-studio-widget
+  chatbot-id="your-chatbot-id"
+  language="es">
+</open-chat-studio-widget>
+```
+
+### Custom Translations
+
+You can provide custom translations using a JSON file hosted on your server:
+
+```html
+<open-chat-studio-widget
+  chatbot-id="your-chatbot-id"
+  translations-url="https://yoursite.com/custom-translations.json">
+</open-chat-studio-widget>
+```
+
+#### Translation File Format
+
+Your custom translation file should follow this JSON structure:
+
+```json
+{
+  "openChat": "Open chat",
+  "close": "Close",
+  "startNewChat": "Start new chat",
+  "enterFullscreen": "Enter fullscreen",
+  "exitFullscreen": "Exit fullscreen",
+  "attachFiles": "Attach files",
+  "removeFile": "Remove file",
+  "startingChat": "Starting chat...",
+  "preparingResponse": "Preparing response",
+  "startNewChatTitle": "Start New Chat",
+  "startNewChatMessage": "Starting a new chat will clear your current conversation. Continue?",
+  "cancel": "Cancel",
+  "confirm": "Confirm",
+  "typeMessage": "Type a message...",
+  "sendMessage": "Send message",
+  "fileAttached": "File attached",
+  "fileTooLarge": "File too large",
+  "totalSizeTooLarge": "Total file size too large",
+  "unsupportedFileType": "Unsupported file type",
+  "connectionError": "Connection error. Please try again.",
+  "sessionExpired": "Session expired. Please start a new chat.",
+  "poweredBy": "Powered by",
+  "buttonText": "",
+  "headerText": "",
+  "welcomeMessages": [],
+  "starterQuestions": [],
+  "typingIndicatorText": "Preparing response",
+  "uploading": "Uploading"
+}
+```
+
+#### Customizable Content
+
+You can override specific widget content through translations:
+
+- **Button Text**: Set `buttonText` in your translations to customize the chat button text
+- **Header Text**: Set `headerText` to customize the chat window header
+- **Welcome Messages**: Provide an array of strings in `welcomeMessages` 
+- **Starter Questions**: Provide an array of strings in `starterQuestions`
+- **Typing Indicator**: Customize the `typingIndicatorText` shown while the bot responds
+
+### Translation Priority
+
+The widget uses the following priority order for text content:
+
+1. **Custom translations from `translations-url`** (highest priority)
+2. **Built-in language translations** (if `language` is specified)
+3. **HTML attributes** (fallback for backward compatibility)
+4. **English defaults** (lowest priority)
+
+This ensures a smooth upgrade path while enabling powerful customization.
+
 ## :material-chat-plus: New Chat Confirmation
 When users have an active conversation and click the "new chat" button, a confirmation dialog appears to prevent accidental loss of conversation history. You can customize the message displayed in this confirmation dialog:
 
@@ -276,3 +370,10 @@ The session data is set to expire after 24 hours. This is also configurable by u
 | `starter-questions` | `string` | Optional | `undefined` | Valid JSON array<br/>**Max:** 6 questions, 100 chars each | Clickable question buttons to start conversation<br/>**Format:** `'["Question 1", "Question 2"]'` | `'["Check my order", "Technical support"]'` |
 | `typing-indicator-text` | `string` | Optional | `"Preparing response"` | Max 50 chars | Text shown while bot is typing | `"AI is thinking..."` |
 | `new-chat-confirmation-message` | `string` | Optional | `"Starting a new chat will clear your current conversation. Continue?"` | Max 200 chars | Confirmation dialog text for new chat button | `"Start over? Your current chat will be lost."` |
+
+### Internationalization & Translations
+
+| Property | Type | Required | Default | Validation | Description | Example |
+|----------|------|----------|---------|------------|-------------|---------|
+| `language` | `string` | Optional | `"en"` | Valid language code | Language code for widget UI (en, es, fr, ar, hi, ita, por, sw, uk) | `"es"` for Spanish |
+| `translations-url` | `string` | Optional | `undefined` | Valid URL | URL to custom JSON translations file for widget strings | `"https://yoursite.com/translations.json"` |
