@@ -25,25 +25,27 @@ Check your current HTML implementation and compare it with the [latest propertie
 ### v0.5.0
 
 * **NEW: Internationalization Support**
-  * Added built-in translations for 9 languages: English, Spanish, French, Arabic, Hindi, Italian, Portuguese, Swahili, and Ukrainian
-  * New `language` property to set widget UI language (e.g., `language="es"`)
-  * New `translations-url` property to load custom translations from a JSON file
-  * All UI strings can now be customized through translations
-  * Content properties (button-text, header-text, welcome-messages, starter-questions, typing-indicator-text) can be overridden in translation files
-  * Translation priority: Custom translations → Built-in language → HTML attributes → English defaults
+    * Added built-in translations for 9 languages: English, Spanish, French, Arabic, Hindi, Italian, Portuguese, Swahili, and Ukrainian
+    * New `language` property to set widget UI language (e.g., `language="es"`)
+    * New `translations-url` property to load custom translations from a JSON file
+    * All UI strings can now be customized through translations
+    * Content properties (`button-text`, `header-text`, `welcome-messages`, `starter-questions`, `typing-indicator-text`) can be overridden in translation files
 
-#### Breaking Changes
-* None - this release maintains full backward compatibility with existing HTML attribute configuration
+#### Deprecation Warnings
+* The following HTML text attributes are now deprecated will be removed in a future major release. You should migrate these to use the new translation system:
+    * `header-text` -> `headerText` translation key
+    * `typing-indicator-text` -> `typeMessage` translation key
+    * `new-chat-confirmation-message` -> `startNewChatMessage` translation key
 
 #### Upgrade Guide
 1. **No immediate action required** - existing implementations continue to work unchanged
 2. **To enable internationalization:**
-   * Add `language="xx"` attribute for built-in language support
-   * Or add `translations-url="https://yoursite.com/translations.json"` for custom translations
-3. **To migrate content to translations (optional):**
-   * Create a custom translations JSON file with your content
-   * Remove corresponding HTML attributes and use the translation file instead
-   * See the [internationalization documentation](reference.md#internationalization) for details
+     * Add `language="xx"` attribute for built-in language support
+     * Or add `translations-url="https://yoursite.com/translations.json"` for custom translations
+3. **To migrate content to translations (recommended):**
+     * Create a custom translations JSON file with your content
+     * Remove corresponding deprecated HTML attributes and use the translation file instead
+     * See the [internationalization documentation](reference.md#internationalization) for details
 
 ### v0.4.8
 

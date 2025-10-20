@@ -251,13 +251,9 @@ Your custom translation file should follow this JSON structure:
 
 #### Customizable Content
 
-You can override specific widget content through translations:
+You can override specific widget content through translations. 
 
-- **Button Text**: Set `buttonText` in your translations to customize the chat button text
-- **Header Text**: Set `headerText` to customize the chat window header
-- **Welcome Messages**: Provide an array of strings in `welcomeMessages` 
-- **Starter Questions**: Provide an array of strings in `starterQuestions`
-- **Typing Indicator**: Customize the `typingIndicatorText` shown while the bot responds
+If you only want to override some text, you can set those values in your custom translation file and remove the rest of the keys. The widget will use the default values for any missing keys.
 
 ### Translation Priority
 
@@ -265,50 +261,11 @@ The widget uses the following priority order for text content:
 
 1. **Custom translations from `translations-url`** (highest priority)
 2. **Built-in language translations** (if `language` is specified)
-3. **HTML attributes** (fallback for backward compatibility)
+   3. **HTML attributes** (fallback for backward compatibility - ⚠️ **DEPRECATED**)
 4. **English defaults** (lowest priority)
 
-This ensures a smooth upgrade path while enabling powerful customization.
-
-## :material-chat-plus: New Chat Confirmation
-When users have an active conversation and click the "new chat" button, a confirmation dialog appears to prevent accidental loss of conversation history. You can customize the message displayed in this confirmation dialog:
-
-```html
-<open-chat-studio-widget
- new-chat-confirmation-message="Are you sure you want to start a new conversation?">
-</open-chat-studio-widget>
-```
-
-Default behavior:
-
-- Shows confirmation dialog with the message: "Starting a new chat will clear your current conversation. Continue?"
-- Users can either "Cancel" to keep their current chat or "Continue" to start fresh
-- The dialog only appears when there's an existing conversation with messages
-
-Customization options:
-
-- Customize the confirmation message text to match your brand voice
-- Style the dialog appearance using CSS variables (see CSS Styling)
-
-
-## :material-robot-excited: Typing Indicator
-
-Customize the message displayed while the assistant is preparing a response. This helps set user expectations and can match your brand's personality.
-
-```html
-<open-chat-studio-widget
-     typing-indicator-text="AI is thinking">
-</open-chat-studio-widget>
-```
-
-The typing indicator appears with animated dots and a progress bar to provide visual feedback during response generation.
-
-Styling:
-
-- Text color is controlled by `--loading-text-color`
-- Font size uses `--chat-window-font-size-sm`
-- See [CSS Styling](styling.md#loading-indicators) for customization options
-
+!!! warning "Deprecation Notice"
+    HTML attributes for text content (`header-text`, `typing-indicator-text`, `new-chat-confirmation-message`) are deprecated and will be removed in a future major release. Please migrate to using the translations system for better internationalization support.
 
 ## Persistent Sessions
 
@@ -344,7 +301,7 @@ The session data is set to expire after 24 hours. This is also configurable by u
 | `icon-url` | `string` | Optional | OCS default logo | Valid URL | Custom icon for the chat button | `"https://yoursite.com/chat-icon.svg"` |
 | `visible` | `boolean` | Optional | `false` | `true` \| `false` | Show widget immediately on page load | `"true"` to auto-open |
 | `position` | `string` | Optional | `"right"` | `"left"` \| `"center"` \| `"right"` | Initial widget position on screen | `"left"` for left side placement |
-| `header-text` | `string` | Optional | `undefined` | Max 100 chars | Text displayed in chat window header | `"Customer Support"` |
+| `header-text` | `string` | Optional | `undefined` | Max 100 chars | **⚠️ DEPRECATED:** Text displayed in chat window header. Use `headerText` in translations instead | `"Customer Support"` |
 
 ### User Management
 
@@ -368,8 +325,8 @@ The session data is set to expire after 24 hours. This is also configurable by u
 |----------|------|----------|---------|------------|-------------|---------|
 | `welcome-messages` | `string` | Optional | `undefined` | Valid JSON array<br/>**Max:** 5 messages, 500 chars each | Welcome messages shown when chat opens<br/>**Format:** `'["Message 1", "Message 2"]'` | `'["Welcome!", "How can I help?"]'` |
 | `starter-questions` | `string` | Optional | `undefined` | Valid JSON array<br/>**Max:** 6 questions, 100 chars each | Clickable question buttons to start conversation<br/>**Format:** `'["Question 1", "Question 2"]'` | `'["Check my order", "Technical support"]'` |
-| `typing-indicator-text` | `string` | Optional | `"Preparing response"` | Max 50 chars | Text shown while bot is typing | `"AI is thinking..."` |
-| `new-chat-confirmation-message` | `string` | Optional | `"Starting a new chat will clear your current conversation. Continue?"` | Max 200 chars | Confirmation dialog text for new chat button | `"Start over? Your current chat will be lost."` |
+| `typing-indicator-text` | `string` | Optional | `"Preparing response"` | Max 50 chars | **⚠️ DEPRECATED:** Text shown while bot is typing. Use `typingIndicatorText` in translations instead | `"AI is thinking..."` |
+| `new-chat-confirmation-message` | `string` | Optional | `"Starting a new chat will clear your current conversation. Continue?"` | Max 200 chars | **⚠️ DEPRECATED:** Confirmation dialog text for new chat button. Use `startNewChatMessage` in translations instead | `"Start over? Your current chat will be lost."` |
 
 ### Internationalization & Translations
 
