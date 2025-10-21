@@ -101,6 +101,53 @@ def main(input, **kwargs):
     return f"{b}\n{c}"
 ```
 
+## Optional Parallel Branches
+
+This shows a use case for the `wait_for_next_input` function. We have a pipeline which has parallel branches and a merge node but not all the branches will execute.
+
+```mermaid
+flowchart LR
+    start([Input]) --> Router
+    start --> NodeA
+    Router -.-> NodeB
+    Router -.-> NodeC
+    NodeA --> Merge
+    NodeB --> Merge
+    NodeC --> Merge
+    Merge --> out([Output])
+```
+
+The `Merge` node will get outputs from `NodeA` and either `NodeB` or `NodeC`. We can't use `require_node_outputs` because not all outputs will be generated. Instead we need to use the `wait_for_next_input` function:
+
+=== "Option 1"
+    
+    ```python
+    def main(input, **kwargs):
+        b = get_node_output("NodeB")
+        c = get_node_output("NodeC")
+        b_or_c = b or c
+        if not b_or_c:
+            # wait until we have either b or c 
+            wait_for_next_input()
+        a = get_node_output("NodeA")
+        return f"{a}\n{b_or_c}"
+    ```
+    
+    Note that we don't need to check if we have output from `NodeA` since it will be guaranteed to be available by the time `NodeB` or `NodeC` execute due to the execution order.
+
+=== "Option 2"
+
+    This option makes use of the [`node_inputs`](nodes.md#additional-keyword-arguments) keyword argument which contains a list of all the inputs available to the current node execution. Since we want to wait until we have inputs from `NodeA and (NodeB or NodeC)` we can check that the inputs list has at least two values. 
+
+    ```python
+    def main(input, **kwargs):
+        all_inputs = kwargs.get("node_inputs", [])
+        if len(all_inputs) < 2:
+            # wait until we have at least two inputs 
+            wait_for_next_input()
+        return "\n".join(all_inputs)
+    ```
+
 <div class="grid cards" markdown>
 
 -   :material-hexagon-multiple-outline:{ .lg .middle } __More Example Workflows__

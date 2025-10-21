@@ -66,7 +66,7 @@ def main(input, **kwargs) -> str:
 
 The `input` parameter is a string that contains the input to the node. The return value of the function is a string that will be passed to the next node in the pipeline.
 
-**Additional Keyword Arguments**
+### Additional Keyword Arguments
 
 The following additional arguments are provided:
 
