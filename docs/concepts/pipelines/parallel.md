@@ -130,14 +130,14 @@ The `Merge` node will get outputs from `NodeA` and either `NodeB` or `NodeC`. We
             # wait until we have either b or c 
             wait_for_next_input()
         a = get_node_output("NodeA")
-        return "f{a}\n{b_or_c}"
+        return f"{a}\n{b_or_c}"
     ```
     
     Note that we don't need to check if we have output from `NodeA` since it will be guaranteed to be available by the time `NodeB` or `NodeC` execute due to the execution order.
 
 === "Option 2"
 
-    This options makes use of the [`node_inputs`](nodes.md#additional-keyword-arguments) keyword argument which contains a list of all the inputs available to the current node execution. Since we want to wait until we have inputs from `NodeA and (NodeB or NodeC)` we can check that the inputs list has at least two values. 
+    This option makes use of the [`node_inputs`](nodes.md#additional-keyword-arguments) keyword argument which contains a list of all the inputs available to the current node execution. Since we want to wait until we have inputs from `NodeA and (NodeB or NodeC)` we can check that the inputs list has at least two values. 
 
     ```python
     def main(input, **kwargs):
