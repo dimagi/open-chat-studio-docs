@@ -20,9 +20,30 @@ jobs:
   update-changelog-and-docs:
     runs-on: ubuntu-latest
     steps:
+      - name: Determine base branch
+        id: determine_branch
+        run: |
+          # Determine base branch before checkout
+          if [ "${{ github.event_name }}" == "repository_dispatch" ]; then
+            IS_WIDGET="${{ github.event.client_payload.is_widget_change }}"
+          else
+            # For manual trigger, fetch PR info to determine if it's widget-related
+            # We'll use a default checkout first, then determine branch
+            IS_WIDGET="false"
+          fi
+
+          if [ "$IS_WIDGET" == "true" ]; then
+            echo "base_branch=widget-develop" >> $GITHUB_OUTPUT
+          else
+            echo "base_branch=main" >> $GITHUB_OUTPUT
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.OCS_DOCS_PAT }}
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
+          ref: ${{ steps.determine_branch.outputs.base_branch }}
           fetch-depth: 0
 
       - name: Set variables from dispatch or manual input
@@ -36,6 +57,9 @@ jobs:
             echo "pr_merged_at=${{ github.event.client_payload.pr_merged_at }}" >> $GITHUB_OUTPUT
             echo "pr_body=${{ toJSON(github.event.client_payload.pr_body) }}" >> $GITHUB_OUTPUT
             echo "pr_labels=${{ toJSON(github.event.client_payload.pr_labels) }}" >> $GITHUB_OUTPUT
+            IS_WIDGET="${{ github.event.client_payload.is_widget_change }}"
+            echo "is_widget_change=$IS_WIDGET" >> $GITHUB_OUTPUT
+            echo "changed_files=${{ toJSON(github.event.client_payload.changed_files) }}" >> $GITHUB_OUTPUT
           else
             echo "pr_number=${{ inputs.pr_number }}" >> $GITHUB_OUTPUT
             # Fetch PR details using GitHub API
@@ -46,7 +70,26 @@ jobs:
             echo "pr_merged_at=$(echo $PR_DATA | jq -r '.merged_at')" >> $GITHUB_OUTPUT
             echo "pr_body=$(echo $PR_DATA | jq -r '.body')" >> $GITHUB_OUTPUT
             echo "pr_labels=$(echo $PR_DATA | jq -r '[.labels[].name]')" >> $GITHUB_OUTPUT
+
+            # Check if widget files changed for manual trigger
+            FILES=$(echo $PR_DATA | jq -r '.changed_files[]?.filename // empty')
+            if echo "$FILES" | grep -q "^components/"; then
+              IS_WIDGET="true"
+            else
+              IS_WIDGET="false"
+            fi
+            echo "is_widget_change=$IS_WIDGET" >> $GITHUB_OUTPUT
+            echo "changed_files=$(echo $PR_DATA | jq -c '[.changed_files[].filename]')" >> $GITHUB_OUTPUT
           fi
+
+          # Determine base branch based on whether this is a widget change
+          if [ "$IS_WIDGET" == "true" ]; then
+            BASE_BRANCH="widget-develop"
+          else
+            BASE_BRANCH="main"
+          fi
+          echo "base_branch=$BASE_BRANCH" >> $GITHUB_OUTPUT
+          echo "Using base branch: $BASE_BRANCH"
         env:
           GH_TOKEN: ${{ secrets.OCS_DOCS_PAT }}
 
@@ -68,17 +111,62 @@ jobs:
           - **Author:** ${{ steps.set_vars.outputs.pr_author }}
           - **Merged Date:** ${{ steps.set_vars.outputs.pr_merged_at }}
           - **Labels:** ${{ steps.set_vars.outputs.pr_labels }}
+          - **Is Widget Change:** ${{ steps.set_vars.outputs.is_widget_change }}
+          - **Base Branch:** ${{ steps.set_vars.outputs.base_branch }}
 
           ## PR Description
           ```
           ${{ steps.set_vars.outputs.pr_body }}
           ```
 
+          ## Important Context
+          ${{ steps.set_vars.outputs.is_widget_change == 'true' && '**This PR modifies the chat widget** (files in components/ folder). Widget documentation should be updated in the chat_widget/ directory.' || 'This PR modifies the main Open Chat Studio application.' }}
+
           ## Your Tasks
 
           ### Task 1: Update Changelog
 
-          1. Read the current changelog at docs/changelog.md
+          **IMPORTANT: The changelog file to update depends on whether this is a widget change:**
+
+          ${{ steps.set_vars.outputs.is_widget_change == 'true' && '
+          #### Widget Changelog (This PR)
+
+          Since this PR modifies widget files, update the **widget changelog** at `docs/chat_widget/changelog.md`.
+
+          **Widget Changelog Structure:**
+          - The widget changelog is organized by **version numbers** (e.g., v0.4.8, v0.4.7)
+          - Entries are bullet points under each version
+          - NO date-based sections
+          - NO TYPE prefixes (NEW, CHANGE, BUG)
+          - Read the existing widget changelog to understand the format
+
+          **Steps for Widget Changelog:**
+          1. Read `docs/chat_widget/changelog.md` to understand the current structure
+          2. Find the latest version section (e.g., v0.4.8)
+          3. Add your entry as a new bullet point under that version
+          4. If a new version is being released, check the PR description for version info
+          5. Follow the existing style: concise bullet points describing changes
+
+          **Widget Changelog Format:**
+          ```markdown
+          ### v0.4.8
+
+          * Fix horizontal scrollbar styling.
+          * Improve scrolling behavior for new messages.
+          * Your new entry here.
+          ```
+          ' || '
+          #### Main Changelog (This PR)
+
+          Since this PR modifies main app files, update the **main changelog** at `docs/changelog.md`.
+
+          **Main Changelog Structure:**
+          - The main changelog is organized by **dates** (e.g., "Oct 22, 2025")
+          - Entries use TYPE prefixes: **NEW**, **CHANGE**, **BUG**, **MIGRATION**
+          - Format: * **[TYPE]** [Description]
+
+          **Steps for Main Changelog:**
+          1. Read `docs/changelog.md` to understand the current structure
           2. Analyze the PR title, description, and labels to understand what changed
           3. Determine the appropriate changelog type:
              - **NEW**: New features or functionality
@@ -90,13 +178,15 @@ jobs:
           6. Format the merged date as "MMM D, YYYY" (e.g., "Oct 22, 2025")
           7. If a section for that date already exists, add to it; otherwise create a new date section
 
-          **Changelog Format:**
+          **Main Changelog Format:**
           ```markdown
-          ## [Date]
-          * **[TYPE]** [Description]
+          ## Oct 22, 2025
+          * **NEW** Added support for parallel pipeline execution.
+          * **BUG** Fixed issue with session timeout handling.
           ```
+          '}}
 
-          **Changelog Guidelines:**
+          **General Changelog Guidelines (both types):**
           - Be concise but informative
           - Focus on user-facing changes
           - Use active voice (e.g., "Added support for..." not "Support was added for...")
@@ -157,18 +247,28 @@ jobs:
       - name: Check for changes and push
         id: check_changes
         run: |
-          if git diff --quiet origin/main; then
+          BASE_BRANCH="${{ steps.set_vars.outputs.base_branch }}"
+
+          if git diff --quiet origin/$BASE_BRANCH; then
             echo "has_changes=false" >> $GITHUB_OUTPUT
             echo "No changes made by Claude"
           else
             echo "has_changes=true" >> $GITHUB_OUTPUT
 
+            # Determine which changelog file to check based on widget change flag
+            if [ "${{ steps.set_vars.outputs.is_widget_change }}" == "true" ]; then
+              CHANGELOG_FILE="docs/chat_widget/changelog.md"
+            else
+              CHANGELOG_FILE="docs/changelog.md"
+            fi
+
             # Check what was changed
-            CHANGELOG_CHANGED=$(git diff --name-only origin/main | grep -c "docs/changelog.md" || echo "0")
-            DOCS_CHANGED=$(git diff --name-only origin/main | grep -v "docs/changelog.md" | grep -c "docs/" || echo "0")
+            CHANGELOG_CHANGED=$(git diff --name-only origin/$BASE_BRANCH | grep -c "$CHANGELOG_FILE" || echo "0")
+            DOCS_CHANGED=$(git diff --name-only origin/$BASE_BRANCH | grep -v "$CHANGELOG_FILE" | grep -c "docs/" || echo "0")
 
             echo "changelog_changed=$CHANGELOG_CHANGED" >> $GITHUB_OUTPUT
             echo "docs_changed=$DOCS_CHANGED" >> $GITHUB_OUTPUT
+            echo "changelog_file=$CHANGELOG_FILE" >> $GITHUB_OUTPUT
 
             git push origin ${{ env.branch_name }}
           fi
@@ -185,6 +285,18 @@ jobs:
             CHANGES_DESC="Automated changelog update"
           fi
 
+          # Add widget context to title if applicable
+          if [ "${{ steps.set_vars.outputs.is_widget_change }}" == "true" ]; then
+            PR_TITLE="[Widget] $PR_TITLE"
+          fi
+
+          # Determine changelog file description
+          if [ "${{ steps.set_vars.outputs.is_widget_change }}" == "true" ]; then
+            CHANGELOG_DESC="Widget changelog (\`docs/chat_widget/changelog.md\`)"
+          else
+            CHANGELOG_DESC="Main changelog (\`docs/changelog.md\`)"
+          fi
+
           gh pr create \
             --title "$PR_TITLE" \
             --body "## Summary
@@ -193,9 +305,11 @@ jobs:
           **Source PR:** ${{ steps.set_vars.outputs.pr_url }}
           **PR Title:** ${{ steps.set_vars.outputs.pr_title }}
           **Author:** @${{ steps.set_vars.outputs.pr_author }}
+          **Base Branch:** \`${{ steps.set_vars.outputs.base_branch }}\`
+          **Widget Change:** ${{ steps.set_vars.outputs.is_widget_change == 'true' && '✅ Yes' || '❌ No' }}
 
           ### Changes Made
-          - Changelog: ${{ steps.check_changes.outputs.changelog_changed == '1' && '✅ Updated' || '⏭️ Skipped' }}
+          - Changelog ($CHANGELOG_DESC): ${{ steps.check_changes.outputs.changelog_changed == '1' && '✅ Updated' || '⏭️ Skipped' }}
           - Documentation: ${{ steps.check_changes.outputs.docs_changed != '0' && '✅ Updated' || '⏭️ No updates needed' }}
 
           ---
@@ -204,7 +318,7 @@ jobs:
           @claude please review the changes for accuracy, completeness, and style." \
             --label "automated,changelog" \
             --assignee "${{ steps.set_vars.outputs.pr_author }}" \
-            --base main \
+            --base "${{ steps.set_vars.outputs.base_branch }}" \
             --head "${{ env.branch_name }}"
         env:
           GH_TOKEN: ${{ secrets.OCS_DOCS_PAT }}
