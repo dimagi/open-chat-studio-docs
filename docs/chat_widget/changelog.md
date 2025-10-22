@@ -22,6 +22,10 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 ## Changelog
 
+### v0.5.0
+
+- Allow users to drag and reposition the chat-widget launch button when it’s fixed, to avoid obscuring page content.
+
 ### v0.4.8
 
 * Fix horizontal scrollbar styling.
