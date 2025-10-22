@@ -33,9 +33,9 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 #### Deprecation Warnings
 * The following HTML text attributes are now deprecated and will be removed in a future major release. You should migrate these to use the new translation system:
-    * `header-text` -> `headerText` translation key
-    * `typing-indicator-text` -> `typeMessage` translation key
-    * `new-chat-confirmation-message` -> `startNewChatMessage` translation key
+    * `header-text` -> `branding.headerText` translation key
+    * `typing-indicator-text` -> `status.typing` translation key
+    * `new-chat-confirmation-message` -> `modal.newChatBody` translation key
 
 #### Upgrade Guide
 1. **No immediate action required** - existing implementations continue to work unchanged
