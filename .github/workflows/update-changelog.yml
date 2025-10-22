@@ -1,4 +1,4 @@
-name: Update Changelog from OCS PR
+name: Update Changelog and Docs from OCS PR
 
 on:
   repository_dispatch:
@@ -17,7 +17,7 @@ permissions:
   id-token: write
 
 jobs:
-  update-changelog:
+  update-changelog-and-docs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -59,7 +59,7 @@ jobs:
       - name: Create instruction file for Claude
         run: |
           cat > /tmp/claude_instructions.md << 'EOF'
-          You need to update the changelog in docs/changelog.md based on a merged PR from the open-chat-studio repository.
+          You need to update the changelog and documentation in this repository based on a merged PR from the open-chat-studio repository.
 
           ## PR Information
           - **PR Number:** #${{ steps.set_vars.outputs.pr_number }}
@@ -74,7 +74,9 @@ jobs:
           ${{ steps.set_vars.outputs.pr_body }}
           ```
 
-          ## Your Task
+          ## Your Tasks
+
+          ### Task 1: Update Changelog
 
           1. Read the current changelog at docs/changelog.md
           2. Analyze the PR title, description, and labels to understand what changed
@@ -88,30 +90,61 @@ jobs:
           6. Format the merged date as "MMM D, YYYY" (e.g., "Oct 22, 2025")
           7. If a section for that date already exists, add to it; otherwise create a new date section
 
-          ## Changelog Format
-
-          The changelog follows this format:
+          **Changelog Format:**
           ```markdown
           ## [Date]
           * **[TYPE]** [Description]
           ```
 
-          ## Important Guidelines
-
+          **Changelog Guidelines:**
           - Be concise but informative
           - Focus on user-facing changes
           - Use active voice (e.g., "Added support for..." not "Support was added for...")
           - Don't include internal implementation details unless they affect users
-          - If the PR is purely internal/refactoring with no user impact, you can skip it
+          - If the PR is purely internal/refactoring with no user impact, you can skip the changelog
           - Match the style and tone of existing changelog entries
 
-          After updating the changelog, commit your changes with the message:
-          "update changelog from OCS PR #${{ steps.set_vars.outputs.pr_number }}"
+          ### Task 2: Update Documentation
 
-          Do NOT create a pull request - just commit the changes to this branch.
+          After updating the changelog, analyze whether this PR requires documentation updates:
+
+          1. **Check if documentation is needed:**
+             - New features → Need user guides, how-tos, or concept docs
+             - API changes → Update API documentation
+             - Configuration changes → Update setup/configuration docs
+             - Behavior changes → Update relevant user guides
+             - Bug fixes → Usually no docs needed unless it changes behavior
+             - Internal/refactoring → Skip documentation updates
+
+          2. **If documentation IS needed:**
+             - Use the Task tool with subagent_type="mkdocs-technical-writer" to handle the documentation updates
+             - Provide the agent with:
+               * What changed (from the PR)
+               * What documentation needs to be created or updated
+               * Context from the PR description
+             - The agent will find the right place in the docs structure and update accordingly
+             - Review the agent's output to ensure quality
+
+          3. **If documentation is NOT needed:**
+             - Simply skip this task and proceed to commit
+
+          ### Task 3: Commit Changes
+
+          After completing the above tasks, commit your changes with the message:
+          "update changelog and docs from OCS PR #${{ steps.set_vars.outputs.pr_number }}"
+
+          **IMPORTANT:** Do NOT create a pull request - just commit the changes to this branch. The workflow will create the PR.
+
+          ## Important Guidelines
+
+          - Focus on user-facing changes
+          - Be clear and concise in both changelog and documentation
+          - Match the style of existing content
+          - If unsure whether docs are needed, err on the side of including them for NEW features
+          - For CHANGE and BUG types, docs updates are usually optional unless behavior significantly changes
           EOF
 
-      - name: Run Claude Code to generate changelog
+      - name: Run Claude Code to generate changelog and update docs
         id: claude
         uses: anthropics/claude-code-action@v1
         with:
@@ -119,35 +152,56 @@ jobs:
           github_token: ${{ secrets.OCS_DOCS_PAT }}
           prompt_file: /tmp/claude_instructions.md
           claude_args: |
-            --allowedTools "Read,Write,Edit,Bash(git add:*),Bash(git commit:*)"
+            --allowedTools "Read,Write,Edit,Glob,Grep,Task,Bash(git add:*),Bash(git commit:*)"
 
       - name: Check for changes and push
         id: check_changes
         run: |
-          if git diff --quiet origin/main docs/changelog.md; then
+          if git diff --quiet origin/main; then
             echo "has_changes=false" >> $GITHUB_OUTPUT
-            echo "No changes made to changelog"
+            echo "No changes made by Claude"
           else
             echo "has_changes=true" >> $GITHUB_OUTPUT
+
+            # Check what was changed
+            CHANGELOG_CHANGED=$(git diff --name-only origin/main | grep -c "docs/changelog.md" || echo "0")
+            DOCS_CHANGED=$(git diff --name-only origin/main | grep -v "docs/changelog.md" | grep -c "docs/" || echo "0")
+
+            echo "changelog_changed=$CHANGELOG_CHANGED" >> $GITHUB_OUTPUT
+            echo "docs_changed=$DOCS_CHANGED" >> $GITHUB_OUTPUT
+
             git push origin ${{ env.branch_name }}
           fi
 
       - name: Create Pull Request
         if: steps.check_changes.outputs.has_changes == 'true'
         run: |
+          # Determine PR title based on what changed
+          if [ "${{ steps.check_changes.outputs.docs_changed }}" != "0" ]; then
+            PR_TITLE="Update Changelog and Docs from OCS PR #${{ steps.set_vars.outputs.pr_number }}"
+            CHANGES_DESC="Automated changelog and documentation updates"
+          else
+            PR_TITLE="Update Changelog from OCS PR #${{ steps.set_vars.outputs.pr_number }}"
+            CHANGES_DESC="Automated changelog update"
+          fi
+
           gh pr create \
-            --title "Update Changelog from OCS PR #${{ steps.set_vars.outputs.pr_number }}" \
+            --title "$PR_TITLE" \
             --body "## Summary
-          Automated changelog update based on merged PR in open-chat-studio.
+          $CHANGES_DESC based on merged PR in open-chat-studio.
 
           **Source PR:** ${{ steps.set_vars.outputs.pr_url }}
           **PR Title:** ${{ steps.set_vars.outputs.pr_title }}
           **Author:** @${{ steps.set_vars.outputs.pr_author }}
 
-          ---
-          🤖 This PR was automatically generated using Claude to analyze the source PR and create an appropriate changelog entry.
+          ### Changes Made
+          - Changelog: ${{ steps.check_changes.outputs.changelog_changed == '1' && '✅ Updated' || '⏭️ Skipped' }}
+          - Documentation: ${{ steps.check_changes.outputs.docs_changed != '0' && '✅ Updated' || '⏭️ No updates needed' }}
 
-          @claude please review the changelog entry for accuracy and style." \
+          ---
+          🤖 This PR was automatically generated using Claude to analyze the source PR and update the changelog and documentation accordingly.
+
+          @claude please review the changes for accuracy, completeness, and style." \
             --label "automated,changelog" \
             --assignee "${{ steps.set_vars.outputs.pr_author }}" \
             --base main \
