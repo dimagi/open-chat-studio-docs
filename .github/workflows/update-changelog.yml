@@ -28,15 +28,25 @@ jobs:
             IS_WIDGET="${{ github.event.client_payload.is_widget_change }}"
           else
             # For manual trigger, fetch PR info to determine if it's widget-related
-            # We'll use a default checkout first, then determine branch
-            IS_WIDGET="false"
+            echo "Fetching PR data to determine widget status..."
+            PR_DATA=$(gh api repos/dimagi/open-chat-studio/pulls/${{ inputs.pr_number }}) || { echo "Failed to fetch PR data"; exit 1; }
+            FILES=$(echo "$PR_DATA" | jq -r '.files[]?.filename // empty')
+            if echo "$FILES" | grep -q "^components/"; then
+              IS_WIDGET="true"
+            else
+              IS_WIDGET="false"
+            fi
           fi
 
           if [ "$IS_WIDGET" == "true" ]; then
-            echo "base_branch=widget-develop" >> $GITHUB_OUTPUT
+            BASE_BRANCH="widget-develop"
           else
-            echo "base_branch=main" >> $GITHUB_OUTPUT
+            BASE_BRANCH="main"
           fi
+
+          echo "base_branch=$BASE_BRANCH" >> $GITHUB_OUTPUT
+          echo "is_widget_change=$IS_WIDGET" >> $GITHUB_OUTPUT
+          echo "Using base branch: $BASE_BRANCH (widget change: $IS_WIDGET)"
         env:
           GH_TOKEN: ${{ secrets.OCS_DOCS_PAT }}
 
@@ -45,6 +55,11 @@ jobs:
         with:
           ref: ${{ steps.determine_branch.outputs.base_branch }}
           fetch-depth: 0
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Set variables from dispatch or manual input
         id: set_vars
@@ -63,33 +78,52 @@ jobs:
           else
             echo "pr_number=${{ inputs.pr_number }}" >> $GITHUB_OUTPUT
             # Fetch PR details using GitHub API
-            PR_DATA=$(gh api repos/dimagi/open-chat-studio/pulls/${{ inputs.pr_number }})
-            echo "pr_title=$(echo $PR_DATA | jq -r '.title')" >> $GITHUB_OUTPUT
-            echo "pr_url=$(echo $PR_DATA | jq -r '.html_url')" >> $GITHUB_OUTPUT
-            echo "pr_author=$(echo $PR_DATA | jq -r '.user.login')" >> $GITHUB_OUTPUT
-            echo "pr_merged_at=$(echo $PR_DATA | jq -r '.merged_at')" >> $GITHUB_OUTPUT
-            echo "pr_body=$(echo $PR_DATA | jq -r '.body')" >> $GITHUB_OUTPUT
-            echo "pr_labels=$(echo $PR_DATA | jq -r '[.labels[].name]')" >> $GITHUB_OUTPUT
+            PR_DATA=$(gh api repos/dimagi/open-chat-studio/pulls/${{ inputs.pr_number }}) || { echo "Failed to fetch PR data"; exit 1; }
 
-            # Check if widget files changed for manual trigger
-            FILES=$(echo $PR_DATA | jq -r '.changed_files[]?.filename // empty')
-            if echo "$FILES" | grep -q "^components/"; then
-              IS_WIDGET="true"
-            else
-              IS_WIDGET="false"
-            fi
-            echo "is_widget_change=$IS_WIDGET" >> $GITHUB_OUTPUT
-            echo "changed_files=$(echo $PR_DATA | jq -c '[.changed_files[].filename]')" >> $GITHUB_OUTPUT
+            # Use multiline outputs for safe escaping
+            {
+              echo "pr_title<<EOF"
+              echo "$PR_DATA" | jq -r '.title'
+              echo "EOF"
+            } >> $GITHUB_OUTPUT
+
+            {
+              echo "pr_url<<EOF"
+              echo "$PR_DATA" | jq -r '.html_url'
+              echo "EOF"
+            } >> $GITHUB_OUTPUT
+
+            {
+              echo "pr_author<<EOF"
+              echo "$PR_DATA" | jq -r '.user.login'
+              echo "EOF"
+            } >> $GITHUB_OUTPUT
+
+            {
+              echo "pr_merged_at<<EOF"
+              echo "$PR_DATA" | jq -r '.merged_at'
+              echo "EOF"
+            } >> $GITHUB_OUTPUT
+
+            {
+              echo "pr_body<<EOF"
+              echo "$PR_DATA" | jq -r '.body'
+              echo "EOF"
+            } >> $GITHUB_OUTPUT
+
+            {
+              echo "pr_labels<<EOF"
+              echo "$PR_DATA" | jq -r '[.labels[].name]'
+              echo "EOF"
+            } >> $GITHUB_OUTPUT
+
+            # Get widget change status and changed files list
+            echo "is_widget_change=${{ steps.determine_branch.outputs.is_widget_change }}" >> $GITHUB_OUTPUT
+            echo "changed_files=$(echo "$PR_DATA" | jq -c '[.files[].filename]')" >> $GITHUB_OUTPUT
           fi
 
-          # Determine base branch based on whether this is a widget change
-          if [ "$IS_WIDGET" == "true" ]; then
-            BASE_BRANCH="widget-develop"
-          else
-            BASE_BRANCH="main"
-          fi
-          echo "base_branch=$BASE_BRANCH" >> $GITHUB_OUTPUT
-          echo "Using base branch: $BASE_BRANCH"
+          # Use base branch from determine_branch step (already determined correctly)
+          echo "base_branch=${{ steps.determine_branch.outputs.base_branch }}" >> $GITHUB_OUTPUT
         env:
           GH_TOKEN: ${{ secrets.OCS_DOCS_PAT }}
 
@@ -270,7 +304,8 @@ jobs:
             echo "docs_changed=$DOCS_CHANGED" >> $GITHUB_OUTPUT
             echo "changelog_file=$CHANGELOG_FILE" >> $GITHUB_OUTPUT
 
-            git push origin ${{ env.branch_name }}
+            echo "Pushing changes to origin/${{ env.branch_name }}..."
+            git push origin ${{ env.branch_name }} || { echo "Failed to push changes"; exit 1; }
           fi
 
       - name: Create Pull Request
@@ -297,6 +332,7 @@ jobs:
             CHANGELOG_DESC="Main changelog (\`docs/changelog.md\`)"
           fi
 
+          echo "Creating pull request..."
           gh pr create \
             --title "$PR_TITLE" \
             --body "## Summary
@@ -319,6 +355,6 @@ jobs:
             --label "automated,changelog" \
             --assignee "${{ steps.set_vars.outputs.pr_author }}" \
             --base "${{ steps.set_vars.outputs.base_branch }}" \
-            --head "${{ env.branch_name }}"
+            --head "${{ env.branch_name }}" || { echo "Failed to create pull request"; exit 1; }
         env:
           GH_TOKEN: ${{ secrets.OCS_DOCS_PAT }}
