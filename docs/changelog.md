@@ -4,6 +4,8 @@ hide:
 ---
 
 # Changelog
+## Oct 9, 2025
+* **BUG** The dynamic filter widget will now update the available versions to match those of the selected chatbot(s).
 
 ## Oct 17, 2025
 * **CHANGE** Fix edge case errors for pipelines with parallel workflows. 
