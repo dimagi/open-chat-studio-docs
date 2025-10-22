@@ -44,6 +44,27 @@ open-chat-studio-widget {
 -   :simple-css:{ .sm .middle } See [CSS Styling](styling.md) for more customization options.
 </div>
 
+## :material-shield-key: Embed Authentication
+Secure your embedded widgets with authentication keys for controlled access to specific channels.
+
+### Overview
+The embed authentication feature allows you to:
+
+- Restrict widget access to authorized embeddings only
+- Authenticate specific embedded channel instances
+- Provide secure access control for sensitive or premium content
+- Track and manage different embedded deployments
+
+### Implementation
+```html
+<open-chat-studio-widget
+  chatbot-id="your-chatbot-id"
+  embed-key="your-secure-embed-key">
+</open-chat-studio-widget>
+```
+
+When an embed key is provided, it's automatically sent as an `X-Embed-Key` header with all API requests to authenticate the widget instance.
+
 ## :material-account: User Identification
 Control how users are identified across chat sessions to enable personalized experiences and session continuity.
 ### Overview
@@ -240,6 +261,7 @@ The session data is set to expire after 24 hours. This is also configurable by u
 |----------|------|----------|---------|-------------|---------|
 | `chatbot-id` | `string` | **REQUIRED** | - | Your chatbot ID from Open Chat Studio | `"183312ac-cbe5-4c91-9e7b-d9df96b088e4"` |
 | `api-base-url` | `string` | Optional | `"https://chatbots.dimagi.com"` | API base URL for your Open Chat Studio instance | `"https://your-domain.com"` |
+| `embed-key` | `string` | Optional | `undefined` | Authentication key for embedded channels | `"your-embed-auth-key"` |
 
 ### Button & UI Customization
 
