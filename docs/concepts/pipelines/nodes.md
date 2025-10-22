@@ -5,7 +5,7 @@
     See [cookbook](../../how-to/workflow_cookbook.md) for example usage. 
 
 ## LLM
-Use an LLM to respond to the node input. This node can be configured with a prompt to give the LLM instructions on how to respond. It can also be configured to use [tools](../tools/index.md) which enable it to perform additional actions. 
+Use an LLM to respond to the node input. This node can be configured with a prompt to give the LLM instructions on how to respond. It can also be configured to use [tools](../tools/index.md) which enable it to perform additional actions.
 
 ## Routers
 
@@ -50,7 +50,7 @@ You can select the `name` field using the key `user.name` and the `age` field us
 If the field is not present in the data source, the router will not route the input to the first linked node.
 
 ## Assistant
-Uses an OpenAI assistant to respond to the input.
+Use an OpenAI assistant to respond to the input.
 
 ## Python Node
 The Python node allows the bot builder to execute custom Python code to perform logic, data processing, or other tasks.
@@ -66,7 +66,11 @@ def main(input, **kwargs) -> str:
 
 The `input` parameter is a string that contains the input to the node. The return value of the function is a string that will be passed to the next node in the pipeline.
 
-The `kwargs` parameter is currently unused, but it is included to support future features that may require additional arguments to be passed to the function (though it is required to be present in the function signature).
+### Additional Keyword Arguments
+
+The following additional arguments are provided:
+
+* `node_inputs: list[str]` - A list of all the inputs to the node at the time of execution. This will be the same as `[input]` except when the node is part of a workflow with [parallel branches](./index.md#parallel-nodes).
 
 !!! warning
 
@@ -101,6 +105,7 @@ The Python node provides a set of utility functions that can be used to interact
 #### ::: python_node.add_session_tag
 #### ::: python_node.get_node_output
 #### ::: python_node.require_node_outputs
+#### ::: python_node.wait_for_next_input
 #### ::: python_node.abort_with_message
 
 ### Temporary State
@@ -178,6 +183,30 @@ Other file types can still be uploaded to assistants but the Python Node is not 
 
 ## Template
 Renders a [Jinja](https://jinja.palletsprojects.com/en/stable/templates/) template.
+
+## Available Template Variables
+The following variables are available in the template context:
+
+| Key                     | Description                                                          | Type            |
+|-------------------------|----------------------------------------------------------------------|-----------------|
+| `input`                 | The input to the node                                                | String          |
+| `node_inputs`           | The list of all inputs to the node in the case of parallel workflows | List of strings |
+| `temp_state`            | Pipeline temporary state                                             | Dict            |
+| `session_state`         | Session state                                                        | Dict            |
+| `participant_details`   | Participant details (`identifier`, `platform`)                       | Dict            |
+| `participant_data`      | Participant data                                                     | Dict            |
+| `participant_schedules` | Participant schedule data                                            | List            |
+
+### Sample Template
+```
+Input: {{ input }}
+Node Inputs: {{ node_inputs }}
+Temp State Key: {{ temp_state.my_key }}
+Participant ID: {{ participant_details.identifier }}
+Participant Platform: {{ participant_details.platform }}
+Participant Data: {{ participant_data.custom_key }}
+Schedules: {{ participant_schedules }}
+```
 
 ## Email
 Send the input to the specified list of email addresses. This node acts as a passthrough, meaning the output will be identical to the input, allowing it to be used in a pipeline without affecting the conversation.

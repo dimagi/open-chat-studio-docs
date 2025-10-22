@@ -4,6 +4,14 @@ hide:
 ---
 
 # Changelog
+## Oct 9, 2025
+* **BUG** The dynamic filter widget will now update the available versions to match those of the selected chatbot(s).
+
+## Oct 17, 2025
+* **CHANGE** Fix edge case errors for pipelines with parallel workflows. 
+* **CHANGE** Make all node inputs available to Python Nodes and Render Template nodes via the `node_inputs` argument.
+* **NEW** Introduce [wait_for_next_input](concepts/pipelines/nodes.md#python_node.wait_for_next_input) Python Node function for advanced parallel flow control. 
+
 ## Oct 15, 2025
 * **NEW** Participants can now be removed.
 
@@ -64,7 +72,7 @@ hide:
 
 ## Jul 31, 2025
 * **NEW** Added `set_participant_data_key`, `append_to_participant_data_key` and `increment_participant_data_key` utility methods to the code node.
-* **NEW** Added LLM tools to append to and incremet a counter in the participant data.
+* **NEW** Added LLM tools to append to and increment a counter in the participant data.
 
 ## Jul 30, 2025
 * **NEW** Chat Widget v1.4 released. This represents a major rewrite of the widget with significant improvements and new features. See the [widget changelog](chat_widget/changelog.md) for full details.

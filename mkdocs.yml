@@ -65,6 +65,8 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
   - toc:
       permalink: true
 
@@ -128,6 +130,7 @@ nav:
         - concepts/pipelines/index.md
         - concepts/pipelines/nodes.md
         - concepts/pipelines/history.md
+        - concepts/pipelines/parallel.md
       - Team:
           - concepts/team/index.md
           - concepts/team/llm_providers.md

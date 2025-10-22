@@ -92,8 +92,10 @@ def get_node_path(node_name: str) -> list | None:
 
 def get_all_routes() -> dict:
     """
-    Returns a dictionary containing all routing decisions in the pipeline.
-    The keys are the node names and the values are the routes chosen by each node.
+    Returns a dictionary containing all routing decisions made in the pipeline up to the current node.
+    The keys are the node names and the values are the route keywords chosen by each router node.
+
+    Note that in parallel workflows only the most recent route for a particular node will be returned.
     """
 
 
@@ -137,5 +139,23 @@ def require_node_outputs(*node_names):
     def main(input, **kwargs):
         require_node_outputs("nodeA", "nodeB")
         return get_node_output("nodeA") + get_node_output("nodeB")
+    ```
+    """
+
+
+def wait_for_next_input():
+    """Advanced utility that will abort the current execution when not all inputs have been received.
+    This is only useful in cases where the workflow has parallel branches which might result in the node being
+    executed more than once.
+
+    This is similar to `require_node_outputs` but useful where some node outputs may be optional.
+
+    ```python
+    def main(input, **kwargs):
+        a = get_node_output("a")
+        b = get_node_output("b")
+        if not a and not b:
+            wait_for_next_input()
+        # do something with a or b
     ```
     """

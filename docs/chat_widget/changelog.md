@@ -24,6 +24,7 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 ### v0.5.0
 
+* Allow users to drag and reposition the chat-widget launch button when it’s fixed, to avoid obscuring page content.
 * **NEW: Internationalization Support**
     * Added built-in translations for 9 languages: English, Spanish, French, Arabic, Hindi, Italian, Portuguese, Swahili, and Ukrainian
     * New `language` property to set widget UI language (e.g., `language="es"`)
