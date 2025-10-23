@@ -43,7 +43,9 @@ Create a new GitHub release by comparing the current changelog with the previous
    - Do not add any other sections or headers to the release notes.
    - Focus on user-facing changes
    - Where possible include links to the documentation
+       - If the changelog includes links, copy those exactly.
        - The changelog is hosted in the same mkdocs site as the documentation.
+       - Verify that the links exist before adding.
 
 4. **Create the GitHub release:**
    - Use `gh release create --draft` with tag: $1
