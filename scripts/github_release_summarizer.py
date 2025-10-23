@@ -78,7 +78,7 @@ def fetch_github_releases(repo: str, token: str) -> List[Dict]:
         releases = response.json()
 
         # Sort releases by published date (newest first)
-        releases.sort(key=lambda x: x.get('published_at', ''), reverse=True)
+        releases.sort(key=lambda x: x.get('published_at') or '', reverse=True)
 
         return releases
     except requests.exceptions.RequestException as e:
