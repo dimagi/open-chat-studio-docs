@@ -45,11 +45,8 @@ jobs:
           if [ "${{ github.event_name }}" == "repository_dispatch" ]; then
             IS_WIDGET="${{ github.event.client_payload.is_widget_change }}"
           else
-            # Fetch PR data and all changed files (handles pagination)
             echo "Fetching PR data to determine widget status..."
-            PR_DATA=$(gh api repos/${{ env.SOURCE_REPO }}/pulls/${{ inputs.pr_number }}) || { echo "Failed to fetch PR data"; exit 1; }
-            FILES=$(gh api "repos/${{ env.SOURCE_REPO }}/pulls/${{ inputs.pr_number }}/files" --paginate --jq '.[].filename')
-            FILES=$(gh api "repos/${{ env.SOURCE_REPO }}/pulls/${{ inputs.pr_number }}/files" --paginate --jq '.[].filename')
+            FILES=$(gh api "repos/${{ env.SOURCE_REPO }}/pulls/${{ inputs.pr_number }}/files" --paginate --jq '.[].filename') || { echo "Failed to fetch PR data"; exit 1; }
             WIDGET_PREFIX="${{ env.WIDGET_PATH_PREFIX }}"
             if echo "$FILES" | grep -q "^$WIDGET_PREFIX"; then
               IS_WIDGET="true"
@@ -92,9 +89,6 @@ jobs:
             echo "pr_merged_at=${{ github.event.client_payload.pr_merged_at }}" >> $GITHUB_OUTPUT
             echo "pr_body=${{ toJSON(github.event.client_payload.pr_body) }}" >> $GITHUB_OUTPUT
             echo "pr_labels=${{ toJSON(github.event.client_payload.pr_labels) }}" >> $GITHUB_OUTPUT
-            IS_WIDGET="${{ github.event.client_payload.is_widget_change }}"
-            echo "is_widget_change=$IS_WIDGET" >> $GITHUB_OUTPUT
-            echo "changed_files=${{ toJSON(github.event.client_payload.changed_files) }}" >> $GITHUB_OUTPUT
           else
             echo "pr_number=${{ inputs.pr_number }}" >> $GITHUB_OUTPUT
             # Fetch PR details using GitHub API
@@ -136,14 +130,11 @@ jobs:
               echo "$PR_DATA" | jq -r '[.labels[].name]'
               echo "EOF"
             } >> $GITHUB_OUTPUT
-
-            # Get widget change status and changed files list
-            echo "is_widget_change=${{ steps.determine_branch.outputs.is_widget_change }}" >> $GITHUB_OUTPUT
-            echo "changed_files=$(echo "$PR_DATA" | jq -c '[.files[].filename]')" >> $GITHUB_OUTPUT
           fi
 
           # Use base branch from determine_branch step (already determined correctly)
           echo "base_branch=${{ steps.determine_branch.outputs.base_branch }}" >> $GITHUB_OUTPUT
+          echo "is_widget_change=${{ steps.determine_branch.outputs.is_widget_change }}" >> $GITHUB_OUTPUT
         env:
           GH_TOKEN: ${{ secrets.OCS_DOCS_PAT }}
 
@@ -237,10 +228,6 @@ jobs:
           # Add widget context to title if applicable
           if [ "${{ steps.set_vars.outputs.is_widget_change }}" == "true" ]; then
             PR_TITLE="[Widget] $PR_TITLE"
-          fi
-
-          # Determine changelog file description
-          if [ "${{ steps.set_vars.outputs.is_widget_change }}" == "true" ]; then
             CHANGELOG_DESC="Widget changelog (\`${{ env.WIDGET_CHANGELOG }}\`)"
           else
             CHANGELOG_DESC="Main changelog (\`${{ env.MAIN_CHANGELOG }}\`)"
@@ -263,9 +250,7 @@ jobs:
           - Documentation: ${{ steps.check_changes.outputs.docs_changed != '0' && '✅ Updated' || '⏭️ No updates needed' }}
 
           ---
-          🤖 This PR was automatically generated using Claude to analyze the source PR and update the changelog and documentation accordingly.
-
-          @claude please review the changes for accuracy, completeness, and style." \
+          🤖 This PR was automatically generated using Claude to analyze the source PR and update the changelog and documentation accordingly." \
             --label "automated,changelog" \
             --assignee "${{ steps.set_vars.outputs.pr_author }}" \
             --base "${{ steps.set_vars.outputs.base_branch }}" \
