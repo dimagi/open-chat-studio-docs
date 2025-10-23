@@ -45,13 +45,10 @@ jobs:
           if [ "${{ github.event_name }}" == "repository_dispatch" ]; then
             IS_WIDGET="${{ github.event.client_payload.is_widget_change }}"
           else
-            # For manual trigger, fetch PR info to determine if it's widget-related
-            echo "Fetching PR data to determine widget status..."
-            PR_DATA=$(gh api repos/${{ env.SOURCE_REPO }}/pulls/${{ inputs.pr_number }}) || { echo "Failed to fetch PR data"; exit 1; }
-            FILES=$(echo "$PR_DATA" | jq -r '.files[]?.filename // empty')
             # Fetch PR data and all changed files (handles pagination)
             echo "Fetching PR data to determine widget status..."
             PR_DATA=$(gh api repos/${{ env.SOURCE_REPO }}/pulls/${{ inputs.pr_number }}) || { echo "Failed to fetch PR data"; exit 1; }
+            FILES=$(gh api "repos/${{ env.SOURCE_REPO }}/pulls/${{ inputs.pr_number }}/files" --paginate --jq '.[].filename')
             FILES=$(gh api "repos/${{ env.SOURCE_REPO }}/pulls/${{ inputs.pr_number }}/files" --paginate --jq '.[].filename')
             WIDGET_PREFIX="${{ env.WIDGET_PATH_PREFIX }}"
             if echo "$FILES" | grep -q "^$WIDGET_PREFIX"; then
