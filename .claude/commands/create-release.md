@@ -35,10 +35,15 @@ Create a new GitHub release by comparing the current changelog with the previous
      - Itemized list of **BUG** entries
      ### Migrations
      - Itemized list of **MIGRATION** entries
+     
+     Remove before publishing:
+     - diff link: https://github.com/dimagi/open-chat-studio-docs/compare/<previous-tag>...HEAD
      ```
    - Only include sections that have entries. If a section has no entries, omit it entirely.
    - Do not add any other sections or headers to the release notes.
    - Focus on user-facing changes
+   - Where possible include links to the documentation
+       - The changelog is hosted in the same mkdocs site as the documentation.
 
 4. **Create the GitHub release:**
    - Use `gh release create --draft` with tag: $1
