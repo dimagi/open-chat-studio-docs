@@ -14,35 +14,21 @@ on:
       release_name:
         description: 'Name for the release'
         required: false
-      target_branch:
-        description: 'Target branch for the release (defaults to main)'
-        required: false
-        default: 'main'
 
 jobs:
   create-weekly-release:
-    permissions: write-all
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      id-token: write
     runs-on: ubuntu-latest
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0  # Fetch all history for all tags and branches
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.13'
-
-      - name: Install uv
-        uses: astral-sh/setup-uv@v3
-
-      - name: Configure Git Credentials
-        # see https://api.github.com/users/github-actions%5Bbot%5D
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
 
       - name: Generate tag name for scheduled run
         if: github.event_name == 'schedule'
@@ -58,17 +44,11 @@ jobs:
         run: |
           echo "RELEASE_TAG=${{ github.event.inputs.release_tag }}" >> $GITHUB_ENV
           echo "RELEASE_NAME=${{ github.event.inputs.release_name || github.event.inputs.release_tag }}" >> $GITHUB_ENV
-          echo "TARGET_BRANCH=${{ github.event.inputs.target_branch }}" >> $GITHUB_ENV
 
-      - name: Run Release Summarizer
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: |
-          uv run scripts/github_release_summarizer.py \
-            --repo "${{ github.repository }}" \
-            --tag "${{ env.RELEASE_TAG }}" \
-            --name "${{ env.RELEASE_NAME }}" \
-            --target "${{ env.TARGET_BRANCH || 'main' }}" \
-            --model "claude-3-5-haiku-20241022" \
-            --draft
+      - name: Create Release with Claude
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: /create-release ${{ env.RELEASE_TAG }} "${{ env.RELEASE_NAME }}"
+          claude_args: |
+            --model claude-3-5-sonnet-20241022
