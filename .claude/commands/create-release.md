@@ -46,9 +46,7 @@ Create a new GitHub release by comparing the current changelog with the previous
        - If the changelog includes links, copy those exactly.
        - The changelog is hosted in the same mkdocs site as the documentation.
        - Verify that the links exist before adding.
-       - Use relative docs links, not absolute links:
-         - BAD: [Chatbots](https://docs.openchatstudio.com/concepts/chatbots/)
-         - GOOD: [Chatbots](concepts/chatbots.md)
+       - Use the following base URL for links: https://docs.openchatstudio.com
 
 4. **Create the GitHub release:**
    - Use `gh release create --draft` with tag: $1
