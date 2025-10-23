@@ -18,10 +18,9 @@ Create a new GitHub release by comparing the current changelog with the previous
    - Run `gh release list --limit 1 --exclude-drafts` to get the latest release
    - Extract the tag name (3rd column in the output)
 
-2. **Compare the changelog between releases:**
-   - Read the current docs/changelog.md file using the Read tool
-   - Run `git show <previous-tag>:docs/changelog.md` to get the changelog from the previous release
-   - Identify all new entries that appear in the current changelog but not in the previous release
+2. **Get changelog changes since last release:**
+   - Run `git diff <previous-tag> HEAD -- docs/changelog.md` to get only the new entries
+   - Lines starting with `+` are new additions since the previous release
 
 3. **Generate a well-formatted release summary:**
    - Start with an overall summary of the release
