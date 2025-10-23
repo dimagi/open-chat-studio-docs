@@ -31,8 +31,10 @@ ${CHANGELOG_INSTRUCTIONS}
 - Focus on user-facing changes
 - Use active voice (e.g., "Added support for..." not "Support was added for...")
 - Don't include internal implementation details unless they affect users
-- If the PR is purely internal/refactoring with no user impact, you can skip the changelog
 - Match the style and tone of existing changelog entries
+- If the PR is purely internal/refactoring with no user impact, you can skip the changelog entry
+- **However:** Still proceed to Task 2 to check if documentation updates are needed
+- If both changelog AND docs are skipped, do not create a commit - the workflow will detect no changes and skip PR creation
 
 ### Task 2: Update Documentation
 
@@ -47,7 +49,7 @@ After updating the changelog, analyze whether this PR requires documentation upd
    - Internal/refactoring → Skip documentation updates
 
 2. **If documentation IS needed:**
-   - Use the Task tool with subagent_type="mkdocs-technical-writer" to handle the documentation updates
+   - Use the "mkdocs-technical-writer" agent to handle the documentation updates
    - Provide the agent with:
      * What changed (from the PR)
      * What documentation needs to be created or updated

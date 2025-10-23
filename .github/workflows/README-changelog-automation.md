@@ -28,8 +28,8 @@ Run workflow manually: Actions → "Update Changelog and Docs from OCS PR" → E
 
 ## Required Secrets
 
-- **`OCS_DOCS_PAT`**: GitHub PAT with repo/workflow scope
-- **`ANTHROPIC_API_KEY`**: Claude API key
+- **`OCS_DOCS_PAT`**: GitHub PAT with contents, issues, pull_request scope to both the OCS repo and the OCS docs repo.
+- **`ANTHROPIC_API_KEY`**: Claude API key.
 
 ## Troubleshooting
 
