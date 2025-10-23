@@ -23,13 +23,20 @@ Create a new GitHub release by comparing the current changelog with the previous
    - Lines starting with `+` are new additions since the previous release
 
 3. **Generate a well-formatted release summary:**
-   - Start with an overall summary of the release
-   - Organize changes into sections:
-     * **New Features** (entries tagged with **NEW** in the changelog)
-     * **Improvements** (entries tagged with **CHANGE** in the changelog)
-     * **Bug Fixes** (entries tagged with **BUG** in the changelog)
    - Use markdown formatting for the release notes
-   - Keep the summary concise but comprehensive
+   - Use the following template:
+
+     ```markdown
+     ### New Features
+     - Itemized list of **NEW** entries.
+
+     ### Improvements
+     - Itemized list of **CHANGE** entries.
+
+     ### Bug Fixes
+     - Itemized list of **BUG** entries.
+     ```
+   - Do not add any other sections or headers to the release notes.
    - Focus on user-facing changes
 
 4. **Create the GitHub release:**
@@ -37,7 +44,7 @@ Create a new GitHub release by comparing the current changelog with the previous
    - Title: $2
    - Target: 'main'
    - Use your generated summary as the release notes
-   - Example: `gh release create $1 --title "..." --notes "..." --target main --draft`
+   - Example: `gh release create $1 --title "$2" --notes "..." --target main --draft`
 
 5. **Confirm completion:**
    - Output the URL of the created release
@@ -48,3 +55,4 @@ Create a new GitHub release by comparing the current changelog with the previous
 - Keep the release notes concise and well-formatted
 - Use markdown formatting consistently
 - Focus on user-facing changes and their impact
+- If no changes found in changelog diff, warn user and don't create empty release
