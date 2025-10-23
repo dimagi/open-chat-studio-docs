@@ -52,3 +52,5 @@ jobs:
           prompt: /create-release ${{ env.RELEASE_TAG }} "${{ env.RELEASE_NAME }}"
           claude_args: |
             --model claude-3-5-sonnet-20241022
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

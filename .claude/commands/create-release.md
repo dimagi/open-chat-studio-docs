@@ -1,5 +1,5 @@
 ---
-allowed-tools: Bash(gh release:*),Bash(git:*),Read,AskUserQuestion
+allowed-tools: Bash(gh release:*),Bash(git:*),Read
 description: Create a new release with changelog
 argument-hint: [release-tag] [release-title]
 ---
@@ -19,8 +19,8 @@ Create a new GitHub release by comparing the current changelog with the previous
    - Extract the tag name (3rd column in the output)
 
 2. **Get changelog changes since last release:**
-   - Run `git diff <previous-tag> HEAD -- docs/changelog.md` to get only the new entries
-   - Lines starting with `+` are new additions since the previous release
+   - Run `git diff <previous-tag> HEAD -- docs/changelog.md` to the diff from the previous release.
+   - Use the diff to determine what has changed.
 
 3. **Generate a well-formatted release summary:**
    - Use markdown formatting for the release notes
@@ -28,14 +28,15 @@ Create a new GitHub release by comparing the current changelog with the previous
 
      ```markdown
      ### New Features
-     - Itemized list of **NEW** entries.
-
+     - Itemized list of **NEW** entries
      ### Improvements
-     - Itemized list of **CHANGE** entries.
-
+     - Itemized list of **CHANGE** entries
      ### Bug Fixes
-     - Itemized list of **BUG** entries.
+     - Itemized list of **BUG** entries
+     ### Migrations
+     - Itemized list of **MIGRATION** entries
      ```
+   - Only include sections that have entries. If a section has no entries, omit it entirely.
    - Do not add any other sections or headers to the release notes.
    - Focus on user-facing changes
 
