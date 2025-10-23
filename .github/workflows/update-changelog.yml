@@ -1,3 +1,11 @@
+# Workflow: Update Changelog and Docs from OCS PR
+#
+# This workflow automatically updates changelog and documentation when PRs are merged
+# in the open-chat-studio repository. It can be triggered via repository_dispatch events
+# or manually using workflow_dispatch.
+#
+# See README-changelog-automation.md for more.
+
 name: Update Changelog and Docs from OCS PR
 
 on:
@@ -8,7 +16,7 @@ on:
       pr_number:
         description: 'OCS PR number'
         required: true
-        type: string
+        type: number
 
 permissions:
   contents: write
@@ -16,9 +24,19 @@ permissions:
   issues: write
   id-token: write
 
+# Prevent concurrent runs for the same PR to avoid conflicts
+concurrency:
+  group: changelog-update-${{ github.event_name == 'repository_dispatch' && github.event.client_payload.pr_number || inputs.pr_number }}
+  cancel-in-progress: false  # Let current run finish
+
 jobs:
   update-changelog-and-docs:
     runs-on: ubuntu-latest
+    env:
+      WIDGET_PATH_PREFIX: "components/"
+      WIDGET_CHANGELOG: "docs/chat_widget/changelog.md"
+      MAIN_CHANGELOG: "docs/changelog.md"
+      SOURCE_REPO: "dimagi/open-chat-studio"
     steps:
       - name: Determine base branch
         id: determine_branch
@@ -29,9 +47,9 @@ jobs:
           else
             # For manual trigger, fetch PR info to determine if it's widget-related
             echo "Fetching PR data to determine widget status..."
-            PR_DATA=$(gh api repos/dimagi/open-chat-studio/pulls/${{ inputs.pr_number }}) || { echo "Failed to fetch PR data"; exit 1; }
+            PR_DATA=$(gh api repos/${{ env.SOURCE_REPO }}/pulls/${{ inputs.pr_number }}) || { echo "Failed to fetch PR data"; exit 1; }
             FILES=$(echo "$PR_DATA" | jq -r '.files[]?.filename // empty')
-            if echo "$FILES" | grep -q "^components/"; then
+            if echo "$FILES" | grep -q "^${{ env.WIDGET_PATH_PREFIX }}"; then
               IS_WIDGET="true"
             else
               IS_WIDGET="false"
@@ -54,7 +72,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ steps.determine_branch.outputs.base_branch }}
-          fetch-depth: 0
+          fetch-depth: 1
 
       - name: Configure git
         run: |
@@ -78,7 +96,7 @@ jobs:
           else
             echo "pr_number=${{ inputs.pr_number }}" >> $GITHUB_OUTPUT
             # Fetch PR details using GitHub API
-            PR_DATA=$(gh api repos/dimagi/open-chat-studio/pulls/${{ inputs.pr_number }}) || { echo "Failed to fetch PR data"; exit 1; }
+            PR_DATA=$(gh api repos/${{ env.SOURCE_REPO }}/pulls/${{ inputs.pr_number }}) || { echo "Failed to fetch PR data"; exit 1; }
 
             # Use multiline outputs for safe escaping
             {
@@ -135,37 +153,12 @@ jobs:
 
       - name: Create instruction file for Claude
         run: |
-          cat > /tmp/claude_instructions.md << 'EOF'
-          You need to update the changelog and documentation in this repository based on a merged PR from the open-chat-studio repository.
+          # Determine context and changelog instructions based on widget change status
+          if [ "${{ steps.set_vars.outputs.is_widget_change }}" == "true" ]; then
+            CONTEXT_MESSAGE="**This PR modifies the chat widget** (files in ${{ env.WIDGET_PATH_PREFIX }} folder). Widget documentation should be updated in the chat_widget/ directory."
+            CHANGELOG_INSTRUCTIONS="#### Widget Changelog (This PR)
 
-          ## PR Information
-          - **PR Number:** #${{ steps.set_vars.outputs.pr_number }}
-          - **PR Title:** ${{ steps.set_vars.outputs.pr_title }}
-          - **PR URL:** ${{ steps.set_vars.outputs.pr_url }}
-          - **Author:** ${{ steps.set_vars.outputs.pr_author }}
-          - **Merged Date:** ${{ steps.set_vars.outputs.pr_merged_at }}
-          - **Labels:** ${{ steps.set_vars.outputs.pr_labels }}
-          - **Is Widget Change:** ${{ steps.set_vars.outputs.is_widget_change }}
-          - **Base Branch:** ${{ steps.set_vars.outputs.base_branch }}
-
-          ## PR Description
-          ```
-          ${{ steps.set_vars.outputs.pr_body }}
-          ```
-
-          ## Important Context
-          ${{ steps.set_vars.outputs.is_widget_change == 'true' && '**This PR modifies the chat widget** (files in components/ folder). Widget documentation should be updated in the chat_widget/ directory.' || 'This PR modifies the main Open Chat Studio application.' }}
-
-          ## Your Tasks
-
-          ### Task 1: Update Changelog
-
-          **IMPORTANT: The changelog file to update depends on whether this is a widget change:**
-
-          ${{ steps.set_vars.outputs.is_widget_change == 'true' && '
-          #### Widget Changelog (This PR)
-
-          Since this PR modifies widget files, update the **widget changelog** at `docs/chat_widget/changelog.md`.
+          Since this PR modifies widget files, update the **widget changelog** at \`${{ env.WIDGET_CHANGELOG }}\`.
 
           **Widget Changelog Structure:**
           - The widget changelog is organized by **version numbers** (e.g., v0.4.8, v0.4.7)
@@ -175,32 +168,33 @@ jobs:
           - Read the existing widget changelog to understand the format
 
           **Steps for Widget Changelog:**
-          1. Read `docs/chat_widget/changelog.md` to understand the current structure
+          1. Read \`${{ env.WIDGET_CHANGELOG }}\` to understand the current structure
           2. Find the latest version section (e.g., v0.4.8)
           3. Add your entry as a new bullet point under that version
           4. If a new version is being released, check the PR description for version info
           5. Follow the existing style: concise bullet points describing changes
 
           **Widget Changelog Format:**
-          ```markdown
+          \`\`\`markdown
           ### v0.4.8
 
           * Fix horizontal scrollbar styling.
           * Improve scrolling behavior for new messages.
           * Your new entry here.
-          ```
-          ' || '
-          #### Main Changelog (This PR)
+          \`\`\`"
+          else
+            CONTEXT_MESSAGE="This PR modifies the main Open Chat Studio application."
+            CHANGELOG_INSTRUCTIONS="#### Main Changelog (This PR)
 
-          Since this PR modifies main app files, update the **main changelog** at `docs/changelog.md`.
+          Since this PR modifies main app files, update the **main changelog** at \`${{ env.MAIN_CHANGELOG }}\`.
 
           **Main Changelog Structure:**
-          - The main changelog is organized by **dates** (e.g., "Oct 22, 2025")
+          - The main changelog is organized by **dates** (e.g., \"Oct 22, 2025\")
           - Entries use TYPE prefixes: **NEW**, **CHANGE**, **BUG**, **MIGRATION**
           - Format: * **[TYPE]** [Description]
 
           **Steps for Main Changelog:**
-          1. Read `docs/changelog.md` to understand the current structure
+          1. Read \`${{ env.MAIN_CHANGELOG }}\` to understand the current structure
           2. Analyze the PR title, description, and labels to understand what changed
           3. Determine the appropriate changelog type:
              - **NEW**: New features or functionality
@@ -209,67 +203,36 @@ jobs:
              - **MIGRATION**: Migration-related changes or breaking changes
           4. Write a clear, concise changelog entry (1-2 sentences max)
           5. Add the entry to the changelog under the appropriate date section
-          6. Format the merged date as "MMM D, YYYY" (e.g., "Oct 22, 2025")
+          6. Format the merged date as \"MMM D, YYYY\" (e.g., \"Oct 22, 2025\")
           7. If a section for that date already exists, add to it; otherwise create a new date section
 
           **Main Changelog Format:**
-          ```markdown
+          \`\`\`markdown
           ## Oct 22, 2025
           * **NEW** Added support for parallel pipeline execution.
           * **BUG** Fixed issue with session timeout handling.
-          ```
-          '}}
+          \`\`\`"
+          fi
 
-          **General Changelog Guidelines (both types):**
-          - Be concise but informative
-          - Focus on user-facing changes
-          - Use active voice (e.g., "Added support for..." not "Support was added for...")
-          - Don't include internal implementation details unless they affect users
-          - If the PR is purely internal/refactoring with no user impact, you can skip the changelog
-          - Match the style and tone of existing changelog entries
+          # Read template and substitute variables
+          export PR_NUMBER="${{ steps.set_vars.outputs.pr_number }}"
+          export PR_TITLE="${{ steps.set_vars.outputs.pr_title }}"
+          export PR_URL="${{ steps.set_vars.outputs.pr_url }}"
+          export PR_AUTHOR="${{ steps.set_vars.outputs.pr_author }}"
+          export PR_MERGED_AT="${{ steps.set_vars.outputs.pr_merged_at }}"
+          export PR_LABELS="${{ steps.set_vars.outputs.pr_labels }}"
+          export IS_WIDGET_CHANGE="${{ steps.set_vars.outputs.is_widget_change }}"
+          export BASE_BRANCH="${{ steps.set_vars.outputs.base_branch }}"
+          export PR_BODY="${{ steps.set_vars.outputs.pr_body }}"
+          export CONTEXT_MESSAGE
+          export CHANGELOG_INSTRUCTIONS
 
-          ### Task 2: Update Documentation
-
-          After updating the changelog, analyze whether this PR requires documentation updates:
-
-          1. **Check if documentation is needed:**
-             - New features → Need user guides, how-tos, or concept docs
-             - API changes → Update API documentation
-             - Configuration changes → Update setup/configuration docs
-             - Behavior changes → Update relevant user guides
-             - Bug fixes → Usually no docs needed unless it changes behavior
-             - Internal/refactoring → Skip documentation updates
-
-          2. **If documentation IS needed:**
-             - Use the Task tool with subagent_type="mkdocs-technical-writer" to handle the documentation updates
-             - Provide the agent with:
-               * What changed (from the PR)
-               * What documentation needs to be created or updated
-               * Context from the PR description
-             - The agent will find the right place in the docs structure and update accordingly
-             - Review the agent's output to ensure quality
-
-          3. **If documentation is NOT needed:**
-             - Simply skip this task and proceed to commit
-
-          ### Task 3: Commit Changes
-
-          After completing the above tasks, commit your changes with the message:
-          "update changelog and docs from OCS PR #${{ steps.set_vars.outputs.pr_number }}"
-
-          **IMPORTANT:** Do NOT create a pull request - just commit the changes to this branch. The workflow will create the PR.
-
-          ## Important Guidelines
-
-          - Focus on user-facing changes
-          - Be clear and concise in both changelog and documentation
-          - Match the style of existing content
-          - If unsure whether docs are needed, err on the side of including them for NEW features
-          - For CHANGE and BUG types, docs updates are usually optional unless behavior significantly changes
-          EOF
+          # Use envsubst to replace variables in template
+          envsubst < .github/templates/changelog-instructions.md > /tmp/claude_instructions.md
 
       - name: Run Claude Code to generate changelog and update docs
         id: claude
+        timeout-minutes: 10
         uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -291,9 +254,9 @@ jobs:
 
             # Determine which changelog file to check based on widget change flag
             if [ "${{ steps.set_vars.outputs.is_widget_change }}" == "true" ]; then
-              CHANGELOG_FILE="docs/chat_widget/changelog.md"
+              CHANGELOG_FILE="${{ env.WIDGET_CHANGELOG }}"
             else
-              CHANGELOG_FILE="docs/changelog.md"
+              CHANGELOG_FILE="${{ env.MAIN_CHANGELOG }}"
             fi
 
             # Check what was changed
@@ -327,9 +290,9 @@ jobs:
 
           # Determine changelog file description
           if [ "${{ steps.set_vars.outputs.is_widget_change }}" == "true" ]; then
-            CHANGELOG_DESC="Widget changelog (\`docs/chat_widget/changelog.md\`)"
+            CHANGELOG_DESC="Widget changelog (\`${{ env.WIDGET_CHANGELOG }}\`)"
           else
-            CHANGELOG_DESC="Main changelog (\`docs/changelog.md\`)"
+            CHANGELOG_DESC="Main changelog (\`${{ env.MAIN_CHANGELOG }}\`)"
           fi
 
           echo "Creating pull request..."
@@ -356,5 +319,39 @@ jobs:
             --assignee "${{ steps.set_vars.outputs.pr_author }}" \
             --base "${{ steps.set_vars.outputs.base_branch }}" \
             --head "${{ env.branch_name }}" || { echo "Failed to create pull request"; exit 1; }
+        env:
+          GH_TOKEN: ${{ secrets.OCS_DOCS_PAT }}
+
+      - name: Generate workflow summary
+        if: always()
+        run: |
+          echo "## Changelog Update Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Field | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|-------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| **PR Number** | #${{ steps.set_vars.outputs.pr_number }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| **PR Title** | ${{ steps.set_vars.outputs.pr_title }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Base Branch** | \`${{ steps.set_vars.outputs.base_branch }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Widget Change** | ${{ steps.set_vars.outputs.is_widget_change == 'true' && '✅ Yes' || '❌ No' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Changes Made** | ${{ steps.check_changes.outputs.has_changes == 'true' && '✅ Yes' || '❌ No' }} |" >> $GITHUB_STEP_SUMMARY
+
+          if [ "${{ steps.check_changes.outputs.has_changes }}" == "true" ]; then
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "### Files Changed" >> $GITHUB_STEP_SUMMARY
+            echo "- Changelog: ${{ steps.check_changes.outputs.changelog_changed == '1' && '✅ Updated' || '⏭️ Skipped' }}" >> $GITHUB_STEP_SUMMARY
+            echo "- Documentation: ${{ steps.check_changes.outputs.docs_changed != '0' && '✅ Updated' || '⏭️ No updates needed' }}" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          # Comment on the source PR to notify about failure
+          gh issue comment ${{ steps.set_vars.outputs.pr_number }} \
+            --repo ${{ env.SOURCE_REPO }} \
+            --body "⚠️ Automated changelog update failed for this PR.
+
+          **Workflow Run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+          Please check the logs or manually update the changelog in the docs repository." || echo "Failed to post comment (PR may be inaccessible)"
         env:
           GH_TOKEN: ${{ secrets.OCS_DOCS_PAT }}
