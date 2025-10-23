@@ -1,0 +1,293 @@
+# Workflow: Update Changelog and Docs from OCS PR
+#
+# This workflow automatically updates changelog and documentation when PRs are merged
+# in the open-chat-studio repository. It can be triggered via repository_dispatch events
+# or manually using workflow_dispatch.
+#
+# See README-changelog-automation.md for more.
+
+name: Update Changelog and Docs from OCS PR
+
+on:
+  repository_dispatch:
+    types: [ocs_changelog_update]
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'OCS PR number'
+        required: true
+        type: number
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+  id-token: write
+
+# Prevent concurrent runs for the same PR to avoid conflicts
+concurrency:
+  group: changelog-update-${{ github.event_name == 'repository_dispatch' && github.event.client_payload.pr_number || inputs.pr_number }}
+  cancel-in-progress: false  # Let current run finish
+
+jobs:
+  update-changelog-and-docs:
+    runs-on: ubuntu-latest
+    env:
+      WIDGET_PATH_PREFIX: "components/"
+      WIDGET_CHANGELOG: "docs/chat_widget/changelog.md"
+      MAIN_CHANGELOG: "docs/changelog.md"
+      SOURCE_REPO: "dimagi/open-chat-studio"
+    steps:
+      - name: Determine base branch
+        id: determine_branch
+        run: |
+          # Determine base branch before checkout
+          if [ "${{ github.event_name }}" == "repository_dispatch" ]; then
+            IS_WIDGET="${{ github.event.client_payload.is_widget_change }}"
+          else
+            echo "Fetching PR data to determine widget status..."
+            FILES=$(gh api "repos/${{ env.SOURCE_REPO }}/pulls/${{ inputs.pr_number }}/files" --paginate --jq '.[].filename') || { echo "Failed to fetch PR data"; exit 1; }
+            WIDGET_PREFIX="${{ env.WIDGET_PATH_PREFIX }}"
+            if echo "$FILES" | grep -q "^$WIDGET_PREFIX"; then
+              IS_WIDGET="true"
+            else
+              IS_WIDGET="false"
+            fi
+          fi
+
+          if [ "$IS_WIDGET" == "true" ]; then
+            BASE_BRANCH="widget-develop"
+          else
+            BASE_BRANCH="main"
+          fi
+
+          echo "base_branch=$BASE_BRANCH" >> $GITHUB_OUTPUT
+          echo "is_widget_change=$IS_WIDGET" >> $GITHUB_OUTPUT
+          echo "Using base branch: $BASE_BRANCH (widget change: $IS_WIDGET)"
+        env:
+          GH_TOKEN: ${{ secrets.OCS_DOCS_PAT }}
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.determine_branch.outputs.base_branch }}
+          fetch-depth: 1
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Set variables from dispatch or manual input
+        id: set_vars
+        run: |
+          if [ "${{ github.event_name }}" == "repository_dispatch" ]; then
+            echo "pr_number=${{ github.event.client_payload.pr_number }}" >> $GITHUB_OUTPUT
+            echo "pr_title=${{ github.event.client_payload.pr_title }}" >> $GITHUB_OUTPUT
+            echo "pr_url=${{ github.event.client_payload.pr_url }}" >> $GITHUB_OUTPUT
+            echo "pr_author=${{ github.event.client_payload.pr_author }}" >> $GITHUB_OUTPUT
+            echo "pr_merged_at=${{ github.event.client_payload.pr_merged_at }}" >> $GITHUB_OUTPUT
+            echo "pr_body=${{ toJSON(github.event.client_payload.pr_body) }}" >> $GITHUB_OUTPUT
+            echo "pr_labels=${{ toJSON(github.event.client_payload.pr_labels) }}" >> $GITHUB_OUTPUT
+          else
+            echo "pr_number=${{ inputs.pr_number }}" >> $GITHUB_OUTPUT
+            # Fetch PR details using GitHub API
+            PR_DATA=$(gh api repos/${{ env.SOURCE_REPO }}/pulls/${{ inputs.pr_number }}) || { echo "Failed to fetch PR data"; exit 1; }
+
+            # Use multiline outputs for safe escaping
+            {
+              echo "pr_title<<EOF"
+              echo "$PR_DATA" | jq -r '.title'
+              echo "EOF"
+            } >> $GITHUB_OUTPUT
+
+            {
+              echo "pr_url<<EOF"
+              echo "$PR_DATA" | jq -r '.html_url'
+              echo "EOF"
+            } >> $GITHUB_OUTPUT
+
+            {
+              echo "pr_author<<EOF"
+              echo "$PR_DATA" | jq -r '.user.login'
+              echo "EOF"
+            } >> $GITHUB_OUTPUT
+
+            {
+              echo "pr_merged_at<<EOF"
+              echo "$PR_DATA" | jq -r '.merged_at'
+              echo "EOF"
+            } >> $GITHUB_OUTPUT
+
+            {
+              echo "pr_body<<EOF"
+              echo "$PR_DATA" | jq -r '.body'
+              echo "EOF"
+            } >> $GITHUB_OUTPUT
+
+            {
+              echo "pr_labels<<EOF"
+              echo "$PR_DATA" | jq -r '[.labels[].name]'
+              echo "EOF"
+            } >> $GITHUB_OUTPUT
+          fi
+
+          # Use base branch from determine_branch step (already determined correctly)
+          echo "base_branch=${{ steps.determine_branch.outputs.base_branch }}" >> $GITHUB_OUTPUT
+          echo "is_widget_change=${{ steps.determine_branch.outputs.is_widget_change }}" >> $GITHUB_OUTPUT
+        env:
+          GH_TOKEN: ${{ secrets.OCS_DOCS_PAT }}
+
+      - name: Create branch for changelog update
+        run: |
+          BRANCH_NAME="changelog-pr-${{ steps.set_vars.outputs.pr_number }}-${{ github.run_number }}"
+          git checkout -b $BRANCH_NAME
+          echo "branch_name=$BRANCH_NAME" >> $GITHUB_ENV
+
+      - name: Create instruction file for Claude
+        run: |
+          # Export environment variables for template substitution
+          export PR_NUMBER="${{ steps.set_vars.outputs.pr_number }}"
+          export PR_TITLE="${{ steps.set_vars.outputs.pr_title }}"
+          export PR_URL="${{ steps.set_vars.outputs.pr_url }}"
+          export PR_AUTHOR="${{ steps.set_vars.outputs.pr_author }}"
+          export PR_MERGED_AT="${{ steps.set_vars.outputs.pr_merged_at }}"
+          export PR_LABELS="${{ steps.set_vars.outputs.pr_labels }}"
+          export IS_WIDGET_CHANGE="${{ steps.set_vars.outputs.is_widget_change }}"
+          export BASE_BRANCH="${{ steps.set_vars.outputs.base_branch }}"
+          export PR_BODY="${{ steps.set_vars.outputs.pr_body }}"
+          export WIDGET_CHANGELOG="${{ env.WIDGET_CHANGELOG }}"
+          export MAIN_CHANGELOG="${{ env.MAIN_CHANGELOG }}"
+          export WIDGET_PATH_PREFIX="${{ env.WIDGET_PATH_PREFIX }}"
+
+          # Determine context message and load appropriate changelog section template
+          if [ "${{ steps.set_vars.outputs.is_widget_change }}" == "true" ]; then
+            export CONTEXT_MESSAGE="**This PR modifies the chat widget** (files in $WIDGET_PATH_PREFIX folder). Widget documentation should be updated in the chat_widget/ directory."
+            export CHANGELOG_INSTRUCTIONS=$(envsubst < .github/templates/widget-changelog-section.md)
+          else
+            export CONTEXT_MESSAGE="This PR modifies the main Open Chat Studio application."
+            export CHANGELOG_INSTRUCTIONS=$(envsubst < .github/templates/main-changelog-section.md)
+          fi
+
+          # Use envsubst to replace variables in main template
+          envsubst < .github/templates/changelog-instructions.md > /tmp/claude_instructions.md
+
+      - name: Run Claude Code to generate changelog and update docs
+        id: claude
+        timeout-minutes: 10
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ secrets.OCS_DOCS_PAT }}
+          prompt_file: /tmp/claude_instructions.md
+          claude_args: |
+            --allowedTools "Read,Write,Edit,Glob,Grep,Task,Bash(git add:*),Bash(git commit:*)"
+
+      - name: Check for changes and push
+        id: check_changes
+        run: |
+          BASE_BRANCH="${{ steps.set_vars.outputs.base_branch }}"
+
+          if git diff --quiet origin/$BASE_BRANCH; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "No changes made by Claude"
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+
+            # Determine which changelog file to check based on widget change flag
+            if [ "${{ steps.set_vars.outputs.is_widget_change }}" == "true" ]; then
+              CHANGELOG_FILE="${{ env.WIDGET_CHANGELOG }}"
+            else
+              CHANGELOG_FILE="${{ env.MAIN_CHANGELOG }}"
+            fi
+
+            # Check what was changed
+            CHANGELOG_CHANGED=$(git diff --name-only origin/$BASE_BRANCH | grep -c "$CHANGELOG_FILE" || echo "0")
+            DOCS_CHANGED=$(git diff --name-only origin/$BASE_BRANCH | grep -v "$CHANGELOG_FILE" | grep -c "docs/" || echo "0")
+
+            echo "changelog_changed=$CHANGELOG_CHANGED" >> $GITHUB_OUTPUT
+            echo "docs_changed=$DOCS_CHANGED" >> $GITHUB_OUTPUT
+            echo "changelog_file=$CHANGELOG_FILE" >> $GITHUB_OUTPUT
+
+            echo "Pushing changes to origin/${{ env.branch_name }}..."
+            git push origin ${{ env.branch_name }} || { echo "Failed to push changes"; exit 1; }
+          fi
+
+      - name: Create Pull Request
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          # Determine PR title based on what changed
+          if [ "${{ steps.check_changes.outputs.docs_changed }}" != "0" ]; then
+            PR_TITLE="Update Changelog and Docs from OCS PR #${{ steps.set_vars.outputs.pr_number }}"
+            CHANGES_DESC="Automated changelog and documentation updates"
+          else
+            PR_TITLE="Update Changelog from OCS PR #${{ steps.set_vars.outputs.pr_number }}"
+            CHANGES_DESC="Automated changelog update"
+          fi
+
+          # Add widget context to title if applicable
+          if [ "${{ steps.set_vars.outputs.is_widget_change }}" == "true" ]; then
+            PR_TITLE="[Widget] $PR_TITLE"
+            CHANGELOG_DESC="Widget changelog (\`${{ env.WIDGET_CHANGELOG }}\`)"
+          else
+            CHANGELOG_DESC="Main changelog (\`${{ env.MAIN_CHANGELOG }}\`)"
+          fi
+
+          echo "Creating pull request..."
+          gh pr create \
+            --title "$PR_TITLE" \
+            --body "## Summary
+          $CHANGES_DESC based on merged PR in open-chat-studio.
+
+          **Source PR:** ${{ steps.set_vars.outputs.pr_url }}
+          **PR Title:** ${{ steps.set_vars.outputs.pr_title }}
+          **Author:** @${{ steps.set_vars.outputs.pr_author }}
+          **Base Branch:** \`${{ steps.set_vars.outputs.base_branch }}\`
+          **Widget Change:** ${{ steps.set_vars.outputs.is_widget_change == 'true' && '✅ Yes' || '❌ No' }}
+
+          ### Changes Made
+          - Changelog ($CHANGELOG_DESC): ${{ steps.check_changes.outputs.changelog_changed == '1' && '✅ Updated' || '⏭️ Skipped' }}
+          - Documentation: ${{ steps.check_changes.outputs.docs_changed != '0' && '✅ Updated' || '⏭️ No updates needed' }}
+
+          ---
+          🤖 This PR was automatically generated using Claude to analyze the source PR and update the changelog and documentation accordingly." \
+            --label "automated,changelog" \
+            --assignee "${{ steps.set_vars.outputs.pr_author }}" \
+            --base "${{ steps.set_vars.outputs.base_branch }}" \
+            --head "${{ env.branch_name }}" || { echo "Failed to create pull request"; exit 1; }
+        env:
+          GH_TOKEN: ${{ secrets.OCS_DOCS_PAT }}
+
+      - name: Generate workflow summary
+        if: always()
+        run: |
+          echo "## Changelog Update Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Field | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|-------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| **PR Number** | #${{ steps.set_vars.outputs.pr_number }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| **PR Title** | ${{ steps.set_vars.outputs.pr_title }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Base Branch** | \`${{ steps.set_vars.outputs.base_branch }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Widget Change** | ${{ steps.set_vars.outputs.is_widget_change == 'true' && '✅ Yes' || '❌ No' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Changes Made** | ${{ steps.check_changes.outputs.has_changes == 'true' && '✅ Yes' || '❌ No' }} |" >> $GITHUB_STEP_SUMMARY
+
+          if [ "${{ steps.check_changes.outputs.has_changes }}" == "true" ]; then
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "### Files Changed" >> $GITHUB_STEP_SUMMARY
+            echo "- Changelog: ${{ steps.check_changes.outputs.changelog_changed == '1' && '✅ Updated' || '⏭️ Skipped' }}" >> $GITHUB_STEP_SUMMARY
+            echo "- Documentation: ${{ steps.check_changes.outputs.docs_changed != '0' && '✅ Updated' || '⏭️ No updates needed' }}" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          # Comment on the source PR to notify about failure
+          gh issue comment ${{ steps.set_vars.outputs.pr_number }} \
+            --repo ${{ env.SOURCE_REPO }} \
+            --body "⚠️ Automated changelog update failed for this PR.
+
+          **Workflow Run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+          Please check the logs or manually update the changelog in the docs repository." || echo "Failed to post comment (PR may be inaccessible)"
+        env:
+          GH_TOKEN: ${{ secrets.OCS_DOCS_PAT }}
