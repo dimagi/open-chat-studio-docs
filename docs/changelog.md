@@ -5,7 +5,7 @@ hide:
 
 # Changelog
 ## Oct 23, 2025
-* **BUG** Fixed an issue with timeout triggers not respecting the configured delay.
+* **BUG** Fixed an issue where timeout triggers would fire repeatedly instead of respecting the configured delay between triggers.
 
 ## Oct 9, 2025
 * **BUG** The dynamic filter widget will now update the available versions to match those of the selected chatbot(s).
