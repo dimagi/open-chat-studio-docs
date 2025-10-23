@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
     inputs:
       release_tag:
-        description: 'Tag for the release (e.g., v1.2.3)'
+        description: 'Tag for the release (e.g., v2025-10-23)'
         required: true
       release_name:
         description: 'Name for the release'
@@ -51,6 +51,6 @@ jobs:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           prompt: /create-release ${{ env.RELEASE_TAG }} "${{ env.RELEASE_NAME }}"
           claude_args: |
-            --model claude-3-5-sonnet-20241022
+            --model claude-sonnet-4-5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
