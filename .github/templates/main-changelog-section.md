@@ -16,11 +16,9 @@ Since this PR modifies main app files, update the **main changelog** at `${MAIN_
    - **BUG**: Bug fixes
    - **MIGRATION**: Migration-related changes or breaking changes
 4. Write a clear, concise changelog entry (1-2 sentences max)
-5. Add the entry to the changelog under the appropriate date section
-6. Format the merged date as "MMM D, YYYY" (e.g., "Oct 22, 2025")
-5. Add the entry to the changelog under the appropriate date section
-6. Format the merged date as "MMM D, YYYY" with no leading zero on single-digit days (e.g., "Oct 9, 2025", "Oct 22, 2025")
-7. **Date sections must be in reverse chronological order (newest dates at the top)**
+5. Format the merged date as "MMM D, YYYY" with no leading zero on single-digit days (e.g., "Oct 9, 2025", "Oct 22, 2025")
+6. **Date sections must be in reverse chronological order (newest dates at the top)**
+7. If a section for that date already exists, add your entry to it; otherwise create a new date section at the top
 8. If a section for that date already exists, add your entry to it; otherwise create a new date section at the top
 
 **Main Changelog Format:**
