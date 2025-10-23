@@ -15,26 +15,12 @@ When a PR is merged in open-chat-studio:
 
 **Detection:** PRs with changes in `components/` are classified as widget changes.
 
-| Type | Base Branch | Changelog | Target Branch |
-|------|------------|-----------|---------------|
-| **Widget** | `widget-develop` | `docs/chat_widget/changelog.md` | `widget-develop` |
-| **Main App** | `main` | `docs/changelog.md` | `main` |
+| Type         | Base Branch      | Changelog                       | Target Branch    |
+|--------------|------------------|---------------------------------|------------------|
+| **Widget**   | `widget-develop` | `docs/chat_widget/changelog.md` | `widget-develop` |
+| **Main App** | `main`           | `docs/changelog.md`             | `main`           |
 
 **Mixed Changes:** If a PR touches both widget and main app files, it's treated as a widget change and only the widget changelog is updated. Separate PRs are recommended.
-
-## Changelog Formats
-
-| Aspect | Main Changelog | Widget Changelog |
-|--------|----------------|------------------|
-| **File** | `docs/changelog.md` | `docs/chat_widget/changelog.md` |
-| **Format** | Date-based (Oct 22, 2025) | Version-based (v0.4.8) |
-| **Entries** | `* **TYPE** Description` | `* Description` |
-| **Types** | NEW, CHANGE, BUG, MIGRATION | None |
-
-**Examples:**
-
-Main: `* **NEW** Added support for parallel execution`
-Widget: `* Fix horizontal scrollbar styling`
 
 ## Manual Trigger
 

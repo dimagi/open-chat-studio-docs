@@ -153,68 +153,7 @@ jobs:
 
       - name: Create instruction file for Claude
         run: |
-          # Determine context and changelog instructions based on widget change status
-          if [ "${{ steps.set_vars.outputs.is_widget_change }}" == "true" ]; then
-            CONTEXT_MESSAGE="**This PR modifies the chat widget** (files in ${{ env.WIDGET_PATH_PREFIX }} folder). Widget documentation should be updated in the chat_widget/ directory."
-            CHANGELOG_INSTRUCTIONS="#### Widget Changelog (This PR)
-
-          Since this PR modifies widget files, update the **widget changelog** at \`${{ env.WIDGET_CHANGELOG }}\`.
-
-          **Widget Changelog Structure:**
-          - The widget changelog is organized by **version numbers** (e.g., v0.4.8, v0.4.7)
-          - Entries are bullet points under each version
-          - NO date-based sections
-          - NO TYPE prefixes (NEW, CHANGE, BUG)
-          - Read the existing widget changelog to understand the format
-
-          **Steps for Widget Changelog:**
-          1. Read \`${{ env.WIDGET_CHANGELOG }}\` to understand the current structure
-          2. Find the latest version section (e.g., v0.4.8)
-          3. Add your entry as a new bullet point under that version
-          4. If a new version is being released, check the PR description for version info
-          5. Follow the existing style: concise bullet points describing changes
-
-          **Widget Changelog Format:**
-          \`\`\`markdown
-          ### v0.4.8
-
-          * Fix horizontal scrollbar styling.
-          * Improve scrolling behavior for new messages.
-          * Your new entry here.
-          \`\`\`"
-          else
-            CONTEXT_MESSAGE="This PR modifies the main Open Chat Studio application."
-            CHANGELOG_INSTRUCTIONS="#### Main Changelog (This PR)
-
-          Since this PR modifies main app files, update the **main changelog** at \`${{ env.MAIN_CHANGELOG }}\`.
-
-          **Main Changelog Structure:**
-          - The main changelog is organized by **dates** (e.g., \"Oct 22, 2025\")
-          - Entries use TYPE prefixes: **NEW**, **CHANGE**, **BUG**, **MIGRATION**
-          - Format: * **[TYPE]** [Description]
-
-          **Steps for Main Changelog:**
-          1. Read \`${{ env.MAIN_CHANGELOG }}\` to understand the current structure
-          2. Analyze the PR title, description, and labels to understand what changed
-          3. Determine the appropriate changelog type:
-             - **NEW**: New features or functionality
-             - **CHANGE**: Modifications to existing features
-             - **BUG**: Bug fixes
-             - **MIGRATION**: Migration-related changes or breaking changes
-          4. Write a clear, concise changelog entry (1-2 sentences max)
-          5. Add the entry to the changelog under the appropriate date section
-          6. Format the merged date as \"MMM D, YYYY\" (e.g., \"Oct 22, 2025\")
-          7. If a section for that date already exists, add to it; otherwise create a new date section
-
-          **Main Changelog Format:**
-          \`\`\`markdown
-          ## Oct 22, 2025
-          * **NEW** Added support for parallel pipeline execution.
-          * **BUG** Fixed issue with session timeout handling.
-          \`\`\`"
-          fi
-
-          # Read template and substitute variables
+          # Export environment variables for template substitution
           export PR_NUMBER="${{ steps.set_vars.outputs.pr_number }}"
           export PR_TITLE="${{ steps.set_vars.outputs.pr_title }}"
           export PR_URL="${{ steps.set_vars.outputs.pr_url }}"
@@ -224,10 +163,20 @@ jobs:
           export IS_WIDGET_CHANGE="${{ steps.set_vars.outputs.is_widget_change }}"
           export BASE_BRANCH="${{ steps.set_vars.outputs.base_branch }}"
           export PR_BODY="${{ steps.set_vars.outputs.pr_body }}"
-          export CONTEXT_MESSAGE
-          export CHANGELOG_INSTRUCTIONS
+          export WIDGET_CHANGELOG="${{ env.WIDGET_CHANGELOG }}"
+          export MAIN_CHANGELOG="${{ env.MAIN_CHANGELOG }}"
+          export WIDGET_PATH_PREFIX="${{ env.WIDGET_PATH_PREFIX }}"
 
-          # Use envsubst to replace variables in template
+          # Determine context message and load appropriate changelog section template
+          if [ "${{ steps.set_vars.outputs.is_widget_change }}" == "true" ]; then
+            export CONTEXT_MESSAGE="**This PR modifies the chat widget** (files in $WIDGET_PATH_PREFIX folder). Widget documentation should be updated in the chat_widget/ directory."
+            export CHANGELOG_INSTRUCTIONS=$(envsubst < .github/templates/widget-changelog-section.md)
+          else
+            export CONTEXT_MESSAGE="This PR modifies the main Open Chat Studio application."
+            export CHANGELOG_INSTRUCTIONS=$(envsubst < .github/templates/main-changelog-section.md)
+          fi
+
+          # Use envsubst to replace variables in main template
           envsubst < .github/templates/changelog-instructions.md > /tmp/claude_instructions.md
 
       - name: Run Claude Code to generate changelog and update docs
