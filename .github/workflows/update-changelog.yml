@@ -207,8 +207,12 @@ jobs:
             fi
 
             # Check what was changed
-            CHANGELOG_CHANGED=$(git diff --name-only origin/$BASE_BRANCH | grep -c "$CHANGELOG_FILE" || echo "0")
-            DOCS_CHANGED=$(git diff --name-only origin/$BASE_BRANCH | grep -v "$CHANGELOG_FILE" | grep -c "docs/" || echo "0")
+            CHANGELOG_CHANGED=$(git diff --name-only origin/$BASE_BRANCH | grep -c "$CHANGELOG_FILE" || true)
+            DOCS_CHANGED=$(git diff --name-only origin/$BASE_BRANCH | grep -v "$CHANGELOG_FILE" | grep -c "docs/" || true)
+
+            # Ensure we have numeric values (grep -c returns 0 when no matches, but with exit code 1)
+            CHANGELOG_CHANGED=${CHANGELOG_CHANGED:-0}
+            DOCS_CHANGED=${DOCS_CHANGED:-0}
 
             echo "changelog_changed=$CHANGELOG_CHANGED" >> $GITHUB_OUTPUT
             echo "docs_changed=$DOCS_CHANGED" >> $GITHUB_OUTPUT
