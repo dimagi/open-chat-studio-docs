@@ -37,7 +37,7 @@ assistant: It is currently 12:05 PM in Ankara.
 
 ### CSV Upload
 
-A CSV can also be uploaded to populate the dataset. There should be columns for human messages, ai responses, and any context data. You can also include participant_data and session_state fields.
+A CSV can also be uploaded to populate the dataset. There should be columns for human messages, ai responses, and any context data. You can also include `participant_data` and `session_state` fields.
 
 An example structure for this csv might be:
 
