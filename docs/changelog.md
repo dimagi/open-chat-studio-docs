@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Oct 24, 2025
+* **NEW** Added support for bulk updating participant_data and session_state keys via CSV upload in evaluation message views.
+
 ## Oct 23, 2025
 * **BUG** Fixed an issue where timeout triggers would fire repeatedly instead of respecting the configured delay between triggers.
 
