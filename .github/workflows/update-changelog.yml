@@ -145,6 +145,7 @@ jobs:
           echo "branch_name=$BRANCH_NAME" >> $GITHUB_ENV
 
       - name: Create instruction file for Claude
+        id: create_instructions
         run: |
           # Export environment variables for template substitution
           export PR_NUMBER="${{ steps.set_vars.outputs.pr_number }}"
@@ -169,8 +170,12 @@ jobs:
             export CHANGELOG_INSTRUCTIONS=$(envsubst < .github/templates/main-changelog-section.md)
           fi
 
-          # Use envsubst to replace variables in main template
-          envsubst < .github/templates/changelog-instructions.md > /tmp/claude_instructions.md
+          # Use envsubst to replace variables in main template and write to GITHUB_OUTPUT
+          {
+            echo "instructions<<EOF"
+            envsubst < .github/templates/changelog-instructions.md
+            echo "EOF"
+          } >> $GITHUB_OUTPUT
 
       - name: Run Claude Code to generate changelog and update docs
         id: claude
@@ -179,7 +184,7 @@ jobs:
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           github_token: ${{ secrets.OCS_DOCS_PAT }}
-          prompt_file: /tmp/claude_instructions.md
+          prompt: ${{ steps.create_instructions.outputs.instructions }}
           claude_args: |
             --allowedTools "Read,Write,Edit,Glob,Grep,Task,Bash(git add:*),Bash(git commit:*)"
 
