@@ -54,7 +54,7 @@ When including [participant_data](../participant_data.md) or [session_state](../
 - `participant_data.name` - Sets the participant's name
 - `participant_data.age` - Sets the participant's age
 - `session_state.counter` - Sets a session state counter
-- `context.foo.bar` - Sets a nested context value
+- `context.foo` - Sets the `foo` field in the context
 
 You can also include complex JSON structures directly in these fields. For example, if you have a column named `participant_data` (without dot notation), you can include JSON like `{"name": "John", "preferences": {"theme": "dark"}}`.
 
