@@ -56,7 +56,9 @@ When including [participant_data](../participant_data.md) or [session_state](../
 - `session_state.counter` - Sets a session state counter
 - `context.foo` - Sets the `foo` field in the context
 
-You can also include complex JSON structures directly in these fields. For example, if you have a column named `participant_data` (without dot notation), you can include JSON like `{"name": "John", "preferences": {"theme": "dark"}}`.
+You can also include complex JSON structures directly in these fields. For example, if you have a column named `participant_data.tasks` you can include JSON data like `["Buy socks", "Feed the dog", "Clean the car"]`.
+
+You can also specify participant data and session state as raw JSON objects by using the keys `participant_data` and `session_state` (without dot notation).
 
 #### CSV History
 
