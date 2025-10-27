@@ -260,6 +260,7 @@ jobs:
 
           ---
           🤖 This PR was automatically generated using Claude to analyze the source PR and update the changelog and documentation accordingly." \
+            --label "automated" \
             --assignee "${{ steps.set_vars.outputs.pr_author }}" \
             --base "${{ steps.set_vars.outputs.base_branch }}" \
             --head "${{ env.branch_name }}" || { echo "Failed to create pull request"; exit 1; }
