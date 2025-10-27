@@ -5,6 +5,7 @@ hide:
 
 # Changelog
 ## Oct 24, 2025
+* **BUG** Fixed dashboard query issues with unique counts, date range filtering for active participants and sessions, and improved cache keys.
 * **NEW** Added support for bulk updating participant_data and session_state keys via CSV upload in evaluation message views.
 
 ## Oct 23, 2025
