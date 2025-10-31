@@ -26,7 +26,7 @@ The widget button can be customized using the following properties:
 
 **Icon URL**
 
-If no icon-url is provided, the default Open Chat Studio logo is used.
+If no icon-url is provided, the default Open Chat Studio avatar is used.
 
 ### Button position
 
@@ -39,6 +39,11 @@ open-chat-studio-widget {
     bottom: 20px;
 }
 ```
+
+!!! tip "Drag the button"
+
+    The button can be dragged by the user to anywhere on the screen. This allows the user to move the button
+    if it is obstructing other page content. The button will return to its original position on the next page load.
 
 <div class="grid cards" markdown>
 -   :simple-css:{ .sm .middle } See [CSS Styling](styling.md) for more customization options.
@@ -135,7 +140,7 @@ Pass welcome messages as a JSON array string. Each message appears as a separate
 
 ## :material-folder-question: Starter Questions
 
-Accelerate user engagement with pre-defined clickable questions that address common queries. These starter questions help users quickly find what they're looking for without having to type which improves the user experience. Starter questions are ideal for:
+Accelerate user engagement with pre-defined clickable questions that address common queries. These starter questions help users quickly find what they're looking for without having to type, which improves the user experience. Starter questions are ideal for:
 
 - Highlighting your most frequently asked questions
 - Guiding users toward key features or information
@@ -197,45 +202,136 @@ Enable users to send files along with their messages. This feature is perfect fo
 
 See [CSS Styling](styling.md#file-attachments) for customization options
 
-## :material-chat-plus: New Chat Confirmation
-When users have an active conversation and click the "new chat" button, a confirmation dialog appears to prevent accidental loss of conversation history. You can customize the message displayed in this confirmation dialog:
+## :material-translate: Internationalization
+
+The chat widget supports multiple languages and custom translations for all UI text elements.
+
+### Built-in Language Support
+
+The widget includes built-in translations for the following languages:
+
+- **English** (`en`) - Default
+- **Spanish** (`es`)
+- **French** (`fr`)
+- **Arabic** (`ar`)
+- **Hindi** (`hi`)
+- **Italian** (`it`)
+- **Portuguese** (`pt`)
+- **Swahili** (`sw`)
+- **Ukrainian** (`uk`)
 
 ```html
 <open-chat-studio-widget
- new-chat-confirmation-message="Are you sure you want to start a new conversation?">
+  chatbot-id="your-chatbot-id"
+  language="es">
 </open-chat-studio-widget>
 ```
 
-Default behavior:
+### Custom Translations
 
-- Shows confirmation dialog with the message: "Starting a new chat will clear your current conversation. Continue?"
-- Users can either "Cancel" to keep their current chat or "Continue" to start fresh
-- The dialog only appears when there's an existing conversation with messages
-
-Customization options:
-
-- Customize the confirmation message text to match your brand voice
-- Style the dialog appearance using CSS variables (see CSS Styling)
-
-
-## :material-robot-excited: Typing Indicator
-
-Customize the message displayed while the assistant is preparing a response. This helps set user expectations and can match your brand's personality.
+You can provide custom translations using a JSON file hosted on your server:
 
 ```html
 <open-chat-studio-widget
-     typing-indicator-text="AI is thinking">
+  chatbot-id="your-chatbot-id"
+  translations-url="https://yoursite.com/custom-translations.json">
 </open-chat-studio-widget>
 ```
 
-The typing indicator appears with animated dots and a progress bar to provide visual feedback during response generation.
+#### Translation File Format
 
-Styling:
+Provide translations as a flat JSON object that uses dot-notation keys. These keys loosely group strings by the part of the widget they affect:
 
-- Text color is controlled by `--loading-text-color`
-- Font size uses `--chat-window-font-size-sm`
-- See [CSS Styling](styling.md#loading-indicators) for customization options
+```json
+{
+  "launcher.open": "Open chat",
+  "window.close": "Close",
+  "window.newChat": "Start new chat",
+  "window.fullscreen": "Enter fullscreen",
+  "window.exitFullscreen": "Exit fullscreen",
+  "attach.add": "Attach files",
+  "attach.remove": "Remove file",
+  "attach.success": "File attached",
+  "status.starting": "Starting chat...",
+  "status.typing": "Preparing response",
+  "status.uploading": "Uploading",
+  "modal.newChatTitle": "Start New Chat",
+  "modal.newChatBody": "Starting a new chat will clear your current conversation. Continue?",
+  "modal.cancel": "Cancel",
+  "modal.confirm": "Confirm",
+  "composer.placeholder": "Type a message...",
+  "composer.send": "Send message",
+  "error.fileTooLarge": "File too large",
+  "error.totalTooLarge": "Total file size too large",
+  "error.unsupportedType": "Unsupported file type",
+  "error.connection": "Connection error. Please try again.",
+  "error.sessionExpired": "Session expired. Please start a new chat.",
+  "branding.poweredBy": "Powered by",
+  "branding.buttonText": "",
+  "branding.headerText": "",
+  "content.welcomeMessages": [],
+  "content.starterQuestions": []
+}
+```
 
+#### Translation Key Reference
+
+Use the following reference when creating or updating translation bundles (mirrors the widget's `en.json`):
+
+- **launcher**
+  - `launcher.open` — Launcher button label, aria-label, and tooltip.
+- **window**
+  - `window.close` — Closes the chat window.
+  - `window.newChat` — Menu item to start a new chat.
+  - `window.fullscreen` — Enters fullscreen mode.
+  - `window.exitFullscreen` — Leaves fullscreen mode.
+- **attach**
+  - `attach.add` — Adds file attachments.
+  - `attach.remove` — Removes a pending attachment.
+  - `attach.success` — Upload queued confirmation.
+- **status**
+  - `status.starting` — Shown while the session initializes.
+  - `status.typing` — Typing indicator text (previously `typingIndicatorText`).
+  - `status.uploading` — Attachment upload in progress.
+- **modal**
+  - `modal.newChatTitle` — "Start new chat" dialog title.
+  - `modal.newChatBody` — Dialog body text.
+  - `modal.cancel` — Dialog cancel button.
+  - `modal.confirm` — Dialog confirmation button.
+- **composer**
+  - `composer.placeholder` — Message composer placeholder text.
+  - `composer.send` — Send button text.
+- **error**
+  - `error.fileTooLarge` — Single file size violation.
+  - `error.totalTooLarge` — Combined size violation.
+  - `error.unsupportedType` — Unsupported file format.
+  - `error.connection` — Generic connection failure.
+  - `error.sessionExpired` — Session expiration prompt.
+- **branding**
+  - `branding.poweredBy` — Footer "Powered by" label.
+  - `branding.buttonText` — Optional launcher text override; leave blank to use widget props.
+  - `branding.headerText` — Optional header title override; leave blank to use widget props.
+- **content**
+  - `content.welcomeMessages` — Array of initial bot messages (empty array falls back to props).
+  - `content.starterQuestions` — Array of starter questions (empty array falls back to props).
+
+#### Customizable Content
+
+You can override specific widget content through translations.
+
+If you only want to override some text, include just those keys in your custom translation file. The widget will use the values from the default language file for provided languages or fall back to English. Arrays must remain arrays, and null values in `branding.buttonText` defer to the runtime HTML attribute or prop.
+
+### Translation Priority
+
+The widget uses the following priority order for text content:
+
+1. **Custom translations from `translations-url`** (highest priority)
+2. **Built-in language translations** (if `language` is specified)
+3. **Widget props / HTML attributes** (used when translation keys are null or missing - ⚠️ **DEPRECATED** for long-term use)
+4. **English defaults** (lowest priority)
+
+!!! warning "Deprecation Notice"
+    HTML attributes for text content (`header-text`, `typing-indicator-text`, `new-chat-confirmation-message`) are deprecated and will be removed in a future major release. Please migrate to using the translations system for better internationalization support. Leave translation values blank when you want the widget props to supply the text instead of duplicating it.
 
 ## Persistent Sessions
 
@@ -272,7 +368,7 @@ The session data is set to expire after 24 hours. This is also configurable by u
 | `icon-url` | `string` | Optional | OCS default logo | Valid URL | Custom icon for the chat button | `"https://yoursite.com/chat-icon.svg"` |
 | `visible` | `boolean` | Optional | `false` | `true` \| `false` | Show widget immediately on page load | `"true"` to auto-open |
 | `position` | `string` | Optional | `"right"` | `"left"` \| `"center"` \| `"right"` | Initial widget position on screen | `"left"` for left side placement |
-| `header-text` | `string` | Optional | `undefined` | Max 100 chars | Text displayed in chat window header | `"Customer Support"` |
+| `header-text` | `string` | Optional | `undefined` | Max 100 chars | **⚠️ DEPRECATED:** Text displayed in chat window header. Use `branding.headerText` in translations instead | `"Customer Support"` |
 
 ### User Management
 
@@ -296,5 +392,12 @@ The session data is set to expire after 24 hours. This is also configurable by u
 |----------|------|----------|---------|------------|-------------|---------|
 | `welcome-messages` | `string` | Optional | `undefined` | Valid JSON array<br/>**Max:** 5 messages, 500 chars each | Welcome messages shown when chat opens<br/>**Format:** `'["Message 1", "Message 2"]'` | `'["Welcome!", "How can I help?"]'` |
 | `starter-questions` | `string` | Optional | `undefined` | Valid JSON array<br/>**Max:** 6 questions, 100 chars each | Clickable question buttons to start conversation<br/>**Format:** `'["Question 1", "Question 2"]'` | `'["Check my order", "Technical support"]'` |
-| `typing-indicator-text` | `string` | Optional | `"Preparing response"` | Max 50 chars | Text shown while bot is typing | `"AI is thinking..."` |
-| `new-chat-confirmation-message` | `string` | Optional | `"Starting a new chat will clear your current conversation. Continue?"` | Max 200 chars | Confirmation dialog text for new chat button | `"Start over? Your current chat will be lost."` |
+| `typing-indicator-text` | `string` | Optional | `"Preparing response"` | Max 50 chars | **⚠️ DEPRECATED:** Text shown while bot is typing. Use `status.typing` in translations instead | `"AI is thinking..."` |
+| `new-chat-confirmation-message` | `string` | Optional | `"Starting a new chat will clear your current conversation. Continue?"` | Max 200 chars | **⚠️ DEPRECATED:** Confirmation dialog text for new chat button. Use `modal.newChatBody` in translations instead | `"Start over? Your current chat will be lost."` |
+
+### Internationalization & Translations
+
+| Property | Type | Required | Default | Validation | Description                                                      | Example |
+|----------|------|----------|---------|------------|------------------------------------------------------------------|---------|
+| `language` | `string` | Optional | `"en"` | Valid language code | Language code for widget UI (en, es, fr, ar, hi, it, pt, sw, uk) | `"es"` for Spanish |
+| `translations-url` | `string` | Optional | `undefined` | Valid URL | URL to custom JSON translations file for widget strings          | `"https://yoursite.com/translations.json"` |

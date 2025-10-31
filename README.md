@@ -43,3 +43,11 @@ python src/ocs_docs/openapi_to_docs.py https://chatbots.dimagi.com/api/schema -o
 ```
 
 This utility is used in the `update-api-docs` GitHub action.
+
+## Chat Widget Docs
+
+Documentation for the embeddable chat widget lives under `docs/chat_widget/` and ships on a different cadence from the rest of Open Chat Studio. To keep those docs aligned with widget releases:
+
+- Start branches from `widget-develop`, and open the pull request against `widget-develop` so updates can be bundled into the next widget release.
+- Limit changes to the widget docs (and their assets) when targeting `widget-develop`; broader documentation updates should continue to go to `main`.
+- Release managers merge `widget-develop` back into `main` as part of the widget release process, so no extra action is needed once the PR is approved.
