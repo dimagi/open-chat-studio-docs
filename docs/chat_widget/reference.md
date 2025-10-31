@@ -26,7 +26,7 @@ The widget button can be customized using the following properties:
 
 **Icon URL**
 
-If no icon-url is provided, the default Open Chat Studio logo is used.
+If no icon-url is provided, the default Open Chat Studio avatar is used.
 
 ### Button position
 
