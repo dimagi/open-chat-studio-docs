@@ -4,6 +4,13 @@ hide:
 ---
 
 # Changelog
+## Oct 24, 2025
+* **BUG** Fixed dashboard query issues with unique counts, date range filtering for active participants and sessions, and improved cache keys.
+* **NEW** Added support for bulk updating participant_data and session_state keys via CSV upload in evaluation message views.
+
+## Oct 23, 2025
+* **BUG** Fixed an issue where timeout triggers would fire repeatedly instead of respecting the configured delay between triggers.
+
 ## Oct 9, 2025
 * **BUG** The dynamic filter widget will now update the available versions to match those of the selected chatbot(s).
 

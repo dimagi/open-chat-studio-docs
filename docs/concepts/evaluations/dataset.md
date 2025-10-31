@@ -8,6 +8,8 @@ Each dataset contains messages with the following structure:
 - **Output**: The expected AI response (required)
 - **Context**: Additional metadata and context variables that can later be accessed in the evaluators (optional)
 - **History**: Previous conversation messages for context (optional)
+- **Participant Data**: Information about the participant that can be accessed during evaluation (optional)
+- **Session State**: Session-specific state data that can be accessed during evaluation (optional)
 
 ## Managing Datasets
 
@@ -35,15 +37,28 @@ assistant: It is currently 12:05 PM in Ankara.
 
 ### CSV Upload
 
-A CSV can also be uploaded to populate the dataset. There should be columns for human messages, ai responses, and any context data.
+A CSV can also be uploaded to populate the dataset. There should be columns for human messages, ai responses, and any context data. You can also include `participant_data` and `session_state` fields.
 
 An example structure for this csv might be:
 
-| Human Message | AI Response | Datetime | History |
-|---------------|-------------|----------|---------|
-| What's the weather like? | I don't have access to weather data | 2024-03-15T10:30:00Z | user: Hello<br/>assistant: Hi there!<br/>user: How are you?<br/>assistant: I'm doing well! |
-| Tell me a joke | Why don't scientists trust atoms? Because they make up everything! | 2024-03-15T10:32:00Z | user: What's the weather like?<br/>assistant: I don't have access to weather data |
-| What is 2+2? | 2+2 equals 4 | 2024-03-15T10:35:00Z | |
+| Human Message | AI Response | Datetime | History | participant_data.name | session_state.count |
+|---------------|-------------|----------|---------|------------------------|---------------------|
+| What's the weather like? | I don't have access to weather data | 2024-03-15T10:30:00Z | user: Hello<br/>assistant: Hi there!<br/>user: How are you?<br/>assistant: I'm doing well! | John | 1 |
+| Tell me a joke | Why don't scientists trust atoms? Because they make up everything! | 2024-03-15T10:32:00Z | user: What's the weather like?<br/>assistant: I don't have access to weather data | John | 2 |
+| What is 2+2? | 2+2 equals 4 | 2024-03-15T10:35:00Z | | Jane | 1 |
+
+#### Participant Data and Session State
+
+When including [participant_data](../participant_data.md) or [session_state](../pipelines/nodes.md#session-state) in your CSV, you can use dot notation to specify nested keys. For example:
+
+- `participant_data.name` - Sets the participant's name
+- `participant_data.age` - Sets the participant's age
+- `session_state.counter` - Sets a session state counter
+- `context.foo` - Sets the `foo` field in the context
+
+You can also include complex JSON structures directly in these fields. For example, if you have a column named `participant_data.tasks` you can include JSON data like `["Buy socks", "Feed the dog", "Clean the car"]`.
+
+You can also specify participant data and session state as raw JSON objects by using the keys `participant_data` and `session_state` (without dot notation).
 
 #### CSV History
 
