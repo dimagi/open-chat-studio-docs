@@ -210,8 +210,8 @@ The widget includes built-in translations for the following languages:
 - **French** (`fr`)
 - **Arabic** (`ar`)
 - **Hindi** (`hi`)
-- **Italian** (`ita`)
-- **Portuguese** (`por`)
+- **Italian** (`it`)
+- **Portuguese** (`pt`)
 - **Swahili** (`sw`)
 - **Ukrainian** (`uk`)
 
@@ -392,7 +392,7 @@ The session data is set to expire after 24 hours. This is also configurable by u
 
 ### Internationalization & Translations
 
-| Property | Type | Required | Default | Validation | Description | Example |
-|----------|------|----------|---------|------------|-------------|---------|
-| `language` | `string` | Optional | `"en"` | Valid language code | Language code for widget UI (en, es, fr, ar, hi, ita, por, sw, uk) | `"es"` for Spanish |
-| `translations-url` | `string` | Optional | `undefined` | Valid URL | URL to custom JSON translations file for widget strings | `"https://yoursite.com/translations.json"` |
+| Property | Type | Required | Default | Validation | Description                                                      | Example |
+|----------|------|----------|---------|------------|------------------------------------------------------------------|---------|
+| `language` | `string` | Optional | `"en"` | Valid language code | Language code for widget UI (en, es, fr, ar, hi, it, pt, sw, uk) | `"es"` for Spanish |
+| `translations-url` | `string` | Optional | `undefined` | Valid URL | URL to custom JSON translations file for widget strings          | `"https://yoursite.com/translations.json"` |
