@@ -22,6 +22,10 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 ## Changelog
 
+### v0.5.1
+
+* Change language codes for Italian and Portuguese to use standard codes: `ita` -> `it`, `por` -> `pt`
+
 ### v0.5.0
 
 * Allow users to drag and reposition the chat-widget launch button when it’s fixed, to avoid obscuring page content.
