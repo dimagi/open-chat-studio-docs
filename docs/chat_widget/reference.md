@@ -40,6 +40,11 @@ open-chat-studio-widget {
 }
 ```
 
+!!! tip "Drag the button"
+
+    The button can be dragged by the user to anywhere on the screen. This allows the user to move the button
+    if it is obstructing other page content. The button will return to its original position on the next page load.
+
 <div class="grid cards" markdown>
 -   :simple-css:{ .sm .middle } See [CSS Styling](styling.md) for more customization options.
 </div>
