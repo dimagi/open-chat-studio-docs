@@ -22,6 +22,12 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 ## Changelog
 
+### v0.5.2 (2025-11-03)
+
+* Update default button logo to use the Open Chat Studio avatar
+* Fix welcome messages and starter questions not being displayed when provided in translation files
+* Improvements to session handling
+
 ### v0.5.1
 
 * Change language codes for Italian and Portuguese to use standard codes: `ita` -> `it`, `por` -> `pt`
