@@ -6,6 +6,7 @@ hide:
 # Changelog
 ## Nov 3, 2025
 * **CHANGE** Removed seed message processing from the chat API session creation endpoint. The `seed_message_task_id` field is no longer returned in API responses.
+* **CHANGE** Improved version creation UI performance by truncating large change sets to 10 items and displaying the count of hidden changes.
 
 ## Oct 24, 2025
 * **BUG** Fixed dashboard query issues with unique counts, date range filtering for active participants and sessions, and improved cache keys.
