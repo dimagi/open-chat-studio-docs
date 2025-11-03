@@ -93,7 +93,6 @@ ChatStartSessionResponse:
   - session_id: string (required)
   - chatbot: Unknown (required)
   - participant: Unknown (required)
-  - seed_message_task_id: string (required)
 
 ChatTaskPoll:
   - message: Message
