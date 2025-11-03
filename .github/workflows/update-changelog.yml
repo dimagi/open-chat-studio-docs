@@ -86,9 +86,7 @@ jobs:
             echo "pr_title=${{ github.event.client_payload.pr_title }}" >> $GITHUB_OUTPUT
             echo "pr_url=${{ github.event.client_payload.pr_url }}" >> $GITHUB_OUTPUT
             echo "pr_author=${{ github.event.client_payload.pr_author }}" >> $GITHUB_OUTPUT
-            echo "pr_merged_at=${{ github.event.client_payload.pr_merged_at }}" >> $GITHUB_OUTPUT
             echo "pr_body=${{ toJSON(github.event.client_payload.pr_body) }}" >> $GITHUB_OUTPUT
-            echo "pr_labels=${{ toJSON(github.event.client_payload.pr_labels) }}" >> $GITHUB_OUTPUT
           else
             echo "pr_number=${{ inputs.pr_number }}" >> $GITHUB_OUTPUT
             # Fetch PR details using GitHub API
@@ -114,22 +112,11 @@ jobs:
             } >> $GITHUB_OUTPUT
 
             {
-              echo "pr_merged_at<<EOF"
-              echo "$PR_DATA" | jq -r '.merged_at'
-              echo "EOF"
-            } >> $GITHUB_OUTPUT
-
-            {
               echo "pr_body<<EOF"
               echo "$PR_DATA" | jq -r '.body'
               echo "EOF"
             } >> $GITHUB_OUTPUT
 
-            {
-              echo "pr_labels<<EOF"
-              echo "$PR_DATA" | jq -r '[.labels[].name]'
-              echo "EOF"
-            } >> $GITHUB_OUTPUT
           fi
 
           # Use base branch from determine_branch step (already determined correctly)
