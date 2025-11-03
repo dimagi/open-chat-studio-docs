@@ -22,7 +22,7 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 ## Changelog
 
-### v0.5.2
+### v0.5.2 (2025-11-03)
 
 * Update default button logo to use the Open Chat Studio avatar
 * Fix welcome messages and starter questions not being displayed when provided in translation files
