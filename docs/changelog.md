@@ -5,6 +5,15 @@ hide:
 
 # Changelog
 ## Nov 3, 2025
+* **NEW** Chat Widget releases v0.5.0, v0.5.1, and v0.5.2. Key features include:
+    * Users can drag and reposition the chat widget launch button when fixed, to avoid obscuring page content
+    * Internationalization support with built-in translations for 9 languages (English, Spanish, French, Arabic, Hindi, Italian, Portuguese, Swahili, Ukrainian)
+    * New `language` property to set widget UI language and `translations-url` property for custom translations
+    * Updated default button logo to use the Open Chat Studio avatar
+    * Fixed welcome messages and starter questions not being displayed when provided in translation files
+    * Session handling improvements
+    * Language code updates: Italian (`ita` → `it`) and Portuguese (`por` → `pt`)
+    * See the [widget changelog](chat_widget/changelog.md) for full details
 * **CHANGE** Removed seed message processing from the chat API session creation endpoint. The `seed_message_task_id` field is no longer returned in API responses.
 * **CHANGE** Improved version creation UI performance by truncating large change sets to 10 items and displaying the count of hidden changes.
 
