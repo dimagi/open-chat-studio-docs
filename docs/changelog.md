@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Nov 7, 2025
+* **NEW** Added "Select all" option to sessions table for bulk selection of sessions.
+
 ## Nov 3, 2025
 * **NEW** Chat Widget releases v0.5. Key features include:
     * Users can drag and reposition the chat widget launch button when fixed, to avoid obscuring page content
