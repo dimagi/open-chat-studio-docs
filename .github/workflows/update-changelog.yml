@@ -143,10 +143,16 @@ jobs:
           export PR_LABELS="${{ steps.set_vars.outputs.pr_labels }}"
           export IS_WIDGET_CHANGE="${{ steps.set_vars.outputs.is_widget_change }}"
           export BASE_BRANCH="${{ steps.set_vars.outputs.base_branch }}"
-          export PR_BODY="${{ steps.set_vars.outputs.pr_body }}"
           export WIDGET_CHANGELOG="${{ env.WIDGET_CHANGELOG }}"
           export MAIN_CHANGELOG="${{ env.MAIN_CHANGELOG }}"
           export WIDGET_PATH_PREFIX="${{ env.WIDGET_PATH_PREFIX }}"
+
+          # Use heredoc for PR_BODY to safely handle quotes and special characters
+          PR_BODY=$(cat <<'EOF'
+          ${{ steps.set_vars.outputs.pr_body }}
+          EOF
+          )
+          export PR_BODY
 
           # Determine context message and load appropriate changelog section template
           if [ "${{ steps.set_vars.outputs.is_widget_change }}" == "true" ]; then
