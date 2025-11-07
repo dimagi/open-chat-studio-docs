@@ -6,6 +6,7 @@ hide:
 # Changelog
 ## Nov 7, 2025
 * **NEW** Added "Select all" option to sessions table for bulk selection of sessions.
+* **CHANGE** Improved client key security for chat widget with enhanced embed code display that scrolls to preview the code.
 
 ## Nov 3, 2025
 * **NEW** Chat Widget releases v0.5. Key features include:
