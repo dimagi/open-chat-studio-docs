@@ -251,10 +251,8 @@ jobs:
           EOF
           )
 
-          echo "Creating pull request..."
-          gh pr create \
-            --title "$PR_TITLE" \
-            --body "$(cat <<EOF
+          # Create PR body using heredoc to handle special characters safely
+          PR_BODY=$(cat <<EOF
 ## Summary
 $CHANGES_DESC based on merged PR in open-chat-studio.
 
@@ -271,7 +269,12 @@ $CHANGES_DESC based on merged PR in open-chat-studio.
 ---
 🤖 This PR was automatically generated using Claude to analyze the source PR and update the changelog and documentation accordingly.
 EOF
-)" \
+)
+
+          echo "Creating pull request..."
+          gh pr create \
+            --title "$PR_TITLE" \
+            --body "$PR_BODY" \
             --label "automated" \
             --assignee "${{ steps.set_vars.outputs.pr_author }}" \
             --base "${{ steps.set_vars.outputs.base_branch }}" \
