@@ -254,24 +254,21 @@ jobs:
           echo "Creating pull request..."
           gh pr create \
             --title "$PR_TITLE" \
-            --body "$(cat <<EOF
-## Summary
-$CHANGES_DESC based on merged PR in open-chat-studio.
+            --body "## Summary
+          $CHANGES_DESC based on merged PR in open-chat-studio.
 
-**Source PR:** ${{ steps.set_vars.outputs.pr_url }}
-**PR Title:** $SOURCE_PR_TITLE
-**Author:** @${{ steps.set_vars.outputs.pr_author }}
-**Base Branch:** \`${{ steps.set_vars.outputs.base_branch }}\`
-**Widget Change:** ${{ steps.set_vars.outputs.is_widget_change == 'true' && '✅ Yes' || '❌ No' }}
+          **Source PR:** ${{ steps.set_vars.outputs.pr_url }}
+          **PR Title:** $SOURCE_PR_TITLE
+          **Author:** @${{ steps.set_vars.outputs.pr_author }}
+          **Base Branch:** \`${{ steps.set_vars.outputs.base_branch }}\`
+          **Widget Change:** ${{ steps.set_vars.outputs.is_widget_change == 'true' && '✅ Yes' || '❌ No' }}
 
-### Changes Made
-- Changelog ($CHANGELOG_DESC): ${{ steps.check_changes.outputs.changelog_changed == '1' && '✅ Updated' || '⏭️ Skipped' }}
-- Documentation: ${{ steps.check_changes.outputs.docs_changed != '0' && '✅ Updated' || '⏭️ No updates needed' }}
+          ### Changes Made
+          - Changelog ($CHANGELOG_DESC): ${{ steps.check_changes.outputs.changelog_changed == '1' && '✅ Updated' || '⏭️ Skipped' }}
+          - Documentation: ${{ steps.check_changes.outputs.docs_changed != '0' && '✅ Updated' || '⏭️ No updates needed' }}
 
----
-🤖 This PR was automatically generated using Claude to analyze the source PR and update the changelog and documentation accordingly.
-EOF
-)" \
+          ---
+          🤖 This PR was automatically generated using Claude to analyze the source PR and update the changelog and documentation accordingly." \
             --label "automated" \
             --assignee "${{ steps.set_vars.outputs.pr_author }}" \
             --base "${{ steps.set_vars.outputs.base_branch }}" \
