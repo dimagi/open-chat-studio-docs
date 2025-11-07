@@ -59,6 +59,7 @@ POST /api/chat/{session_id}/upload/
 
 POST /api/chat/start/
   Summary: Start a new chat session for a widget
+  Description: Start a new chat session - supports both authenticated users and embedded widgets
   Request Body:
     Content: application/json
     Schema: ChatStartSessionRequest
