@@ -31,12 +31,12 @@ Before embedding, you must create a bot in Open Chat Studio.
 
 2. Getting the Embed Code
 
-   1. **Log in** to Open Chat Studio.
-   2. Navigate to the **Chatbot** you wish to embed.
-   3. Click on the :material-plus: (plus) icon and select **Embedded Widget** from the dropdown.
-   4. Complete the form (provide a name and any configuration options) and click **Create**.
+      1. **Log in** to Open Chat Studio.
+      2. Navigate to the **Chatbot** you wish to embed.
+      3. Click on the :material-plus: (plus) icon and select **Embedded Widget** from the dropdown.
+      4. Complete the form (provide a name and any configuration options) and click **Create**.
 
-   A new dialog will open with all the necessary details to embed your bot. You can either copy the chatbot ID and embed token for manual setup or use the **Copy Widget Embed Code** to copy a fully configured HTML snippet.
+      A new dialog will open with all the necessary details to embed your bot. You can either copy the chatbot ID and embed token for manual setup or use the **Copy Widget Embed Code** to copy a fully configured HTML snippet.
 
 3. Insert the widget where you want the chat button.
 
@@ -53,7 +53,7 @@ Before embedding, you must create a bot in Open Chat Studio.
       </open-chat-studio-widget>
       ```
 
-   !!! note "Embed Key Required"
+!!! note "Embed Key Required"
     The `embed-key` parameter is required for all embedded widget channels. If you are upgrading from a previous version, you must create a new Embedded Widget channel (following the steps above) to obtain your embed key.
 
 ## Test the Chatbot
