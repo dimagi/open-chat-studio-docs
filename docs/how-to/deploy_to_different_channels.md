@@ -5,10 +5,11 @@ To link a channel to your bot:
 !!! info "Note"
     Not all channels require a provider.
 
-- Choose a [provider][2] for your channel.
-- [Configure a messaging provider][6]. You will need to get the required credentials from your chosen provider.
-- Once the provider is set up, navigate to your bot on OCS and click the plus icon in the "Channels" section.
-- Choose your channel and complete the form. Follow the guide below to get the required information for each channel.
+1. Navigate to the **Chatbot** you wish to embed.
+2. Click on the :material-plus: (plus) icon and select the [provider][2] from the dropdown.
+3. Complete the form and click **Create**. Follow the guide below to get the required information for each channel.
+
+You may need to [Configure a messaging provider][6] before you will be able to select it from the dropdown. 
 
 ## Web and API
 The web channel uses the web interface and is enabled by default for all bots. Likewise, all bots can be accessed via the [APIs][api].
