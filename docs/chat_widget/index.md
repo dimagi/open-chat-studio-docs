@@ -26,15 +26,17 @@ Before embedding, you must create a bot in Open Chat Studio.
 1. Add the widget script to your site's `<head>` section:
    
       ```html
-      <script type='module' src='https://unpkg.com/open-chat-studio-widget@0.5.1/dist/open-chat-studio-widget/open-chat-studio-widget.esm.js' async></script>
+      <script type='module' src='https://unpkg.com/open-chat-studio-widget@0.5.2/dist/open-chat-studio-widget/open-chat-studio-widget.esm.js' async></script>
       ```
 
-2. Obtaining Embed Code
+2. Getting the Embed Code
 
-      1. **Log in** to Open Chat Studio.
-      2. Navigate to the **Experiment** you wish to embed.
-      3. Click on the :fontawesome-regular-window-maximize: **Web** channel and select :fontawesome-solid-share-nodes: **Share**
-      4. Copy the provided embed code snippet.
+   1. **Log in** to Open Chat Studio.
+   2. Navigate to the **Chatbot** you wish to embed.
+   3. Click on the :material-plus: (plus) icon and select **Embedded Widget** from the dropdown.
+   4. Complete the form and click **Create**
+
+   A new dialog will open with all the necessary details to embed your bot. You can either copy the chatbot ID and embed token for manual setup or use the **Copy Widget Embed Code** to copy a fully configured HTML snippet.
 
 3. Insert the widget where you want the chat button.
 
@@ -44,6 +46,7 @@ Before embedding, you must create a bot in Open Chat Studio.
       <open-chat-studio-widget
         visible="false"
         chatbot-id="{CHATBOT_ID}"
+        embed-key="{EMBED_KEY}"
         button-text="Let's Chat"
         position="right"
         expanded="false">
