@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Nov 11, 2025
+* **NEW** Users can now configure model parameters alongside other node parameters.
+
 ## Nov 7, 2025
 * **NEW** Added "Select all" option to sessions table for bulk selection of sessions.
 * **CHANGE** Improved client key security for chat widget. See the [Chat Widget docs](chat_widget/reference.md#embed-authentication).
