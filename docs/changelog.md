@@ -5,7 +5,7 @@ hide:
 
 # Changelog
 ## Nov 11, 2025
-* **NEW** Users can now configure model parameters alongside other node parameters.
+* **NEW** Users can now configure model parameters (temperature, max tokens, etc.) directly in LLM nodes alongside other node parameters, instead of requiring separate configuration.
 
 ## Nov 7, 2025
 * **NEW** Added "Select all" option to sessions table for bulk selection of sessions.
