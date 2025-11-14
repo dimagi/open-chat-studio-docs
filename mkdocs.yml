@@ -157,7 +157,7 @@ watch:
 - src/python_node
 
 extra_javascript:
-  - path: https://unpkg.com/open-chat-studio-widget@0.5.2/dist/open-chat-studio-widget/open-chat-studio-widget.esm.js
+  - path: https://unpkg.com/open-chat-studio-widget@0.5.3/dist/open-chat-studio-widget/open-chat-studio-widget.esm.js
 # Use this for testing widget changes
 #  - path: assets/build/open-chat-studio-widget.esm.js
     type: module
