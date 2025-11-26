@@ -148,7 +148,7 @@ A successful response returns a JSON object with the access token:
   "access_token": "eyJ0eXAiOiJKV1QiLCJhbGc...",
   "token_type": "Bearer",
   "expires_in": 3600,
-  "scope": "chatbot:read session:read",
+  "scope": "chatbot:read session:read"
 }
 ```
 
