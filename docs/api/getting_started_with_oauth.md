@@ -68,7 +68,7 @@ import hashlib
 
 # Generate a random code verifier (43-128 characters)
 characters = string.ascii_letters + string.digits + '-._~'
-code_verifier = ''.join(secrets.choice(characters) for _ in range(43, 128))
+code_verifier = ''.join(secrets.choice(characters) for _ in range(128))
 
 # Create the code challenge by hashing and encoding the verifier
 code_challenge = base64.urlsafe_b64encode(
