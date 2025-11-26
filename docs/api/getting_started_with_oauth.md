@@ -95,7 +95,7 @@ code_challenge = base64.urlsafe_b64encode(
 https://www.openchatstudio.com/o/authorize/?response_type=code&client_id=TkojUzrbS4nOUeF3deQ0uFwpNNH1kYjYFTisfEIC&redirect_uri=https://your-server/callback/&code_challenge=E9Mrozoa2owUzb1iCHFpQwbi6E3MwMZLvDu0mkMksYI&code_challenge_method=S256&scope=chatbot:read+session:read&state=random_state_string
 ```
 
-## Step 2: Handle the authorization response
+## Step 3: Handle the authorization response
 
 After the user grants permission, OpenChatStudio redirects them to your `redirect_uri` with the authorization code in the query string:
 
@@ -109,7 +109,7 @@ https://your-server/callback/?code=auth_code_here&state=random_state_string
 2. Extract the `code` parameter
 3. Handle errors if present (user denied, invalid client, etc.)
 
-## Step 3: Exchange the authorization code for an access token
+## Step 4: Exchange the authorization code for an access token
 
 Your server must send a POST request to OpenChatStudio's token endpoint.
 
@@ -159,7 +159,7 @@ A successful response returns a JSON object with the access token:
 - `expires_in`: Seconds until token expiration
 - `scope`: The actual scopes granted
 
-## Step 4: Use the access token
+## Step 5: Use the access token
 
 Include the access token in the Authorization header when making API requests:
 
