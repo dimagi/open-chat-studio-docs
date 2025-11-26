@@ -109,6 +109,20 @@ https://your-server/callback/?code=auth_code_here&state=random_state_string
 2. Extract the `code` parameter
 3. Handle errors if present (user denied, invalid client, etc.)
 
+### Error Responses
+
+If an error occurs, the redirect will include error parameters:
+
+```
+https://your-server/callback/?error=access_denied&error_description=The+user+denied+the+request&state=random_state_string
+```
+
+Common error codes:
+- `access_denied`: User rejected the authorization request
+- `invalid_request`: Missing or invalid parameters
+- `unauthorized_client`: Client not authorized to use this flow
+- `server_error`: Authorization server encountered an error
+
 ## Step 4: Exchange the authorization code for an access token
 
 Your server must send a POST request to OpenChatStudio's token endpoint.
