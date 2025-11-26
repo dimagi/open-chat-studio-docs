@@ -22,7 +22,7 @@ The API supports multiple authentication methods:
 - **API Key Authentication:** Include your API key in the `X-api-key` header
 - **Token Authentication:** Use Bearer token authentication in the `Authorization` header  
 - **Cookie Authentication:** Session-based authentication using cookies (for web integrations)
-- **OAuth2 Authentication:** OAuth2 authentication using scopes. See the [getting started page](/docs/api/getting_started_with_oauth.md) on how to get started.
+- **OAuth2 Authentication:** OAuth2 authentication using scopes. See the [getting started page](getting_started_with_oauth.md) on how to get started.
 
 ## Error Handling
 
