@@ -148,7 +148,8 @@ A successful response returns a JSON object with the access token:
   "access_token": "eyJ0eXAiOiJKV1QiLCJhbGc...",
   "token_type": "Bearer",
   "expires_in": 3600,
-  "scope": "chatbot:read session:read"
+  "scope": "chatbot:read session:read",
+  "refresh_token": "1p1mG5sD2k4PCdILM9qLYB..."
 }
 ```
 
@@ -158,6 +159,7 @@ A successful response returns a JSON object with the access token:
 - `token_type`: Always `Bearer` for this flow
 - `expires_in`: Seconds until token expiration
 - `scope`: The actual scopes granted
+- `refresh_token`: Use this to get a new access token when the current one expires (see Step 6)
 
 ## Step 5: Use the access token
 
@@ -167,3 +169,45 @@ Include the access token in the Authorization header when making API requests:
 curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGc..." \
   https://www.openchatstudio.com/api/...
 ```
+
+## Step 6: Get a new access token using the refresh token
+
+When your access token expires, use the refresh token to get a new one without requiring the user to re-authenticate. Send a POST request to the token endpoint with the refresh token grant type.
+
+**Token endpoint:** `https://www.openchatstudio.com/o/token/`
+
+### Required POST Parameters
+
+| Parameter | Description |
+|-----------|-------------|
+| `grant_type` | Must be `refresh_token` |
+| `refresh_token` | The refresh token received in Step 4 |
+| `client_id` | Your client ID |
+| `client_secret` | Your client secret |
+
+### Example Request
+
+```bash
+curl -X POST https://www.openchatstudio.com/o/token/ \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=refresh_token" \
+  -d "refresh_token=1p1mG5sD2k4PCdILM9qLYB..." \
+  -d "client_id=TkojUzrbS4nOUeF3deQ0uFwpNNH1kYjYFTisfEIC" \
+  -d "client_secret=your_client_secret"
+```
+
+### Response
+
+A successful response returns a new access token:
+
+```json
+{
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGc...",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+  "scope": "chatbot:read session:read",
+  "refresh_token": "new_refresh_token_here..."
+}
+```
+
+**Important:** Save the new `refresh_token` returned in the response, as it replaces your previous refresh token. Use this new token for future refresh requests.
