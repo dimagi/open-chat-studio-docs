@@ -183,7 +183,7 @@ hide:
 * **CHANGE** For teams with Chatbots enabled, the default landing page will now be "Chatbots" replacing "Experiments"
 
 ## May 22, 2025
-* **CHANGE** API update: The [list experiments](https://chatbots.dimagi.com/api/docs/#tag/Experiments/operation/experiment_list) endpoint now returns **only unreleased experiments** in the top-level response. A new `versions` key has been added to each experiment, containing all version of that experiment.
+* **CHANGE** API update: The [list experiments](https://openchatstudio.com/api/docs/#tag/Experiments/operation/experiment_list) endpoint now returns **only unreleased experiments** in the top-level response. A new `versions` key has been added to each experiment, containing all version of that experiment.
 * **NEW** [Collections](./concepts/collections/index.md) are now generally available for all users who are using
 pipelines
 
@@ -211,7 +211,7 @@ pipelines
 ## Apr 29, 2025
 * **BUG** Fixed an issue where users are unable to view archived experiments / chatbots.
 * **NEW** Dark mode support for the chat UI.
-* **NEW** The session creation endpoint now supports passing state. Additionally, the state of an existing session can also be updated via the [update state](https://chatbots.dimagi.com/api/docs/#tag/Experiment-Sessions/operation/session_update_state) endpoint.
+* **NEW** The session creation endpoint now supports passing state. Additionally, the state of an existing session can also be updated via the [update state](https://openchatstudio.com/api/docs/#tag/Experiment-Sessions/operation/session_update_state) endpoint.
 
 ## Apr 25, 2025
 * **NEW** Pipeline bots can now configure surveys and voice settings.
@@ -290,7 +290,7 @@ Adds 'does not contain' to participant filter in sessions filter widget
 
 ## Mar 6, 2025
 
-* **NEW** The [Chat Completions API](https://chatbots.dimagi.com/api/docs/#tag/OpenAI) and [New Message API](https://chatbots.dimagi.com/api/docs/#tag/Channels/operation/new_api_message_versioned) endpoints now support a version parameter (`vN`) to specify the working version of the experiment.
+* **NEW** The [Chat Completions API](https://openchatstudio.com/api/docs/#tag/OpenAI) and [New Message API](https://openchatstudio.com/api/docs/#tag/Channels/operation/new_api_message_versioned) endpoints now support a version parameter (`vN`) to specify the working version of the experiment.
 * **NEW** Added a button in the versions table to copy the API URL for each version of the experiment.
 * **BUG** Fix an error when reading `docx` files: "There is no item named '...' in the archive".
 * **BUG** Fix a bug with pipelines which resulted in the bot generating a new scheduled message every time a scheduled message is triggered.
@@ -359,7 +359,7 @@ Adds 'does not contain' to participant filter in sessions filter widget
     * [OpenAI Assistant Node](concepts/pipelines/nodes.md#assistant): Allows you to use an OpenAI Assistant in the pipeline.
     * [Static Router Node](concepts/pipelines/nodes.md#static-router): Allows you to route messages to different nodes based on a static mapping.
 * **NEW** Pipelines can now be tested via the edit UI. This does not currently support history or participant data.
-* **NEW** "Trigger Bot Message" API endpoint. This allows you to send a prompt to a bot which will trigger a message to the specified user. See the [API documentation](https://chatbots.dimagi.com/api/docs/#tag/Channels/operation/trigger_bot_message) for more information.
+* **NEW** "Trigger Bot Message" API endpoint. This allows you to send a prompt to a bot which will trigger a message to the specified user. See the [API documentation](https://openchatstudio.com/api/docs/#tag/Channels/operation/trigger_bot_message) for more information.
 * **NEW** [Custom Actions](concepts/custom_actions.md) allow bots to connect to external APIs and services.
 * **NEW** The web chat UI now supports :thumbsup: and :thumbsdown: reactions to bot messages. These reactions are saved as tags on the message.
 
@@ -461,7 +461,7 @@ Adds 'does not contain' to participant filter in sessions filter widget
 
 **API changes**
 
-  * **NEW** API documentation and schema now available at [https://chatbots.dimagi.com/api/docs/](https://chatbots.dimagi.com/api/docs/)
+  * **NEW** API documentation and schema now available at [https://openchatstudio.com/api/docs/](https://openchatstudio.com/api/docs/)
   * **NEW** Experiment session list, detail and create API
   * **CHANGE** Channel message API now takes an optional session field in the request body to specify the ID of a specific
     session

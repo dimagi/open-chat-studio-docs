@@ -4,5 +4,5 @@ Using the API allows you to interact with your bot programmatically. This comes 
 
 See the [API documentation][api-docs] for more details.
 
-[profile-page]: https://chatbots.dimagi.com/users/profile/
-[api-docs]: https://chatbots.dimagi.com/api/docs/
+[profile-page]: https://openchatstudio.com/users/profile/
+[api-docs]: https://openchatstudio.com/api/docs/

@@ -39,7 +39,7 @@ See the [MkDocs documentation](https://www.mkdocs.org/user-guide/writing-your-do
 API docs are generated automatically based on the OpenAPI schema. This is done using the `src/ocs_docs/openapi_to_docs.py` utility.
 
 ```bash
-python src/ocs_docs/openapi_to_docs.py https://chatbots.dimagi.com/api/schema -o docs/api
+python src/ocs_docs/openapi_to_docs.py https://openchatstudio.com/api/schema -o docs/api
 ```
 
 This utility is used in the `update-api-docs` GitHub action.

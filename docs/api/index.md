@@ -6,14 +6,14 @@ Open Chat Studio provides a REST API that enables you to create chat sessions, s
 
 See the following links for documentation on the API endpoints:
 
-* [API docs](https://chatbots.dimagi.com/api/docs/)
-* [OpenAPI Schema](https://chatbots.dimagi.com/api/schema/)
+* [API docs](https://openchatstudio.com/api/docs/)
+* [OpenAPI Schema](https://openchatstudio.com/api/schema/)
 
 ## Overview
 
 The API is organized around REST principles and uses standard HTTP methods and status codes. All API endpoints return JSON responses and require authentication.
 
-**Base URL:** `https://chatbots.dimagi.com/api/`
+**Base URL:** `https://openchatstudio.com/api/`
 
 ## Authentication
 

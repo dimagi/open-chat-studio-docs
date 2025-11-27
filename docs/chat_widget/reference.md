@@ -356,7 +356,7 @@ The session data is set to expire after 24 hours. This is also configurable by u
 | Property | Type | Required | Default | Description | Example |
 |----------|------|----------|---------|-------------|---------|
 | `chatbot-id` | `string` | **REQUIRED** | - | Your chatbot ID from Open Chat Studio | `"183312ac-cbe5-4c91-9e7b-d9df96b088e4"` |
-| `api-base-url` | `string` | Optional | `"https://chatbots.dimagi.com"` | API base URL for your Open Chat Studio instance | `"https://your-domain.com"` |
+| `api-base-url` | `string` | Optional | `"https://openchatstudio.com"` | API base URL for your Open Chat Studio instance | `"https://your-domain.com"` |
 | `embed-key` | `string` | Optional | `undefined` | Authentication key for embedded channels | `"your-embed-auth-key"` |
 
 ### Button & UI Customization
