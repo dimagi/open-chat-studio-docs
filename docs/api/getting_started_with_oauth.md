@@ -72,7 +72,7 @@ code_challenge = base64.urlsafe_b64encode(
 ### Example Request
 
 ```uri
-https://www.openchatstudio.com/o/authorize/?response_type=code&client_id=TkojUzrbS4nOUeF3deQ0uFwpNNH1kYjYFTisfEIC&redirect_uri=https://your-server/callback/&code_challenge=E9Mrozoa2owUzb1iCHFpQwbi6E3MwMZLvDu0mkMksYI&code_challenge_method=S256&scope=chatbot:read+session:read&state=random_state_string
+https://www.openchatstudio.com/o/authorize/?response_type=code&client_id=${CLIENT_ID}&redirect_uri=https://your-server/callback/&code_challenge=${CHALLENGE}&code_challenge_method=S256&scope=chatbot:read+session:read&state=random_state_string
 ```
 
 ## Step 3: Handle the authorization response
