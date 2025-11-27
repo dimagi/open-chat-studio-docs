@@ -4,40 +4,22 @@ title: OAuth2
 
 # Getting started with OAuth2
 
-OpenChatStudio uses OAuth2 with the Authorization Code Flow with PKCE (Proof Key for Code Exchange) to enable secure third-party integrations. This guide walks you through the implementation.
+OpenChatStudio uses OAuth2 with the Authorization Code Flow with PKCE (Proof Key for Code Exchange) to enable secure third-party integrations.
 
-## Terminology
+## How OAuth 2.0 works
 
-- **Authorization server**: The server that issues access tokens e.g. OpenChatStudio
-- **Client application**: Your server — requests tokens on behalf of users
-- **Authorization code**: Short-lived, one-time-use code exchanged for an access token
-- **Access token**: Credential used to access protected resources
-- **PKCE**: Security mechanism that protects against authorization code interception attacks
-- **Scopes**: Permissions granted to the access token. The available scopes and scopes required by each endpoint are shown in the [API docs](https://chatbots.dimagi.com/api/docs/).
+For a detailed explanation of the OAuth 2.0 authorization code flow, see [OAuth 2 Simplified](https://aaronparecki.com/oauth-2-simplified/#authorization). OpenChatStudio follows this standard flow, with specific endpoints documented below.
 
-## Overview of the authorization flow
+## OpenChatStudio OAuth Endpoints
 
-```mermaid
-sequenceDiagram
-    participant User as User<br/>(Browser)
-    participant Client as Your Client<br/>(Server)
-    participant OCS as OpenChatStudio<br/>(Authorization Server)
-    
-    User->>Client: 1. Click button that starts the authorization flow
-    Client->>Client: 2. Generate code_challenge from code_verifier
-    Client->>OCS: 3. Redirect to /o/authorize/<br/>with client_id, redirect_uri,<br/>code_challenge, scope
-    OCS->>User: 4. Show login & consent screen
-    User->>OCS: 5. Authenticate & grant permission
-    OCS->>Client: 6. Redirect to redirect_uri<br/>with authorization code
-    Client->>OCS: 7. POST to /o/token/<br/>with code, code_verifier,<br/>client_id, client_secret
-    OCS->>OCS: 8. Validate code_verifier against<br/>code_challenge & verify client
-    OCS->>Client: 9. Return access token
-```
-
+| Endpoint | URL |
+|----------|-----|
+| Authorization | `https://www.openchatstudio.com/o/authorize/` |
+| Token | `https://www.openchatstudio.com/o/token/` |
 
 ## Step 1: Register your application with OpenChatStudio
 
-Contact the OpenChatStudio team to register your application. During registration, you must provide one or more **redirect URIs** where you'll receive authorization codes. OpenChatStudio will only redirect to URIs that match exactly what you registered.
+Contact the OpenChatStudio team to register your application.
 
 You'll receive:
 
@@ -47,8 +29,6 @@ You'll receive:
 ## Step 2: Initiate the authorization call
 
 Your application should redirect the user to OpenChatStudio's authorization endpoint to request permission.
-
-**Authorization endpoint:** `https://www.openchatstudio.com/o/authorize/`
 
 ### PKCE Setup (Required)
 
@@ -86,7 +66,7 @@ code_challenge = base64.urlsafe_b64encode(
 | `code_challenge` | Yes | The PKCE code challenge (base64url-encoded SHA256 hash of your code_verifier) |
 | `code_challenge_method` | Yes | Must be `S256` (SHA256) |
 | `state` | Recommended | Random string to prevent CSRF attacks. Store this and validate the response |
-| `scope` | No | Space-separated list of scopes (defaults to all scopes if omitted) |
+| `scope` | No | Space-separated list of scopes. See available scopes in the [API docs](https://chatbots.dimagi.com/api/docs/). If omitted, defaults to all scopes |
 | `team` | No | Specific team to scope the token to |
 
 ### Example Request
@@ -118,6 +98,7 @@ https://your-server/callback/?error=access_denied&error_description=The+user+den
 ```
 
 Common error codes:
+
 - `access_denied`: User rejected the authorization request
 - `invalid_request`: Missing or invalid parameters
 - `unauthorized_client`: Client not authorized to use this flow
@@ -126,8 +107,6 @@ Common error codes:
 ## Step 4: Exchange the authorization code for an access token
 
 Your server must send a POST request to OpenChatStudio's token endpoint.
-
-**Token endpoint:** `https://www.openchatstudio.com/o/token/`
 
 ### Required POST Parameters
 
