@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Nov 26, 2025
+* **NEW** OAuth2 authentication is now supported for API access. This enables secure third-party integrations using industry-standard OAuth2 with PKCE. See the [OAuth2 integration guide](./api/getting_started_with_oauth.md) for implementation details.
+
 ## Nov 11, 2025
 * **NEW** Users can now configure model parameters (temperature, max tokens, etc.) directly in LLM nodes alongside other node parameters, instead of requiring separate configuration.
 

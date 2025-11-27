@@ -144,7 +144,9 @@ nav:
         - concepts/evaluations/index.md
         - concepts/evaluations/dataset.md
         - concepts/evaluations/evaluators.md
-      - API: api/index.md
+      - API:
+        - api/index.md
+        - api/getting_started_with_oauth.md
   - Chat Widget:
     - chat_widget/index.md
     - chat_widget/reference.md
