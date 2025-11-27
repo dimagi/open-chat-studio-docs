@@ -1,6 +1,6 @@
 # Domain Migration
 
-We will be migrating from the current [openchatstudio.com](https://openchatstudio.com) domain to [www.openchatstudio.com](https://www.openchatstudio.com).
+We will be migrating from the current [chatbots.dimagi.com](https://chatbots.dimagi.com) domain to [www.openchatstudio.com](https://www.openchatstudio.com).```
 
 We will be configuring automatic redirects for most traffic, however, some features will require you to make changes to external systems. Please follow the migration guides below.
 
