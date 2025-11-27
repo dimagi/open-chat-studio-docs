@@ -1,0 +1,70 @@
+API: Dimagi Chatbots v1
+Description: Experiments with AI, GPT and LLMs
+
+TAG: Channels
+
+ENDPOINTS:
+
+POST /api/trigger_bot
+  Summary: Trigger the bot to send a message to the user
+  Request Body:
+    Content: application/json
+    Schema: TriggerBotMessageRequest
+  Responses:
+    200: No response body
+    400: 
+      Content: application/json
+      Schema: Unknown
+    404: 
+      Content: application/json
+      Schema: Unknown
+
+POST /channels/api/{experiment_id}/incoming_message
+  Summary: New API Message
+  Parameters:
+    - experiment_id (path, string (required)): Experiment ID
+  Request Body:
+    Content: application/json
+    Schema: ApiMessage
+  Responses:
+    200: 
+      Content: application/json
+      Schema: ApiResponseMessage
+
+POST /channels/api/{experiment_id}/v{version}/incoming_message
+  Summary: New API Message Versioned
+  Parameters:
+    - experiment_id (path, string (required)): Experiment ID
+    - version (path, integer (required)): No description
+    - version (query, string (optional)): Version of experiment
+  Request Body:
+    Content: application/json
+    Schema: ApiMessage
+  Responses:
+    200: 
+      Content: application/json
+      Schema: ApiResponseMessage
+
+SCHEMAS:
+
+ApiMessage:
+  - message: string (required)
+  - session: string
+
+ApiResponseMessage:
+  - response: string (required)
+  - attachments: array of ApiResponseAttachment (required)
+
+TriggerBotMessageRequest:
+  - identifier: string (required)
+  - platform: Unknown (required)
+  - experiment: string (required)
+  - prompt_text: string (required)
+  - start_new_session: boolean
+  - session_data: object
+  - participant_data: object
+
+SECURITY:
+- API Key authentication (header: X-api-key)
+- API Key authentication (cookie: sessionid)
+- HTTP bearer authentication
