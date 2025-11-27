@@ -126,9 +126,9 @@ curl -X POST https://www.openchatstudio.com/o/token/ \
   -H "Content-Type: application/x-www-form-urlencoded" \
   -d "grant_type=authorization_code" \
   -d "code=auth_code_here" \
-  -d "client_id=TkojUzrbS4nOUeF3deQ0uFwpNNH1kYjYFTisfEIC" \
-  -d "client_secret=your_client_secret" \
-  -d "code_verifier=random_string_used_for_pkce" \
+  -d "client_id=${CLIENT_ID}" \
+  -d "client_secret=${CLIENT_SECRET}" \
+  -d "code_verifier=${PKCE_CODE}" \
   -d "redirect_uri=https://your-server/callback/"
 ```
 
