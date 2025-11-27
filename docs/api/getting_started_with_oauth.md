@@ -66,7 +66,7 @@ code_challenge = base64.urlsafe_b64encode(
 | `code_challenge` | Yes | The PKCE code challenge (base64url-encoded SHA256 hash of your code_verifier) |
 | `code_challenge_method` | Yes | Must be `S256` (SHA256) |
 | `state` | Recommended | Random string to prevent CSRF attacks. Store this and validate the response |
-| `scope` | No | Space-separated list of scopes. See available scopes in the [API docs](https://chatbots.dimagi.com/api/docs/). If omitted, defaults to all scopes |
+| `scope` | No | Space-separated list of scopes. See available scopes in the [API docs](https://openchatstudio.com/api/docs/). If omitted, defaults to all scopes |
 | `team` | No | Specific team to scope the token to |
 
 ### Example Request
@@ -113,7 +113,7 @@ Your server must send a POST request to OpenChatStudio's token endpoint.
 | Parameter | Description |
 |-----------|-------------|
 | `grant_type` | Must be `authorization_code` |
-| `code` | The authorization code received in Step 2 |
+| `code` | The authorization code |
 | `client_id` | Your client ID |
 | `client_secret` | Your client secret (keep this server-side!) |
 | `code_verifier` | The PKCE code verifier you generated in Step 1 |
