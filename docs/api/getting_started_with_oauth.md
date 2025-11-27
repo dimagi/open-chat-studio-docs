@@ -184,9 +184,9 @@ When your access token expires, use the refresh token to get a new one without r
 curl -X POST https://www.openchatstudio.com/o/token/ \
   -H "Content-Type: application/x-www-form-urlencoded" \
   -d "grant_type=refresh_token" \
-  -d "refresh_token=1p1mG5sD2k4PCdILM9qLYB..." \
-  -d "client_id=TkojUzrbS4nOUeF3deQ0uFwpNNH1kYjYFTisfEIC" \
-  -d "client_secret=your_client_secret"
+  -d "refresh_token=${REFRESH_TOKEN}" \
+  -d "client_id=${CLIENT_ID}" \
+  -d "client_secret={$CLIENT_SECRET}"
 ```
 
 ### Response
