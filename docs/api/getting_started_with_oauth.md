@@ -19,7 +19,7 @@ For a detailed explanation of the OAuth 2.0 authorization code flow, see [OAuth 
 
 ## Step 1: Register your application with OpenChatStudio
 
-Contact the OpenChatStudio team to register your application.
+Register your application with Open Chat Studio.
 
 You'll receive:
 
