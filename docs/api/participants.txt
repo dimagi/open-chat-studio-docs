@@ -12,6 +12,11 @@ POST /api/participants
     Schema: ParticipantDataUpdateRequest
   Responses:
     200: No response body
+  Security:
+    OAuth2
+      - Required scopes: participants:write
+    apiKeyAuth
+    tokenAuth
 
 SCHEMAS:
 
@@ -22,7 +27,8 @@ ParticipantDataUpdateRequest:
   - data: array of ParticipantExperimentData (required)
 
 SECURITY:
-- OAuth2 (oauth2)
+- OAuth2
+  - Authorization Code Flow (authorization url: /o/authorize/, token url: /o/token/)
 - API Key authentication (header: X-api-key)
 - API Key authentication (cookie: sessionid)
 - HTTP bearer authentication

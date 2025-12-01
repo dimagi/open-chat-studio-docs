@@ -205,6 +205,15 @@ class OpenAPIToMarkdownConverter:
                 elif scheme_type == "http":
                     scheme_name_val = scheme.get("scheme", "bearer")
                     lines.append(f"- HTTP {scheme_name_val} authentication")
+                elif scheme_type == "oauth2":
+                    lines.append(f"- {scheme_name}")
+                    for name, flow in scheme.get("flows", {}).items():
+                        auth_url = flow.get("authorizationUrl", "")
+                        token_url = flow.get("tokenUrl", "")
+                        title = list(filter(None, re.split(r'(?=[A-Z])', name)))
+                        title[0] = title[0].title()
+                        name = ' '.join(title)
+                        lines.append(f"  - {name} Flow (authorization url: {auth_url}, token url: {token_url})")
                 else:
                     lines.append(f"- {scheme_name} ({scheme_type})")
             lines.append("")
@@ -281,6 +290,16 @@ class OpenAPIToMarkdownConverter:
                     if schema:
                         schema_ref = self._get_schema_reference(schema)
                         lines.append(f"      Schema: {schema_ref}")
+
+        # Security
+        if security :=  operation.get("security", []):
+            lines.append("  Security:")
+            for security in security:
+                key = next(iter(security))
+                lines.append(f"    {key}")
+                if value := security.get(key):
+                    value = ', '.join(value)
+                    lines.append(f"      - Required scopes: {value}")
 
         return lines
 
