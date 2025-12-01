@@ -14,6 +14,11 @@ GET /api/experiments/
     200: 
       Content: application/json
       Schema: PaginatedExperimentList
+  Security:
+    OAuth2
+      - Required scopes: chatbots:read
+    apiKeyAuth
+    tokenAuth
 
 GET /api/experiments/{id}/
   Summary: Retrieve Chatbot
@@ -23,6 +28,11 @@ GET /api/experiments/{id}/
     200: 
       Content: application/json
       Schema: Experiment
+  Security:
+    OAuth2
+      - Required scopes: chatbots:read
+    apiKeyAuth
+    tokenAuth
 
 SCHEMAS:
 
@@ -39,7 +49,8 @@ PaginatedExperimentList:
   - results: array of Experiment (required)
 
 SECURITY:
-- OAuth2 (oauth2)
+- OAuth2
+  - Authorization Code Flow (authorization url: /o/authorize/, token url: /o/token/)
 - API Key authentication (header: X-api-key)
 - API Key authentication (cookie: sessionid)
 - HTTP bearer authentication

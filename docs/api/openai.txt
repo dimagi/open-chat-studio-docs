@@ -44,6 +44,11 @@ reply = completion.choices[0].message
     200: 
       Content: application/json
       Schema: CreateChatCompletionResponse
+  Security:
+    OAuth2
+      - Required scopes: chatbots:interact
+    apiKeyAuth
+    tokenAuth
 
 POST /api/openai/{experiment_id}/v{version}/chat/completions
   Summary: Versioned Chat Completions API for Experiments
@@ -86,6 +91,11 @@ reply = completion.choices[0].message
     200: 
       Content: application/json
       Schema: CreateChatCompletionResponse
+  Security:
+    OAuth2
+      - Required scopes: chatbots:interact
+    apiKeyAuth
+    tokenAuth
 
 SCHEMAS:
 
@@ -100,7 +110,8 @@ CreateChatCompletionResponse:
   - object: ObjectEnum (required)
 
 SECURITY:
-- OAuth2 (oauth2)
+- OAuth2
+  - Authorization Code Flow (authorization url: /o/authorize/, token url: /o/token/)
 - API Key authentication (header: X-api-key)
 - API Key authentication (cookie: sessionid)
 - HTTP bearer authentication

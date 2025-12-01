@@ -13,9 +13,15 @@ GET /api/files/{id}/content
     200: 
       Content: application/octet-stream
       Schema: string
+  Security:
+    OAuth2
+      - Required scopes: files:read
+    apiKeyAuth
+    tokenAuth
 
 SECURITY:
-- OAuth2 (oauth2)
+- OAuth2
+  - Authorization Code Flow (authorization url: /o/authorize/, token url: /o/token/)
 - API Key authentication (header: X-api-key)
 - API Key authentication (cookie: sessionid)
 - HTTP bearer authentication

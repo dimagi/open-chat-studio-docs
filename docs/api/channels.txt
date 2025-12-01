@@ -18,6 +18,11 @@ POST /api/trigger_bot
     404: 
       Content: application/json
       Schema: Unknown
+  Security:
+    OAuth2
+      - Required scopes: chatbots:interact
+    apiKeyAuth
+    tokenAuth
 
 POST /channels/api/{experiment_id}/incoming_message
   Summary: New API Message
@@ -30,6 +35,11 @@ POST /channels/api/{experiment_id}/incoming_message
     200: 
       Content: application/json
       Schema: ApiResponseMessage
+  Security:
+    OAuth2
+      - Required scopes: chatbots:interact
+    apiKeyAuth
+    tokenAuth
 
 POST /channels/api/{experiment_id}/v{version}/incoming_message
   Summary: New API Message Versioned
@@ -44,6 +54,11 @@ POST /channels/api/{experiment_id}/v{version}/incoming_message
     200: 
       Content: application/json
       Schema: ApiResponseMessage
+  Security:
+    OAuth2
+      - Required scopes: chatbots:interact
+    apiKeyAuth
+    tokenAuth
 
 SCHEMAS:
 
@@ -65,7 +80,8 @@ TriggerBotMessageRequest:
   - participant_data: object
 
 SECURITY:
-- OAuth2 (oauth2)
+- OAuth2
+  - Authorization Code Flow (authorization url: /o/authorize/, token url: /o/token/)
 - API Key authentication (header: X-api-key)
 - API Key authentication (cookie: sessionid)
 - HTTP bearer authentication
