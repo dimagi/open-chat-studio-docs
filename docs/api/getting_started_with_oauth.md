@@ -12,10 +12,11 @@ For a detailed explanation of the OAuth 2.0 authorization code flow, see [OAuth 
 
 ## OpenChatStudio OAuth Endpoints
 
-| Endpoint | URL |
-|----------|-----|
-| Authorization | `https://www.openchatstudio.com/o/authorize/` |
-| Token | `https://www.openchatstudio.com/o/token/` |
+| Endpoint | URL | Notes |
+|----------|-----|-------|
+| Authorization | `https://www.openchatstudio.com/o/authorize/` | |
+| Token | `https://www.openchatstudio.com/o/token/` | |
+| UserInfo | `https://www.openchatstudio.com/o/userinfo/` | Requires `openid` scope |
 
 ## Step 1: Register your application with OpenChatStudio
 
@@ -204,3 +205,71 @@ A successful response returns a new access token:
 ```
 
 **Important:** Save the new `refresh_token` returned in the response, as it replaces your previous refresh token. Use this new token for future refresh requests.
+
+## OpenID Connect (OIDC)
+
+OpenChatStudio supports OpenID Connect, which extends OAuth 2.0 to provide identity information about authenticated users. This is particularly useful for applications that need to identify which team the authenticated user has access to.
+
+### The `openid` Scope
+
+To use OpenID Connect features, include the `openid` scope in your authorization request (Step 2). You can combine it with other scopes as needed:
+
+```uri
+https://www.openchatstudio.com/o/authorize/?response_type=code&client_id=${CLIENT_ID}&redirect_uri=https://your-server/callback/&code_challenge=${CHALLENGE}&code_challenge_method=S256&scope=openid+chatbot:read+session:read&state=random_state_string
+```
+
+### ID Token in Token Response
+
+When you request the `openid` scope, the token endpoint response (Step 4) will include an additional `id_token` field:
+
+```json
+{
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGc...",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+  "scope": "openid chatbot:read session:read",
+  "refresh_token": "1p1mG5sD2k4PCdILM9qLYB...",
+  "id_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+```
+
+The `id_token` is a JSON Web Token (JWT) that contains identity claims about the authenticated user, including:
+
+- `sub`: The user's email address
+- `name`: The user's full name
+- `is_active`: Whether the user account is active
+- `team`: The team slug for the team associated with this token
+
+You can decode this JWT to extract user identity information without making additional API calls.
+
+**Security Note:** When using the `id_token`, always verify its signature using a JWT library before trusting its contents. This ensures the token hasn't been tampered with and was actually issued by OpenChatStudio. Most JWT libraries can handle signature verification automatically using OpenChatStudio's public keys from the OIDC discovery endpoint.
+
+### UserInfo Endpoint
+
+Alternatively, you can retrieve user information by calling the UserInfo endpoint with your access token:
+
+**Endpoint:** `https://www.openchatstudio.com/o/userinfo/`
+
+**Method:** GET or POST
+
+**Authentication:** Include the access token in the Authorization header
+
+**Note:** The access token must have been issued with the `openid` scope to access this endpoint.
+
+```bash
+curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGc..." \
+  https://www.openchatstudio.com/o/userinfo/
+```
+
+**Response:**
+
+```json
+{
+  "sub": "user@example.com",
+  "name": "John Doe",
+  "is_active": true,
+  "team": "team-slug"
+}
+```
+
+The UserInfo endpoint returns the same claims as the `id_token`, providing a standard way to retrieve user identity information when needed.
