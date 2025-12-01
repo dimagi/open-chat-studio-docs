@@ -6,7 +6,7 @@ TAG: Experiments
 ENDPOINTS:
 
 GET /api/experiments/
-  Summary: List Experiments
+  Summary: List Chatbots
   Parameters:
     - cursor (query, string (optional)): The pagination cursor value.
     - page_size (query, integer (optional)): Number of results to return per page.
@@ -16,7 +16,7 @@ GET /api/experiments/
       Schema: PaginatedExperimentList
 
 GET /api/experiments/{id}/
-  Summary: Retrieve Experiment
+  Summary: Retrieve Chatbot
   Parameters:
     - id (path, string (required)): Experiment ID
   Responses:
@@ -39,6 +39,7 @@ PaginatedExperimentList:
   - results: array of Experiment (required)
 
 SECURITY:
+- OAuth2 (oauth2)
 - API Key authentication (header: X-api-key)
 - API Key authentication (cookie: sessionid)
 - HTTP bearer authentication
