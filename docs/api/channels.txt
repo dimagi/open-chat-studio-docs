@@ -65,6 +65,7 @@ TriggerBotMessageRequest:
   - participant_data: object
 
 SECURITY:
+- OAuth2 (oauth2)
 - API Key authentication (header: X-api-key)
 - API Key authentication (cookie: sessionid)
 - HTTP bearer authentication
