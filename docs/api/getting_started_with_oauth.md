@@ -12,10 +12,11 @@ For a detailed explanation of the OAuth 2.0 authorization code flow, see [OAuth 
 
 ## OpenChatStudio OAuth Endpoints
 
-| Endpoint | URL |
-|----------|-----|
-| Authorization | `https://www.openchatstudio.com/o/authorize/` |
-| Token | `https://www.openchatstudio.com/o/token/` |
+| Endpoint | URL | Notes |
+|----------|-----|-------|
+| Authorization | `https://www.openchatstudio.com/o/authorize/` | |
+| Token | `https://www.openchatstudio.com/o/token/` | |
+| UserInfo | `https://www.openchatstudio.com/o/userinfo/` | Requires `openid` scope |
 
 ## Step 1: Register your application with OpenChatStudio
 
@@ -241,6 +242,8 @@ The `id_token` is a JSON Web Token (JWT) that contains identity claims about the
 
 You can decode this JWT to extract user identity information without making additional API calls.
 
+**Security Note:** When using the `id_token`, always verify its signature using a JWT library before trusting its contents. This ensures the token hasn't been tampered with and was actually issued by OpenChatStudio. Most JWT libraries can handle signature verification automatically using OpenChatStudio's public keys from the OIDC discovery endpoint.
+
 ### UserInfo Endpoint
 
 Alternatively, you can retrieve user information by calling the UserInfo endpoint with your access token:
@@ -250,6 +253,8 @@ Alternatively, you can retrieve user information by calling the UserInfo endpoin
 **Method:** GET or POST
 
 **Authentication:** Include the access token in the Authorization header
+
+**Note:** The access token must have been issued with the `openid` scope to access this endpoint.
 
 ```bash
 curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGc..." \
