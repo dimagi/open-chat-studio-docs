@@ -24,4 +24,5 @@ SECURITY:
   - Authorization Code Flow (authorization url: /o/authorize/, token url: /o/token/)
 - API Key authentication (header: X-api-key)
 - API Key authentication (cookie: sessionid)
+- API Key authentication (header: X-Embed-Key)
 - HTTP bearer authentication

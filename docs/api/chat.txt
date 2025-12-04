@@ -22,6 +22,7 @@ GET /api/chat/{session_id}/{task_id}/poll/
       Schema: ChatTaskPollError
   Security:
     cookieAuth
+    embedKeyAuth
 
 POST /api/chat/{session_id}/message/
   Summary: Send a message to a chat session
@@ -36,6 +37,7 @@ POST /api/chat/{session_id}/message/
       Schema: ChatSendMessageResponse
   Security:
     cookieAuth
+    embedKeyAuth
 
 GET /api/chat/{session_id}/poll/
   Summary: Poll for new messages in a chat session. Do not poll more than once every 30 seconds
@@ -50,6 +52,7 @@ GET /api/chat/{session_id}/poll/
       Schema: ChatPollResponse
   Security:
     cookieAuth
+    embedKeyAuth
 
 POST /api/chat/{session_id}/upload/
   Summary: Upload files for a chat message
@@ -64,6 +67,7 @@ POST /api/chat/{session_id}/upload/
       Schema: ChatUploadFileResponse
   Security:
     cookieAuth
+    embedKeyAuth
 
 POST /api/chat/start/
   Summary: Start a new chat session for a widget
@@ -77,6 +81,7 @@ POST /api/chat/start/
       Schema: ChatStartSessionResponse
   Security:
     cookieAuth
+    embedKeyAuth
 
 SCHEMAS:
 
@@ -123,4 +128,5 @@ SECURITY:
   - Authorization Code Flow (authorization url: /o/authorize/, token url: /o/token/)
 - API Key authentication (header: X-api-key)
 - API Key authentication (cookie: sessionid)
+- API Key authentication (header: X-Embed-Key)
 - HTTP bearer authentication
