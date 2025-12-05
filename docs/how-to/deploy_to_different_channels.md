@@ -61,9 +61,27 @@ If you're reusing an existing WhatsApp number that was previously configured for
     - For Twilio, edit your Facebook page settings and paste the URL into the "Webhook URL for incoming messages" field.
 
 ## Slack
-- Choose the channel mode.
-- If you chose to link a specific channel, enter the name of the Slack channel you want your bot to be available on.
-- Once the channel is linked, you will be able to chat with it using the `@Dimagi Bots` reference.
+
+There are three different ways to configure how your bot responds to messages in Slack:
+
+### 1. Respond to messages from a single channel
+
+- Specify the channel name (with or without the '#' prefix)
+- This is the highest specificity - messages on this channel will only be responded to by this bot
+- Only one bot can be configured like this per Slack workspace
+
+### 2. Respond to messages from any channel using keyword matching
+
+- Multiple keywords can be used to trigger the bot
+- Keywords are NOT case sensitive
+- Keywords must be unique to this bot & Slack workspace combination
+
+### 3. Respond to messages from all channels
+
+- The bot will respond to any message on any channel if it hasn't matched one of the previous two configurations
+- This is the lowest priority matching option
+
+Once the channel is linked, you will be able to chat with it using the `@Dimagi Bots` reference.
 
 ## SureAdhere
 - Enter the Tenant ID that would have been provided to you when setting up your SureAdhere account.
