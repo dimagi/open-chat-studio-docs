@@ -80,7 +80,7 @@ There are three different ways to configure how your bot responds to messages in
 
 - Specify the channel name (with or without the '#' prefix) in the channel configuration form.
 - This is the highest specificity - messages on this channel will only be responded to by this bot.
-- Only one bot can be configured like this per Slack workspace.
+- Only one bot can be configured per Slack channel.
 
 ### 2. Respond to messages from any channel using keyword matching
 
