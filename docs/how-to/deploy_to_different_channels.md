@@ -62,26 +62,49 @@ If you're reusing an existing WhatsApp number that was previously configured for
 
 ## Slack
 
-There are three different ways to configure how your bot responds to messages in Slack:
+### Prerequisites
 
-### 1. Respond to messages from a single channel
+Before configuring a Slack channel for your bot, you need to set up a Slack messaging provider. This requires:
 
-- Specify the channel name (with or without the '#' prefix)
-- This is the highest specificity - messages on this channel will only be responded to by this bot
-- Only one bot can be configured like this per Slack workspace
+- Admin access to your Slack workspace
+- Following the Slack OAuth and application installation flow
+- Configuring the messaging provider in Open Chat Studio (see [Configure a messaging provider][6])
+
+Once your Slack messaging provider is configured, you can link channels to your bot.
+
+### Configuration Options
+
+There are three different ways to configure how your bot responds to messages in Slack. The bot will check each configuration in order of priority:
+
+### 1. Respond to messages from a single channel (Highest Priority)
+
+- Specify the channel name (with or without the '#' prefix) in the channel configuration form.
+- This is the highest specificity - messages on this channel will only be responded to by this bot.
+- Only one bot can be configured like this per Slack workspace.
 
 ### 2. Respond to messages from any channel using keyword matching
 
-- Multiple keywords can be used to trigger the bot
-- Keywords are NOT case sensitive
-- Keywords must be unique to this bot & Slack workspace combination
+- Enter keywords separated by commas in the keyword field (e.g., `support, help, assistance`).
+- Keywords are matched using exact word matching (case-insensitive) to the first word of the user's message.
+- Multiple keywords can be used to trigger the bot.
+- Keywords must be unique to this bot & Slack workspace combination.
 
-### 3. Respond to messages from all channels
+### 3. Respond to messages from all channels (Lowest Priority)
 
-- The bot will respond to any message on any channel if it hasn't matched one of the previous two configurations
-- This is the lowest priority matching option
+- The bot will respond to any message on any channel if it hasn't matched one of the previous two configurations.
+- This is the lowest priority matching option.
+- Only one bot per Slack workspace can be configured with this option.
 
-Once the channel is linked, you will be able to chat with it using the `@Dimagi Bots` reference.
+### Bot Interaction
+
+Once the channel is linked, users interact with the bot by mentioning it in Slack messages. The bot mention name is determined by your Slack app configuration. For example, on the Dimagi hosted instance of Open Chat Studio, the bot is mentioned using `@Dimagi Bots`.
+
+!!! info "Priority and Precedence"
+    If multiple bots could match a message, the bot with the most specific configuration wins:
+
+    1. Single channel configuration (highest priority)
+    2. Keyword matching
+    3. Respond to all channels (lowest priority)
 
 ## SureAdhere
 - Enter the Tenant ID that would have been provided to you when setting up your SureAdhere account.
