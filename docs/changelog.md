@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Dec 10, 2025
+* **BUG** Fixed an issue where additional citation links were included in channel responses when using custom citation text.
+
 ## Nov 26, 2025
 * **NEW** OAuth2 authentication is now supported for API access. This enables secure third-party integrations using industry-standard OAuth2 with PKCE. See the [OAuth2 integration guide](./api/getting_started_with_oauth.md) for implementation details.
 
