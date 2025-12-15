@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Dec 15, 2025
+* **NEW** Added support for GPT-5.2 and GPT-5.2-pro models.
+
 ## Dec 10, 2025
 * **BUG** Fixed an issue where additional citation links were included in channel responses when using custom citation text.
 
