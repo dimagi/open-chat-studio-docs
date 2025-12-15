@@ -30,13 +30,25 @@ The following variables are available to be used in the LLM prompt.
 
 #### Output Schema
 
-The output schema defines the metrics that the LLM should attempt to output. These will always be output as a string. Each item in the schema will become a column in the output table.
+The output schema defines the metrics that the LLM should attempt to output. Each item in the schema will become a column in the output table. You can specify the data type for each field to ensure structured, validated output.
 
-| Column Name | Description |
-|-------------|-------------|
-| expected_helpfulness | The helpfulness, on a scale of 1-5 of the expected assistant message |
-| actual_helpfulness | The helpfulness, on a scale of 1-5 of the actual assistant message |
-| user_sentiment | The sentiment, on a scale of 1-5 of the user message |
+**Available Types:**
+
+- **string**: Text output (default behavior)
+- **integer**: Whole numbers (e.g., counts, ratings)
+- **float**: Decimal numbers (e.g., confidence scores, percentages)
+- **choices (enum)**: Predefined options from a list
+
+The system automatically validates the LLM's output against the specified types using a dynamically generated schema. If the output doesn't match the expected format, the system will retry up to 3 times before failing, ensuring reliable structured data.
+
+**Example Output Schema:**
+
+| Column Name | Type | Description |
+|-------------|------|-------------|
+| expected_helpfulness | integer | The helpfulness, on a scale of 1-5 of the expected assistant message |
+| actual_helpfulness | integer | The helpfulness, on a scale of 1-5 of the actual assistant message |
+| user_sentiment | choices | The sentiment of the user message (options: positive, neutral, negative) |
+| confidence_score | float | Confidence in the evaluation, from 0.0 to 1.0 |
 
 
 ### Python Evaluator
