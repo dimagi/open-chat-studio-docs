@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Dec 16, 2025
+* **NEW** Added the ability for users to manually end sessions.
+
 ## Dec 15, 2025
 * **NEW** LLM Evaluators now support type validation for output schemas with integer, float, string, and enum (choices) types.
 * **NEW** Added support for GPT-5.2 and GPT-5.2-pro models.
