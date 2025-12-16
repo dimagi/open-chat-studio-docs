@@ -83,10 +83,30 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" == "repository_dispatch" ]; then
             echo "pr_number=${{ github.event.client_payload.pr_number }}" >> $GITHUB_OUTPUT
-            echo "pr_title=${{ github.event.client_payload.pr_title }}" >> $GITHUB_OUTPUT
-            echo "pr_url=${{ github.event.client_payload.pr_url }}" >> $GITHUB_OUTPUT
-            echo "pr_author=${{ github.event.client_payload.pr_author }}" >> $GITHUB_OUTPUT
-            echo "pr_body=${{ toJSON(github.event.client_payload.pr_body) }}" >> $GITHUB_OUTPUT
+            
+            {
+              echo "pr_title<<EOF"
+              echo "${{ github.event.client_payload.pr_title }}"
+              echo "EOF"
+            } >> $GITHUB_OUTPUT
+            
+            {
+              echo "pr_url<<EOF"
+              echo "${{ github.event.client_payload.pr_url }}"
+              echo "EOF"
+            } >> $GITHUB_OUTPUT
+            
+            {
+              echo "pr_author<<EOF"
+              echo "${{ github.event.client_payload.pr_author }}"
+              echo "EOF"
+            } >> $GITHUB_OUTPUT
+            
+            {
+              echo "pr_body<<EOF"
+              echo "${{ github.event.client_payload.pr_body }}"
+              echo "EOF"
+            } >> $GITHUB_OUTPUT
           else
             echo "pr_number=${{ inputs.pr_number }}" >> $GITHUB_OUTPUT
             # Fetch PR details using GitHub API
