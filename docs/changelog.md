@@ -10,6 +10,7 @@ hide:
 ## Dec 15, 2025
 * **NEW** LLM Evaluators now support type validation for output schemas with integer, float, string, and enum (choices) types.
 * **NEW** Added support for GPT-5.2 and GPT-5.2-pro models.
+* **BUG** Fixed an issue where temperature and top_p parameters were shown in GPT-5.2 model configurations when effort level was set, causing configuration conflicts.
 
 ## Dec 10, 2025
 * **BUG** Fixed an issue where additional citation links were included in channel responses when using custom citation text.
