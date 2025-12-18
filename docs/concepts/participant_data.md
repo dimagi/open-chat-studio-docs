@@ -15,6 +15,9 @@ the participant's name in the list of participants on the "Participants" list pa
 
 You can also export and import participant data from the "Participants" list page.
 
+!!! tip "Manually Trigger Bot Messages"
+    From the participant details page, you can also manually trigger bot messages to send proactive messages to participants. This is useful for follow-ups, re-engagement, or testing. See [Manually Trigger Bot Messages](../how-to/manually_trigger_bot_messages.md) for more information.
+
 ## Using participant data
 
 ### Prompt Variable

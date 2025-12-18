@@ -103,6 +103,7 @@ nav:
       - how-to/configure_providers.md
       - how-to/api_access.md
       - how-to/setting_up_a_survey.md
+      - how-to/manually_trigger_bot_messages.md
       - how-to/assistants_migration.md
   - Concepts:
       - concepts/index.md

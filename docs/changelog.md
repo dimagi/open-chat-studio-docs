@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Dec 18, 2025
+* **NEW** Added manual bot trigger UI for participants, allowing users to trigger bot messages directly from the participant interface.
+
 ## Dec 16, 2025
 * **NEW** Added the ability for users to manually end sessions.
 

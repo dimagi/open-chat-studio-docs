@@ -61,4 +61,7 @@ There are two ways to automatically reset a session:
 - **Events**: You can configure an event to end the current session when the event is triggered. This will not automatically create a new session; however, if the user sends a message after the session is ended, a new session will be created. See [Events](events.md).
 - **API**: When using the [Trigger Bot Message](https://openchatstudio.com/api/docs/#tag/Channels/operation/trigger_bot_message) API, you can set `"start_new_session": true`, which will end the current session and start a new one before messaging the user.
 
+!!! tip "Manually Triggering Bot Messages"
+    You can also manually trigger bot messages from the participant details page in the web interface. This is useful for proactive engagement or testing. See [Manually Trigger Bot Messages](../how-to/manually_trigger_bot_messages.md) for more information.
+
 By structuring sessions in this way, Open Chat Studio ensures privacy-conscious, context-aware, and seamless interactions across different communication channels.
