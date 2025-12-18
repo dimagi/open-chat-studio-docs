@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Dec 18, 2025
+* **NEW** Users can now trigger the bot to send a message to a participant when viewing the participant.
+
 ## Dec 16, 2025
 * **NEW** Added the ability for users to manually end sessions.
 
