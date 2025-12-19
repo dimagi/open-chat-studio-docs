@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Dec 19, 2025
+* **NEW** Collections now support bulk file downloads. When a collection contains multiple files, users can download all files as a zip archive with progress tracking. Downloaded archives expire after 24 hours.
+
 ## Dec 18, 2025
 * **NEW** Users can now trigger the bot to send a message to a participant from the participant details page.
 
