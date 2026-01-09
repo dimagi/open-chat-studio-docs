@@ -77,9 +77,49 @@ PATCH /api/sessions/{id}/update_state/
     Content: application/json
     Schema: Patchedupdate_state_serializer
   Responses:
-    200: 
+    200:
       Content: application/json
       Schema: update_state_response
+  Security:
+    OAuth2
+      - Required scopes: sessions:write
+    apiKeyAuth
+    tokenAuth
+
+POST /api/sessions/{id}/tags/
+  Summary: Add Session Tags
+  Description:
+Adds tags to a session. Creates tags if they don't exist. Returns the updated list of tags.
+
+  Parameters:
+    - id (path, string (required)): ID of the session
+  Request Body:
+    Content: application/json
+    Schema: SessionTags
+  Responses:
+    200:
+      Content: application/json
+      Schema: SessionTagsResponse
+  Security:
+    OAuth2
+      - Required scopes: sessions:write
+    apiKeyAuth
+    tokenAuth
+
+DELETE /api/sessions/{id}/tags/
+  Summary: Remove Session Tags
+  Description:
+Removes tags from a session. Returns the updated list of tags.
+
+  Parameters:
+    - id (path, string (required)): ID of the session
+  Request Body:
+    Content: application/json
+    Schema: SessionTags
+  Responses:
+    200:
+      Content: application/json
+      Schema: SessionTagsResponse
   Security:
     OAuth2
       - Required scopes: sessions:write
@@ -127,6 +167,12 @@ Patchedupdate_state_serializer:
 update_state_response:
   - success: boolean (required)
   - state: object (required)
+
+SessionTags:
+  - tags: array of string (required)
+
+SessionTagsResponse:
+  - tags: array of string (required)
 
 SECURITY:
 - OAuth2

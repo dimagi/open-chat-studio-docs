@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Jan 9, 2026
+* **NEW** Added REST API endpoint for managing session tags. Sessions can now be tagged via POST requests (adds tags) and DELETE requests (removes tags), enabling external integrations to organize and filter sessions programmatically.
+
 ## Dec 18, 2025
 * **NEW** Users can now trigger the bot to send a message to a participant from the participant details page.
 
