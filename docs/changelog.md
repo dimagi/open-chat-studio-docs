@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Jan 9, 2026
+* **NEW** Added REST API endpoint for managing session tags. Sessions can now be tagged via POST requests (adds tags) and DELETE requests (removes tags), enabling external integrations to organize and filter sessions programmatically.
+
 ## Dec 19, 2025
 * **NEW** Collections now support bulk file downloads. When a collection contains multiple files, users can download all files as a zip archive with progress tracking. Downloaded archives expire after 24 hours.
 
