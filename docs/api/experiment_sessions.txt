@@ -69,6 +69,39 @@ POST /api/sessions/{id}/end_experiment_session/
     apiKeyAuth
     tokenAuth
 
+POST /api/sessions/{id}/tags/
+  Summary: Add Tags to Session
+  Description: Add tags to a session. Tags are automatically created if they don't exist.
+  Parameters:
+    - id (path, string (required)): ID of the session
+  Request Body:
+    Content: application/json
+    Schema: tags_request_serializer
+  Responses:
+    200: 
+      Content: application/json
+      Schema: tags_response_serializer
+  Security:
+    OAuth2
+      - Required scopes: sessions:write
+    apiKeyAuth
+    tokenAuth
+
+DELETE /api/sessions/{id}/tags/
+  Summary: Remove Tags from Session
+  Description: Remove tags from a session.
+  Parameters:
+    - id (path, string (required)): ID of the session
+  Responses:
+    200: 
+      Content: application/json
+      Schema: tags_response_serializer
+  Security:
+    OAuth2
+      - Required scopes: sessions:write
+    apiKeyAuth
+    tokenAuth
+
 PATCH /api/sessions/{id}/update_state/
   Summary: Update Chatbot Session State
   Parameters:
@@ -123,6 +156,12 @@ PaginatedExperimentSessionList:
 
 Patchedupdate_state_serializer:
   - state: object
+
+tags_request_serializer:
+  - tags: array of string (required)
+
+tags_response_serializer:
+  - tags: array of string (required)
 
 update_state_response:
   - success: boolean (required)
