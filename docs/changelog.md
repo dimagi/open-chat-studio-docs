@@ -7,6 +7,9 @@ hide:
 ## Jan 9, 2026
 * **NEW** Added REST API endpoint for managing session tags. Sessions can now be tagged via POST requests (adds tags) and DELETE requests (removes tags), enabling external integrations to organize and filter sessions programmatically.
 
+## Dec 19, 2025
+* **NEW** Collections now support bulk file downloads. When a collection contains multiple files, users can download all files as a zip archive with progress tracking. Downloaded archives expire after 24 hours.
+
 ## Dec 18, 2025
 * **NEW** Users can now trigger the bot to send a message to a participant from the participant details page.
 
@@ -16,6 +19,8 @@ hide:
 ## Dec 15, 2025
 * **NEW** LLM Evaluators now support type validation for output schemas with integer, float, string, and enum (choices) types.
 * **NEW** Added support for GPT-5.2 and GPT-5.2-pro models.
+* **CHANGE** Sessions generated during evaluation runs are now retained for 30 days (increased from 7 days) before being permanently deleted.
+* **BUG** Fixed an issue where temperature and top_p parameters were shown in GPT-5.2 model configurations when effort level was set, causing configuration conflicts.
 
 ## Dec 10, 2025
 * **BUG** Fixed an issue where additional citation links were included in channel responses when using custom citation text.
