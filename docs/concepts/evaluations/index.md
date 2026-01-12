@@ -34,3 +34,13 @@ flowchart LR
     evaluator1 --> structured_output([Structured Output])
     evaluator2 --> structured_output
 ```
+
+## Session Retention
+
+When evaluations are run with chatbot generation enabled, temporary sessions are created to store the generated responses and conversation context. These evaluation sessions are automatically deleted after **30 days**.
+
+!!! warning "Data Retention"
+    Session deletion is permanent and cannot be undone. Ensure you export any evaluation results you need to retain before the 30-day retention period expires.
+
+!!! note "Source Sessions Unaffected"
+    This automatic deletion only affects sessions created during evaluation runs. Source sessions (the original sessions that datasets may be cloned from) are not affected by this retention policy and remain in the system according to their own lifecycle.

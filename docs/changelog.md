@@ -4,12 +4,16 @@ hide:
 ---
 
 # Changelog
+## Dec 18, 2025
+* **NEW** Users can now trigger the bot to send a message to a participant from the participant details page.
+
 ## Dec 16, 2025
 * **NEW** Added the ability for users to manually end sessions.
 
 ## Dec 15, 2025
 * **NEW** LLM Evaluators now support type validation for output schemas with integer, float, string, and enum (choices) types.
 * **NEW** Added support for GPT-5.2 and GPT-5.2-pro models.
+* **CHANGE** Sessions generated during evaluation runs are now retained for 30 days (increased from 7 days) before being permanently deleted.
 * **BUG** Fixed an issue where temperature and top_p parameters were shown in GPT-5.2 model configurations when effort level was set, causing configuration conflicts.
 
 ## Dec 10, 2025

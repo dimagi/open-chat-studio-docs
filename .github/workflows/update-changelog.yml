@@ -290,9 +290,11 @@ jobs:
           ---
           🤖 This PR was automatically generated using Claude to analyze the source PR and update the changelog and documentation accordingly." \
             --label "automated" \
-            --assignee "${{ steps.set_vars.outputs.pr_author }}" \
             --base "${{ steps.set_vars.outputs.base_branch }}" \
             --head "${{ env.branch_name }}" || { echo "Failed to create pull request"; exit 1; }
+          
+          # Try to assign after PR creation (won't fail the workflow if user doesn't exist)
+          gh pr edit "${{ env.branch_name }}" --add-assignee "${{ steps.set_vars.outputs.pr_author }}" || echo "Could not assign @${{ steps.set_vars.outputs.pr_author }} (user may not have access to this repo)"
         env:
           GH_TOKEN: ${{ secrets.OCS_DOCS_PAT }}
 
