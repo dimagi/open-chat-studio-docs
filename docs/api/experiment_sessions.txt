@@ -69,6 +69,39 @@ POST /api/sessions/{id}/end_experiment_session/
     apiKeyAuth
     tokenAuth
 
+POST /api/sessions/{id}/tags/
+  Summary: Add Tags to Session
+  Description: Add tags to a session. Tags are automatically created if they don't exist.
+  Parameters:
+    - id (path, string (required)): ID of the session
+  Request Body:
+    Content: application/json
+    Schema: tags_request_serializer
+  Responses:
+    200: 
+      Content: application/json
+      Schema: tags_response_serializer
+  Security:
+    OAuth2
+      - Required scopes: sessions:write
+    apiKeyAuth
+    tokenAuth
+
+DELETE /api/sessions/{id}/tags/
+  Summary: Remove Tags from Session
+  Description: Remove tags from a session.
+  Parameters:
+    - id (path, string (required)): ID of the session
+  Responses:
+    200: 
+      Content: application/json
+      Schema: tags_response_serializer
+  Security:
+    OAuth2
+      - Required scopes: sessions:write
+    apiKeyAuth
+    tokenAuth
+
 PATCH /api/sessions/{id}/update_state/
   Summary: Update Chatbot Session State
   Parameters:
@@ -77,49 +110,9 @@ PATCH /api/sessions/{id}/update_state/
     Content: application/json
     Schema: Patchedupdate_state_serializer
   Responses:
-    200:
+    200: 
       Content: application/json
       Schema: update_state_response
-  Security:
-    OAuth2
-      - Required scopes: sessions:write
-    apiKeyAuth
-    tokenAuth
-
-POST /api/sessions/{id}/tags/
-  Summary: Add Session Tags
-  Description:
-Adds tags to a session. Creates tags if they don't exist. Returns the updated list of tags.
-
-  Parameters:
-    - id (path, string (required)): ID of the session
-  Request Body:
-    Content: application/json
-    Schema: SessionTags
-  Responses:
-    200:
-      Content: application/json
-      Schema: SessionTagsResponse
-  Security:
-    OAuth2
-      - Required scopes: sessions:write
-    apiKeyAuth
-    tokenAuth
-
-DELETE /api/sessions/{id}/tags/
-  Summary: Remove Session Tags
-  Description:
-Removes tags from a session. Returns the updated list of tags.
-
-  Parameters:
-    - id (path, string (required)): ID of the session
-  Request Body:
-    Content: application/json
-    Schema: SessionTags
-  Responses:
-    200:
-      Content: application/json
-      Schema: SessionTagsResponse
   Security:
     OAuth2
       - Required scopes: sessions:write
@@ -164,15 +157,15 @@ PaginatedExperimentSessionList:
 Patchedupdate_state_serializer:
   - state: object
 
+tags_request_serializer:
+  - tags: array of string (required)
+
+tags_response_serializer:
+  - tags: array of string (required)
+
 update_state_response:
   - success: boolean (required)
   - state: object (required)
-
-SessionTags:
-  - tags: array of string (required)
-
-SessionTagsResponse:
-  - tags: array of string (required)
 
 SECURITY:
 - OAuth2
