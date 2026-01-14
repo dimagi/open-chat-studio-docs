@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Jan 14, 2026
+* **NEW** Added the ability to start a new session after ending the current one. Users can choose whether to trigger end conversation events and must provide a prompt for the bot's initial message (pre-filled with the seed message when available).
+
 ## Jan 9, 2026
 * **NEW** Added REST API endpoint for managing session tags. Sessions can now be tagged via POST requests (adds tags) and DELETE requests (removes tags), enabling external integrations to organize and filter sessions programmatically.
 

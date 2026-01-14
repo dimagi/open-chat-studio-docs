@@ -52,7 +52,20 @@ This means that, aside from participant data, the bot loses all information abou
 
 ### Manual resets
 
-The chat user can manually reset the session (start a new session) by sending the `/reset` command. This command is available on all channels except **Web** and **Slack**.
+Users can manually reset a session (start a new session) in two ways:
+
+#### Using the `/reset` command
+
+The `/reset` command allows chat users to start a new session by sending this text command in the chat. This command is available on all channels except **Web** and **Slack**.
+
+#### Using the session reset button
+
+In the web interface, users have access to a button that allows them to end the current session and immediately start a new one. When using this button, users can:
+
+- **Choose whether to trigger end conversation events**: Users can opt to run any configured [end conversation events](events.md) before starting the new session, or skip them.
+- **Provide an initial bot message**: Users must specify a prompt that will be used as the bot's first message in the new session. If the chatbot has a seed message configured, this field will be pre-filled with that seed message, but users can modify it as needed.
+
+This button provides more control over the session reset process compared to the `/reset` command, allowing users to customize how the transition between sessions occurs.
 
 ### Automatic resets
 
