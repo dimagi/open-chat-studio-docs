@@ -6,6 +6,7 @@ hide:
 # Changelog
 ## Jan 20, 2026
 * **NEW** Evaluation results table rows can now be highlighted and shared via URL. Each row has a link and copy button to easily share specific evaluation results with others.
+* **BUG** Fixed an issue where provider compatibility checks between LLM nodes and indexed collections were skipped when only one collection was used.
 
 ## Jan 14, 2026
 * **NEW** Added the ability to start a new session after ending the current one. Users can choose whether to trigger end conversation events and must provide a prompt for the bot's initial message (pre-filled with the seed message when available).
