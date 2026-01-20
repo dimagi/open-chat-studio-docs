@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Jan 20, 2026
+* **BUG** Fixed an issue where provider compatibility checks between LLM nodes and indexed collections were skipped when only one collection was used.
+
 ## Jan 14, 2026
 * **NEW** Added the ability to start a new session after ending the current one. Users can choose whether to trigger end conversation events and must provide a prompt for the bot's initial message (pre-filled with the seed message when available).
 
