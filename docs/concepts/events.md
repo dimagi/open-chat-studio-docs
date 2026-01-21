@@ -15,7 +15,16 @@ Each event has one action associated with it that is executed when the event occ
 
 Static events are predefined triggers that occur based on specific actions or conditions within the chat session. The available static events are:
 
-- **Conversation End**: Triggered when the conversation ends.
+- **Conversation End**: A catch-all trigger that fires whenever any conversation ends, regardless of how it ended. This trigger is always fired alongside any of the specific conversation end sub-triggers listed below. Use this trigger when you want to perform an action for all conversation endings, or use the sub-triggers when you need to respond to specific end conditions.
+    - **The Conversation is Ended by the Participant**: Triggered when the participant explicitly ends the conversation.
+    - **The Conversation is Ended by the Bot**: Triggered when the bot ends the conversation.
+    - **The Conversation is Ended via the API**: Triggered when the conversation ends via an API call.
+    - **The Conversation is Ended by an Event**: Triggered when the conversation ends due to an event.
+    - **The Conversation is manually ended by an Admin**: Triggered when an admin manually ends the conversation.
+
+    !!! note "How Sub-triggers Work"
+        When a specific end condition occurs (e.g., participant ends conversation), both the specific sub-trigger AND the generic "Conversation End" trigger will fire. This allows you to create both targeted events (using sub-triggers) and catch-all events (using the generic trigger) that respond to any conversation ending.
+
 - **Last Timeout**: Triggered when the last timeout of any configured timeout events occur.
 - **Human Safety Layer Triggered**: Triggered when the safety layer is activated by a message from the user.
 - **Bot Safety Layer Triggered**: Triggered when the safety layer is activated by a response from the bot.
