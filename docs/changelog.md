@@ -5,6 +5,8 @@ hide:
 
 # Changelog
 ## Jan 22, 2026
+* **NEW** Added API support for passing arbitrary context data with messages that gets merged into session state under the `remote_context` key, enabling API clients to provide contextual information.
+
 * **BUG** Fixed an issue where cited and generated files from OpenAI assistants were not being properly annotated for download.
 
 ## Jan 21, 2026
