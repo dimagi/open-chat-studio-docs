@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Jan 22, 2026
+* **NEW** Added API support for arbitrary page context that gets merged into session state under the `page_context` key, enabling chat widgets to pass contextual information from the embedding page.
+
 ## Jan 21, 2026
 * **CHANGE** Router keywords are now automatically converted to lowercase. All router configurations will only accept and match lowercase keywords.
 

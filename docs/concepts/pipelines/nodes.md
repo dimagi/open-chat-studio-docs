@@ -147,6 +147,12 @@ The Python node can also access and modify the state of the participant's sessio
 
 The session state can be accessed and modified using the [get_session_state_key](#python_node.get_session_state_key) and [set_session_state_key](#python_node.set_session_state_key) utility functions.
 
+#### Reserved Keys
+
+The session state contains reserved keys that are populated by the system and cannot be overwritten:
+
+- **`page_context`**: Contains contextual information passed from embedded chat widgets or API clients. This is particularly useful for chat widgets embedded on web pages that need to pass information about the current page (e.g., URL, product IDs, user location) to the chatbot. This data is set via the `page_context` parameter when creating a session through the API or chat widget. See the [API documentation](../../api/index.md) for details on passing page context.
+
 ### Attachments
 
 Part of the temporary state is a list of attachments. Attachments are files that the user has uploaded to the bot. Each attachment has the following fields:

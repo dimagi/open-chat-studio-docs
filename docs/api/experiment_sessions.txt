@@ -121,6 +121,16 @@ PATCH /api/sessions/{id}/update_state/
 
 SCHEMAS:
 
+ExperimentSessionCreate:
+  - url: string (required) - The URL of the session resource
+  - experiment: string (required) - The unique identifier for the experiment/chatbot
+  - participant: string (optional) - The identifier for the participant
+  - messages: array of Message (optional) - Initial messages for the session
+  - state: object (optional) - Arbitrary session state data. This data will be merged into the session state
+  - page_context: object (optional) - Contextual information (e.g., current page URL, product IDs, user location).
+                                      This data is merged into the session state under the reserved 'page_context' key.
+                                      Note: The 'page_context' key cannot be set directly in state; use this field instead.
+
 ExperimentSession:
   - url: string (required)
   - id: string (required)
@@ -130,13 +140,6 @@ ExperimentSession:
   - created_at: string (required)
   - updated_at: string (required)
   - tags: array of string (required)
-
-ExperimentSessionCreate:
-  - url: string (required)
-  - experiment: string (required)
-  - participant: string
-  - messages: array of Message
-  - state: object
 
 ExperimentSessionWithMessages:
   - url: string (required)

@@ -85,6 +85,16 @@ POST /api/chat/start/
 
 SCHEMAS:
 
+ChatStartSessionRequest:
+  - chatbot_id: string (required) - The unique identifier for the chatbot
+  - session_data: object (optional) - Arbitrary session state data. This data will be merged into the session state
+  - page_context: object (optional) - Contextual information from the embedding page (e.g., current URL, product IDs, user location).
+                                     This data is merged into the session state under the reserved 'page_context' key.
+                                     Useful for chat widgets to pass page-specific context to the chatbot.
+                                     Note: The 'page_context' key cannot be set directly in session_data; use this field instead.
+  - participant_remote_id: string (optional) - External identifier for the participant
+  - participant_name: string (optional) - Display name for the participant
+
 ChatPollResponse:
   - messages: array of Message (required)
   - has_more: boolean (required)
@@ -98,12 +108,6 @@ ChatSendMessageResponse:
   - task_id: string (required)
   - status: Unknown (required)
   - error: string
-
-ChatStartSessionRequest:
-  - chatbot_id: string (required)
-  - session_data: object
-  - participant_remote_id: string
-  - participant_name: string
 
 ChatStartSessionResponse:
   - session_id: string (required)

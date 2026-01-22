@@ -53,3 +53,33 @@ You can access specific parts of the data using the following prompt variables:
 {participant_data.address.street}
 {participant_data.tasks[0].name}  # lists are zero-indexed
 ```
+
+## Accessing Page Context
+
+When using embedded chat widgets or API integrations that pass page context, you can access this contextual information in your prompts using the session state variable:
+
+```
+{session_state.page_context}
+```
+
+For example, if a chat widget embedded on a product page passes context like this:
+
+```json
+{
+  "page_url": "https://example.com/products/widget-x",
+  "product_id": "widget-x",
+  "category": "gadgets",
+  "user_segment": "premium"
+}
+```
+
+You can access specific values in your prompts:
+
+```
+Current page: {session_state.page_context.page_url}
+Product ID: {session_state.page_context.product_id}
+User segment: {session_state.page_context.user_segment}
+```
+
+!!! note "Page Context Availability"
+    The `page_context` key in session state is only populated when explicitly provided via the API or chat widget. If no page context is passed, this key will not be present in the session state. See the [API documentation](../api/index.md) and [Chat Widget documentation](../chat_widget/reference.md) for details on passing page context.

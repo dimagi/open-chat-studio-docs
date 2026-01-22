@@ -333,6 +333,89 @@ The widget uses the following priority order for text content:
 !!! warning "Deprecation Notice"
     HTML attributes for text content (`header-text`, `typing-indicator-text`, `new-chat-confirmation-message`) are deprecated and will be removed in a future major release. Please migrate to using the translations system for better internationalization support. Leave translation values blank when you want the widget props to supply the text instead of duplicating it.
 
+## :material-file-document: Page Context
+
+Pass contextual information from your web page to the chatbot, enabling more personalized and context-aware conversations.
+
+### Overview
+
+Page context allows you to send information about the current page or user environment to the chatbot when starting a session. This is particularly useful for:
+
+- Providing product details on e-commerce pages
+- Sharing the current page URL and navigation path
+- Passing user preferences or settings
+- Including shopping cart contents
+- Sending location or region information
+
+The page context is stored in the session state under the reserved `page_context` key and can be accessed in your bot's prompts and pipelines.
+
+### Dynamic Page Context
+
+Set page context dynamically through JavaScript by accessing the widget element:
+
+```javascript
+const widget = document.querySelector('open-chat-studio-widget');
+
+// Set page context before the session starts
+widget.pageContext = {
+  page_url: window.location.href,
+  page_title: document.title,
+  product_id: "widget-x",
+  category: "gadgets",
+  user_segment: "premium"
+};
+```
+
+### Real-World Example
+
+E-commerce product page with dynamic context:
+
+```html
+<open-chat-studio-widget
+  chatbot-id="your-chatbot-id"
+  embed-key="your-embed-key">
+</open-chat-studio-widget>
+
+<script>
+  // Wait for widget to be ready
+  const widget = document.querySelector('open-chat-studio-widget');
+
+  // Set context based on the current product page
+  widget.pageContext = {
+    page_url: window.location.href,
+    product_id: document.querySelector('[data-product-id]').dataset.productId,
+    product_name: document.querySelector('.product-title').textContent,
+    price: document.querySelector('.product-price').textContent,
+    in_stock: document.querySelector('.stock-status').dataset.available === 'true',
+    category: document.querySelector('.breadcrumb').dataset.category
+  };
+</script>
+```
+
+### Accessing Page Context in Prompts
+
+Once page context is set, you can reference it in your bot's prompts using session state variables:
+
+```
+Current page: {session_state.page_context.page_url}
+Product: {session_state.page_context.product_name}
+Price: {session_state.page_context.price}
+```
+
+For more information on using page context in prompts and pipelines, see:
+
+- [Prompt Variables](../concepts/prompt_variables.md#accessing-page-context)
+- [Session State](../concepts/pipelines/nodes.md#session-state)
+
+!!! note "Page Context Persistence"
+    Page context is stored with the session and persists across page reloads when using [persistent sessions](#persistent-sessions). To update the context, you must start a new session or update it through the API.
+
+!!! tip "Best Practices"
+    - Keep page context focused and relevant to avoid cluttering the session state
+    - Use consistent key names across your pages for easier prompt configuration
+    - Sanitize user-generated data before including it in page context
+    - Consider privacy implications when passing user data
+
 ## Persistent Sessions
 
 By default, the widget will save the chat messages in the browser local storage. This allows users to continue sessions after reloading the page or navigating to a new page. In addition to automatic session expiration, the user can also use the 'new chat' button to start a new session.
