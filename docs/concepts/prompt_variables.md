@@ -54,15 +54,15 @@ You can access specific parts of the data using the following prompt variables:
 {participant_data.tasks[0].name}  # lists are zero-indexed
 ```
 
-## Accessing Page Context
+## Accessing Remote Context
 
-When using embedded chat widgets or API integrations that pass page context, you can access this contextual information in your prompts using the session state variable:
+When using API integrations that pass context with messages, you can access this contextual information in your prompts using the session state variable:
 
 ```
 {session_state.remote_context}
 ```
 
-For example, if a chat widget embedded on a product page passes context like this:
+For example, if an API client sends a message with context like this:
 
 ```json
 {
@@ -81,5 +81,5 @@ Product ID: {session_state.remote_context.product_id}
 User segment: {session_state.remote_context.user_segment}
 ```
 
-!!! note "Page Context Availability"
-    The `remote_context` key in session state is only populated when explicitly provided via the API or chat widget. If no page context is passed, this key will not be present in the session state. See the [API documentation](../api/index.md) and [Chat Widget documentation](../chat_widget/reference.md) for details on passing page context.
+!!! note "Remote Context Availability"
+    The `remote_context` key in session state is only populated when explicitly provided via the API when sending messages. If no context is passed, this key will not be present in the session state. See the [Chat API documentation](../api/chat.txt) for details on passing context with messages.

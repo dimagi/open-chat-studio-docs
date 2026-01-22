@@ -62,18 +62,6 @@ POST /channels/api/{experiment_id}/v{version}/incoming_message
 
 SCHEMAS:
 
-TriggerBotMessageRequest:
-  - identifier: string (required) - The participant identifier
-  - platform: Unknown (required) - The platform/channel type
-  - experiment: string (required) - The experiment/chatbot ID
-  - prompt_text: string (required) - The message prompt text to send to the bot
-  - start_new_session: boolean (optional) - Whether to end the current session and start a new one
-  - session_data: object (optional) - Arbitrary session state data. This data will be merged into the session state
-  - page_context: object (optional) - Contextual information (e.g., current page URL, product IDs).
-                                      This data is merged into the session state under the reserved 'page_context' key.
-                                      Note: The 'page_context' key cannot be set directly in session_data; use this field instead.
-  - participant_data: object (optional) - Arbitrary participant data to set or update
-
 ApiMessage:
   - message: string (required)
   - session: string
@@ -81,6 +69,15 @@ ApiMessage:
 ApiResponseMessage:
   - response: string (required)
   - attachments: array of ApiResponseAttachment (required)
+
+TriggerBotMessageRequest:
+  - identifier: string (required)
+  - platform: Unknown (required)
+  - experiment: string (required)
+  - prompt_text: string (required)
+  - start_new_session: boolean
+  - session_data: object
+  - participant_data: object
 
 SECURITY:
 - OAuth2
