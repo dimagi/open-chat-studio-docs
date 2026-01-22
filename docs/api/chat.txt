@@ -98,7 +98,7 @@ ChatPollResponse:
 
 ChatSendMessageRequestWithAttachments:
   - message: string (required)
-  - context: object (optional) - Additional context data to include with the message such as details about the page the user is on or the action they are trying to perform. This is stored in the session state under the `remote_context` key.
+  - context: object (optional) - Additional context data to include with the message such as details about the current environment or application state. This is stored in the session state under the `remote_context` key.
   - attachment_ids: array of integer
 
 ChatSendMessageResponse:
