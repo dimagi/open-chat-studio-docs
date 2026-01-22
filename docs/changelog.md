@@ -9,6 +9,8 @@ hide:
 
 * **BUG** Fixed an issue where cited and generated files from OpenAI assistants were not being properly annotated for download.
 
+* **BUG** Fixed an issue where built-in tools and tool configurations were not cleared when switching LLM providers.
+
 ## Jan 21, 2026
 * **CHANGE** Router keywords are now automatically converted to lowercase. All router configurations will only accept and match lowercase keywords.
 
