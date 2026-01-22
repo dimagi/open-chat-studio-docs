@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Jan 22, 2026
+* **BUG** Fixed an issue where cited and generated files from OpenAI assistants were not being properly annotated for download.
+
 ## Jan 21, 2026
 * **CHANGE** Router keywords are now automatically converted to lowercase. All router configurations will only accept and match lowercase keywords.
 
