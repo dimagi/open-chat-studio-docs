@@ -85,12 +85,6 @@ POST /api/chat/start/
 
 SCHEMAS:
 
-ChatStartSessionRequest:
-  - chatbot_id: string (required)
-  - session_data: object
-  - participant_remote_id: string
-  - participant_name: string
-
 ChatPollResponse:
   - messages: array of Message (required)
   - has_more: boolean (required)
@@ -98,13 +92,19 @@ ChatPollResponse:
 
 ChatSendMessageRequestWithAttachments:
   - message: string (required)
-  - context: object (optional) - Additional context data to include with the message such as details about the current environment or application state. This is stored in the session state under the `remote_context` key.
+  - context: object
   - attachment_ids: array of integer
 
 ChatSendMessageResponse:
   - task_id: string (required)
   - status: Unknown (required)
   - error: string
+
+ChatStartSessionRequest:
+  - chatbot_id: string (required)
+  - session_data: object
+  - participant_remote_id: string
+  - participant_name: string
 
 ChatStartSessionResponse:
   - session_id: string (required)
