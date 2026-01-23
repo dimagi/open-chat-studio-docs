@@ -92,6 +92,7 @@ ChatPollResponse:
 
 ChatSendMessageRequestWithAttachments:
   - message: string (required)
+  - context: object
   - attachment_ids: array of integer
 
 ChatSendMessageResponse:

@@ -4,7 +4,13 @@ hide:
 ---
 
 # Changelog
+## Jan 22, 2026
+* **NEW** Added API support for passing arbitrary context data with messages that gets merged into session state under the `remote_context` key, enabling API clients to provide contextual information.
+* **BUG** Fixed an issue where cited and generated files from OpenAI assistants were not being properly annotated for download.
+* **BUG** Fixed an issue where built-in tools and tool configurations were not cleared when switching LLM providers.
+
 ## Jan 21, 2026
+* **CHANGE** Router keywords are now automatically converted to lowercase. All router configurations will only accept and match lowercase keywords.
 * **MIGRATION** Removed the defunct 'summarize' event action. All events using this action have been deleted, and team admins have been notified of affected chatbots.
 
 ## Jan 20, 2026
