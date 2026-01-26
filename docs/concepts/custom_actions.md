@@ -70,6 +70,9 @@ The health status can be one of the following:
 
 - **Up**: The external service is reachable and responding correctly to health checks
 - **Down**: The external service is not responding or is returning errors
+- **Unknown**: A health check has never been performed. This can occur when:
+    - A health check endpoint has not been configured for the custom action
+    - The custom action was recently created and the automatic health check task has not yet run
 
 !!! tip "Troubleshooting"
     If a custom action shows as "Down," verify that:
