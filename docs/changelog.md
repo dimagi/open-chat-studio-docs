@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Jan 26, 2026
+* **NEW** Custom actions now include health status monitoring. The system automatically checks custom action endpoints every 5 minutes to verify server availability, displaying the status in the custom actions table. Users can also manually trigger health checks.
+
 ## Jan 22, 2026
 * **NEW** Added API support for passing arbitrary context data with messages that gets merged into session state under the `remote_context` key, enabling API clients to provide contextual information.
 * **BUG** Fixed an issue where cited and generated files from OpenAI assistants were not being properly annotated for download.
