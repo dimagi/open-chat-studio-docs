@@ -35,6 +35,12 @@ user: Please tell me the time.
 assistant: It is currently 12:05 PM in Ankara.
 ```
 
+## Sharing Dataset Messages
+
+When viewing dataset messages in the table, each row includes a link button that allows you to share a direct link to that specific message. When someone follows this link, the page automatically scrolls to the message and highlights it for easy identification.
+
+This feature is useful for collaborating with team members, referencing specific test cases in discussions, or documenting particular dataset examples. Simply click the link icon next to any message, and the URL will be copied to your clipboard with the message ID parameter included.
+
 ### CSV Upload
 
 A CSV can also be uploaded to populate the dataset. There should be columns for human messages, ai responses, and any context data. You can also include `participant_data` and `session_state` fields.
