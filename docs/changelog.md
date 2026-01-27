@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Jan 27, 2026
+* **CHANGE** Router keywords are now automatically converted to uppercase. All router configurations will only accept and match uppercase keywords.
+
 ## Jan 26, 2026
 * **NEW** Custom actions now include health status monitoring. The system automatically checks custom action endpoints every 5 minutes to verify server availability, displaying the status in the custom actions table. Users can also manually trigger health checks.
 
