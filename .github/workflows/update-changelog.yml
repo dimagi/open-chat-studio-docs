@@ -57,20 +57,33 @@ jobs:
 
           if [ "$IS_WIDGET" == "true" ]; then
             BASE_BRANCH="widget-develop"
+            # Check if widget-develop exists on remote
+            if git ls-remote --exit-code --heads https://github.com/${{ github.repository }}.git widget-develop > /dev/null 2>&1; then
+              CHECKOUT_REF="widget-develop"
+              CREATE_WIDGET_BRANCH="false"
+            else
+              echo "widget-develop branch does not exist, will create from main"
+              CHECKOUT_REF="main"
+              CREATE_WIDGET_BRANCH="true"
+            fi
           else
             BASE_BRANCH="main"
+            CHECKOUT_REF="main"
+            CREATE_WIDGET_BRANCH="false"
           fi
 
           echo "base_branch=$BASE_BRANCH" >> $GITHUB_OUTPUT
+          echo "checkout_ref=$CHECKOUT_REF" >> $GITHUB_OUTPUT
+          echo "create_widget_branch=$CREATE_WIDGET_BRANCH" >> $GITHUB_OUTPUT
           echo "is_widget_change=$IS_WIDGET" >> $GITHUB_OUTPUT
-          echo "Using base branch: $BASE_BRANCH (widget change: $IS_WIDGET)"
+          echo "Using base branch: $BASE_BRANCH, checkout ref: $CHECKOUT_REF (widget change: $IS_WIDGET)"
         env:
           GH_TOKEN: ${{ secrets.OCS_DOCS_PAT }}
 
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ref: ${{ steps.determine_branch.outputs.base_branch }}
+          ref: ${{ steps.determine_branch.outputs.checkout_ref }}
           fetch-depth: 1
 
       - name: Configure git
@@ -147,6 +160,13 @@ jobs:
 
       - name: Create branch for changelog update
         run: |
+          # Create widget-develop from main if needed
+          if [ "${{ steps.determine_branch.outputs.create_widget_branch }}" == "true" ]; then
+            echo "Creating widget-develop branch from main..."
+            git push origin HEAD:widget-develop
+            echo "Created widget-develop branch"
+          fi
+
           BRANCH_NAME="changelog-pr-${{ steps.set_vars.outputs.pr_number }}-${{ github.run_number }}"
           git checkout -b $BRANCH_NAME
           echo "branch_name=$BRANCH_NAME" >> $GITHUB_ENV
