@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Jan 27, 2026
+* **NEW** Dataset messages table rows can now be highlighted and shared via URL. Each row has a link and copy button to easily share specific dataset messages with others, with automatic scrolling to the highlighted message.
+
 ## Jan 26, 2026
 * **NEW** Custom actions now include health status monitoring. The system automatically checks custom action endpoints every 5 minutes to verify server availability, displaying the status in the custom actions table. Users can also manually trigger health checks.
 
