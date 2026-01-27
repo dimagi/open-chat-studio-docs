@@ -22,7 +22,7 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 ## Changelog
 
-### v0.6.0
+### v0.6.0 (2026-01-27)
 
 * **NEW: Page Context Support** - Pass page-specific context to the bot with each message
 
