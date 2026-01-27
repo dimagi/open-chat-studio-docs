@@ -16,9 +16,9 @@ Router nodes share some common configuration such as the list of route options. 
 tag the output message with the selected route. This is useful for debugging and for tracking the flow of messages through the pipeline.
 The format of the tag is `<node_name>:<route_name>` where `<route_name>` is the name of the route selected by the router node.
 
-!!! info "Router Keywords Are Case-Insensitive"
+!!! info "Router Keywords Are Uppercase"
 
-    All router keywords are automatically converted to lowercase. When configuring router outputs, use lowercase keywords to match this behavior. Keyword matching is case-insensitive, so "HELP", "Help", and "help" will all match the same route.
+    All router keywords are automatically converted to uppercase. When configuring router outputs, use uppercase keywords to match this behavior. Keyword matching is case-insensitive, so "HELP", "Help", and "help" will all match the same route.
 
 ### LLM Router
 Routes the input to one of the linked nodes using an LLM. In this case, the LLM acts as a classifier using the prompt provided to classify an incoming message into a set of discrete categories that allow messages to be routed.
