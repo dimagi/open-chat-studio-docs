@@ -22,6 +22,12 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 ## Changelog
 
+### v0.6.0
+
+* Add support for all text file types via `text/*` MIME type
+    * Users can now upload any text-based files, not just predefined formats
+    * Includes .txt, .csv, and all other text/* types
+
 ### v0.5.2 (2025-11-03)
 
 * Update default button logo to use the Open Chat Studio avatar

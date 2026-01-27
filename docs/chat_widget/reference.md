@@ -170,11 +170,10 @@ Enable users to send files along with their messages. This feature is perfect fo
 ### Supported File Types
 
 #### Documents:
-- Text files: .txt
+- Text files: All text/* types (including .txt, .csv, .log, .md, and more)
 - PDF documents: .pdf
 - Microsoft Word: .doc, .docx
 - Microsoft Excel: .xls, .xlsx
-- Spreadsheets: .csv
 
 #### Images:
 - Common formats: .jpg, .jpeg, .png, .gif, .bmp, .webp
