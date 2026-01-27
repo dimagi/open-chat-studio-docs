@@ -348,6 +348,86 @@ The session data is set to expire after 24 hours. This is also configurable by u
 
     Session persistence works in conjunction with [User Identification](#user-identification). Different users will have separate persistent sessions.
 
+## :material-lightbulb: Page Context
+
+Pass page-specific context to the bot with each message to enable more personalized and relevant responses. The context is automatically included with every user message and helps the bot understand the current page state and user environment.
+
+### Use Cases
+
+Page context is ideal for:
+
+- Providing current user role or permissions to the bot
+- Sharing page URL, document name, or current section information
+- Passing feature flags or configuration state
+- Including product/service information relevant to the page
+
+### Basic Implementation
+
+Context must be set using JavaScript with a plain object:
+
+```javascript
+const widget = document.querySelector('open-chat-studio-widget');
+
+widget.pageContext = {
+  user_role: 'admin',
+  page_location: 'dashboard'
+};
+```
+
+### Dynamic Context Management
+
+Update context dynamically using JavaScript when page state changes:
+
+```javascript
+const widget = document.querySelector('open-chat-studio-widget');
+
+// Set initial context
+let pageContext = {
+  user_role: 'customer',
+  page_location: 'product-listing',
+  product_category: 'electronics'
+};
+
+widget.pageContext = pageContext;
+
+// Update context when user navigates
+document.addEventListener('navigate', (event) => {
+  let newContext = {
+    ...pageContext,
+    page_location: event.detail.location
+  };
+  widget.pageContext = newContext;
+});
+```
+
+### Context Object Structure
+
+The `pageContext` property accepts a plain JavaScript object (not a JSON string). Each property is included in the context sent to the bot:
+
+```javascript
+widget.pageContext = {
+  // User information
+  user_role: 'support_agent',
+  user_department: 'technical_support',
+  
+  // Page information
+  page_location: 'help-center',
+  page_title: 'Troubleshooting Guide',
+  
+  // Application state
+  session_type: 'trial',
+  account_status: 'active',
+  
+  // Custom data
+  feature_flags: ['new_ui', 'beta_features'],
+  request_context: 'urgent'
+};
+```
+
+!!! note
+    
+    The context is cleared after each message is sent. If you want to send context with multiple messages, you'll need to set it again before each message.
+
 ## :material-clipboard-list: Properties Reference
 
 ### Core Configuration
@@ -380,6 +460,7 @@ The session data is set to expire after 24 hours. This is also configurable by u
 
 | Property | Type | Required | Default | Validation | Description | Example |
 |----------|------|----------|---------|------------|-------------|---------|
+| `pageContext` | `object` | Optional | `undefined` | Plain JS object | Optional context data to send with each message for personalization<br/>**Note:** Context is cleared after each message | `{"user_role": "admin", "page_location": "dashboard"}` |
 | `persistent-session` | `boolean` | Optional | `true` | `true` \| `false` | Save chat history in browser localStorage | `"false"` to disable session saving |
 | `persistent-session-expire` | `number` | Optional | `1440` (24 hours) | 0-43200 (30 days) | Minutes before session expires | `720` for 12 hours, `0` for never expire |
 | `allow-full-screen` | `boolean` | Optional | `true` | `true` \| `false` | Enable fullscreen mode button | `"false"` to hide fullscreen option |

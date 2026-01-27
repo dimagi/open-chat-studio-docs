@@ -24,6 +24,13 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 ### v0.6.0
 
+* **NEW: Page Context Support** - Pass page-specific context to the bot with each message
+
+    * New `pageContext` property to send dynamic context data (e.g., current user role, page location)
+    * Must be set using JavaScript as a plain object (not an HTML attribute)
+    * Context is automatically included with every message sent by the user
+    * Useful for personalizing bot responses based on the current page state
+
 * Add support for all text file types via `text/*` MIME type
     * Users can now upload any text-based files, not just predefined formats
     * Includes .txt, .csv, and all other text/* types
