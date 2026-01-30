@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Jan 30, 2026
+* **CHANGE** Indexed collections using OpenAI-hosted vectorstores are now limited to 2 remote collections per LLM node, enforcing OpenAI's vectorstore limit. Local indexes and non-OpenAI providers remain unaffected.
+
 ## Jan 27, 2026
 * **CHANGE** Router keywords are now automatically converted to uppercase. All router configurations will only accept and match uppercase keywords.
 * **NEW** Dataset messages table rows can now be highlighted and shared via URL. Each row has a link and copy button to easily share specific dataset messages with others, with automatic scrolling to the highlighted message.
