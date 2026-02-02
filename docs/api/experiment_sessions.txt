@@ -136,7 +136,7 @@ ExperimentSessionCreate:
   - experiment: string (required)
   - participant: string
   - messages: array of Message
-  - state: object
+  - state: Unknown
 
 ExperimentSessionWithMessages:
   - url: string (required)
@@ -155,7 +155,7 @@ PaginatedExperimentSessionList:
   - results: array of ExperimentSession (required)
 
 Patchedupdate_state_serializer:
-  - state: object
+  - state: Unknown
 
 tags_request_serializer:
   - tags: array of string (required)
@@ -165,7 +165,7 @@ tags_response_serializer:
 
 update_state_response:
   - success: boolean (required)
-  - state: object (required)
+  - state: Unknown (required)
 
 SECURITY:
 - OAuth2
