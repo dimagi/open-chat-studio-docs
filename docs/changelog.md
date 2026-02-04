@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Feb 4, 2026
+* **CHANGE** Upgraded chat widget to v0.6.0 with page context support, allowing the help bot to provide more contextual assistance based on the user's current location in the application.
+
 ## Feb 3, 2026
 * **BUG** Fixed character encoding issues when reading plaintext files by automatically detecting and converting different encoding schemes to unicode.
 
