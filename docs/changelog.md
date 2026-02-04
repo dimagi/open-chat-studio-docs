@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Feb 3, 2026
+* **BUG** Fixed character encoding issues when reading plaintext files by automatically detecting and converting different encoding schemes to unicode.
+
 ## Jan 27, 2026
 * **CHANGE** Router keywords are now automatically converted to uppercase. All router configurations will only accept and match uppercase keywords.
 * **NEW** Dataset messages table rows can now be highlighted and shared via URL. Each row has a link and copy button to easily share specific dataset messages with others, with automatic scrolling to the highlighted message.
