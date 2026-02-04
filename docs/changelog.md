@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Feb 3, 2026
+* **BUG** Fixed character encoding issues when reading plaintext files by automatically detecting and converting different encoding schemes to unicode.
+
 ## Feb 2, 2026
 * **NEW** Voice notes from users and bots are now displayed as attachments in the chat transcript, making it easier to review and access voice messages.
 
