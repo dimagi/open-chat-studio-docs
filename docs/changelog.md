@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Feb 6, 2026
+* **CHANGE** LLM API calls now automatically retry with exponential backoff when rate limited by providers (OpenAI, Anthropic, Google), improving reliability during peak usage.
+
 ## Feb 3, 2026
 * **BUG** Fixed character encoding issues when reading plaintext files by automatically detecting and converting different encoding schemes to unicode.
 
