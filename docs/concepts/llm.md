@@ -71,3 +71,103 @@ If the max token limit is 4096 tokens:
 Understanding the token limit helps you create effective prompts without truncating responses.
 
 ---
+
+## Model-Specific Features
+
+Different LLM providers offer unique capabilities and features. This section documents provider-specific features that are available in Open Chat Studio.
+
+### Claude Opus 4.6 (Anthropic)
+
+Claude Opus 4.6 is Anthropic's most advanced model, featuring adaptive thinking capabilities and exceptional performance on complex reasoning tasks. This model is particularly well-suited for:
+
+- **Agentic coding**: Building sophisticated AI agents that can write, debug, and refactor code
+- **Long-context retrieval**: Processing and extracting information from large documents
+- **Complex reasoning**: Tackling multi-step problems that require deep analysis
+
+#### Key Specifications
+
+| Specification | Value |
+|--------------|-------|
+| Model ID | `claude-opus-4-6` |
+| Context Window | 200,000 tokens |
+| Max Output Tokens | 128,000 tokens |
+| Release Date | February 5, 2026 |
+
+#### Adaptive Thinking
+
+Claude Opus 4.6 introduces **adaptive thinking**, a feature that allows the model to engage in extended reasoning before generating responses. This is particularly valuable for complex tasks that benefit from careful analysis and planning.
+
+The adaptive thinking feature is controlled by the **effort parameter**, which determines how much computational resources the model dedicates to reasoning about your request before responding.
+
+##### Effort Levels
+
+You can configure the effort level when using Claude Opus 4.6 in your chatbot or pipeline:
+
+| Effort Level | Description | Best For |
+|-------------|-------------|----------|
+| **Low** | Minimal extended thinking | Simple queries, quick responses, straightforward tasks |
+| **Medium** | Moderate extended thinking | Tasks requiring some analysis, balanced performance |
+| **High** (default) | Substantial extended thinking | Complex reasoning, multi-step problems, detailed analysis |
+| **Max** | Maximum extended thinking | Highly complex tasks, critical decision-making, thorough analysis |
+
+!!! tip "Choosing the Right Effort Level"
+    Start with the **high** effort level (default) for most use cases. Increase to **max** for particularly challenging problems, or reduce to **medium** or **low** for simpler tasks where speed is more important than depth of reasoning.
+
+##### How to Configure Effort Level
+
+When configuring a chatbot or LLM node with Claude Opus 4.6:
+
+1. Select "claude-opus-4-6" as your model
+2. Look for the **Effort** parameter in the model configuration
+3. Choose from: `low`, `medium`, `high`, or `max`
+4. The default setting is `high` if not specified
+
+!!! note "Effort Parameter Compatibility"
+    The effort parameter is only available for Claude Opus 4.6. Other Claude models (such as Claude 3.5 Sonnet or Claude 3 Haiku) do not support this feature and will use their standard reasoning capabilities.
+
+##### Use Cases for Different Effort Levels
+
+**Low Effort**
+```
+- Simple fact retrieval
+- Basic translations
+- Straightforward summarization
+- Quick responses to common questions
+```
+
+**Medium Effort**
+```
+- Content creation and editing
+- Basic code review
+- Moderate complexity analysis
+- Multi-turn conversations
+```
+
+**High Effort (Default)**
+```
+- Complex problem solving
+- Detailed code generation and debugging
+- In-depth document analysis
+- Strategic planning and decision support
+```
+
+**Max Effort**
+```
+- Research and analysis requiring extreme thoroughness
+- Critical code review for production systems
+- Complex mathematical or logical proofs
+- High-stakes decision-making scenarios
+```
+
+#### Performance Benchmarks
+
+Claude Opus 4.6 achieves state-of-the-art performance on several industry benchmarks:
+
+- **Terminal-Bench 2.0**: Advanced agentic coding evaluation
+- **Humanity's Last Exam**: Complex reasoning and knowledge assessment
+- **GDPval-AA**: Economic and analytical reasoning
+- **BrowseComp**: Web browsing and information retrieval tasks
+
+For the latest benchmark results and detailed performance comparisons, visit [Anthropic's model documentation](https://docs.anthropic.com/en/docs/about-claude/models).
+
+---

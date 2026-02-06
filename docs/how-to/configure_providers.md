@@ -36,10 +36,14 @@ Find current model names at: https://platform.openai.com/docs/models (check the 
 
 #### Anthropic Models
 For Anthropic (Claude) models, use the names from the "Claude API" column in their documentation. Examples:
+- `claude-opus-4-6` (latest flagship model with adaptive thinking)
 - `claude-3-5-sonnet-20241022`
 - `claude-3-haiku-20240307`
 
-Find current model names at: https://docs.claude.com/en/docs/about-claude/models/overview
+Find current model names at: https://docs.anthropic.com/en/docs/about-claude/models
+
+!!! info "Claude Opus 4.6 Features"
+    Claude Opus 4.6 supports adaptive thinking with configurable effort levels (low, medium, high, max). This feature allows the model to engage in extended reasoning for complex tasks. See the [LLM documentation](../concepts/llm.md#claude-opus-46-anthropic) for detailed information about this capability.
 
 #### Google Models
 For Google (Gemini) models, use the names from the "Model Variant" column. Examples:
