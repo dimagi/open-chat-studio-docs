@@ -36,10 +36,11 @@ Find current model names at: https://platform.openai.com/docs/models (check the 
 
 #### Anthropic Models
 For Anthropic (Claude) models, use the names from the "Claude API" column in their documentation. Examples:
+- `claude-opus-4-6`
 - `claude-3-5-sonnet-20241022`
 - `claude-3-haiku-20240307`
 
-Find current model names at: https://docs.claude.com/en/docs/about-claude/models/overview
+Find current model names at: https://docs.anthropic.com/en/docs/about-claude/models
 
 #### Google Models
 For Google (Gemini) models, use the names from the "Model Variant" column. Examples:
