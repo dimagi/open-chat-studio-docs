@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Feb 9, 2026
+* **BUG** Fixed an issue with Langfuse error reporting where exception handling was causing AttributeErrors.
+
 ## Feb 3, 2026
 * **BUG** Fixed character encoding issues when reading plaintext files by automatically detecting and converting different encoding schemes to unicode.
 
