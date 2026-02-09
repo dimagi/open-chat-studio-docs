@@ -268,28 +268,30 @@ jobs:
       - name: Create Pull Request
         if: steps.check_changes.outputs.has_changes == 'true'
         run: |
-          # Determine PR title based on what changed
+          # Store source PR title safely (may contain special characters)
+          SOURCE_PR_TITLE=$(cat <<'EOF'
+          ${{ steps.set_vars.outputs.pr_title }}
+          EOF
+          )
+
+          # Determine PR title prefix based on what changed
           if [ "${{ steps.check_changes.outputs.docs_changed }}" != "0" ]; then
-            PR_TITLE="Update Changelog and Docs from OCS PR #${{ steps.set_vars.outputs.pr_number }}"
+            PR_PREFIX="Changelog + Docs"
             CHANGES_DESC="Automated changelog and documentation updates"
           else
-            PR_TITLE="Update Changelog from OCS PR #${{ steps.set_vars.outputs.pr_number }}"
+            PR_PREFIX="Changelog"
             CHANGES_DESC="Automated changelog update"
           fi
 
-          # Add widget context to title if applicable
+          # Add widget context to prefix if applicable
           if [ "${{ steps.set_vars.outputs.is_widget_change }}" == "true" ]; then
-            PR_TITLE="[Widget] $PR_TITLE"
+            PR_PREFIX="[Widget] $PR_PREFIX"
             CHANGELOG_DESC="Widget changelog (\`${{ env.WIDGET_CHANGELOG }}\`)"
           else
             CHANGELOG_DESC="Main changelog (\`${{ env.MAIN_CHANGELOG }}\`)"
           fi
 
-          # Store pr_title safely for use in PR body
-          SOURCE_PR_TITLE=$(cat <<'EOF'
-          ${{ steps.set_vars.outputs.pr_title }}
-          EOF
-          )
+          PR_TITLE="$PR_PREFIX: $SOURCE_PR_TITLE (OCS #${{ steps.set_vars.outputs.pr_number }})"
 
           echo "Creating pull request..."
           gh pr create \
@@ -316,7 +318,7 @@ jobs:
           # Try to assign after PR creation (won't fail the workflow if user doesn't exist)
           gh pr edit "${{ env.branch_name }}" --add-assignee "${{ steps.set_vars.outputs.pr_author }}" || echo "Could not assign @${{ steps.set_vars.outputs.pr_author }} (user may not have access to this repo)"
         env:
-          GH_TOKEN: ${{ secrets.OCS_DOCS_PAT }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate workflow summary
         if: always()
