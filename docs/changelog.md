@@ -5,6 +5,7 @@ hide:
 
 # Changelog
 ## Feb 6, 2026
+* **NEW** Added support for Claude Opus 4.6 model with adaptive thinking control. Features configurable effort levels (low, medium, high, max), 200K context window, and 128K max output tokens.
 * **CHANGE** LLM API calls now automatically retry with exponential backoff when rate limited by providers (OpenAI, Anthropic, Google), improving reliability during peak usage.
 
 ## Feb 3, 2026
