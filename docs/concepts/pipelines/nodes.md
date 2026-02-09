@@ -189,8 +189,11 @@ The HTTP client includes several built-in security protections:
 
 #### Using Authentication Providers
 
-The `http` can automatically inject credentials from your team's [Authentication Providers](../../team/authentication_providers.md) into HTTP requests. This provides a secure way to manage API credentials without hardcoding them in your code.
+The `http` can automatically inject credentials from your team's [Authentication Providers](../../team/authentication_providers.md) into HTTP requests. This provides a secure way to manage API credentials without hardcoding them in your code. To use a configured Authentication Provider, pass the name of the provider to the request method using the `auth` keyword:
 
+```python
+request.get("https://example.com", auth="my auth provider")
+```
 
 #### Complete Examples
 
@@ -227,7 +230,7 @@ def main(input, **kwargs) -> str:
     response = http.post(
         "https://api.example.com/submissions",
         json=user_data,
-        auth_provider="my-api-key",
+        auth="my-api-key",
         timeout=15
     )
 
@@ -253,7 +256,7 @@ def main(input, **kwargs) -> str:
     response = http.get(
         "https://api.example.com/search",
         params=params,
-        auth_provider="search-api"
+        auth="search-api"
     )
 
     if response["status_code"] == 200:
@@ -271,7 +274,7 @@ def main(input, **kwargs) -> str:
     """Handle both JSON and text responses"""
     response = http.get(
         "https://api.example.com/data",
-        auth_provider="api-provider"
+        auth="api-provider"
     )
 
     # Check content type
