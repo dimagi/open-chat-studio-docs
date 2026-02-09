@@ -155,12 +155,12 @@ All HTTP methods return a dictionary containing the response data:
 
 ```python
 {
-    "status_code": response.status_code,
-    "headers": dict(response.headers),
-    "text": text,
-    "json": json_body,
-    "is_success": 200 <= response.status_code < 300,
-    "is_error": response.status_code >= 400,
+    "status_code": 200,
+    "headers": {...},
+    "text": "body as text",  # this is always present
+    "json": {"body": "as json"},  # this is `None` if the response was not JSON
+    "is_success": 200 <= status_code < 300,
+    "is_error": status_code >= 400,
 }
 ```
 
