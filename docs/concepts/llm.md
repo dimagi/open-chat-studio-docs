@@ -70,6 +70,4 @@ If the max token limit is 4096 tokens:
 
 Understanding the token limit helps you create effective prompts without truncating responses.
 
-For the latest benchmark results and detailed performance comparisons, visit [Anthropic's model documentation](https://docs.anthropic.com/en/docs/about-claude/models).
-
 ---
