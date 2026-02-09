@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Feb 9, 2026
+* **NEW** Added `http_client` global to Python sandbox for making HTTP requests with security guardrails including SSRF prevention, request/response size limits, timeout clamping, automatic retries, and authentication provider integration.
+
 ## Feb 3, 2026
 * **BUG** Fixed character encoding issues when reading plaintext files by automatically detecting and converting different encoding schemes to unicode.
 
