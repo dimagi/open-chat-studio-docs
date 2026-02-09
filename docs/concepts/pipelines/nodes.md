@@ -112,6 +112,220 @@ The Python node provides a set of utility functions that can be used to interact
 #### ::: python_node.wait_for_next_input
 #### ::: python_node.abort_with_message
 
+### HTTP Client
+
+The Python node provides an `http` global that enables secure HTTP requests to external APIs. This client includes built-in security features to protect against common vulnerabilities and supports automatic credential injection through Authentication Providers.
+
+#### Overview
+
+The `http` is available as a global variable in your Python node code and can be used to make HTTP requests without importing external libraries. It provides a safe, team-aware way to interact with external APIs.
+
+```python
+def main(input, **kwargs) -> str:
+    # Make a GET request
+    response = http.get("https://api.example.com/data")
+
+    # Process the response
+    return f"Retrieved {len(response['json'])} items"
+```
+
+#### Available Methods
+
+The `http` supports the following HTTP methods:
+
+- `get(url, **kwargs)` - Send a GET request
+- `post(url, **kwargs)` - Send a POST request
+- `put(url, **kwargs)` - Send a PUT request
+- `patch(url, **kwargs)` - Send a PATCH request
+- `delete(url, **kwargs)` - Send a DELETE request
+
+All methods accept the same parameters as Python's `requests` library, including:
+
+- `headers` - Dictionary of HTTP headers
+- `params` - URL query parameters
+- `json` - JSON data to send in the request body
+- `data` - Form data or raw body content
+- `timeout` - Request timeout (automatically clamped to safe limits)
+- `files` - File upload data
+- `auth` - HTTP authentication credentials
+
+#### Response Structure
+
+All HTTP methods return a dictionary containing the response data:
+
+```python
+{
+    "status_code": 200,
+    "headers": {...},
+    "text": "body as text",  # this is always present
+    "json": {"body": "as json"},  # this is `None` if the response was not JSON
+    "is_success": 200 <= status_code < 300,
+    "is_error": status_code >= 400,
+}
+```
+
+Access response data using dictionary keys:
+
+```python
+response = http.get("https://api.example.com/data")
+status = response["status_code"]
+data = response["json"]
+text_content = response["text"]
+```
+
+#### Security Features
+
+The HTTP client includes several built-in security protections:
+
+**SSRF Prevention**: Blocks requests to private IP addresses, localhost, and other internal network resources to prevent Server-Side Request Forgery attacks.
+
+**Request/Response Size Limits**: Enforces maximum size limits on both requests and responses to prevent memory exhaustion.
+
+**Timeout Clamping**: Automatically limits request timeouts to prevent indefinite hanging.
+
+**Blocked Headers**: Certain sensitive headers are blocked to prevent security issues.
+
+**Automatic Retries**: Failed requests are automatically retried with exponential backoff for improved reliability.
+
+#### Using Authentication Providers
+
+The `http` can automatically inject credentials from your team's [Authentication Providers](../../team/authentication_providers.md) into HTTP requests. This provides a secure way to manage API credentials without hardcoding them in your code.
+
+
+#### Complete Examples
+
+##### Example 1: Fetching Data from a Public API
+
+```python
+def main(input, **kwargs) -> str:
+    """Fetch weather data from a public API"""
+    response = http.get(
+        "https://api.weather.gov/gridpoints/TOP/31,80/forecast",
+        timeout=10
+    )
+
+    if response["status_code"] == 200:
+        data = response["json"]
+        forecast = data["properties"]["periods"][0]
+        return f"Weather: {forecast['shortForecast']}, Temp: {forecast['temperature']}°F"
+    else:
+        return f"Error: Unable to fetch weather (status {response['status_code']})"
+```
+
+##### Example 2: Posting Data with Authentication
+
+```python
+def main(input, **kwargs) -> str:
+    """Submit form data to an external API"""
+    # Parse user input
+    user_data = {
+        "message": input,
+        "timestamp": "2024-01-01T12:00:00Z"
+    }
+
+    # Post to API with authentication
+    response = http.post(
+        "https://api.example.com/submissions",
+        json=user_data,
+        auth_provider="my-api-key",
+        timeout=15
+    )
+
+    if response["status_code"] == 201:
+        result = response["json"]
+        return f"Submission successful! ID: {result['id']}"
+    else:
+        return f"Submission failed with status {response['status_code']}"
+```
+
+##### Example 3: Working with Query Parameters
+
+```python
+def main(input, **kwargs) -> str:
+    """Search an API with query parameters"""
+    # Build query parameters from user input
+    params = {
+        "q": input,
+        "limit": 10,
+        "format": "json"
+    }
+
+    response = http.get(
+        "https://api.example.com/search",
+        params=params,
+        auth_provider="search-api"
+    )
+
+    if response["status_code"] == 200:
+        results = response["json"]
+        count = len(results["items"])
+        return f"Found {count} results for '{input}'"
+    else:
+        return "Search failed"
+```
+
+##### Example 4: Handling Different Response Types
+
+```python
+def main(input, **kwargs) -> str:
+    """Handle both JSON and text responses"""
+    response = http.get(
+        "https://api.example.com/data",
+        auth_provider="api-provider"
+    )
+
+    # Check content type
+    content_type = response["headers"].get("Content-Type", "")
+
+    if "application/json" in content_type:
+        data = response["json"]
+        return f"JSON data: {data}"
+    else:
+        text = response["text"]
+        return f"Text data: {text[:100]}..."  # First 100 chars
+```
+
+#### Common Status Codes
+
+When checking response status codes:
+
+- `200` - OK (successful GET)
+- `201` - Created (successful POST)
+- `204` - No Content (successful DELETE)
+- `400` - Bad Request (client error)
+- `401` - Unauthorized (authentication required)
+- `403` - Forbidden (insufficient permissions)
+- `404` - Not Found
+- `429` - Too Many Requests (rate limited)
+- `500` - Internal Server Error
+- `503` - Service Unavailable
+
+#### Best Practices
+
+1. **Check status codes**: The HTTP client never raises exceptions. All error information is contained in the response dict. Always check `response["status_code"]` or use `response["is_success"]` and `response["is_error"]` to determine if the request succeeded.
+
+2. **Set reasonable timeouts**: Specify timeout values to prevent requests from hanging indefinitely.
+
+3. **Use Authentication Providers**: Never hardcode API keys or credentials in your code. Use Authentication Providers instead.
+
+4. **Validate user input**: If using user input in URLs or parameters, validate and sanitize it first.
+
+5. **Limit data size**: Be mindful of the size of data you're requesting or sending.
+
+6. **Cache when appropriate**: If making repeated requests for the same data, consider caching results in session state.
+
+#### Troubleshooting
+
+**"Network access is disabled"**: Network access must be enabled in the pipeline configuration. Contact your team administrator.
+
+**"SSRF protection blocked request"**: The URL you're trying to access is blocked for security reasons (e.g., localhost, private IPs).
+
+**"Authentication provider not found"**: Verify the provider name matches exactly what's configured in your team settings.
+
+**"Request timeout"**: The external API took too long to respond. Try increasing the timeout or check if the API is available.
+
+**"Connection refused"**: The target server is not accepting connections. Verify the URL and check if the service is running.
+
 ### Temporary State
 The Python node can also access and modify the temporary state of the pipeline. The temporary state is a dictionary that is unique to each run of the pipeline (each new message from the user) and is not stored between sessions.
 
