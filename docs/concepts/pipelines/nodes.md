@@ -114,25 +114,24 @@ The Python node provides a set of utility functions that can be used to interact
 
 ### HTTP Client
 
-The Python node provides an `http_client` global that enables secure HTTP requests to external APIs. This client includes built-in security features to protect against common vulnerabilities and supports automatic credential injection through Authentication Providers.
+The Python node provides an `http` global that enables secure HTTP requests to external APIs. This client includes built-in security features to protect against common vulnerabilities and supports automatic credential injection through Authentication Providers.
 
 #### Overview
 
-The `http_client` is available as a global variable in your Python node code and can be used to make HTTP requests without importing external libraries. It provides a safe, team-aware way to interact with external APIs.
+The `http` is available as a global variable in your Python node code and can be used to make HTTP requests without importing external libraries. It provides a safe, team-aware way to interact with external APIs.
 
 ```python
 def main(input, **kwargs) -> str:
     # Make a GET request
-    response = http_client.get("https://api.example.com/data")
+    response = http.get("https://api.example.com/data")
 
     # Process the response
-    data = response.json()
-    return f"Retrieved {len(data)} items"
+    return f"Retrieved {len(response['json'])} items"
 ```
 
 #### Available Methods
 
-The `http_client` supports the following HTTP methods:
+The `http` supports the following HTTP methods:
 
 - `get(url, **kwargs)` - Send a GET request
 - `post(url, **kwargs)` - Send a POST request
@@ -147,6 +146,32 @@ All methods accept the same parameters as Python's `requests` library, including
 - `json` - JSON data to send in the request body
 - `data` - Form data or raw body content
 - `timeout` - Request timeout (automatically clamped to safe limits)
+- `files` - File upload data
+- `auth` - HTTP authentication credentials
+
+#### Response Structure
+
+All HTTP methods return a dictionary containing the response data:
+
+```python
+{
+    "status_code": response.status_code,
+    "headers": dict(response.headers),
+    "text": text,
+    "json": json_body,
+    "is_success": 200 <= response.status_code < 300,
+    "is_error": response.status_code >= 400,
+}
+```
+
+Access response data using dictionary keys:
+
+```python
+response = http.get("https://api.example.com/data")
+status = response["status_code"]
+data = response["json"]
+text_content = response["text"]
+```
 
 #### Security Features
 
@@ -162,13 +187,9 @@ The HTTP client includes several built-in security protections:
 
 **Automatic Retries**: Failed requests are automatically retried with exponential backoff for improved reliability.
 
-!!! warning "Network Access Toggle"
-
-    Network access must be explicitly enabled for the pipeline. If disabled, any attempt to use `http_client` will raise an error. Contact your team administrator if you need network access enabled.
-
 #### Using Authentication Providers
 
-The `http_client` can automatically inject credentials from your team's [Authentication Providers](../../team/authentication_providers.md) into HTTP requests. This provides a secure way to manage API credentials without hardcoding them in your code.
+The `http` can automatically inject credentials from your team's [Authentication Providers](../../team/authentication_providers.md) into HTTP requests. This provides a secure way to manage API credentials without hardcoding them in your code.
 
 ##### Basic Usage with Authentication
 
@@ -177,11 +198,11 @@ To use an Authentication Provider, specify the `auth_provider` parameter:
 ```python
 def main(input, **kwargs) -> str:
     # Use the configured authentication provider
-    response = http_client.get(
+    response = http.get(
         "https://api.example.com/protected/resource",
         auth_provider="my-api-provider"
     )
-    return response.text
+    return response["text"]
 ```
 
 ##### Authentication Provider Types
@@ -196,7 +217,7 @@ The HTTP client supports all Authentication Provider types configured in Open Ch
 # - Header: X-API-Key
 # - Value: your-api-key
 
-response = http_client.get(
+response = http.get(
     "https://api.example.com/data",
     auth_provider="api-key-provider"
 )
@@ -210,7 +231,7 @@ response = http_client.get(
 # - Type: Bearer Token
 # - Token: your-bearer-token
 
-response = http_client.post(
+response = http.post(
     "https://api.example.com/create",
     json={"name": "example"},
     auth_provider="bearer-provider"
@@ -226,7 +247,7 @@ response = http_client.post(
 # - Username: user
 # - Password: pass
 
-response = http_client.get(
+response = http.get(
     "https://api.example.com/resource",
     auth_provider="basic-provider"
 )
@@ -236,7 +257,7 @@ response = http_client.get(
 **CommCare**: Supports CommCare-specific authentication schemes.
 
 ```python
-response = http_client.get(
+response = http.get(
     "https://commcarehq.example.com/api/v0.5/case/",
     auth_provider="commcare-provider"
 )
@@ -260,20 +281,17 @@ See [Authentication Providers](../../team/authentication_providers.md) for detai
 ```python
 def main(input, **kwargs) -> str:
     """Fetch weather data from a public API"""
-    try:
-        response = http_client.get(
-            "https://api.weather.gov/gridpoints/TOP/31,80/forecast",
-            timeout=10
-        )
+    response = http.get(
+        "https://api.weather.gov/gridpoints/TOP/31,80/forecast",
+        timeout=10
+    )
 
-        if response.status_code == 200:
-            data = response.json()
-            forecast = data["properties"]["periods"][0]
-            return f"Weather: {forecast['shortForecast']}, Temp: {forecast['temperature']}°F"
-        else:
-            return f"Error: Unable to fetch weather (status {response.status_code})"
-    except Exception as e:
-        return f"Error fetching weather: {str(e)}"
+    if response["status_code"] == 200:
+        data = response["json"]
+        forecast = data["properties"]["periods"][0]
+        return f"Weather: {forecast['shortForecast']}, Temp: {forecast['temperature']}°F"
+    else:
+        return f"Error: Unable to fetch weather (status {response['status_code']})"
 ```
 
 ##### Example 2: Posting Data with Authentication
@@ -281,29 +299,25 @@ def main(input, **kwargs) -> str:
 ```python
 def main(input, **kwargs) -> str:
     """Submit form data to an external API"""
-    try:
-        # Parse user input
-        user_data = {
-            "message": input,
-            "timestamp": "2024-01-01T12:00:00Z"
-        }
+    # Parse user input
+    user_data = {
+        "message": input,
+        "timestamp": "2024-01-01T12:00:00Z"
+    }
 
-        # Post to API with authentication
-        response = http_client.post(
-            "https://api.example.com/submissions",
-            json=user_data,
-            auth_provider="my-api-key",
-            timeout=15
-        )
+    # Post to API with authentication
+    response = http.post(
+        "https://api.example.com/submissions",
+        json=user_data,
+        auth_provider="my-api-key",
+        timeout=15
+    )
 
-        if response.status_code == 201:
-            result = response.json()
-            return f"Submission successful! ID: {result['id']}"
-        else:
-            return f"Submission failed with status {response.status_code}"
-
-    except Exception as e:
-        return f"Error submitting data: {str(e)}"
+    if response["status_code"] == 201:
+        result = response["json"]
+        return f"Submission successful! ID: {result['id']}"
+    else:
+        return f"Submission failed with status {response['status_code']}"
 ```
 
 ##### Example 3: Working with Query Parameters
@@ -311,29 +325,25 @@ def main(input, **kwargs) -> str:
 ```python
 def main(input, **kwargs) -> str:
     """Search an API with query parameters"""
-    try:
-        # Build query parameters from user input
-        params = {
-            "q": input,
-            "limit": 10,
-            "format": "json"
-        }
+    # Build query parameters from user input
+    params = {
+        "q": input,
+        "limit": 10,
+        "format": "json"
+    }
 
-        response = http_client.get(
-            "https://api.example.com/search",
-            params=params,
-            auth_provider="search-api"
-        )
+    response = http.get(
+        "https://api.example.com/search",
+        params=params,
+        auth_provider="search-api"
+    )
 
-        if response.status_code == 200:
-            results = response.json()
-            count = len(results["items"])
-            return f"Found {count} results for '{input}'"
-        else:
-            return "Search failed"
-
-    except Exception as e:
-        return f"Search error: {str(e)}"
+    if response["status_code"] == 200:
+        results = response["json"]
+        count = len(results["items"])
+        return f"Found {count} results for '{input}'"
+    else:
+        return "Search failed"
 ```
 
 ##### Example 4: Handling Different Response Types
@@ -341,44 +351,20 @@ def main(input, **kwargs) -> str:
 ```python
 def main(input, **kwargs) -> str:
     """Handle both JSON and text responses"""
-    try:
-        response = http_client.get(
-            "https://api.example.com/data",
-            auth_provider="api-provider"
-        )
+    response = http.get(
+        "https://api.example.com/data",
+        auth_provider="api-provider"
+    )
 
-        # Check content type
-        content_type = response.headers.get("Content-Type", "")
+    # Check content type
+    content_type = response["headers"].get("Content-Type", "")
 
-        if "application/json" in content_type:
-            data = response.json()
-            return f"JSON data: {data}"
-        else:
-            text = response.text
-            return f"Text data: {text[:100]}..."  # First 100 chars
-
-    except Exception as e:
-        return f"Error: {str(e)}"
-```
-
-#### Error Handling
-
-Always wrap HTTP requests in try-except blocks to handle potential errors gracefully:
-
-```python
-def main(input, **kwargs) -> str:
-    try:
-        response = http_client.get("https://api.example.com/data")
-        response.raise_for_status()  # Raises error for 4xx/5xx status codes
-        return response.json()
-    except http_client.exceptions.ConnectionError:
-        return "Unable to connect to the API"
-    except http_client.exceptions.Timeout:
-        return "Request timed out"
-    except http_client.exceptions.HTTPError as e:
-        return f"HTTP error occurred: {e}"
-    except Exception as e:
-        return f"Unexpected error: {str(e)}"
+    if "application/json" in content_type:
+        data = response["json"]
+        return f"JSON data: {data}"
+    else:
+        text = response["text"]
+        return f"Text data: {text[:100]}..."  # First 100 chars
 ```
 
 #### Common Status Codes
@@ -398,19 +384,17 @@ When checking response status codes:
 
 #### Best Practices
 
-1. **Always handle errors**: Network requests can fail for many reasons. Always use try-except blocks.
+1. **Check status codes**: The HTTP client never raises exceptions. All error information is contained in the response dict. Always check `response["status_code"]` or use `response["is_success"]` and `response["is_error"]` to determine if the request succeeded.
 
-2. **Check status codes**: Don't assume a request succeeded. Check `response.status_code` or use `response.raise_for_status()`.
+2. **Set reasonable timeouts**: Specify timeout values to prevent requests from hanging indefinitely.
 
-3. **Set reasonable timeouts**: Specify timeout values to prevent requests from hanging indefinitely.
+3. **Use Authentication Providers**: Never hardcode API keys or credentials in your code. Use Authentication Providers instead.
 
-4. **Use Authentication Providers**: Never hardcode API keys or credentials in your code. Use Authentication Providers instead.
+4. **Validate user input**: If using user input in URLs or parameters, validate and sanitize it first.
 
-5. **Validate user input**: If using user input in URLs or parameters, validate and sanitize it first.
+5. **Limit data size**: Be mindful of the size of data you're requesting or sending.
 
-6. **Limit data size**: Be mindful of the size of data you're requesting or sending.
-
-7. **Cache when appropriate**: If making repeated requests for the same data, consider caching results in session state.
+6. **Cache when appropriate**: If making repeated requests for the same data, consider caching results in session state.
 
 #### Troubleshooting
 
