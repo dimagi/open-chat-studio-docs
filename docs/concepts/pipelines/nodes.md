@@ -139,15 +139,15 @@ The `http` supports the following HTTP methods:
 - `patch(url, **kwargs)` - Send a PATCH request
 - `delete(url, **kwargs)` - Send a DELETE request
 
-All methods accept the same parameters as Python's `requests` library, including:
+All methods accept the following keyword-only parameters:
 
 - `headers` - Dictionary of HTTP headers
 - `params` - URL query parameters
-- `json` - JSON data to send in the request body
-- `data` - Form data or raw body content
-- `timeout` - Request timeout (automatically clamped to safe limits)
-- `files` - File upload data
-- `auth` - HTTP authentication credentials
+- `json` - JSON data to send in the request body (mutually exclusive with `data` and `files`)
+- `data` - Form data (dict) or raw body content (str/bytes). Can be combined with `files` for multipart form uploads
+- `timeout` - Request timeout in seconds (automatically clamped between 1s and the system maximum)
+- `files` - File upload data. See [File Uploads](#file-uploads) for details
+- `auth` - Name of an [Authentication Provider](../../team/authentication_providers.md) to inject credentials. This is a string, not a credentials tuple
 
 #### Response Structure
 
@@ -185,14 +185,35 @@ The HTTP client includes several built-in security protections:
 
 **Blocked Headers**: Certain sensitive headers are blocked to prevent security issues.
 
-**Automatic Retries**: Failed requests are automatically retried with exponential backoff for improved reliability.
+**Automatic Retries**: Requests that receive a `429`, `502`, `503`, or `504` status code are automatically retried up to 3 times with exponential backoff. The client also respects the `Retry-After` header when present. Connection errors and timeouts are also retried.
+
+**No Redirect Following**: The HTTP client does not follow redirects automatically. If a request returns a `3xx` redirect status, you will receive the redirect response directly and must handle it in your code.
+
+**Request Count Limit**: There is a maximum number of HTTP requests that can be made per pipeline run. Exceeding this limit will raise an error.
+
+#### Exceptions
+
+The HTTP client raises exceptions for infrastructure-level errors. You should handle these in your code if you need custom error handling:
+
+| Exception | When it's raised |
+|-----------|-----------------|
+| `HttpRequestLimitExceeded` | Maximum number of requests per pipeline run exceeded |
+| `HttpRequestTooLarge` | Request body or file upload exceeds the size limit |
+| `HttpResponseTooLarge` | Response body exceeds the size limit |
+| `HttpConnectionError` | Connection failed after all retries exhausted |
+| `HttpTimeoutError` | Request timed out after all retries exhausted |
+| `HttpInvalidURL` | URL blocked by SSRF protection (private IPs, localhost, etc.) |
+| `HttpAuthProviderError` | Auth provider not found or not available |
+
+!!! note
+    HTTP error status codes like `400`, `401`, `404`, or `500` do **not** raise exceptions. These are returned as normal response dicts. Always check `response["status_code"]` or `response["is_error"]` to detect HTTP-level errors.
 
 #### Using Authentication Providers
 
 The `http` can automatically inject credentials from your team's [Authentication Providers](../../team/authentication_providers.md) into HTTP requests. This provides a secure way to manage API credentials without hardcoding them in your code. To use a configured Authentication Provider, pass the name of the provider to the request method using the `auth` keyword:
 
 ```python
-request.get("https://example.com", auth="my auth provider")
+http.get("https://example.com", auth="my auth provider")
 ```
 
 #### Complete Examples
@@ -288,6 +309,119 @@ def main(input, **kwargs) -> str:
         return f"Text data: {text[:100]}..."  # First 100 chars
 ```
 
+#### File Uploads
+
+The `files` parameter allows you to upload files as part of a multipart form request. It accepts either a dictionary or a list of tuples mapping field names to file values.
+
+Each file value can be one of:
+
+- An `Attachment` object from the temporary state `attachments` list
+- A tuple of `(filename, data, content_type)` where `data` is bytes
+- Raw `bytes` (the field name is used as the filename with `application/octet-stream` content type)
+
+!!! note
+    The `json` parameter cannot be combined with `files`. Use `data` (dict) alongside `files` if you need to send additional form fields with your file upload.
+
+##### Example 5: Uploading User Attachments to an External API
+
+```python
+def main(input, **kwargs) -> str:
+    """Forward all user attachments to an external API"""
+    attachments = get_temp_state_key("attachments")
+
+    if not attachments:
+        return "No files were uploaded"
+
+    # Pass attachments directly — the HTTP client handles them
+    files = [("files", attachment) for attachment in attachments]
+
+    response = http.post(
+        "https://api.example.com/upload",
+        files=files,
+        auth="upload-api",
+        timeout=30
+    )
+
+    if response["is_success"]:
+        return f"Successfully uploaded {len(attachments)} file(s)"
+    else:
+        return f"Upload failed with status {response['status_code']}"
+```
+
+##### Example 6: Uploading a Single Attachment with Form Data
+
+```python
+def main(input, **kwargs) -> str:
+    """Upload the first attachment with additional metadata"""
+    attachments = get_temp_state_key("attachments")
+
+    if not attachments:
+        return "Please upload a file"
+
+    attachment = attachments[0]
+
+    response = http.post(
+        "https://api.example.com/documents",
+        files={"document": attachment},
+        data={"description": input, "source": "chatbot"},
+        auth="doc-api",
+        timeout=30
+    )
+
+    if response["is_success"]:
+        result = response["json"]
+        return f"Uploaded '{attachment.name}' — Document ID: {result['id']}"
+    else:
+        return f"Upload failed: {response['text']}"
+```
+
+##### Example 7: Uploading Raw Bytes
+
+```python
+def main(input, **kwargs) -> str:
+    """Generate a CSV and upload it"""
+    csv_content = "name,email\nAlice,alice@example.com\nBob,bob@example.com\n"
+    csv_bytes = csv_content.encode("utf-8")
+
+    response = http.post(
+        "https://api.example.com/import",
+        files={"file": ("contacts.csv", csv_bytes, "text/csv")},
+        auth="import-api"
+    )
+
+    if response["is_success"]:
+        return "CSV uploaded successfully"
+    else:
+        return f"Upload failed: {response['status_code']}"
+```
+
+##### Example 8: Filtering Attachments by Type Before Uploading
+
+```python
+def main(input, **kwargs) -> str:
+    """Upload only image attachments"""
+    attachments = get_temp_state_key("attachments")
+
+    images = [a for a in attachments if a.content_type.startswith("image/")]
+
+    if not images:
+        return "No images found in attachments"
+
+    files = [("images", img) for img in images]
+
+    response = http.post(
+        "https://api.example.com/gallery",
+        files=files,
+        auth="gallery-api",
+        timeout=30
+    )
+
+    if response["is_success"]:
+        return f"Uploaded {len(images)} image(s)"
+    else:
+        return f"Upload failed: {response['text']}"
+```
+
 #### Common Status Codes
 
 When checking response status codes:
@@ -305,7 +439,7 @@ When checking response status codes:
 
 #### Best Practices
 
-1. **Check status codes**: The HTTP client never raises exceptions. All error information is contained in the response dict. Always check `response["status_code"]` or use `response["is_success"]` and `response["is_error"]` to determine if the request succeeded.
+1. **Check status codes**: HTTP error status codes (4xx, 5xx) do not raise exceptions — they are returned as normal response dicts. Always check `response["status_code"]` or use `response["is_success"]` and `response["is_error"]` to detect HTTP-level errors. Infrastructure errors like connection failures, timeouts, and size limit violations **do** raise exceptions (see [Exceptions](#exceptions)).
 
 2. **Set reasonable timeouts**: Specify timeout values to prevent requests from hanging indefinitely.
 
@@ -328,6 +462,12 @@ When checking response status codes:
 **"Request timeout"**: The external API took too long to respond. Try increasing the timeout or check if the API is available.
 
 **"Connection refused"**: The target server is not accepting connections. Verify the URL and check if the service is running.
+
+**"Request limit exceeded"**: You have made too many HTTP requests in a single pipeline run. Reduce the number of requests or restructure your pipeline.
+
+**"Request body exceeds ... bytes"** / **"File upload exceeds ... bytes"**: The data you are sending is too large. Reduce the payload size or split it into multiple requests.
+
+**"Response body exceeds ... bytes"**: The external API returned a response that is too large. Consider requesting a smaller payload (e.g., use pagination or limit fields).
 
 ### Temporary State
 The Python node can also access and modify the temporary state of the pipeline. The temporary state is a dictionary that is unique to each run of the pipeline (each new message from the user) and is not stored between sessions.
