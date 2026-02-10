@@ -197,16 +197,65 @@ The HTTP client raises exceptions for infrastructure-level errors. You should ha
 
 | Exception | When it's raised |
 |-----------|-----------------|
-| `HttpRequestLimitExceeded` | Maximum number of requests per pipeline run exceeded |
-| `HttpRequestTooLarge` | Request body or file upload exceeds the size limit |
-| `HttpResponseTooLarge` | Response body exceeds the size limit |
-| `HttpConnectionError` | Connection failed after all retries exhausted |
-| `HttpTimeoutError` | Request timed out after all retries exhausted |
-| `HttpInvalidURL` | URL blocked by SSRF protection (private IPs, localhost, etc.) |
-| `HttpAuthProviderError` | Auth provider not found or not available |
+| `http.RequestLimitExceeded` | Maximum number of requests per pipeline run exceeded |
+| `http.RequestTooLarge` | Request body or file upload exceeds the size limit |
+| `http.ResponseTooLarge` | Response body exceeds the size limit |
+| `http.ConnectionError` | Connection failed after all retries exhausted |
+| `http.TimeoutError` | Request timed out after all retries exhausted |
+| `http.InvalidURL` | URL blocked by SSRF protection (private IPs, localhost, etc.) |
+| `http.AuthProviderError` | Auth provider not found or not available |
 
 !!! note
     HTTP error status codes like `400`, `401`, `404`, or `500` do **not** raise exceptions. These are returned as normal response dicts. Always check `response["status_code"]` or `response["is_error"]` to detect HTTP-level errors.
+
+##### Handling Exceptions
+
+Use `try`/`except` blocks to catch infrastructure-level errors and provide user-friendly responses. Since the exception classes cannot be imported directly, reference them from the `http` global:
+
+```python
+def main(input, **kwargs) -> str:
+    try:
+        response = http.get("https://api.example.com/data", timeout=10)
+    except http.TimeoutError:
+        return "The request timed out. Please try again later."
+    except http.ConnectionError:
+        return "Could not connect to the server. Please try again later."
+    except http.InvalidURL:
+        return "The request was blocked for security reasons."
+    except http.RequestLimitExceeded:
+        return "Too many requests have been made. Please try again later."
+
+    # HTTP error status codes (4xx, 5xx) don't raise exceptions,
+    # so check the response directly
+    if response["is_error"]:
+        return f"Request failed with status {response['status_code']}"
+
+    return f"Got data: {response['json']}"
+```
+
+You can also catch multiple exceptions at once:
+
+```python
+def main(input, **kwargs) -> str:
+    try:
+        response = http.post(
+            "https://api.example.com/submit",
+            json={"query": input},
+            auth="my-api",
+            timeout=15,
+        )
+    except (http.TimeoutError, http.ConnectionError) as e:
+        return f"Network error: {e}"
+    except (http.RequestTooLarge, http.ResponseTooLarge):
+        return "The request or response was too large."
+    except http.AuthProviderError:
+        return "Authentication is not configured correctly."
+
+    if response["is_success"]:
+        return f"Result: {response['json']}"
+    else:
+        return f"API error (status {response['status_code']}): {response['text']}"
+```
 
 #### Using Authentication Providers
 
