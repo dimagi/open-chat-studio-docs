@@ -191,13 +191,13 @@ def main(input, **kwargs) -> str:
     """Fetch weather data and prepare it for the LLM"""
     try:
         # Make GET request to weather API
-        response = http_client.get(
+        response = http.get(
             "https://api.weather.gov/gridpoints/TOP/31,80/forecast",
             timeout=10
         )
 
-        if response.status_code == 200:
-            data = response.json()
+        if response["status_code"] == 200:
+            data = response["json"]
             forecast = data["properties"]["periods"][0]
 
             # Format the data for the LLM
@@ -250,15 +250,15 @@ def main(input, **kwargs) -> str:
         }
 
         # POST to API with authentication
-        response = http_client.post(
+        response = http.post(
             "https://api.example.com/feedback",
             json=feedback_data,
-            auth_provider="feedback-api-key",  # Reference to Auth Provider
+            auth="feedback-api-key",  # Reference to Auth Provider
             timeout=15
         )
 
-        if response.status_code == 201:
-            result = response.json()
+        if response["status_code"] == 201:
+            result = response["json"]
             return f"Thank you for your feedback! Reference ID: {result['id']}"
         else:
             return "We encountered an issue submitting your feedback. Please try again later."
@@ -279,14 +279,14 @@ def main(input, **kwargs) -> str:
         product_id = input.strip()
 
         # Query external product API
-        response = http_client.get(
+        response = http.get(
             f"https://api.example.com/products/{product_id}",
-            auth_provider="product-api",
+            auth="product-api",
             timeout=10
         )
 
-        if response.status_code == 200:
-            product = response.json()
+        if response["status_code"] == 200:
+            product = response["json"]
 
             # Store product details in temp state
             set_temp_state_key("product_name", product["name"])
@@ -295,7 +295,7 @@ def main(input, **kwargs) -> str:
             set_temp_state_key("product_available", product["in_stock"])
 
             return input
-        elif response.status_code == 404:
+        elif response["status_code"] == 404:
             set_temp_state_key("product_error", "Product not found")
             return input
         else:
@@ -342,12 +342,12 @@ Instructions:
 
 See the [HTTP Client documentation][http_client] for more details on available methods, security features, and advanced usage.
 
-[abort]: ../concepts/pipelines/nodes.md#python_node.abort_with_message
-[python]: ../concepts/pipelines/nodes.md#python-node
+[abort]: ../concepts/pipelines/python_node.md#python_node.abort_with_message
+[python]: ../concepts/pipelines/python_node.md
 [router]: ../concepts/pipelines/nodes.md#llm-router
 [prompt_vars]: ../concepts/prompt_variables.md
-[temp_state]: ../concepts/pipelines/nodes.md#temporary-state
-[attachments]: ../concepts/pipelines/nodes.md#attachments
-[code_node_supported_file_types]: ../concepts/pipelines/nodes.md#supported-file-types
-[http_client]: ../concepts/pipelines/nodes.md#http-client
+[temp_state]: ../concepts/pipelines/python_node.md#temporary-state
+[attachments]: ../concepts/pipelines/python_node.md#attachments
+[code_node_supported_file_types]: ../concepts/pipelines/python_node.md#supported-file-types
+[http_client]: ../concepts/pipelines/http.md
 [auth_providers]: ../concepts/team/authentication_providers.md

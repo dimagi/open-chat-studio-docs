@@ -55,7 +55,7 @@ An example structure for this csv might be:
 
 #### Participant Data and Session State
 
-When including [participant_data](../participant_data.md) or [session_state](../pipelines/nodes.md#session-state) in your CSV, you can use dot notation to specify nested keys. For example:
+When including [participant_data](../participant_data.md) or [session_state](../pipelines/python_node.md#session-state) in your CSV, you can use dot notation to specify nested keys. For example:
 
 - `participant_data.name` - Sets the participant's name
 - `participant_data.age` - Sets the participant's age

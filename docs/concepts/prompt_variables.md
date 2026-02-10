@@ -10,8 +10,8 @@ The following variables are currently supported:
 - `{participant_data}` - Information specific to this participant, bot and channel. See [here][participant_data] for more information. 
 - `{current_datetime}` - This refers to the date and time at which the response is generated.
 - `{media}` - (pipelines only) This refers to the linked [media collection](./collections/media.md).
-- `{temp_state}` - (pipelines only) Access to the pipeline temporary state. See [Temporary State](pipelines/nodes.md#temporary-state).
-- `{session_state}` - (pipelines only) Access to the session state. See [Session State](pipelines/nodes.md#session-state)
+- `{temp_state}` - (pipelines only) Access to the pipeline temporary state. See [Temporary State](pipelines/python_node.md#temporary-state).
+- `{session_state}` - (pipelines only) Access to the session state. See [Session State](pipelines/python_node.md#session-state)
 
 !!! info "Localizing injected datetime"
     The injected datetime will be localized to the participant's timezone if it exists in their participant data. When a participant uses the web UI, their browser's timezone will automatically be saved to their participant data.

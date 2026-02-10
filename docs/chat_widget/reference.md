@@ -426,7 +426,7 @@ widget.pageContext = {
 
 !!! note
     
-    The page context is persisted in the session state on the server side and is accessible via `session_state.remote_context`. See [accessing remote context](../../concepts/prompt_variables#accessing-remote-context) for more details.
+    The page context is persisted in the session state on the server side and is accessible via `session_state.remote_context`. See [accessing remote context](../concepts/prompt_variables.md#accessing-remote-context) for more details.
 
 ## :material-clipboard-list: Properties Reference
 
