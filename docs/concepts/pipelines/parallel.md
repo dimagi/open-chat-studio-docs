@@ -137,7 +137,7 @@ The `Merge` node will get outputs from `NodeA` and either `NodeB` or `NodeC`. We
 
 === "Option 2"
 
-    This option makes use of the [`node_inputs`](nodes.md#additional-keyword-arguments) keyword argument which contains a list of all the inputs available to the current node execution. Since we want to wait until we have inputs from `NodeA and (NodeB or NodeC)` we can check that the inputs list has at least two values. 
+    This option makes use of the [`node_inputs`](python_node.md#additional-keyword-arguments) keyword argument which contains a list of all the inputs available to the current node execution. Since we want to wait until we have inputs from `NodeA and (NodeB or NodeC)` we can check that the inputs list has at least two values. 
 
     ```python
     def main(input, **kwargs):

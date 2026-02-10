@@ -3,7 +3,7 @@
 Authentication Providers are used to authenticate with external services via HTTP API calls. Authentication Providers
 provide a centralized location to manage the credentials and tokens required to authenticate with external services.
 
-These credentials are used by features like [Custom Actions](../custom_actions.md) and the [HTTP Client](../pipelines/nodes.md#http-client) in Python nodes.
+These credentials are used by features like [Custom Actions](../custom_actions.md) and the [HTTP Client](../pipelines/http_client.md) in Python nodes.
 
 ## Authentication Provider Types
 

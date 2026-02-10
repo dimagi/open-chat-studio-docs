@@ -130,6 +130,8 @@ nav:
       - Pipelines:
         - concepts/pipelines/index.md
         - concepts/pipelines/nodes.md
+        - concepts/pipelines/python_node.md
+        - concepts/pipelines/http_client.md
         - concepts/pipelines/history.md
         - concepts/pipelines/parallel.md
       - Team:
