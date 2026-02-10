@@ -216,6 +216,9 @@ The `http` can automatically inject credentials from your team's [Authentication
 http.get("https://example.com", auth="my auth provider")
 ```
 
+!!! note "Case-Insensitive Provider Names"
+    Authentication provider names are case-insensitive. `auth="My-Provider"`, `auth="my-provider"`, and `auth="MY-PROVIDER"` will all match the same configured provider.
+
 #### Complete Examples
 
 ##### Example 1: Fetching Data from a Public API
@@ -457,7 +460,7 @@ When checking response status codes:
 
 **"SSRF protection blocked request"**: The URL you're trying to access is blocked for security reasons (e.g., localhost, private IPs).
 
-**"Authentication provider not found"**: Verify the provider name matches exactly what's configured in your team settings.
+**"Authentication provider not found"**: Verify the provider name matches what's configured in your team settings (matching is case-insensitive).
 
 **"Request timeout"**: The external API took too long to respond. Try increasing the timeout or check if the API is available.
 

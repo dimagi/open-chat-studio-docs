@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Feb 10, 2026
+* **CHANGE** Authentication provider names in Python node HTTP requests are now case-insensitive, allowing `auth="My-Provider"` and `auth="my-provider"` to match the same provider.
+
 ## Feb 9, 2026
 * **NEW** Added `http_client` global to Python sandbox for making HTTP requests with security guardrails including SSRF prevention, request/response size limits, timeout clamping, automatic retries, and authentication provider integration.
 
