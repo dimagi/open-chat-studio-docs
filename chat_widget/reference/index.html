@@ -1,0 +1,2461 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://docs.openchatstudio.com/chat_widget/reference/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../styling/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Reference Docs - Open Chat Studio Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#reference-docs" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Open Chat Studio Documentation" class="md-header__button md-logo" aria-label="Open Chat Studio Documentation" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Open Chat Studio Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Reference Docs
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dimagi/open-chat-studio-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../how-to/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  How-to Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../concepts/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Chat Widget
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../changelog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Open Chat Studio Documentation" class="md-nav__button md-logo" aria-label="Open Chat Studio Documentation" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    Open Chat Studio Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dimagi/open-chat-studio-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../how-to/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    How-to Guides
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../concepts/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Concepts
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Chat Widget
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chat Widget
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Reference Docs
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reference Docs
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#button-customization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Button Customization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Button Customization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#button-position" class="md-nav__link">
+    <span class="md-ellipsis">
+      Button position
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#embed-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Embed Authentication
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Embed Authentication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-identification" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Identification
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="User Identification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Implementation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auto-generated-user-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      Auto-Generated User IDs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-user-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamic User Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#welcome-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Welcome Messages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#starter-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Starter Questions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-attachments" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Attachments
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="File Attachments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supported-file-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported File Types
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Supported File Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documents:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#images" class="md-nav__link">
+    <span class="md-ellipsis">
+      Images:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#media" class="md-nav__link">
+    <span class="md-ellipsis">
+      Media:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-size-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Size Limits
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-experience" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Experience
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#internationalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internationalization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Internationalization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#built-in-language-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Built-in Language Support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-translations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Translations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom Translations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#translation-file-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Translation File Format
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#translation-key-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Translation Key Reference
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizable-content" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customizable Content
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#translation-priority" class="md-nav__link">
+    <span class="md-ellipsis">
+      Translation Priority
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#persistent-sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persistent Sessions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      Page Context
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Page Context">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use Cases
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-implementation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Implementation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-context-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamic Context Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-object-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Object Structure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#properties-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Properties Reference
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#button-ui-customization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Button &amp; UI Customization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chat-behavior-sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chat Behavior &amp; Sessions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#messages-content" class="md-nav__link">
+    <span class="md-ellipsis">
+      Messages &amp; Content
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internationalization-translations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internationalization &amp; Translations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../styling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CSS Styling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Changelog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Changelog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#button-customization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Button Customization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Button Customization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#button-position" class="md-nav__link">
+    <span class="md-ellipsis">
+      Button position
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#embed-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Embed Authentication
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Embed Authentication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-identification" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Identification
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="User Identification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Implementation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auto-generated-user-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      Auto-Generated User IDs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-user-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamic User Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#welcome-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Welcome Messages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#starter-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Starter Questions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-attachments" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Attachments
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="File Attachments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supported-file-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported File Types
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Supported File Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documents:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#images" class="md-nav__link">
+    <span class="md-ellipsis">
+      Images:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#media" class="md-nav__link">
+    <span class="md-ellipsis">
+      Media:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-size-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Size Limits
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-experience" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Experience
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#internationalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internationalization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Internationalization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#built-in-language-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Built-in Language Support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-translations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Translations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom Translations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#translation-file-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Translation File Format
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#translation-key-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Translation Key Reference
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizable-content" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customizable Content
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#translation-priority" class="md-nav__link">
+    <span class="md-ellipsis">
+      Translation Priority
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#persistent-sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persistent Sessions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      Page Context
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Page Context">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use Cases
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-implementation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Implementation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-context-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamic Context Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-object-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Object Structure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#properties-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Properties Reference
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#button-ui-customization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Button &amp; UI Customization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chat-behavior-sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chat Behavior &amp; Sessions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#messages-content" class="md-nav__link">
+    <span class="md-ellipsis">
+      Messages &amp; Content
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internationalization-translations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internationalization &amp; Translations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/dimagi/open-chat-studio-docs/edit/main/docs/chat_widget/reference.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/dimagi/open-chat-studio-docs/raw/main/docs/chat_widget/reference.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+<h1 id="reference-docs">Reference Docs<a class="headerlink" href="#reference-docs" title="Permanent link">&para;</a></h1>
+<p>Learn how to customize the Open Chat Studio widget to match your brand and improve user experience.</p>
+<h2 id="button-customization">Button Customization<a class="headerlink" href="#button-customization" title="Permanent link">&para;</a></h2>
+<p>The widget button can be customized using the following properties:</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">&lt;</span><span class="nt">open-chat-studio-widget</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  <span class="na">button-text</span><span class="o">=</span><span class="s">&quot;Chat with us&quot;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  <span class="na">button-shape</span><span class="o">=</span><span class="s">&quot;round&quot;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  <span class="na">icon-url</span><span class="o">=</span><span class="s">&quot;https://your-domain.com/custom-chat-icon.svg&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">&lt;/</span><span class="nt">open-chat-studio-widget</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<p><strong>Button Text</strong></p>
+<ul>
+<li>When button-text is provided, the button displays both icon and text</li>
+<li>When button-text is empty or not provided, only an icon is shown</li>
+</ul>
+<p><strong>Button Shape</strong></p>
+<ul>
+<li><strong>round</strong> - Circular button</li>
+<li><strong>square</strong> - Rectangular button with rounded corners</li>
+</ul>
+<p><strong>Icon URL</strong></p>
+<p>If no icon-url is provided, the default Open Chat Studio avatar is used.</p>
+<h3 id="button-position">Button position<a class="headerlink" href="#button-position" title="Permanent link">&para;</a></h3>
+<p>Customize the button position using CSS variables or a CSS class attached to the widget element:</p>
+<div class="language-css highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">open-chat-studio-widget</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">fixed</span><span class="p">;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="k">right</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="k">bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">}</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Drag the button</p>
+<p>The button can be dragged by the user to anywhere on the screen. This allows the user to move the button
+if it is obstructing other page content. The button will return to its original position on the next page load.</p>
+</div>
+<div class="grid cards">
+<ul>
+<li><span class="twemoji sm middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0v20.16A3.84 3.84 0 0 0 3.84 24h16.32A3.84 3.84 0 0 0 24 20.16V3.84A3.84 3.84 0 0 0 20.16 0Zm14.256 13.08c1.56 0 2.28 1.08 2.304 2.64h-1.608c.024-.288-.048-.6-.144-.84-.096-.192-.288-.264-.552-.264-.456 0-.696.264-.696.84-.024.576.288.888.768 1.08.72.288 1.608.744 1.92 1.296q.432.648.432 1.656c0 1.608-.912 2.592-2.496 2.592-1.656 0-2.4-1.032-2.424-2.688h1.68c0 .792.264 1.176.792 1.176.264 0 .456-.072.552-.24.192-.312.24-1.176-.048-1.512-.312-.408-.912-.6-1.32-.816q-.828-.396-1.224-.936c-.24-.36-.36-.888-.36-1.536 0-1.44.936-2.472 2.424-2.448m5.4 0c1.584 0 2.304 1.08 2.328 2.64h-1.608c0-.288-.048-.6-.168-.84-.096-.192-.264-.264-.528-.264-.48 0-.72.264-.72.84s.288.888.792 1.08c.696.288 1.608.744 1.92 1.296.264.432.408.984.408 1.656.024 1.608-.888 2.592-2.472 2.592-1.68 0-2.424-1.056-2.448-2.688h1.68c0 .744.264 1.176.792 1.176.264 0 .456-.072.552-.24.216-.312.264-1.176-.048-1.512-.288-.408-.888-.6-1.32-.816-.552-.264-.96-.576-1.2-.936s-.36-.888-.36-1.536c-.024-1.44.912-2.472 2.4-2.448m-11.031.018c.711-.006 1.419.198 1.839.63.432.432.672 1.128.648 1.992H9.336c.024-.456-.096-.792-.432-.96-.312-.144-.768-.048-.888.24-.12.264-.192.576-.168.864v3.504c0 .744.264 1.128.768 1.128a.65.65 0 0 0 .552-.264c.168-.24.192-.552.168-.84h1.776c.096 1.632-.984 2.712-2.568 2.688-1.536 0-2.496-.864-2.472-2.472v-4.032c0-.816.24-1.44.696-1.848.432-.408 1.146-.624 1.857-.63"/></svg></span> See <a href="../styling/">CSS Styling</a> for more customization options.</li>
+</ul>
+</div>
+<h2 id="embed-authentication"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m9 3c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9-5a3 3 0 0 0-3 3c0 1.31.83 2.42 2 2.83V18h2v-2h2v-2h-2v-2.17c1.17-.41 2-1.52 2-2.83a3 3 0 0 0-3-3"/></svg></span> Embed Authentication<a class="headerlink" href="#embed-authentication" title="Permanent link">&para;</a></h2>
+<p>Secure your embedded widgets with authentication keys for controlled access to specific channels.</p>
+<h3 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h3>
+<p>The embed authentication feature allows you to:</p>
+<ul>
+<li>Restrict widget access to authorized embeddings only</li>
+<li>Authenticate specific embedded channel instances</li>
+<li>Provide secure access control for sensitive or premium content</li>
+<li>Track and manage different embedded deployments</li>
+</ul>
+<h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h3>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">&lt;</span><span class="nt">open-chat-studio-widget</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>  <span class="na">chatbot-id</span><span class="o">=</span><span class="s">&quot;your-chatbot-id&quot;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>  <span class="na">embed-key</span><span class="o">=</span><span class="s">&quot;your-secure-embed-key&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">&lt;/</span><span class="nt">open-chat-studio-widget</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<p>When an embed key is provided, it's automatically sent as an <code>X-Embed-Key</code> header with all API requests to authenticate the widget instance.</p>
+<h2 id="user-identification"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg></span> User Identification<a class="headerlink" href="#user-identification" title="Permanent link">&para;</a></h2>
+<p>Control how users are identified across chat sessions to enable personalized experiences and session continuity.</p>
+<h3 id="overview_1">Overview<a class="headerlink" href="#overview_1" title="Permanent link">&para;</a></h3>
+<p>The chat widget uses user identification to:</p>
+<ul>
+<li>Maintain chat history across page reloads and different visits</li>
+<li>Separate conversations for different users on shared devices</li>
+<li>Personalize interactions with user names and context</li>
+<li>Enable analytics and user tracking in your chat system</li>
+</ul>
+<h3 id="basic-implementation">Basic Implementation<a class="headerlink" href="#basic-implementation" title="Permanent link">&para;</a></h3>
+<p>Anonymous Users (Default)
+<div class="language-html highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">&lt;</span><span class="nt">open-chat-studio-widget</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>  <span class="na">chatbot-id</span><span class="o">=</span><span class="s">&quot;your-chatbot-id&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">&lt;/</span><span class="nt">open-chat-studio-widget</span><span class="p">&gt;</span>
+</span></code></pre></div>
+Identified Users
+<div class="language-html highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">&lt;</span><span class="nt">open-chat-studio-widget</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>  <span class="na">chatbot-id</span><span class="o">=</span><span class="s">&quot;your-chatbot-id&quot;</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>  <span class="na">user-id</span><span class="o">=</span><span class="s">&quot;user_12345&quot;</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>  <span class="na">user-name</span><span class="o">=</span><span class="s">&quot;Sarah Johnson&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">&lt;/</span><span class="nt">open-chat-studio-widget</span><span class="p">&gt;</span>
+</span></code></pre></div></p>
+<h3 id="auto-generated-user-ids">Auto-Generated User IDs<a class="headerlink" href="#auto-generated-user-ids" title="Permanent link">&para;</a></h3>
+<p>When no user-id is provided, the widget automatically creates a unique identifier:</p>
+<ul>
+<li>Example: ocs:1703123456789_a7x9k2m8f</li>
+</ul>
+<p>Persistence Behavior:</p>
+<ul>
+<li>Same browser/device: ID persists across sessions</li>
+<li>Different browser/device: Gets new auto-generated ID</li>
+<li>Incognito mode: New ID that's cleared when session ends</li>
+</ul>
+<h3 id="dynamic-user-management">Dynamic User Management<a class="headerlink" href="#dynamic-user-management" title="Permanent link">&para;</a></h3>
+<p>Update user identification when authentication state changes:
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">updateChatUser</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">widget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;open-chat-studio-widget&#39;</span><span class="p">);</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">user</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="nx">widget</span><span class="p">.</span><span class="nx">userId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="nx">widget</span><span class="p">.</span><span class="nx">userName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="p">}</span>
+</span></code></pre></div></p>
+<h2 id="welcome-messages"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23 17c0 3.31-2.69 6-6 6v-1.5c2.5 0 4.5-2 4.5-4.5zM1 7c0-3.31 2.69-6 6-6v1.5c-2.5 0-4.5 2-4.5 4.5zm7-2.68-4.59 4.6c-3.22 3.22-3.22 8.45 0 11.67s8.45 3.22 11.67 0l7.07-7.09c.49-.47.49-1.26 0-1.75a1.25 1.25 0 0 0-1.77 0l-4.42 4.42-.71-.71 6.54-6.54c.49-.49.49-1.28 0-1.77s-1.29-.49-1.79 0L14.19 13l-.69-.73 6.87-6.89c.49-.49.49-1.28 0-1.77s-1.28-.49-1.77 0l-6.89 6.89-.71-.7 5.5-5.48c.5-.49.5-1.28 0-1.77s-1.28-.49-1.77 0l-7.62 7.62a4 4 0 0 1-.33 5.28l-.71-.71a3 3 0 0 0 0-4.24l-.35-.35 4.07-4.07c.49-.49.49-1.28 0-1.77-.5-.48-1.29-.48-1.79.01"/></svg></span> Welcome Messages<a class="headerlink" href="#welcome-messages" title="Permanent link">&para;</a></h2>
+<p>Enhance user experience by displaying personalized greeting messages when the chat opens. These messages appear as bot messages at the beginning of the conversation. Welcome messages are perfect for:</p>
+<ul>
+<li>Greeting users and introducing your bot's capabilities</li>
+<li>Providing context about what kind of help is available</li>
+<li>Creating a warm, engaging first impression</li>
+</ul>
+<p>Pass welcome messages as a JSON array string. Each message appears as a separate message bubble.</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="p">&lt;</span><span class="nt">open-chat-studio-widget</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a> <span class="na">welcome-messages</span><span class="o">=</span><span class="s">&quot;[&#39;Hi! Welcome to our support chat.&#39;, &#39;How can I assist you today?&#39;]&quot;</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">&gt;</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="p">&lt;/</span><span class="nt">open-chat-studio-widget</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<h2 id="starter-questions"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 6h-8l-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2m-3.2 12h-1.5v-1.5h1.5zm0-2.2h-1.5c0-2.4 2.2-2.3 2.2-3.8 0-.8-.7-1.5-1.5-1.5s-1.5.7-1.5 1.5H13c0-1.7 1.3-3 3-3s3 1.3 3 3c0 1.9-2.2 2.1-2.2 3.8"/></svg></span> Starter Questions<a class="headerlink" href="#starter-questions" title="Permanent link">&para;</a></h2>
+<p>Accelerate user engagement with pre-defined clickable questions that address common queries. These starter questions help users quickly find what they're looking for without having to type, which improves the user experience. Starter questions are ideal for:</p>
+<ul>
+<li>Highlighting your most frequently asked questions</li>
+<li>Guiding users toward key features or information</li>
+<li>Improving accessibility for users who prefer clicking to typing</li>
+</ul>
+<p>These questions appear as blue-outlined buttons aligned to the right (similar to user messages), making it clear that they are user actions. When clicked, they automatically send that question as a user message, initiating the conversation flow. The starter questions disappear after the user clicks one or starts typing their own message.</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">&lt;</span><span class="nt">open-chat-studio-widget</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a> <span class="na">starter-questions</span><span class="o">=</span><span class="s">&quot;[</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="s">   &#39;I need technical support&#39;,</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="s">   &#39;Tell me about pricing&#39;,</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="s">   &#39;Schedule a demo&#39;,</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="s">   &#39;Contact sales team&#39;</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="s"> ]&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="p">&lt;/</span><span class="nt">open-chat-studio-widget</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<h2 id="file-attachments"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.5 6v11.5a4 4 0 0 1-4 4 4 4 0 0 1-4-4V5A2.5 2.5 0 0 1 11 2.5 2.5 2.5 0 0 1 13.5 5v10.5a1 1 0 0 1-1 1 1 1 0 0 1-1-1V6H10v9.5a2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5V5a4 4 0 0 0-4-4 4 4 0 0 0-4 4v12.5a5.5 5.5 0 0 0 5.5 5.5 5.5 5.5 0 0 0 5.5-5.5V6z"/></svg></span> File Attachments<a class="headerlink" href="#file-attachments" title="Permanent link">&para;</a></h2>
+<p>Enable users to send files along with their messages. This feature is perfect for support scenarios where users need to share screenshots, documents, or other files.</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p">&lt;</span><span class="nt">open-chat-studio-widget</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a> <span class="na">allow-attachments</span><span class="o">=</span><span class="s">&quot;true&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">&lt;/</span><span class="nt">open-chat-studio-widget</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<h3 id="supported-file-types">Supported File Types<a class="headerlink" href="#supported-file-types" title="Permanent link">&para;</a></h3>
+<h4 id="documents">Documents:<a class="headerlink" href="#documents" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Text files: All text/* types (including .txt, .csv, .log, .md, and more)</li>
+<li>PDF documents: .pdf</li>
+<li>Microsoft Word: .doc, .docx</li>
+<li>Microsoft Excel: .xls, .xlsx</li>
+</ul>
+<h4 id="images">Images:<a class="headerlink" href="#images" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Common formats: .jpg, .jpeg, .png, .gif, .bmp, .webp</li>
+<li>Vector graphics: .svg</li>
+</ul>
+<h4 id="media">Media:<a class="headerlink" href="#media" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Video files: .mp4, .mov, .avi</li>
+<li>Audio files: .mp3, .wav</li>
+</ul>
+<h3 id="file-size-limits">File Size Limits<a class="headerlink" href="#file-size-limits" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Maximum file size: 50MB per individual file</li>
+<li>Maximum total size: 50MB for all files combined in a single message</li>
+<li>Multiple files: Users can attach multiple files as long as the total doesn't exceed 50MB</li>
+</ul>
+<h3 id="user-experience">User Experience<a class="headerlink" href="#user-experience" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Users click the paperclip icon next to the send button to select files</li>
+<li>Selected files appear in a preview area above the input field</li>
+<li>Files show name, size, and upload status</li>
+<li>Users can remove files before sending by clicking the X button</li>
+<li>Error messages appear for unsupported file types or files exceeding size limits</li>
+<li>Files are uploaded when the message is sent</li>
+</ol>
+<p>See <a href="../styling/#file-attachments">CSS Styling</a> for customization options</p>
+<h2 id="internationalization"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg></span> Internationalization<a class="headerlink" href="#internationalization" title="Permanent link">&para;</a></h2>
+<p>The chat widget supports multiple languages and custom translations for all UI text elements.</p>
+<h3 id="built-in-language-support">Built-in Language Support<a class="headerlink" href="#built-in-language-support" title="Permanent link">&para;</a></h3>
+<p>The widget includes built-in translations for the following languages:</p>
+<ul>
+<li><strong>English</strong> (<code>en</code>) - Default</li>
+<li><strong>Spanish</strong> (<code>es</code>)</li>
+<li><strong>French</strong> (<code>fr</code>)</li>
+<li><strong>Arabic</strong> (<code>ar</code>)</li>
+<li><strong>Hindi</strong> (<code>hi</code>)</li>
+<li><strong>Italian</strong> (<code>it</code>)</li>
+<li><strong>Portuguese</strong> (<code>pt</code>)</li>
+<li><strong>Swahili</strong> (<code>sw</code>)</li>
+<li><strong>Ukrainian</strong> (<code>uk</code>)</li>
+</ul>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">&lt;</span><span class="nt">open-chat-studio-widget</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>  <span class="na">chatbot-id</span><span class="o">=</span><span class="s">&quot;your-chatbot-id&quot;</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>  <span class="na">language</span><span class="o">=</span><span class="s">&quot;es&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="p">&lt;/</span><span class="nt">open-chat-studio-widget</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<h3 id="custom-translations">Custom Translations<a class="headerlink" href="#custom-translations" title="Permanent link">&para;</a></h3>
+<p>You can provide custom translations using a JSON file hosted on your server:</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="p">&lt;</span><span class="nt">open-chat-studio-widget</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>  <span class="na">chatbot-id</span><span class="o">=</span><span class="s">&quot;your-chatbot-id&quot;</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>  <span class="na">translations-url</span><span class="o">=</span><span class="s">&quot;https://yoursite.com/custom-translations.json&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="p">&lt;/</span><span class="nt">open-chat-studio-widget</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<h4 id="translation-file-format">Translation File Format<a class="headerlink" href="#translation-file-format" title="Permanent link">&para;</a></h4>
+<p>Provide translations as a flat JSON object that uses dot-notation keys. These keys loosely group strings by the part of the widget they affect:</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="p">{</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span><span class="nt">&quot;launcher.open&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Open chat&quot;</span><span class="p">,</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span><span class="nt">&quot;window.close&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Close&quot;</span><span class="p">,</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">  </span><span class="nt">&quot;window.newChat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Start new chat&quot;</span><span class="p">,</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">  </span><span class="nt">&quot;window.fullscreen&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enter fullscreen&quot;</span><span class="p">,</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">  </span><span class="nt">&quot;window.exitFullscreen&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Exit fullscreen&quot;</span><span class="p">,</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">  </span><span class="nt">&quot;attach.add&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Attach files&quot;</span><span class="p">,</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">  </span><span class="nt">&quot;attach.remove&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Remove file&quot;</span><span class="p">,</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">  </span><span class="nt">&quot;attach.success&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;File attached&quot;</span><span class="p">,</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">  </span><span class="nt">&quot;status.starting&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Starting chat...&quot;</span><span class="p">,</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">  </span><span class="nt">&quot;status.typing&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Preparing response&quot;</span><span class="p">,</span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">  </span><span class="nt">&quot;status.uploading&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Uploading&quot;</span><span class="p">,</span>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">  </span><span class="nt">&quot;modal.newChatTitle&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Start New Chat&quot;</span><span class="p">,</span>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">  </span><span class="nt">&quot;modal.newChatBody&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Starting a new chat will clear your current conversation. Continue?&quot;</span><span class="p">,</span>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="w">  </span><span class="nt">&quot;modal.cancel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Cancel&quot;</span><span class="p">,</span>
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="w">  </span><span class="nt">&quot;modal.confirm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Confirm&quot;</span><span class="p">,</span>
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="w">  </span><span class="nt">&quot;composer.placeholder&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Type a message...&quot;</span><span class="p">,</span>
+</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="w">  </span><span class="nt">&quot;composer.send&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Send message&quot;</span><span class="p">,</span>
+</span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="w">  </span><span class="nt">&quot;error.fileTooLarge&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;File too large&quot;</span><span class="p">,</span>
+</span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="w">  </span><span class="nt">&quot;error.totalTooLarge&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Total file size too large&quot;</span><span class="p">,</span>
+</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="w">  </span><span class="nt">&quot;error.unsupportedType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Unsupported file type&quot;</span><span class="p">,</span>
+</span><span id="__span-11-22"><a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a><span class="w">  </span><span class="nt">&quot;error.connection&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Connection error. Please try again.&quot;</span><span class="p">,</span>
+</span><span id="__span-11-23"><a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a><span class="w">  </span><span class="nt">&quot;error.sessionExpired&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Session expired. Please start a new chat.&quot;</span><span class="p">,</span>
+</span><span id="__span-11-24"><a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a><span class="w">  </span><span class="nt">&quot;branding.poweredBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Powered by&quot;</span><span class="p">,</span>
+</span><span id="__span-11-25"><a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a><span class="w">  </span><span class="nt">&quot;branding.buttonText&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-11-26"><a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a><span class="w">  </span><span class="nt">&quot;branding.headerText&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-11-27"><a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a><span class="w">  </span><span class="nt">&quot;content.welcomeMessages&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+</span><span id="__span-11-28"><a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a><span class="w">  </span><span class="nt">&quot;content.starterQuestions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+</span><span id="__span-11-29"><a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a><span class="p">}</span>
+</span></code></pre></div>
+<h4 id="translation-key-reference">Translation Key Reference<a class="headerlink" href="#translation-key-reference" title="Permanent link">&para;</a></h4>
+<p>Use the following reference when creating or updating translation bundles (mirrors the widget's <code>en.json</code>):</p>
+<ul>
+<li><strong>launcher</strong></li>
+<li><code>launcher.open</code> — Launcher button label, aria-label, and tooltip.</li>
+<li><strong>window</strong></li>
+<li><code>window.close</code> — Closes the chat window.</li>
+<li><code>window.newChat</code> — Menu item to start a new chat.</li>
+<li><code>window.fullscreen</code> — Enters fullscreen mode.</li>
+<li><code>window.exitFullscreen</code> — Leaves fullscreen mode.</li>
+<li><strong>attach</strong></li>
+<li><code>attach.add</code> — Adds file attachments.</li>
+<li><code>attach.remove</code> — Removes a pending attachment.</li>
+<li><code>attach.success</code> — Upload queued confirmation.</li>
+<li><strong>status</strong></li>
+<li><code>status.starting</code> — Shown while the session initializes.</li>
+<li><code>status.typing</code> — Typing indicator text (previously <code>typingIndicatorText</code>).</li>
+<li><code>status.uploading</code> — Attachment upload in progress.</li>
+<li><strong>modal</strong></li>
+<li><code>modal.newChatTitle</code> — "Start new chat" dialog title.</li>
+<li><code>modal.newChatBody</code> — Dialog body text.</li>
+<li><code>modal.cancel</code> — Dialog cancel button.</li>
+<li><code>modal.confirm</code> — Dialog confirmation button.</li>
+<li><strong>composer</strong></li>
+<li><code>composer.placeholder</code> — Message composer placeholder text.</li>
+<li><code>composer.send</code> — Send button text.</li>
+<li><strong>error</strong></li>
+<li><code>error.fileTooLarge</code> — Single file size violation.</li>
+<li><code>error.totalTooLarge</code> — Combined size violation.</li>
+<li><code>error.unsupportedType</code> — Unsupported file format.</li>
+<li><code>error.connection</code> — Generic connection failure.</li>
+<li><code>error.sessionExpired</code> — Session expiration prompt.</li>
+<li><strong>branding</strong></li>
+<li><code>branding.poweredBy</code> — Footer "Powered by" label.</li>
+<li><code>branding.buttonText</code> — Optional launcher text override; leave blank to use widget props.</li>
+<li><code>branding.headerText</code> — Optional header title override; leave blank to use widget props.</li>
+<li><strong>content</strong></li>
+<li><code>content.welcomeMessages</code> — Array of initial bot messages (empty array falls back to props).</li>
+<li><code>content.starterQuestions</code> — Array of starter questions (empty array falls back to props).</li>
+</ul>
+<h4 id="customizable-content">Customizable Content<a class="headerlink" href="#customizable-content" title="Permanent link">&para;</a></h4>
+<p>You can override specific widget content through translations.</p>
+<p>If you only want to override some text, include just those keys in your custom translation file. The widget will use the values from the default language file for provided languages or fall back to English. Arrays must remain arrays, and null values in <code>branding.buttonText</code> defer to the runtime HTML attribute or prop.</p>
+<h3 id="translation-priority">Translation Priority<a class="headerlink" href="#translation-priority" title="Permanent link">&para;</a></h3>
+<p>The widget uses the following priority order for text content:</p>
+<ol>
+<li><strong>Custom translations from <code>translations-url</code></strong> (highest priority)</li>
+<li><strong>Built-in language translations</strong> (if <code>language</code> is specified)</li>
+<li><strong>Widget props / HTML attributes</strong> (used when translation keys are null or missing - ⚠️ <strong>DEPRECATED</strong> for long-term use)</li>
+<li><strong>English defaults</strong> (lowest priority)</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Deprecation Notice</p>
+<p>HTML attributes for text content (<code>header-text</code>, <code>typing-indicator-text</code>, <code>new-chat-confirmation-message</code>) are deprecated and will be removed in a future major release. Please migrate to using the translations system for better internationalization support. Leave translation values blank when you want the widget props to supply the text instead of duplicating it.</p>
+</div>
+<h2 id="persistent-sessions">Persistent Sessions<a class="headerlink" href="#persistent-sessions" title="Permanent link">&para;</a></h2>
+<p>By default, the widget will save the chat messages in the browser local storage. This allows users to continue sessions after reloading the page or navigating to a new page. In addition to automatic session expiration, the user can also use the 'new chat' button to start a new session.</p>
+<p>To disable this feature, set the <code>persistent-session="false"</code> attribute on the widget element.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The session persistence is associated with the <code>chatbot-id</code>. If the <code>chatbot-id</code> changes, any previous session data will be ignored.</p>
+</div>
+<p>The session data is set to expire after 24 hours. This is also configurable by using the <code>persistent-session-expire</code> attribute. The value is interpreted as <em>"the number of minutes since the last message before the session expires"</em>. Setting this attribute to <code>0</code> will disable the expiration entirely.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Session persistence works in conjunction with <a href="#user-identification">User Identification</a>. Different users will have separate persistent sessions.</p>
+</div>
+<h2 id="page-context"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg></span> Page Context<a class="headerlink" href="#page-context" title="Permanent link">&para;</a></h2>
+<p>Pass page-specific context to the bot with each message to enable more personalized and relevant responses. The context is automatically included with every user message and helps the bot understand the current page state and user environment.</p>
+<h3 id="use-cases">Use Cases<a class="headerlink" href="#use-cases" title="Permanent link">&para;</a></h3>
+<p>Page context is ideal for:</p>
+<ul>
+<li>Providing current user role or permissions to the bot</li>
+<li>Sharing page URL, document name, or current section information</li>
+<li>Passing feature flags or configuration state</li>
+<li>Including product/service information relevant to the page</li>
+</ul>
+<h3 id="basic-implementation_1">Basic Implementation<a class="headerlink" href="#basic-implementation_1" title="Permanent link">&para;</a></h3>
+<p>Context must be set using JavaScript with a plain object:</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">widget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;open-chat-studio-widget&#39;</span><span class="p">);</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nx">widget</span><span class="p">.</span><span class="nx">pageContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">  </span><span class="nx">user_role</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="p">,</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">  </span><span class="nx">page_location</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;dashboard&#39;</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="p">};</span>
+</span></code></pre></div>
+<h3 id="dynamic-context-management">Dynamic Context Management<a class="headerlink" href="#dynamic-context-management" title="Permanent link">&para;</a></h3>
+<p>Update context dynamically using JavaScript when page state changes:</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">widget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;open-chat-studio-widget&#39;</span><span class="p">);</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="c1">// Set initial context</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="kd">let</span><span class="w"> </span><span class="nx">pageContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">  </span><span class="nx">user_role</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;customer&#39;</span><span class="p">,</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">  </span><span class="nx">page_location</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;product-listing&#39;</span><span class="p">,</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">  </span><span class="nx">product_category</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;electronics&#39;</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="p">};</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="nx">widget</span><span class="p">.</span><span class="nx">pageContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pageContext</span><span class="p">;</span>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="c1">// Update context when user navigates</span>
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;navigate&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">newContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="w">    </span><span class="p">...</span><span class="nx">pageContext</span><span class="p">,</span>
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="w">    </span><span class="nx">page_location</span><span class="o">:</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">location</span>
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="w">  </span><span class="p">};</span>
+</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="w">  </span><span class="nx">widget</span><span class="p">.</span><span class="nx">pageContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">newContext</span><span class="p">;</span>
+</span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a><span class="p">});</span>
+</span></code></pre></div>
+<h3 id="context-object-structure">Context Object Structure<a class="headerlink" href="#context-object-structure" title="Permanent link">&para;</a></h3>
+<p>The <code>pageContext</code> property accepts a plain JavaScript object (not a JSON string). Each property is included in the context sent to the bot:</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nx">widget</span><span class="p">.</span><span class="nx">pageContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">  </span><span class="c1">// User information</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">  </span><span class="nx">user_role</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;support_agent&#39;</span><span class="p">,</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">  </span><span class="nx">user_department</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;technical_support&#39;</span><span class="p">,</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">  </span><span class="c1">// Page information</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="w">  </span><span class="nx">page_location</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;help-center&#39;</span><span class="p">,</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="w">  </span><span class="nx">page_title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Troubleshooting Guide&#39;</span><span class="p">,</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="w">  </span><span class="c1">// Application state</span>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="w">  </span><span class="nx">session_type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;trial&#39;</span><span class="p">,</span>
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="w">  </span><span class="nx">account_status</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;active&#39;</span><span class="p">,</span>
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="w">  </span><span class="c1">// Custom data</span>
+</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="w">  </span><span class="nx">feature_flags</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;new_ui&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;beta_features&#39;</span><span class="p">],</span>
+</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="w">  </span><span class="nx">request_context</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;urgent&#39;</span>
+</span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="p">};</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The page context is persisted in the session state on the server side and is accessible via <code>session_state.remote_context</code>. See <a href="../../concepts/prompt_variables/#accessing-remote-context">accessing remote context</a> for more details.</p>
+</div>
+<h2 id="properties-reference"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2M7 8h2v4H8V9H7zm3 9v1H7v-.92L9 15H7v-1h2.25c.41 0 .75.34.75.75 0 .2-.08.39-.21.52L8.12 17zm1-13c0-.55.45-1 1-1s1 .45 1 1-.45 1-1 1-1-.45-1-1m6 13h-5v-2h5zm0-6h-5V9h5z"/></svg></span> Properties Reference<a class="headerlink" href="#properties-reference" title="Permanent link">&para;</a></h2>
+<h3 id="core-configuration">Core Configuration<a class="headerlink" href="#core-configuration" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>chatbot-id</code></td>
+<td><code>string</code></td>
+<td><strong>REQUIRED</strong></td>
+<td>-</td>
+<td>Your chatbot ID from Open Chat Studio</td>
+<td><code>"183312ac-cbe5-4c91-9e7b-d9df96b088e4"</code></td>
+</tr>
+<tr>
+<td><code>api-base-url</code></td>
+<td><code>string</code></td>
+<td>Optional</td>
+<td><code>"https://openchatstudio.com"</code></td>
+<td>API base URL for your Open Chat Studio instance</td>
+<td><code>"https://your-domain.com"</code></td>
+</tr>
+<tr>
+<td><code>embed-key</code></td>
+<td><code>string</code></td>
+<td>Optional</td>
+<td><code>undefined</code></td>
+<td>Authentication key for embedded channels</td>
+<td><code>"your-embed-auth-key"</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="button-ui-customization">Button &amp; UI Customization<a class="headerlink" href="#button-ui-customization" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Validation</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>button-text</code></td>
+<td><code>string</code></td>
+<td>Optional</td>
+<td><code>undefined</code></td>
+<td>Max 50 chars</td>
+<td>Button display text. If empty, shows icon only</td>
+<td><code>"Need Help?"</code></td>
+</tr>
+<tr>
+<td><code>button-shape</code></td>
+<td><code>string</code></td>
+<td>Optional</td>
+<td><code>"square"</code></td>
+<td><code>"round"</code> | <code>"square"</code></td>
+<td>Button shape style</td>
+<td><code>"round"</code> for circular button</td>
+</tr>
+<tr>
+<td><code>icon-url</code></td>
+<td><code>string</code></td>
+<td>Optional</td>
+<td>OCS default logo</td>
+<td>Valid URL</td>
+<td>Custom icon for the chat button</td>
+<td><code>"https://yoursite.com/chat-icon.svg"</code></td>
+</tr>
+<tr>
+<td><code>visible</code></td>
+<td><code>boolean</code></td>
+<td>Optional</td>
+<td><code>false</code></td>
+<td><code>true</code> | <code>false</code></td>
+<td>Show widget immediately on page load</td>
+<td><code>"true"</code> to auto-open</td>
+</tr>
+<tr>
+<td><code>position</code></td>
+<td><code>string</code></td>
+<td>Optional</td>
+<td><code>"right"</code></td>
+<td><code>"left"</code> | <code>"center"</code> | <code>"right"</code></td>
+<td>Initial widget position on screen</td>
+<td><code>"left"</code> for left side placement</td>
+</tr>
+<tr>
+<td><code>header-text</code></td>
+<td><code>string</code></td>
+<td>Optional</td>
+<td><code>undefined</code></td>
+<td>Max 100 chars</td>
+<td><strong>⚠️ DEPRECATED:</strong> Text displayed in chat window header. Use <code>branding.headerText</code> in translations instead</td>
+<td><code>"Customer Support"</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="user-management">User Management<a class="headerlink" href="#user-management" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Validation</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>user-id</code></td>
+<td><code>string</code></td>
+<td>Optional</td>
+<td>Auto-generated</td>
+<td>Alphanumeric + underscore/dash</td>
+<td>Unique user identifier for session continuity<br/><strong>Auto-format:</strong> <code>ocs:1703123456789_a7x9k2m8f</code></td>
+<td><code>"user_12345"</code> or <code>"customer@email.com"</code></td>
+</tr>
+<tr>
+<td><code>user-name</code></td>
+<td><code>string</code></td>
+<td>Optional</td>
+<td><code>undefined</code></td>
+<td>Max 200 chars</td>
+<td>Display name sent to chat API for personalization</td>
+<td><code>"John Smith"</code> or <code>"Customer #12345"</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="chat-behavior-sessions">Chat Behavior &amp; Sessions<a class="headerlink" href="#chat-behavior-sessions" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Validation</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pageContext</code></td>
+<td><code>object</code></td>
+<td>Optional</td>
+<td><code>undefined</code></td>
+<td>Plain JS object</td>
+<td>Optional context data to send with each message for personalization<br/><strong>Note:</strong> Context is cleared after each message</td>
+<td><code>{"user_role": "admin", "page_location": "dashboard"}</code></td>
+</tr>
+<tr>
+<td><code>persistent-session</code></td>
+<td><code>boolean</code></td>
+<td>Optional</td>
+<td><code>true</code></td>
+<td><code>true</code> | <code>false</code></td>
+<td>Save chat history in browser localStorage</td>
+<td><code>"false"</code> to disable session saving</td>
+</tr>
+<tr>
+<td><code>persistent-session-expire</code></td>
+<td><code>number</code></td>
+<td>Optional</td>
+<td><code>1440</code> (24 hours)</td>
+<td>0-43200 (30 days)</td>
+<td>Minutes before session expires</td>
+<td><code>720</code> for 12 hours, <code>0</code> for never expire</td>
+</tr>
+<tr>
+<td><code>allow-full-screen</code></td>
+<td><code>boolean</code></td>
+<td>Optional</td>
+<td><code>true</code></td>
+<td><code>true</code> | <code>false</code></td>
+<td>Enable fullscreen mode button</td>
+<td><code>"false"</code> to hide fullscreen option</td>
+</tr>
+<tr>
+<td><code>allow-attachments</code></td>
+<td><code>boolean</code></td>
+<td>Optional</td>
+<td><code>false</code></td>
+<td><code>true</code> | <code>false</code></td>
+<td>Enable file upload functionality<br/><strong>Limits:</strong> 50MB per file, 50MB total per message</td>
+<td><code>"true"</code> to enable file uploads</td>
+</tr>
+</tbody>
+</table>
+<h3 id="messages-content">Messages &amp; Content<a class="headerlink" href="#messages-content" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Validation</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>welcome-messages</code></td>
+<td><code>string</code></td>
+<td>Optional</td>
+<td><code>undefined</code></td>
+<td>Valid JSON array<br/><strong>Max:</strong> 5 messages, 500 chars each</td>
+<td>Welcome messages shown when chat opens<br/><strong>Format:</strong> <code>'["Message 1", "Message 2"]'</code></td>
+<td><code>'["Welcome!", "How can I help?"]'</code></td>
+</tr>
+<tr>
+<td><code>starter-questions</code></td>
+<td><code>string</code></td>
+<td>Optional</td>
+<td><code>undefined</code></td>
+<td>Valid JSON array<br/><strong>Max:</strong> 6 questions, 100 chars each</td>
+<td>Clickable question buttons to start conversation<br/><strong>Format:</strong> <code>'["Question 1", "Question 2"]'</code></td>
+<td><code>'["Check my order", "Technical support"]'</code></td>
+</tr>
+<tr>
+<td><code>typing-indicator-text</code></td>
+<td><code>string</code></td>
+<td>Optional</td>
+<td><code>"Preparing response"</code></td>
+<td>Max 50 chars</td>
+<td><strong>⚠️ DEPRECATED:</strong> Text shown while bot is typing. Use <code>status.typing</code> in translations instead</td>
+<td><code>"AI is thinking..."</code></td>
+</tr>
+<tr>
+<td><code>new-chat-confirmation-message</code></td>
+<td><code>string</code></td>
+<td>Optional</td>
+<td><code>"Starting a new chat will clear your current conversation. Continue?"</code></td>
+<td>Max 200 chars</td>
+<td><strong>⚠️ DEPRECATED:</strong> Confirmation dialog text for new chat button. Use <code>modal.newChatBody</code> in translations instead</td>
+<td><code>"Start over? Your current chat will be lost."</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="internationalization-translations">Internationalization &amp; Translations<a class="headerlink" href="#internationalization-translations" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Validation</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>language</code></td>
+<td><code>string</code></td>
+<td>Optional</td>
+<td><code>"en"</code></td>
+<td>Valid language code</td>
+<td>Language code for widget UI (en, es, fr, ar, hi, it, pt, sw, uk)</td>
+<td><code>"es"</code> for Spanish</td>
+</tr>
+<tr>
+<td><code>translations-url</code></td>
+<td><code>string</code></td>
+<td>Optional</td>
+<td><code>undefined</code></td>
+<td>Valid URL</td>
+<td>URL to custom JSON translations file for widget strings</td>
+<td><code>"https://yoursite.com/translations.json"</code></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 11, 2026 12:51:50 UTC">February 11, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+  
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Open Chat Studio Widget">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Open Chat Studio Widget
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../styling/" class="md-footer__link md-footer__link--next" aria-label="Next: CSS Styling">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                CSS Styling
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 Dimagi
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+  <!-- styling in assets/extra.css -->
+  <!-- see also assets/javascript/widget.js for welcome messages and starter questions -->
+  <open-chat-studio-widget
+    visible="false"
+    chatbot-id="cdec8c04-ff39-4175-bffb-f7d872e2eb3a"
+    embed-key="wZ2R5aizF5fi6MosxaPdjuovWK6B0Oj1"
+    button-text="Ask me!"
+    header-text="Docs Bot"
+    allow-full-screen="true"></open-chat-studio-widget>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["header.autohide", "navigation.expand", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.prune", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.tracking", "navigation.top", "search.highlight", "search.share", "search.suggest", "toc.follow", "content.action.edit", "content.action.view", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="https://unpkg.com/open-chat-studio-widget@0.6.0/dist/open-chat-studio-widget/open-chat-studio-widget.esm.js" type="module" async></script>
+      
+        <script src="../../assets/javascript/widget.js"></script>
+      
+    
+  </body>
+</html>

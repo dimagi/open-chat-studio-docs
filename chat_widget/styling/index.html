@@ -1,0 +1,1758 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://docs.openchatstudio.com/chat_widget/styling/">
+      
+      
+        <link rel="prev" href="../reference/">
+      
+      
+        <link rel="next" href="../changelog/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>CSS Styling - Open Chat Studio Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#css-styling" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Open Chat Studio Documentation" class="md-header__button md-logo" aria-label="Open Chat Studio Documentation" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Open Chat Studio Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CSS Styling
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dimagi/open-chat-studio-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../how-to/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  How-to Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../concepts/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Chat Widget
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../changelog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Open Chat Studio Documentation" class="md-nav__button md-logo" aria-label="Open Chat Studio Documentation" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    Open Chat Studio Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dimagi/open-chat-studio-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../how-to/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    How-to Guides
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../concepts/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Concepts
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Chat Widget
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chat Widget
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reference Docs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    CSS Styling
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    CSS Styling
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#launch-button" class="md-nav__link">
+    <span class="md-ellipsis">
+      Launch button
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chat-window" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chat Window
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#header" class="md-nav__link">
+    <span class="md-ellipsis">
+      Header
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Messages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#starter-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      Starter question
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#confirmation-dialog" class="md-nav__link">
+    <span class="md-ellipsis">
+      Confirmation dialog
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-bar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input bar
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-attachments" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Attachments
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#send-button" class="md-nav__link">
+    <span class="md-ellipsis">
+      Send button
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loading-indicators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loading indicators
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#markdown-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Markdown code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-message" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error message
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#z-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      Z-Index
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Changelog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Changelog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#launch-button" class="md-nav__link">
+    <span class="md-ellipsis">
+      Launch button
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chat-window" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chat Window
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#header" class="md-nav__link">
+    <span class="md-ellipsis">
+      Header
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Messages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#starter-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      Starter question
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#confirmation-dialog" class="md-nav__link">
+    <span class="md-ellipsis">
+      Confirmation dialog
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-bar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input bar
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-attachments" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Attachments
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#send-button" class="md-nav__link">
+    <span class="md-ellipsis">
+      Send button
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loading-indicators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loading indicators
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#markdown-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Markdown code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-message" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error message
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#z-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      Z-Index
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/dimagi/open-chat-studio-docs/edit/main/docs/chat_widget/styling.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/dimagi/open-chat-studio-docs/raw/main/docs/chat_widget/styling.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+<h1 id="css-styling"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0v20.16A3.84 3.84 0 0 0 3.84 24h16.32A3.84 3.84 0 0 0 24 20.16V3.84A3.84 3.84 0 0 0 20.16 0Zm14.256 13.08c1.56 0 2.28 1.08 2.304 2.64h-1.608c.024-.288-.048-.6-.144-.84-.096-.192-.288-.264-.552-.264-.456 0-.696.264-.696.84-.024.576.288.888.768 1.08.72.288 1.608.744 1.92 1.296q.432.648.432 1.656c0 1.608-.912 2.592-2.496 2.592-1.656 0-2.4-1.032-2.424-2.688h1.68c0 .792.264 1.176.792 1.176.264 0 .456-.072.552-.24.192-.312.24-1.176-.048-1.512-.312-.408-.912-.6-1.32-.816q-.828-.396-1.224-.936c-.24-.36-.36-.888-.36-1.536 0-1.44.936-2.472 2.424-2.448m5.4 0c1.584 0 2.304 1.08 2.328 2.64h-1.608c0-.288-.048-.6-.168-.84-.096-.192-.264-.264-.528-.264-.48 0-.72.264-.72.84s.288.888.792 1.08c.696.288 1.608.744 1.92 1.296.264.432.408.984.408 1.656.024 1.608-.888 2.592-2.472 2.592-1.68 0-2.424-1.056-2.448-2.688h1.68c0 .744.264 1.176.792 1.176.264 0 .456-.072.552-.24.216-.312.264-1.176-.048-1.512-.288-.408-.888-.6-1.32-.816-.552-.264-.96-.576-1.2-.936s-.36-.888-.36-1.536c-.024-1.44.912-2.472 2.4-2.448m-11.031.018c.711-.006 1.419.198 1.839.63.432.432.672 1.128.648 1.992H9.336c.024-.456-.096-.792-.432-.96-.312-.144-.768-.048-.888.24-.12.264-.192.576-.168.864v3.504c0 .744.264 1.128.768 1.128a.65.65 0 0 0 .552-.264c.168-.24.192-.552.168-.84h1.776c.096 1.632-.984 2.712-2.568 2.688-1.536 0-2.496-.864-2.472-2.472v-4.032c0-.816.24-1.44.696-1.848.432-.408 1.146-.624 1.857-.63"/></svg></span> CSS Styling<a class="headerlink" href="#css-styling" title="Permanent link">&para;</a></h1>
+<p>Customization of the widget appearance can be done using CSS variables as follows:</p>
+<div class="language-css highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">open-chat-studio-widget</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nv">--button-background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#d1d5db</span><span class="p">;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>The following tables contain the full list of CSS variables that are available.</p>
+<h2 id="launch-button">Launch button<a class="headerlink" href="#launch-button" title="Permanent link">&para;</a></h2>
+<p>Customize the button position using CSS variables or a CSS class attached to the widget element:</p>
+<div class="language-css highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">open-chat-studio-widget</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">fixed</span><span class="p">;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="k">right</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="k">bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Use the following CSS variables to style the button appearance.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--button-background-color</code></td>
+<td>Button background color <span style="font: monospace"><span style="background-color: #ffffff; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#ffffff)</span></td>
+</tr>
+<tr>
+<td><code>--button-background-color-hover</code></td>
+<td>Button background color on hover <span style="font: monospace"><span style="background-color: #f3f4f6; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#f3f4f6)</span></td>
+</tr>
+<tr>
+<td><code>--button-border-color</code></td>
+<td>Button border color <span style="font: monospace"><span style="background-color: #6b7280; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#6b7280)</span></td>
+</tr>
+<tr>
+<td><code>--button-border-color-hover</code></td>
+<td>Button border color on hover <span style="font: monospace"><span style="background-color: #374151; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#374151)</span></td>
+</tr>
+<tr>
+<td><code>--button-font-size</code></td>
+<td>Button text font size (0.875em)</td>
+</tr>
+<tr>
+<td><code>--button-icon-size</code></td>
+<td>Button icon size (1.5em)</td>
+</tr>
+<tr>
+<td><code>--button-text-color</code></td>
+<td>Button text color <span style="font: monospace"><span style="background-color: #111827; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#111827)</span></td>
+</tr>
+<tr>
+<td><code>--button-text-color-hover</code></td>
+<td>Button text color on hover <span style="font: monospace"><span style="background-color: #1d4ed8; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#1d4ed8)</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="chat-window">Chat Window<a class="headerlink" href="#chat-window" title="Permanent link">&para;</a></h2>
+<div class="admonition tip relative sizes">
+<p class="admonition-title">Tip</p>
+<p>All font sizes and some margins / padding are relative to the widget element's font size which can be set using the <code>--chat-window-font-size</code> and <code>--button-font-size</code> variables.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--chat-window-width</code></td>
+<td>Chat window height in pixels or percent (25%)</td>
+</tr>
+<tr>
+<td><code>--chat-window-height</code></td>
+<td>Chat window width in pixels or percent (60%)</td>
+</tr>
+<tr>
+<td><code>--chat-window-fullscreen-width</code></td>
+<td>Chat window fullscreen width in pixels or percent (80%)</td>
+</tr>
+<tr>
+<td><code>--chat-window-bg-color</code></td>
+<td>Chat window background color <span style="font: monospace"><span style="background-color: #ffffff; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#ffffff)</span></td>
+</tr>
+<tr>
+<td><code>--chat-window-border-color</code></td>
+<td>Chat window border color <span style="font: monospace"><span style="background-color: #d1d5db; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#d1d5db)</span></td>
+</tr>
+<tr>
+<td><code>--chat-window-font-size</code></td>
+<td>Default font size for text in the chat window (0.875em)</td>
+</tr>
+<tr>
+<td><code>--chat-window-font-size-sm</code></td>
+<td>Font size for small text in the chat window (0.75em)</td>
+</tr>
+<tr>
+<td><code>--chat-window-shadow-color</code></td>
+<td>Chat window shadow color <span style="font: monospace"><span style="background-color: rgba(0, 0, 0, 0.1); display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (rgba(0, 0, 0, 0.1))</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="header">Header<a class="headerlink" href="#header" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--header-bg-color</code></td>
+<td>Header background color (transparent)</td>
+</tr>
+<tr>
+<td><code>--header-bg-hover-color</code></td>
+<td>Header background color on hover <span style="font: monospace"><span style="background-color: #f9fafb; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#f9fafb)</span></td>
+</tr>
+<tr>
+<td><code>--header-border-color</code></td>
+<td>Header border color <span style="font: monospace"><span style="background-color: #f3f4f6; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#f3f4f6)</span></td>
+</tr>
+<tr>
+<td><code>--header-button-bg-hover-color</code></td>
+<td>Header button background on hover <span style="font: monospace"><span style="background-color: #f3f4f6; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#f3f4f6)</span></td>
+</tr>
+<tr>
+<td><code>--header-button-text-color</code></td>
+<td>Header button text color <span style="font: monospace"><span style="background-color: #6b7280; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#6b7280)</span></td>
+</tr>
+<tr>
+<td><code>--header-button-icon-size</code></td>
+<td>Icon size for buttons in the header (1.5em)</td>
+</tr>
+<tr>
+<td><code>--header-font-size</code></td>
+<td>Header font size (1em)</td>
+</tr>
+<tr>
+<td><code>--header-text-color</code></td>
+<td>Color for the text in the header <span style="font: monospace"><span style="background-color: #525762; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#525762)</span></td>
+</tr>
+<tr>
+<td><code>--header-text-font-size</code></td>
+<td>Font size for the text in the header (1em)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="messages">Messages<a class="headerlink" href="#messages" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--message-user-bg-color</code></td>
+<td>User message background color <span style="font: monospace"><span style="background-color: #e4edfb; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#e4edfb)</span></td>
+</tr>
+<tr>
+<td><code>--message-user-text-color</code></td>
+<td>User message text color <span style="font: monospace"><span style="background-color: #1f2937; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#1f2937)</span></td>
+</tr>
+<tr>
+<td><code>--message-user-link-color</code></td>
+<td>User message link color <span style="font: monospace"><span style="background-color: #155dfc; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#155dfc)</span></td>
+</tr>
+<tr>
+<td><code>--message-assistant-bg-color</code></td>
+<td>Assistant message background color <span style="font: monospace"><span style="background-color: #eae7e8; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#eae7e8)</span></td>
+</tr>
+<tr>
+<td><code>--message-assistant-text-color</code></td>
+<td>Assistant message text color (--message-user-text-color)</td>
+</tr>
+<tr>
+<td><code>--message-assistant-link-color</code></td>
+<td>Assistant message text color (--message-user-link-color)</td>
+</tr>
+<tr>
+<td><code>--message-system-bg-color</code></td>
+<td>System message background color <span style="font: monospace"><span style="background-color: #fbe4f8; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#fbe4f8)</span></td>
+</tr>
+<tr>
+<td><code>--message-system-text-color</code></td>
+<td>System message text color (--message-user-text-color)</td>
+</tr>
+<tr>
+<td><code>--message-system-link-color</code></td>
+<td>System message text color (--message-user-link-color)</td>
+</tr>
+<tr>
+<td><code>--message-timestamp-assistant-color</code></td>
+<td>Assistant message timestamp color <span style="font: monospace"><span style="background-color: rgba(75, 85, 99, 0.7); display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (rgba(75, 85, 99, 0.7))</span></td>
+</tr>
+<tr>
+<td><code>--message-timestamp-color</code></td>
+<td>User message timestamp color <span style="font: monospace"><span style="background-color: rgba(255, 255, 255, 0.7); display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (rgba(255, 255, 255, 0.7))</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="starter-question">Starter question<a class="headerlink" href="#starter-question" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--starter-question-bg-color</code></td>
+<td>Starter question background color (transparent)</td>
+</tr>
+<tr>
+<td><code>--starter-question-bg-hover-color</code></td>
+<td>Starter question background on hover <span style="font: monospace"><span style="background-color: #eff6ff; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#eff6ff)</span></td>
+</tr>
+<tr>
+<td><code>--starter-question-border-color</code></td>
+<td>Starter question border color <span style="font: monospace"><span style="background-color: #3b82f6; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#3b82f6)</span></td>
+</tr>
+<tr>
+<td><code>--starter-question-border-hover-color</code></td>
+<td>Starter question border on hover <span style="font: monospace"><span style="background-color: #2563eb; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#2563eb)</span></td>
+</tr>
+<tr>
+<td><code>--starter-question-text-color</code></td>
+<td>Starter question text color <span style="font: monospace"><span style="background-color: #3b82f6; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#3b82f6)</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="confirmation-dialog">Confirmation dialog<a class="headerlink" href="#confirmation-dialog" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--confirmation-overlay-bg-color</code></td>
+<td>Confirmation dialog overlay background color <span style="font: monospace"><span style="background-color: rgba(0, 0, 0, 0.5); display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (rgba(0, 0, 0, 0.5))</span></td>
+</tr>
+<tr>
+<td><code>--confirmation-dialog-bg-color</code></td>
+<td>Confirmation dialog background color (uses --chat-window-bg-color)</td>
+</tr>
+<tr>
+<td><code>--confirmation-dialog-border-color</code></td>
+<td>Confirmation dialog border color (uses --chat-window-border-color)</td>
+</tr>
+<tr>
+<td><code>--confirmation-dialog-shadow-color</code></td>
+<td>Confirmation dialog shadow color (uses --chat-window-shadow-color)</td>
+</tr>
+<tr>
+<td><code>--confirmation-title-color</code></td>
+<td>Confirmation dialog title text color <span style="font: monospace"><span style="background-color: #111827; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#111827)</span></td>
+</tr>
+<tr>
+<td><code>--confirmation-title-font-size</code></td>
+<td>Confirmation dialog title font size (1.125em)</td>
+</tr>
+<tr>
+<td><code>--confirmation-message-color</code></td>
+<td>Confirmation dialog message text color (uses --loading-text-color)</td>
+</tr>
+<tr>
+<td><code>--confirmation-message-font-size</code></td>
+<td>Confirmation dialog message font size (1em)</td>
+</tr>
+<tr>
+<td><code>--confirmation-button-cancel-bg-color</code></td>
+<td>Cancel button background color (uses --button-background-color-hover)</td>
+</tr>
+<tr>
+<td><code>--confirmation-button-cancel-bg-hover-color</code></td>
+<td>Cancel button background on hover <span style="font: monospace"><span style="background-color: #e5e7eb; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#e5e7eb)</span></td>
+</tr>
+<tr>
+<td><code>--confirmation-button-cancel-text-color</code></td>
+<td>Cancel button text color (uses --header-button-text-color)</td>
+</tr>
+<tr>
+<td><code>--confirmation-button-confirm-bg-color</code></td>
+<td>Confirm button background color (uses --error-text-color)</td>
+</tr>
+<tr>
+<td><code>--confirmation-button-confirm-bg-hover-color</code></td>
+<td>Confirm button background on hover (uses --error-text-color)</td>
+</tr>
+<tr>
+<td><code>--confirmation-button-confirm-text-color</code></td>
+<td>Confirm button text color (uses --send-button-text-color)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="input-bar">Input bar<a class="headerlink" href="#input-bar" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--input-bg-color</code></td>
+<td>Input area background color (transparent)</td>
+</tr>
+<tr>
+<td><code>--input-border-color</code></td>
+<td>Input field border color <span style="font: monospace"><span style="background-color: #d1d5db; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#d1d5db)</span></td>
+</tr>
+<tr>
+<td><code>--input-outline-focus-color</code></td>
+<td>Input field focus ring color <span style="font: monospace"><span style="background-color: #3b82f6; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#3b82f6)</span></td>
+</tr>
+<tr>
+<td><code>--input-placeholder-color</code></td>
+<td>Input placeholder text color <span style="font: monospace"><span style="background-color: #6b7280; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#6b7280)</span></td>
+</tr>
+<tr>
+<td><code>--input-text-color</code></td>
+<td>Input text color <span style="font: monospace"><span style="background-color: #111827; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#111827)</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="file-attachments">File Attachments<a class="headerlink" href="#file-attachments" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--file-attachment-button-bg-color</code></td>
+<td>Attach file button background color (transparent)</td>
+</tr>
+<tr>
+<td><code>--file-attachment-button-bg-hover-color</code></td>
+<td>Attach file button background hover color (--header-button-bg-hover-color)</td>
+</tr>
+<tr>
+<td><code>--file-attachment-button-text-color</code></td>
+<td>Attach file button text color (--header-button-text-color)</td>
+</tr>
+<tr>
+<td><code>--file-attachment-button-text-disabled-color</code></td>
+<td>Attach file button disabled text color (--send-button-text-disabled-color)</td>
+</tr>
+<tr>
+<td><code>--selected-file-bg-color</code></td>
+<td>Selected file item background color (--message-system-bg-color)</td>
+</tr>
+<tr>
+<td><code>--selected-file-font-size</code></td>
+<td>Selected file item font size (--chat-window-font-size-sm)</td>
+</tr>
+<tr>
+<td><code>--selected-file-icon-size</code></td>
+<td>Selected file item icon size (1.25em)</td>
+</tr>
+<tr>
+<td><code>--selected-file-name-color</code></td>
+<td>Selected file name color (--message-assistant-text-color)</td>
+</tr>
+<tr>
+<td><code>--selected-file-remove-icon-color</code></td>
+<td>Selected file remove icon color (--error-text-color)</td>
+</tr>
+<tr>
+<td><code>--selected-file-remove-icon-hover-color</code></td>
+<td>Selected file remove icon hover <span style="font: monospace"><span style="background-color: #dc2626; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#dc2626)</span></td>
+</tr>
+<tr>
+<td><code>--selected-file-size-color</code></td>
+<td>Selected file size display color (--input-placeholder-color)</td>
+</tr>
+<tr>
+<td><code>--selected-files-bg-color</code></td>
+<td>Selected files container background color (--chat-window-bg-color)</td>
+</tr>
+<tr>
+<td><code>--selected-files-border-color</code></td>
+<td>Selected files container border color (--header-border-color)</td>
+</tr>
+<tr>
+<td><code>--message-attachment-icon-size</code></td>
+<td>Message attachment icon size (1em)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="send-button">Send button<a class="headerlink" href="#send-button" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--send-button-bg-color</code></td>
+<td>Send button background color <span style="font: monospace"><span style="background-color: #3b82f6; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#3b82f6)</span></td>
+</tr>
+<tr>
+<td><code>--send-button-bg-disabled-color</code></td>
+<td>Send button background when disabled <span style="font: monospace"><span style="background-color: #d1d5db; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#d1d5db)</span></td>
+</tr>
+<tr>
+<td><code>--send-button-bg-hover-color</code></td>
+<td>Send button background on hover <span style="font: monospace"><span style="background-color: #2563eb; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#2563eb)</span></td>
+</tr>
+<tr>
+<td><code>--send-button-text-color</code></td>
+<td>Send button text color <span style="font: monospace"><span style="background-color: #ffffff; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#ffffff)</span></td>
+</tr>
+<tr>
+<td><code>--send-button-text-disabled-color</code></td>
+<td>Send button text when disabled <span style="font: monospace"><span style="background-color: #6b7280; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#6b7280)</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="loading-indicators">Loading indicators<a class="headerlink" href="#loading-indicators" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--loading-spinner-fill-color</code></td>
+<td>Loading spinner fill color <span style="font: monospace"><span style="background-color: #3b82f6; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#3b82f6)</span></td>
+</tr>
+<tr>
+<td><code>--loading-spinner-size</code></td>
+<td>Loading spinner size (1.25em)</td>
+</tr>
+<tr>
+<td><code>--loading-spinner-track-color</code></td>
+<td>Loading spinner track color <span style="font: monospace"><span style="background-color: #e5e7eb; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#e5e7eb)</span></td>
+</tr>
+<tr>
+<td><code>--loading-text-color</code></td>
+<td>Loading text color <span style="font: monospace"><span style="background-color: #6b7280; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#6b7280)</span></td>
+</tr>
+<tr>
+<td><code>--typing-progress-bg-color</code></td>
+<td>Typing progress bar background color <span style="font: monospace"><span style="background-color: #ade3ff; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#ade3ff)</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="markdown-code">Markdown code<a class="headerlink" href="#markdown-code" title="Permanent link">&para;</a></h2>
+<p>By default, the Markdown code colours are relative to the respective message text and background colours, but they can be overridden. </p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--code-bg-assistant-color</code></td>
+<td>Code background in assistant messages <span style="background-color: #f2f3f5; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span><br/>(--message-assistant-bg-color + 50% white)</td>
+</tr>
+<tr>
+<td><code>--code-border-assistant-color</code></td>
+<td>Code border in assistant messages <span style="background-color: #ced0d4; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span><br/>(--message-assistant-bg-color + 10% black)</td>
+</tr>
+<tr>
+<td><code>--code-text-assistant-color</code></td>
+<td>Code text color in assistant messages <span style="background-color: #1f2937; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span><br/>(--message-assistant-text-color)</td>
+</tr>
+<tr>
+<td><code>--code-bg-user-color</code></td>
+<td>Code background in user messages <span style="background-color: #629bf8; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span><br/>(--message-user-bg-color + 20% white)</td>
+</tr>
+<tr>
+<td><code>--code-border-user-color</code></td>
+<td>Code border in user messages <span style="background-color: #3575dd; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span><br/>(--message-user-bg-color + 20% black)</td>
+</tr>
+<tr>
+<td><code>--code-text-user-color</code></td>
+<td>Code text color in user messages <span style="background-color: #ffffff; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span><br/>(--message-user-text-color)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="error-message">Error message<a class="headerlink" href="#error-message" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--error-text-color</code></td>
+<td>Error text color <span style="font: monospace"><span style="background-color: #ef4444; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#ef4444)</span></td>
+</tr>
+<tr>
+<td><code>--success-text-color</code></td>
+<td>Success text color <span style="font: monospace"><span style="background-color: #10b981; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span> (#10b981)</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="z-index">Z-Index<a class="headerlink" href="#z-index" title="Permanent link">&para;</a></h2>
+<p>If the chatbot appears below other elements on the page you can increase the <code>z-index</code> of the chatbot by setting the <code>--chat-z-index</code> CSS variable. The default value is <code>50</code>.</p>
+<div class="language-css highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">open-chat-studio-widget</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nv">--chat-z-index</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>In some cases, it may also be necessary to reduce the z-index of other elements on the page.</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 11, 2026 12:51:50 UTC">February 11, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+  
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../reference/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Reference Docs">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Reference Docs
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../changelog/" class="md-footer__link md-footer__link--next" aria-label="Next: Changelog">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Changelog
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 Dimagi
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+  <!-- styling in assets/extra.css -->
+  <!-- see also assets/javascript/widget.js for welcome messages and starter questions -->
+  <open-chat-studio-widget
+    visible="false"
+    chatbot-id="cdec8c04-ff39-4175-bffb-f7d872e2eb3a"
+    embed-key="wZ2R5aizF5fi6MosxaPdjuovWK6B0Oj1"
+    button-text="Ask me!"
+    header-text="Docs Bot"
+    allow-full-screen="true"></open-chat-studio-widget>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["header.autohide", "navigation.expand", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.prune", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.tracking", "navigation.top", "search.highlight", "search.share", "search.suggest", "toc.follow", "content.action.edit", "content.action.view", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="https://unpkg.com/open-chat-studio-widget@0.6.0/dist/open-chat-studio-widget/open-chat-studio-widget.esm.js" type="module" async></script>
+      
+        <script src="../../assets/javascript/widget.js"></script>
+      
+    
+  </body>
+</html>
