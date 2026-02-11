@@ -159,3 +159,34 @@ def wait_for_next_input():
         # do something with a or b
     ```
     """
+
+
+def attach_file_from_response(response_bytes: bytes, filename: str) -> None:
+    """Attaches a file downloaded from an HTTP response to the chat session.
+
+    This function is used in combination with the HTTP client to download files from external APIs
+    and attach them to the assistant's response message. The file will be available for the user to download.
+
+    Args:
+        response_bytes: The raw bytes of the file, typically from the `response_bytes` field of an HTTP response
+        filename: The name to give the attached file, including the file extension
+
+    Example:
+        ```python
+        def main(input, **kwargs):
+            # Download a file from an API
+            response = http.get("https://api.example.com/report.pdf", auth="my-api")
+
+            if response["is_success"]:
+                # Attach the file to the chat
+                attach_file_from_response(
+                    response_bytes=response["response_bytes"],
+                    filename="report.pdf"
+                )
+                return "I've attached the report for you."
+
+            return "Failed to download the report."
+        ```
+
+    See also: [HTTP Client - Downloading and Attaching Files](http_client.md#downloading-and-attaching-files)
+    """
