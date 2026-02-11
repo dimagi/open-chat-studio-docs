@@ -34,7 +34,7 @@ the [How-to guides](../how-to/index.md).
 : Evaluations is a testing system for measuring chatbot performance against different metrics.
 
 [Events](events.md)
-: Events are a way to trigger actions in the bot based on specific conditions.
+: Events are a way to trigger actions in the bot based on specific conditions, including user interactions and system notification events for monitoring operational failures.
 
 [Experiment](experiment/index.md)
 : The current name used in Open Chat Studio to refer to a chatbot. An experiment links all the configuration and data for a chatbot, including user sessions, data, actions, etc.
