@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Feb 11, 2026
+* **NEW** Python nodes can now attach files fetched via HTTP to AI response messages using the new `attach_file_from_response()` helper and `response_bytes` field on HTTP responses.
+
 ## Feb 10, 2026
 * **CHANGE** Authentication provider names in Python node HTTP requests are now case-insensitive, allowing `auth="My-Provider"` and `auth="my-provider"` to match the same provider.
 

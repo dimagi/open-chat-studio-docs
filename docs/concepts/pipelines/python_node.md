@@ -53,6 +53,7 @@ The Python node provides a set of utility functions that can be used to interact
 ### ::: python_node.require_node_outputs
 ### ::: python_node.wait_for_next_input
 ### ::: python_node.abort_with_message
+### ::: python_node.attach_file_from_response
 
 ## HTTP Client
 
