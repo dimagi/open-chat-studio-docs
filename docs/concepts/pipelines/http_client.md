@@ -45,6 +45,7 @@ All HTTP methods return a dictionary containing the response data:
     "headers": {...},
     "text": "body as text",  # this is always present
     "json": {"body": "as json"},  # this is `None` if the response was not JSON
+    "response_bytes": b"raw bytes",  # raw response content as bytes
     "is_success": 200 <= status_code < 300,
     "is_error": status_code >= 400,
 }
@@ -57,6 +58,25 @@ response = http.get("https://api.example.com/data")
 status = response["status_code"]
 data = response["json"]
 text_content = response["text"]
+raw_bytes = response["response_bytes"]
+```
+
+### Binary Content Handling
+
+The `response_bytes` field contains the raw binary data from the HTTP response. This is particularly useful when working with binary content types like images, PDFs, or other non-text files.
+
+For binary content types (images, PDFs, etc.), text decoding is skipped in the `text` field to avoid doubling memory usage. The `json` field is parsed directly from the bytes when applicable.
+
+```python
+# Downloading a binary file
+response = http.get("https://example.com/document.pdf")
+pdf_bytes = response["response_bytes"]
+
+# Check if the response is binary content
+content_type = response["headers"].get("Content-Type", "")
+if "application/pdf" in content_type:
+    # Use response_bytes for binary data
+    file_data = response["response_bytes"]
 ```
 
 ## Security Features
@@ -359,6 +379,60 @@ def main(input, **kwargs) -> str:
     else:
         return f"Upload failed: {response['text']}"
 ```
+
+## Downloading and Attaching Files
+
+The HTTP client can be used in combination with the `attach_file_from_response()` helper function to download files from external APIs and attach them to the chat session. This is useful for generating reports, downloading documents, or retrieving images to share with the user.
+
+### Example 9: Downloading and Attaching a File
+
+```python
+def main(input, **kwargs) -> str:
+    """Download a PDF report from an external API and attach it to the chat"""
+    # Fetch the file from the API
+    response = http.get(
+        "https://api.example.com/reports/monthly.pdf",
+        auth="reports-api",
+        timeout=30
+    )
+
+    if not response["is_success"]:
+        return f"Failed to download report: {response['status_code']}"
+
+    # Attach the file to the chat session
+    attach_file_from_response(
+        response_bytes=response["response_bytes"],
+        filename="monthly_report.pdf"
+    )
+
+    return "I've attached the monthly report for you to review."
+```
+
+### Example 10: Downloading Multiple Files Based on User Input
+
+```python
+def main(input, **kwargs) -> str:
+    """Download and attach multiple charts based on user request"""
+    # Parse which charts the user wants
+    chart_types = ["sales", "revenue", "customers"]
+
+    for chart_type in chart_types:
+        response = http.get(
+            f"https://api.example.com/charts/{chart_type}.png",
+            auth="charts-api",
+            timeout=20
+        )
+
+        if response["is_success"]:
+            attach_file_from_response(
+                response_bytes=response["response_bytes"],
+                filename=f"{chart_type}_chart.png"
+            )
+
+    return f"I've attached {len(chart_types)} charts for your review."
+```
+
+See the [Python Node utility functions](python_node.md#python_nodeattach_file_from_response) documentation for more details on the `attach_file_from_response()` function.
 
 ## Common Status Codes
 
