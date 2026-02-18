@@ -141,7 +141,7 @@ Use the following CSS variables to style the button appearance.
 | `--file-attachment-button-bg-hover-color`      | Attach file button background hover color (--header-button-bg-hover-color) |
 | `--file-attachment-button-text-color`          | Attach file button text color (--header-button-text-color)                 |
 | `--file-attachment-button-text-disabled-color` | Attach file button disabled text color (--send-button-text-disabled-color) |
-| `--selected-file-bg-color`                     | Selected file item background color (--message-system-bg-color)            |
+| `--selected-file-bg-color`                     | Selected file item background color (--button-background-color-hover)      |
 | `--selected-file-font-size`                    | Selected file item font size (--chat-window-font-size-sm)                  |
 | `--selected-file-icon-size`                    | Selected file item icon size (1.25em)                                      |
 | `--selected-file-name-color`                   | Selected file name color (--message-assistant-text-color)                  |

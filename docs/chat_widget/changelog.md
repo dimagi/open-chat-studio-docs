@@ -26,6 +26,7 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 * Widget now persists its open/closed state across page navigations when `persistent-session` is enabled (the default)
 * Display dynamic progress messages in the typing indicator during task processing (e.g., "Searching documents...")
+* Change file attachment bar background color to neutral gray for improved visual clarity
 
 ### v0.6.0 (2026-01-27)
 
