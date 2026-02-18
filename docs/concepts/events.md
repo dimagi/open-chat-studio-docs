@@ -2,6 +2,9 @@
 
 Open Chat Studio provides an event system that allows you to define actions triggered by specific events within a chat session. This functionality enables you to automate responses, manage session states, and enhance user interactions effectively.
 
+!!! tip "Managing Notifications"
+    When events are triggered, they can generate notifications in the Open Chat Studio interface. You can view notification history, mute specific notifications, or enable Do Not Disturb mode. Learn more in the [Managing Notifications](../how-to/manage_notifications.md) guide.
+
 ## Overview
 
 Events in Open Chat Studio are categorized into two types:
