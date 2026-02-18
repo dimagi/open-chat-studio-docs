@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Feb 18, 2026
+* **NEW** Notifications system now maintains event history, allowing users to view past notifications and events. Users can also mute notifications per-event or enable "Do Not Disturb" mode to mute all notifications.
+
 ## Feb 11, 2026
 * **NEW** Python nodes can now attach files fetched via HTTP to AI response messages using the new `attach_file_from_response()` helper and `response_bytes` field on HTTP responses.
 
