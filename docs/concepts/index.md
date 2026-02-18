@@ -45,9 +45,6 @@ the [How-to guides](../how-to/index.md).
 [Messaging Provider](team/messaging_providers.md)
 : Messaging providers hold the configuration required to send messages to users on a specific channel.
 
-[Notifications](../how-to/manage_notifications.md)
-: The notification system alerts you when events occur in your chatbots. You can view notification history, mute individual notifications, and enable Do Not Disturb mode to control when you receive alerts.
-
 [Participant Data](participant_data.md)
 : Data that persists across sessions and is tied to the same `User, Channel, Chatbot` scope. It helps retain long-term user preferences and contextual information beyond a single session.
 
