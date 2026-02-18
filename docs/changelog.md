@@ -4,11 +4,8 @@ hide:
 ---
 
 # Changelog
-## Feb 18, 2026
-* **NEW** Notifications system now maintains event history, allowing users to view past notifications and events. Users can also mute notifications per-event or enable "Do Not Disturb" mode to mute all notifications.
-
 ## Feb 11, 2026
-* **NEW** Python nodes can now attach files fetched via HTTP to AI response messages using the new `attach_file_from_response()` helper and `response_bytes` field on HTTP responses.
+* **NEW** Added comprehensive system notification events for monitoring failures across custom actions (health checks, API failures), chat operations (pipeline execution, LLM errors, tool failures), media handling (audio synthesis/transcription), and message delivery (platform-specific failures).
 
 ## Feb 10, 2026
 * **CHANGE** Authentication provider names in Python node HTTP requests are now case-insensitive, allowing `auth="My-Provider"` and `auth="my-provider"` to match the same provider.
