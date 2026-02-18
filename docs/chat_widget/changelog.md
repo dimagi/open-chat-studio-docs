@@ -38,6 +38,7 @@ Check your current HTML implementation and compare it with the [latest propertie
     * Includes .txt, .csv, and all other text/* types
 
 * Widget now persists its open/closed state across page navigations when `persistent-session` is enabled (the default)
+* Display dynamic progress messages in the typing indicator during task processing (e.g., "Searching documents...")
 
 ### v0.5.2 (2025-11-03)
 
