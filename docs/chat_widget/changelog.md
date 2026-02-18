@@ -22,6 +22,11 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 ## Changelog
 
+### v0.7.0
+
+* Widget now persists its open/closed state across page navigations when `persistent-session` is enabled (the default)
+* Display dynamic progress messages in the typing indicator during task processing (e.g., "Searching documents...")
+
 ### v0.6.0 (2026-01-27)
 
 * **NEW: Page Context Support** - Pass page-specific context to the bot with each message
@@ -36,8 +41,6 @@ Check your current HTML implementation and compare it with the [latest propertie
     * Added support for all text file types via `text/*` MIME type
     * Users can now upload any text-based files, not just predefined formats
     * Includes .txt, .csv, and all other text/* types
-
-* Widget now persists its open/closed state across page navigations when `persistent-session` is enabled (the default)
 
 ### v0.5.2 (2025-11-03)
 
