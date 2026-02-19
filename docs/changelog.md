@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Feb 19, 2026
+* **NEW** Document source sync logs are now accessible directly from the Collections page via a "View Sync Logs" button, allowing users to inspect sync history, file counts (added/updated/removed), duration, and error details without leaving the page.
+
 ## Feb 18, 2026
 * **NEW** Notifications system now maintains event history, allowing users to view past notifications and events. Users can also mute notifications per-event or enable "Do Not Disturb" mode to mute all notifications.
 
