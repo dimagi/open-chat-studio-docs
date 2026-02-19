@@ -121,3 +121,16 @@ Use a [Bearer Token](../team/authentication_providers.md#bearer-token) authentic
 | Branch         | Git branch to sync from                                              |
 | File Pattern   | File patterns to include. Prefix with '!' to exclude matching files. |
 | Path Filter    | Optional path prefix to filter files (e.g., docs/)                   |
+
+## Monitoring Sync Status
+
+Open Chat Studio tracks the history of every sync run for each document source. Use the sync logs to confirm that syncs are completing successfully and to diagnose problems when they are not.
+
+### Status indicator
+
+Each document source header displays a status indicator reflecting the outcome of the most recent sync:
+
+- **Error** – the last sync encountered a problem. The indicator is shown in red.
+- **Success** – the last sync completed without errors.
+- **In progress** – a sync is currently running. The indicator animates to show activity.
+
