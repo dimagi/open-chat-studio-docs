@@ -36,6 +36,7 @@ Find current model names at: https://platform.openai.com/docs/models (check the 
 
 #### Anthropic Models
 For Anthropic (Claude) models, use the names from the "Claude API" column in their documentation. Examples:
+- `claude-sonnet-4-6`
 - `claude-opus-4-6`
 - `claude-3-5-sonnet-20241022`
 - `claude-3-haiku-20240307`
