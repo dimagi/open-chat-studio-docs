@@ -75,3 +75,7 @@ There are two ways to automatically reset a session:
 - **API**: When using the [Trigger Bot Message](https://openchatstudio.com/api/docs/#tag/Channels/operation/trigger_bot_message) API, you can set `"start_new_session": true`, which will end the current session and start a new one before messaging the user.
 
 By structuring sessions in this way, Open Chat Studio ensures privacy-conscious, context-aware, and seamless interactions across different communication channels.
+
+## Filtering Sessions
+
+The Sessions table includes a filter panel that lets you narrow down the list of sessions by criteria such as date range, channel, or status. You can add filter rows manually or use the [natural language filter](../how-to/filter_sessions_and_messages.md) to describe what you want in plain English.
