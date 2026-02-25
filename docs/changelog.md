@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Feb 25, 2026
+* **NEW** Timeout events can now be configured to measure inactivity from the first human message instead of the last message, giving more control over session timeout behavior.
+
 ## Feb 20, 2026
 * **NEW** Added support for Claude Sonnet 4.6 model with adaptive thinking. Claude Sonnet 4.6 is now the default Anthropic model, replacing Claude Sonnet 4.5 as the default.
 

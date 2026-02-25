@@ -7,7 +7,7 @@ Open Chat Studio provides an event system that allows you to define actions trig
 Events in Open Chat Studio are categorized into two types:
 
 1. **Static Events**: Triggered by specific actions or occurrences within the chat session.
-2. **Timeout Events**: Triggered after a specified duration of inactivity following the last interaction.
+2. **Timeout Events**: Triggered after a specified duration of inactivity. By default, inactivity is measured from the last interaction, but you can configure a timeout to be measured from the first human message instead.
 
 Each event has one action associated with it that is executed when the event occurs.
 
