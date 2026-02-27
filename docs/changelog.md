@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Feb 27, 2026
+* **CHANGE** Tracing is now available to all users with the `can_view_traces` permission. The `flag_tracing` feature flag has been removed, so no feature flag is required to access the Traces section.
+
 ## Feb 26, 2026
 * **NEW** The trace detail page now includes a Langfuse span tree panel when Langfuse tracing is configured, showing the full observation tree with status indicators and latency badges alongside a detail view for each span's input/output.
 
