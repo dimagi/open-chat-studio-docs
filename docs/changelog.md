@@ -4,7 +4,11 @@ hide:
 ---
 
 # Changelog
+## Feb 26, 2026
+* **NEW** The trace detail page now includes a Langfuse span tree panel when Langfuse tracing is configured, showing the full observation tree with status indicators and latency badges alongside a detail view for each span's input/output.
+
 ## Feb 25, 2026
+* **NEW** Timeout events can now be configured to measure inactivity from the first human message instead of the last message, giving more control over session timeout behavior.
 * **NEW** Added natural language filter input to session and message tables. Users can type plain-English queries (e.g., "sessions from last week excluding WhatsApp") and click **✨ Generate** to automatically create filter rows. This feature is in beta and can be enabled by team admins from the team feature flags page.
 
 ## Feb 20, 2026
