@@ -99,7 +99,6 @@ nav:
       - how-to/add_a_knowledge_base.md
       - how-to/remote_api.md
       - how-to/global_search.md
-      - how-to/filter_sessions_and_messages.md
       - how-to/deploy_to_different_channels.md
       - how-to/configure_providers.md
       - how-to/api_access.md
