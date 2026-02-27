@@ -22,6 +22,12 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 ## Changelog
 
+### v0.7.0
+
+* Widget now persists its open/closed state across page navigations when `persistent-session` is enabled (the default)
+* Display dynamic progress messages in the typing indicator during task processing (e.g., "Searching documents...")
+* Change file attachment bar background color to neutral gray for improved visual clarity
+
 ### v0.6.0 (2026-01-27)
 
 * **NEW: Page Context Support** - Pass page-specific context to the bot with each message
@@ -31,7 +37,7 @@ Check your current HTML implementation and compare it with the [latest propertie
     * Context is automatically included with every message sent by the user
     * Useful for personalizing bot responses based on the current page state
 
-* **Enhanced File Upload Support** - Now accepts all text-based file types  
+* **Enhanced File Upload Support** - Now accepts all text-based file types
 
     * Added support for all text file types via `text/*` MIME type
     * Users can now upload any text-based files, not just predefined formats
