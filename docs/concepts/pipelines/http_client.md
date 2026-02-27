@@ -432,7 +432,7 @@ def main(input, **kwargs) -> str:
     return f"I've attached {len(chart_types)} charts for your review."
 ```
 
-See the [Python Node utility functions](python_node.md#python_nodeattach_file_from_response) documentation for more details on the `attach_file_from_response()` function.
+See the [Python Node utility functions](python_node.md#python_node.attach_file_from_response) documentation for more details on the `attach_file_from_response()` function.
 
 ## Common Status Codes
 
