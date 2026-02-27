@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Feb 27, 2026
+* **NEW** Tracing is now available to all users — no feature flag required. View and debug conversation traces directly from the session detail page. [Learn more](concepts/tracing.md)
+
 ## Feb 26, 2026
 * **NEW** The trace detail page now includes a Langfuse span tree panel when Langfuse tracing is configured, showing the full observation tree with status indicators and latency badges alongside a detail view for each span's input/output.
 

@@ -349,5 +349,5 @@ See the [HTTP Client documentation][http_client] for more details on available m
 [temp_state]: ../concepts/pipelines/python_node.md#temporary-state
 [attachments]: ../concepts/pipelines/python_node.md#attachments
 [code_node_supported_file_types]: ../concepts/pipelines/python_node.md#supported-file-types
-[http_client]: ../concepts/pipelines/http.md
+[http_client]: ../concepts/pipelines/http_client.md
 [auth_providers]: ../concepts/team/authentication_providers.md

@@ -73,6 +73,9 @@ markdown_extensions:
 plugins:
 - search
 - git-revision-date-localized
+- redirects:
+    redirect_maps:
+      'concepts/team/tracing_providers.md': 'concepts/tracing.md'
 - macros:
     render_by_default: false
 - mkdocstrings:
@@ -122,6 +125,7 @@ nav:
         - concepts/channels.md
         - concepts/events.md
         - concepts/tags.md
+        - concepts/tracing.md
         - concepts/tools/index.md
       - Collections:
         - concepts/collections/index.md
@@ -139,7 +143,6 @@ nav:
           - concepts/team/llm_providers.md
           - concepts/team/authentication_providers.md
           - concepts/team/messaging_providers.md
-          - concepts/team/tracing_providers.md
           - concepts/team/groups.md
       - Assistants:
           - concepts/assistants.md
