@@ -2,7 +2,7 @@
 
 LLM tracing captures a model's inputs, outputs, and decision-making process so bot developers can understand and debug their chatbot's behavior.
 
-Open Chat Studio provides **builtin tracing** for all users with the `can_view_traces` permission. You can optionally connect an external [Langfuse][langfuse] tracing provider to get additional span-level detail.
+Open Chat Studio provides **builtin tracing** for all users. You can optionally connect an external [Langfuse][langfuse] tracing provider to get additional span-level detail.
 
 ## Builtin Tracing
 
