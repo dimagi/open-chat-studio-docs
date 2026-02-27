@@ -1,6 +1,6 @@
 # Tracing
 
-LLM tracing captures a model's inputs, outputs, and decision-making process so bot developers can understand and debug their chatbot's behavior.
+Tracing captures a chatbot's inputs, outputs, and decision-making process so bot developers can understand and debug their chatbot's behavior.
 
 Open Chat Studio provides **builtin tracing** for all users. You can optionally connect an external [Langfuse][langfuse] tracing provider to get additional span-level detail.
 
@@ -44,7 +44,7 @@ When the panel loads, it automatically selects the first span that has an error 
 
 ## See also
 
-- [Configure a provider](../../how-to/configure_providers.md)
+- [Configure a provider](../how-to/configure_providers.md)
 
 
 [langfuse]: https://langfuse.com/docs

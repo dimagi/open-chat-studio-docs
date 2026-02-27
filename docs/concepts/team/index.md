@@ -19,7 +19,7 @@ There is a set of global configuration that can be set at the team level. This i
 - [Messaging Providers](messaging_providers.md)
 - [Authentication Providers](authentication_providers.md)
 - [Custom Actions](../custom_actions.md)
-- [Tracing providers](tracing_providers.md)
+- [Tracing providers](../tracing.md)
 - [User Management](groups.md)
 
 <!--- TODO: user management -->
