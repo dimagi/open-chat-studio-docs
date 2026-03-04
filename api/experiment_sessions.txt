@@ -1,0 +1,176 @@
+API: Dimagi Chatbots v1
+Description: Experiments with AI, GPT and LLMs
+
+TAG: Experiment Sessions
+
+ENDPOINTS:
+
+GET /api/sessions/
+  Summary: List Chatbot Sessions
+  Parameters:
+    - cursor (query, string (optional)): The pagination cursor value.
+    - experiment (query, string (optional)): Experiment ID to filter sessions by
+    - ordering (query, string (optional)): Which field to use when ordering the results.
+    - page_size (query, integer (optional)): Number of results to return per page.
+    - tags (query, string (optional)): A list of session tags (comma separated) to filter the results by
+    - versions (query, string (optional)): Experiment versions (comma separated) to filter sessions by
+  Responses:
+    200: 
+      Content: application/json
+      Schema: PaginatedExperimentSessionList
+  Security:
+    OAuth2
+      - Required scopes: sessions:read
+    apiKeyAuth
+    tokenAuth
+
+POST /api/sessions/
+  Summary: Create Chatbot Session
+  Request Body:
+    Content: application/json
+    Schema: ExperimentSessionCreate
+  Responses:
+    201: 
+      Content: application/json
+      Schema: ExperimentSession
+  Security:
+    OAuth2
+      - Required scopes: sessions:write
+    apiKeyAuth
+    tokenAuth
+
+GET /api/sessions/{id}/
+  Summary: Retrieve Chatbot Session
+  Description: 
+Retrieve the details of an session. This includes the messages exchanged during the session ordered
+by the creation date.
+
+  Parameters:
+    - id (path, string (required)): ID of the session
+  Responses:
+    200: 
+      Content: application/json
+      Schema: ExperimentSessionWithMessages
+  Security:
+    OAuth2
+      - Required scopes: sessions:read
+    apiKeyAuth
+    tokenAuth
+
+POST /api/sessions/{id}/end_experiment_session/
+  Summary: End Chatbot Session
+  Parameters:
+    - id (path, string (required)): ID of the session
+  Responses:
+    200: No response body
+  Security:
+    OAuth2
+      - Required scopes: sessions:write
+    apiKeyAuth
+    tokenAuth
+
+POST /api/sessions/{id}/tags/
+  Summary: Add Tags to Session
+  Description: Add tags to a session. Tags are automatically created if they don't exist.
+  Parameters:
+    - id (path, string (required)): ID of the session
+  Request Body:
+    Content: application/json
+    Schema: tags_request_serializer
+  Responses:
+    200: 
+      Content: application/json
+      Schema: tags_response_serializer
+  Security:
+    OAuth2
+      - Required scopes: sessions:write
+    apiKeyAuth
+    tokenAuth
+
+DELETE /api/sessions/{id}/tags/
+  Summary: Remove Tags from Session
+  Description: Remove tags from a session.
+  Parameters:
+    - id (path, string (required)): ID of the session
+  Responses:
+    200: 
+      Content: application/json
+      Schema: tags_response_serializer
+  Security:
+    OAuth2
+      - Required scopes: sessions:write
+    apiKeyAuth
+    tokenAuth
+
+PATCH /api/sessions/{id}/update_state/
+  Summary: Update Chatbot Session State
+  Parameters:
+    - id (path, string (required)): ID of the session
+  Request Body:
+    Content: application/json
+    Schema: Patchedupdate_state_serializer
+  Responses:
+    200: 
+      Content: application/json
+      Schema: update_state_response
+  Security:
+    OAuth2
+      - Required scopes: sessions:write
+    apiKeyAuth
+    tokenAuth
+
+SCHEMAS:
+
+ExperimentSession:
+  - url: string (required)
+  - id: string (required)
+  - team: Unknown (required)
+  - experiment: Unknown (required)
+  - participant: Unknown (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - tags: array of string (required)
+
+ExperimentSessionCreate:
+  - url: string (required)
+  - experiment: string (required)
+  - participant: string
+  - messages: array of Message
+  - state: Unknown
+
+ExperimentSessionWithMessages:
+  - url: string (required)
+  - id: string (required)
+  - team: Unknown (required)
+  - experiment: Unknown (required)
+  - participant: Unknown (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - messages: array of Message (required)
+  - tags: array of string (required)
+
+PaginatedExperimentSessionList:
+  - next: string
+  - previous: string
+  - results: array of ExperimentSession (required)
+
+Patchedupdate_state_serializer:
+  - state: Unknown
+
+tags_request_serializer:
+  - tags: array of string (required)
+
+tags_response_serializer:
+  - tags: array of string (required)
+
+update_state_response:
+  - success: boolean (required)
+  - state: Unknown (required)
+
+SECURITY:
+- OAuth2
+  - Authorization Code Flow (authorization url: /o/authorize/, token url: /o/token/)
+- API Key authentication (header: X-api-key)
+- API Key authentication (cookie: sessionid)
+- API Key authentication (header: X-Embed-Key)
+- HTTP bearer authentication
