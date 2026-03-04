@@ -71,3 +71,12 @@ If the max token limit is 4096 tokens:
 Understanding the token limit helps you create effective prompts without truncating responses.
 
 ---
+
+## Model Lifecycle and Deprecation
+
+AI providers regularly update their model offerings, which means models available on Open Chat Studio may occasionally be deprecated or removed over time.
+
+- **Deprecation**: If a model you are using is deprecated, you will receive an in-app notification recommending that you switch to a replacement model. Your chatbots and pipelines continue to work during this period, but you should update your configuration at your earliest convenience.
+- **Removal**: If a model is fully removed from the platform, Open Chat Studio automatically migrates all references in your chatbots and pipelines to the recommended replacement model. You will receive an in-app notification confirming that the migration has taken place.
+
+No manual action is required when a model is removed — the platform handles the transition for you.

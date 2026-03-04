@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Mar 4, 2026
+* **NEW** Teams now receive in-app notifications when LLM models are deprecated or removed. When a model is removed from the platform, pipeline and assistant references are automatically migrated to the recommended replacement model.
+
 ## Feb 27, 2026
 * **NEW** Tracing is now available to all users — no feature flag required. View and debug conversation traces directly from the session detail page. [Learn more](concepts/tracing.md)
 
