@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Mar 6, 2026
+* **BUG** Fixed dashboard statistics (message stats, participant stats, usage data, top teams, top experiments, period totals, and team activity) to exclude data from evaluation sessions, ensuring metrics accurately reflect real usage.
+
 ## Mar 4, 2026
 * **NEW** Teams now receive in-app notifications when LLM models are deprecated or removed.
 
