@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Mar 9, 2026
+* **NEW** Natural language filtering is now available to all users. Type plain-English queries (e.g., "sessions from last week excluding WhatsApp") on session, message, traces, participants, and notifications tables and click **✨ Generate** to automatically build filter rows.
+
 ## Mar 4, 2026
 * **NEW** Teams now receive in-app notifications when LLM models are deprecated or removed.
 
