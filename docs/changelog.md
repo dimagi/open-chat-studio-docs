@@ -5,7 +5,7 @@ hide:
 
 # Changelog
 ## Mar 9, 2026
-* **NEW** Natural language filtering is now available to all users. Type plain-English queries (e.g., "sessions from last week excluding WhatsApp") on session, message, traces, participants, and notifications tables and click **✨ Generate** to automatically build filter rows — no feature flag required.
+* **NEW** Natural language filtering is now available to all users. Type plain-English queries (e.g., "sessions from last week excluding WhatsApp") on session, message, traces, participants, and notifications tables and click **✨ Generate** to automatically build filter rows.
 
 ## Mar 4, 2026
 * **NEW** Teams now receive in-app notifications when LLM models are deprecated or removed.
@@ -18,7 +18,7 @@ hide:
 
 ## Feb 25, 2026
 * **NEW** Timeout events can now be configured to measure inactivity from the first human message instead of the last message, giving more control over session timeout behavior.
-* **NEW** Added natural language filter input to session and message tables. Users can type plain-English queries (e.g., "sessions from last week excluding WhatsApp") and click **✨ Generate** to automatically create filter rows.
+* **NEW** Added natural language filter input to session and message tables. Users can type plain-English queries (e.g., "sessions from last week excluding WhatsApp") and click **✨ Generate** to automatically create filter rows. This feature is in beta and can be enabled by team admins from the team feature flags page.
 
 ## Feb 20, 2026
 * **NEW** Added support for Claude Sonnet 4.6 model with adaptive thinking. Claude Sonnet 4.6 is now the default Anthropic model, replacing Claude Sonnet 4.5 as the default.
