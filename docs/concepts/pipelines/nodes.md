@@ -91,6 +91,12 @@ Send an email as part of a pipeline. This node acts as a passthrough, meaning th
 
 The **subject**, **recipient**, and **body** fields all accept plain strings or [Jinja2](https://jinja.palletsprojects.com/en/stable/templates/) templates using the same [template variables](#available-template-variables) as the Template node.
 
+The **recipient** field accepts a comma-separated list of email addresses and supports Jinja2 templates. For example:
+
+- Single address: `{{ participant_data.email }}`
+- List of addresses: `{{ participant_data.emails | join(',') }}`
+- Delimited string: `{{ participant_data.emails | split(';') | join(',') }}`
+
 The **body** field is optional. When left blank, the node input is used as the email body — this preserves backwards compatibility with existing pipelines.
 
 !!! example "Dynamic subject and personalised body"
