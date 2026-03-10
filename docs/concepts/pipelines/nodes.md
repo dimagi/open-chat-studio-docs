@@ -87,7 +87,28 @@ Schedules: {{ participant_schedules }}
 ```
 
 ## Email
-Send the input to the specified list of email addresses. This node acts as a passthrough, meaning the output will be identical to the input, allowing it to be used in a pipeline without affecting the conversation.
+Send an email as part of a pipeline. This node acts as a passthrough, meaning the output will be identical to the input, allowing it to be used in a pipeline without affecting the conversation.
+
+The **subject**, **recipient**, and **body** fields all accept plain strings or [Jinja2](https://jinja.palletsprojects.com/en/stable/templates/) templates using the same [template variables](#available-template-variables) as the Template node.
+
+The **recipient** field accepts a comma-separated list of email addresses and supports Jinja2 templates. For example:
+
+- Single address: `{{ participant_data.email }}`
+- List of addresses: `{{ participant_data.emails | join(',') }}`
+- Delimited string: `{{ participant_data.emails | split(';') | join(',') }}`
+
+The **body** field is optional. When left blank, the node input is used as the email body — this preserves backwards compatibility with existing pipelines.
+
+!!! example "Dynamic subject and personalised body"
+
+    **Subject:** `Update for {{ participant_details.identifier }}`
+
+    **Body:**
+    ```
+    Hello {{ participant_data.name }},
+
+    Here is your update: {{ input }}
+    ```
 
 ## Extract Structured Data
 Extract structured data from the input. This node acts as a passthrough, meaning the output will be identical to the input, allowing it to be used in a pipeline without affecting the conversation.
