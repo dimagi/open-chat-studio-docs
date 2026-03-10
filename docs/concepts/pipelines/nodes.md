@@ -89,21 +89,13 @@ Schedules: {{ participant_schedules }}
 ## Email
 Send an email as part of a pipeline. This node acts as a passthrough, meaning the output will be identical to the input, allowing it to be used in a pipeline without affecting the conversation.
 
-The **subject** and **recipient** fields support Python format strings, so you can personalise them using runtime context variables:
+The **subject**, **recipient**, and **body** fields all accept plain strings or [Jinja2](https://jinja.palletsprojects.com/en/stable/templates/) templates using the same [template variables](#available-template-variables) as the Template node.
 
-| Variable               | Description                         |
-|------------------------|-------------------------------------|
-| `{participant_id}`     | Participant identifier              |
-| `{session_id}`         | Current session ID                  |
-| `{input}`              | The input passed to the node        |
-| `{temp_state}`         | Pipeline temporary state (dict)     |
-| `{session_state}`      | Session state (dict)                |
-
-The **body** field is optional and accepts a [Jinja2](https://jinja.palletsprojects.com/en/stable/templates/) template using the same [template variables](#available-template-variables) as the Template node. When left blank, the node input is used as the email body — this preserves backwards compatibility with existing pipelines.
+The **body** field is optional. When left blank, the node input is used as the email body — this preserves backwards compatibility with existing pipelines.
 
 !!! example "Dynamic subject and personalised body"
 
-    **Subject:** `Update for {participant_id}`
+    **Subject:** `Update for {{ participant_details.identifier }}`
 
     **Body:**
     ```
