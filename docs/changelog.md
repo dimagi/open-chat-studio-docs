@@ -5,6 +5,7 @@ hide:
 
 # Changelog
 ## Mar 10, 2026
+* **NEW** Participant data changes are now tracked per trace. The trace detail page shows a color-coded summary of what data was added, removed, or modified during each conversation turn, and CSV exports include a Participant Data column with the data snapshot at each message.
 * **CHANGE** The Send Email pipeline node's subject and recipient fields now support [Jinja2](https://jinja.palletsprojects.com/en/stable/templates/) templates, and a new optional body field also accepts Jinja2 templates — the same variables available in the Render Template node. Existing pipelines are unaffected.
 
 ## Mar 9, 2026

@@ -15,6 +15,21 @@ Each builtin trace captures:
 - **Duration** — how long the turn took to complete
 - **Session data snapshot** — a point-in-time record of the session state
 - **Participant data snapshot** — a point-in-time record of the participant's data
+- **Participant data changes** — a diff showing what was added, removed, or modified during the turn
+
+### Trace Detail Page
+
+The trace detail page shows a "Changes during this trace" section below the participant data snapshot. Each field that changed during the turn is highlighted with a color-coded indicator:
+
+- Green — data that was added
+- Red — data that was removed
+- Yellow — data that was modified
+
+If no participant data changed during the turn, this section is not shown.
+
+### CSV Export
+
+When you export traces as CSV, the file includes a **Participant Data** column. For each conversation turn, the input message row shows the participant data at the start of the trace, and the AI response row shows the participant data at the end of the trace.
 
 !!! note
     Builtin tracing records top-level information only. It does not include span-level detail (individual LLM calls, tool calls, retrieval steps, etc.). To see spans, configure a [Langfuse](#langfuse-external-tracing) provider.
