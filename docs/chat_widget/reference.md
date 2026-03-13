@@ -334,7 +334,7 @@ The widget uses the following priority order for text content:
 
 ## Persistent Sessions
 
-By default, the widget will save the chat messages in the browser local storage. This allows users to continue sessions after reloading the page or navigating to a new page. In addition to automatic session expiration, the user can also use the 'new chat' button to start a new session.
+By default, the widget will save the chat messages and the widget's open/closed state in the browser local storage. This allows users to continue sessions after reloading the page or navigating to a new page. If the user had the chat widget open when navigating to a new page, it will automatically reopen. In addition to automatic session expiration, the user can also use the 'new chat' button to start a new session.
 
 To disable this feature, set the `persistent-session="false"` attribute on the widget element.
 
