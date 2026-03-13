@@ -98,15 +98,15 @@ nav:
   - How-to Guides:
       - how-to/index.md
       - how-to/first_chatbot.md
+      - how-to/configure_providers.md
       - how-to/workflow_cookbook.md
       - how-to/add_a_knowledge_base.md
-      - how-to/remote_api.md
+      - how-to/deploy_to_different_channels.md
       - how-to/global_search.md
       - how-to/nl_filter.md
-      - how-to/deploy_to_different_channels.md
-      - how-to/configure_providers.md
-      - how-to/api_access.md
       - how-to/setting_up_a_survey.md
+      - how-to/remote_api.md
+      - how-to/api_access.md
       - how-to/assistants_migration.md
   - Concepts:
       - concepts/index.md
