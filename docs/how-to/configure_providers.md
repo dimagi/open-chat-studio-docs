@@ -1,6 +1,6 @@
 # Configure LLM Providers
 
-Providers are configured in your team settings under "LLM and Embedding Model Service Providers". Before configuring a provider, ensure that you have an active account at the provider and access to the necessary integration credentials.
+Providers are configured in your [Team](../concepts/team/index.md) settings under "LLM and Embedding Model Service Providers". Before configuring a provider, ensure that you have an active account at the provider and access to the necessary integration credentials.
 
 ## Prerequisites
 
