@@ -4,7 +4,7 @@ hide:
 ---
 # Teams
 
-Open Chat Studio is designed for multiple companies or groups to work securely withing the same system while keeping their data completely separate. Technically this is known as a [multitenant](https://en.wikipedia.org/wiki/Multitenancy) platform.
+Open Chat Studio is designed for multiple companies or groups to work securely within the same system while keeping their data completely separate. Technically this is known as a [multitenant](https://en.wikipedia.org/wiki/Multitenancy) platform.
 
 In OCS, these private spaces/tenants are called "Teams". Multiple teams can be setup each with its own members. Each Team has its own settings, private data and chatbots/experiments.
 
