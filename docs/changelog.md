@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Mar 16, 2026
+* **NEW** Session CSV exports now include a **Session State** column containing the data stored in the `session_state` field, making it easier to inspect pipeline state alongside conversation history.
+
 ## Mar 11, 2026
 * **NEW** Added an **Annotation Reviewer** team role that grants scoped access to annotation queues. Users with this role can view and annotate queues they are assigned to, but cannot manage queues, add sessions, export results, or access other parts of the app.
 
