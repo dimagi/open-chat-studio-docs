@@ -17,6 +17,18 @@ Each builtin trace captures:
 - **Participant data snapshot** — a point-in-time record of the participant's data
 - **Participant data changes** — a diff showing what was added, removed, or modified during the turn
 
+### Session Detail View
+
+The session detail view shows participant data **as of the most recent trace**, with a note indicating the trace timestamp. This gives you a point-in-time view of the participant's data state at the end of the last recorded turn rather than the live current state.
+
+AI messages in the session's message list that caused participant data changes display a small diff icon next to the trace icons. Clicking the icon opens a popover with color-coded details:
+
+- Green — data that was added
+- Red — data that was removed
+- Yellow — data that was modified
+
+If no traces exist yet for the session, the participant data card shows a fallback note instead of a timestamp.
+
 ### Trace Detail Page
 
 The trace detail page shows a "Changes during this trace" section below the participant data snapshot. Each field that changed during the turn is highlighted with a color-coded indicator:
