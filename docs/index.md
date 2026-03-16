@@ -6,27 +6,25 @@ hide:
 
 # Open Chat Studio
 
-This is the home page for all documentation related to [Open Chat Studio](https://github.com/dimagi/open-chat-studio).
+This is the home page for all documentation related to [Open Chat Studio](https://github.com/dimagi/open-chat-studio) (OCS).
 Developed by Dimagi, Open Chat Studio is an easy-to-use, open source platform for rapidly prototyping, testing and
-deploying chatbots created using Large Language Models (LLMs).
+deploying chatbots powered by Large Language Models ([LLMs](concepts/llm.md)).
 
 ## What can I do on Open Chat Studio?
 
-* **Make Your Own Chatbots:** With Open Chat Studio (OCS), you can easily create your own chatbots using advanced
+* **Make Your Own Chatbots:** Easily create your own chatbots using advanced
   language technology. OCS is built for use by program staff and other teams - you don't need to be an engineer to get
   started.
 
-* **Deploy:** Use Open Chat Studio to launch your chatbots on the web and mobile apps such as Telegram and WhatsApp,
-  with more
-  options coming soon.
+* **Deploy:** Launch your chatbots on the web and using mobile [messaging apps](concepts/channels.md/) such as Telegram and WhatsApp
 
 * **Enable Access for All:** Anyone you share a chatbot with will be able to access it, either through a web link or
   directly
-  on platforms such as WhatsApp or Telegram. Chatbot users do not need to have an account on Open Chat Studio to use
+  on messaging platforms such as WhatsApp or Telegram. Chatbot users do not need to have an account on Open Chat Studio to use
   your
   chatbots.
 
-* **View and Download Data:** View and export the data from interactions with your chatbots, formatted In CSV.
+* **View and Download Data:** View and export the data from interactions [(ie Tracing)](concepts/tracing.md) with your chatbots, formatted In CSV.
 
 <div class="grid cards" markdown>
 

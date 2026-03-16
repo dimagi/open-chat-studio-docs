@@ -1,6 +1,6 @@
-# Configure Providers
+# Configure LLM Providers
 
-Providers are configured in your team settings under "LLM and Embedding Model Service Providers". Before configuring a provider, ensure that you have an active account at the provider and access to the necessary integration credentials.
+Providers are configured in your [Team](../concepts/team/index.md) settings under "LLM and Embedding Model Service Providers". Before configuring a provider, ensure that you have an active account at the provider and access to the necessary integration credentials.
 
 ## Prerequisites
 
@@ -19,9 +19,17 @@ Providers are configured in your team settings under "LLM and Embedding Model Se
 5. Enter your API key
 6. Save the configuration
 
-## Adding Custom Models
+## Testing Your Configuration
 
-If your provider doesn't have a pre-configured model you want to use, you can add it under the "Custom LLM Models" section.
+After adding a provider and models, it's recommended to:
+1. Create a test bot
+2. Configure it to use your new provider/model
+3. Send a test message to verify everything works correctly
+
+
+## Adding Custom LLM Models
+
+If your LLM provider list doesn't have a pre-configured model you want to use, you can add it under the "Custom LLM Models" section.
 
 ### Model Naming Conventions
 
@@ -50,9 +58,3 @@ For Google (Gemini) models, use the names from the "Model Variant" column. Examp
 
 Find current model names at: https://ai.google.dev/gemini-api/docs/models
 
-## Testing Your Configuration
-
-After adding a provider and models, it's recommended to:
-1. Create a test bot
-2. Configure it to use your new provider/model
-3. Send a test message to verify everything works correctly
