@@ -106,6 +106,7 @@ nav:
       - how-to/global_search.md
       - how-to/nl_filter.md
       - how-to/setting_up_a_survey.md
+      - how-to/external_api_calls.md      
       - how-to/remote_api.md
       - how-to/api_access.md
       - how-to/assistants_migration.md
@@ -136,6 +137,7 @@ nav:
       - Pipelines:
         - concepts/pipelines/index.md
         - concepts/pipelines/nodes.md
+        - concepts/pipelines/router_nodes.md        
         - concepts/pipelines/python_node.md
         - concepts/pipelines/http_client.md
         - concepts/pipelines/history.md
