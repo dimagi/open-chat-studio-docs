@@ -1,11 +1,12 @@
 # How to call external APIs
 
+In a Pipeline workflow you need to include a [Python node][python] which provides an `http` global that enables secure HTTP requests to external APIs.
+
+
 !!! note Examples
 
     See [chatbot workflow cookbook](./workflow_cookbook.md) for examples of using Python Nodes in a Pipeline
 
-## Using Python Code Nodes
-In a Pipeline workflow you need to include a [Python node](../concepts/pipelines/python_node.md) which provides an `http` global that enables secure HTTP requests to external APIs.
 
 ## Example workflow
 
@@ -190,12 +191,7 @@ Instructions:
 
 See the [HTTP Client documentation][http_client] for more details on available methods, security features, and advanced usage.
 
-[abort]: ../concepts/pipelines/python_node.md#python_node.abort_with_message
+
 [python]: ../concepts/pipelines/python_node.md
-[router]: ../concepts/pipelines/router_nodes.md
-[prompt_vars]: ../concepts/prompt_variables.md
-[temp_state]: ../concepts/pipelines/python_node.md#temporary-state
-[attachments]: ../concepts/pipelines/python_node.md#attachments
-[code_node_supported_file_types]: ../concepts/pipelines/python_node.md#supported-file-types
 [http_client]: ../concepts/pipelines/http_client.md
 [auth_providers]: ../concepts/team/authentication_providers.md
