@@ -1,92 +1,127 @@
 # Set Up WhatsApp with Meta Cloud API
 
-This guide walks you through connecting a chatbot to WhatsApp using the **Meta Cloud API** messaging provider. This integration connects Open Chat Studio directly to the WhatsApp Business Platform, without routing traffic through a third-party intermediary such as Twilio or Turn.io.
+This guide walks you through connecting a WhatsApp number to Open Chat Studio (OCS) using the **Meta Cloud API**. This is an alternative to using Twilio or Turn.io as your WhatsApp provider.
 
 !!! note "Current limitations"
     Phase 1 of this integration supports **text messages only**. Audio message support is planned for a future release.
 
-## Prerequisites
-
-Before you begin, ensure you have the following:
-
-- An active [Meta for Developers](https://developers.facebook.com/) account
-- A [WhatsApp Business Account (WABA)](https://business.facebook.com/) with at least one registered phone number
-- A **System User Access Token** with the `whatsapp_business_messaging` and `whatsapp_business_management` permissions
-- Your **App Secret** from your Meta App dashboard
-- Admin access to your Open Chat Studio team
-
 ## Overview
 
-Setting up the Meta Cloud API integration involves three stages:
+Setting up a WhatsApp channel via Meta Cloud API involves four main stages:
 
-1. **Create a Meta Cloud API messaging provider** in Open Chat Studio with your Meta credentials.
-2. **Create a WhatsApp channel** on your chatbot using the new provider.
-3. **Configure the webhook** in your Meta App dashboard to forward incoming messages to Open Chat Studio.
+1. [Create a Meta Business Portfolio and add your phone number](#1-create-a-meta-business-portfolio-and-add-your-phone-number)
+2. [Create a Meta App with the WhatsApp use case](#2-create-a-meta-app-with-the-whatsapp-use-case)
+3. [Add your provider to OCS](#3-add-your-provider-to-ocs)
+4. [Configure the webhook in your Meta App](#4-configure-the-webhook-in-your-meta-app)
+
+## Prerequisites
+
+- A Meta Business Portfolio (formerly Meta Business Manager)
+- A phone number to register with WhatsApp (must not already be active on WhatsApp)
+- Access to a tool for making API calls (e.g., cURL or Postman)
+- Admin access to your OCS team
 
 ---
 
-## Step 1: Gather your Meta credentials
+## 1. Create a Meta Business Portfolio and Add Your Phone Number
 
-You will need four values from your Meta App dashboard. Collect these before creating the provider in Open Chat Studio.
+### Enable Two-Factor Authentication
 
-### WhatsApp Business Account ID
+Before proceeding, log in to [Meta Business Manager](https://business.facebook.com) and enable two-factor authentication (2FA) in the **Security Center**.
 
-1. Go to [business.facebook.com](https://business.facebook.com/) and sign in.
-2. Navigate to **Business Settings** > **Accounts** > **WhatsApp Accounts**.
-3. Select your WhatsApp Business Account and copy the **Account ID** displayed on the page.
+!!! warning "Required step"
+    Two-factor authentication must be enabled before you can register a phone number or generate system user access tokens.
 
-### System User Access Token
+### Create a System User and Generate an Access Token
 
-1. In **Business Settings**, go to **Users** > **System Users**.
-2. Select the system user you want to use (or create a new one with the `Employee` role).
-3. Click **Generate New Token**.
-4. Select your Meta App and grant at minimum these permissions:
-    - `whatsapp_business_messaging`
-    - `whatsapp_business_management`
-5. Copy the generated token. Store it securely — it will not be shown again.
+Follow the [Meta documentation on admin system users](https://developers.facebook.com/documentation/business-messaging/whatsapp/access-tokens#admin-system-users) to create a system user and generate an access token.
+
+When generating the token, grant at minimum these permissions:
+
+- `whatsapp_business_messaging`
+- `whatsapp_business_management`
+
+Copy and securely store the generated token — this is your **System User Access Token**.
 
 !!! warning "Token expiry"
     Tokens can be set to never expire or to a fixed duration. For production use, a non-expiring token is recommended to avoid service interruptions.
 
-### App Secret
+### Add and Register Your Phone Number
 
-1. Go to [developers.facebook.com](https://developers.facebook.com/) and open your app.
-2. Navigate to **App Settings** > **Basic**.
-3. Click **Show** next to the **App Secret** field and copy the value.
+1. Open **WhatsApp Manager** in your Business Portfolio.
+2. Click **Add Phone Number** and follow the prompts to add your number.
+3. Note the **Phone Number ID** displayed for your number — you will need this later.
+4. Verify ownership of the number using the one-time code sent by Meta.
+5. Wait for your **display name** to be verified by Meta before proceeding.
 
-### Webhook Verify Token
+!!! info "Display name verification"
+    Display name verification typically takes 2–3 hours. You cannot complete the registration step until this is approved.
 
-This is a value **you choose**. It is a secret string that Meta sends to your webhook endpoint during verification to confirm that the endpoint belongs to you. Use any strong, unique string (for example, a random UUID). Keep a copy — you will need it in both Open Chat Studio and the Meta App dashboard.
+6. Once verified, register your number by making a `POST` request to the `/register` endpoint. Replace `<PHONE_NUMBER_ID>` and `<SYSTEM_USER_ACCESS_TOKEN>` with your values:
+
+```bash
+curl -X POST \
+  "https://graph.facebook.com/v18.0/<PHONE_NUMBER_ID>/register" \
+  -H "Authorization: Bearer <SYSTEM_USER_ACCESS_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{"messaging_product": "whatsapp", "pin": "<YOUR_2FA_PIN>"}'
+```
+
+The response should include `"status": "connected"` to confirm successful registration.
+
+!!! tip "Using Postman"
+    If you prefer a GUI over cURL, you can make this call using [Postman](https://www.postman.com/). Import the request above and set your credentials as environment variables.
+
+!!! info "Reference"
+    See the [Meta documentation on registering a business phone number](https://developers.facebook.com/documentation/business-messaging/whatsapp/business-phone-numbers/registration) for full details.
 
 ---
 
-## Step 2: Create the Meta Cloud API messaging provider
+## 2. Create a Meta App with the WhatsApp Use Case
 
-1. In Open Chat Studio, navigate to your **Team Settings**.
-2. Select **Messaging Providers**.
-3. Click **Add Provider**.
-4. From the **Type** dropdown, select **Meta Cloud API**.
-5. Fill in the form:
+1. Follow the [Meta WhatsApp get-started guide](https://developers.facebook.com/documentation/business-messaging/whatsapp/get-started) to create a new Meta App.
+2. When prompted to select a use case, choose **WhatsApp**.
+3. Link the app to your Business Portfolio.
+4. Once the app is created, navigate to **App Settings** > **Basic** and note the following values:
+    - **App ID**
+    - **App Secret** — click **Show** to reveal it and store it securely.
 
-    | Field | Value |
-    |---|---|
-    | Name | A label to identify this provider (e.g., `My WhatsApp Business`) |
-    | WhatsApp Business Account ID | The Account ID from Step 1 |
-    | System User Access Token | The access token from Step 1 |
-    | App Secret | The App Secret from Step 1 |
-    | Webhook Verify Token | The verify token you chose in Step 1 |
+---
 
-6. Click **Save**.
+## 3. Add Your Provider to OCS
+
+Before connecting OCS to Meta, you need to configure a messaging provider in OCS. Gather the following values:
+
+| Value | Where to find it |
+|---|---|
+| `WhatsApp Business Account ID` | In Business Settings > Accounts > WhatsApp Accounts, select your account and copy the **Account ID** |
+| `App Secret` | **Meta App** > **App Settings** > **Basic** > **App Secret** |
+| `Webhook Verify Token` | A random string you generate yourself (see note below) |
+| `System User Access Token` | Generated in [Step 1](#create-a-system-user-and-generate-an-access-token) |
+
+!!! tip "Generating a webhook verify token"
+    The `Webhook Verify Token` is a secret string you create. It can be any random string (e.g., a UUID). Keep a copy — you will need it when configuring the webhook in Step 4.
+
+To add the provider in OCS:
+
+1. Navigate to your **Team Settings** in OCS.
+2. Go to **Messaging Providers** and click **Add Provider**.
+3. From the **Type** dropdown, select **Meta Cloud API**.
+4. Fill in the form with the values gathered above:
+    - **Name** — a label to identify this provider (e.g., `My WhatsApp Business`)
+    - **WhatsApp Business Account ID**
+    - **System User Access Token**
+    - **App Secret**
+    - **Webhook Verify Token**
+5. Click **Save**.
 
 The provider is now available to use when creating channels.
 
----
-
-## Step 3: Create a WhatsApp channel on your chatbot
+### Create a WhatsApp channel on your chatbot
 
 1. Navigate to the **Chatbot** you want to deploy to WhatsApp.
 2. Click the **+** (plus) icon to add a channel and select **WhatsApp**.
-3. In the **Messaging Provider** field, select the Meta Cloud API provider you created in Step 2.
+3. In the **Messaging Provider** field, select the Meta Cloud API provider you just created.
 4. Enter the **WhatsApp phone number** associated with your WhatsApp Business Account (include the country code, for example `+12025550123`).
 5. Click **Create**.
 
@@ -97,7 +132,10 @@ Open Chat Studio validates the phone number against your WhatsApp Business Accou
 
 ---
 
-## Step 4: Configure the webhook in your Meta App dashboard
+## 4. Configure the Webhook in Your Meta App
+
+!!! warning "Order matters"
+    Only configure the webhook in Meta after the messaging provider has been saved in OCS. Meta verifies the webhook immediately, and OCS needs the provider to exist in order to respond successfully.
 
 Open Chat Studio uses a **single global webhook endpoint** for all Meta Cloud API channels:
 
@@ -110,25 +148,33 @@ https://openchatstudio.com/api/channels/meta/
 
 To configure the webhook:
 
-1. Go to [developers.facebook.com](https://developers.facebook.com/) and open your app.
-2. In the left sidebar, click **WhatsApp** > **Configuration**.
+1. Open your Meta App in the [Meta Developer Portal](https://developers.facebook.com/).
+2. In the left sidebar, navigate to **WhatsApp** > **Configuration**.
 3. Under **Webhook**, click **Edit**.
 4. Enter the following values:
 
     | Field | Value |
     |---|---|
     | Callback URL | `https://openchatstudio.com/api/channels/meta/` |
-    | Verify Token | The verify token you chose in Step 1 |
+    | Verify Token | The `Webhook Verify Token` you created in Step 3 |
 
-5. Click **Verify and Save**. Meta will send a verification request to the endpoint. Open Chat Studio will respond automatically if the verify token matches.
-6. After verification succeeds, subscribe to the **`messages`** webhook field under **Webhook Fields**.
+5. Click **Verify and Save**. Meta will send a verification request to OCS to confirm the token matches.
+6. Once verified, subscribe to the **`messages`** webhook field to ensure incoming messages are forwarded to OCS.
+
+!!! info "Reference"
+    See the [Meta documentation on configuring webhooks](https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/create-webhook-endpoint#configure-webhooks) for detailed instructions.
+
+!!! warning "Webhook verification"
+    If the verification step fails, double-check that the `Webhook Verify Token` in the Meta portal exactly matches the value saved in your OCS provider configuration.
 
 !!! warning "Self-hosted instances"
     If you are running a self-hosted instance of Open Chat Studio, replace `https://openchatstudio.com` with your own domain. The path `/api/channels/meta/` remains the same.
 
 ---
 
-## Step 5: Test the integration
+## Next Steps
+
+Once your webhook is verified and the subscription is active, your Meta Cloud API provider is ready to use.
 
 1. Send a WhatsApp message from a personal WhatsApp account to the business phone number you configured.
 2. The chatbot should respond within a few seconds.
@@ -140,7 +186,7 @@ To configure the webhook:
 
 ### The webhook verification failed
 
-- Confirm that the **Verify Token** in Open Chat Studio and in the Meta App dashboard are identical (exact case match).
+- Confirm that the **Webhook Verify Token** in Open Chat Studio and in the Meta App dashboard are identical (exact case match).
 - Confirm that the webhook URL is reachable from the internet. On a self-hosted instance, ensure your server is publicly accessible and TLS is configured.
 
 ### Messages are not reaching the chatbot
@@ -159,6 +205,7 @@ To configure the webhook:
 
 - Confirm the chatbot is active and has a working LLM provider configured.
 - Check that the channel is linked to the correct chatbot.
+- Check the **Webhook Logs** in your Meta App dashboard to see whether delivery attempts are succeeding or returning errors.
 
 ---
 
