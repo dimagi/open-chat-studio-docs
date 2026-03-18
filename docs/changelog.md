@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Mar 18, 2026
+* **NEW** Added a [**Set Session State Key**](concepts/tools/index.md#set-session-state-key) and [**Get Session State**](concepts/tools/index.md#get-session-state) built-in tools that allow LLM nodes to read and write data from the [session state](concepts/sessions.md) during a conversation.
+
 ## Mar 16, 2026
 * **NEW** Session CSV exports now include a **Session State** column containing the data stored in the `session_state` field, making it easier to inspect pipeline state alongside conversation history.
 * **NEW** Session detail views now display participant data as of the latest trace, with a timestamp note. AI messages that triggered participant data changes show a diff icon — click it to see a color-coded popover of what was added, removed, or modified.
