@@ -5,7 +5,7 @@ hide:
 
 # Changelog
 ## Mar 18, 2026
-* **NEW** Added a **Set Session State Key** built-in tool that allows the bot to set a key-value pair in the [session state](concepts/sessions.md), enabling LLMs to read and write pipeline state during a conversation.
+* **NEW** Added a **Set Session State Key** and **Get Session State** built-in tools that allow LLM nodes to read and write data from the [session state](concepts/sessions.md) during a conversation.
 
 ## Mar 16, 2026
 * **NEW** Session CSV exports now include a **Session State** column containing the data stored in the `session_state` field, making it easier to inspect pipeline state alongside conversation history.
