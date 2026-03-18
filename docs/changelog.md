@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Mar 18, 2026
+* **NEW** Added a [**Set Session State Key**](concepts/tools/index.md#set-session-state-key) and [**Get Session State**](concepts/tools/index.md#get-session-state) built-in tools that allow LLM nodes to read and write data from the [session state](concepts/sessions.md) during a conversation.
+
 ## Mar 17, 2026
 * **BUG** Fixed an issue where pipelines triggered by events (e.g. conversation end, timeout) silently discarded updates to participant data, session state, and session tags. These state changes are now correctly persisted.
 
