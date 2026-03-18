@@ -96,6 +96,14 @@ Allows the bot to set a key-value pair in the session state. The session state p
   * `key`: The key in the session state to set.
   * `value`: The value to store at the specified key.
 
+### Get Session State Key
+
+Allows the bot to get a value from the session state.
+
+* Name: `get-session-state`
+* Arguments:
+  * `key`: The key in the session state to get the value for.
+
 ### End Session
 
 End the current chat [session](../sessions.md). This will mark the session as completed. New messages will result in a new session being created.
