@@ -27,6 +27,8 @@ Open Chat Studio supports three WhatsApp providers. The table below summarises t
 | Webhook URL | Per-experiment | Per-experiment | Single global endpoint |
 | Text messages | Yes | Yes | Yes |
 | Audio messages | Yes | Yes | Planned |
+| Setup complexity | Moderate (account + WhatsApp sender setup) | Moderate (account + approval process) | Higher (direct Meta Business Platform configuration, webhook setup, token management) |
+| Pricing model | Per-message fees + WhatsApp conversation fees | Subscription + WhatsApp conversation fees | WhatsApp conversation fees only (no intermediary markup) |
 
 Use **Meta Cloud API** when you want a direct connection to the WhatsApp Business Platform without routing traffic through a third-party service. Use **Twilio** or **Turn.io** when you already have an account with one of those providers or require features not yet available in the Meta Cloud API integration.
 
