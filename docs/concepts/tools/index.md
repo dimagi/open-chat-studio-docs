@@ -87,6 +87,15 @@ Increment the value of a counter. The counter is stored in [participant data](..
   * `counter`: The name of the counter to increment.
   * `value`: Integer value to increment the counter by (defaults to 1).
 
+### Set Session State Key
+
+Allows the bot to set a key-value pair in the session state. The session state persists for the duration of the session and can be used to store and retrieve data across conversation turns, particularly useful in pipeline configurations.
+
+* Name: `set-session-state-key`
+* Arguments:
+  * `key`: The key in the session state to set.
+  * `value`: The value to store at the specified key.
+
 ### End Session
 
 End the current chat [session](../sessions.md). This will mark the session as completed. New messages will result in a new session being created.
