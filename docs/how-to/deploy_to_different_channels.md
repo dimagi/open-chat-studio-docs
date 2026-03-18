@@ -24,7 +24,11 @@ The web channel uses the web interface and is enabled by default for all bots. L
 
 ## WhatsApp
 
-### Setting Up Your WhatsApp Channel
+Open Chat Studio supports multiple WhatsApp providers. Choose the section below that matches the provider you have configured.
+
+### Twilio and Turn.io
+
+#### Setting Up Your WhatsApp Channel
 
 1. **Add your WhatsApp number to the form** in the Open Chat Studio channels section.
 
@@ -34,22 +38,28 @@ The web channel uses the web interface and is enabled by default for all bots. L
 
    This URL is the same for all WhatsApp chatbots and channels on Open Chat Studio.
 
-### Provider-Specific Configuration
+#### Provider-Specific Configuration
 
-#### For New WhatsApp Numbers
+##### For New WhatsApp Numbers
 If you're setting up a brand new WhatsApp number, you'll need:
 - Admin access to your Twilio/Turn.io account
 - To register the number with Meta/WhatsApp
 - To configure the webhook URL in your provider settings
 
-#### For Existing WhatsApp Numbers
+##### For Existing WhatsApp Numbers
 If you're reusing an existing WhatsApp number that was previously configured for Open Chat Studio:
 - **No additional webhook configuration needed** - the number is already set up to forward messages to Open Chat Studio
 - Simply add the number to your bot's channels in Open Chat Studio
 
-#### Provider Instructions
+##### Provider Instructions
 - **For Twilio:** See [this page][3] to configure the webhook URL in your messaging service
 - **For Turn.io:** Go to Settings → API & Webhooks → Add a webhook and paste the OCS webhook URL
+
+### Meta Cloud API
+
+Meta Cloud API connects your chatbot directly to the WhatsApp Business Platform without a third-party intermediary. The setup requires a Meta for Developers account and a WhatsApp Business Account.
+
+See the [Meta Cloud API setup guide][meta] for full step-by-step instructions.
 
 
 ## Facebook Messenger
@@ -120,3 +130,4 @@ Once the channel is linked, users interact with the bot by mentioning it in Slac
 [7]: https://openchatstudio.com/users/profile/
 [8]: https://openchatstudio.com/api/docs/
 [api]: ./api_access.md
+[meta]: ./whatsapp_meta_cloud_api.md

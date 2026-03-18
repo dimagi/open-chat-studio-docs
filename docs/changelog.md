@@ -5,6 +5,7 @@ hide:
 
 # Changelog
 ## Mar 18, 2026
+* **NEW** Added support for **Meta Cloud API** as a new WhatsApp messaging provider, enabling direct integration with the WhatsApp Business Platform without requiring a third-party intermediary. Configure it using your WhatsApp Business Account ID, System User Access Token, App Secret, and Webhook Verify Token.
 * **NEW** Added a [**Set Session State Key**](concepts/tools/index.md#set-session-state-key) and [**Get Session State**](concepts/tools/index.md#get-session-state) built-in tools that allow LLM nodes to read and write data from the [session state](concepts/sessions.md) during a conversation.
 
 ## Mar 16, 2026
