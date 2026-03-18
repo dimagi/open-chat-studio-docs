@@ -104,6 +104,24 @@ Allows the bot to get a value from the session state.
 * Arguments:
   * `key`: The key in the session state to get the value for.
 
+### Append to Session State
+
+Append a value to [session state](../sessions.md) at a specific key. This will convert any existing value to a list and append the new value to the end of the list. Use this tool to track lists of items within a session e.g. topics discussed.
+
+* Name: `append-to-session-state`
+* Arguments:
+  * `key`: The key in the session state to append to.
+  * `value`: The value to append.
+
+### Increment Session State Counter
+
+Increment the value of a counter stored in [session state](../sessions.md). The counter is stored with the key `_counter_{counter_name}`.
+
+* Name: `increment-session-state-counter`
+* Arguments:
+  * `counter`: The name of the counter to increment.
+  * `value`: Integer value to increment the counter by (defaults to 1).
+
 ### End Session
 
 End the current chat [session](../sessions.md). This will mark the session as completed. New messages will result in a new session being created.
