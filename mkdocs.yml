@@ -123,7 +123,7 @@ nav:
         - concepts/prompt_variables.md
         - concepts/source_material.md
         - concepts/versioning.md
-        - concepts/custom_actions.md
+        - concepts/llm_custom_action.md
         - concepts/consent.md
         - concepts/channels.md
         - concepts/events.md
@@ -147,6 +147,7 @@ nav:
           - concepts/team/llm_providers.md
           - concepts/team/authentication_providers.md
           - concepts/team/messaging_providers.md
+          - concepts/team/custom_actions.md
           - concepts/team/groups.md
       - Assistants:
           - concepts/assistants.md
