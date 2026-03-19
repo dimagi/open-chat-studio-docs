@@ -183,6 +183,14 @@ Enable users to send files along with their messages. This feature is perfect fo
 - Video files: .mp4, .mov, .avi
 - Audio files: .mp3, .wav
 
+### How Files Are Processed
+
+When attachments are sent to the LLM:
+
+- **PDFs and images** are sent directly to the LLM API as native file attachments (where supported by the model).
+- **Word (.doc, .docx) and Excel (.xls, .xlsx) documents** are automatically converted to plain text before being sent to the LLM.
+- **Text files and CSVs** are sent as plain text content.
+
 ### File Size Limits
 
 - Maximum file size: 50MB per individual file
