@@ -1,8 +1,8 @@
 # HTTP Client
 
-The HTTP Client feature used in [Python nodes](python_node.md) provides a direct approach for programmatic API calls from within pipelines. If you want LLMs to be able to call the API, then consider [Custom Actions](../custom_actions.md)
+The HTTP Client feature, used in [Python nodes](python_node.md), provides a direct approach for programmatic API calls from within pipelines. If you want you LLMs to call the API directly, then consider [Custom Actions](../llm_custom_action.md)
 
-This  includes built-in [security features](#security-features) to protect against common vulnerabilities and supports automatic credential injection through  [Authentication Providers](../team/authentication_providers.md).
+The HTTP client includes built-in [security features](#security-features) to protect against common vulnerabilities and supports automatic credential injection through  [Authentication Providers](../team/authentication_providers.md).
 
 The following topics are covered:
 
