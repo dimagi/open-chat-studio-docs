@@ -1,19 +1,22 @@
 # HTTP Client
 
-The HTTP Client feature of a [Python node](python_node.md) provides an `http` global that enables secure HTTP requests to external APIs. This client includes built-in [security features](#security-features) to protect against common vulnerabilities and supports automatic credential injection through  [Authentication Providers](../team/authentication_providers.md).
+The HTTP Client feature used in [Python nodes](python_node.md) provides a direct approach for programmatic API calls from within pipelines. If you want LLMs to be able to call the API, then consider [Custom Actions](../custom_actions.md)
+
+This  includes built-in [security features](#security-features) to protect against common vulnerabilities and supports automatic credential injection through  [Authentication Providers](../team/authentication_providers.md).
 
 The following topics are covered:
 
 - [A few examples of calling APIs](#complete-examples)
 - [A few examples of File uploading](#file-uploads)
 - [A few examples of downloading Filesg](#downloading-and-attaching-files)
-- [Exception handling](#exceptions)
+- [How to use Authentication Providers](#using-authentication-providers)
+- [How to do Exception handling](#exceptions)
 - [Best practices](#best-practices)
-- [Troubleshooting](#troubleshooting)
+- [Troubleshooting ideas](#troubleshooting)
 
 ## The Code
 
-The `http` is available as a global variable in your [Python node](python_node.md) code and can be used to make HTTP requests *without* importing external libraries. It provides a safe, team-aware way to interact with external APIs.
+The `http` is available as a global variable in your [Python node](python_node.md) code and can be used to make secure HTTP requests *without* importing external libraries. It provides a safe, team-aware way to interact with external APIs.
 
 ```python
 def main(input, **kwargs) -> str:
