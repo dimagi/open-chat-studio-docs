@@ -55,6 +55,20 @@ The Python node provides a set of utility functions that can be used to interact
 ### ::: python_node.abort_with_message
 ### ::: python_node.attach_file_from_response
 
+## Debugging with print()
+
+You can use `print()` inside your Python Node code to capture debug or diagnostic output. Any printed text is collected and stored as `console` data in the node's trace span, making it visible in the [trace detail view](../tracing.md) and in Langfuse spans if Langfuse tracing is configured.
+
+```python
+def main(input, **kwargs) -> str:
+    print("Processing input:", input)
+    result = input.upper()
+    print("Result:", result)
+    return result
+```
+
+The captured output is joined into a single string and attached to the node's trace entry. This is useful for inspecting intermediate values without affecting the node's return value.
+
 ## HTTP Client
 
 The Python node provides an `http` global that enables secure HTTP requests to external APIs. See the [HTTP Client](http_client.md) page for full documentation.
