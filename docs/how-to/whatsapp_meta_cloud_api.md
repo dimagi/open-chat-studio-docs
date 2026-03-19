@@ -57,7 +57,7 @@ Copy and securely store the generated token — this is your **System User Acces
 !!! info "Display name verification"
     Display name verification typically takes 2–3 hours. You cannot complete the registration step until this is approved.
 
-6. Go to your [system user page](https://business.facebook.com/settings/system-users), click **Add Assets**, select **WhatsApp Accounts**, choose the newly created WhatsApp Business Account, and enable the **Phone numbers view and manage** permission. This is required so the system user's access token can register the phone number in the next step.
+6. While waiting for display name verification, go to your [system user page](https://business.facebook.com/settings/system-users), click **Add Assets**, select **WhatsApp Accounts**, choose the newly created WhatsApp Business Account, and enable the **Phone numbers view and manage** permission. This is required so the system user's access token can register the phone number in the next step.
 
     !!! tip "Permission can be removed after registration"
         Once registration is complete, you can remove this permission from the system user.
@@ -72,7 +72,6 @@ curl -X POST \
   -d '{"messaging_product": "whatsapp", "pin": "<YOUR_2FA_PIN>"}'
 ```
 
-After the successfull call, your phone number's status should now be "connected".
 
 !!! tip "Using Postman"
     If you prefer a GUI over cURL, you can make this call using [Postman](https://www.postman.com/). Import the request above and set your credentials as environment variables.
@@ -208,7 +207,7 @@ This is almost always caused by the system user's access token not having permis
 - Confirm that your WhatsApp Business Account appears under the system user's assigned assets.
 - Confirm that the **Phone numbers view and manage** permission is enabled for that asset.
 - If the asset is missing, click **Add Assets**, select **WhatsApp Accounts**, choose the correct account, enable the permission, and save.
-- Generate a new access token for the system user after updating permissions — tokens do not automatically reflect new permissions.
+- Generate a new access token for the system user after updating permissions.
 
 ### Phone number validation failed during channel creation
 
