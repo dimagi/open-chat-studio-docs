@@ -57,7 +57,12 @@ Copy and securely store the generated token — this is your **System User Acces
 !!! info "Display name verification"
     Display name verification typically takes 2–3 hours. You cannot complete the registration step until this is approved.
 
-6. Once verified, register your number by making a `POST` request to the `/register` endpoint. Replace `<PHONE_NUMBER_ID>` and `<SYSTEM_USER_ACCESS_TOKEN>` with your values:
+6. Go to your [system user page](https://business.facebook.com/settings/system-users), click **Add Assets**, select **WhatsApp Accounts**, choose the newly created WhatsApp Business Account, and enable the **Phone numbers view and manage** permission. This is required so the system user's access token can register the phone number in the next step.
+
+    !!! tip "Permission can be removed after registration"
+        Once registration is complete, you can remove this permission from the system user.
+
+7. Once your display name is verified, register your number by making a `POST` request to the `/register` endpoint. Replace `<PHONE_NUMBER_ID>` and `<SYSTEM_USER_ACCESS_TOKEN>` with your values:
 
 ```bash
 curl -X POST \
@@ -67,7 +72,7 @@ curl -X POST \
   -d '{"messaging_product": "whatsapp", "pin": "<YOUR_2FA_PIN>"}'
 ```
 
-The response should include `"status": "connected"` to confirm successful registration.
+After the successfull call, your phone number's status should now be "connected".
 
 !!! tip "Using Postman"
     If you prefer a GUI over cURL, you can make this call using [Postman](https://www.postman.com/). Import the request above and set your credentials as environment variables.
@@ -194,6 +199,16 @@ Once your webhook is verified and the subscription is active, your Meta Cloud AP
 - In your Meta App dashboard, go to **WhatsApp** > **Configuration** and confirm the `messages` webhook field is subscribed.
 - Check that the phone number entered during channel creation matches exactly the number registered in your WhatsApp Business Account, including the country code.
 - Confirm the System User Access Token has not expired.
+
+### The `/register` API call returned an authorization error
+
+This is almost always caused by the system user's access token not having permission to manage the WhatsApp Business Account's phone numbers.
+
+- In [Meta Business Settings](https://business.facebook.com/settings), go to **Users** > **System Users** and select your system user.
+- Confirm that your WhatsApp Business Account appears under the system user's assigned assets.
+- Confirm that the **Phone numbers view and manage** permission is enabled for that asset.
+- If the asset is missing, click **Add Assets**, select **WhatsApp Accounts**, choose the correct account, enable the permission, and save.
+- Generate a new access token for the system user after updating permissions — tokens do not automatically reflect new permissions.
 
 ### Phone number validation failed during channel creation
 
