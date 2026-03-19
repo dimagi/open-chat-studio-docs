@@ -2,9 +2,6 @@
 
 This guide walks you through connecting a WhatsApp number to Open Chat Studio (OCS) using the **Meta Cloud API**. This is an alternative to using Twilio or Turn.io as your WhatsApp provider.
 
-!!! note "Current limitations"
-    Phase 1 of this integration supports **text messages only**. Audio message support is planned for a future release.
-
 ## Overview
 
 Setting up a WhatsApp channel via Meta Cloud API involves four main stages:

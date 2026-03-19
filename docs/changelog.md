@@ -6,6 +6,7 @@ hide:
 # Changelog
 ## Mar 19, 2026
 * **NEW** Python Node code in pipelines can now use `print()` to capture debug and diagnostic output. Printed output is collected and visible as `console` data in the node's trace span, including in Langfuse.
+* **NEW** The Meta Cloud API WhatsApp provider now supports **voice messages** in addition to text messages.
 
 ## Mar 18, 2026
 * **NEW** Added support for **Meta Cloud API** as a new WhatsApp messaging provider, enabling direct integration with the WhatsApp Business Platform without requiring a third-party intermediary. Configure it using your WhatsApp Business Account ID, System User Access Token, App Secret, and Webhook Verify Token.
