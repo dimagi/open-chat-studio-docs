@@ -1,23 +1,20 @@
 # Authentication Providers
 
-Authentication Providers are used to authenticate with external services via HTTP API calls. Authentication Providers
-provide a centralized location to manage the credentials and tokens required to authenticate with external services.
+Authentication Providers are used to authenticate with external services via HTTP API calls. They are setup in your [Team](index.md) settings so you can manage your authentication credentials for integrations. 
 
-These credentials are used by features like [Custom Actions](../custom_actions.md) and the [HTTP Client](../pipelines/http_client.md) in Python nodes.
+These credentials are used by features like [Custom Actions](../llm_custom_action.md) and the [HTTP Client](../pipelines/http_client.md) in Python nodes.
 
 ## Authentication Provider Types
 
-Open Chat Studio supports various different authentication types. You should select the type that matches the API
-service you will be using.
+Select the type that matches the API service you will be using.
 
 ### Basic Auth
 
-Basic Auth is a simple authentication scheme built into the HTTP protocol.
+Basic Auth is a simple authentication scheme built into the HTTP protocol where you provide the username and password.
 
 ### API Key
 
-API Key is a simple authentication scheme that involves sending a key with the request to authenticate the user. The key
-is sent in a header of the request. The name of the header can be customized when creating the Authentication Provider.
+API Key is a simple authentication scheme that involves sending a key with the request to authenticate the user. The key is sent in a header of the request. The name of the header can be customized when creating your Authentication Provider.
 
 ### Bearer Token
 

@@ -60,4 +60,4 @@ Once your collection is created:
 You're done!
 
 [collections]: ../concepts/collections/index.md  
-[llm-node]: ../concepts/pipelines/nodes.md#llm
+[llm-node]: ../concepts/pipelines/nodes.md#llm-node

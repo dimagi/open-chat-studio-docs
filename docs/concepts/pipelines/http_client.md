@@ -1,10 +1,22 @@
 # HTTP Client
 
-The [Python node](python_node.md) provides an `http` global that enables secure HTTP requests to external APIs. This client includes built-in security features to protect against common vulnerabilities and supports automatic credential injection through Authentication Providers.
+The HTTP Client feature, used in [Python nodes](python_node.md), provides a direct approach for programmatic API calls from within pipelines. If you want you LLMs to call the API directly, then consider [Custom Actions](../llm_custom_action.md)
 
-## Overview
+The HTTP client includes built-in [security features](#security-features) to protect against common vulnerabilities and supports automatic credential injection through  [Authentication Providers](../team/authentication_providers.md).
 
-The `http` is available as a global variable in your Python node code and can be used to make HTTP requests without importing external libraries. It provides a safe, team-aware way to interact with external APIs.
+The following topics are covered:
+
+- [A few examples of calling APIs](#complete-examples)
+- [A few examples of File uploading](#file-uploads)
+- [A few examples of downloading Filesg](#downloading-and-attaching-files)
+- [How to use Authentication Providers](#using-authentication-providers)
+- [How to do Exception handling](#exceptions)
+- [Best practices](#best-practices)
+- [Troubleshooting ideas](#troubleshooting)
+
+## The Code
+
+The `http` global variable is available in your [Python node](python_node.md) code and can be used to make secure HTTP requests *without* importing external libraries. It provides a safe, team-aware way to interact with external APIs.
 
 ```python
 def main(input, **kwargs) -> str:
@@ -83,19 +95,19 @@ if "application/pdf" in content_type:
 
 The HTTP client includes several built-in security protections:
 
-**SSRF Prevention**: Blocks requests to private IP addresses, localhost, and other internal network resources to prevent Server-Side Request Forgery attacks.
+ - **SSRF Prevention**: Blocks requests to private IP addresses, localhost, and other internal network resources to prevent Server-Side Request Forgery attacks.
 
-**Request/Response Size Limits**: Enforces maximum size limits on both requests and responses to prevent memory exhaustion.
+ - **Request/Response Size Limits**: Enforces maximum size limits on both requests and responses to prevent memory exhaustion.
 
-**Timeout Clamping**: Automatically limits request timeouts to prevent indefinite hanging.
+ - **Timeout Clamping**: Automatically limits request timeouts to prevent indefinite hanging.
 
-**Blocked Headers**: Certain sensitive headers are blocked to prevent security issues.
+ - **Blocked Headers**: Certain sensitive headers are blocked to prevent security issues.
 
-**Automatic Retries**: Requests that receive a `429`, `502`, `503`, or `504` status code are automatically retried up to 3 times with exponential backoff. The client also respects the `Retry-After` header when present. Connection errors and timeouts are also retried.
+ - **Automatic Retries**: Requests that receive a `429`, `502`, `503`, or `504` status code are automatically retried up to 3 times with exponential backoff. The client also respects the `Retry-After` header when present. Connection errors and timeouts are also retried.
 
-**No Redirect Following**: The HTTP client does not follow redirects automatically. If a request returns a `3xx` redirect status, you will receive the redirect response directly and must handle it in your code.
+ - **No Redirect Following**: The HTTP client does not follow redirects automatically. If a request returns a `3xx` redirect status, you will receive the redirect response directly and must handle it in your code.
 
-**Request Count Limit**: There is a maximum number of HTTP requests that can be made per pipeline run. Exceeding this limit will raise an error.
+ - **Request Count Limit**: There is a maximum number of HTTP requests that can be made per pipeline run. Exceeding this limit will raise an error.
 
 ## Exceptions
 

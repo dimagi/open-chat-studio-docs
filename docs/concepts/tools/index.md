@@ -2,7 +2,7 @@
 
 Tools allow LLMs to affect change in the real world. An LLM on its own can only produce intentions, but it is not able to execute those intentions. *Tools* are a way of telling the LLM what requests it can make and of executing that request when it is made.
 
-Open Chat Studio provides a number of built-in tools as well as the ability to add your own tools in the form of [Custom Actions](../custom_actions.md).
+Open Chat Studio provides a number of built-in tools as well as the ability to add your own tools in the form of [Custom Actions](../llm_custom_action.md).
 
 The current set of built-in tools are listed below. If you need to refer to the tool in a prompt, use the tool's name directly e.g. `update-user-data`.
 

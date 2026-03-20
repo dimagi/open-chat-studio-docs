@@ -18,7 +18,7 @@ Global settings are managed at the Team level. This includes:
 - Speech Service Providers
 - [Messaging Providers](messaging_providers.md)
 - [Authentication Providers](authentication_providers.md)
-- [Custom Actions](../custom_actions.md)
+- [Custom Actions](custom_actions.md)
 - [Tracing providers](../tracing.md)
 - [User Management](groups.md)
 
