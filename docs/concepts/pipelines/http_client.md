@@ -16,7 +16,7 @@ The following topics are covered:
 
 ## The Code
 
-The `http` is available as a global variable in your [Python node](python_node.md) code and can be used to make secure HTTP requests *without* importing external libraries. It provides a safe, team-aware way to interact with external APIs.
+The `http` global variable is available in your [Python node](python_node.md) code and can be used to make secure HTTP requests *without* importing external libraries. It provides a safe, team-aware way to interact with external APIs.
 
 ```python
 def main(input, **kwargs) -> str:
