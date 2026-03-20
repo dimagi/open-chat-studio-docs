@@ -163,6 +163,9 @@ nav:
     - chat_widget/reference.md
     - chat_widget/styling.md
     - chat_widget/changelog.md
+  - Developer Guides:
+    - dev_guides/index.md
+    - dev_guides/tech_custom_action.md
   - Changelog: changelog.md
   - About: about.md
 
