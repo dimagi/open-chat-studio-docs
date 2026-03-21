@@ -28,7 +28,7 @@ the [How-to guides](../how-to/index.md).
 : Forms that provide context to chatbot users on how their data will be used and who to contact regarding any concerns.
 
 [Custom Actions](llm_custom_action.md)
-: Custom actions are a way to extend the functionality of the bot by integrating with external systems APIs.
+: Custom actions extend a bot's functionality by integrating with external systems and APIs.
 
 [Evaluations](evaluations/index.md)
 : Evaluations is a testing system for measuring chatbot performance against different metrics.

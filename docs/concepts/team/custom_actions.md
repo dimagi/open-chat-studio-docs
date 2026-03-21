@@ -2,13 +2,13 @@
 
 Use this page to set up Custom Actions in Team Settings.
 
-For what Custom Actions are and how they work in chats, see [Custom Action](../llm_custom_action.md).
+To learn what Custom Actions are and how they work in chats, see [Custom Action](../llm_custom_action.md).
 For technical setup details and troubleshooting, see the [Custom Action Developer Guide](../../dev_guides/tech_custom_action.md).
 
 
 ## Team setup steps
 
-### 1) Setup Authentication Provider
+### 1) Set up an Authentication Provider
 
 Before creating a Custom Action, create an Authentication Provider if your external service requires authentication.
 
@@ -16,7 +16,7 @@ Go to [Authentication Providers][auth_providers] in Team Settings and create a p
 
 [auth_providers]: authentication_providers.md
 
-### 2) Create a new Custom Action 
+### 2) Create a new Custom Action
 Add a Custom Action in Team Settings.
 
 ### 3) Enable actions for your chatbot
