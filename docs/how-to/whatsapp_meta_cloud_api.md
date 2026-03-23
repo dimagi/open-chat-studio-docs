@@ -114,6 +114,7 @@ To add the provider in OCS:
     - **System User Access Token**
     - **App Secret**
     - **Webhook Verify Token**
+    - **Template Language Code** — the language code for the out-of-service-window template (defaults to `en`; see [Out-of-service-window template messages](#out-of-service-window-template-messages) below)
 5. Click **Save**.
 
 The provider is now available to use when creating channels.
@@ -130,6 +131,70 @@ Open Chat Studio validates the phone number against your WhatsApp Business Accou
 
 - The phone number is registered under the WhatsApp Business Account ID you provided.
 - The System User Access Token has the required permissions.
+
+---
+
+## Out-of-service-window template messages
+
+### What is the 24-hour service window?
+
+WhatsApp restricts when businesses can send messages to users. Once a user sends a message to your business number, a **24-hour service window** opens. During that window, your chatbot can reply freely. After 24 hours of inactivity from the user, the window closes and the WhatsApp API rejects any outbound messages.
+
+Without a fallback, a bot reply sent outside the service window is silently dropped. The out-of-service-window template message feature prevents this by automatically substituting a pre-approved WhatsApp message template when the window has expired.
+
+!!! info "Automatic fallback"
+    The fallback is automatic — no manual toggle is required. When the service window has expired, OCS attempts to send the configured template in place of the original message. If the template has not been created in Meta, the attempt fails gracefully without interrupting service.
+
+### Voice message fallback chain
+
+When a voice message fails because the service window has expired, OCS first falls back to sending the content as a text message. If the text message also fails due to the expired window, the template fallback applies. This means the template covers both text and voice-originated replies.
+
+### Create the required template in Meta Business Manager
+
+You must create a WhatsApp message template in your Meta Business account before the fallback can work. Meta requires templates to be reviewed and approved before they can be sent.
+
+1. Go to [business.facebook.com](https://business.facebook.com) and find where to manage your WhatsApp message templates.
+2. Create a new template with the following required settings:
+
+    | Setting | Required value |
+    |---|---|
+    | Category | **Utility** (recommended) or **Marketing** |
+    | Template name | `new_bot_message` |
+    | Language | Select the language that matches your **Template Language Code** in OCS |
+
+3. In the **Body** section, add a single text variable named `bot_message`. This variable will be replaced with the bot's actual message when sent.
+
+4. Submit the template and wait for Meta to approve it.
+
+!!! warning "Template name and variable must match exactly"
+    The template name must be `new_bot_message` exactly, and it must have a single template variable (text type) named `bot_message`. OCS looks up this template by name and passes the message via this variable. If either does not match, the fallback will not work.
+
+!!! warning "Template approval required"
+    The template cannot be used until Meta approves it. Approval typically takes a few minutes to a few hours but may take longer. Until approval is granted, the fallback will fail silently.
+
+### Character limits
+
+| Element | Limit |
+|---|---|
+| Template static text | 100 characters |
+| Dynamic message content (`bot_message`) | 974 characters |
+
+If the bot's outgoing message exceeds 974 characters, OCS automatically splits it at word boundaries and sends it across multiple template messages.
+
+### Set the template language code in OCS
+
+The **Template Language Code** field in the Meta Cloud API provider form tells OCS which language variant of the `new_bot_message` template to use when sending the fallback message.
+
+- The default value is `en` (English).
+- Change this value to match the language you selected when creating the template in Meta Business Manager.
+- Common codes include `en_US`, `es`, `fr`, `pt_BR`. For the full list, see the [Meta locale codes reference](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages).
+
+To update the language code:
+
+1. Navigate to **Team Settings** > **Messaging Providers** in OCS.
+2. Click **Edit** on your Meta Cloud API provider.
+3. Update the **Template Language Code** field.
+4. Click **Save**.
 
 ---
 
@@ -217,6 +282,16 @@ This is almost always caused by the system user's access token not having permis
 - Confirm the chatbot is active and has a working LLM provider configured.
 - Check that the channel is linked to the correct chatbot.
 - Check the **Webhook Logs** in your Meta App dashboard to see whether delivery attempts are succeeding or returning errors.
+
+### The out-of-service-window template message is not being sent
+
+If the bot is not reaching users after the 24-hour service window expires:
+
+- Confirm that the template named `ocs_out_of_service_window` exists in your Meta Business account under **WhatsApp Manager** > **Account tools** > **Message templates**.
+- Confirm the template status is **Approved**. Templates that are pending review or that have been rejected cannot be sent.
+- Confirm that the **Template Language Code** in your OCS provider settings matches the language of the approved template exactly (for example, `en` vs `en_US`).
+- Confirm that the template body variable is named `{{1}}` and that the static text surrounding it does not exceed 100 characters.
+- If the template was recently approved, wait a few minutes and try again — there may be a short propagation delay.
 
 ---
 
