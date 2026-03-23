@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Mar 23, 2026
+* **BUG** Fixed an issue where timeout triggers stopped firing after publishing a new experiment version. Sessions created before the publish were silently excluded from timeout detection.
+
 ## Mar 19, 2026
 * **NEW** Python Node code in pipelines can now use `print()` to capture debug and diagnostic output. Printed output is collected and visible as `console` data in the node's trace span, including in Langfuse.
 * **NEW** The Meta Cloud API WhatsApp provider now supports **voice messages** in addition to text messages.
