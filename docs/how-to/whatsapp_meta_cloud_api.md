@@ -153,33 +153,21 @@ When a voice message fails because the service window has expired, OCS first fal
 
 You must create a WhatsApp message template in your Meta Business account before the fallback can work. Meta requires templates to be reviewed and approved before they can be sent.
 
-1. Open [Meta Business Manager](https://business.facebook.com) and navigate to **WhatsApp Manager**.
-2. In the left sidebar, go to **Account tools** > **Message templates**.
-3. Click **Create template**.
-4. Configure the template as follows:
+1. Go to [business.facebook.com](https://business.facebook.com) and find where to manage your WhatsApp message templates.
+2. Create a new template with the following required settings:
 
     | Setting | Required value |
     |---|---|
     | Category | **Utility** (recommended) or **Marketing** |
-    | Template name | `ocs_out_of_service_window` |
+    | Template name | `new_bot_message` |
     | Language | Select the language that matches your **Template Language Code** in OCS |
 
-5. In the **Body** section, add a text component that contains the variable `{{1}}` where you want the bot's message to appear. For example:
+3. In the **Body** section, add a single text variable named `bot_message`. This variable will be replaced with the bot's actual message when sent.
 
-    ```
-    {{1}}
-    ```
+4. Submit the template and wait for Meta to approve it.
 
-    The body can also include surrounding static text, for example:
-
-    ```
-    You have a new message from our assistant: {{1}}
-    ```
-
-6. Click **Submit** and wait for Meta to approve the template.
-
-!!! warning "Template name must match exactly"
-    The template name must be `ocs_out_of_service_window` exactly, including case and underscores. OCS looks up this template by name. If the name does not match, the fallback will not work.
+!!! warning "Template name and variable must match exactly"
+    The template name must be `new_bot_message` exactly, and it must have a single template variable (text type) named `bot_message`. OCS looks up this template by name and passes the message via this variable. If either does not match, the fallback will not work.
 
 !!! warning "Template approval required"
     The template cannot be used until Meta approves it. Approval typically takes a few minutes to a few hours but may take longer. Until approval is granted, the fallback will fail silently.
@@ -188,16 +176,14 @@ You must create a WhatsApp message template in your Meta Business account before
 
 | Element | Limit |
 |---|---|
-| Template static text (everything except `{{1}}`) | 100 characters |
-| Dynamic message content (`{{1}}`) | 974 characters |
+| Template static text | 100 characters |
+| Dynamic message content (`bot_message`) | 974 characters |
 
 If the bot's outgoing message exceeds 974 characters, OCS automatically splits it at word boundaries and sends it across multiple template messages.
 
-Keep the static portions of your template body (any text surrounding `{{1}}`) under 100 characters to ensure messages are not rejected.
-
 ### Set the template language code in OCS
 
-The **Template Language Code** field in the Meta Cloud API provider form tells OCS which language variant of the `ocs_out_of_service_window` template to use when sending the fallback message.
+The **Template Language Code** field in the Meta Cloud API provider form tells OCS which language variant of the `new_bot_message` template to use when sending the fallback message.
 
 - The default value is `en` (English).
 - Change this value to match the language you selected when creating the template in Meta Business Manager.
