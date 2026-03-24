@@ -4,6 +4,14 @@ hide:
 ---
 
 # Changelog
+## Mar 24, 2026
+* **BUG** Fixed an error that could occur when displaying file sizes for files with no recorded content size.
+
+## Mar 23, 2026
+* **NEW** The Meta Cloud API WhatsApp provider now supports **template messages** as a fallback when the 24-hour service window has expired. When a bot cannot send a message due to an expired window, it automatically sends a pre-configured WhatsApp template instead of silently dropping the message.
+* **BUG** Fixed an issue where timeout triggers stopped firing after publishing a new experiment version. Sessions created before the publish were silently excluded from timeout detection.
+* **CHANGE** The default timeout for Custom Action HTTP calls has been increased from 10 seconds to 30 seconds to better accommodate complex or slow external services.
+
 ## Mar 19, 2026
 * **NEW** Python Node code in pipelines can now use `print()` to capture debug and diagnostic output. Printed output is collected and visible as `console` data in the node's trace span, including in Langfuse.
 * **NEW** The Meta Cloud API WhatsApp provider now supports **voice messages** in addition to text messages.
