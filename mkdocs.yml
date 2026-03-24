@@ -164,8 +164,8 @@ nav:
     - chat_widget/styling.md
     - chat_widget/changelog.md
   - Tech Hub:
-    - dev_guides/index.md
-    - dev_guides/tech_custom_action.md
+    - tech-hub/index.md
+    - tech-hub/tech_custom_action.md
     - how-to/external_api_calls.md     
     - how-to/remote_api.md
     - how-to/api_access.md         
