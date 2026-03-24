@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Mar 24, 2026
+* **BUG** Fixed an error that could occur when displaying file sizes for files with no recorded content size.
+
 ## Mar 23, 2026
 * **NEW** The Meta Cloud API WhatsApp provider now supports **template messages** as a fallback when the 24-hour service window has expired. When a bot cannot send a message due to an expired window, it automatically sends a pre-configured WhatsApp template instead of silently dropping the message.
 * **BUG** Fixed an issue where timeout triggers stopped firing after publishing a new experiment version. Sessions created before the publish were silently excluded from timeout detection.
