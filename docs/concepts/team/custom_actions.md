@@ -3,7 +3,7 @@
 Use this page to set up Custom Actions in Team Settings.
 
 To learn what Custom Actions are and how they work in chats, see [Custom Action](../llm_custom_action.md).
-For technical setup details and troubleshooting, see the [Custom Action Developer Guide](../../dev_guides/tech_custom_action.md).
+For technical setup details and troubleshooting, see the [Custom Action Developer Guide](../../tech-hub/tech_custom_action.md).
 
 
 ## Team setup steps
@@ -31,9 +31,9 @@ In Team Settings, you can:
 - edit existing Custom Actions
 - run a manual health check
 
-For field-level technical requirements (Base URL, OpenAPI schema format, and health check behavior), see the [Custom Action Developer Guide](../../dev_guides/tech_custom_action.md).
+For field-level technical requirements (Base URL, OpenAPI schema format, and health check behavior), see the [Custom Action Developer Guide](../../tech-hub/tech_custom_action.md).
 
 ## Related docs
 
 - [Custom Action overview](../llm_custom_action.md)
-- [Custom Action Developer Guide](../../dev_guides/tech_custom_action.md)
+- [Custom Action Developer Guide](../../tech-hub/tech_custom_action.md)

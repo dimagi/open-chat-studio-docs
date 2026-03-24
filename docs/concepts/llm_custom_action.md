@@ -58,4 +58,4 @@ The health status can be one of the following:
     - The external service is running
     - The service can be reached from Open Chat Studio
 
-For advanced setup and technical troubleshooting, see the [Custom Action Developer Guide](../dev_guides/tech_custom_action.md).
+For advanced setup and technical troubleshooting, see the [Custom Action Developer Guide](../tech-hub/tech_custom_action.md).
