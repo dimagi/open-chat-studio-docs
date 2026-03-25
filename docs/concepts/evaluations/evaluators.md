@@ -23,7 +23,7 @@ Consider the conversation context: {context.topic}
 The following variables are available to be used in the LLM prompt.
 
 - `{input.content}`: The human message content
-- `{output.content}`: The expected AI response content
+- `{output.content}`: The AI message content or expected response content
 - `{generated_response}`: The generated response from your chatbot (if generation enabled)
 - `{context.[parameter]}`: Access any context variables, e.g., `{context.topic}`
 - `{full_history}`: Complete conversation history as formatted text
