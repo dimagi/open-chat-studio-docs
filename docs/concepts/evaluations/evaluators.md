@@ -13,7 +13,7 @@ The LLM Evaluator uses language models to evaluate responses based on a custom p
 Rate the helpfulness and accuracy of this response on a scale of 1-5:
 
 User question: {input.content}
-Expected answer: {output.content}
+Reference answer: {output.content}
 Generated answer: {generated_response}
 
 Consider the conversation context: {context.topic}
@@ -23,10 +23,12 @@ Consider the conversation context: {context.topic}
 The following variables are available to be used in the LLM prompt.
 
 - `{input.content}`: The human message content
-- `{output.content}`: The expected AI response content
+- `{output.content}`: The dataset message's AI response content. This may be an expected/reference answer (for manually created datasets) or the actual AI response (for session-cloned datasets).
 - `{generated_response}`: The generated response from your chatbot (if generation enabled)
 - `{context.[parameter]}`: Access any context variables, e.g., `{context.topic}`
 - `{full_history}`: Complete conversation history as formatted text
+
+See [Evaluation Datasets](dataset.md) for how data is mapped into these fields.
 
 #### Output Schema
 
