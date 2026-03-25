@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Mar 25, 2026
+* **NEW** The Meta Cloud API WhatsApp provider now supports **media messages**. Users can send and receive images, videos, audio, and documents through WhatsApp channels.
+
 ## Mar 24, 2026
 * **BUG** Fixed an error that could occur when displaying file sizes for files with no recorded content size.
 

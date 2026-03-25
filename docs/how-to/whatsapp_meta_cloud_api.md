@@ -11,6 +11,22 @@ Setting up a WhatsApp channel via Meta Cloud API involves four main stages:
 3. [Add your provider to OCS](#3-add-your-provider-to-ocs)
 4. [Configure the webhook in your Meta App](#4-configure-the-webhook-in-your-meta-app)
 
+## Supported media types
+
+The Meta Cloud API integration supports sending and receiving media messages in addition to text. The following media types are accepted:
+
+| Media type | Accepted formats | Maximum file size |
+|---|---|---|
+| Image | JPG, PNG, WEBP | 5 MB |
+| Video | MP4, 3GP | 16 MB |
+| Audio | AAC, MP4, MPEG, AMR, OGG | 16 MB |
+| Document | PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, TXT | 100 MB |
+
+!!! warning "Size limits are enforced before sending"
+    Files that exceed the per-type size limit are rejected before the send attempt is made. Ensure any media attached to bot responses falls within the limits above to avoid delivery failures.
+
+---
+
 ## Prerequisites
 
 - A Meta Business Portfolio (formerly Meta Business Manager)
