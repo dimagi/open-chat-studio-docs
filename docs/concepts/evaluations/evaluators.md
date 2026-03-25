@@ -28,6 +28,8 @@ The following variables are available to be used in the LLM prompt.
 - `{context.[parameter]}`: Access any context variables, e.g., `{context.topic}`
 - `{full_history}`: Complete conversation history as formatted text
 
+See [Evaluation Datasets](dataset.md) for how data is mapped into these fields.
+
 #### Output Schema
 
 The output schema defines the metrics that the LLM should attempt to output. Each item in the schema will become a column in the output table. You can specify the data type for each field to ensure structured, validated output.
