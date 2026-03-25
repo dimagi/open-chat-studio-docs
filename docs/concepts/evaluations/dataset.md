@@ -6,7 +6,7 @@ Each dataset contains messages with the following structure:
 
 - **Input** (`input.content`): The human message or prompt (required)
 - **Output** (`output.content`): The expected AI response (required)
-- **Context** (`context`): Additional metadata and context variables that can later be accessed in the evaluators (optional)
+- **Context** (`context`): Additional metadata and context variables that can be accessed individually in evaluators (e.g. `context.topic`, `context.current_datetime`) (optional)
 - **History** (`history`): Previous conversation messages for context (optional)
 - **Participant Data** (`participant_data`): Information about the participant that can be accessed during evaluation (optional)
 - **Session State** (`session_state`): Session-specific state data that can be accessed during evaluation (optional)
@@ -17,7 +17,7 @@ Datasets can be created by cloning an existing session, manually created in the 
 
 ### Cloning a session
 
-When cloning a session, dataset messages are created automatically from messages from past conversations. Session chat messages are paired into (human, AI) pairs and mapped to dataset message fields as follows:
+When cloning a session, dataset messages are created automatically from past conversations. Session chat messages are paired into (human, AI) pairs and mapped to dataset message fields as follows:
 
 | Session Data | Dataset Field | Description |
 |---|---|---|
@@ -26,11 +26,11 @@ When cloning a session, dataset messages are created automatically from messages
 | `message.created_at` | `context.current_datetime` | Timestamp of the human message |
 | `message.comments` | `context.comments` | Any comments attached to either message |
 | `message.tags` | `context.tags` | Non-system tags from either message |
-| Prior messages in the session | `history` | All preceding messages, each with `message_type`, `content`, and `summary` |
+| Prior messages in the session | `history` | All preceding messages, each with `message_type`, `content`, and `summary` (an AI-generated condensation of the message, if available) |
 | `trace.participant_data` | `participant_data` | Participant data captured at the time of the message |
 | `trace.session_state` | `session_state` | Session state captured at the time of the message |
 
-Selecting multiple sessions from the list will clone all the messages from those sessions. Selecting "filtered messages" will only clone the messages that match the filter parameters. Selecting "All messages" will clone all the messages in that session.
+Selecting multiple sessions from the list will clone all the messages from those sessions. Selecting "filtered messages" will only clone the messages that match the filter parameters. Selecting "All messages" will clone every message in that session.
 
 Messages that are cloned from a session will be "connected" to their actual message in OCS, and you will be able to follow links back to their original conversation when viewing the output of an evaluator. However, modifying or updating a cloned message will break this link.
 
