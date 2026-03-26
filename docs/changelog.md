@@ -4,6 +4,12 @@ hide:
 ---
 
 # Changelog
+## Mar 26, 2026
+* **NEW** Added **ElevenLabs** as a speech service provider, supporting text-to-speech (TTS) and speech-to-text (STT). Providers can sync voices from the ElevenLabs catalog, and custom voices created in ElevenLabs are automatically synced to Open Chat Studio.
+
+## Mar 25, 2026
+* **NEW** The Meta Cloud API WhatsApp provider now supports **media messages**. Users can send and receive images, videos, audio, and documents through WhatsApp channels.
+
 ## Mar 24, 2026
 * **BUG** Fixed an error that could occur when displaying file sizes for files with no recorded content size.
 

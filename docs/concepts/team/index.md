@@ -15,7 +15,7 @@ As a user, you can belong to several Teams at once with different roles/permissi
 Global settings are managed at the Team level. This includes:
 
 - [LLM Service Providers](llm_providers.md)
-- Speech Service Providers
+- [Speech Service Providers](speech_providers.md)
 - [Messaging Providers](messaging_providers.md)
 - [Authentication Providers](authentication_providers.md)
 - [Custom Actions](custom_actions.md)
