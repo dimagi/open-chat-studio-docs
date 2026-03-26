@@ -145,6 +145,7 @@ nav:
       - Team:
           - concepts/team/index.md
           - concepts/team/llm_providers.md
+          - concepts/team/speech_providers.md
           - concepts/team/authentication_providers.md
           - concepts/team/messaging_providers.md
           - concepts/team/custom_actions.md
