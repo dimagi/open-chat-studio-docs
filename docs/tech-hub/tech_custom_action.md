@@ -1,4 +1,4 @@
-# Custom Action
+# Custom Actions
 
 Custom Actions let chatbots call external services through a managed integration based on an OpenAPI schema.
 

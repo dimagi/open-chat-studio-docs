@@ -1,7 +1,12 @@
+---
+title: Tech Hub
+description: Technical guides for developers and administrators configuring Open Chat Studio
+---
+
 # Tech Hub
 
-Information for technical users and developers assiting with the setup and configuration of OCS.
+Information for technical users and developers assisting with the setup and configuration of OCS.
 
-These topics will contain code examples
+These topics contain code examples.
 
-Users will need to be Super Admins, Pipeline, Experiement or Team Administratoea to setup these technical features
+Users will need Super Admin, Pipeline, Experiment, or Team Administrator roles to set up these technical features.

@@ -107,7 +107,7 @@ nav:
       - how-to/deploy_to_different_channels.md
       - how-to/whatsapp_meta_cloud_api.md
       - how-to/global_search.md
-      - how-to/nl_filter.md
+      - Filter Tables with Natural Language: how-to/nl_filter.md
       - how-to/setting_up_a_survey.md
       - how-to/assistants_migration.md
   - Concepts:
@@ -133,7 +133,7 @@ nav:
       - Collections:
         - concepts/collections/index.md
         - concepts/collections/media.md
-        - concepts/collections/indexed.md
+        - Indexed Collection for RAG: concepts/collections/indexed.md
       - Pipelines:
         - concepts/pipelines/index.md
         - concepts/pipelines/nodes.md
@@ -148,8 +148,8 @@ nav:
           - concepts/team/speech_providers.md
           - concepts/team/authentication_providers.md
           - concepts/team/messaging_providers.md
-          - concepts/team/custom_actions.md
-          - concepts/team/groups.md
+          - Custom Actions: concepts/team/custom_actions.md
+          - User Groups: concepts/team/groups.md
       - Assistants:
           - concepts/assistants.md
       - Evaluations:
