@@ -1,28 +1,39 @@
-# Custom Actions
+# Custom Actions Team Settings
 
-Custom Actions enable bots to communicate with 3rd party external services. For more information on features of Custom Actions see [here](../llm_custom_action.md) 
+Use this page to set up Custom Actions in Team Settings.
+
+To learn what Custom Actions are and how they work in chats, see [Custom Action](../llm_custom_action.md).
+For technical setup details and troubleshooting, see the [Custom Action Developer Guide](../../tech-hub/tech_custom_action.md).
+
 
 ## Team setup steps
 
-### 1) Setup Authentication Provider
+### 1) Set up an Authentication Provider
 
-Before you create a Custom Action will need to create an Authentication Provider for your action to use (unless the API
-you are using does not require authentication). You can do this by navigating to the [Authentication Providers][auth_providers] section in Team Settings and creating a new Authentication Provider.
+Before creating a Custom Action, create an Authentication Provider if your external service requires authentication.
+
+Go to [Authentication Providers][auth_providers] in Team Settings and create a provider.
 
 [auth_providers]: authentication_providers.md
 
-### 2) Create a new Custom Action 
-Add a Custom Action in [Team Settings](./index.md)
+### 2) Create a new Custom Action
+Add a Custom Action in Team Settings.
 
-## Custom Action Fields
+### 3) Enable actions for your chatbot
 
-### Base URL
+After creating the Custom Action, choose which actions your [LLM Node](../pipelines/nodes.md) is allowed to use.
 
-This is the URL of the external service you want to communicate with. For example: `https://www.example.com`. Only HTTPS URLs are supported.
+## Where to manage Custom Actions
 
-### API Schema
+In Team Settings, you can:
 
-This is a JSON or YAML [OpenAPI Schema](https://swagger.io/specification/) document.
+- create new Custom Actions
+- edit existing Custom Actions
+- run a manual health check
 
-You should be able to get this from the service you want to connect to. For example, the default location for the schema for [FastAPI](https://fastapi.tiangolo.com/) services is `/openapi.json` (https://fastapi.tiangolo.com/tutorial/first-steps/#openapi-and-json-schema).
+For field-level technical requirements (Base URL, OpenAPI schema format, and health check behavior), see the [Custom Action Developer Guide](../../tech-hub/tech_custom_action.md).
 
+## Related docs
+
+- [Custom Action overview](../llm_custom_action.md)
+- [Custom Action Developer Guide](../../tech-hub/tech_custom_action.md)

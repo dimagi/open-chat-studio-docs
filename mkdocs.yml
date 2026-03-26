@@ -95,20 +95,20 @@ plugins:
 
 nav:
   - Home: index.md
+  - Tutorials:
+      - tutorials/index.md
+      - tutorials/first_chatbot.md
+      - Configure LLM Providers: tutorials/configure_providers.md      
+      - Configure Message Providers: tutorials/configure_msg_providers.md
   - How-to Guides:
       - how-to/index.md
-      - how-to/first_chatbot.md
-      - how-to/configure_providers.md
       - how-to/workflow_cookbook.md
       - how-to/add_a_knowledge_base.md
       - how-to/deploy_to_different_channels.md
       - how-to/whatsapp_meta_cloud_api.md
       - how-to/global_search.md
-      - how-to/nl_filter.md
+      - Filter Tables with Natural Language: how-to/nl_filter.md
       - how-to/setting_up_a_survey.md
-      - how-to/external_api_calls.md      
-      - how-to/remote_api.md
-      - how-to/api_access.md
       - how-to/assistants_migration.md
   - Concepts:
       - concepts/index.md
@@ -133,7 +133,7 @@ nav:
       - Collections:
         - concepts/collections/index.md
         - concepts/collections/media.md
-        - concepts/collections/indexed.md
+        - Indexed Collection for RAG: concepts/collections/indexed.md
       - Pipelines:
         - concepts/pipelines/index.md
         - concepts/pipelines/nodes.md
@@ -148,8 +148,8 @@ nav:
           - concepts/team/speech_providers.md
           - concepts/team/authentication_providers.md
           - concepts/team/messaging_providers.md
-          - concepts/team/custom_actions.md
-          - concepts/team/groups.md
+          - Custom Actions: concepts/team/custom_actions.md
+          - User Groups: concepts/team/groups.md
       - Assistants:
           - concepts/assistants.md
       - Evaluations:
@@ -159,13 +159,18 @@ nav:
       - API:
         - api/index.md
         - api/getting_started_with_oauth.md
+  - Tech Hub:
+    - tech-hub/index.md
+    - tech-hub/tech_custom_action.md
+    - Call External APIs: how-to/external_api_calls.md     
+    - how-to/remote_api.md
+    - how-to/api_access.md  
   - Chat Widget:
     - chat_widget/index.md
     - chat_widget/reference.md
     - chat_widget/styling.md
-    - chat_widget/changelog.md
+    - chat_widget/changelog.md           
   - Changelog: changelog.md
-  - About: about.md
 
 watch:
 - src/python_node

@@ -33,5 +33,5 @@ Open Chat Studio supports three WhatsApp providers. The table below summarises t
 Use **Meta Cloud API** when you want a direct connection to the WhatsApp Business Platform without routing traffic through a third-party service. Use **Twilio** or **Turn.io** when you already have an account with one of those providers.
 
 ## See also
-- [Configure a messaging provider](../../how-to/configure_providers.md)
+- [Configure a messaging provider](../../tutorials/configure_msg_providers.md)
 - [Deploy to WhatsApp via Meta Cloud API](../../how-to/whatsapp_meta_cloud_api.md)

@@ -2,11 +2,11 @@
 
 Open Chat Studio allows you to connect to external services via HTTP API calls. This feature is useful for extending the functionality of your bot by integrating it with other services. This feature is analogous to OpenAI's [GPT Actions](https://platform.openai.com/docs/actions/introduction) feature.
 
-To do this you will need to create an action by navigating to the "Custom Actions" section in Team Settings. See the [Custom Actions](../concepts/team/custom_actions.md) guide for more information on creating a Custom Action.
+To do this, create an action by navigating to the "Custom Actions" section in Team Settings. See the [Custom Actions](../concepts/team/custom_actions.md) guide for more information on creating a Custom Action.
 
 ## Using the custom action in your bot
 
-Once you have created a custom action you can add it to your bot by following these steps:
+Once you have created a custom action, you can add it to your bot by following these steps:
 
 1. Open your Chatbot's edit page.
 2. Navigate to the *Tools* tab.
