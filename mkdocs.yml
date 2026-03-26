@@ -159,19 +159,18 @@ nav:
       - API:
         - api/index.md
         - api/getting_started_with_oauth.md
+  - Tech Hub:
+    - tech-hub/index.md
+    - tech-hub/tech_custom_action.md
+    - Call External APIs: how-to/external_api_calls.md     
+    - how-to/remote_api.md
+    - how-to/api_access.md  
   - Chat Widget:
     - chat_widget/index.md
     - chat_widget/reference.md
     - chat_widget/styling.md
-    - chat_widget/changelog.md
-  - Tech Hub:
-    - tech-hub/index.md
-    - tech-hub/tech_custom_action.md
-    - how-to/external_api_calls.md     
-    - how-to/remote_api.md
-    - how-to/api_access.md         
+    - chat_widget/changelog.md           
   - Changelog: changelog.md
-  - About: about.md
 
 watch:
 - src/python_node
