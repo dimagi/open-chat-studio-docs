@@ -7,6 +7,7 @@ hide:
 ## Mar 26, 2026
 * **BUG** Fixed an issue where chat poll API responses could not generate correct URLs due to missing request context in the response serializer.
 * **NEW** Added **ElevenLabs** as a speech service provider, supporting text-to-speech (TTS) and speech-to-text (STT). Providers can sync voices from the ElevenLabs catalog, and custom voices created in ElevenLabs are automatically synced to Open Chat Studio.
+* **BUG** Fixed an authentication error that occurred when an invalid `chatbot_id` was provided in API requests.
 
 ## Mar 25, 2026
 * **NEW** The Meta Cloud API WhatsApp provider now supports **media messages**. Users can send and receive images, videos, audio, and documents through WhatsApp channels.
