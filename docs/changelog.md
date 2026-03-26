@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Mar 26, 2026
+* **CHANGE** The **Pipeline Admin** and **Experiment Admin** permission groups have been consolidated into a single **Chatbot Admin** group. Existing Pipeline Admin members are automatically migrated to the new group. This also fixes a bug where Experiment Admin users were unable to access the chatbot edit page.
+
 ## Mar 25, 2026
 * **NEW** The Meta Cloud API WhatsApp provider now supports **media messages**. Users can send and receive images, videos, audio, and documents through WhatsApp channels.
 
