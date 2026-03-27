@@ -1,25 +1,12 @@
 # Chatbots
 
 !!!info
-    ### Announcement: Chatbots Feature Rolling Out
-    We are excited to announce that we are releasing a new way to build chatbots in Open Chat Studio. You may already be using 'Pipelines'
-    to build 'Experiments'. We are now transitioning to the term 'Chatbots' and away from 'Experiments'. This change is part of our ongoing effort to improve the user experience and make it easier for you to create and manage your chatbots.
-    The term 'Experiment' will be phased out as we fully adopt 'Chatbots' instead. Bot building will shift from the current 'form-based' method to primarily using the pipeline approach. All existing experiments will continue to work without disruption during this rollout.
+    ### New Chatbots Feature
+    We have a new way to build chatbots in Open Chat Studio. 
+    
+    We have transitioned to the term 'Chatbots' and away from ['Experiments'](../experiment/index.md)
 
-    Some key improvements include:
-
-    - **Simplified Workflow**: Chatbots introduces a cleaner, more intuitive interface for building chatbots
-
-    - **Streamlined Bot Building**: We're transitioning from the 'form-based' approach to make pipelines the primary (and eventually only) method for bot building
-
-    - **Enhanced Features**: The new system allows building more bots with greater flexibility and complexity.
-
-    - **Enhanced Features**: Chatbots includes features that are not available to legacy 'Experiments' including:
-        - LLM tools such as 'web search', 'code interpreter', and 'file search'
-
-    **Self-Managed Rollout**: Team administrators can now control feature flags for their teams, allowing for more granular control over when new features are enabled. This means teams can adopt the Chatbots feature at their own pace rather than following a global rollout schedule.
-
-    For more information check out our [FAQ page](../../how-to/rollout_faq.md)
+    For more information on migrating from Experiments to Chatbots see the [FAQ page](../../how-to/rollout_faq.md)
 
 
 ## What is a Chatbot?
