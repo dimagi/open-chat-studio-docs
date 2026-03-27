@@ -1,5 +1,5 @@
 # FAQ: Move Experiements to Chatbots
-An 'Experiment' was the  name used in Open Chat Studio to refer to a 'chatbot'. This is now a legacy term as we transition fully to the term ['Chatbots'](../concepts/chatbots/index.md).
+An ['Experiment'](../concepts/experiment/index.md) was the  name used in Open Chat Studio to refer to a 'chatbot'. This is now a legacy term as we transition fully to the term ['Chatbots'](../concepts/chatbots/index.md).
 ### Timeline
 - September 10th 2025: Team admins can enable the Chatbot Feature Flag for their team via the feature flag management page.
 - September 10th 2025: Chatbot Feature Flag is enabled for all teams

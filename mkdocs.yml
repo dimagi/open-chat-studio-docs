@@ -113,10 +113,9 @@ nav:
       - Experiements to Chatbots: how-to/rollout_faq.md      
   - Concepts:
       - concepts/index.md
+
       - Chatbots:
-        - concepts/chatbots/index.md
-      - Experiments:
-        - concepts/experiment/index.md
+        - concepts/chatbots/index.md      
         - concepts/sessions.md
         - concepts/llm.md
         - concepts/participant_data.md
@@ -130,6 +129,7 @@ nav:
         - concepts/tags.md
         - concepts/tracing.md
         - concepts/tools/index.md
+        - concepts/experiment/index.md
       - Collections:
         - concepts/collections/index.md
         - concepts/collections/media.md
