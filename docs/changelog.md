@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Mar 27, 2026
+* **NEW** When uploading files to a media collection, it will now indicate which channels cannot send this file. Hovering over a channel will also show the reason why it cannot send the file.
+
 ## Mar 26, 2026
 * **BUG** Fixed an issue where chat poll API responses could not generate correct URLs due to missing request context in the response serializer.
 * **NEW** Added **ElevenLabs** as a speech service provider, supporting text-to-speech (TTS) and speech-to-text (STT). Providers can sync voices from the ElevenLabs catalog, and custom voices created in ElevenLabs are automatically synced to Open Chat Studio.
