@@ -129,7 +129,7 @@ nav:
         - concepts/tags.md
         - concepts/tracing.md
         - concepts/tools/index.md
-        - concepts/experiment/index.md
+        - Experiments: concepts/experiment/index.md
       - Collections:
         - concepts/collections/index.md
         - concepts/collections/media.md
