@@ -110,11 +110,11 @@ nav:
       - Filter Tables with Natural Language: how-to/nl_filter.md
       - how-to/setting_up_a_survey.md
       - how-to/assistants_migration.md
+      - Experiements to Chatbots: how-to/rollout_faq.md      
   - Concepts:
       - concepts/index.md
       - Chatbots:
         - concepts/chatbots/index.md
-        - concepts/chatbots/rollout_faq.md
       - Experiments:
         - concepts/experiment/index.md
         - concepts/sessions.md

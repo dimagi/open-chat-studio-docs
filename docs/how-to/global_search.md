@@ -12,5 +12,5 @@ If the object is found, and you have permissions to access it, you will be redir
 ## Objects that are currently supported
 
 * Chatbots
-* Chat Sessions (still refered to as `ExperimentSessions`in the code)
+* Chat Sessions (still referred to as `ExperimentSessions` in the code)
 * Participants

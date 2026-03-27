@@ -1,14 +1,9 @@
-# Frequently Asked Questions
-
+# FAQ: Move Experiements to Chatbots
+An 'Experiment' was the  name used in Open Chat Studio to refer to a 'chatbot'. This is now a legacy term as we transition fully to the term ['Chatbots'](../concepts/chatbots/index.md).
 ### Timeline
-
-Now - September 10th: Team admins can enable the Chatbot Feature Flag for their team via the feature flag management page.
-
-September 10th: Chatbot Feature Flag is enabled for all teams
-
-October 1st: All legacy experiments are migrated to chatbots. Pipeline experiments are filtered out from the pipeline table.
-
-
+- September 10th 2025: Team admins can enable the Chatbot Feature Flag for their team via the feature flag management page.
+- September 10th 2025: Chatbot Feature Flag is enabled for all teams
+- October 1st 2025: All legacy experiments are migrated to chatbots. Pipeline experiments are filtered out from the pipeline table.
 
 ### Are my existing Experiments going to be lost after the upgrade from Experiments to Chatbots?
 No! This update is solely in the bot building experience and not in the end product the user sees. All existing experiments will be seamlessly transferred over to Chatbots without change in any of the chatbot functionality.
@@ -19,7 +14,7 @@ Nothing! All of your experiments will be transferred over to use chatbots automa
 ### How do I adjust the global settings of my chatbot?
 Different from an Experiment, the settings have been moved to a tab on the Chatbot homepage.
 <figure markdown="span">
-  ![Chatbot Settings](../../assets/images/chatbot_settings.png)
+  ![Chatbot Settings](../assets/images/chatbot_settings.png)
   <figcaption>The settings tab</figcaption>
 </figure>
 Here, you are able to modify name, description, voice, tracing, consent, surveys, participant allowlist, and seed message.
@@ -33,11 +28,11 @@ To access feature flag management:
 2. Click on the "Manage Feature Flags" button
 
 <figure markdown="span">
-  ![Chatbot Settings](../../assets/images/manage_flags_button.png)
+  ![Chatbot Settings](../assets/images/manage_flags_button.png)
   <figcaption>Feature Flag Management</figcaption>
 </figure>
 
 <figure markdown="span">
-  ![Chatbot Settings](../../assets/images/manage_flags_page.png)
+  ![Chatbot Settings](../assets/images/manage_flags_page.png)
   <figcaption>Feature Flag Management Page</figcaption>
 </figure>
