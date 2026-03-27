@@ -31,7 +31,7 @@ The very first step is to create a survey and generate a web link for that surve
 - Confirmation text: This is the text a user sees when they see the link to the survey, before they begin to use the chatbot. You can edit this text as you'd like. Here, it's also important to add `{survey_link}` where you would like to show the URL to your survey.
 
 **Example**
-> Before starting the experiment, we ask that you complete a short survey. Please click on the survey link, fill it out, and, when you have finished, select the checkbox to confirm you have completed it. Survey link: {survey_link}. 
+> Before starting the chatbot, please complete a short survey. Click the survey link, fill it out, and, once finished, select the checkbox to confirm completion. Survey link: {survey_link}. 
 
 If you would like to include both a pre-survey and a post-survey, repeat the above process for each survey.
 
@@ -42,12 +42,12 @@ Now edit your chatbot and choose which survey to use as the pre- or post survey.
 
 
 ## Using Google Forms
-Go to [Google Forms][google_forms] and create your form. In order to link a particular participant, session and experiment with a specific form, you'll need to include questions with the titles "Participant ID", "Session ID" and "Experiment ID".
+Go to [Google Forms][google_forms] and create your form. To link a specific participant, session, and Chatbot to a specific form, include questions titled "Participant ID", "Session ID", and "Chatbot ID".
 
 For example:
 ![image](../assets/images/survey6.png)
 
-From here, click on the 3 dots in the top right corner and go to "Get Prefilled Link". Now fill in the fields that you want prefilled. In this case, "Participant ID", "Session ID" and "Experiment ID".
+From here, click the three dots in the top-right corner and select "Get Prefilled Link". Then fill in the fields you want prefilled. In this case: "Participant ID", "Session ID", and "Chatbot ID".
 
 ![image](../assets/images/survey7.png)
 When you click on "Get Link", you'll get a link that looks something like:

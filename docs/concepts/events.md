@@ -31,7 +31,7 @@ Static events are predefined triggers that occur based on specific actions or co
 - **Conversation Start**: Triggered when a new conversation is started.
 - **New Human Message**: Triggered when a new human message is received.
 - **New Bot Message**: Triggered when a new bot message is received.
-- **Participant Joined Experiment**: Triggered when a participant starts interacting with the bot for the very first time.
+- **Participant Joined Chatbot**: Triggered when a participant starts interacting with the bot for the very first time.
 
 ## Event Actions
 
