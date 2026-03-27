@@ -42,12 +42,12 @@ Now edit your chatbot and choose which survey to use as the pre- or post survey.
 
 
 ## Using Google Forms
-Go to [Google Forms][google_forms] and create your form. To link a specific participant, session, and Chatbot to a specific form, include questions titled "Participant ID", "Session ID", and "Chatbot ID".
+Go to [Google Forms][google_forms] and create your form. To link a specific participant, session, and Chatbot to a specific form, include questions titled "Participant ID", "Session ID", and "Experiment ID".
 
 For example:
 ![image](../assets/images/survey6.png)
 
-From here, click the three dots in the top-right corner and select "Get Prefilled Link". Then fill in the fields you want prefilled. In this case: "Participant ID", "Session ID", and "Chatbot ID".
+From here, click the three dots in the top-right corner and select "Get Prefilled Link". Then fill in the fields you want prefilled. In this case: "Participant ID", "Session ID", and "Experiment ID".
 
 ![image](../assets/images/survey7.png)
 When you click on "Get Link", you'll get a link that looks something like:

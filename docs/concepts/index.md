@@ -25,7 +25,7 @@ the [How-to guides](../how-to/index.md).
 : The platform through which a chat occurs (e.g., WhatsApp, Telegram, Web, Slack).
 
 [Chatbot](chatbots/index.md)
-: A chatbot links all the configuration and data for a bot, including user sessions, data, actions, and related settings. This was historically called an "Experiement"
+: A chatbot links all the configuration and data for a bot, including user sessions, data, actions, and related settings. This was historically called an "Experiment"
 
 [Consent Forms](consent.md)
 : Forms that provide context to chatbot users on how their data will be used and who to contact regarding any concerns.

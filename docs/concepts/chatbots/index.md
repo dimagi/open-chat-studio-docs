@@ -1,14 +1,5 @@
 # Chatbots
 
-!!!info
-    ### New Chatbots Feature
-    We have a new way to build chatbots in Open Chat Studio. 
-    
-    We have transitioned to the term 'Chatbots' and away from ['Experiments'](../experiment/index.md)
-
-    For more information on migrating from Experiments to Chatbots see the [FAQ page](../../how-to/rollout_faq.md)
-
-
 ## What is a Chatbot?
 A chatbot is a program that simulates conversation with people. It can use simple rules or advanced AI to understand and respond to messages. 
 
