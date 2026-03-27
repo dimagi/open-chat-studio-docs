@@ -5,7 +5,7 @@ hide:
 
 # Changelog
 ## Mar 27, 2026
-* **NEW** Media collection files can now be configured with sendability settings, controlling whether each file can be sent directly through a channel or only as a download link.
+* **NEW** When uploading files to a media collection, it will now indicate which channels cannot send this file.
 
 ## Mar 26, 2026
 * **BUG** Fixed an issue where chat poll API responses could not generate correct URLs due to missing request context in the response serializer.
