@@ -4,8 +4,6 @@
 
 Evaluations can be run against existing conversation messages in the system or uploaded custom test datasets. Metrics can be defined either as python code, or output from an LLM.
 
-For human-driven review, see [Annotation Queues](./annotation_queues.md), which let team members read and label sessions directly.
-
 ## Overview
 
 **Evaluations** are made up of a [dataset](./dataset.md) and one or more [evaluators](./evaluators.md).
