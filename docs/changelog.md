@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Mar 31, 2026
+* **NEW** Added three session selection modes when adding sessions to an annotation queue: **Selected only** (default, hand-pick via checkboxes), **All matching filters** (bulk-add every session matching the current filter), and **Sample** (add a random percentage of matching sessions using a configurable slider). A confirmation modal is shown for bulk operations.
+
 ## Mar 27, 2026
 * **NEW** When uploading files to a media collection, it will now indicate which channels cannot send this file. Hovering over a channel will also show the reason why it cannot send the file.
 
