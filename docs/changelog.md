@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Apr 2, 2026
+* **NEW** Added the ability to import sessions from an existing evaluation dataset into an annotation queue.
+
 ## Mar 31, 2026
 * **NEW** Added three session selection modes when adding sessions to an annotation queue: **Selected only** (default, hand-pick via checkboxes), **All matching filters** (bulk-add every session matching the current filter), and **Sample** (add a random percentage of matching sessions using a configurable slider). A confirmation modal is shown for bulk operations.
 
