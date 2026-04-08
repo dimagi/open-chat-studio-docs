@@ -190,3 +190,6 @@ def attach_file_from_response(response_bytes: bytes, filename: str) -> None:
 
     See also: [HTTP Client - Downloading and Attaching Files](http_client.md#downloading-and-attaching-files)
     """
+
+def end_session() -> None:
+    """Ends the current session"""
