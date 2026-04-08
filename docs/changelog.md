@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Apr 8, 2026
+* **NEW** Python Node code in pipelines can now call `end_session()` to programmatically end the current session, enabling more complex and deterministic session-ending logic.
+
 ## Apr 2, 2026
 * **NEW** Added the ability to import sessions from an existing evaluation dataset into an annotation queue.
 
