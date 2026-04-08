@@ -26,7 +26,7 @@ flowchart LR
 : The set of fields reviewers fill in. Defined per queue. Supports integer, float, string, and choice (enum) field types.
 
 **Annotation Items**
-: Individual sessions or messages added to a queue. Each item moves through a lifecycle: Pending → In Progress → Completed (or Flagged).
+: Individual sessions added to a queue. Each item moves through a lifecycle: Pending → In Progress → Completed (or Flagged).
 
 **Annotations**
 : A single reviewer's submitted responses for one item. Each reviewer can annotate each item only once.
