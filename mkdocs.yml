@@ -156,6 +156,10 @@ nav:
         - concepts/evaluations/index.md
         - concepts/evaluations/dataset.md
         - concepts/evaluations/evaluators.md
+      - Annotations:
+        - concepts/annotations/index.md
+        - concepts/annotations/queues.md
+        - Annotating: concepts/annotations/annotating.md
       - API:
         - api/index.md
         - api/getting_started_with_oauth.md

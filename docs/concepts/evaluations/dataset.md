@@ -34,6 +34,8 @@ Selecting multiple sessions from the list will clone all the messages from those
 
 Messages that are cloned from a session will be "connected" to their actual message in OCS, and you will be able to follow links back to their original conversation when viewing the output of an evaluator. However, modifying or updating a cloned message will break this link.
 
+Because cloned messages retain this session connection, the sessions they belong to can be imported into an annotation queue for human review. Only dataset entries with a linked session are eligible for this import — messages added manually or via CSV upload do not have a session link and cannot be imported into an annotation queue.
+
 ### Manually creating a dataset
 
 Messages can be manually added in the UI. You must enter a Human Message, an AI response, and optionally the history for this message and any context.

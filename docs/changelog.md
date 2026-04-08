@@ -4,6 +4,18 @@ hide:
 ---
 
 # Changelog
+## Apr 8, 2026
+* **NEW** Python Node code in pipelines can now call `end_session()` to programmatically end the current session, enabling more complex and deterministic session-ending logic.
+
+## Apr 2, 2026
+* **NEW** Added the ability to import sessions from an existing evaluation dataset into an annotation queue.
+
+## Mar 31, 2026
+* **NEW** Added three session selection modes when adding sessions to an annotation queue: **Selected only** (default, hand-pick via checkboxes), **All matching filters** (bulk-add every session matching the current filter), and **Sample** (add a random percentage of matching sessions using a configurable slider). A confirmation modal is shown for bulk operations.
+
+## Mar 27, 2026
+* **NEW** When uploading files to a media collection, it will now indicate which channels cannot send this file. Hovering over a channel will also show the reason why it cannot send the file.
+
 ## Mar 26, 2026
 * **BUG** Fixed an issue where chat poll API responses could not generate correct URLs due to missing request context in the response serializer.
 * **NEW** Added **ElevenLabs** as a speech service provider, supporting text-to-speech (TTS) and speech-to-text (STT). Providers can sync voices from the ElevenLabs catalog, and custom voices created in ElevenLabs are automatically synced to Open Chat Studio.
