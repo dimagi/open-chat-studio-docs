@@ -3,7 +3,7 @@
 Use this page to set up Custom Actions in Team Settings.
 
 To learn what Custom Actions are and how they work in chats, see [Custom Action](../llm_custom_action.md).
-For technical setup details and troubleshooting, see the [Custom Action Developer Guide](../../tech-hub/tech_custom_action.md).
+For technical setup details and troubleshooting, see the [Custom Action Tech-Hub Guide](../../tech-hub/tech_custom_action.md).
 
 
 ## Team setup steps
@@ -17,7 +17,7 @@ Go to [Authentication Providers][auth_providers] in Team Settings and create a p
 [auth_providers]: authentication_providers.md
 
 ### 2) Create a new Custom Action
-Add a Custom Action in Team Settings.
+[Add a Custom Action](../../tech-hub/tech_custom_action.md#team-settings-fields) in Team Settings.
 
 ### 3) Enable actions for your chatbot
 
@@ -29,11 +29,11 @@ In Team Settings, you can:
 
 - create new Custom Actions
 - edit existing Custom Actions
-- run a manual health check
+- run a [manual health check](../../tech-hub/health_custom_action.md#manual-health-checks)
 
-For field-level technical requirements (Base URL, OpenAPI schema format, and health check behavior), see the [Custom Action Developer Guide](../../tech-hub/tech_custom_action.md).
+For field-level technical requirements (Base URL, OpenAPI schema format, and health check behavior), see the [Custom Action Tech-Hub Guide](../../tech-hub/tech_custom_action.md).
 
 ## Related docs
 
 - [Custom Action overview](../llm_custom_action.md)
-- [Custom Action Developer Guide](../../tech-hub/tech_custom_action.md)
+- [Custom Action Tech-Hub Guide](../../tech-hub/tech_custom_action.md)

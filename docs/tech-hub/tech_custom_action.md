@@ -1,10 +1,8 @@
 # Custom Actions
 
-Custom Actions let chatbots call external services through a managed integration based on an OpenAPI schema.
+Custom Actions let chatbots call external services through a managed integration based on an OpenAPI schema. This feature is broadly similar to OpenAI [GPT Actions](https://platform.openai.com/docs/actions/introduction), but is configured within Open Chat Studio and exposed as tools your chatbot can use.
 
 Use this guide if you are configuring or troubleshooting a Custom Action. For a non-technical overview, see [Custom Action](../concepts/llm_custom_action.md).
-
-This feature is broadly similar to OpenAI [GPT Actions](https://platform.openai.com/docs/actions/introduction), but is configured within Open Chat Studio and exposed as tools your chatbot can use.
 
 ## When to use a Custom Action
 
@@ -62,31 +60,13 @@ Open Chat Studio monitors Custom Actions by checking the configured service auto
 !!! note "Health Check Endpoint"
     The health check is made against the base URL of the Custom Action. To support this, the external service should respond successfully at the configured base URL or root path.
 
-You can also trigger a manual health check from the UI. Manual checks run immediately and return the current status without waiting for the scheduled check.
+You can also trigger a [manual health check](./health_custom_action.md#manual-health-checks) from the UI. Manual checks run immediately and return the current status without waiting for the scheduled check.
 
-## Health status values
-
-A Custom Action can report one of the following states:
-
-- **Up**: the external service is reachable and has responded successfully to the health check
-- **Down**: the external service could not be reached or returned an error
-- **Unknown**: no health check has completed yet. This can occur when:
-    - the health check endpoint has not been configured for the custom action
-    - the custom action was recently created and the automatic health check task has not yet run
-
-!!! tip "Troubleshooting"
-    If a custom action shows as "Down" or is not behaving as expected, verify that:
-
-    - The base URL is correct and accessible
-    - Your Authentication Provider credentials are valid
-    - The OpenAPI schema matches the deployed API
-    - The external service is running and accepting connections
-    - Any firewall or network rules allow connections from Open Chat Studio
 
 
 ## Related docs
 
-- [Custom Action overview](../concepts/llm_custom_action.md)
-- [Custom Actions team settings](../concepts/team/custom_actions.md)
+- [Custom Action concept](../concepts/llm_custom_action.md)
+- [Custom Action team settings](../concepts/team/custom_actions.md)
 - [Authentication Providers](../concepts/team/authentication_providers.md)
 - [How to call external APIs with a Python node](../how-to/external_api_calls.md)

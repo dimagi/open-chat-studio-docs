@@ -166,6 +166,7 @@ nav:
   - Tech Hub:
     - tech-hub/index.md
     - tech-hub/tech_custom_action.md
+    - Custom Action Health: tech-hub/health_custom_action.md
     - Call External APIs: how-to/external_api_calls.md     
     - how-to/remote_api.md
     - how-to/api_access.md  
