@@ -13,7 +13,7 @@ Choose a Custom Action when:
 - you want a managed integration with health monitoring
 - you want to reuse the same integration across multiple chatbots
 
-Use a [Python node](../how-to/external_api_calls.md) instead when:
+Use a [Python node](./external_api_calls.md) instead when:
 
 - the external service does not provide a suitable OpenAPI schema
 - you need custom request logic that is easier to express in code
@@ -69,4 +69,4 @@ You can also trigger a [manual health check](./health_custom_action.md#manual-he
 - [Custom Action concept](../concepts/llm_custom_action.md)
 - [Custom Action team settings](../concepts/team/custom_actions.md)
 - [Authentication Providers](../concepts/team/authentication_providers.md)
-- [How to call external APIs with a Python node](../how-to/external_api_calls.md)
+- [How to call external APIs with a Python node](./external_api_calls.md)

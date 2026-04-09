@@ -129,5 +129,5 @@ Once the channel is linked, users interact with the bot by mentioning it in Slac
 [6]: ../tutorials/configure_providers.md
 [7]: https://openchatstudio.com/users/profile/
 [8]: https://openchatstudio.com/api/docs/
-[api]: ./api_access.md
+[api]: ../tech-hub/api_access.md
 [meta]: ./whatsapp_meta_cloud_api.md

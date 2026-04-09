@@ -5,7 +5,7 @@ In a Pipeline workflow you need to include a [Python node][python] which provide
 
 !!! note Examples
 
-    See [chatbot workflow cookbook](./workflow_cookbook.md) for examples of using Python Nodes in a Pipeline
+    See [chatbot workflow cookbook](../how-to/workflow_cookbook.md) for examples of using Python Nodes in a Pipeline
 
 
 ## Example workflow

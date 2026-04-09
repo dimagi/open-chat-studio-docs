@@ -161,7 +161,7 @@ Instructions:
 
 ## Making external API calls
 
-See documentation on [How to call external APIs](./external_api_calls.md) for details
+See documentation on [How to call external APIs](../tech-hub/external_api_calls.md) for details
 
 [abort]: ../concepts/pipelines/python_node.md#python_node.abort_with_message
 [python]: ../concepts/pipelines/python_node.md
