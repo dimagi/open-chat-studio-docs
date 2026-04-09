@@ -3,7 +3,7 @@ The Python node allows the bot builder to execute custom Python code to perform 
 It provides the following:
  - [utility functions](#utility-functions) to interact with users data and pipeline state ([temporary](#temporary-state) and [session state](#session-state))
  - the [attachements](#attachments) that are file uploads of these [file types](#supported-file-types)
- - ability to call [external APIs](./http_client.md)
+ - ability to call [external APIs](../../tech-hub/http_client.md)
 
 
 ## The Code
@@ -79,7 +79,7 @@ The captured output is joined into a single string and attached to the node's tr
 
 ## HTTP Client
 
-The Python node provides an `http` global that enables secure HTTP requests to external APIs. See the [HTTP Client](./http_client.md) page for full documentation.
+The Python node provides an `http` global that enables secure HTTP requests to external APIs. See the [HTTP Client](../../tech-hub/http_client.md) page for full documentation.
 
 ## Temporary State
 The Python node can also access and modify the temporary state of the pipeline. The temporary state is a dictionary that is unique to each run of the pipeline (each new message from the user) and is not stored between sessions.

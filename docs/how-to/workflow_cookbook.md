@@ -170,5 +170,5 @@ See documentation on [How to call external APIs](../tech-hub/external_api_calls.
 [temp_state]: ../concepts/pipelines/python_node.md#temporary-state
 [attachments]: ../concepts/pipelines/python_node.md#attachments
 [code_node_supported_file_types]: ../concepts/pipelines/python_node.md#supported-file-types
-[http_client]: ../concepts/pipelines/http_client.md
+[http_client]: ../tech-hub/http_client.md
 [auth_providers]: ../concepts/team/authentication_providers.md
