@@ -110,7 +110,7 @@ nav:
       - Filter Tables with Natural Language: how-to/nl_filter.md
       - how-to/setting_up_a_survey.md
       - how-to/assistants_migration.md
-      - Experiments to Chatbots: how-to/rollout_faq.md
+      - FAQ: how-to/faq.md
   - Concepts:
       - concepts/index.md
 
