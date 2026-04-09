@@ -24,6 +24,9 @@ the [How-to guides](../how-to/index.md).
 [Channel](channels.md)
 : The platform through which a chat occurs (e.g., WhatsApp, Telegram, Web, Slack).
 
+[Chatbot](chatbots/index.md)
+: A chatbot links all the configuration and data for a bot, including user sessions, data, actions, and related settings. This was historically called an "Experiment"
+
 [Consent Forms](consent.md)
 : Forms that provide context to chatbot users on how their data will be used and who to contact regarding any concerns.
 
@@ -35,9 +38,6 @@ the [How-to guides](../how-to/index.md).
 
 [Events](events.md)
 : Events are a way to trigger actions in the bot based on specific conditions.
-
-[Experiment](experiment/index.md)
-: The current name used in Open Chat Studio to refer to a chatbot. An experiment links all the configuration and data for a chatbot, including user sessions, data, actions, etc.
 
 [Large Language Models (LLMs)](llm.md)
 : Large language models are a type of AI model that can generate human-like text, images and audio.

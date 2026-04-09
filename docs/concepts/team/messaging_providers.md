@@ -24,7 +24,7 @@ Open Chat Studio supports three WhatsApp providers. The table below summarises t
 |---|---|---|---|
 | Direct Meta integration | No | No | Yes |
 | Third-party intermediary required | Yes | Yes | No |
-| Webhook URL | Per-experiment | Per-experiment | Single global endpoint |
+| Webhook URL | Per-chatbot | Per-chatbot | Single global endpoint |
 | Text messages | Yes | Yes | Yes |
 | Media messages (images, video, audio, documents) | Yes | Yes | Yes |
 | Setup complexity | Moderate (account + WhatsApp sender setup) | Moderate (account + approval process) | Higher (direct Meta Business Platform configuration, webhook setup, token management) |
