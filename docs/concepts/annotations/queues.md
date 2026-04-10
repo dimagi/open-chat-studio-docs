@@ -85,6 +85,8 @@ The queue detail page shows a progress summary:
 - **Flagged** items
 - **Overall review progress** as a percentage (reviews done / reviews needed)
 
+The items table includes a **Session** column displaying the session's external ID as a clickable link. Click it to open the source chatbot session directly, which is useful for investigating flagged items or reviewing context outside the annotation UI.
+
 ## Aggregate Scores
 
 After annotations are submitted, **aggregate scores** are automatically computed and displayed on the queue detail page.
