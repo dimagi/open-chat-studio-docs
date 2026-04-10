@@ -165,7 +165,6 @@ nav:
     - Custom Action Health: tech-hub/health_custom_action.md
     - Custom Action Testing: tech-hub/test_custom_action.md
     - Call External APIs: tech-hub/external_api_calls.md     
-    - Remote API: tech-hub/remote_api.md
     - HTTP Client: tech-hub/http_client.md
     - OCS API:
         - api/index.md
