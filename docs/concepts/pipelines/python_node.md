@@ -2,7 +2,7 @@
 The Python node allows the bot builder to execute custom Python code to perform logic, data processing, or other tasks.
 It provides the following:
  - [utility functions](#utility-functions) to interact with users data and pipeline state ([temporary](#temporary-state) and [session state](#session-state))
- - the [attachements](#attachments) that are file uploads of these [file types](#supported-file-types)
+ - the [attachments](#attachments) that are file uploads of these [file types](#supported-file-types)
  - ability to call [external APIs](../../tech-hub/http_client.md)
 
 

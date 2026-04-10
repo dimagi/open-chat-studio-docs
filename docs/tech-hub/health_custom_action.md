@@ -2,18 +2,18 @@
 
 Open Chat Studio regularly checks whether each Custom Action is available so you can see whether the connection is working.
 
-## How Health Checks Work
+## How Custom Action health checks work
 
 Automatic checks run every 5 minutes.
 
-## Viewing Health Status
+## Viewing health status
 
 You can view the health status of your Custom Actions in two places in [Team Settings](../concepts/team/index.md):
 
 1. **Custom Actions table**: The list of Custom Actions gives you a quick view of which services are available, along with a status indicator.
 2. **Custom Action page**: When you open a Custom Action for your team, you can check its status while updating the configuration.
 
-## Manual Health Checks
+## Manual health checks
 
 In addition to automatic monitoring, you can manually trigger a health check at any time. This is useful when:
 
