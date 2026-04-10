@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Apr 10, 2026
+* **NEW** Added date range and participant filters to the annotation queue view, making it easier to find specific sessions.
+
 ## Apr 8, 2026
 * **NEW** Python Node code in pipelines can now call `end_session()` to programmatically end the current session, enabling more complex and deterministic session-ending logic.
 
