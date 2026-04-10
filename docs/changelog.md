@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Apr 10, 2026
+* **NEW** Added clickable session links to annotation queue items. The items table now shows a **Session** column with a link to the source session, and the annotate page includes a **View Session** button so reviewers can navigate directly to the session for additional context.
+
 ## Apr 8, 2026
 * **NEW** Python Node code in pipelines can now call `end_session()` to programmatically end the current session, enabling more complex and deterministic session-ending logic.
 

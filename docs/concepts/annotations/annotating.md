@@ -23,6 +23,7 @@ For session items, the left panel shows:
 - Full conversation history with role indicators (human/assistant), message content, and timestamps
 - **Participant Data** tab — any data stored against the participant
 - **Session State** tab — the session's current state variables
+- A **View Session** button next to the participant info, which opens the full chatbot session view for additional context
 
 ## Submitting an Annotation
 
