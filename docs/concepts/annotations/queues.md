@@ -76,6 +76,17 @@ Click **Import from Dataset** on the queue detail page to add sessions from an e
 
 On any session detail page, use the **Add to Queue** button to add that session directly to one or more annotation queues.
 
+## Filtering Items
+
+The annotation queue view includes filters to help you find specific sessions:
+
+| Filter | Description |
+|--------|-------------|
+| **Date range** | Narrow items to those created within a specific date range |
+| **Participant** | Show only items belonging to a specific participant |
+
+These filters can be combined to quickly locate sessions of interest within a large queue.
+
 ## Monitoring Progress
 
 The queue detail page shows a progress summary:
