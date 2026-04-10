@@ -1,4 +1,4 @@
-# Health Status Monitoring
+# Custom Action Health Monitoring
 
 Open Chat Studio regularly checks whether each Custom Action is available so you can see whether the connection is working.
 

@@ -29,5 +29,6 @@ In Team Settings, you can:
 - After you save the Custom Action, its actions appear in the advanced settings for the [LLM node](../pipelines/nodes.md).
 - Select the actions you want to enable for the chatbot.
 - Once enabled, the LLM can call those actions when they are relevant to the conversation.
+- After enabling actions, you can [test your Custom Action](../../tech-hub/test_custom_action.md) by opening a chat with your chatbot
 
 [auth_providers]: authentication_providers.md
