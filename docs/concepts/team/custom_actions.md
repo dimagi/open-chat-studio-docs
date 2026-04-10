@@ -1,39 +1,35 @@
-# Custom Actions Team Settings
+# Custom Actions
 
-Use this page to set up Custom Actions in Team Settings.
+Use Team Settings to create and manage Custom Actions for your team.
 
-To learn what Custom Actions are and how they work in chats, see [Custom Action](../llm_custom_action.md).
-For technical setup details and troubleshooting, see the [Custom Action Tech-Hub Guide](../../tech-hub/tech_custom_action.md).
+To learn what Custom Actions are and how they work in chats, see [Custom Action](../llm_custom_action.md). For technical setup details and troubleshooting, see the [Custom Action Tech Hub Guide](../../tech-hub/tech_custom_action.md).
 
-
-## Team setup steps
-
-### 1) Set up an Authentication Provider
-
-Before creating a Custom Action, create an Authentication Provider if your external service requires authentication.
-
-Go to [Authentication Providers][auth_providers] in Team Settings and create a provider.
-
-[auth_providers]: authentication_providers.md
-
-### 2) Create a new Custom Action
-[Add a Custom Action](../../tech-hub/tech_custom_action.md#team-settings-fields) in Team Settings.
-
-### 3) Enable actions for your chatbot
-
-After creating the Custom Action, choose which actions your [LLM Node](../pipelines/nodes.md) is allowed to use.
-
-## Where to manage Custom Actions
+## What you can do in Team Settings
 
 In Team Settings, you can:
 
-- create new Custom Actions
-- edit existing Custom Actions
-- run a [manual health check](../../tech-hub/health_custom_action.md#manual-health-checks)
+- create a new Custom Action
+- edit an existing Custom Action
+- run a [manual health check](../../tech-hub/health_custom_action.md#manual-health-checks) for a Custom Action
 
-For field-level technical requirements (Base URL, OpenAPI schema format, and health check behavior), see the [Custom Action Tech-Hub Guide](../../tech-hub/tech_custom_action.md).
+## Configuration steps
 
-## Related docs
+### 1) Create an Authentication Provider (if required)
 
-- [Custom Action overview](../llm_custom_action.md)
-- [Custom Action Tech-Hub Guide](../../tech-hub/tech_custom_action.md)
+If your external service requires authentication, first create an Authentication Provider in Team Settings.
+
+Go to [Authentication Providers][auth_providers] in Team Settings to create a provider.
+
+### 2) Add the Custom Action
+
+Go to Team Settings, scroll to the **Custom Actions** section, and select **Add new**.
+
+For field-level technical requirements, including the Base URL, OpenAPI schema format, and health check behavior, see the [Custom Action Tech Hub Guide](../../tech-hub/tech_custom_action.md#team-settings-fields).
+
+### 3) Enable actions for your chatbot
+
+After you save the Custom Action, its actions appear in the advanced settings for an [LLM node](../pipelines/nodes.md). Select the actions you want to enable for the chatbot.
+
+Once enabled, the LLM can call those actions when they are relevant to the conversation.
+
+[auth_providers]: authentication_providers.md

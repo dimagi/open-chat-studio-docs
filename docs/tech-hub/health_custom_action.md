@@ -1,46 +1,45 @@
-## Health Status Monitoring of Custom Actions
+# Health Status Monitoring
 
-Open Chat Studio regularly checks whether your Custom Action is available so you can see if the connection is working.
+Open Chat Studio regularly checks whether each Custom Action is available so you can see whether the connection is working.
 
-### How Health Checks Work
+## How Health Checks Work
 
 Automatic checks run every 5 minutes.
 
-### Viewing Health Status
+## Viewing Health Status
 
-You can view the health status of your custom actions in two places on your [Teams page](../concepts/team/index.md):
+You can view the health status of your Custom Actions in two places in [Team Settings](../concepts/team/index.md):
 
-1. **Custom Actions Table**: Your Teams list of "Custom Actions" gives you a quick view of which services are available with a status indicator.
+1. **Custom Actions table**: The list of Custom Actions gives you a quick view of which services are available, along with a status indicator.
+2. **Custom Action page**: When you open a Custom Action for your team, you can check its status while updating the configuration.
 
-2. **Custom Action Page**: When editing a Custom Action for you Team, you can check status while updating your configuration.
-
-### Manual Health Checks
+## Manual Health Checks
 
 In addition to automatic monitoring, you can manually trigger a health check at any time. This is useful when:
 
-- You've just configured a new custom action and want to verify connectivity immediately
-- You've made changes to your external service and want to confirm it's still reachable
-- The automatic check shows a service is down and you want to verify it's back online
+- you have just configured a new Custom Action and want to verify connectivity immediately
+- you have made changes to your external service and want to confirm that it is still reachable
+- the automatic check shows that a service is down and you want to verify that it is back online
 
-When you run a manual check, you see the result right away.
+When you run a manual check, the result appears right away.
 
 ## Health status values
 
 A Custom Action can report one of the following states:
 
-- **Up**: the external service is reachable and has responded successfully to the health check
+- **Up**: the external service is reachable and responds successfully to the health check
 - **Down**: the external service could not be reached or returned an error
 - **Unknown**: no health check has completed yet. This can occur when:
-    - the health check endpoint has not been configured for the custom action
-    - the custom action was recently created and the automatic health check task has not yet run
+    - the health check endpoint has not been configured for the Custom Action
+    - the Custom Action was recently created and the automatic health check task has not yet run
 
 !!! tip "Troubleshooting"
-    If a custom action shows as "Down" or is not behaving as expected, verify that:
+    If a Custom Action shows as "Down" or is not behaving as expected, verify that:
 
-    - The base URL is correct and accessible
-    - Your Authentication Provider credentials are valid
-    - The OpenAPI schema matches the deployed API
-    - The external service is running and accepting connections
-    - Any firewall or network rules allow connections from Open Chat Studio
+    - the base URL is correct and accessible
+    - your Authentication Provider credentials are valid
+    - the OpenAPI schema matches the deployed API
+    - the external service is running and accepting connections
+    - any firewall or network rules allow connections from Open Chat Studio
 
 
