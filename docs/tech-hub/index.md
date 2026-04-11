@@ -5,8 +5,9 @@ description: Technical guides for developers and administrators configuring Open
 
 # Tech Hub
 
-Information for technical users and developers assisting with the setup and configuration of OCS.
-
-These topics contain code examples.
+Information for Admin users and technical staff assisting with the setup and configuration of OCS.
 
 Users will need Super Admin, Pipeline, Experiment, or Team Administrator roles to set up these technical features.
+
+These topics contain technical facts and code examples.
+
