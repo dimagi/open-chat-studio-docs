@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Apr 12, 2026
+* **BUG** Fixed an issue where document indexing failed for certain markdown files containing multi-byte UTF-8 characters.
+
 ## Apr 10, 2026
 * **NEW** Added date range and participant filters to the annotation queue view, making it easier to find specific sessions.
 
