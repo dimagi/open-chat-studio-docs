@@ -22,7 +22,7 @@ Execute custom Python code for logic, data processing, and external API calls.
  - See the [Python Node](./python_node.md) page for full documentation including [utility functions](./python_node.md#utility-functions) to interact with users data
   - Utility functions can interact with pipeline state including [Temporary State](./python_node.md#temporary-state) and user [Session State](./python_node.md#session-state)
  - and [attachments](./python_node.md#attachments) uploaded by user
- - See the [HTTP client](../../tech-hub/http_client.md) documentation for calling external APIs
+ - See the [HTTP client](../../tech-hub/external-api-calls/http_client.md) documentation for calling external APIs
 
 ## Template
 Renders a [Jinja](https://jinja.palletsprojects.com/en/stable/templates/) template.

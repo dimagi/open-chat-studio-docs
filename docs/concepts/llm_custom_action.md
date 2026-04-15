@@ -20,4 +20,4 @@ When you [create a Custom Action](./team/custom_actions.md), your chatbot can us
 
 Open Chat Studio monitors these external service connections so you can quickly see whether there are technical issues. It regularly checks whether each Custom Action is available and displays its status.
 
-For details on health status monitoring, see the Custom Action [Health Checks Tech Hub Guide](../tech-hub/health_custom_action.md).
+For details on health status monitoring, see the Custom Action [Health Checks Tech Hub Guide](../tech-hub/custom_action/health_custom_action.md).

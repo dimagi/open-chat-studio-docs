@@ -161,11 +161,14 @@ nav:
         - Annotating: concepts/annotations/annotating.md
   - Tech Hub:
     - tech-hub/index.md
-    - tech-hub/tech_custom_action.md
-    - Custom Action Health: tech-hub/health_custom_action.md
-    - Custom Action Testing: tech-hub/test_custom_action.md
-    - Call External APIs: tech-hub/external_api_calls.md     
-    - HTTP Client: tech-hub/http_client.md
+    - Call External APIs: 
+        - tech-hub/external-api-calls/index.md     
+        - HTTP Client: tech-hub/external-api-calls/http_client.md
+    - Custom Actions:
+        - tech-hub/custom_action/index.md
+        - Custom Action Health: tech-hub/custom_action/health_custom_action.md
+        - Custom Action Testing: tech-hub/custom_action/test_custom_action.md
+
     - OCS API:
         - api/index.md
         - api/getting_started_with_oauth.md
