@@ -136,9 +136,8 @@ nav:
         - Indexed Collection for RAG: concepts/collections/indexed.md
       - Pipelines:
         - concepts/pipelines/index.md
-        - concepts/pipelines/nodes.md
-        - concepts/pipelines/router_nodes.md        
-        - concepts/pipelines/python_node.md
+        - Node Types: concepts/pipelines/nodes.md
+        - Router Nodes: concepts/pipelines/router_nodes.md        
         - concepts/pipelines/history.md
         - concepts/pipelines/parallel.md
       - Team:
@@ -163,6 +162,7 @@ nav:
     - tech-hub/index.md
     - Call External APIs: 
         - tech-hub/external-api-calls/index.md     
+        - tech-hub/python_node.md
         - HTTP Client: tech-hub/external-api-calls/http_client.md
     - Custom Actions:
         - tech-hub/custom_action/index.md

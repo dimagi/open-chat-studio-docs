@@ -1,6 +1,6 @@
 # HTTP Client for Python nodes
 
-The HTTP Client feature, used in [Python nodes](../../concepts/pipelines/python_node.md), provides a direct approach for programmatic API calls from within pipelines. If you want your LLMs to call the API directly, consider [Custom Actions](../../concepts/llm_custom_action.md).
+The HTTP Client feature, used in [Python nodes](../python_node.md), provides a direct approach for programmatic API calls from within pipelines. If you want your LLMs to call the API directly, consider [Custom Actions](../../concepts/llm_custom_action.md).
 
 The HTTP client includes built-in [security features](#security-features) to protect against common vulnerabilities and supports automatic credential injection through [Authentication Providers](../../concepts/team/authentication_providers.md).
 
@@ -16,7 +16,7 @@ The following topics are covered:
 
 ## The Code
 
-The `http` global variable is available in your [Python node](../../concepts/pipelines/python_node.md) code and can be used to make secure HTTP requests *without* importing external libraries. It provides a safe, team-aware way to interact with external APIs.
+The `http` global variable is available in your [Python node](../python_node.md) code and can be used to make secure HTTP requests *without* importing external libraries. It provides a safe, team-aware way to interact with external APIs.
 
 ```python
 def main(input, **kwargs) -> str:
@@ -444,7 +444,7 @@ def main(input, **kwargs) -> str:
     return f"I've attached {len(chart_types)} charts for your review."
 ```
 
-See the [Python Node utility functions](../../concepts/pipelines/python_node.md#python_node.attach_file_from_response) documentation for more details on the `attach_file_from_response()` function.
+See the [Python Node utility functions](../python_node.md#python_node.attach_file_from_response) documentation for more details on the `attach_file_from_response()` function.
 
 ## Common Status Codes
 

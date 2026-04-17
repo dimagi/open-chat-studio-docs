@@ -37,8 +37,8 @@ The Static Router node allows you to route the input to one of the linked nodes 
 The data source can be any of the following:
 
 * [Participant Data](../participant_data.md)
-* [Session State](./python_node.md#session-state)
-* [Temporary State](./python_node.md#temporary-state)
+* [Session State](../../tech-hub/python_node.md#session-state)
+* [Temporary State](../../tech-hub/python_node.md#temporary-state)
 
 The key should be a name of a field in the data source and supports selecting nested fields via the `<field>.<subfield>` syntax. For example, if the data source is a JSON object with the following structure:
 
@@ -53,4 +53,4 @@ The key should be a name of a field in the data source and supports selecting ne
 
 You can select the `name` field using the key `user.name` and the `age` field using the key `user.age`.
 
-If the field is not present in the data source, the router will not route the input to the first linked node.
+If the field is not present in the data source, the router will route the input to the default (first linked) node.

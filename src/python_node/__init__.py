@@ -6,31 +6,31 @@ from typing import Any
 
 def get_participant_data() -> dict:
     """
-    Returns the current [participant's data](../participant_data.md){:target="_blank"} as a dictionary.
+    Returns the current [participant's data](../concepts/participant_data.md){:target="_blank"} as a dictionary.
     """
 
 
 def set_participant_data(data: dict) -> None:
     """
-    Updates the current [participant's data](../participant_data.md){:target="_blank"} with the provided dictionary.
+    Updates the current [participant's data](../concepts/participant_data.md){:target="_blank"} with the provided dictionary.
     This will overwrite any existing data.
     """
 
 
 def set_participant_data_key(key_name: str, data: any) -> None:
     """
-    Updates the current [participant's data](../participant_data.md){:target="_blank"} with the provided value at the specified key.
+    Updates the current [participant's data](../concepts/participant_data.md){:target="_blank"} with the provided value at the specified key.
     """
 
 def append_to_participant_data_key(key_name: str, data: any) -> None:
     """
-    Appends the provided value to the [participant's data](../participant_data.md){:target="_blank"} at the specified key.
+    Appends the provided value to the [participant's data](../concepts/participant_data.md){:target="_blank"} at the specified key.
     If the value at the key is not a list, it will be converted to a list containing the provided value.
     """
 
 def increment_participant_data_key(key_name: str, data: any) -> None:
     """
-    Increments the value at the [participant's data](../participant_data.md){:target="_blank"} key with the specified value
+    Increments the value at the [participant's data](../concepts/participant_data.md){:target="_blank"} key with the specified value
     """
 
 def get_participant_schedules() -> list:
@@ -188,7 +188,7 @@ def attach_file_from_response(response_bytes: bytes, filename: str) -> None:
             return "Failed to download the report."
         ```
 
-    See also: [HTTP Client - Downloading and Attaching Files](http_client.md#downloading-and-attaching-files)
+    See also: [HTTP Client - Downloading and Attaching Files](external-api-calls/http_client.md#downloading-and-attaching-files)
     """
 
 def end_session() -> None:
