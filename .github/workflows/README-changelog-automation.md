@@ -1,6 +1,6 @@
 # Changelog and Documentation Automation
 
-GitHub Actions workflows that use Claude AI to automatically generate changelog entries and update documentation from merged PRs in open-chat-studio.
+GitHub Actions workflows, in this repo and in the OCS repo, use Claude AI to automatically generate changelog entries and update documentation from merged PRs in open-chat-studio.
 
 ## Overview
 
@@ -37,7 +37,7 @@ Run workflow manually: Actions → "Update Changelog and Docs from OCS PR" → E
 
 **Wrong base branch:** Check dispatch workflow logs to see how PR was classified. Widget files must be in `components/`.
 
-**widget-develop doesn't exist:** Create it: `git checkout -b widget-develop main && git push origin widget-develop`
+**widget-develop doesn't exist:** The workflow automatically creates `widget-develop` from `main` if it doesn't exist. If this still fails, check that `OCS_DOCS_PAT` has `contents: write` permission on this repo.
 
 **Improve output:** Comment on generated PR with `@claude` to request changes.
 
