@@ -21,7 +21,7 @@ A conversational node using LLMs with prompts and tools. This node can be [confi
 
 ## Routing Nodes
 
-See the [Router Node](./router_nodes.md) page for full documentation including both Static Router (Deterministic routing based on state values) and LLM Router (Uses LLM to choose between multiple output paths).
+See the [Router Node](./router_nodes.md) page for full documentation on Static Router and LLM Router.
 
 ## Python Code Node
 
@@ -29,7 +29,7 @@ Execute custom Python code for logic, data processing, or external API calls.
 
 **Key capabilities:**
 
-- **[Utility functions](../../tech-hub/python_node.md#utility-functions)** — read and write [participant data](../../tech-hub/python_node.md#utility-functions), [temporary state](../../tech-hub/python_node.md#temporary-state) (per pipeline run), and [session state](../../tech-hub/python_node.md#session-state) (per user session).
+- **[Utility functions](../../tech-hub/python_node.md#utility-functions)** — read and write [participant data](../../concepts/participant_data.md), [temporary state](../../tech-hub/python_node.md#temporary-state) (per pipeline run), and [session state](../../tech-hub/python_node.md#session-state) (per user session).
 - **[Attachments](../../tech-hub/python_node.md#attachments)** — access files uploaded by the user and read their contents (text, PDF, DOCX, XLSX, and [more](../../tech-hub/python_node.md#supported-file-types)).
 - **[HTTP client](../../tech-hub/external-api-calls/http_client.md)** — make secure HTTP requests to external APIs using the built-in `http` global.
 - **[Debugging](../../tech-hub/python_node.md#debugging-with-print)** — use `print()` to capture diagnostic output, visible in the trace detail view.
@@ -95,4 +95,7 @@ Extract structured data and save it as participant data.
 
 ## Assistant as a Node
 Use an [OpenAI assistant](../../concepts/assistants.md) for advanced conversational AI.
+
+!!! warning "Deprecated"
+    This feature is being phased out. Use the [LLM Node](#llm-node) for equivalent functionality.
 

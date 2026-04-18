@@ -13,7 +13,7 @@ Choose a Custom Action when:
 - you want a managed integration with [health monitoring](./health_custom_action.md)
 - you want to reuse the same integration across multiple chatbots
 
-Use a [Python node](../external-api-calls/index.md) instead when:
+Use a [Python node](../python_node.md) instead when:
 
 - the external service does not provide a suitable OpenAPI schema
 - you need custom request logic that is easier to express in code
