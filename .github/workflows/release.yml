@@ -51,6 +51,6 @@ jobs:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           prompt: /create-release ${{ env.RELEASE_TAG }} "${{ env.RELEASE_NAME }}"
           claude_args: |
-            --model claude-sonnet-4-5
+            --model claude-sonnet-4-6
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
