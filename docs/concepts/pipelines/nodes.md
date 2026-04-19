@@ -1,16 +1,16 @@
-# Pipeline Node Types
+# Node Types
 
-A node is a "step" in a pipeline workflow that processes a user’s input and produces a result. Each node performs a specific action (like calling an LLM, running Python code, or routing based on logic) and processes data that flows through the pipeline.
+A node is a "step" in a [pipeline](index.md) workflow that processes a user’s input and produces a result. Each node in the pipeline performs a specific action (like calling an LLM, running Python code, or routing based on logic) and processes data that flows through the pipeline.
 
 ``` mermaid
 graph LR
-  A@{ shape: stadium, label: "Input" } --> B(Node);
-  B --> C@{ shape: stadium, label: "Output" };
+  A@{ shape: stadium, label: "User Input" } --> B(Node);
+  B --> C@{ shape: stadium, label: "Result Output" };
 ```
 
 !!! note Examples
 
-    See [chatbot workflow cookbook](../../how-to/workflow_cookbook.md) for example usage. 
+    See [chatbot workflow cookbook](../../how-to/workflow_cookbook.md) for examples of pipelines using different combinations of these node types.
 
 ## LLM Node
 A conversational node using LLMs with prompts and tools. This node can be [configured](../llm.md#model-configuration-parameters) including:
@@ -23,9 +23,9 @@ A conversational node using LLMs with prompts and tools. This node can be [confi
 
 See the [Router Node](./router_nodes.md) page for full documentation on Static Router and LLM Router.
 
-## Python Code Node
+## Python Node
 
-Execute custom Python code for logic, data processing, or external API calls. 
+Execute custom Python code for logic, data processing, or external API calls.
 
 **Key capabilities:**
 
@@ -36,7 +36,7 @@ Execute custom Python code for logic, data processing, or external API calls.
 
 See the [Python Node](../../tech-hub/python_node.md) page for full documentation.
 
-## Template
+## Render a Template Node
 Renders a [Jinja](https://jinja.palletsprojects.com/en/stable/templates/) template.
 
 ### Available Template Variables
@@ -63,7 +63,7 @@ Participant Data: {{ participant_data.custom_key }}
 Schedules: {{ participant_schedules }}
 ```
 
-## Email Node
+## Send an Email Node
 Send an email as part of a pipeline. This node acts as a passthrough, meaning the output will be identical to the input, allowing it to be used in a pipeline without affecting the conversation.
 
 The **subject**, **recipient**, and **body** fields all accept plain strings or [Jinja2](https://jinja.palletsprojects.com/en/stable/templates/) templates using the same [template variables](#available-template-variables) as the Template node.
@@ -93,9 +93,4 @@ Extract structured data from the input. This node acts as a passthrough, meaning
 ## Update Participant Data Node
 Extract structured data and save it as participant data.
 
-## Assistant as a Node
-Use an [OpenAI assistant](../../concepts/assistants.md) for advanced conversational AI.
-
-!!! warning "Deprecated"
-    This feature is being phased out. Use the [LLM Node](#llm-node) for equivalent functionality.
 

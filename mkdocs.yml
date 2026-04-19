@@ -160,7 +160,7 @@ nav:
         - Annotating: concepts/annotations/annotating.md
   - Tech Hub:
     - tech-hub/index.md
-    - tech-hub/python_node.md
+    - Python Node: tech-hub/python_node.md
     - Call External APIs: 
         - tech-hub/external-api-calls/index.md     
         - HTTP Client: tech-hub/external-api-calls/http_client.md
