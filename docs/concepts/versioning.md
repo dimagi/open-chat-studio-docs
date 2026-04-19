@@ -1,6 +1,6 @@
 # Versioning
 
-Versioning keeps your live chatbot stable while you make changes. You can edit and test your chatbot without impacting your users. For more details, see the tutorial on [creating and publishing versions](../tutorials/versioning_steps.md)
+Versioning keeps your live chatbot stable while you make changes. You can edit and test your chatbot without impacting your users. For more details, see the tutorial on [creating and publishing versions](../tutorials/versioning_steps.md).
 
 Versioning tracks the history of your chatbot's configuration so you can review what changed, and roll back to a previous version if needed.
 
@@ -22,7 +22,7 @@ When chatting with an unpublished version, a banner will appear indicating that 
 
 ![Web chat unpublished version banner](images/version_web_chat.png)
 
-Only bot editors can chat with the unreleased version because it is not available through [channels](./channels.md). 
+Only bot editors can chat with the unreleased version because it is not available through [channels](channels.md). 
 
 !!! note "Behavior before versioning"
     Previously, all channels always used the unreleased version.
@@ -31,7 +31,7 @@ Only bot editors can chat with the unreleased version because it is not availabl
 The published version can be selected from any of the Chatbot versions, enabling rollback to a previous version.
 Only one version can be the published version at a time.
 
-To publish a version, follow the tutorial on [creating and publishing versions](../tutorials/versioning_steps.md)
+To publish a version, follow the tutorial on [creating and publishing versions](../tutorials/versioning_steps.md).
 
 
 ## Versioning for OpenAI Assistants

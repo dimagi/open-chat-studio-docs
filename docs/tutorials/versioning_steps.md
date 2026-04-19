@@ -8,11 +8,11 @@ When a chatbot is first created, it has two versions: a published version and an
 
 ## Step 1: Edit your chatbot
 
-Open your chatbot and make your changes in the pipeline builder UI - all edits apply to the unreleased version.
+Open your chatbot and make your changes in the pipeline editor. All edits apply to the unreleased version.
 
 ## Step 2: Create a new version
 
-Once you have tested and are ready to release the chatbot to participants, create a new version by clicking the **Create Version** button in the versions table. 
+Once you have tested and are ready to release the chatbot to your users, create a new version by clicking the **Create Version** button in the versions table. 
 
 ## Step 3: Review and save the version
 
@@ -23,7 +23,7 @@ Pressing the **Create** button saves the current configuration of the chatbot an
 Here you can:
 
 - Add a description to help identify what changed.
-- Check **Set as Published Version** to make this version live immediately.  
+- Check **Set as Published Version** to make this version live immediately.  If you skip this checkbox, the version is saved but not yet published — you can publish it later via Step 5."
 
 ![Create new Chatbot Version View](images/version_create_view.png)
 
