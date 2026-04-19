@@ -24,14 +24,14 @@ When chatting with an unpublished version, a banner will appear indicating that 
 
 Only bot editors can chat with the unreleased version because it is not available through [channels](./channels.md). 
 
-!!! info     
-    This differs from behavior before the versioning feature was added, as previously all channels always used the unreleased version.
+!!! note "Behavior before versioning"
+    Previously, all channels always used the unreleased version.
 
 ## Changing the Published Version
 The published version can be selected from any of the Chatbot versions, enabling rollback to a previous version.
 Only one version can be the published version at a time.
 
-To publish a version, follow [Tutorial step 5](../tutorials/versioning_steps.md#step-5-publish-the-version)
+To publish a version, follow the tutorial on [creating and publishing versions](../tutorials/versioning_steps.md)
 
 
 ## Versioning for OpenAI Assistants
