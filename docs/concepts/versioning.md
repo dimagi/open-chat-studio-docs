@@ -1,56 +1,43 @@
 # Versioning
 
-Versioning is now enabled by default for all projects on Open Chat Studio. This comes with a few important changes that modify the default behavior of the platform.
+Versioning keeps your live chatbot stable while you make changes. You can edit and test your chatbot without impacting your users. For more details, see the tutorial on [creating and publishing versions](../tutorials/versioning_steps.md)
 
-## Terms
-OCS uses the following terms:
+Versioning tracks the history of your chatbot's configuration so you can review what changed, and roll back to a previous version if needed.
 
-* *Unreleased Version*. This is the version of the chatbot you are currently editing using the edit button. It can also be considered a draft with unsaved changes.
 
-* *Published Version*. This is the version that users will interact with through the web, WhatsApp or any other configured channel--including the public link.
+## Terminology
 
-!!! info "A note on version functionality"
-    Once a version is made, it cannot be edited or modified. This ensures that the users' experience remains stable even if the authors may be changing the unreleased version.
+* *Unreleased Version*. This is the version of the chatbot you are currently editing. It is a draft that has not been versioned or published.
 
-!!! warning "Chatting to the unreleased version"
+* *Published Version*. This is the version that users will interact with — through the web, WhatsApp, or any other channel you have set up, including the public link.
 
-    To chat with the unreleased version, go to the chatbot home page and click the speech bubble icon in the top-right corner. In the dropdown, select "Unreleased Version" instead of "Published Version" to open a web chat. Only bot authors can chat with the unreleased version because it is not available through channels. This differs from behavior before versioning, when all channels always used the unreleased version.
+## What is a Chatbot Version?
 
-#### Changing the Published Version
-The published version can be selected from any released version of the chatbot. To choose which version is the published version:
+Once a version is created, it cannot be edited or modified. This ensures that the users' experience remains stable even if chatbot editors are changing the unreleased version.
 
-- Select "View Details" of the version
-- Press the "Set as Published Version" button at the button of the dialog box.
+## Chatting to the unreleased version
+For testing, if you want to chat with the unreleased draft chatbot, go to the chatbot home page and click the speech bubble icon in the top-right corner. In the dropdown, select "Unreleased Version" instead of "Published Version" to open a web chat. 
 
-Alternatively, when a new version is being created, it can be set as the published version by marking the checkbox "Set as Published Version".
+When chatting with an unpublished version, a banner will appear indicating that it is not the published version and showing the version number.
 
+![Web chat unpublished version banner](images/version_web_chat.png)
+
+Only bot editors can chat with the unreleased version because it is not available through [channels](./channels.md). 
+
+!!! info     
+    This differs from behavior before the versioning feature was added, as previously all channels always used the unreleased version.
+
+## Changing the Published Version
+The published version can be selected from any of the Chatbot versions, enabling rollback to a previous version.
 Only one version can be the published version at a time.
 
-
-## Workflow
-
-When a new chatbot is first created, it has two versions: a published version and an unreleased version, as shown in the version table:
-![CVersion Table](images/version_table_after_exp_creation.png)
-
-After making changes to the unreleased version, you can create another version by either clicking the create version button in the table or navigating to the chatbot edit page and scrolling to the bottom. Note: this button is enabled only when changes have been made.
-![Edit Chatbot Action Buttons](images/version_edit_view_action_buttons.png)
-
-That will take you the the create new version page which will show you the difference between the previous version (note not the published version) and the unreleased version. Here, you can also set this newly created version as the published version. Also, there is an option to add a description to the version that will be shown in the version table to quickly remember the changes between versions.
-![Create Chatbot Version View](images/version_create_view.png)
-
-You now have a new released version. You will be directed back to the chatbot versions table, where it may take a few minutes for the version to be fully available. You can then chat with that version and view its details. The "View Details" page shows full specifications and lets you set the version as published or archive it.
-![Create Chatbot Version View](images/version_edit_view_action_buttons.png)
-
-If you click on the webchat button, for an unpublished version, there will be a banner indication that it's the unpublished version, and which version it is:
-![Create Chatbot Version View](images/version_web_chat.png)
+To publish a version, follow [Tutorial step 5](../tutorials/versioning_steps.md#step-5-publish-the-version)
 
 
-For this demo, I released a few more versions for this chatbot and changed the published version. To quickly see which version is published, look to the right of the chatbot name at the top of the chatbot home screen for the green version badge. In this example, "v2" indicates that version 2 is published. You can also confirm this in the table by checking for the checkmark on the published row.
-![Create Chatbot Version View](images/version_table_after.png)
-
+## Versioning for OpenAI Assistants
 
 !!! info "Versioning chatbots that use OpenAI Assistants"
-    Can this be done? Yes. When a chatbot that uses an OpenAI Assistant is released, no additional configuration is required. A read-only copy of the OpenAI Assistant is created in Open Chat Studio (see the Assistants tab) and in OpenAI, including all referenced files. The original OpenAI Assistant remains available and can still be modified in the unreleased chatbot version.
+    Yes, this is supported. When a new version is saved for a chatbot that uses an OpenAI Assistant, a snapshot copy of that assistant is automatically created — no extra setup needed. The original assistant remains available and can still be updated in the unreleased version.
 
 !!! warning "Modifying Assistants in OpenAI referenced by released versions"
 
