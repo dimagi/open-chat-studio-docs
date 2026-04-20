@@ -26,4 +26,10 @@ The key field accepts dotted path notation to select nested fields. For example,
 - key `user.name` resolves to `"John"`
 - key `user.age` resolves to `30`
 
-If the specified key is not present in the data source, the router falls back to the default (first linked) route.
+If the specified key is not present in the data source, the router falls back to the default (first linked) output.
+
+## Route Tagging
+
+!!! tip "Tip"
+
+    Use the Output Message [Tagging](../../concepts/tags.md) feature to make it easy to review how messages are flowing through your pipeline. 

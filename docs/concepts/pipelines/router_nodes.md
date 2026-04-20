@@ -1,39 +1,41 @@
 # Router Nodes
 
+## Routers
+
+Router nodes direct the conversation to different paths. Rather than following a single fixed workflow, a pipeline with routers can behave differently depending on what the user says or what is known about them.
+
+Router nodes are essentially decision points as they branch the pipeline workflow along different paths based on logic.
+
+For example, you might route new users to an onboarding flow while returning users go straight to the main menu, or send a message to a specialist node if the user asks about a particular topic.
+
 !!! note Examples
 
     See [chatbot workflow cookbook](../../how-to/workflow_cookbook.md) for example usage of pipelines using Routers in complex bots.
 
-## Routers
-
-Router nodes direct the conversation to different paths based on context. Rather than following a single fixed flow, a pipeline with routers can behave differently depending on what the user says or what is known about them.
-
-For example, you might route new users to an onboarding flow while returning users go straight to the main menu, or send a message to a specialist node if the user asks about a particular topic.
-
 There are two types of Router Nodes:
 
 1. **LLM Router** — uses an AI model to classify the input and choose a route
-2. **Static Router** — chooses a route based on a stored data value
+2. **Static Router** — chooses a workflow path based on a stored data value
 
 
 ### LLM Router Node
 
-The LLM Router uses an AI model to classify incoming messages into one of your defined categories. Each category corresponds to a different node output path.
+This uses an AI model to classify incoming messages into one of your defined **outputs**. Each output connects to a different downstream node.
 
-You define the categories (called **outputs**) in the [router node settings](../../tech-hub/routers/llm_router.md#outputs-and-default-route). 
+You define **outputs** in the [router node settings](../../tech-hub/routers/llm_router.md#outputs-and-default-route).
 
-The model will pick the closest match. If the model cannot confidently match any category, the message is sent along the **default** route — marked with a blue `*` in the interface.
+The model will pick the closest match. If the LLM cannot confidently match to any of the configured **outputs**, the router choses the **default** output — marked with a blue `*` in the interface.
 !!! tip "For technical configuration tips"
 
-    See [Router Node — Technical Reference](../../tech-hub/routers/index.md) for best practices around output categories, history mode and output formatting.
+    See [Router Node — Technical Reference](../../tech-hub/routers/index.md) for best practices around output keywords, history mode and tagging.
 
 ### Static Router Node
 
-The Static Router routes the conversation based on a value stored in your data — such as a participant's profile or session information. It does not use an AI model; it simply looks up a key and follows the matching route.
+The Static Router routes the conversation based on a value stored in your data — such as a participant's profile or session information. It does not use an AI model; it simply looks up a key and follows the matching output.
 
 This is useful for directing users based on known attributes, such as their preferred language, their subscription tier, or a flag set earlier in the conversation.
 
-If the key is not found in the data, the message is sent along the default (first linked) route.
+If the key is not found in the data, the message is sent along the **default** output.
 
 !!! tip "For technical configuration"
 
