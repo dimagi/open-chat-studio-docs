@@ -105,7 +105,21 @@ From the queue detail page (requires queue management permissions), you can expo
 | **CSV** | Spreadsheet-friendly, one row per annotation |
 | **JSONL** | One JSON object per line, suitable for programmatic processing |
 
-The export includes the item details, reviewer, and all annotation field values.
+The export includes the item details, reviewer, and all annotation field values. It also includes flagged items that have no reviewer annotations, so every flagged item appears in the export regardless of review status.
+
+Each exported record contains the following fields:
+
+| Field | Description |
+|-------|-------------|
+| Item details | Source data for the reviewed item (e.g. message content, session metadata) |
+| Reviewer | The team member who submitted the annotation |
+| Annotation field values | One value per schema field defined on the queue |
+| `session_external_id` | External UUID of the session linked to the annotation item |
+| `flagged` | Boolean indicating whether the item is flagged |
+| `flagged_reason` | Full list of flag entries recorded on the item |
+
+!!! note
+    In CSV exports, `flagged_reason` is JSON-serialized as a string. Use JSONL format if you need to process flag entries programmatically without parsing JSON within a field.
 
 ## Managing Assignees
 
