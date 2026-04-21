@@ -114,7 +114,7 @@ Each exported record contains the following fields:
 | Item details | Source data for the reviewed item (e.g. message content, session metadata) |
 | Reviewer | The team member who submitted the annotation |
 | Annotation field values | One value per schema field defined on the queue |
-| `session_external_id` | External UUID of the session linked to the annotation item |
+| `session_id` | External UUID of the session linked to the annotation item |
 | `flagged` | Boolean indicating whether the item is flagged |
 | `flagged_reason` | Full list of flag entries recorded on the item |
 
