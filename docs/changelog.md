@@ -5,6 +5,7 @@ hide:
 
 # Changelog
 ## Apr 21, 2026
+* **NEW** Annotation exports (CSV and JSONL) now include three additional fields: `session_id` (the UUID of the linked session), `flagged` (whether the item is flagged), and `flagged_reason` (the list of flag entries). Flagged items with no annotations are also included in the export.
 * **BUG** Fixed an error that occurred when rapidly removing filters in the UI.
 
 ## Apr 12, 2026
