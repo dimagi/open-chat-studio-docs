@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Apr 21, 2026
+* **BUG** Fixed an error that occurred when rapidly removing filters in the UI.
+
 ## Apr 12, 2026
 * **BUG** Fixed an issue where document indexing failed for certain markdown files containing multi-byte UTF-8 characters.
 
