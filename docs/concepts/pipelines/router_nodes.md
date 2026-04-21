@@ -2,47 +2,47 @@
 
 !!! note Examples
 
-    See [chatbot workflow cookbook](../../how-to/workflow_cookbook.md) for example usage of pipelines using Routers in complex bots.
+    See [chatbot workflow cookbook](../../how-to/workflow_cookbook.md) for examples of complex pipelines using Routers.
 
 
 ## Routers
 
-Router nodes direct the conversation to different paths. Rather than following a single fixed workflow, a pipeline with routers can behave differently depending on what the user says or what is known about them.
+Router Nodes act as the intelligent decision-makers of your pipeline. Instead of following a single, rigid path, a pipeline equipped with a Router can dynamically change its behavior based on what the user says or what is already known about them.
 
-Router nodes allow you to route (ie pass through) the input to one of the downstream linked nodes. It selects an path based on the input conversation context.
+Essentially, a Router Node evaluates the current conversation context and "hands off" the input (ie passing user information) to the most relevant downstream node. This allows your chatbot to adapt in real-time. 
 
-```mermaid
-flowchart LR
-    start([Input]) --> Router
-    Router -.outputA.-> Node1
-    Router -.outputB.-> Node2
-    Node2 --> out([Output])
-    Node1 --> out([Output])
-```
-For example, you might route new users to an onboarding flow while returning users go straight to the main menu, or send a message to a specialist node if the user asks about a particular topic.
+For example:
+
+1. **User Status (Data-Based)**: You can route new users to a specialized onboarding flow while returning users are sent straight to the main menu.
+
+2. **Topic Expertise (Intent-Based)**: You can automatically detect if a user is asking about a complex technical issue and send that message to a specialist node instead of a general FAQ LLM Node.
+
+## Useful terms 
+
+1. **Linked Downstream Node**: Any node that appears after the current node in the pipeline flow.
+
+2. **Conversation Context**: The total set of information available to the pipeline at that moment. This includes the user’s current message, their chat history, and known data (like whether they are a "new" or "returning" user).
+
+3. **Default Path**: The "safety net" route (marked with a blue *). If the Router cannot confidently decide where to send the user, it follows this path to prevent the conversation from breaking. [more](../../tech-hub/routers/index.md#the-default-output).
 
 ## Router Types
-There are 2 types of Router Nodes:
+There are two distinct ways to route a conversation. The choice depends on whether you are routing based on what the user means or what the system knows.
 
-1. **LLM Router** — uses an AI model to classify the input and choose the next step in the workflow
-2. **Static Router** — chooses a workflow path based on a stored data value
+### LLM Router Node
+The LLM Router uses an AI model to "read" the incoming message and classify it into a category. Its used to understand intent.
+
+- **How it works**: It acts as a classifier. You provide a prompt that tells the LLM how to categorize a message (e.g., "If the user is angry, output `escalate`").
+- **Best for**: Handling unpredictable user text.
+- You define Keywords for your downstream paths. If the LLM outputs the keyword `billing`, the conversation follows the line labeled billing to the next downstream node.
+
+### Static Router Node
+The Static Router does not use an AI model and does not "read" the user's message. Instead, it looks up a specific value stored in your [data source](../../tech-hub/routers/static_router.md). 
+
+- **How it works**: It checks a pre-existing "key" or "tag"—such as a participant’s profile or session information—and follows the matching path.
+- **Best for**: Routing based on known attributes like preferred language, subscription tier, or VIP status.
+- Example: If your data shows subscription_tier = 'premium', the Static Router will immediately send the user to the Priority Support Agent without needing an LLM to think about it.
+
 
 !!! tip "For technical configuration"
 
     See [Router Nodes on Tech Hub](../../tech-hub/routers/index.md) for configuration details and best practices.
-
-### LLM Router Node
-Routes the input to one of the linked nodes using an LLM. In this case, the LLM acts as a classifier using the prompt provided to classify an incoming message into a set of discrete categories (keywords) that allow messages to be routed.
-
-You define **outputs** in the [router node settings](../../tech-hub/routers/llm_router.md#outputs-and-default-route).
-
-The model will pick the closest match. If the LLM cannot confidently match to any of the configured **outputs**, the router choses the **default** output — marked with a blue `*` in the interface.
-
-### Static Router Node
-The Static Router node allows you to route the input to one of the linked nodes based on the value of a specific key in the data source. This is useful if you want your bot to behave differently depending on the value of a specific key in the [data source](../../tech-hub/routers/static_router.md).
-
-It routes the conversation based on a value stored in your data — such as a participant's profile or session information. It does not use an AI model; it simply looks up a key and follows the matching output.
-
-This is useful for directing users based on known attributes, such as their preferred language, their subscription tier, or a flag set earlier in the conversation.
-
-If the key is not found in the data, the message is sent along the **default** output.

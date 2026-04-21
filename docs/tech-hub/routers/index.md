@@ -1,48 +1,36 @@
-# Router Nodes Configuration
+# Router Nodes: Common Configuration
 
-This page covers technical configuration details for Router nodes. For a conceptual overview, see [Router Nodes in Pipelines](../../concepts/pipelines/router_nodes.md).
+This page details the technical setup shared by all Router nodes. For a high-level explanation of how these nodes function, see [Router Nodes in Pipelines](../../concepts/pipelines/router_nodes.md).
 
-Below is information about both types of routers and the details for each type: 
+Regardless of whether you are using an LLM Router (intent-based) or a Static Router (data-based), both utilize the same underlying mechanics to direct conversation flow. These settings are found in the Advanced section of the node configuration.
 
-1. [LLM Router](llm_router.md) configuration details
-2. [Static Router](static_router.md) configuration details
+For specific setup guides, see:
 
-## Outputs
-
-Each router node has one or more **outputs** — the connection points that link the router node to downstream nodes in the pipeline. The active output for a given input message is determined by matching the router's result against its configured **Output Keywords**.
-
-### Output Keywords
-
-Each output has a keyword. When the router runs, it compares its result against these keywords to select which output to activate.
-
-Keywords must be unique.
-
-#### Keyword Case Behaviour
-
-- All **Output Keywords** are automatically converted to uppercase.
-- When configuring outputs, use uppercase keywords to match this behaviour.
-- Keyword matching itself is case-insensitive, so `HELP`, `Help`, and `help` will all match the same output.
-
-### The default output
-
-The **default** output is indicated by a blue `*` in the node configuration. This can be changed by clicking the blue `*` for another of the **Output Keywords**
-
-If no keyword matches — or an error occurs — the message is routed along this default outputs downstream node .
-
-## Route Tagging
-
-Router nodes in OCS supports Output Message [tagging](../../concepts/tags.md) of output messages based on the routing decision, enabling tracking and analysis of conversation flow paths for debugging.
-
-Toggle the **Tag Output Message** flag when configuring the node for this feature.  
-
-Tags can be viewed in the session trace. See [Tracing](../../concepts/tracing.md) for more detail.
+1. [LLM Router Configuration](llm_router.md)
+2. [Static Router Configuration](static_router.md)
 
 
-### The tag naming convention
+### The Default Output
+Every Router requires a "safety net" to ensure the conversation never hits a dead end. This is known as the Default Output.
+
+- The Indicator: The default output is marked with a blue asterisk (*) in the node configuration.
+- The Logic: If the Router cannot find a confident match for any of your configured Keywords—or if a technical error occurs—the message is automatically directed to the linked downstream node connected to this default path.
+- Customization: You can change which path is the default by clicking the blue * next to a different Keyword in your output list.
+
+## Route Tagging (Observability)
+To understand how users are moving through your chatbot, you can enable Output Message Tagging. This is a critical feature for debugging and analyzing the performance of your routing logic.
+
+- How to Enable: Toggle the **Tag Output Message** flag within the Router node settings.
+- Viewing Data: Once enabled, these tags are recorded in the session logs. You can review them in real-time using the Tracing tool to see exactly which path was chosen and why.
+- Router nodes support [tagging](../../concepts/tags.md), enabling [tracing](../../concepts/tracing.md) and analysis of conversation flow paths for debugging.
+
+### Tag naming convention
+To keep your system tags organized, OCS follows a strict naming convention for these tags:
 ```
 <node_name>:<route_name>
 ```
-For example, if a node named `intent_router` selects the route `HELP`, the tag will be `intent_router:HELP`.
+Example: If you have a Route node named `support_triage` and it selects the **Output Keyword** BILLING, the resulting tag will be:
+`support_triage:BILLING`
 
-
+Ensure your node_name is descriptive (e.g., intent_classifier) to make the tags meaningful.
 

@@ -1,29 +1,45 @@
 # LLM Router Configuration
 
-The LLM Router uses an AI model to classify incoming messages into one of the defined **output keywords**.
+The LLM Router uses an AI model to analyze an incoming message and classify it into a specific category. This category must match one of your defined **output keywords** to successfully hand off the conversation to a linked downstream node.
 
-## Outputs and Default Route
+```mermaid
+flowchart LR
+    start([Input]) --> Router
+    Router -.outputA.-> Node1
+    Router -.outputB.-> Node2
+    Node2 --> out([Output])
+    Node1 --> out([Output])
+```
 
-The `outputs` listed on the node are the available classification labels. These should match the categories described in your prompt. They can be adjusted through the **Advanced** settings for the node.
+## Configuration: Outputs & Keywords
+You manage your Router Node through the Advanced Settings.
 
-The top **Output Keyword** — marked with a blue `*` — is the **default**. If the AI model generates a response that does not match any of the defined Output Keywords or an error occurs, the message is routed along the default output.
+- **Outputs**: These are the paths that link the router to downstream nodes. You must configure one output for every specialized path in your workflow.
+- **Keywords**: A Keyword is the unique label assigned to a pipeline workflow path. It's labeled as **output keyword** in Advanced Settings UI.
+    - Uniqueness: Each Keyword within a single Router Node must be unique.
+    - The Handshake: The LLM produces a word. If that word matches a Keyword on an output line, the conversation follows that path.
+- **The Default Route**: One keyword (marked with a blue *) acts as the Default. If the LLM generates a word that doesn't match your list, or if an error occurs, OCS will automatically use this path.
 
-## Prompt Design
+Example: Configure an **output keyword** for each of linked downstream nodes you need for your workflow paths. The keyword name should describe the path. For example "HIV", "TB" and "GENERAL" for the 3 possible workflow paths.
 
-Your prompt should clearly describe each category and give the model enough context to classify reliably. Ambiguous or overlapping categories will reduce accuracy.
+#### Keyword Case Behaviour
+To ensure technical consistency, OCS handles keywords with the following rules:
+- Automatic Uppercase: All Keywords are stored in UPPERCASE. While matching is case-insensitive (e.g., `Help` matches `HELP`), we recommend using uppercase during configuration for clarity.
+
+## Prompt Design: The Classifier
+
+To ensure reliable routing, the LLM prompt must be written as a Classifier. Its goal is to return a single, constrained choice.
+
+- Clear Categorization: Explicitly describe each category in the prompt and instruct the model to "Output ONLY the keyword."
+- Contextual Accuracy: Provide enough detail so the model can distinguish between overlapping topics.
+  - Example: "If the user asks about account settings, output `SETTINGS`. If they ask about a refund, output `BILLING`. Output nothing else."
 
 
-!!! info "Keyword matching is case-insensitive"
+## Technical Performance: History Mode
+It is strongly advisable to use [Node history mode](../../concepts/pipelines/history.md#node) for an LLM Router. 
 
-    Route names are not case-sensitive. "HELP", "Help", and "help" all refer to the same route.
-
-
-## History Mode
-
-It is strongly advisable to use [Node history mode](../../concepts/pipelines/history.md#node) for an LLM Router. Without this, the model may receive previous conversation turns as few-shot examples, which can include earlier classification outputs and cause the model to reproduce them incorrectly in a new context.
+Why? If the router sees the full conversation history, it might be influenced by previous routing decisions (e.g., seeing that it chose "Billing" in the last turn and repeating it incorrectly). Node history ensures the LLM focuses only on the most recent user input.
 
 ## Route Tagging
 
-!!! tip "Tip"
-
-    Use the Output Message [Tagging](../../concepts/tags.md) feature to make it easy to review how messages are flowing through your pipeline. 
+See [Route Tagging details](index.md#route-tagging-observability)
