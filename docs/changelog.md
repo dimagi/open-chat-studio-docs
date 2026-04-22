@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Apr 22, 2026
+* **BUG** Fixed a `TypeError` on mobile Safari that prevented the trends chart from rendering when the chatbot table was dynamically loaded.
+
 ## Apr 21, 2026
 * **NEW** Annotation exports (CSV and JSONL) now include three additional fields: `session_id` (the UUID of the linked session), `flagged` (whether the item is flagged), and `flagged_reason` (the list of flag entries). Flagged items with no annotations are also included in the export.
 * **BUG** Fixed an error that occurred when rapidly removing filters in the UI.
