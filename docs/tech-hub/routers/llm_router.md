@@ -1,6 +1,6 @@
 # LLM Router Configuration
 
-The LLM Router uses an AI model to analyze an incoming message and classify it into a specific category. This category must match one of your defined **output keywords** to successfully hand off the conversation to a linked downstream node.
+The LLM Router uses an AI model to analyze an incoming message and classify it into a specific category. This category must match one of your defined **output keywords** so the conversation is routed to the correct downstream node.
 
 ```mermaid
 flowchart LR
@@ -12,23 +12,23 @@ flowchart LR
 ```
 
 ## Configuration: Outputs & Keywords
-You manage your Router Node through the Advanced Settings.
+You manage your router node through the Advanced Settings.
 
-- **Outputs**: These are the paths that link the router to downstream nodes. You must configure one output for every specialized path in your workflow.
-- **Keywords**: A Keyword is the unique label assigned to a pipeline workflow path. It's labeled as **output keyword** in Advanced Settings UI.
-    - Uniqueness: Each Keyword within a single Router Node must be unique.
-    - The Handshake: The LLM produces a word. If that word matches a Keyword on an output line, the conversation follows that path.
-- **The Default Route**: One keyword (marked with a blue *) acts as the Default. If the LLM generates a word that doesn't match your list, or if an error occurs, OCS will automatically use this path.
+- **Outputs**: These are paths that link the router to downstream nodes. Configure one output for each specialized path in your workflow.
+- **Keywords**: A keyword is the unique label assigned to an output path. In the Advanced Settings UI, this is shown as **output keyword**.
+  - Uniqueness: Each keyword within one Router node must be unique.
+  - Matching: The LLM returns one word. If that word matches an output keyword, the conversation follows that path.
+- **The Default Route**: One output keyword (marked with a blue *) acts as the default route. If the LLM returns a word that does not match your list, or if an error occurs, OCS automatically uses this path.
 
-Example: Configure an **output keyword** for each of linked downstream nodes you need for your workflow paths. The keyword name should describe the path. For example "HIV", "TB" and "GENERAL" for the 3 possible workflow paths.
+Example: Configure one **output keyword** for each linked downstream node in your workflow. The keyword should describe the path, for example `HIV`, `TB`, and `GENERAL` for three possible workflow paths.
 
-#### Keyword Case Behaviour
+#### Keyword Case Behavior
 To ensure technical consistency, OCS handles keywords with the following rules:
-- Automatic Uppercase: All Keywords are stored in UPPERCASE. While matching is case-insensitive (e.g., `Help` matches `HELP`), we recommend using uppercase during configuration for clarity.
+- Automatic Uppercase: All keywords are stored in uppercase. While matching is case-insensitive (for example, `Help` matches `HELP`), we recommend using uppercase during configuration for clarity.
 
 ## Prompt Design: The Classifier
 
-To ensure reliable routing, the LLM prompt must be written as a Classifier. Its goal is to return a single, constrained choice.
+To ensure reliable routing, write your prompt as a classifier. Its goal is to return exactly one valid keyword.
 
 - Clear Categorization: Explicitly describe each category in the prompt and instruct the model to "Output ONLY the keyword."
 - Contextual Accuracy: Provide enough detail so the model can distinguish between overlapping topics.
@@ -36,9 +36,9 @@ To ensure reliable routing, the LLM prompt must be written as a Classifier. Its 
 
 
 ## Technical Performance: History Mode
-It is strongly advisable to use [Node history mode](../../concepts/pipelines/history.md#node) for an LLM Router. 
+We strongly recommend using [Node history mode](../../concepts/pipelines/history.md#node) for an LLM Router.
 
-Why? If the router sees the full conversation history, it might be influenced by previous routing decisions (e.g., seeing that it chose "Billing" in the last turn and repeating it incorrectly). Node history ensures the LLM focuses only on the most recent user input.
+Why? If the router sees full conversation history, it can be biased by earlier routing decisions (for example, repeating "BILLING" because it selected it previously). Node history helps the LLM focus on the most recent user input.
 
 ## Route Tagging
 
