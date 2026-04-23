@@ -161,14 +161,14 @@ Instructions:
 
 ## Making external API calls
 
-See documentation on [How to call external APIs](../tech-hub/external_api_calls.md) for details
+See documentation on [How to call external APIs](../tech-hub/external-api-calls/index.md) for details
 
-[abort]: ../concepts/pipelines/python_node.md#python_node.abort_with_message
-[python]: ../concepts/pipelines/python_node.md
+[abort]: ../tech-hub/python_node.md#python_node.abort_with_message
+[python]: ../tech-hub/python_node.md
 [router]: ../concepts/pipelines/router_nodes.md
 [prompt_vars]: ../concepts/prompt_variables.md
-[temp_state]: ../concepts/pipelines/python_node.md#temporary-state
-[attachments]: ../concepts/pipelines/python_node.md#attachments
-[code_node_supported_file_types]: ../concepts/pipelines/python_node.md#supported-file-types
-[http_client]: ../tech-hub/http_client.md
+[temp_state]: ../tech-hub/python_node.md#temporary-state
+[attachments]: ../tech-hub/python_node.md#attachments
+[code_node_supported_file_types]: ../tech-hub/python_node.md#supported-file-types
+[http_client]: ../tech-hub/external-api-calls/http_client.md
 [auth_providers]: ../concepts/team/authentication_providers.md

@@ -1,33 +1,45 @@
 # Node Types
 
+A node is a "step" in a [pipeline](index.md) workflow that processes a user’s input and produces a result. Each node in the pipeline performs a specific action (like calling an LLM, running Python code, or routing based on logic) and processes data that flows through the pipeline.
+
+``` mermaid
+graph LR
+  A@{ shape: stadium, label: "User Input" } --> B(Node);
+  B --> C@{ shape: stadium, label: "Result Output" };
+```
+
 !!! note Examples
 
-    See [chatbot workflow cookbook](../../how-to/workflow_cookbook.md) for example usage. 
+    See [chatbot workflow cookbook](../../how-to/workflow_cookbook.md) for examples of pipelines using different combinations of these node types.
 
 ## LLM Node
-Use an LLM to respond to the node input. This node can be [configured](../llm.md#model-configuration-parameters) including:
-- a [prompt](../llm.md#prompt) with promptto give the LLM instructions on how to respond,
+A conversational node using LLMs with prompts and tools. This node can be [configured](../llm.md#model-configuration-parameters) including:
+
+- a [prompt](../llm.md#prompt) to give the LLM instructions on how to respond,
 - selecting a [history mode](history.md) for the LLM,
 - and to use [tools](../tools/index.md) which enable it to perform additional actions.
 
 ## Routing Nodes
 
-See the [Router Node](./router_nodes.md) page for full documentation including both Static Router and LLM Router
+See the [Router Node](./router_nodes.md) page for full documentation on Static Router and LLM Router.
 
-## Assistant as a Node
-Use an [OpenAI assistant](../../concepts/assistants.md) for advanced conversational AI.
+## Python Node
 
-## Python Code Node
-Execute custom Python code for logic, data processing, and external API calls. 
- - See the [Python Node](./python_node.md) page for full documentation including [utility functions](./python_node.md#utility-functions) to interact with users data
-  - Utility functions can interact with pipeline state including [Temporary State](./python_node.md#temporary-state) and user [Session State](./python_node.md#session-state)
- - and [attachments](./python_node.md#attachments) uploaded by user
- - See the [HTTP client](../../tech-hub/http_client.md) documentation for calling external APIs
+Execute custom Python code for logic, data processing, or external API calls.
 
-## Template
+**Key capabilities:**
+
+- **[Utility functions](../../tech-hub/python_node.md#utility-functions)** — read and write [participant data](../../concepts/participant_data.md), [temporary state](../../tech-hub/python_node.md#temporary-state) (per pipeline run), and [session state](../../tech-hub/python_node.md#session-state) (per user session).
+- **[Attachments](../../tech-hub/python_node.md#attachments)** — access files uploaded by the user and read their contents (text, PDF, DOCX, XLSX, and [more](../../tech-hub/python_node.md#supported-file-types)).
+- **[HTTP client](../../tech-hub/external-api-calls/http_client.md)** — make secure HTTP requests to external APIs using the built-in `http` global.
+- **[Debugging](../../tech-hub/python_node.md#debugging-with-print)** — use `print()` to capture diagnostic output, visible in the trace detail view.
+
+See the [Python Node](../../tech-hub/python_node.md) page for full documentation.
+
+## Render a Template Node
 Renders a [Jinja](https://jinja.palletsprojects.com/en/stable/templates/) template.
 
-## Available Template Variables
+### Available Template Variables
 The following variables are available in the template context:
 
 | Key                     | Description                                                          | Type            |
@@ -51,7 +63,7 @@ Participant Data: {{ participant_data.custom_key }}
 Schedules: {{ participant_schedules }}
 ```
 
-## Email Node
+## Send an Email Node
 Send an email as part of a pipeline. This node acts as a passthrough, meaning the output will be identical to the input, allowing it to be used in a pipeline without affecting the conversation.
 
 The **subject**, **recipient**, and **body** fields all accept plain strings or [Jinja2](https://jinja.palletsprojects.com/en/stable/templates/) templates using the same [template variables](#available-template-variables) as the Template node.
@@ -80,3 +92,5 @@ Extract structured data from the input. This node acts as a passthrough, meaning
 
 ## Update Participant Data Node
 Extract structured data and save it as participant data.
+
+

@@ -137,9 +137,8 @@ nav:
         - Indexed Collection for RAG: concepts/collections/indexed.md
       - Pipelines:
         - concepts/pipelines/index.md
-        - concepts/pipelines/nodes.md
-        - concepts/pipelines/router_nodes.md        
-        - concepts/pipelines/python_node.md
+        - Node Types: concepts/pipelines/nodes.md
+        - Router Nodes: concepts/pipelines/router_nodes.md        
         - concepts/pipelines/history.md
         - concepts/pipelines/parallel.md
       - Team:
@@ -162,11 +161,15 @@ nav:
         - Annotating: concepts/annotations/annotating.md
   - Tech Hub:
     - tech-hub/index.md
-    - tech-hub/tech_custom_action.md
-    - Custom Action Health: tech-hub/health_custom_action.md
-    - Custom Action Testing: tech-hub/test_custom_action.md
-    - Call External APIs: tech-hub/external_api_calls.md     
-    - HTTP Client: tech-hub/http_client.md
+    - Python Node: tech-hub/python_node.md
+    - Call External APIs: 
+        - tech-hub/external-api-calls/index.md     
+        - HTTP Client: tech-hub/external-api-calls/http_client.md
+    - Custom Actions:
+        - tech-hub/custom_action/index.md
+        - Custom Action Health: tech-hub/custom_action/health_custom_action.md
+        - Custom Action Testing: tech-hub/custom_action/test_custom_action.md
+
     - OCS API:
         - api/index.md
         - api/getting_started_with_oauth.md

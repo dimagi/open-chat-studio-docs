@@ -1,8 +1,8 @@
 # HTTP Client for Python nodes
 
-The HTTP Client feature, used in [Python nodes](../concepts/pipelines/python_node.md), provides a direct approach for programmatic API calls from within pipelines. If you want your LLMs to call the API directly, consider [Custom Actions](../concepts/llm_custom_action.md).
+The HTTP Client feature, used in [Python nodes](../python_node.md), provides a direct approach for programmatic API calls from within pipelines. If you want your LLMs to call the API directly, consider [Custom Actions](../../concepts/llm_custom_action.md).
 
-The HTTP client includes built-in [security features](#security-features) to protect against common vulnerabilities and supports automatic credential injection through [Authentication Providers](../concepts/team/authentication_providers.md).
+The HTTP client includes built-in [security features](#security-features) to protect against common vulnerabilities and supports automatic credential injection through [Authentication Providers](../../concepts/team/authentication_providers.md).
 
 The following topics are covered:
 
@@ -16,7 +16,7 @@ The following topics are covered:
 
 ## The Code
 
-The `http` global variable is available in your [Python node](../concepts/pipelines/python_node.md) code and can be used to make secure HTTP requests *without* importing external libraries. It provides a safe, team-aware way to interact with external APIs.
+The `http` global variable is available in your [Python node](../python_node.md) code and can be used to make secure HTTP requests *without* importing external libraries. It provides a safe, team-aware way to interact with external APIs.
 
 ```python
 def main(input, **kwargs) -> str:
@@ -45,7 +45,7 @@ All methods accept the following keyword-only parameters:
 - `data` - Form data (dict) or raw body content (str/bytes). Can be combined with `files` for multipart form uploads
 - `timeout` - Request timeout in seconds (automatically clamped between 1s and the system maximum)
 - `files` - File upload data. See [File Uploads](#file-uploads) for details
-- `auth` - Name of an [Authentication Provider](../concepts/team/authentication_providers.md) to inject credentials. This is a string, not a credentials tuple
+- `auth` - Name of an [Authentication Provider](../../concepts/team/authentication_providers.md) to inject credentials. This is a string, not a credentials tuple
 
 ## Response Structure
 
@@ -177,7 +177,7 @@ def main(input, **kwargs) -> str:
 
 ## Using Authentication Providers
 
-The `http` can automatically inject credentials from your team's [Authentication Providers](../concepts/team/authentication_providers.md) into HTTP requests. This provides a secure way to manage API credentials without hardcoding them in your code. To use a configured Authentication Provider, pass the name of the provider to the request method using the `auth` keyword:
+The `http` can automatically inject credentials from your team's [Authentication Providers](../../concepts/team/authentication_providers.md) into HTTP requests. This provides a secure way to manage API credentials without hardcoding them in your code. To use a configured Authentication Provider, pass the name of the provider to the request method using the `auth` keyword:
 
 ```python
 http.get("https://example.com", auth="my auth provider")
@@ -444,7 +444,7 @@ def main(input, **kwargs) -> str:
     return f"I've attached {len(chart_types)} charts for your review."
 ```
 
-See the [Python Node utility functions](../concepts/pipelines/python_node.md#python_node.attach_file_from_response) documentation for more details on the `attach_file_from_response()` function.
+See the [Python Node utility functions](../python_node.md#python_node.attach_file_from_response) documentation for more details on the `attach_file_from_response()` function.
 
 ## Common Status Codes
 
