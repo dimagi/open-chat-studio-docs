@@ -1,14 +1,16 @@
-# Changelog and Documentation Automation
+# Changelog and Documentation Automation with Claude
 
-GitHub Actions workflows, in this repo and in the OCS repo, use Claude AI to automatically generate changelog entries and update documentation from merged PRs in open-chat-studio.
+This automation keeps user documentation in sync after a PR is merged in the main product repo.
+
+GitHub Action Workflows in this repo and in the [OCS repo](https://github.com/dimagi/open-chat-studio/tree/main/.github/workflows) work together to process merged OCS PRs. The source workflow dispatches PR metadata to this repo, this workflow classifies the PR as widget or main app, generates changelog/docs updates with Claude, and opens a docs PR only when a real diff is produced.
 
 ## Overview
 
 When a PR is merged in open-chat-studio:
-1. **Dispatch workflow** detects if widget files (`components/`) changed
-2. **Update workflow** in this repo uses Claude to:
-   - Update the appropriate changelog (widget or main)
-   - Create/update documentation as needed
+1. **Dispatch workflow** detects if widget files (`components/`) changed for branch strategy
+2. **Update Changlog workflow** in this repo uses Claude to:
+   - Update the appropriate changelog page (widget or main)
+   - Create/update User Documentation as needed
    - Create a PR with changes
 
 ## Widget Branching Strategy
@@ -25,6 +27,20 @@ When a PR is merged in open-chat-studio:
 ## Manual Trigger
 
 Run workflow manually: Actions → "Update Changelog and Docs from OCS PR" → Enter PR number
+
+## Dependencies
+
+Maintainers should consider that changes to any item may require updates in both repositories.
+
+- **Source repo:** `dimagi/open-chat-studio` (with )
+- **Receiving repo:** this docs repo
+
+### Internal templates for Claude
+
+Prompt building instruction templates for Claude in: `.github/templates/`.
+
+Maintainers be aware that renaming variables requires coordinated changes in the workflow step that exports environment values
+
 
 ## Required Secrets
 
