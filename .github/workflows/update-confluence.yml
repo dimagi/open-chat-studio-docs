@@ -1,0 +1,47 @@
+name: Update Confluence Release Table
+
+on:
+  release:
+    types: [published]
+
+  # Allow manual triggering for testing or backfilling
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "Release tag to sync (e.g. v2026.04.13). Must be an existing release."
+        required: true
+
+jobs:
+  update-confluence:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests markdown
+
+      - name: Fetch release info for manual trigger
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG="${{ github.event.inputs.release_tag }}"
+          gh release view "$TAG" --json body,tagName,url \
+            | jq '{release: {body: .body, tag_name: .tagName, html_url: .url}}' \
+            > /tmp/release-event.json
+          echo "GITHUB_EVENT_PATH=/tmp/release-event.json" >> "$GITHUB_ENV"
+
+      - name: Update Confluence release table
+        env:
+          CONFLUENCE_BASE_URL: ${{ secrets.CONFLUENCE_BASE_URL }}
+          CONFLUENCE_EMAIL: ${{ secrets.CONFLUENCE_EMAIL }}
+          CONFLUENCE_API_TOKEN: ${{ secrets.CONFLUENCE_API_TOKEN }}
+          CONFLUENCE_PAGE_ID: "3032678414"
+        run: python scripts/update_confluence_release.py
