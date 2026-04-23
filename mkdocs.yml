@@ -111,8 +111,6 @@ nav:
       - how-to/setting_up_a_survey.md
       - how-to/assistants_migration.md
       - FAQ: how-to/faq.md
-      - Zero Trust Administration: how-to/zero_trust_admin.md
-      - Cloudflare Tunnel Setup: how-to/cloudflare_tunnel.md
   - Concepts:
       - concepts/index.md
 
@@ -161,7 +159,6 @@ nav:
         - concepts/annotations/index.md
         - concepts/annotations/queues.md
         - Annotating: concepts/annotations/annotating.md
-      - Zero Trust Access: concepts/zero_trust_access.md
   - Tech Hub:
     - tech-hub/index.md
     - tech-hub/tech_custom_action.md
