@@ -33,10 +33,10 @@ For example, given the following participant data in JSON format:
 - key `user.language` resolves to `"EN"`
 
 ### 2. The Matching Path (The "Where")
-Once the key is resolved, the router looks for a linked downstream node whose output label matches that value.
+Once the key is resolved, the router looks for a linked downstream node whose output keyword matches that value.
 
 - If `user.language` is `EN`, the conversation will switch to English.
-- Note: If the specified key is missing, or the value does not match any path, the router follows the Default Output (marked with a blue *).
+- Note: If the specified key is missing, or the value does not match any output keyword, the router follows the Default Output (marked with a blue *).
 
 ## Route Tagging
 

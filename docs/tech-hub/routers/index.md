@@ -2,7 +2,7 @@
 
 This page explains the technical setup shared by all router nodes. For a high-level explanation of how these nodes work, see [Router Nodes in Pipelines](../../concepts/pipelines/router_nodes.md).
 
-Whether you are using an LLM Router (intent-based) or a Static Router (data-based), both use the same core configuration pattern to direct conversation flow. These settings are in the Advanced section of the node configuration.
+Whether you are using an LLM Router (intent-based) or a Static Router (data-based), both use the same core configuration pattern to direct conversation flow. These settings are in the Advanced Settings of the node configuration.
 
 For specific setup guides, see:
 
@@ -14,8 +14,8 @@ For specific setup guides, see:
 Every router needs a "safety net" so the conversation never reaches a dead end. This is called the Default Output.
 
 - The Indicator: The default output is marked with a blue asterisk (*) in the node configuration.
-- The Logic: If the router cannot find a match for your configured outputs, or if a technical error occurs, the message is automatically directed to the downstream node connected to this default path.
-- Customization: You can change the default path by clicking the blue * next to a different output keyword in your output list.
+- The Logic: If the router cannot find a match for your configured outputs, or if a technical error occurs, the message is automatically directed to the downstream node connected to this Default Output.
+- Customization: You can change the Default Output by clicking the blue * next to a different output keyword in your output list.
 
 ## Route Tagging (Observability)
 To understand how users move through your chatbot, you can enable Output Message Tagging. This is useful for debugging and analyzing routing performance.

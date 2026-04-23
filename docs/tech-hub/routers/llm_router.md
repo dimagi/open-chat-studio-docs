@@ -18,7 +18,7 @@ You manage your router node through the Advanced Settings.
 - **Keywords**: A keyword is the unique label assigned to an output path. In the Advanced Settings UI, this is shown as **output keyword**.
   - Uniqueness: Each keyword within one Router node must be unique.
   - Matching: The LLM returns one word. If that word matches an output keyword, the conversation follows that path.
-- **The Default Route**: One output keyword (marked with a blue *) acts as the default route. If the LLM returns a word that does not match your list, or if an error occurs, OCS automatically uses this path.
+- **The Default Output**: One output keyword (marked with a blue *) acts as the Default Output. If the LLM returns a word that does not match your list, or if an error occurs, OCS automatically uses this output.
 
 Example: Configure one **output keyword** for each linked downstream node in your workflow. The keyword should describe the path, for example `HIV`, `TB`, and `GENERAL` for three possible workflow paths.
 
