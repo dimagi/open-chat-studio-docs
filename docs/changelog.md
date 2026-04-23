@@ -4,9 +4,14 @@ hide:
 ---
 
 # Changelog
+## Apr 22, 2026
+* **NEW** Evaluation datasets now support **session-level evaluation**, allowing evaluators to judge an entire conversation holistically rather than individual message pairs. When creating a dataset, choose "Message level" (existing behavior) or "Session level" (new). Session-level datasets can be populated by cloning sessions, and incompatible evaluators are automatically filtered out when configuring evaluations.
+* **BUG** Fixed a `TypeError` on mobile Safari that prevented the trends chart from rendering when the chatbot table was dynamically loaded.
+
 ## Apr 21, 2026
 * **NEW** Annotation exports (CSV and JSONL) now include three additional fields: `session_id` (the UUID of the linked session), `flagged` (whether the item is flagged), and `flagged_reason` (the list of flag entries). Flagged items with no annotations are also included in the export.
 * **BUG** Fixed an error that occurred when rapidly removing filters in the UI.
+* **BUG** Fixed an API error that occurred when serializing sessions whose `external_id` contained a dot character (e.g., Slack-format identifiers). The sessions API endpoint now correctly handles all `external_id` formats.
 
 ## Apr 12, 2026
 * **BUG** Fixed an issue where document indexing failed for certain markdown files containing multi-byte UTF-8 characters.

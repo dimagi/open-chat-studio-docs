@@ -2,6 +2,8 @@
 
 **Evaluators** define the logic for analyzing messages and generating evaluation metrics. Each evaluator takes individual messages from a dataset and optionally a generated response, then outputs structured results in a table.
 
+Each evaluator has an **evaluation mode** — either **message-level** or **session-level** — that must match the dataset it is used with. When configuring an evaluation run, evaluators whose mode is incompatible with the selected dataset are automatically disabled.
+
 ## Evaluator Types
 
 ### LLM Evaluator
@@ -20,13 +22,30 @@ Consider the conversation context: {context.topic}
 ```
 
 **Template Variables:**
-The following variables are available to be used in the LLM prompt.
 
-- `{input.content}`: The human message content
-- `{output.content}`: The dataset message's AI response content. This may be an expected/reference answer (for manually created datasets) or the actual AI response (for session-cloned datasets).
-- `{generated_response}`: The generated response from your chatbot (if generation enabled)
-- `{context.[parameter]}`: Access any context variables, e.g., `{context.topic}`
-- `{full_history}`: Complete conversation history as formatted text
+The available variables depend on the evaluator's evaluation mode.
+
+##### Message-level variables
+
+| Variable | Description |
+|---|---|
+| `{input.content}` | The human message content |
+| `{output.content}` | The dataset message's AI response content. This may be an expected/reference answer (for manually created datasets) or the actual AI response (for session-cloned datasets). |
+| `{generated_response}` | The generated response from your chatbot (if generation is enabled) |
+| `{context.[parameter]}` | Any context variable, e.g. `{context.topic}` |
+| `{full_history}` | Complete conversation history as formatted text |
+
+##### Session-level variables
+
+In session-level mode, `{input.content}` and `{output.content}` are empty. Use the following variables instead:
+
+| Variable | Description |
+|---|---|
+| `{summary}` | The session snapshot — the full conversation context captured at the time of the last AI message |
+| `{context.[parameter]}` | Any context variable, e.g. `{context.current_datetime}` |
+
+!!! note
+    Generation is not available for session-level datasets, so `{generated_response}` is not applicable in session-level prompts.
 
 See [Evaluation Datasets](dataset.md) for how data is mapped into these fields.
 
