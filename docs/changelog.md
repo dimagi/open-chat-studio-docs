@@ -5,6 +5,7 @@ hide:
 
 # Changelog
 ## Apr 23, 2026
+* **NEW** Pipeline structure and event trigger data are now provided as context to the chat widget when viewing a pipeline, enabling you to ask the assistant questions about the pipeline you are currently viewing.
 * **BUG** Fixed a `SyntaxError` in the evaluator form that prevented the variable autocomplete feature from loading correctly.
 
 ## Apr 22, 2026
