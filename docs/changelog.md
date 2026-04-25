@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Apr 25, 2026
+* **NEW** Added **intron.io** as a Text-to-Speech (TTS) provider. Teams can configure an intron provider with an API key to access 90 voices across 45 African and international accents (male and female), including Afrikaans, Hausa, Igbo, Kinyarwanda, Swahili, Yoruba, Zulu, and more.
+
 ## Apr 23, 2026
 * **NEW** Pipeline structure and event trigger data are now provided as context to the chat widget when viewing a pipeline, enabling you to ask the assistant questions about the pipeline you are currently viewing.
 * **BUG** Fixed a `SyntaxError` in the evaluator form that prevented the variable autocomplete feature from loading correctly.
