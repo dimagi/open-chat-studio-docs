@@ -5,8 +5,8 @@ The LLM Router uses an AI model to analyze an incoming message and classify it i
 ```mermaid
 flowchart LR
     start([Input]) --> Router
-    Router -.outputA.-> Node1
-    Router -.outputB.-> Node2
+    Router -.output-A.-> Node1
+    Router -.output-B.-> Node2
     Node2 --> out([Output])
     Node1 --> out([Output])
 ```
@@ -20,7 +20,7 @@ You manage your router node through the Advanced Settings.
   - Matching: The LLM returns one word. If that word matches an output keyword, the conversation follows that path.
 - **The Default Output**: One output keyword (marked with a blue *) acts as the Default Output. If the LLM returns a word that does not match your list, or if an error occurs, OCS automatically uses this output.
 
-Example: Configure one **output keyword** for each linked downstream node in your workflow. The keyword should describe the path, for example `HIV`, `TB`, and `GENERAL` for three possible workflow paths.
+Example: Configure one **output keyword** for each linked downstream node in your workflow. The keyword should describe the path, for example `HIV`, `TB`, and `GENERAL` for three possible workflow paths for advice on a disease.
 
 #### Keyword Case Behavior
 To ensure technical consistency, OCS handles keywords with the following rules:
@@ -32,13 +32,18 @@ To ensure reliable routing, write your prompt as a classifier. Its goal is to re
 
 - Clear Categorization: Explicitly describe each category in the prompt and instruct the model to "Output ONLY the keyword."
 - Contextual Accuracy: Provide enough detail so the model can distinguish between overlapping topics.
-  - Example: "If the user asks about account settings, output `SETTINGS`. If they ask about a refund, output `BILLING`. Output nothing else."
+  - Example Prompt: "If the user asks about account settings, output `SETTINGS`. If they ask about a refund, output `BILLING`. Output nothing else."
+- Clear Examples: Provide 2-3 "golden examples" for each path to increase accuracy for edge cases
+  - Example Prompt: "If they say X, go to Path A"
 
 
 ## Technical Performance: History Mode
 We strongly recommend using [Node history mode](../../concepts/pipelines/history.md#node) for an LLM Router.
 
 Why? If the router sees full conversation history, it can be biased by earlier routing decisions (for example, repeating "BILLING" because it selected it previously). Node history helps the LLM focus on the most recent user input.
+
+## Cost of LLM model
+You can choose a cheaper model if the complexity of classification of the message into one of the output keywords is low.
 
 ## Route Tagging
 

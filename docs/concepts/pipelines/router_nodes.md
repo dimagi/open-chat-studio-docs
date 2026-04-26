@@ -26,7 +26,7 @@ For example:
 3. **Default Path**: The "safety net" route (marked with a blue *). If the router cannot confidently decide where to send the user, it follows this path to prevent the conversation from breaking. [more](../../tech-hub/routers/index.md#the-default-output).
 
 ## Router Types
-There are two distinct ways to route a conversation. The choice depends on whether you are routing based on what the user means or what the system knows.
+There are two distinct ways to route a conversation in OCS. The choice depends on whether you are routing based on what the user means or what the system knows.
 
 ### LLM Router Node
 The LLM Router uses an AI model to read the incoming message and classify its intent.
