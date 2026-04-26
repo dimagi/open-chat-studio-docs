@@ -34,7 +34,7 @@ To ensure reliable routing, write your prompt as a classifier. Its goal is to re
 - Contextual Accuracy: Provide enough detail so the model can distinguish between overlapping topics.
   - Example Prompt: "If the user asks about account settings, output `SETTINGS`. If they ask about a refund, output `BILLING`. Output nothing else."
 - Clear Examples: Provide 2-3 "golden examples" for each path to increase accuracy for edge cases
-  - Example Prompt: "If they say X, go to Path A"
+  - Example Prompt: "If they mention password reset, output `SETTINGS`."
 
 
 ## Technical Performance: History Mode
