@@ -14,7 +14,7 @@ The router can inspect data from three primary sources:
 You manage your router node through the Advanced Settings.
 
 ### 1. The Key (The "What")
-The key is the field name in the data sourceyou want the router to check. The key must be from one of the supported data sources: Participant Data, Session State, or Temporary State.
+The key is the field name in the data source you want the router to check. The key must be from one of the supported data sources: Participant Data, Session State, or Temporary State.
 
 OCS supports selecting nested fields via dotted path notation, for example `your_field.your_subfield`.
 
@@ -29,8 +29,8 @@ For example, given the following participant data in JSON format:
 }
 ```
 
-- key `user.name` resolves to the value of`"John"`
-- key `user.language` resolves to `"EN"`as the value
+- key `user.name` resolves to the value of `"John"`
+- key `user.language` resolves to `"EN"` as the value
 
 ### 2. Configure route output keywords (Where to go)
 For each downstream path from this router, set an **output keyword**.
@@ -50,16 +50,16 @@ Example:
 - Resolved value: EN
 Result: the router follows Path A
 
+#### Keyword Case Behavior
+To ensure technical consistency, OCS handles keywords with the following rules:
+- Automatic Uppercase: All keywords are stored in uppercase. While matching is case-insensitive (for example, `Help` matches `HELP`), we recommend using uppercase during configuration for clarity.
+
+
 ### 3. Matching behavior and fallback
 - If the key is missing, routing falls back to Default Output.
 - If the key resolves but no output keyword matches, routing falls back to Default Output.
 - If part of a nested path is missing (for example, user.profile.language when profile does not exist), routing falls back to Default Output.
 
-### 2. The Matching Path (The "Where")
-Once the key is resolved, the router looks for a linked downstream node whose output keyword matches that value.
-
-- If `user.language` is `EN`, the conversation will switch to English.
-- Note: If the specified key is missing, or the value does not match any output keyword, the router follows the Default Output (marked with a blue *).
 
 ## Route Tagging
 

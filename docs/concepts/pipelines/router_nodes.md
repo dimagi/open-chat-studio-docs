@@ -36,7 +36,7 @@ The LLM Router uses an AI model to read the incoming message and classify its in
 - You define output keywords for your downstream paths. If the LLM outputs `BILLING`, the conversation follows the path labeled `BILLING` to the next downstream node.
 
 ### Static Router Node
-The Static Router does not use an AI model and does not read the user's message. Instead, it looks up a specific value stored in your [data source](../../tech-hub/routers/static_router.md).
+The Static Router does not use an AI model and does not read the user's message. Instead, it looks up a specific value stored in your [data source](../../tech-hub/routers/static_router.md#supported-data-sources).
 
 - **How it works**: It checks a pre-existing key or tag, such as participant profile data or session information, and follows the matching path.
 - **Best for**: Routing based on known attributes like preferred language, subscription tier, or VIP status.

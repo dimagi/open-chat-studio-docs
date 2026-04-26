@@ -17,12 +17,11 @@ Every router needs a "safety net" so the conversation never reaches a dead end. 
 - The Logic: If the router cannot find a match for your configured outputs, or if a technical error occurs, the message is automatically directed to the downstream node connected to this Default Output.
 - Customization: You can change the Default Output by clicking the blue * next to a different output keyword in your output list.
 
-## Route Tagging (Observability)
+## Route Tagging & Tracing (Observability)
 To understand how users move through your chatbot, you can enable Output Message Tagging. This is useful for debugging and analyzing routing performance.
 
-- How to Enable: Toggle the **Tag Output Message** flag within the Router node settings.
-- Viewing Data: Once enabled, these tags are recorded in the session logs. You can review them in real-time using the Tracing tool to see exactly which path was chosen and why.
-- Router nodes support [tagging](../../concepts/tags.md), which enables [tracing](../../concepts/tracing.md) and path-level analysis for debugging.
+- [Tagging](../../concepts/tags.md): Toggle the **Tag Output Message** flag within the Router node settings.
+- [Tracing](../../concepts/tracing.md): Configure this for path-level analysis for debugging.
 
 ### Tag naming convention
 To keep system tags organized, OCS follows this naming convention:
