@@ -1,24 +1,21 @@
 #!/usr/bin/env python3
 """Update the Confluence release table with a new GitHub release entry.
 
-Reads release information from the GitHub Actions event payload (GITHUB_EVENT_PATH)
-or from environment variables as a fallback for manual testing. Fetches the target
-Confluence page, converts the release markdown to Confluence storage format, inserts
-a new row at the top of the release table, and writes the updated page back.
+Reads release information from environment variables, fetches the target
+Confluence page, converts the release markdown to Confluence storage format,
+inserts a new row at the top of the release table, and writes the updated page
+back.
 
 Required environment variables:
     CONFLUENCE_BASE_URL: e.g. https://dimagi.atlassian.net
     CONFLUENCE_EMAIL: Service account email
     CONFLUENCE_API_TOKEN: Atlassian API token
     CONFLUENCE_PAGE_ID: Target page ID
-
-When not running in GitHub Actions (no GITHUB_EVENT_PATH), also requires:
-    RELEASE_BODY: Release notes in markdown
     RELEASE_URL: URL to the GitHub release
     RELEASE_TAG: Release tag (e.g. v2026.04.13)
+    RELEASE_BODY: Release notes in markdown (optional)
 """
 
-import json
 import os
 import re
 import sys
@@ -36,20 +33,9 @@ def get_env(name: str) -> str:
 
 
 def get_release_info() -> dict:
-    """Get release information from GitHub event payload or environment variables."""
-    event_path = os.environ.get("GITHUB_EVENT_PATH")
-    if event_path:
-        with open(event_path) as f:
-            event = json.load(f)
-        release = event.get("release", {})
-        return {
-            "body": release.get("body", ""),
-            "html_url": release.get("html_url", ""),
-            "tag_name": release.get("tag_name", ""),
-        }
-
+    """Get release information from environment variables."""
     return {
-        "body": get_env("RELEASE_BODY"),
+        "body": os.environ.get("RELEASE_BODY", ""),
         "html_url": get_env("RELEASE_URL"),
         "tag_name": get_env("RELEASE_TAG"),
     }

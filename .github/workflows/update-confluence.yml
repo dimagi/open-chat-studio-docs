@@ -27,16 +27,35 @@ jobs:
       - name: Install dependencies
         run: pip install requests markdown
 
-      - name: Fetch release info for manual trigger
+      - name: Resolve release info from manual input
         if: github.event_name == 'workflow_dispatch'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           TAG="${{ github.event.inputs.release_tag }}"
-          gh release view "$TAG" --json body,tagName,url \
-            | jq '{release: {body: .body, tag_name: .tagName, html_url: .url}}' \
-            > /tmp/release-event.json
-          echo "GITHUB_EVENT_PATH=/tmp/release-event.json" >> "$GITHUB_ENV"
+          gh release view "$TAG" --json body,tagName,url > release.json
+          {
+            echo "RELEASE_TAG=$(jq -r .tagName release.json)"
+            echo "RELEASE_URL=$(jq -r .url release.json)"
+            echo "RELEASE_BODY<<RELEASE_BODY_EOF"
+            jq -r .body release.json
+            echo "RELEASE_BODY_EOF"
+          } >> "$GITHUB_ENV"
+
+      - name: Resolve release info from release event
+        if: github.event_name == 'release'
+        env:
+          EVENT_TAG: ${{ github.event.release.tag_name }}
+          EVENT_URL: ${{ github.event.release.html_url }}
+          EVENT_BODY: ${{ github.event.release.body }}
+        run: |
+          {
+            echo "RELEASE_TAG=$EVENT_TAG"
+            echo "RELEASE_URL=$EVENT_URL"
+            echo "RELEASE_BODY<<RELEASE_BODY_EOF"
+            printf '%s\n' "$EVENT_BODY"
+            echo "RELEASE_BODY_EOF"
+          } >> "$GITHUB_ENV"
 
       - name: Update Confluence release table
         env:
