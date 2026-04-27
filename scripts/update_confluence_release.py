@@ -41,6 +41,23 @@ def get_release_info() -> dict:
     }
 
 
+def resolve_api_base_url(base_url: str) -> str:
+    """Return the base URL to use for Confluence REST calls.
+
+    Scoped Atlassian API tokens only work against the api.atlassian.com gateway
+    (https://api.atlassian.com/ex/confluence/{cloudId}). If the configured base
+    URL is the instance URL (e.g. https://dimagi.atlassian.net), look up the
+    cloud id and rewrite to the gateway form. Otherwise return as-is.
+    """
+    base_url = base_url.rstrip("/")
+    if "api.atlassian.com/ex/confluence/" in base_url:
+        return base_url
+    response = requests.get(f"{base_url}/_edge/tenant_info")
+    response.raise_for_status()
+    cloud_id = response.json()["cloudId"]
+    return f"https://api.atlassian.com/ex/confluence/{cloud_id}"
+
+
 def extract_date_from_tag(tag_name: str) -> str:
     """Extract a YYYY-MM-DD date from a release tag like v2026.04.13."""
     match = re.match(r"v?(\d{4})\.(\d{2})\.(\d{2})", tag_name)
@@ -140,7 +157,7 @@ def insert_row_after_header(page_content: str, new_row: str) -> str:
 
 
 def main():
-    base_url = get_env("CONFLUENCE_BASE_URL")
+    base_url = resolve_api_base_url(get_env("CONFLUENCE_BASE_URL"))
     email = get_env("CONFLUENCE_EMAIL")
     api_token = get_env("CONFLUENCE_API_TOKEN")
     page_id = get_env("CONFLUENCE_PAGE_ID")
