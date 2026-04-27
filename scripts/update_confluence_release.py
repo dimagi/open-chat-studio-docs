@@ -65,8 +65,8 @@ def extract_date_from_tag(tag_name: str) -> str:
 
 def get_confluence_page(base_url: str, page_id: str, auth: tuple) -> dict:
     """Fetch the current Confluence page content and version number."""
-    url = f"{base_url}/wiki/rest/api/content/{page_id}"
-    params = {"expand": "body.storage,version"}
+    url = f"{base_url}/wiki/api/v2/pages/{page_id}"
+    params = {"body-format": "storage"}
     response = requests.get(url, params=params, auth=auth)
     response.raise_for_status()
     data = response.json()
@@ -81,17 +81,16 @@ def update_confluence_page(
     base_url: str, page_id: str, auth: tuple, title: str, content: str, version: int
 ) -> dict:
     """Update the Confluence page, incrementing the version number."""
-    url = f"{base_url}/wiki/rest/api/content/{page_id}"
+    url = f"{base_url}/wiki/api/v2/pages/{page_id}"
     payload = {
-        "version": {"number": version + 1},
+        "id": page_id,
+        "status": "current",
         "title": title,
-        "type": "page",
         "body": {
-            "storage": {
-                "value": content,
-                "representation": "storage",
-            }
+            "representation": "storage",
+            "value": content,
         },
+        "version": {"number": version + 1},
     }
     response = requests.put(url, json=payload, auth=auth)
     response.raise_for_status()
