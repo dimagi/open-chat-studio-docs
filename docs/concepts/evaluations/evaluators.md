@@ -86,8 +86,6 @@ The target of the tag depends on the evaluator's mode:
 
 Each tag application is recorded in an audit log and displayed in the **Applied Tags** column on the run results page.
 
-Tags created by evaluators are placed in an "Evaluations" category and are not system tags, so you can view and manage them alongside other tags in your project.
-
 **Defining a rule**
 
 Each rule has three parts:
@@ -117,10 +115,6 @@ Given the output schema from the example above, you could define the following r
 | confidence_score | low-confidence | range `0.0..0.4` |
 
 With these rules, any evaluation run will automatically tag messages or sessions that meet the conditions, without requiring manual review of every row.
-
-**Schema validation**
-
-If you edit the output schema in a way that removes or renames a field that an existing tag rule references, the form will block the save and display an error. You must either update the affected rules to reference a valid field or remove them before the change can be saved.
 
 ### Python Evaluator
 
