@@ -71,6 +71,56 @@ The system automatically validates the LLM's output against the specified types 
 | user_sentiment | choices | The sentiment of the user message (options: positive, neutral, negative) |
 | confidence_score | float | Confidence in the evaluation, from 0.0 to 1.0 |
 
+#### Tag Rules
+
+Tag Rules let you automatically apply tags to sessions or messages when an evaluator output field matches a condition. This makes it easy to surface and filter results — for example, flagging all sessions where the evaluator detected negative sentiment, or marking messages that scored below a threshold.
+
+Tag Rules are available only on LLM evaluators. They run automatically on every non-preview evaluation run. Preview runs do not trigger tag application.
+
+**How tags are applied**
+
+The target of the tag depends on the evaluator's mode:
+
+- **Message mode**: the tag is applied to the specific chat message being evaluated.
+- **Session mode**: the tag is applied to the session's chat.
+
+Each tag application is recorded in an audit log and displayed in the **Applied Tags** column on the run results page.
+
+Tags created by evaluators are placed in an "Evaluations" category and are not system tags, so you can view and manage them alongside other tags in your project.
+
+**Defining a rule**
+
+Each rule has three parts:
+
+| Field | Description |
+|-------|-------------|
+| Output field | The output schema field whose value is tested |
+| Tag name | The tag to apply when the condition is met |
+| Condition | The value or range that triggers the tag |
+
+The condition options vary by the type of the output field:
+
+| Output field type | Condition behaviour |
+|-------------------|---------------------|
+| choices (enum) | Apply the tag when the field equals one of the defined choice values (e.g. `sentiment == "negative"`) |
+| integer / float | Apply the tag when the field equals a specific value, or falls within a `min..max` range |
+| string | Apply the tag when the field equals a specific value |
+
+**Example Tag Rules**
+
+Given the output schema from the example above, you could define the following rules:
+
+| Output field | Tag name | Condition |
+|---|---|---|
+| user_sentiment | negative-sentiment | equals `negative` |
+| expected_helpfulness | low-helpfulness | range `1..2` |
+| confidence_score | low-confidence | range `0.0..0.4` |
+
+With these rules, any evaluation run will automatically tag messages or sessions that meet the conditions, without requiring manual review of every row.
+
+**Schema validation**
+
+If you edit the output schema in a way that removes or renames a field that an existing tag rule references, the form will block the save and display an error. You must either update the affected rules to reference a valid field or remove them before the change can be saved.
 
 ### Python Evaluator
 
