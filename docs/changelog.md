@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Apr 28, 2026
+* **NEW** LLM evaluators can now automatically tag sessions or messages based on evaluation results. A new **Tag Rules** section on the evaluator form lets you define conditions (equals a value, or falls within a numeric range) that apply a tag when matched. Applied tags are recorded in an audit log and shown in the **Applied Tags** column on the run results page.
+
 ## Apr 25, 2026
 * **NEW** Added **intron.io** as a Text-to-Speech (TTS) provider. Teams can configure an intron provider with an API key to access 90 voices across 45 African and international accents (male and female), including Afrikaans, Hausa, Igbo, Kinyarwanda, Swahili, Yoruba, Zulu, and more.
 
