@@ -394,7 +394,7 @@ def main(input, **kwargs) -> str:
 
 ## Downloading and Attaching Files
 
-The HTTP client can be used in combination with the `attach_file_from_response()` helper function to download files from external APIs and attach them to the chat session. This is useful for generating reports, downloading documents, or retrieving images to share with the user.
+The HTTP client can be used in combination with the `add_file_attachment()` helper function to download files from external APIs and attach them to the chat session. This is useful for generating reports, downloading documents, or retrieving images to share with the user.
 
 ### Example 9: Downloading and Attaching a File
 
@@ -412,9 +412,9 @@ def main(input, **kwargs) -> str:
         return f"Failed to download report: {response['status_code']}"
 
     # Attach the file to the chat session
-    attach_file_from_response(
-        response_bytes=response["response_bytes"],
-        filename="monthly_report.pdf"
+    add_file_attachment(
+        filename="monthly_report.pdf",
+        content=response["response_bytes"]
     )
 
     return "I've attached the monthly report for you to review."
@@ -436,15 +436,15 @@ def main(input, **kwargs) -> str:
         )
 
         if response["is_success"]:
-            attach_file_from_response(
-                response_bytes=response["response_bytes"],
-                filename=f"{chart_type}_chart.png"
+            add_file_attachment(
+                filename=f"{chart_type}_chart.png",
+                content=response["response_bytes"]
             )
 
     return f"I've attached {len(chart_types)} charts for your review."
 ```
 
-See the [Python Node utility functions](../python_node.md#python_node.attach_file_from_response) documentation for more details on the `attach_file_from_response()` function.
+See the [Python Node utility functions](../python_node.md#python_node.add_file_attachment) documentation for more details on the `add_file_attachment()` function.
 
 ## Common Status Codes
 

@@ -110,7 +110,7 @@ hide:
 * **NEW** Notifications system now maintains event history, allowing users to view past notifications and events. Users can also mute notifications per-event or enable "Do Not Disturb" mode to mute all notifications.
 
 ## Feb 11, 2026
-* **NEW** Python nodes can now attach files fetched via HTTP to AI response messages using the new `attach_file_from_response()` helper and `response_bytes` field on HTTP responses.
+* **NEW** Python nodes can now attach files fetched via HTTP to AI response messages using the new `add_file_attachment()` helper and `response_bytes` field on HTTP responses.
 * **NEW** Added notification events that alert you when something important or noteworthy happens in your system, including failures across custom actions (health checks, API failures), chat operations (pipeline execution, LLM errors, tool failures), media handling (audio synthesis/transcription), and message delivery (platform-specific failures). This feature is currently in beta and can be requested for your team.
 
 ## Feb 10, 2026
