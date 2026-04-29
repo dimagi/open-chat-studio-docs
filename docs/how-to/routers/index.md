@@ -1,10 +1,10 @@
 # Configuration for Router Nodes
 
-This page explains the setup steps of configuration shared by all router nodes. For a high-level explanation of how these nodes work, see [Router Nodes in Pipelines](../../concepts/pipelines/router_nodes.md).
+This page covers the configuration steps shared by all router nodes. For a high-level explanation of how these nodes work, see [Router Nodes in Pipelines](../../concepts/pipelines/router_nodes.md).
 
 Whether you are using an LLM Router (intent-based) or a Static Router (data-based), both use the same core configuration pattern to direct conversation flow. These settings are in the Advanced Settings of the node.
 
-For specific setup how-to guides, see:
+For router-specific configuration, see:
 
 1. [LLM Router Configuration](llm_router.md)
 2. [Static Router Configuration](static_router.md)
