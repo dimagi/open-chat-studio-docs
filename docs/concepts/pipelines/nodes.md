@@ -1,11 +1,11 @@
 # Node Types
 
-A node is a "step" in a [pipeline](index.md) workflow that processes a user’s input and produces a result. Each node in the pipeline performs a specific action (like calling an LLM, running Python code, or routing based on logic) and processes data that flows through the pipeline.
+A node is a discrete processing step in a [pipeline](index.md) that accepts a user’s input and produces an output to downstream nodes. Each node in the pipeline performs a specific task (like calling an LLM, running Python code, or routing based on logic) and processes data that flows through the pipeline.
 
 ``` mermaid
 graph LR
-  A@{ shape: stadium, label: "User Input" } --> B(Node);
-  B --> C@{ shape: stadium, label: "Result Output" };
+  A@{ shape: stadium, label: "Input (ie data or prompt)" } --> B(Node);
+  B --> C@{ shape: stadium, label: "Output (ie LLM response)" };
 ```
 
 !!! note Examples
@@ -13,7 +13,7 @@ graph LR
     See [chatbot workflow cookbook](../../how-to/workflow_cookbook.md) for examples of pipelines using different combinations of these node types.
 
 ## LLM Node
-A conversational node using LLMs with prompts and tools. This node can be [configured](../llm.md#model-configuration-parameters) including:
+A conversational node using AI models. This node can be [configured](../llm.md#model-configuration-parameters) including:
 
 - a [prompt](../llm.md#prompt) to give the LLM instructions on how to respond,
 - selecting a [history mode](history.md) for the LLM,
@@ -21,7 +21,8 @@ A conversational node using LLMs with prompts and tools. This node can be [confi
 
 ## Routing Nodes
 
-See the [Router Node](./router_nodes.md) page for full documentation on Static Router and LLM Router.
+Routers are used to reduce cost, improve accuracy, and keep pipeline workflows flexible. A router will: receive input, analyze it, choose the next workflow step, and pass the request to the downstream node.
+See the [Router Node](./router_nodes.md) page for full details.
 
 ## Python Node
 

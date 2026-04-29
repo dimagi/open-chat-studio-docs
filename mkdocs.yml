@@ -162,6 +162,10 @@ nav:
   - Tech Hub:
     - tech-hub/index.md
     - Python Node: tech-hub/python_node.md
+    - Router Nodes:
+        - tech-hub/routers/index.md
+        - tech-hub/routers/llm_router.md
+        - tech-hub/routers/static_router.md
     - Call External APIs: 
         - tech-hub/external-api-calls/index.md     
         - HTTP Client: tech-hub/external-api-calls/http_client.md
