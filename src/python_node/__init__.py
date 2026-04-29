@@ -188,6 +188,20 @@ def add_file_attachment(filename: str, content: bytes, content_type: str | None 
                 return "I've attached the report for you."
 
             return "Failed to download the report."
+
+        def main_explicit_mime(input, **kwargs):
+            # When the filename alone doesn't reliably indicate the MIME type
+            response = http.get("https://api.example.com/export", auth="my-api")
+
+            if response["is_success"]:
+                add_file_attachment(
+                    filename="export",
+                    content=response["response_bytes"],
+                    content_type="application/pdf"
+                )
+                return "Export attached."
+
+            return "Failed to retrieve export."
         ```
 
     See also: [HTTP Client - Downloading and Attaching Files](external-api-calls/http_client.md#downloading-and-attaching-files)
