@@ -1,15 +1,12 @@
 # Changelog and Documentation Automation with Claude
 
-This automation keeps user documentation in sync after a PR is merged in the main product repo.
+This process keeps user-facing documentation and changelog entries aligned after PRs are merged in the main product repository.
 
-GitHub Actions workflows in this repo and in the [OCS repo](https://github.com/dimagi/open-chat-studio/tree/main/.github/workflows) work together to process merged OCS PRs. The source workflow dispatches PR metadata to this repo; this workflow classifies the PR as widget or main app, generates changelog/docs updates with Claude, and opens a docs PR only when a real diff is produced.
+Workflows in this repository and in the [OCS repository](https://github.com/dimagi/open-chat-studio/tree/main/.github/workflows) work together. The source workflow sends PR context to this docs repository, Claude updates changelog and docs when needed, and a docs PR is opened only when there is a meaningful content change.
 
-1. Read the [developer guide](https://github.com/lisa-jwayela/open-chat-studio/blob/Dev-Docs/docs/developer_guides/user_docs.md) for an overview, guidelines, and process details.
-2. The notes below are for workflow maintainers; implementation details live in templates, commands, and agent files
+This page is for maintainers of the changelog automation process. It explains how the system is organized and where to make updates.
 
-## Widget Branching Strategy
-
-For background on handling [widget vs main app changes](https://github.com/lisa-jwayela/open-chat-studio/blob/Dev-Docs/docs/developer_guides/user_docs.md), see the widget branching strategy documentation.
+For broader process guidance, see the [developer guide](https://github.com/lisa-jwayela/open-chat-studio/blob/Dev-Docs/docs/developer_guides/user_docs.md).
 
 ## Manual Trigger
 
@@ -17,18 +14,20 @@ To run the workflow manually, open GitHub Actions, select ‘Update Changelog an
 
 ## Maintenance Notes
 
-### Dependencies
+Use this map to decide where to make updates:
 
-Maintainers should consider that changes to any item may require updates in both repositories.
+- `.github/templates/`: Change automation decisions, such as when changelog or docs updates are required.
+- `.claude/agents/`: Change writing and review standards used by Claude.
+- `.claude/commands/`: Change reusable command workflows.
+
+Keep in mind that behavior changes may require updates in both `.github/templates/` and `.claude/`.
+
+## Repositories in Scope
+
+Troubleshooting and process changes can involve both repositories:
 
 - **Source repo:** `dimagi/open-chat-studio` (dispatch workflow source)
 - **Receiving repo:** this docs repo
-
-### Internal templates for Claude
-
-- Claude prompt templates are stored in: `.github/templates/`.
-- Maintainers should be aware that renaming variables requires coordinated changes in the workflow step that exports environment values.
-
 
 ### Required Secrets
 
@@ -37,10 +36,10 @@ Maintainers should consider that changes to any item may require updates in both
 
 ### Troubleshooting
 
-- **No PR created:** Check the GitHub workflow runs in both repos. Claude may have determined changes were internal-only.
-- **Wrong base branch:** Check dispatch workflow logs to see how PR was classified. Widget files must be in `components/`.
-- **widget-develop doesn't exist:** The workflow automatically creates `widget-develop` from `main` if it doesn't exist. If this still fails, check that `OCS_DOCS_PAT` has `contents: write` permission on this repo.
-- **Improve output:** Comment on generated PR with `@claude` to request changes.
+- **No PR created:** Check workflow runs in both repositories. If there was no meaningful docs/changelog change, no docs PR is expected.
+- **Unexpected target branch or classification:** Check workflow logs in the source and receiving repos to verify how the PR was classified.
+- **Authentication or permission failures:** Verify `OCS_DOCS_PAT` and `ANTHROPIC_API_KEY` are set correctly and still valid.
+- **Output quality needs improvement:** Comment on the generated PR with `@claude` and specify what to revise.
 
 ## Best Practices
 
