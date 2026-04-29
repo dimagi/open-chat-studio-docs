@@ -23,7 +23,7 @@ For example:
 
 2. **Conversation Context**: The total set of information available to the pipeline at that moment. This includes the user’s current message, their chat history, and known data (like whether they are a "new" or "returning" user).
 
-3. **Default Path**: The "safety net" route (marked with a blue *). If the router cannot confidently decide where to send the user, it follows this path to prevent the conversation from breaking. [more](../../tech-hub/routers/index.md#the-default-output).
+3. **Default Path**: The "safety net" route (marked with a blue *). If the router cannot confidently decide where to send the user, it follows this path to prevent the conversation from breaking. [more](../../how-to/routers/index.md#the-default-output).
 
 ## Router Types
 There are two distinct ways to route a conversation in OCS. The choice depends on whether you are routing based on what the user means or what the system knows.
@@ -35,14 +35,20 @@ The LLM Router uses an AI model to read the incoming message and classify its in
 - **Best for**: Handling unpredictable user text.
 - You define output keywords for your downstream paths. If the LLM outputs `BILLING`, the conversation follows the path labeled `BILLING` to the next downstream node.
 
+
+!!! tip "For configuration steps"
+
+    See [Router Nodes in How-to Guides](../../how-to/routers/index.md) for configuration details and best practices.
+
+
 ### Static Router Node
-The Static Router does not use an AI model and does not read the user's message. Instead, it looks up a specific value stored in your [data source](../../tech-hub/routers/static_router.md#supported-data-sources).
+The Static Router does not use an AI model and does not read the user's message. Instead, it looks up a specific value stored in your [data source](../../how-to/routers/static_router.md#supported-data-sources).
 
 - **How it works**: It checks a pre-existing key or tag, such as participant profile data or session information, and follows the matching path.
 - **Best for**: Routing based on known attributes like preferred language, subscription tier, or VIP status.
 - Example: If your data shows `subscription_tier = premium`, the Static Router immediately sends the user to the Priority Support Agent.
 
 
-!!! tip "For technical configuration"
+!!! tip "For configuration steps"
 
-    See [Router Nodes on Tech Hub](../../tech-hub/routers/index.md) for configuration details and best practices.
+    See [Router Nodes in How-to Guides](../../how-to/routers/index.md) for configuration details and best practices.
