@@ -11,6 +11,7 @@ Open Chat Studio currently supports the following providers:
 * Groq
 * Perplexity
 * DeepSeek
+* Voyage AI (embedding only)
 
 ## LLM Models
 

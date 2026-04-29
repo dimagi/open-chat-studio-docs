@@ -48,6 +48,7 @@ Local indexes are hosted and managed by OCS. When you create a local index, you 
 
 ### Supported providers
 - OpenAI
+- Voyage AI
 
 ### Supported file types
 - pdf
