@@ -109,6 +109,10 @@ nav:
       - how-to/whatsapp_meta_cloud_api.md
       - how-to/global_search.md
       - Filter Tables with Natural Language: how-to/nl_filter.md
+      - Router Nodes:
+        - how-to/routers/index.md
+        - how-to/routers/llm_router.md
+        - how-to/routers/static_router.md
       - how-to/setting_up_a_survey.md
       - how-to/assistants_migration.md
       - FAQ: how-to/faq.md
@@ -162,10 +166,6 @@ nav:
   - Tech Hub:
     - tech-hub/index.md
     - Python Node: tech-hub/python_node.md
-    - Router Nodes:
-        - tech-hub/routers/index.md
-        - tech-hub/routers/llm_router.md
-        - tech-hub/routers/static_router.md
     - Call External APIs: 
         - tech-hub/external-api-calls/index.md     
         - HTTP Client: tech-hub/external-api-calls/http_client.md

@@ -7,8 +7,8 @@ The Static Router directs messages using specific data values already stored in 
 The router can inspect data from three primary sources:
 
 * [Participant Data](../../concepts/participant_data.md) - Persistent data stored with the participant (for example, language)
-* [Session State](../python_node.md#session-state) - Data stored for the current chat session
-* [Temporary State](../python_node.md#temporary-state) - Data that exists only for the current pipeline execution
+* [Session State](../../tech-hub/python_node.md#session-state) - Data stored for the current chat session
+* [Temporary State](../../tech-hub/python_node.md#temporary-state) - Data that exists only for the current pipeline execution
 
 ## Configuration: Keys and Paths
 You manage your router node through the Advanced Settings.
