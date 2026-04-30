@@ -5,6 +5,7 @@ hide:
 
 # Changelog
 ## Apr 30, 2026
+* **NEW** Added **Email** as a messaging channel. Users can now communicate with chatbots via email — inbound messages are received through a webhook, routed to the correct chatbot, and replied to in a threaded email conversation. This feature is gated behind the `flag_email_channel` feature flag.
 * **NEW** Trace detail pages now include a **Performance Metrics** section showing LLM turn count, tool call count, total tokens, input tokens, and output tokens for each pipeline execution. Metrics are collected across all LLM nodes (Router and LLM nodes); pipelines without LLM nodes display "—" for all metrics.
 
 ## Apr 29, 2026
