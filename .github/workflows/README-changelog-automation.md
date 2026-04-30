@@ -37,6 +37,7 @@ Troubleshooting and process changes can involve both repositories:
 - **No PR created:** Check workflow runs in both repositories. If there was no meaningful docs/changelog change, no docs PR is expected.
 - **Unexpected target branch or classification:** Check workflow logs in the source and receiving repos to verify how the PR was classified.
 - **Authentication or permission failures:** Verify `OCS_DOCS_PAT` and `ANTHROPIC_API_KEY` are set correctly and still valid.
+- **widget-develop branch doesn't exist:** Create it: `git checkout -b widget-develop main && git push origin widget-develop`
 - **Output quality needs improvement:** Comment on the generated PR with `@claude` and specify what to revise.
 - **For systemic quality issues:** Update the relevant agent in agents rather than correcting each PR manually.
 
@@ -44,5 +45,5 @@ Troubleshooting and process changes can involve both repositories:
 
 1. [Contribution Guides for Creating Good PRs](https://developers.openchatstudio.com/contributing/pull_requests/)
 2. [User docs and changelog process](https://developers.openchatstudio.com/developer_guides/user_docs/)
-3. [Claude custom Subagents](https://code.claude.com/docs/en/sub-agents#create-custom-subagents)
+3. [Claude custom Subagents](https://docs.anthropic.com/en/docs/claude-code/sub-agents)
 
