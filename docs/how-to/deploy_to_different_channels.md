@@ -165,8 +165,6 @@ The following attachments are rejected automatically:
 
 Rejection notes are inserted inline into the user's message so the bot can read them and explain the problem to the user in its reply.
 
-!!! note
-    Attachments are validated against both the declared MIME type in the email header and the actual file content. A file that claims to be a PDF but contains executable bytes will be rejected even if the filename ends in `.pdf`.
 
 #### Outbound attachments (bot to user)
 
