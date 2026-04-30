@@ -167,6 +167,14 @@ def add_file_attachment(filename: str, content: bytes, content_type: str | None 
     This function can be used to attach files (e.g. downloaded via the HTTP client) to the
     assistant's response message. The file will be available for the user to download.
 
+    Delivery depends on the channel:
+
+    - **Web / API**: the file is offered as a download link in the chat.
+    - **Email channel**: the file is sent as a MIME attachment in the same threaded reply as the
+      bot's text response. If the file exceeds the size limit or is a denylisted type, an inline
+      download link is included in the email body instead.
+    - **Other channels**: behaviour varies; unsupported channels may fall back to a download link.
+
     Args:
         filename: The name to give the attached file, including the file extension
         content: The raw bytes of the file content

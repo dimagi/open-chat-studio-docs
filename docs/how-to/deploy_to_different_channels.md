@@ -147,6 +147,47 @@ Inbound emails are matched to the correct bot in this order:
 
 Replying to a bot email continues the same conversation session. Sending a fresh email to the channel address starts a new session.
 
+### File attachments
+
+The email channel supports bidirectional file attachments.
+
+#### Inbound attachments (user to bot)
+
+When a user emails files to the bot, each attachment is saved and made available to the LLM or pipeline as a file record. Attachments behave like files uploaded through any other channel: they appear in the `attachments` list in the pipeline's [temporary state](../tech-hub/python_node.md#attachments) and are passed to the LLM for processing.
+
+The following attachments are rejected automatically:
+
+| Rejection reason | How it appears to the bot |
+|---|---|
+| File exceeds 20 MB | Bracketed note in the message text, e.g. `[Attachment "report.zip" was rejected: file too large (max 20 MB)]` |
+| Executable file type (e.g. `.exe`, `.sh`) | Bracketed note in the message text |
+| Content-type mismatch (declared MIME type does not match actual file bytes) | Bracketed note in the message text |
+
+Rejection notes are inserted inline into the user's message so the bot can read them and explain the problem to the user in its reply.
+
+
+#### Outbound attachments (bot to user)
+
+Files produced by the pipeline are sent as MIME attachments in the same threaded reply as the bot's text response. To attach a file from a Python node, call `add_file_attachment()`:
+
+```python
+def main(input, **kwargs) -> str:
+    response = http.get("https://api.example.com/report.pdf", auth="reports-api")
+
+    if response["is_success"]:
+        add_file_attachment(
+            filename="report.pdf",
+            content=response["response_bytes"]
+        )
+        return "I've attached the report."
+
+    return "Failed to retrieve the report."
+```
+
+See the [Python Node documentation](../tech-hub/python_node.md#python_node.add_file_attachment) for the full `add_file_attachment()` API reference.
+
+If a pipeline-produced file cannot be sent as an attachment (for example, it exceeds the size limit or is a denylisted type), the email body will contain an inline download link for that file instead.
+
 
 [1]: https://core.telegram.org/bots#how-do-i-create-a-bot
 [2]: ../concepts/team/messaging_providers.md
