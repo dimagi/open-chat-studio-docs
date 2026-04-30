@@ -33,12 +33,12 @@ Troubleshooting and process changes can involve both repositories:
 
 ## Troubleshooting
 
-- **Manual Trigger** To run the workflow manually, open GitHub Actions, select ‘Update Changelog and Docs from OCS PR,’ and enter the OCS PR number.
+- **Manual Trigger:** To run the workflow manually, open GitHub Actions, select `Update Changelog and Docs from OCS PR`, and enter the OCS PR number.
 - **No PR created:** Check workflow runs in both repositories. If there was no meaningful docs/changelog change, no docs PR is expected.
 - **Unexpected target branch or classification:** Check workflow logs in the source and receiving repos to verify how the PR was classified.
 - **Authentication or permission failures:** Verify `OCS_DOCS_PAT` and `ANTHROPIC_API_KEY` are set correctly and still valid.
 - **Output quality needs improvement:** Comment on the generated PR with `@claude` and specify what to revise.
-- **For systemic quality issues** Update the relevant agent in agents rather than correcting each PR manually.
+- **For systemic quality issues:** Update the relevant agent in agents rather than correcting each PR manually.
 
 ## Best Practices
 
