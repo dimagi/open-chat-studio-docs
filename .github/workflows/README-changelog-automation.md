@@ -17,7 +17,7 @@ Use this map to decide where to make updates:
 - `.claude/commands/`: Change reusable command workflows.
 
 Keep in mind that behavior changes may require updates in both `.github/templates/` and `.claude/`.
-Use AI assistants to understand key files and their responsibility.
+Use AI assistants to understand key files and their responsibilities.
 
 ### Repositories in Scope
 
