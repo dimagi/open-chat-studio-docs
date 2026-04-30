@@ -6,6 +6,7 @@ hide:
 # Changelog
 ## Apr 30, 2026
 * **NEW** Trace detail pages now include a **Performance Metrics** section showing LLM turn count, tool call count, total tokens, input tokens, and output tokens for each pipeline execution. Metrics are collected across all LLM nodes (Router and LLM nodes); pipelines without LLM nodes display "—" for all metrics.
+* **BUG** Fixed the `/api/sessions/` endpoint to return a 400 Bad Request error when an invalid (non-UUID) value is provided for the `experiment` query parameter, instead of an unhandled 500 Internal Server Error.
 
 ## Apr 29, 2026
 * **NEW** Added **Voyage AI** as a local embedding provider. Teams can now configure a Voyage AI service provider to embed and semantically search documents in collections using models such as `voyage-4-large`, `voyage-4`, and `voyage-3.5`.
