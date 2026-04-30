@@ -120,6 +120,33 @@ Once the channel is linked, users interact with the bot by mentioning it in Slac
 - Enter the Tenant ID that would have been provided to you when setting up your SureAdhere account.
 - After you submit the form, you will be provided with a webhook URL. Copy this URL and navigate back to your provider's settings to configure it with this URL.
 
+## Email
+
+The email channel lets users interact with your bot by sending and receiving emails.
+
+### Configuration
+
+When creating an email channel, the form has the following fields:
+
+- **Email address**: The inbound address that users send messages to. Incoming emails addressed to this value are routed to this bot.
+- **From address**: The address that appears in the "From" field of outgoing replies.
+- **Default channel**: When enabled, this channel acts as the fallback for inbound emails that do not match any other configured email address in your workspace.
+
+!!! info "Note"
+    Only one email channel per workspace can be set as the default.
+
+### How routing works
+
+Inbound emails are matched to the correct bot in this order:
+
+1. **In-Reply-To header** - If the email is a reply to a previous message sent by the bot, it is routed to the same channel and continues the existing conversation thread.
+2. **To address** - If no prior thread is found, the recipient address is matched against configured email channels.
+3. **Default channel** - If no address match is found, the email is delivered to the workspace's default email channel (if one is configured).
+
+### Thread continuity
+
+Replying to a bot email continues the same conversation session. Sending a fresh email to the channel address starts a new session.
+
 
 [1]: https://core.telegram.org/bots#how-do-i-create-a-bot
 [2]: ../concepts/team/messaging_providers.md
