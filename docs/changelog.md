@@ -6,6 +6,7 @@ hide:
 # Changelog
 ## Apr 30, 2026
 * **NEW** Added **Email** as a messaging channel. Users can now communicate with chatbots via email — inbound messages are received through a webhook, routed to the correct chatbot, and replied to in a threaded email conversation. This feature is gated behind the `flag_email_channel` feature flag.
+* **NEW** The email channel now supports **bidirectional file attachments**. Inbound attachments (PDFs, CSVs, images, etc.) are saved and made available to the LLM or pipeline; oversized or blocked file types are surfaced as inline notes so the bot can explain the rejection. Outbound files produced by the pipeline (e.g. via `add_file_attachment()` in a Python node) are sent as MIME attachments in the same threaded reply.
 * **NEW** Trace detail pages now include a **Performance Metrics** section showing LLM turn count, tool call count, total tokens, input tokens, and output tokens for each pipeline execution. Metrics are collected across all LLM nodes (Router and LLM nodes); pipelines without LLM nodes display "—" for all metrics.
 
 ## Apr 29, 2026
