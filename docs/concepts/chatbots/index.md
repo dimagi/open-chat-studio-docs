@@ -5,14 +5,5 @@ A chatbot is a program that simulates conversation with people. It can use simpl
 
 Within the context of Open Chat Studio, a chatbot is a specific configuration of a language model (LLM) that is designed to interact with users conversationally. It can be customized to perform various tasks, such as answering questions, providing information, or assisting with specific workflows.
 
-The specific way that a chatbot is configured with Open Chat Studio is through the use of a [**Pipeline**](../pipelines/index.md). You can think of a pipeline as a flowchart that starts with user input on one end and ends with the chatbot’s response at the other. Each message sent to the bot follows a specific path through the pipeline to generate the final output. 
+Every chatbot in Open Chat Studio is configured using a visual workflow called a [**Pipeline**](../pipelines/index.md). The workflow visualization makes it easy to understand how the bot processes each message and generates a response. Pipelines make it easy to build complex bots by breaking the workflow into smaller, focused steps rather than trying to do everything in a single prompt.
 
-This approach can be useful if you want to build a complex bot that performs different tasks depending on the user’s request. Generally, trying to make a single bot prompt do multiple functions doesn’t work well, so it is better to create multiple prompts for each task and then combine them using a Pipeline. 
-
-
-## What is a Pipeline?
-As described above, a pipeline is a flowchart-like structure that defines how a chatbot processes user input and generates responses. It consists of a series of connected nodes, each representing a specific step in the workflow. Each node can perform a specific function, such as processing user input, generating responses, or integrating with external systems.
-
-The simplest pipeline is a single node that takes user input and generates a response. More complex pipelines can include multiple nodes that work together to create a more sophisticated interaction.
-
-You can read more about pipelines in the [Pipelines documentation](../pipelines/index.md).

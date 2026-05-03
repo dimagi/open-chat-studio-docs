@@ -1,27 +1,19 @@
 # Pipelines
 
-A pipeline is a way to build a bot by combining one or more steps together.
+A **pipeline** is a visual workflow that defines how your chatbot processes a user's message and generates a response. It is made up of connected **nodes** — each node performs one task, such as calling an AI model, running custom logic, or routing the conversation to a different path. A message enters the pipeline as **input**, passes through one or more nodes, and exits as the chatbot's **output**.
 
-!!! info "Pipelines are the future"
+!!! info "Pipelines are now the standard way to build bots"
 
-    Pipelines are currently becoming the default way to build bots in Open Chat Studio. They are a superset of existing functionality, enabling complex safety layers, routing and conditionals. The transition is now underway, and we're providing communication as we begin phasing out other bot building approaches.
+    Pipelines are the default way to build bots in Open Chat Studio. They replace older approaches and support everything from simple single-step responses to complex workflows with branching, parallel steps, and safety layers.
 
-## Overview
+## A Simple Example
 
-Here is an example of a very simple pipeline that uses an LLM to respond to the users input. This pipeline has a
-single step that uses the LLM to generate a response.
+The pipeline below has a single node. The user sends a message, the LLM generates a reply, and that reply is sent back to the user. That's it.
 
 <figure markdown="span">
   ![A Simple Pipeline](../../assets/images/pipeline-basic.png)
   <figcaption>A simple pipeline</figcaption>
 </figure>
-
-Analyzing this pipeline from left to right:
-
-* the user sends a message to the bot (this is the `input`)
-* the message is then passed to the LLM which generates a response
-* the response is then sent back to the user (this is the `output`)
-
 
 ``` mermaid
 graph LR
@@ -29,28 +21,35 @@ graph LR
   B --> C@{ shape: stadium, label: "Output" };
 ```
 
-Each time a user sends a message to the bot, the pipeline is executed and the final output is sent back to the user.
+Analyzing this pipeline from left to right:
 
-Each 'step' in a pipeline is called a 'node' and pipelines can have multiple nodes. To learn more about the different
-types of nodes that can be used in a pipeline, see the [node types](nodes.md) documentation.
+* the user sends a message to the bot (this is the `input`)
+* the message is then passed to the LLM which generates a response
+* the response is then sent back to the user (this is the `output`)
 
-## Pipeline Execution
+Every time a user sends a message, the pipeline workflow runs from start to finish and the final output is sent back to the user.
+
+Each step in a pipeline is called a **node**. Pipelines can have as many nodes as your workflow requires. See [Node Types](nodes.md) for a full list of what each node can do.
+
+## How a Pipeline Runs
 
 Open Chat Studio  runs your application in organized steps. Think of it like a well-coordinated team where different parts of your application (pipeline **nodes**) communicate through shared **channels** (pipeline edges / connections).
 
-Here's how each step works:
+When a user sends a message, Open Chat Studio processes the pipeline in repeating cycles:
 
 **Plan** → **Execute** → **Update** → Repeat
 
-1. **Plan**: Decide which nodes should run next. Initially, this includes nodes that need your input data. In later steps, it includes nodes that are ready to process new information.
+1. **Plan**: Identify which nodes are ready to run. On the first cycle, this is the node connected to the user's input. On later cycles, it is any node whose dependencies have been satisfied.
 
-2. **Execute**: Run all selected nodes at the same time. Each node does its work independently and can't see changes from other nodes until the next step.
+2. **Execute**: Run all ready nodes at the same time. Each node works independently — it cannot see the results of other nodes running in the same cycle. Collect the results from all nodes just executed and make them available to the next cycle
 
 3. **Update**: Share the results from all nodes so they're available for the next step.
 
-This process repeats until either all work is complete or a step limit is reached. This approach ensures your application runs efficiently while maintaining predictable behavior.
+This repeats until all nodes have completed or a maximum step limit is reached.
 
-See [Parallel Pipelines](./parallel.md) for information about running nodes in parallel.
+!!! tip "Running nodes in parallel"
+
+    Because multiple nodes can execute in the same cycle, pipelines naturally support parallel processing. See [Parallel Pipelines](./parallel.md) for details.
 
 ## Asking the Assistant About a Pipeline
 
