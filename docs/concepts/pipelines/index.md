@@ -1,33 +1,24 @@
 # Pipelines
 
-A **pipeline** is a visual workflow that defines how your chatbot processes a user's message and generates a response. It is made up of connected **nodes** — each node performs one task, such as calling an AI model, running custom logic, or routing the conversation to a different path. A message enters the pipeline as **input**, passes through one or more nodes, and exits as the chatbot's **output**.
+A **pipeline** is a visual workflow in Open Chat Studio (OCS) that makes it easy to build chatbots that can perform multiple or complex tasks.
 
-!!! info "Pipelines are now the standard way to build bots"
+A chatbot pipeline is made up of connected **nodes** — each node performs one task, such as calling a Large Language Model (LLM), running custom logic, or routing the conversation to a different workflow path. A message enters the pipeline as **input**, passes through one or more nodes, and exits as the chatbot's **output** as a response to the user.
 
-    Pipelines are the default way to build bots in Open Chat Studio. They replace older approaches and support everything from simple single-step responses to complex workflows with branching, parallel steps, and safety layers.
+``` mermaid
+graph LR
+  A@{ shape: stadium, label: "Input" } --> B(Node);
+  B --> C@{ shape: stadium, label: "Output" };
+```
+Every time a user sends a message, the pipeline workflow runs from start to finish and the final output is sent back to the user.
 
 ## A Simple Example
 
-The pipeline below has a single node. The user sends a message, the LLM generates a reply, and that reply is sent back to the user. That's it.
+The OCS screenshot below shows a chatbot that has a single node in its pipeline. The user sends a message, the LLM node generates a reply, and that reply is sent back to the user. That's it.
 
 <figure markdown="span">
   ![A Simple Pipeline](../../assets/images/pipeline-basic.png)
   <figcaption>A simple pipeline</figcaption>
 </figure>
-
-``` mermaid
-graph LR
-  A@{ shape: stadium, label: "Input" } --> B(LLM);
-  B --> C@{ shape: stadium, label: "Output" };
-```
-
-Analyzing this pipeline from left to right:
-
-* the user sends a message to the bot (this is the `input`)
-* the message is then passed to the LLM which generates a response
-* the response is then sent back to the user (this is the `output`)
-
-Every time a user sends a message, the pipeline workflow runs from start to finish and the final output is sent back to the user.
 
 Each step in a pipeline is called a **node**. Pipelines can have as many nodes as your workflow requires. See [Node Types](nodes.md) for a full list of what each node can do.
 
@@ -35,7 +26,7 @@ Each step in a pipeline is called a **node**. Pipelines can have as many nodes a
 
 Open Chat Studio  runs your application in organized steps. Think of it like a well-coordinated team where different parts of your application (pipeline **nodes**) communicate through shared **channels** (pipeline edges / connections).
 
-When a user sends a message, Open Chat Studio processes the pipeline in repeating cycles:
+When a user sends a message, Open Chat Studio processes the chatbot pipeline in repeating cycles:
 
 **Plan** → **Execute** → **Update** → Repeat
 
