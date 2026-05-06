@@ -10,6 +10,7 @@ The currently supported channels are:
 - Slack
 - API
 - SureAdhere
+- Email
 
 #### See also
 - [Deploying your bot to different channels](../how-to/deploy_to_different_channels.md)

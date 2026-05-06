@@ -14,9 +14,9 @@ Nodes will default to `No History` as their history mode. This means that when a
 
 !!! warning "LLM output is not necessarily the same as node output"
 
-    In a [LLM Router](nodes.md#llm-router) node, the `output` from the node will be the same as the `input` to that node. That is, once it has done its routing, it will be a passthrough for the `input`. The output of the LLM however, will be the classification label. This is an important distinction to keep in mind.
+    In a [LLM Router](./router_nodes.md#llm-router-node) node, the `output` from the node will be the same as the `input` to that node. That is, once it has done its routing, it will be a passthrough for the `input`. The output of the LLM however, will be the classification label. This is an important distinction to keep in mind.
 
-A common use case will be in a [LLM Router](nodes.md#llm-router) node where we want to maintain a history of the node outputs (e.g., for continuity of what 'part' of the chatbot the user is interacting with), and we want to ensure that the history is using LLM outputs so that we don't unintentionally supply the LLM with few-shot examples of the wrong type of output.
+A common use case will be in a [LLM Router](./router_nodes.md#llm-router-node) node where we want to maintain a history of the node outputs (e.g., for continuity of what 'part' of the chatbot the user is interacting with), and we want to ensure that the history is using LLM outputs so that we don't unintentionally supply the LLM with few-shot examples of the wrong type of output.
 
 ## Global
 Nodes with `Global` history will supply the conversational history that the user would see to the LLM. The [simple example](index.md) uses a global history as the user is interacting directly with a single LLM. 
@@ -29,7 +29,7 @@ The final history mode is called `Named` and allows you to specify a specific, n
     If there are multiple nodes serially that use the same `Named` history, then each node will add to the history. In the case of serial nodes, this will result in multiple new history entries for every processed user message.
 
 
-The most common use case to this will be when we have multiple parallel nodes after an [LLM Router](nodes.md#llm-router). In the [Advanced Pipelines Example](../../how-to/workflow_cookbook.md#split-bot-into-multiple-smaller-bots), the general, quiz, and roleplay LLM nodes would all likely use the same shared history, giving each node visibility into the larger conversation.
+The most common use case to this will be when we have multiple parallel nodes after an [LLM Router](./router_nodes.md#llm-router-node). In the [Advanced Pipelines Example](../../how-to/workflow_cookbook.md#split-bot-into-multiple-smaller-bots), the general, quiz, and roleplay LLM nodes would all likely use the same shared history, giving each node visibility into the larger conversation.
 
 Note that for this particular example, each of the nodes could use a `Global` history to achieve the same thing. However, if there was a translation or formatting node at before the final `output`, then the `Named` history mode would enable the interim nodes to share a history in the original language / formatting.
 

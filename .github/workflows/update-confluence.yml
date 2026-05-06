@@ -1,0 +1,66 @@
+name: Update Confluence Release Table
+
+on:
+  release:
+    types: [published]
+
+  # Allow manual triggering for testing or backfilling
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "Release tag to sync (e.g. v2026.04.13). Must be an existing release."
+        required: true
+
+jobs:
+  update-confluence:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests markdown
+
+      - name: Resolve release info from manual input
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG="${{ github.event.inputs.release_tag }}"
+          gh release view "$TAG" --json body,tagName,url > release.json
+          {
+            echo "RELEASE_TAG=$(jq -r .tagName release.json)"
+            echo "RELEASE_URL=$(jq -r .url release.json)"
+            echo "RELEASE_BODY<<RELEASE_BODY_EOF"
+            jq -r .body release.json
+            echo "RELEASE_BODY_EOF"
+          } >> "$GITHUB_ENV"
+
+      - name: Resolve release info from release event
+        if: github.event_name == 'release'
+        env:
+          EVENT_TAG: ${{ github.event.release.tag_name }}
+          EVENT_URL: ${{ github.event.release.html_url }}
+          EVENT_BODY: ${{ github.event.release.body }}
+        run: |
+          {
+            echo "RELEASE_TAG=$EVENT_TAG"
+            echo "RELEASE_URL=$EVENT_URL"
+            echo "RELEASE_BODY<<RELEASE_BODY_EOF"
+            printf '%s\n' "$EVENT_BODY"
+            echo "RELEASE_BODY_EOF"
+          } >> "$GITHUB_ENV"
+
+      - name: Update Confluence release table
+        env:
+          CONFLUENCE_BASE_URL: ${{ secrets.CONFLUENCE_BASE_URL }}
+          CONFLUENCE_EMAIL: ${{ secrets.CONFLUENCE_EMAIL }}
+          CONFLUENCE_API_TOKEN: ${{ secrets.CONFLUENCE_API_TOKEN }}
+          CONFLUENCE_PAGE_ID: "3032678414"
+        run: python scripts/update_confluence_release.py

@@ -4,6 +4,133 @@ hide:
 ---
 
 # Changelog
+## May 5, 2026
+* **CHANGE** Increased the HTTP request size limit from 512 KB to 1 MB and the response size limit from 1 MB to 5 MB for the restricted HTTP client used in pipelines.
+
+## Apr 30, 2026
+* **NEW** Added **Email** as a messaging channel. Users can now communicate with chatbots via email — inbound messages are received through a webhook, routed to the correct chatbot, and replied to in a threaded email conversation. This feature is gated behind the `flag_email_channel` feature flag.
+* **NEW** The email channel now supports **bidirectional file attachments**. Inbound attachments (PDFs, CSVs, images, etc.) are saved and made available to the LLM or pipeline; oversized or blocked file types are surfaced as inline notes so the bot can explain the rejection. Outbound files produced by the pipeline (e.g. via `add_file_attachment()` in a Python node) are sent as MIME attachments in the same threaded reply.
+* **NEW** Trace detail pages now include a **Performance Metrics** section showing LLM turn count, tool call count, total tokens, input tokens, and output tokens for each pipeline execution. Metrics are collected across all LLM nodes (Router and LLM nodes); pipelines without LLM nodes display "—" for all metrics.
+
+## Apr 29, 2026
+* **NEW** Added **Voyage AI** as a local embedding provider. Teams can now configure a Voyage AI service provider to embed and semantically search documents in collections using models such as `voyage-4-large`, `voyage-4`, and `voyage-3.5`.
+
+## Apr 28, 2026
+* **NEW** LLM evaluators can now automatically tag sessions or messages based on evaluation results. A new **Tag Rules** section on the evaluator form lets you define conditions (equals a value, or falls within a numeric range) that apply a tag when matched. Applied tags are recorded in an audit log and shown in the **Applied Tags** column on the run results page.
+
+## Apr 25, 2026
+* **NEW** Added **intron.io** as a Text-to-Speech (TTS) provider. Teams can configure an intron provider with an API key to access 90 voices across 45 African and international accents (male and female), including Afrikaans, Hausa, Igbo, Kinyarwanda, Swahili, Yoruba, Zulu, and more.
+
+## Apr 23, 2026
+* **NEW** Pipeline structure and event trigger data are now provided as context to the chat widget when viewing a pipeline, enabling you to ask the assistant questions about the pipeline you are currently viewing.
+* **BUG** Fixed a `SyntaxError` in the evaluator form that prevented the variable autocomplete feature from loading correctly.
+
+## Apr 22, 2026
+* **NEW** Evaluation datasets now support **session-level evaluation**, allowing evaluators to judge an entire conversation holistically rather than individual message pairs. When creating a dataset, choose "Message level" (existing behavior) or "Session level" (new). Session-level datasets can be populated by cloning sessions, and incompatible evaluators are automatically filtered out when configuring evaluations.
+* **BUG** Fixed a `TypeError` on mobile Safari that prevented the trends chart from rendering when the chatbot table was dynamically loaded.
+
+## Apr 21, 2026
+* **NEW** Annotation exports (CSV and JSONL) now include three additional fields: `session_id` (the UUID of the linked session), `flagged` (whether the item is flagged), and `flagged_reason` (the list of flag entries). Flagged items with no annotations are also included in the export.
+* **BUG** Fixed an error that occurred when rapidly removing filters in the UI.
+* **BUG** Fixed an API error that occurred when serializing sessions whose `external_id` contained a dot character (e.g., Slack-format identifiers). The sessions API endpoint now correctly handles all `external_id` formats.
+
+## Apr 12, 2026
+* **BUG** Fixed an issue where document indexing failed for certain markdown files containing multi-byte UTF-8 characters.
+
+## Apr 10, 2026
+* **NEW** Added date range and participant filters to the annotation queue view, making it easier to find specific sessions.
+
+## Apr 8, 2026
+* **NEW** Python Node code in pipelines can now call `end_session()` to programmatically end the current session, enabling more complex and deterministic session-ending logic.
+
+## Apr 2, 2026
+* **NEW** Added the ability to import sessions from an existing evaluation dataset into an annotation queue.
+
+## Mar 31, 2026
+* **NEW** Added three session selection modes when adding sessions to an annotation queue: **Selected only** (default, hand-pick via checkboxes), **All matching filters** (bulk-add every session matching the current filter), and **Sample** (add a random percentage of matching sessions using a configurable slider). A confirmation modal is shown for bulk operations.
+
+## Mar 27, 2026
+* **NEW** When uploading files to a media collection, it will now indicate which channels cannot send this file. Hovering over a channel will also show the reason why it cannot send the file.
+
+## Mar 26, 2026
+* **BUG** Fixed an issue where chat poll API responses could not generate correct URLs due to missing request context in the response serializer.
+* **NEW** Added **ElevenLabs** as a speech service provider, supporting text-to-speech (TTS) and speech-to-text (STT). Providers can sync voices from the ElevenLabs catalog, and custom voices created in ElevenLabs are automatically synced to Open Chat Studio.
+* **BUG** Fixed an authentication error that occurred when an invalid `chatbot_id` was provided in API requests.
+
+## Mar 25, 2026
+* **NEW** The Meta Cloud API WhatsApp provider now supports **media messages**. Users can send and receive images, videos, audio, and documents through WhatsApp channels.
+
+## Mar 24, 2026
+* **BUG** Fixed an error that could occur when displaying file sizes for files with no recorded content size.
+
+## Mar 23, 2026
+* **NEW** The Meta Cloud API WhatsApp provider now supports **template messages** as a fallback when the 24-hour service window has expired. When a bot cannot send a message due to an expired window, it automatically sends a pre-configured WhatsApp template instead of silently dropping the message.
+* **BUG** Fixed an issue where timeout triggers stopped firing after publishing a new experiment version. Sessions created before the publish were silently excluded from timeout detection.
+* **CHANGE** The default timeout for Custom Action HTTP calls has been increased from 10 seconds to 30 seconds to better accommodate complex or slow external services.
+
+## Mar 19, 2026
+* **NEW** Python Node code in pipelines can now use `print()` to capture debug and diagnostic output. Printed output is collected and visible as `console` data in the node's trace span, including in Langfuse.
+* **NEW** The Meta Cloud API WhatsApp provider now supports **voice messages** in addition to text messages.
+* **NEW** Excel and Word document attachments are now automatically converted to text before being sent to the LLM, enabling these file types to be processed in conversations alongside PDFs and images.
+
+## Mar 18, 2026
+* **NEW** Added support for **Meta Cloud API** as a new WhatsApp messaging provider, enabling direct integration with the WhatsApp Business Platform without requiring a third-party intermediary. Configure it using your WhatsApp Business Account ID, System User Access Token, App Secret, and Webhook Verify Token.
+* **NEW** Added a [**Set Session State Key**](concepts/tools/index.md#set-session-state-key) and [**Get Session State**](concepts/tools/index.md#get-session-state) built-in tools that allow LLM nodes to read and write data from the [session state](concepts/sessions.md) during a conversation.
+* **NEW** Added [**Append to Session State**](concepts/tools/index.md#append-to-session-state) and [**Increment Session State Counter**](concepts/tools/index.md#increment-session-state-counter) built-in tools, mirroring the existing participant data tools for managing lists and counters in session state.
+
+## Mar 17, 2026
+* **BUG** Fixed an issue where pipelines triggered by events (e.g. conversation end, timeout) silently discarded updates to participant data, session state, and session tags. These state changes are now correctly persisted.
+
+## Mar 16, 2026
+* **NEW** Session CSV exports now include a **Session State** column containing the data stored in the `session_state` field, making it easier to inspect pipeline state alongside conversation history.
+* **NEW** Session detail views now display participant data as of the latest trace, with a timestamp note. AI messages that triggered participant data changes show a diff icon — click it to see a color-coded popover of what was added, removed, or modified.
+
+## Mar 11, 2026
+* **NEW** Added an **Annotation Reviewer** team role that grants scoped access to annotation queues. Users with this role can view and annotate queues they are assigned to, but cannot manage queues, add sessions, export results, or access other parts of the app.
+
+## Mar 10, 2026
+* **NEW** Participant data changes are now tracked per trace. The trace detail page shows a color-coded summary of what data was added, removed, or modified during each conversation turn, and CSV exports include a Participant Data column with the data snapshot at each message.
+* **CHANGE** The Send Email pipeline node's subject and recipient fields now support [Jinja2](https://jinja.palletsprojects.com/en/stable/templates/) templates, and a new optional body field also accepts Jinja2 templates — the same variables available in the Render Template node. Existing pipelines are unaffected.
+
+## Mar 9, 2026
+* **NEW** Natural language filtering is now available to all users. Type plain-English queries (e.g., "sessions from last week excluding WhatsApp") on session, message, traces, participants, and notifications tables and click **✨ Generate** to automatically build filter rows.
+
+## Mar 4, 2026
+* **NEW** Teams now receive in-app notifications when LLM models are deprecated or removed.
+
+## Feb 27, 2026
+* **NEW** Tracing is now available to all users — no feature flag required. View and debug conversation traces directly from the session detail page. [Learn more](concepts/tracing.md)
+
+## Feb 26, 2026
+* **NEW** The trace detail page now includes a Langfuse span tree panel when Langfuse tracing is configured, showing the full observation tree with status indicators and latency badges alongside a detail view for each span's input/output.
+
+## Feb 25, 2026
+* **NEW** Timeout events can now be configured to measure inactivity from the first human message instead of the last message, giving more control over session timeout behavior.
+* **NEW** Added natural language filter input to session and message tables. Users can type plain-English queries (e.g., "sessions from last week excluding WhatsApp") and click **✨ Generate** to automatically create filter rows. This feature is in beta and can be enabled by team admins from the team feature flags page.
+
+## Feb 20, 2026
+* **NEW** Added support for Claude Sonnet 4.6 model with adaptive thinking. Claude Sonnet 4.6 is now the default Anthropic model, replacing Claude Sonnet 4.5 as the default.
+
+## Feb 19, 2026
+* **NEW** Document source sync logs are now accessible directly from the Collections page via a "View Sync Logs" button, allowing users to inspect sync history, file counts (added/updated/removed), duration, and error details without leaving the page.
+
+## Feb 18, 2026
+* **NEW** Notifications system now maintains event history, allowing users to view past notifications and events. Users can also mute notifications per-event or enable "Do Not Disturb" mode to mute all notifications.
+
+## Feb 11, 2026
+* **NEW** Python nodes can now attach files fetched via HTTP to AI response messages using the `add_file_attachment()` helper and `response_bytes` field on HTTP responses. Note: originally documented as `attach_file_from_response(response_bytes, filename)`; the correct name and signature is `add_file_attachment(filename, content, content_type=None)`.
+* **NEW** Added notification events that alert you when something important or noteworthy happens in your system, including failures across custom actions (health checks, API failures), chat operations (pipeline execution, LLM errors, tool failures), media handling (audio synthesis/transcription), and message delivery (platform-specific failures). This feature is currently in beta and can be requested for your team.
+
+## Feb 10, 2026
+* **CHANGE** Authentication provider names in Python node HTTP requests are now case-insensitive, allowing `auth="My-Provider"` and `auth="my-provider"` to match the same provider.
+
+## Feb 9, 2026
+* **NEW** Added `http_client` global to Python sandbox for making HTTP requests with security guardrails including SSRF prevention, request/response size limits, timeout clamping, automatic retries, and authentication provider integration.
+
+## Feb 6, 2026
+* **NEW** Added support for Claude Opus 4.6 model with adaptive thinking control. Features configurable effort levels (low, medium, high, max), 200K context window, and 128K max output tokens.
+* **CHANGE** LLM API calls now automatically retry with exponential backoff when rate limited by providers (OpenAI, Anthropic, Google), improving reliability during peak usage.
+
 ## Feb 3, 2026
 * **BUG** Fixed character encoding issues when reading plaintext files by automatically detecting and converting different encoding schemes to unicode.
 

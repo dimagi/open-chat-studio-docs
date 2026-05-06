@@ -1,52 +1,49 @@
-# Changelog and Documentation Automation
+# Changelog and Documentation Automation with Claude
 
-GitHub Actions workflows that use Claude AI to automatically generate changelog entries and update documentation from merged PRs in open-chat-studio.
+This process keeps user-facing documentation and changelog entries aligned after PRs are merged in the main product repository.
 
-## Overview
+Workflows in this repository and in the [OCS repository](https://github.com/dimagi/open-chat-studio/tree/main/.github/workflows) work together. The source workflow sends PR context to this docs repository, Claude updates changelog and docs when needed, and a docs PR is opened only when there is a meaningful content change.
 
-When a PR is merged in open-chat-studio:
-1. **Dispatch workflow** detects if widget files (`components/`) changed
-2. **Update workflow** in this repo uses Claude to:
-   - Update the appropriate changelog (widget or main)
-   - Create/update documentation as needed
-   - Create a PR with changes
+This page is for maintainers of the changelog automation process. It explains how the system is organized and where to make updates.
 
-## Widget Branching Strategy
+For broader process guidance and details about main app vs chat widget, see the [developer guide](https://developers.openchatstudio.com/developer_guides/user_docs/).
 
-**Detection:** PRs with changes in `components/` are classified as widget changes.
+## Maintenance Notes
 
-| Type         | Base Branch      | Changelog                       | Target Branch    |
-|--------------|------------------|---------------------------------|------------------|
-| **Widget**   | `widget-develop` | `docs/chat_widget/changelog.md` | `widget-develop` |
-| **Main App** | `main`           | `docs/changelog.md`             | `main`           |
+Use this map to decide where to make updates:
 
-**Mixed Changes:** If a PR touches both widget and main app files, it's treated as a widget change and only the widget changelog is updated. Separate PRs are recommended.
+- `.github/templates/`: Change automation decisions, such as when changelog or docs updates are required.
+- `.claude/agents/`: Change writing and review standards used by Claude.
+- `.claude/commands/`: Change reusable command workflows.
 
-## Manual Trigger
+Keep in mind that behavior changes may require updates in both `.github/templates/` and `.claude/`.
+Use AI assistants to understand key files and their responsibilities.
 
-Run workflow manually: Actions → "Update Changelog and Docs from OCS PR" → Enter PR number
+### Repositories in Scope
 
-## Required Secrets
+Troubleshooting and process changes can involve both repositories:
 
-- **`OCS_DOCS_PAT`**: GitHub PAT with contents, issues, pull_request scope to both the OCS repo and the OCS docs repo.
+- **Source repo:** `dimagi/open-chat-studio` (dispatch workflow source)
+- **Receiving repo:** this docs repo
+
+### Required Secrets
+
+- **`OCS_DOCS_PAT`**: GitHub PAT with scopes for contents, issues, and pull requests in both the OCS repo and the OCS docs repo.
 - **`ANTHROPIC_API_KEY`**: Claude API key.
 
 ## Troubleshooting
 
-**No PR created:** Check workflow runs in both repos. Claude may have determined changes were internal-only.
-
-**Wrong base branch:** Check dispatch workflow logs to see how PR was classified. Widget files must be in `components/`.
-
-**widget-develop doesn't exist:** Create it: `git checkout -b widget-develop main && git push origin widget-develop`
-
-**Improve output:** Comment on generated PR with `@claude` to request changes.
+- **Manual Trigger:** To run the workflow manually, open GitHub Actions, select `Update Changelog and Docs from OCS PR`, and enter the OCS PR number.
+- **No PR created:** Check workflow runs in both repositories. If there was no meaningful docs/changelog change, no docs PR is expected.
+- **Unexpected target branch or classification:** Check workflow logs in the source and receiving repos to verify how the PR was classified.
+- **Authentication or permission failures:** Verify `OCS_DOCS_PAT` and `ANTHROPIC_API_KEY` are set correctly and still valid.
+- **widget-develop branch doesn't exist:** Create it: `git checkout -b widget-develop main && git push origin widget-develop`
+- **Output quality needs improvement:** Comment on the generated PR with `@claude` and specify what to revise.
+- **For systemic quality issues:** Update the relevant agent in agents rather than correcting each PR manually.
 
 ## Best Practices
 
-**For Better Results:**
-- Write clear, descriptive PR titles
-- Fill out "User Facing Changes" section thoroughly
-- For widget releases: Include version number in PR description (e.g., "v0.4.9")
-- Use `@claude` in generated PRs to request improvements
+1. [Contribution Guides for Creating Good PRs](https://developers.openchatstudio.com/contributing/pull_requests/)
+2. [User docs and changelog process](https://developers.openchatstudio.com/developer_guides/user_docs/)
+3. [Claude custom Subagents](https://docs.anthropic.com/en/docs/claude-code/sub-agents)
 
-**Separate PRs:** Keep widget and main app changes in separate PRs to ensure both changelogs are updated.

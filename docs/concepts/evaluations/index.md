@@ -20,7 +20,7 @@ Datasets can either be created directly from existing [sessions](../sessions.md)
 
 ### Chatbot Generation
 
-Messages can also optionally be passed in to a [chatbot](../concepts/chatbots/index.md), whose generation output will be available to the evaluators.
+Messages can also optionally be passed in to a [chatbot](../chatbots/index.md), whose generation output will be available to the evaluators.
 
 ## Evaluation Execution
 

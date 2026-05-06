@@ -2,7 +2,7 @@
 
 Tools allow LLMs to affect change in the real world. An LLM on its own can only produce intentions, but it is not able to execute those intentions. *Tools* are a way of telling the LLM what requests it can make and of executing that request when it is made.
 
-Open Chat Studio provides a number of built-in tools as well as the ability to add your own tools in the form of [Custom Actions](../custom_actions.md).
+Open Chat Studio provides a number of built-in tools as well as the ability to add your own tools in the form of [Custom Actions](../llm_custom_action.md).
 
 The current set of built-in tools are listed below. If you need to refer to the tool in a prompt, use the tool's name directly e.g. `update-user-data`.
 
@@ -83,6 +83,41 @@ Append a value to [participant data](../participant_data.md) at a specific key. 
 Increment the value of a counter. The counter is stored in [participant data](../participant_data.md) with the key `_counter_{counter_name}`.
 
 * Name: `increment-counter`
+* Arguments:
+  * `counter`: The name of the counter to increment.
+  * `value`: Integer value to increment the counter by (defaults to 1).
+
+### Set Session State Key
+
+Allows the bot to set a key-value pair in the session state. The session state persists for the duration of the session and can be used to store and retrieve data across conversation turns, particularly useful in pipeline configurations.
+
+* Name: `set-session-state-key`
+* Arguments:
+  * `key`: The key in the session state to set.
+  * `value`: The value to store at the specified key.
+
+### Get Session State Key
+
+Allows the bot to get a value from the session state.
+
+* Name: `get-session-state`
+* Arguments:
+  * `key`: The key in the session state to get the value for.
+
+### Append to Session State
+
+Append a value to [session state](../sessions.md) at a specific key. This will convert any existing value to a list and append the new value to the end of the list. Use this tool to track lists of items within a session e.g. topics discussed.
+
+* Name: `append-to-session-state`
+* Arguments:
+  * `key`: The key in the session state to append to.
+  * `value`: The value to append.
+
+### Increment Session State Counter
+
+Increment the value of a counter stored in [session state](../sessions.md). The counter is stored with the key `_counter_{counter_name}`.
+
+* Name: `increment-session-state-counter`
 * Arguments:
   * `counter`: The name of the counter to increment.
   * `value`: Integer value to increment the counter by (defaults to 1).

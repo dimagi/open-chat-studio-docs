@@ -94,6 +94,7 @@ ChatSendMessageRequestWithAttachments:
   - message: string (required)
   - context: object
   - attachment_ids: array of integer
+  - version_number: integer
 
 ChatSendMessageResponse:
   - task_id: string (required)
@@ -102,6 +103,7 @@ ChatSendMessageResponse:
 
 ChatStartSessionRequest:
   - chatbot_id: string (required)
+  - version_number: integer
   - session_data: object
   - participant_remote_id: string
   - participant_name: string

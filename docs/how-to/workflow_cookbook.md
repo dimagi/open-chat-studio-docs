@@ -159,10 +159,16 @@ Instructions:
 - If you cannot find relevant information in the files, clearly state this
 ```
 
-[abort]: ../concepts/pipelines/nodes.md#python_node.abort_with_message
-[python]: ../concepts/pipelines/nodes.md#python-node
-[router]: ../concepts/pipelines/nodes.md#llm-router
+## Making external API calls
+
+See documentation on [How to call external APIs](../tech-hub/external-api-calls/index.md) for details
+
+[abort]: ../tech-hub/python_node.md#python_node.abort_with_message
+[python]: ../tech-hub/python_node.md
+[router]: ../concepts/pipelines/router_nodes.md
 [prompt_vars]: ../concepts/prompt_variables.md
-[temp_state]: ../concepts/pipelines/nodes.md#temporary-state
-[attachments]: ../concepts/pipelines/nodes.md#attachments
-[code_node_supported_file_types]: ../concepts/pipelines/nodes.md#supported-file-types
+[temp_state]: ../tech-hub/python_node.md#temporary-state
+[attachments]: ../tech-hub/python_node.md#attachments
+[code_node_supported_file_types]: ../tech-hub/python_node.md#supported-file-types
+[http_client]: ../tech-hub/external-api-calls/http_client.md
+[auth_providers]: ../concepts/team/authentication_providers.md
