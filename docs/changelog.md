@@ -6,6 +6,7 @@ hide:
 # Changelog
 ## May 6, 2026
 * **NEW** Added a **Create** action to the Participants page, letting you add a single participant by hand without using the bulk CSV importer. The form takes an identifier, platform, and optional name, and shows an inline link to the existing participant if one already exists for that platform and identifier.
+* **CHANGE** v0.7.0 of the Chat Widget is released. See [widget chagelog](chat_widget/changelog.md) for details.
 
 ## May 5, 2026
 * **CHANGE** Increased the HTTP request size limit from 512 KB to 1 MB and the response size limit from 1 MB to 5 MB for the restricted HTTP client used in pipelines.
