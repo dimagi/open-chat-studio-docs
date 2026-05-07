@@ -51,3 +51,9 @@ Here's how each step works:
 This process repeats until either all work is complete or a step limit is reached. This approach ensures your application runs efficiently while maintaining predictable behavior.
 
 See [Parallel Pipelines](./parallel.md) for information about running nodes in parallel.
+
+## Asking the Assistant About a Pipeline
+
+!!! tip "Chat widget context"
+
+    When you are viewing a pipeline in Open Chat Studio, the in-app chat widget automatically receives the pipeline's structure (nodes and connections) and event trigger data as context. This means you can ask the assistant questions about the pipeline you are currently editing — for example, what a particular node does or how the flow is connected. The context updates automatically as you make changes to the pipeline.

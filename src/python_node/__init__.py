@@ -6,31 +6,31 @@ from typing import Any
 
 def get_participant_data() -> dict:
     """
-    Returns the current [participant's data](../participant_data.md){:target="_blank"} as a dictionary.
+    Returns the current [participant's data](../concepts/participant_data.md){:target="_blank"} as a dictionary.
     """
 
 
 def set_participant_data(data: dict) -> None:
     """
-    Updates the current [participant's data](../participant_data.md){:target="_blank"} with the provided dictionary.
+    Updates the current [participant's data](../concepts/participant_data.md){:target="_blank"} with the provided dictionary.
     This will overwrite any existing data.
     """
 
 
 def set_participant_data_key(key_name: str, data: any) -> None:
     """
-    Updates the current [participant's data](../participant_data.md){:target="_blank"} with the provided value at the specified key.
+    Updates the current [participant's data](../concepts/participant_data.md){:target="_blank"} with the provided value at the specified key.
     """
 
 def append_to_participant_data_key(key_name: str, data: any) -> None:
     """
-    Appends the provided value to the [participant's data](../participant_data.md){:target="_blank"} at the specified key.
+    Appends the provided value to the [participant's data](../concepts/participant_data.md){:target="_blank"} at the specified key.
     If the value at the key is not a list, it will be converted to a list containing the provided value.
     """
 
 def increment_participant_data_key(key_name: str, data: any) -> None:
     """
-    Increments the value at the [participant's data](../participant_data.md){:target="_blank"} key with the specified value
+    Increments the value at the [participant's data](../concepts/participant_data.md){:target="_blank"} key with the specified value
     """
 
 def get_participant_schedules() -> list:
@@ -161,15 +161,25 @@ def wait_for_next_input():
     """
 
 
-def attach_file_from_response(response_bytes: bytes, filename: str) -> None:
-    """Attaches a file downloaded from an HTTP response to the chat session.
+def add_file_attachment(filename: str, content: bytes, content_type: str | None = None) -> None:
+    """Attaches a file to the chat session.
 
-    This function is used in combination with the HTTP client to download files from external APIs
-    and attach them to the assistant's response message. The file will be available for the user to download.
+    This function can be used to attach files (e.g. downloaded via the HTTP client) to the
+    assistant's response message. The file will be available for the user to download.
+
+    Delivery depends on the channel:
+
+    - **Web / API**: the file is offered as a download link in the chat.
+    - **Email channel**: the file is sent as a MIME attachment in the same threaded reply as the
+      bot's text response. If the file exceeds the size limit or is a denylisted type, an inline
+      download link is included in the email body instead.
+    - **Other channels**: behaviour varies; unsupported channels may fall back to a download link.
 
     Args:
-        response_bytes: The raw bytes of the file, typically from the `response_bytes` field of an HTTP response
         filename: The name to give the attached file, including the file extension
+        content: The raw bytes of the file content
+        content_type: Optional MIME type of the file (e.g. `"application/pdf"`, `"image/png"`).
+            If not provided, it will be inferred from the filename.
 
     Example:
         ```python
@@ -179,14 +189,31 @@ def attach_file_from_response(response_bytes: bytes, filename: str) -> None:
 
             if response["is_success"]:
                 # Attach the file to the chat
-                attach_file_from_response(
-                    response_bytes=response["response_bytes"],
-                    filename="report.pdf"
+                add_file_attachment(
+                    filename="report.pdf",
+                    content=response["response_bytes"]
                 )
                 return "I've attached the report for you."
 
             return "Failed to download the report."
+
+        def main_explicit_mime(input, **kwargs):
+            # When the filename alone doesn't reliably indicate the MIME type
+            response = http.get("https://api.example.com/export", auth="my-api")
+
+            if response["is_success"]:
+                add_file_attachment(
+                    filename="export",
+                    content=response["response_bytes"],
+                    content_type="application/pdf"
+                )
+                return "Export attached."
+
+            return "Failed to retrieve export."
         ```
 
-    See also: [HTTP Client - Downloading and Attaching Files](http_client.md#downloading-and-attaching-files)
+    See also: [HTTP Client - Downloading and Attaching Files](external-api-calls/http_client.md#downloading-and-attaching-files)
     """
+
+def end_session() -> None:
+    """Ends the current session"""

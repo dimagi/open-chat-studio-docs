@@ -2,6 +2,8 @@
 
 **Evaluators** define the logic for analyzing messages and generating evaluation metrics. Each evaluator takes individual messages from a dataset and optionally a generated response, then outputs structured results in a table.
 
+Each evaluator has an **evaluation mode** — either **message-level** or **session-level** — that must match the dataset it is used with. When configuring an evaluation run, evaluators whose mode is incompatible with the selected dataset are automatically disabled.
+
 ## Evaluator Types
 
 ### LLM Evaluator
@@ -20,13 +22,30 @@ Consider the conversation context: {context.topic}
 ```
 
 **Template Variables:**
-The following variables are available to be used in the LLM prompt.
 
-- `{input.content}`: The human message content
-- `{output.content}`: The dataset message's AI response content. This may be an expected/reference answer (for manually created datasets) or the actual AI response (for session-cloned datasets).
-- `{generated_response}`: The generated response from your chatbot (if generation enabled)
-- `{context.[parameter]}`: Access any context variables, e.g., `{context.topic}`
-- `{full_history}`: Complete conversation history as formatted text
+The available variables depend on the evaluator's evaluation mode.
+
+##### Message-level variables
+
+| Variable | Description |
+|---|---|
+| `{input.content}` | The human message content |
+| `{output.content}` | The dataset message's AI response content. This may be an expected/reference answer (for manually created datasets) or the actual AI response (for session-cloned datasets). |
+| `{generated_response}` | The generated response from your chatbot (if generation is enabled) |
+| `{context.[parameter]}` | Any context variable, e.g. `{context.topic}` |
+| `{full_history}` | Complete conversation history as formatted text |
+
+##### Session-level variables
+
+In session-level mode, `{input.content}` and `{output.content}` are empty. Use the following variables instead:
+
+| Variable | Description |
+|---|---|
+| `{summary}` | The session snapshot — the full conversation context captured at the time of the last AI message |
+| `{context.[parameter]}` | Any context variable, e.g. `{context.current_datetime}` |
+
+!!! note
+    Generation is not available for session-level datasets, so `{generated_response}` is not applicable in session-level prompts.
 
 See [Evaluation Datasets](dataset.md) for how data is mapped into these fields.
 
@@ -52,6 +71,50 @@ The system automatically validates the LLM's output against the specified types 
 | user_sentiment | choices | The sentiment of the user message (options: positive, neutral, negative) |
 | confidence_score | float | Confidence in the evaluation, from 0.0 to 1.0 |
 
+#### Tag Rules
+
+Tag Rules let you automatically apply tags to sessions or messages when an evaluator output field matches a condition. This makes it easy to surface and filter results — for example, flagging all sessions where the evaluator detected negative sentiment, or marking messages that scored below a threshold.
+
+Tag Rules are available only on LLM evaluators. They run automatically on every non-preview evaluation run. Preview runs do not trigger tag application.
+
+**How tags are applied**
+
+The target of the tag depends on the evaluator's mode:
+
+- **Message mode**: the tag is applied to the specific chat message being evaluated.
+- **Session mode**: the tag is applied to the session's chat.
+
+Each tag application is recorded in an audit log and displayed in the **Applied Tags** column on the run results page.
+
+**Defining a rule**
+
+Each rule has three parts:
+
+| Field | Description |
+|-------|-------------|
+| Output field | The output schema field whose value is tested |
+| Tag name | The tag to apply when the condition is met |
+| Condition | The value or range that triggers the tag |
+
+The condition options vary by the type of the output field:
+
+| Output field type | Condition behaviour |
+|-------------------|---------------------|
+| choices (enum) | Apply the tag when the field equals one of the defined choice values (e.g. `sentiment == "negative"`) |
+| integer / float | Apply the tag when the field equals a specific value, or falls within a `min..max` range |
+| string | Apply the tag when the field equals a specific value |
+
+**Example Tag Rules**
+
+Given the output schema from the example above, you could define the following rules:
+
+| Output field | Tag name | Condition |
+|---|---|---|
+| user_sentiment | negative-sentiment | equals `negative` |
+| expected_helpfulness | low-helpfulness | range `1..2` |
+| confidence_score | low-confidence | range `0.0..0.4` |
+
+With these rules, any evaluation run will automatically tag messages or sessions that meet the conditions, without requiring manual review of every row.
 
 ### Python Evaluator
 

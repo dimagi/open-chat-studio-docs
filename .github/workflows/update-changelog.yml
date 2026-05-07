@@ -93,70 +93,81 @@ jobs:
 
       - name: Set variables from dispatch or manual input
         id: set_vars
+        # Payload fields are passed via env (not ${{ }} interpolation in the script body)
+        # so PR titles/bodies containing backticks, quotes, parens, or $ cannot break the shell.
+        env:
+          GH_TOKEN: ${{ secrets.OCS_DOCS_PAT }}
+          EVENT_NAME: ${{ github.event_name }}
+          PAYLOAD_PR_NUMBER: ${{ github.event.client_payload.pr_number }}
+          PAYLOAD_PR_TITLE: ${{ github.event.client_payload.pr_title }}
+          PAYLOAD_PR_URL: ${{ github.event.client_payload.pr_url }}
+          PAYLOAD_PR_AUTHOR: ${{ github.event.client_payload.pr_author }}
+          PAYLOAD_PR_BODY: ${{ github.event.client_payload.pr_body }}
+          INPUT_PR_NUMBER: ${{ inputs.pr_number }}
+          DETERMINED_BASE_BRANCH: ${{ steps.determine_branch.outputs.base_branch }}
+          DETERMINED_IS_WIDGET: ${{ steps.determine_branch.outputs.is_widget_change }}
         run: |
-          if [ "${{ github.event_name }}" == "repository_dispatch" ]; then
-            echo "pr_number=${{ github.event.client_payload.pr_number }}" >> $GITHUB_OUTPUT
-            
+          if [ "$EVENT_NAME" == "repository_dispatch" ]; then
+            echo "pr_number=$PAYLOAD_PR_NUMBER" >> $GITHUB_OUTPUT
+
             {
-              echo "pr_title<<EOF"
-              echo "${{ github.event.client_payload.pr_title }}"
-              echo "EOF"
+              echo "pr_title<<OCS_DOCS_EOF"
+              echo "$PAYLOAD_PR_TITLE"
+              echo "OCS_DOCS_EOF"
             } >> $GITHUB_OUTPUT
-            
+
             {
-              echo "pr_url<<EOF"
-              echo "${{ github.event.client_payload.pr_url }}"
-              echo "EOF"
+              echo "pr_url<<OCS_DOCS_EOF"
+              echo "$PAYLOAD_PR_URL"
+              echo "OCS_DOCS_EOF"
             } >> $GITHUB_OUTPUT
-            
+
             {
-              echo "pr_author<<EOF"
-              echo "${{ github.event.client_payload.pr_author }}"
-              echo "EOF"
+              echo "pr_author<<OCS_DOCS_EOF"
+              echo "$PAYLOAD_PR_AUTHOR"
+              echo "OCS_DOCS_EOF"
             } >> $GITHUB_OUTPUT
-            
+
             {
-              echo "pr_body<<EOF"
-              echo "${{ github.event.client_payload.pr_body }}"
-              echo "EOF"
+              echo "pr_body<<OCS_DOCS_EOF"
+              echo "$PAYLOAD_PR_BODY"
+              echo "OCS_DOCS_EOF"
             } >> $GITHUB_OUTPUT
           else
-            echo "pr_number=${{ inputs.pr_number }}" >> $GITHUB_OUTPUT
+            echo "pr_number=$INPUT_PR_NUMBER" >> $GITHUB_OUTPUT
             # Fetch PR details using GitHub API
-            PR_DATA=$(gh api repos/${{ env.SOURCE_REPO }}/pulls/${{ inputs.pr_number }}) || { echo "Failed to fetch PR data"; exit 1; }
+            PR_DATA=$(gh api "repos/${SOURCE_REPO}/pulls/${INPUT_PR_NUMBER}") || { echo "Failed to fetch PR data"; exit 1; }
 
             # Use multiline outputs for safe escaping
             {
-              echo "pr_title<<EOF"
+              echo "pr_title<<OCS_DOCS_EOF"
               echo "$PR_DATA" | jq -r '.title'
-              echo "EOF"
+              echo "OCS_DOCS_EOF"
             } >> $GITHUB_OUTPUT
 
             {
-              echo "pr_url<<EOF"
+              echo "pr_url<<OCS_DOCS_EOF"
               echo "$PR_DATA" | jq -r '.html_url'
-              echo "EOF"
+              echo "OCS_DOCS_EOF"
             } >> $GITHUB_OUTPUT
 
             {
-              echo "pr_author<<EOF"
+              echo "pr_author<<OCS_DOCS_EOF"
               echo "$PR_DATA" | jq -r '.user.login'
-              echo "EOF"
+              echo "OCS_DOCS_EOF"
             } >> $GITHUB_OUTPUT
 
             {
-              echo "pr_body<<EOF"
+              echo "pr_body<<OCS_DOCS_EOF"
               echo "$PR_DATA" | jq -r '.body'
-              echo "EOF"
+              echo "OCS_DOCS_EOF"
             } >> $GITHUB_OUTPUT
 
           fi
 
           # Use base branch from determine_branch step (already determined correctly)
-          echo "base_branch=${{ steps.determine_branch.outputs.base_branch }}" >> $GITHUB_OUTPUT
-          echo "is_widget_change=${{ steps.determine_branch.outputs.is_widget_change }}" >> $GITHUB_OUTPUT
-        env:
-          GH_TOKEN: ${{ secrets.OCS_DOCS_PAT }}
+          echo "base_branch=$DETERMINED_BASE_BRANCH" >> $GITHUB_OUTPUT
+          echo "is_widget_change=$DETERMINED_IS_WIDGET" >> $GITHUB_OUTPUT
 
       - name: Create branch for changelog update
         run: |

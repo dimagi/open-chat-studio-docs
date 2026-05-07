@@ -1,28 +1,34 @@
 # Custom Actions
 
-Custom Actions enable bots to communicate with 3rd party external services. For more information on features of Custom Actions see [here](../llm_custom_action.md) 
+Use Team Settings to create and manage Custom Actions for your team.
 
-## Team setup steps
+To learn what Custom Actions are and how they work in chats, see [Custom Action](../llm_custom_action.md). For technical setup details and troubleshooting, see the [Custom Action Tech Hub Guide](../../tech-hub/custom_action/index.md).
 
-### 1) Setup Authentication Provider
+## What you can do in Team Settings
 
-Before you create a Custom Action will need to create an Authentication Provider for your action to use (unless the API
-you are using does not require authentication). You can do this by navigating to the [Authentication Providers][auth_providers] section in Team Settings and creating a new Authentication Provider.
+In Team Settings, you can:
+
+- create a new Custom Action
+- edit an existing Custom Action
+- run a [manual health check](../../tech-hub/custom_action/health_custom_action.md#manual-health-checks) for a Custom Action
+
+## Configuration steps
+
+### 1) Create an Authentication Provider (if required)
+
+- If your external service requires authentication, first create an Authentication Provider in Team Settings.
+- Go to [Authentication Providers][auth_providers] in Team Settings to create a provider.
+
+### 2) Add the Custom Action
+
+- Go to Team Settings, scroll to the **Custom Actions** section, and select **Add new**.
+- For field-level technical requirements, including the Base URL, OpenAPI schema format, and health check behavior, see the [Custom Action Tech Hub Guide](../../tech-hub/custom_action/index.md#team-settings-fields).
+
+### 3) Enable actions for your chatbot
+
+- After you save the Custom Action, its actions appear in the advanced settings for the [LLM node](../pipelines/nodes.md).
+- Select the actions you want to enable for the chatbot.
+- Once enabled, the LLM can call those actions when they are relevant to the conversation.
+- After enabling actions, you can [test your Custom Action](../../tech-hub/custom_action/test_custom_action.md) by opening a chat with your chatbot
 
 [auth_providers]: authentication_providers.md
-
-### 2) Create a new Custom Action 
-Add a Custom Action in [Team Settings](./index.md)
-
-## Custom Action Fields
-
-### Base URL
-
-This is the URL of the external service you want to communicate with. For example: `https://www.example.com`. Only HTTPS URLs are supported.
-
-### API Schema
-
-This is a JSON or YAML [OpenAPI Schema](https://swagger.io/specification/) document.
-
-You should be able to get this from the service you want to connect to. For example, the default location for the schema for [FastAPI](https://fastapi.tiangolo.com/) services is `/openapi.json` (https://fastapi.tiangolo.com/tutorial/first-steps/#openapi-and-json-schema).
-

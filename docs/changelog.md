@@ -4,6 +4,63 @@ hide:
 ---
 
 # Changelog
+## May 6, 2026
+* **NEW** Added a **Create** action to the Participants page, letting you add a single participant by hand without using the bulk CSV importer. The form takes an identifier, platform, and optional name, and shows an inline link to the existing participant if one already exists for that platform and identifier.
+* **CHANGE** v0.7.0 of the Chat Widget is released. See [widget chagelog](chat_widget/changelog.md) for details.
+
+## May 5, 2026
+* **CHANGE** Increased the HTTP request size limit from 512 KB to 1 MB and the response size limit from 1 MB to 5 MB for the restricted HTTP client used in pipelines.
+
+## Apr 30, 2026
+* **NEW** Added **Email** as a messaging channel. Users can now communicate with chatbots via email — inbound messages are received through a webhook, routed to the correct chatbot, and replied to in a threaded email conversation. This feature is gated behind the `flag_email_channel` feature flag.
+* **NEW** The email channel now supports **bidirectional file attachments**. Inbound attachments (PDFs, CSVs, images, etc.) are saved and made available to the LLM or pipeline; oversized or blocked file types are surfaced as inline notes so the bot can explain the rejection. Outbound files produced by the pipeline (e.g. via `add_file_attachment()` in a Python node) are sent as MIME attachments in the same threaded reply.
+* **NEW** Trace detail pages now include a **Performance Metrics** section showing LLM turn count, tool call count, total tokens, input tokens, and output tokens for each pipeline execution. Metrics are collected across all LLM nodes (Router and LLM nodes); pipelines without LLM nodes display "—" for all metrics.
+
+## Apr 29, 2026
+* **NEW** Added **Voyage AI** as a local embedding provider. Teams can now configure a Voyage AI service provider to embed and semantically search documents in collections using models such as `voyage-4-large`, `voyage-4`, and `voyage-3.5`.
+
+## Apr 28, 2026
+* **NEW** LLM evaluators can now automatically tag sessions or messages based on evaluation results. A new **Tag Rules** section on the evaluator form lets you define conditions (equals a value, or falls within a numeric range) that apply a tag when matched. Applied tags are recorded in an audit log and shown in the **Applied Tags** column on the run results page.
+
+## Apr 25, 2026
+* **NEW** Added **intron.io** as a Text-to-Speech (TTS) provider. Teams can configure an intron provider with an API key to access 90 voices across 45 African and international accents (male and female), including Afrikaans, Hausa, Igbo, Kinyarwanda, Swahili, Yoruba, Zulu, and more.
+
+## Apr 23, 2026
+* **NEW** Pipeline structure and event trigger data are now provided as context to the chat widget when viewing a pipeline, enabling you to ask the assistant questions about the pipeline you are currently viewing.
+* **BUG** Fixed a `SyntaxError` in the evaluator form that prevented the variable autocomplete feature from loading correctly.
+
+## Apr 22, 2026
+* **NEW** Evaluation datasets now support **session-level evaluation**, allowing evaluators to judge an entire conversation holistically rather than individual message pairs. When creating a dataset, choose "Message level" (existing behavior) or "Session level" (new). Session-level datasets can be populated by cloning sessions, and incompatible evaluators are automatically filtered out when configuring evaluations.
+* **BUG** Fixed a `TypeError` on mobile Safari that prevented the trends chart from rendering when the chatbot table was dynamically loaded.
+
+## Apr 21, 2026
+* **NEW** Annotation exports (CSV and JSONL) now include three additional fields: `session_id` (the UUID of the linked session), `flagged` (whether the item is flagged), and `flagged_reason` (the list of flag entries). Flagged items with no annotations are also included in the export.
+* **BUG** Fixed an error that occurred when rapidly removing filters in the UI.
+* **BUG** Fixed an API error that occurred when serializing sessions whose `external_id` contained a dot character (e.g., Slack-format identifiers). The sessions API endpoint now correctly handles all `external_id` formats.
+
+## Apr 12, 2026
+* **BUG** Fixed an issue where document indexing failed for certain markdown files containing multi-byte UTF-8 characters.
+
+## Apr 10, 2026
+* **NEW** Added date range and participant filters to the annotation queue view, making it easier to find specific sessions.
+
+## Apr 8, 2026
+* **NEW** Python Node code in pipelines can now call `end_session()` to programmatically end the current session, enabling more complex and deterministic session-ending logic.
+
+## Apr 2, 2026
+* **NEW** Added the ability to import sessions from an existing evaluation dataset into an annotation queue.
+
+## Mar 31, 2026
+* **NEW** Added three session selection modes when adding sessions to an annotation queue: **Selected only** (default, hand-pick via checkboxes), **All matching filters** (bulk-add every session matching the current filter), and **Sample** (add a random percentage of matching sessions using a configurable slider). A confirmation modal is shown for bulk operations.
+
+## Mar 27, 2026
+* **NEW** When uploading files to a media collection, it will now indicate which channels cannot send this file. Hovering over a channel will also show the reason why it cannot send the file.
+
+## Mar 26, 2026
+* **BUG** Fixed an issue where chat poll API responses could not generate correct URLs due to missing request context in the response serializer.
+* **NEW** Added **ElevenLabs** as a speech service provider, supporting text-to-speech (TTS) and speech-to-text (STT). Providers can sync voices from the ElevenLabs catalog, and custom voices created in ElevenLabs are automatically synced to Open Chat Studio.
+* **BUG** Fixed an authentication error that occurred when an invalid `chatbot_id` was provided in API requests.
+
 ## Mar 25, 2026
 * **NEW** The Meta Cloud API WhatsApp provider now supports **media messages**. Users can send and receive images, videos, audio, and documents through WhatsApp channels.
 
@@ -65,7 +122,7 @@ hide:
 * **NEW** Notifications system now maintains event history, allowing users to view past notifications and events. Users can also mute notifications per-event or enable "Do Not Disturb" mode to mute all notifications.
 
 ## Feb 11, 2026
-* **NEW** Python nodes can now attach files fetched via HTTP to AI response messages using the new `attach_file_from_response()` helper and `response_bytes` field on HTTP responses.
+* **NEW** Python nodes can now attach files fetched via HTTP to AI response messages using the `add_file_attachment()` helper and `response_bytes` field on HTTP responses. Note: originally documented as `attach_file_from_response(response_bytes, filename)`; the correct name and signature is `add_file_attachment(filename, content, content_type=None)`.
 * **NEW** Added notification events that alert you when something important or noteworthy happens in your system, including failures across custom actions (health checks, API failures), chat operations (pipeline execution, LLM errors, tool failures), media handling (audio synthesis/transcription), and message delivery (platform-specific failures). This feature is currently in beta and can be requested for your team.
 
 ## Feb 10, 2026

@@ -1,14 +1,14 @@
-# HTTP Client
+# HTTP Client for Python nodes
 
-The HTTP Client feature, used in [Python nodes](python_node.md), provides a direct approach for programmatic API calls from within pipelines. If you want you LLMs to call the API directly, then consider [Custom Actions](../llm_custom_action.md)
+The HTTP Client feature, used in [Python nodes](../python_node.md), provides a direct approach for programmatic API calls from within pipelines. If you want your LLMs to call the API directly, consider [Custom Actions](../../concepts/llm_custom_action.md).
 
-The HTTP client includes built-in [security features](#security-features) to protect against common vulnerabilities and supports automatic credential injection through  [Authentication Providers](../team/authentication_providers.md).
+The HTTP client includes built-in [security features](#security-features) to protect against common vulnerabilities and supports automatic credential injection through [Authentication Providers](../../concepts/team/authentication_providers.md).
 
 The following topics are covered:
 
 - [A few examples of calling APIs](#complete-examples)
 - [A few examples of File uploading](#file-uploads)
-- [A few examples of downloading Filesg](#downloading-and-attaching-files)
+- [A few examples of downloading Files](#downloading-and-attaching-files)
 - [How to use Authentication Providers](#using-authentication-providers)
 - [How to do Exception handling](#exceptions)
 - [Best practices](#best-practices)
@@ -16,7 +16,7 @@ The following topics are covered:
 
 ## The Code
 
-The `http` global variable is available in your [Python node](python_node.md) code and can be used to make secure HTTP requests *without* importing external libraries. It provides a safe, team-aware way to interact with external APIs.
+The `http` global variable is available in your [Python node](../python_node.md) code and can be used to make secure HTTP requests *without* importing external libraries. It provides a safe, team-aware way to interact with external APIs.
 
 ```python
 def main(input, **kwargs) -> str:
@@ -45,7 +45,7 @@ All methods accept the following keyword-only parameters:
 - `data` - Form data (dict) or raw body content (str/bytes). Can be combined with `files` for multipart form uploads
 - `timeout` - Request timeout in seconds (automatically clamped between 1s and the system maximum)
 - `files` - File upload data. See [File Uploads](#file-uploads) for details
-- `auth` - Name of an [Authentication Provider](../team/authentication_providers.md) to inject credentials. This is a string, not a credentials tuple
+- `auth` - Name of an [Authentication Provider](../../concepts/team/authentication_providers.md) to inject credentials. This is a string, not a credentials tuple
 
 ## Response Structure
 
@@ -177,7 +177,7 @@ def main(input, **kwargs) -> str:
 
 ## Using Authentication Providers
 
-The `http` can automatically inject credentials from your team's [Authentication Providers](../team/authentication_providers.md) into HTTP requests. This provides a secure way to manage API credentials without hardcoding them in your code. To use a configured Authentication Provider, pass the name of the provider to the request method using the `auth` keyword:
+The `http` can automatically inject credentials from your team's [Authentication Providers](../../concepts/team/authentication_providers.md) into HTTP requests. This provides a secure way to manage API credentials without hardcoding them in your code. To use a configured Authentication Provider, pass the name of the provider to the request method using the `auth` keyword:
 
 ```python
 http.get("https://example.com", auth="my auth provider")
@@ -394,7 +394,17 @@ def main(input, **kwargs) -> str:
 
 ## Downloading and Attaching Files
 
-The HTTP client can be used in combination with the `attach_file_from_response()` helper function to download files from external APIs and attach them to the chat session. This is useful for generating reports, downloading documents, or retrieving images to share with the user.
+The HTTP client can be used in combination with the `add_file_attachment()` helper function to download files from external APIs and attach them to the chat session. This is useful for generating reports, downloading documents, or retrieving images to share with the user.
+
+The optional `content_type` argument lets you specify the MIME type explicitly when it cannot be reliably inferred from the filename (e.g. files with no extension or a generic `.bin` extension):
+
+```python
+add_file_attachment(
+    filename="report",
+    content=response["response_bytes"],
+    content_type="application/pdf"
+)
+```
 
 ### Example 9: Downloading and Attaching a File
 
@@ -412,9 +422,9 @@ def main(input, **kwargs) -> str:
         return f"Failed to download report: {response['status_code']}"
 
     # Attach the file to the chat session
-    attach_file_from_response(
-        response_bytes=response["response_bytes"],
-        filename="monthly_report.pdf"
+    add_file_attachment(
+        filename="monthly_report.pdf",
+        content=response["response_bytes"]
     )
 
     return "I've attached the monthly report for you to review."
@@ -428,6 +438,7 @@ def main(input, **kwargs) -> str:
     # Parse which charts the user wants
     chart_types = ["sales", "revenue", "customers"]
 
+    attached = 0
     for chart_type in chart_types:
         response = http.get(
             f"https://api.example.com/charts/{chart_type}.png",
@@ -436,15 +447,18 @@ def main(input, **kwargs) -> str:
         )
 
         if response["is_success"]:
-            attach_file_from_response(
-                response_bytes=response["response_bytes"],
-                filename=f"{chart_type}_chart.png"
+            add_file_attachment(
+                filename=f"{chart_type}_chart.png",
+                content=response["response_bytes"]
             )
+            attached += 1
 
-    return f"I've attached {len(chart_types)} charts for your review."
+    if attached == 0:
+        return "Failed to download any charts."
+    return f"I've attached {attached} chart(s) for your review."
 ```
 
-See the [Python Node utility functions](python_node.md#python_node.attach_file_from_response) documentation for more details on the `attach_file_from_response()` function.
+See the [Python Node utility functions](../python_node.md#python_node.add_file_attachment) documentation for more details on the `add_file_attachment()` function.
 
 ## Common Status Codes
 

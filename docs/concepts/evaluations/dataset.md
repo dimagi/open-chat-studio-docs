@@ -2,7 +2,20 @@
 
 **Datasets** are collections of messages that serve as the foundation for running evaluations.
 
-Each dataset contains messages with the following structure:
+## Evaluation Levels
+
+When creating a dataset, you choose an **Evaluation level** that determines how the dataset is structured and which evaluators are compatible with it.
+
+| Level | Description | When to use |
+|---|---|---|
+| **Message level** | Each row represents a single Human/AI message pair | Judging individual responses for accuracy, tone, or correctness |
+| **Session level** | Each row represents an entire conversation | Judging overall conversation quality, goal completion, or coherence across turns |
+
+The evaluation level is set at dataset creation and cannot be changed later. Evaluators must share the same evaluation level as the dataset — incompatible evaluators are automatically disabled when configuring an evaluation run.
+
+## Dataset Structure
+
+Each dataset row contains the following fields. Not all fields are populated for every evaluation level — see the sections below for details.
 
 - **Input** (`input.content`): The human message or prompt (required)
 - **Output** (`output.content`): The expected AI response (required)
@@ -15,9 +28,14 @@ Each dataset contains messages with the following structure:
 
 Datasets can be created by cloning an existing session, manually created in the UI, or uploaded with a CSV.
 
+!!! note
+    Manual creation and CSV upload are only available for **message-level** datasets. Session-level datasets must be populated by cloning sessions.
+
 ### Cloning a session
 
-When cloning a session, dataset messages are created automatically from past conversations. Session chat messages are paired into (human, AI) pairs and mapped to dataset message fields as follows:
+#### Message-level datasets
+
+When cloning a message-level session, dataset rows are created automatically from past conversations. Session chat messages are paired into (human, AI) pairs and mapped to dataset message fields as follows:
 
 | Session Data | Dataset Field | Description |
 |---|---|---|
@@ -33,6 +51,24 @@ When cloning a session, dataset messages are created automatically from past con
 Selecting multiple sessions from the list will clone all the messages from those sessions. Selecting "filtered messages" will only clone the messages that match the filter parameters. Selecting "All messages" will clone every message in that session.
 
 Messages that are cloned from a session will be "connected" to their actual message in OCS, and you will be able to follow links back to their original conversation when viewing the output of an evaluator. However, modifying or updating a cloned message will break this link.
+
+Because cloned messages retain this session connection, the sessions they belong to can be imported into an annotation queue for human review. Only dataset entries with a linked session are eligible for this import — messages added manually or via CSV upload do not have a session link and cannot be imported into an annotation queue.
+
+#### Session-level datasets
+
+When cloning into a **session-level** dataset, one row is created per session rather than one row per message pair. The last AI message in the session is used as the output snapshot. The session snapshot is stored in the `summary` field and carries the full context the evaluator works from.
+
+| Session Data | Dataset Field | Description |
+|---|---|---|
+| Session snapshot | `summary` | Full session context used by the evaluator |
+| `message.created_at` | `context.current_datetime` | Timestamp of the last AI message |
+| `trace.participant_data` | `participant_data` | Participant data at the time of the last message |
+| `trace.session_state` | `session_state` | Session state at the time of the last message |
+
+The `input` and `output` fields are empty for session-level rows. Evaluators working on session-level datasets use the `summary` field and session context variables rather than `{input.content}` or `{output.content}`.
+
+!!! note
+    Generation is not available for session-level datasets. Generation applies only to message-level evaluation.
 
 ### Manually creating a dataset
 
@@ -68,7 +104,7 @@ An example structure for this csv might be:
 
 #### Participant Data and Session State
 
-When including [participant_data](../participant_data.md) or [session_state](../pipelines/python_node.md#session-state) in your CSV, you can use dot notation to specify nested keys. For example:
+When including [participant_data](../participant_data.md) or [session_state](../../tech-hub/python_node.md#session-state) in your CSV, you can use dot notation to specify nested keys. For example:
 
 - `participant_data.name` - Sets the participant's name
 - `participant_data.age` - Sets the participant's age
