@@ -1,0 +1,28 @@
+API: Dimagi Chatbots v1
+Description: Experiments with AI, GPT and LLMs
+
+TAG: Files
+
+ENDPOINTS:
+
+GET /api/files/{id}/content
+  Summary: Download File Content
+  Parameters:
+    - id (path, integer (required)): No description
+  Responses:
+    200: 
+      Content: application/octet-stream
+      Schema: string
+  Security:
+    OAuth2
+      - Required scopes: files:read
+    apiKeyAuth
+    tokenAuth
+
+SECURITY:
+- OAuth2
+  - Authorization Code Flow (authorization url: /o/authorize/, token url: /o/token/)
+- API Key authentication (header: X-api-key)
+- API Key authentication (cookie: sessionid)
+- API Key authentication (header: X-Embed-Key)
+- HTTP bearer authentication

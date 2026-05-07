@@ -1,0 +1,118 @@
+API: Dimagi Chatbots v1
+Description: Experiments with AI, GPT and LLMs
+
+TAG: OpenAI
+
+ENDPOINTS:
+
+POST /api/openai/{experiment_id}/chat/completions
+  Summary: Chat Completions API for Experiments
+  Description: 
+Use OpenAI's client to send messages to the experiment and get responses. This will
+create a new session in the experiment with all the provided messages
+and return the response from the experiment.
+
+The last message must be a 'user' message.
+
+Example (Python):
+
+```python
+experiment_id = "your experiment ID"
+
+client = OpenAI(
+    api_key="your API key",
+    base_url=f"https://chatbots.dimagi.com/api/openai/{experiment_id}",
+)
+
+completion = client.chat.completions.create(
+    model="anything",
+    messages=[
+        {"role": "assistant", "content": "How can I help you today?"},
+        {"role": "user", "content": "I need help with something."},
+    ],
+)
+
+reply = completion.choices[0].message
+```
+
+  Parameters:
+    - experiment_id (path, string (required)): Experiment ID
+  Request Body:
+    Content: application/json
+    Schema: CreateChatCompletionRequest
+  Responses:
+    200: 
+      Content: application/json
+      Schema: CreateChatCompletionResponse
+  Security:
+    OAuth2
+      - Required scopes: chatbots:interact
+    apiKeyAuth
+    tokenAuth
+
+POST /api/openai/{experiment_id}/v{version}/chat/completions
+  Summary: Versioned Chat Completions API for Experiments
+  Description: 
+Use OpenAI's client to send messages to the experiment and get responses. This will
+create a new session in the experiment with all the provided messages
+and return the response from the experiment.
+
+The last message must be a 'user' message.
+
+Example (Python):
+
+```python
+experiment_id = "your experiment ID"
+
+client = OpenAI(
+    api_key="your API key",
+    base_url=f"https://chatbots.dimagi.com/api/openai/{experiment_id}/v{version}",
+)
+
+completion = client.chat.completions.create(
+    model="anything",
+    messages=[
+        {"role": "assistant", "content": "How can I help you today?"},
+        {"role": "user", "content": "I need help with something."},
+    ],
+)
+
+reply = completion.choices[0].message
+```
+
+  Parameters:
+    - experiment_id (path, string (required)): Experiment ID
+    - version (path, integer (required)): No description
+    - version (query, string (optional)): Version of experiment
+  Request Body:
+    Content: application/json
+    Schema: CreateChatCompletionRequest
+  Responses:
+    200: 
+      Content: application/json
+      Schema: CreateChatCompletionResponse
+  Security:
+    OAuth2
+      - Required scopes: chatbots:interact
+    apiKeyAuth
+    tokenAuth
+
+SCHEMAS:
+
+CreateChatCompletionRequest:
+  - messages: array of Message (required)
+
+CreateChatCompletionResponse:
+  - id: string (required)
+  - choices: array of ChatCompletionResponseChoices (required)
+  - created: integer (required)
+  - model: string (required)
+  - object: ObjectEnum (required)
+
+SECURITY:
+- OAuth2
+  - Authorization Code Flow (authorization url: /o/authorize/, token url: /o/token/)
+- API Key authentication (header: X-api-key)
+- API Key authentication (cookie: sessionid)
+- API Key authentication (header: X-Embed-Key)
+- HTTP bearer authentication

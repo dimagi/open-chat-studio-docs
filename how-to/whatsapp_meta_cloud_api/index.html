@@ -1,0 +1,2290 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://docs.openchatstudio.com/how-to/whatsapp_meta_cloud_api/">
+      
+      
+        <link rel="prev" href="../deploy_to_different_channels/">
+      
+      
+        <link rel="next" href="../global_search/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Set Up WhatsApp with Meta Cloud API - Open Chat Studio Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#set-up-whatsapp-with-meta-cloud-api" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Open Chat Studio Documentation" class="md-header__button md-logo" aria-label="Open Chat Studio Documentation" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Open Chat Studio Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Set Up WhatsApp with Meta Cloud API
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dimagi/open-chat-studio-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tutorials/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  How-to Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../concepts/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tech-hub/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Tech Hub
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../chat_widget/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Chat Widget
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../changelog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Open Chat Studio Documentation" class="md-nav__button md-logo" aria-label="Open Chat Studio Documentation" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    Open Chat Studio Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dimagi/open-chat-studio-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../tutorials/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Tutorials
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    How-to Guides
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            How-to Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workflow_cookbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chatbot Workflow Cookbook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../add_a_knowledge_base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Add a knowledge base
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deploy_to_different_channels/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deploy your bot to different platforms
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Set Up WhatsApp with Meta Cloud API
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Set Up WhatsApp with Meta Cloud API
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-media-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported media types
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-create-a-meta-business-portfolio-and-add-your-phone-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Create a Meta Business Portfolio and Add Your Phone Number
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Create a Meta Business Portfolio and Add Your Phone Number">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enable-two-factor-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enable Two-Factor Authentication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-system-user-and-generate-an-access-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create a System User and Generate an Access Token
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-and-register-your-phone-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add and Register Your Phone Number
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-create-a-meta-app-with-the-whatsapp-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Create a Meta App with the WhatsApp Use Case
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-add-your-provider-to-ocs" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Add Your Provider to OCS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Add Your Provider to OCS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-whatsapp-channel-on-your-chatbot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create a WhatsApp channel on your chatbot
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#out-of-service-window-template-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Out-of-service-window template messages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Out-of-service-window template messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-the-24-hour-service-window" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is the 24-hour service window?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#voice-message-fallback-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      Voice message fallback chain
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-the-required-template-in-meta-business-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create the required template in Meta Business Manager
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#character-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Character limits
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-the-template-language-code-in-ocs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set the template language code in OCS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-configure-the-webhook-in-your-meta-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Configure the Webhook in Your Meta App
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-webhook-verification-failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      The webhook verification failed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#messages-are-not-reaching-the-chatbot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Messages are not reaching the chatbot
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-register-api-call-returned-an-authorization-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      The /register API call returned an authorization error
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phone-number-validation-failed-during-channel-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phone number validation failed during channel creation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#messages-are-delivered-but-the-chatbot-does-not-respond" class="md-nav__link">
+    <span class="md-ellipsis">
+      Messages are delivered but the chatbot does not respond
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-out-of-service-window-template-message-is-not-being-sent" class="md-nav__link">
+    <span class="md-ellipsis">
+      The out-of-service-window template message is not being sent
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      See also
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../global_search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to find objects
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nl_filter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Filter Tables with Natural Language
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../routers/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Router Nodes
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_8" id="__nav_3_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            Router Nodes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../routers/llm_router/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LLM Router Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../routers/static_router/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Static Router Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setting_up_a_survey/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setting up a survey
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assistants_migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Migrate Assistants
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FAQ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../concepts/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Concepts
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../tech-hub/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Tech Hub
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../chat_widget/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Chat Widget
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Changelog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-media-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported media types
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-create-a-meta-business-portfolio-and-add-your-phone-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Create a Meta Business Portfolio and Add Your Phone Number
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Create a Meta Business Portfolio and Add Your Phone Number">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enable-two-factor-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enable Two-Factor Authentication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-system-user-and-generate-an-access-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create a System User and Generate an Access Token
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-and-register-your-phone-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add and Register Your Phone Number
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-create-a-meta-app-with-the-whatsapp-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Create a Meta App with the WhatsApp Use Case
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-add-your-provider-to-ocs" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Add Your Provider to OCS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Add Your Provider to OCS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-whatsapp-channel-on-your-chatbot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create a WhatsApp channel on your chatbot
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#out-of-service-window-template-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Out-of-service-window template messages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Out-of-service-window template messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-the-24-hour-service-window" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is the 24-hour service window?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#voice-message-fallback-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      Voice message fallback chain
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-the-required-template-in-meta-business-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create the required template in Meta Business Manager
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#character-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Character limits
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-the-template-language-code-in-ocs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set the template language code in OCS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-configure-the-webhook-in-your-meta-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Configure the Webhook in Your Meta App
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-webhook-verification-failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      The webhook verification failed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#messages-are-not-reaching-the-chatbot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Messages are not reaching the chatbot
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-register-api-call-returned-an-authorization-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      The /register API call returned an authorization error
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phone-number-validation-failed-during-channel-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phone number validation failed during channel creation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#messages-are-delivered-but-the-chatbot-does-not-respond" class="md-nav__link">
+    <span class="md-ellipsis">
+      Messages are delivered but the chatbot does not respond
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-out-of-service-window-template-message-is-not-being-sent" class="md-nav__link">
+    <span class="md-ellipsis">
+      The out-of-service-window template message is not being sent
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      See also
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/dimagi/open-chat-studio-docs/edit/main/docs/how-to/whatsapp_meta_cloud_api.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/dimagi/open-chat-studio-docs/raw/main/docs/how-to/whatsapp_meta_cloud_api.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+<h1 id="set-up-whatsapp-with-meta-cloud-api">Set Up WhatsApp with Meta Cloud API<a class="headerlink" href="#set-up-whatsapp-with-meta-cloud-api" title="Permanent link">&para;</a></h1>
+<p>This guide walks you through connecting a WhatsApp number to Open Chat Studio (OCS) using the <strong>Meta Cloud API</strong>. This is an alternative to using Twilio or Turn.io as your WhatsApp provider.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>Setting up a WhatsApp channel via Meta Cloud API involves four main stages:</p>
+<ol>
+<li><a href="#1-create-a-meta-business-portfolio-and-add-your-phone-number">Create a Meta Business Portfolio and add your phone number</a></li>
+<li><a href="#2-create-a-meta-app-with-the-whatsapp-use-case">Create a Meta App with the WhatsApp use case</a></li>
+<li><a href="#3-add-your-provider-to-ocs">Add your provider to OCS</a></li>
+<li><a href="#4-configure-the-webhook-in-your-meta-app">Configure the webhook in your Meta App</a></li>
+</ol>
+<h2 id="supported-media-types">Supported media types<a class="headerlink" href="#supported-media-types" title="Permanent link">&para;</a></h2>
+<p>The Meta Cloud API integration supports sending and receiving media messages in addition to text. The following media types are accepted:</p>
+<table>
+<thead>
+<tr>
+<th>Media type</th>
+<th>Accepted formats</th>
+<th>Maximum file size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Image</td>
+<td>JPG, PNG, WEBP</td>
+<td>5 MB</td>
+</tr>
+<tr>
+<td>Video</td>
+<td>MP4, 3GP</td>
+<td>16 MB</td>
+</tr>
+<tr>
+<td>Audio</td>
+<td>AAC, MP4, MPEG, AMR, OGG</td>
+<td>16 MB</td>
+</tr>
+<tr>
+<td>Document</td>
+<td>PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, TXT</td>
+<td>100 MB</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Size limits are enforced before sending</p>
+<p>Files that exceed the per-type size limit are rejected before the send attempt is made. Ensure any media attached to bot responses falls within the limits above to avoid delivery failures.</p>
+</div>
+<hr />
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<ul>
+<li>A Meta Business Portfolio (formerly Meta Business Manager)</li>
+<li>A phone number to register with WhatsApp (must not already be active on WhatsApp)</li>
+<li>Access to a tool for making API calls (e.g., cURL or Postman)</li>
+<li>Admin access to your OCS team</li>
+</ul>
+<hr />
+<h2 id="1-create-a-meta-business-portfolio-and-add-your-phone-number">1. Create a Meta Business Portfolio and Add Your Phone Number<a class="headerlink" href="#1-create-a-meta-business-portfolio-and-add-your-phone-number" title="Permanent link">&para;</a></h2>
+<h3 id="enable-two-factor-authentication">Enable Two-Factor Authentication<a class="headerlink" href="#enable-two-factor-authentication" title="Permanent link">&para;</a></h3>
+<p>Before proceeding, log in to <a href="https://business.facebook.com">Meta Business Manager</a> and enable two-factor authentication (2FA) in the <strong>Security Center</strong>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Required step</p>
+<p>Two-factor authentication must be enabled before you can register a phone number or generate system user access tokens.</p>
+</div>
+<h3 id="create-a-system-user-and-generate-an-access-token">Create a System User and Generate an Access Token<a class="headerlink" href="#create-a-system-user-and-generate-an-access-token" title="Permanent link">&para;</a></h3>
+<p>Follow the <a href="https://developers.facebook.com/documentation/business-messaging/whatsapp/access-tokens#admin-system-users">Meta documentation on admin system users</a> to create a system user and generate an access token.</p>
+<p>When generating the token, grant at minimum these permissions:</p>
+<ul>
+<li><code>whatsapp_business_messaging</code></li>
+<li><code>whatsapp_business_management</code></li>
+</ul>
+<p>Copy and securely store the generated token — this is your <strong>System User Access Token</strong>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Token expiry</p>
+<p>Tokens can be set to never expire or to a fixed duration. For production use, a non-expiring token is recommended to avoid service interruptions.</p>
+</div>
+<h3 id="add-and-register-your-phone-number">Add and Register Your Phone Number<a class="headerlink" href="#add-and-register-your-phone-number" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Open <strong>WhatsApp Manager</strong> in your Business Portfolio.</li>
+<li>Click <strong>Add Phone Number</strong> and follow the prompts to add your number.</li>
+<li>Note the <strong>Phone Number ID</strong> displayed for your number — you will need this later.</li>
+<li>Verify ownership of the number using the one-time code sent by Meta.</li>
+<li>Wait for your <strong>display name</strong> to be verified by Meta before proceeding.</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">Display name verification</p>
+<p>Display name verification typically takes 2–3 hours. You cannot complete the registration step until this is approved.</p>
+</div>
+<ol>
+<li>
+<p>While waiting for display name verification, go to your <a href="https://business.facebook.com/settings/system-users">system user page</a>, click <strong>Add Assets</strong>, select <strong>WhatsApp Accounts</strong>, choose the newly created WhatsApp Business Account, and enable the <strong>Phone numbers view and manage</strong> permission. This is required so the system user's access token can register the phone number in the next step.</p>
+<div class="admonition tip">
+<p class="admonition-title">Permission can be removed after registration</p>
+<p>Once registration is complete, you can remove this permission from the system user.</p>
+</div>
+</li>
+<li>
+<p>Once your display name is verified, register your number by making a <code>POST</code> request to the <code>/register</code> endpoint. Replace <code>&lt;PHONE_NUMBER_ID&gt;</code> and <code>&lt;SYSTEM_USER_ACCESS_TOKEN&gt;</code> with your values:</p>
+</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="s2">&quot;https://graph.facebook.com/v18.0/&lt;PHONE_NUMBER_ID&gt;/register&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer &lt;SYSTEM_USER_ACCESS_TOKEN&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;messaging_product&quot;: &quot;whatsapp&quot;, &quot;pin&quot;: &quot;&lt;YOUR_2FA_PIN&gt;&quot;}&#39;</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Using Postman</p>
+<p>If you prefer a GUI over cURL, you can make this call using <a href="https://www.postman.com/">Postman</a>. Import the request above and set your credentials as environment variables.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Reference</p>
+<p>See the <a href="https://developers.facebook.com/documentation/business-messaging/whatsapp/business-phone-numbers/registration">Meta documentation on registering a business phone number</a> for full details.</p>
+</div>
+<hr />
+<h2 id="2-create-a-meta-app-with-the-whatsapp-use-case">2. Create a Meta App with the WhatsApp Use Case<a class="headerlink" href="#2-create-a-meta-app-with-the-whatsapp-use-case" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Follow the <a href="https://developers.facebook.com/documentation/business-messaging/whatsapp/get-started">Meta WhatsApp get-started guide</a> to create a new Meta App.</li>
+<li>When prompted to select a use case, choose <strong>WhatsApp</strong>.</li>
+<li>Link the app to your Business Portfolio.</li>
+<li>Once the app is created, navigate to <strong>App Settings</strong> &gt; <strong>Basic</strong> and note the following values:<ul>
+<li><strong>App ID</strong></li>
+<li><strong>App Secret</strong> — click <strong>Show</strong> to reveal it and store it securely.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="3-add-your-provider-to-ocs">3. Add Your Provider to OCS<a class="headerlink" href="#3-add-your-provider-to-ocs" title="Permanent link">&para;</a></h2>
+<p>Before connecting OCS to Meta, you need to configure a messaging provider in OCS. Gather the following values:</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Where to find it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>WhatsApp Business Account ID</code></td>
+<td>In Business Settings &gt; Accounts &gt; WhatsApp Accounts, select your account and copy the <strong>Account ID</strong></td>
+</tr>
+<tr>
+<td><code>App Secret</code></td>
+<td><strong>Meta App</strong> &gt; <strong>App Settings</strong> &gt; <strong>Basic</strong> &gt; <strong>App Secret</strong></td>
+</tr>
+<tr>
+<td><code>Webhook Verify Token</code></td>
+<td>A random string you generate yourself (see note below)</td>
+</tr>
+<tr>
+<td><code>System User Access Token</code></td>
+<td>Generated in <a href="#create-a-system-user-and-generate-an-access-token">Step 1</a></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Generating a webhook verify token</p>
+<p>The <code>Webhook Verify Token</code> is a secret string you create. It can be any random string (e.g., a UUID). Keep a copy — you will need it when configuring the webhook in Step 4.</p>
+</div>
+<p>To add the provider in OCS:</p>
+<ol>
+<li>Navigate to your <strong>Team Settings</strong> in OCS.</li>
+<li>Go to <strong>Messaging Providers</strong> and click <strong>Add Provider</strong>.</li>
+<li>From the <strong>Type</strong> dropdown, select <strong>Meta Cloud API</strong>.</li>
+<li>Fill in the form with the values gathered above:<ul>
+<li><strong>Name</strong> — a label to identify this provider (e.g., <code>My WhatsApp Business</code>)</li>
+<li><strong>WhatsApp Business Account ID</strong></li>
+<li><strong>System User Access Token</strong></li>
+<li><strong>App Secret</strong></li>
+<li><strong>Webhook Verify Token</strong></li>
+<li><strong>Template Language Code</strong> — the language code for the out-of-service-window template (defaults to <code>en</code>; see <a href="#out-of-service-window-template-messages">Out-of-service-window template messages</a> below)</li>
+</ul>
+</li>
+<li>Click <strong>Save</strong>.</li>
+</ol>
+<p>The provider is now available to use when creating channels.</p>
+<h3 id="create-a-whatsapp-channel-on-your-chatbot">Create a WhatsApp channel on your chatbot<a class="headerlink" href="#create-a-whatsapp-channel-on-your-chatbot" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Navigate to the <strong>Chatbot</strong> you want to deploy to WhatsApp.</li>
+<li>Click the <strong>+</strong> (plus) icon to add a channel and select <strong>WhatsApp</strong>.</li>
+<li>In the <strong>Messaging Provider</strong> field, select the Meta Cloud API provider you just created.</li>
+<li>Enter the <strong>WhatsApp phone number</strong> associated with your WhatsApp Business Account (include the country code, for example <code>+12025550123</code>).</li>
+<li>Click <strong>Create</strong>.</li>
+</ol>
+<p>Open Chat Studio validates the phone number against your WhatsApp Business Account and stores the phone number ID automatically. If validation fails, check that:</p>
+<ul>
+<li>The phone number is registered under the WhatsApp Business Account ID you provided.</li>
+<li>The System User Access Token has the required permissions.</li>
+</ul>
+<hr />
+<h2 id="out-of-service-window-template-messages">Out-of-service-window template messages<a class="headerlink" href="#out-of-service-window-template-messages" title="Permanent link">&para;</a></h2>
+<h3 id="what-is-the-24-hour-service-window">What is the 24-hour service window?<a class="headerlink" href="#what-is-the-24-hour-service-window" title="Permanent link">&para;</a></h3>
+<p>WhatsApp restricts when businesses can send messages to users. Once a user sends a message to your business number, a <strong>24-hour service window</strong> opens. During that window, your chatbot can reply freely. After 24 hours of inactivity from the user, the window closes and the WhatsApp API rejects any outbound messages.</p>
+<p>Without a fallback, a bot reply sent outside the service window is silently dropped. The out-of-service-window template message feature prevents this by automatically substituting a pre-approved WhatsApp message template when the window has expired.</p>
+<div class="admonition info">
+<p class="admonition-title">Automatic fallback</p>
+<p>The fallback is automatic — no manual toggle is required. When the service window has expired, OCS attempts to send the configured template in place of the original message. If the template has not been created in Meta, the attempt fails gracefully without interrupting service.</p>
+</div>
+<h3 id="voice-message-fallback-chain">Voice message fallback chain<a class="headerlink" href="#voice-message-fallback-chain" title="Permanent link">&para;</a></h3>
+<p>When a voice message fails because the service window has expired, OCS first falls back to sending the content as a text message. If the text message also fails due to the expired window, the template fallback applies. This means the template covers both text and voice-originated replies.</p>
+<h3 id="create-the-required-template-in-meta-business-manager">Create the required template in Meta Business Manager<a class="headerlink" href="#create-the-required-template-in-meta-business-manager" title="Permanent link">&para;</a></h3>
+<p>You must create a WhatsApp message template in your Meta Business account before the fallback can work. Meta requires templates to be reviewed and approved before they can be sent.</p>
+<ol>
+<li>Go to <a href="https://business.facebook.com">business.facebook.com</a> and find where to manage your WhatsApp message templates.</li>
+<li>
+<p>Create a new template with the following required settings:</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Required value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Category</td>
+<td><strong>Utility</strong> (recommended) or <strong>Marketing</strong></td>
+</tr>
+<tr>
+<td>Template name</td>
+<td><code>new_bot_message</code></td>
+</tr>
+<tr>
+<td>Language</td>
+<td>Select the language that matches your <strong>Template Language Code</strong> in OCS</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>In the <strong>Body</strong> section, add a single text variable named <code>bot_message</code>. This variable will be replaced with the bot's actual message when sent.</p>
+</li>
+<li>
+<p>Submit the template and wait for Meta to approve it.</p>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Template name and variable must match exactly</p>
+<p>The template name must be <code>new_bot_message</code> exactly, and it must have a single template variable (text type) named <code>bot_message</code>. OCS looks up this template by name and passes the message via this variable. If either does not match, the fallback will not work.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Template approval required</p>
+<p>The template cannot be used until Meta approves it. Approval typically takes a few minutes to a few hours but may take longer. Until approval is granted, the fallback will fail silently.</p>
+</div>
+<h3 id="character-limits">Character limits<a class="headerlink" href="#character-limits" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Limit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Template static text</td>
+<td>100 characters</td>
+</tr>
+<tr>
+<td>Dynamic message content (<code>bot_message</code>)</td>
+<td>974 characters</td>
+</tr>
+</tbody>
+</table>
+<p>If the bot's outgoing message exceeds 974 characters, OCS automatically splits it at word boundaries and sends it across multiple template messages.</p>
+<h3 id="set-the-template-language-code-in-ocs">Set the template language code in OCS<a class="headerlink" href="#set-the-template-language-code-in-ocs" title="Permanent link">&para;</a></h3>
+<p>The <strong>Template Language Code</strong> field in the Meta Cloud API provider form tells OCS which language variant of the <code>new_bot_message</code> template to use when sending the fallback message.</p>
+<ul>
+<li>The default value is <code>en</code> (English).</li>
+<li>Change this value to match the language you selected when creating the template in Meta Business Manager.</li>
+<li>Common codes include <code>en_US</code>, <code>es</code>, <code>fr</code>, <code>pt_BR</code>. For the full list, see the <a href="https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages">Meta locale codes reference</a>.</li>
+</ul>
+<p>To update the language code:</p>
+<ol>
+<li>Navigate to <strong>Team Settings</strong> &gt; <strong>Messaging Providers</strong> in OCS.</li>
+<li>Click <strong>Edit</strong> on your Meta Cloud API provider.</li>
+<li>Update the <strong>Template Language Code</strong> field.</li>
+<li>Click <strong>Save</strong>.</li>
+</ol>
+<hr />
+<h2 id="4-configure-the-webhook-in-your-meta-app">4. Configure the Webhook in Your Meta App<a class="headerlink" href="#4-configure-the-webhook-in-your-meta-app" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Order matters</p>
+<p>Only configure the webhook in Meta after the messaging provider has been saved in OCS. Meta verifies the webhook immediately, and OCS needs the provider to exist in order to respond successfully.</p>
+</div>
+<p>Open Chat Studio uses a <strong>single global webhook endpoint</strong> for all Meta Cloud API channels:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>https://openchatstudio.com/api/channels/meta/
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Global endpoint</p>
+<p>Unlike Twilio or Turn.io, where each channel has its own webhook URL, all Meta Cloud API channels share this single endpoint. Open Chat Studio routes incoming messages to the correct chatbot based on the receiving phone number.</p>
+</div>
+<p>To configure the webhook:</p>
+<ol>
+<li>Open your Meta App in the <a href="https://developers.facebook.com/">Meta Developer Portal</a>.</li>
+<li>In the left sidebar, navigate to <strong>WhatsApp</strong> &gt; <strong>Configuration</strong>.</li>
+<li>Under <strong>Webhook</strong>, click <strong>Edit</strong>.</li>
+<li>
+<p>Enter the following values:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Callback URL</td>
+<td><code>https://openchatstudio.com/api/channels/meta/</code></td>
+</tr>
+<tr>
+<td>Verify Token</td>
+<td>The <code>Webhook Verify Token</code> you created in Step 3</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Click <strong>Verify and Save</strong>. Meta will send a verification request to OCS to confirm the token matches.</p>
+</li>
+<li>Once verified, subscribe to the <strong><code>messages</code></strong> webhook field to ensure incoming messages are forwarded to OCS.</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">Reference</p>
+<p>See the <a href="https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/create-webhook-endpoint#configure-webhooks">Meta documentation on configuring webhooks</a> for detailed instructions.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Webhook verification</p>
+<p>If the verification step fails, double-check that the <code>Webhook Verify Token</code> in the Meta portal exactly matches the value saved in your OCS provider configuration.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Self-hosted instances</p>
+<p>If you are running a self-hosted instance of Open Chat Studio, replace <code>https://openchatstudio.com</code> with your own domain. The path <code>/api/channels/meta/</code> remains the same.</p>
+</div>
+<hr />
+<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<p>Once your webhook is verified and the subscription is active, your Meta Cloud API provider is ready to use.</p>
+<ol>
+<li>Send a WhatsApp message from a personal WhatsApp account to the business phone number you configured.</li>
+<li>The chatbot should respond within a few seconds.</li>
+<li>If there is no response, see the <a href="#troubleshooting">Troubleshooting</a> section below.</li>
+</ol>
+<hr />
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="the-webhook-verification-failed">The webhook verification failed<a class="headerlink" href="#the-webhook-verification-failed" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Confirm that the <strong>Webhook Verify Token</strong> in Open Chat Studio and in the Meta App dashboard are identical (exact case match).</li>
+<li>Confirm that the webhook URL is reachable from the internet. On a self-hosted instance, ensure your server is publicly accessible and TLS is configured.</li>
+</ul>
+<h3 id="messages-are-not-reaching-the-chatbot">Messages are not reaching the chatbot<a class="headerlink" href="#messages-are-not-reaching-the-chatbot" title="Permanent link">&para;</a></h3>
+<ul>
+<li>In your Meta App dashboard, go to <strong>WhatsApp</strong> &gt; <strong>Configuration</strong> and confirm the <code>messages</code> webhook field is subscribed.</li>
+<li>Check that the phone number entered during channel creation matches exactly the number registered in your WhatsApp Business Account, including the country code.</li>
+<li>Confirm the System User Access Token has not expired.</li>
+</ul>
+<h3 id="the-register-api-call-returned-an-authorization-error">The <code>/register</code> API call returned an authorization error<a class="headerlink" href="#the-register-api-call-returned-an-authorization-error" title="Permanent link">&para;</a></h3>
+<p>This is almost always caused by the system user's access token not having permission to manage the WhatsApp Business Account's phone numbers.</p>
+<ul>
+<li>In <a href="https://business.facebook.com/settings">Meta Business Settings</a>, go to <strong>Users</strong> &gt; <strong>System Users</strong> and select your system user.</li>
+<li>Confirm that your WhatsApp Business Account appears under the system user's assigned assets.</li>
+<li>Confirm that the <strong>Phone numbers view and manage</strong> permission is enabled for that asset.</li>
+<li>If the asset is missing, click <strong>Add Assets</strong>, select <strong>WhatsApp Accounts</strong>, choose the correct account, enable the permission, and save.</li>
+<li>Generate a new access token for the system user after updating permissions.</li>
+</ul>
+<h3 id="phone-number-validation-failed-during-channel-creation">Phone number validation failed during channel creation<a class="headerlink" href="#phone-number-validation-failed-during-channel-creation" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Verify that the phone number is registered under the WhatsApp Business Account ID you provided.</li>
+<li>Verify that the System User Access Token has the <code>whatsapp_business_management</code> permission.</li>
+<li>Confirm there are no typos in the Account ID or access token fields.</li>
+</ul>
+<h3 id="messages-are-delivered-but-the-chatbot-does-not-respond">Messages are delivered but the chatbot does not respond<a class="headerlink" href="#messages-are-delivered-but-the-chatbot-does-not-respond" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Confirm the chatbot is active and has a working LLM provider configured.</li>
+<li>Check that the channel is linked to the correct chatbot.</li>
+<li>Check the <strong>Webhook Logs</strong> in your Meta App dashboard to see whether delivery attempts are succeeding or returning errors.</li>
+</ul>
+<h3 id="the-out-of-service-window-template-message-is-not-being-sent">The out-of-service-window template message is not being sent<a class="headerlink" href="#the-out-of-service-window-template-message-is-not-being-sent" title="Permanent link">&para;</a></h3>
+<p>If the bot is not reaching users after the 24-hour service window expires:</p>
+<ul>
+<li>Confirm that the template named <code>ocs_out_of_service_window</code> exists in your Meta Business account under <strong>WhatsApp Manager</strong> &gt; <strong>Account tools</strong> &gt; <strong>Message templates</strong>.</li>
+<li>Confirm the template status is <strong>Approved</strong>. Templates that are pending review or that have been rejected cannot be sent.</li>
+<li>Confirm that the <strong>Template Language Code</strong> in your OCS provider settings matches the language of the approved template exactly (for example, <code>en</code> vs <code>en_US</code>).</li>
+<li>Confirm that the template body variable is named <code>{{1}}</code> and that the static text surrounding it does not exceed 100 characters.</li>
+<li>If the template was recently approved, wait a few minutes and try again — there may be a short propagation delay.</li>
+</ul>
+<hr />
+<h2 id="see-also">See also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../concepts/team/messaging_providers/">Messaging providers</a></li>
+<li><a href="../deploy_to_different_channels/">Deploy your bot to different platforms</a></li>
+<li><a href="https://developers.facebook.com/docs/whatsapp/cloud-api">Meta WhatsApp Business Platform documentation</a></li>
+</ul>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 7, 2026 09:49:08 UTC">May 7, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+  
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../deploy_to_different_channels/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Deploy your bot to different platforms">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Deploy your bot to different platforms
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../global_search/" class="md-footer__link md-footer__link--next" aria-label="Next: How to find objects">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                How to find objects
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 Dimagi
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+  <!-- styling in assets/extra.css -->
+  <!-- see also assets/javascript/widget.js for welcome messages and starter questions -->
+  <open-chat-studio-widget
+    visible="false"
+    chatbot-id="cdec8c04-ff39-4175-bffb-f7d872e2eb3a"
+    embed-key="wZ2R5aizF5fi6MosxaPdjuovWK6B0Oj1"
+    button-text="Ask me!"
+    header-text="Docs Bot"
+    allow-full-screen="true"></open-chat-studio-widget>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["header.autohide", "navigation.expand", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.prune", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.tracking", "navigation.top", "search.highlight", "search.share", "search.suggest", "toc.follow", "content.action.edit", "content.action.view", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="https://unpkg.com/open-chat-studio-widget@0.7.0/dist/open-chat-studio-widget/open-chat-studio-widget.esm.js" type="module" async></script>
+      
+        <script src="../../assets/javascript/widget.js"></script>
+      
+    
+  </body>
+</html>
