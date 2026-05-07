@@ -103,7 +103,5 @@ data:
 }
 ```
 
-See [the API docs][api_docs]{target="_blank"}
+See [the API docs](https://openchatstudio.com/api/docs/#tag/Participants/operation/update_participant_data){target="_blank"}
 for more information on the API.
-
-[api_docs]: https://openchatstudio.com/api/docs/#tag/Participants/operation/update_participant_data
