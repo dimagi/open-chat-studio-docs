@@ -44,7 +44,7 @@ def get_temp_state_key(key_name: str) -> str | None:
     Returns the value of the temporary state key with the given name.
     If the key does not exist, it returns `None`.
 
-    See also: [Temporary State](./#temporary-state)
+    See also: [Temporary State](tech-hub/python_node.md#temporary-state)
     """
 
 
@@ -53,7 +53,7 @@ def set_temp_state_key(key_name: str, data: Any) -> None:
     Sets the value of the temporary state key with the given name to the provided data.
     This will override any existing data for the key.
 
-    See also: [Temporary State](./#temporary-state)
+    See also: [Temporary State](tech-hub/python_node.md#temporary-state)
     """
 
 
@@ -62,7 +62,7 @@ def get_session_state_key(key_name: str) -> str | None:
     Returns the value of the session state key with the given name.
     If the key does not exist, it returns `None`.
 
-    See also: [Session State](./#session-state)
+    See also: [Session State](tech-hub/python_node.md#session-state)
     """
 
 
@@ -71,7 +71,7 @@ def set_session_state_key(key_name: str, data: Any) -> None:
     Sets the value of the session state key with the given name to the provided data.
     This will override any existing data for the key.
 
-    See also: [Session State](./#session-state)
+    See also: [Session State](tech-hub/python_node.md#session-state)
     """
 
 
@@ -212,7 +212,7 @@ def add_file_attachment(filename: str, content: bytes, content_type: str | None 
             return "Failed to retrieve export."
         ```
 
-    See also: [HTTP Client - Downloading and Attaching Files](external-api-calls/http_client.md#downloading-and-attaching-files)
+    See also: [HTTP Client - Downloading and Attaching Files](tech-hub/external-api-calls/http_client.md#downloading-and-attaching-files)
     """
 
 def end_session() -> None:
