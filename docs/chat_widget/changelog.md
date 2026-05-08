@@ -22,7 +22,7 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 ## Changelog
 
-### v0.7.0
+### v0.7.0 (2026-05-06)
 
 * Widget now persists its open/closed state across page navigations when `persistent-session` is enabled (the default)
 * Display dynamic progress messages in the typing indicator during task processing (e.g., "Searching documents...")
