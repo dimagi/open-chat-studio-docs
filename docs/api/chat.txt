@@ -17,6 +17,9 @@ GET /api/chat/{session_id}/{task_id}/poll/
     200: 
       Content: application/json
       Schema: ChatTaskPoll
+    400: 
+      Content: application/json
+      Schema: ChatTaskPollUserError
     500: 
       Content: application/json
       Schema: ChatTaskPollError
@@ -119,6 +122,11 @@ ChatTaskPoll:
 
 ChatTaskPollError:
   - error: string
+  - status: string (required)
+
+ChatTaskPollUserError:
+  - error: string
+  - status: string (required)
 
 ChatUploadFileRequest:
   - files: array of string (required)

@@ -72,12 +72,11 @@ markdown_extensions:
 
 plugins:
 - search
+- macros
 - git-revision-date-localized
 - redirects:
     redirect_maps:
       'concepts/team/tracing_providers.md': 'concepts/tracing.md'
-- macros:
-    render_by_default: false
 - mkdocstrings:
     enabled: true
     default_handler: python
@@ -189,7 +188,7 @@ watch:
 - src/python_node
 
 extra_javascript:
-  - path: https://unpkg.com/open-chat-studio-widget@0.6.0/dist/open-chat-studio-widget/open-chat-studio-widget.esm.js
+  - path: https://unpkg.com/open-chat-studio-widget@0.7.0/dist/open-chat-studio-widget/open-chat-studio-widget.esm.js
 # Use this for testing widget changes
 #  - path: assets/build/open-chat-studio-widget.esm.js
     type: module

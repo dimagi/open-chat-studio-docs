@@ -195,7 +195,5 @@ If a pipeline-produced file cannot be sent as an attachment (for example, it exc
 [4]: https://www.twilio.com/docs/conversations/Facebook-messenger#setting-up-the-Facebook-messenger-channel
 [5]: https://core.Telegram.org/bots/features#:~:text=/setjoingroups%20%E2%80%93%20toggle%20whether%20your%20bot%20can%20be%20added%20to%20groups%20or%20not.%20All%20bots%20must%20be%20able%20to%20process%20direct%20messages%2C%20but%20if%20your%20bot%20was%20not%20designed%20to%20work%20in%20groups%2C%20you%20can%20disable%20this.
 [6]: ../tutorials/configure_providers.md
-[7]: https://openchatstudio.com/users/profile/
-[8]: https://openchatstudio.com/api/docs/
 [api]: ../tech-hub/api_access.md
 [meta]: ./whatsapp_meta_cloud_api.md
