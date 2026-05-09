@@ -25,7 +25,7 @@ the [How-to guides](../how-to/index.md).
 : The platform through which a chat occurs (e.g., WhatsApp, Telegram, Web, Slack).
 
 [Chatbot](chatbots/index.md)
-: A chatbot is an AI-powered conversational agent configured in Open Chat Studio to interact with users across one or more channels.
+: A chatbot in Open Chat Studio is a bot configuration that interacts with users across one or more channels.
 
 [Consent Forms](consent.md)
 : Forms that provide context to chatbot users on how their data will be used and who to contact regarding any concerns.
@@ -46,13 +46,13 @@ the [How-to guides](../how-to/index.md).
 : Messaging providers hold the configuration required to send messages to users on a specific channel.
 
 [Node](./pipelines/nodes.md)
-: A single processing step within a chatbot's pipeline workflow.
+: A node is a single step in a chatbot's pipeline.
 
 [Participant Data](participant_data.md)
 : Data that persists across sessions and is tied to the same `User, Channel, Chatbot` scope. It helps retain long-term user preferences and contextual information beyond a single session.
 
 [Pipelines](pipelines/index.md)
-: A pipeline is a visual workflow that defines how your chatbot processes a user's message and generates a response.
+: A pipeline is the visual workflow that controls how a chatbot processes input and produces output.
 
 [Prompt](prompt_variables.md)
 : A prompt is the instructions that are given to the LLM to generate a response. Prompts can include text, source material, and other variables.

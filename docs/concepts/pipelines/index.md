@@ -4,15 +4,6 @@
 
 A **pipeline** is a visual workflow in Open Chat Studio that defines how a chatbot processes messages and generates responses. Think of it like a recipe or assembly line — each step in the pipeline does one specific job, and the steps are connected together to create a complete conversation flow.
 
-### In Plain English
-
-Imagine a customer service chatbot:
-
-1. A customer sends a question
-2. The chatbot receives the message (input)
-3. It processes the message through a series of steps (the pipeline)
-4. Finally, it sends back an answer (output)
-
 ## What is a Node?
 Each step in the pipeline is called a **node**. A node performs one specific task, such as:
 
@@ -21,7 +12,7 @@ Each step in the pipeline is called a **node**. A node performs one specific tas
 - Making decisions about which way the conversation should go ([Router nodes](nodes.md#routing-nodes))
 - Sending emails or extracting data (specialty nodes)
 
-Pipelines are **visual** — you build them by dragging nodes onto a canvas and connecting them with lines, making it easy to see and understand your chatbot's logic without writing complex code.
+Pipelines are **visual** — you build them by dragging nodes onto a canvas and connecting them with lines, making chatbot logic easier to understand and maintain without writing complex code.
 
 
 ## A Simple Example
@@ -39,13 +30,13 @@ In this simple pipeline:
 2. The [LLM node](nodes.md#llm-node) receives the message and uses AI to generate a response
 3. The response is sent back to the user
 
-That's the complete conversation flow! Every time the user sends a message, the pipeline runs through all its steps (in this case, just one) and returns the output.
+This is the complete conversation flow for a single-node chatbot.
 
 ## Complex Pipelines
 
 Most real-world chatbots are more complex than a single node. Pipelines become powerful when you combine multiple types of nodes to handle different tasks.
 
-By breaking tasks into separate nodes, you can:
+Breaking work into separate nodes lets you:
 
 - Keep logic focused and easy to understand
 - Reuse nodes across different parts of your pipeline
@@ -54,7 +45,7 @@ By breaking tasks into separate nodes, you can:
 
 ### Node Types for Complex Pipelines
 
-Here are the main node types you can use to build more sophisticated chatbots:
+Common node types include:
 
  - **[LLM Node](nodes.md#llm-node)** — Processes messages using an AI model. Handles natural conversations, answering questions, and generating responses.
 
@@ -73,9 +64,9 @@ Here are the main node types you can use to build more sophisticated chatbots:
 
 ## How a Pipeline Runs
 
-Open Chat Studio (OCS) executes your pipeline in organized steps, running nodes in parallel when possible. Think of it like a well-coordinated team where different pipeline **nodes** work together, each completing their task and passing results forward.
+Open Chat Studio (OCS) executes your pipeline in organized steps, running nodes in parallel when possible.
 
-When a user sends a message, OCS processes the chatbot pipeline in repeating passes:
+When a user sends a message, OCS processes the pipeline in repeating passes:
 
 **Plan** → **Execute** → **Update** → Repeat
 
