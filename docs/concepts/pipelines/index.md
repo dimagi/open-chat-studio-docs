@@ -32,7 +32,7 @@ When a user sends a message, Open Chat Studio processes the chatbot pipeline in 
 
 1. **Plan**: Identify which nodes are ready to run. On the first cycle, this is the node connected to the user's input. On later cycles, it is any node whose dependencies have been satisfied.
 
-2. **Execute**: Run all ready nodes at the same time. Each node works independently — it cannot see the results of other nodes running in the same cycle. Collect the results from all nodes just executed and make them available to the next cycle
+2. **Execute**: Run all ready nodes at the same time. Each node works independently — it cannot see the results of other nodes running in the same cycle.
 
 3. **Update**: Share the results from all nodes so they're available for the next step.
 
