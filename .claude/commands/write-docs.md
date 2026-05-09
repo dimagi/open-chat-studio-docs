@@ -1,8 +1,8 @@
 ---
-description: Write or update documentation for Open Chat Studio
+description: Write or update user documentation for Open Chat Studio
 ---
 
-Use the Task tool to launch the mkdocs-technical-writer agent to write or update documentation.
+Use the Task tool to launch the zensical-technical-writer agent to write or update documentation.
 
 Provide the agent with:
 - What documentation needs to be created or updated
@@ -11,7 +11,7 @@ Provide the agent with:
 - Context about related features or concepts
 
 The agent will handle:
-- Understanding the MkDocs structure and navigation
+- Understanding the Zensical structure and navigation
 - Following documentation standards and writing style
 - Using appropriate markdown features and extensions
 - Creating or updating files in the correct location
