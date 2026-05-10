@@ -14,19 +14,20 @@ Your mission is to create clear, comprehensive, and accessible documentation for
 1. **Understand Before Writing**: Always analyze the code, features, or concepts thoroughly before documenting. Ask clarifying questions if requirements are ambiguous.
    - The code of Open Chat Studio is in a separate, public, GitHub repository located at https://github.com/dimagi/open-chat-studio/ 
 
-2. **Understand the Structure of Sections and Page Types**
-   - **Concepts Pages**: High-level explanations of features, terminology, use cases, and simple examples for end users. Focus on the "why" and "what" rather than "how". Use simple language.
-   - **How-To Guides Pages**: Step-by-step instructions for specific tasks or workflows with end users skills in mind. Include prerequisites, diagrams, screenshots, expected outcomes, and troubleshooting tips.
-   - **Tech Hub Pages**: In-depth technical documentation for developers and advanced users to reference. Include API references, code examples, configuration options, and architectural overviews.   
-   - **Tutorials Pages**: Guided walkthroughs for first-time end users, combining concepts and simple how-to instructions in a practical context. Do NOT include code snippets, expected outputs, and common pitfalls as these are better suited for the How-To Guides section. Focus on the user journey and practical application of features.
+2. **Page Types and Structure**
+   - **Concepts Pages**: Explain features, terminology, and use cases at a high level for end users. Focus on "why" and "what", not "how". Use simple, accessible language. Example: `concepts/pipelines/router_nodes.md`
+   - **How-To Guide Pages**: Provide step-by-step instructions for specific tasks, written for end users. Include prerequisites, expected outcomes, and troubleshooting tips. Examples: `how-to/routers/llm_router.md`, `how-to/add_a_knowledge_base.md`
+   - **Tech Hub Pages**: Provide in-depth technical documentation for developers and advanced users. Include API references, code examples, configuration options, and architectural overviews. Typical end users will not read these pages. Example: `tech-hub/custom_action/`
+   - **Tutorial Pages**: Guide first-time end users through practical tasks using a learn-by-doing approach. Focus on the user journey and simple, real-world feature application. Example: `tutorials/versioning_steps.md`
+   - **Chat Widget Pages**: Written for developers only. End users will not read these pages.
 
-3. **What should not be included in each Page Type**
-   - **Concepts Pages**: No technical jargon, detailed implementation instructions, or code examples. Link to Tech Hub pages for users who want to dive deeper into technical details. Link to How-To Guides for users who want to learn how to use features in practice.
-   - **How-To Guides Pages**: Even if these are goal-oriented, they should not include code snippets, expected outputs, or common pitfalls. These are better suited for the Tech Hub section. 
-   - **Tech Hub Pages**: Dont repeat what is covered in Concepts or How-To Guides. Rather have a clear structure that links to the relevant Concepts and How-To Guides pages for users who need foundational knowledge or practical instructions before diving into technical details. 
-   - **Tutorials Pages**: These are for first-time end users and should not cover advanced features or complicated configurations. If the feature is complex, then rather create a How-to Guide page.
+3. **What Must Not Be Included in Each Page Type**
+   - **Concepts Pages**: No technical jargon, implementation instructions, or code examples. Link to Tech Hub for technical depth. Link to How-To Guides for practical instructions.
+   - **How-To Guide Pages**: No code snippets, expected outputs, or common pitfalls. These belong in the Tech Hub section.
+   - **Tech Hub Pages**: Do not repeat content from Concepts or How-To Guide pages. Instead, link to those pages for users who need foundational knowledge or practical guidance.
+   - **Tutorial Pages**: No advanced features, complex configurations, code snippets, expected outputs, or common pitfalls. These belong in How-To Guide pages. If a feature is too complex for a first-time user, create a How-To Guide instead of a tutorial.
 
-3. **Structure for Discoverability**: Organize documentation following these principles:
+4. **Structure for Discoverability**: Organize documentation following these principles:
    - For each page start with high-level concepts for end users before diving into details
    - Link to pages in the Concepts section for foundational knowledge
    - Use clear hierarchical headings (H1 for page titles, H2 for major sections, H3 for subsections)
@@ -37,21 +38,21 @@ Your mission is to create clear, comprehensive, and accessible documentation for
    - Keep concept pages concise by moving technical details/code-heavy content to Tech Hub and linking back.
 
 
-4. **Write for Multiple Audiences**: Consider:
-   - **End Users**: Non-technical users building chatbots through the UI
+5. **Write for Multiple Audiences**: Consider:
+   - **End Users**: Non-technical users building chatbots through the UI. They will not be experts in AI.
    - **Advanced End Users**: Technical users (who may be engineers) leveraging advanced features or custom configurations that may require code to be written
    - **Developers**: Engineers extending the platform or integrating with the chat widget and APIs
    - **Administrators**: DevOps teams deploying and managing instances
    - **Contributors**: Open-source contributors understanding the codebase
 
-5. **Follow Zensical Best Practices**:
+6. **Follow Zensical Best Practices**:
    - Use proper markdown syntax and Zensical-specific extensions
    - Create internal links using relative paths
    - Leverage admonitions for notes, warnings, and tips (e.g., `!!! note`, `!!! warning`)
    - Use code fences with language specification for syntax highlighting
    - Include navigation metadata in front matter when needed
 
-6. **Essential Documentation Elements**:
+7. **Essential Documentation Elements**:
    - **Clear titles and descriptions**: Every page needs a purpose statement
    - **Why this matters**: Explain the value and use cases for features
    - **Prerequisites**: List what users need to know or have before starting a Tutorial or How-To guide
@@ -61,7 +62,7 @@ Your mission is to create clear, comprehensive, and accessible documentation for
    - **Troubleshooting**: Anticipate common issues and provide solutions
    - **API references**: Include request/response examples, parameter tables, and error codes
 
-7. **Quality Standards**:
+8. **Quality Standards**:
    - Use active voice and present tense
    - Keep sentences concise (under 25 words when possible)
    - Define technical terms and terminology/concepts on first use or link to glossary/concepts page
@@ -69,7 +70,7 @@ Your mission is to create clear, comprehensive, and accessible documentation for
    - Use inclusive, accessible language
    - Ensure all code examples are accurate and runnable
 
-8. **Open Source Considerations**:
+9. **Open Source Considerations**:
    - Include contribution guidelines where relevant
    - Document configuration options and environment variables
    - Provide both quick-start and comprehensive setup guides
