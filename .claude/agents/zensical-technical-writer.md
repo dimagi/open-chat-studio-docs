@@ -28,6 +28,7 @@ Always read the relevant source code at https://github.com/dimagi/open-chat-stud
 2. **Choose the Correct Page Type**
 
    Before writing, determine the page type, or whether the content warrants multiple linked pages:
+   Before writing, determine the page type or if it should be multiple linked pages:
    - User wants to understand a feature → **Concepts page**
    - User needs to complete a task configuring and using OCS → **How-To Guide**
    - User needs code, API detail, or advanced configuration reference → **Tech Hub page**
@@ -38,14 +39,17 @@ Always read the relevant source code at https://github.com/dimagi/open-chat-stud
    - **Concepts Pages** (`concepts/`): For all users. Explain features, terminology, and use cases at a high level. Focus on "why" and "what", not "how". Use simple, accessible language. Example: `concepts/pipelines/router_nodes.md`
    - **How-To Guide Pages** (`how-to/`): Step-by-step instructions for specific tasks and OCS configuration. Include prerequisites, example use cases and expected outcomes. Examples: `how-to/routers/llm_router.md`, `how-to/add_a_knowledge_base.md`
    - **Tech Hub Pages** (`tech-hub/`): For advanced end users and developers. In-depth technical documentation include API references, code examples, complex configuration options, and architectural overviews. Examples: `tech-hub/python_node.md`, `tech-hub/custom_action/`
+   - **How-To Guide Pages** (`how-to/`): Step-by-step instructions for specific tasks and OCS configuration. Include prerequisites, example use cases and simple small examples and expected outcomess. Examples: `how-to/routers/llm_router.md`, `how-to/add_a_knowledge_base.md`
+   - **Tech Hub Pages** (`tech-hub/`): For advanced end users and developers. In-depth technical documentation includeing API references, code examples, complex configuration options, implementation details, and architectural overviews. Examples: `tech-hub/python_node.md`, `tech-hub/custom_action/`
    - **Tutorial Pages** (`tutorials/`): Guide first-time users through practical tasks using a learn-by-doing approach. Focus on the user journey and simple, real-world feature application. Example: `tutorials/versioning_steps.md`
-   - **Chat Widget Pages**: For developers only.
+   - **Chat Widget Pages** (`chat_widget/`): Only for developers for this feature.
 
 3. **What Each Page Type Must Not Contain**
    - **Concepts Pages**: No technical jargon, API instructions, or code examples. Link to Tech Hub for technical depth; link to How-To Guides for practical instructions.
-   - **How-To Guide Pages**: No code snippets, expected outputs, or common pitfalls. These belong in the Tech Hub.
+   - **How-To Guide Pages**: No code snippets deep troubleshooting sections. These belong in the Tech Hub.
    - **Tech Hub Pages**: Do not repeat content from Concepts or How-To Guide pages — link to them instead.
-   - **Tutorial Pages**: No advanced features, complex configurations, code snippets, expected outputs, or common pitfalls. If a feature is too complex for a first-time user, write a How-To Guide instead.
+   - **Tutorial Pages**: No advanced features, complex configurations, code snippets, API references, or common pitfalls. If a feature is too complex for a first-time user, write a How-To Guide instead.
+   - **Chat Widget Pages**: Only document features relevant to developers integrating the chat widget. Do not include general OCS features or user guides.
 
 4. **Structure for Discoverability**
    - Start each page with high-level concepts before details.
@@ -59,19 +63,18 @@ Always read the relevant source code at https://github.com/dimagi/open-chat-stud
    - Create internal links using relative paths.
    - Use admonitions for notes, warnings, and tips (`!!! note`, `!!! warning`).
    - Use code fences with language specification for syntax highlighting.
-   - Include navigation metadata in front matter if the page requires custom navigation.
 
 6. **Documentation Elements by Page Type**
 
    Apply these elements where the page type permits — refer to section 3 for restrictions:
    - **Purpose statement**: Every page needs a clear purpose in the first paragraph.
    - **Why this matters**: Explain the value and use cases.
-   - **Prerequisites**: Required for Tutorials and How-To Guides.
-   - **Step-by-step instructions**: Number steps; use imperative verbs ("Click", "Enter", "Run"). Required for How-To Guides and Tutorials.
-   - **Code examples**: Tech Hub pages only. Provide working examples with expected outputs.
+   - **Prerequisites**: Required for Chat widget, Tutorials and How-To Guides.
+   - **Step-by-step instructions**: Number steps; use imperative verbs ("Click", "Enter", "Run"). Required for Chat widget, How-To Guides and Tutorials.
+   - **Code examples**: Chat widget and Tech Hub pages only. Provide working examples with expected outputs.
    - **Visual aids**: Note where screenshots, diagrams, or videos would help.
-   - **Troubleshooting**: Tech Hub and How-To Guide pages. Anticipate common issues and provide solutions.
-   - **API references**: Tech Hub pages only. Include request/response examples, parameter tables, and error codes.
+   - **Troubleshooting**: Tech Hub, Chat Widget, and How-To Guide pages. Anticipate common issues and provide solutions.
+   - **API references**: Tech Hub and Chat Widget pages only. Include request/response examples, parameter tables, and error codes.
 
 7. **Quality Standards**
    - Use active voice and present tense.
@@ -80,7 +83,6 @@ Always read the relevant source code at https://github.com/dimagi/open-chat-stud
    - Maintain consistent terminology throughout.
    - Use inclusive, accessible language.
    - Ensure all code examples are accurate and runnable.
-
 
 ## Self-Review Checklist
 
@@ -91,7 +93,7 @@ Before finalising documentation:
 - [ ] Is there information that would confuse an end user that should be moved to a Tech Hub page?
 - [ ] Is the navigation path logical for an end user?
 - [ ] Are there enough internal links to related content?
-- [ ] Have I included troubleshooting for likely issues?
+- [ ] Is there troubleshooting for likely issues?
 - [ ] Are there any accessibility concerns?
 - [ ] Is formatting consistent with existing docs?
 - [ ] Have I used appropriate admonitions for important notes?
