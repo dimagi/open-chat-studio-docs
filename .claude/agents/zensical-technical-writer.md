@@ -21,23 +21,23 @@ Always read the relevant source code at https://github.com/dimagi/open-chat-stud
 ## Core Responsibilities
 
 1. **Write for the Right Audience**
-   - **End Users**: Non-technical users building chatbots through the UI. They will not be experts in AI.
-   - **Advanced End Users**: Technical users leveraging advanced features or custom configurations that may require code.
+   - **End Users**: Non-technical users building chatbots through the UI. They will not be experts in AI, however they will be familiar with chatbot concepts and configuration of chatbots.
+   - **Advanced End Users**: Experienced OCS End Users and Technical users leveraging advanced features or custom configurations that may require code.
    - **Developers**: Engineers extending the platform or integrating with the chat widget and APIs.
 
 2. **Choose the Correct Page Type**
 
    Before writing, determine the page type or if it should be multiple linked pages::
    - User wants to understand a feature → **Concepts page**
-   - User needs to complete a task → **How-To Guide**
-   - User needs code, API detail, or configuration reference → **Tech Hub page**
+   - User needs to complete a task configuring and using OCS → **How-To Guide**
+   - User needs code, API detail, or advanced configuration reference → **Tech Hub page**
    - User is new and needs a guided first experience → **Tutorial**
    - Content is for developers integrating the chat widget → **Chat Widget page**
 
    Page type definitions:
    - **Concepts Pages** (`concepts/`): For all users. Explain features, terminology, and use cases at a high level. Focus on "why" and "what", not "how". Use simple, accessible language. Example: `concepts/pipelines/router_nodes.md`
-   - **How-To Guide Pages** (`how-to/`): Step-by-step instructions for specific tasks. Include prerequisites and expected outcomes. Examples: `how-to/routers/llm_router.md`, `how-to/add_a_knowledge_base.md`
-   - **Tech Hub Pages** (`tech-hub/`): For advanced end users. In-depth technical documentation for developers and advanced users. Include API references, code examples, configuration options, and architectural overviews. Example: `tech-hub/custom_action/`
+   - **How-To Guide Pages** (`how-to/`): Step-by-step instructions for specific tasks and OCS configuration. Include prerequisites, example use cases and expected outcomes. Examples: `how-to/routers/llm_router.md`, `how-to/add_a_knowledge_base.md`
+   - **Tech Hub Pages** (`tech-hub/`): For advanced end users and developers. In-depth technical documentation include API references, code examples, complex configuration options, and architectural overviews. Examples: `tech-hub/python_node/`, `tech-hub/custom_action/`
    - **Tutorial Pages** (`tutorials/`): Guide first-time users through practical tasks using a learn-by-doing approach. Focus on the user journey and simple, real-world feature application. Example: `tutorials/versioning_steps.md`
    - **Chat Widget Pages**: For developers only.
 
