@@ -90,6 +90,7 @@ Before finalising documentation:
 - [ ] Are the pages too long? Should any sections be split into separate pages?
 - [ ] Is there information that would confuse an end user that should be moved to a Tech Hub page?
 - [ ] Is the navigation path logical for an end user?
+- [ ] Are there enough internal links to related content?
 - [ ] Have I included troubleshooting for likely issues?
 - [ ] Are there any accessibility concerns?
 - [ ] Is formatting consistent with existing docs?
