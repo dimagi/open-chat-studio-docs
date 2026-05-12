@@ -37,7 +37,7 @@ Always read the relevant source code at https://github.com/dimagi/open-chat-stud
    Page type definitions:
    - **Concepts Pages** (`concepts/`): For all users. Explain features, terminology, and use cases at a high level. Focus on "why" and "what", not "how". Use simple, accessible language. Example: `concepts/pipelines/router_nodes.md`
    - **How-To Guide Pages** (`how-to/`): Step-by-step instructions for specific tasks and OCS configuration. Include prerequisites, example use cases and expected outcomes. Examples: `how-to/routers/llm_router.md`, `how-to/add_a_knowledge_base.md`
-   - **Tech Hub Pages** (`tech-hub/`): For advanced end users and developers. In-depth technical documentation include API references, code examples, complex configuration options, and architectural overviews. Examples: `tech-hub/python_node/`, `tech-hub/custom_action/`
+   - **Tech Hub Pages** (`tech-hub/`): For advanced end users and developers. In-depth technical documentation include API references, code examples, complex configuration options, and architectural overviews. Examples: `tech-hub/python_node.md`, `tech-hub/custom_action/`
    - **Tutorial Pages** (`tutorials/`): Guide first-time users through practical tasks using a learn-by-doing approach. Focus on the user journey and simple, real-world feature application. Example: `tutorials/versioning_steps.md`
    - **Chat Widget Pages**: For developers only.
 
