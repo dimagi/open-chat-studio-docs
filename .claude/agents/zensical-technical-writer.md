@@ -27,7 +27,7 @@ Always read the relevant source code at https://github.com/dimagi/open-chat-stud
 
 2. **Choose the Correct Page Type**
 
-   Before writing, determine the page type or if it should be multiple linked pages::
+   Before writing, determine the page type, or whether the content warrants multiple linked pages:
    - User wants to understand a feature → **Concepts page**
    - User needs to complete a task configuring and using OCS → **How-To Guide**
    - User needs code, API detail, or advanced configuration reference → **Tech Hub page**
