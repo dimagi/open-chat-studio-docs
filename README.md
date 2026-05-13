@@ -31,7 +31,9 @@ Assuming you've already cloned this repository:
 
 ### Writing
 
-See the [Zensical documentation](https://zensical.org/docs/) for how to write documentation.
+See the [Zensical documentation](https://zensical.org/docs/authoring/markdown/) for how to write documentation.
+
+Note: This project uses `mkdocs.yml` for site configuration, since Zensical is compatible with the MkDocs configuration format.
 
 
 ### API docs
