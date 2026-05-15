@@ -29,7 +29,7 @@ Each dataset row contains the following fields. Not all fields are populated for
 Datasets can be created by cloning an existing session, manually created in the UI, or uploaded with a CSV.
 
 !!! note
-    Manual creation and CSV upload are only available for **message-level** datasets. Session-level datasets must be populated by cloning sessions.
+    Manual creation and CSV upload are only available for **message-level** datasets. Session-level datasets must be populated by cloning sessions or by importing sessions from an annotation queue.
 
 ### Cloning a session
 
@@ -69,6 +69,15 @@ The `input` and `output` fields are empty for session-level rows. Evaluators wor
 
 !!! note
     Generation is not available for session-level datasets. Generation applies only to message-level evaluation.
+
+### Importing from an annotation queue
+
+Session-level datasets can also be populated from an existing [annotation queue](../annotations/queues.md). From the dataset edit page, click **Import from Annotation Queue** and select any team queue that contains session items (archived queues are excluded). Each session item in the queue becomes a row in the dataset using the same mapping as session cloning.
+
+Imports are idempotent — sessions already present in the dataset are skipped, so re-running the import after adding new items to the queue will only append the new sessions.
+
+!!! note
+    This option is only available on session-level datasets.
 
 ### Manually creating a dataset
 

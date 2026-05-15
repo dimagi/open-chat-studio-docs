@@ -6,6 +6,7 @@ hide:
 # Changelog
 ## May 15, 2026
 * **NEW** The [Trigger Bot Message](https://www.openchatstudio.com/api/docs/#tag/Channels/operation/trigger_bot_message) API now accepts an optional `message_text` parameter that delivers the exact text to the participant's channel without LLM processing. Requests must include either `prompt_text` (for an LLM-generated reply, existing behaviour) or `message_text` (for verbatim delivery), but not both.
+* **NEW** Session-level evaluation datasets can now be populated by importing sessions from an annotation queue. From a session-level dataset's edit page, choose **Import from Annotation Queue** and pick any team queue that contains session items. Imports are de-duplicated against the existing sessions in the dataset.
 
 ## May 6, 2026
 * **NEW** Added a **Create** action to the Participants page, letting you add a single participant by hand without using the bulk CSV importer. The form takes an identifier, platform, and optional name, and shows an inline link to the existing participant if one already exists for that platform and identifier.
