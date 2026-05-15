@@ -26,10 +26,10 @@ Each dataset row contains the following fields. Not all fields are populated for
 
 ## Managing Datasets
 
-Datasets can be created by cloning an existing session, manually created in the UI, or uploaded with a CSV.
+Datasets can be created by cloning an existing session, manually created in the UI, uploaded with a CSV, or — for session-level datasets — auto-populated continuously from a source chatbot via [auto-population rules](#auto-population-rules).
 
 !!! note
-    Manual creation and CSV upload are only available for **message-level** datasets. Session-level datasets must be populated by cloning sessions.
+    Manual creation and CSV upload are only available for **message-level** datasets. Session-level datasets must be populated by cloning sessions or by configuring an auto-population rule.
 
 ### Cloning a session
 
@@ -83,6 +83,32 @@ assistant: I am doing well, thank you for asking. How can I help you?
 user: Please tell me the time.
 assistant: It is currently 12:05 PM in Ankara.
 ```
+
+## Auto-Population Rules
+
+Session-level datasets can be configured to **continuously ingest new sessions** from a source chatbot. Each dataset can have one or more **auto-population rules**, and each rule defines:
+
+- **Source chatbot**: The chatbot whose sessions should be considered for ingestion.
+- **Filter criteria**: Standard session filters (tags, participant, channel, date range, etc.) that determine which sessions match the rule.
+- **Evaluation config** (optional): When set, evaluators in the linked config are automatically run over only the rows that the rule contributes to the dataset.
+
+!!! note
+    Auto-population is available for **session-level** datasets only. Message-level datasets must be populated by cloning, manual entry, or CSV upload.
+
+### How ingestion works
+
+A background task polls each enabled rule every **5 minutes** and adds any new sessions that match its filters and are not already in the dataset. Ingestion is bounded:
+
+- Only sessions created **after the rule itself was created** are eligible — enabling a rule does not backfill historical sessions.
+- A configurable lookback window (default: 30 days) limits how far back the poller scans, so a rule that has been disabled for an extended period will not pull in a large historical batch when re-enabled.
+
+If a rule fails repeatedly (e.g. due to a misconfigured filter or a transient database error), it is automatically **disabled after three consecutive failures** and a notification is raised so the rule can be reviewed.
+
+### Automatic delta evaluation runs
+
+When a rule has an **Evaluation config** linked, each ingestion cycle that adds new rows also enqueues a **delta evaluation run** that scores only those newly added rows. This avoids re-evaluating rows that were processed in a previous cycle and keeps results flowing as new sessions arrive.
+
+Manual filter-import and CSV-import paths do not trigger automatic evaluation runs — only the auto-population path does.
 
 ## Sharing Dataset Messages
 
