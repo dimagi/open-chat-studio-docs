@@ -78,4 +78,6 @@ stateDiagram-v2
 
 ## Read-Only View
 
-If you open an item that you've already annotated, or if you don't have annotation permissions, the item is shown in a **read-only view** — you can see the content and any existing annotations, but cannot submit a new one. You can still edit your own existing annotation via the **Edit** action.
+When you open an item you've already annotated, the item content and the annotations list are shown without the submission form — each reviewer can only submit one annotation per item, but you can revise your own via the **Edit** action (see [Editing Your Annotation](#editing-your-annotation)).
+
+If you don't have annotation permissions, the item is fully read-only: you can see the content and any existing annotations, but cannot submit or edit.
