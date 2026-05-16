@@ -162,6 +162,28 @@ Ends the current chat [session](../concepts/sessions.md). The session is marked 
 - Name: `end-session`
 - Arguments: (none)
 
+## Internal tools
+
+The following tools are managed automatically by Open Chat Studio. You do not enable or configure them directly — OCS enables them when your chatbot's configuration requires them.
+
+### Attach media
+
+Allows the bot to attach media when a media collection is configured.
+
+- Name: `attach-media`
+- Arguments:
+    - `file_id`: The ID of the media file to attach.
+
+### File search
+
+Allows the bot to search indexed collections when a collection is configured.
+
+- Name: `file-search`
+- Arguments:
+    - `query`: A natural language query to search for relevant information in the documents.
+
+See [Collections](../concepts/collections/index.md) for more information on configuring media and indexed collections.
+
 ## LLM provider tools
 
 Some LLM providers offer their own built-in tools that run inside the provider's infrastructure.
