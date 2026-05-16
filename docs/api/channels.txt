@@ -6,7 +6,11 @@ TAG: Channels
 ENDPOINTS:
 
 POST /api/trigger_bot
-  Summary: Trigger the bot to send a message to the user
+  Summary: Trigger the bot to send a message to the user, or deliver a message directly
+  Description: Trigger the bot to send a message to the user, or deliver a message directly.
+
+Provide either ``prompt_text`` (routes through the LLM/bot pipeline) or ``message_text``
+(sends the exact text to the participant without any LLM processing). Exactly one is required.
   Request Body:
     Content: application/json
     Schema: TriggerBotMessageRequest
@@ -74,7 +78,8 @@ TriggerBotMessageRequest:
   - identifier: string (required)
   - platform: Unknown (required)
   - experiment: string (required)
-  - prompt_text: string (required)
+  - prompt_text: string
+  - message_text: string
   - start_new_session: boolean
   - session_data: object
   - participant_data: object

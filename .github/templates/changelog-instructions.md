@@ -49,7 +49,7 @@ After updating the changelog, analyze whether this PR requires documentation upd
    - Internal/refactoring → Skip documentation updates
 
 2. **If documentation IS needed:**
-   - Use the "mkdocs-technical-writer" agent to handle the documentation updates
+   - Use the "zensical-technical-writer" agent to handle the documentation updates
    - Provide the agent with:
      * What changed (from the PR)
      * What documentation needs to be created or updated

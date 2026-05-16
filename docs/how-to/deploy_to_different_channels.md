@@ -120,6 +120,74 @@ Once the channel is linked, users interact with the bot by mentioning it in Slac
 - Enter the Tenant ID that would have been provided to you when setting up your SureAdhere account.
 - After you submit the form, you will be provided with a webhook URL. Copy this URL and navigate back to your provider's settings to configure it with this URL.
 
+## Email
+
+The email channel lets users interact with your bot by sending and receiving emails.
+
+### Configuration
+
+When creating an email channel, the form has the following fields:
+
+- **Email address**: The inbound address that users send messages to. Incoming emails addressed to this value are routed to this bot.
+- **From address**: The address that appears in the "From" field of outgoing replies.
+- **Default channel**: When enabled, this channel acts as the fallback for inbound emails that do not match any other configured email address in your workspace.
+
+!!! info "Note"
+    Only one email channel per workspace can be set as the default.
+
+### How routing works
+
+Inbound emails are matched to the correct bot in this order:
+
+1. **In-Reply-To header** - If the email is a reply to a previous message sent by the bot, it is routed to the same channel and continues the existing conversation thread.
+2. **To address** - If no prior thread is found, the recipient address is matched against configured email channels.
+3. **Default channel** - If no address match is found, the email is delivered to the workspace's default email channel (if one is configured).
+
+### Thread continuity
+
+Replying to a bot email continues the same conversation session. Sending a fresh email to the channel address starts a new session.
+
+### File attachments
+
+The email channel supports bidirectional file attachments.
+
+#### Inbound attachments (user to bot)
+
+When a user emails files to the bot, each attachment is saved and made available to the LLM or pipeline as a file record. Attachments behave like files uploaded through any other channel: they appear in the `attachments` list in the pipeline's [temporary state](../tech-hub/python_node.md#attachments) and are passed to the LLM for processing.
+
+The following attachments are rejected automatically:
+
+| Rejection reason | How it appears to the bot |
+|---|---|
+| File exceeds 20 MB | Bracketed note in the message text, e.g. `[Attachment "report.zip" was rejected: file too large (max 20 MB)]` |
+| Executable file type (e.g. `.exe`, `.sh`) | Bracketed note in the message text |
+| Content-type mismatch (declared MIME type does not match actual file bytes) | Bracketed note in the message text |
+
+Rejection notes are inserted inline into the user's message so the bot can read them and explain the problem to the user in its reply.
+
+
+#### Outbound attachments (bot to user)
+
+Files produced by the pipeline are sent as MIME attachments in the same threaded reply as the bot's text response. To attach a file from a Python node, call `add_file_attachment()`:
+
+```python
+def main(input, **kwargs) -> str:
+    response = http.get("https://api.example.com/report.pdf", auth="reports-api")
+
+    if response["is_success"]:
+        add_file_attachment(
+            filename="report.pdf",
+            content=response["response_bytes"]
+        )
+        return "I've attached the report."
+
+    return "Failed to retrieve the report."
+```
+
+See the [Python Node documentation](../tech-hub/python_node.md#python_node.add_file_attachment) for the full `add_file_attachment()` API reference.
+
+If a pipeline-produced file cannot be sent as an attachment (for example, it exceeds the size limit or is a denylisted type), the email body will contain an inline download link for that file instead.
+
 
 [1]: https://core.telegram.org/bots#how-do-i-create-a-bot
 [2]: ../concepts/team/messaging_providers.md
@@ -127,7 +195,5 @@ Once the channel is linked, users interact with the bot by mentioning it in Slac
 [4]: https://www.twilio.com/docs/conversations/Facebook-messenger#setting-up-the-Facebook-messenger-channel
 [5]: https://core.Telegram.org/bots/features#:~:text=/setjoingroups%20%E2%80%93%20toggle%20whether%20your%20bot%20can%20be%20added%20to%20groups%20or%20not.%20All%20bots%20must%20be%20able%20to%20process%20direct%20messages%2C%20but%20if%20your%20bot%20was%20not%20designed%20to%20work%20in%20groups%2C%20you%20can%20disable%20this.
 [6]: ../tutorials/configure_providers.md
-[7]: https://openchatstudio.com/users/profile/
-[8]: https://openchatstudio.com/api/docs/
 [api]: ../tech-hub/api_access.md
 [meta]: ./whatsapp_meta_cloud_api.md

@@ -2,18 +2,18 @@
 
 Custom Actions let chatbots call external services through a managed integration based on an [OpenAPI Schema](https://swagger.io/specification/). This feature is similar to OpenAI [GPT Actions](https://platform.openai.com/docs/actions/introduction), but it is configured within Open Chat Studio and exposed as tools that your chatbot can use.
 
-Use this guide if you are configuring or troubleshooting a Custom Action. For a non-technical overview, see [Custom Action](../concepts/llm_custom_action.md).
+Use this guide if you are configuring or troubleshooting a Custom Action. For a non-technical overview, see [Custom Action](../../concepts/llm_custom_action.md).
 
 ## When to use a Custom Action
 
 Choose a Custom Action when:
 
 - the external service provides a usable [OpenAPI Schema](https://swagger.io/specification/)
-- you want API operations to appear as selectable [tools](../concepts/tools/index.md) in chatbot configuration
+- you want API operations to appear as selectable [tools](../../concepts/tools/index.md) in chatbot configuration
 - you want a managed integration with [health monitoring](./health_custom_action.md)
 - you want to reuse the same integration across multiple chatbots
 
-Use a [Python node](./external_api_calls.md) instead when:
+Use a [Python node](../python_node.md) instead when:
 
 - the external service does not provide a suitable OpenAPI schema
 - you need custom request logic that is easier to express in code
@@ -33,9 +33,9 @@ Before creating a Custom Action, make sure you have:
 
 1. an HTTPS base URL for the external service
 2. an [OpenAPI Schema](https://swagger.io/specification/) in JSON or YAML format
-3. an [Authentication Provider](../concepts/team/authentication_providers.md), if the API requires authentication
+3. an [Authentication Provider](../../concepts/team/authentication_providers.md), if the API requires authentication
 
-Once you have this information, go to [Team Settings](../concepts/team/custom_actions.md) and enter the details described below.
+Once you have this information, go to [Team Settings](../../concepts/team/custom_actions.md) and enter the details described below.
 
 ## Team Settings fields
 

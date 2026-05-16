@@ -1,18 +1,15 @@
 # Chatbots
 
 ## What is a Chatbot?
-A chatbot is a program that simulates conversation with people. It can use simple rules or advanced AI to understand and respond to messages. 
+A chatbot in Open Chat Studio is the bot configuration that users interact with. It defines the conversational experience, while the underlying [pipeline](../pipelines/index.md) controls how messages are processed and responses are generated.
 
-Within the context of Open Chat Studio, a chatbot is a specific configuration of a language model (LLM) that is designed to interact with users conversationally. It can be customized to perform various tasks, such as answering questions, providing information, or assisting with specific workflows.
+Chatbots can be connected to one or more channels, use [LLMs](../llm.md) to generate responses, and include supporting logic such as routing, participant data, or custom actions.
 
-The specific way that a chatbot is configured with Open Chat Studio is through the use of a [**Pipeline**](../pipelines/index.md). You can think of a pipeline as a flowchart that starts with user input on one end and ends with the chatbot’s response at the other. Each message sent to the bot follows a specific path through the pipeline to generate the final output. 
+## Creating a Chatbot
+Every chatbot in Open Chat Studio is configured using a visual workflow called a [**Pipeline**](../pipelines/index.md).
 
-This approach can be useful if you want to build a complex bot that performs different tasks depending on the user’s request. Generally, trying to make a single bot prompt do multiple functions doesn’t work well, so it is better to create multiple prompts for each task and then combine them using a Pipeline. 
+Use the resources below to learn how to create a chatbot and how its pipeline works:
 
-
-## What is a Pipeline?
-As described above, a pipeline is a flowchart-like structure that defines how a chatbot processes user input and generates responses. It consists of a series of connected nodes, each representing a specific step in the workflow. Each node can perform a specific function, such as processing user input, generating responses, or integrating with external systems.
-
-The simplest pipeline is a single node that takes user input and generates a response. More complex pipelines can include multiple nodes that work together to create a more sophisticated interaction.
-
-You can read more about pipelines in the [Pipelines documentation](../pipelines/index.md).
+- :material-clock-fast:{ .lg .middle } [__Quickstart Guide__](../../tutorials/first_chatbot.md)
+- :material-chat-question:{ .lg .middle } [__What is a Pipeline?__](../pipelines/index.md#what-is-a-pipeline)
+- :material-whatsapp:{ .lg .middle } [__Deploying your bot__](../../how-to/deploy_to_different_channels.md)

@@ -71,7 +71,7 @@ The execution steps are as follows:
 
 Notice how `NodeD` gets executed twice. The first time `NodeD` runs it will have the output from `NodeC` as it's input. The 2nd time it runs it will have both the outputs from `NodeB` and `NodeC` as its inputs.
 
-To understand why this happens you need to understand the [execution model](index.md#pipeline-execution).
+To understand why this happens you need to understand the [execution model](index.md#how-a-pipeline-runs).
 
 You can manage this challenge by using a `PythonNode` with some utility functions:
 
@@ -137,7 +137,7 @@ The `Merge` node will get outputs from `NodeA` and either `NodeB` or `NodeC`. We
 
 === "Option 2"
 
-    This option makes use of the [`node_inputs`](python_node.md#additional-keyword-arguments) keyword argument which contains a list of all the inputs available to the current node execution. Since we want to wait until we have inputs from `NodeA and (NodeB or NodeC)` we can check that the inputs list has at least two values. 
+    This option makes use of the [`node_inputs`](../../tech-hub/python_node.md#additional-keyword-arguments) keyword argument which contains a list of all the inputs available to the current node execution. Since we want to wait until we have inputs from `NodeA and (NodeB or NodeC)` we can check that the inputs list has at least two values. 
 
     ```python
     def main(input, **kwargs):

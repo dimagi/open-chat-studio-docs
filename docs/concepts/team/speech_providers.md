@@ -5,6 +5,7 @@ Speech service providers enable voice capabilities in Open Chat Studio, includin
 ## Supported providers
 
 - **ElevenLabs** — TTS, STT, and voice management including custom voice cloning
+- **intron.io** — TTS with 90 African and international accent voices
 
 ## ElevenLabs
 
@@ -32,3 +33,27 @@ When you create or edit an ElevenLabs provider, OCS fetches and stores the voice
 **Custom voices:** Custom voices must be created directly in ElevenLabs. OCS does not support creating custom voices. Once created in ElevenLabs, they will be synced to OCS the next time a sync runs (automatically on provider creation, or manually on request).
 
 OCS does not support creating custom voices directly — manage your voice library in ElevenLabs and let OCS sync the results.
+
+## intron.io
+
+intron.io is a text-to-speech platform specialising in African language voices. It provides synthetic voices across a wide range of African and international accents, making it a strong choice for teams serving African-language audiences.
+
+### Capabilities
+
+| Capability | Details |
+|---|---|
+| Text-to-Speech (TTS) | Converts text to audio using intron.io voices |
+| Voice catalogue | 90 pre-seeded voices covering 45 accents × male and female variants |
+
+### Setup
+
+1. Obtain an API key from your intron.io account.
+2. In Open Chat Studio, navigate to **Team Settings → Speech Service Providers**.
+3. Add a new provider, select **intron.io**, and enter your API key.
+4. On creation, OCS will automatically seed all available voices for the provider.
+
+### Voices
+
+When you create an intron.io provider, OCS automatically creates 90 voices — one male and one female variant for each of 45 accents. Example accents include Afrikaans, Hausa, Igbo, Kinyarwanda, Luganda, Swahili, Xhosa, Yoruba, and Zulu, alongside a further 36 African and international accents.
+
+Voice seeding is idempotent: saving or re-saving the provider will not create duplicate voices.

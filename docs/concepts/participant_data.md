@@ -13,7 +13,7 @@ is no way for the system to know whether the same person is interacting with the
 Participant data can be viewed and edited on the "Participant Details" page. This page can be accessed by clicking on
 the participant's name in the list of participants on the "Participants" list page.
 
-You can also export and import participant data from the "Participants" list page.
+You can also export and import participant data from the "Participants" list page. To add an individual participant by hand, use the "Create" action on the same page and provide an identifier, platform, and optional name. If a participant with that platform and identifier already exists for the team, the form will link you to the existing record.
 
 ## Using participant data
 
@@ -103,7 +103,5 @@ data:
 }
 ```
 
-See [the API docs][api_docs]{target="_blank"}
+See [the API docs](https://openchatstudio.com/api/docs/#tag/Participants/operation/update_participant_data){target="_blank"}
 for more information on the API.
-
-[api_docs]: https://openchatstudio.com/api/docs/#tag/Participants/operation/update_participant_data

@@ -72,12 +72,11 @@ markdown_extensions:
 
 plugins:
 - search
+- macros
 - git-revision-date-localized
 - redirects:
     redirect_maps:
       'concepts/team/tracing_providers.md': 'concepts/tracing.md'
-- macros:
-    render_by_default: false
 - mkdocstrings:
     enabled: true
     default_handler: python
@@ -100,6 +99,7 @@ nav:
       - tutorials/first_chatbot.md
       - Configure LLM Providers: tutorials/configure_providers.md      
       - Configure Message Providers: tutorials/configure_msg_providers.md
+      - Create & Publish Versions: tutorials/versioning_steps.md
   - How-to Guides:
       - how-to/index.md
       - how-to/workflow_cookbook.md
@@ -108,6 +108,10 @@ nav:
       - how-to/whatsapp_meta_cloud_api.md
       - how-to/global_search.md
       - Filter Tables with Natural Language: how-to/nl_filter.md
+      - Router Nodes:
+        - how-to/routers/index.md
+        - how-to/routers/llm_router.md
+        - how-to/routers/static_router.md
       - how-to/setting_up_a_survey.md
       - how-to/assistants_migration.md
       - FAQ: how-to/faq.md
@@ -136,9 +140,8 @@ nav:
         - Indexed Collection for RAG: concepts/collections/indexed.md
       - Pipelines:
         - concepts/pipelines/index.md
-        - concepts/pipelines/nodes.md
-        - concepts/pipelines/router_nodes.md        
-        - concepts/pipelines/python_node.md
+        - Node Types: concepts/pipelines/nodes.md
+        - Router Nodes: concepts/pipelines/router_nodes.md        
         - concepts/pipelines/history.md
         - concepts/pipelines/parallel.md
       - Team:
@@ -161,11 +164,15 @@ nav:
         - Annotating: concepts/annotations/annotating.md
   - Tech Hub:
     - tech-hub/index.md
-    - tech-hub/tech_custom_action.md
-    - Custom Action Health: tech-hub/health_custom_action.md
-    - Custom Action Testing: tech-hub/test_custom_action.md
-    - Call External APIs: tech-hub/external_api_calls.md     
-    - HTTP Client: tech-hub/http_client.md
+    - Python Node: tech-hub/python_node.md
+    - Call External APIs: 
+        - tech-hub/external-api-calls/index.md     
+        - HTTP Client: tech-hub/external-api-calls/http_client.md
+    - Custom Actions:
+        - tech-hub/custom_action/index.md
+        - Custom Action Health: tech-hub/custom_action/health_custom_action.md
+        - Custom Action Testing: tech-hub/custom_action/test_custom_action.md
+
     - OCS API:
         - api/index.md
         - api/getting_started_with_oauth.md
@@ -181,7 +188,7 @@ watch:
 - src/python_node
 
 extra_javascript:
-  - path: https://unpkg.com/open-chat-studio-widget@0.6.0/dist/open-chat-studio-widget/open-chat-studio-widget.esm.js
+  - path: https://unpkg.com/open-chat-studio-widget@0.7.0/dist/open-chat-studio-widget/open-chat-studio-widget.esm.js
 # Use this for testing widget changes
 #  - path: assets/build/open-chat-studio-widget.esm.js
     type: module

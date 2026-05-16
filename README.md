@@ -26,12 +26,14 @@ Assuming you've already cloned this repository:
 3. Start the project
     
     ```shell
-    uv run mkdocs serve
+    uv run zensical serve
     ```
 
 ### Writing
 
-See the [MkDocs documentation](https://www.mkdocs.org/user-guide/writing-your-docs/) for how to write documentation.
+See the [Zensical documentation](https://zensical.org/docs/authoring/markdown/) for how to write documentation.
+
+Note: This project uses `mkdocs.yml` for site configuration, since Zensical is compatible with the MkDocs configuration format.
 
 
 ### API docs

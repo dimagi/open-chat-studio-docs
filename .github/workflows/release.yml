@@ -54,3 +54,63 @@ jobs:
             --model claude-sonnet-4-6
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get release details
+        id: release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if gh release view "$RELEASE_TAG" --json url,isDraft -q '.' > /dev/null 2>&1; then
+            echo "url=$(gh release view "$RELEASE_TAG" --json url -q '.url')" >> "$GITHUB_OUTPUT"
+            echo "is_draft=$(gh release view "$RELEASE_TAG" --json isDraft -q '.isDraft')" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Notify Slack
+        if: steps.release.outputs.url
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          RELEASE_URL: ${{ steps.release.outputs.url }}
+          IS_DRAFT: ${{ steps.release.outputs.is_draft }}
+        run: |
+          if [ -z "$SLACK_WEBHOOK_URL" ]; then
+            echo "SLACK_WEBHOOK_URL not set, skipping notification"
+            exit 0
+          fi
+
+          if [ "$IS_DRAFT" = "true" ]; then
+            BUTTON_TEXT="Review & Publish"
+            STATUS="A new *draft* release is ready for review"
+          else
+            BUTTON_TEXT="View Release"
+            STATUS="A new release has been published"
+          fi
+
+          payload=$(jq -n \
+            --arg tag "$RELEASE_TAG" \
+            --arg name "$RELEASE_NAME" \
+            --arg url "$RELEASE_URL" \
+            --arg status "$STATUS" \
+            --arg button "$BUTTON_TEXT" \
+            '{
+              blocks: [
+                {
+                  type: "header",
+                  text: { type: "plain_text", text: ("New OCS Release: " + $tag) }
+                },
+                {
+                  type: "section",
+                  text: { type: "mrkdwn", text: ($status + ": *" + $name + "*") },
+                  accessory: {
+                    type: "button",
+                    text: { type: "plain_text", text: $button },
+                    url: $url,
+                    action_id: "view_release",
+                    style: "primary"
+                  }
+                }
+              ]
+            }')
+
+          curl -sfS -X POST "$SLACK_WEBHOOK_URL" \
+            -H "Content-Type: application/json" \
+            -d "$payload"

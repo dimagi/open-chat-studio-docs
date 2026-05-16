@@ -1,53 +1,90 @@
 # Pipelines
 
-A pipeline is a way to build a bot by combining one or more steps together.
+## What is a Pipeline?
 
-!!! info "Pipelines are the future"
+A **pipeline** is a visual workflow in Open Chat Studio that defines how a chatbot processes messages and generates responses. Think of it like a recipe or assembly line — each step in the pipeline does one specific job, and the steps are connected together to create a complete conversation flow.
 
-    Pipelines are currently becoming the default way to build bots in Open Chat Studio. They are a superset of existing functionality, enabling complex safety layers, routing and conditionals. The transition is now underway, and we're providing communication as we begin phasing out other bot building approaches.
+## What is a Node?
+Each step in the pipeline is called a **node**. A node performs one specific task, such as:
 
-## Overview
+- Calling an AI model to generate a response ([LLM node](nodes.md#llm-node))
+- Running custom logic or code ([Python node](nodes.md#python-node))
+- Making decisions about which way the conversation should go ([Router nodes](nodes.md#routing-nodes))
+- Sending emails or extracting data (specialty nodes)
 
-Here is an example of a very simple pipeline that uses an LLM to respond to the users input. This pipeline has a
-single step that uses the LLM to generate a response.
+Pipelines are **visual** — you build them by dragging nodes onto a canvas and connecting them with lines, making chatbot logic easier to understand and maintain without writing complex code.
+
+
+## A Simple Example
+
+Here's the simplest possible chatbot pipeline — it has just **one node**:
 
 <figure markdown="span">
   ![A Simple Pipeline](../../assets/images/pipeline-basic.png)
   <figcaption>A simple pipeline</figcaption>
 </figure>
 
-Analyzing this pipeline from left to right:
+In this simple pipeline:
 
-* the user sends a message to the bot (this is the `input`)
-* the message is then passed to the LLM which generates a response
-* the response is then sent back to the user (this is the `output`)
+1. A user sends a message
+2. The [LLM node](nodes.md#llm-node) receives the message and uses AI to generate a response
+3. The response is sent back to the user
+
+This is the complete conversation flow for a single-node chatbot.
+
+## Complex Pipelines
+
+Most real-world chatbots are more complex than a single node. Pipelines become powerful when you combine multiple types of nodes to handle different tasks.
+
+Breaking work into separate nodes lets you:
+
+- Keep logic focused and easy to understand
+- Reuse nodes across different parts of your pipeline
+- Test and modify individual steps without affecting the whole pipeline
+- Scale complex workflows without overwhelming a single AI prompt
+
+### Node Types for Complex Pipelines
+
+Common node types include:
+
+ - **[LLM Node](nodes.md#llm-node)** — Processes messages using an AI model. Handles natural conversations, answering questions, and generating responses.
+
+ - **[Routing Nodes](nodes.md#routing-nodes)** — Makes decisions about which path the conversation should take based on the message content. Useful for directing different types of questions to different handling logic, or routing based on user intent.
+
+ - **[Python Node](nodes.md#python-node)** — Runs custom code to handle complex logic, fetch data from external systems, process attachments, or manipulate participant data.
+
+ - **[Render Template Node](nodes.md#render-a-template-node)** — Formats responses using templates, allowing you to customize messages with dynamic data.
+
+ - **[Send Email Node](nodes.md#send-an-email-node)** — Sends emails as part of your pipeline, useful for notifications or confirmations.
+
+ - **[Extract Structured Data Node](nodes.md#extract-structured-data-node)** — Pulls specific information from conversations and structures it for downstream processing.
+
+ - **[Update Participant Data Node](nodes.md#update-participant-data-node)** — Saves information about the user for later use in the conversation.
 
 
-``` mermaid
-graph LR
-  A@{ shape: stadium, label: "Input" } --> B(LLM);
-  B --> C@{ shape: stadium, label: "Output" };
-```
+## How a Pipeline Runs
 
-Each time a user sends a message to the bot, the pipeline is executed and the final output is sent back to the user.
+Open Chat Studio (OCS) executes your pipeline in organized steps, running nodes in parallel when possible.
 
-Each 'step' in a pipeline is called a 'node' and pipelines can have multiple nodes. To learn more about the different
-types of nodes that can be used in a pipeline, see the [node types](nodes.md) documentation.
-
-## Pipeline Execution
-
-Open Chat Studio  runs your application in organized steps. Think of it like a well-coordinated team where different parts of your application (pipeline **nodes**) communicate through shared **channels** (pipeline edges / connections).
-
-Here's how each step works:
+When a user sends a message, OCS processes the pipeline in repeating passes:
 
 **Plan** → **Execute** → **Update** → Repeat
 
-1. **Plan**: Decide which nodes should run next. Initially, this includes nodes that need your input data. In later steps, it includes nodes that are ready to process new information.
+1. **Plan**: Identify which nodes are ready to run. On the first pass, this is the node(s) directly connected to the user's input. On later passes, any node whose dependencies have been satisfied is ready.
 
-2. **Execute**: Run all selected nodes at the same time. Each node does its work independently and can't see changes from other nodes until the next step.
+2. **Execute**: Run all ready nodes in parallel. Each node processes independently — it cannot see the results of other nodes running in the same pass.
 
 3. **Update**: Share the results from all nodes so they're available for the next step.
 
-This process repeats until either all work is complete or a step limit is reached. This approach ensures your application runs efficiently while maintaining predictable behavior.
+This repeats until all nodes have completed or a maximum step limit is reached.
 
-See [Parallel Pipelines](./parallel.md) for information about running nodes in parallel.
+!!! tip "Running nodes in parallel"
+
+  Because multiple nodes can execute in the same pass, pipelines naturally support parallel processing. See [Parallel Pipelines](./parallel.md) for details.
+
+
+## Asking the Assistant About a Pipeline
+
+!!! tip "Chat widget context"
+
+    When you are viewing a pipeline in OCS, the in-app chat widget automatically receives the pipeline's structure (nodes and connections) and event trigger data as context. This means you can ask the assistant questions about the pipeline you are currently editing — for example, what a particular node does or how the flow is connected. The context updates automatically as you make changes to the pipeline.
