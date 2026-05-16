@@ -1,196 +1,102 @@
 # Tools
 
-Tools allow LLMs to affect change in the real world. An LLM on its own can only produce intentions, but it is not able to execute those intentions. *Tools* are a way of telling the LLM what requests it can make and of executing that request when it is made.
+Tools let your chatbot take real actions during a conversation — not just respond with text. When a tool is enabled, the LLM can decide to use it at the right moment, and Open Chat Studio executes it on the LLM model's behalf.
 
-Open Chat Studio provides a number of built-in tools as well as the ability to add your own tools in the form of [Custom Actions](../llm_custom_action.md).
+For example, a chatbot with the Calculator tool can perform accurate arithmetic. A chatbot with reminder tools can schedule a message to be sent to the participant at a future time. Without tools, a chatbot can only generate text.
 
-The current set of built-in tools are listed below. If you need to refer to the tool in a prompt, use the tool's name directly e.g. `update-user-data`.
+!!! tip
 
-## User configurable tools
+    You choose which tools to enable for each chatbot. Only enable tools that match what your chatbot needs to do — this keeps the chatbot focused and reduces the chance of unintended actions.
+
+Tools in Open Chat Studio fall into three categories:
+
+- **[User-configurable tools](#user-configurable-tools)** — tools you enable on each chatbot
+- **[Internal tools](#internal-tools)** — tools OCS enables automatically based on your chatbot's configuration
+- **[LLM provider tools](#llm-provider-tools)** — tools provided by LLM that OCS chatbots can use
+
+## User-configurable tools
+
+These tools appear in your chatbot's node settings. Enable only the ones your chatbot needs.
 
 ### Calculator
 
-Allows to bot to do mathematical calculations reliably.
-
-* Name: `calculator`
-* Arguments:
-  * `expression`: The mathematical expression to evaluate.
+Performs reliable mathematical calculations. Use this when your chatbot needs to compute values accurately rather than relying on the language model's estimation.
 
 ### Recurring reminders
 
-Allows the bot to schedule recurring reminders for the participant.
+Schedules a repeating reminder for the participant — for example, a daily check-in message. You can set the start date, frequency, and an optional end date or maximum number of repetitions.
 
-* Name: `recurring-reminder`
-* Arguments:
-  * `datetime_due`: The first (or only) reminder start date in ISO 8601 format.
-  * `every`: Number of 'periods' to wait between reminders.
-  * `period`: The time period used in conjunction with 'every'. One of `minutes`, `hours`, `days`, `weeks`, `months`
-  * `message`: The reminder message.
-  * `schedule_name`: The name for this reminder.
-  * `datetime_end`: The date of the last reminder in ISO 8601 format (optional).
-  * `repetitions`: The number of messages to send before stopping (optional).
+### One-off reminder
 
-### One-off Reminder
+Schedules a single reminder message to be sent to the participant at a specific future date and time.
 
-Allows the bot to schedule once-off reminders for the participant.
+### Delete reminder
 
-* Name: `one-off-reminder`
-* Arguments:
-  * `datetime_due`: The datetime that the reminder is due in ISO 8601 format
-  * `message`: The reminder message
-  * `schedule_name`: The name for this reminder
+Cancels an existing reminder (either a one-off or a recurring one). Use this when your chatbot should let participants cancel scheduled messages.
 
-### Delete Reminder
+### Move reminder date
 
-Allows the bot to delete existing reminders (either once-off or recurring)
+Changes the date or time of an existing reminder. Use this to let participants reschedule a reminder without deleting and recreating it.
 
-* Name: `delete-reminder`
-* Arguments:
-  * `message_id`: The ID of the scheduled message to delete.
+### Update participant data
 
-### Move Reminder Date
+Writes a value to a participant's stored data under a specific key. Use this when the chatbot should remember something about the participant across sessions, such as a preference or a recorded response.
 
-Allows the bot to update the reminder date
+See [Participant Data](../participant_data.md) for more information.
 
-* Name: `move-scheduled-message-date`
-* Arguments:
-  * `message_id`: The ID of the scheduled message to update.
-  * `weekday`: The new day of the week (1-7 where 1 = Monday).
-  * `hour`: The new hour of the day, in UTC.
-  * `minute`: The new minute of the hour.
-  * `specified_date`: A specific date to re-schedule the message for in ISO 8601 format
+### Append to participant data
 
-### Update Participant Data
+Adds a value to participant data at a specific key. If the key does not yet exist, it is created as a list. Use this to track multiple items over time — for example, a list of topics a participant has mentioned.
 
-Allows the bot to make changes to the [participant data](../participant_data.md)
+See [Participant Data](../participant_data.md) for more information.
 
-* Name: `update-user-data`
-* Arguments:
-  * `key`: The key in the user data to update.
-  * `value`: The new value of the user data.
+### Increment counter
 
-### Append to Participant Data
+Increments a numeric counter stored in participant data. Use this to track how many times something has happened across sessions — for example, how many check-ins a participant has completed.
 
-Append a value to [participant data](../participant_data.md) at a specific key. This will convert any existing value to a list and append the new value to the end of the list. Use this tool to track lists of items e.g. questions asked.
+See [Participant Data](../participant_data.md) for more information.
 
-* Name: `append-to-participant-data`
-* Arguments:
-  * `key`: The key in the user data to append to.
-  * `value`: The value to append.
+### Set session state key
 
-### Increment Counter
+Stores a key-value pair in the session state, which persists for the duration of the current session. Useful in pipeline configurations where one part of the conversation needs to pass information to another.
 
-Increment the value of a counter. The counter is stored in [participant data](../participant_data.md) with the key `_counter_{counter_name}`.
+### Get session state key
 
-* Name: `increment-counter`
-* Arguments:
-  * `counter`: The name of the counter to increment.
-  * `value`: Integer value to increment the counter by (defaults to 1).
+Retrieves a value previously stored in session state during the current session.
 
-### Set Session State Key
+### Append to session state
 
-Allows the bot to set a key-value pair in the session state. The session state persists for the duration of the session and can be used to store and retrieve data across conversation turns, particularly useful in pipeline configurations.
+Adds a value to a list in the session state at a specific key. Use this to track items within a single session — for example, a list of topics discussed so far.
 
-* Name: `set-session-state-key`
-* Arguments:
-  * `key`: The key in the session state to set.
-  * `value`: The value to store at the specified key.
+See [Sessions](../sessions.md) for more information.
 
-### Get Session State Key
+### Increment session state counter
 
-Allows the bot to get a value from the session state.
+Increments a numeric counter stored in session state. Use this to count events within a single session.
 
-* Name: `get-session-state`
-* Arguments:
-  * `key`: The key in the session state to get the value for.
+### End session
 
-### Append to Session State
+Marks the current session as complete. After this, any new message from the participant will begin a fresh session. Use this when the chatbot should formally close a conversation — for example, after a survey is complete.
 
-Append a value to [session state](../sessions.md) at a specific key. This will convert any existing value to a list and append the new value to the end of the list. Use this tool to track lists of items within a session e.g. topics discussed.
-
-* Name: `append-to-session-state`
-* Arguments:
-  * `key`: The key in the session state to append to.
-  * `value`: The value to append.
-
-### Increment Session State Counter
-
-Increment the value of a counter stored in [session state](../sessions.md). The counter is stored with the key `_counter_{counter_name}`.
-
-* Name: `increment-session-state-counter`
-* Arguments:
-  * `counter`: The name of the counter to increment.
-  * `value`: Integer value to increment the counter by (defaults to 1).
-
-### End Session
-
-End the current chat [session](../sessions.md). This will mark the session as completed. New messages will result in a new session being created.
-
-* Name: `end-session`
-* Arguments: (none)
+See [Sessions](../sessions.md) for more information.
 
 ## Internal tools
 
-The following tools are used internally by Open Chat Studio and enabled / disabled automatically depending on the chatbot configuration.
+The following tools are managed automatically by Open Chat Studio. You do not enable or configure them directly — OCS enables them when your chatbot's configuration requires them.
 
-### Attach Media
+**Attach media** is enabled when your chatbot has a media collection configured. It allows the chatbot to attach files from that collection to a response.
 
-Allows the bot to attach media when a media collection is configured. 
+**File search** is enabled when your chatbot has an indexed collection configured. It allows the chatbot to search indexed documents and include relevant information in its response.
 
-* Name: `attach-media`
-* Arguments:
-  * `file_id`: The ID of the media file to attach.
+See [Collections](../../concepts/collections/index.md) for more information on configuring media and indexed collections.
 
-### File Search
+## LLM provider tools
 
-Allows the bot to search indexed collections when a collection is configured.
+Some LLM providers offer their own built-in tools — such as web search or code execution — that run inside the provider's infrastructure. Open Chat Studio can connect to some of these where the provider supports it.
 
-* Name: `file-search`
-* Arguments:
-  * `query`: A natural language query to search for relevant information in the documents.
+Support varies by provider. The full list of provider tools and their current support status is in the [Tools Reference](../../tech-hub/tools.md#llm-provider-tools).
 
-## LLM Provider Tools
+## Next steps
 
-In addition to the tools provided by Open Chat Studio, some LLM providers have their own set of tools which are executed interally by the provider.
-
-### OpenAI tools
-
-#### Web Search { #openai-web-search }
-
-* Search the web and pass the results to the LLM.
-* See https://platform.openai.com/docs/guides/tools-web-search
-* :material-check-circle-outline:{ .green } Supported by OCS
-
-#### Code Interpreter { #openai-code-interpreter }
-
-* Execute code to analyse data, generate graphs etc.
-* See https://platform.openai.com/docs/guides/tools-code-interpreter
-* :material-check-circle-outline:{ .green } Supported by OCS
-
-### Anthropic tools
-
-#### Web Search { #anthropic-web-search }
-
-* Search the web and pass the results to the LLM.
-* See https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/web-search-tool
-* :material-check-circle-outline:{ .green } Supported by OCS
-
-#### Code Execution { #anthropic-code-execution }
-
-* Execute code to analyse data, generate graphs etc.
-* See https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/code-execution-tool
-* :octicons-x-circle-24:{ .red } Not supported by OCS
-
-### Gemini tools
-
-#### Grounding with search { #gemini-web-search }
-
-* Search the web and pass the results to the LLM.
-* See https://ai.google.dev/gemini-api/docs/google-search
-* :octicons-x-circle-24:{ .red } Not supported by OCS
-
-#### Code Execution { #gemini-code-execution }
-
-* Execute code to analyse data, generate graphs etc.
-* See https://ai.google.dev/gemini-api/docs/code-execution
-* :octicons-x-circle-24:{ .red } Not supported by OCS
+- To see full argument details for each user-configurable tool, see the [Tools Reference](../../tech-hub/tools.md).
+- To add your own tools in the form of custom integrations, see [Custom Actions](../llm_custom_action.md).
