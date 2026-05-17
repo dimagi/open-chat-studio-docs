@@ -63,6 +63,9 @@ the [How-to guides](../how-to/index.md).
 [Source Material](source_material.md)
 : Additional information that can be included in the bot prompt using the `{source_material}` prompt variable.
 
+[Tools](tools/index.md)
+: Tools let your chatbot take real actions during a conversation — such as performing calculations, scheduling reminders, or storing information about a participant — rather than only responding with text.
+
 [Tracing](tracing.md)
 : Tracing captures a chatbot's inputs, outputs, and decision-making process so bot developers can understand and debug their chatbot's behavior.
 

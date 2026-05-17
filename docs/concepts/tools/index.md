@@ -14,84 +14,41 @@ Once a tool is enabled, the AI will use it when it judges it to be appropriate. 
 
 > When the participant asks to be reminded about something, use the `recurring-reminder` tool to schedule it.
 
-Each tool has a specific name. Click any tool heading below to see its name and full argument details.
+Each tool name below links to its full argument details in the [Tools Reference](../../tech-hub/tools.md).
 
 Tools in Open Chat Studio fall into two categories:
 
 - **[User-configurable tools](#user-configurable-tools)** — tools you enable on each chatbot
-- **[LLM provider tools](#llm-provider-tools)** — tools provided by LLM model that are available for OCS chatbots can use
+- **[LLM provider tools](#llm-provider-tools)** — tools provided by AI models that are available for OCS chatbots to use
 
 ## User-configurable tools
 
 These tools appear in your chatbot's node settings. Enable only the ones your chatbot needs.
 
-### [Calculator](../../tech-hub/tools.md#calculator)
+- **[Calculator](../../tech-hub/tools.md#calculator)** — Performs reliable mathematical calculations. Use this when your chatbot needs to compute values accurately rather than relying on the language model's estimation.
+- **[Recurring reminders](../../tech-hub/tools.md#recurring-reminders)** — Schedules a repeating reminder for the participant — for example, a daily check-in message. You can set the start date, frequency, and an optional end date or maximum number of repetitions.
+- **[One-off reminder](../../tech-hub/tools.md#one-off-reminder)** — Schedules a single reminder message to be sent to the participant at a specific future date and time.
+- **[Delete reminder](../../tech-hub/tools.md#delete-reminder)** — Cancels an existing reminder (either a one-off or a recurring one). Use this when your chatbot should let participants cancel scheduled messages.
+- **[Move reminder date](../../tech-hub/tools.md#move-reminder-date)** — Changes the date or time of an existing reminder. Use this to let participants reschedule a reminder without deleting and recreating it.
+- **[Update participant data](../../tech-hub/tools.md#update-participant-data)** — Writes a value to a participant's stored data under a specific key. Use this when the chatbot should remember something about the participant across sessions, such as a preference or a recorded response. See [Participant Data](../participant_data.md) for more information.
+- **[Append to participant data](../../tech-hub/tools.md#append-to-participant-data)** — Adds a value to participant data at a specific key. Use this to track multiple items over time — for example, a list of topics a participant has mentioned. See [Participant Data](../participant_data.md) for more information.
+- **[Increment counter](../../tech-hub/tools.md#increment-counter)** — Increments a numeric counter stored in participant data. Use this to track how many times something has happened across sessions — for example, how many check-ins a participant has completed. See [Participant Data](../participant_data.md) for more information.
+- **[Set session state key](../../tech-hub/tools.md#set-session-state-key)** — Stores a key-value pair in the session state, which persists for the duration of the current session. Useful in pipeline configurations where one part of the conversation needs to pass information to another.
+- **[Get session state key](../../tech-hub/tools.md#get-session-state-key)** — Retrieves a value previously stored in session state during the current session.
+- **[Append to session state](../../tech-hub/tools.md#append-to-session-state)** — Adds a value to a list in the session state. Use this to track items within a single session — for example, a list of topics discussed so far. See [Sessions](../sessions.md) for more information.
+- **[Increment session state counter](../../tech-hub/tools.md#increment-session-state-counter)** — Increments a numeric counter stored in session state. Use this to count events within a single session.
+- **[End session](../../tech-hub/tools.md#end-session)** — Marks the current session as complete. After this, any new message from the participant will begin a fresh session. Use this when the chatbot should formally close a conversation — for example, after a survey is complete. See [Sessions](../sessions.md) for more information.
 
-Performs reliable mathematical calculations. Use this when your chatbot needs to compute values accurately rather than relying on the language model's estimation.
-
-### [Recurring reminders](../../tech-hub/tools.md#recurring-reminders)
-
-Schedules a repeating reminder for the participant — for example, a daily check-in message. You can set the start date, frequency, and an optional end date or maximum number of repetitions.
-
-### [One-off reminder](../../tech-hub/tools.md#one-off-reminder)
-
-Schedules a single reminder message to be sent to the participant at a specific future date and time.
-
-### [Delete reminder](../../tech-hub/tools.md#delete-reminder)
-
-Cancels an existing reminder (either a one-off or a recurring one). Use this when your chatbot should let participants cancel scheduled messages.
-
-### [Move reminder date](../../tech-hub/tools.md#move-reminder-date)
-
-Changes the date or time of an existing reminder. Use this to let participants reschedule a reminder without deleting and recreating it.
-
-### [Update participant data](../../tech-hub/tools.md#update-participant-data)
-
-Writes a value to a participant's stored data under a specific key. Use this when the chatbot should remember something about the participant across sessions, such as a preference or a recorded response.
-
-See [Participant Data](../participant_data.md) for more information.
-
-### [Append to participant data](../../tech-hub/tools.md#append-to-participant-data)
-
-Adds a value to participant data at a specific key. If the key does not yet exist, it is created as a list. Use this to track multiple items over time — for example, a list of topics a participant has mentioned.
-
-See [Participant Data](../participant_data.md) for more information.
-
-### [Increment counter](../../tech-hub/tools.md#increment-counter)
-
-Increments a numeric counter stored in participant data. Use this to track how many times something has happened across sessions — for example, how many check-ins a participant has completed.
-
-See [Participant Data](../participant_data.md) for more information.
-
-### [Set session state key](../../tech-hub/tools.md#set-session-state-key)
-
-Stores a key-value pair in the session state, which persists for the duration of the current session. Useful in pipeline configurations where one part of the conversation needs to pass information to another.
-
-### [Get session state key](../../tech-hub/tools.md#get-session-state-key)
-
-Retrieves a value previously stored in session state during the current session.
-
-### [Append to session state](../../tech-hub/tools.md#append-to-session-state)
-
-Adds a value to a list in the session state at a specific key. Use this to track items within a single session — for example, a list of topics discussed so far.
-
-See [Sessions](../sessions.md) for more information.
-
-### [Increment session state counter](../../tech-hub/tools.md#increment-session-state-counter)
-
-Increments a numeric counter stored in session state. Use this to count events within a single session.
-
-### [End session](../../tech-hub/tools.md#end-session)
-
-Marks the current session as complete. After this, any new message from the participant will begin a fresh session. Use this when the chatbot should formally close a conversation — for example, after a survey is complete.
-
-See [Sessions](../sessions.md) for more information.
 
 ## LLM provider tools
 
 Some LLM providers offer their own built-in tools — such as web search or code execution — that run inside the provider's infrastructure. Open Chat Studio can connect to some of these where the provider supports it.
 
 Support varies by provider. The full list of provider tools and their current support status is in the [Tools Reference](../../tech-hub/tools.md#llm-provider-tools).
+
+## OCS Internal tools
+
+Open Chat Studio also manages a small set of internal tools automatically - `Attach media` and `File Search`. See the [Tools Reference](../../tech-hub/tools.md#internal-tools) for details.
 
 ## Next steps
 
