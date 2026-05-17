@@ -41,7 +41,7 @@ See the [Python Node](../../tech-hub/python_node.md) page for full documentation
 
 The Render a Template node lets you shape the text flowing through a pipeline before it reaches the next step. You write a template that mixes fixed text with placeholders — the node fills in those placeholders at runtime using information about the current message, the participant, and the pipeline state.
 
-Use this node to reformat a previous node's output, build a prompt for a downstream LLM node, or compose a message that includes personalised participant details.
+Use this node to reformat a previous node's output, build a prompt for a downstream LLM node, or compose a message that includes personalized participant details.
 
 See the [Render a Template and Send an Email Node](../../tech-hub/template_and_email_nodes.md#render-a-template-node) reference for the full variable list and template syntax.
 

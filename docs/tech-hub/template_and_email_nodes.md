@@ -22,9 +22,6 @@ Both nodes evaluate templates against the same context dictionary. All keys list
 
     `participant_details`, `participant_data`, and `participant_schedules` are only populated when the pipeline is running inside an active session. They are empty when the pipeline is tested in isolation without a session context.
 
-!!! warning "Strict variable resolution"
-
-    Templates use strict undefined behaviour. Referencing a variable that does not exist in the context will raise an error at runtime. Use Jinja2's `default` filter to provide fallback values: `{{ participant_data.name | default('there') }}`.
 
 ## Render a Template Node
 
@@ -79,9 +76,6 @@ The recipient field must resolve to a comma-separated list of valid email addres
 | Addresses stored as a delimited string  | `{{ participant_data.emails \| split(';') \| join(',') }}` |
 | Mix of static and dynamic              | `ops@example.com,{{ participant_data.manager_email }}` |
 
-!!! warning "Validation at render time"
-
-    If the recipient field contains a Jinja2 expression, email address validation runs after rendering, not when you save the node. An invalid address discovered at runtime will cause the pipeline step to fail. Test your recipient expressions before deploying.
 
 ### Body Field Behaviour
 
@@ -89,7 +83,7 @@ When the **body** field is blank, the node sends the pipeline input as the email
 
 When the **body** field contains a template, the node renders it and uses the result as the email body. The pipeline input is still passed through to the next node unchanged.
 
-### Example — Dynamic Subject and Personalised Body
+### Example — Dynamic Subject and Personalized Body
 
 **Subject:**
 ```jinja

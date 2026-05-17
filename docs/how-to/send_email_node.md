@@ -35,7 +35,7 @@ Accepts a plain string or a [Jinja2 template](../tech-hub/template_and_email_nod
 
 ### Recipient
 
-Accepts a comma-separated list of email addresses. [See more here:](../tech-hub/template_and_email_nodes.md#recipient-field-syntax).
+Accepts a comma-separated list of email addresses. See the [Recipient Field Syntax](../tech-hub/template_and_email_nodes.md#recipient-field-syntax) reference for advanced usage. 
 
 ### Body
 
