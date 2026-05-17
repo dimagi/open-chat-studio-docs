@@ -38,55 +38,22 @@ Execute custom Python code for logic, data processing, or external API calls.
 See the [Python Node](../../tech-hub/python_node.md) page for full documentation.
 
 ## Render a Template Node
-Renders a [Jinja](https://jinja.palletsprojects.com/en/stable/templates/) template.
 
-### Available Template Variables
-The following variables are available in the template context:
+The Render a Template node lets you shape the text flowing through a pipeline before it reaches the next step. You write a template that mixes fixed text with placeholders — the node fills in those placeholders at runtime using information about the current message, the participant, and the pipeline state.
 
-| Key                     | Description                                                          | Type            |
-|-------------------------|----------------------------------------------------------------------|-----------------|
-| `input`                 | The input to the node                                                | String          |
-| `node_inputs`           | The list of all inputs to the node in the case of parallel workflows | List of strings |
-| `temp_state`            | Pipeline temporary state                                             | Dict            |
-| `session_state`         | Session state                                                        | Dict            |
-| `participant_details`   | Participant details (`identifier`, `platform`)                       | Dict            |
-| `participant_data`      | Participant data                                                     | Dict            |
-| `participant_schedules` | Participant schedule data                                            | List            |
+Use this node to reformat a previous node's output, build a prompt for a downstream LLM node, or compose a message that includes personalised participant details.
 
-### Sample Template
-```
-Input: {{ input }}
-Node Inputs: {{ node_inputs }}
-Temp State Key: {{ temp_state.my_key }}
-Participant ID: {{ participant_details.identifier }}
-Participant Platform: {{ participant_details.platform }}
-Participant Data: {{ participant_data.custom_key }}
-Schedules: {{ participant_schedules }}
-```
+See the [Render a Template and Send an Email Node](../../tech-hub/template_and_email_nodes.md#render-a-template-node) reference for the full variable list and template syntax.
 
 ## Send an Email Node
-Send an email as part of a pipeline. This node acts as a passthrough, meaning the output will be identical to the input, allowing it to be used in a pipeline without affecting the conversation.
 
-The **subject**, **recipient**, and **body** fields all accept plain strings or [Jinja2](https://jinja.palletsprojects.com/en/stable/templates/) templates using the same [template variables](#available-template-variables) as the Template node.
+The Send an Email node sends an email as part of a pipeline run. The node acts as a passthrough: its output is identical to its input, so inserting it into a pipeline does not change what the next node receives.
 
-The **recipient** field accepts a comma-separated list of email addresses and supports Jinja2 templates. For example:
+You configure three fields — **recipient**, **subject**, and **body** — using the same Jinja2 template syntax as the Render a Template node. This means you can pull in participant details, session state, or the current message text directly into the email content.
 
-- Single address: `{{ participant_data.email }}`
-- List of addresses: `{{ participant_data.emails | join(',') }}`
-- Delimited string: `{{ participant_data.emails | split(';') | join(',') }}`
+The **body** field is optional. When left blank, the node uses the pipeline input as the email body.
 
-The **body** field is optional. When left blank, the node input is used as the email body — this preserves backwards compatibility with existing pipelines.
-
-!!! example "Dynamic subject and personalised body"
-
-    **Subject:** `Update for {{ participant_details.identifier }}`
-
-    **Body:**
-    ```
-    Hello {{ participant_data.name }},
-
-    Here is your update: {{ input }}
-    ```
+See the [Render a Template and Send an Email Node](../../tech-hub/template_and_email_nodes.md#send-an-email-node) reference for recipient field syntax, variable reference, and examples.
 
 ## Extract Structured Data Node
 Extract structured data from the input. This node acts as a passthrough, meaning the output will be identical to the input, allowing it to be used in a pipeline without affecting the conversation.
