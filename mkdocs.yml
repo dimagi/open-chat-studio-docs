@@ -108,6 +108,7 @@ nav:
       - how-to/whatsapp_meta_cloud_api.md
       - how-to/global_search.md
       - Filter Tables with Natural Language: how-to/nl_filter.md
+      - Send an Email: how-to/send_email_node.md
       - Router Nodes:
         - how-to/routers/index.md
         - how-to/routers/llm_router.md
