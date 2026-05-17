@@ -171,7 +171,7 @@ nav:
     - Python Node: tech-hub/python_node.md
     - Render a Template and Send an Email Nodes: tech-hub/template_and_email_nodes.md
     - Call External APIs:
-        - tech-hub/external-api-calls/index.md
+        - tech-hub/external-api-calls/index.md     
         - HTTP Client: tech-hub/external-api-calls/http_client.md
     - Custom Actions:
         - tech-hub/custom_action/index.md
