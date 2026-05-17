@@ -9,7 +9,7 @@ Open Chat Studio supports all the features of Assistants in alternative ways as 
 | Assistant Feature | Replacement Feature                                                                             |
 |-------------------|-------------------------------------------------------------------------------------------------|
 | Threads           | Open Chat Studio [sessions](../concepts/sessions.md)                                            |
-| Code Interpreter  | [OpenAI Code Interpreter tool](../tech-hub/tools.md#openai-tools) in LLM nodes |
+| Code Interpreter  | [OpenAI Code Interpreter tool](../tech-hub/tools.md#openai-code-interpreter) in LLM nodes |
 | File Search       | [Indexed Collections](../concepts/collections/indexed.md)                                       |
 
 
