@@ -110,7 +110,7 @@ nav:
       - Find Objects: how-to/global_search.md
       - Filter Tables with Natural Language: how-to/nl_filter.md
       - Send an Email: how-to/send_email_node.md
-      - Configure Router Nodes:
+      - Router Nodes:
         - how-to/routers/index.md
         - Configure LLM Router: how-to/routers/llm_router.md
         - how-to/routers/static_router.md
