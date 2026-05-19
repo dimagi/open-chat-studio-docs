@@ -26,12 +26,18 @@ For session items, the left panel shows:
 
 ## Submitting an Annotation
 
-Fill in the annotation form fields and click **Submit**. Each reviewer can submit only one annotation per item — you cannot edit a submitted annotation.
+Fill in the annotation form fields and click **Submit**. Each reviewer can submit only one annotation per item.
 
 After submission, the next item is loaded automatically.
 
 !!! tip "Progress indicator"
     The annotation page shows your personal progress (items you've reviewed vs. total items in the queue).
+
+## Editing Your Annotation
+
+If you need to revise an annotation you've already submitted, open the item from the queue and click **Edit** next to your annotation in the annotations list. The annotation form opens pre-filled with your existing responses — make your changes and click **Save**, or **Cancel** to discard them. Saving updates the annotation in place and recomputes the queue's aggregate stats.
+
+You can only edit your own annotations; annotations submitted by other reviewers remain read-only.
 
 ## Skipping an Item
 
@@ -72,4 +78,6 @@ stateDiagram-v2
 
 ## Read-Only View
 
-If you open an item that you've already annotated, or if you don't have annotation permissions, the item is shown in a **read-only view** — you can see the content and any existing annotations, but cannot submit a new one.
+When you open an item you've already annotated, the item content and the annotations list are shown without the submission form — each reviewer can only submit one annotation per item, but you can revise your own via the **Edit** action (see [Editing Your Annotation](#editing-your-annotation)).
+
+If you don't have annotation permissions, the item is fully read-only: you can see the content and any existing annotations, but cannot submit or edit.
