@@ -6,6 +6,7 @@ hide:
 # Changelog
 ## May 19, 2026
 * **CHANGE** The session list and detail API responses now include a `status` field, exposing the current state of a session (`setup`, `pending`, `active`, `complete`, etc.) to API consumers.
+* **CHANGE** The session list and detail API responses now include a `platform` field, identifying the channel through which the session was created (e.g. `web`, `api`, `slack`).
 
 ## May 15, 2026
 * **NEW** Session-level evaluation datasets can now be **auto-populated** from a source chatbot. Configure one or more filter-driven rules on a dataset, and matching new sessions are continuously ingested on a 5-minute polling cycle. When a rule is linked to an evaluation config, evaluators run automatically over only the newly added rows.
