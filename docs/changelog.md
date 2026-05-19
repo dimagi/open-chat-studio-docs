@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## May 19, 2026
+* **CHANGE** The session list and detail API responses now include a `status` field, exposing the current state of a session (`setup`, `pending`, `active`, `complete`, etc.) to API consumers.
+
 ## May 15, 2026
 * **NEW** Session-level evaluation datasets can now be **auto-populated** from a source chatbot. Configure one or more filter-driven rules on a dataset, and matching new sessions are continuously ingested on a 5-minute polling cycle. When a rule is linked to an evaluation config, evaluators run automatically over only the newly added rows.
 * **NEW** The [Trigger Bot Message](https://www.openchatstudio.com/api/docs/#tag/Channels/operation/trigger_bot_message) API now accepts an optional `message_text` parameter that delivers the exact text to the participant's channel without LLM processing. Requests must include either `prompt_text` (for an LLM-generated reply, existing behaviour) or `message_text` (for verbatim delivery), but not both.
