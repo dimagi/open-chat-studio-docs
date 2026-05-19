@@ -26,7 +26,9 @@ Sessions flow through statuses automatically. The path depends on how the partic
 
 ### Web invitation flow
 
-Used when participants arrive via an invitation link or public web chat link.
+Used when participants arrive via an invitation link or public web chat link. The path differs depending on whether the participant was invited by email or arrived via a public link.
+
+**Invitation email flow** — the session is created in `SETUP`, the email is sent, and the participant accepts consent on the invitation page:
 
 ```mermaid
 stateDiagram-v2
@@ -34,15 +36,26 @@ stateDiagram-v2
     SETUP --> PENDING: invitation email sent
     PENDING --> PENDING_PRE_SURVEY: consent accepted<br/>(pre-survey configured)
     PENDING --> ACTIVE: consent accepted<br/>(no pre-survey)
-    SETUP --> PENDING_PRE_SURVEY: participant arrives via public link<br/>+ consent accepted (pre-survey configured)
-    SETUP --> ACTIVE: participant arrives via public link<br/>+ consent accepted (no pre-survey)
     PENDING_PRE_SURVEY --> ACTIVE: pre-survey submitted
     ACTIVE --> PENDING_REVIEW: session ended
     PENDING_REVIEW --> COMPLETE: review submitted
     COMPLETE --> [*]
 ```
 
-Sessions created from an invitation email start in `SETUP` and move to `PENDING` once the email is sent. Sessions started from a public chat link skip `PENDING` and transition directly out of `SETUP` once the participant accepts consent. If no pre-survey is configured, the session also skips `PENDING_PRE_SURVEY` and moves directly to `ACTIVE`.
+**Public link flow** — the session is created and immediately moves out of `SETUP` as the participant accepts consent on arrival:
+
+```mermaid
+stateDiagram-v2
+    [*] --> SETUP
+    SETUP --> PENDING_PRE_SURVEY: consent accepted<br/>(pre-survey configured)
+    SETUP --> ACTIVE: consent accepted<br/>(no pre-survey)
+    PENDING_PRE_SURVEY --> ACTIVE: pre-survey submitted
+    ACTIVE --> PENDING_REVIEW: session ended
+    PENDING_REVIEW --> COMPLETE: review submitted
+    COMPLETE --> [*]
+```
+
+In both flows, if no pre-survey is configured the session skips `PENDING_PRE_SURVEY` and moves directly to `ACTIVE`.
 
 ### Messaging channel flow
 
