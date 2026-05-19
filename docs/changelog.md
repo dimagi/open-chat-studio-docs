@@ -12,6 +12,10 @@ hide:
 * **NEW** The [Trigger Bot Message](https://www.openchatstudio.com/api/docs/#tag/Channels/operation/trigger_bot_message) API now accepts an optional `message_text` parameter that delivers the exact text to the participant's channel without LLM processing. Requests must include either `prompt_text` (for an LLM-generated reply, existing behaviour) or `message_text` (for verbatim delivery), but not both.
 * **NEW** Reviewers can now edit their own submitted annotations on a queue item. An **Edit** button appears next to each of your annotations, opening the form pre-filled with your existing responses; saving updates the annotation and recomputes the queue's aggregate stats.
 
+## May 13, 2026
+* **NEW** Added a `GET /api/participants` endpoint to list participants for your team along with their per-chatbot data. The endpoint supports filtering by `identifier`, `platform`, and `experiment` (chatbot public id), and is cursor-paginated. A new `participants:read` OAuth scope is required for read access.
+* **CHANGE** The `ParticipantData` API field `experiment` has been renamed to `chatbot` (chatbot name) and `chatbot_id` (chatbot public id) to align with user-facing terminology.
+
 ## May 6, 2026
 * **NEW** Added a **Create** action to the Participants page, letting you add a single participant by hand without using the bulk CSV importer. The form takes an identifier, platform, and optional name, and shows an inline link to the existing participant if one already exists for that platform and identifier.
 * **CHANGE** v0.7.0 of the Chat Widget is released. See [widget chagelog](chat_widget/changelog.md) for details.
