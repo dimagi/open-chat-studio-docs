@@ -34,25 +34,25 @@ stateDiagram-v2
     SETUP --> PENDING: invitation email sent
     PENDING --> PENDING_PRE_SURVEY: consent accepted<br/>(pre-survey configured)
     PENDING --> ACTIVE: consent accepted<br/>(no pre-survey)
-    SETUP --> PENDING_PRE_SURVEY: consent accepted<br/>(pre-survey configured)
-    SETUP --> ACTIVE: consent accepted<br/>(no pre-survey)
+    SETUP --> PENDING_PRE_SURVEY: participant arrives via public link<br/>+ consent accepted (pre-survey configured)
+    SETUP --> ACTIVE: participant arrives via public link<br/>+ consent accepted (no pre-survey)
     PENDING_PRE_SURVEY --> ACTIVE: pre-survey submitted
     ACTIVE --> PENDING_REVIEW: session ended
     PENDING_REVIEW --> COMPLETE: review submitted
     COMPLETE --> [*]
 ```
 
-If no pre-survey is configured, the session skips `PENDING_PRE_SURVEY` and moves directly to `ACTIVE` after consent.
+Sessions created from an invitation email start in `SETUP` and move to `PENDING` once the email is sent. Sessions started from a public chat link skip `PENDING` and transition directly out of `SETUP` once the participant accepts consent. If no pre-survey is configured, the session also skips `PENDING_PRE_SURVEY` and moves directly to `ACTIVE`.
 
 ### Messaging channel flow
 
 Used for [channels](channels.md) such as Telegram, WhatsApp, the web widget, and the API.
 
 - **If [conversational consent](consent.md) is disabled** (the common case): the session is created directly in `ACTIVE`. The early statuses are skipped entirely.
-- **If conversational consent is enabled**: the bot walks the participant through a chat-driven consent flow, traversing `SETUP → PENDING → (PENDING_PRE_SURVEY) → ACTIVE`.
+- **If conversational consent is enabled**: the bot walks the participant through a chat-driven consent flow, traversing `SETUP → PENDING → (PENDING_PRE_SURVEY) → ACTIVE`. Parentheses around `PENDING_PRE_SURVEY` indicate that the step is only included when a pre-survey is configured; otherwise the session moves straight from `PENDING` to `ACTIVE`.
 
 !!! note
-    Messaging channel sessions do not typically reach `PENDING_REVIEW` or `COMPLETE` on their own. Those terminal statuses are driven by the web review UI or an explicit end-conversation action.
+    Messaging channel sessions do not typically reach `PENDING_REVIEW` or `COMPLETE` on their own. Those terminal statuses are driven by the post-conversation review form or an explicit end-conversation action.
 
 ## Reaching the terminal statuses
 
@@ -98,6 +98,8 @@ Add the **End Session** tool to your LLM node's tool list. The LLM can then choo
 
 The tool description presented to the LLM is: *"End the current chat session. This will mark the session as completed. New messages will result in a new session being created."*
 
+In that description, "completed" means the conversation is finished — the session moves to `PENDING_REVIEW`. It does not move directly to the `COMPLETE` status, which only happens once the participant submits the post-conversation review.
+
 The session ends after the bot's reply is delivered to the participant.
 
 For full configuration details, see the [End Session tool reference](../tech-hub/tools.md#end-session).
@@ -131,9 +133,9 @@ Configure an [event](events.md) whose action is **End the conversation**:
 
 Use this approach when the decision to end the conversation should be driven by lifecycle conditions outside the pipeline itself.
 
-### Observing how a session ended
+## Observing how a session ended
 
-Regardless of what ends a session, you can attach further actions to the conversation-end event using static triggers. This lets you respond differently depending on who or what ended the conversation.
+Regardless of what ends a session — participant, bot, admin, API caller, or event — you can attach further actions to the conversation-end event using static triggers. This lets you respond differently depending on who or what ended the conversation.
 
 | Trigger type | Fires when |
 |--------------|------------|
@@ -153,7 +155,7 @@ Three statuses are treated as "this chat is over" for the purposes of filtering,
 - `COMPLETE`
 - `UNKNOWN`
 
-Only `COMPLETE` is considered fully done — meaning the participant has submitted the post-conversation review.
+`UNKNOWN` is included here because sessions in this state will not progress further — they have left the normal flow and should not be treated as in-progress conversations. Only `COMPLETE` is considered fully done — meaning the participant has submitted the post-conversation review.
 
 ## Things to keep in mind
 
