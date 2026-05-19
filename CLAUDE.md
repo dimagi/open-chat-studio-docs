@@ -73,8 +73,8 @@ and produces a markdown summary. Releases are created as drafts.
 - `zensical build --strict` (CI) fails on broken internal links — `serve` does not.
   Run the strict build locally before pushing if you've added cross-references.
 - `docs/api/` is regenerated from OpenAPI by the `update-api-docs` workflow. Don't hand-edit.
-- `.gitignore` excludes `site/` (build output) and `.idea/` only — be careful not to
-  commit other transient files (`.venv/`, caches).
+- `uv` self-ignores `.venv/` and `.cache/` by dropping `.gitignore` files inside them,
+  so the repo `.gitignore` doesn't need entries for those.
 
 ## Custom Tooling
 
