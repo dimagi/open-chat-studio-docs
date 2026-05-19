@@ -16,7 +16,7 @@ Understanding session status helps you:
 | `PENDING` | Awaiting Participant | The participant has been invited (for example, by email) or prompted for consent, but has not yet agreed to start. |
 | `PENDING_PRE_SURVEY` | Awaiting Pre-Survey | The participant has consented and is waiting to complete the pre-conversation survey before the chat begins. |
 | `ACTIVE` | Active | The conversation is in progress. |
-| `PENDING_REVIEW` | Awaiting Final Review | The conversation has ended and is waiting for the participant to submit the post-conversation review. |
+| `PENDING_REVIEW` | Awaiting Final Review | The conversation has ended and is waiting for the participant to submit the post-conversation review or for an admin to review the session. |
 | `COMPLETE` | Complete | The session is fully finished. No further activity is expected. |
 | `UNKNOWN` | Unknown | A safety fallback for sessions in unexpected states. Sessions are never deliberately placed here. |
 
