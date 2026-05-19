@@ -129,6 +129,7 @@ ExperimentSession:
   - participant: Unknown (required)
   - created_at: string (required)
   - updated_at: string (required)
+  - status: StatusCb5Enum
   - tags: array of string (required)
 
 ExperimentSessionCreate:
@@ -146,6 +147,7 @@ ExperimentSessionWithMessages:
   - participant: Unknown (required)
   - created_at: string (required)
   - updated_at: string (required)
+  - status: StatusCb5Enum
   - messages: array of Message (required)
   - tags: array of string (required)
 
