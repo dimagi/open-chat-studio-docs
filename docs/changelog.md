@@ -4,6 +4,14 @@ hide:
 ---
 
 # Changelog
+## May 19, 2026
+* **CHANGE** The session list and detail API responses now include a `status` field, exposing the current state of a session (`setup`, `pending`, `active`, `complete`, etc.) to API consumers.
+
+## May 15, 2026
+* **NEW** Session-level evaluation datasets can now be **auto-populated** from a source chatbot. Configure one or more filter-driven rules on a dataset, and matching new sessions are continuously ingested on a 5-minute polling cycle. When a rule is linked to an evaluation config, evaluators run automatically over only the newly added rows.
+* **NEW** The [Trigger Bot Message](https://www.openchatstudio.com/api/docs/#tag/Channels/operation/trigger_bot_message) API now accepts an optional `message_text` parameter that delivers the exact text to the participant's channel without LLM processing. Requests must include either `prompt_text` (for an LLM-generated reply, existing behaviour) or `message_text` (for verbatim delivery), but not both.
+* **NEW** Reviewers can now edit their own submitted annotations on a queue item. An **Edit** button appears next to each of your annotations, opening the form pre-filled with your existing responses; saving updates the annotation and recomputes the queue's aggregate stats.
+
 ## May 13, 2026
 * **NEW** Added a `GET /api/participants` endpoint to list participants for your team along with their per-chatbot data. The endpoint supports filtering by `identifier`, `platform`, and `experiment` (chatbot public id), and is cursor-paginated. A new `participants:read` OAuth scope is required for read access.
 * **CHANGE** The `ParticipantData` API field `experiment` has been renamed to `chatbot` (chatbot name) and `chatbot_id` (chatbot public id) to align with user-facing terminology.
@@ -83,8 +91,8 @@ hide:
 
 ## Mar 18, 2026
 * **NEW** Added support for **Meta Cloud API** as a new WhatsApp messaging provider, enabling direct integration with the WhatsApp Business Platform without requiring a third-party intermediary. Configure it using your WhatsApp Business Account ID, System User Access Token, App Secret, and Webhook Verify Token.
-* **NEW** Added a [**Set Session State Key**](concepts/tools/index.md#set-session-state-key) and [**Get Session State**](concepts/tools/index.md#get-session-state-key) built-in tools that allow LLM nodes to read and write data from the [session state](concepts/sessions.md) during a conversation.
-* **NEW** Added [**Append to Session State**](concepts/tools/index.md#append-to-session-state) and [**Increment Session State Counter**](concepts/tools/index.md#increment-session-state-counter) built-in tools, mirroring the existing participant data tools for managing lists and counters in session state.
+* **NEW** Added a [**Set Session State Key**](./tech-hub/tools.md#set-session-state-key) and [**Get Session State**](./tech-hub/tools.md#get-session-state-key) built-in tools that allow LLM nodes to read and write data from the [session state](concepts/sessions.md) during a conversation.
+* **NEW** Added [**Append to Session State**](./tech-hub/tools.md#append-to-session-state) and [**Increment Session State Counter**](./tech-hub/tools.md#increment-session-state-counter) built-in tools, mirroring the existing participant data tools for managing lists and counters in session state.
 
 ## Mar 17, 2026
 * **BUG** Fixed an issue where pipelines triggered by events (e.g. conversation end, timeout) silently discarded updates to participant data, session state, and session tags. These state changes are now correctly persisted.

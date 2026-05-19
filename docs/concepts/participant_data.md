@@ -47,7 +47,7 @@ You can manually update the participant data using the Web UI. Participant data 
 
 ### Tools
 
-Open Chat Studio provides some [tools](tools/index.md#update-participant-data) that allow bots to update the participant data. These tools are available in the "Tools"
+Open Chat Studio provides some [tools](../tech-hub/tools.md#update-participant-data) that allow bots to update the participant data. These tools are available in the "Tools"
 tab of the chatbot edit page.
 
 These tools allow the bot to update the data in real time as the user is interacting with the bot.
