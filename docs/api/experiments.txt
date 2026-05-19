@@ -43,6 +43,12 @@ Experiment:
   - version_number: integer
   - versions: array of ExperimentVersion (required)
 
+ExperimentVersion:
+  - name: string (required)
+  - version_number: integer
+  - is_default_version: boolean
+  - version_description: string
+
 PaginatedExperimentList:
   - next: string
   - previous: string

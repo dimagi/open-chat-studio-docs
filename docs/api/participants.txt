@@ -78,11 +78,36 @@ PaginatedParticipantDetailList:
   - previous: string
   - results: array of ParticipantDetail (required)
 
+ParticipantDataEntry:
+  - chatbot: string (required)
+  - chatbot_id: string (required)
+  - data: Unknown
+
 ParticipantDataUpdateRequest:
   - identifier: string (required)
   - name: string
   - platform: Unknown
   - data: array of ParticipantExperimentData (required)
+
+ParticipantDetail:
+  - id: string (required)
+  - identifier: string
+  - name: string
+  - platform: string (required)
+  - remote_id: string
+  - data: array of ParticipantDataEntry (required)
+
+ParticipantExperimentData:
+  - experiment: string (required)
+  - data: object
+  - schedules: array of ParticipantSchedule
+
+ParticipantSchedule:
+  - id: string
+  - name: string
+  - prompt: string
+  - date: string
+  - delete: boolean
 
 SECURITY:
 - OAuth2
