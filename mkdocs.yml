@@ -121,6 +121,7 @@ nav:
       - Chatbots:
         - concepts/chatbots/index.md
         - concepts/sessions.md
+        - concepts/session_status.md
         - concepts/llm.md
         - concepts/participant_data.md
         - concepts/prompt_variables.md
