@@ -153,6 +153,23 @@ ExperimentSessionWithMessages:
   - messages: array of Message (required)
   - tags: array of string (required)
 
+File:
+  - name: string (required)
+  - content_type: string
+  - size: integer (required)
+  - content_url: string (required)
+
+Message:
+  - created_at: string (required)
+  - role: MessageRoleEnum (required)
+  - content: string (required)
+  - metadata: Unknown (required)
+  - tags: array of string (required)
+  - attachments: array of File (required)
+
+MessageRoleEnum:
+  - enum: [system, user, assistant]
+
 PaginatedExperimentSessionList:
   - next: string
   - previous: string
@@ -160,6 +177,9 @@ PaginatedExperimentSessionList:
 
 Patchedupdate_state_serializer:
   - state: Unknown
+
+StatusCb5Enum:
+  - enum: [setup, pending, pending-pre-survey, active, pending-review, complete, unknown]
 
 tags_request_serializer:
   - tags: array of string (required)

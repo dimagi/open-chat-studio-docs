@@ -124,6 +124,9 @@ ChatTaskPollError:
   - error: string
   - status: string (required)
 
+ChatTaskPollStatusEnum:
+  - enum: [processing, complete]
+
 ChatTaskPollUserError:
   - error: string
   - status: string (required)
@@ -133,6 +136,29 @@ ChatUploadFileRequest:
 
 ChatUploadFileResponse:
   - files: array of UploadedFile (required)
+
+File:
+  - name: string (required)
+  - content_type: string
+  - size: integer (required)
+  - content_url: string (required)
+
+Message:
+  - created_at: string (required)
+  - role: MessageRoleEnum (required)
+  - content: string (required)
+  - metadata: Unknown (required)
+  - tags: array of string (required)
+  - attachments: array of File (required)
+
+MessageRoleEnum:
+  - enum: [system, user, assistant]
+
+UploadedFile:
+  - id: integer (required)
+  - name: string (required)
+  - size: integer (required)
+  - content_type: string (required)
 
 SECURITY:
 - OAuth2

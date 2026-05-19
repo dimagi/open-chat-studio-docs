@@ -70,6 +70,10 @@ ApiMessage:
   - message: string (required)
   - session: string
 
+ApiResponseAttachment:
+  - file_name: string (required)
+  - link: string (required)
+
 ApiResponseMessage:
   - response: string (required)
   - attachments: array of ApiResponseAttachment (required)
