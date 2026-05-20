@@ -81,14 +81,14 @@ On any session detail page, use the **Add to Queue** button to add that session 
 The queue detail page shows a progress summary:
 
 - **Total items** in the queue
-- **Completed** items (reached required number of reviews; for multi-reviewer queues, an accepted annotation has also been selected)
+- **Completed** items (reached required number of reviews; for multi-reviewer queues, an authoritative annotation has also been selected)
 - **Flagged** items
 - **Overall review progress** as a percentage (reviews done / reviews needed)
 
 For multi-reviewer queues, the summary also surfaces two additional counts:
 
-- **Resolved** — items that have an accepted annotation, shown as `X / N items resolved`
-- **Awaiting resolution** — items where all required reviews are in but no accepted annotation has been selected yet (see [Resolving Multi-Reviewer Conflicts](annotating.md#resolving-multi-reviewer-conflicts))
+- **Resolved** — items that have an authoritative annotation, shown as `X / N items resolved`
+- **Awaiting resolution** — items where all required reviews are in but no authoritative annotation has been selected yet (see [Resolving Multi-Reviewer Conflicts](annotating.md#resolving-multi-reviewer-conflicts))
 
 ## Aggregate Scores
 
@@ -102,7 +102,7 @@ After annotations are submitted, **aggregate scores** are automatically computed
 Aggregates are recomputed after each annotation submission, so you always see up-to-date stats.
 
 !!! note "Multi-reviewer aggregation"
-    For multi-reviewer queues, aggregates prefer the **accepted** annotation per item when one is set. Items without an accepted pick fall back to averaging across all submitted annotations for that item.
+    For multi-reviewer queues, aggregates prefer the **authoritative** annotation per item when one is set. Items without an authoritative pick fall back to averaging across all submitted annotations for that item.
 
 ## Exporting Results
 
@@ -125,7 +125,7 @@ Each exported record contains the following fields:
 | `session_id` | External UUID of the session linked to the annotation item |
 | `flagged` | Boolean indicating whether the item is flagged |
 | `flagged_reason` | Full list of flag entries recorded on the item |
-| `is_accepted` | Boolean indicating whether this annotation is the accepted answer for the item (always `true` on single-reviewer queues; set per-item by a queue admin on multi-reviewer queues) |
+| `is_authoritative` | Boolean indicating whether this annotation is the authoritative answer for the item (always `true` on single-reviewer queues; set per-item by a queue admin on multi-reviewer queues) |
 
 !!! note
     In CSV exports, `flagged_reason` is JSON-serialized as a string. Use JSONL format if you need to process flag entries programmatically without parsing JSON within a field.

@@ -65,8 +65,8 @@ stateDiagram-v2
     Pending --> InProgress : First annotation submitted
     InProgress --> Completed : Required reviews reached (single-reviewer queue)
     InProgress --> AwaitingResolution : Required reviews reached (multi-reviewer queue)
-    AwaitingResolution --> Completed : Admin marks one annotation accepted
-    Completed --> AwaitingResolution : Admin clears the accepted annotation
+    AwaitingResolution --> Completed : Admin marks one annotation authoritative
+    Completed --> AwaitingResolution : Admin clears the authoritative annotation
     Pending --> Flagged : Reviewer flags item
     InProgress --> Flagged : Reviewer flags item
     Flagged --> Pending : Manager unflags
@@ -76,26 +76,26 @@ stateDiagram-v2
 |--------|---------|
 | **Pending** | No annotations yet |
 | **In Progress** | At least one annotation submitted, but not yet at the required count |
-| **Awaiting resolution** | Multi-reviewer item has all required reviews, but no annotation has been marked **accepted** yet |
-| **Completed** | Required number of reviews have been submitted (and, for multi-reviewer queues, an accepted annotation has been selected) |
+| **Awaiting resolution** | Multi-reviewer item has all required reviews, but no annotation has been marked **authoritative** yet |
+| **Completed** | Required number of reviews have been submitted (and, for multi-reviewer queues, an authoritative annotation has been selected) |
 | **Flagged** | Marked for follow-up; excluded from annotation workflow |
 
 !!! note "Single vs multi-reviewer queues"
-    On single-reviewer queues (the default, **Reviews required = 1**), the first submitted annotation is automatically marked as accepted and the item moves straight to **Completed**. The accepted workflow below only applies to queues configured with **Reviews required > 1**.
+    On single-reviewer queues (the default, **Reviews required = 1**), the first submitted annotation is automatically marked as authoritative and the item moves straight to **Completed**. The authoritative workflow below only applies to queues configured with **Reviews required > 1**.
 
 ## Resolving Multi-Reviewer Conflicts
 
-When a multi-reviewer queue collects all required reviews for an item, the item enters **Awaiting resolution** until a queue admin picks one annotation as the accepted answer.
+When a multi-reviewer queue collects all required reviews for an item, the item enters **Awaiting resolution** until a queue admin picks one annotation as the authoritative answer.
 
 On the annotate-item page, queue admins see:
 
 - An amber **Awaiting resolution** banner at the top of the page
-- A **Mark accepted** button next to each annotation in the annotations list
+- A **Mark authoritative** button next to each annotation in the annotations list
 
-Clicking **Mark accepted** on an annotation flips the item to **Completed** and shows an **Accepted** badge on that row (with a tooltip recording who marked it and when). Selecting a different annotation moves the badge — only one annotation per item can be marked accepted at a time. Use **Clear accepted** to return the item to **Awaiting resolution**.
+Clicking **Mark authoritative** on an annotation flips the item to **Completed** and shows an **Authoritative** badge on that row (with a tooltip recording who marked it and when). Selecting a different annotation moves the badge — only one annotation per item can be marked authoritative at a time. Use **Clear authoritative** to return the item to **Awaiting resolution**.
 
 !!! tip "Why this matters"
-    Aggregate scores prefer the accepted annotation when one is set; only when no annotation is accepted do they fall back to averaging across all submitted annotations. Marking an accepted answer therefore both resolves the conflict for the queue admin and ensures the queue's aggregate stats reflect the agreed answer.
+    Aggregate scores prefer the authoritative annotation when one is set; only when no annotation is authoritative do they fall back to averaging across all submitted annotations. Marking an authoritative answer therefore both resolves the conflict for the queue admin and ensures the queue's aggregate stats reflect the agreed answer.
 
 ## Read-Only View
 

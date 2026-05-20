@@ -5,7 +5,7 @@ hide:
 
 # Changelog
 ## May 20, 2026
-* **NEW** Multi-reviewer annotation queues now support **accepted answers** for resolving conflicting annotations. Queue admins can mark one annotation as the accepted response from a "Mark accepted" button next to each annotation. Items with all required reviews submitted but no accepted pick enter a new **Awaiting resolution** status, surfaced with an amber banner on the annotate page and `resolved / awaiting` counts on the queue detail. Aggregations prefer the accepted annotation per item (falling back to all submitted when none is set), and CSV/JSONL exports now include an `is_accepted` column.
+* **NEW** Multi-reviewer annotation queues now support **authoritative answers** for resolving conflicting annotations. Queue admins can mark one annotation as the authoritative response from a "Mark authoritative" button next to each annotation. Items with all required reviews submitted but no accepted pick enter a new **Awaiting resolution** status, surfaced with an amber banner on the annotate page and `resolved / awaiting` counts on the queue detail. Aggregations prefer the authoritative annotation per item (falling back to all submitted when none is set), and CSV/JSONL exports now include an `is_authoritative` column.
 
 ## May 19, 2026
 * **CHANGE** Outbound emails sent by the bot now use the `email_subject` value from session state as the subject line when set, falling back to "New message" when absent. Inbound reply threads continue to reuse the original subject.
