@@ -4,7 +4,12 @@ hide:
 ---
 
 # Changelog
+## May 20, 2026
+* **NEW** Multi-reviewer annotation queues now support **authoritative answers** for resolving conflicting annotations. Queue admins can mark one annotation as the authoritative response from a "Mark authoritative" button next to each annotation. Items with all required reviews submitted but no authoritative pick enter a new **Awaiting resolution** status, surfaced with an amber banner on the annotate page and `resolved / awaiting` counts on the queue detail. Aggregations prefer the authoritative annotation per item (falling back to all submitted when none is set), and CSV/JSONL exports now include an `is_authoritative` column.
+
 ## May 19, 2026
+* **CHANGE** Outbound emails sent by the bot now use the `email_subject` value from session state as the subject line when set, falling back to "New message" when absent. Inbound reply threads continue to reuse the original subject.
+* **CHANGE** The [Trigger Bot Message](https://www.openchatstudio.com/api/docs/#tag/Channels/operation/trigger_bot_message) API now returns the session details (`session_id`, `url`, `team`, and `channel`) in its 200 response, so callers can reference the session immediately without a follow-up lookup.
 * **CHANGE** The session list and detail API responses now include a `status` field, exposing the current state of a session (`setup`, `pending`, `active`, `complete`, etc.) to API consumers.
 * **CHANGE** The session list and detail API responses now include a `platform` field, identifying the channel through which the session was created (e.g. `web`, `api`, `slack`).
 
