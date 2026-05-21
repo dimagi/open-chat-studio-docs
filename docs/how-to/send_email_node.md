@@ -70,4 +70,4 @@ After a bot collects structured information from a user (such as a support reque
 
 **Alert your team when a threshold is reached**
 
-After an [Increment counter](../concepts/tools/index.md#increment-counter) tool updates a counter in participant data, use a router to check the value. When the threshold is met, route to the Send an Email node to trigger an alert.
+After an [Increment counter](../tech-hub/tools.md#increment-counter) tool updates a counter in participant data, use a router to check the value. When the threshold is met, route to the Send an Email node to trigger an alert.

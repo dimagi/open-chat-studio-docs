@@ -41,12 +41,6 @@ Relevant context from their profile:
 - Account tier: {{ participant_data.tier | default('standard') }}
 ```
 
-**Example — combining parallel branch inputs:**
-
-```jinja
-Summary from branch A: {{ node_inputs[0] }}
-Summary from branch B: {{ node_inputs[1] }}
-```
 
 ### Syntax Validation
 
@@ -59,7 +53,7 @@ The template string is validated for correct Jinja2 syntax when you save the nod
 | Field         | Required | Accepts Jinja2 | Notes                                                                                   |
 |---------------|----------|----------------|-----------------------------------------------------------------------------------------|
 | `recipient`   | Yes      | Yes            | Comma-separated email addresses or a Jinja2 expression that resolves to them            |
-| `subject`     | Yes      | Yes            | Newlines are stripped from the rendered subject                                         |
+| `subject`     | Yes      | Yes            |                                        |
 | `body`        | No       | Yes            | When left blank, the node input is used as the body                                     |
 
 The node output is always the unmodified node input, regardless of the email content. This means you can insert the node anywhere in a pipeline without breaking the data flow.
@@ -72,8 +66,8 @@ The recipient field must resolve to a comma-separated list of valid email addres
 |-----------------------------------------|----------------------------------------------------|
 | Single static address                   | `ops@example.com`                                  |
 | Single address from participant data    | `{{ participant_data.email }}`                     |
-| Multiple addresses from a list          | `{{ participant_data.emails \| join(',') }}`        |
-| Addresses stored as a delimited string  | `{{ participant_data.emails \| split(';') \| join(',') }}` |
+| Multiple addresses from a list          | `{{ participant_data.emails | join(',') }}`        |
+| Addresses stored as a delimited string  | `{{ participant_data.emails | split(';') | join(',') }}` |
 | Mix of static and dynamic              | `ops@example.com,{{ participant_data.manager_email }}` |
 
 
