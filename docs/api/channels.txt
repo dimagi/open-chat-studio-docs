@@ -15,7 +15,9 @@ Provide either ``prompt_text`` (routes through the LLM/bot pipeline) or ``messag
     Content: application/json
     Schema: TriggerBotMessageRequest
   Responses:
-    200: No response body
+    200: 
+      Content: application/json
+      Schema: TriggerBotMessageResponse
     400: 
       Content: application/json
       Schema: Unknown
@@ -70,6 +72,10 @@ ApiMessage:
   - message: string (required)
   - session: string
 
+ApiResponseAttachment:
+  - file_name: string (required)
+  - link: string (required)
+
 ApiResponseMessage:
   - response: string (required)
   - attachments: array of ApiResponseAttachment (required)
@@ -83,6 +89,12 @@ TriggerBotMessageRequest:
   - start_new_session: boolean
   - session_data: object
   - participant_data: object
+
+TriggerBotMessageResponse:
+  - session_id: string (required)
+  - url: string (required)
+  - team: Unknown (required)
+  - channel: string (required)
 
 SECURITY:
 - OAuth2

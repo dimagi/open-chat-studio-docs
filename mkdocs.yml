@@ -122,6 +122,7 @@ nav:
       - Chatbots:
         - concepts/chatbots/index.md
         - concepts/sessions.md
+        - concepts/session_status.md
         - concepts/llm.md
         - concepts/participant_data.md
         - concepts/prompt_variables.md
@@ -165,10 +166,11 @@ nav:
         - Annotating: concepts/annotations/annotating.md
   - Tech Hub:
     - tech-hub/index.md
+    - Tools Reference: tech-hub/tools.md
     - Python Node: tech-hub/python_node.md
     - Render a Template and Send an Email Nodes: tech-hub/template_and_email_nodes.md
     - Call External APIs:
-        - tech-hub/external-api-calls/index.md     
+        - tech-hub/external-api-calls/index.md
         - HTTP Client: tech-hub/external-api-calls/http_client.md
     - Custom Actions:
         - tech-hub/custom_action/index.md

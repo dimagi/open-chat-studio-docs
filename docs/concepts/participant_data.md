@@ -47,7 +47,7 @@ You can manually update the participant data using the Web UI. Participant data 
 
 ### Tools
 
-Open Chat Studio provides some [tools](tools/index.md#update-participant-data) that allow bots to update the participant data. These tools are available in the "Tools"
+Open Chat Studio provides some [tools](../tech-hub/tools.md#update-participant-data) that allow bots to update the participant data. These tools are available in the "Tools"
 tab of the chatbot edit page.
 
 These tools allow the bot to update the data in real time as the user is interacting with the bot.
@@ -94,7 +94,7 @@ data:
   "name": "Optional name for the participant",
   "data": [
     {
-      "experiment": "ID of the experiment the data is for",
+      "chatbot_id": "Public ID of the chatbot the data is for",
       "data": {
         "key": "value"
       }
@@ -103,5 +103,21 @@ data:
 }
 ```
 
+The `POST` endpoint requires the `participants:write` OAuth scope.
+
 See [the API docs](https://openchatstudio.com/api/docs/#tag/Participants/operation/update_participant_data){target="_blank"}
 for more information on the API.
+
+## Reading participant data via the API
+
+You can list participants and their per-chatbot data using:
+
+`GET /api/participants/`
+
+The endpoint is cursor-paginated and supports the following query parameters:
+
+* `identifier` — filter by participant identifier
+* `platform` — filter by channel platform
+* `experiment` — filter by chatbot public id; when provided, each returned participant's `data` array is also limited to entries for that chatbot
+
+The `GET` endpoint requires the `participants:read` OAuth scope. Each entry in the `data` array uses `chatbot` (chatbot name) and `chatbot_id` (chatbot public id) to identify the chatbot the data belongs to.

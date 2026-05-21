@@ -346,10 +346,13 @@ class OpenAPIToMarkdownConverter:
         return schemas
 
     def _extract_schema_refs(self, schema: dict[str, Any], refs: set[str]):
-        """Recursively extract schema references."""
+        """Recursively extract schema references, following $refs into nested schema definitions."""
         if "$ref" in schema:
             ref_name = schema["$ref"].split("/")[-1]
-            refs.add(ref_name)
+            if ref_name not in refs:
+                refs.add(ref_name)
+                referenced_schema = self.schemas.get(ref_name, {})
+                self._extract_schema_refs(referenced_schema, refs)
         elif schema.get("type") == "array" and "items" in schema:
             self._extract_schema_refs(schema["items"], refs)
         elif schema.get("type") == "object" and "properties" in schema:
