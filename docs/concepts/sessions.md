@@ -43,37 +43,15 @@ On the **Web** channel, users can have **anonymous sessions**, where:
 
 ## Resetting Sessions
 
-For **Single-Session Channels** like **WhatsApp** and **Telegram**, the current session continues indefinitely. However, sessions can be reset either manually by the user or automatically using [Events](events.md) or the API. When a session is reset:
+For **Single-Session Channels** like **WhatsApp** and **Telegram**, the current session continues until it is explicitly ended. 
 
-- The current session is marked as completed.
+However, sessions can be reset either [manually](../how-to/reset_sessions.md#reset-a-session-manually) by the user or [automatically](../how-to/reset_sessions.md#reset-sessions-automatically). 
+
+When a session is reset:
+
+- The current session is marked as [completed](./session_status.md#complete).
 - A new session is started with a fresh history.
-
-For a detailed breakdown of session states and transitions, see [Session Status](session_status.md).
 
 This means that, aside from participant data, the bot loses all information about the previous conversation — including the fact that it even took place.
 
-### Manual resets
-
-Users can manually reset a session (start a new session) in two ways:
-
-#### Using the `/reset` command
-
-The `/reset` command allows chat users to start a new session by sending this text command in the chat. This command is available on all channels except **Web** and **Slack**.
-
-#### Using the session reset button
-
-In the web interface, users have access to a button that allows them to end the current session and immediately start a new one. When using this button, users can:
-
-- **Choose whether to trigger end conversation events**: Users can opt to run any configured [end conversation events](events.md) before starting the new session, or skip them.
-- **Provide an initial bot message**: Users must specify a prompt that will be used as the bot's first message in the new session. If the chatbot has a seed message configured, this field will be pre-filled with that seed message, but users can modify it as needed.
-
-This button provides more control over the session reset process compared to the `/reset` command, allowing users to customize how the transition between sessions occurs.
-
-### Automatic resets
-
-There are two ways to automatically reset a session:
-
-- **Events**: You can configure an event to end the current session when the event is triggered. This will not automatically create a new session; however, if the user sends a message after the session is ended, a new session will be created. See [Events](events.md).
-- **API**: When using the [Trigger Bot Message](https://openchatstudio.com/api/docs/#tag/Channels/operation/trigger_bot_message) API, you can set `"start_new_session": true`, which will end the current session and start a new one before messaging the user.
-
-By structuring sessions in this way, Open Chat Studio ensures privacy-conscious, context-aware, and seamless interactions across different communication channels.
+For task-focused setup instructions, see [How to reset sessions](../how-to/reset_sessions.md).

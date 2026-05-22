@@ -105,6 +105,7 @@ nav:
       - how-to/workflow_cookbook.md
       - how-to/add_a_knowledge_base.md
       - how-to/deploy_to_different_channels.md
+      - Reset Sessions: how-to/reset_sessions.md
       - how-to/whatsapp_meta_cloud_api.md
       - how-to/global_search.md
       - Filter Tables with Natural Language: how-to/nl_filter.md
