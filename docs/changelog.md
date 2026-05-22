@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## May 22, 2026
+* **BUG** Message exports now include AI messages that don't have an associated human input message (e.g. pre-tracing data), which were previously omitted. The "Trace ID" column is now sourced from each message's own trace info, so AI response rows will be empty where they previously inherited the trace ID from the input message.
+
 ## May 20, 2026
 * **NEW** Evaluations can now be **edited** and **deleted** from the UI. A new Edit button on the evaluation detail page opens the configuration form, and Delete actions are available both on each row of the evaluations list and on the detail page. Deleting an evaluation cascades to its runs and results.
 * **NEW** Multi-reviewer annotation queues now support **authoritative answers** for resolving conflicting annotations. Queue admins can mark one annotation as the authoritative response from a "Mark authoritative" button next to each annotation. Items with all required reviews submitted but no authoritative pick enter a new **Awaiting resolution** status, surfaced with an amber banner on the annotate page and `resolved / awaiting` counts on the queue detail. Aggregations prefer the authoritative annotation per item (falling back to all submitted when none is set), and CSV/JSONL exports now include an `is_authoritative` column.
