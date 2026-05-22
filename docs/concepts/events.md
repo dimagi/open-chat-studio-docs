@@ -1,6 +1,6 @@
 # Events
 
-Open Chat Studio provides an event system that allows you to define actions triggered by specific events within a chat session. This functionality enables you to automate responses, manage session states, and enhance user interactions effectively.
+Open Chat Studio provides an event system that allows you to define actions triggered by specific events within a [chat session](sessions.md). This functionality enables you to automate responses, manage session states, and enhance user interactions effectively.
 
 ## Overview
 
@@ -37,7 +37,7 @@ Static events are predefined triggers that occur based on specific actions or co
 
 Each event is associated with one action. The available actions are:
 
-- **End the conversation**: Ends the conversation with the user. See [Resetting Sessions](sessions.md#resetting-sessions).
+- **End the conversation**: Ends the conversation with the user. See [Resetting Sessions](sessions.md#resetting-sessions) and [Session Status](session_status.md).
 - **Prompt the bot to message the user**: Prompts the bot to message the user.
 - **Trigger a schedule**: This will create a once off or recurring schedule. Each time the schedule is triggered, the bot will be prompted to message the user.
 - **Start a pipeline**: This will run the given pipeline when the event triggers. The input to the pipeline can be configured.

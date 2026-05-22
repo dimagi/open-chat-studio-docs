@@ -48,6 +48,8 @@ For **Single-Session Channels** like **WhatsApp** and **Telegram**, the current 
 - The current session is marked as completed.
 - A new session is started with a fresh history.
 
+For a detailed breakdown of session states and transitions, see [Session Status](session_status.md).
+
 This means that, aside from participant data, the bot loses all information about the previous conversation — including the fact that it even took place.
 
 ### Manual resets
