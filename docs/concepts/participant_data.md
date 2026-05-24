@@ -1,6 +1,6 @@
 # Participant Data
 
-Participant data is custom information you store against a participant to personalise their experience. You can use it to remember preferences, track progress, or pass context into your chatbot's prompts.
+Participant data is custom information you store against a participant to personalize their experience. You can use it to remember preferences, track progress, or pass context into your chatbot's prompts.
 
 Each participant record is tied to a specific channel (such as WhatsApp or the web) and a specific chatbot. The same person using two different channels, or two different chatbots, will have separate participant records for each. OCS does not automatically merge these records.
 
@@ -26,15 +26,15 @@ You can access participant data with the `{participant_data}` [prompt variable](
 
 You can [update participant data in the web UI](#managing-participant-records) or dynamically during a conversation, as explained below.
 
-### Tools
+### Update with tools
 
 OCS provides [tools](../tech-hub/tools.md#update-participant-data) that let chatbots update participant data in real time.
 
-### Pipeline nodes
+### Update with pipeline nodes
 
 The [Update Participant Data Node](pipelines/nodes.md#update-participant-data-node) and the [Python Node](pipelines/nodes.md#python-node) can both modify participant data.
 
-### Events
+### Update with events
 
 You can trigger participant data updates automatically using [events](events.md). This approach is useful when you want to extract and store information from a conversation without manual intervention.
 

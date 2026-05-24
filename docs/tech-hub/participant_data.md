@@ -35,7 +35,25 @@ Use this endpoint when you need to:
 * Sync participant records into OCS.
 * Update data outside the conversation flow.
 
-For the full request body and response schema, see the generated [API docs](../api/index.md).
+The `POST` endpoint requires the `participants:write` OAuth scope.
+
+```json
+{
+  "platform": "Name of the channel platform e.g. WhatsApp, Telegram etc.",
+  "identifier": "ID of the participant on the specified platform",
+  "name": "Optional name for the participant",
+  "data": [
+    {
+      "chatbot_id": "Public ID of the chatbot the data is for",
+      "data": {
+        "key": "value"
+      }
+    }
+  ]
+}
+```
+
+For the full request body and response schema, see the generated [API docs](https://openchatstudio.com/api/docs/).
 
 ## Related docs
 
