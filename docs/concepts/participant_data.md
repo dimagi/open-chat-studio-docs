@@ -16,7 +16,7 @@ To add a participant manually, use the Create action and provide an identifier, 
 
 ### Prompt variable
 
-You can access participant data with the `{participant_data}` [prompt variable](prompt_variables.md). Use it to personalise responses — for example, to greet the participant by name or tailor content to their preferences.
+You can access participant data with the `{participant_data}` [prompt variable](prompt_variables.md). Use it to personalize responses — for example, to greet the participant by name or tailor content to their preferences.
 
 ### Pipeline nodes
 
@@ -53,10 +53,9 @@ When using the [Update Participant Data Node](pipelines/nodes.md#update-particip
 }
 ```
 
-The pipeline node will only write data that matches this schema, which prevents malformed data from being stored.
+### Update with API
 
-
-### API
+You can also update the participant data using the API. This is useful if you want full control over the data or when you want to update the data based from an external system.
 
 For API details, including request and response formats, see [Participant Data API](../tech-hub/participant_data.md).
 
