@@ -6,29 +6,28 @@ Participant data is scoped to the participant's channel platform and channel ide
 
 This separation keeps each chatbot's data isolated. OCS does not automatically merge participant records across different channels.
 
+## Managing participant records
+
 You can view and edit participant data on the Participant Details page. Open it by selecting a participant from the Participants list.
 
-You can also export and import participant data from the Participants list page. To add a participant manually, use the Create action and provide an identifier, platform, and optional name. If a participant with that platform and identifier already exists for the team, the form links you to the existing record.
+You can also export and import participant data from the Participants list page. 
+
+To add a participant manually, use the Create action and provide an identifier, platform, and optional name. If a participant with that platform and identifier already exists for the team, the form links you to the existing record.
 
 ## Using participant data
 
 ### Prompt variable
 
-You can access participant data with the `{participant_data}` prompt variable. The value is a JSON object, so you can use it to personalize responses. For example, you can greet the participant by name.
-
-For more information about prompt variables, see [Prompt Variables](prompt_variables.md).
+You can access participant data with the `{participant_data}` [prompt variable](prompt_variables.md). The value is a JSON object, so you can use it to personalize responses. For example, you can greet the participant by name.
 
 ### Pipeline nodes
 
-Pipeline nodes can also read participant data.
-
-* Python Node: Use Python code to read or transform participant data in a pipeline.
-
-For more information, see the [pipeline node documentation](pipelines/nodes.md).
+[Pipeline nodes](../concepts/pipelines/index.md#node-types-for-complex-pipelines) can also read participant data.
+For more information on each node type and how they use participant data, see the [pipeline node documentation](pipelines/nodes.md).
 
 ## System properties
 
-The system automatically sets one participant data property when a participant uses the web channel: `timezone`. It comes from the participant's browser and helps localize date and time values in prompts.
+The system automatically sets the `timezone` participant data property when a participant uses the web channel. It comes from the participant's browser and helps localize date and time values in prompts.
 
 ## Updating participant data
 
@@ -41,8 +40,6 @@ Open Chat Studio provides [tools](../tech-hub/tools.md#update-participant-data) 
 ### Pipeline nodes
 
 The [Update Participant Data Node](../concepts/pipelines/nodes.md#update-participant-data-node) and the [Python Node](../concepts/pipelines/nodes.md#python-node) can both modify participant data. The Update Participant Data Node is commonly used with events, while the Python Node works in any pipeline.
-
-For more information, see the [pipeline node documentation](pipelines/nodes.md).
 
 ### Events
 
