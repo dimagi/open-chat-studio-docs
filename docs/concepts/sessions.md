@@ -45,11 +45,11 @@ On the **Web** channel, users can have **anonymous sessions**, where:
 
 For **Single-Session Channels** like **WhatsApp** and **Telegram**, the current session continues until it is explicitly ended. 
 
-However, sessions can be reset either [manually](../how-to/reset_sessions.md#reset-a-session-manually) by the user or [automatically](../how-to/reset_sessions.md#reset-sessions-automatically). 
+However, sessions can be reset either [manually](../how-to/reset_sessions.md#user-initiated-manual-reset-of-a-session) by the user or [automatically](../how-to/reset_sessions.md#reset-sessions-automatically). 
 
 When a session is reset:
 
-- The current session is marked as [completed](./session_status.md#complete).
+- The current session is marked as completed.
 - A new session is started with a fresh history.
 
 This means that, aside from participant data, the bot loses all information about the previous conversation — including the fact that it even took place.
