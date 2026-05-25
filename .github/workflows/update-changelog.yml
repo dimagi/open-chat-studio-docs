@@ -133,6 +133,7 @@ jobs:
               echo "$PAYLOAD_PR_BODY"
               echo "OCS_DOCS_EOF"
             } >> $GITHUB_OUTPUT
+
           else
             echo "pr_number=$INPUT_PR_NUMBER" >> $GITHUB_OUTPUT
             # Fetch PR details using GitHub API
@@ -189,7 +190,6 @@ jobs:
           export PR_NUMBER="${{ steps.set_vars.outputs.pr_number }}"
           export PR_URL="${{ steps.set_vars.outputs.pr_url }}"
           export PR_AUTHOR="${{ steps.set_vars.outputs.pr_author }}"
-          export PR_MERGED_AT="${{ steps.set_vars.outputs.pr_merged_at }}"
           export IS_WIDGET_CHANGE="${{ steps.set_vars.outputs.is_widget_change }}"
           export BASE_BRANCH="${{ steps.set_vars.outputs.base_branch }}"
           export WIDGET_CHANGELOG="${{ env.WIDGET_CHANGELOG }}"
@@ -202,12 +202,6 @@ jobs:
           EOF
           )
           export PR_TITLE
-
-          PR_LABELS=$(cat <<'EOF'
-          ${{ steps.set_vars.outputs.pr_labels }}
-          EOF
-          )
-          export PR_LABELS
 
           PR_BODY=$(cat <<'EOF'
           ${{ steps.set_vars.outputs.pr_body }}
