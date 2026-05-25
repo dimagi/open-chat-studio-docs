@@ -6,8 +6,9 @@ updates:
       interval: "weekly"
       day: "tuesday"
 
-  - package-ecosystem: "pip"
+  - package-ecosystem: "uv"
     directory: "/"
+    open-pull-requests-limit: 5
     schedule:
-      interval: "weekly"
+      interval: "monthly"
       day: "tuesday"
