@@ -5,6 +5,7 @@ hide:
 
 # Changelog
 ## May 25, 2026
+* **BUG** Fixed an error that could appear when opening an evaluation dataset whose ingestion task was still queued. The dataset edit page now shows a "Queued. Waiting for task to start..." message instead of erroring out.
 * **BUG** Fixed a `ValidationError` raised when the `Append to Participant Data` tool was called with a dictionary value (for example, multi-part responses from an `LLM Response With Prompt` node). Dict values are now accepted and appended to the participant data list as a single entry.
 
 ## May 22, 2026
