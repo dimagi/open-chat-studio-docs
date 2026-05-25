@@ -166,7 +166,6 @@ nav:
   - Tech Hub:
     - tech-hub/index.md
     - Tools Reference: tech-hub/tools.md
-    - Participant Data API: tech-hub/participant_data.md
     - Python Node: tech-hub/python_node.md
     - Call External APIs:
         - tech-hub/external-api-calls/index.md

@@ -57,7 +57,7 @@ When using the [Update Participant Data Node](pipelines/nodes.md#update-particip
 
 You can also update the participant data using the API. This is useful if you want full control over the data or when you want to update the data based from an external system.
 
-For API details, including request and response formats, see [Participant Data API](../tech-hub/participant_data.md).
+For the full details on using the API, see the [API docs](https://openchatstudio.com/api/docs/).
 
 ## System properties
 
