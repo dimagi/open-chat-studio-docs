@@ -5,6 +5,7 @@ hide:
 
 # Changelog
 ## May 25, 2026
+* **NEW** Added a **Concordance** view under Evaluations that compares an LLM judge's output against human annotations on a shared categorical field. The view shows side-by-side judge vs. human values per session, an overall agreement count and percentage, and matched / eval-only / human-only buckets with deep links per row. This feature is alpha and gated behind the `flag_assessments_concordance` feature flag.
 * **BUG** Fixed an error that could appear when opening an evaluation dataset whose ingestion task was still queued. The dataset edit page now shows a "Queued. Waiting for task to start..." message instead of erroring out.
 * **BUG** Fixed a `ValidationError` raised when the `Append to Participant Data` tool was called with a dictionary value (for example, multi-part responses from an `LLM Response With Prompt` node). Dict values are now accepted and appended to the participant data list as a single entry.
 
