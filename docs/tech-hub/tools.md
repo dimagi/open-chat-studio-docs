@@ -157,7 +157,7 @@ Increments a numeric counter stored in [session state](../concepts/sessions.md).
 
 ### End session
 
-Ends the current chat [session](../concepts/sessions.md). The session is marked as completed. New messages will start a fresh session.
+Ends the current chat [session](../concepts/sessions.md). The session is marked as completed. New messages will start a fresh session. See [Session Status](../concepts/session_status.md) for how statuses transition after ending a session.
 
 - Name: `end-session`
 - Arguments: (none)
