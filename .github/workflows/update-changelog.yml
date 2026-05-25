@@ -190,8 +190,6 @@ jobs:
           export PR_NUMBER="${{ steps.set_vars.outputs.pr_number }}"
           export PR_URL="${{ steps.set_vars.outputs.pr_url }}"
           export PR_AUTHOR="${{ steps.set_vars.outputs.pr_author }}"
-          export IS_WIDGET_CHANGE="${{ steps.set_vars.outputs.is_widget_change }}"
-          export BASE_BRANCH="${{ steps.set_vars.outputs.base_branch }}"
           export WIDGET_CHANGELOG="${{ env.WIDGET_CHANGELOG }}"
           export MAIN_CHANGELOG="${{ env.MAIN_CHANGELOG }}"
           export WIDGET_PATH_PREFIX="${{ env.WIDGET_PATH_PREFIX }}"

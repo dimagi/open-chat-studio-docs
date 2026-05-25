@@ -19,7 +19,6 @@ Since this PR modifies main app files, update the **main changelog** at `${MAIN_
 5. Use today's date formatted as "MMM D, YYYY" with no leading zero on single-digit days (e.g., "Oct 9, 2025", "Oct 22, 2025")
 6. **Date sections must be in reverse chronological order (newest dates at the top)**
 7. If a section for that date already exists, add your entry to it; otherwise create a new date section at the top
-8. If a section for that date already exists, add your entry to it; otherwise create a new date section at the top
 
 **Main Changelog Format:**
 ```markdown

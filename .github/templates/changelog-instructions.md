@@ -5,9 +5,6 @@ You need to update the changelog and documentation in this repository based on a
 - **PR Title:** ${PR_TITLE}
 - **PR URL:** ${PR_URL}
 - **Author:** ${PR_AUTHOR}
-- **Is Widget Change:** ${IS_WIDGET_CHANGE}
-- **Base Branch:** ${BASE_BRANCH}
-
 ## PR Description
 ```
 ${PR_BODY}
