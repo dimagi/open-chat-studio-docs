@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## May 25, 2026
+* **BUG** Fixed a `ValidationError` raised when the `Append to Participant Data` tool was called with a dictionary value (for example, multi-part responses from an `LLM Response With Prompt` node). Dict values are now accepted and appended to the participant data list as a single entry.
+
 ## May 22, 2026
 * **BUG** Message exports now include AI messages that don't have an associated human input message (e.g. pre-tracing data), which were previously omitted. The "Trace ID" column is now sourced from each message's own trace info, so AI response rows will be empty where they previously inherited the trace ID from the input message.
 
