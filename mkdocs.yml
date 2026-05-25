@@ -105,15 +105,16 @@ nav:
       - how-to/workflow_cookbook.md
       - how-to/add_a_knowledge_base.md
       - how-to/deploy_to_different_channels.md
+      - Reset Sessions: how-to/reset_sessions.md
       - how-to/whatsapp_meta_cloud_api.md
-      - how-to/global_search.md
+      - Find Objects: how-to/global_search.md
       - Filter Tables with Natural Language: how-to/nl_filter.md
       - Send an Email: how-to/send_email_node.md
-      - Router Nodes:
+      - Configure Router Nodes:
         - how-to/routers/index.md
-        - how-to/routers/llm_router.md
+        - Configure LLM Router: how-to/routers/llm_router.md
         - how-to/routers/static_router.md
-      - how-to/setting_up_a_survey.md
+      - Setup a Survey: how-to/setting_up_a_survey.md
       - how-to/assistants_migration.md
       - FAQ: how-to/faq.md
   - Concepts:

@@ -4,6 +4,16 @@ hide:
 ---
 
 # Changelog
+## May 25, 2026
+* **NEW** Added a **Concordance** view under Evaluations that compares an LLM judge's output against human annotations on a shared categorical field. The view shows side-by-side judge vs. human values per session, an overall agreement count and percentage, and matched / eval-only / human-only buckets with deep links per row. This feature is alpha and gated behind the `flag_assessments_concordance` feature flag.
+* **NEW** Added a **Show usages** button to each service-provider edit page that lists the chatbots, assistants, pipelines, collections, and channels referencing that provider, with version badges and direct links to each working version. A staff-only **Find provider by API key** admin tool also lets administrators look up providers across teams by full key, suffix, or substring — useful for credential rotation and leaked-key triage.
+* **BUG** Fixed an error that could appear when opening an evaluation dataset whose ingestion task was still queued. The dataset edit page now shows a "Queued. Waiting for task to start..." message instead of erroring out.
+* **BUG** Fixed a `ValidationError` raised when the `Append to Participant Data` tool was called with a dictionary value (for example, multi-part responses from an `LLM Response With Prompt` node). Dict values are now accepted and appended to the participant data list as a single entry.
+* **BUG** Fixed a `ValueError` that could prevent file downloads (notably `voice_note.ogg`) when an underlying `File` record had no stored content. Empty files are no longer created, and the download view now returns a 404 instead of erroring out for any pre-existing empty entries.
+
+## May 22, 2026
+* **BUG** Message exports now include AI messages that don't have an associated human input message (e.g. pre-tracing data), which were previously omitted. The "Trace ID" column is now sourced from each message's own trace info, so AI response rows will be empty where they previously inherited the trace ID from the input message.
+
 ## May 20, 2026
 * **NEW** Evaluations can now be **edited** and **deleted** from the UI. A new Edit button on the evaluation detail page opens the configuration form, and Delete actions are available both on each row of the evaluations list and on the detail page. Deleting an evaluation cascades to its runs and results.
 * **NEW** Multi-reviewer annotation queues now support **authoritative answers** for resolving conflicting annotations. Queue admins can mark one annotation as the authoritative response from a "Mark authoritative" button next to each annotation. Items with all required reviews submitted but no authoritative pick enter a new **Awaiting resolution** status, surfaced with an amber banner on the annotate page and `resolved / awaiting` counts on the queue detail. Aggregations prefer the authoritative annotation per item (falling back to all submitted when none is set), and CSV/JSONL exports now include an `is_authoritative` column.

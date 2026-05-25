@@ -60,6 +60,9 @@ the [How-to guides](../how-to/index.md).
 [Session](sessions.md)
 : The scope of conversations between a user and a chatbot within a specific channel. Sessions are isolated, ensuring data privacy and contextual continuity for the duration of an interaction.
 
+[Session Status](session_status.md)
+: The lifecycle state of a chat session (for example, setup, active, pending review, complete) and the transitions between those states.
+
 [Source Material](source_material.md)
 : Additional information that can be included in the bot prompt using the `{source_material}` prompt variable.
 

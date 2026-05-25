@@ -1,72 +1,46 @@
 # Participant Data
 
-Participant data is the information collected from participants during their interactions with the system.
+Participant data is custom information you store against a participant to personalize their experience. You can use it to remember preferences, track progress, or pass context into your chatbot's prompts.
 
-Participant data is unique to each combination of channel platform, channel identifier, and chatbot. This means that
-the data for each bot may be different. For example, if the same person interacts with two different bots over the same
- channel, e.g. WhatsApp, the data for each bot will be different. Furthermore, if the same person interacts with the same
-bot over two different channels, e.g. WhatsApp and Telegram, the data for each channel will be different.
+Each participant record is tied to a specific channel (such as WhatsApp or the web) and a specific chatbot. The same person using two different channels, or two different chatbots, will have separate participant records for each. OCS does not automatically merge these records.
 
-The reason for this is to ensure that the data is only accessible to the bot that it is intended for. There
-is no way for the system to know whether the same person is interacting with the bot on different channels.
+## Managing participant records
 
-Participant data can be viewed and edited on the "Participant Details" page. This page can be accessed by clicking on
-the participant's name in the list of participants on the "Participants" list page.
+You can view and edit participant data on the Participant Details page. Open it by selecting a participant from the Participants list.
 
-You can also export and import participant data from the "Participants" list page. To add an individual participant by hand, use the "Create" action on the same page and provide an identifier, platform, and optional name. If a participant with that platform and identifier already exists for the team, the form will link you to the existing record.
+You can also export and import participant data from the Participants list page.
+
+To add a participant manually, use the Create action and provide an identifier, platform, and optional name. If a participant with that platform and identifier already exists for the team, the form links you to the existing record.
 
 ## Using participant data
 
-### Prompt Variable
+### Prompt variable
 
-You can access the participant data using the `{participant_data}` prompt variable. This variable is a JSON object that
-contains the data for the participant. You can use this data to personalize the responses from the bot. For example, you
-can use the participant's name to personalize the greeting. For more information on prompt variables
-see [here][prompt_variables].
+You can access participant data with the `{participant_data}` [prompt variable](prompt_variables.md). Use it to personalize responses — for example, to greet the participant by name or tailor content to their preferences.
 
-[prompt_variables]: ../concepts/prompt_variables.md
+### Pipeline nodes
 
-### Pipeline Nodes
-
-Other than using the prompt variable described above, there are also various pipeline nodes which allow you to access
-the participant data:
-
-* Python node: This node allows you to access the participant data using Python code.
-
-For more information, see the [node documentation](pipelines/nodes.md).
-
-## System properties
-
-There is only one system property that is set automatically by the system and only if the user interacts with a bot via
-the web channel. This is the `timezone` property. It is set to the timezone of the participant's browser. This is useful
-for localizing datetime variables in prompts.
+[Pipeline nodes](pipelines/index.md#node-types-for-complex-pipelines) can read participant data. For more information on each node type and how they use participant data, see [Node Types](pipelines/nodes.md).
 
 ## Updating participant data
 
-You can manually update the participant data using the Web UI. Participant data can also be updated dynamically using the methods described below.
+You can [update participant data in the web UI](#managing-participant-records) or dynamically during a conversation, as explained below.
 
-### Tools
+### Update with tools
 
-Open Chat Studio provides some [tools](../tech-hub/tools.md#update-participant-data) that allow bots to update the participant data. These tools are available in the "Tools"
-tab of the chatbot edit page.
+OCS provides [tools](../tech-hub/tools.md#update-participant-data) that let chatbots update participant data in real time.
 
-These tools allow the bot to update the data in real time as the user is interacting with the bot.
+### Update with pipeline nodes
 
-### Pipelines Nodes
+The [Update Participant Data Node](pipelines/nodes.md#update-participant-data-node) and the [Python Node](pipelines/nodes.md#python-node) can both modify participant data.
 
-Both the "Update Participant Data Node" and the "Python Node" can be used to make updates to participant data. The "Update participant data" node is primarily used in conjunction with events (see below). The "Python Node" can be used to update the data using Python code as part of any pipeline.
+### Update with events
 
-For more information, see the [node documentation](pipelines/nodes.md).
+You can trigger participant data updates automatically using [events](events.md). This approach is useful when you want to extract and store information from a conversation without manual intervention.
 
-### Events
+A common pattern is to use a timeout event to process conversation history after a period of inactivity. For example, you could configure an event to fire 15 minutes after the last message, run a pipeline that extracts tasks from the conversation, and then write those tasks to participant data using the Update Participant Data Node.
 
-You can also update the participant data using [events](events.md). This is useful if you want to update the data based on the
-context of the conversation. This method also allows you to specify the schema for the data that is being updated.
-
-An example of this is extracting tasks from the conversation history using a timeout event. The event could be
-configured to run 15 minutes after the last message was sent. The event would execute a pipeline which would extract the
-tasks from the conversation history and update the participant data using the appropriate pipeline node. In this example
-the following schema could be used:
+When using the [Update Participant Data Node](pipelines/nodes.md#update-participant-data-node) in a pipeline, you can provide a JSON schema to validate the structure of the data before it is saved. For example, to store a list of tasks extracted from a conversation:
 
 ```json
 {
@@ -79,45 +53,12 @@ the following schema could be used:
 }
 ```
 
-### API
+### Update with API
 
-You can also update the participant data using the API. This is useful if you want full control over the data or when
-you want to update the data based from an external system. You can use the following endpoint to update the participant
-data:
+You can also update the participant data using the API. This is useful if you want full control over the data or when you want to update the data based from an external system.
 
-`POST /api/participants/`
+For the full details on using the API, see the [API docs](https://openchatstudio.com/api/docs/).
 
-```json
-{
-  "platform": "Name of the channel platform e.g. WhatsApp, Telegram etc.",
-  "identifier": "ID of the participant on the specified platform",
-  "name": "Optional name for the participant",
-  "data": [
-    {
-      "chatbot_id": "Public ID of the chatbot the data is for",
-      "data": {
-        "key": "value"
-      }
-    }
-  ]
-}
-```
+## System properties
 
-The `POST` endpoint requires the `participants:write` OAuth scope.
-
-See [the API docs](https://openchatstudio.com/api/docs/#tag/Participants/operation/update_participant_data){target="_blank"}
-for more information on the API.
-
-## Reading participant data via the API
-
-You can list participants and their per-chatbot data using:
-
-`GET /api/participants/`
-
-The endpoint is cursor-paginated and supports the following query parameters:
-
-* `identifier` — filter by participant identifier
-* `platform` — filter by channel platform
-* `experiment` — filter by chatbot public id; when provided, each returned participant's `data` array is also limited to entries for that chatbot
-
-The `GET` endpoint requires the `participants:read` OAuth scope. Each entry in the `data` array uses `chatbot` (chatbot name) and `chatbot_id` (chatbot public id) to identify the chatbot the data belongs to.
+The system automatically sets the `timezone` participant data property when a participant uses the web channel. It comes from the participant's browser and helps localize date and time values in prompts.
