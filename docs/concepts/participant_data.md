@@ -8,7 +8,7 @@ Each participant record is tied to a specific [channel](./channels.md) (such as 
 
 You can view and edit participant data on the **Participant Details** page. Open it by selecting a participant from the Participants list. You can also export and import participant data from the Participants list page.
 
-The **Session details** screen shows both the **participant's data** and their **participant schedules** — the [reminders](../how-to/reminders.md) and scheduled messages set for that participant — in one place. 
+The **Session details** screen shows both the **Participant's Data** and their **participant Schedules** - the [reminders](../how-to/reminders.md) and scheduled messages set for that participant — in one place.
 
 To add a participant manually, use the Create action and provide an identifier, platform, and optional name. If a participant with that platform and identifier already exists for the team, the form links you to the existing record.
 
@@ -59,6 +59,6 @@ You can also update the participant data using the API. This is useful if you wa
 
 For the full details on using the API, see the [API docs](https://openchatstudio.com/api/docs/).
 
-## System properties
+## Participant Timezone for web channel
 
 The system automatically sets the `timezone` participant data property when a participant uses the web channel. It comes from the participant's browser and helps localize date and time values in prompts.

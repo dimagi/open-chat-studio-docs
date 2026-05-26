@@ -105,6 +105,8 @@ nav:
       - how-to/workflow_cookbook.md
       - how-to/add_a_knowledge_base.md
       - how-to/deploy_to_different_channels.md
+      - Setup a Survey: how-to/setting_up_a_survey.md
+      - Schedule Reminders: how-to/reminders.md
       - Reset Sessions: how-to/reset_sessions.md
       - how-to/whatsapp_meta_cloud_api.md
       - Find Objects: how-to/global_search.md
@@ -112,9 +114,7 @@ nav:
       - Configure Router Nodes:
         - how-to/routers/index.md
         - Configure LLM Router: how-to/routers/llm_router.md
-        - how-to/routers/static_router.md
-      - Setup a Survey: how-to/setting_up_a_survey.md
-      - Schedule Reminders: how-to/reminders.md
+        - Configure Static Router: how-to/routers/static_router.md
       - how-to/assistants_migration.md
       - FAQ: how-to/faq.md
   - Concepts:

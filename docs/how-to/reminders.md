@@ -34,10 +34,15 @@ For example: "Good morning! Time to take your medication."
 
 ## Step 3: Handle timezones
 
-Reminders are scheduled in UTC. Include the participant's timezone in your system prompt so the LLM converts times correctly:
+The tools handle timezones differently:
+
+- `one-off-reminder` and `recurring-reminder` store ISO 8601 datetime strings, which can carry a timezone offset. The LLM does not need to convert to UTC for these tools.
+- `move-scheduled-message-date` takes an `hour` value in UTC. The LLM must convert the participant's local time to UTC when calling this tool.
+
+If the channel is the web chat widget, the participant's timezone is available as [participant data](../concepts/participant_data.md#participant-timezone-for-web-channel). For other channels, include the timezone in your system prompt:
 
 ```
-Participants are in Cape Town, South Africa (UTC+2). Convert their requested local time to UTC when scheduling reminders.
+Participants are in Cape Town, South Africa (UTC+2). When calling move-scheduled-message-date, convert their requested local time to UTC.
 ```
 
 ## Step 4: Verify reminders for a participant
