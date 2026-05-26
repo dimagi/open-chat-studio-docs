@@ -1,6 +1,6 @@
 # Send an Email from a Pipeline
 
-The Send an Email node lets your chatbot trigger an email at any point in a pipeline — without stopping or altering the conversation. Use it to notify an administrator, send a summary to a participant, or alert your team when something important happens.
+The [Send an Email node](../concepts/pipelines/nodes.md#send-an-email-node) lets your chatbot trigger an email at any point in a pipeline — without stopping or altering the conversation. Use it to notify an administrator, send a summary to a participant, or alert your team when something important happens.
 
 !!! note
 
@@ -9,7 +9,7 @@ The Send an Email node lets your chatbot trigger an email at any point in a pipe
 ## Prerequisites
 
 - A pipeline with at least one node before the Send an Email node to provide input.
-- If you plan to address emails dynamically (e.g. to the participant's own address), the email address must already be stored in [participant data](../concepts/participant_data.md) or [session data](../concepts/sessions.md).
+- If you plan to address emails dynamically (e.g. to the participant's own address), the email address must already be stored in [participant data](../concepts/participant_data.md) or [session data](../concepts/sessions.md#session-scope).
 
 ## Add and configure the node
 
@@ -23,7 +23,7 @@ The Send an Email node lets your chatbot trigger an email at any point in a pipe
 
 ### Subject
 
-Accepts a plain string or a [Jinja2 template](../tech-hub/template_and_email_nodes.md). Use template variables to personalize the subject line.
+Accepts a plain string or use [template variables](../tech-hub/template_and_email_nodes.md#shared-template-variable-context) to personalize the subject line.
 
 **Examples:**
 
@@ -39,20 +39,9 @@ Accepts a comma-separated list of email addresses. See the [Recipient Field Synt
 
 ### Body
 
-Optional. Accepts a plain string or a [Jinja2](https://jinja.palletsprojects.com/en/stable/templates/) template.
+Optional. Accepts a plain string or a Jinja2 template. See [Body Field Behavior](../tech-hub/template_and_email_nodes.md#body-field-behavior) reference for details and an example.
 
 When left blank, the node's input is used as the email body. This is useful when the previous node in the pipeline has already produced the text you want to send.
-
-**Example — personalize body with dynamic content:**
-
-**Subject:** `Update for {{ participant_details.identifier }}`
-
-**Body:**
-```
-Hello {{ participant_data.name }},
-
-Here is your update: {{ input }}
-```
 
 ## Template variables
 

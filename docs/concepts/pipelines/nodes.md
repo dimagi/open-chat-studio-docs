@@ -49,11 +49,9 @@ See the [Render a Template and Send an Email Node](../../tech-hub/template_and_e
 
 The Send an Email node sends an email as part of a pipeline run. The node acts as a passthrough: its output is identical to its input, so inserting it into a pipeline does not change what the next node receives.
 
-You configure three fields — **recipient**, **subject**, and **body** — using the same Jinja2 template syntax as the Render a Template node. This means you can pull in participant details, session state, or the current message text directly into the email content.
+See the [Send an Email How-to Guide](../../how-to/send_email_node.md) for steps and example use cases.
 
-The **body** field is optional. When left blank, the node uses the pipeline input as the email body.
-
-See the [Render a Template and Send an Email Node](../../tech-hub/template_and_email_nodes.md#send-an-email-node) reference for recipient field syntax, variable reference, and examples.
+See the [Render a Template and Send an Email Node](../../tech-hub/template_and_email_nodes.md#send-an-email-node) reference for recipient field syntax, template variables, and prompt examples.
 
 ## Extract Structured Data Node
 Extract structured data from the input. This node acts as a passthrough, meaning the output will be identical to the input, allowing it to be used in a pipeline without affecting the conversation.

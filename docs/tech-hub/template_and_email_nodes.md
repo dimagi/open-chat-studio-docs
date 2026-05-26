@@ -1,6 +1,6 @@
 # Render a Template and Send an Email Nodes
 
-The Render a Template and Send an Email nodes both use [Jinja2](https://jinja.palletsprojects.com/en/stable/templates/) templates to produce dynamic text from pipeline state. This page is the complete reference for the shared template variable context, field behaviour, and syntax examples for both nodes.
+The Render a Template and Send an Email nodes both use [Jinja2](https://jinja.palletsprojects.com/en/stable/templates/) templates to produce dynamic text from pipeline state. This page is the complete reference for the shared template variable context, field behavior, and syntax examples for both nodes.
 
 For a plain-English introduction to these nodes, see [Node Types](../concepts/pipelines/nodes.md).
 
@@ -66,12 +66,12 @@ The recipient field must resolve to a comma-separated list of valid email addres
 |-----------------------------------------|----------------------------------------------------|
 | Single static address                   | `ops@example.com`                                  |
 | Single address from participant data    | `{{ participant_data.email }}`                     |
-| Multiple addresses from a list          | `{{ participant_data.emails | join(',') }}`        |
-| Addresses stored as a delimited string  | `{{ participant_data.emails | split(';') | join(',') }}` |
+| Multiple addresses from a list          | `{{ participant_data.emails \| join(',') }}`        |
+| Addresses stored as a delimited string  | `{{ participant_data.emails \| split(';') \| join(',') }}` |
 | Mix of static and dynamic              | `ops@example.com,{{ participant_data.manager_email }}` |
 
 
-### Body Field Behaviour
+### Body Field Behavior
 
 When the **body** field is blank, the node sends the pipeline input as the email body. This is the backwards-compatible default and is appropriate when an upstream node (such as an LLM node) has already produced the text you want to send.
 
