@@ -81,7 +81,7 @@ jobs:
           GH_TOKEN: ${{ secrets.OCS_DOCS_PAT }}
 
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: ${{ steps.determine_branch.outputs.checkout_ref }}
           fetch-depth: 1
