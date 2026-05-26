@@ -8,7 +8,7 @@ Each participant record is tied to a specific [channel](./channels.md) (such as 
 
 You can view and edit participant data on the **Participant Details** page. Open it by selecting a participant from the Participants list. You can also export and import participant data from the Participants list page.
 
-The **Session details** screen shows both the **Participant's Data** and their **participant Schedules** - the [reminders](../how-to/reminders.md) and scheduled messages set for that participant — in one place.
+The **Session details** screen shows both the **Participant Data** and their **Participant Schedules** - the [reminders](../how-to/reminders.md) and scheduled messages set for that participant — in one place.
 
 To add a participant manually, use the Create action and provide an identifier, platform, and optional name. If a participant with that platform and identifier already exists for the team, the form links you to the existing record.
 
