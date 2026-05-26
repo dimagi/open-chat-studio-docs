@@ -9,7 +9,7 @@ dependencies = [
     "zensical>=0.0.43",
     "mkdocs-redirects>=1.2.3",
     "mkdocstrings[python]>=1.0.4",
-    "requests>=2.32.3",
+    "requests>=2.34.2",
 ]
 
 [build-system]
