@@ -2,13 +2,13 @@
 
 Participant data is custom information you store against a participant to personalize their experience. You can use it to remember preferences, track progress, or pass context into your chatbot's prompts.
 
-Each participant record is tied to a specific channel (such as WhatsApp or the web) and a specific chatbot. The same person using two different channels, or two different chatbots, will have separate participant records for each. OCS does not automatically merge these records.
+Each participant record is tied to a specific [channel](./channels.md) (such as WhatsApp or the web) and a specific chatbot. The same person using two different channels, or two different chatbots, will have separate participant records for each. OCS does not automatically merge these records.
 
 ## Managing participant records
 
-You can view and edit participant data on the Participant Details page. Open it by selecting a participant from the Participants list.
+You can view and edit participant data on the **Participant Details** page. Open it by selecting a participant from the Participants list. You can also export and import participant data from the Participants list page.
 
-You can also export and import participant data from the Participants list page.
+The **Session details** screen shows both the **participant's data** and their **participant schedules** — the [reminders](../how-to/reminders.md) and scheduled messages set for that participant — in one place. 
 
 To add a participant manually, use the Create action and provide an identifier, platform, and optional name. If a participant with that platform and identifier already exists for the team, the form links you to the existing record.
 

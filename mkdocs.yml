@@ -114,6 +114,7 @@ nav:
         - Configure LLM Router: how-to/routers/llm_router.md
         - how-to/routers/static_router.md
       - Setup a Survey: how-to/setting_up_a_survey.md
+      - Schedule Reminders: how-to/reminders.md
       - how-to/assistants_migration.md
       - FAQ: how-to/faq.md
   - Concepts:
