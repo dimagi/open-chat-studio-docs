@@ -8,10 +8,10 @@ dependencies = [
     "mkdocs-git-revision-date-localized-plugin>=1.5.0",
     "zensical>=0.0.40",
     "mkdocs-redirects>=1.2.3",
-    "mkdocstrings[python]>=1.0.0",
+    "mkdocstrings[python]>=1.0.4",
     "requests>=2.32.3",
 ]
 
 [build-system]
-requires = ["uv_build>=0.8.10,<0.9.0"]
+requires = ["uv_build>=0.11.16,<0.12.0"]
 build-backend = "uv_build"
