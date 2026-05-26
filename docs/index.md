@@ -16,7 +16,7 @@ deploying chatbots powered by Large Language Models ([LLMs](concepts/llm.md)).
   language technology. OCS is built for use by program staff and other teams - you don't need to be an engineer to get
   started.
 
-* **Deploy:** Launch your chatbots on the web and using mobile [messaging apps](concepts/channels.md/) such as Telegram and WhatsApp
+* **Deploy:** Launch your chatbots on the web and using mobile [messaging apps](concepts/channels.md) such as Telegram and WhatsApp
 
 * **Enable Access for All:** Anyone you share a chatbot with will be able to access it, either through a web link or
   directly
