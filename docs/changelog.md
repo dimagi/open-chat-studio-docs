@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## May 27, 2026
+* **CHANGE** Reorganised the evaluation dataset edit page: **Add Sessions** now opens a dedicated sub-page with a simplified selection UI (mirroring the annotation-queue Add Sessions surface), and the **Manual entry** and **CSV upload** forms are hidden behind a new **Add** dropdown until selected.
+
 ## May 25, 2026
 * **NEW** Added a **Concordance** view under Evaluations that compares an LLM judge's output against human annotations on a shared categorical field. The view shows side-by-side judge vs. human values per session, an overall agreement count and percentage, and matched / eval-only / human-only buckets with deep links per row. This feature is alpha and gated behind the `flag_assessments_concordance` feature flag.
 * **NEW** Added a **Show usages** button to each service-provider edit page that lists the chatbots, assistants, pipelines, collections, and channels referencing that provider, with version badges and direct links to each working version. A staff-only **Find provider by API key** admin tool also lets administrators look up providers across teams by full key, suffix, or substring — useful for credential rotation and leaked-key triage.
