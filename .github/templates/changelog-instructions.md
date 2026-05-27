@@ -5,6 +5,7 @@ You need to update the changelog and documentation in this repository based on a
 - **PR Title:** ${PR_TITLE}
 - **PR URL:** ${PR_URL}
 - **Author:** ${PR_AUTHOR}
+
 ## PR Description
 ```
 ${PR_BODY}
@@ -36,11 +37,12 @@ ${CHANGELOG_INSTRUCTIONS}
 After updating the changelog, analyze whether this PR requires documentation updates:
 
 1. **Check if documentation is needed:**
-   - New features → Need user guides, how-tos, or concept docs
-   - API changes → Update API documentation
-   - Configuration changes → Update setup/configuration docs
+   - New feature → Need concept and/or how-tos
+   - UI changes and/or a Demo → Update user guides or how-tos
+   - Configuration changes → Update setup/configuration docs in tech hub
    - Behavior changes → Update relevant user guides
-   - Bug fixes → Usually no docs needed unless it changes behavior
+   - API changes → Update API documentation
+   - Bug fixes → Usually no docs needed unless it changes behavior/UI or screens/views
    - Internal/refactoring → Skip documentation updates
 
 2. **If documentation IS needed:**
