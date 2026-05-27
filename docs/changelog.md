@@ -6,7 +6,7 @@ hide:
 # Changelog
 ## May 27, 2026
 * **CHANGE** Reorganised the evaluation dataset edit page: **Add Sessions** now opens a dedicated sub-page with a simplified selection UI (mirroring the annotation-queue Add Sessions surface), and the **Manual entry** and **CSV upload** forms are hidden behind a new **Add** dropdown until selected.
-* **BUG** Fixed a retrieval-quality bug affecting local indexed collections that use Voyage AI or Google embedding models. Documents were previously embedded in "query" mode rather than "document" mode, weakening retrieval accuracy. **Action required for operators:** existing files in Voyage/Google local collections must be re-uploaded (or re-indexed) to benefit; newly-indexed files apply the correct mode automatically. OpenAI collections are unaffected.
+* **BUG** Fixed a retrieval-quality bug affecting local indexed collections that use Voyage AI or Google embedding models. Documents were previously embedded in "query" mode rather than "document" mode, weakening retrieval accuracy. OpenAI collections are unaffected.
 * **BUG** Fixed local indexing for OpenAI providers configured against an OpenAI-compatible proxy or gateway (e.g. LiteLLM). The provider's custom base URL is now passed through to the embedding client during indexing, which previously always hit `api.openai.com` and failed with a 401.
 
 ## May 25, 2026
