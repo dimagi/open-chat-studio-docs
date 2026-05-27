@@ -97,7 +97,7 @@ nav:
   - Tutorials:
       - tutorials/index.md
       - tutorials/first_chatbot.md
-      - Configure LLM Providers: tutorials/configure_providers.md      
+      - Configure LLM Providers: tutorials/configure_providers.md
       - Configure Message Providers: tutorials/configure_msg_providers.md
       - Create & Publish Versions: tutorials/versioning_steps.md
   - How-to Guides:
@@ -111,7 +111,8 @@ nav:
       - how-to/whatsapp_meta_cloud_api.md
       - Find Objects: how-to/global_search.md
       - Filter Tables with Natural Language: how-to/nl_filter.md
-      - Configure Router Nodes:
+      - Send an Email: how-to/send_email_node.md
+      - Router Nodes:
         - how-to/routers/index.md
         - Configure LLM Router: how-to/routers/llm_router.md
         - Configure Static Router: how-to/routers/static_router.md
@@ -169,8 +170,9 @@ nav:
     - tech-hub/index.md
     - Tools Reference: tech-hub/tools.md
     - Python Node: tech-hub/python_node.md
+    - Render a Template and Send an Email Nodes: tech-hub/template_and_email_nodes.md
     - Call External APIs:
-        - tech-hub/external-api-calls/index.md
+        - tech-hub/external-api-calls/index.md     
         - HTTP Client: tech-hub/external-api-calls/http_client.md
     - Custom Actions:
         - tech-hub/custom_action/index.md
