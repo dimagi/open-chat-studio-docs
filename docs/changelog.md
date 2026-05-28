@@ -4,7 +4,8 @@ hide:
 ---
 
 # Changelog
-## May 27, 2026
+## May 28, 2026
+* **CHANGE** Rerunning an evaluation now reconciles tags applied by its evaluators' tag rules. After a rerun, any tag managed by those rules that no longer matches the latest evaluator output is removed from the affected message or session — even if it had originally been applied by a human. **FULL** reruns reconcile every row in the dataset; **DELTA** reruns only reconcile the rows in their scope. **PREVIEW** runs do not apply or remove tags.
 * **CHANGE** Reorganised the evaluation dataset edit page: **Add Sessions** now opens a dedicated sub-page with a simplified selection UI (mirroring the annotation-queue Add Sessions surface), and the **Manual entry** and **CSV upload** forms are hidden behind a new **Add** dropdown until selected.
 * **BUG** Fixed a retrieval-quality bug affecting local indexed collections that use Voyage AI or Google embedding models. Documents were previously embedded in "query" mode rather than "document" mode, weakening retrieval accuracy. OpenAI collections are unaffected.
 * **BUG** Fixed local indexing for OpenAI providers configured against an OpenAI-compatible proxy or gateway (e.g. LiteLLM). The provider's custom base URL is now passed through to the embedding client during indexing, which previously always hit `api.openai.com` and failed with a 401.
