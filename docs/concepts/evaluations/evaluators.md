@@ -86,6 +86,17 @@ The target of the tag depends on the evaluator's mode:
 
 Each tag application is recorded in an audit log and displayed in the **Applied Tags** column on the run results page.
 
+**Tag reconciliation on rerun**
+
+The philosophy behind tag rules is simple: a message or session either meets the criteria for a tag, or it does not. To keep tag state consistent with the latest evaluation results, rerunning an evaluation reconciles the tags managed by its evaluators' tag rules:
+
+- For each message or session in the rerun's scope, any tag named by an evaluator's tag rules that was **not** applied by the latest run is removed from that message or session.
+- Reconciliation removes a tag regardless of who applied it. If a human had previously added a tag that is also managed by a tag rule, and the new evaluator output does not satisfy that rule, the human-applied tag is removed.
+- **FULL** reruns reconcile every row in the dataset. **DELTA** reruns only reconcile the rows in their scope.
+- **PREVIEW** runs neither apply nor remove tags.
+
+Tags whose names are not referenced by any tag rule on the run's evaluators are never touched by reconciliation.
+
 **Defining a rule**
 
 Each rule has three parts:
