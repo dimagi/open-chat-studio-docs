@@ -10,13 +10,12 @@ Workflows in this docs repository and in the [OCS repository](https://github.com
 
 Use this map to decide where to make updates:
 
-- `.github/templates/`: 1) Changelog section templates and 2) instruction files for **decisions** on whether changelog or docs updates are required.
-- `.claude/agents/`: Change writing and review standards used by Claude.
-- `.claude/commands/`: Change reusable command workflows.
+- `.github/templates/`: Changelog section templates and the full Claude instruction spec (`changelog-instructions.md`) — this file controls what Claude does across all three tasks: updating the changelog, deciding on and writing docs, and committing.
+- `.claude/agents/`: Writing and review standards used by Claude. The `zensical-technical-writer` agent handles all documentation writing decisions for this workflow.
+
+> **Note on `.claude/commands/`:** The `/write-docs` slash command is a human-facing shortcut for interactive Claude Code sessions — it simply invokes the same `zensical-technical-writer` agent. The automated workflow calls the agent directly via the `Task` tool and does not use slash commands.
 
 Keep in mind that behavior changes may require updates in both `.github/templates/` and `.claude/`.
-
-Use AI assistants to understand key files and their responsibilities when maintaining this workflow.
 
 ### Repositories in Scope
 
@@ -43,7 +42,6 @@ Troubleshooting and process changes can involve both repositories:
 
 ## Best Practices
 
-1. [User docs and changelog process](https://developers.openchatstudio.com/developer_guides/user_docs/)
-2. [Developer guide on docs branching and app/widget release flow](https://developers.openchatstudio.com/developer_guides/user_docs/)
-3. [Background to using Claude custom Subagents](https://docs.anthropic.com/en/docs/claude-code/sub-agents)
+1. [Developer guide on docs branching and app/widget release flow](https://developers.openchatstudio.com/developer_guides/user_docs/)
+2. [Background to using Claude custom Subagents](https://docs.anthropic.com/en/docs/claude-code/sub-agents)
 
