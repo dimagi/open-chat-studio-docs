@@ -23,3 +23,11 @@ Global settings are managed at the Team level. This includes:
 - [User Management](groups.md)
 
 <!--- TODO: user management -->
+
+## Checking provider usages
+
+Each provider edit page has a **Show usages** button. Click it to see every chatbot, assistant, pipeline, collection, and channel that references the provider.
+
+Results are grouped by chatbot or collection. Versioned resources show a version badge, and each entry links directly to the working version.
+
+Use this before making changes that could affect live chatbots — for example, before editing a provider's configuration, rotating credentials, or deleting a provider you believe is unused.
