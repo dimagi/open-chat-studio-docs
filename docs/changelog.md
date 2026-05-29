@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## May 29, 2026
+* **CHANGE** The chatbot UI now surfaces a warning wherever a chatbot is viewed if no consent form is configured, making it easier to spot bots that may be collecting participant data without a consent mechanism in place.
+
 ## May 28, 2026
 * **CHANGE** Rerunning an evaluation now reconciles tags applied by its evaluators' tag rules. After a rerun, any tag managed by those rules that no longer matches the latest evaluator output is removed from the affected message or session — even if it had originally been applied by a human. **FULL** reruns reconcile every row in the dataset; **DELTA** reruns only reconcile the rows in their scope. **PREVIEW** runs do not apply or remove tags.
 * **CHANGE** Reorganised the evaluation dataset edit page: **Add Sessions** now opens a dedicated sub-page with a simplified selection UI (mirroring the annotation-queue Add Sessions surface), and the **Manual entry** and **CSV upload** forms are hidden behind a new **Add** dropdown until selected.
