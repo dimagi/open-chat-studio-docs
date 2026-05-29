@@ -38,27 +38,28 @@ ${CHANGELOG_INSTRUCTIONS}
 
 ### Task 2: Update Documentation
 
-After updating the changelog, analyze whether this PR requires documentation updates:
+#### Decide: does this PR need documentation updates?
 
-1. **Check if documentation is needed:**
-   - New features → Need user guides, how-tos, or concept docs
-   - API changes → Update API documentation
-   - Configuration changes → Update setup/configuration docs
-   - Behavior changes → Update relevant user guides
-   - Bug fixes → Usually no docs needed unless it changes behavior
-   - Internal/refactoring → Skip documentation updates
+| PR type                  | Docs needed?                                          |
+|--------------------------|-------------------------------------------------------|
+| New feature              | Yes — concept and/or how-to pages                    |
+| UI changes / demo        | Yes — update relevant user guides or how-tos         |
+| Configuration changes    | Yes — update how-to pages with code examples in tech hub    |
+| Behavior changes         | Yes — update relevant user guides                    |
+| API changes              | Yes — update API documentation                       |
+| Bug fix                  | Usually no — only if behavior or UI visibly changes  |
+| Internal / refactoring   | No — skip this task and proceed to commit            |
 
-2. **If documentation IS needed:**
-   - Use the "zensical-technical-writer" agent to handle the documentation updates
-   - Provide the agent with:
-     * What changed (from the PR)
-     * What documentation needs to be created or updated
-     * Context from the PR description
-   - The agent will find the right place in the docs structure and update accordingly
-   - Review the agent's output to ensure quality
+#### If yes: act
 
-3. **If documentation is NOT needed:**
-   - Simply skip this task and proceed to commit
+Invoke the `zensical-technical-writer` agent via the `Task` tool. Write your prompt to the agent like this:
+
+> "Update the documentation for a change to Open Chat Studio.
+> **What changed:** [1–2 sentences from the PR]
+> **Doc type affected:** [concept / how-to / configuration / tech hub / API]
+> **PR description excerpt:** [paste the most relevant section]"
+
+The agent will find the right place in the docs structure and update accordingly. Review its output before committing.
 
 ### Task 3: Commit Changes
 
@@ -72,5 +73,3 @@ After completing the above tasks, commit your changes with the message:
 - Focus on user-facing changes
 - Be clear and concise in both changelog and documentation
 - Match the style of existing content
-- If unsure whether docs are needed, err on the side of including them for NEW features
-- For CHANGE and BUG types, docs updates are usually optional unless behavior significantly changes
