@@ -116,6 +116,7 @@ nav:
         - how-to/routers/index.md
         - Configure LLM Router: how-to/routers/llm_router.md
         - Configure Static Router: how-to/routers/static_router.md
+      - Configure Model Parameters: how-to/configure_model_parameters.md
       - how-to/assistants_migration.md
       - FAQ: how-to/faq.md
   - Concepts:
@@ -171,6 +172,7 @@ nav:
     - Tools Reference: tech-hub/tools.md
     - Python Node: tech-hub/python_node.md
     - Render a Template and Send an Email Nodes: tech-hub/template_and_email_nodes.md
+    - Model Configuration: tech-hub/model_configuration.md
     - Call External APIs:
         - tech-hub/external-api-calls/index.md     
         - HTTP Client: tech-hub/external-api-calls/http_client.md
