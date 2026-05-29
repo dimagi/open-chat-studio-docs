@@ -91,6 +91,23 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
+      # When this workflow is triggered manually (workflow_dispatch) from a feature branch,
+      # the checkout step above always checks out main/widget-develop — meaning any template
+      # changes on the triggering branch would be silently ignored. This step overlays
+      # .github/templates/ from the triggering branch so that template edits can be tested
+      # end-to-end without merging to main first. It is a no-op for main/widget-develop
+      # and skipped entirely for repository_dispatch (production) runs.
+      - name: Override templates from triggering branch (workflow_dispatch testing)
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          WORKFLOW_BRANCH="${{ github.ref_name }}"
+          if [ "$WORKFLOW_BRANCH" != "main" ] && [ "$WORKFLOW_BRANCH" != "widget-develop" ]; then
+            echo "Fetching templates from branch: $WORKFLOW_BRANCH"
+            git fetch origin "$WORKFLOW_BRANCH"
+            git checkout "origin/$WORKFLOW_BRANCH" -- .github/templates/
+            echo "Templates overridden from $WORKFLOW_BRANCH"
+          fi
+
       - name: Set variables from dispatch or manual input
         id: set_vars
         # Payload fields are passed via env (not ${{ }} interpolation in the script body)
