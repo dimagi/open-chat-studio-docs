@@ -9,7 +9,7 @@ Since this PR modifies main app files, update the **main changelog** at `${MAIN_
 
 **Steps for Main Changelog:**
 1. Read `${MAIN_CHANGELOG}` to understand the current structure
-2. Analyze the PR title, description, and labels to understand what changed
+2. Analyze the PR title and description to understand what changed
 3. Determine the appropriate changelog type:
    - **NEW**: New features or functionality
    - **CHANGE**: Modifications to existing features
