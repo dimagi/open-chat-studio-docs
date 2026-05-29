@@ -203,12 +203,6 @@ jobs:
           )
           export PR_TITLE
 
-          PR_LABELS=$(cat <<'EOF'
-          ${{ steps.set_vars.outputs.pr_labels }}
-          EOF
-          )
-          export PR_LABELS
-
           PR_BODY=$(cat <<'EOF'
           ${{ steps.set_vars.outputs.pr_body }}
           EOF
