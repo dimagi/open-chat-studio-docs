@@ -1,12 +1,12 @@
 ---
-title: Model Configuration Reference
+title: LLM Node Advanced Settings
 ---
 
-# Model Configuration Reference
+# LLM Node Advanced Settings
 
-This page is a technical reference for model configuration parameters in Open Chat Studio. It covers the full parameter details, provider-level behaviour differences, and the model lifecycle and deprecation process.
+This page is a technical reference for the advanced settings available on the LLM node in Open Chat Studio. It covers the full parameter details, provider-level behaviour differences, and the model lifecycle and deprecation process.
 
-For a conceptual overview, see [Large Language Models](../concepts/llm.md). For step-by-step configuration instructions, see [Configure Model Parameters](../how-to/configure_model_parameters.md).
+For a conceptual overview, see [Large Language Models](../concepts/llm.md). For step-by-step configuration instructions, see [Adjust LLM Node Settings](../how-to/adjust_llm_node_settings.md).
 
 ## Parameter Reference
 
@@ -82,6 +82,6 @@ No manual action is required when a model is removed — the platform handles th
 ## See Also
 
 - [Large Language Models](../concepts/llm.md) — conceptual overview of LLMs, prompts, tokens, and parameters
-- [Configure Model Parameters](../how-to/configure_model_parameters.md) — step-by-step instructions for tuning parameters in the UI
+- [Adjust LLM Node Settings](../how-to/adjust_llm_node_settings.md) — step-by-step instructions for tuning settings in the UI
 - [LLM Service Providers](../concepts/team/llm_providers.md) — setting up and managing provider credentials for your team
 - [Configure LLM Providers](../tutorials/configure_providers.md) — adding providers and custom models to Open Chat Studio

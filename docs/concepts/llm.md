@@ -15,7 +15,7 @@ title: Large Language Model
 
 When building chatbots, an LLM powers the chatbot's ability to understand and respond to user inputs, effectively acting as the brain behind the chatbot.
 
-## Which Large Language Models are supported by Open Chat Studio?
+## Which LLMs are supported by Open Chat Studio?
 
 Open Chat Studio is developed to support a range of LLMs. The platform is designed to be flexible and can work with any
 LLM that has an API. The platform currently supports all the models provided by the following APIs:
@@ -69,8 +69,8 @@ The max token limit is the maximum number of tokens the LLM can handle in a sing
 
 ## Going Further
 
-!!! tip "Configure model parameters"
-    For step-by-step guidance on tuning temperature, effort, and token limits in Open Chat Studio, see the [Configure Model Parameters](../how-to/configure_model_parameters.md) how-to guide.
+!!! tip "Setup LLM Node parameters"
+    For step-by-step guidance on tuning temperature, effort, and token limits in Open Chat Studio, see the [Adjust LLM Node Settings](../how-to/adjust_llm_node_settings.md) how-to guide.
 
 !!! tip "Technical reference"
-    For full parameter details, provider-level differences, and model lifecycle information, see the [Model Configuration Reference](../tech-hub/model_configuration.md) in the Tech Hub.
+    For full parameter details, provider-level differences, and model lifecycle information, see the [LLM Node Advanced Settings](../tech-hub/llm_node_advanced_settings.md) in the Tech Hub.

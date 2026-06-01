@@ -1,10 +1,10 @@
 ---
-title: Configure Model Parameters
+title: Adjust LLM Node Settings
 ---
 
-# Configure Model Parameters
+# Adjust LLM Node Settings
 
-This guide explains how to tune the key model parameters — **Temperature**, **Effort**, and **Max Token Limit** — when configuring a chatbot or pipeline node in Open Chat Studio.
+This guide explains how to tune the key LLM node settings — **Temperature**, **Effort**, and **Max Token Limit** — when configuring a chatbot or pipeline in Open Chat Studio.
 
 ## Prerequisites
 
@@ -85,4 +85,4 @@ The max token limit sets the maximum number of tokens — input plus output — 
 ## See Also
 
 - [Large Language Models](../concepts/llm.md) — conceptual overview of LLMs, prompts, tokens, and parameters
-- [Model Configuration Reference](../tech-hub/model_configuration.md) — full technical parameter reference and provider-level details
+- [LLM Node Advanced Settings](../tech-hub/llm_node_advanced_settings.md) — full technical parameter reference and provider-level details
