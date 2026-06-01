@@ -6,7 +6,6 @@ You need to update the changelog and documentation in this repository based on a
 - **PR URL:** ${PR_URL}
 - **Author:** ${PR_AUTHOR}
 - **Merged Date:** ${PR_MERGED_AT}
-- **Labels:** ${PR_LABELS}
 - **Is Widget Change:** ${IS_WIDGET_CHANGE}
 - **Base Branch:** ${BASE_BRANCH}
 
