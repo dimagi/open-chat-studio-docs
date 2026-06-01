@@ -4,7 +4,7 @@ title: LLM Node Advanced Settings
 
 # LLM Node Advanced Settings
 
-This page is a technical reference for the advanced settings available on the LLM node in Open Chat Studio. It covers the full parameter details, provider-level behaviour differences, and the model lifecycle and deprecation process.
+This page is a technical reference for the advanced settings available on the LLM node in Open Chat Studio. It covers the full parameter details and provider-level behaviour differences.
 
 For a conceptual overview, see [Large Language Models](../concepts/llm.md). For step-by-step configuration instructions, see [Adjust LLM Node Settings](../how-to/adjust_llm_node_settings.md).
 
@@ -60,24 +60,6 @@ Open Chat Studio maps all of these to the same `low/medium/high/max` effort leve
 The max token limit is the maximum number of tokens the model can process in a single interaction — input (prompt) plus output (response) combined.
 
 For reasoning models, the model's internal thinking tokens count against the max output token budget. Setting Effort to `high` or `max` while keeping the Max Token Limit low can cause the model to exhaust its budget before generating any visible output. If you observe truncated or empty responses from a high-effort configuration, increase the Max Token Limit.
-
-## Model Lifecycle and Deprecation
-
-AI providers regularly update their model offerings. Models available in Open Chat Studio may be deprecated or removed over time.
-
-### Deprecation
-
-When a model you are using is deprecated, Open Chat Studio sends an in-app notification recommending that you switch to a replacement model. Your chatbots and pipelines continue to operate during the deprecation period, but you should update your configuration at your earliest convenience.
-
-### Removal
-
-When a model is fully removed from the platform:
-
-- Open Chat Studio automatically removes all references to the model in your chatbots and pipelines.
-- Where a clear replacement exists, Open Chat Studio migrates usages of the old model to the recommended replacement.
-- You receive an in-app notification confirming the removal or migration.
-
-No manual action is required when a model is removed — the platform handles the transition automatically.
 
 ## See Also
 
