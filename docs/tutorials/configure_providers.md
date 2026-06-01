@@ -1,8 +1,10 @@
 # Configure LLM Providers
 
-Providers are configured in your [Team](../concepts/team/index.md) settings under "LLM and Embedding Model Service Providers". Before configuring a provider, ensure that you have an active account at the provider and access to the necessary integration credentials.
+Providers are configured in your [Team](../concepts/team/index.md) settings under "LLM and Embedding Model Service Providers". For the full list of supported providers, see [LLM Service Providers](../concepts/team/llm_providers.md). 
 
 ## Prerequisites
+
+Before configuring a provider, ensure that you have an active account at the provider and access to the necessary integration credentials.
 
 **API Key Required**: You cannot create a provider without a valid API key. The API key is used for authentication between Open Chat Studio and the provider. You must:
 
@@ -58,3 +60,6 @@ For Google (Gemini) models, use the names from the "Model Variant" column. Examp
 
 Find current model names at: https://ai.google.dev/gemini-api/docs/models
 
+## See Also
+
+- [LLM Service Providers](../concepts/team/llm_providers.md) — full list of supported providers and embedding options

@@ -103,15 +103,16 @@ nav:
   - How-to Guides:
       - how-to/index.md
       - how-to/workflow_cookbook.md
+      - Adjust LLM Node Settings: how-to/adjust_llm_node_settings.md
       - how-to/add_a_knowledge_base.md
       - how-to/deploy_to_different_channels.md
+      - Send an Email: how-to/send_email_node.md
       - Setup a Survey: how-to/setting_up_a_survey.md
       - Schedule Reminders: how-to/reminders.md
       - Reset Sessions: how-to/reset_sessions.md
       - how-to/whatsapp_meta_cloud_api.md
       - Find Objects: how-to/global_search.md
       - Filter Tables with Natural Language: how-to/nl_filter.md
-      - Send an Email: how-to/send_email_node.md
       - Router Nodes:
         - how-to/routers/index.md
         - Configure LLM Router: how-to/routers/llm_router.md
@@ -168,6 +169,7 @@ nav:
         - Annotating: concepts/annotations/annotating.md
   - Tech Hub:
     - tech-hub/index.md
+    - LLM Model Parameters: tech-hub/llm_model_parameters.md
     - Tools Reference: tech-hub/tools.md
     - Python Node: tech-hub/python_node.md
     - Render a Template and Send an Email Nodes: tech-hub/template_and_email_nodes.md
