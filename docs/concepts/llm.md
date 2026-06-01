@@ -27,7 +27,7 @@ LLM that has an API. The platform currently supports all the models provided by 
 * [Perplexity](https://docs.perplexity.ai/guides/model-cards)
 * [Deepseek](https://api-docs.deepseek.com/quick_start/pricing)
 
-## Key Concepts
+## Key Concepts of LLMs
 
 ### Prompt
 
@@ -42,6 +42,10 @@ Tokens are the building blocks of text that the LLM processes. A token might be 
 **Example:** The sentence *"Chatbots are cool."* is broken into 4 tokens: `Chatbots | are | cool | .`
 
 Tokens are important because they determine the cost and the processing complexity of an LLM's response.
+
+### Max Token Limit
+
+The max token limit is the maximum number of tokens the LLM can handle in a single interaction, including both the input (prompt) and output (response). Understanding this limit helps you write effective prompts without risking truncated responses.
 
 ### Temperature
 
@@ -63,14 +67,11 @@ A simple rule of thumb: **effort is for substance**.
 
 When a model uses effort, temperature is not available — the model manages its own internal randomness.
 
-### Max Token Limit
-
-The max token limit is the maximum number of tokens the LLM can handle in a single interaction, including both the input (prompt) and output (response). Understanding this limit helps you write effective prompts without risking truncated responses.
-
 ## Going Further
 
-!!! tip "Setup LLM Node parameters"
-    For step-by-step guidance on tuning temperature, effort, and token limits in Open Chat Studio, see the [Adjust LLM Node Settings](../how-to/adjust_llm_node_settings.md) how-to guide.
+!!! tip "Using a LLM in a chatbot"
+    First do the tutorial on [creating your first chatbot](../tutorials/first_chatbot.md) and then see more about using the [LLM Node](../concepts/pipelines/nodes.md#llm-node) in a chatbot.
 
-!!! tip "Technical reference"
-    For full parameter details, provider-level differences, and model lifecycle information, see the [LLM Node Advanced Settings](../tech-hub/llm_node_advanced_settings.md) in the Tech Hub.
+!!! tip "Setup LLM Node parameters"
+    For step-by-step guidance on tuning temperature, effort, and token limits for a LLM, see the [Adjust LLM Node Settings](../how-to/adjust_llm_node_settings.md) how-to guide.
+

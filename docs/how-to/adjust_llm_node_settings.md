@@ -4,14 +4,19 @@ title: Adjust LLM Node Settings
 
 # Adjust LLM Node Settings
 
-This guide explains how to tune the key LLM node settings — **Temperature**, **Effort**, and **Max Token Limit** — when configuring a chatbot or pipeline in Open Chat Studio.
+This guide explains how to tune the key [LLM node](../concepts/pipelines/nodes.md#llm-node) settings — **Temperature**, **Effort**, and **Max Token Limit** — when configuring a chatbot [pipeline](../concepts/pipelines/index.md) in Open Chat Studio.
 
 ## Prerequisites
 
-- You have created a chatbot or pipeline in Open Chat Studio.
-- You have selected a model. Not all parameters are available on every model. Open Chat Studio shows only the parameters your selected model supports.
+- You have added a LLM node to your chatbot pipeline.
+- You have selected to edit the LLM Node advanced settings.
+- You have selected the **LLM model** this node will use.
 
-## Temperature
+## LLM Model Parameters
+
+Note that not all parameter settings are available for every model. Open Chat Studio shows only the parameters your selected model supports.
+
+### Temperature
 
 Temperature controls how creative or varied the model's responses are.
 
@@ -28,7 +33,7 @@ Temperature is available on general-purpose chat models. It is not available on 
 3. Drag or type a value between 0 and 1.
 4. Save your changes and test the output.
 
-## Effort
+### Effort
 
 Effort controls how much internal reasoning the model applies before producing a response. It is only available on reasoning models.
 
@@ -50,7 +55,7 @@ Use a **higher effort** level when accuracy and thoroughness matter more than sp
 !!! note
     When Effort is set, Temperature is not available on the same model. Open Chat Studio hides the Temperature field automatically on reasoning models.
 
-## Choosing Between Temperature and Effort
+### Choosing Between Temperature and Effort
 
 | If you want to…                                                  | Use…        |
 |------------------------------------------------------------------|-------------|
@@ -68,7 +73,7 @@ Use a **higher effort** level when accuracy and thoroughness matter more than sp
 2. Is this a logic, analysis, math, or coding task? Use a reasoning model and tune **Effort**.
 3. Not sure? Start with the default model and default settings. Adjust only if outputs are consistently too random, too bland, too shallow, or too slow.
 
-## Max Token Limit
+### Max Token Limit
 
 The max token limit sets the maximum number of tokens — input plus output — the model can process in a single interaction. Keeping this limit appropriate for your use case prevents responses from being cut off.
 
@@ -82,7 +87,16 @@ The max token limit sets the maximum number of tokens — input plus output — 
 !!! warning "Reasoning models and token budgets"
     On reasoning models, the model's internal thinking tokens count toward the max output token budget. If you set Effort to `high` or `max` and the Max Token Limit is too low, the model may run out of space before producing a visible response. If you see truncated or empty responses from a high-effort run, raise the Max Token Limit.
 
-## See Also
+### See Also
 
 - [Large Language Models](../concepts/llm.md) — conceptual overview of LLMs, prompts, tokens, and parameters
 - [LLM Node Advanced Settings](../tech-hub/llm_node_advanced_settings.md) — full technical parameter reference and provider-level details
+
+## Other LLM Node Settings
+
+- Node Name
+- [Prompt](../concepts/llm.md#prompt)
+- [LLM History Mode](../concepts/pipelines/history.md)
+- [Max History Length](../concepts/pipelines/history.md#max-history-length)
+- [Message Tag](../concepts/tags.md)
+- [Tools](../concepts/tools/index.md)
