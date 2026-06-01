@@ -83,3 +83,5 @@ No manual action is required when a model is removed — the platform handles th
 
 - [Large Language Models](../concepts/llm.md) — conceptual overview of LLMs, prompts, tokens, and parameters
 - [Configure Model Parameters](../how-to/configure_model_parameters.md) — step-by-step instructions for tuning parameters in the UI
+- [LLM Service Providers](../concepts/team/llm_providers.md) — setting up and managing provider credentials for your team
+- [Configure LLM Providers](../tutorials/configure_providers.md) — adding providers and custom models to Open Chat Studio
