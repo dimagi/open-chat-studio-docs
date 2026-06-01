@@ -1,10 +1,10 @@
 ---
-title: Adjust LLM Node Settings
+title: Adjust LLM Node Model Settings
 ---
 
-# Adjust LLM Node Settings
+# Adjust LLM Node Model Settings
 
-This guide explains how to tune the key [LLM node](../concepts/pipelines/nodes.md#llm-node) settings — **Temperature**, **Effort**, and **Max Token Limit** — when configuring a chatbot [pipeline](../concepts/pipelines/index.md) in Open Chat Studio.
+This guide helps you choose the right model settings for the [LLM node](../concepts/pipelines/nodes.md#llm-node) in your chatbot [pipeline](../concepts/pipelines/index.md). For an explanation of what each parameter does, see [Large Language Models](../concepts/llm.md).
 
 ## Prerequisites
 
@@ -12,60 +12,60 @@ This guide explains how to tune the key [LLM node](../concepts/pipelines/nodes.m
 - You have selected to edit the LLM Node advanced settings.
 - You have selected the **LLM model** this node will use.
 
-## LLM Model Parameters
+!!! note
+    Different models expose different knobs for shaping their behaviour. The most common are temperature, effort, and reasoning / adaptive thinking. 
+    
+    Not every model supports every parameter — when you select a model in Open Chat Studio, the configuration panel only shows the parameters that model actually supports, so you won't accidentally set one that has no effect.
 
-Note that not all parameter settings are available for every model. Open Chat Studio shows only the parameters your selected model supports.
+## LLM model parameters
 
 ### Temperature
 
-Temperature controls how creative or varied the model's responses are.
+See [Temperature](../concepts/llm.md#temperature-parameter) for a conceptual overview.
 
-- Use a **low temperature** (closer to 0) for factual, consistent, or structured outputs.
-- Use a **high temperature** (closer to 1) for creative, conversational, or generative outputs.
-- The default of 0.7 balances coherence with natural variation and is a good starting point for most chatbots.
+- **Range:** 0.0–1.0 (exact range may vary by provider)
+- **Default:** 0.7 (to provide responses that are both varied and interesting, while still being coherent)
 
-Temperature is available on general-purpose chat models. It is not available on reasoning models that use Effort instead.
+**Example**:
 
-**To adjust temperature:**
+- Low temperature: What's a dog? → A dog is a domesticated animal.
+- High temperature: What's a dog? → A dog is a loyal companion, a furry friend who fills your life with wagging tails and boundless joy.
 
-1. Open your chatbot or LLM node settings.
-2. Locate the **Temperature** slider or input field.
-3. Drag or type a value between 0 and 1.
-4. Save your changes and test the output.
+Temperature is supported by most general-purpose chat models including GPT-4o, Claude Sonnet/Opus without thinking enabled, Gemini, Groq, Perplexity, and Deepseek. 
+
+It is **not** available on reasoning models that use Effort — see below.
 
 ### Effort
 
-Effort controls how much internal reasoning the model applies before producing a response. It is only available on reasoning models.
+See [Effort](../concepts/llm.md#effort-parameter) for a conceptual overview. Effort applies only to reasoning models.
 
-Use a **higher effort** level when accuracy and thoroughness matter more than speed — for example, for analysis, coding tasks, or complex multi-step questions. Use a **lower effort** level for simple or conversational tasks where speed and cost matter more.
+| Level    | Behaviour                                                                                         |
+|----------|---------------------------------------------------------------------------------------------------|
+| `low`    | Minimal reasoning. Fastest and cheapest. Good for routine questions.                              |
+| `medium` | Balanced default for most tasks.                                                                  |
+| `high`   | More thorough reasoning — useful for complex analysis, multi-step problems, or code review.       |
+| `max`    | Maximum reasoning budget. Slowest and most expensive; produces the most considered answers.       |
 
-| Level    | Best for                                                             |
-|----------|----------------------------------------------------------------------|
-| `low`    | Routine questions, simple lookups, conversational exchanges          |
-| `medium` | General-purpose tasks — a good default                               |
-| `high`   | Complex analysis, multi-step reasoning, careful code review          |
-| `max`    | The most demanding tasks where quality outweighs cost and latency    |
+Higher effort levels generally produce better answers on hard problems but cost more (both in tokens and latency). For simple conversational tasks, low or medium is almost always enough — turning the knob up doesn't make a friendly chitchat bot friendlier, just slower.
 
-**To adjust effort:**
+Models that use effort include OpenAI's GPT-5 / GPT-5.2 series and Anthropic's Claude Opus 4.6 and Sonnet 4.6 with [thinking enabled](../tech-hub/llm_model_parameters.md#reasoning-and-adaptive-thinking).
 
-1. Open your chatbot or LLM node settings.
-2. If the **Effort** field appears (Temperature will be hidden), select a level from the dropdown.
-3. Save your changes and test the output.
 
-!!! note
-    When Effort is set, Temperature is not available on the same model. Open Chat Studio hides the Temperature field automatically on reasoning models.
+## Choosing Between Temperature and Effort
 
-### Choosing Between Temperature and Effort
+These two knobs do very different things, so it's worth being clear about when each one helps
+
+[Temperature](../concepts/llm.md#temperature-parameter) and [Effort](../concepts/llm.md#effort-parameter) are mutually exclusive — only one will be available depending on your selected model.
 
 | If you want to…                                                  | Use…        |
 |------------------------------------------------------------------|-------------|
-| Make responses more or less creative or varied                   | Temperature |
+| Make responses more or less creative, varied or unpredictable    | Temperature |
 | Make responses more or less rigorous or well-reasoned            | Effort      |
 | Get natural-sounding phrasing in a conversational bot            | Temperature |
 | Solve a hard problem (analysis, coding, multi-step reasoning)    | Effort      |
-| Reduce hallucinations on a factual Q&A bot                       | Lower temperature, or switch to a reasoning model with low-to-medium effort |
+| Reduce hallucinations on a factual Q&A bot                       | Lower temperature, or switch to a reasoning model and raise effort |
 | Make an extractor or classifier more deterministic               | Temperature → 0, or a reasoning model with low effort |
-| Speed things up or reduce cost                                   | Lower effort (if set), or use a non-reasoning model |
+| Speed things up or reduce cost on an over-engineered setup       | Lower effort (if set), or use a non-reasoning model |
 
 **Quick decision guide:**
 
@@ -73,24 +73,14 @@ Use a **higher effort** level when accuracy and thoroughness matter more than sp
 2. Is this a logic, analysis, math, or coding task? Use a reasoning model and tune **Effort**.
 3. Not sure? Start with the default model and default settings. Adjust only if outputs are consistently too random, too bland, too shallow, or too slow.
 
-### Max Token Limit
+## Max Token Limit
 
-The max token limit sets the maximum number of tokens — input plus output — the model can process in a single interaction. Keeping this limit appropriate for your use case prevents responses from being cut off.
-
-**To adjust the max token limit:**
-
-1. Open your chatbot or LLM node settings.
-2. Locate the **Max Token Limit** field.
-3. Enter a value appropriate for your expected prompt length and response length.
-4. Save your changes.
+See [Max Token Limit](../concepts/llm.md#max-token-limit) for an explanation of what this setting does.
 
 !!! warning "Reasoning models and token budgets"
-    On reasoning models, the model's internal thinking tokens count toward the max output token budget. If you set Effort to `high` or `max` and the Max Token Limit is too low, the model may run out of space before producing a visible response. If you see truncated or empty responses from a high-effort run, raise the Max Token Limit.
-
-### See Also
-
-- [Large Language Models](../concepts/llm.md) — conceptual overview of LLMs, prompts, tokens, and parameters
-- [LLM Node Advanced Settings](../tech-hub/llm_node_advanced_settings.md) — full technical parameter reference and provider-level details
+    On [reasoning models](../tech-hub/llm_model_parameters.md#reasoning-and-adaptive-thinking), internal thinking tokens count toward the max output token budget. If you set Effort to `high` or `max` and the Max Token Limit is too low, the model may run out of space before producing a visible response. 
+    
+    If you see truncated or empty responses from a high-effort run, raise the Max Token Limit.
 
 ## Other LLM Node Settings
 
