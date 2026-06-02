@@ -48,6 +48,40 @@ def discover_version_schemas(schema_dir: str | Path) -> list[tuple[str, Path]]:
     return [(p.stem, p) for p in schema_files]
 
 
+VERSIONS_MARKER_START = "<!-- api-versions:start -->"
+VERSIONS_MARKER_END = "<!-- api-versions:end -->"
+
+
+def inject_versions_list(index_path: str | Path, versions: list[str]) -> None:
+    """Replace the content between the version markers in the top-level API index.
+
+    Only the text between ``VERSIONS_MARKER_START`` and ``VERSIONS_MARKER_END`` is
+    rewritten; all surrounding hand-written prose is preserved. Idempotent.
+
+    Raises:
+        ValueError: if either marker is missing from the file.
+    """
+    path = Path(index_path)
+    content = path.read_text(encoding="utf-8")
+
+    if VERSIONS_MARKER_START not in content or VERSIONS_MARKER_END not in content:
+        raise ValueError(
+            f"Missing api-versions markers in {path}. Expected both "
+            f"'{VERSIONS_MARKER_START}' and '{VERSIONS_MARKER_END}'."
+        )
+
+    block_lines = [VERSIONS_MARKER_START]
+    block_lines += [f"* [{version}]({version}/index.md)" for version in versions]
+    block_lines.append(VERSIONS_MARKER_END)
+    replacement = "\n".join(block_lines)
+
+    pattern = re.compile(
+        re.escape(VERSIONS_MARKER_START) + r".*?" + re.escape(VERSIONS_MARKER_END),
+        re.DOTALL,
+    )
+    path.write_text(pattern.sub(lambda _: replacement, content), encoding="utf-8")
+
+
 class OpenAPIToMarkdownConverter:
     """Converts OpenAPI schemas to markdown documentation."""
 

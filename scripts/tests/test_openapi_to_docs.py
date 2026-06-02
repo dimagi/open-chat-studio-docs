@@ -7,6 +7,7 @@ import pytest
 from src.ocs_docs.openapi_to_docs import (
     OpenAPIToMarkdownConverter,
     discover_version_schemas,
+    inject_versions_list,
 )
 
 SAMPLE_SCHEMA = {
@@ -74,3 +75,51 @@ def test_generate_version_index_escapes_pipes_in_summary():
     }
     index_md = OpenAPIToMarkdownConverter(schema).generate_version_index("v1")
     assert r"| GET | `/api/x/` | List a \| b channels |" in index_md
+
+
+INDEX_WITH_MARKERS = """# API
+
+Some hand-written prose about auth.
+
+## Versions
+
+<!-- api-versions:start -->
+old content to be replaced
+<!-- api-versions:end -->
+
+More prose after.
+"""
+
+
+def test_inject_versions_list_replaces_between_markers(tmp_path):
+    index_path = tmp_path / "index.md"
+    index_path.write_text(INDEX_WITH_MARKERS, encoding="utf-8")
+
+    inject_versions_list(index_path, ["v1", "v2"])
+
+    result = index_path.read_text(encoding="utf-8")
+    assert "Some hand-written prose about auth." in result
+    assert "More prose after." in result
+    assert "old content to be replaced" not in result
+    assert "* [v1](v1/index.md)" in result
+    assert "* [v2](v2/index.md)" in result
+
+
+def test_inject_versions_list_is_idempotent(tmp_path):
+    index_path = tmp_path / "index.md"
+    index_path.write_text(INDEX_WITH_MARKERS, encoding="utf-8")
+
+    inject_versions_list(index_path, ["v1"])
+    first = index_path.read_text(encoding="utf-8")
+    inject_versions_list(index_path, ["v1"])
+    second = index_path.read_text(encoding="utf-8")
+
+    assert first == second
+
+
+def test_inject_versions_list_missing_markers_raises(tmp_path):
+    index_path = tmp_path / "index.md"
+    index_path.write_text("# API\n\nNo markers here.\n", encoding="utf-8")
+
+    with pytest.raises(ValueError, match="api-versions"):
+        inject_versions_list(index_path, ["v1"])
