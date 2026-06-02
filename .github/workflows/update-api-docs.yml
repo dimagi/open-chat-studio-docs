@@ -33,8 +33,25 @@ jobs:
       - name: Install dependencies
         run: uv sync
 
+      - name: Fetch OpenAPI schema directory
+        env:
+          # Path to the per-version schema directory in the OCS repo.
+          # Change this one line once OCS finalizes the location.
+          API_SCHEMA_DIR: api-schema
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p schemas
+          gh api "repos/dimagi/open-chat-studio/contents/${API_SCHEMA_DIR}?ref=main" \
+            --jq '.[] | select(.name | test("\\.ya?ml$")) | .download_url' \
+          | while read -r url; do
+              echo "Downloading $url"
+              curl -sSL "$url" -O --output-dir schemas
+            done
+          echo "Fetched schema files:"
+          ls -1 schemas
+
       - name: Generate API documentation
-        run: uv run python src/ocs_docs/openapi_to_docs.py https://raw.githubusercontent.com/dimagi/open-chat-studio/refs/heads/main/api-schema.yml -o docs/api/
+        run: uv run python src/ocs_docs/openapi_to_docs.py schemas -o docs/api/
 
       - name: Check for changes
         id: check_changes
