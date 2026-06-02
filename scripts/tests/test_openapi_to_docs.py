@@ -79,6 +79,24 @@ def test_generate_version_index_escapes_pipes_in_summary():
     assert r"| GET | `/api/x/` | List a \| b channels |" in index_md
 
 
+def test_generate_version_index_collapses_multiline_tag_description():
+    schema = {
+        "openapi": "3.0.0",
+        "info": {"title": "T", "version": "1"},
+        "tags": [{"name": "Chat", "description": "\n        The Chat API.\n        Use it well.\n    "}],
+        "paths": {
+            "/api/chat/": {
+                "get": {"tags": ["Chat"], "summary": "List", "responses": {"200": {"description": "ok"}}},
+            }
+        },
+    }
+    index_md = OpenAPIToMarkdownConverter(schema).generate_version_index("v1")
+    assert "[Chat](./chat.txt){:target=\"_blank\"} — The Chat API. Use it well." in index_md
+    # No raw newline inside the bullet, no trailing space before newline
+    for line in index_md.splitlines():
+        assert not line.endswith(" ")
+
+
 INDEX_WITH_MARKERS = """# API
 
 Some hand-written prose about auth.

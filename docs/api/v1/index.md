@@ -9,9 +9,7 @@ Experiments with AI, GPT and LLMs
 Simplified per-tag references for LLM consumption:
 
 * [Channels](./channels.txt){:target="_blank"}
-* [Chat](./chat.txt){:target="_blank"} — 
-                The Chat API is designed to be used for integrating chatbots into external systems.
-            
+* [Chat](./chat.txt){:target="_blank"} — The Chat API is designed to be used for integrating chatbots into external systems.
 * [Experiment Sessions](./experiment_sessions.txt){:target="_blank"}
 * [Experiments](./experiments.txt){:target="_blank"}
 * [Files](./files.txt){:target="_blank"}

@@ -206,7 +206,8 @@ class OpenAPIToMarkdownConverter:
         for tag in sorted(tag_groups):
             filename = self._generate_tag_filename(tag)
             tag_info = self._get_tag_info(tag) or {}
-            suffix = f" — {tag_info['description']}" if tag_info.get("description") else ""
+            description = " ".join(tag_info.get("description", "").split())
+            suffix = f" — {description}" if description else ""
             lines.append(f"* [{tag}](./{filename}.txt){{:target=\"_blank\"}}{suffix}")
         lines.append("")
 
