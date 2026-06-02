@@ -606,14 +606,20 @@ if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser(description="Convert OpenAPI schema to markdown documentation")
-    parser.add_argument("schema", help="Path to OpenAPI schema file, URL, or schema content (JSON or YAML)")
+    parser.add_argument(
+        "schema",
+        help="Path to an OpenAPI schema file/URL, or a directory of per-version schema files",
+    )
     parser.add_argument("-o", "--output", default="api_docs", help="Output directory for markdown files")
 
     args = parser.parse_args()
 
     try:
-        generated_files = convert_openapi_to_markdown(args.schema, args.output)
-        print(f"Generated {len(generated_files)} markdown files in '{args.output}':")
+        if Path(args.schema).is_dir():
+            generated_files = convert_versioned_docs(args.schema, args.output)
+        else:
+            generated_files = convert_openapi_to_markdown(args.schema, args.output)
+        print(f"Generated {len(generated_files)} files in '{args.output}':")
         for file_path in generated_files:
             print(f"  - {file_path}")
     except Exception as e:
