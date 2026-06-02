@@ -79,6 +79,11 @@ def inject_versions_list(index_path: str | Path, versions: list[str]) -> None:
         re.escape(VERSIONS_MARKER_START) + r".*?" + re.escape(VERSIONS_MARKER_END),
         re.DOTALL,
     )
+    if not pattern.search(content):
+        raise ValueError(
+            f"Could not locate a '{VERSIONS_MARKER_START}' ... '{VERSIONS_MARKER_END}' "
+            f"region in {path} (markers present but not in the expected order?)."
+        )
     path.write_text(pattern.sub(lambda _: replacement, content), encoding="utf-8")
 
 

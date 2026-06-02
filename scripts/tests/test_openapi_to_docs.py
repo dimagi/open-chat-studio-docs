@@ -123,3 +123,14 @@ def test_inject_versions_list_missing_markers_raises(tmp_path):
 
     with pytest.raises(ValueError, match="api-versions"):
         inject_versions_list(index_path, ["v1"])
+
+
+def test_inject_versions_list_reversed_markers_raises(tmp_path):
+    index_path = tmp_path / "index.md"
+    index_path.write_text(
+        "# API\n\n<!-- api-versions:end -->\n<!-- api-versions:start -->\n",
+        encoding="utf-8",
+    )
+
+    with pytest.raises(ValueError, match="api-versions"):
+        inject_versions_list(index_path, ["v1"])
