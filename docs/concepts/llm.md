@@ -45,18 +45,19 @@ Tokens are important because they determine the cost and the processing complexi
 
 ### Max Token Limit
 
-The max token limit is the maximum number of tokens the LLM can handle in a single interaction, including both the input (prompt) and output (response). Understanding this limit helps you write effective prompts without risking truncated responses.
+The max token limit is the maximum number of tokens the LLM model can handle in a single interaction, including both the input (prompt) and output (response).
 
-### Temperature Parameter
+### LLM Model Parameters
+#### Temperature
 
 Temperature controls the creativity or randomness of a model's responses.
 
-- A **low temperature** (e.g., 0.1) produces more predictable, consistent answers — useful for factual or structured tasks.
-- A **high temperature** (e.g., 0.9) produces more varied, creative answers — useful for conversational or generative tasks.
+- A **low temperature** produces more predictable, consistent answers — useful for factual or structured tasks.
+- A **high temperature** produces more varied, creative answers — useful for conversational or generative tasks.
 
 A simple rule of thumb: **temperature is for style**.
 
-### Effort Parameter
+#### Effort
 
 Effort (sometimes called reasoning effort) controls how much internal reasoning a model applies before answering. It is used by reasoning models — models designed to think through problems step-by-step before producing a response.
 
@@ -65,13 +66,11 @@ Effort (sometimes called reasoning effort) controls how much internal reasoning 
 
 A simple rule of thumb: **effort is for substance**.
 
-When a model uses effort, temperature is not available — the model manages its own internal randomness.
-
 ## Going Further
 
-!!! tip "Using a LLM in a chatbot"
+!!! tip "Using an LLM in a chatbot"
     First do the tutorial on [creating your first chatbot](../tutorials/first_chatbot.md) and then see more about using the [LLM Node](../concepts/pipelines/nodes.md#llm-node) in a chatbot.
 
 !!! tip "Adjust LLM behavior"
-    For step-by-step guidance on tuning **temperature, effort, and token limits** for a LLM, see the [Adjust LLM Node Settings](../how-to/adjust_llm_node_settings.md) how-to guide.
+    For step-by-step guidance on tuning **temperature, effort, and token limits** for a LLM, see the [Adjust LLM Mode Parameters](../how-to/adjust_llm_node_settings.md) how-to guide.
 
