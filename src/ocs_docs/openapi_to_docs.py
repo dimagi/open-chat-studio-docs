@@ -21,6 +21,33 @@ JSON_EXTENSIONS = {".json"}
 YAML_EXTENSIONS = {".yaml", ".yml"}
 
 
+def _natural_sort_key(version: str) -> tuple[int | str, ...]:
+    """Split a version label into text/number chunks so 'v10' sorts after 'v2'."""
+    return tuple(int(chunk) if chunk.isdigit() else chunk for chunk in re.split(r"(\d+)", version))
+
+
+def discover_version_schemas(schema_dir: str | Path) -> list[tuple[str, Path]]:
+    """Find per-version schema files in a directory.
+
+    Each YAML file is one API version; the version label is the filename stem
+    (``v1.yml`` -> ``v1``). Returned in numeric-aware sorted order.
+
+    Returns:
+        List of (version_label, schema_path) tuples.
+
+    Raises:
+        ValueError: if the directory contains no YAML schema files.
+    """
+    directory = Path(schema_dir)
+    schema_files = sorted(
+        (p for p in directory.iterdir() if p.suffix.lower() in YAML_EXTENSIONS),
+        key=lambda p: _natural_sort_key(p.stem),
+    )
+    if not schema_files:
+        raise ValueError(f"No schema files (*.yaml/*.yml) found in directory: {directory}")
+    return [(p.stem, p) for p in schema_files]
+
+
 class OpenAPIToMarkdownConverter:
     """Converts OpenAPI schemas to markdown documentation."""
 
