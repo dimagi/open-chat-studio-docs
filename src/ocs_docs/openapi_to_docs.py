@@ -572,6 +572,36 @@ def convert_openapi_to_markdown(
     return converter.convert_to_text_files(output_dir)
 
 
+def convert_versioned_docs(schema_dir: str | Path, output_dir: str | Path) -> list[str]:
+    """Generate per-version API docs from a directory of schema files.
+
+    For each ``*.yml``/``*.yaml`` file in ``schema_dir`` (one per version), writes the
+    per-tag ``.txt`` files and a generated ``index.md`` into ``output_dir/<version>/``,
+    then injects the versions list into ``output_dir/index.md`` between its markers.
+
+    Returns:
+        List of generated file paths (tag docs + per-version index pages).
+    """
+    output_path = Path(output_dir)
+    versions = discover_version_schemas(schema_dir)
+
+    generated_files: list[str] = []
+    for version, schema_path in versions:
+        version_dir = output_path / version
+        version_dir.mkdir(parents=True, exist_ok=True)
+        converter = OpenAPIToMarkdownConverter(schema_path)
+
+        generated_files.extend(converter.convert_to_text_files(version_dir))
+
+        index_file = version_dir / "index.md"
+        index_file.write_text(converter.generate_version_index(version), encoding="utf-8")
+        generated_files.append(str(index_file))
+
+    inject_versions_list(output_path / "index.md", [version for version, _ in versions])
+
+    return generated_files
+
+
 if __name__ == "__main__":
     import argparse
 

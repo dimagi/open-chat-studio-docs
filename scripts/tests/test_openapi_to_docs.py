@@ -3,9 +3,11 @@
 from pathlib import Path
 
 import pytest
+import yaml
 
 from src.ocs_docs.openapi_to_docs import (
     OpenAPIToMarkdownConverter,
+    convert_versioned_docs,
     discover_version_schemas,
     inject_versions_list,
 )
@@ -134,3 +136,30 @@ def test_inject_versions_list_reversed_markers_raises(tmp_path):
 
     with pytest.raises(ValueError, match="api-versions"):
         inject_versions_list(index_path, ["v1"])
+
+
+def test_convert_versioned_docs_end_to_end(tmp_path):
+    # Schema directory with a single version
+    schema_dir = tmp_path / "schemas"
+    schema_dir.mkdir()
+    (schema_dir / "v1.yml").write_text(yaml.safe_dump(SAMPLE_SCHEMA), encoding="utf-8")
+
+    # Output dir with a top-level index containing markers
+    output_dir = tmp_path / "api"
+    output_dir.mkdir()
+    (output_dir / "index.md").write_text(
+        "# API\n\n## Versions\n\n"
+        "<!-- api-versions:start -->\n<!-- api-versions:end -->\n",
+        encoding="utf-8",
+    )
+
+    generated = convert_versioned_docs(schema_dir, output_dir)
+
+    # Per-version folder, index, and tag txt exist
+    assert (output_dir / "v1" / "index.md").exists()
+    assert (output_dir / "v1" / "channels.txt").exists()
+    # Top-level index links the version
+    index_text = (output_dir / "index.md").read_text(encoding="utf-8")
+    assert "* [v1](v1/index.md)" in index_text
+    # Return value lists generated files
+    assert any(name.endswith("v1/index.md") for name in generated)
