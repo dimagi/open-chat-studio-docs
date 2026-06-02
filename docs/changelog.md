@@ -4,6 +4,10 @@ hide:
 ---
 
 # Changelog
+## Jun 1, 2026
+* **NEW** WhatsApp channels now accept **inbound images and documents** across all three providers — Meta Cloud API, Twilio, and Turn.io. Incoming media is downloaded, persisted, attached to the session, and forwarded to the LLM alongside the user's message.
+* **BUG** Fixed a 404 that could occur when downloading attachments received over the email channel. The `ChatAttachment` record required by the authorized download endpoint was not being created during inbound email hydration, so links generated for the bot's attachments resolved to "not found".
+
 ## May 29, 2026
 * **CHANGE** The chatbot UI now surfaces a warning wherever a chatbot is viewed if no consent form is configured, making it easier to spot bots that may be collecting participant data without a consent mechanism in place.
 

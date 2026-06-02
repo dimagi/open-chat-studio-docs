@@ -13,7 +13,9 @@ Setting up a WhatsApp channel via Meta Cloud API involves four main stages:
 
 ## Supported media types
 
-The Meta Cloud API integration supports sending and receiving media messages in addition to text. The following media types are accepted:
+The Meta Cloud API integration supports sending and receiving media messages in addition to text. When a user sends an image or document to your WhatsApp number, OCS downloads it, links it to the conversation, and passes it to the LLM automatically — no extra configuration is required.
+
+The following media types are accepted:
 
 | Media type | Accepted formats | Maximum file size |
 |---|---|---|
