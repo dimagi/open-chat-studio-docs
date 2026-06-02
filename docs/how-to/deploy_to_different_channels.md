@@ -38,13 +38,6 @@ Open Chat Studio supports multiple WhatsApp providers. Choose the section below 
 
    This URL is the same for all WhatsApp chatbots and channels on Open Chat Studio.
 
-#### Inbound media (images and documents)
-
-Your chatbot automatically receives images and documents that users send over WhatsApp. OCS downloads each attachment, links it to the conversation, and passes it to the LLM — no additional configuration is required.
-
-!!! info "Size and format limits"
-    Accepted file types and size limits are determined by your WhatsApp provider (Twilio or Turn.io), not by OCS. Check your provider's documentation for the specific limits that apply to your account.
-
 #### Provider-Specific Configuration
 
 ##### For New WhatsApp Numbers

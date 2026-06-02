@@ -30,8 +30,6 @@ Open Chat Studio supports three WhatsApp providers. The table below summarises t
 | Setup complexity | Moderate (account + WhatsApp sender setup) | Moderate (account + approval process) | Higher (direct Meta Business Platform configuration, webhook setup, token management) |
 | Pricing model | Per-message fees + WhatsApp conversation fees | Subscription + WhatsApp conversation fees | WhatsApp conversation fees only (no intermediary markup) |
 
-All three providers support inbound media — users can send images and documents to your WhatsApp number and the bot will receive them.
-
 Use **Meta Cloud API** when you want a direct connection to the WhatsApp Business Platform without routing traffic through a third-party service. Use **Twilio** or **Turn.io** when you already have an account with one of those providers.
 
 ## See also
