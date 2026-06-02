@@ -40,12 +40,13 @@ jobs:
           API_SCHEMA_DIR: api-schema
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          set -euo pipefail
           mkdir -p schemas
           gh api "repos/dimagi/open-chat-studio/contents/${API_SCHEMA_DIR}?ref=main" \
             --jq '.[] | select(.name | test("\\.ya?ml$")) | .download_url' \
           | while read -r url; do
               echo "Downloading $url"
-              curl -sSL "$url" -O --output-dir schemas
+              curl -fsSL "$url" -O --output-dir schemas
             done
           echo "Fetched schema files:"
           ls -1 schemas
