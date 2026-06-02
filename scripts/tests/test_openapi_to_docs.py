@@ -5,8 +5,21 @@ from pathlib import Path
 import pytest
 
 from src.ocs_docs.openapi_to_docs import (
+    OpenAPIToMarkdownConverter,
     discover_version_schemas,
 )
+
+SAMPLE_SCHEMA = {
+    "openapi": "3.0.0",
+    "info": {"title": "Dimagi Chatbots", "version": "1", "description": "Experiments with LLMs"},
+    "tags": [{"name": "Channels", "description": "Manage channels"}],
+    "paths": {
+        "/api/channels/": {
+            "get": {"tags": ["Channels"], "summary": "List channels", "responses": {"200": {"description": "ok"}}},
+            "post": {"tags": ["Channels"], "summary": "Create channel", "responses": {"201": {"description": "made"}}},
+        }
+    },
+}
 
 
 def _write(path: Path, text: str = "openapi: 3.0.0\ninfo:\n  title: T\n  version: '1'\npaths: {}\n"):
@@ -29,3 +42,20 @@ def test_discover_version_schemas_sorts_numerically(tmp_path):
 def test_discover_version_schemas_empty_dir_raises(tmp_path):
     with pytest.raises(ValueError, match="No schema files"):
         discover_version_schemas(tmp_path)
+
+
+def test_generate_version_index_has_links_and_table():
+    converter = OpenAPIToMarkdownConverter(SAMPLE_SCHEMA)
+
+    index_md = converter.generate_version_index("v1")
+
+    # Heading + API info
+    assert "# v1" in index_md
+    assert "Dimagi Chatbots" in index_md
+    # LLM-doc link to the tag .txt file (relative, new-tab attribute preserved)
+    assert "[Channels](./channels.txt){:target=\"_blank\"}" in index_md
+    assert "Manage channels" in index_md
+    # Endpoint summary table: header + both endpoints
+    assert "| Method | Path | Summary |" in index_md
+    assert "| GET | `/api/channels/` | List channels |" in index_md
+    assert "| POST | `/api/channels/` | Create channel |" in index_md

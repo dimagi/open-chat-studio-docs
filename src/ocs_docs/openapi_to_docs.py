@@ -145,6 +145,45 @@ class OpenAPIToMarkdownConverter:
 
         return generated_files
 
+    def generate_version_index(self, version: str) -> str:
+        """Generate the markdown index page for a single API version.
+
+        Includes the API title/version/description, a per-tag list linking to each
+        tag's ``.txt`` LLM doc, and an endpoint summary table grouped by tag.
+        """
+        tag_groups = self._group_endpoints_by_tag()
+
+        lines = [
+            f"# {version}",
+            "",
+            f"**{self.base_info['title']}** API version `{self.base_info['version']}`.",
+            "",
+        ]
+        if self.base_info.get("description"):
+            lines += [self.base_info["description"], ""]
+
+        # LLM-doc links per tag
+        lines += ["## LLM Docs", "", "Simplified per-tag references for LLM consumption:", ""]
+        for tag in sorted(tag_groups):
+            filename = self._generate_tag_filename(tag)
+            tag_info = self._get_tag_info(tag) or {}
+            suffix = f" — {tag_info['description']}" if tag_info.get("description") else ""
+            lines.append(f"* [{tag}](./{filename}.txt){{:target=\"_blank\"}}{suffix}")
+        lines.append("")
+
+        # Endpoint summary table grouped by tag
+        lines += ["## Endpoints", ""]
+        for tag in sorted(tag_groups):
+            lines += [f"### {tag}", "", "| Method | Path | Summary |", "| --- | --- | --- |"]
+            for endpoint in tag_groups[tag]:
+                method = endpoint["method"].upper()
+                path = endpoint["path"]
+                summary = endpoint["operation"].get("summary", "")
+                lines.append(f"| {method} | `{path}` | {summary} |")
+            lines.append("")
+
+        return "\n".join(lines)
+
     def _group_endpoints_by_tag(self) -> dict[str, list[dict[str, Any]]]:
         """
         Group all endpoints by their tags.
