@@ -24,9 +24,6 @@ The following media types are accepted:
 | Audio | AAC, MP4, MPEG, AMR, OGG | 16 MB |
 | Document | PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, TXT | 100 MB |
 
-!!! info "Limits are set by Meta, not OCS"
-    The size and format limits above are enforced by the Meta Cloud API. OCS does not impose additional caps. The same principle applies to Twilio and Turn.io — each provider defines its own accepted formats and size limits for inbound media.
-
 !!! warning "Size limits are enforced before sending"
     Files that exceed the per-type size limit are rejected before the send attempt is made. Ensure any media attached to bot responses falls within the limits above to avoid delivery failures.
 
