@@ -44,7 +44,7 @@ flowchart LR
 | Role | Capabilities |
 |------|-------------|
 | Team Admin / Member (with queue permissions) | Create and manage queues, add sessions, export results, manage assignees, view aggregates |
-| **Annotation Reviewer** | View and annotate queues they are assigned to only. Cannot manage queues, export, or access other app areas. |
+| **Annotation Reviewer** | View and annotate queues they are assigned to only, including viewing the chat sessions attached to each queue item. Cannot manage queues, export, or access other app areas. |
 
 !!! note "Annotation Reviewer role"
     The **Annotation Reviewer** role is designed for external annotators or team members who should only have access to their assigned annotation work — they won't see other parts of the application.

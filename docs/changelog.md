@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Jun 2, 2026
+* **CHANGE** The **Annotation Reviewer** role now includes chat-view permission by default, so reviewers can open the sessions attached to the queue items they're working on without needing the chat viewer role granted separately. Trace icons are also now only rendered for users who have permission to view traces.
+
 ## Jun 1, 2026
 * **NEW** WhatsApp channels now accept **inbound images and documents** across all three providers — Meta Cloud API, Twilio, and Turn.io. Incoming media is downloaded, persisted, attached to the session, and forwarded to the LLM alongside the user's message.
 * **BUG** Fixed a 404 that could occur when downloading attachments received over the email channel. The `ChatAttachment` record required by the authorized download endpoint was not being created during inbound email hydration, so links generated for the bot's attachments resolved to "not found".
