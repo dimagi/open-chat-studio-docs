@@ -178,7 +178,7 @@ class OpenAPIToMarkdownConverter:
             for endpoint in tag_groups[tag]:
                 method = endpoint["method"].upper()
                 path = endpoint["path"]
-                summary = endpoint["operation"].get("summary", "")
+                summary = endpoint["operation"].get("summary", "").replace("|", "\\|")
                 lines.append(f"| {method} | `{path}` | {summary} |")
             lines.append("")
 

@@ -59,3 +59,18 @@ def test_generate_version_index_has_links_and_table():
     assert "| Method | Path | Summary |" in index_md
     assert "| GET | `/api/channels/` | List channels |" in index_md
     assert "| POST | `/api/channels/` | Create channel |" in index_md
+
+
+def test_generate_version_index_escapes_pipes_in_summary():
+    schema = {
+        "openapi": "3.0.0",
+        "info": {"title": "T", "version": "1"},
+        "tags": [{"name": "Channels"}],
+        "paths": {
+            "/api/x/": {
+                "get": {"tags": ["Channels"], "summary": "List a | b channels", "responses": {"200": {"description": "ok"}}},
+            }
+        },
+    }
+    index_md = OpenAPIToMarkdownConverter(schema).generate_version_index("v1")
+    assert r"| GET | `/api/x/` | List a \| b channels |" in index_md
