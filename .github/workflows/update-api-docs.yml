@@ -57,7 +57,9 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
-          if git diff --quiet docs/api/; then
+          # --porcelain catches untracked files too, so a brand-new version
+          # directory (e.g. docs/api/v2/) is detected, not just edits to tracked files.
+          if [ -z "$(git status --porcelain docs/api/)" ]; then
             echo "has_changes=false" >> $GITHUB_OUTPUT
           else
             echo "has_changes=true" >> $GITHUB_OUTPUT
