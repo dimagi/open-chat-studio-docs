@@ -81,6 +81,9 @@ In addition to manually uploading documents to a collection, you can also config
 
 The primary advantage of document sources over manual uploads is that Open Chat Studio can check for updates periodically, which eliminates the need for manual updates.
 
+!!! note "Document-source updates reach published bots automatically"
+    When a document-source sync runs and updates the collection's content, those changes are applied to your published bot without requiring a republish. See [Collections and published bots](./index.md#collections-and-published-bots) for more detail.
+
 The following document source types are currently supported:
 
 ### :simple-confluence: Confluence

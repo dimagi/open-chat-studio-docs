@@ -5,6 +5,7 @@ hide:
 
 # Changelog
 ## Jun 3, 2026
+* **CHANGE** Published chatbots now automatically reflect updates to their linked collections — scheduled document-source syncs to RAG indexes and manual edits to media (attachment) collections — instead of staying pinned to the snapshot captured at publish time. Existing published bots pick up this live behaviour the next time they're republished.
 * **NEW** The trace table now has a **Session ID** filter, and quick links let you jump from a trace detail page or a chatbot session transcript straight to a trace table pre-filtered to that session, chatbot, or participant.
 * **BUG** Fixed a crash that could occur with Azure text-to-speech when a voice was asked to speak text in a language it doesn't support. Azure could return a corrupted audio file in this case; the bot now detects the invalid output and gracefully falls back to a text response instead of erroring out.
 
