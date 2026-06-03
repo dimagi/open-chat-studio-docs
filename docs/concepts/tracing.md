@@ -8,6 +8,20 @@ Open Chat Studio provides **builtin tracing** for all users. You can optionally 
 
 Builtin tracing is always available — no feature flag or external service is required. A trace is recorded automatically for every conversation turn.
 
+### Trace Table
+
+The trace table lists every recorded trace for your team. You can filter the table by:
+
+- **Chatbot** — show only traces from a specific chatbot
+- **Session ID** — show only traces from a single conversation session
+- **Participant** — show only traces for a specific participant
+
+You can reach a pre-filtered trace table from several places in Open Chat Studio:
+
+- From a **trace detail page**, use the quick links to jump to all traces for that session, chatbot, or participant.
+- From a **session transcript**, use the "View traces" link to open the trace table pre-filtered to that session.
+- From the **chatbot list or detail page**, use the "View chatbot traces" link to open the trace table pre-filtered to that chatbot.
+
 Each builtin trace captures:
 
 - **Input** — the message sent by the participant
