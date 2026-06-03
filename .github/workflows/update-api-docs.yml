@@ -36,8 +36,7 @@ jobs:
       - name: Fetch OpenAPI schema directory
         env:
           # Path to the per-version schema directory in the OCS repo.
-          # Change this one line once OCS finalizes the location.
-          API_SCHEMA_DIR: api-schema
+          API_SCHEMA_DIR: api-schemas
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
