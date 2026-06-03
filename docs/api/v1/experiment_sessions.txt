@@ -1,7 +1,8 @@
-API: Dimagi Chatbots v1
-Description: Experiments with AI, GPT and LLMs
+API: Open Chat Studio v1
+Description: Build, deploy and monitor chatbots.
 
 TAG: Experiment Sessions
+Description: Manage chatbot sessions including session state, and session tags.
 
 ENDPOINTS:
 
