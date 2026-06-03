@@ -28,7 +28,7 @@ The collection *structure* (which collections are linked to which nodes) remains
     Because collection content is live, adding files to a collection or waiting for a document-source sync no longer marks your bot as having unpublished changes. Only changes to the bot's pipeline configuration and settings are tracked as pending changes.
 
 !!! warning "Existing published bots"
-    This live-collection behaviour applies to bots republished after this change was introduced. Bots that were published before retain their previous frozen collection snapshot until the next time they are republished.
+    This live-collection behaviour applies to bots republished after this change was introduced (2026-06-03). Bots that were published before retain their previous frozen collection snapshot until the next time they are republished.
 
 ## Chatting to the unreleased version
 For testing, if you want to chat with the unreleased draft chatbot, go to the chatbot home page and click the speech bubble icon in the top-right corner. In the dropdown, select "Unreleased Version" instead of "Published Version" to open a web chat. 
