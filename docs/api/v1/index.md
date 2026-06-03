@@ -1,20 +1,20 @@
 # v1
 
-**Dimagi Chatbots** API version `1`.
+**Open Chat Studio** API version `1`.
 
-Experiments with AI, GPT and LLMs
+Build, deploy and monitor chatbots.
 
 ## LLM Docs
 
 Simplified per-tag references for LLM consumption:
 
-* [Channels](./channels.txt){:target="_blank"}
+* [Channels](./channels.txt){:target="_blank"} — Trigger bot messages or deliver messages directly to users on a channel.
 * [Chat](./chat.txt){:target="_blank"} — The Chat API is designed to be used for integrating chatbots into external systems.
-* [Experiment Sessions](./experiment_sessions.txt){:target="_blank"}
-* [Experiments](./experiments.txt){:target="_blank"}
-* [Files](./files.txt){:target="_blank"}
-* [OpenAI](./openai.txt){:target="_blank"}
-* [Participants](./participants.txt){:target="_blank"}
+* [Experiment Sessions](./experiment_sessions.txt){:target="_blank"} — Manage chatbot sessions including session state, and session tags.
+* [Experiments](./experiments.txt){:target="_blank"} — List and retrieve chatbots (formerly 'experiments').
+* [Files](./files.txt){:target="_blank"} — Download the content of files associated with chat messages.
+* [OpenAI](./openai.txt){:target="_blank"} — OpenAI-compatible endpoints for interacting with chatbots.
+* [Participants](./participants.txt){:target="_blank"} — Manage participants, their data, and their schedules.
 
 ## Endpoints
 

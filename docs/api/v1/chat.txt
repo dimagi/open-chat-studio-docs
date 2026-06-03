@@ -1,5 +1,5 @@
-API: Dimagi Chatbots v1
-Description: Experiments with AI, GPT and LLMs
+API: Open Chat Studio v1
+Description: Build, deploy and monitor chatbots.
 
 TAG: Chat
 Description: 
