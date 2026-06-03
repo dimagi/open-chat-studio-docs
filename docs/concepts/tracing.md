@@ -22,9 +22,6 @@ You can reach a pre-filtered trace table from several places in Open Chat Studio
 - From a **session transcript**, use the "View traces" link to open the trace table pre-filtered to that session.
 - From the **chatbot list or detail page**, use the "View chatbot traces" link to open the trace table pre-filtered to that chatbot.
 
-!!! note
-    Quick links to the trace table are only shown to users who have permission to view traces.
-
 Each builtin trace captures:
 
 - **Input** — the message sent by the participant
