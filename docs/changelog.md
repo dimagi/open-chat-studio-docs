@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Jun 3, 2026
+* **NEW** The trace table now has a **Session ID** filter, and quick links let you jump from a trace detail page or a chatbot session transcript straight to a trace table pre-filtered to that session, chatbot, or participant.
+
 ## Jun 2, 2026
 * **CHANGE** The **Annotation Reviewer** role now includes chat-view permission by default, so reviewers can open the sessions attached to the queue items they're working on without needing the chat viewer role granted separately. Trace icons are also now only rendered for users who have permission to view traces.
 * **BUG** Bot messages pushed directly through the [Trigger Bot Message](https://www.openchatstudio.com/api/docs/#tag/Channels/operation/trigger_bot_message) API with `message_text` (verbatim delivery, no LLM) are now captured in tracing alongside LLM-generated messages, so they appear in the session trace and observability views.
