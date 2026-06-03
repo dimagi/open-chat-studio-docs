@@ -82,4 +82,4 @@ User segment: {session_state.remote_context.user_segment}
 ```
 
 !!! note "Remote Context Availability"
-    The `remote_context` key in session state is only populated when explicitly provided via the API when sending messages. If no context is passed, this key will not be present in the session state. See the [Chat API documentation](../api/chat.txt) for details on passing context with messages.
+    The `remote_context` key in session state is only populated when explicitly provided via the API when sending messages. If no context is passed, this key will not be present in the session state. See the [Chat API documentation](../api/v1/chat.txt) for details on passing context with messages.

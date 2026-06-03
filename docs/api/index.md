@@ -52,14 +52,11 @@ To ensure optimal performance:
 - Use pagination for large data sets
 
 
-## LLM Docs
+## Versions
 
-The following documents are a simplified version of the API for consumption by LLMs:
+The API is versioned. Select a version below for its endpoint reference and simplified
+LLM docs:
 
-* [Channels](./channels.txt){:target="_blank"}
-* [Chat](./chat.txt){:target="_blank"}
-* [Sessions](./experiment_sessions.txt){:target="_blank"}
-* [Experiments](./experiments.txt){:target="_blank"}
-* [Files](./files.txt){:target="_blank"}
-* [OpenAI](./openai.txt){:target="_blank"}
-* [Participants](./participants.txt){:target="_blank"}
+<!-- api-versions:start -->
+* [v1](v1/index.md)
+<!-- api-versions:end -->
