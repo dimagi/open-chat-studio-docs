@@ -102,6 +102,8 @@ nav:
       - Create & Publish Versions: tutorials/versioning_steps.md
   - How-to Guides:
       - how-to/index.md
+      - Choose an LLM Model: how-to/choose_llm_model.md
+      - Adjust LLM Node Model Parameters: how-to/adjust_llm_node_model_parameters.md
       - how-to/workflow_cookbook.md
       - how-to/add_a_knowledge_base.md
       - how-to/deploy_to_different_channels.md
@@ -130,6 +132,7 @@ nav:
         - concepts/prompt_variables.md
         - concepts/source_material.md
         - concepts/versioning.md
+        - concepts/max_tokens.md
         - concepts/llm_custom_action.md
         - concepts/consent.md
         - concepts/channels.md
@@ -169,6 +172,7 @@ nav:
   - Tech Hub:
     - tech-hub/index.md
     - Tools Reference: tech-hub/tools.md
+    - Model Configuration: tech-hub/model_configuration.md
     - Python Node: tech-hub/python_node.md
     - Render a Template and Send an Email Nodes: tech-hub/template_and_email_nodes.md
     - Call External APIs:
@@ -178,7 +182,6 @@ nav:
         - tech-hub/custom_action/index.md
         - Custom Action Health: tech-hub/custom_action/health_custom_action.md
         - Custom Action Testing: tech-hub/custom_action/test_custom_action.md
-
     - OCS API:
         - api/index.md
         - api/getting_started_with_oauth.md
