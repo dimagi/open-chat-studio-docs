@@ -45,7 +45,7 @@ Tokens are important because they determine the cost and the processing complexi
 
 ### Max Token Limit
 
-The max token limit is the maximum number of tokens the LLM model can handle in a single interaction, including both the input (prompt) and output (response).
+See [Max Token Limit](max_token_limit.md) for a full explanation of how the context window is shared between input and output tokens.
 
 ### LLM Model Parameters
 #### Temperature
@@ -59,7 +59,7 @@ A simple rule of thumb: **temperature is for style**.
 
 #### Effort
 
-Effort (sometimes called reasoning effort) controls how much internal reasoning a model applies before answering. It is used by reasoning models — models designed to think through problems step-by-step before producing a response.
+Effort (sometimes called **reasoning effort**) controls how much internal reasoning a model applies before answering. It is used by reasoning models — models designed to think through problems step-by-step before producing a response.
 
 - A **lower effort** level is faster and more economical — suitable for straightforward tasks.
 - A **higher effort** level produces more considered answers — suitable for complex analysis or multi-step problems.
@@ -72,5 +72,5 @@ A simple rule of thumb: **effort is for substance**.
     First do the tutorial on [creating your first chatbot](../tutorials/first_chatbot.md) and then see more about using the [LLM Node](../concepts/pipelines/nodes.md#llm-node) in a chatbot.
 
 !!! tip "Adjust LLM behavior"
-    For step-by-step guidance on tuning **temperature, effort, and token limits** for a LLM, see the [Adjust LLM Mode Parameters](../how-to/adjust_llm_node_settings.md) how-to guide.
+    For step-by-step guidance on tuning **temperature, effort, and token limits** for a LLM, see the [Adjust LLM Model Parameters](../how-to/adjust_llm_node_settings.md) how-to guide.
 
