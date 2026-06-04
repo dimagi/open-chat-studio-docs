@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Jun 4, 2026
+* **CHANGE** The legacy embedded web chat endpoints (the old `/embed/start/` iframe flow) are now deprecated and will be removed on **2026-08-03**. Responses from these endpoints now include `Deprecation`, `Sunset`, and successor `Link` headers per RFC 8594. Sites still embedding chat via the old iframe flow should migrate to the current [chat widget](https://docs.openchatstudio.com/chat_widget/).
+
 ## Jun 3, 2026
 * **CHANGE** Published chatbots now automatically reflect updates to their linked collections — scheduled document-source syncs to RAG indexes and manual edits to media (attachment) collections — instead of staying pinned to the snapshot captured at publish time. Existing published bots pick up this live behaviour the next time they're republished.
 * **NEW** The trace table now has a **Session ID** filter, and quick links let you jump from a trace detail page or a chatbot session transcript straight to a trace table pre-filtered to that session, chatbot, or participant.
