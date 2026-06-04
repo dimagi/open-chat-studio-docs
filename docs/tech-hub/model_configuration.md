@@ -25,7 +25,7 @@ Applies to general-purpose models (GPT-4o, Claude Sonnet/Opus without thinking, 
 
 ### Effort (reasoning effort)
 
-Controls the token budget for a reasoning model's internal chain-of-thought. Temperature is mutually exclusive with effort — OCS hides temperature on models that use effort (OpenAI GPT-5 series, Anthropic Claude Opus/Sonnet 4.6 with thinking enabled).
+Controls the token budget for a reasoning model's internal chain-of-thought. Temperature is mutually exclusive with effort — OCS hides temperature on models that use effort (OpenAI GPT-5 series, Anthropic Claude models with thinking enabled).
 
 | Level    | What it does                                                                                        |
 |----------|-----------------------------------------------------------------------------------------------------|
@@ -34,7 +34,7 @@ Controls the token budget for a reasoning model's internal chain-of-thought. Tem
 | `high`   | More thorough reasoning — useful for complex analysis or multi-step problems.                       |
 | `max`    | Maximum reasoning budget. Slowest and most expensive.                                               |
 
-**Provider notes:** OpenAI exposes this as `reasoning_effort`. Anthropic's Claude 4.6 models use adaptive thinking, where the model self-allocates budget per turn within the effort level you set. Gemini 2.5+ exposes a thinking budget. OCS maps all of these to the same four levels.
+**Provider notes:** OpenAI exposes this as `reasoning_effort`. Anthropic's Claude models use adaptive thinking, where the model self-allocates budget per turn within the effort level you set. Gemini's thinking-capable models expose a thinking budget. OCS maps all of these to the same four levels.
 
 ### Max output tokens
 

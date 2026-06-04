@@ -20,8 +20,6 @@ This guide steps you through adjusting the LLM model parameters on an [LLM node]
 1. In the node settings, locate the **LLM Model** dropdown.
 2. Select the model you want to use.
 
-Not sure which model to pick? See [Choose an LLM Model](choose_llm_model.md).
-
 ## Step 3 — Adjust temperature or effort
 
 Once you select an LLM model, Open Chat Studio shows only the settings that apply to it.
@@ -50,7 +48,7 @@ Select a level from the dropdown:
 !!! tip
     Higher effort levels cost more tokens and take longer to respond. Start with `medium` and only raise it if answers are not thorough enough.
 
-## Step 4 — If the model shows a Max output tokens setting 
+## Step 4 — Adjust max output tokens (if shown)
 
 The **Max output tokens** field caps how long the model's response can be. Leave it at the default unless you have a specific reason to limit response length.
 
