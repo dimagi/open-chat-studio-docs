@@ -71,6 +71,9 @@ A simple rule of thumb: **effort is for substance**.
 !!! tip "Using an LLM in a chatbot"
     First do the tutorial on [creating your first chatbot](../tutorials/first_chatbot.md) and then see more about using the [LLM Node](../concepts/pipelines/nodes.md#llm-node) in a chatbot.
 
+!!! tip "Choose an LLM model"
+    For guidance on matching your chatbot's purpose to the right model type, see [Choose an LLM Model](../how-to/choose_llm_model.md).
+
 !!! tip "Adjust LLM behavior"
     For step-by-step guidance on tuning **temperature, effort, and token limits** for a LLM, see the [Adjust LLM Model Parameters](../how-to/adjust_llm_node_settings.md) how-to guide.
 

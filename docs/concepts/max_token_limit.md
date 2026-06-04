@@ -36,6 +36,6 @@ If you see truncated or empty responses from a high-effort run, raise the Max To
 
 ## Going Further
 
-- [Adjust the Max Token Limit](../how-to/adjust_llm_node_settings.md#max-token-limit) — step-by-step instructions
+- [Adjust LLM Node Model Parameters](../how-to/adjust_llm_node_settings.md) — step-by-step instructions including Max Token Limit
 - [LLM Model Parameters](../tech-hub/llm_model_parameters.md#reasoning-and-adaptive-thinking) — provider-level detail on reasoning and thinking budgets
 - [History Mode](pipelines/history.md) — how conversation history affects token usage
