@@ -24,7 +24,7 @@ Not sure which model to pick? See [Choose an LLM Model](choose_llm_model.md).
 
 ## Step 3 — Adjust temperature or effort
 
-Once you select a LLM model, Open Chat Studio shows only the settings that apply to it.
+Once you select an LLM model, Open Chat Studio shows only the settings that apply to it.
 
 ### If the model shows a Temperature setting
 
@@ -50,12 +50,12 @@ Select a level from the dropdown:
 !!! tip
     Higher effort levels cost more tokens and take longer to respond. Start with `medium` and only raise it if answers are not thorough enough.
 
-## Step 4 — If the model shows max output tokens (optional)
+## Step 4 — If the model shows a Max output tokens setting 
 
-The **Max output tokens** field caps how long the model's response can be.
+The **Max output tokens** field caps how long the model's response can be. Leave it at the default unless you have a specific reason to limit response length.
 
-- Leave it at the default unless you have a specific reason to limit response length.
-- If you are using a reasoning model with high or max effort, set this value high enough to give the model room to think. If it is too low, responses may be cut off. See [Max Token Limit](../concepts/max_tokens.md) for a full explanation.
+!!! warning "Reasoning models"
+    If you are using a reasoning model (one that shows an Effort setting), set this value higher than you would for a standard model. A value that is too low can result in no visible output at all. See [Max Output Tokens](../tech-hub/model_configuration.md#max-output-tokens) for details.
 
 ## Step 5 — Save your changes
 
@@ -68,14 +68,13 @@ The **Max output tokens** field caps how long the model's response can be.
 Your team may not have that provider configured. Ask your team administrator or see [LLM Providers](../concepts/team/llm_providers.md).
 
 **Responses are being cut off.**
-The max output token limit may be too low. Raise it in the node settings. If you are using a reasoning model, this is especially common — see [Max Token Limit](../concepts/max_tokens.md).
+The max output token limit may be too low. Raise it in the node settings. If you are using a [reasoning model](../tech-hub/model_configuration.md), this is especially common — see [Model Configuration Reference](../tech-hub/model_configuration.md#max-output-tokens) for details.
 
 **I changed temperature but the answers feel the same.**
-Check that you are not using a reasoning model — those use effort instead of temperature. Open Chat Studio hides the temperature setting on reasoning models.
+Check that you are not using a reasoning model — those use effort instead of temperature. OCS hides the temperature setting on reasoning models.
 
 ## Related pages
 
 - [Choose an LLM Model](choose_llm_model.md) — guidance on picking the right model for your use case
-- [Large Language Models](../concepts/llm.md) — conceptual overview of temperature, effort, and tokens
-- [Max Token Limit](../concepts/max_tokens.md) — understanding token budgets
-- [Model Configuration Reference](../tech-hub/model_configuration.md) — full parameter details for advanced users
+- [Large Language Models](../concepts/llm.md) — conceptual overview of temperature and effort
+- [Model Configuration Reference](../tech-hub/model_configuration.md) — full parameter details including max output tokens

@@ -4,67 +4,48 @@ title: Model Configuration Reference
 
 # Model Configuration Reference
 
-This page is a technical reference for the model configuration parameters available on LLM nodes in Open Chat Studio. It is aimed at advanced users and developers who need to understand the precise behaviour of each parameter, provider-level differences, and constraints.
+This page is a technical reference for the LLM model parameters available on [LLM nodes](../concepts/pipelines/nodes.md#llm-node) in Open Chat Studio. It is aimed at advanced users and developers who need to understand the precise behaviour of each parameter, LLM provider-level differences, and constraints.
 
 For a conceptual introduction, see [Large Language Models](../concepts/llm.md). For step-by-step instructions on changing these settings in the UI, see [Adjust LLM Node Model Parameters](../how-to/adjust_llm_node_model_parameters.md).
 
 ## Supported parameters
 
-Different models expose different parameters. Open Chat Studio shows only the parameters a selected model actually supports — unsupported fields are hidden to prevent silent misconfiguration.
+Different models expose different parameters. OCS shows only the parameters a selected model actually supports — unsupported fields are hidden to prevent silent misconfiguration.
 
 ### Temperature
 
-Temperature is a floating-point value that controls the probability distribution over the model's next-token predictions.
-
 | Value | Behaviour |
 |-------|-----------|
-| `0.0` | Fully deterministic (greedy decoding). The highest-probability token is always chosen. |
-| `0.1–0.4` | Low randomness. Consistent, predictable outputs. Good for classifiers and factual Q&A. |
+| `0.0` | Fully deterministic (greedy decoding). |
+| `0.1–0.4` | Low randomness. Consistent, predictable outputs. |
 | `0.7` | Default. Balanced between coherence and variety. |
-| `0.8–1.0` | High randomness. More varied and creative outputs. May produce less coherent answers on factual tasks. |
+| `0.8–1.0` | High randomness. More varied and creative outputs. |
 
-**Applicable models:** General-purpose chat models including GPT-4o, Claude Sonnet/Opus without thinking enabled, Gemini, Groq, Perplexity, and DeepSeek.
-
-**Not applicable:** Reasoning models that use effort (see below). On these models, the provider controls internal sampling; Open Chat Studio hides the temperature field.
+Applies to general-purpose models (GPT-4o, Claude Sonnet/Opus without thinking, Gemini, Groq, Perplexity, DeepSeek). Hidden on reasoning models — see [Effort](#effort-reasoning-effort) below.
 
 ### Effort (reasoning effort)
 
-Effort is a discrete level that controls the token budget allocated to a reasoning model's internal chain-of-thought before it produces a visible response.
+Controls the token budget for a reasoning model's internal chain-of-thought. Temperature is mutually exclusive with effort — OCS hides temperature on models that use effort (OpenAI GPT-5 series, Anthropic Claude Opus/Sonnet 4.6 with thinking enabled).
 
-| Level    | What it does                                                                                          |
-|----------|-------------------------------------------------------------------------------------------------------|
-| `low`    | Fastest and cheapest. Short reasoning before answering — good for routine questions.                  |
-| `medium` | A balanced default for most tasks.                                                                    |
-| `high`   | More thorough reasoning — useful for complex analysis, multi-step problems, or careful code review.   |
-| `max`    | Maximum reasoning budget. Slowest and most expensive, but produces the most considered answers.       |
+| Level    | What it does                                                                                        |
+|----------|-----------------------------------------------------------------------------------------------------|
+| `low`    | Fastest and cheapest. Short reasoning — good for routine questions.                                 |
+| `medium` | Balanced default for most tasks.                                                                    |
+| `high`   | More thorough reasoning — useful for complex analysis or multi-step problems.                       |
+| `max`    | Maximum reasoning budget. Slowest and most expensive.                                               |
 
-Higher effort levels generally produce better answers on hard problems but cost more (both in tokens and latency). For simple conversational tasks, low or medium is almost always enough — turning the knob up doesn't make a friendly chitchat bot friendlier, just
-slower.
+**Provider notes:** OpenAI exposes this as `reasoning_effort`. Anthropic's Claude 4.6 models use adaptive thinking, where the model self-allocates budget per turn within the effort level you set. Gemini 2.5+ exposes a thinking budget. OCS maps all of these to the same four levels.
 
-#### When effort is set, temperature is ignored
+### Max output tokens
 
-On models that use effort, OpenAI and Anthropic do not allow temperature or `top_p` to be
-configured at the same time — the reasoning loop manages randomness internally. Open Chat
-Studio reflects this by hiding the temperature field on these models so you don't have to
-think about it.
+Hard cap on generated output tokens only — does not affect input consumption. Truncates mid-sentence if reached and there can be no explicit error explaining this. OCS provides a default based on the LLM provider default (this varies by model and may be conservative).
 
-Models that use effort include OpenAI's GPT-5 / GPT-5.2 series and Anthropic's Claude Opus
-4.6 and Sonnet 4.6 with thinking enabled.
+Distinct from the model's [context window](../concepts/max_tokens.md), which limits combined input + output. Both limits apply simultaneously.
 
-### Reasoning and adaptive thinking
-"Reasoning" is the broader name for the same idea as effort: letting the model spend extra
-tokens *thinking* before it produces the answer the user sees. Different providers expose
-this slightly differently:
-
-- **OpenAI** calls it `reasoning_effort` and uses the level system above.
-- **Anthropic** offers **adaptive thinking** on its Claude 4.6 models. Adaptive thinking
-  lets the model decide how much to think on a per-message basis, guided by the effort
-  level you set. Easy turns finish quickly; hard turns get more thinking budget.
-- **Google Gemini** exposes a thinking budget on some Gemini 2.5+ models.
-
-You normally don't need to think about these provider-level differences — Open Chat Studio
-abstracts them into the same effort levels (low/medium/high/max) wherever the model supports
-them.
+!!! warning "Reasoning models — shared budget"
+    On reasoning models, thinking tokens and visible-reply tokens draw from the same max output tokens budget. If the thinking phase exhausts the budget, the model produces no visible output — silently.
+    
+    For `high` or `max` effort, a safe starting point is 2–4× your expected reply length.
 
 ## Adding custom models
 
@@ -73,7 +54,7 @@ If a model is available from a supported provider but is not listed in Open Chat
 ## Related pages
 
 - [Large Language Models](../concepts/llm.md) — conceptual overview
-- [Max Token Limit](../concepts/max_tokens.md) — token budget concepts
+- [Max Token Limit](../concepts/max_tokens.md) — understanding the model's context window
 - [Choose an LLM Model](../how-to/choose_llm_model.md) — guidance for non-technical users
 - [Adjust LLM Node Model Parameters](../how-to/adjust_llm_node_model_parameters.md) — UI step-by-step guide
 - [LLM Providers](../concepts/team/llm_providers.md) — configuring provider credentials

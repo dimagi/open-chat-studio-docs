@@ -43,7 +43,7 @@ the [How-to guides](../how-to/index.md).
 : Large language models are a type of AI model that can generate human-like text, images and audio.
 
 [Max Token Limit](max_tokens.md)
-: The maximum number of tokens an LLM can handle in a single interaction, covering both the input prompt and the output response.
+: The fixed maximum number of tokens a model can process in one turn, covering both the input prompt and the output response. This is a property of the model itself and cannot be changed.
 
 [Messaging Provider](team/messaging_providers.md)
 : Messaging providers hold the configuration required to send messages to users on a specific channel.

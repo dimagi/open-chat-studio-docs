@@ -32,7 +32,7 @@ Tokens are the building blocks of text that the LLM processes. A token might be 
 **Example:** The sentence *"Chatbots are cool."* is broken into 4 tokens:
 `Chatbots | are | cool | .`
 
-Tokens are important because they determine the cost and the processing complexity of an LLM's response. For more on how token limits affect your chatbot, see [Max Token Limit](max_tokens.md).
+Tokens are important because they determine the cost and the processing complexity of an LLM's response. For more on how the model's token limit affects your chatbot, see [Max Token Limit](max_tokens.md).
 
 ## Model Parameters: Temperature and Effort
 
