@@ -2,15 +2,16 @@
 
 Building chatbots in Open Chat Studio requires access to [LLMs](../llm.md). This requires configuring your [Teams](index.md) by providing credentials needed to access the LLM models provided by services such as OpenAI, Anthropic, and Google.
 
-Open Chat Studio currently supports the following providers:
+Open Chat Studio is developed to support a range of LLMs. The platform is designed to be flexible and can work with any
+LLM that has an API. Open Chat Studio currently supports the following providers:
 
-* OpenAI
-* Anthropic
+* [OpenAI](https://platform.openai.com/docs/models)
+* [Anthropic](https://docs.anthropic.com/en/docs/about-claude/models)
+* [Azure OpenAI](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=python-secure%2Cglobal-standard%2Cstandard-chat-completions)
+* [Groq](https://console.groq.com/docs/models)
+* [Perplexity](https://docs.perplexity.ai/guides/model-cards)
+* [DeepSeek](https://api-docs.deepseek.com/quick_start/pricing)
 * Google Gemini
-* Azure OpenAI
-* Groq
-* Perplexity
-* DeepSeek
 * Voyage AI (embedding only)
 
 ## LLM Models
@@ -23,7 +24,7 @@ Should the service provider configuration not include a model which is available
 
 If your LLM provider list doesn't have a pre-configured model you want to use, you can add it under the "Custom LLM Models" section.
 
-See the [How to guide for adding custom LLM models](../../tutorials/configure_providers.md)
+See the [How to guide for adding custom LLM models](../../tutorials/configure_providers.md#adding-custom-llm-models)
 
 ## Model Lifecycle and Deprecation
 

@@ -35,15 +35,7 @@ If you are unsure, start with a general-purpose model and the default settings. 
 
 ## Provider choice
 
-The model you choose determines which AI provider is used. Open Chat Studio supports the following providers:
-
-- [OpenAI](https://platform.openai.com/docs/models)
-- [Azure OpenAI](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models)
-- [Anthropic](https://docs.anthropic.com/en/docs/about-claude/models)
-- [Google Gemini](https://ai.google.dev/gemini-api/docs/models)
-- [Groq](https://console.groq.com/docs/models)
-- [Perplexity](https://docs.perplexity.ai/guides/model-cards)
-- [DeepSeek](https://api-docs.deepseek.com/quick_start/pricing)
+The model you choose determines which AI provider is used. For the full list of supported providers, see [LLM Providers](../concepts/team/llm_providers.md).
 
 Your team must have credentials configured for a provider before you can use its models. If the model you want is not listed, check with your team administrator or see the guide for [configuring LLM providers](../tutorials/configure_providers.md).
 
