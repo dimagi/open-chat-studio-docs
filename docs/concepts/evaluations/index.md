@@ -35,6 +35,12 @@ flowchart LR
     evaluator2 --> structured_output
 ```
 
+## Clearing Run History
+
+Users with delete permission for evaluation runs can remove an evaluation config's entire run history at once using the **Clear all** button on the runs page. Clearing run history also removes any tags the evaluator applied to chats or messages, returning those targets to the state they were in before the evaluator ran. Manually applied tags are not affected.
+
+For details on how evaluator-managed tags work, see [Tag Rules](./evaluators.md#tag-rules).
+
 ## Session Retention
 
 When evaluations are run with chatbot generation enabled, temporary sessions are created to store the generated responses and conversation context. These evaluation sessions are automatically deleted after **30 days**.

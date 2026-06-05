@@ -127,6 +127,17 @@ Given the output schema from the example above, you could define the following r
 
 With these rules, any evaluation run will automatically tag messages or sessions that meet the conditions, without requiring manual review of every row.
 
+**Clearing run history**
+
+The evaluation runs page includes a **Clear all** button that deletes the entire run history for an evaluation config in a single action. This button is only shown to users who have delete permission for evaluation runs.
+
+Clearing run history also removes the tags that those runs applied to their targets. Only tags that were applied by the evaluator's tag rules are removed — tags that a person added by hand are left untouched.
+
+!!! warning "Clearing run history is permanent"
+    Deleted runs and their results cannot be recovered. Export any results you need to keep before using **Clear all**.
+
+A confirmation prompt appears before the action runs.
+
 ### Python Evaluator
 
 The Python Evaluator allows custom code execution against each message.
