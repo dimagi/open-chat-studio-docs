@@ -22,6 +22,10 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 ## Changelog
 
+### v0.8.0 (2026-06-05)
+
+* Add a `session-id` parameter to resume an existing chat session. (Used internally within the Open Chat Studio platform.)
+
 ### v0.7.0 (2026-05-06)
 
 * Widget now persists its open/closed state across page navigations when `persistent-session` is enabled (the default)
