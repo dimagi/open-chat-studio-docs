@@ -65,8 +65,8 @@ stateDiagram-v2
     Pending --> InProgress : First annotation submitted
     InProgress --> Completed : Required reviews reached (single-reviewer queue)
     InProgress --> AwaitingResolution : Required reviews reached (multi-reviewer queue)
-    AwaitingResolution --> Completed : Admin marks one annotation authoritative
-    Completed --> AwaitingResolution : Admin clears the authoritative annotation
+    AwaitingResolution --> Completed : Reviewer marks one annotation authoritative
+    Completed --> AwaitingResolution : Reviewer clears the authoritative annotation
     Pending --> Flagged : Reviewer flags item
     InProgress --> Flagged : Reviewer flags item
     Flagged --> Pending : Manager unflags
@@ -85,9 +85,9 @@ stateDiagram-v2
 
 ## Resolving Multi-Reviewer Conflicts
 
-When a multi-reviewer queue collects all required reviews for an item, the item enters **Awaiting resolution** until a queue admin picks one annotation as the authoritative answer.
+When a multi-reviewer queue collects all required reviews for an item, the item enters **Awaiting resolution** until a reviewer picks one annotation as the authoritative answer.
 
-On the annotate-item page, queue admins see:
+On the annotate-item page, any annotation reviewer sees:
 
 - An amber **Awaiting resolution** banner at the top of the page
 - A **Mark authoritative** button next to each annotation in the annotations list
@@ -95,7 +95,7 @@ On the annotate-item page, queue admins see:
 Clicking **Mark authoritative** on an annotation flips the item to **Completed** and shows an **Authoritative** badge on that row (with a tooltip recording who marked it and when). Selecting a different annotation moves the badge — only one annotation per item can be marked authoritative at a time. Use **Clear authoritative** to return the item to **Awaiting resolution**.
 
 !!! tip "Why this matters"
-    Aggregate scores prefer the authoritative annotation when one is set; only when no annotation is authoritative do they fall back to averaging across all submitted annotations. Marking an authoritative answer therefore both resolves the conflict for the queue admin and ensures the queue's aggregate stats reflect the agreed answer.
+    Aggregate scores prefer the authoritative annotation when one is set; only when no annotation is authoritative do they fall back to averaging across all submitted annotations. Marking an authoritative answer therefore both resolves the conflict and ensures the queue's aggregate stats reflect the agreed answer.
 
 ## Read-Only View
 

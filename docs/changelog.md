@@ -5,6 +5,7 @@ hide:
 
 # Changelog
 ## Jun 5, 2026
+* **CHANGE** Any annotation reviewer (any team member) can now mark or unmark a submitted annotation as **authoritative**. This was previously restricted to queue admins.
 * **CHANGE** The **number of reviews required** on an annotation queue can now be edited even after annotation has started. Saving the new value recomputes the status of every queue item: raising the requirement can move completed items back to **Awaiting resolution**, while lowering it leaves unresolved multi-review items awaiting resolution rather than silently marking them complete. A confirmation dialog warns before the change is applied.
 
 ## Jun 4, 2026
