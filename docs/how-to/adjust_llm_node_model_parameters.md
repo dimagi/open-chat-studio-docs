@@ -58,7 +58,11 @@ The **Max output tokens** field caps how long the model's response can be. Leave
 !!! warning "Reasoning models"
     If you are using a reasoning model (one that shows an Effort setting), set this value higher than you would for a standard model. A value that is too low can result in no visible output at all. See [Max Output Tokens](../tech-hub/model_configuration.md#max-output-tokens) for details.
 
-## Step 5 — Save your changes
+## Step 5 — if the model shows reasoning / adaptive thinking
+
+Refer to [Model Configuration Reference](../tech-hub/model_configuration.md#adaptive-thinking) for more on these parameters.
+
+## Step 6 — Save your changes
 
 1. Click outside the edit settings dialog to save
 2. Test your chatbot to confirm the output looks as expected.

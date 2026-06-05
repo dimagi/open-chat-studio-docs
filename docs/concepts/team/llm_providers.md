@@ -12,7 +12,7 @@ LLM that has an API. Open Chat Studio currently supports the following providers
 * [Perplexity](https://docs.perplexity.ai/guides/model-cards)
 * [DeepSeek](https://api-docs.deepseek.com/quick_start/pricing)
 * [Google Gemini](https://ai.google.dev/gemini-api/docs/models)
-* Voyage AI (embedding only)
+* [Voyage AI (embedding only)](https://docs.voyageai.com/docs/embeddings)
 
 ## LLM Models
 
