@@ -13,7 +13,7 @@ This guide steps you through adjusting the LLM model parameters on an [LLM node]
 
 1. Open your pipeline or chatbot for editing.
 2. Click the LLM node you want to configure.
-3. Select "Advanced" to open up the settings panel
+3. Select "Advanced" to expand the settings panel
 
 ## Step 2 — Select a model
 
@@ -34,7 +34,7 @@ Temperature controls how creative or varied the responses are.
 
 ### If the model shows an Effort setting
 
-Effort (or Reasoning Effort) controls how much internal reasoning the model does before answering. It is available on reasoning models.
+Effort (or Reasoning Effort) controls how much internal reasoning the model does before answering. It is available on [reasoning models](../how-to/choose_llm_model.md#two-model-types).
 
 Select a level from the dropdown:
 
@@ -46,18 +46,21 @@ Select a level from the dropdown:
 | `max`    | The hardest problems where accuracy is more important than speed     |
 
 !!! tip
-    Higher effort levels cost more tokens and take longer to respond. Start with `medium` and only raise it if answers are not thorough enough.
+    Higher effort levels cost more tokens (see below) and take longer to respond. Start with `medium` and only raise it if answers are not thorough enough.
 
 ## Step 4 — Adjust max output tokens (if shown)
 
 The **Max output tokens** field caps how long the model's response can be. Leave it at the default unless you have a specific reason to limit response length.
+
+!!! note "Distinct from the max token limit"
+    It is a different limit from the model's [context window](../concepts/max_tokens.md) (ie. the max token limit), which limits combined input + output. Both limits apply simultaneously.
 
 !!! warning "Reasoning models"
     If you are using a reasoning model (one that shows an Effort setting), set this value higher than you would for a standard model. A value that is too low can result in no visible output at all. See [Max Output Tokens](../tech-hub/model_configuration.md#max-output-tokens) for details.
 
 ## Step 5 — Save your changes
 
-1. Click off the edit settings dialog to save
+1. Click outside the edit settings dialog to save
 2. Test your chatbot to confirm the output looks as expected.
 
 ## Troubleshooting
@@ -66,10 +69,10 @@ The **Max output tokens** field caps how long the model's response can be. Leave
 Your team may not have that provider configured. Ask your team administrator or see [LLM Providers](../concepts/team/llm_providers.md).
 
 **Responses are being cut off.**
-The max output token limit may be too low. Raise it in the node settings. If you are using a [reasoning model](../tech-hub/model_configuration.md), this is especially common — see [Model Configuration Reference](../tech-hub/model_configuration.md#max-output-tokens) for details.
+The max output token limit may be too low. Raise it in the node settings. If you are using a [reasoning model](../tech-hub/model_configuration.md), this is especially common — see [Model Configuration for max output token limit](../tech-hub/model_configuration.md#max-output-tokens) for details.
 
 **I changed temperature but the answers feel the same.**
-Check that you are not using a reasoning model — those use effort instead of temperature. OCS hides the temperature setting on reasoning models.
+Check that you are not using a reasoning model — those use effort instead of temperature.
 
 ## Related pages
 

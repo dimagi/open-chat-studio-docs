@@ -36,11 +36,11 @@ Tokens are important because they determine the cost and the processing complexi
 
 ## Model Parameters: Temperature and Effort
 
-Open Chat Studio exposes two main knobs for shaping how a model responds: **temperature** and **effort**. Which one is available depends on the model you choose.
+Open Chat Studio exposes two main "knobs" for shaping how a model responds: **temperature** and **effort**. Which one is available depends on the model you choose.
 
 **Temperature** controls how creative or varied the responses are. A low temperature produces consistent, predictable answers. A high temperature produces more varied and imaginative ones.
 
-**Effort** controls how much internal reasoning the model does before answering. It is used by reasoning models that work through problems step-by-step. You set it as a level: `low`, `medium`, `high`, or `max`.
+**Effort** controls how much internal "thinking" the model does before answering. It is used by [reasoning models](../how-to/choose_llm_model.md) that work through problems step-by-step. You set it as a level: `low`, `medium`, `high`, or `max`.
 
 These two parameters serve different purposes: temperature shapes *style*, effort shapes *substance*.
 

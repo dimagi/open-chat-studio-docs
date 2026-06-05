@@ -14,9 +14,6 @@ All models in Open Chat Studio fall into one of two categories.
 
 **Reasoning models** are designed for tasks that require careful, step-by-step thinking — such as analysis, coding assistance, or complex decision-making. Before producing a final answer, these models work through the problem internally. You control how much thinking they do with an *effort* setting. Examples include OpenAI's GPT-5 series and Anthropic's Claude Opus with thinking enabled.
 
-!!! note
-    You do not need to configure both settings. Each model type uses one or the other — Open Chat Studio only shows the settings that apply to the model you have selected. For what temperature and effort actually do, see [Model Parameters: Temperature and Effort](../concepts/llm.md#model-parameters-temperature-and-effort).
-
 ## Match your use case
 
 Use this table as a starting point when choosing a model type.
