@@ -34,7 +34,7 @@ Temperature controls how creative or varied the responses are.
 
 ### If the model shows an Effort setting
 
-Effort (or Reasoning Effort) controls how much internal reasoning the model does before answering. It is available on [reasoning models](../how-to/choose_llm_model.md#two-model-types).
+Effort (or Reasoning Effort) controls how much internal reasoning the model does before answering. It is available on [reasoning models](choose_llm_model.md#two-model-types).
 
 Select a level from the dropdown:
 
@@ -58,7 +58,7 @@ The **Max output tokens** field caps how long the model's response can be. Leave
 !!! warning "Reasoning models"
     If you are using a reasoning model (one that shows an Effort setting), set this value higher than you would for a standard model. A value that is too low can result in no visible output at all. See [Max Output Tokens](../tech-hub/model_configuration.md#max-output-tokens) for details.
 
-## Step 5 — if the model shows reasoning / adaptive thinking
+## Step 5 — Configure adaptive thinking (if shown)
 
 Refer to [Model Configuration Reference](../tech-hub/model_configuration.md#adaptive-thinking) for more on these parameters.
 
@@ -73,7 +73,7 @@ Refer to [Model Configuration Reference](../tech-hub/model_configuration.md#adap
 Your team may not have that provider configured. Ask your team administrator or see [LLM Providers](../concepts/team/llm_providers.md).
 
 **Responses are being cut off.**
-The max output token limit may be too low. Raise it in the node settings. If you are using a [reasoning model](../tech-hub/model_configuration.md), this is especially common — see [Model Configuration for max output token limit](../tech-hub/model_configuration.md#max-output-tokens) for details.
+The max output token limit may be too low. Raise it in the node settings. If you are using a [reasoning model](../how-to/choose_llm_model.md#two-model-types), this is especially common — see [Model Configuration for max output token limit](../tech-hub/model_configuration.md#max-output-tokens) for details.
 
 ## Related pages
 
