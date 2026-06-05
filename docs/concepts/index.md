@@ -42,7 +42,7 @@ the [How-to guides](../how-to/index.md).
 [Large Language Models (LLMs)](llm.md)
 : Large language models are a type of AI model that can generate human-like text, images and audio.
 
-[Max Token Limit](max_tokens.md)
+[Max Token Limit](llm.md#max-token-limit)
 : The fixed maximum number of tokens a model can process in one turn, covering both the input prompt and the output response. This is a property of the model itself and cannot be changed.
 
 [Messaging Provider](team/messaging_providers.md)

@@ -128,7 +128,6 @@ nav:
         - concepts/sessions.md
         - concepts/session_status.md
         - concepts/llm.md
-        - concepts/max_tokens.md
         - concepts/participant_data.md
         - concepts/prompt_variables.md
         - concepts/source_material.md

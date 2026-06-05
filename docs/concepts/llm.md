@@ -32,7 +32,13 @@ Tokens are the building blocks of text that the LLM processes. A token might be 
 **Example:** The sentence *"Chatbots are cool."* is broken into 4 tokens:
 `Chatbots | are | cool | .`
 
-Tokens are important because they determine the cost and the processing complexity of an LLM's response. For more on how the model's token limit affects your chatbot, see [Max Token Limit](max_tokens.md).
+Tokens are important because they determine the cost and the processing complexity of an LLM's response.
+
+## Max Token Limit
+
+Every AI model has a maximum token limit — also called its **context window**. Max Token Limit is a fixed property of the model and is listed alongside the model name when viewing the models for the [team's LLM providers](../concepts/team/llm_providers.md).
+
+The context window is the total number of tokens the model can work with in one turn: your prompt, the conversation history, and the model's reply all share the same budget. When the budget runs out, the request may be truncated or fail.
 
 ## Model Parameters: Temperature and Effort
 
