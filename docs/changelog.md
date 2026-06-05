@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Jun 5, 2026
+* **CHANGE** The **number of reviews required** on an annotation queue can now be edited even after annotation has started. Saving the new value recomputes the status of every queue item: raising the requirement can move completed items back to **Awaiting resolution**, while lowering it leaves unresolved multi-review items awaiting resolution rather than silently marking them complete. A confirmation dialog warns before the change is applied.
+
 ## Jun 4, 2026
 * **CHANGE** The legacy embedded web chat endpoints (the old `/embed/start/` iframe flow) are now deprecated and will be removed on **2026-08-03**. Responses from these endpoints now include `Deprecation`, `Sunset`, and successor `Link` headers per RFC 8594. Sites still embedding chat via the old iframe flow should migrate to the current [chat widget](https://docs.openchatstudio.com/chat_widget/).
 

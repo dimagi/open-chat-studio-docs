@@ -49,6 +49,27 @@ Navigate to **Annotation Queues** in the left sidebar and click **New Queue**.
 | **Completed** | All items have been reviewed |
 | **Archived** | Queue is closed and no longer active |
 
+## Changing Reviews Required After Annotation Starts
+
+You can change the **Reviews required** setting on a queue even after annotation is underway. Because this affects how item statuses are calculated, the system recomputes the status of every non-flagged item when you save the change.
+
+Before applying the change, a confirmation dialog summarises what will happen. Review it carefully before confirming.
+
+### Effects of raising the requirement
+
+Increasing **Reviews required** can move items that were previously **Completed** back to **In Progress** or **Awaiting resolution** — if they no longer have enough reviews to meet the new threshold.
+
+### Effects of lowering the requirement
+
+Decreasing **Reviews required** does not automatically complete items that still have unresolved reviews. Items where all required reviews are in but no authoritative annotation has been selected remain in **Awaiting resolution** until a queue admin picks one annotation as authoritative.
+
+### Switching to multi-reviewer mode
+
+When you increase **Reviews required** from 1 to more than 1, any authoritative flags that were set automatically by the system are cleared. Authoritative flags that a queue admin set manually are kept. Aggregate scores are refreshed after the change.
+
+!!! note
+    Flagged items are not affected by a change to **Reviews required** — their status remains **Flagged** until a manager unflags them.
+
 ## Adding Items
 
 Items can be added to a queue in three ways.
