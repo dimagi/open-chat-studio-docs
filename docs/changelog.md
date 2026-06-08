@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Jun 8, 2026
+* **NEW** Replaced the minimal landing page with a full marketing site for signed-out visitors, including Home, Use Cases, Community, Contact, and Open Opportunities pages. Signed-in users visiting `/` continue to be redirected to their dashboard.
+
 ## Jun 5, 2026
 * **CHANGE** Any annotation reviewer (any team member) can now mark or unmark a submitted annotation as **authoritative**. This was previously restricted to queue admins.
 * **NEW** Added a **Clear all** button to the evaluation runs page. Users with delete permission can wipe a config's entire run history in one action; this also un-applies the tags those runs added to their targets (chats and chat messages), returning them to their pre-evaluation state. Tags applied by hand are left untouched.
