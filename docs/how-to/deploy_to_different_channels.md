@@ -28,32 +28,24 @@ Open Chat Studio supports multiple WhatsApp providers. Choose the section below 
 
 ### Twilio and Turn.io
 
-#### Setting Up Your WhatsApp Channel
+#### Twilio
 
-1. **Add your WhatsApp number to the form** in the Open Chat Studio channels section.
+When you create or edit a WhatsApp channel using a Twilio provider, Open Chat Studio automatically configures the webhook in your Twilio messaging service. When you delete the channel, the webhook is cleared automatically. You do not need to copy or paste any webhook URL.
 
-2. **Configure the webhook URL in your provider:**
+!!! info "Sandbox numbers and other exceptions"
+    Automatic webhook configuration is not supported for Twilio sandbox numbers or in cases where OCS cannot reach the Twilio API. If auto-configuration fails, OCS will display manual setup instructions instead. Follow the steps in the [Twilio webhook configuration guide][3] and enter the following webhook URL in your messaging service settings:
 
-   The webhook URL is always: `https://openchatstudio.com/channels/whatsapp/incoming_message`
+    `https://openchatstudio.com/channels/whatsapp/incoming_message`
 
-   This URL is the same for all WhatsApp chatbots and channels on Open Chat Studio.
+#### Turn.io
 
-#### Provider-Specific Configuration
+Turn.io does not support automatic webhook configuration. After adding your WhatsApp number in Open Chat Studio, configure the webhook manually:
 
-##### For New WhatsApp Numbers
-If you're setting up a brand new WhatsApp number, you'll need:
-- Admin access to your Twilio/Turn.io account
-- To register the number with Meta/WhatsApp
-- To configure the webhook URL in your provider settings
+1. In your Turn.io account, go to **Settings → API & Webhooks**.
+2. Select **Add a webhook**.
+3. Enter the following URL:
 
-##### For Existing WhatsApp Numbers
-If you're reusing an existing WhatsApp number that was previously configured for Open Chat Studio:
-- **No additional webhook configuration needed** - the number is already set up to forward messages to Open Chat Studio
-- Simply add the number to your bot's channels in Open Chat Studio
-
-##### Provider Instructions
-- **For Twilio:** See [this page][3] to configure the webhook URL in your messaging service
-- **For Turn.io:** Go to Settings → API & Webhooks → Add a webhook and paste the OCS webhook URL
+   `https://openchatstudio.com/channels/whatsapp/incoming_message`
 
 ### Meta Cloud API
 
