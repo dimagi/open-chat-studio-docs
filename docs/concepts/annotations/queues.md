@@ -61,11 +61,11 @@ Increasing **Reviews required** can move items that were previously **Completed*
 
 ### Effects of lowering the requirement
 
-Decreasing **Reviews required** does not automatically complete items that still have unresolved reviews. Items where all required reviews are in but no authoritative annotation has been selected remain in **Awaiting resolution** until a queue admin picks one annotation as authoritative.
+Decreasing **Reviews required** does not automatically complete items that still have unresolved reviews. Items where all required reviews are in but no authoritative annotation has been selected remain in **Awaiting resolution** until a reviewer picks one annotation as authoritative.
 
 ### Switching to multi-reviewer mode
 
-When you increase **Reviews required** from 1 to more than 1, any authoritative flags that were set automatically by the system are cleared. Authoritative flags that a queue admin set manually are kept. Aggregate scores are refreshed after the change.
+When you increase **Reviews required** from 1 to more than 1, any authoritative flags that were set automatically by the system are cleared. Authoritative flags that a reviewer set manually are kept. Aggregate scores are refreshed after the change.
 
 !!! note
     Flagged items are not affected by a change to **Reviews required** — their status remains **Flagged** until a manager unflags them.
@@ -146,7 +146,7 @@ Each exported record contains the following fields:
 | `session_id` | External UUID of the session linked to the annotation item |
 | `flagged` | Boolean indicating whether the item is flagged |
 | `flagged_reason` | Full list of flag entries recorded on the item |
-| `is_authoritative` | Boolean indicating whether this annotation is the authoritative answer for the item (always `true` on single-reviewer queues; set per-item by a queue admin on multi-reviewer queues) |
+| `is_authoritative` | Boolean indicating whether this annotation is the authoritative answer for the item (always `true` on single-reviewer queues; set per-item by an annotation reviewer on multi-reviewer queues) |
 
 !!! note
     In CSV exports, `flagged_reason` is JSON-serialized as a string. Use JSONL format if you need to process flag entries programmatically without parsing JSON within a field.
