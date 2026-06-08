@@ -56,16 +56,16 @@ Because cloned messages retain this session connection, the sessions they belong
 
 #### Session-level datasets
 
-When cloning into a **session-level** dataset, one row is created per session rather than one row per message pair. The last AI message in the session is used as the output snapshot. The session snapshot is stored in the `summary` field and carries the full context the evaluator works from.
+When cloning into a **session-level** dataset, one row is created per session rather than one row per message pair. The full session transcript, captured at the time of the last AI message, carries the context the evaluator works from.
 
 | Session Data | Dataset Field | Description |
 |---|---|---|
-| Session snapshot | `summary` | Full session context used by the evaluator |
+| Session transcript | `full_history` | Full session transcript used by the evaluator |
 | `message.created_at` | `context.current_datetime` | Timestamp of the last AI message |
 | `trace.participant_data` | `participant_data` | Participant data at the time of the last message |
 | `trace.session_state` | `session_state` | Session state at the time of the last message |
 
-The `input` and `output` fields are empty for session-level rows. Evaluators working on session-level datasets use the `summary` field and session context variables rather than `{input.content}` or `{output.content}`.
+The `input` and `output` fields are empty for session-level rows. Evaluators working on session-level datasets use the `{full_history}` variable and session context variables rather than `{input.content}` or `{output.content}`.
 
 !!! note
     Generation is not available for session-level datasets. Generation applies only to message-level evaluation.
