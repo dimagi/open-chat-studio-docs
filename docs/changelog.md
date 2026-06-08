@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Jun 8, 2026
+* **CHANGE** The `POST /api/participants/` endpoint now returns the full participant detail in its response, including the CommCare Connect `connect_channel_id` for each chatbot. Connect channels are created synchronously during the request, so callers no longer need to poll for the channel ID after updating a participant.
+
 ## Jun 5, 2026
 * **CHANGE** Any annotation reviewer (any team member) can now mark or unmark a submitted annotation as **authoritative**. This was previously restricted to queue admins.
 * **NEW** Added a **Clear all** button to the evaluation runs page. Users with delete permission can wipe a config's entire run history in one action; this also un-applies the tags those runs added to their targets (chats and chat messages), returning them to their pre-evaluation state. Tags applied by hand are left untouched.
