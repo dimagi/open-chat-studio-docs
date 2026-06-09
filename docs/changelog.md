@@ -4,6 +4,9 @@ hide:
 ---
 
 # Changelog
+## Jun 9, 2026
+* **NEW** Added a read-only v2 chatbots API: `GET /api/v2/chatbots/` (list) and `/{id}/` (retrieve), plus `/{id}/inspect/?version=`, which returns a single denormalized view of a chatbot's full configuration — settings, channels, pipeline nodes with their resources inlined, and event triggers. The response is self-documenting via the OpenAPI schema, making it well suited to LLM-agent consumers.
+
 ## Jun 8, 2026
 * **CHANGE** WhatsApp channels using a Twilio provider now have their webhook configured at Twilio automatically when the channel is created, edited, or deleted. If auto-configuration isn't possible (for example, on a Twilio sandbox number), the manual setup instructions are shown instead.
 * **CHANGE** The `POST /api/participants/` endpoint now returns the full participant detail in its response, including the CommCare Connect `connect_channel_id` for each chatbot. Connect channels are created synchronously during the request, so callers no longer need to poll for the channel ID after updating a participant.
