@@ -24,9 +24,10 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 !!! warning "About deprecated versions"
 
-    Versions marked :octicons-alert-16: **Deprecated** reach their sunset date on
-    **2026-10-01**. After that date these versions stop receiving fixes and their CDN
-    builds may be removed. Upgrade to [v0.6.0+](#v060-2026-01-27) to stay supported.
+    Versions marked :octicons-alert-16: **Deprecated** are scheduled for removal on the
+    sunset date shown on each entry. After that date these versions stop receiving fixes
+    and their CDN builds may be removed. Upgrade to a supported version to stay current —
+    see the [Quick Upgrade Steps](#quick-upgrade-steps) above.
 
 ### v0.8.0 (2026-06-05)
 
