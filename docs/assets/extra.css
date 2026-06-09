@@ -16,3 +16,13 @@ open-chat-studio-widget {
 .red {
     color: red;
 }
+
+/* Deprecated changelog versions: muted heading + badge with muted-orange icon */
+.deprecated,
+.deprecated + p {
+    color: var(--md-default-fg-color--light);
+}
+
+.deprecated + p .twemoji {
+    color: #c77d3a;
+}
