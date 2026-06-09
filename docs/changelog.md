@@ -4,6 +4,11 @@ hide:
 ---
 
 # Changelog
+
+!!! info
+
+    Looking for the embeddable chat widget? See the [Chat Widget changelog](chat_widget/changelog.md).
+
 ## Jun 9, 2026
 * **NEW** Added a read-only v2 chatbots API: `GET /api/v2/chatbots/` (list) and `/{id}/` (retrieve), plus `/{id}/inspect/?version=`, which returns a single denormalized view of a chatbot's full configuration — settings, channels, pipeline nodes with their resources inlined, and event triggers. The response is self-documenting via the OpenAPI schema, making it well suited to LLM-agent consumers.
 * **BUG** Fixed an error when opening a chatbot's home page via a URL pointing to a version snapshot of the chatbot. Users are now redirected to the canonical URL of the active version instead of hitting an error.

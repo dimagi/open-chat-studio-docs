@@ -22,6 +22,12 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 ## Changelog
 
+!!! warning "About deprecated versions"
+
+    Versions marked :octicons-alert-16: **Deprecated** are no longer supported after the
+    sunset date shown on each entry, and may stop working. Upgrade to a supported version
+    to stay current — see the [Quick Upgrade Steps](#quick-upgrade-steps) above.
+
 ### v0.8.0 (2026-06-05)
 
 * Add a `session-id` parameter to resume an existing chat session. (Used internally within the Open Chat Studio platform.)
