@@ -32,7 +32,9 @@ POST /api/participants
     Content: application/json
     Schema: ParticipantDataUpdateRequest
   Responses:
-    200: No response body
+    200: 
+      Content: application/json
+      Schema: ParticipantDetail
   Security:
     OAuth2
       - Required scopes: participants:write
@@ -65,7 +67,9 @@ POST /api/participants/
     Content: application/json
     Schema: ParticipantDataUpdateRequest
   Responses:
-    200: No response body
+    200: 
+      Content: application/json
+      Schema: ParticipantDetail
   Security:
     OAuth2
       - Required scopes: participants:write
@@ -83,6 +87,7 @@ ParticipantDataEntry:
   - chatbot: string (required)
   - chatbot_id: string (required)
   - data: Unknown
+  - connect_channel_id: string (required)
 
 ParticipantDataUpdateRequest:
   - identifier: string (required)
