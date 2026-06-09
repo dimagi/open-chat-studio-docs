@@ -47,17 +47,23 @@ Check your current HTML implementation and compare it with the [latest propertie
     * Users can now upload any text-based files, not just predefined formats
     * Includes .txt, .csv, and all other text/* types
 
-### v0.5.2 (2025-11-03)
+### v0.5.2 (2025-11-03) { .deprecated }
+
+:octicons-alert-16: **Deprecated** — sunset 2026-10-01
 
 * Update default button logo to use the Open Chat Studio avatar
 * Fix welcome messages and starter questions not being displayed when provided in translation files
 * Improvements to session handling
 
-### v0.5.1
+### v0.5.1 { .deprecated }
+
+:octicons-alert-16: **Deprecated** — sunset 2026-10-01
 
 * Change language codes for Italian and Portuguese to use standard codes: `ita` -> `it`, `por` -> `pt`
 
-### v0.5.0
+### v0.5.0 { .deprecated }
+
+:octicons-alert-16: **Deprecated** — sunset 2026-10-01
 
 * Allow users to drag and reposition the chat-widget launch button when it’s fixed, to avoid obscuring page content.
 * **NEW: Internationalization Support**
@@ -83,17 +89,23 @@ Check your current HTML implementation and compare it with the [latest propertie
      * Remove corresponding deprecated HTML attributes and use the translation file instead
      * See the [internationalization documentation](reference.md#internationalization) for details
 
-### v0.4.8
+### v0.4.8 { .deprecated }
+
+:octicons-alert-16: **Deprecated** — sunset 2026-10-01
 
 * Fix horizontal scrollbar styling.
 * Improve scrolling behavior for new messages.
 * Scroll to bottom when loading the window.
 
-### v0.4.7
+### v0.4.7 { .deprecated }
+
+:octicons-alert-16: **Deprecated** — sunset 2026-10-01
 
 * Fix regression in font size consistency.
 
-### v0.4.6
+### v0.4.6 { .deprecated }
+
+:octicons-alert-16: **Deprecated** — sunset 2026-10-01
 
 * Add support for sending messages with attachments.
     * Enabled by setting `allow-attachments="true"`
@@ -112,11 +124,15 @@ Check your current HTML implementation and compare it with the [latest propertie
 * Error handling improvements.
 * Fix full screen mode layout.
 
-### v0.4.5
+### v0.4.5 { .deprecated }
+
+:octicons-alert-16: **Deprecated** — sunset 2026-10-01
 
 * Internal API changes
 
-### v0.4.4
+### v0.4.4 { .deprecated }
+
+:octicons-alert-16: **Deprecated** — sunset 2026-10-01
 
 * Merge width & height vars:
     * `--button-icon-width`, `--button-icon-height` -> `--button-icon-size` 
@@ -128,7 +144,9 @@ Check your current HTML implementation and compare it with the [latest propertie
 * Support for placing text in the window header using the `header-text`.
     * Use `--header-text-font-size` and `--header-text-color` to style it independently of the other header elements. 
 
-### v0.4.3
+### v0.4.3 { .deprecated }
+
+:octicons-alert-16: **Deprecated** — sunset 2026-10-01
 
 * Fix markdown styling
 * Allow customizing the chat window width and height using the following CSS vars:
@@ -138,11 +156,15 @@ Check your current HTML implementation and compare it with the [latest propertie
     * See the [styling guide](./styling.md#chat-window) for details.
 * Change size units from `rem` to `em`.
 
-### v0.4.2
+### v0.4.2 { .deprecated }
+
+:octicons-alert-16: **Deprecated** — sunset 2026-10-01
 
 * Fully configurable styling via CSS properties.
 
-### v0.4.1
+### v0.4.1 { .deprecated }
+
+:octicons-alert-16: **Deprecated** — sunset 2026-10-01
 
 * Improved styling.
 * Replaced 'expand' with 'fullscreen' mode.
@@ -157,7 +179,9 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 * `expanded`
 
-### v0.4.0
+### v0.4.0 { .deprecated }
+
+:octicons-alert-16: **Deprecated** — sunset 2026-10-01
 
 !!! warning
 
