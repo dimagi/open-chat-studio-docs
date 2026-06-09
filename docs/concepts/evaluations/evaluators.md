@@ -41,7 +41,7 @@ In session-level mode, `{input.content}` and `{output.content}` are empty. Use t
 
 | Variable | Description |
 |---|---|
-| `{summary}` | The session snapshot — the full conversation context captured at the time of the last AI message |
+| `{full_history}` | The full session transcript captured at the time of the last AI message |
 | `{context.[parameter]}` | Any context variable, e.g. `{context.current_datetime}` |
 
 !!! note
