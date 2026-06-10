@@ -54,6 +54,7 @@ PaginatedExperimentList:
   - next: string
   - previous: string
   - results: array of Experiment (required)
+  - count: integer
 
 SECURITY:
 - OAuth2
