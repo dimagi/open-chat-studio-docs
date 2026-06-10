@@ -51,6 +51,38 @@ To ensure optimal performance:
 - API requests are subject to reasonable rate limits
 - Use pagination for large data sets
 
+## Pagination
+
+List endpoints use **cursor-based pagination**. Each response wraps the records in a
+`results` array alongside `next` and `previous` links:
+
+```json
+{
+  "count": 1432,
+  "next": "https://openchatstudio.com/api/sessions/?cursor=cD0yMDI2LTA2LTEw",
+  "previous": null,
+  "results": [ ... ]
+}
+```
+
+To page through a full result set, follow the `next` link until it is `null`. The
+`previous` link returns the prior page (or `null` on the first page). Do not construct
+cursor values yourself — always use the links returned by the API, as their format may
+change.
+
+### Total count
+
+On the **first page** of a cursor-paginated response, the `count` field reports the total
+number of records matching your query, which is useful for showing progress while syncing
+a large data set. To keep paging fast, `count` is **omitted on subsequent (cursor-following)
+pages** — treat it as optional and do not rely on it being present after the first page.
+
+The following list endpoints are cursor-paginated and include the first-page `count`:
+
+- `GET /api/sessions/`
+- `GET /api/participants/`
+- `GET /api/experiments/`
+- `GET /api/v2/chatbots/`
 
 ## Versions
 
