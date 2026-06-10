@@ -9,6 +9,9 @@ hide:
 
     Looking for the embeddable chat widget? See the [Chat Widget changelog](chat_widget/changelog.md).
 
+## Jun 10, 2026
+* **CHANGE** The cursor-paginated list endpoints — `/api/sessions/`, `/api/participants/`, `/api/experiments/`, and `/api/v2/chatbots/` — now include a `count` field (the total number of matching records) on the first page of results, so consumers can show real progress while paging through a full sync. The field is omitted on subsequent (cursor-following) pages and is optional, so existing consumers are unaffected.
+
 ## Jun 9, 2026
 * **CHANGE** Chat sessions started through the API now require a per-session token to read their transcripts. `POST /api/chat/start/` returns a `session_token`, which must be sent as the `X-Session-Token` header on subsequent session calls (or an authenticated user with access to the session). This prevents session transcripts from being read by anyone who obtains a session ID. **Breaking change** for direct API consumers: send the returned `session_token` on subsequent calls, or opt out with `use_session_token: false`. Token access to sessions inactive for more than 7 days is rejected.
 * **NEW** Added a read-only v2 chatbots API: `GET /api/v2/chatbots/` (list) and `/{id}/` (retrieve), plus `/{id}/inspect/?version=`, which returns a single denormalized view of a chatbot's full configuration — settings, channels, pipeline nodes with their resources inlined, and event triggers. The response is self-documenting via the OpenAPI schema, making it well suited to LLM-agent consumers.
