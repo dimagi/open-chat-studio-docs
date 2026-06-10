@@ -175,6 +175,7 @@ PaginatedExperimentSessionList:
   - next: string
   - previous: string
   - results: array of ExperimentSession (required)
+  - count: integer
 
 Patchedupdate_state_serializer:
   - state: Unknown
