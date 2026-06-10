@@ -82,6 +82,7 @@ PaginatedParticipantDetailList:
   - next: string
   - previous: string
   - results: array of ParticipantDetail (required)
+  - count: integer
 
 ParticipantDataEntry:
   - chatbot: string (required)

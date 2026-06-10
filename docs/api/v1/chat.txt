@@ -20,6 +20,9 @@ GET /api/chat/{session_id}/{task_id}/poll/
     400: 
       Content: application/json
       Schema: ChatTaskPollUserError
+    404: 
+      Content: application/json
+      Schema: ChatTaskPollNotFound
     500: 
       Content: application/json
       Schema: ChatTaskPollError
@@ -110,9 +113,11 @@ ChatStartSessionRequest:
   - session_data: object
   - participant_remote_id: string
   - participant_name: string
+  - use_session_token: boolean
 
 ChatStartSessionResponse:
   - session_id: string (required)
+  - session_token: string
   - chatbot: Unknown (required)
   - participant: Unknown (required)
 
@@ -123,6 +128,9 @@ ChatTaskPoll:
 ChatTaskPollError:
   - error: string
   - status: string (required)
+
+ChatTaskPollNotFound:
+  - detail: string (required)
 
 ChatTaskPollStatusEnum:
   - enum: [processing, complete]
