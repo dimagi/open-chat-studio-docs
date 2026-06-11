@@ -9,6 +9,9 @@ hide:
 
     Looking for the embeddable chat widget? See the [Chat Widget changelog](chat_widget/changelog.md).
 
+## Jun 11, 2026
+* **CHANGE** Surveys are deprecated and will be removed on **2026-07-10**. They are now decoupled from chatbots — the pre- and post-survey settings have been removed, so surveys are no longer presented to participants before or after a web chat. Existing surveys are read-only (you can no longer create new ones, only view or delete them) for a 30-day window so teams can export their data. A deprecation warning and an in-product notification announce the removal.
+
 ## Jun 10, 2026
 * **CHANGE** The cursor-paginated list endpoints — `/api/sessions/`, `/api/participants/`, `/api/experiments/`, and `/api/v2/chatbots/` — now include a `count` field (the total number of matching records) on the first page of results, so consumers can show real progress while paging through a full sync. The field is omitted on subsequent (cursor-following) pages and is optional, so existing consumers are unaffected.
 * **NEW** Added support for the **Claude Fable 5** model from Anthropic. Fable 5 offers a 1M-token context window with adaptive thinking and configurable effort levels (low, medium, high, max), and can now be selected for chatbots and pipelines.

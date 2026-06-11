@@ -1,71 +1,17 @@
-This page provides an overview of how to utilize surveys in your OCS chatbot.
+!!! warning "Surveys are deprecated — removal scheduled for 2026-07-10"
+    The Surveys feature has been deprecated and will be permanently removed on **10 July 2026**.
 
-### What are Surveys on Open Chat Studio?
+    **What this means for you:**
 
-The Surveys feature allows chatbot makers to give users a link to a Google form (or any other link to a survey), both at the start and end of an OCS chatbot web session. 
+    - You can no longer create new surveys or attach surveys to chatbots as pre- or post-surveys.
+    - Existing surveys are read-only. You can view or delete them, but not edit them.
+    - Survey data is still accessible until the removal date. **Export any data you need before 10 July 2026.**
+    - After removal, all survey records and any associated data will be deleted.
 
-!!! info "External Channel Survey Limitations & Workarounds"
-    Surveys will not be automatically presented to the user before or after the chat if you deploy your chatbot on external channels like WhatsApp or Telegram. If you would still like to capture pre- or post-survey questions using these channels, you can: 
+    If you currently use surveys to collect responses before or after a chat session, consider these alternatives:
 
-    - Incorporate survey questions in your prompt and structuring the prompt such that the chatbot starts and ends with questions as you would like it to. 
-    - Send users links to a Google form or other kind of survey directly, before or after providing them with the link to the chatbot. 
+    - **Embed questions in your chatbot prompt** — structure the chatbot to open and close the conversation with the questions you need.
+    - **Send survey links manually** — provide participants with a link to an external form (for example, Google Forms) before or after the chat session.
+    - **Use participant data tools** — store responses directly in participant data using the [Update participant data](../tech-hub/tools.md#update-participant-data) tool.
 
-
-
-**Example of a pre-survey when using an OCS bot on the web**
-![image](../assets/images/survey1.png)
-
-
-**Example of a post-survey when using an OCS bot on the web**
-![image](../assets/images/survey2.png)
-![image](../assets/images/survey3.png)
-
-### Create a Survey
-
-The very first step is to create a survey and generate a web link for that survey. For example, you might use [Google forms](#using-google-forms) to create pre- and post-surveys. Once this step is complete, navigate to the "Surveys" option on the left-hand menu on Open Chat Studio and follow the steps given below to add your survey(s) to a chatbot. 
-
-#### Select "Add New". 
-
-- Name: This is a name for you or your team members on OCS to identify different surveys.
-- URL: Add the URL of your survey. 
-- Confirmation text: This is the text a user sees when they see the link to the survey, before they begin to use the chatbot. You can edit this text as you'd like. Here, it's also important to add `{survey_link}` where you would like to show the URL to your survey.
-
-**Example**
-> Before starting the chatbot, please complete a short survey. Click the survey link, fill it out, and, once finished, select the checkbox to confirm completion. Survey link: {survey_link}. 
-
-If you would like to include both a pre-survey and a post-survey, repeat the above process for each survey.
-
-### Final Step
-
-Now edit your chatbot and choose which survey to use as the pre- or post survey.
-
-
-
-## Using Google Forms
-Go to [Google Forms][google_forms] and create your form. To link a specific participant, session, and Chatbot to a specific form, include questions titled "Participant ID", "Session ID", and "Experiment ID".
-
-For example:
-![image](../assets/images/survey6.png)
-
-From here, click the three dots in the top-right corner and select "Get Prefilled Link". Then fill in the fields you want prefilled. In this case: "Participant ID", "Session ID", and "Experiment ID".
-
-![image](../assets/images/survey7.png)
-When you click on "Get Link", you'll get a link that looks something like:
-
-> https://docs.google.com/forms/some/uri/viewform?usp=pp_url&entry.1118764343=participant&entry.791635770=session&entry.784126073=experiment
-
-Replace the sections in the URL as follows:
-
-- participant -> {participant_id}
-- session -> {session_id}
-- experiment -> {experiment_id}
-
-This will result in a link that looks like this:
-
-> https://docs.google.com/forms/some/uri/viewform?usp=pp_url&entry.1118764343={participant_id}&entry.791635770={session_id}&entry.784126073={experiment_id}
-
-
-This new link should be used for your survey link.
-
-
-[google_forms]: https://docs.google.com/forms
+    If you have questions, contact your team administrator or the Open Chat Studio support team.
