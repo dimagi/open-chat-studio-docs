@@ -38,6 +38,20 @@ jobs:
       MAIN_CHANGELOG: "docs/changelog.md"
       SOURCE_REPO: "dimagi/open-chat-studio"
     steps:
+      # Installation token for the ocs-agent GitHub App. Scoped to both repos:
+      # the docs repo for branch/PR writes, and the OCS repo for the
+      # failure-notification comment on the source PR.
+      - name: Generate app token
+        id: app-token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ vars.OCS_AGENT_APP_ID }}
+          private-key: ${{ secrets.OCS_AGENT_PRIVATE_KEY }}
+          owner: dimagi
+          repositories: |
+            open-chat-studio-docs
+            open-chat-studio
+
       - name: Determine base branch
         id: determine_branch
         run: |
@@ -78,7 +92,7 @@ jobs:
           echo "is_widget_change=$IS_WIDGET" >> $GITHUB_OUTPUT
           echo "Using base branch: $BASE_BRANCH, checkout ref: $CHECKOUT_REF (widget change: $IS_WIDGET)"
         env:
-          GH_TOKEN: ${{ secrets.OCS_DOCS_PAT }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
 
       - name: Checkout repository
         uses: actions/checkout@v6
@@ -96,7 +110,7 @@ jobs:
         # Payload fields are passed via env (not ${{ }} interpolation in the script body)
         # so PR titles/bodies containing backticks, quotes, parens, or $ cannot break the shell.
         env:
-          GH_TOKEN: ${{ secrets.OCS_DOCS_PAT }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
           EVENT_NAME: ${{ github.event_name }}
           PAYLOAD_PR_NUMBER: ${{ github.event.client_payload.pr_number }}
           PAYLOAD_PR_TITLE: ${{ github.event.client_payload.pr_title }}
@@ -231,7 +245,7 @@ jobs:
         uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          github_token: ${{ secrets.OCS_DOCS_PAT }}
+          github_token: ${{ steps.app-token.outputs.token }}
           prompt: ${{ steps.create_instructions.outputs.instructions }}
           claude_args: |
             --allowedTools "Read,Write,Edit,Glob,Grep,Task,Bash(git add:*),Bash(git commit:*)"
@@ -323,7 +337,7 @@ jobs:
           # Try to assign after PR creation (won't fail the workflow if user doesn't exist)
           gh pr edit "${{ env.branch_name }}" --add-assignee "${{ steps.set_vars.outputs.pr_author }}" || echo "Could not assign @${{ steps.set_vars.outputs.pr_author }} (user may not have access to this repo)"
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
 
       - name: Generate workflow summary
         if: always()
@@ -363,4 +377,4 @@ jobs:
 
           Please check the logs or manually update the changelog in the docs repository." || echo "Failed to post comment (PR may be inaccessible)"
         env:
-          GH_TOKEN: ${{ secrets.OCS_DOCS_PAT }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
