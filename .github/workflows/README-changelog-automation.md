@@ -26,7 +26,11 @@ Troubleshooting and process changes can involve both repositories:
 
 ### Required Secrets
 
-- **`OCS_DOCS_PAT`**: GitHub PAT with scopes for contents, issues, and pull requests in both the OCS repo and the OCS docs repo.
+- **`OCS_AGENT_PRIVATE_KEY`** (secret) and **`OCS_AGENT_APP_ID`** (variable): credentials for
+  the `ocs-agent` GitHub App (org Settings → GitHub Apps). The app must be installed on both
+  the OCS repo and this docs repo with contents, issues, and pull request write permissions.
+  Workflows mint a short-lived installation token from these, so automated PRs and comments
+  are attributed to `ocs-agent[bot]`.
 - **`ANTHROPIC_API_KEY`**: Claude API key.
 
 ## Troubleshooting
@@ -35,7 +39,7 @@ Troubleshooting and process changes can involve both repositories:
     - Note: this workflow requires repository secrets and will fail in forks unless those secrets are configured.
 - **No PR created:** Check workflow runs in both repositories. If there was no meaningful docs/changelog change, no docs PR is expected.
 - **Unexpected target branch or classification:** Check workflow logs in the source and receiving repos to verify how the PR was classified.
-- **Authentication or permission failures:** Verify `OCS_DOCS_PAT` and `ANTHROPIC_API_KEY` are set correctly and still valid.
+- **Authentication or permission failures:** Verify `ANTHROPIC_API_KEY` is valid, the `ocs-agent` app's private key matches `OCS_AGENT_PRIVATE_KEY`, and the app is still installed on both repos (token minting fails if either repo is missing from the installation).
 - **widget-develop branch doesn't exist:** Create it: `git checkout -b widget-develop main && git push origin widget-develop`
 - **Output quality needs improvement:** Comment on the generated PR with `@claude` and specify what to revise.
 - **For systemic quality issues:** Update the relevant agent in `.claude/agents/` rather than correcting each PR manually.
