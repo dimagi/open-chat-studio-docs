@@ -50,7 +50,7 @@ Read and write data within the current session, or manage the session lifecycle.
 - **[Get session state key](../../tech-hub/tools.md#get-session-state-key)** — Retrieves a value previously stored in session state during the current session.
 - **[Append to session state](../../tech-hub/tools.md#append-to-session-state)** — Adds a value to a list in the session state. Use this to track items within a single session — for example, a list of topics discussed so far.
 - **[Increment session state counter](../../tech-hub/tools.md#increment-session-state-counter)** — Increments a numeric counter stored in session state. Use this to count events within a single session.
-- **[End session](../../tech-hub/tools.md#end-session)** — Marks the current session as complete. After this, any new message from the participant will begin a fresh session. Use this when the chatbot should formally close a conversation — for example, after a survey is complete. See [Session Status](../session_status.md) for status transitions.
+- **[End session](../../tech-hub/tools.md#end-session)** — Marks the current session as complete. After this, any new message from the participant will begin a fresh session. Use this when the chatbot should formally close a conversation — for example, after the participant confirms they are finished. See [Session Status](../session_status.md) for status transitions.
 
 ### Utilities
 

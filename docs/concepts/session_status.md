@@ -14,7 +14,7 @@ Understanding session status helps you:
 |--------|-------|---------------|
 | `SETUP` | Setting Up | A session has been created but the participant has not yet been contacted or arrived. This is the default starting point for every session. |
 | `PENDING` | Awaiting Participant | The participant has been invited (for example, by email) or prompted for consent, but has not yet agreed to start. |
-| `PENDING_PRE_SURVEY` | Awaiting Pre-Survey | The participant has consented and is waiting to complete the pre-conversation survey before the chat begins. |
+| `PENDING_PRE_SURVEY` | Awaiting Pre-Survey | The participant has consented and was waiting to complete a pre-conversation survey before the chat began. This status is no longer reachable — the pre-survey feature has been deprecated and removed. Existing sessions that reached this status before the change will remain here. |
 | `ACTIVE` | Active | The conversation is in progress. |
 | `PENDING_REVIEW` | Awaiting Final Review | The conversation has ended and is waiting for the participant to submit the post-conversation review or for an admin to review the session. |
 | `COMPLETE` | Complete | The session is fully finished. No further activity is expected. |
@@ -34,9 +34,7 @@ Used when participants arrive via an invitation link or public web chat link. Th
 stateDiagram-v2
     [*] --> SETUP
     SETUP --> PENDING: invitation email sent
-    PENDING --> PENDING_PRE_SURVEY: consent accepted<br/>(pre-survey configured)
-    PENDING --> ACTIVE: consent accepted<br/>(no pre-survey)
-    PENDING_PRE_SURVEY --> ACTIVE: pre-survey submitted
+    PENDING --> ACTIVE: consent accepted
     ACTIVE --> PENDING_REVIEW: session ended
     PENDING_REVIEW --> COMPLETE: review submitted
     COMPLETE --> [*]
@@ -47,22 +45,21 @@ stateDiagram-v2
 ```mermaid
 stateDiagram-v2
     [*] --> SETUP
-    SETUP --> PENDING_PRE_SURVEY: consent accepted<br/>(pre-survey configured)
-    SETUP --> ACTIVE: consent accepted<br/>(no pre-survey)
-    PENDING_PRE_SURVEY --> ACTIVE: pre-survey submitted
+    SETUP --> ACTIVE: consent accepted
     ACTIVE --> PENDING_REVIEW: session ended
     PENDING_REVIEW --> COMPLETE: review submitted
     COMPLETE --> [*]
 ```
 
-In both flows, if no pre-survey is configured the session skips `PENDING_PRE_SURVEY` and moves directly to `ACTIVE`.
+!!! note "PENDING_PRE_SURVEY"
+    The `PENDING_PRE_SURVEY` status is no longer reachable. The pre-survey feature has been deprecated and the coupling between surveys and chatbots has been removed. Sessions that reached this status before the change will remain in it, but no new sessions will enter it. See [Setting up a Survey](../how-to/setting_up_a_survey.md) for deprecation details.
 
 ### Messaging channel flow
 
 Used for [channels](channels.md) such as Telegram, WhatsApp, the web widget, and the API.
 
 - **If [conversational consent](consent.md) is disabled** (the common case): the session is created directly in `ACTIVE`. The early statuses are skipped entirely.
-- **If conversational consent is enabled**: the bot walks the participant through a chat-driven consent flow, traversing `SETUP → PENDING → (PENDING_PRE_SURVEY) → ACTIVE`. Parentheses around `PENDING_PRE_SURVEY` indicate that the step is only included when a pre-survey is configured; otherwise the session moves straight from `PENDING` to `ACTIVE`.
+- **If conversational consent is enabled**: the bot walks the participant through a chat-driven consent flow, traversing `SETUP → PENDING → ACTIVE`.
 
 !!! note
     Messaging channel sessions do not typically reach `PENDING_REVIEW` or `COMPLETE` on their own. Those terminal statuses are driven by the post-conversation review form or an explicit end-conversation action.
