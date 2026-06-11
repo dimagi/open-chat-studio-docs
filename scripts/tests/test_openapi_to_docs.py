@@ -156,6 +156,30 @@ def test_inject_versions_list_reversed_markers_raises(tmp_path):
         inject_versions_list(index_path, ["v1"])
 
 
+def test_endpoint_security_handles_optional_requirement():
+    # An empty requirement object ({}) means auth is optional; it must not crash.
+    schema = {
+        "openapi": "3.0.0",
+        "info": {"title": "T", "version": "1"},
+        "paths": {
+            "/api/me/": {
+                "get": {
+                    "tags": ["Me"],
+                    "summary": "Current user",
+                    "security": [{}, {"apiKeyAuth": []}, {"tokenAuth": ["read"]}],
+                    "responses": {"200": {"description": "ok"}},
+                }
+            }
+        },
+    }
+    converter = OpenAPIToMarkdownConverter(schema)
+    doc = converter._generate_tag_documentation("Me", converter._group_endpoints_by_tag()["Me"])
+
+    assert "(optional - no authentication required)" in doc
+    assert "apiKeyAuth" in doc
+    assert "Required scopes: read" in doc
+
+
 def test_convert_versioned_docs_end_to_end(tmp_path):
     # Schema directory with a single version
     schema_dir = tmp_path / "schemas"

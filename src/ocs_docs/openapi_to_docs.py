@@ -398,14 +398,17 @@ class OpenAPIToMarkdownConverter:
                         lines.append(f"      Schema: {schema_ref}")
 
         # Security
-        if security :=  operation.get("security", []):
+        if requirements := operation.get("security", []):
             lines.append("  Security:")
-            for security in security:
-                key = next(iter(security))
+            for requirement in requirements:
+                # An empty requirement object ({}) means authentication is optional.
+                if not requirement:
+                    lines.append("    (optional - no authentication required)")
+                    continue
+                key = next(iter(requirement))
                 lines.append(f"    {key}")
-                if value := security.get(key):
-                    value = ', '.join(value)
-                    lines.append(f"      - Required scopes: {value}")
+                if scopes := requirement.get(key):
+                    lines.append(f"      - Required scopes: {', '.join(scopes)}")
 
         return lines
 
