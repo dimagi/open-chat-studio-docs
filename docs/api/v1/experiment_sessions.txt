@@ -130,7 +130,7 @@ ExperimentSession:
   - participant: Unknown (required)
   - created_at: string (required)
   - updated_at: string (required)
-  - status: StatusCb5Enum
+  - status: Status490Enum
   - platform: string
   - tags: array of string (required)
 
@@ -149,7 +149,7 @@ ExperimentSessionWithMessages:
   - participant: Unknown (required)
   - created_at: string (required)
   - updated_at: string (required)
-  - status: StatusCb5Enum
+  - status: Status490Enum
   - platform: string
   - messages: array of Message (required)
   - tags: array of string (required)
@@ -180,8 +180,8 @@ PaginatedExperimentSessionList:
 Patchedupdate_state_serializer:
   - state: Unknown
 
-StatusCb5Enum:
-  - enum: [setup, pending, pending-pre-survey, active, pending-review, complete, unknown]
+Status490Enum:
+  - enum: [setup, pending, active, pending-review, complete, unknown]
 
 tags_request_serializer:
   - tags: array of string (required)
