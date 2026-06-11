@@ -14,6 +14,7 @@ Simplified per-tag references for LLM consumption:
 * [Experiment Sessions](./experiment_sessions.txt){:target="_blank"} — Manage chatbot sessions including session state, and session tags.
 * [Experiments](./experiments.txt){:target="_blank"} — List and retrieve chatbots (formerly 'experiments').
 * [Files](./files.txt){:target="_blank"} — Download the content of files associated with chat messages.
+* [Me](./me.txt){:target="_blank"}
 * [OpenAI](./openai.txt){:target="_blank"} — OpenAI-compatible endpoints for interacting with chatbots.
 * [Participants](./participants.txt){:target="_blank"} — Manage participants, their data, and their schedules.
 
@@ -69,6 +70,12 @@ Simplified per-tag references for LLM consumption:
 | Method | Path | Summary |
 | --- | --- | --- |
 | GET | `/api/files/{id}/content` | Download File Content |
+
+### Me
+
+| Method | Path | Summary |
+| --- | --- | --- |
+| GET | `/api/v2/me/` | Current User |
 
 ### OpenAI
 
