@@ -18,5 +18,4 @@ These topics contain technical facts and code examples.
 - **[Python Node](python_node.md)** — Write custom Python code inside a Pipeline to perform logic, process data, manage session state, and make HTTP requests to external services.
 - **[Render a Template and Send an Email Nodes](template_and_email_nodes.md)** — Full Jinja2 variable reference, recipient field syntax, and examples for the Render a Template and Send an Email pipeline nodes.
 - **[Tools Reference](tools.md)** — Full argument reference for all built-in tools and the LLM provider tools supported. For a conceptual overview, see [Tools Concepts](../concepts/tools/index.md).
-- **[Model Configuration Reference](model_configuration.md)** — Full parameter reference for LLM model settings including temperature, effort, and adaptive thinking.
 - **[OCS API Access](api_access.md)** — Interact with OCS chatbots programmatically using the REST API. Useful for third-party integrations and automated evaluation.

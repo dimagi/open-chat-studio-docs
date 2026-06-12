@@ -172,7 +172,6 @@ nav:
   - Tech Hub:
     - tech-hub/index.md
     - Tools Reference: tech-hub/tools.md
-    - Model Configuration: tech-hub/model_configuration.md
     - Python Node: tech-hub/python_node.md
     - Render a Template and Send an Email Nodes: tech-hub/template_and_email_nodes.md
     - Call External APIs:
