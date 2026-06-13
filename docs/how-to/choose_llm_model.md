@@ -10,9 +10,9 @@ Open Chat Studio supports a range of AI models from providers such as OpenAI, An
 
 All models in Open Chat Studio fall into one of two categories.
 
-**General-purpose models** are designed for everyday conversation. They respond quickly and handle a wide range of topics. You shape their answers with a [*temperature*](../concepts/llm.md#model-parameters-temperature-and-effort) setting. Examples include GPT-4o, Claude Sonnet (without thinking), and Gemini.
+**General-purpose models** are designed for everyday conversation. They respond quickly and handle a wide range of topics. You shape their answers with a [*temperature*](../concepts/llm.md#model-parameters-temperature-and-effort) setting. 
 
-**Reasoning models** are designed for tasks that require careful, step-by-step thinking — such as analysis, coding assistance, or complex decision-making. Before producing a final answer, these models work through the problem internally. You control how much thinking they do with an [*effort*](../concepts/llm.md#model-parameters-temperature-and-effort) setting. Examples include OpenAI's GPT-5 series and Anthropic's Claude Opus with thinking enabled.
+**Reasoning models** are designed for tasks that require careful, step-by-step thinking — such as analysis, coding assistance, or complex decision-making. Before producing a final answer, these models work through the problem internally. You control how much thinking they do with an [*effort*](../concepts/llm.md#model-parameters-temperature-and-effort) setting. 
 
 ## Match your use case
 

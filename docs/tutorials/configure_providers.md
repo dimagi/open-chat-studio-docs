@@ -18,8 +18,9 @@ Providers are configured in your [Team](../concepts/team/index.md) settings unde
 4. Select your provider from the dropdown (see [supported providers](../concepts/team/llm_providers.md) for the full list)
 5. Enter your API key
 6. Save the configuration
-7. View the list of LLM models the provider supports
-8. Each LLM model will show its [max token limit](../concepts/llm.md#max-token-limit)
+
+!!! note  
+    After saving, the provider page lists the LLM models it supports. Each model shows its [max token limit](../concepts/llm.md#max-token-limit).
 
 ## Testing Your Configuration
 

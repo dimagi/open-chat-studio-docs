@@ -36,7 +36,7 @@ Temperature controls how creative or varied the responses are.
 
 Effort (or Reasoning Effort) controls how much internal reasoning the model does before answering. It is available on [reasoning models](choose_llm_model.md#two-model-types).
 
-- Select a level from the dropdown — `low`, `medium`, `high`, or `max`. 
+- Select a level from the dropdown — `low`, `medium`, `high`, or `max`.
 - For a description of each level, see [Effort](#effort-reasoning-effort) in the parameter reference below.
 
 !!! tip
@@ -61,7 +61,7 @@ See [Adaptive thinking](#adaptive-thinking) in the parameter reference below for
 Your team may not have that provider configured. Ask your team administrator or see [LLM Providers](../concepts/team/llm_providers.md).
 
 **Responses are being cut off.**
-The max output token limit may be too low. Raise it in the node settings. If you are using a [reasoning model](../how-to/choose_llm_model.md#two-model-types), this is especially common — see [Max output tokens](#max-output-tokens) in the parameter reference below.
+The max output token limit may be too low. Raise it in the node settings. If you are using a [reasoning model](choose_llm_model.md#two-model-types), this is especially common — see [Max output tokens](#max-output-tokens) in the parameter reference below.
 
 ## Related pages
 
@@ -73,7 +73,7 @@ The max output token limit may be too low. Raise it in the node settings. If you
 
 ## Parameter reference
 
-This section covers the precise behaviour of each parameter and LLM provider-level differences. It is intended for advanced users.
+This section covers the precise behaviour of each parameter. It is intended for advanced users.
 
 ### Temperature
 
@@ -84,7 +84,7 @@ This section covers the precise behaviour of each parameter and LLM provider-lev
 | `0.7` | Default. Balanced between coherence and variety. |
 | `0.8–1.0` | High randomness. More varied and creative outputs. |
 
-**Provider notes:** Temperature is supported by most ["general-purpose"](choose_llm_model.md#two-model-types) chat models (GPT-4o, Claude Sonnet/Opus without thinking, Gemini, Groq, Perplexity, DeepSeek). It is usually not supported on [reasoning models](choose_llm_model.md#two-model-types), but there are a few exceptions like Claude Opus 4.6.
+**Provider notes:** Temperature is supported by most ["general-purpose"](choose_llm_model.md#two-model-types) chat models.
 
 ### Effort (reasoning effort)
 
@@ -117,4 +117,4 @@ OCS provides a default based on the LLM provider default (this varies by model a
 
 When enabled, the model dynamically allocates its reasoning budget per message rather than spending a fixed amount every time — guided by the [effort level](#effort-reasoning-effort) you set. Easy turns finish quickly; complex ones get more thinking tokens.
 
-Only available on supported Claude models.
+Only available on supported Claude models. Refer to [Claude documentation for details](https://platform.claude.com/docs/en/about-claude/models/choosing-a-model).
