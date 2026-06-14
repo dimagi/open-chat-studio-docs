@@ -23,7 +23,7 @@ repos:
       - id: fix-byte-order-marker
       - id: check-merge-conflict
       - id: no-commit-to-branch
-        args: [--branch, main]
+        args: [--branch, main, --branch, widget-develop]
 
   # ---------------------------------------------------------------------------
   # GitHub Actions workflow validation
