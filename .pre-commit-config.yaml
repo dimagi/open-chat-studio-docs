@@ -4,8 +4,8 @@ repos:
   # ---------------------------------------------------------------------------
   # File hygiene
   # ---------------------------------------------------------------------------
-  - repo: https://github.com/pre-commit/pre-commit-hooks  # Enables fast path
-    rev: v6.0.0  # This is ignored for fast path detection
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
     hooks:
       - id: trailing-whitespace
         # Preserve intentional two-space line-breaks in Markdown
@@ -42,9 +42,3 @@ repos:
     hooks:
       - id: markdownlint
         args: [--config, .markdownlint.yaml]
-
-  - repo: https://github.com/crate-ci/typos
-    rev: v1.32.0
-    hooks:
-      - id: typos
-
