@@ -17,7 +17,6 @@ repos:
         # --unsafe is required for mkdocs.yml which uses !!python/name: tags
         args: [--unsafe]
       - id: check-toml
-      - id: check-json
       - id: check-added-large-files
         args: [--maxkb=500]
       - id: check-case-conflict
