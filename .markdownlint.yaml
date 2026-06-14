@@ -1,0 +1,28 @@
+default: true
+
+# Line length: relax for tables and code blocks; headings can be long too
+MD013:
+  line_length: 120
+  code_blocks: false
+  tables: false
+  headings: false
+
+# Inline HTML: MkDocs Material uses <br>, <kbd>, attribute lists, etc.
+MD033:
+  allowed_elements:
+    - a
+    - br
+    - details
+    - div
+    - kbd
+    - span
+    - sub
+    - summary
+    - sup
+
+# First-line heading: some index pages open with an admonition or prose
+MD041: false
+
+# Ordered list style: allow 1. 1. 1. (auto-numbering) as well as 1. 2. 3.
+MD029:
+  style: ordered
