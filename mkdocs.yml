@@ -146,7 +146,7 @@ nav:
       - Pipelines:
         - concepts/pipelines/index.md
         - Node Types: concepts/pipelines/nodes.md
-        - Router Nodes: concepts/pipelines/router_nodes.md        
+        - Router Nodes: concepts/pipelines/router_nodes.md
         - concepts/pipelines/history.md
         - concepts/pipelines/parallel.md
       - Team:
@@ -173,7 +173,7 @@ nav:
     - Python Node: tech-hub/python_node.md
     - Render a Template and Send an Email Nodes: tech-hub/template_and_email_nodes.md
     - Call External APIs:
-        - tech-hub/external-api-calls/index.md     
+        - tech-hub/external-api-calls/index.md
         - HTTP Client: tech-hub/external-api-calls/http_client.md
     - Custom Actions:
         - tech-hub/custom_action/index.md
@@ -183,12 +183,12 @@ nav:
     - OCS API:
         - api/index.md
         - api/getting_started_with_oauth.md
-        - API Access: tech-hub/api_access.md  
+        - API Access: tech-hub/api_access.md
   - Chat Widget:
     - chat_widget/index.md
     - chat_widget/reference.md
     - chat_widget/styling.md
-    - chat_widget/changelog.md           
+    - chat_widget/changelog.md
   - Changelog: changelog.md
 
 watch:

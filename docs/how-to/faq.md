@@ -18,5 +18,3 @@ To access feature flag management:
   ![Feature Flags](../assets/images/manage_flags_page.png)
   <figcaption>Feature Flag Management Page</figcaption>
 </figure>
-
-

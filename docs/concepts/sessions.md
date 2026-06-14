@@ -43,9 +43,9 @@ On the **Web** channel, users can have **anonymous sessions**, where:
 
 ## Resetting Sessions
 
-For **Single-Session Channels** like **WhatsApp** and **Telegram**, the current session continues until it is explicitly ended. 
+For **Single-Session Channels** like **WhatsApp** and **Telegram**, the current session continues until it is explicitly ended.
 
-However, sessions can be reset either [manually](../how-to/reset_sessions.md#user-initiated-manual-reset-of-a-session) by the user or [automatically](../how-to/reset_sessions.md#reset-sessions-automatically). 
+However, sessions can be reset either [manually](../how-to/reset_sessions.md#user-initiated-manual-reset-of-a-session) by the user or [automatically](../how-to/reset_sessions.md#reset-sessions-automatically).
 
 When a session is reset:
 

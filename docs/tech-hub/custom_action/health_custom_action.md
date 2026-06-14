@@ -41,5 +41,3 @@ A Custom Action can report one of the following states:
     - the OpenAPI schema matches the deployed API
     - the external service is running and accepting connections
     - any firewall or network rules allow connections from Open Chat Studio
-
-

@@ -10,7 +10,7 @@ This guide will help you upgrade from previous versions of the Open Chat Studio 
 
 **Update your script tags to use the latest version:**
 ```bash
-<script 
+<script
   src="https://unpkg.com/open-chat-studio-widget{LATEST_VERSION_NUMBER}/dist/open-chat-studio-widget/open-chat-studio-widget.js"
   type="module"
   async
@@ -141,14 +141,14 @@ Check your current HTML implementation and compare it with the [latest propertie
 :octicons-alert-16: **Deprecated** — sunset 2026-10-01
 
 * Merge width & height vars:
-    * `--button-icon-width`, `--button-icon-height` -> `--button-icon-size` 
+    * `--button-icon-width`, `--button-icon-height` -> `--button-icon-size`
 * Fix launch button styling.
     * Correctly apply font size and borders.
 * Add variables to control header font and icon size:
-    * `--header-font-size` 
-    * `--header-button-icon-size` 
+    * `--header-font-size`
+    * `--header-button-icon-size`
 * Support for placing text in the window header using the `header-text`.
-    * Use `--header-text-font-size` and `--header-text-color` to style it independently of the other header elements. 
+    * Use `--header-text-font-size` and `--header-text-color` to style it independently of the other header elements.
 
 ### v0.4.3 { .deprecated }
 
@@ -156,8 +156,8 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 * Fix markdown styling
 * Allow customizing the chat window width and height using the following CSS vars:
-    * `--chat-window-width` 
-    * `--chat-window-height` 
+    * `--chat-window-width`
+    * `--chat-window-height`
     * `--chat-window-fullscreen-width`
     * See the [styling guide](./styling.md#chat-window) for details.
 * Change size units from `rem` to `em`.
@@ -179,7 +179,7 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 **Added**
 
-* `allow-full-screen`: Allow the user to make the chat window full screen. 
+* `allow-full-screen`: Allow the user to make the chat window full screen.
 
 **Removed**
 
@@ -205,7 +205,7 @@ Check your current HTML implementation and compare it with the [latest propertie
     * Provide clickable starter questions to help users get started
     * Both support rich markdown formatting
 * [Session persistence](reference.md#persistent-sessions) across page loads
-    * Store session data in browser local storage to allow resuming sessions across page loads. 
+    * Store session data in browser local storage to allow resuming sessions across page loads.
 
 #### Upgrading from 0.3.x
 

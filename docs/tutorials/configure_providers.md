@@ -57,4 +57,3 @@ For Google (Gemini) models, use the names from the "Model Variant" column. Examp
 - `gemini-1.5-pro`
 
 Find current model names at: https://ai.google.dev/gemini-api/docs/models
-

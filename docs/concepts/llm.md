@@ -7,8 +7,8 @@ title: Large Language Model
 !!! note "Definition"
     A Large Language Model (or LLM) is a type of artificial intelligence software that is trained on a vast amount of text data. Its
     primary function is to understand, interpret, and generate human language. This training allows it to produce text-based
-    responses, answer questions, translate between languages, and perform various other language-related tasks. 
-    
+    responses, answer questions, translate between languages, and perform various other language-related tasks.
+
     The term "large" in its name refers to the extensive volume of data it has been trained on and the complexity of its design, enabling it to handle complex language tasks.
 
 <small>The definition above was authored by the famous LLM that powers ChatGPT: GPT-4 developed by OpenAI.</small>

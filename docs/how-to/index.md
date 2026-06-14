@@ -6,7 +6,7 @@ description: How to accomplish common tasks Open Chat Studio
 # How-to Guides
 
 Here you’ll find answers to “How do I...?” types of questions. These guides are **goal-oriented** and concrete; they're
-meant to help you complete a specific task. 
+meant to help you complete a specific task.
 
 ## Related content
 
@@ -23,6 +23,6 @@ meant to help you complete a specific task.
 
     [:octicons-arrow-right-24: Add a knowledge base](./add_a_knowledge_base.md)
 
-    [:octicons-arrow-right-24: Add a message provider as a channel](./add_a_knowledge_base.md)        
+    [:octicons-arrow-right-24: Add a message provider as a channel](./add_a_knowledge_base.md)  
 
 </div>

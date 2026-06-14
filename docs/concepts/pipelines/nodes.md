@@ -58,5 +58,3 @@ Extract structured data from the input. This node acts as a passthrough, meaning
 
 ## Update Participant Data Node
 Extract structured data and save it as participant data. This node is commonly used with [events](../events.md).
-
-

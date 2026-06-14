@@ -98,16 +98,16 @@ flowchart TD
 Process only the first uploaded file:
 
 ```python
-def main(input: str, **kwargs) -> str: 
+def main(input: str, **kwargs) -> str:
     # Get uploaded files from temp state
     attachments = get_temp_state_key("attachments")
     if not attachments:
         return input
-    
+
     # Read the first file's content
     file_content = attachments[0].read_text()
     set_temp_state_key("file_contents", file_content)
-    
+
     return input
 ```
 
@@ -115,27 +115,27 @@ def main(input: str, **kwargs) -> str:
 Process all uploaded files:
 
 ```python
-def main(input: str, **kwargs) -> str: 
+def main(input: str, **kwargs) -> str:
     # Get uploaded files from temp state
     attachments = get_temp_state_key("attachments")
     if not attachments:
         return input
-    
+
     # Read all files and combine their contents
     all_file_contents = []
     for i, attachment in enumerate(attachments):
         file_content = attachment.read_text()
         filename = attachment.name if hasattr(attachment, 'name') else f"File {i+1}"
         all_file_contents.append(f"## {filename}\n{file_content}")
-    
+
     # Save combined contents to temp state
     combined_contents = "\n\n".join(all_file_contents)
     set_temp_state_key("file_contents", combined_contents)
-    
+
     return input
 ```
 
-In these examples, the Python node reads the uploaded file(s) and saves their contents to the temp state under the key "file_contents". The user's original input is passed through unchanged to the LLM node. 
+In these examples, the Python node reads the uploaded file(s) and saves their contents to the temp state under the key "file_contents". The user's original input is passed through unchanged to the LLM node.
 
 **LLM Node Configuration:**
 

@@ -11,7 +11,7 @@ GET /api/files/{id}/content
   Parameters:
     - id (path, integer (required)): No description
   Responses:
-    200: 
+    200:
       Content: application/octet-stream
       Schema: string
   Security:

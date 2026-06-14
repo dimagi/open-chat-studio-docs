@@ -109,7 +109,7 @@ class OpenAPIToMarkdownConverter:
     def _load_schema(self, schema_path: str | Path) -> dict[str, Any]:
         """Load OpenAPI schema from file path, URL, or string content."""
         schema_str = str(schema_path)
-        
+
         # Check if it's a URL
         parsed_url = urlparse(schema_str)
         if parsed_url.scheme in ('http', 'https'):
@@ -133,7 +133,7 @@ class OpenAPIToMarkdownConverter:
                         return yaml.safe_load(schema_str)
                     except yaml.YAMLError as e:
                         raise ValueError("Invalid schema: not a valid file path, URL, JSON, or YAML") from e
-        
+
         # Parse the content (from file or URL)
         try:
             return json.loads(content)

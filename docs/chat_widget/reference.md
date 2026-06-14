@@ -417,15 +417,15 @@ widget.pageContext = {
   // User information
   user_role: 'support_agent',
   user_department: 'technical_support',
-  
+
   // Page information
   page_location: 'help-center',
   page_title: 'Troubleshooting Guide',
-  
+
   // Application state
   session_type: 'trial',
   account_status: 'active',
-  
+
   // Custom data
   feature_flags: ['new_ui', 'beta_features'],
   request_context: 'urgent'
@@ -433,7 +433,7 @@ widget.pageContext = {
 ```
 
 !!! note
-    
+
     The page context is persisted in the session state on the server side and is accessible via `session_state.remote_context`. See [accessing remote context](../concepts/prompt_variables.md#accessing-remote-context) for more details.
 
 ## :material-clipboard-list: Properties Reference

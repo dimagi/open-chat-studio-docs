@@ -15,7 +15,7 @@ Open Chat Studio currently supports the following providers:
 
 ## LLM Models
 
-Each service provider is pre-configured with the most common models for both AI inference and text embedding. 
+Each service provider is pre-configured with the most common models for both AI inference and text embedding.
 
 Should the service provider configuration not include a model which is available via the provider, it may be added directly via the user interface. This is done by editing the provider and using the :material-plus-box: button in the 'Custom Models' section.
 

@@ -9,7 +9,7 @@ GET /api/v2/me/
   Summary: Current User
   Description: Returns basic information about the authenticated user and the team the token is scoped to.
   Responses:
-    200: 
+    200:
       Content: application/json
       Schema: Me
   Security:

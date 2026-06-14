@@ -31,13 +31,13 @@ The collection *structure* (which collections are linked to which nodes) remains
     This live-collection behaviour applies to bots republished after this change was introduced (2026-06-03). Bots that were published before retain their previous frozen collection snapshot until the next time they are republished.
 
 ## Chatting to the unreleased version
-For testing, if you want to chat with the unreleased draft chatbot, go to the chatbot home page and click the speech bubble icon in the top-right corner. In the dropdown, select "Unreleased Version" instead of "Published Version" to open a web chat. 
+For testing, if you want to chat with the unreleased draft chatbot, go to the chatbot home page and click the speech bubble icon in the top-right corner. In the dropdown, select "Unreleased Version" instead of "Published Version" to open a web chat.
 
 When chatting with an unpublished version, a banner will appear indicating that it is not the published version and showing the version number.
 
 ![Web chat unpublished version banner](images/version_web_chat.png)
 
-Only bot editors can chat with the unreleased version because it is not available through [channels](channels.md). 
+Only bot editors can chat with the unreleased version because it is not available through [channels](channels.md).
 
 !!! note "Behavior before versioning"
     Previously, all channels always used the unreleased version.

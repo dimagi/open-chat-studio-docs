@@ -41,4 +41,4 @@ deploying chatbots powered by Large Language Models ([LLMs](concepts/llm.md)).
 You can host your own instance of Open Chat Studio, or use the hosted version
 at [openchatstudio.com](https://openchatstudio.com/).
 
-If you would like an account on Dimagi's hosted version of Open Chat Studio send an email to ocs-info@dimagi.com. 
+If you would like an account on Dimagi's hosted version of Open Chat Studio send an email to ocs-info@dimagi.com.
