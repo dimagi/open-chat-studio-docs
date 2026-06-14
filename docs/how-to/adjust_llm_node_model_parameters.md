@@ -22,7 +22,7 @@ This guide walks you through adjusting the LLM model parameters on an [LLM node]
 
 ## Step 3 — Adjust temperature or effort
 
-Once you select an LLM model, Open Chat Studio shows only the parameter settings that apply to it. This can be one or more settings.
+Once you select an LLM model, Open Chat Studio shows only the parameter settings that apply to it. There may be one or more settings.
 
 ### If the model shows a Temperature setting
 
@@ -97,19 +97,19 @@ This section covers the precise behaviour of each parameter. It is intended for 
 
 Set the effort level to guide how much the model reasons; set Max output tokens to enforce a hard token cap.
 
-**Provider notes:** Different providers expose this slightly differently. OpenAI exposes this as `reasoning_effort`. Anthropic's Claude models use [adaptive thinking](#adaptive-thinking). Gemini's thinking-capable models expose a thinking budget. OCS maps all of these to the same four effort levels.
+**Provider notes:** Different providers expose this slightly differently for each of their model versions, so visit the provider websites for details.
 
 ### Max output tokens
 
 !!! note "Distinct from the max token limit"
     This is a different limit from the model's [max token limit](../concepts/llm.md#max-token-limit). Both limits apply simultaneously.
 
-This is a hard cap on generated **output** tokens only — it does not affect input consumption. If reached, output truncates mid-sentence and OCS may not display an explicit error.
+This is a hard cap on generated **output** tokens only — it does not affect input consumption. If reached, the output is truncated mid-sentence and OCS may not display an explicit error.
 
 OCS provides a default based on the LLM provider default (this varies by model and may be conservative).
 
 !!! warning "Reasoning models — shared budget"
-    On reasoning models, thinking tokens and visible-reply tokens draw from the same max output tokens budget. If the thinking phase exhausts the budget, the model produces no visible output — silently.
+    On reasoning models, thinking tokens and visible-reply tokens draw from the same max output tokens budget. If the thinking phase exhausts the budget, the model silently produces no visible output.
 
     For `high` or `max` effort level, a safe starting point is 2–4× your expected reply length.
 
@@ -117,4 +117,4 @@ OCS provides a default based on the LLM provider default (this varies by model a
 
 When enabled, the model dynamically allocates its reasoning budget per message rather than spending a fixed amount every time — guided by the [effort level](#effort-reasoning-effort) you set. Easy turns finish quickly; complex ones get more thinking tokens.
 
-Only available on supported Claude models. Refer to [Claude documentation for details](https://platform.claude.com/docs/en/about-claude/models/choosing-a-model).
+Refer to [Claude documentation for more on adaptive thinking and what models support it](https://platform.claude.com/docs/en/build-with-claude/adaptive-thinking).
