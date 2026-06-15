@@ -133,6 +133,7 @@ ExperimentSession:
   - status: Status490Enum
   - platform: string
   - tags: array of string (required)
+  - state: Unknown
 
 ExperimentSessionCreate:
   - url: string (required)
@@ -153,6 +154,7 @@ ExperimentSessionWithMessages:
   - platform: string
   - messages: array of Message (required)
   - tags: array of string (required)
+  - state: Unknown
 
 File:
   - name: string (required)
