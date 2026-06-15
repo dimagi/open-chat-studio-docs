@@ -9,6 +9,9 @@ hide:
 
     Looking for the embeddable chat widget? See the [Chat Widget changelog](chat_widget/changelog.md).
 
+## Jun 15, 2026
+* **CHANGE** The session retrieval endpoint (`GET /api/sessions/{id}/`) now includes the session's state in its response payload, so consumers can read a session's stored state alongside its other details without a separate call.
+
 ## Jun 11, 2026
 * **CHANGE** Surveys are deprecated and will be removed on **2026-07-10**. They are now decoupled from chatbots — the pre- and post-survey settings have been removed, so surveys are no longer presented to participants before or after a web chat. Existing surveys are read-only (you can no longer create new ones, only view or delete them) for a 30-day window so teams can export their data. A deprecation warning and an in-product notification announce the removal.
 
