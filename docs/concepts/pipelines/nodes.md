@@ -13,11 +13,12 @@ graph LR
     See [chatbot workflow cookbook](../../how-to/workflow_cookbook.md) for examples of pipelines using different combinations of these node types.
 
 ## LLM Node
-A conversational node using AI models. This node can be [configured](../llm.md#model-configuration-parameters) including:
+A conversational node using AI models. You can configure this node.
 
-- a [prompt](../llm.md#prompt) to give the LLM instructions on how to respond,
-- selecting a [history mode](history.md) for the LLM,
-- and to use [tools](../tools/index.md) which enable it to perform additional actions.
+- A [prompt](../llm.md#prompt) for instructions on how to respond
+- A [history mode](history.md) for conversation memory
+- [Temperature and effort parameters](../../how-to/adjust_llm_node_model_parameters.md) to shape output style and depth
+- [Tools](../tools/index.md) for additional actions
 
 ## Routing Nodes
 

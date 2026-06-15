@@ -103,6 +103,8 @@ nav:
   - How-to Guides:
       - how-to/index.md
       - FAQ: how-to/faq.md
+      - Choose an LLM Model: how-to/choose_llm_model.md
+      - Adjust LLM Node Model Parameters: how-to/adjust_llm_node_model_parameters.md
       - how-to/workflow_cookbook.md
       - how-to/add_a_knowledge_base.md
       - how-to/deploy_to_different_channels.md

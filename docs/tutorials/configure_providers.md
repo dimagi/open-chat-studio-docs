@@ -15,9 +15,12 @@ Providers are configured in your [Team](../concepts/team/index.md) settings unde
 1. Go to your team settings
 2. Navigate to "LLM and Embedding Model Service Providers"
 3. Click "Add Provider"
-4. Select your provider from the dropdown
+4. Select your provider from the dropdown (see [supported providers](../concepts/team/llm_providers.md) for the full list)
 5. Enter your API key
 6. Save the configuration
+
+!!! note  
+    After saving, the provider page lists the LLM models it supports. Each model shows its [max token limit](../concepts/llm.md#max-token-limit).
 
 ## Testing Your Configuration
 
