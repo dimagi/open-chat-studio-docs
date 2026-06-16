@@ -1,6 +1,4 @@
-# Auto-Population Rules
-
-See [Evaluation Datasets](../../concepts/evaluations/dataset.md#evaluation-levels) for an overview of session-level vs. message-level datasets.
+# Auto-Population Rules for datasets
 
 Session-level datasets can be configured to **continuously ingest new sessions** from a source chatbot. Each dataset can have one or more **auto-population rules**, and each rule defines:
 
@@ -9,6 +7,8 @@ Session-level datasets can be configured to **continuously ingest new sessions**
 
 !!! note
     Auto-population is available for **session-level** datasets only. Message-level datasets must be populated by cloning, manual entry, or CSV upload.
+
+    See [Evaluation Datasets](../../concepts/evaluations/dataset.md#evaluation-levels) for an overview of session-level vs. message-level datasets.
 
 ## How ingestion works
 
