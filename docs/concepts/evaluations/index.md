@@ -2,17 +2,13 @@
 
 Evaluations let you check how well your chatbot is performing by running it against a set of sample conversations and automatically scoring the results — for example, checking whether responses were accurate, on-topic, or used the right tone.
 
-In Open Chat Studio, evaluations can be run against existing conversation messages in the system or uploaded custom test datasets. Metrics can be defined either as python code, or output from an LLM.
+In Open Chat Studio, evaluations can be run against existing conversation messages in the system or uploaded custom test datasets.
 
 ## Overview
 
 - **Evaluations** are made up of a [dataset](./dataset.md) and one or more [evaluators](./evaluators.md).
 - **Datasets** are collections of messages that serve as the foundation for running evaluations. Datasets can either be created directly from existing [sessions](../sessions.md), manually created in the UI, or uploaded with a CSV.
-- **Evaluators** define the logic for analyzing messages and generating evaluation metrics. Each evaluator takes individual messages from a dataset and optionally a generated response, then outputs structured results in a table. You can apply many evaluators to a dataset in parallel, and the outputs of each will be added as new columns to the table.
-
-### Chatbot Generation
-
-Messages can also optionally be passed in to a [chatbot](../chatbots/index.md), whose generation output will be available to the evaluators.
+- **Evaluators** define the logic for analyzing messages and generating evaluation metrics, either as an [LLM-as-judge prompt](./evaluators.md#llm-evaluator) or [custom python code](./evaluators.md#python-evaluator). Each evaluator takes individual messages from a dataset and optionally a generated response, then outputs structured results in a table. You can apply many evaluators to a dataset in parallel, and the outputs of each will be added as new columns to the table.
 
 ## Evaluation Execution
 
@@ -27,7 +23,11 @@ flowchart LR
     evaluator2 --> structured_output
 ```
 
-## Session Retention
+### Chatbot Generation
+
+Messages can also optionally be passed in to a [chatbot](../chatbots/index.md), whose generation output will be available to the evaluators.
+
+### Session Retention
 
 When evaluations are run with chatbot generation enabled, temporary sessions are created to store the generated responses and conversation context. These evaluation sessions are automatically deleted after **30 days**.
 
@@ -36,3 +36,4 @@ When evaluations are run with chatbot generation enabled, temporary sessions are
 
 !!! note "Source Sessions Unaffected"
     This automatic deletion only affects sessions created during evaluation runs. Source sessions (the original sessions that datasets may be cloned from) are not affected by this retention policy and remain in the system according to their own lifecycle.
+
