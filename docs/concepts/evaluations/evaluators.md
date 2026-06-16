@@ -74,7 +74,13 @@ The system automatically validates the LLM's output against the specified types 
 | user_sentiment | choices | The sentiment of the user message (options: positive, neutral, negative) |
 | confidence_score | float | Confidence in the evaluation, from 0.0 to 1.0 |
 
-See [Tag Rules](tag_rules.md) to automatically tag sessions or messages based on these output values.
+See [Tag Rules](../evaluations/tag_rules.md) to automatically tag sessions or messages based on these output values.
+
+### Python Evaluator
+
+Use the Python Evaluator when you need deterministic rules, custom string matching, or logic that an LLM prompt cannot reliably express. It runs custom code against each message instead of an LLM prompt.
+
+See [Python Evaluator](../../tech-hub/evaluations/python_evaluator.md) for the function signature, arguments, and a worked example.
 
 ## Clearing Run History
 
@@ -86,9 +92,3 @@ Clearing run history also removes the tags that those runs applied to their targ
     Deleted runs and their results cannot be recovered. Export any results you need to keep before using **Clear all**.
 
 A confirmation prompt appears before the action runs.
-
-## Python Evaluator
-
-Use the Python Evaluator when you need deterministic rules, custom string matching, or logic that an LLM prompt cannot reliably express. It runs custom code against each message instead of an LLM prompt.
-
-See [Python Evaluator](../../tech-hub/evaluations/python_evaluator.md) for the function signature, arguments, and a worked example.

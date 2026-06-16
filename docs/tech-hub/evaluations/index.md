@@ -1,6 +1,6 @@
 # Evaluations
 
-This section covers the advanced features for Open Chat Studio's evaluation features: writing custom Python evaluators and configuring continuous dataset ingestion.
+This section covers Open Chat Studio's advanced evaluation features: writing custom Python evaluators and configuring continuous dataset ingestion.
 
 For a non-technical overview of datasets, evaluators, and how evaluation runs work, see [Evaluations](../../concepts/evaluations/index.md).
 
