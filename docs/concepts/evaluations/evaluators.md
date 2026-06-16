@@ -21,11 +21,11 @@ Generated answer: {generated_response}
 Consider the conversation context: {context.topic}
 ```
 
-**Template Variables:**
+### Template Variables
 
 The available variables depend on the evaluator's evaluation mode.
 
-##### Message-level variables
+**Message-level variables**
 
 | Variable | Description |
 |---|---|
@@ -35,7 +35,7 @@ The available variables depend on the evaluator's evaluation mode.
 | `{context.[parameter]}` | Any context variable, e.g. `{context.topic}` |
 | `{full_history}` | Complete conversation history as formatted text |
 
-##### Session-level variables
+**Session-level variables**
 
 In session-level mode, `{input.content}` and `{output.content}` are empty. Use the following variables instead:
 
@@ -49,7 +49,7 @@ In session-level mode, `{input.content}` and `{output.content}` are empty. Use t
 
 See [Evaluation Datasets](dataset.md) for how data is mapped into these fields.
 
-#### Output Schema
+### Output Schema
 
 The output schema defines the metrics that the LLM should attempt to output. Each item in the schema will become a column in the output table. You can specify the data type for each field to ensure structured, validated output.
 
@@ -71,63 +71,9 @@ The system automatically validates the LLM's output against the specified types 
 | user_sentiment | choices | The sentiment of the user message (options: positive, neutral, negative) |
 | confidence_score | float | Confidence in the evaluation, from 0.0 to 1.0 |
 
-#### Tag Rules
+See [Tag Rules](tag_rules.md) to automatically tag sessions or messages based on these output values.
 
-Tag Rules let you automatically apply tags to sessions or messages when an evaluator output field matches a condition. This makes it easy to surface and filter results — for example, flagging all sessions where the evaluator detected negative sentiment, or marking messages that scored below a threshold.
-
-Tag Rules are available only on LLM evaluators. They run automatically on every non-preview evaluation run. Preview runs do not trigger tag application.
-
-**How tags are applied**
-
-The target of the tag depends on the evaluator's mode:
-
-- **Message mode**: the tag is applied to the specific chat message being evaluated.
-- **Session mode**: the tag is applied to the session's chat.
-
-Each tag application is recorded in an audit log and displayed in the **Applied Tags** column on the run results page.
-
-**Tag reconciliation on rerun**
-
-The philosophy behind tag rules is simple: a message or session either meets the criteria for a tag, or it does not. To keep tag state consistent with the latest evaluation results, rerunning an evaluation reconciles the tags managed by its evaluators' tag rules:
-
-- For each message or session in the rerun's scope, any tag named by an evaluator's tag rules that was **not** applied by the latest run is removed from that message or session.
-- Reconciliation removes a tag regardless of who applied it. If a human had previously added a tag that is also managed by a tag rule, and the new evaluator output does not satisfy that rule, the human-applied tag is removed.
-- **FULL** reruns reconcile every row in the dataset. **DELTA** reruns only reconcile the rows in their scope.
-- **PREVIEW** runs neither apply nor remove tags.
-
-Tags whose names are not referenced by any tag rule on the run's evaluators are never touched by reconciliation.
-
-**Defining a rule**
-
-Each rule has three parts:
-
-| Field | Description |
-|-------|-------------|
-| Output field | The output schema field whose value is tested |
-| Tag name | The tag to apply when the condition is met |
-| Condition | The value or range that triggers the tag |
-
-The condition options vary by the type of the output field:
-
-| Output field type | Condition behaviour |
-|-------------------|---------------------|
-| choices (enum) | Apply the tag when the field equals one of the defined choice values (e.g. `sentiment == "negative"`) |
-| integer / float | Apply the tag when the field equals a specific value, or falls within a `min..max` range |
-| string | Apply the tag when the field equals a specific value |
-
-**Example Tag Rules**
-
-Given the output schema from the example above, you could define the following rules:
-
-| Output field | Tag name | Condition |
-|---|---|---|
-| user_sentiment | negative-sentiment | equals `negative` |
-| expected_helpfulness | low-helpfulness | range `1..2` |
-| confidence_score | low-confidence | range `0.0..0.4` |
-
-With these rules, any evaluation run will automatically tag messages or sessions that meet the conditions, without requiring manual review of every row.
-
-**Clearing run history**
+## Clearing Run History
 
 The evaluation runs page includes a **Clear all** button that deletes the entire run history for an evaluation config in a single action. This button is only shown to users who have delete permission for evaluation runs.
 
@@ -138,41 +84,8 @@ Clearing run history also removes the tags that those runs applied to their targ
 
 A confirmation prompt appears before the action runs.
 
-### Python Evaluator
+## Python Evaluator
 
-The Python Evaluator allows custom code execution against each message.
+Use the Python Evaluator when you need deterministic rules, custom string matching, or logic that an LLM prompt cannot reliably express. It runs custom code against each message instead of an LLM prompt.
 
-The code **must** define a `main` function which takes the `input`, `output`, `full_history`, and `generated_response`. It should return a `dict` whose keys will become columns in the output table.
-
-**Function Arguments:**
-
-| Argument | Type | Description | Example |
-|----------|------|-------------|---------|
-| `input` | dict | The human message data with `content` and `role` keys | `{'content': 'What is 2+2?', 'role': 'human'}` |
-| `output` | dict | The expected AI response with `content` and `role` keys | `{'content': '2+2 equals 4', 'role': 'ai'}` |
-| `context` | dict | Additional metadata and variables | `{'topic': 'math', 'difficulty': 'easy', 'user_id': '123'}` |
-| `full_history` | str | Complete conversation history | `"user: Hello\nassistant: Hi there!\nuser: What is 2+2?"` |
-| `generated_response` | str | AI-generated response being evaluated | `"The answer is 4. Is there anything else I can help with?"` |
-
-
-**Example:**
-
-```python
-def main(input: dict, output: dict, context: dict, full_history: str, generated_response: str, **kwargs) -> dict:
-    """Evaluates response quality based on accuracy, length, and politeness.
-    """
-
-    expected_answer = output['content'].lower()
-    actual_answer = generated_response.lower()
-    has_correct_answer = expected_answer in actual_answer
-
-    response_length = len(generated_response.split())
-    is_polite = any(word in actual_answer for word in ['please', 'thank', 'help', 'happy'])
-
-    return {
-        'correct_answer': has_correct_answer,
-        'response_length': response_length,
-        'politeness_score': 1.0 if is_polite else 0.0,
-        'topic': context.get('topic', 'unknown')
-    }
-```
+See [Python Evaluator](../../tech-hub/evaluations/python_evaluator.md) for the function signature, arguments, and a worked example.

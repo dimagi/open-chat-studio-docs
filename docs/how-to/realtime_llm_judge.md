@@ -35,7 +35,7 @@ A dataset can have more than one rule — useful if you want to combine sessions
 - A configurable lookback window (default: 30 days) limits how far back the poller scans, based on session creation date.
 - If a rule fails three consecutive times, it is **automatically disabled** and a notification is raised. If ingestion appears to have stopped, check whether the rule is still enabled.
 
-For full details, see [Auto-Population Rules](../concepts/evaluations/dataset.md#auto-population-rules).
+For full details, see [Auto-Population Rules](../tech-hub/evaluations/auto_population.md).
 
 ## Step 3: Create a session-level LLM evaluator
 
@@ -93,7 +93,7 @@ With these rules in place, sessions where the goal was not met or where quality 
 !!! tip
     Tagged sessions can be filtered in the session list, so your team can prioritise follow-up without wading through all results.
 
-See [Tag Rules](../concepts/evaluations/evaluators.md#tag-rules) for the full set of condition types.
+See [Tag Rules](../concepts/evaluations/tag_rules.md) for the full set of condition types.
 
 ## Step 5: Create an evaluation config with auto-run enabled
 

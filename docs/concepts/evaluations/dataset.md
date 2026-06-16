@@ -1,6 +1,6 @@
 # Evaluation Datasets
 
-**Datasets** are collections of messages that serve as the foundation for running evaluations.
+A **dataset** is the set of example conversations or messages you want to test your chatbot against — the input for an [evaluation](./index.md).
 
 ## Evaluation Levels
 
@@ -26,7 +26,7 @@ Each dataset row contains the following fields. Not all fields are populated for
 
 ## Managing Datasets
 
-Datasets can be created by cloning an existing session, manually created in the UI, uploaded with a CSV, or — for session-level datasets — auto-populated continuously from a source chatbot via [auto-population rules](#auto-population-rules).
+Datasets can be created by cloning an existing session, manually created in the UI, uploaded with a CSV, or — for session-level datasets — auto-populated continuously from a source chatbot via [auto-population rules](../../tech-hub/evaluations/auto_population.md).
 
 !!! note
     Manual creation and CSV upload are only available for **message-level** datasets. Session-level datasets must be populated by cloning sessions, by configuring an auto-population rule, or by importing sessions from an annotation queue.
@@ -48,7 +48,11 @@ When cloning a message-level session, dataset rows are created automatically fro
 | `trace.participant_data` | `participant_data` | Participant data captured at the time of the message |
 | `trace.session_state` | `session_state` | Session state captured at the time of the message |
 
-Selecting multiple sessions from the list will clone all the messages from those sessions. Selecting "filtered messages" will only clone the messages that match the filter parameters. Selecting "All messages" will clone every message in that session.
+When selecting messages to clone, you have three options:
+
+- **Multiple sessions** — clones all messages from each selected session(s).
+- **Filtered messages** — clones only the messages that match the active filter parameters.
+- **All messages** — clones every message in the session.
 
 Messages that are cloned from a session will be "connected" to their actual message in OCS, and you will be able to follow links back to their original conversation when viewing the output of an evaluator. However, modifying or updating a cloned message will break this link.
 
@@ -93,39 +97,6 @@ user: Please tell me the time.
 assistant: It is currently 12:05 PM in Ankara.
 ```
 
-## Auto-Population Rules
-
-Session-level datasets can be configured to **continuously ingest new sessions** from a source chatbot. Each dataset can have one or more **auto-population rules**, and each rule defines:
-
-- **Source chatbot**: The chatbot whose sessions should be considered for ingestion.
-- **Filter criteria**: Standard session filters (tags, participant, channel, date range, etc.) that determine which sessions match the rule.
-
-!!! note
-    Auto-population is available for **session-level** datasets only. Message-level datasets must be populated by cloning, manual entry, or CSV upload.
-
-### How ingestion works
-
-A background task polls each enabled rule every **5 minutes** and adds any new sessions that match its filters and are not already in the dataset. Ingestion is bounded:
-
-- Only sessions created **after the rule itself was created** are eligible — enabling a rule does not backfill historical sessions.
-- A configurable lookback window (default: 30 days) limits how far back the poller scans, based on session creation date. This means a rule will only ingest sessions created within the lookback window, even if they otherwise match the filter (e.g. a session tagged with a matching tag will only be picked up if it was created less than 30 days ago).
-
-If a rule fails repeatedly (e.g. due to a misconfigured filter or a transient database error), it is automatically **disabled after three consecutive failures** and a notification is raised so the rule can be reviewed.
-
-### Automatic delta evaluation runs
-
-Auto-population works together with the **auto-run** flag on evaluation configs. When new sessions are added to a dataset by an auto-population rule, any evaluation config that references that dataset *and* has the auto-run flag set will be triggered automatically against the newly added rows.
-
-Each automatic run scores only the rows added in that ingestion cycle, producing a **delta** result set rather than re-evaluating every row in the dataset. The evaluation run table lists both **full** runs (which score the entire dataset) and **delta** runs (which score only newly added rows), so you can track results from manual full runs and automatic delta runs side by side.
-
-Manual filter-import and CSV-import paths do not trigger automatic evaluation runs — only the auto-population path does.
-
-## Sharing Dataset Messages
-
-When viewing dataset messages in the table, each row includes a link button that allows you to share a direct link to that specific message. When someone follows this link, the page automatically scrolls to the message and highlights it for easy identification.
-
-This feature is useful for collaborating with team members, referencing specific test cases in discussions, or documenting particular dataset examples. Simply click the link icon next to any message, and the URL will be copied to your clipboard with the message ID parameter included.
-
 ### CSV Upload
 
 A CSV can also be uploaded to populate the dataset. There should be columns for human messages, ai responses, and any context data. You can also include `participant_data` and `session_state` fields.
@@ -156,3 +127,13 @@ You can also specify participant data and session state as raw JSON objects by u
 When uploading a CSV, you can populate the history automatically from previous messages, or add it as a separate column.
 
 Adding the history automatically assumes the CSV is the transcript of a single conversation, in chronological order.
+
+## Auto-Population
+
+Session-level datasets can be continuously and automatically populated with new sessions from a live chatbot, instead of being created manually or from a one-off import. See [Auto-Population Rules](../../tech-hub/evaluations/auto_population.md) for how to configure rules and how ingestion works.
+
+## Sharing Dataset Messages
+
+When viewing dataset messages in the table, each row includes a link button that allows you to share a direct link to that specific message. When someone follows this link, the page automatically scrolls to the message and highlights it for easy identification.
+
+This feature is useful for collaborating with team members, referencing specific test cases in discussions, or documenting particular dataset examples. Simply click the link icon next to any message, and the URL will be copied to your clipboard with the message ID parameter included.
