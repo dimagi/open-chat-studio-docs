@@ -38,7 +38,7 @@ Each rule has three parts:
 
 The condition options vary by the type of the output field:
 
-| Output field type | Condition behaviour |
+| Output field type | Condition behavior
 |-------------------|---------------------|
 | choices (enum) | Apply the tag when the field equals one of the defined choice values (e.g. `sentiment == "negative"`) |
 | integer / float | Apply the tag when the field equals a specific value, or falls within a `min..max` range |

@@ -15,7 +15,7 @@ Session-level datasets can be configured to **continuously ingest new sessions**
 A background task polls each enabled rule every **5 minutes** and adds any new sessions that match its filters and are not already in the dataset. Ingestion is bounded:
 
 - Only sessions created **after the rule itself was created** are eligible — enabling a rule does not backfill historical sessions.
-- A configurable lookback window (default: 30 days) limits how far back the poller scans, based on session creation date. This means a rule will only ingest sessions created within the lookback window, even if they otherwise match the filter (e.g. a session tagged with a matching tag will only be picked up if it was created less than 30 days ago).
+- A configurable lookback window (default: 30 days) limits how far back the poller scans, based on session creation date. This means a rule will only ingest sessions created within the lookback window, even if they otherwise match the filter (e.g. a session matching a tag filter will only be picked up if it was created less than 30 days ago).
 
 If a rule fails repeatedly (e.g. due to a misconfigured filter or a transient database error), it is automatically **disabled after three consecutive failures** and a notification is raised so the rule can be reviewed.
 

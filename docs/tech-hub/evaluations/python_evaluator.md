@@ -2,7 +2,7 @@
 
 The Python Evaluator runs custom code against each message — useful for deterministic rules, custom string matching, or logic an LLM prompt can't reliably express. See [Evaluators](../../concepts/evaluations/evaluators.md#python-evaluator) for when to choose it over the [LLM Evaluator](../../concepts/evaluations/evaluators.md#llm-evaluator).
 
-The code **must** define a `main` function which takes the `input`, `output`, `full_history`, and `generated_response`. It should return a `dict` whose keys will become columns in the output table.
+The code **must** define a `main` function which takes the `input`, `output`, `full_history`, and `generated_response` as arguments. It should return a `dict` whose keys will become columns in the output table.
 
 ## Function Arguments
 
