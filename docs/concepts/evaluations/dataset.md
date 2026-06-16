@@ -1,6 +1,10 @@
 # Evaluation Datasets
 
-A **dataset** is the set of example conversations or messages you want to test your chatbot against — the input for an [evaluation](./index.md).
+Every evaluation needs example conversations to test against — that's what a **dataset** provides. A dataset is the set of messages or sessions you want to score.
+
+Dataset quality matters more than dataset size: a small, well-chosen set of realistic examples tells you more about how your chatbot behaves than scoring everything that happens to exist.
+
+You can build a dataset from real conversations your chatbot has already had, or write your own test cases to check specific behaviors — including edge cases your chatbot hasn't encountered yet.
 
 ## Evaluation Levels
 

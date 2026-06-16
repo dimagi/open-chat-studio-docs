@@ -1,8 +1,10 @@
 # Tag Rules
 
-Tag Rules let you automatically apply tags to sessions or messages when an evaluator output field matches a condition. This makes it easy to surface and filter results — for example, flagging all sessions where the evaluator detected negative sentiment, or marking messages that scored below a threshold.
+Running an evaluation against hundreds of messages produces a results table too large to read row by row. **Tag Rules** solve this by automatically tagging the sessions or messages that meet a condition you define.
 
-Tag Rules are available only on [LLM evaluators](evaluators.md#llm-evaluator). They run automatically on every non-preview evaluation run. Preview runs do not trigger tag application.
+For example, you could flag every session with negative sentiment, or every response that scored below a threshold — so your team can jump straight to the conversations that need attention instead of reviewing everything.
+
+Tag Rules are available only on [LLM evaluators](evaluators.md#llm-evaluator). They run automatically on every non-preview evaluation run; preview runs do not trigger tag application.
 
 ## How tags are applied
 

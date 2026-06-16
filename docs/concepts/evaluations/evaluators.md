@@ -1,8 +1,10 @@
 # Evaluators
 
-**Evaluators** define the logic for analyzing messages and generating evaluation metrics. Each evaluator takes individual messages from a dataset and optionally a generated response, then outputs structured results in a table.
+A dataset full of example conversations only becomes useful once it's been scored — that's the job of an **evaluator**. An evaluator looks at each message (and, optionally, your chatbot's generated response to it) and outputs a judgment: was it accurate, on-topic, polite, or whatever else matters for your use case.
 
-Each evaluator has an **evaluation mode** — either **message-level** or **session-level** — that must match the dataset it is used with. When configuring an evaluation run, evaluators whose mode is incompatible with the selected dataset are automatically disabled.
+You can run several evaluators over the same dataset at once, so a single evaluation run can check multiple things — accuracy, tone, safety — without re-running your chatbot for each one.
+
+Each evaluator works in one of two **evaluation modes** — **message-level** (judging a single response) or **session-level** (judging a whole conversation) — and must match the mode of the dataset it's used with. Evaluators using the wrong mode for a dataset are automatically disabled when configuring a run.
 
 ## Evaluator Types
 
