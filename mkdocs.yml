@@ -183,6 +183,7 @@ nav:
         - Custom Action Health: tech-hub/custom_action/health_custom_action.md
         - Custom Action Testing: tech-hub/custom_action/test_custom_action.md
     - Evaluations:
+        - tech-hub/evaluations/index.md
         - Python Evaluator: tech-hub/evaluations/python_evaluator.md
         - Auto-Population Rules: tech-hub/evaluations/auto_population.md
 
