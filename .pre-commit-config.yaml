@@ -37,7 +37,7 @@ repos:
   # Markdown quality
   # ---------------------------------------------------------------------------
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.44.0
+    rev: v0.45.0
     hooks:
       - id: markdownlint
         args: [--config, .markdownlint.yaml]
