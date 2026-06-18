@@ -9,9 +9,9 @@ Each evaluator works in one of two **evaluation modes** — **message-level** (j
 ## Evaluator Types
 
 ### LLM Evaluator
-The LLM Evaluator uses language models to evaluate responses based on a custom prompt. This can be used as an [LLM-as-judge](../../how-to/realtime_llm_judge.md) to evaluate the performance of a chatbot, or to gain insight properties of both the user and assistant messages.
+The LLM Evaluator uses language models to evaluate responses based on a custom prompt. This can be used as an [LLM-as-judge](../../how-to/evaluations/realtime_llm_judge.md) to evaluate the performance of a chatbot, or to gain insight into the properties of both the user and assistant messages.
 
-For the how to guide see [set up a real time LLM Judge](../../how-to/realtime_llm_judge.md).
+For the how-to guide, see [Set Up a Real-Time LLM Judge](../../how-to/evaluations/realtime_llm_judge.md).
 
 **Example prompt:**
 
@@ -70,12 +70,12 @@ The system automatically validates the LLM's output against the specified types 
 
 | Column Name | Type | Description |
 |-------------|------|-------------|
-| expected_helpfulness | integer | The helpfulness, on a scale of 1-5 of the expected assistant message |
-| actual_helpfulness | integer | The helpfulness, on a scale of 1-5 of the actual assistant message |
+| expected_helpfulness | integer | The helpfulness, on a scale of 1-5, of the expected assistant message |
+| actual_helpfulness | integer | The helpfulness, on a scale of 1-5, of the actual assistant message |
 | user_sentiment | choices | The sentiment of the user message (options: positive, neutral, negative) |
 | confidence_score | float | Confidence in the evaluation, from 0.0 to 1.0 |
 
-See [Tag Rules](../evaluations/tag_rules.md) to automatically tag sessions or messages based on these output values.
+See [Tag Rules](./tag_rules.md) to automatically tag sessions or messages based on these output values.
 
 ### Python Evaluator
 
