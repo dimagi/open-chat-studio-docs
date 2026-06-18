@@ -1,4 +1,4 @@
-# Auto-Population Rules for datasets
+# Auto-Population Rules
 
 Session-level datasets can be configured to **continuously ingest new sessions** from a source chatbot. Each dataset can have one or more **auto-population rules**, and each rule defines:
 

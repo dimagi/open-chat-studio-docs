@@ -1,4 +1,4 @@
-# Tag Rules
+# Tag Rules for LLM Evaluators
 
 Running an evaluation against hundreds of messages produces a results table too large to read row by row. **Tag Rules** solve this by automatically tagging the sessions or messages that meet a condition you define.
 
@@ -38,7 +38,7 @@ Each rule has three parts:
 
 The condition options vary by the type of the output field:
 
-| Output field type | Condition behavior
+| Output field type | Condition behavior |
 |-------------------|---------------------|
 | choices (enum) | Apply the tag when the field equals one of the defined choice values (e.g. `sentiment == "negative"`) |
 | integer / float | Apply the tag when the field equals a specific value, or falls within a `min..max` range |
