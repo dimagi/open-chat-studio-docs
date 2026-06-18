@@ -9,6 +9,7 @@ This guide will help you upgrade from previous versions of the Open Chat Studio 
 ### 1. Update the script tags
 
 **Update your script tags to use the latest version:**
+
 ```bash
 <script
   src="https://unpkg.com/open-chat-studio-widget{LATEST_VERSION_NUMBER}/dist/open-chat-studio-widget/open-chat-studio-widget.js"
@@ -216,10 +217,10 @@ The minimal steps required to upgrade are to replace the `bot-url` attribute wit
 -     bot-url=".../experiments/e/{CHATBOT_ID}/embed/start/"
 +     chatbot-id="{CHATBOT_ID}"
   </open-chat-studio-widget>
+
 ```
 
 The `chatbot_id` can be extracted from the `bot-url` by copying the UUID from the URL as shown above.
-
 
 ## Upgrade Checklist
 ✅ Check These Items
@@ -227,6 +228,7 @@ The `chatbot_id` can be extracted from the `bot-url` by copying the UUID from th
 **Property Names:** Ensure all property names use kebab-case (e.g., chatbot-id, not chatbotId)
 **JSON Properties:** Verify that welcome-messages and starter-questions are properly formatted
 **JSON strings:**
+
 ```bash
 <!-- ✅ Correct -->
 welcome-messages='["Message 1", "Message 2"]'
@@ -238,6 +240,7 @@ welcome-messages="Message 1, Message 2"
 **API Base URL:** If you were using a custom API URL, ensure the api-base-url property is set correctly
 
 **Boolean Properties:** Use string values for boolean properties:
+
 ```bash
 <!-- ✅ Correct -->
 visible="true"

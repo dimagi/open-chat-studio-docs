@@ -34,10 +34,12 @@ Additionally, OCS automatically provides the bot with a tool that enables it to 
 The location in the prompt where these summaries are included is defined by the [{media} prompt variable](../prompt_variables.md).
 
 Here’s an example of how file details appear in the system prompt:
+
 ```
 You are a friendly assistant. Here's some files that you can attach to your responses when you think the user will benefit from it:
 {media}
 ```
+
 becomes
 
 ```

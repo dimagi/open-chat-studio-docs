@@ -26,9 +26,11 @@ To understand how users move through your chatbot, you can enable Output Message
 
 ### Tag naming convention
 To keep system tags organized, OCS follows this naming convention:
+
 ```
 <node_name>:<route_name>
 ```
+
 Example: If you have a Router node named `support_triage` and it selects the output keyword `BILLING`, the resulting tag is:
 `support_triage:BILLING`
 

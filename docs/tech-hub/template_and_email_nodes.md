@@ -77,11 +77,13 @@ When the **body** field contains a template, the node renders it and uses the re
 ### Example — Dynamic Subject and Personalized Body
 
 **Subject:**
+
 ```jinja
 Update for {{ participant_details.identifier }}
 ```
 
 **Body:**
+
 ```jinja
 Hello {{ participant_data.name | default('there') }},
 

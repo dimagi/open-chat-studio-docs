@@ -61,6 +61,7 @@ The embed authentication feature allows you to:
 - Track and manage different embedded deployments
 
 ### Implementation
+
 ```html
 <open-chat-studio-widget
   chatbot-id="your-chatbot-id"
@@ -82,12 +83,15 @@ The chat widget uses user identification to:
 
 ### Basic Implementation
 Anonymous Users (Default)
+
 ```html
 <open-chat-studio-widget
   chatbot-id="your-chatbot-id">
 </open-chat-studio-widget>
 ```
+
 Identified Users
+
 ```html
 <open-chat-studio-widget
   chatbot-id="your-chatbot-id"
@@ -95,6 +99,7 @@ Identified Users
   user-name="Sarah Johnson">
 </open-chat-studio-widget>
 ```
+
 ### Auto-Generated User IDs
 
 When no user-id is provided, the widget automatically creates a unique identifier:
@@ -109,6 +114,7 @@ Persistence Behavior:
 
 ### Dynamic User Management
 Update user identification when authentication state changes:
+
 ```javascript
 function updateChatUser(user) {
   const widget = document.querySelector('open-chat-studio-widget');
@@ -166,6 +172,7 @@ Enable users to send files along with their messages. This feature is perfect fo
  allow-attachments="true">
 </open-chat-studio-widget>
 ```
+
 ### Supported File Types
 
 #### Documents:
