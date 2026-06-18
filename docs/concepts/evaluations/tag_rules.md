@@ -1,4 +1,4 @@
-# Tag Rules
+# Tag Rules for LLM Evaluators
 
 Running an evaluation against hundreds of messages produces a results table too large to read row by row. **Tag Rules** solve this by automatically tagging the sessions or messages that meet a condition you define.
 
