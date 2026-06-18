@@ -111,4 +111,4 @@ After setup, confirm the pipeline is running end to end:
 2. **Delta runs appear in the run table** — each ingestion cycle that adds new sessions should produce a corresponding delta run entry.
 3. **Tags appear on matching sessions** — if you configured tag rules, check the Applied Tags column on the run results page and verify that sessions meeting the conditions are tagged.
 
-If sessions are not appearing, verify that the auto-population rule is still enabled (see Step 2 for the three-failure auto-disable behavior).
+If sessions are not appearing, verify that the [auto-population rule](../../tech-hub/evaluations/auto_population.md) is still enabled.
