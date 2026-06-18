@@ -30,10 +30,10 @@ MD033:
 MD004: false
 # Ingore unorded list indentation
 MD007: false
-
-MD021: false
+#Ignore need for blank lines around headings, lists, and code blocks
 MD022: false
-MD024: false
+MD024:
+  siblings_only: true
 MD025: false
 MD026: false
 MD029: false
@@ -53,3 +53,4 @@ MD053: false
 MD054: false
 MD058: false
 MD059: false
+MD060: false
