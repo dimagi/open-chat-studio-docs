@@ -9,6 +9,9 @@ hide:
 
     Looking for the embeddable chat widget? See the [Chat Widget changelog](chat_widget/changelog.md).
 
+## Jun 18, 2026
+* **CHANGE** The `/api/v2/me/` endpoint now includes an `email_verified` field indicating whether the authenticated user has confirmed their email address.
+
 ## Jun 15, 2026
 * **CHANGE** The session retrieval endpoint (`GET /api/sessions/{id}/`) now includes the session's state in its response payload, so consumers can read a session's stored state alongside its other details without a separate call.
 
