@@ -1,6 +1,6 @@
 # Set Up a Real-Time LLM Judge
 
-This guide shows you how to configure an LLM-as-a-judge automated evaluator that scores new chatbot sessions automatically as they arrive, with no manual intervention required. 
+This guide shows you how to configure an LLM-as-a-judge automated evaluator that scores new chatbot sessions automatically as they arrive, with no manual intervention required.
 
 The pattern combines a [session-level dataset](../../concepts/evaluations/dataset.md#evaluation-levels) that continuously ingests new sessions from a chatbot with an [LLM evaluator](../../concepts/evaluations/evaluators.md#llm-evaluator) set to run automatically on each new batch.
 

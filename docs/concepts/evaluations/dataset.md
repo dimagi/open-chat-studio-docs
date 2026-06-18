@@ -30,8 +30,8 @@ There are four ways to populate a dataset. The right choice depends on the data 
 **Upload a CSV** — bulk-load message pairs from a file. This is the fastest way to migrate an existing test suite or import data from another tool.
 
 !!! note
-    Manual creation and CSV upload are only available for **message-level** datasets. 
-    
+    Manual creation and CSV upload are only available for **message-level** datasets.
+
     **Session-level** datasets must be populated by cloning sessions, by configuring an [auto-population rule](../../tech-hub/evaluations/auto_population.md), or by importing sessions from an annotation queue.
 
 For step-by-step instructions for each method, see [Create a Dataset](../../how-to/evaluations/create-a-dataset.md). For the full field reference and CSV format details, see [Dataset Structure](../../tech-hub/evaluations/dataset-structure.md).

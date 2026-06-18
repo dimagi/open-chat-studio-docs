@@ -29,7 +29,7 @@ Based on the evaluation level you have chosen, the system will clone either the 
 ### Clone a Session for a message-level dataset:
 
 1. Open the dataset and click **Add from session**.
-2. Select at least one session you want to clone from. 
+2. Select at least one session you want to clone from.
 3. You can search and filter by chatbot, date range, tags, or other session attributes.
 4. Choose how much of each session to include:
     - **Multiple sessions** — clones all messages from each selected session.
