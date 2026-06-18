@@ -44,4 +44,4 @@ Session-level datasets can be continuously and automatically populated with new 
 
 When viewing dataset messages in the table, each row includes a link button that allows you to share a direct link to that specific message. When someone follows this link, the page automatically scrolls to the message and highlights it for easy identification.
 
-This feature is useful for collaborating with team members, referencing specific test cases in discussions, or documenting particular dataset examples. Click the link icon next to any message and the URL will be copied to your clipboard with the message ID parameter included.
+This feature is useful for collaborating with team members, referencing specific test cases in discussions, or documenting particular dataset examples. Click the link icon next to any message, and the URL will be copied to your clipboard with the message ID parameter included.

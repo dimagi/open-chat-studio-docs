@@ -7,7 +7,7 @@ For a non-technical overview of datasets, evaluators, and how evaluation runs wo
 
 ## Evaluation Execution
 
-When an evaluation is run, each message from the dataset is first passed in to the defined chatbot (if applicable). The result, with the added generation output is then passed in to each evaluator in parallel. The evaluators output structured data. This data is compiled into a table, whose rows are each message and the columns are the evaluator output.
+When an evaluation is run, each message from the dataset is first passed into the defined chatbot (if applicable). The result, with the added generation output, is then passed into each evaluator in parallel. The evaluators output structured data. This data is compiled into a table, whose rows are each message and the columns are the evaluator output.
 
 ```mermaid
 flowchart LR
@@ -20,7 +20,7 @@ flowchart LR
 
 ### Chatbot Generation
 
-Messages can also optionally be passed in to a [chatbot](../chatbots/index.md), whose generation output will be available to the evaluators.
+Messages can also optionally be passed into a [chatbot](../../concepts/chatbots/index.md), whose generation output will be available to the evaluators.
 
 ### Session Retention
 
