@@ -1,6 +1,6 @@
 # Set Up a Real-Time LLM Judge
 
-This guide shows you how to configure an LLM-as-a-judge that scores new chatbot sessions automatically as they arrive, with no manual intervention required. The pattern combines a session-level dataset that continuously ingests new sessions from a chatbot with an LLM evaluator set to run automatically on each new batch.
+This guide shows you how to configure an LLM-as-a-judge that scores new chatbot sessions automatically as they arrive, with no manual intervention required. The pattern combines a [session-level dataset](../concepts/evaluations/dataset.md#session-level-datasets) that continuously ingests new sessions from a chatbot with an [LLM evaluator](../concepts/evaluations/evaluators.md#llm-evaluator) set to run automatically on each new batch.
 
 For background on evaluations, datasets, and evaluators, see [Evaluations](../concepts/evaluations/index.md).
 
@@ -17,7 +17,7 @@ See [Evaluation Datasets](../concepts/evaluations/dataset.md) for an overview of
 
 ## Step 2: Add an auto-population rule
 
-Once the dataset exists, add an auto-population rule to tell OCS which chatbot sessions should flow into it.
+Once the dataset exists, add an auto-population rule to tell OCS which chatbot sessions should flow into it. For full details, see [Auto-Population Rules](../tech-hub/evaluations/auto_population.md).
 
 Each rule requires:
 
@@ -29,13 +29,7 @@ A dataset can have more than one rule — useful if you want to combine sessions
 !!! note
     A rule only ingests sessions created **after the rule itself was created**. Enabling a rule does not backfill historical sessions.
 
-**How ingestion works once the rule is active:**
-
-- A background task polls each enabled rule every **5 minutes** and adds any new matching sessions not already in the dataset.
-- A configurable lookback window (default: 30 days) limits how far back the poller scans, based on session creation date.
-- If a rule fails three consecutive times, it is **automatically disabled** and a notification is raised. If ingestion appears to have stopped, check whether the rule is still enabled.
-
-For full details, see [Auto-Population Rules](../concepts/evaluations/dataset.md#auto-population-rules).
+For full details of **how ingestion works once the rule is active**, see [Auto-Population Rules on Tech Hub](../tech-hub/evaluations/auto_population.md#how-ingestion-works).
 
 ## Step 3: Create a session-level LLM evaluator
 
@@ -77,7 +71,7 @@ See [Evaluators](../concepts/evaluations/evaluators.md) for full details on outp
 
 ## Step 4 (optional): Add tag rules to flag results automatically
 
-Tag rules apply a tag to a session automatically when an evaluator output field meets a condition. They run on every non-preview evaluation run and make it easy to surface sessions of interest without reviewing every row.
+[Tag rules](../concepts/evaluations/tag_rules.md) apply a tag to a session automatically when an evaluator output field meets a condition. They run on every non-preview evaluation run and make it easy to surface sessions of interest without reviewing every row.
 
 In session mode, the tag is applied to the session's chat. Each application is recorded in the **Applied Tags** column on the run results page.
 
@@ -93,7 +87,7 @@ With these rules in place, sessions where the goal was not met or where quality 
 !!! tip
     Tagged sessions can be filtered in the session list, so your team can prioritise follow-up without wading through all results.
 
-See [Tag Rules](../concepts/evaluations/evaluators.md#tag-rules) for the full set of condition types.
+See [Tag Rules](../concepts/evaluations/tag_rules.md) for the full set of condition types.
 
 ## Step 5: Create an evaluation config with auto-run enabled
 
@@ -121,4 +115,4 @@ After setup, confirm the pipeline is running end to end:
 2. **Delta runs appear in the run table** — each ingestion cycle that adds new sessions should produce a corresponding delta run entry.
 3. **Tags appear on matching sessions** — if you configured tag rules, check the Applied Tags column on the run results page and verify that sessions meeting the conditions are tagged.
 
-If sessions are not appearing, verify that the auto-population rule is still enabled (see Step 2 for the three-failure auto-disable behaviour).
+If sessions are not appearing, verify that the auto-population rule is still enabled (see Step 2 for the three-failure auto-disable behavior).

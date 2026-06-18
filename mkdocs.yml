@@ -165,6 +165,7 @@ nav:
         - concepts/evaluations/index.md
         - concepts/evaluations/dataset.md
         - concepts/evaluations/evaluators.md
+        - Tag Rules: concepts/evaluations/tag_rules.md
       - Annotations:
         - concepts/annotations/index.md
         - concepts/annotations/queues.md
@@ -181,6 +182,10 @@ nav:
         - tech-hub/custom_action/index.md
         - Custom Action Health: tech-hub/custom_action/health_custom_action.md
         - Custom Action Testing: tech-hub/custom_action/test_custom_action.md
+    - Evaluations:
+        - tech-hub/evaluations/index.md
+        - Python Evaluator: tech-hub/evaluations/python_evaluator.md
+        - Auto-Population Rules: tech-hub/evaluations/auto_population.md
 
     - OCS API:
         - api/index.md
