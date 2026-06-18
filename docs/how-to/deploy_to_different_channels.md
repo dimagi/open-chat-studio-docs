@@ -9,7 +9,7 @@ To link a channel to your bot:
 2. Click on the :material-plus: (plus) icon and select the [provider][2] from the dropdown.
 3. Complete the form and click **Create**. Follow the guide below to get the required information for each channel.
 
-You may need to [Configure a messaging provider][6] before you will be able to select it from the dropdown. 
+You may need to [Configure a messaging provider][6] before you will be able to select it from the dropdown.
 
 ## Web and API
 The web channel uses the web interface and is enabled by default for all bots. Likewise, all bots can be accessed via the [APIs][api].

@@ -35,7 +35,7 @@ Create a new GitHub release by comparing the current changelog with the previous
      - Itemized list of **BUG** entries
      ### Migrations
      - Itemized list of **MIGRATION** entries
-     
+
      Remove before publishing:
      - diff link: https://github.com/dimagi/open-chat-studio-docs/compare/<previous-tag>...HEAD
      ```

@@ -35,7 +35,7 @@ Accepts a plain string or use [template variables](../tech-hub/template_and_emai
 
 ### Recipient
 
-Accepts a comma-separated list of email addresses. See the [Recipient Field Syntax](../tech-hub/template_and_email_nodes.md#recipient-field-syntax) reference for advanced usage. 
+Accepts a comma-separated list of email addresses. See the [Recipient Field Syntax](../tech-hub/template_and_email_nodes.md#recipient-field-syntax) reference for advanced usage.
 
 ### Body
 

@@ -48,4 +48,3 @@ Troubleshooting and process changes can involve both repositories:
 
 1. [Developer guide on docs branching and app/widget release flow](https://developers.openchatstudio.com/developer_guides/user_docs/)
 2. [Background to using Claude custom Subagents](https://docs.anthropic.com/en/docs/claude-code/sub-agents)
-

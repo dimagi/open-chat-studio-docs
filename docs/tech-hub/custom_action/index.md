@@ -64,5 +64,3 @@ Open Chat Studio monitors Custom Actions by automatically checking the configure
 
 - You can also trigger a [manual health check](./health_custom_action.md#manual-health-checks) from the UI. Manual checks run immediately and return the current status without waiting for the scheduled check.
 - If the [health status](./health_custom_action.md#health-status-values) indicates that the service is not **Up**, follow the troubleshooting guidance on that page.
-
-

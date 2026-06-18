@@ -38,7 +38,7 @@ If your chatbot has been configured with a seed message, this is pre-filled and 
 
 ### Reset manually from the OCS Admin UI
 
-When viewing the session detail, the "End Session" button ends the current session. 
+When viewing the session detail, the "End Session" button ends the current session.
 - For more on ending sessions see [Session Status](../concepts/session_status.md#pending_review)
 
 ## Reset sessions automatically

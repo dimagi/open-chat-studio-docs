@@ -64,4 +64,3 @@ To ensure technical consistency, OCS handles keywords with the following rules:
 ## Route Tagging
 
 See [Route Tagging details](index.md#route-tagging-observability)
-

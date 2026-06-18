@@ -53,7 +53,7 @@ Use the following CSS variables to style the button appearance.
 
     All font sizes and some margins / padding are relative to the widget element's font size which can be set using the `--chat-window-font-size` and `--button-font-size` variables.
 
- 
+
 | Name                              | Description                                                       |
 |-----------------------------------|-------------------------------------------------------------------|
 | `--chat-window-width`             | Chat window height in pixels or percent (25%)                     |
@@ -174,7 +174,7 @@ Use the following CSS variables to style the button appearance.
 
 ## Markdown code
 
-By default, the Markdown code colours are relative to the respective message text and background colours, but they can be overridden. 
+By default, the Markdown code colours are relative to the respective message text and background colours, but they can be overridden.
 
 | Name                            | Description                                                                                                             |
 |---------------------------------|-------------------------------------------------------------------------------------------------------------------------|

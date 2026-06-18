@@ -137,4 +137,3 @@ Each document source header displays a status indicator reflecting the outcome o
 - **Error** – the last sync encountered a problem. The indicator is shown in red.
 - **Success** – the last sync completed without errors.
 - **In progress** – a sync is currently running. The indicator animates to show activity.
-

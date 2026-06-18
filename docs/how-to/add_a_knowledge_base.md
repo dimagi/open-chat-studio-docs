@@ -13,7 +13,7 @@ To reference the source material, include the `{source_material}` [prompt variab
 Example prompt:
 
 ```
-You are a friendly bot. Be sure to reference the source material before answering the user's query: 
+You are a friendly bot. Be sure to reference the source material before answering the user's query:
 
 ### Source material
 {source_material}

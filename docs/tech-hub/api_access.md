@@ -1,6 +1,6 @@
 # API access to OCS chatbots
 
-Using the API allows you to interact with your bot programmatically. This comes in especially useful when you're using a third-party system to evaluate your bot. API access is enabled by default for all bots. 
+Using the API allows you to interact with your bot programmatically. This comes in especially useful when you're using a third-party system to evaluate your bot. API access is enabled by default for all bots.
 
 To get started, you will need an API key, which you can generate by going to your [profile page][profile-page].
 
