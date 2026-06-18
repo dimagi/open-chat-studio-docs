@@ -4,7 +4,6 @@ This section covers Open Chat Studio's advanced evaluation features: writing cus
 
 For a non-technical overview of datasets, evaluators, and how evaluation runs work, see [Evaluations](../../concepts/evaluations/index.md).
 
-
 ## Evaluation Execution
 
 When an evaluation is run, each message from the dataset is first passed into the defined chatbot (if applicable). The result, with the added generation output, is then passed into each evaluator in parallel. The evaluators output structured data. This data is compiled into a table, whose rows are each message and the columns are the evaluator output.
@@ -31,7 +30,6 @@ When evaluations are run with chatbot generation enabled, temporary sessions are
 
 !!! note "Source Sessions Unaffected"
     This automatic deletion only affects sessions created during evaluation runs. Source sessions (the original sessions that datasets may be cloned from) are not affected by this retention policy and remain in the system according to their own lifecycle.
-
 
 ## Pages in this section
 
