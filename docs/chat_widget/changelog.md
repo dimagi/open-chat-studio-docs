@@ -28,6 +28,18 @@ Check your current HTML implementation and compare it with the [latest propertie
     sunset date shown on each entry, and may stop working. Upgrade to a supported version
     to stay current — see the [Quick Upgrade Steps](#quick-upgrade-steps) above.
 
+### v0.9.1 (2026-06-11)
+
+* Fix: include CSRF and common headers on file uploads.
+* Fix: don't persist the widget's open/closed state in kiosk mode.
+* Fix: stop polling and disable the message composer once a session ends.
+* Dependency updates.
+
+### v0.9.0 (2026-06-11)
+
+* Support for session tokens — used to authenticate chat sessions, including file uploads, with automatic recovery if a token is rejected.
+* Surface API deprecation notices — logs a warning when the chat API is approaching its sunset date and an error once it has passed.
+
 ### v0.8.0 (2026-06-05)
 
 * Add a `session-id` parameter to resume an existing chat session. (Used internally within the Open Chat Studio platform.)
