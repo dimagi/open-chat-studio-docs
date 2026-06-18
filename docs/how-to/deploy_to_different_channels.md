@@ -18,7 +18,6 @@ The web channel uses the web interface and is enabled by default for all bots. L
 - Follow [this guide][1] to create a Telegram bot.
 - Copy the bot token and paste it into the form on OCS. It will look something like this: `4839574812:AAFD39kkdpWt3ywyRZergyOLMaJhac60qc`.
 
-
 !!! info "Note"
     Depending on your usecase, you probably want to disable group joins for your bot on Telegram. Since your telegram bot is public, anyone can add it to a group, which could end up costing you a lot. To achieve this, use the [setjoingroups][5] setting in BotFather.
 
@@ -52,7 +51,6 @@ Turn.io does not support automatic webhook configuration. After adding your What
 Meta Cloud API connects your chatbot directly to the WhatsApp Business Platform without a third-party intermediary. The setup requires a Meta for Developers account and a WhatsApp Business Account.
 
 See the [Meta Cloud API setup guide][meta] for full step-by-step instructions.
-
 
 ## Facebook Messenger
 !!! info "Note"
@@ -161,7 +159,6 @@ The following attachments are rejected automatically:
 
 Rejection notes are inserted inline into the user's message so the bot can read them and explain the problem to the user in its reply.
 
-
 #### Outbound attachments (bot to user)
 
 Files produced by the pipeline are sent as MIME attachments in the same threaded reply as the bot's text response. To attach a file from a Python node, call `add_file_attachment()`:
@@ -183,7 +180,6 @@ def main(input, **kwargs) -> str:
 See the [Python Node documentation](../tech-hub/python_node.md#python_node.add_file_attachment) for the full `add_file_attachment()` API reference.
 
 If a pipeline-produced file cannot be sent as an attachment (for example, it exceeds the size limit or is a denylisted type), the email body will contain an inline download link for that file instead.
-
 
 [1]: https://core.telegram.org/bots#how-do-i-create-a-bot
 [2]: ../concepts/team/messaging_providers.md

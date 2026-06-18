@@ -93,7 +93,6 @@ Messages can be manually added in the UI. You must enter a Human Message, an AI 
 
 History must be entered as a new-line separated list of messages prepended with either `user:` or `assistant:`. For example:
 
-
 ```
 user: Hello, how are you?
 assistant: I am doing well, thank you for asking. How can I help you?

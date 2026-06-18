@@ -29,7 +29,6 @@ After adding a provider and models, it's recommended to:
 2. Configure it to use your new provider/model
 3. Send a test message to verify everything works correctly
 
-
 ## Adding Custom LLM Models
 
 If your LLM provider list doesn't have a pre-configured model you want to use, you can add it under the "Custom LLM Models" section.

@@ -86,5 +86,4 @@ When the panel loads, it automatically selects the first span that has an error 
 !!! note
     The span tree panel only appears when a Langfuse tracing provider is configured for your bot. If no Langfuse provider is configured, no trace information exists for the session, or the Langfuse API returns an error, the panel is hidden and the rest of the page is unaffected.
 
-
 [langfuse]: https://langfuse.com/docs

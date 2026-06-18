@@ -25,7 +25,6 @@ To add knowledge to your assistant, you must upload files to serve as the source
 - [File search][file_search]: This allows the bot to search and reference information provided in uploaded files.
 - [Code Interpreter][code_interpreter]: This allows the bot to write and execute code to accomplish tasks.
 
-
 ### See also
 - [Source Material][source_material_concept]
 

@@ -6,7 +6,6 @@ Tags can be created using the “Manage Tags” section.
 
 ![](../assets/images/tags_manage.png)
 
-
 ## Types Of Tags
 
 There are 3 types of tags.

@@ -36,7 +36,6 @@ To ensure reliable routing, write your prompt as a classifier. Its goal is to re
 - Clear Examples: Provide 2-3 "golden examples" for each path to increase accuracy for edge cases
   - Example Prompt: "If they mention password reset, output `SETTINGS`."
 
-
 ## Technical Performance: History Mode
 We strongly recommend using [Node history mode](../../concepts/pipelines/history.md#node) for an LLM Router.
 

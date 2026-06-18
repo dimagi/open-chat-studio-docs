@@ -107,7 +107,6 @@ Persistence Behavior:
 - Different browser/device: Gets new auto-generated ID
 - Incognito mode: New ID that's cleared when session ends
 
-
 ### Dynamic User Management
 Update user identification when authentication state changes:
 ```javascript
@@ -205,7 +204,6 @@ When attachments are sent to the LLM:
 4. Users can remove files before sending by clicking the X button
 5. Error messages appear for unsupported file types or files exceeding size limits
 6. Files are uploaded when the message is sent
-
 
 See [CSS Styling](styling.md#file-attachments) for customization options
 

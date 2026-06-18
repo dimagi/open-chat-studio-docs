@@ -1,6 +1,5 @@
 # Frequently Asked Questions
 
-
 ## How can I control feature rollouts for my team?
 Team administrators can use flags to show or hide the features for their team.
 

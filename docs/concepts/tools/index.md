@@ -56,7 +56,6 @@ Read and write data within the current session, or manage the session lifecycle.
 
 - **[Calculator](../../tech-hub/tools.md#calculator)** — Performs reliable mathematical calculations. Use this when your chatbot needs to compute values accurately rather than relying on the language model's estimation.
 
-
 ## LLM provider tools
 
 Some LLM providers offer their own built-in tools — such as web search or code execution — that run inside the provider's infrastructure. Open Chat Studio can connect to some of these where the provider supports it.

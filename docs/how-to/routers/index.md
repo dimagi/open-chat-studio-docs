@@ -9,7 +9,6 @@ For router-specific configuration, see:
 1. [LLM Router Configuration](llm_router.md)
 2. [Static Router Configuration](static_router.md)
 
-
 ## The Default Output
 Every router needs a "safety net" so the conversation never reaches a dead end. This is called the Default Output.
 
