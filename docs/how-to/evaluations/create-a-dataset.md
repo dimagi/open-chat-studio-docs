@@ -10,7 +10,7 @@ This guide walks you through each method for populating an evaluation dataset. B
 
 !!! note
 
-    If you choose a **message-level** dataset, then manual creation and CSV upload are available. If you choose **session-level**, then the datasets must be populated by cloning sessions, by importing from an annotation queue, or by configuring an [auto-population rule](../../tech-hub/evaluations/auto_population.md).
+    If you choose a **message-level** dataset, then manual creation and CSV upload are available. If you choose **session-level**, then the dataset must be populated by cloning sessions, by importing from an annotation queue, or by configuring an [auto-population rule](../../tech-hub/evaluations/auto_population.md).
 
 ---
 
@@ -24,7 +24,7 @@ Rows created by cloning keep a link back to their original session in OCS. This 
 
     Modifying or updating a cloned message row will break the link to its original session.
 
-Based on the evaluation level you have chosen, the system will clone either the message pairs (one row per message pair) or the sessions (one row is created per session). For details of the cloning field mappings see [Tech Hub dataset structure](../../tech-hub/evaluations/dataset-structure.md).
+Based on the evaluation level you have chosen, the system will clone either the message pairs (one row per message pair) or the sessions (one row is created per session). For details of the cloning field mappings, see [Tech Hub dataset structure](../../tech-hub/evaluations/dataset-structure.md).
 
 ### Clone a Session for a message-level dataset:
 
@@ -59,7 +59,7 @@ Use this method to populate a **session-level** dataset from sessions that have 
 
 Each session item in the queue becomes one row in the dataset, using the same field mapping as [session-level cloning](../../tech-hub/evaluations/dataset-structure.md#session-level-datasets).
 
-Imports are idempotent — sessions already present in the dataset are skipped. You can re-run the import after adding new items to the queue and only the new sessions will be added.
+Imports are idempotent — sessions already present in the dataset are skipped. You can re-run the import after adding new items to the queue, and only the new sessions will be added.
 
 ---
 
@@ -84,7 +84,7 @@ Use this method to bulk-load message pairs from a file for a **message-level** d
 
 1. Open the dataset and click **Upload CSV**.
 2. Select your CSV file.
-3. Choose whether to **auto-generate history** from the CSV rows. Enable this option if your CSV represents a single conversation in chronological order and you want OCS to construct the history column automatically from preceding rows. Leave it disabled if your CSV includes its own history column or the rows are not a sequential conversation.
+3. Choose whether to **auto-generate history** from the CSV rows. Enable this option if your CSV represents a single conversation in chronological order and you want OCS to construct the history column automatically from preceding rows. Leave it disabled if your CSV includes its own history column or the rows do not form a sequential conversation.
 4. Click **Upload**.
 
 For column naming conventions, dot-notation for nested fields, and JSON structure examples, see the [CSV Format](../../tech-hub/evaluations/dataset-structure.md#csv-format) reference.
