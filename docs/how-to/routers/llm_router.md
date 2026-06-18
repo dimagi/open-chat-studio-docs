@@ -22,7 +22,7 @@ You manage your router node through the Advanced Settings.
 
 Example: Configure one **output keyword** for each linked downstream node in your workflow. The keyword should describe the path, for example `HIV`, `TB`, and `GENERAL` for three possible workflow paths for advice on a disease.
 
-#### Keyword Case Behavior
+### Keyword Case Behavior
 To ensure technical consistency, OCS handles keywords with the following rules:
 - Automatic Uppercase: All keywords are stored in uppercase. While matching is case-insensitive (for example, `Help` matches `HELP`), we recommend using uppercase during configuration for clarity.
 

@@ -1,13 +1,13 @@
 Adding knowledge to your bot depends on the type of bot you are building.
 
 ## Base LLM and Pipeline
-#### Add your source material
+### Add your source material
 Select the *Source Material* tab on the left-hand menu and click *Add new*
 
-#### Select the source material for your bot
+### Select the source material for your bot
 Once you’ve created your source material, it should appear in the list of source materials when editing your bot.
 
-#### Reference the source material in your prompt
+### Reference the source material in your prompt
 To reference the source material, include the `{source_material}` [prompt variable][prompt_variables_concept] in your prompt. Be mindful of its placement—it’s best to include it in a separate section rather than within a sentence.
 
 Example prompt:
