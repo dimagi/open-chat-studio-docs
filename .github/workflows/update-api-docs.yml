@@ -53,6 +53,13 @@ jobs:
       - name: Generate API documentation
         run: uv run python src/ocs_docs/openapi_to_docs.py schemas -o docs/api/
 
+      - name: Apply lint rules
+        run: |
+          # Auto-fix lint issues (markdownlint, trailing whitespace, EOF) on the
+          # generated docs so committed output matches local pre-commit. prek hooks
+          # exit non-zero when they modify files; that's expected here, so don't fail.
+          uv run prek run --files $(find docs/api -name '*.md') || true
+
       - name: Check for changes
         id: check_changes
         run: |
