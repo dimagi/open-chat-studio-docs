@@ -1,6 +1,6 @@
 Prompt variables are a great way to make your prompt dynamic or tailored to the participant by injecting data into specified placeholders. These variables are predefined and look like this:
 
-```
+```text
 {variable}
 ```
 
@@ -48,7 +48,7 @@ Subsets of the data can be accessed using dot notation. For example, if you have
 
 You can access specific parts of the data using the following prompt variables:
 
-```
+```text
 {participant_data.name}
 {participant_data.address.street}
 {participant_data.tasks[0].name}  # lists are zero-indexed
@@ -58,7 +58,7 @@ You can access specific parts of the data using the following prompt variables:
 
 When using API integrations that pass context with messages, you can access this contextual information in your prompts using the session state variable:
 
-```
+```text
 {session_state.remote_context}
 ```
 
@@ -75,7 +75,7 @@ For example, if an API client sends a message with context like this:
 
 You can access specific values in your prompts:
 
-```
+```text
 Current page: {session_state.remote_context.page_url}
 Product ID: {session_state.remote_context.product_id}
 User segment: {session_state.remote_context.user_segment}

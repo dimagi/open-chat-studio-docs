@@ -52,7 +52,7 @@ The `input` and `output` fields are empty for session-level rows. Evaluators wor
 
 When adding history manually in the UI or as a column in a CSV, history must be a newline-separated list of messages, each prepended with either `user:` or `assistant:`. For example:
 
-```
+```text
 user: Hello, how are you?
 assistant: I am doing well, thank you for asking. How can I help you?
 user: Please tell me the time.

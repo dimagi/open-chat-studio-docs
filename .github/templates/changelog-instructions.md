@@ -11,7 +11,7 @@ You need to update the changelog and documentation in this repository based on a
 
 ## PR Description
 
-```
+```text
 ${PR_BODY}
 ```
 

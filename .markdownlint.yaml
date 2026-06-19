@@ -50,8 +50,6 @@ MD032: false
 MD034: false
 MD036: false
 
-# TODO: enable this for code fence langague tags, but disable for now because we have some code fences without language tags
-MD040: false
 MD041: false
 
 # TODO: enable this for alt text on images for accessibility, but disable for now because we have some images without alt text

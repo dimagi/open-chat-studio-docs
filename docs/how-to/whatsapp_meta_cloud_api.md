@@ -222,7 +222,7 @@ To update the language code:
 
 Open Chat Studio uses a **single global webhook endpoint** for all Meta Cloud API channels:
 
-```
+```text
 https://openchatstudio.com/api/channels/meta/incoming_message
 ```
 

@@ -15,7 +15,7 @@ For the how-to guide, see [Set Up a Real-Time LLM Judge](../../how-to/evaluation
 
 **Example prompt:**
 
-```
+```text
 Rate the helpfulness and accuracy of this response on a scale of 1-5:
 
 User question: {input.content}
