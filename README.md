@@ -28,17 +28,26 @@ Assuming you've already cloned this repository:
     prek install --install-hooks
     ```
 
-3. Start the project
+4. Start the project
 
     ```shell
     uv run zensical serve
     ```
 
-### Writing
+### Writing User Docs
 
-See the [Zensical documentation](https://zensical.org/docs/authoring/markdown/) for how to write documentation.
+Read the [contributing to user docs](https://developers.openchatstudio.com/contributing/user_docs/) guide before making changes to the documentation.
+
+The [AGENTS.md](AGENTS.md) file is a great place to start to understand the architecture, the page type conventions, custom tooling etc.
+See the [Zensical documentation](https://zensical.org/docs/authoring/markdown/) for how to write markdown.
 
 Note: This project uses `mkdocs.yml` for site configuration, since Zensical is compatible with the MkDocs configuration format.
+
+Before pushing, run the strict build to catch broken internal links (CI will fail if you don't):
+
+```shell
+uv run zensical build --clean --strict
+```
 
 ### API docs
 
@@ -57,3 +66,7 @@ Documentation for the embeddable chat widget lives under `docs/chat_widget/` and
 - Start branches from `widget-develop`, and open the pull request against `widget-develop` so updates can be bundled into the next widget release.
 - Limit changes to the widget docs (and their assets) when targeting `widget-develop`; broader documentation updates should continue to go to `main`.
 - Release managers merge `widget-develop` back into `main` as part of the widget release process, so no extra action is needed once the PR is approved.
+
+## Changelog
+
+Changelog updates are largely automated. See the [changelog process developer guide](https://developers.openchatstudio.com/developer_guides/user_docs/) for background on the automation and the [AGENTS.md](AGENTS.md) file for details.
