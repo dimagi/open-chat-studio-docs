@@ -12,7 +12,7 @@ GET /api/experiments/
     - cursor (query, string (optional)): The pagination cursor value.
     - page_size (query, integer (optional)): Number of results to return per page.
   Responses:
-    200:
+    200: 
       Content: application/json
       Schema: PaginatedExperimentList
   Security:
@@ -26,7 +26,7 @@ GET /api/experiments/{id}/
   Parameters:
     - id (path, string (required)): Experiment ID
   Responses:
-    200:
+    200: 
       Content: application/json
       Schema: Experiment
   Security:
