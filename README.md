@@ -8,19 +8,24 @@ Open Chat Studio is a platform for building, deploying, and evaluating AI-powere
 
 Assuming you've already cloned this repository:
 
-1. Install UV
+1. Install [UV python package and project manager](https://docs.astral.sh/uv/getting-started/installation/)
 
     ```shell
     curl -LsSf https://astral.sh/uv/install.sh | sh
     ```
 
-    See https://docs.astral.sh/uv/getting-started/installation/
-
 2. Set up the project
 
     ```shell
     uv venv
+    source .venv/bin/activate
     uv sync
+    ```
+
+3. Install the pre-commit hooks
+
+    ```shell
+    prek install --install-hooks
     ```
 
 3. Start the project
