@@ -7,7 +7,6 @@ A collection in OCS refers to a collection of files. There are two types of coll
 - [Media collection](./media.md)
 - [Indexed Collection (for RAG applications)](./indexed.md)
 
-
 ## Adding a collection to a bot
 
 Navigate to the **Collections** section in the sidebar and click "Add new". Once the collection is created, you will be able to upload files to it.
@@ -26,7 +25,6 @@ This means:
 The *structure* of a published version — which collections are linked to which pipeline nodes — is still frozen at publish time. To change which collections a bot uses, you must publish a new version.
 
 For more detail on how versioning interacts with collections, see [Versioning](../versioning.md#what-is-frozen-and-what-is-live).
-
 
 ## How are attachments sent?
 Whenever your bot references a particular file or document, it will be sent to the user as an attachment. Depending on the channel, attachments are delivered in different ways.
@@ -48,7 +46,6 @@ Channels that support sending multimedia files will receive each attachment as a
 
 * API - See the [API documentation](https://openchatstudio.com/api/docs/#tag/Channels/operation/new_api_message) for more information
 * WhatsApp (Twilio Provider) - Consult the [Twilio docs][twilio_docs] for supported file types.
-
 
 [llm_node]: ../pipelines/nodes.md
 [twilio_docs]: https://www.twilio.com/docs/whatsapp/guidance-whatsapp-media-messages

@@ -35,7 +35,6 @@ See the [Zensical documentation](https://zensical.org/docs/authoring/markdown/) 
 
 Note: This project uses `mkdocs.yml` for site configuration, since Zensical is compatible with the MkDocs configuration format.
 
-
 ### API docs
 
 API docs are generated automatically based on the OpenAPI schema. This is done using the `src/ocs_docs/openapi_to_docs.py` utility.

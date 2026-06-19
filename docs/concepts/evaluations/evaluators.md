@@ -14,6 +14,7 @@ The LLM Evaluator uses language models to evaluate responses based on a custom p
 For the how-to guide, see [Set Up a Real-Time LLM Judge](../../how-to/evaluations/realtime_llm_judge.md).
 
 **Example prompt:**
+
 ```
 Rate the helpfulness and accuracy of this response on a scale of 1-5:
 

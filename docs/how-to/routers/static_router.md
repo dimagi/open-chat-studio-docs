@@ -54,12 +54,10 @@ Result: the router follows Path A
 To ensure technical consistency, OCS handles keywords with the following rules:
 - Automatic Uppercase: All keywords are stored in uppercase. While matching is case-insensitive (for example, `Help` matches `HELP`), we recommend using uppercase during configuration for clarity.
 
-
 ### 3. Matching behavior and fallback
 - If the key is missing, routing falls back to Default Output.
 - If the key resolves but no output keyword matches, routing falls back to Default Output.
 - If part of a nested path is missing (for example, user.profile.language when profile does not exist), routing falls back to Default Output.
-
 
 ## Route Tagging
 

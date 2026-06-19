@@ -6,7 +6,6 @@ It provides the following:
  - [attachments](#attachments): file uploads of the [supported file types](#supported-file-types)
  - ability to call [external APIs](./external-api-calls/http_client.md)
 
-
 ## The Code
 
 The code **must** define a `main` function which takes the node input as a string and returns a string to pass to the next node.

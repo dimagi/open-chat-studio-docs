@@ -22,7 +22,6 @@ Both nodes evaluate templates against the same context dictionary. All keys list
 
     `participant_details`, `participant_data`, and `participant_schedules` are only populated when the pipeline is running inside an active session. They are empty when the pipeline is tested in isolation without a session context.
 
-
 ## Render a Template Node
 
 ### Template Field
@@ -40,7 +39,6 @@ Relevant context from their profile:
 - Preferred language: {{ participant_data.language | default('English') }}
 - Account tier: {{ participant_data.tier | default('standard') }}
 ```
-
 
 ### Syntax Validation
 
@@ -70,7 +68,6 @@ The recipient field must resolve to a comma-separated list of valid email addres
 | Addresses stored as a delimited string  | `{{ participant_data.emails \| split(';') \| join(',') }}` |
 | Mix of static and dynamic              | `ops@example.com,{{ participant_data.manager_email }}` |
 
-
 ### Body Field Behavior
 
 When the **body** field is blank, the node sends the pipeline input as the email body. This is the backwards-compatible default and is appropriate when an upstream node (such as an LLM node) has already produced the text you want to send.
@@ -80,11 +77,13 @@ When the **body** field contains a template, the node renders it and uses the re
 ### Example — Dynamic Subject and Personalized Body
 
 **Subject:**
+
 ```jinja
 Update for {{ participant_details.identifier }}
 ```
 
 **Body:**
+
 ```jinja
 Hello {{ participant_data.name | default('there') }},
 

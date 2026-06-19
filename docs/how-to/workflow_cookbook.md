@@ -142,6 +142,7 @@ In these examples, the Python node reads the uploaded file(s) and saves their co
 Configure your LLM node to utilize the uploaded file contents by injecting them into the prompt using temp state variables.
 
 *Basic Prompt Template:*
+
 ```
 You are a helpful assistant. Answer the user's query as best you can.
 

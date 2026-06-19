@@ -17,6 +17,7 @@ Since this PR modifies widget files, update the **widget changelog** at `${WIDGE
 5. Follow the existing style: concise bullet points describing changes
 
 **Widget Changelog Format:**
+
 ```markdown
 ### v0.4.8
 

@@ -87,7 +87,6 @@ curl -X POST \
   -d '{"messaging_product": "whatsapp", "pin": "<YOUR_2FA_PIN>"}'
 ```
 
-
 !!! tip "Using Postman"
     If you prefer a GUI over cURL, you can make this call using [Postman](https://www.postman.com/). Import the request above and set your credentials as environment variables.
 

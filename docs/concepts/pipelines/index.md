@@ -14,7 +14,6 @@ Each step in the pipeline is called a **node**. A node performs one specific tas
 
 Pipelines are **visual** — you build them by dragging nodes onto a canvas and connecting them with lines, making chatbot logic easier to understand and maintain without writing complex code.
 
-
 ## A Simple Example
 
 Here's the simplest possible chatbot pipeline — it has just **one node**:
@@ -61,7 +60,6 @@ Common node types include:
 
  - **[Update Participant Data Node](nodes.md#update-participant-data-node)** — Saves information about the user for later use in the conversation.
 
-
 ## How a Pipeline Runs
 
 Open Chat Studio (OCS) executes your pipeline in organized steps, running nodes in parallel when possible.
@@ -81,7 +79,6 @@ This repeats until all nodes have completed or a maximum step limit is reached.
 !!! tip "Running nodes in parallel"
 
   Because multiple nodes can execute in the same pass, pipelines naturally support parallel processing. See [Parallel Pipelines](./parallel.md) for details.
-
 
 ## Asking the Assistant About a Pipeline
 

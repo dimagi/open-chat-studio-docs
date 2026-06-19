@@ -4,7 +4,6 @@ Versioning keeps your live chatbot stable while you make changes. You can edit a
 
 Versioning tracks the history of your chatbot's configuration so you can review what changed, and roll back to a previous version if needed.
 
-
 ## Terminology
 
 * *Unreleased Version*. This is the version of the chatbot you are currently editing. It is a draft that has not been versioned or published.
@@ -47,7 +46,6 @@ The published version can be selected from any of the Chatbot versions, enabling
 Only one version can be the published version at a time.
 
 To publish a version, follow the tutorial on [creating and publishing versions](../tutorials/versioning_steps.md).
-
 
 ## Versioning for OpenAI Assistants
 

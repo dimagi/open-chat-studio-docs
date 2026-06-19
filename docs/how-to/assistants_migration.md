@@ -12,7 +12,6 @@ Open Chat Studio supports all the features of Assistants in alternative ways as 
 | Code Interpreter  | [OpenAI Code Interpreter tool](../tech-hub/tools.md#openai-code-interpreter) in LLM nodes |
 | File Search       | [Indexed Collections](../concepts/collections/indexed.md)                                       |
 
-
 ## Migrating Code Interpreter
 
 !!! info
