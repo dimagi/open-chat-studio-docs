@@ -16,7 +16,7 @@ GET /api/participants
     - page_size (query, integer (optional)): Number of results to return per page.
     - platform (query, string (optional)): Filter by platform (e.g. api, telegram, whatsapp)
   Responses:
-    200: 
+    200:
       Content: application/json
       Schema: PaginatedParticipantDetailList
   Security:
@@ -32,7 +32,7 @@ POST /api/participants
     Content: application/json
     Schema: ParticipantDataUpdateRequest
   Responses:
-    200: 
+    200:
       Content: application/json
       Schema: ParticipantDetail
   Security:
@@ -51,7 +51,7 @@ GET /api/participants/
     - page_size (query, integer (optional)): Number of results to return per page.
     - platform (query, string (optional)): Filter by platform (e.g. api, telegram, whatsapp)
   Responses:
-    200: 
+    200:
       Content: application/json
       Schema: PaginatedParticipantDetailList
   Security:
@@ -67,7 +67,7 @@ POST /api/participants/
     Content: application/json
     Schema: ParticipantDataUpdateRequest
   Responses:
-    200: 
+    200:
       Content: application/json
       Schema: ParticipantDetail
   Security:
