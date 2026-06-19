@@ -58,7 +58,7 @@ MD046: false
 MD050: false
 
 # TODO: enable this for valid link fragments, but disable for now because we have some invalid links in the docs
-MD051: false
+#MD051: false
 MD053: false
 MD054: false
 MD058: false

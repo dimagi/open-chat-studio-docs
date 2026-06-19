@@ -84,7 +84,7 @@ The Python node provides an `http` global that enables secure HTTP requests to e
 ## Temporary State
 The Python node can also access and modify the temporary state of the pipeline. The temporary state is a dictionary that is unique to each run of the pipeline (each new message from the user) and is not stored between sessions.
 
-The temporary state can be accessed and modified using the [get_temp_state_key](#python_node.get_temp_state_key) and [set_temp_state_key](#python_node.set_temp_state_key) utility functions.
+The temporary state can be accessed and modified using the [get_temp_state_key](#python_node.get_temp_state_key) and [set_temp_state_key](#python_node.set_temp_state_key) utility functions. <!-- markdownlint-disable-line MD051 -->
 
 Temporary state contains the following keys by default. These keys can not be modified or deleted:
 
@@ -114,7 +114,7 @@ Here is an example of a temporary state dictionary:
 ## Session State
 The Python node can also access and modify the state of the participant's session. This state is a dictionary that is scoped to each session that the user might have with the bot.
 
-The session state can be accessed and modified using the [get_session_state_key](#python_node.get_session_state_key) and [set_session_state_key](#python_node.set_session_state_key) utility functions.
+The session state can be accessed and modified using the [get_session_state_key](#python_node.get_session_state_key) and [set_session_state_key](#python_node.set_session_state_key) utility functions. <!-- markdownlint-disable-line MD051 -->
 
 ## Attachments
 
