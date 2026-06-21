@@ -18,14 +18,13 @@ Assuming you've already cloned this repository:
 
     ```shell
     uv venv
-    source .venv/bin/activate
     uv sync
     ```
 
 3. Install the pre-commit hooks
 
     ```shell
-    prek install --install-hooks
+    uv run prek install --install-hooks
     ```
 
 4. Start the project
