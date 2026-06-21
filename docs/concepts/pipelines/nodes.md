@@ -2,7 +2,7 @@
 
 A node is a discrete processing step in a [pipeline](index.md) that accepts a user’s input and produces an output to downstream nodes. Each node in the pipeline performs a specific task (like calling an LLM, running Python code, or routing based on logic) and processes data that flows through the pipeline.
 
-``` mermaid
+```mermaid
 graph LR
   A@{ shape: stadium, label: "Input (ie data or prompt)" } --> B(Node);
   B --> C@{ shape: stadium, label: "Output (ie LLM response)" };

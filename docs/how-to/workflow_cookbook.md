@@ -8,7 +8,7 @@ In such cases, it can be better to create smaller, narrowly focused prompts and 
 
 Here is a more complex example that uses a [LLM Router][router] to route the input to one of three linked nodes.
 
-``` mermaid
+```mermaid
 graph TB
   A@{ shape: stadium, label: "Input" } --> Router("`**LLM Router**
   Route to one of the linked nodes using an LLM`");

@@ -29,7 +29,7 @@ The following additional arguments are provided:
 
     All code must be encapsulated in a `main` function. You can write other functions but they must be within the scope of the `main` function. For example:
 
-    ``` py
+    ```python
     def main(input, **kwargs):
         def important(arg):
             return arg + "!"
