@@ -386,8 +386,17 @@ class OpenAPIToMarkdownConverter:
         if responses:
             lines.append("  Responses:")
             for status_code, response in responses.items():
-                description = response.get("description", "No description")
-                lines.append(f"    {status_code}: {description}")
+                # Only show the description when it's provided; otherwise emit just the code and colon.
+                description = response.get("description", "")
+                if isinstance(description, str):
+                    description = description.strip()
+                else:
+                    description = str(description)
+
+                if description:
+                    lines.append(f"    {status_code}: {description}")
+                else:
+                    lines.append(f"    {status_code}:")
 
                 content = response.get("content", {})
                 for media_type, media_content in content.items():

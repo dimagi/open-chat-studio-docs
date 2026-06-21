@@ -43,7 +43,7 @@ You are a friendly assistant. Here's some files that you can attach to your resp
 becomes
 
 ```text
-You are a friendly assitant. Here's some files that you can attach to your responses when you think the user will benefit from it:
+You are a friendly assistant. Here's some files that you can attach to your responses when you think the user will benefit from it:
 * File (id=22, content_type=image/png): This is an image of a border collie
 * File (id=23, content_type=application/pdf): This file contains information about the behaviours of border collies
 ```
