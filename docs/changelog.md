@@ -9,6 +9,9 @@ hide:
 
     Looking for the embeddable chat widget? See the [Chat Widget changelog](chat_widget/changelog.md).
 
+## Jun 22, 2026
+* **CHANGE** Reverting a chatbot to a previous version now opens a confirmation modal showing exactly what will change — a field- and node-level diff of the current working state against the target version. A warning appears when the working version has unreleased changes that the revert would overwrite.
+
 ## Jun 18, 2026
 * **CHANGE** The `/api/v2/me/` endpoint now includes an `email_verified` field indicating whether the authenticated user has confirmed their email address.
 

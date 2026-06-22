@@ -37,6 +37,18 @@ Click **View Details** on any version to see its summary and set it as published
 ![Chatbot Version Action Buttons](images/version_details_action_button.png)
 
 ## Step 6: Check what version is published
+
 To quickly see which version is currently published, look for the green version badge next to the chatbot name at the top of the chatbot home screen. In the example below, "v2" is the published version. You can also confirm this in the table by looking for the checkmark in the published row.
 
 ![Chatbot version table showing published version badge](images/version_table_after.png)
+
+## Step 7: Revert to a previous version
+
+If you need to go back to an older configuration, click **View Details** on the version you want to restore, then click **Revert to this version**.
+
+A confirmation modal opens showing a field- and node-level diff between your current working state and the target version. Review the highlighted differences to confirm that this is the change you want to make.
+
+!!! warning "Check for unreleased changes before reverting"
+    If your current working state has edits that have not been saved as a version, the modal shows a warning. Reverting will permanently overwrite those changes. Create a new version first if you want to keep them.
+
+After reviewing the diff, click **Confirm** to replace your working state with a copy of the selected version. The reverted configuration becomes your new unreleased version, which you can edit or publish following Steps 2–5 above.
