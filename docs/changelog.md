@@ -9,6 +9,8 @@ hide:
 
     Looking for the embeddable chat widget? See the [Chat Widget changelog](chat_widget/changelog.md).
 
+    Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
+
 ## Jun 22, 2026
 * **CHANGE** Reverting a chatbot to a previous version now opens a confirmation modal showing exactly what will change — a field- and node-level diff of the current working state against the target version. A warning appears when the working version has unreleased changes that the revert would overwrite.
 
@@ -193,116 +195,8 @@ hide:
 ## Mar 4, 2026
 * **NEW** Teams now receive in-app notifications when LLM models are deprecated or removed.
 
-## Feb 27, 2026
-* **NEW** Tracing is now available to all users — no feature flag required. View and debug conversation traces directly from the session detail page. [Learn more](concepts/tracing.md)
+## Archive
 
-## Feb 26, 2026
-* **NEW** The trace detail page now includes a Langfuse span tree panel when Langfuse tracing is configured, showing the full observation tree with status indicators and latency badges alongside a detail view for each span's input/output.
+!!! note
 
-## Feb 25, 2026
-* **NEW** Timeout events can now be configured to measure inactivity from the first human message instead of the last message, giving more control over session timeout behavior.
-* **NEW** Added natural language filter input to session and message tables. Users can type plain-English queries (e.g., "sessions from last week excluding WhatsApp") and click **✨ Generate** to automatically create filter rows. This feature is in beta and can be enabled by team admins from the team feature flags page.
-
-## Feb 20, 2026
-* **NEW** Added support for Claude Sonnet 4.6 model with adaptive thinking. Claude Sonnet 4.6 is now the default Anthropic model, replacing Claude Sonnet 4.5 as the default.
-
-## Feb 19, 2026
-* **NEW** Document source sync logs are now accessible directly from the Collections page via a "View Sync Logs" button, allowing users to inspect sync history, file counts (added/updated/removed), duration, and error details without leaving the page.
-
-## Feb 18, 2026
-* **NEW** Notifications system now maintains event history, allowing users to view past notifications and events. Users can also mute notifications per-event or enable "Do Not Disturb" mode to mute all notifications.
-
-## Feb 11, 2026
-* **NEW** Python nodes can now attach files fetched via HTTP to AI response messages using the `add_file_attachment()` helper and `response_bytes` field on HTTP responses. Note: originally documented as `attach_file_from_response(response_bytes, filename)`; the correct name and signature is `add_file_attachment(filename, content, content_type=None)`.
-* **NEW** Added notification events that alert you when something important or noteworthy happens in your system, including failures across custom actions (health checks, API failures), chat operations (pipeline execution, LLM errors, tool failures), media handling (audio synthesis/transcription), and message delivery (platform-specific failures). This feature is currently in beta and can be requested for your team.
-
-## Feb 10, 2026
-* **CHANGE** Authentication provider names in Python node HTTP requests are now case-insensitive, allowing `auth="My-Provider"` and `auth="my-provider"` to match the same provider.
-
-## Feb 9, 2026
-* **NEW** Added `http_client` global to Python sandbox for making HTTP requests with security guardrails including SSRF prevention, request/response size limits, timeout clamping, automatic retries, and authentication provider integration.
-
-## Feb 6, 2026
-* **NEW** Added support for Claude Opus 4.6 model with adaptive thinking control. Features configurable effort levels (low, medium, high, max), 200K context window, and 128K max output tokens.
-* **CHANGE** LLM API calls now automatically retry with exponential backoff when rate limited by providers (OpenAI, Anthropic, Google), improving reliability during peak usage.
-
-## Feb 3, 2026
-* **BUG** Fixed character encoding issues when reading plaintext files by automatically detecting and converting different encoding schemes to unicode.
-
-## Feb 2, 2026
-* **NEW** Voice notes from users and bots are now displayed as attachments in the chat transcript, making it easier to review and access voice messages.
-
-## Jan 31, 2026
-* **BUG** Fixed an issue where local collection index validation in LLM nodes incorrectly required all collections to use the same LLM provider as the node. This restriction now only applies to remote collections.
-
-## Jan 30, 2026
-* **CHANGE** Indexed collections using OpenAI-hosted vectorstores are now limited to 2 remote collections per LLM node, enforcing OpenAI's vectorstore limit. Local indexes and non-OpenAI providers remain unaffected.
-
-## Jan 27, 2026
-* **CHANGE** Router keywords are now automatically converted to uppercase. All router configurations will only accept and match uppercase keywords.
-* **NEW** Dataset messages table rows can now be highlighted and shared via URL. Each row has a link and copy button to easily share specific dataset messages with others, with automatic scrolling to the highlighted message.
-
-## Jan 26, 2026
-* **NEW** Custom actions now include health status monitoring. The system automatically checks custom action endpoints every 5 minutes to verify server availability, displaying the status in the custom actions table. Users can also manually trigger health checks.
-
-## Jan 22, 2026
-* **NEW** Added API support for passing arbitrary context data with messages that gets merged into session state under the `remote_context` key, enabling API clients to provide contextual information.
-* **BUG** Fixed an issue where cited and generated files from OpenAI assistants were not being properly annotated for download.
-* **BUG** Fixed an issue where built-in tools and tool configurations were not cleared when switching LLM providers.
-
-## Jan 21, 2026
-* **CHANGE** Router keywords are now automatically converted to lowercase. All router configurations will only accept and match lowercase keywords.
-* **MIGRATION** Removed the defunct 'summarize' event action. All events using this action have been deleted, and team admins have been notified of affected chatbots.
-
-## Jan 20, 2026
-* **NEW** Evaluation results table rows can now be highlighted and shared via URL. Each row has a link and copy button to easily share specific evaluation results with others.
-* **BUG** Fixed an issue where provider compatibility checks between LLM nodes and indexed collections were skipped when only one collection was used.
-* **NEW** Added more granular conversation end event types. Users can now create events based on who ended the conversation (participant, bot, event, admin or API). The generic conversation end trigger remains as a catch-all that fires whenever any conversation ends.
-
-## Jan 14, 2026
-* **NEW** Added the ability to start a new session after ending the current one. Users can choose whether to trigger end conversation events and must provide a prompt for the bot's initial message (pre-filled with the seed message when available).
-
-## Jan 9, 2026
-* **NEW** Added REST API endpoint for managing session tags. Sessions can now be tagged via POST requests (adds tags) and DELETE requests (removes tags), enabling external integrations to organize and filter sessions programmatically.
-
-## Dec 19, 2025
-* **NEW** Collections now support bulk file downloads. When a collection contains multiple files, users can download all files as a zip archive with progress tracking. Downloaded archives expire after 24 hours.
-
-## Dec 18, 2025
-* **NEW** Users can now trigger the bot to send a message to a participant from the participant details page.
-
-## Dec 16, 2025
-* **NEW** Added the ability for users to manually end sessions.
-
-## Dec 15, 2025
-* **NEW** LLM Evaluators now support type validation for output schemas with integer, float, string, and enum (choices) types.
-* **NEW** Added support for GPT-5.2 and GPT-5.2-pro models.
-* **CHANGE** Sessions generated during evaluation runs are now retained for 30 days (increased from 7 days) before being permanently deleted.
-* **BUG** Fixed an issue where temperature and top_p parameters were shown in GPT-5.2 model configurations when effort level was set, causing configuration conflicts.
-
-## Dec 10, 2025
-* **BUG** Fixed an issue where additional citation links were included in channel responses when using custom citation text.
-
-## Nov 26, 2025
-* **NEW** OAuth2 authentication is now supported for API access. This enables secure third-party integrations using industry-standard OAuth2 with PKCE. See the [OAuth2 integration guide](./api/getting_started_with_oauth.md) for implementation details.
-
-## Nov 11, 2025
-* **NEW** Users can now configure model parameters (temperature, max tokens, etc.) directly in LLM nodes alongside other node parameters, instead of requiring separate configuration.
-
-## Nov 7, 2025
-* **NEW** Added "Select all" option to sessions table for bulk selection of sessions.
-* **CHANGE** Improved client key security for chat widget. See the [Chat Widget docs](chat_widget/reference.md#embed-authentication).
-
-## Nov 3, 2025
-* **NEW** Chat Widget releases v0.5. Key features include:
-    * Users can drag and reposition the chat widget launch button when fixed, to avoid obscuring page content
-    * Internationalization support with built-in translations for 9 languages (English, Spanish, French, Arabic, Hindi, Italian, Portuguese, Swahili, Ukrainian)
-    * New `language` property to set widget UI language and `translations-url` property for custom translations
-    * Updated default button logo to use the Open Chat Studio avatar
-    * See the [widget changelog](chat_widget/changelog.md) for full details
-* **CHANGE** Removed seed message processing from the chat API session creation endpoint. The `seed_message_task_id` field is no longer returned in API responses.
-* **CHANGE** Improved version creation UI performance by truncating large change sets to 10 items and displaying the count of hidden changes.
-
----
-
-You can find older entries in the GitHub release notes: https://github.com/dimagi/open-chat-studio-docs/releases
+    You can find older entries in the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
