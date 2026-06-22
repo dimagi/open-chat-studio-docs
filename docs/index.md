@@ -24,7 +24,7 @@ deploying chatbots powered by Large Language Models ([LLMs](concepts/llm.md)).
   your
   chatbots.
 
-* **View and Download Data:** View and export the data from interactions [(ie Tracing)](concepts/tracing.md) with your chatbots, formatted In CSV.
+* **View and Download Data:** View and export the data from interactions with your chatbots, formatted In CSV.
 
 <div class="grid cards" markdown>
 

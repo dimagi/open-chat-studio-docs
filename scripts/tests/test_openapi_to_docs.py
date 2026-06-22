@@ -156,6 +156,22 @@ def test_inject_versions_list_reversed_markers_raises(tmp_path):
         inject_versions_list(index_path, ["v1"])
 
 
+def test_response_empty_description_emits_no_trailing_space():
+    converter = OpenAPIToMarkdownConverter(
+        {"openapi": "3.0.0", "info": {"title": "T", "version": "1"}, "paths": {}}
+    )
+
+    lines = converter._generate_endpoint_section_minified(
+        "delete", "/api/x/", {"responses": {"204": {"description": ""}, "200": {}}}
+    )
+
+    assert "    204:" in lines
+    assert "    200:" in lines
+    # Neither code must have a trailing space
+    assert "    204: " not in lines
+    assert "    200: " not in lines
+
+
 def test_endpoint_security_handles_optional_requirement():
     # An empty requirement object ({}) means auth is optional; it must not crash.
     schema = {

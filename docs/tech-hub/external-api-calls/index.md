@@ -69,7 +69,7 @@ Weather Forecast:
 
 **LLM Prompt Configuration:**
 
-```
+```text
 You are a helpful weather assistant. Use the weather data provided to answer the user's question.
 
 {temp_state.weather_data}
@@ -156,7 +156,7 @@ def main(input, **kwargs) -> str:
 
 **LLM Prompt Configuration:**
 
-```
+```text
 You are a product support assistant.
 
 {% if temp_state.product_error %}

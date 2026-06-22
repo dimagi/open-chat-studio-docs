@@ -27,7 +27,7 @@ To understand how users move through your chatbot, you can enable Output Message
 ### Tag naming convention
 To keep system tags organized, OCS follows this naming convention:
 
-```
+```text
 <node_name>:<route_name>
 ```
 

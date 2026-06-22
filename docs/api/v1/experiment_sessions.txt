@@ -16,7 +16,7 @@ GET /api/sessions/
     - tags (query, string (optional)): A list of session tags (comma separated) to filter the results by
     - versions (query, string (optional)): Experiment versions (comma separated) to filter sessions by
   Responses:
-    200: 
+    200:
       Content: application/json
       Schema: PaginatedExperimentSessionList
   Security:
@@ -31,7 +31,7 @@ POST /api/sessions/
     Content: application/json
     Schema: ExperimentSessionCreate
   Responses:
-    201: 
+    201:
       Content: application/json
       Schema: ExperimentSession
   Security:
@@ -42,14 +42,14 @@ POST /api/sessions/
 
 GET /api/sessions/{id}/
   Summary: Retrieve Chatbot Session
-  Description: 
+  Description:
 Retrieve the details of an session. This includes the messages exchanged during the session ordered
 by the creation date.
 
   Parameters:
     - id (path, string (required)): ID of the session
   Responses:
-    200: 
+    200:
       Content: application/json
       Schema: ExperimentSessionWithMessages
   Security:
@@ -79,7 +79,7 @@ POST /api/sessions/{id}/tags/
     Content: application/json
     Schema: tags_request_serializer
   Responses:
-    200: 
+    200:
       Content: application/json
       Schema: tags_response_serializer
   Security:
@@ -94,7 +94,7 @@ DELETE /api/sessions/{id}/tags/
   Parameters:
     - id (path, string (required)): ID of the session
   Responses:
-    200: 
+    200:
       Content: application/json
       Schema: tags_response_serializer
   Security:
@@ -111,7 +111,7 @@ PATCH /api/sessions/{id}/update_state/
     Content: application/json
     Schema: Patchedupdate_state_serializer
   Responses:
-    200: 
+    200:
       Content: application/json
       Schema: update_state_response
   Security:

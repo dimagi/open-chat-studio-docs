@@ -8,7 +8,7 @@ In such cases, it can be better to create smaller, narrowly focused prompts and 
 
 Here is a more complex example that uses a [LLM Router][router] to route the input to one of three linked nodes.
 
-``` mermaid
+```mermaid
 graph TB
   A@{ shape: stadium, label: "Input" } --> Router("`**LLM Router**
   Route to one of the linked nodes using an LLM`");
@@ -66,7 +66,7 @@ def main(input, **kwargs):
 
 Then in the LLM node prompt you could use the [**temp_state**][prompt_vars] to inject the category:
 
-```
+```text
 The current category is {temp_state.category}
 ```
 
@@ -143,7 +143,7 @@ Configure your LLM node to utilize the uploaded file contents by injecting them 
 
 *Basic Prompt Template:*
 
-```
+```text
 You are a helpful assistant. Answer the user's query as best you can.
 
 Here are some file contents that you should consider when generating your answer:

@@ -43,7 +43,7 @@ In session-level prompts, `{input.content}` and `{output.content}` are empty —
 
 **Example prompt:**
 
-```
+```text
 You are evaluating a support chatbot conversation. Review the session below and assess:
 1. Whether the participant's goal was completed.
 2. The overall quality of the responses.

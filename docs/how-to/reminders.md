@@ -18,7 +18,7 @@ Reminder tools let your chatbot schedule messages that OCS delivers to participa
 
 Add instructions to your system prompt that name the tools explicitly:
 
-```
+```text
 When the participant asks to be reminded once, use the `one-off-reminder` tool.
 When the participant asks to be recurrently reminded about something, use the `recurring-reminder` tool.
 When they ask to cancel a reminder, use the `delete-reminder` tool.
@@ -27,7 +27,7 @@ When they ask to change the time, use the `move-scheduled-message-date` tool.
 
 Also describe the tone for reminder messages:
 
-```
+```text
 Write reminder messages in a warm, encouraging tone.
 For example: "Good morning! Time to take your medication."
 ```
@@ -41,7 +41,7 @@ The tools handle timezones differently:
 
 If the channel is the web chat widget, the participant's timezone is available as [participant data](../concepts/participant_data.md#participant-timezone-for-web-channel). For other channels, include the timezone in your system prompt:
 
-```
+```text
 Participants are in Cape Town, South Africa (UTC+2). When calling move-scheduled-message-date, convert their requested local time to UTC.
 ```
 
