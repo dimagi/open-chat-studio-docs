@@ -1,0 +1,110 @@
+# Workflow: Compact Changelog
+#
+# Runs on the 1st of every month. Keeps the three most recent months of the changelog
+# verbatim and collapses each older month into a single summary section (written by
+# Claude), then opens a PR with the result.
+
+name: Compact Changelog
+
+on:
+  schedule:
+    - cron: '0 3 1 * *'  # 03:00 UTC on the 1st of every month
+  workflow_dispatch:  # Allow manual trigger
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+jobs:
+  compact-changelog:
+    runs-on: ubuntu-latest
+    env:
+      CHANGELOG_FILE: docs/changelog.md
+    steps:
+      - name: Generate app token
+        id: app-token
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ vars.OCS_AGENT_APP_ID }}
+          private-key: ${{ secrets.OCS_AGENT_PRIVATE_KEY }}
+          owner: dimagi
+          repositories: open-chat-studio-docs
+
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 1
+          token: ${{ steps.app-token.outputs.token }}
+
+      - name: Compute retention window
+        id: window
+        run: |
+          set -euo pipefail
+          # Anchor to the first of the current month so the relative subtraction below
+          # can't skip a month (e.g. Mar 31 minus one month). The three months kept
+          # verbatim are the current month plus the two before it.
+          FIRST=$(date -u +%Y-%m-01)
+          CUTOFF=$(date -u -d "$FIRST -2 months" +%Y-%m-%d)
+          CUTOFF_HUMAN=$(date -u -d "$CUTOFF" +'%b %-d, %Y')
+          M0=$(date -u -d "$FIRST" +'%b %Y')
+          M1=$(date -u -d "$FIRST -1 month" +'%b %Y')
+          M2=$(date -u -d "$FIRST -2 months" +'%b %Y')
+          echo "cutoff_human=$CUTOFF_HUMAN" >> "$GITHUB_OUTPUT"
+          echo "keep_months=$M0, $M1, $M2" >> "$GITHUB_OUTPUT"
+          echo "Keeping verbatim: $M0, $M1, $M2 (cutoff: $CUTOFF_HUMAN)"
+
+      - name: Build Claude prompt
+        id: prompt
+        env:
+          CUTOFF_HUMAN: ${{ steps.window.outputs.cutoff_human }}
+          KEEP_MONTHS: ${{ steps.window.outputs.keep_months }}
+        run: |
+          set -euo pipefail
+          {
+            echo "instructions<<EOF"
+            envsubst < .github/templates/changelog-compaction-instructions.md
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Run Claude Code to compact the changelog
+        id: claude
+        timeout-minutes: 10
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ steps.app-token.outputs.token }}
+          prompt: ${{ steps.prompt.outputs.instructions }}
+          claude_args: |
+            --allowedTools "Read,Edit"
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if [ -z "$(git status --porcelain "$CHANGELOG_FILE")" ]; then
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+            echo "No compaction needed this month."
+          else
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create Pull Request
+        if: steps.check_changes.outputs.has_changes == 'true'
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+          commit-message: "compact changelog: summarize entries older than ${{ steps.window.outputs.cutoff_human }}"
+          title: "Compact changelog (keep ${{ steps.window.outputs.keep_months }} verbatim)"
+          body: |
+            ## Summary
+            Automated monthly changelog compaction. Entries from the three most recent
+            months (${{ steps.window.outputs.keep_months }}) are kept verbatim; older
+            months are collapsed into a single summary section each.
+
+            Please review the generated summaries before merging.
+          branch: compact-changelog-${{ github.run_number }}
+          delete-branch: true
+          assignees: snopoke
+          team-reviewers: dimagi/open-chat-studio
+          labels: automated
