@@ -44,7 +44,7 @@ To quickly see which version is currently published, look for the green version 
 
 ## Step 7: Revert to a previous version
 
-If you need to go back to an older configuration, click **View Details** on the version you want to restore, then click **Revert to this version**.
+If you need to go back to an older configuration, click **Revert**.
 
 A confirmation modal opens showing a field- and node-level diff between your current working state and the target version. Review the highlighted differences to confirm that this is the change you want to make.
 
