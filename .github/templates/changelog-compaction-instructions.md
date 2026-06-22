@@ -12,7 +12,8 @@ single summary per month.
 
 For each calendar month earlier than the cutoff, replace all of its per-day sections
 (e.g. `## May 18, 2026`, `## May 15, 2026`, …) with a **single** section headed by the
-month and year only:
+month and year only. Use the **abbreviated month** form to match the file's existing
+day headings (`## Jun 22, 2026` → `## Jun 2026`, `## Apr 8, 2026` → `## Apr 2026`):
 
 ```
 ## May 2026
