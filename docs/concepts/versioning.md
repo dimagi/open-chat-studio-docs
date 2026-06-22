@@ -42,10 +42,26 @@ Only bot editors can chat with the unreleased version because it is not availabl
     Previously, all channels always used the unreleased version.
 
 ## Changing the Published Version
+
 The published version can be selected from any of the Chatbot versions, enabling rollback to a previous version.
 Only one version can be the published version at a time.
 
 To publish a version, follow the tutorial on [creating and publishing versions](../tutorials/versioning_steps.md).
+
+## Reverting to a Previous Version
+
+Reverting replaces your current working (unreleased) state with a copy of an older version's configuration. The older version itself is not modified — a fresh copy becomes your new working state, ready to edit or publish.
+
+### The revert confirmation modal
+
+When you click **Revert** on a version, a confirmation modal opens instead of a plain confirm dialog. The modal shows a field- and node-level diff so you can see exactly what will change before committing. Added fields are highlighted and removed fields are marked, giving you a clear picture of the differences between your current working state and the target version.
+
+### Warning for unreleased changes
+
+If your current working version contains changes that have not yet been released (that is, they do not belong to any saved version), a warning appears in the modal. The warning tells you that reverting will overwrite those unreleased changes permanently. Review the diff carefully before confirming if you see this warning.
+
+!!! warning "Unreleased changes are permanently lost on revert"
+    Once you confirm a revert, any edits in the unreleased working state that are not part of a saved version cannot be recovered. Create a new version first if you want to preserve those changes.
 
 ## Versioning for OpenAI Assistants
 
