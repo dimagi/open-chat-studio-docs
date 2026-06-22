@@ -54,7 +54,7 @@ Reverting replaces your current working (unreleased) state with a copy of an old
 
 ### The revert confirmation modal
 
-When you click **Revert to this version** on a version, a confirmation modal opens instead of a plain confirm dialog. The modal shows a field- and node-level diff so you can see exactly what will change before committing. Added fields are highlighted and removed fields are marked, giving you a clear picture of the differences between your current working state and the target version.
+When you click **Revert** on a version, a confirmation modal opens instead of a plain confirm dialog. The modal shows a field- and node-level diff so you can see exactly what will change before committing. Added fields are highlighted and removed fields are marked, giving you a clear picture of the differences between your current working state and the target version.
 
 ### Warning for unreleased changes
 
