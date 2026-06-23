@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Jun 23, 2026
+* **CHANGE** API reference docs are now split by version. `/api/docs/` is now a landing page linking to the v1 and v2 references; the v1 reference has moved to `/api/v1/docs/` and the v2 reference is at `/api/v2/docs/`. The raw schemas are available at `/api/schema/` (v1) and `/api/v2/schema/`. This also fixes v2 endpoints that were previously leaking into the v1 schema.
+
 ## Jun 22, 2026
 * **CHANGE** Reverting a chatbot to a previous version now opens a confirmation modal showing exactly what will change — a field- and node-level diff of the current working state against the target version. A warning appears when the working version has unreleased changes that the revert would overwrite.
 
@@ -51,7 +54,7 @@ hide:
 
 ## Jun 2, 2026
 * **CHANGE** The **Annotation Reviewer** role now includes chat-view permission by default, so reviewers can open the sessions attached to the queue items they're working on without needing the chat viewer role granted separately. Trace icons are also now only rendered for users who have permission to view traces.
-* **BUG** Bot messages pushed directly through the [Trigger Bot Message](https://www.openchatstudio.com/api/docs/#tag/Channels/operation/trigger_bot_message) API with `message_text` (verbatim delivery, no LLM) are now captured in tracing alongside LLM-generated messages, so they appear in the session trace and observability views.
+* **BUG** Bot messages pushed directly through the [Trigger Bot Message](https://www.openchatstudio.com/api/v1/docs/#tag/Channels/operation/trigger_bot_message) API with `message_text` (verbatim delivery, no LLM) are now captured in tracing alongside LLM-generated messages, so they appear in the session trace and observability views.
 
 ## Jun 1, 2026
 * **NEW** WhatsApp channels now accept **inbound images and documents** across all three providers — Meta Cloud API, Twilio, and Turn.io. Incoming media is downloaded, persisted, attached to the session, and forwarded to the LLM alongside the user's message.
@@ -83,13 +86,13 @@ hide:
 
 ## May 19, 2026
 * **CHANGE** Outbound emails sent by the bot now use the `email_subject` value from session state as the subject line when set, falling back to "New message" when absent. Inbound reply threads continue to reuse the original subject.
-* **CHANGE** The [Trigger Bot Message](https://www.openchatstudio.com/api/docs/#tag/Channels/operation/trigger_bot_message) API now returns the session details (`session_id`, `url`, `team`, and `channel`) in its 200 response, so callers can reference the session immediately without a follow-up lookup.
+* **CHANGE** The [Trigger Bot Message](https://www.openchatstudio.com/api/v1/docs/#tag/Channels/operation/trigger_bot_message) API now returns the session details (`session_id`, `url`, `team`, and `channel`) in its 200 response, so callers can reference the session immediately without a follow-up lookup.
 * **CHANGE** The session list and detail API responses now include a `status` field, exposing the current state of a session (`setup`, `pending`, `active`, `complete`, etc.) to API consumers.
 * **CHANGE** The session list and detail API responses now include a `platform` field, identifying the channel through which the session was created (e.g. `web`, `api`, `slack`).
 
 ## May 15, 2026
 * **NEW** Session-level evaluation datasets can now be **auto-populated** from a source chatbot. Configure one or more filter-driven rules on a dataset, and matching new sessions are continuously ingested on a 5-minute polling cycle. When a rule is linked to an evaluation config, evaluators run automatically over only the newly added rows.
-* **NEW** The [Trigger Bot Message](https://www.openchatstudio.com/api/docs/#tag/Channels/operation/trigger_bot_message) API now accepts an optional `message_text` parameter that delivers the exact text to the participant's channel without LLM processing. Requests must include either `prompt_text` (for an LLM-generated reply, existing behaviour) or `message_text` (for verbatim delivery), but not both.
+* **NEW** The [Trigger Bot Message](https://www.openchatstudio.com/api/v1/docs/#tag/Channels/operation/trigger_bot_message) API now accepts an optional `message_text` parameter that delivers the exact text to the participant's channel without LLM processing. Requests must include either `prompt_text` (for an LLM-generated reply, existing behaviour) or `message_text` (for verbatim delivery), but not both.
 * **NEW** Session-level evaluation datasets can now be populated by importing sessions from an annotation queue. From a session-level dataset's edit page, choose **Import from Annotation Queue** and pick any team queue that contains session items. Imports are de-duplicated against the existing sessions in the dataset.
 * **NEW** Reviewers can now edit their own submitted annotations on a queue item. An **Edit** button appears next to each of your annotations, opening the form pre-filled with your existing responses; saving updates the annotation and recomputes the queue's aggregate stats.
 
