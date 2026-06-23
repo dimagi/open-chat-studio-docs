@@ -1,4 +1,4 @@
-API: Open Chat Studio vv1
+API: Open Chat Studio v1
 Description: Build, deploy and monitor chatbots.
 
 TAG: Files
