@@ -2,8 +2,17 @@
 title: Indexed Collection (for RAG applications)
 ---
 
+An indexed collection lets your chatbot search through your documents to find relevant information before responding. Instead of relying on the AI's built-in knowledge, the chatbot retrieves answers from files you upload — such as PDFs, reports, or wiki pages.
+
 ## When should I use this?
 When you want your chatbot's responses to be grounded in your uploaded documents.
+
+Common examples include:
+
+- A **customer support chatbot** that answers questions from your product documentation or FAQs
+- An **HR assistant** that looks up company policies from an internal wiki or handbook
+- A **research tool** that searches across uploaded reports, studies, or reference materials
+- An **onboarding guide** that walks new users through your own uploaded training content
 
 !!! note "Definition"
     **Retrieval-Augmented Generation** (RAG) is a technique where a language model retrieves relevant information from a set of documents to ground its answers in real data. Instead of relying solely on its built-in knowledge, the model uses indexes—specialized databases that store document content as vectors (numerical representations of meaning). This makes it easy for the model to find and use the most relevant parts of your uploaded files when answering questions.
