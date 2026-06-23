@@ -3,7 +3,7 @@ title: Indexed Collection (for RAG applications)
 ---
 
 ## When should I use this?
-When you want your bot's responses to be grounded in your uploaded documents.
+When you want your chatbot's responses to be grounded in your uploaded documents.
 
 !!! note "Definition"
     **Retrieval-Augmented Generation** (RAG) is a technique where a language model retrieves relevant information from a set of documents to ground its answers in real data. Instead of relying solely on its built-in knowledge, the model uses indexes—specialized databases that store document content as vectors (numerical representations of meaning). This makes it easy for the model to find and use the most relevant parts of your uploaded files when answering questions.
@@ -79,8 +79,8 @@ In addition to manually uploading documents to a collection, you can also config
 
 The primary advantage of document sources over manual uploads is that Open Chat Studio can check for updates periodically, which eliminates the need for manual updates.
 
-!!! note "Document-source updates reach published bots automatically"
-    When a document-source sync runs and updates the collection's content, those changes are applied to your published bot without requiring a republish. See [Collections and published bots](./index.md#collections-and-published-bots) for more detail.
+!!! note "Document-source updates reach published chatbots automatically"
+    When a document-source sync runs and updates the collection's content, those changes are applied to your published chatbot without requiring a republish. See [Collections and published bots](./index.md#collections-and-published-bots) for more detail.
 
 The following document source types are currently supported:
 
@@ -105,7 +105,7 @@ Use a [Basic Auth](../team/authentication_providers.md#basic-auth) authenticatio
 
 !!! note
 
-    Only one of the `Space Key`, `Lable`, `CQL` and `Page IDs` fields can be used at a time.
+    Only one of the `Space Key`, `Label`, `CQL` and `Page IDs` fields can be used at a time.
 
 ### :simple-github: GitHub
 
