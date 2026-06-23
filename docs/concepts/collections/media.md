@@ -3,7 +3,7 @@ title: Media collections
 ---
 
 ## When should I use this?
-When you want your bot to be able to send multimedia files to users.
+When you want your chatbot to be able to send multimedia files to users.
 
 ## Currently supported file types
 
@@ -21,15 +21,15 @@ When you want your bot to be able to send multimedia files to users.
 
 Once a collection is linked, your bot will be able to send one or more files from it to users—either as a download link or directly—depending on the specific channel’s support for the file type and file size.
 
-!!! note "Changes take effect on published bots immediately"
-    Adding, removing, or replacing files in a media collection is reflected in the published bot without requiring a republish. See [Collections and published bots](./index.md#collections-and-published-bots) for more detail.
+!!! note "Changes take effect on published chatbots immediately"
+    Adding, removing, or replacing files in a media collection is reflected in the published chatbot without requiring a republish. See [Collections and published bots](./index.md#collections-and-published-bots) for more detail.
 
 ## How does it work?
 ### How does the bot know when to attach a file?
 
 When you create a collection and upload files to it, you'll be prompted to add a summary for each file. These summaries are included in the system prompt when you link a collection to your bot. This allows the bot to accurately determine when a particular file is relevant to a conversation.
 
-Additionally, OCS automatically provides the bot with a tool that enables it to attach files to its responses.
+Additionally, OCS automatically provides the chatbot with a tool that enables it to attach files to its responses.
 
 The location in the prompt where these summaries are included is defined by the [{media} prompt variable](../prompt_variables.md).
 
