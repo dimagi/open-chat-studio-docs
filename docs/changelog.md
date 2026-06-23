@@ -12,6 +12,7 @@ hide:
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
 ## Jun 23, 2026
+* **NEW** JSON collection sources now support filtering options that control what gets indexed: include only items matching a metadata field value (e.g. `status == published`), skip unsupported attachment types (such as audio and video, which can't be read), and ignore entries with no document link. Items without a fetchable attachment are now skipped instead of falling back to a title-only entry. Existing sources automatically pick up the default blocklist of unsupported file types (mp3, mp4, wav, and similar).
 * **CHANGE** API reference docs are now split by version. `/api/docs/` is now a landing page linking to the v1 and v2 references; the v1 reference has moved to `/api/v1/docs/` and the v2 reference is at `/api/v2/docs/`. The raw schemas are available at `/api/schema/` (v1) and `/api/v2/schema/`. This also fixes v2 endpoints that were previously leaking into the v1 schema.
 
 ## Jun 22, 2026

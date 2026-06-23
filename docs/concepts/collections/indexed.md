@@ -124,6 +124,31 @@ Use a [Bearer Token](../team/authentication_providers.md#bearer-token) authentic
 | File Pattern   | File patterns to include. Prefix with '!' to exclude matching files. |
 | Path Filter    | Optional path prefix to filter files (e.g., docs/)                   |
 
+### JSON Collection
+
+Load documents from an external JSON feed. Each item in the feed represents a document entry, and Open Chat Studio fetches and indexes the linked attachment for each item.
+
+You can control which items are indexed using filtering options. Items that do not pass the configured filters are skipped entirely and are not added to the collection.
+
+**Authentication**
+
+Use a [Bearer Token](../team/authentication_providers.md#bearer-token) authentication provider if the JSON feed requires authentication. Leave the authentication field blank for public feeds.
+
+**Configuration**
+
+| Field                    | Description                                                                                                                      |
+|--------------------------|----------------------------------------------------------------------------------------------------------------------------------|
+| URL                      | The URL of the JSON feed to load documents from.                                                                                 |
+| Filter Field             | Optional. The name of a metadata field to filter items by (e.g. `status`). Only items where this field matches the filter value are indexed. |
+| Filter Value             | The value that the filter field must match for an item to be included (e.g. `published`).                                        |
+| Blocked File Extensions  | A list of file extensions to skip. Items whose attachment URL ends with a blocked extension are not indexed. Defaults to a blocklist of audio and video types (e.g. `mp3`, `mp4`, `wav`) that cannot be read. |
+
+!!! note "Default blocklist for unsupported file types"
+    Existing JSON collection sources automatically apply a default blocklist that excludes common audio and video file types (such as `mp3`, `mp4`, and `wav`). These formats cannot be read by the document indexer. You can edit the blocklist to add or remove extensions as needed.
+
+!!! note "Items with no document link are skipped"
+    Items that have no fetchable attachment link are skipped and are not added to the collection. (Previously, such items were indexed using their title only; that fallback has been removed.)
+
 ## Monitoring Sync Status
 
 Open Chat Studio tracks the history of every sync run for each document source. Use the sync logs to confirm that syncs are completing successfully and to diagnose problems when they are not.
