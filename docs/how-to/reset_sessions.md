@@ -49,7 +49,7 @@ For details on how to end sessions from a chatbot see [Session Status](../concep
 
 Use this when your integration controls when conversations should restart.
 
- - When using the [Trigger Bot Message](https://openchatstudio.com/api/docs/#tag/Channels/operation/trigger_bot_message) API, you can set `"start_new_session": true`, which will end the current session and start a new one before messaging the user.
+ - When using the [Trigger Bot Message](https://openchatstudio.com/api/v1/docs/#tag/Channels/operation/trigger_bot_message) API, you can set `"start_new_session": true`, which will end the current session and start a new one before messaging the user.
 
 ## Related concepts
 
