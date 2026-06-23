@@ -1,4 +1,4 @@
-API: Open Chat Studio v1
+API: Open Chat Studio vv1
 Description: Build, deploy and monitor chatbots.
 
 TAG: OpenAI
@@ -8,7 +8,7 @@ ENDPOINTS:
 
 POST /api/openai/{experiment_id}/chat/completions
   Summary: Chat Completions API for Experiments
-  Description:
+  Description: 
 Use OpenAI's client to send messages to the experiment and get responses. This will
 create a new session in the experiment with all the provided messages
 and return the response from the experiment.
@@ -53,7 +53,7 @@ reply = completion.choices[0].message
 
 POST /api/openai/{experiment_id}/v{version}/chat/completions
   Summary: Versioned Chat Completions API for Experiments
-  Description:
+  Description: 
 Use OpenAI's client to send messages to the experiment and get responses. This will
 create a new session in the experiment with all the provided messages
 and return the response from the experiment.

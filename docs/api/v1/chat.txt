@@ -1,10 +1,10 @@
-API: Open Chat Studio v1
+API: Open Chat Studio vv1
 Description: Build, deploy and monitor chatbots.
 
 TAG: Chat
-Description:
+Description: 
                 The Chat API is designed to be used for integrating chatbots into external systems.
-
+            
 
 ENDPOINTS:
 

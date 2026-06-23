@@ -1,6 +1,6 @@
 # v1
 
-**Open Chat Studio** API version `1`.
+**Open Chat Studio** API version `v1`.
 
 Build, deploy and monitor chatbots.
 
@@ -10,11 +10,9 @@ Simplified per-tag references for LLM consumption:
 
 * [Channels](./channels.txt){:target="_blank"} — Trigger bot messages or deliver messages directly to users on a channel.
 * [Chat](./chat.txt){:target="_blank"} — The Chat API is designed to be used for integrating chatbots into external systems.
-* [Chatbots](./chatbots.txt){:target="_blank"}
 * [Experiment Sessions](./experiment_sessions.txt){:target="_blank"} — Manage chatbot sessions including session state, and session tags.
 * [Experiments](./experiments.txt){:target="_blank"} — List and retrieve chatbots (formerly 'experiments').
 * [Files](./files.txt){:target="_blank"} — Download the content of files associated with chat messages.
-* [Me](./me.txt){:target="_blank"}
 * [OpenAI](./openai.txt){:target="_blank"} — OpenAI-compatible endpoints for interacting with chatbots.
 * [Participants](./participants.txt){:target="_blank"} — Manage participants, their data, and their schedules.
 
@@ -37,14 +35,6 @@ Simplified per-tag references for LLM consumption:
 | GET | `/api/chat/{session_id}/poll/` | Poll for new messages in a chat session. Do not poll more than once every 30 seconds |
 | POST | `/api/chat/{session_id}/upload/` | Upload files for a chat message |
 | POST | `/api/chat/start/` | Start a new chat session for a widget |
-
-### Chatbots
-
-| Method | Path | Summary |
-| --- | --- | --- |
-| GET | `/api/v2/chatbots/` | List Chatbots |
-| GET | `/api/v2/chatbots/{id}/` | Retrieve Chatbot |
-| GET | `/api/v2/chatbots/{id}/inspect/` | Inspect Chatbot |
 
 ### Experiment Sessions
 
@@ -71,12 +61,6 @@ Simplified per-tag references for LLM consumption:
 | --- | --- | --- |
 | GET | `/api/files/{id}/content` | Download File Content |
 
-### Me
-
-| Method | Path | Summary |
-| --- | --- | --- |
-| GET | `/api/v2/me/` | Current User |
-
 ### OpenAI
 
 | Method | Path | Summary |
@@ -90,5 +74,3 @@ Simplified per-tag references for LLM consumption:
 | --- | --- | --- |
 | GET | `/api/participants` | List Participants |
 | POST | `/api/participants` | Update Participant Data |
-| GET | `/api/participants/` | List Participants |
-| POST | `/api/participants/` | Update Participant Data |

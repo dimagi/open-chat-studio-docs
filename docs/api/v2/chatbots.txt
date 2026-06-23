@@ -1,0 +1,142 @@
+API: Open Chat Studio vv2
+Description: Build, deploy and monitor chatbots.
+
+TAG: Chatbots
+Description: List, retrieve and inspect chatbots (v2; formerly 'experiments').
+
+ENDPOINTS:
+
+GET /api/v2/chatbots/
+  Summary: List Chatbots
+  Parameters:
+    - cursor (query, string (optional)): The pagination cursor value.
+    - page_size (query, integer (optional)): Number of results to return per page.
+  Responses:
+    200:
+      Content: application/json
+      Schema: PaginatedChatbotList
+  Security:
+    OAuth2
+      - Required scopes: chatbots:read
+    apiKeyAuth
+    tokenAuth
+
+GET /api/v2/chatbots/{id}/
+  Summary: Retrieve Chatbot
+  Parameters:
+    - id (path, string (required)): Chatbot ID
+  Responses:
+    200:
+      Content: application/json
+      Schema: Chatbot
+  Security:
+    OAuth2
+      - Required scopes: chatbots:read
+    apiKeyAuth
+    tokenAuth
+
+GET /api/v2/chatbots/{id}/inspect/
+  Summary: Inspect Chatbot
+  Description: Return the chatbot's full configuration as a single read-only document.
+  Parameters:
+    - id (path, string (required)): Chatbot ID
+    - version (query, string (optional)): Which version to inspect: a version number, 'default' for the default published version, or omit for the working (draft) version.
+  Responses:
+    200:
+      Content: application/json
+      Schema: ChatbotInspect
+  Security:
+    OAuth2
+      - Required scopes: chatbots:read
+    apiKeyAuth
+    tokenAuth
+
+SCHEMAS:
+
+Channel:
+  - platform: PlatformEnum
+  - name: string (required)
+  - messaging_provider: Unknown (required)
+  - number: string
+  - page_id: string
+  - sureadhere_tenant_id: string
+  - commcare_connect_bot_name: string
+  - allow_all_domains: boolean
+  - allowed_domains: array of string
+
+Chatbot:
+  - id: string (required)
+  - name: string (required)
+  - url: string (required)
+  - version_number: integer
+  - versions: array of ChatbotVersion (required)
+
+ChatbotInspect:
+  - id: string (required)
+  - name: string (required)
+  - description: string
+  - version_number: integer
+  - is_unreleased: boolean (required)
+  - is_published_version: boolean (required)
+  - version_description: string (required)
+  - team_slug: string (required)
+  - settings: InspectSettings (required)
+  - consent_form: Unknown (required)
+  - voice: Unknown (required)
+  - trace_provider: Unknown (required)
+  - channels: array of Channel (required)
+  - pipeline: Unknown (required)
+  - events: InspectEvents (required)
+
+ChatbotVersion:
+  - name: string (required)
+  - version_number: integer
+  - is_default_version: boolean
+  - version_description: string
+
+InspectEvents:
+  - static_triggers: array of InspectStaticTrigger (required)
+  - timeout_triggers: array of InspectTimeoutTrigger (required)
+
+InspectSettings:
+  - seed_message: string (required)
+  - conversational_consent_enabled: boolean (required)
+  - voice_response_behaviour: string (required)
+  - echo_transcript: boolean (required)
+  - debug_mode_enabled: boolean (required)
+  - file_uploads_enabled: boolean (required)
+  - participant_allowlist: array of string (required)
+
+InspectStaticTrigger:
+  - id: integer (required)
+  - type: Unknown (required)
+  - is_active: boolean
+  - action: InspectTriggerAction (required)
+
+InspectTimeoutTrigger:
+  - id: integer (required)
+  - delay_seconds: integer (required)
+  - total_num_triggers: integer (required)
+  - trigger_from_first_message: boolean (required)
+  - is_active: boolean
+  - action: InspectTriggerAction (required)
+
+InspectTriggerAction:
+  - type: Unknown (required)
+  - params: object (required)
+  - pipeline: Unknown
+
+PaginatedChatbotList:
+  - next: string
+  - previous: string
+  - results: array of Chatbot (required)
+  - count: integer
+
+PlatformEnum:
+  - enum: [telegram, web, whatsapp, facebook, sureadhere, api, slack, commcare_connect, evaluations, embedded_widget, email]
+
+SECURITY:
+- OAuth2
+  - Authorization Code Flow (authorization url: /o/authorize/, token url: /o/token/)
+- API Key authentication (header: X-api-key)
+- HTTP bearer authentication

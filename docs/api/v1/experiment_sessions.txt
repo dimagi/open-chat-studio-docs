@@ -1,4 +1,4 @@
-API: Open Chat Studio v1
+API: Open Chat Studio vv1
 Description: Build, deploy and monitor chatbots.
 
 TAG: Experiment Sessions
@@ -42,7 +42,7 @@ POST /api/sessions/
 
 GET /api/sessions/{id}/
   Summary: Retrieve Chatbot Session
-  Description:
+  Description: 
 Retrieve the details of an session. This includes the messages exchanged during the session ordered
 by the creation date.
 
@@ -122,6 +122,9 @@ PATCH /api/sessions/{id}/update_state/
 
 SCHEMAS:
 
+ChatbotSessionStatusEnum:
+  - enum: [setup, pending, active, pending-review, complete, unknown]
+
 ExperimentSession:
   - url: string (required)
   - id: string (required)
@@ -130,7 +133,7 @@ ExperimentSession:
   - participant: Unknown (required)
   - created_at: string (required)
   - updated_at: string (required)
-  - status: Status490Enum
+  - status: ChatbotSessionStatusEnum
   - platform: string
   - tags: array of string (required)
   - state: Unknown
@@ -150,7 +153,7 @@ ExperimentSessionWithMessages:
   - participant: Unknown (required)
   - created_at: string (required)
   - updated_at: string (required)
-  - status: Status490Enum
+  - status: ChatbotSessionStatusEnum
   - platform: string
   - messages: array of Message (required)
   - tags: array of string (required)
@@ -181,9 +184,6 @@ PaginatedExperimentSessionList:
 
 Patchedupdate_state_serializer:
   - state: Unknown
-
-Status490Enum:
-  - enum: [setup, pending, active, pending-review, complete, unknown]
 
 tags_request_serializer:
   - tags: array of string (required)
