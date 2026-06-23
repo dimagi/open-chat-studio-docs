@@ -91,4 +91,5 @@ LLM docs:
 
 <!-- api-versions:start -->
 * [v1](v1/index.md)
+* [v2](v2/index.md)
 <!-- api-versions:end -->
