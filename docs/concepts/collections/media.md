@@ -25,7 +25,7 @@ Once a collection is linked, your chatbot will be able to send one or more files
     Adding, removing, or replacing files in a media collection is reflected in the published chatbot without requiring a republish. See [Collections and published chatbots](index.md#collections-and-published-chatbots) for more detail.
 
 ## How does it work?
-### How does the bot know when to attach a file?
+### How does the chatbot know when to attach a file?
 
 When you create a collection and upload files to it, you'll be prompted to add a summary for each file. These summaries are included in the system prompt when you link a collection to your chatbot. This allows the chatbot to accurately determine when a particular file is relevant to a conversation.
 

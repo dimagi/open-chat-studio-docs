@@ -1,6 +1,7 @@
 ---
 title: Local Index Optimization
 ---
+# Local Index Optimization
 
 This page covers advanced configuration options for indexed collections. For a conceptual overview of how indexed collections work, see [Indexed Collection for RAG](../concepts/collections/indexed.md).
 
@@ -17,8 +18,6 @@ Different embedding models have different strengths:
 - Models trained on domain-specific data (medical, legal, code) can outperform general-purpose models in those domains.
 
 You can view the available embedding models for each provider when creating or editing the [LLM provider in your team](../concepts/team/llm_providers.md) settings. If you are unsure which model to choose, start with the default offered by your LLM provider — it is optimised for general-purpose retrieval.
-
-!!! info "Local indexes are a new feature in OCS. We are actively working to support additional embedding models."
 
 ## Chunking and Optimization (Local Indexes only)
 
