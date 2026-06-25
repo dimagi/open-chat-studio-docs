@@ -16,7 +16,7 @@ deploying chatbots powered by Large Language Models ([LLMs](concepts/llm.md)).
   language technology. OCS is built for use by program staff and other teams - you don't need to be an engineer to get
   started.
 
-* **Deploy:** Launch your chatbots on the web and using mobile [messaging apps](concepts/channels.md/) such as Telegram and WhatsApp
+* **Deploy:** Launch your chatbots on the web and using mobile [messaging apps](concepts/channels.md) such as Telegram and WhatsApp
 
 * **Enable Access for All:** Anyone you share a chatbot with will be able to access it, either through a web link or
   directly
@@ -24,7 +24,7 @@ deploying chatbots powered by Large Language Models ([LLMs](concepts/llm.md)).
   your
   chatbots.
 
-* **View and Download Data:** View and export the data from interactions [(ie Tracing)](concepts/tracing.md) with your chatbots, formatted In CSV.
+* **View and Download Data:** View and export the data from interactions with your chatbots, formatted In CSV.
 
 <div class="grid cards" markdown>
 
@@ -41,4 +41,4 @@ deploying chatbots powered by Large Language Models ([LLMs](concepts/llm.md)).
 You can host your own instance of Open Chat Studio, or use the hosted version
 at [openchatstudio.com](https://openchatstudio.com/).
 
-If you would like an account on Dimagi's hosted version of Open Chat Studio send an email to ocs-info@dimagi.com. 
+If you would like an account on Dimagi's hosted version of Open Chat Studio send an email to ocs-info@dimagi.com.

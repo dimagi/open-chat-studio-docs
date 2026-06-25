@@ -16,3 +16,27 @@ open-chat-studio-widget {
 .red {
     color: red;
 }
+
+/* Deprecated changelog versions: muted heading + badge with muted-orange icon.
+   Markup contract: the badge paragraph must immediately follow the `.deprecated`
+   heading (the `+ p` sibling selector). Muting the heading and badge but leaving
+   the entry's bullet list at full contrast is intentional. */
+.deprecated,
+.deprecated + p {
+    color: var(--md-default-fg-color--light);
+}
+
+.deprecated + p .twemoji {
+    color: var(--deprecated-icon-color);
+}
+
+/* Theme-aware deprecation icon: muted orange on light, brighter on the slate
+   (dark) scheme so it keeps adequate contrast. */
+:root,
+[data-md-color-scheme="default"] {
+    --deprecated-icon-color: #c77d3a;
+}
+
+[data-md-color-scheme="slate"] {
+    --deprecated-icon-color: #e5944a;
+}

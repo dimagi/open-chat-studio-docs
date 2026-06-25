@@ -9,7 +9,7 @@ To link a channel to your bot:
 2. Click on the :material-plus: (plus) icon and select the [provider][2] from the dropdown.
 3. Complete the form and click **Create**. Follow the guide below to get the required information for each channel.
 
-You may need to [Configure a messaging provider][6] before you will be able to select it from the dropdown. 
+You may need to [Configure a messaging provider][6] before you will be able to select it from the dropdown.
 
 ## Web and API
 The web channel uses the web interface and is enabled by default for all bots. Likewise, all bots can be accessed via the [APIs][api].
@@ -17,7 +17,6 @@ The web channel uses the web interface and is enabled by default for all bots. L
 ## Telegram
 - Follow [this guide][1] to create a Telegram bot.
 - Copy the bot token and paste it into the form on OCS. It will look something like this: `4839574812:AAFD39kkdpWt3ywyRZergyOLMaJhac60qc`.
-
 
 !!! info "Note"
     Depending on your usecase, you probably want to disable group joins for your bot on Telegram. Since your telegram bot is public, anyone can add it to a group, which could end up costing you a lot. To achieve this, use the [setjoingroups][5] setting in BotFather.
@@ -28,39 +27,30 @@ Open Chat Studio supports multiple WhatsApp providers. Choose the section below 
 
 ### Twilio and Turn.io
 
-#### Setting Up Your WhatsApp Channel
+#### Twilio
 
-1. **Add your WhatsApp number to the form** in the Open Chat Studio channels section.
+When you create or edit a WhatsApp channel using a Twilio provider, Open Chat Studio automatically configures the webhook in your Twilio messaging service. When you delete the channel, the webhook is cleared automatically. You do not need to copy or paste any webhook URL.
 
-2. **Configure the webhook URL in your provider:**
+!!! info "Sandbox numbers and other exceptions"
+    Automatic webhook configuration is not supported for Twilio sandbox numbers or in cases where OCS cannot reach the Twilio API. If auto-configuration fails, OCS will display manual setup instructions instead. Follow the steps in the [Twilio webhook configuration guide][3] and enter the following webhook URL in your messaging service settings:
 
-   The webhook URL is always: `https://openchatstudio.com/channels/whatsapp/incoming_message`
+    `https://openchatstudio.com/channels/whatsapp/incoming_message`
 
-   This URL is the same for all WhatsApp chatbots and channels on Open Chat Studio.
+#### Turn.io
 
-#### Provider-Specific Configuration
+Turn.io does not support automatic webhook configuration. After adding your WhatsApp number in Open Chat Studio, configure the webhook manually:
 
-##### For New WhatsApp Numbers
-If you're setting up a brand new WhatsApp number, you'll need:
-- Admin access to your Twilio/Turn.io account
-- To register the number with Meta/WhatsApp
-- To configure the webhook URL in your provider settings
+1. In your Turn.io account, go to **Settings → API & Webhooks**.
+2. Select **Add a webhook**.
+3. Enter the following URL:
 
-##### For Existing WhatsApp Numbers
-If you're reusing an existing WhatsApp number that was previously configured for Open Chat Studio:
-- **No additional webhook configuration needed** - the number is already set up to forward messages to Open Chat Studio
-- Simply add the number to your bot's channels in Open Chat Studio
-
-##### Provider Instructions
-- **For Twilio:** See [this page][3] to configure the webhook URL in your messaging service
-- **For Turn.io:** Go to Settings → API & Webhooks → Add a webhook and paste the OCS webhook URL
+   `https://openchatstudio.com/channels/whatsapp/incoming_message`
 
 ### Meta Cloud API
 
 Meta Cloud API connects your chatbot directly to the WhatsApp Business Platform without a third-party intermediary. The setup requires a Meta for Developers account and a WhatsApp Business Account.
 
 See the [Meta Cloud API setup guide][meta] for full step-by-step instructions.
-
 
 ## Facebook Messenger
 !!! info "Note"
@@ -149,7 +139,7 @@ Replying to a bot email continues the same conversation session. Sending a fresh
 
 ### Customizing the outbound subject
 
-When the bot starts a new email thread (for example, via the [Trigger Bot Message](https://www.openchatstudio.com/api/docs/#tag/Channels/operation/trigger_bot_message) API), the subject line defaults to "New message". To override this, set an `email_subject` value in [session state](../tech-hub/python_node.md#session-state) before the email is sent — for example from a pipeline's Python node, or via the `session_data` parameter when triggering the bot. Inbound reply threads always reuse the subject of the original email and are unaffected by this value.
+When the bot starts a new email thread (for example, via the [Trigger Bot Message](https://www.openchatstudio.com/api/v1/docs/#tag/Channels/operation/trigger_bot_message) API), the subject line defaults to "New message". To override this, set an `email_subject` value in [session state](../tech-hub/python_node.md#session-state) before the email is sent — for example from a pipeline's Python node, or via the `session_data` parameter when triggering the bot. Inbound reply threads always reuse the subject of the original email and are unaffected by this value.
 
 ### File attachments
 
@@ -168,7 +158,6 @@ The following attachments are rejected automatically:
 | Content-type mismatch (declared MIME type does not match actual file bytes) | Bracketed note in the message text |
 
 Rejection notes are inserted inline into the user's message so the bot can read them and explain the problem to the user in its reply.
-
 
 #### Outbound attachments (bot to user)
 
@@ -191,7 +180,6 @@ def main(input, **kwargs) -> str:
 See the [Python Node documentation](../tech-hub/python_node.md#python_node.add_file_attachment) for the full `add_file_attachment()` API reference.
 
 If a pipeline-produced file cannot be sent as an attachment (for example, it exceeds the size limit or is a denylisted type), the email body will contain an inline download link for that file instead.
-
 
 [1]: https://core.telegram.org/bots#how-do-i-create-a-bot
 [2]: ../concepts/team/messaging_providers.md

@@ -4,6 +4,74 @@ hide:
 ---
 
 # Changelog
+
+!!! info
+
+    Looking for the embeddable chat widget? See the [Chat Widget changelog](chat_widget/changelog.md).
+
+    Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
+
+## Jun 25, 2026
+* **BUG** Fixed a `NameError` in pipeline Code nodes when using tuple-unpacking assignments (for example, `a, b = some_function()`). Such assignments now work as expected.
+
+## Jun 23, 2026
+* **CHANGE** API reference docs are now split by version. `/api/docs/` is now a landing page linking to the v1 and v2 references; the v1 reference has moved to `/api/v1/docs/` and the v2 reference is at `/api/v2/docs/`. The raw schemas are available at `/api/schema/` (v1) and `/api/v2/schema/`. This also fixes v2 endpoints that were previously leaking into the v1 schema.
+
+## Jun 22, 2026
+* **CHANGE** Reverting a chatbot to a previous version now opens a confirmation modal showing exactly what will change — a field- and node-level diff of the current working state against the target version. A warning appears when the working version has unreleased changes that the revert would overwrite.
+
+## Jun 18, 2026
+* **CHANGE** The `/api/v2/me/` endpoint now includes an `email_verified` field indicating whether the authenticated user has confirmed their email address.
+
+## Jun 15, 2026
+* **CHANGE** The session retrieval endpoint (`GET /api/sessions/{id}/`) now includes the session's state in its response payload, so consumers can read a session's stored state alongside its other details without a separate call.
+
+## Jun 11, 2026
+* **CHANGE** Surveys are deprecated and will be removed on **2026-07-10**. They are now decoupled from chatbots — the pre- and post-survey settings have been removed, so surveys are no longer presented to participants before or after a web chat. Existing surveys are read-only (you can no longer create new ones, only view or delete them) for a 30-day window so teams can export their data. A deprecation warning and an in-product notification announce the removal.
+
+## Jun 10, 2026
+* **CHANGE** The cursor-paginated list endpoints — `/api/sessions/`, `/api/participants/`, `/api/experiments/`, and `/api/v2/chatbots/` — now include a `count` field (the total number of matching records) on the first page of results, so consumers can show real progress while paging through a full sync. The field is omitted on subsequent (cursor-following) pages and is optional, so existing consumers are unaffected.
+* **NEW** Added support for the **Claude Fable 5** model from Anthropic. Fable 5 offers a 1M-token context window with adaptive thinking and configurable effort levels (low, medium, high, max), and can now be selected for chatbots and pipelines.
+
+## Jun 9, 2026
+* **CHANGE** Chat sessions started through the API now require a per-session token to read their transcripts. `POST /api/chat/start/` returns a `session_token`, which must be sent as the `X-Session-Token` header on subsequent session calls (or an authenticated user with access to the session). This prevents session transcripts from being read by anyone who obtains a session ID. **Breaking change** for direct API consumers: send the returned `session_token` on subsequent calls, or opt out with `use_session_token: false`. Token access to sessions inactive for more than 7 days is rejected.
+* **NEW** Added a read-only v2 chatbots API: `GET /api/v2/chatbots/` (list) and `/{id}/` (retrieve), plus `/{id}/inspect/?version=`, which returns a single denormalized view of a chatbot's full configuration — settings, channels, pipeline nodes with their resources inlined, and event triggers. The response is self-documenting via the OpenAPI schema, making it well suited to LLM-agent consumers.
+* **BUG** Fixed an error when opening a chatbot's home page via a URL pointing to a version snapshot of the chatbot. Users are now redirected to the canonical URL of the active version instead of hitting an error.
+
+## Jun 8, 2026
+* **CHANGE** WhatsApp channels using a Twilio provider now have their webhook configured at Twilio automatically when the channel is created, edited, or deleted. If auto-configuration isn't possible (for example, on a Twilio sandbox number), the manual setup instructions are shown instead.
+* **CHANGE** The `POST /api/participants/` endpoint now returns the full participant detail in its response, including the CommCare Connect `connect_channel_id` for each chatbot. Connect channels are created synchronously during the request, so callers no longer need to poll for the channel ID after updating a participant.
+
+## Jun 5, 2026
+* **CHANGE** Any annotation reviewer (any team member) can now mark or unmark a submitted annotation as **authoritative**. This was previously restricted to queue admins.
+* **NEW** Added a **Clear all** button to the evaluation runs page. Users with delete permission can wipe a config's entire run history in one action; this also un-applies the tags those runs added to their targets (chats and chat messages), returning them to their pre-evaluation state. Tags applied by hand are left untouched.
+* **CHANGE** The **number of reviews required** on an annotation queue can now be edited even after annotation has started. Saving the new value recomputes the status of every queue item: raising the requirement can move completed items back to **Awaiting resolution**, while lowering it leaves unresolved multi-review items awaiting resolution rather than silently marking them complete. A confirmation dialog warns before the change is applied.
+
+## Jun 4, 2026
+* **CHANGE** The legacy embedded web chat endpoints (the old `/embed/start/` iframe flow) are now deprecated and will be removed on **2026-08-03**. Responses from these endpoints now include `Deprecation`, `Sunset`, and successor `Link` headers per RFC 8594. Sites still embedding chat via the old iframe flow should migrate to the current [chat widget](https://docs.openchatstudio.com/chat_widget/).
+
+## Jun 3, 2026
+* **CHANGE** Published chatbots now automatically reflect updates to their linked collections — scheduled document-source syncs to RAG indexes and manual edits to media (attachment) collections — instead of staying pinned to the snapshot captured at publish time. Existing published bots pick up this live behaviour the next time they're republished.
+* **NEW** The trace table now has a **Session ID** filter, and quick links let you jump from a trace detail page or a chatbot session transcript straight to a trace table pre-filtered to that session, chatbot, or participant.
+* **BUG** Fixed a crash that could occur with Azure text-to-speech when a voice was asked to speak text in a language it doesn't support. Azure could return a corrupted audio file in this case; the bot now detects the invalid output and gracefully falls back to a text response instead of erroring out.
+
+## Jun 2, 2026
+* **CHANGE** The **Annotation Reviewer** role now includes chat-view permission by default, so reviewers can open the sessions attached to the queue items they're working on without needing the chat viewer role granted separately. Trace icons are also now only rendered for users who have permission to view traces.
+* **BUG** Bot messages pushed directly through the [Trigger Bot Message](https://www.openchatstudio.com/api/v1/docs/#tag/Channels/operation/trigger_bot_message) API with `message_text` (verbatim delivery, no LLM) are now captured in tracing alongside LLM-generated messages, so they appear in the session trace and observability views.
+
+## Jun 1, 2026
+* **NEW** WhatsApp channels now accept **inbound images and documents** across all three providers — Meta Cloud API, Twilio, and Turn.io. Incoming media is downloaded, persisted, attached to the session, and forwarded to the LLM alongside the user's message.
+* **BUG** Fixed a 404 that could occur when downloading attachments received over the email channel. The `ChatAttachment` record required by the authorized download endpoint was not being created during inbound email hydration, so links generated for the bot's attachments resolved to "not found".
+
+## May 29, 2026
+* **CHANGE** The chatbot UI now surfaces a warning wherever a chatbot is viewed if no consent form is configured, making it easier to spot bots that may be collecting participant data without a consent mechanism in place.
+
+## May 28, 2026
+* **CHANGE** Rerunning an evaluation now reconciles tags applied by its evaluators' tag rules. After a rerun, any tag managed by those rules that no longer matches the latest evaluator output is removed from the affected message or session — even if it had originally been applied by a human. **FULL** reruns reconcile every row in the dataset; **DELTA** reruns only reconcile the rows in their scope. **PREVIEW** runs do not apply or remove tags.
+* **CHANGE** Reorganised the evaluation dataset edit page: **Add Sessions** now opens a dedicated sub-page with a simplified selection UI (mirroring the annotation-queue Add Sessions surface), and the **Manual entry** and **CSV upload** forms are hidden behind a new **Add** dropdown until selected.
+* **BUG** Fixed a retrieval-quality bug affecting local indexed collections that use Voyage AI or Google embedding models. Documents were previously embedded in "query" mode rather than "document" mode, weakening retrieval accuracy. OpenAI collections are unaffected.
+* **BUG** Fixed local indexing for OpenAI providers configured against an OpenAI-compatible proxy or gateway (e.g. LiteLLM). The provider's custom base URL is now passed through to the embedding client during indexing, which previously always hit `api.openai.com` and failed with a 401.
+
 ## May 25, 2026
 * **NEW** Added a **Concordance** view under Evaluations that compares an LLM judge's output against human annotations on a shared categorical field. The view shows side-by-side judge vs. human values per session, an overall agreement count and percentage, and matched / eval-only / human-only buckets with deep links per row. This feature is alpha and gated behind the `flag_assessments_concordance` feature flag.
 * **NEW** Added a **Show usages** button to each service-provider edit page that lists the chatbots, assistants, pipelines, collections, and channels referencing that provider, with version badges and direct links to each working version. A staff-only **Find provider by API key** admin tool also lets administrators look up providers across teams by full key, suffix, or substring — useful for credential rotation and leaked-key triage.
@@ -21,13 +89,13 @@ hide:
 
 ## May 19, 2026
 * **CHANGE** Outbound emails sent by the bot now use the `email_subject` value from session state as the subject line when set, falling back to "New message" when absent. Inbound reply threads continue to reuse the original subject.
-* **CHANGE** The [Trigger Bot Message](https://www.openchatstudio.com/api/docs/#tag/Channels/operation/trigger_bot_message) API now returns the session details (`session_id`, `url`, `team`, and `channel`) in its 200 response, so callers can reference the session immediately without a follow-up lookup.
+* **CHANGE** The [Trigger Bot Message](https://www.openchatstudio.com/api/v1/docs/#tag/Channels/operation/trigger_bot_message) API now returns the session details (`session_id`, `url`, `team`, and `channel`) in its 200 response, so callers can reference the session immediately without a follow-up lookup.
 * **CHANGE** The session list and detail API responses now include a `status` field, exposing the current state of a session (`setup`, `pending`, `active`, `complete`, etc.) to API consumers.
 * **CHANGE** The session list and detail API responses now include a `platform` field, identifying the channel through which the session was created (e.g. `web`, `api`, `slack`).
 
 ## May 15, 2026
 * **NEW** Session-level evaluation datasets can now be **auto-populated** from a source chatbot. Configure one or more filter-driven rules on a dataset, and matching new sessions are continuously ingested on a 5-minute polling cycle. When a rule is linked to an evaluation config, evaluators run automatically over only the newly added rows.
-* **NEW** The [Trigger Bot Message](https://www.openchatstudio.com/api/docs/#tag/Channels/operation/trigger_bot_message) API now accepts an optional `message_text` parameter that delivers the exact text to the participant's channel without LLM processing. Requests must include either `prompt_text` (for an LLM-generated reply, existing behaviour) or `message_text` (for verbatim delivery), but not both.
+* **NEW** The [Trigger Bot Message](https://www.openchatstudio.com/api/v1/docs/#tag/Channels/operation/trigger_bot_message) API now accepts an optional `message_text` parameter that delivers the exact text to the participant's channel without LLM processing. Requests must include either `prompt_text` (for an LLM-generated reply, existing behaviour) or `message_text` (for verbatim delivery), but not both.
 * **NEW** Session-level evaluation datasets can now be populated by importing sessions from an annotation queue. From a session-level dataset's edit page, choose **Import from Annotation Queue** and pick any team queue that contains session items. Imports are de-duplicated against the existing sessions in the dataset.
 * **NEW** Reviewers can now edit their own submitted annotations on a queue item. An **Edit** button appears next to each of your annotations, opening the form pre-filled with your existing responses; saving updates the annotation and recomputes the queue's aggregate stats.
 
@@ -133,116 +201,8 @@ hide:
 ## Mar 4, 2026
 * **NEW** Teams now receive in-app notifications when LLM models are deprecated or removed.
 
-## Feb 27, 2026
-* **NEW** Tracing is now available to all users — no feature flag required. View and debug conversation traces directly from the session detail page. [Learn more](concepts/tracing.md)
+## Archive
 
-## Feb 26, 2026
-* **NEW** The trace detail page now includes a Langfuse span tree panel when Langfuse tracing is configured, showing the full observation tree with status indicators and latency badges alongside a detail view for each span's input/output.
+!!! note
 
-## Feb 25, 2026
-* **NEW** Timeout events can now be configured to measure inactivity from the first human message instead of the last message, giving more control over session timeout behavior.
-* **NEW** Added natural language filter input to session and message tables. Users can type plain-English queries (e.g., "sessions from last week excluding WhatsApp") and click **✨ Generate** to automatically create filter rows. This feature is in beta and can be enabled by team admins from the team feature flags page.
-
-## Feb 20, 2026
-* **NEW** Added support for Claude Sonnet 4.6 model with adaptive thinking. Claude Sonnet 4.6 is now the default Anthropic model, replacing Claude Sonnet 4.5 as the default.
-
-## Feb 19, 2026
-* **NEW** Document source sync logs are now accessible directly from the Collections page via a "View Sync Logs" button, allowing users to inspect sync history, file counts (added/updated/removed), duration, and error details without leaving the page.
-
-## Feb 18, 2026
-* **NEW** Notifications system now maintains event history, allowing users to view past notifications and events. Users can also mute notifications per-event or enable "Do Not Disturb" mode to mute all notifications.
-
-## Feb 11, 2026
-* **NEW** Python nodes can now attach files fetched via HTTP to AI response messages using the `add_file_attachment()` helper and `response_bytes` field on HTTP responses. Note: originally documented as `attach_file_from_response(response_bytes, filename)`; the correct name and signature is `add_file_attachment(filename, content, content_type=None)`.
-* **NEW** Added notification events that alert you when something important or noteworthy happens in your system, including failures across custom actions (health checks, API failures), chat operations (pipeline execution, LLM errors, tool failures), media handling (audio synthesis/transcription), and message delivery (platform-specific failures). This feature is currently in beta and can be requested for your team.
-
-## Feb 10, 2026
-* **CHANGE** Authentication provider names in Python node HTTP requests are now case-insensitive, allowing `auth="My-Provider"` and `auth="my-provider"` to match the same provider.
-
-## Feb 9, 2026
-* **NEW** Added `http_client` global to Python sandbox for making HTTP requests with security guardrails including SSRF prevention, request/response size limits, timeout clamping, automatic retries, and authentication provider integration.
-
-## Feb 6, 2026
-* **NEW** Added support for Claude Opus 4.6 model with adaptive thinking control. Features configurable effort levels (low, medium, high, max), 200K context window, and 128K max output tokens.
-* **CHANGE** LLM API calls now automatically retry with exponential backoff when rate limited by providers (OpenAI, Anthropic, Google), improving reliability during peak usage.
-
-## Feb 3, 2026
-* **BUG** Fixed character encoding issues when reading plaintext files by automatically detecting and converting different encoding schemes to unicode.
-
-## Feb 2, 2026
-* **NEW** Voice notes from users and bots are now displayed as attachments in the chat transcript, making it easier to review and access voice messages.
-
-## Jan 31, 2026
-* **BUG** Fixed an issue where local collection index validation in LLM nodes incorrectly required all collections to use the same LLM provider as the node. This restriction now only applies to remote collections.
-
-## Jan 30, 2026
-* **CHANGE** Indexed collections using OpenAI-hosted vectorstores are now limited to 2 remote collections per LLM node, enforcing OpenAI's vectorstore limit. Local indexes and non-OpenAI providers remain unaffected.
-
-## Jan 27, 2026
-* **CHANGE** Router keywords are now automatically converted to uppercase. All router configurations will only accept and match uppercase keywords.
-* **NEW** Dataset messages table rows can now be highlighted and shared via URL. Each row has a link and copy button to easily share specific dataset messages with others, with automatic scrolling to the highlighted message.
-
-## Jan 26, 2026
-* **NEW** Custom actions now include health status monitoring. The system automatically checks custom action endpoints every 5 minutes to verify server availability, displaying the status in the custom actions table. Users can also manually trigger health checks.
-
-## Jan 22, 2026
-* **NEW** Added API support for passing arbitrary context data with messages that gets merged into session state under the `remote_context` key, enabling API clients to provide contextual information.
-* **BUG** Fixed an issue where cited and generated files from OpenAI assistants were not being properly annotated for download.
-* **BUG** Fixed an issue where built-in tools and tool configurations were not cleared when switching LLM providers.
-
-## Jan 21, 2026
-* **CHANGE** Router keywords are now automatically converted to lowercase. All router configurations will only accept and match lowercase keywords.
-* **MIGRATION** Removed the defunct 'summarize' event action. All events using this action have been deleted, and team admins have been notified of affected chatbots.
-
-## Jan 20, 2026
-* **NEW** Evaluation results table rows can now be highlighted and shared via URL. Each row has a link and copy button to easily share specific evaluation results with others.
-* **BUG** Fixed an issue where provider compatibility checks between LLM nodes and indexed collections were skipped when only one collection was used.
-* **NEW** Added more granular conversation end event types. Users can now create events based on who ended the conversation (participant, bot, event, admin or API). The generic conversation end trigger remains as a catch-all that fires whenever any conversation ends.
-
-## Jan 14, 2026
-* **NEW** Added the ability to start a new session after ending the current one. Users can choose whether to trigger end conversation events and must provide a prompt for the bot's initial message (pre-filled with the seed message when available).
-
-## Jan 9, 2026
-* **NEW** Added REST API endpoint for managing session tags. Sessions can now be tagged via POST requests (adds tags) and DELETE requests (removes tags), enabling external integrations to organize and filter sessions programmatically.
-
-## Dec 19, 2025
-* **NEW** Collections now support bulk file downloads. When a collection contains multiple files, users can download all files as a zip archive with progress tracking. Downloaded archives expire after 24 hours.
-
-## Dec 18, 2025
-* **NEW** Users can now trigger the bot to send a message to a participant from the participant details page.
-
-## Dec 16, 2025
-* **NEW** Added the ability for users to manually end sessions.
-
-## Dec 15, 2025
-* **NEW** LLM Evaluators now support type validation for output schemas with integer, float, string, and enum (choices) types.
-* **NEW** Added support for GPT-5.2 and GPT-5.2-pro models.
-* **CHANGE** Sessions generated during evaluation runs are now retained for 30 days (increased from 7 days) before being permanently deleted.
-* **BUG** Fixed an issue where temperature and top_p parameters were shown in GPT-5.2 model configurations when effort level was set, causing configuration conflicts.
-
-## Dec 10, 2025
-* **BUG** Fixed an issue where additional citation links were included in channel responses when using custom citation text.
-
-## Nov 26, 2025
-* **NEW** OAuth2 authentication is now supported for API access. This enables secure third-party integrations using industry-standard OAuth2 with PKCE. See the [OAuth2 integration guide](./api/getting_started_with_oauth.md) for implementation details.
-
-## Nov 11, 2025
-* **NEW** Users can now configure model parameters (temperature, max tokens, etc.) directly in LLM nodes alongside other node parameters, instead of requiring separate configuration.
-
-## Nov 7, 2025
-* **NEW** Added "Select all" option to sessions table for bulk selection of sessions.
-* **CHANGE** Improved client key security for chat widget. See the [Chat Widget docs](chat_widget/reference.md#embed-authentication).
-
-## Nov 3, 2025
-* **NEW** Chat Widget releases v0.5. Key features include:
-    * Users can drag and reposition the chat widget launch button when fixed, to avoid obscuring page content
-    * Internationalization support with built-in translations for 9 languages (English, Spanish, French, Arabic, Hindi, Italian, Portuguese, Swahili, Ukrainian)
-    * New `language` property to set widget UI language and `translations-url` property for custom translations
-    * Updated default button logo to use the Open Chat Studio avatar
-    * See the [widget changelog](chat_widget/changelog.md) for full details
-* **CHANGE** Removed seed message processing from the chat API session creation endpoint. The `seed_message_task_id` field is no longer returned in API responses.
-* **CHANGE** Improved version creation UI performance by truncating large change sets to 10 items and displaying the count of hidden changes.
-
----
-
-You can find older entries in the GitHub release notes: https://github.com/dimagi/open-chat-studio-docs/releases
+    You can find older entries in the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).

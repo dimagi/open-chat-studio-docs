@@ -36,7 +36,7 @@ To instruct the model to use a specific tool, refer to it by its tool name in yo
 | OpenAI | [Code Interpreter](#openai-code-interpreter) | :material-check-circle-outline:{ .green } Yes |
 | Anthropic | [Web Search](#anthropic-web-search) | :material-check-circle-outline:{ .green } Yes |
 | Anthropic | [Code Execution](#anthropic-code-execution) | :octicons-x-circle-24:{ .red } No |
-| Gemini | [Grounding with Search](#gemini-web-search) | :octicons-x-circle-24:{ .red } No |
+| Gemini | [Grounding with Search](#gemini-grounding-with-search) | :octicons-x-circle-24:{ .red } No |
 | Gemini | [Code Execution](#gemini-code-execution) | :octicons-x-circle-24:{ .red } No |
 
 ## User-configurable tools
@@ -190,13 +190,13 @@ Some LLM providers offer their own built-in tools that run inside the provider's
 
 ### OpenAI tools
 
-#### Web Search { #openai-web-search }
+#### OpenAI Web Search
 
 - Search the web and pass the results to the LLM.
 - See [OpenAI Web Search documentation](https://platform.openai.com/docs/guides/tools-web-search)
 - :material-check-circle-outline:{ .green } Supported by OCS
 
-#### Code Interpreter { #openai-code-interpreter }
+#### OpenAI Code Interpreter
 
 - Execute code to analyse data, generate graphs, and more.
 - See [OpenAI Code Interpreter documentation](https://platform.openai.com/docs/guides/tools-code-interpreter)
@@ -204,13 +204,13 @@ Some LLM providers offer their own built-in tools that run inside the provider's
 
 ### Anthropic tools
 
-#### Web Search { #anthropic-web-search }
+#### Anthropic Web Search
 
 - Search the web and pass the results to the LLM.
 - See [Anthropic Web Search documentation](https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/web-search-tool)
 - :material-check-circle-outline:{ .green } Supported by OCS
 
-#### Code Execution { #anthropic-code-execution }
+#### Anthropic Code Execution
 
 - Execute code to analyse data, generate graphs, and more.
 - See [Anthropic Code Execution documentation](https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/code-execution-tool)
@@ -218,13 +218,13 @@ Some LLM providers offer their own built-in tools that run inside the provider's
 
 ### Gemini tools
 
-#### Grounding with search { #gemini-web-search }
+#### Gemini Grounding with Search
 
 - Search the web and pass the results to the LLM.
 - See [Gemini Grounding with Search documentation](https://ai.google.dev/gemini-api/docs/google-search)
 - :octicons-x-circle-24:{ .red } Not supported by OCS
 
-#### Code Execution { #gemini-code-execution }
+#### Gemini Code Execution
 
 - Execute code to analyse data, generate graphs, and more.
 - See [Gemini Code Execution documentation](https://ai.google.dev/gemini-api/docs/code-execution)

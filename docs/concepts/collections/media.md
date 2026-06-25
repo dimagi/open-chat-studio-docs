@@ -21,6 +21,9 @@ When you want your bot to be able to send multimedia files to users.
 
 Once a collection is linked, your bot will be able to send one or more files from it to users—either as a download link or directly—depending on the specific channel’s support for the file type and file size.
 
+!!! note "Changes take effect on published bots immediately"
+    Adding, removing, or replacing files in a media collection is reflected in the published bot without requiring a republish. See [Collections and published bots](./index.md#collections-and-published-bots) for more detail.
+
 ## How does it work?
 ### How does the bot know when to attach a file?
 
@@ -31,14 +34,16 @@ Additionally, OCS automatically provides the bot with a tool that enables it to 
 The location in the prompt where these summaries are included is defined by the [{media} prompt variable](../prompt_variables.md).
 
 Here’s an example of how file details appear in the system prompt:
-```
+
+```text
 You are a friendly assistant. Here's some files that you can attach to your responses when you think the user will benefit from it:
 {media}
 ```
+
 becomes
 
-```
-You are a friendly assitant. Here's some files that you can attach to your responses when you think the user will benefit from it:
+```text
+You are a friendly assistant. Here's some files that you can attach to your responses when you think the user will benefit from it:
 * File (id=22, content_type=image/png): This is an image of a border collie
 * File (id=23, content_type=application/pdf): This file contains information about the behaviours of border collies
 ```

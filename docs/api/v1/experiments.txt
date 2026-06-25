@@ -1,7 +1,8 @@
-API: Dimagi Chatbots v1
-Description: Experiments with AI, GPT and LLMs
+API: Open Chat Studio v1
+Description: Build, deploy and monitor chatbots.
 
 TAG: Experiments
+Description: List and retrieve chatbots (formerly 'experiments').
 
 ENDPOINTS:
 
@@ -11,7 +12,7 @@ GET /api/experiments/
     - cursor (query, string (optional)): The pagination cursor value.
     - page_size (query, integer (optional)): Number of results to return per page.
   Responses:
-    200: 
+    200:
       Content: application/json
       Schema: PaginatedExperimentList
   Security:
@@ -25,7 +26,7 @@ GET /api/experiments/{id}/
   Parameters:
     - id (path, string (required)): Experiment ID
   Responses:
-    200: 
+    200:
       Content: application/json
       Schema: Experiment
   Security:
@@ -53,6 +54,7 @@ PaginatedExperimentList:
   - next: string
   - previous: string
   - results: array of Experiment (required)
+  - count: integer
 
 SECURITY:
 - OAuth2

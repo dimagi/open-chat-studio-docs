@@ -1,7 +1,8 @@
-API: Dimagi Chatbots v1
-Description: Experiments with AI, GPT and LLMs
+API: Open Chat Studio v1
+Description: Build, deploy and monitor chatbots.
 
 TAG: Participants
+Description: Manage participants, their data, and their schedules.
 
 ENDPOINTS:
 
@@ -15,7 +16,7 @@ GET /api/participants
     - page_size (query, integer (optional)): Number of results to return per page.
     - platform (query, string (optional)): Filter by platform (e.g. api, telegram, whatsapp)
   Responses:
-    200: 
+    200:
       Content: application/json
       Schema: PaginatedParticipantDetailList
   Security:
@@ -31,40 +32,9 @@ POST /api/participants
     Content: application/json
     Schema: ParticipantDataUpdateRequest
   Responses:
-    200: No response body
-  Security:
-    OAuth2
-      - Required scopes: participants:write
-    apiKeyAuth
-    tokenAuth
-
-GET /api/participants/
-  Summary: List Participants
-  Description: GET: list participants for the team. POST: update/create participant data.
-  Parameters:
-    - chatbot (query, string (optional)): Filter by chatbot public id; returns participants that have data for the chatbot.
-    - cursor (query, string (optional)): The pagination cursor value.
-    - identifier (query, string (optional)): Filter by participant identifier
-    - page_size (query, integer (optional)): Number of results to return per page.
-    - platform (query, string (optional)): Filter by platform (e.g. api, telegram, whatsapp)
-  Responses:
-    200: 
+    200:
       Content: application/json
-      Schema: PaginatedParticipantDetailList
-  Security:
-    OAuth2
-      - Required scopes: participants:read
-    apiKeyAuth
-    tokenAuth
-
-POST /api/participants/
-  Summary: Update Participant Data
-  Description: GET: list participants for the team. POST: update/create participant data.
-  Request Body:
-    Content: application/json
-    Schema: ParticipantDataUpdateRequest
-  Responses:
-    200: No response body
+      Schema: ParticipantDetail
   Security:
     OAuth2
       - Required scopes: participants:write
@@ -77,11 +47,13 @@ PaginatedParticipantDetailList:
   - next: string
   - previous: string
   - results: array of ParticipantDetail (required)
+  - count: integer
 
 ParticipantDataEntry:
   - chatbot: string (required)
   - chatbot_id: string (required)
   - data: Unknown
+  - connect_channel_id: string (required)
 
 ParticipantDataUpdateRequest:
   - identifier: string (required)

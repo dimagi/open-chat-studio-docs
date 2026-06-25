@@ -10,11 +10,11 @@ flowchart LR
 
 !!! warning "Limitations"
     **Cycles**
-    
+
     Configurations that result in cycles (recursive loops) are not supported.
 
     **Multiple Exectuion**
-    
+
     In cases where the branches of a workflow do not have the same number of nodes and then merge, nodes after the merge will be executed more than once without special handling. See the section below on [Uneven Banches](#uneven-branches)
 
 ## Dangling nodes
@@ -120,30 +120,30 @@ flowchart LR
 The `Merge` node will get outputs from `NodeA` and either `NodeB` or `NodeC`. We can't use `require_node_outputs` because not all outputs will be generated. Instead we need to use the `wait_for_next_input` function:
 
 === "Option 1"
-    
+
     ```python
     def main(input, **kwargs):
         b = get_node_output("NodeB")
         c = get_node_output("NodeC")
         b_or_c = b or c
         if not b_or_c:
-            # wait until we have either b or c 
+            # wait until we have either b or c
             wait_for_next_input()
         a = get_node_output("NodeA")
         return f"{a}\n{b_or_c}"
     ```
-    
+
     Note that we don't need to check if we have output from `NodeA` since it will be guaranteed to be available by the time `NodeB` or `NodeC` execute due to the execution order.
 
 === "Option 2"
 
-    This option makes use of the [`node_inputs`](../../tech-hub/python_node.md#additional-keyword-arguments) keyword argument which contains a list of all the inputs available to the current node execution. Since we want to wait until we have inputs from `NodeA and (NodeB or NodeC)` we can check that the inputs list has at least two values. 
+    This option makes use of the [`node_inputs`](../../tech-hub/python_node.md#additional-keyword-arguments) keyword argument which contains a list of all the inputs available to the current node execution. Since we want to wait until we have inputs from `NodeA and (NodeB or NodeC)` we can check that the inputs list has at least two values.
 
     ```python
     def main(input, **kwargs):
         all_inputs = kwargs.get("node_inputs", [])
         if len(all_inputs) < 2:
-            # wait until we have at least two inputs 
+            # wait until we have at least two inputs
             wait_for_next_input()
         return "\n".join(all_inputs)
     ```

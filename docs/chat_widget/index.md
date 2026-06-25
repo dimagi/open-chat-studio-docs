@@ -24,9 +24,9 @@ The Open Chat Studio Widget is a customizable chat component that allows you to 
 Before embedding, you must create a bot in Open Chat Studio.
 
 1. Add the widget script to your site's `<head>` section:
-   
+
       ```html
-      <script type='module' src='https://unpkg.com/open-chat-studio-widget@0.7.0/dist/open-chat-studio-widget/open-chat-studio-widget.esm.js' async></script>
+      <script type='module' src='https://unpkg.com/open-chat-studio-widget@0.8.0/dist/open-chat-studio-widget/open-chat-studio-widget.esm.js' async></script>
       ```
 
 2. Getting the Embed Code

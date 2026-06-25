@@ -1,7 +1,8 @@
-API: Dimagi Chatbots v1
-Description: Experiments with AI, GPT and LLMs
+API: Open Chat Studio v1
+Description: Build, deploy and monitor chatbots.
 
 TAG: Channels
+Description: Trigger bot messages or deliver messages directly to users on a channel.
 
 ENDPOINTS:
 
@@ -15,13 +16,13 @@ Provide either ``prompt_text`` (routes through the LLM/bot pipeline) or ``messag
     Content: application/json
     Schema: TriggerBotMessageRequest
   Responses:
-    200: 
+    200:
       Content: application/json
       Schema: TriggerBotMessageResponse
-    400: 
+    400:
       Content: application/json
       Schema: Unknown
-    404: 
+    404:
       Content: application/json
       Schema: Unknown
   Security:
@@ -38,7 +39,7 @@ POST /channels/api/{experiment_id}/incoming_message
     Content: application/json
     Schema: ApiMessage
   Responses:
-    200: 
+    200:
       Content: application/json
       Schema: ApiResponseMessage
   Security:
@@ -57,7 +58,7 @@ POST /channels/api/{experiment_id}/v{version}/incoming_message
     Content: application/json
     Schema: ApiMessage
   Responses:
-    200: 
+    200:
       Content: application/json
       Schema: ApiResponseMessage
   Security:

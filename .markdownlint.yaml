@@ -1,0 +1,62 @@
+default: true
+
+# Line length — reduce progressively after long lines are fixed
+MD013:
+  line_length: 650
+  code_blocks: false
+  tables: false
+  headings: false
+
+# Inline HTML: MkDocs Material uses <br>, <kbd>, attribute lists, etc.
+MD033:
+  allowed_elements:
+    - a
+    - br
+    - details
+    - div
+    - figcaption
+    - figure
+    - iframe
+    - kbd
+    - small
+    - span
+    - sub
+    - summary
+    - sup
+
+# Disable rules that are not relevant to our style guide
+
+# List markers can be either - or *
+MD004: false
+
+# Ingore unorded list indentation check
+MD007: false
+
+# Ignore need for blank lines around headings, lists, and code blocks
+MD022: false
+
+MD024:
+  siblings_only: true
+
+# Ignore issue of frontmatter title and first heading not matching
+MD025: false
+
+MD026: false
+MD029: false
+# TODO: Ordered list style: allow 1. 1. 1. (auto-numbering) as well as 1. 2. 3.
+MD030: false
+#MD031: false
+MD032: false
+MD034: false
+MD036: false
+MD041: false
+
+# TODO: enable this for alt text on images for accessibility, but disable for now because we have some images without alt text
+MD045: false
+MD046: false
+MD050: false
+MD053: false
+MD054: false
+MD058: false
+MD059: false
+MD060: false

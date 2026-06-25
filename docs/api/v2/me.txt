@@ -1,0 +1,36 @@
+API: Open Chat Studio v2
+Description: Build, deploy and monitor chatbots.
+
+TAG: Me
+Description: Information about the authenticated user and the team the token is scoped to.
+
+ENDPOINTS:
+
+GET /api/v2/me/
+  Summary: Current User
+  Description: Returns basic information about the authenticated user and the team the token is scoped to.
+  Responses:
+    200:
+      Content: application/json
+      Schema: Me
+  Security:
+    OAuth2
+    apiKeyAuth
+    tokenAuth
+
+SCHEMAS:
+
+Me:
+  - id: integer (required)
+  - username: string (required)
+  - email: string
+  - first_name: string
+  - last_name: string
+  - email_verified: boolean (required)
+  - team: Unknown (required)
+
+SECURITY:
+- OAuth2
+  - Authorization Code Flow (authorization url: /o/authorize/, token url: /o/token/)
+- API Key authentication (header: X-api-key)
+- HTTP bearer authentication

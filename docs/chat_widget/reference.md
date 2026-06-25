@@ -61,6 +61,7 @@ The embed authentication feature allows you to:
 - Track and manage different embedded deployments
 
 ### Implementation
+
 ```html
 <open-chat-studio-widget
   chatbot-id="your-chatbot-id"
@@ -82,12 +83,15 @@ The chat widget uses user identification to:
 
 ### Basic Implementation
 Anonymous Users (Default)
+
 ```html
 <open-chat-studio-widget
   chatbot-id="your-chatbot-id">
 </open-chat-studio-widget>
 ```
+
 Identified Users
+
 ```html
 <open-chat-studio-widget
   chatbot-id="your-chatbot-id"
@@ -95,6 +99,7 @@ Identified Users
   user-name="Sarah Johnson">
 </open-chat-studio-widget>
 ```
+
 ### Auto-Generated User IDs
 
 When no user-id is provided, the widget automatically creates a unique identifier:
@@ -107,9 +112,9 @@ Persistence Behavior:
 - Different browser/device: Gets new auto-generated ID
 - Incognito mode: New ID that's cleared when session ends
 
-
 ### Dynamic User Management
 Update user identification when authentication state changes:
+
 ```javascript
 function updateChatUser(user) {
   const widget = document.querySelector('open-chat-studio-widget');
@@ -167,6 +172,7 @@ Enable users to send files along with their messages. This feature is perfect fo
  allow-attachments="true">
 </open-chat-studio-widget>
 ```
+
 ### Supported File Types
 
 #### Documents:
@@ -205,7 +211,6 @@ When attachments are sent to the LLM:
 4. Users can remove files before sending by clicking the X button
 5. Error messages appear for unsupported file types or files exceeding size limits
 6. Files are uploaded when the message is sent
-
 
 See [CSS Styling](styling.md#file-attachments) for customization options
 
@@ -417,15 +422,15 @@ widget.pageContext = {
   // User information
   user_role: 'support_agent',
   user_department: 'technical_support',
-  
+
   // Page information
   page_location: 'help-center',
   page_title: 'Troubleshooting Guide',
-  
+
   // Application state
   session_type: 'trial',
   account_status: 'active',
-  
+
   // Custom data
   feature_flags: ['new_ui', 'beta_features'],
   request_context: 'urgent'
@@ -433,7 +438,7 @@ widget.pageContext = {
 ```
 
 !!! note
-    
+
     The page context is persisted in the session state on the server side and is accessible via `session_state.remote_context`. See [accessing remote context](../concepts/prompt_variables.md#accessing-remote-context) for more details.
 
 ## :material-clipboard-list: Properties Reference

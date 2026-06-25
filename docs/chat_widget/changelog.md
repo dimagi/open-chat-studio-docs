@@ -9,8 +9,9 @@ This guide will help you upgrade from previous versions of the Open Chat Studio 
 ### 1. Update the script tags
 
 **Update your script tags to use the latest version:**
+
 ```bash
-<script 
+<script
   src="https://unpkg.com/open-chat-studio-widget{LATEST_VERSION_NUMBER}/dist/open-chat-studio-widget/open-chat-studio-widget.js"
   type="module"
   async
@@ -21,6 +22,28 @@ This guide will help you upgrade from previous versions of the Open Chat Studio 
 Check your current HTML implementation and compare it with the [latest properties reference](reference.md#properties-reference).
 
 ## Changelog
+
+!!! warning "About deprecated versions"
+
+    Versions marked :octicons-alert-16: **Deprecated** are no longer supported after the
+    sunset date shown on each entry, and may stop working. Upgrade to a supported version
+    to stay current — see the [Quick Upgrade Steps](#quick-upgrade-steps) above.
+
+### v0.9.1 (2026-06-11)
+
+* Fix: include CSRF and common headers on file uploads.
+* Fix: don't persist the widget's open/closed state in kiosk mode.
+* Fix: stop polling and disable the message composer once a session ends.
+* Dependency updates.
+
+### v0.9.0 (2026-06-11)
+
+* Support for session tokens — used to authenticate chat sessions, including file uploads, with automatic recovery if a token is rejected.
+* Surface API deprecation notices — logs a warning when the chat API is approaching its sunset date and an error once it has passed.
+
+### v0.8.0 (2026-06-05)
+
+* Add a `session-id` parameter to resume an existing chat session. (Used internally within the Open Chat Studio platform.)
 
 ### v0.7.0 (2026-05-06)
 
@@ -43,17 +66,23 @@ Check your current HTML implementation and compare it with the [latest propertie
     * Users can now upload any text-based files, not just predefined formats
     * Includes .txt, .csv, and all other text/* types
 
-### v0.5.2 (2025-11-03)
+### v0.5.2 (2025-11-03) { .deprecated }
+
+:octicons-alert-16: **Deprecated** — sunset 2026-10-01
 
 * Update default button logo to use the Open Chat Studio avatar
 * Fix welcome messages and starter questions not being displayed when provided in translation files
 * Improvements to session handling
 
-### v0.5.1
+### v0.5.1 { .deprecated }
+
+:octicons-alert-16: **Deprecated** — sunset 2026-10-01
 
 * Change language codes for Italian and Portuguese to use standard codes: `ita` -> `it`, `por` -> `pt`
 
-### v0.5.0
+### v0.5.0 { .deprecated }
+
+:octicons-alert-16: **Deprecated** — sunset 2026-10-01
 
 * Allow users to drag and reposition the chat-widget launch button when it’s fixed, to avoid obscuring page content.
 * **NEW: Internationalization Support**
@@ -79,17 +108,23 @@ Check your current HTML implementation and compare it with the [latest propertie
      * Remove corresponding deprecated HTML attributes and use the translation file instead
      * See the [internationalization documentation](reference.md#internationalization) for details
 
-### v0.4.8
+### v0.4.8 { .deprecated }
+
+:octicons-alert-16: **Deprecated** — sunset 2026-10-01
 
 * Fix horizontal scrollbar styling.
 * Improve scrolling behavior for new messages.
 * Scroll to bottom when loading the window.
 
-### v0.4.7
+### v0.4.7 { .deprecated }
+
+:octicons-alert-16: **Deprecated** — sunset 2026-10-01
 
 * Fix regression in font size consistency.
 
-### v0.4.6
+### v0.4.6 { .deprecated }
+
+:octicons-alert-16: **Deprecated** — sunset 2026-10-01
 
 * Add support for sending messages with attachments.
     * Enabled by setting `allow-attachments="true"`
@@ -108,37 +143,47 @@ Check your current HTML implementation and compare it with the [latest propertie
 * Error handling improvements.
 * Fix full screen mode layout.
 
-### v0.4.5
+### v0.4.5 { .deprecated }
+
+:octicons-alert-16: **Deprecated** — sunset 2026-10-01
 
 * Internal API changes
 
-### v0.4.4
+### v0.4.4 { .deprecated }
+
+:octicons-alert-16: **Deprecated** — sunset 2026-10-01
 
 * Merge width & height vars:
-    * `--button-icon-width`, `--button-icon-height` -> `--button-icon-size` 
+    * `--button-icon-width`, `--button-icon-height` -> `--button-icon-size`
 * Fix launch button styling.
     * Correctly apply font size and borders.
 * Add variables to control header font and icon size:
-    * `--header-font-size` 
-    * `--header-button-icon-size` 
+    * `--header-font-size`
+    * `--header-button-icon-size`
 * Support for placing text in the window header using the `header-text`.
-    * Use `--header-text-font-size` and `--header-text-color` to style it independently of the other header elements. 
+    * Use `--header-text-font-size` and `--header-text-color` to style it independently of the other header elements.
 
-### v0.4.3
+### v0.4.3 { .deprecated }
+
+:octicons-alert-16: **Deprecated** — sunset 2026-10-01
 
 * Fix markdown styling
 * Allow customizing the chat window width and height using the following CSS vars:
-    * `--chat-window-width` 
-    * `--chat-window-height` 
+    * `--chat-window-width`
+    * `--chat-window-height`
     * `--chat-window-fullscreen-width`
     * See the [styling guide](./styling.md#chat-window) for details.
 * Change size units from `rem` to `em`.
 
-### v0.4.2
+### v0.4.2 { .deprecated }
+
+:octicons-alert-16: **Deprecated** — sunset 2026-10-01
 
 * Fully configurable styling via CSS properties.
 
-### v0.4.1
+### v0.4.1 { .deprecated }
+
+:octicons-alert-16: **Deprecated** — sunset 2026-10-01
 
 * Improved styling.
 * Replaced 'expand' with 'fullscreen' mode.
@@ -147,13 +192,15 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 **Added**
 
-* `allow-full-screen`: Allow the user to make the chat window full screen. 
+* `allow-full-screen`: Allow the user to make the chat window full screen.
 
 **Removed**
 
 * `expanded`
 
-### v0.4.0
+### v0.4.0 { .deprecated }
+
+:octicons-alert-16: **Deprecated** — sunset 2026-10-01
 
 !!! warning
 
@@ -171,7 +218,7 @@ Check your current HTML implementation and compare it with the [latest propertie
     * Provide clickable starter questions to help users get started
     * Both support rich markdown formatting
 * [Session persistence](reference.md#persistent-sessions) across page loads
-    * Store session data in browser local storage to allow resuming sessions across page loads. 
+    * Store session data in browser local storage to allow resuming sessions across page loads.
 
 #### Upgrading from 0.3.x
 
@@ -182,10 +229,10 @@ The minimal steps required to upgrade are to replace the `bot-url` attribute wit
 -     bot-url=".../experiments/e/{CHATBOT_ID}/embed/start/"
 +     chatbot-id="{CHATBOT_ID}"
   </open-chat-studio-widget>
+
 ```
 
 The `chatbot_id` can be extracted from the `bot-url` by copying the UUID from the URL as shown above.
-
 
 ## Upgrade Checklist
 ✅ Check These Items
@@ -193,6 +240,7 @@ The `chatbot_id` can be extracted from the `bot-url` by copying the UUID from th
 **Property Names:** Ensure all property names use kebab-case (e.g., chatbot-id, not chatbotId)
 **JSON Properties:** Verify that welcome-messages and starter-questions are properly formatted
 **JSON strings:**
+
 ```bash
 <!-- ✅ Correct -->
 welcome-messages='["Message 1", "Message 2"]'
@@ -204,6 +252,7 @@ welcome-messages="Message 1, Message 2"
 **API Base URL:** If you were using a custom API URL, ensure the api-base-url property is set correctly
 
 **Boolean Properties:** Use string values for boolean properties:
+
 ```bash
 <!-- ✅ Correct -->
 visible="true"

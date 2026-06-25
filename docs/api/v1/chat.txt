@@ -1,5 +1,5 @@
-API: Dimagi Chatbots v1
-Description: Experiments with AI, GPT and LLMs
+API: Open Chat Studio v1
+Description: Build, deploy and monitor chatbots.
 
 TAG: Chat
 Description: 
@@ -14,13 +14,16 @@ GET /api/chat/{session_id}/{task_id}/poll/
     - session_id (path, string (required)): Session ID
     - task_id (path, string (required)): Check on the status of a specific task
   Responses:
-    200: 
+    200:
       Content: application/json
       Schema: ChatTaskPoll
-    400: 
+    400:
       Content: application/json
       Schema: ChatTaskPollUserError
-    500: 
+    404:
+      Content: application/json
+      Schema: ChatTaskPollNotFound
+    500:
       Content: application/json
       Schema: ChatTaskPollError
   Security:
@@ -35,7 +38,7 @@ POST /api/chat/{session_id}/message/
     Content: application/json
     Schema: ChatSendMessageRequestWithAttachments
   Responses:
-    202: 
+    202:
       Content: application/json
       Schema: ChatSendMessageResponse
   Security:
@@ -50,7 +53,7 @@ GET /api/chat/{session_id}/poll/
     - session_id (path, string (required)): Session ID
     - since (query, string (optional)): Only return messages after this timestamp
   Responses:
-    200: 
+    200:
       Content: application/json
       Schema: ChatPollResponse
   Security:
@@ -65,7 +68,7 @@ POST /api/chat/{session_id}/upload/
     Content: multipart/form-data
     Schema: ChatUploadFileRequest
   Responses:
-    201: 
+    201:
       Content: application/json
       Schema: ChatUploadFileResponse
   Security:
@@ -79,7 +82,7 @@ POST /api/chat/start/
     Content: application/json
     Schema: ChatStartSessionRequest
   Responses:
-    201: 
+    201:
       Content: application/json
       Schema: ChatStartSessionResponse
   Security:
@@ -110,9 +113,11 @@ ChatStartSessionRequest:
   - session_data: object
   - participant_remote_id: string
   - participant_name: string
+  - use_session_token: boolean
 
 ChatStartSessionResponse:
   - session_id: string (required)
+  - session_token: string
   - chatbot: Unknown (required)
   - participant: Unknown (required)
 
@@ -123,6 +128,9 @@ ChatTaskPoll:
 ChatTaskPollError:
   - error: string
   - status: string (required)
+
+ChatTaskPollNotFound:
+  - detail: string (required)
 
 ChatTaskPollStatusEnum:
   - enum: [processing, complete]

@@ -40,7 +40,6 @@ Supported files are determined by the selected provider:
 
 - OpenAI - See the [OpenAI docs](https://platform.openai.com/docs/assistants/tools/file-search/supported-files#supported-files)
 
-
 ## Local Index
 !!! info "Local indexes are a new feature in OCS. We are actively working to support additional file types and embedding models, allowing you to better customize your index with models that suit your needs."
 
@@ -58,7 +57,6 @@ Local indexes are hosted and managed by OCS. When you create a local index, you 
 
 ### Supported embedding models
 You can see the supported embedding models for each provider when creating or editing the provider in your team settings.
-
 
 ## Chunking and Optimization
 When you upload a document to an index, it’s broken up into smaller parts called chunks. These chunks are then converted into vectors and stored in the index. Chunking is a key part of how RAG works, as it affects how accurately the model can retrieve relevant information.
@@ -80,6 +78,9 @@ Choosing the right chunking strategy can improve retrieval accuracy, especially 
 In addition to manually uploading documents to a collection, you can also configure document sources from which Open Chat Studio will automatically load and index documents.
 
 The primary advantage of document sources over manual uploads is that Open Chat Studio can check for updates periodically, which eliminates the need for manual updates.
+
+!!! note "Document-source updates reach published bots automatically"
+    When a document-source sync runs and updates the collection's content, those changes are applied to your published bot without requiring a republish. See [Collections and published bots](./index.md#collections-and-published-bots) for more detail.
 
 The following document source types are currently supported:
 
@@ -134,4 +135,3 @@ Each document source header displays a status indicator reflecting the outcome o
 - **Error** – the last sync encountered a problem. The indicator is shown in red.
 - **Success** – the last sync completed without errors.
 - **In progress** – a sync is currently running. The indicator animates to show activity.
-

@@ -1,7 +1,8 @@
-API: Dimagi Chatbots v1
-Description: Experiments with AI, GPT and LLMs
+API: Open Chat Studio v1
+Description: Build, deploy and monitor chatbots.
 
 TAG: OpenAI
+Description: OpenAI-compatible endpoints for interacting with chatbots.
 
 ENDPOINTS:
 
@@ -21,7 +22,7 @@ experiment_id = "your experiment ID"
 
 client = OpenAI(
     api_key="your API key",
-    base_url=f"https://chatbots.dimagi.com/api/openai/{experiment_id}",
+    base_url=f"https://www.openchatstudio.com/api/openai/{experiment_id}",
 )
 
 completion = client.chat.completions.create(
@@ -41,7 +42,7 @@ reply = completion.choices[0].message
     Content: application/json
     Schema: CreateChatCompletionRequest
   Responses:
-    200: 
+    200:
       Content: application/json
       Schema: CreateChatCompletionResponse
   Security:
@@ -66,7 +67,7 @@ experiment_id = "your experiment ID"
 
 client = OpenAI(
     api_key="your API key",
-    base_url=f"https://chatbots.dimagi.com/api/openai/{experiment_id}/v{version}",
+    base_url=f"https://www.openchatstudio.com/api/openai/{experiment_id}/v{version}",
 )
 
 completion = client.chat.completions.create(
@@ -88,7 +89,7 @@ reply = completion.choices[0].message
     Content: application/json
     Schema: CreateChatCompletionRequest
   Responses:
-    200: 
+    200:
       Content: application/json
       Schema: CreateChatCompletionResponse
   Security:

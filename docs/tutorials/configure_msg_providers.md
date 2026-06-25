@@ -15,7 +15,7 @@ Before configuring a provider, ensure that you have an active account at the pro
 
 ### 3) Add the messaging provider details to your Team
 
-Messaging providers configured in your [Team](../concepts/team/index.md) settings under "Messaging Providers". 
+Messaging providers configured in your [Team](../concepts/team/index.md) settings under "Messaging Providers".
 
 - For WhatsApp, see details [here](../how-to/deploy_to_different_channels.md#whatsapp)
 - For Telegram, see details [here](../how-to/deploy_to_different_channels.md#telegram)
@@ -23,5 +23,3 @@ Messaging providers configured in your [Team](../concepts/team/index.md) setting
 - For Slack see details [here](../how-to/deploy_to_different_channels.md#slack)
 - For Facebook Messenger see details [here](../how-to/deploy_to_different_channels.md#facebook-messenger)
 - For SureAdhere secure In-App Messaging see details [here](../how-to/deploy_to_different_channels.md#sureadhere)
-
-

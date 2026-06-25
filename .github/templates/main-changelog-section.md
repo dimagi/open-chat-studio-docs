@@ -9,7 +9,7 @@ Since this PR modifies main app files, update the **main changelog** at `${MAIN_
 
 **Steps for Main Changelog:**
 1. Read `${MAIN_CHANGELOG}` to understand the current structure
-2. Analyze the PR title, description, and labels to understand what changed
+2. Analyze the PR title and description to understand what changed
 3. Determine the appropriate changelog type:
    - **NEW**: New features or functionality
    - **CHANGE**: Modifications to existing features
@@ -19,9 +19,9 @@ Since this PR modifies main app files, update the **main changelog** at `${MAIN_
 5. Format the merged date as "MMM D, YYYY" with no leading zero on single-digit days (e.g., "Oct 9, 2025", "Oct 22, 2025")
 6. **Date sections must be in reverse chronological order (newest dates at the top)**
 7. If a section for that date already exists, add your entry to it; otherwise create a new date section at the top
-8. If a section for that date already exists, add your entry to it; otherwise create a new date section at the top
 
 **Main Changelog Format:**
+
 ```markdown
 ## Oct 22, 2025
 * **NEW** Added support for parallel pipeline execution.

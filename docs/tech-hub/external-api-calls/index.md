@@ -2,11 +2,9 @@
 
 In a Pipeline workflow you need to include a [Python node][python] which provides an `http` global that enables secure HTTP requests to external APIs.
 
-
 !!! note Examples
 
     See [chatbot workflow cookbook](../../how-to/workflow_cookbook.md) for examples of using Python Nodes in a Pipeline
-
 
 ## Example workflow
 
@@ -71,7 +69,7 @@ Weather Forecast:
 
 **LLM Prompt Configuration:**
 
-```
+```text
 You are a helpful weather assistant. Use the weather data provided to answer the user's question.
 
 {temp_state.weather_data}
@@ -158,7 +156,7 @@ def main(input, **kwargs) -> str:
 
 **LLM Prompt Configuration:**
 
-```
+```text
 You are a product support assistant.
 
 {% if temp_state.product_error %}
@@ -190,7 +188,6 @@ Instructions:
 7. **Provide user feedback**: Return meaningful messages when API calls fail
 
 See the [HTTP Client documentation][http_client] for more details on available methods, security features, and advanced usage.
-
 
 [python]: ../python_node.md
 [http_client]: ./http_client.md

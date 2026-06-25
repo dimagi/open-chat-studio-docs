@@ -22,7 +22,7 @@ You manage your router node through the Advanced Settings.
 
 Example: Configure one **output keyword** for each linked downstream node in your workflow. The keyword should describe the path, for example `HIV`, `TB`, and `GENERAL` for three possible workflow paths for advice on a disease.
 
-#### Keyword Case Behavior
+### Keyword Case Behavior
 To ensure technical consistency, OCS handles keywords with the following rules:
 - Automatic Uppercase: All keywords are stored in uppercase. While matching is case-insensitive (for example, `Help` matches `HELP`), we recommend using uppercase during configuration for clarity.
 
@@ -35,7 +35,6 @@ To ensure reliable routing, write your prompt as a classifier. Its goal is to re
   - Example Prompt: "If the user asks about account settings, output `SETTINGS`. If they ask about a refund, output `BILLING`. Output nothing else."
 - Clear Examples: Provide 2-3 "golden examples" for each path to increase accuracy for edge cases
   - Example Prompt: "If they mention password reset, output `SETTINGS`."
-
 
 ## Technical Performance: History Mode
 We strongly recommend using [Node history mode](../../concepts/pipelines/history.md#node) for an LLM Router.

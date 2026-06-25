@@ -1,23 +1,21 @@
-# Changelog and Documentation Automation with Claude
+# Changelog and User Doc Automation with Claude
 
 This process keeps user-facing documentation and changelog entries aligned after PRs are merged in the main product repository.
 
-Workflows in this repository and in the [OCS repository](https://github.com/dimagi/open-chat-studio/tree/main/.github/workflows) work together. The source workflow sends PR context to this docs repository, Claude updates changelog and docs when needed, and a docs PR is opened only when there is a meaningful content change.
+Workflows in this docs repository and in the [OCS repository](https://github.com/dimagi/open-chat-studio/tree/main/.github/workflows) work together. The source workflow sends PR context to this docs repository, Claude updates changelog and docs when needed, and a docs PR is opened only when there is a meaningful content change.
 
-This page is for maintainers of the changelog automation process. It explains how the system is organized and where to make updates.
-
-For broader process guidance and details about main app vs chat widget, see the [developer guide](https://developers.openchatstudio.com/developer_guides/user_docs/).
+This page is for maintainers of this [process](https://developers.openchatstudio.com/developer_guides/user_docs/). It explains how the workflow is organized, where to make updates, and how to troubleshoot issues.
 
 ## Maintenance Notes
 
 Use this map to decide where to make updates:
 
-- `.github/templates/`: Change automation decisions, such as when changelog or docs updates are required.
-- `.claude/agents/`: Change writing and review standards used by Claude.
-- `.claude/commands/`: Change reusable command workflows.
+- `.github/templates/`: Changelog section templates and the (`changelog-instructions.md`) which is the top-level instruction spec Claude receives — it orchestrates all three tasks, delegating documentation writing to the zensical-technical-writer agent.
+- `.claude/agents/`: Writing and PR review standards used by Claude. The `zensical-technical-writer` agent handles all documentation writing decisions for this workflow.
+
+> **Note on `.claude/commands/`:** The `/write-docs` slash command is a human-facing shortcut for interactive Claude Code sessions — it simply invokes the same `zensical-technical-writer` agent. The automated workflow calls the agent directly via the `Task` tool and does not use slash commands.
 
 Keep in mind that behavior changes may require updates in both `.github/templates/` and `.claude/`.
-Use AI assistants to understand key files and their responsibilities.
 
 ### Repositories in Scope
 
@@ -28,22 +26,25 @@ Troubleshooting and process changes can involve both repositories:
 
 ### Required Secrets
 
-- **`OCS_DOCS_PAT`**: GitHub PAT with scopes for contents, issues, and pull requests in both the OCS repo and the OCS docs repo.
+- **`OCS_AGENT_PRIVATE_KEY`** (secret) and **`OCS_AGENT_APP_ID`** (variable): credentials for
+  the `ocs-agent` GitHub App (org Settings → GitHub Apps). The app must be installed on both
+  the OCS repo and this docs repo with contents, issues, and pull request write permissions.
+  Workflows mint a short-lived installation token from these, so automated PRs and comments
+  are attributed to `ocs-agent[bot]`.
 - **`ANTHROPIC_API_KEY`**: Claude API key.
 
 ## Troubleshooting
 
-- **Manual Trigger:** To run the workflow manually, open GitHub Actions, select `Update Changelog and Docs from OCS PR`, and enter the OCS PR number.
+- **Manual Trigger:** To run the workflow manually: open GitHub Actions, select `Update Changelog and Docs from OCS PR`, and enter the OCS PR number. It is safe to rerun this for a PR.
+    - Note: this workflow requires repository secrets and will fail in forks unless those secrets are configured.
 - **No PR created:** Check workflow runs in both repositories. If there was no meaningful docs/changelog change, no docs PR is expected.
 - **Unexpected target branch or classification:** Check workflow logs in the source and receiving repos to verify how the PR was classified.
-- **Authentication or permission failures:** Verify `OCS_DOCS_PAT` and `ANTHROPIC_API_KEY` are set correctly and still valid.
+- **Authentication or permission failures:** Verify `ANTHROPIC_API_KEY` is valid, the `ocs-agent` app's private key matches `OCS_AGENT_PRIVATE_KEY`, and the app is still installed on both repos (token minting fails if either repo is missing from the installation).
 - **widget-develop branch doesn't exist:** Create it: `git checkout -b widget-develop main && git push origin widget-develop`
 - **Output quality needs improvement:** Comment on the generated PR with `@claude` and specify what to revise.
-- **For systemic quality issues:** Update the relevant agent in agents rather than correcting each PR manually.
+- **For systemic quality issues:** Update the relevant agent in `.claude/agents/` rather than correcting each PR manually.
 
 ## Best Practices
 
-1. [Contribution Guides for Creating Good PRs](https://developers.openchatstudio.com/contributing/pull_requests/)
-2. [User docs and changelog process](https://developers.openchatstudio.com/developer_guides/user_docs/)
-3. [Claude custom Subagents](https://docs.anthropic.com/en/docs/claude-code/sub-agents)
-
+1. [Developer guide on docs branching and app/widget release flow](https://developers.openchatstudio.com/developer_guides/user_docs/)
+2. [Background to using Claude custom Subagents](https://docs.anthropic.com/en/docs/claude-code/sub-agents)

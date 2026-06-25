@@ -6,12 +6,12 @@ You need to update the changelog and documentation in this repository based on a
 - **PR URL:** ${PR_URL}
 - **Author:** ${PR_AUTHOR}
 - **Merged Date:** ${PR_MERGED_AT}
-- **Labels:** ${PR_LABELS}
 - **Is Widget Change:** ${IS_WIDGET_CHANGE}
 - **Base Branch:** ${BASE_BRANCH}
 
 ## PR Description
-```
+
+```text
 ${PR_BODY}
 ```
 
@@ -34,43 +34,47 @@ ${CHANGELOG_INSTRUCTIONS}
 - Match the style and tone of existing changelog entries
 - If the PR is purely internal/refactoring with no user impact, you can skip the changelog entry
 - **However:** Still proceed to Task 2 to check if documentation updates are needed
-- If both changelog AND docs are skipped, do not create a commit - the workflow will detect no changes and skip PR creation
 
 ### Task 2: Update Documentation
 
-After updating the changelog, analyze whether this PR requires documentation updates:
+#### Decide: does this PR need documentation updates?
 
-1. **Check if documentation is needed:**
-   - New features → Need user guides, how-tos, or concept docs
-   - API changes → Update API documentation
-   - Configuration changes → Update setup/configuration docs
-   - Behavior changes → Update relevant user guides
-   - Bug fixes → Usually no docs needed unless it changes behavior
-   - Internal/refactoring → Skip documentation updates
+| PR type                  | Docs needed?                                         |
+|--------------------------|------------------------------------------------------|
+| New feature              | Yes                                                  |
+| UI changes               | Yes                                                  |
+| Configuration changes    | Yes                                                  |
+| Behavior changes         | Yes                                                  |
+| API changes              | No — skip this task and proceed to commit            |
+| Bug fix                  | Usually no — only if behavior or UI visibly changes  |
+| Internal / refactoring   | No — skip this task and proceed to commit            |
 
-2. **If documentation IS needed:**
-   - Use the "zensical-technical-writer" agent to handle the documentation updates
-   - Provide the agent with:
-     * What changed (from the PR)
-     * What documentation needs to be created or updated
-     * Context from the PR description
-   - The agent will find the right place in the docs structure and update accordingly
-   - Review the agent's output to ensure quality
+**When in doubt:** If the PR introduces a new feature and you're unsure whether docs are needed, include them.
 
-3. **If documentation is NOT needed:**
-   - Simply skip this task and proceed to commit
+#### If yes: act
+
+Invoke the `zensical-technical-writer` agent via the `Task` tool. Give it facts about the change — **do not prescribe a page type or folder**. The agent is a documentation specialist; it will read the existing docs structure and decide the correct page type and location.
+
+Write your prompt like this:
+
+> "Update the documentation for a change to Open Chat Studio.
+> **PR URL:** ${PR_URL}
+> **What changed:** [1–2 sentences describing the change]
+> **Who is affected:** [end users / advanced users / developers / widget integrators]
+> **Nature of change:** [new feature / UI change / config change / behavior change / bug fix with visible impact]
+> **PR description excerpt:** [paste the most relevant section of the PR body]"
+
+Review the agent's output before committing.
+
+#### If no: skip
+
+Proceed to Task 3. If the changelog was also skipped, do not create a commit — see Task 3 for details.
 
 ### Task 3: Commit Changes
 
-After completing the above tasks, commit your changes with the message:
+If both the changelog and docs were skipped, do not create a commit — the workflow will detect no changes and skip PR creation automatically.
+
+Otherwise, commit your changes with the message:
 "update changelog and docs from OCS PR #${PR_NUMBER}"
 
 **IMPORTANT:** Do NOT create a pull request - just commit the changes to this branch. The workflow will create the PR.
-
-## Important Guidelines
-
-- Focus on user-facing changes
-- Be clear and concise in both changelog and documentation
-- Match the style of existing content
-- If unsure whether docs are needed, err on the side of including them for NEW features
-- For CHANGE and BUG types, docs updates are usually optional unless behavior significantly changes

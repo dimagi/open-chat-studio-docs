@@ -21,6 +21,77 @@ JSON_EXTENSIONS = {".json"}
 YAML_EXTENSIONS = {".yaml", ".yml"}
 
 
+def _natural_sort_key(version: str) -> tuple[int | str, ...]:
+    """Split a version label into text/number chunks so 'v10' sorts after 'v2'."""
+    return tuple(
+        int(chunk) if chunk.isdigit() else chunk
+        for chunk in re.split(r"(\d+)", version)
+    )
+
+
+def discover_version_schemas(schema_dir: str | Path) -> list[tuple[str, Path]]:
+    """Find per-version schema files in a directory.
+
+    Each YAML file is one API version; the version label is the filename stem
+    (``v1.yml`` -> ``v1``). Returned in numeric-aware sorted order.
+
+    Returns:
+        List of (version_label, schema_path) tuples.
+
+    Raises:
+        ValueError: if the directory contains no YAML schema files.
+    """
+    directory = Path(schema_dir)
+    schema_files = sorted(
+        (p for p in directory.iterdir() if p.suffix.lower() in YAML_EXTENSIONS),
+        key=lambda p: _natural_sort_key(p.stem),
+    )
+    if not schema_files:
+        raise ValueError(
+            f"No schema files (*.yaml/*.yml) found in directory: {directory}"
+        )
+    return [(p.stem, p) for p in schema_files]
+
+
+VERSIONS_MARKER_START = "<!-- api-versions:start -->"
+VERSIONS_MARKER_END = "<!-- api-versions:end -->"
+
+
+def inject_versions_list(index_path: str | Path, versions: list[str]) -> None:
+    """Replace the content between the version markers in the top-level API index.
+
+    Only the text between ``VERSIONS_MARKER_START`` and ``VERSIONS_MARKER_END`` is
+    rewritten; all surrounding hand-written prose is preserved. Idempotent.
+
+    Raises:
+        ValueError: if either marker is missing from the file.
+    """
+    path = Path(index_path)
+    content = path.read_text(encoding="utf-8")
+
+    if VERSIONS_MARKER_START not in content or VERSIONS_MARKER_END not in content:
+        raise ValueError(
+            f"Missing api-versions markers in {path}. Expected both "
+            f"'{VERSIONS_MARKER_START}' and '{VERSIONS_MARKER_END}'."
+        )
+
+    block_lines = [VERSIONS_MARKER_START]
+    block_lines += [f"* [{version}]({version}/index.md)" for version in versions]
+    block_lines.append(VERSIONS_MARKER_END)
+    replacement = "\n".join(block_lines)
+
+    pattern = re.compile(
+        re.escape(VERSIONS_MARKER_START) + r".*?" + re.escape(VERSIONS_MARKER_END),
+        re.DOTALL,
+    )
+    if not pattern.search(content):
+        raise ValueError(
+            f"Could not locate a '{VERSIONS_MARKER_START}' ... '{VERSIONS_MARKER_END}' "
+            f"region in {path} (markers present but not in the expected order?)."
+        )
+    path.write_text(pattern.sub(lambda _: replacement, content), encoding="utf-8")
+
+
 class OpenAPIToMarkdownConverter:
     """Converts OpenAPI schemas to markdown documentation."""
 
@@ -43,10 +114,10 @@ class OpenAPIToMarkdownConverter:
     def _load_schema(self, schema_path: str | Path) -> dict[str, Any]:
         """Load OpenAPI schema from file path, URL, or string content."""
         schema_str = str(schema_path)
-        
+
         # Check if it's a URL
         parsed_url = urlparse(schema_str)
-        if parsed_url.scheme in ('http', 'https'):
+        if parsed_url.scheme in ("http", "https"):
             try:
                 response = requests.get(schema_str, timeout=30)
                 response.raise_for_status()
@@ -66,8 +137,10 @@ class OpenAPIToMarkdownConverter:
                     try:
                         return yaml.safe_load(schema_str)
                     except yaml.YAMLError as e:
-                        raise ValueError("Invalid schema: not a valid file path, URL, JSON, or YAML") from e
-        
+                        raise ValueError(
+                            "Invalid schema: not a valid file path, URL, JSON, or YAML"
+                        ) from e
+
         # Parse the content (from file or URL)
         try:
             return json.loads(content)
@@ -75,7 +148,9 @@ class OpenAPIToMarkdownConverter:
             try:
                 return yaml.safe_load(content)
             except yaml.YAMLError as e:
-                raise ValueError("Invalid schema content: not valid JSON or YAML") from e
+                raise ValueError(
+                    "Invalid schema content: not valid JSON or YAML"
+                ) from e
 
     def _extract_base_info(self) -> dict[str, Any]:
         """Extract basic API information from schema."""
@@ -118,6 +193,56 @@ class OpenAPIToMarkdownConverter:
 
         return generated_files
 
+    def generate_version_index(self, version: str) -> str:
+        """Generate the markdown index page for a single API version.
+
+        Includes the API title/version/description, a per-tag list linking to each
+        tag's ``.txt`` LLM doc, and an endpoint summary table grouped by tag.
+        """
+        tag_groups = self._group_endpoints_by_tag()
+
+        lines = [
+            f"# {version}",
+            "",
+            f"**{self.base_info['title']}** API version `{self.base_info['version']}`.",
+            "",
+        ]
+        if self.base_info.get("description"):
+            lines += [self.base_info["description"], ""]
+
+        # LLM-doc links per tag
+        lines += [
+            "## LLM Docs",
+            "",
+            "Simplified per-tag references for LLM consumption:",
+            "",
+        ]
+        for tag in sorted(tag_groups):
+            filename = self._generate_tag_filename(tag)
+            tag_info = self._get_tag_info(tag) or {}
+            description = " ".join(tag_info.get("description", "").split())
+            suffix = f" — {description}" if description else ""
+            lines.append(f'* [{tag}](./{filename}.txt){{:target="_blank"}}{suffix}')
+        lines.append("")
+
+        # Endpoint summary table grouped by tag
+        lines += ["## Endpoints", ""]
+        for tag in sorted(tag_groups):
+            lines += [
+                f"### {tag}",
+                "",
+                "| Method | Path | Summary |",
+                "| --- | --- | --- |",
+            ]
+            for endpoint in tag_groups[tag]:
+                method = endpoint["method"].upper()
+                path = endpoint["path"]
+                summary = endpoint["operation"].get("summary", "").replace("|", "\\|")
+                lines.append(f"| {method} | `{path}` | {summary} |")
+            lines.append("")
+
+        return "\n".join(lines)
+
     def _group_endpoints_by_tag(self) -> dict[str, list[dict[str, Any]]]:
         """
         Group all endpoints by their tags.
@@ -138,7 +263,11 @@ class OpenAPIToMarkdownConverter:
                         if tag not in tag_groups:
                             tag_groups[tag] = []
 
-                        endpoint_info = {"method": method, "path": path, "operation": operation}
+                        endpoint_info = {
+                            "method": method,
+                            "path": path,
+                            "operation": operation,
+                        }
                         tag_groups[tag].append(endpoint_info)
 
         return tag_groups
@@ -150,12 +279,14 @@ class OpenAPIToMarkdownConverter:
         clean_tag = re.sub(r"_+", "_", clean_tag)
         return clean_tag.strip("_")
 
-    def _generate_tag_documentation(self, tag: str, endpoints: list[dict[str, Any]]) -> str:
+    def _generate_tag_documentation(
+        self, tag: str, endpoints: list[dict[str, Any]]
+    ) -> str:
         """Generate markdown documentation for all endpoints in a tag."""
         lines = []
 
         # API header info
-        lines.append(f"API: {self.base_info['title']} v{self.base_info['version']}")
+        lines.append(f"API: {self.base_info['title']} {self.base_info['version']}")
         if self.base_info.get("description"):
             lines.append(f"Description: {self.base_info['description']}")
         lines.append("")
@@ -177,7 +308,9 @@ class OpenAPIToMarkdownConverter:
             path = endpoint["path"]
             operation = endpoint["operation"]
 
-            endpoint_lines = self._generate_endpoint_section_minified(method, path, operation)
+            endpoint_lines = self._generate_endpoint_section_minified(
+                method, path, operation
+            )
             lines.extend(endpoint_lines)
             lines.append("")
 
@@ -210,10 +343,12 @@ class OpenAPIToMarkdownConverter:
                     for name, flow in scheme.get("flows", {}).items():
                         auth_url = flow.get("authorizationUrl", "")
                         token_url = flow.get("tokenUrl", "")
-                        title = list(filter(None, re.split(r'(?=[A-Z])', name)))
+                        title = list(filter(None, re.split(r"(?=[A-Z])", name)))
                         title[0] = title[0].title()
-                        name = ' '.join(title)
-                        lines.append(f"  - {name} Flow (authorization url: {auth_url}, token url: {token_url})")
+                        name = " ".join(title)
+                        lines.append(
+                            f"  - {name} Flow (authorization url: {auth_url}, token url: {token_url})"
+                        )
                 else:
                     lines.append(f"- {scheme_name} ({scheme_type})")
             lines.append("")
@@ -235,7 +370,9 @@ class OpenAPIToMarkdownConverter:
         anchor = re.sub(r"-+", "-", anchor)
         return anchor.strip("-")
 
-    def _generate_endpoint_section_minified(self, method: str, path: str, operation: dict[str, Any]) -> list[str]:
+    def _generate_endpoint_section_minified(
+        self, method: str, path: str, operation: dict[str, Any]
+    ) -> list[str]:
         """Generate minified markdown section for a single endpoint."""
         lines = []
 
@@ -259,9 +396,13 @@ class OpenAPIToMarkdownConverter:
                 name = param.get("name", "")
                 location = param.get("in", "query")
                 param_type = self._get_parameter_type_minified(param)
-                required = " (required)" if param.get("required", False) else " (optional)"
+                required = (
+                    " (required)" if param.get("required", False) else " (optional)"
+                )
                 description = param.get("description", "No description")
-                lines.append(f"    - {name} ({location}, {param_type}{required}): {description}")
+                lines.append(
+                    f"    - {name} ({location}, {param_type}{required}): {description}"
+                )
 
         # Request Body
         request_body = operation.get("requestBody")
@@ -280,8 +421,17 @@ class OpenAPIToMarkdownConverter:
         if responses:
             lines.append("  Responses:")
             for status_code, response in responses.items():
-                description = response.get("description", "No description")
-                lines.append(f"    {status_code}: {description}")
+                # Only show the description when it's provided; otherwise emit just the code and colon.
+                description = response.get("description", "")
+                if isinstance(description, str):
+                    description = description.strip()
+                else:
+                    description = str(description)
+
+                if description:
+                    lines.append(f"    {status_code}: {description}")
+                else:
+                    lines.append(f"    {status_code}:")
 
                 content = response.get("content", {})
                 for media_type, media_content in content.items():
@@ -292,14 +442,17 @@ class OpenAPIToMarkdownConverter:
                         lines.append(f"      Schema: {schema_ref}")
 
         # Security
-        if security :=  operation.get("security", []):
+        if requirements := operation.get("security", []):
             lines.append("  Security:")
-            for security in security:
-                key = next(iter(security))
+            for requirement in requirements:
+                # An empty requirement object ({}) means authentication is optional.
+                if not requirement:
+                    lines.append("    (optional - no authentication required)")
+                    continue
+                key = next(iter(requirement))
                 lines.append(f"    {key}")
-                if value := security.get(key):
-                    value = ', '.join(value)
-                    lines.append(f"      - Required scopes: {value}")
+                if scopes := requirement.get(key):
+                    lines.append(f"      - Required scopes: {', '.join(scopes)}")
 
         return lines
 
@@ -467,18 +620,60 @@ def convert_openapi_to_markdown(
     return converter.convert_to_text_files(output_dir)
 
 
+def convert_versioned_docs(schema_dir: str | Path, output_dir: str | Path) -> list[str]:
+    """Generate per-version API docs from a directory of schema files.
+
+    For each ``*.yml``/``*.yaml`` file in ``schema_dir`` (one per version), writes the
+    per-tag ``.txt`` files and a generated ``index.md`` into ``output_dir/<version>/``,
+    then injects the versions list into ``output_dir/index.md`` between its markers.
+
+    Returns:
+        List of generated file paths (tag docs + per-version index pages).
+    """
+    output_path = Path(output_dir)
+    versions = discover_version_schemas(schema_dir)
+
+    generated_files: list[str] = []
+    for version, schema_path in versions:
+        version_dir = output_path / version
+        version_dir.mkdir(parents=True, exist_ok=True)
+        converter = OpenAPIToMarkdownConverter(schema_path)
+
+        generated_files.extend(converter.convert_to_text_files(version_dir))
+
+        index_file = version_dir / "index.md"
+        index_file.write_text(
+            converter.generate_version_index(version), encoding="utf-8"
+        )
+        generated_files.append(str(index_file))
+
+    inject_versions_list(output_path / "index.md", [version for version, _ in versions])
+
+    return generated_files
+
+
 if __name__ == "__main__":
     import argparse
 
-    parser = argparse.ArgumentParser(description="Convert OpenAPI schema to markdown documentation")
-    parser.add_argument("schema", help="Path to OpenAPI schema file, URL, or schema content (JSON or YAML)")
-    parser.add_argument("-o", "--output", default="api_docs", help="Output directory for markdown files")
+    parser = argparse.ArgumentParser(
+        description="Convert OpenAPI schema to markdown documentation"
+    )
+    parser.add_argument(
+        "schema",
+        help="Path to an OpenAPI schema file/URL, or a directory of per-version schema files",
+    )
+    parser.add_argument(
+        "-o", "--output", default="api_docs", help="Output directory for markdown files"
+    )
 
     args = parser.parse_args()
 
     try:
-        generated_files = convert_openapi_to_markdown(args.schema, args.output)
-        print(f"Generated {len(generated_files)} markdown files in '{args.output}':")
+        if Path(args.schema).is_dir():
+            generated_files = convert_versioned_docs(args.schema, args.output)
+        else:
+            generated_files = convert_openapi_to_markdown(args.schema, args.output)
+        print(f"Generated {len(generated_files)} files in '{args.output}':")
         for file_path in generated_files:
             print(f"  - {file_path}")
     except Exception as e:

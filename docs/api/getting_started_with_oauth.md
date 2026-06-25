@@ -80,7 +80,7 @@ https://www.openchatstudio.com/o/authorize/?response_type=code&client_id=${CLIEN
 
 After the user grants permission, OpenChatStudio redirects them to your `redirect_uri` with the authorization code in the query string:
 
-```
+```uri
 https://your-server/callback/?code=auth_code_here&state=random_state_string
 ```
 
@@ -94,7 +94,7 @@ https://your-server/callback/?code=auth_code_here&state=random_state_string
 
 If an error occurs, the redirect will include error parameters:
 
-```
+```uri
 https://your-server/callback/?error=access_denied&error_description=The+user+denied+the+request&state=random_state_string
 ```
 
