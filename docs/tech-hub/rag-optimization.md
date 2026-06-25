@@ -6,7 +6,9 @@ This page covers advanced configuration options for indexed collections. For a c
 
 ## Choosing an Embedding Model (Local Indexes)
 
-When you create a local index, you select which embedding model converts your documents into vectors. The model you choose affects how well the chatbot retrieves relevant content.
+An embedding model converts your documents into a mathematical form that enables search by *meaning* rather than exact keywords. When a user asks a question, the chatbot finds content that is conceptually related — even if it uses different words. The quality and focus of the embedding model directly affects how relevant the retrieved content is.
+
+When you create a local index, you select which embedding model to use. The model you choose affects how well the chatbot retrieves relevant content.
 
 Different embedding models have different strengths:
 
@@ -18,9 +20,12 @@ You can view the available embedding models for each provider when creating or e
 
 !!! info "Local indexes are a new feature in OCS. We are actively working to support additional embedding models."
 
-## Chunking and Optimization
+## Chunking and Optimization (Local Indexes only)
 
-When you upload a document to an index, OCS breaks it into smaller parts called **chunks**. Each chunk is converted into a vector and stored in the index. The chunking strategy affects how accurately the chatbot retrieves relevant content.
+!!! info
+    Chunking is configured in OCS for local indexes only. For remote indexes, the provider (e.g. OpenAI) handles chunking internally and it cannot be configured.
+
+When you upload a document to a local index, OCS breaks it into smaller parts called **chunks**. Each chunk is converted into a vector and stored in the index. The chunking strategy affects how accurately the chatbot retrieves relevant content.
 
 In most cases the default chunking strategy works well. You can customise it per set of uploaded files if needed:
 
