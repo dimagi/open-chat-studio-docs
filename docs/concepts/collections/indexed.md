@@ -54,7 +54,7 @@ Supported files are determined by the selected provider:
 ## Local Index
 !!! info "Local indexes are a new feature in OCS. We are actively working to support additional file types and embedding models, allowing you to better customize your index with models that suit your needs."
 
-Local indexes are hosted and managed by OCS. When you create a local index, you choose which embedding model to use. Different models suit different content types for a chatbot, so choosing the right one can improve retrieval accuracy. See [RAG Index Optimization](../../tech-hub/rag-optimization.md#choosing-an-embedding-model-local-indexes) for guidance.
+Local indexes are hosted and managed by OCS. When you create a local index, you choose which embedding model to use. Different models suit different content types for a chatbot, so choosing the right one can improve retrieval accuracy. See [RAG Index Optimization](../../tech-hub/local-index-optimization.md#choosing-an-embedding-model-local-indexes) for guidance.
 
 ### Supported providers
 - OpenAI
@@ -72,7 +72,7 @@ You can see the supported embedding models for each provider when creating or ed
 ## Chunking and Optimization
 When you upload a document, OCS breaks it into smaller parts called **chunks** and stores them in the index. The default chunking settings work well for most use cases.
 
-For advanced configuration — including chunk size, chunk overlap, and embedding model selection — see [RAG Index Optimization](../../tech-hub/rag-optimization.md).
+For advanced configuration — including chunk size, chunk overlap, and embedding model selection — see [RAG Index Optimization](../../tech-hub/local-index-optimization.md).
 
 [file-search]: ../experiment/index.md#file-search
 [migration-guide]: ../../how-to/assistants_migration.md
