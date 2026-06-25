@@ -24,7 +24,11 @@ Should the service provider configuration not include a model which is available
 
 If your LLM provider list doesn't have a pre-configured model you want to use, you can add it under the "Custom LLM Models" section.
 
-See the [How to guide for adding custom LLM models](../../tutorials/configure_providers.md#adding-custom-llm-models)
+See the [How to guide for adding custom LLM models](../../tutorials/configure_providers.md)
+
+## See also
+
+- [Finding where a provider is used](index.md#finding-where-a-provider-is-used)
 
 ## Model Lifecycle and Deprecation
 
