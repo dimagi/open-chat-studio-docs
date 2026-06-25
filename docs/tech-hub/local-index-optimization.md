@@ -1,5 +1,5 @@
 ---
-title: RAG Index Optimization
+title: Local Index Optimization
 ---
 
 This page covers advanced configuration options for indexed collections. For a conceptual overview of how indexed collections work, see [Indexed Collection for RAG](../concepts/collections/indexed.md).
