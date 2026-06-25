@@ -14,23 +14,23 @@ Common examples include:
 - A **research tool** that searches across uploaded reports, studies, or reference materials
 - An **onboarding guide** that walks new users through your own uploaded training content
 
+## How it works
+
 !!! note "Definition"
     **Retrieval-Augmented Generation** (RAG) is a technique where a language model retrieves relevant information from a set of documents to ground its answers in real data. Instead of relying solely on its built-in knowledge, the model uses indexes—specialized databases that store document content as vectors (numerical representations of meaning). This makes it easy for the model to find and use the most relevant parts of your uploaded files when answering questions.
 
+To search documents by meaning, OCS uses an **embedding model** — a component that converts text into a mathematical form so the chatbot can find conceptually related content even when the exact words don't match. For example, a user asking "how do I cancel?" can match a document that says "terminating your subscription."
+
 !!! warning "Indexed collections will replace OpenAI Assistants' file search functionality in the future"
 
-    Consult the [migration guide][migration-guide] if you have assistants that you want to replace with indexed collections.
+    If you've used the OpenAI Assistants' [file search][file-search] capability in OCS, you've already interacted with an index behind the scenes. Consult the [migration guide][migration-guide] if you have assistants you want to replace with indexed collections.
 
-If you’ve used the OpenAI Assistants’ [file search][file-search] capability in OCS, you’ve already interacted with an index behind the scenes.
-
-To search documents by meaning, OCS uses an **embedding model** — a component that converts text into a mathematical form so the chatbot can find conceptually related content even when the exact words don't match. For example, a user asking "how do I cancel?" can match a document that says "terminating your subscription."
+## Which should I use?
 
 In OCS, there are two types of indexes:
 
 - [Remote Index](#remote-index)
-- Local Index
-
-### Which should I use?
+- [Local Index](#local-index)
 
 | | Remote Index | Local Index |
 |---|---|---|
@@ -40,10 +40,10 @@ In OCS, there are two types of indexes:
 | **Collections per LLM node** | Max 2 (OpenAI limit) | Unlimited |
 | **Best for** | Getting started quickly | More control, or more than 2 collections |
 
-If you are new to indexed collections, start with a **Remote Index**. Switch to a Local Index if you need to use more than 2 collections, or want to choose a specific embedding model for your content type.
+If you are new to indexed collections, start with a **Remote Index**. Switch to a Local Index if you need more than 2 collections or want to choose a specific embedding model for your content type.
 
 ## Remote Index
-Remote indexes are hosted and managed by an LLM provider. Files and index configuration are uploaded to the provider, which maintains and manages the index. The embedding model used to create file embeddings is selected by the provider.
+Remote indexes are hosted and managed by your LLM provider. Files are uploaded to the provider, which handles all indexing. The embedding model is chosen by the provider.
 
 ### Supported providers
 - OpenAI (using the [responses API](https://platform.openai.com/docs/api-reference/responses))
@@ -56,17 +56,15 @@ Remote indexes are hosted and managed by an LLM provider. Files and index config
     - **Non-OpenAI providers** are NOT affected by this limit
     - If you attempt to select more than 2 remote collections with OpenAI, you will receive a validation error
 
-    If you need to use more than 2 collections, consider using local indexes instead.
-
 ### Supported file types
 Supported files are determined by the selected provider:
 
 - OpenAI - See the [OpenAI docs](https://platform.openai.com/docs/assistants/tools/file-search/supported-files#supported-files)
 
 ## Local Index
-!!! info "Local indexes are a new feature in OCS. We are actively working to support additional file types and embedding models, allowing you to better customize your index with models that suit your needs."
+!!! info "Local indexes are actively developed. We are working to support additional file types and embedding models so you can better customize your index."
 
-Local indexes are hosted and managed by OCS. When you create a local index, you choose which embedding model to use. Different models suit different content types for a chatbot, so choosing the right one can improve retrieval accuracy. See [RAG Index Optimization](../../tech-hub/local-index-optimization.md#choosing-an-embedding-model-local-indexes) for guidance.
+Local indexes are hosted and managed by OCS. When you create a local index, you choose which embedding model to use. Different models suit different types of content, so choosing the right one can improve retrieval accuracy. See [RAG Index Optimization](../../tech-hub/local-index-optimization.md#choosing-an-embedding-model-local-indexes) for guidance.
 
 ### Supported providers
 - OpenAI
