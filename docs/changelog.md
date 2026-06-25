@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Jun 25, 2026
+* **BUG** Fixed a `NameError` in pipeline Code nodes when using tuple-unpacking assignments (for example, `a, b = some_function()`). Such assignments now work as expected.
+
 ## Jun 23, 2026
 * **CHANGE** API reference docs are now split by version. `/api/docs/` is now a landing page linking to the v1 and v2 references; the v1 reference has moved to `/api/v1/docs/` and the v2 reference is at `/api/v2/docs/`. The raw schemas are available at `/api/schema/` (v1) and `/api/v2/schema/`. This also fixes v2 endpoints that were previously leaking into the v1 schema.
 
