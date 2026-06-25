@@ -108,7 +108,6 @@ nav:
     - how-to/workflow_cookbook.md
     - how-to/add_a_knowledge_base.md
     - how-to/deploy_to_different_channels.md
-    - Surveys (Deprecated): how-to/setting_up_a_survey.md
     - Schedule Reminders: how-to/reminders.md
     - Reset Sessions: how-to/reset_sessions.md
     - how-to/whatsapp_meta_cloud_api.md
@@ -116,6 +115,7 @@ nav:
     - how-to/assistants_migration.md
     - Filter Tables with Natural Language: how-to/nl_filter.md
     - Find Objects: how-to/global_search.md
+    - Surveys (Deprecated): how-to/setting_up_a_survey.md
     - Router Nodes:
       - how-to/routers/index.md
       - Configure LLM Router: how-to/routers/llm_router.md
@@ -142,10 +142,6 @@ nav:
       - concepts/tracing.md
       - concepts/tools/index.md
       - Experiments: concepts/experiment/index.md
-    - Collections:
-      - concepts/collections/index.md
-      - concepts/collections/media.md
-      - Indexed Collection for RAG: concepts/collections/indexed.md
     - Pipelines:
       - concepts/pipelines/index.md
       - Node Types: concepts/pipelines/nodes.md
@@ -160,8 +156,10 @@ nav:
       - concepts/team/messaging_providers.md
       - Custom Actions: concepts/team/custom_actions.md
       - User Groups: concepts/team/groups.md
-    - Assistants:
-      - concepts/assistants.md
+    - Collections:
+      - concepts/collections/index.md
+      - concepts/collections/media.md
+      - Indexed Collection for RAG: concepts/collections/indexed.md
     - Evaluations:
       - concepts/evaluations/index.md
       - concepts/evaluations/dataset.md
@@ -171,6 +169,8 @@ nav:
       - concepts/annotations/index.md
       - concepts/annotations/queues.md
       - Annotating: concepts/annotations/annotating.md
+    - Assistants:
+      - concepts/assistants.md
   - Tech Hub:
     - tech-hub/index.md
     - Tools Reference: tech-hub/tools.md
