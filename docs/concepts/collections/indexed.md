@@ -88,11 +88,11 @@ The following document source types are currently supported:
 
 Load pages from a Confluence site. Pages can be filtered using the space key, label, CQL, or individual page IDs.
 
-**Authentication**
+#### Authentication
 
 Use a [Basic Auth](../team/authentication_providers.md#basic-auth) authentication provider with your Atlassian username and use your API Key as the password.
 
-**Configuration**
+#### Configuration
 
 | Field     | Description                                                               |
 |-----------|---------------------------------------------------------------------------|
@@ -111,11 +111,11 @@ Use a [Basic Auth](../team/authentication_providers.md#basic-auth) authenticatio
 
 Load pages from a GitHub repository. Files can be filtered by path and by matching patterns against the filenames.
 
-**Authentication**
+#### Authentication
 
 Use a [Bearer Token](../team/authentication_providers.md#bearer-token) authentication provider.
 
-**Configuration**
+#### Configuration
 
 | Field          | Description                                                          |
 |----------------|----------------------------------------------------------------------|

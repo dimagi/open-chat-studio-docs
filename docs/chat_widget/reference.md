@@ -14,17 +14,17 @@ The widget button can be customized using the following properties:
 </open-chat-studio-widget>
 ```
 
-**Button Text**
+### Button Text
 
 - When button-text is provided, the button displays both icon and text
 - When button-text is empty or not provided, only an icon is shown
 
-**Button Shape**
+### Button Shape
 
 - **round** - Circular button
 - **square** - Rectangular button with rounded corners
 
-**Icon URL**
+### Icon URL
 
 If no icon-url is provided, the default Open Chat Studio avatar is used.
 
