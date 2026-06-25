@@ -69,8 +69,8 @@ Copy and securely store the generated token — this is your **System User Acces
 4. Verify ownership of the number using the one-time code sent by Meta.
 5. Wait for your **display name** to be verified by Meta before proceeding.
 
-!!! info "Display name verification"
-    Display name verification typically takes 2–3 hours. You cannot complete the registration step until this is approved.
+    !!! info "Display name verification"
+        Display name verification typically takes 2–3 hours. You cannot complete the registration step until this is approved.
 
 6. While waiting for display name verification, go to your [system user page](https://business.facebook.com/settings/system-users), click **Add Assets**, select **WhatsApp Accounts**, choose the newly created WhatsApp Business Account, and enable the **Phone numbers view and manage** permission. This is required so the system user's access token can register the phone number in the next step.
 
