@@ -27,7 +27,7 @@ To search documents by meaning, OCS uses an **embedding model** — a component 
 
 In OCS, there are two types of indexes:
 
-- Remote Index
+- [Remote Index](#remote-index)
 - Local Index
 
 ### Which should I use?
@@ -91,63 +91,11 @@ For advanced configuration — including chunk size, chunk overlap, and embeddin
 
 ## Document Sources
 
-In addition to manually uploading documents to a collection, you can also configure document sources from which Open Chat Studio will automatically load and index documents.
-
-The primary advantage of document sources over manual uploads is that Open Chat Studio can check for updates periodically, which eliminates the need for manual updates.
+Instead of uploading files manually, you can connect OCS to an external source — such as a Confluence space or GitHub repository — and have it fetch and index content automatically on a schedule. This keeps your collection current without manual uploads.
 
 !!! note "Document-source updates reach published chatbots automatically"
-    When a document-source sync runs and updates the collection's content, those changes are applied to your published chatbot without requiring a republish. See [Collections and published bots](./index.md#collections-and-published-bots) for more detail.
+    When a document-source sync runs and updates the collection's content, those changes are applied to your published chatbot without requiring a republish. See [Collections and published chatbots](./index.md#collections-and-published-chatbots) for more detail.
 
-The following document source types are currently supported:
+Currently supported sources: **Confluence** and **GitHub**.
 
-### :simple-confluence: Confluence
-
-Load pages from a Confluence site. Pages can be filtered using the space key, label, CQL, or individual page IDs.
-
-**Authentication**
-
-Use a [Basic Auth](../team/authentication_providers.md#basic-auth) authentication provider with your Atlassian username and use your API Key as the password.
-
-**Configuration**
-
-| Field     | Description                                                               |
-|-----------|---------------------------------------------------------------------------|
-| Site URL  | The URL of the Confluence site (e.g. https://yoursite.atlassian.net/wiki) |
-| Max Pages | The maximum number of pages to load                                       |
-| Space Key | Load pages from this space                                                |
-| Label     | Load pages with this label                                                |
-| CQL       | CQL query to use to search for pages to load                              |
-| Page IDs  | Load only these specific pages                                            |
-
-!!! note
-
-    Only one of the `Space Key`, `Label`, `CQL` and `Page IDs` fields can be used at a time.
-
-### :simple-github: GitHub
-
-Load pages from a GitHub repository. Files can be filtered by path and by matching patterns against the filenames.
-
-**Authentication**
-
-Use a [Bearer Token](../team/authentication_providers.md#bearer-token) authentication provider.
-
-**Configuration**
-
-| Field          | Description                                                          |
-|----------------|----------------------------------------------------------------------|
-| Repository URL | GitHub repository URL (e.g. https://github.com/user/repo)            |
-| Branch         | Git branch to sync from                                              |
-| File Pattern   | File patterns to include. Prefix with '!' to exclude matching files. |
-| Path Filter    | Optional path prefix to filter files (e.g., docs/)                   |
-
-## Monitoring Sync Status
-
-Open Chat Studio tracks the history of every sync run for each document source. Use the sync logs to confirm that syncs are completing successfully and to diagnose problems when they are not.
-
-### Status indicator
-
-Each document source header displays a status indicator reflecting the outcome of the most recent sync:
-
-- **Error** – the last sync encountered a problem. The indicator is shown in red.
-- **Success** – the last sync completed without errors.
-- **In progress** – a sync is currently running. The indicator animates to show activity.
+For configuration steps, authentication setup, and how to monitor sync status, see [Set Up Document Sources](../../how-to/document_sources.md).

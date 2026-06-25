@@ -107,6 +107,7 @@ nav:
     - Adjust LLM Node Model Parameters: how-to/adjust_llm_node_model_parameters.md
     - how-to/workflow_cookbook.md
     - how-to/add_a_knowledge_base.md
+    - Set Up Document Sources: how-to/document_sources.md
     - how-to/deploy_to_different_channels.md
     - Surveys (Deprecated): how-to/setting_up_a_survey.md
     - Schedule Reminders: how-to/reminders.md
