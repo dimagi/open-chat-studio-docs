@@ -52,7 +52,7 @@ Supported files are determined by the selected provider:
 ## Local Index
 !!! info "Local indexes are a new feature in OCS. We are actively working to support additional file types and embedding models, allowing you to better customize your index with models that suit your needs."
 
-Local indexes are hosted and managed by OCS. When you create a local index, you can select which embedding model to use for generating file embeddings. Embedding models are provided by LLM providers. Just as different LLM models have varying strengths and weaknesses, different embedding models also have their own strengths and weaknesses. Thus, choosing the right embedding model is important to ensure the best performance for your specific use case.
+Local indexes are hosted and managed by OCS. When you create a local index, you choose which embedding model to use. Different models suit different content types for a chatbot, so choosing the right one can improve retrieval accuracy. See [RAG Index Optimization](../../tech-hub/rag-optimization.md#choosing-an-embedding-model-local-indexes) for guidance.
 
 ### Supported providers
 - OpenAI
@@ -68,16 +68,9 @@ Local indexes are hosted and managed by OCS. When you create a local index, you 
 You can see the supported embedding models for each provider when creating or editing the provider in your team settings.
 
 ## Chunking and Optimization
-When you upload a document to an index, it’s broken up into smaller parts called chunks. These chunks are then converted into vectors and stored in the index. Chunking is a key part of how RAG works, as it affects how accurately the model can retrieve relevant information.
+When you upload a document, OCS breaks it into smaller parts called **chunks** and stores them in the index. The default chunking settings work well for most use cases.
 
-In most cases, it will not be necessary to change the default chunking strategy, but you’ll have the option to customize the chunking strategy for each set of uploaded files:
-
-- Chunk size – how large each chunk is (in tokens)
-- Chunk overlap – how much each chunk overlaps with the next, to preserve context
-
-Choosing the right chunking strategy can improve retrieval accuracy, especially for technical documents.
-
-!!! info "This flexibility helps tailor the index to your use case—whether it’s short notes or long, complex reports."
+For advanced configuration — including chunk size, chunk overlap, and embedding model selection — see [RAG Index Optimization](../../tech-hub/rag-optimization.md).
 
 [file-search]: ../experiment/index.md#file-search
 [migration-guide]: ../../how-to/assistants_migration.md

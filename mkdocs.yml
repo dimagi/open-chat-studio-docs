@@ -173,6 +173,7 @@ nav:
       - Annotating: concepts/annotations/annotating.md
   - Tech Hub:
     - tech-hub/index.md
+    - RAG Index Optimization: tech-hub/rag-optimization.md
     - Tools Reference: tech-hub/tools.md
     - Python Node: tech-hub/python_node.md
     - Render a Template and Send an Email Nodes: tech-hub/template_and_email_nodes.md
