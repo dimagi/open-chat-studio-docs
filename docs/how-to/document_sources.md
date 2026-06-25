@@ -1,6 +1,7 @@
 ---
 title: Set Up Document Sources
 ---
+# Set Up Document Sources
 
 Document sources let OCS automatically fetch and index content from an external system on a schedule. This keeps your indexed collection up to date without manual uploads.
 
