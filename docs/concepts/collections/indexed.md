@@ -19,7 +19,7 @@ Common examples include:
 !!! note "Definition"
     **Retrieval-Augmented Generation** (RAG) is a technique where a language model retrieves relevant information from a set of documents to ground its answers in real data. Instead of relying solely on its built-in knowledge, the model uses indexes—specialized databases that store document content as vectors (numerical representations of meaning). This makes it easy for the model to find and use the most relevant parts of your uploaded files when answering questions.
 
-To search documents by meaning, OCS uses an **embedding model** — a component that converts text into a mathematical form so the chatbot can find conceptually related content even when the exact words don't match. For example, a user asking "how do I cancel?" can match a document that says "terminating your subscription."
+To search documents by meaning, OCS uses an **embedding model** to convert text into a mathematical form that captures meaning, not just keywords. See [RAG Local Index Optimization](../../tech-hub/local-index-optimization.md) for a full explanation.
 
 !!! warning "Indexed collections will replace OpenAI Assistants' file search functionality in the future"
 
@@ -64,7 +64,7 @@ Supported files are determined by the selected provider:
 ## Local Index
 !!! info "Local indexes are actively developed. We are working to support additional file types and embedding models so you can better customize your index."
 
-Local indexes are hosted and managed by OCS. When you create a local index, you choose which embedding model to use. Different models suit different types of content, so choosing the right one can improve retrieval accuracy. See [RAG Index Optimization](../../tech-hub/local-index-optimization.md#choosing-an-embedding-model-local-indexes) for guidance.
+Local indexes are hosted and managed by OCS. When you create a local index, you choose which embedding model to use. Different models suit different types of content, so choosing the right one can improve retrieval accuracy. See [RAG Local Index Optimization](../../tech-hub/local-index-optimization.md#choosing-an-embedding-model-local-indexes) for guidance.
 
 ### Supported providers
 - OpenAI
@@ -79,10 +79,10 @@ Local indexes are hosted and managed by OCS. When you create a local index, you 
 ### Supported embedding models
 You can see the supported embedding models for each provider when creating or editing the provider in your team settings.
 
-## Chunking and Optimization
-When you upload a document, OCS breaks it into smaller parts called **chunks** and stores them in the index. The default chunking settings work well for most use cases.
+## Chunking and Optimization (Local Indexes only)
+When you upload a document to a local index, OCS breaks it into smaller parts called **chunks** and stores them in the index. The default chunking settings work well for most use cases.
 
-For advanced configuration — including chunk size, chunk overlap, and embedding model selection — see [RAG Index Optimization](../../tech-hub/local-index-optimization.md).
+For advanced configuration — including chunk size, chunk overlap, and embedding model selection — see [RAG Local Index Optimization](../../tech-hub/local-index-optimization.md).
 
 [file-search]: ../experiment/index.md#file-search
 [migration-guide]: ../../how-to/assistants_migration.md
