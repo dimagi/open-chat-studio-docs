@@ -22,7 +22,7 @@ When you want your chatbot to be able to send multimedia files to users.
 Once a collection is linked, your bot will be able to send one or more files from it to users—either as a download link or directly—depending on the specific channel’s support for the file type and file size.
 
 !!! note "Changes take effect on published chatbots immediately"
-    Adding, removing, or replacing files in a media collection is reflected in the published chatbot without requiring a republish. See [Collections and published bots](./index.md#collections-and-published-bots) for more detail.
+    Adding, removing, or replacing files in a media collection is reflected in the published chatbot without requiring a republish. See [Collections and published chatbots](index.md#collections-and-published-chatbots) for more detail.
 
 ## How does it work?
 ### How does the bot know when to attach a file?
