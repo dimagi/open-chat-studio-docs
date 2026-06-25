@@ -23,6 +23,8 @@ Common examples include:
 
 If you’ve used the OpenAI Assistants’ [file search][file-search] capability in OCS, you’ve already interacted with an index behind the scenes.
 
+To search documents by meaning, OCS uses an **embedding model** — a component that converts text into a mathematical form so the chatbot can find conceptually related content even when the exact words don't match. For example, a user asking "how do I cancel?" can match a document that says "terminating your subscription."
+
 In OCS, there are two types of indexes:
 
 - Remote Index
