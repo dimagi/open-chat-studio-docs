@@ -30,6 +30,18 @@ In OCS, there are two types of indexes:
 - Remote Index
 - Local Index
 
+### Which should I use?
+
+| | Remote Index | Local Index |
+|---|---|---|
+| **Managed by** | Your LLM provider (e.g. OpenAI) | OCS |
+| **Setup** | Simpler — the provider handles everything | More steps — you choose the embedding model |
+| **Embedding model** | Selected by the provider | You choose |
+| **Collections per LLM node** | Max 2 (OpenAI limit) | Unlimited |
+| **Best for** | Getting started quickly | More control, or more than 2 collections |
+
+If you are new to indexed collections, start with a **Remote Index**. Switch to a Local Index if you need to use more than 2 collections, or want to choose a specific embedding model for your content type.
+
 ## Remote Index
 Remote indexes are hosted and managed by an LLM provider. Files and index configuration are uploaded to the provider, which maintains and manages the index. The embedding model used to create file embeddings is selected by the provider.
 
