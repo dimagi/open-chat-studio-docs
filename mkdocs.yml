@@ -114,6 +114,7 @@ nav:
         - Configure Static Router: how-to/routers/static_router.md
       - Send an Email: how-to/send_email_node.md
       - Schedule Reminders: how-to/reminders.md
+      - Set Up Document Sources: how-to/document_sources.md
     - Channels & Deployment:
       - how-to/deploy_to_different_channels.md
       - how-to/whatsapp_meta_cloud_api.md
@@ -178,6 +179,7 @@ nav:
       - concepts/assistants.md
   - Tech Hub:
     - tech-hub/index.md
+    - Local Index Optimization: tech-hub/local-index-optimization.md
     - Tools Reference: tech-hub/tools.md
     - Python Node: tech-hub/python_node.md
     - Render a Template and Send an Email Nodes: tech-hub/template_and_email_nodes.md

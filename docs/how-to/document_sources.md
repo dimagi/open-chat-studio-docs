@@ -1,0 +1,89 @@
+---
+title: Set Up Document Sources
+---
+# Set Up Document Sources
+
+Document sources let OCS automatically fetch and index content from an external system on a schedule. This keeps your indexed collection up to date without manual uploads.
+
+For a conceptual overview, see [Indexed Collection for RAG](../concepts/collections/indexed.md#document-sources).
+
+## Prerequisites
+
+- An [indexed collection](../concepts/collections/indexed.md) already created in OCS.
+- An [authentication provider](../concepts/team/authentication_providers.md) configured for your document source (see per-source instructions below).
+
+## Add a Document Source
+
+1. Navigate to your indexed collection and open the **Document Sources** tab.
+2. Click **Add document source** and select the source type.
+3. Complete the configuration fields for your chosen source (see below).
+4. Click **Save**. OCS will run an initial sync immediately.
+
+---
+
+## Confluence
+
+Load pages from a Confluence site. You can filter which pages are loaded by space, label, CQL query, or individual page IDs.
+
+### Authentication
+
+Use a [Basic Auth](../concepts/team/authentication_providers.md#basic-auth) authentication provider. Set your Atlassian username as the **username** and your Atlassian API key as the **password**.
+
+### Configuration
+
+| Field     | Description                                                               |
+|-----------|---------------------------------------------------------------------------|
+| Site URL  | The URL of your Confluence site (e.g. `https://yoursite.atlassian.net/wiki`) |
+| Max Pages | The maximum number of pages to load                                       |
+| Space Key | Load all pages from this space                                            |
+| Label     | Load pages that have this label                                           |
+| CQL       | A CQL query to select which pages to load                                 |
+| Page IDs  | Load only these specific pages (comma-separated IDs)                      |
+
+!!! note
+    Only one of **Space Key**, **Label**, **CQL**, and **Page IDs** can be used at a time.
+
+---
+
+## GitHub
+
+Load files from a GitHub repository. You can filter by path prefix or filename patterns.
+
+### Authentication
+
+Use a [Bearer Token](../concepts/team/authentication_providers.md#bearer-token) authentication provider with a GitHub personal access token.
+
+### Configuration
+
+| Field          | Description                                                          |
+|----------------|----------------------------------------------------------------------|
+| Repository URL | GitHub repository URL (e.g. `https://github.com/user/repo`)          |
+| Branch         | Git branch to sync from                                              |
+| File Pattern   | File patterns to include. Prefix with `!` to exclude matching files. |
+| Path Filter    | Optional path prefix to filter files (e.g. `docs/`)                  |
+
+---
+
+## Monitoring Sync Status
+
+OCS tracks the history of every sync run for each document source. Use the sync logs to confirm that syncs are completing successfully and to diagnose problems when they are not.
+
+Each document source displays a status indicator showing the outcome of the most recent sync:
+
+- **Error** — the last sync encountered a problem. The indicator is shown in red. Open the sync log for details.
+- **Success** — the last sync completed without errors.
+- **In progress** — a sync is currently running. The indicator animates to show activity.
+
+## Troubleshooting
+
+**Sync shows Error status**
+
+Open the sync log for the failed run. Common causes:
+
+- Authentication credentials have expired or been revoked — update your authentication provider.
+- The Confluence space key or GitHub repository URL has changed — update the configuration field.
+- The Max Pages limit was reached before all pages were loaded — increase the limit or narrow your filter.
+
+**Pages are not updating after a sync**
+
+Check that the correct Space Key, Label, CQL, or Page IDs are set. Only one filter field can be active at a time — if multiple are filled in, only one will be used.
