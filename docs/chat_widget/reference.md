@@ -441,10 +441,6 @@ widget.pageContext = {
 
     The page context is persisted in the session state on the server side and is accessible via `session_state.remote_context`. See [accessing remote context](../concepts/prompt_variables.md#accessing-remote-context) for more details.
 
-!!! tip
-
-    Page context is cleared after each message. To refresh it automatically before every send, set `pageContext` from an [`ocs:message:before-send`](#ocsmessagebefore-send) handler.
-
 ## :material-lightning-bolt: Events
 
 The widget dispatches custom events on the `<open-chat-studio-widget>` host element. All events are dispatched with `bubbles: true` and `composed: true`, so they escape the shadow DOM and are catchable anywhere on the host page using standard `addEventListener`.
