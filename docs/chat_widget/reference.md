@@ -464,8 +464,6 @@ The widget dispatches custom events on the `<open-chat-studio-widget>` host elem
 
 `ocs:message:before-send` fires **synchronously** before the API call. A handler can update the `pageContext` property and the new value is picked up in that same send. This is the recommended pattern for lazily refreshing page context just before each message.
 
-The lifecycle is: set `pageContext` in the handler → it is included in this send → it is cleared after the message completes. Because [page context](#page-context) is cleared after each message, setting it in this handler ensures fresh context accompanies every send without needing to re-set it manually.
-
 ### Usage Example
 
 ```javascript
