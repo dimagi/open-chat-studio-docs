@@ -165,7 +165,7 @@ nav:
     - Collections:
       - concepts/collections/index.md
       - concepts/collections/media.md
-      - Indexed Collection for RAG: concepts/collections/indexed.md
+      - Indexed Collection: concepts/collections/indexed.md
     - Evaluations:
       - concepts/evaluations/index.md
       - concepts/evaluations/dataset.md

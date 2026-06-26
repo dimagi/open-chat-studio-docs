@@ -76,7 +76,7 @@ You can see the supported embedding models for each provider when creating or ed
 ### Chunking and Optimization
 When you upload a document to a local index, OCS breaks it into smaller parts called **chunks** and stores them in the index. The default chunking settings work well for most use cases.
 
-For advanced configuration — including chunk size, chunk overlap, and embedding model selection — see [RAG Local Index Optimization](../../tech-hub/local-index-optimization.md).
+For advanced configuration — including chunk size, chunk overlap, and embedding model selection — see [Local Index Optimization](../../tech-hub/local-index-optimization.md).
 
 ## Document Sources
 
