@@ -288,7 +288,7 @@ class OpenAPIToMarkdownConverter:
         # API header info
         lines.append(f"API: {self.base_info['title']} {self.base_info['version']}")
         if self.base_info.get("description"):
-            lines.append(f"Description: {self.base_info['description']}")
+            lines.append(f"Description: {self.base_info['description'].strip()}")
         lines.append("")
 
         # Tag info
@@ -296,7 +296,7 @@ class OpenAPIToMarkdownConverter:
         if tag != "Untagged":
             lines.append(f"TAG: {tag}")
             if tag_info and tag_info.get("description"):
-                lines.append(f"Description: {tag_info['description']}")
+                lines.append(f"Description: {tag_info['description'].strip()}")
             lines.append("")
 
         lines.append("ENDPOINTS:")
@@ -386,7 +386,7 @@ class OpenAPIToMarkdownConverter:
         # Description (only if different from summary)
         description = operation.get("description")
         if description and description != operation.get("summary"):
-            lines.append(f"  Description: {description}")
+            lines.append(f"  Description: {description.strip()}")
 
         # Parameters
         parameters = operation.get("parameters", [])
