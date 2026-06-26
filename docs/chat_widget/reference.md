@@ -441,7 +441,11 @@ widget.pageContext = {
 
     The page context is persisted in the session state on the server side and is accessible via `session_state.remote_context`. See [accessing remote context](../concepts/prompt_variables.md#accessing-remote-context) for more details.
 
-## Events
+!!! tip
+
+    Page context is cleared after each message. To refresh it automatically before every send, set `pageContext` from an [`ocs:message:before-send`](#ocsmessagebefore-send) handler.
+
+## :material-lightning-bolt: Events
 
 The widget dispatches custom events on the `<open-chat-studio-widget>` host element. All events are dispatched with `bubbles: true` and `composed: true`, so they escape the shadow DOM and are catchable anywhere on the host page using standard `addEventListener`.
 
@@ -453,7 +457,7 @@ The widget dispatches custom events on the `<open-chat-studio-widget>` host elem
 | `ocs:close` | Widget is hidden | — |
 | `ocs:message:before-send` | Before a message is sent to the API | `{ message, sessionId }` |
 | `ocs:message:sent` | Message dispatched to the API | `{ message, sessionId }` |
-| `ocs:message:received` | Bot reply delivered | `{ message: ChatMessage, sessionId }` |
+| `ocs:message:received` | Bot reply delivered | `{ message: { content: string, role: string }, sessionId }` |
 | `ocs:session:started` | New session created | `{ sessionId }` |
 | `ocs:session:ended` | Server ended the session | `{ sessionId }` |
 
@@ -464,19 +468,21 @@ The widget dispatches custom events on the `<open-chat-studio-widget>` host elem
 
 `ocs:message:before-send` fires **synchronously** before the API call. A handler can update the `pageContext` property and the new value is picked up in that same send. This is the recommended pattern for lazily refreshing page context just before each message.
 
+The lifecycle is: set `pageContext` in the handler → it is included in this send → it is cleared after the message completes. Because [page context](#page-context) is cleared after each message, setting it in this handler ensures fresh context accompanies every send without needing to re-set it manually.
+
 ### Usage Example
 
-```js
-const widget = document.querySelector("open-chat-studio-widget");
+```javascript
+const widget = document.querySelector('open-chat-studio-widget');
 
 // Lazy pageContext update just before send
-widget.addEventListener("ocs:message:before-send", () => {
-  widget.pageContext = getClientPageContext();
+widget.addEventListener('ocs:message:before-send', () => {
+  widget.pageContext = getClientPageContext(); // your own function
 });
 
 // Track bot replies
-widget.addEventListener("ocs:message:received", (e) => {
-  console.log("Bot said:", e.detail.message.content);
+widget.addEventListener('ocs:message:received', (e) => {
+  console.log('Bot said:', e.detail.message.content);
 });
 ```
 
