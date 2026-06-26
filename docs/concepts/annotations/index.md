@@ -1,6 +1,6 @@
 # Annotations
 
-**Annotations** is a human review system for labeling and evaluating experiment sessions and messages. It enables teams to systematically collect structured feedback from reviewers — useful for data quality assessment, content moderation, chatbot evaluation, and training dataset creation.
+**Annotations** is a human review system for labeling and evaluating chatbot sessions and messages. It lets teams collect structured feedback from reviewers — useful for data quality checks, content moderation, chatbot evaluation, and training dataset creation.
 
 ## Overview
 

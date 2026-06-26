@@ -7,11 +7,9 @@ hide:
 
 # Conceptual Guide
 
-This guide provides explanations of the key concepts behind the Open Chat Studio platform and AI applications more
-broadly.
+This guide explains the key concepts behind Open Chat Studio and AI-powered chatbots. Use it to understand what each feature is and why it exists.
 
-The conceptual guide does not cover step-by-step instructions or specific examples — those are found in
-the [How-to guides](../how-to/index.md).
+For step-by-step instructions and worked examples, see the [How-to guides](../how-to/index.md).
 
 ## Terms
 [Assistant](assistants.md)

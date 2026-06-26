@@ -1,6 +1,6 @@
 # Experiments (Deprecated feature)
 
-An 'Experiment' was the name used in Open Chat Studio to refer to a 'chatbot'. This is now a legacy term as the UI transitions fully to the term ['Chatbots'](../chatbots/index.md). This change is part of our ongoing effort to improve the user experience and make it easier for you to create and manage your chatbots.
+An Experiment was the original name for a chatbot in Open Chat Studio. The UI now uses the term [Chatbots](../chatbots/index.md) throughout. You may still see "Experiment" in older parts of the interface, API responses, or documentation.
 
 ## Historical Notes
 

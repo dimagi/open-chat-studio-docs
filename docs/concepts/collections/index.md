@@ -1,8 +1,6 @@
 # Collections
 
-!!! info "Collections are only supported with pipeline bots"
-
-A collection in OCS refers to a collection of files. There are two types of collections:
+A collection is a group of files you can attach to a chatbot to give it access to content. There are two types of collections:
 
 - [Media collection](./media.md)
 - [Indexed Collection (for RAG applications)](./indexed.md)
