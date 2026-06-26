@@ -12,6 +12,9 @@ This guide explains the key concepts behind Open Chat Studio and AI-powered chat
 For step-by-step instructions on completing specific tasks, see the [How-to guides](../how-to/index.md). If you are new to OCS, start with the [Tutorials](../tutorials/index.md).
 
 ## Terms
+[Annotations](annotations/index.md)
+: A human review system that lets teams label and score chatbot sessions and messages against a defined schema — useful for quality assurance, content moderation, and building evaluation datasets.
+
 [Assistant](assistants.md)
 : A legacy chatbot type powered by the OpenAI Assistants API. OpenAI has deprecated this API — see the [migration guide](../how-to/assistants_migration.md) if you currently use Assistants.
 
@@ -23,6 +26,9 @@ For step-by-step instructions on completing specific tasks, see the [How-to guid
 
 [Chatbot](chatbots/index.md)
 : In OCS, this is the top-level configuration for your conversational experience. It defines the chatbot's behaviour, connects it to one or more channels, and is published to participants.
+
+[Collections](collections/index.md)
+: A group of files you attach to a chatbot to give it access to content — either as a media collection for file delivery, or an indexed collection for AI-powered document search (RAG).
 
 [Consent Forms](consent.md)
 : An agreement screen shown to participants before a conversation begins, letting them read how their data is used and confirm they agree before interacting with your chatbot.
@@ -62,6 +68,12 @@ For step-by-step instructions on completing specific tasks, see the [How-to guid
 
 [Source Material](source_material.md)
 : A knowledge base you attach to your chatbot — such as product documentation or FAQs — that it can reference when generating responses.
+
+[Tags](tags.md)
+: Labels applied to sessions or messages to categorize and organize interactions — for example, flagging conversations that need follow-up or segmenting sessions based on content.
+
+[Team](team/index.md)
+: The organisational unit in OCS. Each team has its own chatbots, data, and settings.
 
 [Tools](tools/index.md)
 : Built-in capabilities you enable per chatbot so it can do more than generate text — for example, schedule reminders, perform calculations, or remember information about a participant across sessions.
