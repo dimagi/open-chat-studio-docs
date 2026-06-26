@@ -21,10 +21,6 @@ Common examples include:
 
 To search documents by meaning, OCS uses an **embedding model** to convert text into a mathematical form that captures meaning, not just keywords. See [RAG Local Index Optimization](../../tech-hub/local-index-optimization.md) for a full explanation.
 
-!!! warning "Indexed collections will replace OpenAI Assistants' file search functionality in the future"
-
-    If you've used the OpenAI Assistants' [file search][file-search] capability in OCS, you've already interacted with an index behind the scenes. Consult the [migration guide][migration-guide] if you have assistants you want to replace with indexed collections.
-
 ## Which should I use?
 
 In OCS, there are two types of indexes:
@@ -62,7 +58,6 @@ Supported files are determined by the selected provider:
 - OpenAI - See the [OpenAI docs](https://platform.openai.com/docs/assistants/tools/file-search/supported-files#supported-files)
 
 ## Local Index
-!!! info "Local indexes are actively developed. We are working to support additional file types and embedding models so you can better customize your index."
 
 Local indexes are hosted and managed by OCS. When you create a local index, you choose which embedding model to use. Different models suit different types of content, so choosing the right one can improve retrieval accuracy. See [RAG Local Index Optimization](../../tech-hub/local-index-optimization.md#choosing-an-embedding-model-local-indexes) for guidance.
 
