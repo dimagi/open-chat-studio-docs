@@ -1,6 +1,7 @@
 ---
 title: Indexed Collection (for RAG applications)
 ---
+# Indexed Collections
 
 An indexed collection lets your chatbot search through your documents to find relevant information before responding. Instead of relying on the AI's built-in knowledge, the chatbot retrieves answers from files you upload — such as PDFs, reports, or wiki pages.
 
@@ -16,7 +17,7 @@ Common examples include:
 
 ## How it works
 
-To search documents by meaning, OCS uses an **embedding model** — this technique is called **Retrieval-Augmented Generation (RAG)**. See [RAG Local Index Optimization](../../tech-hub/local-index-optimization.md) for a full explanation.
+To search documents by meaning, OCS uses an **embedding model** — this technique is called **Retrieval-Augmented Generation (RAG)**. See [Local Index Optimization](../../tech-hub/local-index-optimization.md) for a full explanation.
 
 ## Which should I use?
 
@@ -34,7 +35,7 @@ In OCS, there are two types of indexes:
 | **Collections per LLM node** | Max 2 (OpenAI limit) | Unlimited |
 | **Best for** | Getting started quickly | More control, or more than 2 collections |
 
-If you are new to indexed collections, start with a **Remote Index**. Switch to a Local Index if you need more than 2 collections or want to choose a specific embedding model for your content type.
+If you are new to indexed collections, start with a **Remote Index**. Switch to a Local Index if you need more than 2 collections or want to [choose a specific embedding model](../../tech-hub/local-index-optimization.md#choosing-an-embedding-model) for your content type.
 
 ## Remote Index
 Remote indexes are hosted and managed by your LLM provider. Files are uploaded to the provider, which handles all indexing. The embedding model is chosen by the provider.
@@ -57,7 +58,7 @@ Supported files are determined by the selected provider:
 
 ## Local Index
 
-Local indexes are hosted and managed by OCS. When you create a local index, you choose which embedding model to use. Different models suit different types of content, so choosing the right one can improve retrieval accuracy. See [RAG Local Index Optimization](../../tech-hub/local-index-optimization.md#choosing-an-embedding-model) for guidance.
+Local indexes are hosted and managed by OCS. When you create a local index, you choose which embedding model to use. Different models suit different types of content, so choosing the right one can improve retrieval accuracy. See [Local Index Optimization](../../tech-hub/local-index-optimization.md#choosing-an-embedding-model) for guidance.
 
 ### Supported providers
 - OpenAI

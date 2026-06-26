@@ -21,7 +21,7 @@ Collection content is a **live shared resource**. When you update the files in a
 This means:
 
 - Adding or removing files from a [media collection](./media.md) takes effect for users immediately.
-- Document-source syncs to a [RAG index collection](./indexed.md) (for example, nightly Confluence or GitHub syncs) are applied to the published chatbot as each sync completes.
+- Document-source syncs to a [index collection](./indexed.md) (for example, nightly Confluence or GitHub syncs) are applied to the published chatbot as each sync completes.
 
 The *structure* of a published version — which collections are linked to which pipeline nodes — is still frozen at publish time. To change which collections a chatbot uses, you must publish a new version.
 
