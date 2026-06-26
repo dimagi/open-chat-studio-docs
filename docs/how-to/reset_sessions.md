@@ -38,7 +38,7 @@ If your chatbot has been configured with a seed message, this is pre-filled and 
 
 ### Reset manually from the OCS Admin UI
 
-When viewing the session detail, the "End Session" button ends the current session. 
+When viewing the session detail, the "End Session" button ends the current session.
 - For more on ending sessions see [Session Status](../concepts/session_status.md#pending_review)
 
 ## Reset sessions automatically
@@ -49,7 +49,7 @@ For details on how to end sessions from a chatbot see [Session Status](../concep
 
 Use this when your integration controls when conversations should restart.
 
- - When using the [Trigger Bot Message](https://openchatstudio.com/api/docs/#tag/Channels/operation/trigger_bot_message) API, you can set `"start_new_session": true`, which will end the current session and start a new one before messaging the user.
+ - When using the [Trigger Bot Message](https://openchatstudio.com/api/v1/docs/#tag/Channels/operation/trigger_bot_message) API, you can set `"start_new_session": true`, which will end the current session and start a new one before messaging the user.
 
 ## Related concepts
 

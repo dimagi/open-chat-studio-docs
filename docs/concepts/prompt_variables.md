@@ -1,13 +1,13 @@
 Prompt variables are a great way to make your prompt dynamic or tailored to the participant by injecting data into specified placeholders. These variables are predefined and look like this:
 
-```
+```text
 {variable}
 ```
 
 The following variables are currently supported:
 
 - `{source_material}` - The [source material](../how-to/add_a_knowledge_base.md) linked to your bot.
-- `{participant_data}` - Information specific to this participant, bot and channel. See [here][participant_data] for more information. 
+- `{participant_data}` - Information specific to this participant, bot and channel. See [here][participant_data] for more information.
 - `{current_datetime}` - This refers to the date and time at which the response is generated.
 - `{media}` - (pipelines only) This refers to the linked [media collection](./collections/media.md).
 - `{temp_state}` - (pipelines only) Access to the pipeline temporary state. See [Temporary State](../tech-hub/python_node.md#temporary-state).
@@ -48,7 +48,7 @@ Subsets of the data can be accessed using dot notation. For example, if you have
 
 You can access specific parts of the data using the following prompt variables:
 
-```
+```text
 {participant_data.name}
 {participant_data.address.street}
 {participant_data.tasks[0].name}  # lists are zero-indexed
@@ -58,7 +58,7 @@ You can access specific parts of the data using the following prompt variables:
 
 When using API integrations that pass context with messages, you can access this contextual information in your prompts using the session state variable:
 
-```
+```text
 {session_state.remote_context}
 ```
 
@@ -75,7 +75,7 @@ For example, if an API client sends a message with context like this:
 
 You can access specific values in your prompts:
 
-```
+```text
 Current page: {session_state.remote_context.page_url}
 Product ID: {session_state.remote_context.product_id}
 User segment: {session_state.remote_context.user_segment}

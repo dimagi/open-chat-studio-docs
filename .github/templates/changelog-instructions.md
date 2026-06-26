@@ -10,7 +10,8 @@ You need to update the changelog and documentation in this repository based on a
 - **Base Branch:** ${BASE_BRANCH}
 
 ## PR Description
-```
+
+```text
 ${PR_BODY}
 ```
 

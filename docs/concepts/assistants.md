@@ -17,7 +17,6 @@ Otherwise, a warning will be displayed explaining what is out of sync. For examp
 
     Although an assistant cannot be modified in OCS once a chatbot version that references it is released, it can still be modified in OpenAI. A new assistant in OpenAI is created at release time, and *we recommend not modifying that assistant to preserve expected behavior in the released chatbot*.
 
-
 ## Archiving
 
 * **Goal: Archiving an assistant in OCS deletes the associated assistant in OpenAI.** This is an easy way to stop incurring costs and ensure that the assistant is closed for all chatbots and pipelines that reference it within a project.

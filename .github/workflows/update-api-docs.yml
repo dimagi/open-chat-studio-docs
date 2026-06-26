@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
@@ -53,6 +53,13 @@ jobs:
       - name: Generate API documentation
         run: uv run python src/ocs_docs/openapi_to_docs.py schemas -o docs/api/
 
+      - name: Apply lint rules
+        run: |
+          # Auto-fix lint issues (markdownlint, trailing whitespace, EOF) on the
+          # generated docs so committed output matches local pre-commit. prek hooks
+          # exit non-zero when they modify files; that's expected here, so don't fail.
+          uv run prek run --files $(find docs/api -name '*.md') || true
+
       - name: Check for changes
         id: check_changes
         run: |
@@ -64,11 +71,19 @@ jobs:
             echo "has_changes=true" >> $GITHUB_OUTPUT
           fi
 
+      - name: Generate app token
+        if: steps.check_changes.outputs.has_changes == 'true'
+        id: app-token
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ vars.OCS_AGENT_APP_ID }}
+          private-key: ${{ secrets.OCS_AGENT_PRIVATE_KEY }}
+
       - name: Create Pull Request
         if: steps.check_changes.outputs.has_changes == 'true'
         uses: peter-evans/create-pull-request@v8
         with:
-          token: ${{ secrets.OCS_DOCS_PAT }}
+          token: ${{ steps.app-token.outputs.token }}
           commit-message: "update API documentation from OpenAPI schema"
           title: "Update API Documentation"
           body: |

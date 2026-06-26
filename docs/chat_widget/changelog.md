@@ -9,8 +9,9 @@ This guide will help you upgrade from previous versions of the Open Chat Studio 
 ### 1. Update the script tags
 
 **Update your script tags to use the latest version:**
+
 ```bash
-<script 
+<script
   src="https://unpkg.com/open-chat-studio-widget{LATEST_VERSION_NUMBER}/dist/open-chat-studio-widget/open-chat-studio-widget.js"
   type="module"
   async
@@ -28,9 +29,21 @@ Check your current HTML implementation and compare it with the [latest propertie
     sunset date shown on each entry, and may stop working. Upgrade to a supported version
     to stay current — see the [Quick Upgrade Steps](#quick-upgrade-steps) above.
 
-### v0.9.0 (2026-06-26)
+### v0.10.0 (2026-06-26)
 
 * Add a public JavaScript event API. The widget now dispatches lifecycle events (e.g. `ocs:open`, `ocs:message:sent`, `ocs:message:received`, `ocs:session:started`) on the `<open-chat-studio-widget>` element, so you can react to them with `addEventListener`. See the [events reference](reference.md#events) for the full list.
+
+### v0.9.1 (2026-06-11)
+
+* Fix: include CSRF and common headers on file uploads.
+* Fix: don't persist the widget's open/closed state in kiosk mode.
+* Fix: stop polling and disable the message composer once a session ends.
+* Dependency updates.
+
+### v0.9.0 (2026-06-11)
+
+* Support for session tokens — used to authenticate chat sessions, including file uploads, with automatic recovery if a token is rejected.
+* Surface API deprecation notices — logs a warning when the chat API is approaching its sunset date and an error once it has passed.
 
 ### v0.8.0 (2026-06-05)
 
@@ -145,14 +158,14 @@ Check your current HTML implementation and compare it with the [latest propertie
 :octicons-alert-16: **Deprecated** — sunset 2026-10-01
 
 * Merge width & height vars:
-    * `--button-icon-width`, `--button-icon-height` -> `--button-icon-size` 
+    * `--button-icon-width`, `--button-icon-height` -> `--button-icon-size`
 * Fix launch button styling.
     * Correctly apply font size and borders.
 * Add variables to control header font and icon size:
-    * `--header-font-size` 
-    * `--header-button-icon-size` 
+    * `--header-font-size`
+    * `--header-button-icon-size`
 * Support for placing text in the window header using the `header-text`.
-    * Use `--header-text-font-size` and `--header-text-color` to style it independently of the other header elements. 
+    * Use `--header-text-font-size` and `--header-text-color` to style it independently of the other header elements.
 
 ### v0.4.3 { .deprecated }
 
@@ -160,8 +173,8 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 * Fix markdown styling
 * Allow customizing the chat window width and height using the following CSS vars:
-    * `--chat-window-width` 
-    * `--chat-window-height` 
+    * `--chat-window-width`
+    * `--chat-window-height`
     * `--chat-window-fullscreen-width`
     * See the [styling guide](./styling.md#chat-window) for details.
 * Change size units from `rem` to `em`.
@@ -183,7 +196,7 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 **Added**
 
-* `allow-full-screen`: Allow the user to make the chat window full screen. 
+* `allow-full-screen`: Allow the user to make the chat window full screen.
 
 **Removed**
 
@@ -209,7 +222,7 @@ Check your current HTML implementation and compare it with the [latest propertie
     * Provide clickable starter questions to help users get started
     * Both support rich markdown formatting
 * [Session persistence](reference.md#persistent-sessions) across page loads
-    * Store session data in browser local storage to allow resuming sessions across page loads. 
+    * Store session data in browser local storage to allow resuming sessions across page loads.
 
 #### Upgrading from 0.3.x
 
@@ -220,10 +233,10 @@ The minimal steps required to upgrade are to replace the `bot-url` attribute wit
 -     bot-url=".../experiments/e/{CHATBOT_ID}/embed/start/"
 +     chatbot-id="{CHATBOT_ID}"
   </open-chat-studio-widget>
+
 ```
 
 The `chatbot_id` can be extracted from the `bot-url` by copying the UUID from the URL as shown above.
-
 
 ## Upgrade Checklist
 ✅ Check These Items
@@ -231,6 +244,7 @@ The `chatbot_id` can be extracted from the `bot-url` by copying the UUID from th
 **Property Names:** Ensure all property names use kebab-case (e.g., chatbot-id, not chatbotId)
 **JSON Properties:** Verify that welcome-messages and starter-questions are properly formatted
 **JSON strings:**
+
 ```bash
 <!-- ✅ Correct -->
 welcome-messages='["Message 1", "Message 2"]'
@@ -242,6 +256,7 @@ welcome-messages="Message 1, Message 2"
 **API Base URL:** If you were using a custom API URL, ensure the api-base-url property is set correctly
 
 **Boolean Properties:** Use string values for boolean properties:
+
 ```bash
 <!-- ✅ Correct -->
 visible="true"

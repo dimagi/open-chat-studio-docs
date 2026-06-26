@@ -1,7 +1,7 @@
 [project]
 name = "ocs-docs"
 version = "0.1.0"
-description = "Add your description here"
+description = "Open Chat Studio user documentation"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
@@ -11,6 +11,15 @@ dependencies = [
     "mkdocstrings[python]>=1.0.4",
     "requests>=2.34.2",
 ]
+
+[dependency-groups]
+dev = [
+    "prek>=0.4.5",
+    "pytest>=9.1.1",
+]
+
+[tool.uv]
+default-groups = ["dev"]
 
 [build-system]
 requires = ["uv_build>=0.11.18,<0.12.0"]

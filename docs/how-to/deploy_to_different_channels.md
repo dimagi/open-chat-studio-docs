@@ -9,7 +9,7 @@ To link a channel to your bot:
 2. Click on the :material-plus: (plus) icon and select the [provider][2] from the dropdown.
 3. Complete the form and click **Create**. Follow the guide below to get the required information for each channel.
 
-You may need to [Configure a messaging provider][6] before you will be able to select it from the dropdown. 
+You may need to [Configure a messaging provider][6] before you will be able to select it from the dropdown.
 
 ## Web and API
 The web channel uses the web interface and is enabled by default for all bots. Likewise, all bots can be accessed via the [APIs][api].
@@ -17,7 +17,6 @@ The web channel uses the web interface and is enabled by default for all bots. L
 ## Telegram
 - Follow [this guide][1] to create a Telegram bot.
 - Copy the bot token and paste it into the form on OCS. It will look something like this: `4839574812:AAFD39kkdpWt3ywyRZergyOLMaJhac60qc`.
-
 
 !!! info "Note"
     Depending on your usecase, you probably want to disable group joins for your bot on Telegram. Since your telegram bot is public, anyone can add it to a group, which could end up costing you a lot. To achieve this, use the [setjoingroups][5] setting in BotFather.
@@ -52,7 +51,6 @@ Turn.io does not support automatic webhook configuration. After adding your What
 Meta Cloud API connects your chatbot directly to the WhatsApp Business Platform without a third-party intermediary. The setup requires a Meta for Developers account and a WhatsApp Business Account.
 
 See the [Meta Cloud API setup guide][meta] for full step-by-step instructions.
-
 
 ## Facebook Messenger
 !!! info "Note"
@@ -141,7 +139,7 @@ Replying to a bot email continues the same conversation session. Sending a fresh
 
 ### Customizing the outbound subject
 
-When the bot starts a new email thread (for example, via the [Trigger Bot Message](https://www.openchatstudio.com/api/docs/#tag/Channels/operation/trigger_bot_message) API), the subject line defaults to "New message". To override this, set an `email_subject` value in [session state](../tech-hub/python_node.md#session-state) before the email is sent — for example from a pipeline's Python node, or via the `session_data` parameter when triggering the bot. Inbound reply threads always reuse the subject of the original email and are unaffected by this value.
+When the bot starts a new email thread (for example, via the [Trigger Bot Message](https://www.openchatstudio.com/api/v1/docs/#tag/Channels/operation/trigger_bot_message) API), the subject line defaults to "New message". To override this, set an `email_subject` value in [session state](../tech-hub/python_node.md#session-state) before the email is sent — for example from a pipeline's Python node, or via the `session_data` parameter when triggering the bot. Inbound reply threads always reuse the subject of the original email and are unaffected by this value.
 
 ### File attachments
 
@@ -160,7 +158,6 @@ The following attachments are rejected automatically:
 | Content-type mismatch (declared MIME type does not match actual file bytes) | Bracketed note in the message text |
 
 Rejection notes are inserted inline into the user's message so the bot can read them and explain the problem to the user in its reply.
-
 
 #### Outbound attachments (bot to user)
 
@@ -183,7 +180,6 @@ def main(input, **kwargs) -> str:
 See the [Python Node documentation](../tech-hub/python_node.md#python_node.add_file_attachment) for the full `add_file_attachment()` API reference.
 
 If a pipeline-produced file cannot be sent as an attachment (for example, it exceeds the size limit or is a denylisted type), the email body will contain an inline download link for that file instead.
-
 
 [1]: https://core.telegram.org/bots#how-do-i-create-a-bot
 [2]: ../concepts/team/messaging_providers.md

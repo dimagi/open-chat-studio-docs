@@ -20,7 +20,6 @@ This kind of bot is the most commonly used and simple to configure. It is backed
 
 Bots configured in this way have all the basic features (memory, source material etc.) and can also use some of the advanced features like Scheduling and Reminders.
 
-
 #### Assistant
 Assistant bots make use of OpenAI [Assistants][4]. The main advantage of using Assistants is that your bot gets access to the OpenAI tools:
 
@@ -34,7 +33,6 @@ For more information see the [OpenAI docs][5].
 
     The functionality described here is planned to be replaced by [Indexed Collections][indexed-collections] in the future. It’s recommended to start using Indexed Collections instead to ensure forward compatibility.
 
-
 This allows the bot to search and reference information provided in uploaded files. Unless your bot needs either of these capabilities, you should use a Base Language Model type bot.
 
 For more information see the [OpenAI docs][6].
@@ -43,7 +41,6 @@ For more information see the [OpenAI docs][6].
 [Pipelines](../pipelines/index.md) allow you to create more complex bots by defining a ‘graph’ (in the computer science sense) of nodes. You can think of this graph as a workflow that flows from input to output. Each message to the bot is processed by the graph to produce a final output. A single response from the chatbot will be one successful path through the graph from the input node to the output node.
 
 This can be useful if you want to build a complex bot that performs different tasks depending on the user’s request. Generally, trying to make a single bot prompt do multiple functions doesn’t work well so it is better to create multiple prompts for each task and then combine them using a Pipeline. This is similar to the Multi-bot setup but allows more flexibility and complexity.
-
 
 [1]: https://platform.openai.com/docs/guides/text-generation
 [2]: https://docs.anthropic.com/en/api/messages

@@ -42,7 +42,7 @@ reply = completion.choices[0].message
     Content: application/json
     Schema: CreateChatCompletionRequest
   Responses:
-    200: 
+    200:
       Content: application/json
       Schema: CreateChatCompletionResponse
   Security:
@@ -89,7 +89,7 @@ reply = completion.choices[0].message
     Content: application/json
     Schema: CreateChatCompletionRequest
   Responses:
-    200: 
+    200:
       Content: application/json
       Schema: CreateChatCompletionResponse
   Security:

@@ -87,7 +87,6 @@ curl -X POST \
   -d '{"messaging_product": "whatsapp", "pin": "<YOUR_2FA_PIN>"}'
 ```
 
-
 !!! tip "Using Postman"
     If you prefer a GUI over cURL, you can make this call using [Postman](https://www.postman.com/). Import the request above and set your credentials as environment variables.
 
@@ -223,8 +222,8 @@ To update the language code:
 
 Open Chat Studio uses a **single global webhook endpoint** for all Meta Cloud API channels:
 
-```
-https://openchatstudio.com/api/channels/meta/
+```uri
+https://openchatstudio.com/api/channels/meta/incoming_message
 ```
 
 !!! info "Global endpoint"
@@ -239,7 +238,7 @@ To configure the webhook:
 
     | Field | Value |
     |---|---|
-    | Callback URL | `https://openchatstudio.com/api/channels/meta/` |
+    | Callback URL | `https://openchatstudio.com/api/channels/meta/incoming_message` |
     | Verify Token | The `Webhook Verify Token` you created in Step 3 |
 
 5. Click **Verify and Save**. Meta will send a verification request to OCS to confirm the token matches.
@@ -252,7 +251,7 @@ To configure the webhook:
     If the verification step fails, double-check that the `Webhook Verify Token` in the Meta portal exactly matches the value saved in your OCS provider configuration.
 
 !!! warning "Self-hosted instances"
-    If you are running a self-hosted instance of Open Chat Studio, replace `https://openchatstudio.com` with your own domain. The path `/api/channels/meta/` remains the same.
+    If you are running a self-hosted instance of Open Chat Studio, replace `https://openchatstudio.com` with your own domain. The path `/api/channels/meta/incoming_message` remains the same.
 
 ---
 

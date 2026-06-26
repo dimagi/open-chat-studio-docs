@@ -11,7 +11,6 @@ render_macros: true
     <span style="background-color: {{ value }}; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ccc; border-radius: 4px;"></span>
 {%- endmacro %}
 
-
 Customization of the widget appearance can be done using CSS variables as follows:
 
 ```css
@@ -53,7 +52,6 @@ Use the following CSS variables to style the button appearance.
 
     All font sizes and some margins / padding are relative to the widget element's font size which can be set using the `--chat-window-font-size` and `--button-font-size` variables.
 
- 
 | Name                              | Description                                                       |
 |-----------------------------------|-------------------------------------------------------------------|
 | `--chat-window-width`             | Chat window height in pixels or percent (25%)                     |
@@ -174,7 +172,7 @@ Use the following CSS variables to style the button appearance.
 
 ## Markdown code
 
-By default, the Markdown code colours are relative to the respective message text and background colours, but they can be overridden. 
+By default, the Markdown code colours are relative to the respective message text and background colours, but they can be overridden.
 
 | Name                            | Description                                                                                                             |
 |---------------------------------|-------------------------------------------------------------------------------------------------------------------------|
@@ -191,7 +189,6 @@ By default, the Markdown code colours are relative to the respective message tex
 |------------------------|--------------------------------------------------|
 | `--error-text-color`   | Error text color {{ color_swatch('#ef4444') }}   |
 | `--success-text-color` | Success text color {{ color_swatch('#10b981') }} |
-
 
 ## Z-Index
 

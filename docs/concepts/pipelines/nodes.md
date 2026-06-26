@@ -2,7 +2,7 @@
 
 A node is a discrete processing step in a [pipeline](index.md) that accepts a user’s input and produces an output to downstream nodes. Each node in the pipeline performs a specific task (like calling an LLM, running Python code, or routing based on logic) and processes data that flows through the pipeline.
 
-``` mermaid
+```mermaid
 graph LR
   A@{ shape: stadium, label: "Input (ie data or prompt)" } --> B(Node);
   B --> C@{ shape: stadium, label: "Output (ie LLM response)" };
@@ -13,11 +13,12 @@ graph LR
     See [chatbot workflow cookbook](../../how-to/workflow_cookbook.md) for examples of pipelines using different combinations of these node types.
 
 ## LLM Node
-A conversational node using AI models. This node can be [configured](../llm.md#model-configuration-parameters) including:
+A conversational node using AI models. You can configure this node.
 
-- a [prompt](../llm.md#prompt) to give the LLM instructions on how to respond,
-- selecting a [history mode](history.md) for the LLM,
-- and to use [tools](../tools/index.md) which enable it to perform additional actions.
+- A [prompt](../llm.md#prompt) for instructions on how to respond
+- A [history mode](history.md) for conversation memory
+- [Temperature and effort parameters](../../how-to/adjust_llm_node_model_parameters.md) to shape output style and depth
+- [Tools](../tools/index.md) for additional actions
 
 ## Routing Nodes
 
@@ -58,5 +59,3 @@ Extract structured data from the input. This node acts as a passthrough, meaning
 
 ## Update Participant Data Node
 Extract structured data and save it as participant data. This node is commonly used with [events](../events.md).
-
-

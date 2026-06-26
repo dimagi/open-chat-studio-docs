@@ -1,6 +1,5 @@
 # Frequently Asked Questions
 
-
 ## How can I control feature rollouts for my team?
 Team administrators can use flags to show or hide the features for their team.
 
@@ -18,5 +17,3 @@ To access feature flag management:
   ![Feature Flags](../assets/images/manage_flags_page.png)
   <figcaption>Feature Flag Management Page</figcaption>
 </figure>
-
-

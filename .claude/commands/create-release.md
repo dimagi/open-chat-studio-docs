@@ -26,7 +26,7 @@ Create a new GitHub release by comparing the current changelog with the previous
    - Use markdown formatting for the release notes
    - Use the following template:
 
-     ```markdown
+   ```markdown
      ### New Features
      - Itemized list of **NEW** entries
      ### Improvements
@@ -35,10 +35,11 @@ Create a new GitHub release by comparing the current changelog with the previous
      - Itemized list of **BUG** entries
      ### Migrations
      - Itemized list of **MIGRATION** entries
-     
+
      Remove before publishing:
      - diff link: https://github.com/dimagi/open-chat-studio-docs/compare/<previous-tag>...HEAD
-     ```
+   ```
+
    - Only include sections that have entries. If a section has no entries, omit it entirely.
    - Do not add any other sections or headers to the release notes.
    - Focus on user-facing changes

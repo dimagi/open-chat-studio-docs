@@ -21,6 +21,7 @@ Since this PR modifies main app files, update the **main changelog** at `${MAIN_
 7. If a section for that date already exists, add your entry to it; otherwise create a new date section at the top
 
 **Main Changelog Format:**
+
 ```markdown
 ## Oct 22, 2025
 * **NEW** Added support for parallel pipeline execution.

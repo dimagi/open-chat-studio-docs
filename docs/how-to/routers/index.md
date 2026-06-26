@@ -9,7 +9,6 @@ For router-specific configuration, see:
 1. [LLM Router Configuration](llm_router.md)
 2. [Static Router Configuration](static_router.md)
 
-
 ## The Default Output
 Every router needs a "safety net" so the conversation never reaches a dead end. This is called the Default Output.
 
@@ -27,11 +26,12 @@ To understand how users move through your chatbot, you can enable Output Message
 
 ### Tag naming convention
 To keep system tags organized, OCS follows this naming convention:
-```
+
+```text
 <node_name>:<route_name>
 ```
+
 Example: If you have a Router node named `support_triage` and it selects the output keyword `BILLING`, the resulting tag is:
 `support_triage:BILLING`
 
 Ensure your `node_name` is descriptive (for example, `intent_classifier`) so tags are easy to interpret.
-
