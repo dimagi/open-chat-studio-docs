@@ -19,7 +19,7 @@ For step-by-step instructions on completing specific tasks, see the [How-to guid
 : A legacy chatbot type powered by the OpenAI Assistants API. OpenAI has deprecated this API — see the [migration guide](../how-to/assistants_migration.md) if you currently use Assistants.
 
 [Authentication Provider](team/authentication_providers.md)
-: Credentials — such as API keys, or passwords — used when your chatbot connects to external services via Custom Actions or Python nodes.
+: Credentials — such as API keys, bearer tokens, or username/password pairs — used when your chatbot connects to external services via Custom Actions or Python nodes.
 
 [Channel](channels.md)
 : The platform through which a participant interacts with your chatbot — for example, WhatsApp, Telegram, the web, or Slack.
