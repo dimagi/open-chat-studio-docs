@@ -103,26 +103,31 @@ nav:
   - How-to Guides:
     - how-to/index.md
     - FAQ: how-to/faq.md
-    - Choose an LLM Model: how-to/choose_llm_model.md
-    - Adjust LLM Node Model Parameters: how-to/adjust_llm_node_model_parameters.md
-    - how-to/workflow_cookbook.md
-    - how-to/add_a_knowledge_base.md
-    - how-to/deploy_to_different_channels.md
-    - Surveys (Deprecated): how-to/setting_up_a_survey.md
-    - Schedule Reminders: how-to/reminders.md
-    - Reset Sessions: how-to/reset_sessions.md
-    - how-to/whatsapp_meta_cloud_api.md
-    - Send an Email: how-to/send_email_node.md
-    - how-to/assistants_migration.md
-    - Filter Tables with Natural Language: how-to/nl_filter.md
-    - Find Objects: how-to/global_search.md
-    - Router Nodes:
-      - how-to/routers/index.md
-      - Configure LLM Router: how-to/routers/llm_router.md
-      - Configure Static Router: how-to/routers/static_router.md
+    - Building Chatbots:
+      - Choose an LLM Model: how-to/choose_llm_model.md
+      - Adjust LLM Node Model Parameters: how-to/adjust_llm_node_model_parameters.md
+      - how-to/workflow_cookbook.md
+      - how-to/add_a_knowledge_base.md
+      - Router Nodes:
+        - how-to/routers/index.md
+        - Configure LLM Router: how-to/routers/llm_router.md
+        - Configure Static Router: how-to/routers/static_router.md
+      - Send an Email: how-to/send_email_node.md
+      - Schedule Reminders: how-to/reminders.md
+    - Channels & Deployment:
+      - how-to/deploy_to_different_channels.md
+      - how-to/whatsapp_meta_cloud_api.md
+    - UI Helpers:
+      - Filter Tables with Natural Language: how-to/nl_filter.md
+      - Find Objects: how-to/global_search.md
+    - Sessions & Data:
+      - Reset Sessions: how-to/reset_sessions.md
     - Evaluations:
       - Create a Dataset: how-to/evaluations/create-a-dataset.md
       - Real-Time LLM Judge: how-to/evaluations/realtime_llm_judge.md
+    - Migration & Deprecated:
+      - how-to/assistants_migration.md
+      - Surveys (Deprecated): how-to/setting_up_a_survey.md
   - Concepts:
     - concepts/index.md
     - Chatbots:
@@ -142,10 +147,6 @@ nav:
       - concepts/tracing.md
       - concepts/tools/index.md
       - Experiments: concepts/experiment/index.md
-    - Collections:
-      - concepts/collections/index.md
-      - concepts/collections/media.md
-      - Indexed Collection for RAG: concepts/collections/indexed.md
     - Pipelines:
       - concepts/pipelines/index.md
       - Node Types: concepts/pipelines/nodes.md
@@ -160,8 +161,10 @@ nav:
       - concepts/team/messaging_providers.md
       - Custom Actions: concepts/team/custom_actions.md
       - User Groups: concepts/team/groups.md
-    - Assistants:
-      - concepts/assistants.md
+    - Collections:
+      - concepts/collections/index.md
+      - concepts/collections/media.md
+      - Indexed Collection for RAG: concepts/collections/indexed.md
     - Evaluations:
       - concepts/evaluations/index.md
       - concepts/evaluations/dataset.md
@@ -171,6 +174,8 @@ nav:
       - concepts/annotations/index.md
       - concepts/annotations/queues.md
       - Annotating: concepts/annotations/annotating.md
+    - Assistants:
+      - concepts/assistants.md
   - Tech Hub:
     - tech-hub/index.md
     - Tools Reference: tech-hub/tools.md
