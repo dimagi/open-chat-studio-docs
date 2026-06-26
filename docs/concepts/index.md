@@ -9,6 +9,8 @@ hide:
 
 This guide explains the key concepts behind Open Chat Studio and AI-powered chatbots. Use it to understand what each feature is and why it exists.
 
+For step-by-step instructions on completing specific tasks, see the [How-to guides](../how-to/index.md). If you are new to OCS, start with the [Tutorials](../tutorials/index.md).
+
 ## Terms
 [Assistant](assistants.md)
 : A legacy chatbot type powered by the OpenAI Assistants API. OpenAI has deprecated this API — see the [migration guide](../how-to/assistants_migration.md) if you currently use Assistants.

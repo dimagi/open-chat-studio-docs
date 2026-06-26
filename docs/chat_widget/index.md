@@ -21,7 +21,7 @@ The Open Chat Studio Widget is a customizable chat component that you embed dire
 
 ## Getting Started
 
-Before embedding, you must create a bot in Open Chat Studio.
+Before embedding, you must [create a chatbot in Open Chat Studio](../tutorials/first_chatbot.md).
 
 1. Add the widget script to your site's `<head>` section:
 

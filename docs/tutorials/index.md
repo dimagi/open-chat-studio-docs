@@ -10,7 +10,7 @@ Get started creating a simple LLM chatbot, test it and deploy it without writing
 ## Related content
 
  - For conceptual explanations about OCS features and terminology, see the [Conceptual guide](../concepts/index.md).
- - For more complex step by stesp guides to help you complete a specific task, see the [How-to Guides](../how-to/index.md)
+ - For more complex step-by-step guides to help you complete a specific task, see the [How-to Guides](../how-to/index.md)
 
 <div class="grid cards" markdown>
 
