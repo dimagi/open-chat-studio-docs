@@ -190,11 +190,11 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 #### Attribute changes
 
-**Added**
+##### Added
 
 * `allow-full-screen`: Allow the user to make the chat window full screen.
 
-**Removed**
+##### Removed
 
 * `expanded`
 
