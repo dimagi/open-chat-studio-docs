@@ -4,7 +4,7 @@ Tags are labels applied to chats and messages to categorize and organize interac
 
 Tags can be created using the “Manage Tags” section.
 
-![](../assets/images/tags_manage.png)
+![Manage Tags section showing options to create and edit tags](../assets/images/tags_manage.png)
 
 ## Types Of Tags
 
@@ -19,4 +19,4 @@ These tags are manually added to sessions.
 * Message tags  
 These tags are manually added to specific messages within a user session.
 
-![](../assets/images/tags_screenshot.png)
+![Tags applied to sessions and messages in Open Chat Studio](../assets/images/tags_screenshot.png)

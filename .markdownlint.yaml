@@ -42,17 +42,15 @@ MD024:
 MD025: false
 
 MD026: false
-MD029: false
-# TODO: Ordered list style: allow 1. 1. 1. (auto-numbering) as well as 1. 2. 3.
+MD029:
+  style: one_or_ordered
 MD030: false
-#MD031: false
+
 MD032: false
 MD034: false
-MD036: false
+
 MD041: false
 
-# TODO: enable this for alt text on images for accessibility, but disable for now because we have some images without alt text
-MD045: false
 MD046: false
 MD050: false
 MD053: false

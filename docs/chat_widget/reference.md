@@ -14,17 +14,17 @@ The widget button can be customized using the following properties:
 </open-chat-studio-widget>
 ```
 
-**Button Text**
+### Button Text
 
 - When button-text is provided, the button displays both icon and text
 - When button-text is empty or not provided, only an icon is shown
 
-**Button Shape**
+### Button Shape
 
 - **round** - Circular button
 - **square** - Rectangular button with rounded corners
 
-**Icon URL**
+### Icon URL
 
 If no icon-url is provided, the default Open Chat Studio avatar is used.
 
@@ -440,6 +440,45 @@ widget.pageContext = {
 !!! note
 
     The page context is persisted in the session state on the server side and is accessible via `session_state.remote_context`. See [accessing remote context](../concepts/prompt_variables.md#accessing-remote-context) for more details.
+
+## :material-lightning-bolt: Events
+
+The widget dispatches custom events on the `<open-chat-studio-widget>` host element. All events are dispatched with `bubbles: true` and `composed: true`, so they escape the shadow DOM and are catchable anywhere on the host page using standard `addEventListener`.
+
+### Event Reference
+
+| Event | Fired when | `event.detail` |
+|---|---|---|
+| `ocs:open` | Widget becomes visible | — |
+| `ocs:close` | Widget is hidden | — |
+| `ocs:message:before-send` | Before a message is sent to the API | `{ message, sessionId }` |
+| `ocs:message:sent` | Message dispatched to the API | `{ message, sessionId }` |
+| `ocs:message:received` | Bot reply delivered | `{ message: { content: string, role: string }, sessionId }` |
+| `ocs:session:started` | New session created | `{ sessionId }` |
+| `ocs:session:ended` | Server ended the session | `{ sessionId }` |
+
+!!! note "`ocs:message:received`"
+    This event fires only for non-`user` roles (bot, assistant, and system replies). It does not fire for the participant's own messages.
+
+### `ocs:message:before-send`
+
+`ocs:message:before-send` fires **synchronously** before the API call. A handler can update the `pageContext` property and the new value is picked up in that same send. This is the recommended pattern for lazily refreshing page context just before each message.
+
+### Usage Example
+
+```javascript
+const widget = document.querySelector('open-chat-studio-widget');
+
+// Lazy pageContext update just before send
+widget.addEventListener('ocs:message:before-send', () => {
+  widget.pageContext = getClientPageContext(); // your own function
+});
+
+// Track bot replies
+widget.addEventListener('ocs:message:received', (e) => {
+  console.log('Bot said:', e.detail.message.content);
+});
+```
 
 ## :material-clipboard-list: Properties Reference
 
