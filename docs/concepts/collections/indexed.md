@@ -57,7 +57,7 @@ Supported files are determined by the selected provider:
 
 ## Local Index
 
-Local indexes are hosted and managed by OCS. When you create a local index, you choose which embedding model to use. Different models suit different types of content, so choosing the right one can improve retrieval accuracy. See [RAG Local Index Optimization](../../tech-hub/local-index-optimization.md#choosing-an-embedding-model-local-indexes) for guidance.
+Local indexes are hosted and managed by OCS. When you create a local index, you choose which embedding model to use. Different models suit different types of content, so choosing the right one can improve retrieval accuracy. See [RAG Local Index Optimization](../../tech-hub/local-index-optimization.md#choosing-an-embedding-model) for guidance.
 
 ### Supported providers
 - OpenAI
@@ -76,9 +76,6 @@ You can see the supported embedding models for each provider when creating or ed
 When you upload a document to a local index, OCS breaks it into smaller parts called **chunks** and stores them in the index. The default chunking settings work well for most use cases.
 
 For advanced configuration — including chunk size, chunk overlap, and embedding model selection — see [RAG Local Index Optimization](../../tech-hub/local-index-optimization.md).
-
-[file-search]: ../experiment/index.md#file-search
-[migration-guide]: ../../how-to/assistants_migration.md
 
 ## Document Sources
 
