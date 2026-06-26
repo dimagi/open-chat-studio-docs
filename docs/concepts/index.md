@@ -34,7 +34,7 @@ For step-by-step instructions on completing specific tasks, see the [How-to guid
 : An agreement screen shown to participants before a conversation begins, letting them read how their data is used and confirm they agree before interacting with your chatbot.
 
 [Custom Actions](llm_custom_action.md)
-: Reusable connections to external services, configured at team level, that let your chatbot retrieve information or complete tasks in another system — such as looking up an order status or creating a support ticket.
+: Reusable connections to external services that let your chatbot retrieve information or complete tasks in another system — such as looking up an order status or creating a support ticket.
 
 [Evaluations](evaluations/index.md)
 : A built-in testing system that runs your chatbot against sample conversations and scores the responses against criteria you define, such as accuracy, tone, or whether the bot stayed on topic.
