@@ -16,10 +16,7 @@ Common examples include:
 
 ## How it works
 
-!!! note "Definition"
-    **Retrieval-Augmented Generation** (RAG) is a technique where a language model retrieves relevant information from a set of documents to ground its answers in real data. Instead of relying solely on its built-in knowledge, the model uses indexes—specialized databases that store document content as vectors (numerical representations of meaning). This makes it easy for the model to find and use the most relevant parts of your uploaded files when answering questions.
-
-To search documents by meaning, OCS uses an **embedding model** to convert text into a mathematical form that captures meaning, not just keywords. See [RAG Local Index Optimization](../../tech-hub/local-index-optimization.md) for a full explanation.
+To search documents by meaning, OCS uses an **embedding model** — this technique is called **Retrieval-Augmented Generation (RAG)**. See [RAG Local Index Optimization](../../tech-hub/local-index-optimization.md) for a full explanation.
 
 ## Which should I use?
 
@@ -33,6 +30,7 @@ In OCS, there are two types of indexes:
 | **Managed by** | Your LLM provider (e.g. OpenAI) | OCS |
 | **Setup** | Simpler — the provider handles everything | More steps — you choose the embedding model |
 | **Embedding model** | Selected by the provider | You choose |
+| **Chunking** | Handled by provider, not configurable | Configurable per file set |
 | **Collections per LLM node** | Max 2 (OpenAI limit) | Unlimited |
 | **Best for** | Getting started quickly | More control, or more than 2 collections |
 
@@ -74,7 +72,7 @@ Local indexes are hosted and managed by OCS. When you create a local index, you 
 ### Supported embedding models
 You can see the supported embedding models for each provider when creating or editing the provider in your team settings.
 
-## Chunking and Optimization (Local Indexes only)
+### Chunking and Optimization
 When you upload a document to a local index, OCS breaks it into smaller parts called **chunks** and stores them in the index. The default chunking settings work well for most use cases.
 
 For advanced configuration — including chunk size, chunk overlap, and embedding model selection — see [RAG Local Index Optimization](../../tech-hub/local-index-optimization.md).
@@ -84,7 +82,7 @@ For advanced configuration — including chunk size, chunk overlap, and embeddin
 
 ## Document Sources
 
-Instead of uploading files manually, you can connect OCS to an external source — such as a Confluence space or GitHub repository — and have it fetch and index content automatically on a schedule. This keeps your collection current without manual uploads.
+Instead of uploading files manually, you can connect OCS to an external source — such as a Confluence space or GitHub repository — and have it fetch and index content automatically on a schedule. This keeps your indexed collection (both remote and local) current without manual uploads.
 
 !!! note "Document-source updates reach published chatbots automatically"
     When a document-source sync runs and updates the collection's content, those changes are applied to your published chatbot without requiring a republish. See [Collections and published chatbots](./index.md#collections-and-published-chatbots) for more detail.

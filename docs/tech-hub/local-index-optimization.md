@@ -5,7 +5,7 @@ title: Local Index Optimization
 
 This page covers advanced configuration options for indexed collections. For a conceptual overview of how indexed collections work, see [Indexed Collection for RAG](../concepts/collections/indexed.md).
 
-## Choosing an Embedding Model (Local Indexes)
+## Choosing an Embedding Model
 
 An embedding model converts your documents into a mathematical form that enables search by *meaning* rather than exact keywords. When a user asks a question, the chatbot finds content that is conceptually related — even if it uses different words. The quality and focus of the embedding model directly affects how relevant the retrieved content is.
 
@@ -19,7 +19,7 @@ Different embedding models have different strengths:
 
 You can view the available embedding models for each provider when creating or editing the [LLM provider in your team](../concepts/team/llm_providers.md) settings. If you are unsure which model to choose, start with the default offered by your LLM provider — it is optimised for general-purpose retrieval.
 
-## Chunking and Optimization (Local Indexes only)
+## Chunking and Optimization
 
 !!! info
     Chunking is configured in OCS for local indexes only. For remote indexes, the provider (e.g. OpenAI) handles chunking internally and it cannot be configured.
