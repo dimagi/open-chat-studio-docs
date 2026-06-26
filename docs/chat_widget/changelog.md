@@ -28,6 +28,10 @@ Check your current HTML implementation and compare it with the [latest propertie
     sunset date shown on each entry, and may stop working. Upgrade to a supported version
     to stay current — see the [Quick Upgrade Steps](#quick-upgrade-steps) above.
 
+### v0.9.0 (2026-06-26)
+
+* Add a public JavaScript event API. The widget now dispatches lifecycle events (e.g. `ocs:open`, `ocs:message:sent`, `ocs:message:received`, `ocs:session:started`) on the `<open-chat-studio-widget>` element, so you can react to them with `addEventListener`. See the [events reference](reference.md#events) for the full list.
+
 ### v0.8.0 (2026-06-05)
 
 * Add a `session-id` parameter to resume an existing chat session. (Used internally within the Open Chat Studio platform.)
