@@ -25,7 +25,7 @@ For step-by-step instructions on completing specific tasks, see the [How-to guid
 : The platform through which a participant interacts with your chatbot — for example, WhatsApp, Telegram, the web, or Slack.
 
 [Chatbot](chatbots/index.md)
-: In OCS, this is the top-level configuration for your conversational experience. It defines the chatbot's behaviour, connects it to one or more channels, and is published to participants.
+: In OCS, this is the top-level configuration for your conversational experience. It defines the chatbot's behavior, connects it to one or more channels, and is published to participants.
 
 [Collections](collections/index.md)
 : A group of files you attach to a chatbot to give it access to content — either as a media collection for file delivery, or an indexed collection for AI-powered document search (RAG).
@@ -52,7 +52,7 @@ For step-by-step instructions on completing specific tasks, see the [How-to guid
 : A single processing step in a pipeline. Each node performs one task, such as calling an LLM, running custom code, or routing the conversation based on its content.
 
 [Participant Data](participant_data.md)
-: Custom information stored against each participant that persists across chatbot sessions. Use it to remember preferences, track progress, or personalise chatbot responses.
+: Custom information stored against each participant that persists across chatbot sessions. Use it to remember preferences, track progress, or personalize chatbot responses.
 
 [Pipelines](pipelines/index.md)
 : The drag-and-drop canvas where you build your chatbot's conversation logic by connecting nodes together. Every chatbot in OCS is powered by a pipeline.
@@ -73,13 +73,13 @@ For step-by-step instructions on completing specific tasks, see the [How-to guid
 : Labels applied to sessions or messages to categorize and organize interactions — for example, flagging conversations that need follow-up or segmenting sessions based on content.
 
 [Team](team/index.md)
-: The organisational unit in OCS. Each team has its own chatbots, data, and settings.
+: The organizational unit in OCS. Each team has its own chatbots, data, and settings.
 
 [Tools](tools/index.md)
 : Built-in capabilities you enable per chatbot so it can do more than generate text — for example, schedule reminders, perform calculations, or remember information about a participant across sessions.
 
 [Tracing](tracing.md)
-: A record of every conversation turn showing what the chatbot received, what it returned, and how long it took. Use it to understand and debug unexpected chatbot behaviour.
+: A record of every conversation turn showing what the chatbot received, what it returned, and how long it took. Use it to understand and debug unexpected chatbot behavior.
 
 [Versions](versioning.md)
 : Snapshots of your chatbot's configuration that let you publish a stable version to participants while you continue developing and testing changes in the background.

@@ -4,7 +4,7 @@ hide:
 ---
 # Teams
 
-Open Chat Studio supports multiple organisations/departments working in the same system while keeping their data completely separate. Each organisation is called a **Team**. Teams have their own settings, private data, and chatbots.
+Open Chat Studio supports multiple organizations/departments working in the same system while keeping their data completely separate. Each organization is called a **Team**. Teams have their own settings, private data, and chatbots.
 
 You can belong to several teams at once, with different roles in each — for example, an Admin on one team and a Viewer on another. Roles are managed with [User Groups](groups.md).
 
