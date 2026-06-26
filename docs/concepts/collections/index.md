@@ -1,9 +1,12 @@
 # Collections
 
-A collection in OCS refers to a collection of files. There are two types of collections:
+A collection is a group of files you attach to a chatbot. There are two types:
 
-- [Media collection](./media.md)
-- [Indexed Collection (for RAG applications)](./indexed.md)
+[Media collection](./media.md)
+: Send files — such as images, PDFs, video, or audio — to participants during a conversation.
+
+[Indexed collection](./indexed.md)
+: Let your chatbot search your documents and ground its answers in that content (RAG).
 
 ## Adding a collection to a chatbot
 
@@ -17,8 +20,8 @@ Collection content is a **live shared resource**. When you update the files in a
 
 This means:
 
-- Adding or removing files from a media collection takes effect for users immediately.
-- Document-source syncs to a RAG index collection (for example, nightly Confluence or GitHub syncs) are applied to the published chatbot as each sync completes.
+- Adding or removing files from a [media collection](./media.md) takes effect for users immediately.
+- Document-source syncs to a [RAG index collection](./indexed.md) (for example, nightly Confluence or GitHub syncs) are applied to the published chatbot as each sync completes.
 
 The *structure* of a published version — which collections are linked to which pipeline nodes — is still frozen at publish time. To change which collections a chatbot uses, you must publish a new version.
 
