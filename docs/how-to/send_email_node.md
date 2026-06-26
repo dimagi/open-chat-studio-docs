@@ -49,14 +49,14 @@ The variables available for the Subject, Recipient, and Body fields are [listed 
 
 ## Example use cases
 
-**Notify your team of an emergency**
+### Notify your team of an emergency
 
 Use a [Router node](../concepts/pipelines/router_nodes.md) to detect whether the user needs urgent assistance. In the router's emergency branch, add the Send an Email node with the recipient set to your team address and the body describing the situation. This lets you escalate extraordinary circumstances — such as a user in crisis — without waiting for the session to end.
 
-**Route a completed intake form to the right team member**
+### Route a completed intake form to the right team member
 
 After a bot collects structured information from a user (such as a support request or referral), use an LLM node to extract the key details, then add the Send an Email node to forward them to the appropriate contact. Set the recipient using a participant data field (e.g. `{{ participant_data.assigned_caseworker_email }}`) and use the LLM output as the body.
 
-**Alert your team when a threshold is reached**
+### Alert your team when a threshold is reached
 
 After an [Increment counter](../tech-hub/tools.md#increment-counter) tool updates a counter in participant data, use a router to check the value. When the threshold is met, route to the Send an Email node to trigger an alert.

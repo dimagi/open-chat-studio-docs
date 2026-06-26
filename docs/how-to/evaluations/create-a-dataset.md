@@ -61,7 +61,7 @@ Based on the evaluation level you have chosen, the system will clone either the 
 Use this method to populate a **session-level** dataset from sessions that have already been curated in an [annotation queue](../../concepts/annotations/queues.md). This is useful when your team has reviewed a set of conversations and you want to run automated scoring against the same set.
 
 1. Select a team annotation queue that contains session items (archived queues are excluded).
-3. Click **Import**.
+2. Click **Import**.
 
 Each session item in the queue becomes one row in the dataset, using the same field mapping as [session-level cloning](../../tech-hub/evaluations/dataset-structure.md#session-level-datasets).
 
