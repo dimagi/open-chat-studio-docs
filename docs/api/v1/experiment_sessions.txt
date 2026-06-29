@@ -42,10 +42,8 @@ POST /api/sessions/
 
 GET /api/sessions/{id}/
   Summary: Retrieve Chatbot Session
-  Description: 
-Retrieve the details of an session. This includes the messages exchanged during the session ordered
+  Description: Retrieve the details of an session. This includes the messages exchanged during the session ordered
 by the creation date.
-
   Parameters:
     - id (path, string (required)): ID of the session
   Responses:
