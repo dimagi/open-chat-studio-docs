@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Jun 30, 2026
+* **BUG** Creating or editing an annotation queue with a name that already exists for your team now shows a clear validation error instead of a server error.
+
 ## Jun 25, 2026
 * **BUG** Fixed a `NameError` in pipeline Code nodes when using tuple-unpacking assignments (for example, `a, b = some_function()`). Such assignments now work as expected.
 
