@@ -90,6 +90,7 @@ The API is versioned. Select a version below for its endpoint reference and simp
 LLM docs:
 
 <!-- api-versions:start -->
+* [export](export/index.md)
 * [v1](v1/index.md)
 * [v2](v2/index.md)
 <!-- api-versions:end -->
