@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Jul 1, 2026
+* **CHANGE** The prompt builder no longer has a "Load Prompt from Experiment" section. This option no longer applies now that chatbots are pipelines composed of multiple nodes.
+
 ## Jun 30, 2026
 * **BUG** Creating or editing an annotation queue with a name that already exists for your team now shows a clear validation error instead of a server error.
 
