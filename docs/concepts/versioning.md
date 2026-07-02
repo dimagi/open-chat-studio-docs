@@ -19,7 +19,7 @@ Once a version is created, it cannot be edited or modified. This ensures that th
 Most of a published version's configuration is frozen at publish time. One exception is **collection content**:
 
 - Changes to files in a linked [media collection](collections/media.md) — such as adding, removing, or replacing files — are reflected immediately in the published bot.
-- Scheduled [document-source syncs](collections/indexed.md#document-sources) to a linked RAG index collection are also applied to the published bot as they run.
+- Scheduled [document-source syncs](collections/indexed.md#document-sources-for-indexed-collections) to a linked RAG index collection are also applied to the published bot as they run.
 
 The collection *structure* (which collections are linked to which nodes) remains part of the frozen version. Only the *content* of those collections is treated as a live shared resource.
 

@@ -1,7 +1,7 @@
 ---
 title: Indexed Collection (for RAG applications)
 ---
-# Indexed Collections
+# Indexed Collections (for RAG applications)
 
 An indexed collection lets your chatbot search through your documents to find relevant information before responding. Instead of relying on the AI's built-in knowledge, the chatbot retrieves answers from files you upload — such as PDFs, reports, or wiki pages.
 
@@ -60,27 +60,21 @@ Supported files are determined by the selected provider:
 
 Local indexes are hosted and managed by OCS. When you create a local index, you choose which embedding model to use. Different models suit different types of content, so choosing the right one can improve retrieval accuracy. See [Local Index Optimization](../../tech-hub/local-index-optimization.md#choosing-an-embedding-model) for guidance.
 
-### Supported providers
-- OpenAI
-- Voyage AI
+### Indexing Options
 
-### Supported file types
-- pdf
-- txt
-- csv
-- docx
-
-### Supported embedding models
-You can see the supported embedding models for each provider when creating or editing the provider in your team settings.
+- **Supported LLM providers**: OpenAI,  Voyage AI
+- **Supported file types**: pdf, txt, csv, docx
+- **Supported embedding models**: You can see the list of embedding models for the LLM provider you have selected.
 
 ### Chunking and Optimization
+
 When you upload a document to a local index, OCS breaks it into smaller parts called **chunks** and stores them in the index. The default chunking settings work well for most use cases.
 
 For advanced configuration — including chunk size, chunk overlap, and embedding model selection — see [Local Index Optimization](../../tech-hub/local-index-optimization.md).
 
-## Document Sources
+## Document Sources for Indexed Collections
 
-Instead of uploading files manually, you can connect OCS to an external source — such as a Confluence space or GitHub repository — and have it fetch and index content automatically on a schedule. This keeps your indexed collection (both remote and local) current without manual uploads.
+Instead of uploading files manually, you can connect OCS to an external document source — such as a Confluence space or GitHub repository — and have it fetch and index content automatically on a schedule. This keeps your OCS indexed collection (for both remote and local indexes) current without manual uploads.
 
 !!! note "Document-source updates reach published chatbots automatically"
     When a document-source sync runs and updates the collection's content, those changes are applied to your published chatbot without requiring a republish. See [Collections and published chatbots](./index.md#collections-and-published-chatbots) for more detail.
