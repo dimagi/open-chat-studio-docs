@@ -3,7 +3,7 @@ title: Set Up Document Sources
 ---
 # Set Up Document Sources
 
-Document sources let OCS automatically fetch and index content from an external platform on a schedule. This keeps your indexed collection up to date without manual uploads.
+Document sources let OCS automatically fetch and index content from an external system on a schedule. This keeps your indexed collection up to date without manual uploads.
 
 OCS currently supports two document source types: **[GitHub](#github)** and **[Confluence](#confluence)**. Decide which one you need before you start, since the authentication provider and configuration fields differ for each.
 

@@ -2,10 +2,8 @@
 
 A collection is a group of files you attach to a chatbot. There are two types:
 
-- [Media collection](./media.md)
-: Send files — such as images, PDFs, video, or audio — to participants during a conversation.
-- [Indexed collection](./indexed.md)
-: Let your chatbot search your documents and ground its answers in that content (RAG).
+[Media collection](./media.md): Send files — such as images, PDFs, video, or audio — to participants during a conversation.
+[Indexed collection](./indexed.md): Let your chatbot search your documents and ground its answers in that content (RAG).
 
 ## Adding a collection to a chatbot
 
