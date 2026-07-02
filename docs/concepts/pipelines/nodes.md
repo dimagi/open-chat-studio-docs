@@ -19,6 +19,8 @@ A conversational node using AI models. You can configure this node.
 - A [history mode](history.md) for conversation memory
 - [Temperature and effort parameters](../../how-to/adjust_llm_node_model_parameters.md) to shape output style and depth
 - [Tools](../tools/index.md) for additional actions
+- [Collections](../collections/index.md) — reference and search an indexed collection to ground responses in your documents (RAG), or send files to participants from a media collection
+- [Custom Actions](../llm_custom_action.md) — connect to external systems to retrieve information or complete tasks
 
 ## Routing Nodes
 
