@@ -15,15 +15,19 @@ After your collection has been created and populated with files, you can link it
 
 ## Collections and published chatbots
 
-Collection content is a **live shared resource**. When you update the files in a collection — either manually or through a scheduled [document-source](../../how-to/document_sources.md) sync — those changes are reflected in your published chatbot automatically. You do not need to republish to pick up new or updated files.
-
-This means:
+Collection content is a **live shared resource**: updates to your files in a collection reach your published chatbot automatically, without a republish. This applies whether you update a collection manually or via a scheduled [document-source](../../how-to/document_sources.md) sync:
 
 - Adding or removing files from a [media collection](./media.md) takes effect for users immediately.
-- Document-source syncs to an [indexed collection](./indexed.md) (for example, nightly Confluence or GitHub syncs) are applied to the published chatbot as each sync completes.
+- Document-source syncs to an [indexed collection](./indexed.md#document-sources-for-indexed-collections) — for example, nightly Confluence or GitHub syncs — are applied to the published chatbot as each sync completes.
 
-The *structure* of a published version — which collections are linked to which pipeline nodes — is still frozen at publish time. To change which collections a chatbot uses, you must publish a new version.
+The collection *structure* of a published chatbot version — which collections are linked to which pipeline nodes — is still frozen at publish time. To change which collections a chatbot uses, you must publish a new version.
 
-For more detail on how versioning interacts with collections, see [Versioning](../versioning.md#what-is-frozen-and-what-is-live).
+!!! note "What this means for drift detection"
+    Because collection content is live, adding files to a collection or waiting for a document-source sync no longer marks your chatbot as having unpublished changes. Only changes to the chatbot's pipeline configuration and settings are tracked as pending changes.
+
+!!! warning "Existing published bots"
+    This live-collection behavior applies to chatbots republished after this change was introduced (2026-06-03). Bots that were published before retain their previous frozen collection snapshot until the next time they are republished.
+
+For more detail on versioning in general, see [Versioning](../versioning.md).
 
 [llm_node]: ../pipelines/nodes.md
