@@ -25,19 +25,6 @@ A conversational node using AI models. You can configure this node.
 Routers are used to reduce cost, improve accuracy, and keep pipeline workflows flexible. A router will: receive input, analyze it, choose the next workflow step, and pass the request to the downstream node.
 See the [Router Node](./router_nodes.md) page for full details.
 
-## Python Node
-
-Execute custom Python code for logic, data processing, or external API calls.
-
-**Key capabilities:**
-
-- **[Utility functions](../../tech-hub/python_node.md#utility-functions)** — read and write [participant data](../../concepts/participant_data.md), [temporary state](../../tech-hub/python_node.md#temporary-state) (per pipeline run), and [session state](../../tech-hub/python_node.md#session-state) (per user session).
-- **[Attachments](../../tech-hub/python_node.md#attachments)** — access files uploaded by the user and read their contents (text, PDF, DOCX, XLSX, and [more](../../tech-hub/python_node.md#supported-file-types)).
-- **[HTTP client](../../tech-hub/external-api-calls/http_client.md)** — make secure HTTP requests to external APIs using the built-in `http` global.
-- **[Debugging](../../tech-hub/python_node.md#debugging-with-print)** — use `print()` to capture diagnostic output, visible in the trace detail view.
-
-See the [Python Node](../../tech-hub/python_node.md) page for full documentation.
-
 ## Render a Template Node
 
 The Render a Template node lets you shape the text flowing through a pipeline before it reaches the next step. You write a template that mixes fixed text with placeholders — the node fills in those placeholders at runtime using information about the current message, the participant, and the pipeline state.
@@ -59,3 +46,16 @@ Extract structured data from the input. This node acts as a passthrough, meaning
 
 ## Update Participant Data Node
 Extract structured data and save it as participant data. This node is commonly used with [events](../events.md).
+
+## Python Node
+
+Execute custom Python code for logic, data processing, or external API calls.
+
+**Key capabilities:**
+
+- **[Utility functions](../../tech-hub/python_node.md#utility-functions)** — read and write [participant data](../../concepts/participant_data.md), [temporary state](../../tech-hub/python_node.md#temporary-state) (per pipeline run), and [session state](../../tech-hub/python_node.md#session-state) (per user session).
+- **[Attachments](../../tech-hub/python_node.md#attachments)** — access files uploaded by the user and read their contents (text, PDF, DOCX, XLSX, and [more](../../tech-hub/python_node.md#supported-file-types)).
+- **[HTTP client](../../tech-hub/external-api-calls/http_client.md)** — make secure HTTP requests to external APIs using the built-in `http` global.
+- **[Debugging](../../tech-hub/python_node.md#debugging-with-print)** — use `print()` to capture diagnostic output, visible in the trace detail view.
+
+See the [Python Node](../../tech-hub/python_node.md) page for full documentation.
