@@ -1,6 +1,6 @@
 # How to call external APIs
 
-In a Pipeline workflow you need to include a [Python node][python] which provides an `http` global that enables secure HTTP requests to external APIs.
+This guide explains how to call external APIs from inside a Pipeline. You use a [Python node][python] to make secure HTTP requests, with an `http` global available for all common request methods.
 
 !!! note Examples
 
