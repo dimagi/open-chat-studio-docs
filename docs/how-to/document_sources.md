@@ -3,21 +3,25 @@ title: Set Up Document Sources
 ---
 # Set Up Document Sources
 
-Document sources let OCS automatically fetch and index content from an external system on a schedule. This keeps your indexed collection up to date without manual uploads.
+Document sources let OCS automatically fetch and index content from an external platform on a schedule. This keeps your indexed collection up to date without manual uploads.
 
-For a conceptual overview, see [Indexed Collection for RAG](../concepts/collections/indexed.md#document-sources).
+OCS currently supports two document source types: **[GitHub](#github)** and **[Confluence](#confluence)**. Decide which one you need before you start, since the authentication provider and configuration fields differ for each.
+
+For a conceptual overview, see [Indexed Collection for RAG](../concepts/collections/indexed.md#document-sources-for-indexed-collections).
 
 ## Prerequisites
 
 - An [indexed collection](../concepts/collections/indexed.md) already created in OCS.
-- An [authentication provider](../concepts/team/authentication_providers.md) configured for your document source (see per-source instructions below).
+- An [authentication provider](../concepts/team/authentication_providers.md) configured for your chosen source type.
 
 ## Add a Document Source
 
 1. Navigate to your indexed collection and open the **Document Sources** tab.
-2. Click **Add document source** and select the source type.
+2. Click **Add document source** and select the source type: [GitHub](#github) or [Confluence](#confluence).
 3. Complete the configuration fields for your chosen source (see below).
-4. Click **Save**. OCS will run an initial sync immediately.
+4. Click **Save**.
+
+OCS runs an initial sync immediately and you can [monitor the sync status](#monitoring-sync-status).
 
 ---
 
@@ -76,7 +80,7 @@ Each document source displays a status indicator showing the outcome of the most
 
 ## Troubleshooting
 
-**Sync shows Error status**
+### Sync shows Error status
 
 Open the sync log for the failed run. Common causes:
 
@@ -84,6 +88,6 @@ Open the sync log for the failed run. Common causes:
 - The Confluence space key or GitHub repository URL has changed — update the configuration field.
 - The Max Pages limit was reached before all pages were loaded — increase the limit or narrow your filter.
 
-**Pages are not updating after a sync**
+### Pages are not updating after a sync
 
 Check that the correct Space Key, Label, CQL, or Page IDs are set. Only one filter field can be active at a time — if multiple are filled in, only one will be used.
