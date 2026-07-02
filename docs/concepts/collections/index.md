@@ -2,8 +2,8 @@
 
 A collection is a group of files you attach to a chatbot. There are two types:
 
-[Media collection](./media.md): Send files — such as images, PDFs, video, or audio — to participants during a conversation.
-[Indexed collection](./indexed.md): Let your chatbot search your documents and ground its answers in that content (RAG).
+- **[Media collection](./media.md)** - Send files — such as images, PDFs, video, or audio — to participants during a conversation.
+- **[Indexed collection](./indexed.md)** - Let your chatbot search your documents and ground its answers in that content (RAG).
 
 ## Adding a collection to a chatbot
 
@@ -13,7 +13,7 @@ After your collection has been created and populated with files, you can link it
 
 ## Collections and published chatbots
 
-Collection content is a **live shared resource**: updates to your files in a collection reach your published chatbot automatically, without a republish. This applies whether you update a collection manually or via a scheduled [document-source](../../how-to/document_sources.md) sync:
+Collection content is a **live shared resource**: updates to your files in a collection reach your published chatbot automatically, without a republish. This applies whether you update a collection manually or via a scheduled [document-source](../../how-to/document_sources.md) sync.
 
 - Adding or removing files from a [media collection](./media.md) takes effect for users immediately.
 - Document-source syncs to an [indexed collection](./indexed.md#document-sources-for-indexed-collections) — for example, nightly Confluence or GitHub syncs — are applied to the published chatbot as each sync completes.
