@@ -6,9 +6,7 @@ hide:
 
 # Open Chat Studio
 
-This is the home page for all documentation related to [Open Chat Studio](https://github.com/dimagi/open-chat-studio) (OCS).
-Developed by Dimagi, Open Chat Studio is an easy-to-use, open source platform for rapidly prototyping, testing and
-deploying chatbots powered by Large Language Models ([LLMs](concepts/llm.md)).
+Open Chat Studio (OCS) is an open source platform developed by Dimagi for building, testing, and deploying chatbots powered by Large Language Models ([LLMs](concepts/llm.md)). This site contains all the documentation you need to get started and go further.
 
 ## What can I do on Open Chat Studio?
 
@@ -24,12 +22,12 @@ deploying chatbots powered by Large Language Models ([LLMs](concepts/llm.md)).
   your
   chatbots.
 
-* **View and Download Data:** View and export the data from interactions with your chatbots, formatted In CSV.
+* **View and Download Data:** View and export conversation data from your chatbots in CSV format.
 
 <div class="grid cards" markdown>
 
 -   :material-clock-fast:{ .lg .middle } [__Quickstart Guide__](./tutorials/first_chatbot.md)
--   :material-chat-question:{ .lg .middle } [__What is a Chatbot?__](concepts/chatbots/index.md#what-is-a-chatbot)
+-   :material-chat-question:{ .lg .middle } [__What is a Chatbot?__](concepts/chatbots/index.md)
 -   :octicons-gear-24:{ .lg .middle } [__Configuring your Team__](concepts/team/index.md)
 -   :octicons-ai-model-24:{ .lg .middle } [__What is an LLM?__](concepts/llm.md)
 -   :material-whatsapp:{ .lg .middle } [__Deploying your bot__](how-to/deploy_to_different_channels.md)
