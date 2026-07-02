@@ -4,8 +4,8 @@ A node is a discrete processing step in a [pipeline](index.md) that accepts a us
 
 ```mermaid
 graph LR
-  A@{ shape: stadium, label: "Input (ie data or prompt)" } --> B(Node);
-  B --> C@{ shape: stadium, label: "Output (ie LLM response)" };
+  A@{ shape: stadium, label: "Input (i.e. data or prompt)" } --> B(Node);
+  B --> C@{ shape: stadium, label: "Output (i.e. LLM response)" };
 ```
 
 !!! note Examples
@@ -13,18 +13,19 @@ graph LR
     See [chatbot workflow cookbook](../../how-to/workflow_cookbook.md) for examples of pipelines using different combinations of these node types.
 
 ## LLM Node
-A conversational node using AI models. You can configure this node.
+
+A conversational node using AI models. You can configure:
 
 - A [prompt](../llm.md#prompt) for instructions on how to respond
 - A [history mode](history.md) for conversation memory
 - [Temperature and effort parameters](../../how-to/adjust_llm_node_model_parameters.md) to shape output style and depth
 - [Tools](../tools/index.md) for additional actions
-- [Collections](../collections/index.md) — reference and search an indexed collection to ground responses in your documents (RAG), or send files to participants from a media collection
-- [Custom Actions](../llm_custom_action.md) — connect to external systems to retrieve information or complete tasks
+- [Collections](../collections/index.md) to search an indexed collection and ground responses in your documents (RAG), or send files to participants from a media collection
+- [Custom Actions](../llm_custom_action.md) to connect to external systems and retrieve information or complete tasks
 
 ## Routing Nodes
 
-Routers are used to reduce cost, improve accuracy, and keep pipeline workflows flexible. A router will: receive input, analyze it, choose the next workflow step, and pass the request to the downstream node.
+Routers are used to reduce cost, improve accuracy, and keep pipeline workflows flexible. A router will receive input, analyze it, choose the next workflow step, and pass the request to the downstream node.
 See the [Router Node](./router_nodes.md) page for full details.
 
 ## Render a Template Node
@@ -44,10 +45,12 @@ See the [Send an Email How-to Guide](../../how-to/send_email_node.md) for steps 
 See the [Render a Template and Send an Email Node](../../tech-hub/template_and_email_nodes.md#send-an-email-node) reference for recipient field syntax, template variables, and prompt examples.
 
 ## Extract Structured Data Node
-Extract structured data from the input. This node acts as a passthrough, meaning the output will be identical to the input, allowing it to be used in a pipeline without affecting the conversation.
+
+Extract structured data from the input. This node acts as a passthrough: its output is identical to its input, so it can be used in a pipeline without affecting the conversation.
 
 ## Update Participant Data Node
-Extract structured data and save it as participant data. This node is commonly used with [events](../events.md).
+
+Extracts structured data from the input and saves it as participant data. This node is commonly used with [events](../events.md).
 
 ## Python Node
 
