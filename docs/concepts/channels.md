@@ -28,7 +28,7 @@ Channels differ in whether users can send files to the bot and whether the bot c
 | SureAdhere | No | As download links | Text messages only. |
 
 !!! info "Voice notes"
-    Voice notes are handled separately from file attachments. On channels with voice support (Telegram and WhatsApp), a voice note from the user is transcribed and processed as a regular message rather than being treated as a file.
+    Voice notes are handled separately from file attachments. On channels with voice support (Telegram, WhatsApp and Facebook Messenger), a voice note from the user is transcribed and processed as a regular message rather than being treated as a file.
 
 ## See also
 - [Deploying your bot to different channels](../how-to/deploy_to_different_channels.md)
