@@ -22,10 +22,10 @@ Channels differ in whether users can send files to the bot and whether the bot c
 | API | Yes | As attachment metadata | Same upload limits as the web channel. Files the bot produces are returned on the message as attachments with download links. |
 | Telegram | No | Yes | Outgoing: images up to 10 MB; audio, video and documents up to 50 MB. Photos and documents sent by users are not accepted. |
 | WhatsApp | Yes | Yes | Incoming: images and documents (a caption becomes the message text). Outgoing: images up to 5 MB, audio and video up to 16 MB, documents up to 100 MB. Applies to all providers (Twilio, Turn.io, Meta Cloud API). |
-| Facebook Messenger | No | As download links | Text and voice messages only. |
+| Facebook Messenger | No | As download links | No files in either direction; text and voice messages only. |
 | Slack | No | Yes | Outgoing: images, audio, video and documents up to 50 MB. |
 | Email | Yes | Yes | Attachments up to 20 MB in both directions. Executable file types are blocked. See [email file attachments][email-files] for details. |
-| SureAdhere | No | As download links | Text messages only. |
+| SureAdhere | No | As download links | No files in either direction; text messages only. |
 
 !!! info "Voice notes"
     Voice notes are handled separately from file attachments. On channels with voice support (Telegram, WhatsApp and Facebook Messenger), a voice note from the user is transcribed and processed as a regular message rather than being treated as a file.
