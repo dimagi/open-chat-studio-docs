@@ -1,8 +1,8 @@
 # Migrate a Team to Another OCS Instance
 
-This guide walks through moving a team — its chatbots, configuration, and chat history — from one Open Chat Studio (OCS) instance to another. A common case is moving a team off the hosted `www.openchatstudio.com` onto a self-hosted instance, but the same process works between any two OCS servers.
+This guide walks through moving a team — its chatbots, configuration, and chat history — from one Open Chat Studio (OCS) instance to another. A common case is moving a team off the hosted `openchatstudio.com` onto a self-hosted instance, but the same process works between any two OCS servers.
 
-This is operator-level work: you'll run Django management commands on a server you administer. It assumes shell (or Docker) access to the target server and Team Admin access on the source server.
+This is operator-level work: you'll run Django management commands on a server you administer. It assumes shell access to the target server and Team Admin access on the source server.
 
 ## Source and target servers
 
@@ -19,29 +19,19 @@ The command creates a small SQLite tracking database (named after the team slug)
 
 Sensitive fields, such as provider credentials, are never sent in plain text: the source encrypts ("seals") them to a public key you register beforehand, and the sync command decrypts them on the target using the matching private key.
 
-## What gets migrated
-
-- Team configuration, chatbots, and pipelines
-- Channels
-- Files and [collections](../concepts/collections/index.md)
-- Participants, sessions, and chat history
-- Scheduled messages
-- Evaluations and [annotations](../concepts/annotations/index.md)
-
 ## What is not migrated
 
 These need to be re-established on the target server after migration:
 
 - API keys
 - OAuth applications — clients must re-authenticate against the target server
-- Social login and MFA enrolment
 - Slack installations
 - Open (unaccepted) team invitations
 
 ## Prerequisites
 
 - Team Admin access to the team on the source server.
-- The ability to run `manage.py` commands on the target server, either directly or via `docker compose exec`.
+- The ability to run `manage.py` commands on the target server.
 - OpenSSL, or Python with the `cryptography` package, to generate a key pair.
 
 ## 1. Set up the target server
@@ -49,11 +39,11 @@ These need to be re-established on the target server after migration:
 Stand up and configure the self-hosted OCS instance you're migrating to, if you haven't already. See the [local development setup](https://developers.openchatstudio.com/getting-started/local-setup/) or [Docker setup](https://developers.openchatstudio.com/getting-started/docker-setup/) guides, or the [OCS GitHub repository](https://github.com/dimagi/open-chat-studio) for deployment options.
 
 !!! warning "Source and target must match versions"
-    The sync command checks that the source and target are on the same schema/migration state before syncing anything, and aborts if they don't match. Make sure the target server is running the same OCS version as the source before you continue.
+    The sync command checks that the source and target are on the same schema/migration state before syncing anything, and aborts if they don't match. Make sure the target server is running the latest OCS version before you continue.
 
 ## 2. Export your team's files (source server)
 
-Chatbot files aren't transferred by the sync command itself — you move them separately:
+A team's files live in a storage backend (such as an S3-compatible bucket), so you move them across separately:
 
 1. On the source server, go to **Team Settings** and open the **Data Export** section. This section is only visible to Team Admins.
 2. Download all of the team's files as a zip.
@@ -114,7 +104,6 @@ In the **Data Export** section on the source server, enable migration mode for t
 !!! warning "Effects of migration mode"
     While migration mode is enabled on the source:
 
-    - Structural changes are blocked — team members can't edit chatbots, pipelines, providers, and similar configuration.
     - The source stops sending the team's scheduled messages.
     - Live chat traffic is unaffected and continues to work normally.
 
@@ -127,8 +116,17 @@ python manage.py sync_team \
   --source-url "https://www.openchatstudio.com" \
   --api-key "<your-api-key>" \
   --team-slug "<team-slug>" \
-  --private-key-path "/path/to/privkey.pem"
+  --private-key-path "/path/to/privkey.pem" \
+  --state-dir "/path/to/state-dir"
 ```
+
+The arguments are:
+
+- `--source-url` — the base URL of the source server.
+- `--api-key` — the API key you created on the source server ([step 4](#4-create-an-api-key-source-server)).
+- `--team-slug` — the slug of the team you're migrating.
+- `--private-key-path` — the path to the private key you copied to the target server ([step 3](#3-generate-an-encryption-key-pair-and-register-the-public-key)).
+- `--state-dir` — the directory where the checkpoint SQLite database is stored. Point every rerun at the same directory so the command can resume from where it left off.
 
 Where you run this depends on how you run OCS:
 
@@ -140,10 +138,11 @@ docker compose exec web python manage.py sync_team \
   --source-url "https://www.openchatstudio.com" \
   --api-key "<your-api-key>" \
   --team-slug "<team-slug>" \
-  --private-key-path "/path/to/privkey.pem"
+  --private-key-path "/path/to/privkey.pem" \
+  --state-dir "/path/to/state-dir"
 ```
 
-The command creates a SQLite tracking database named after the team slug in the working directory. It's safe to run `sync_team` again at any point — each run picks up only what's changed since the last run, so you can use it to pull in a delta later (see [step 8](#8-verify-and-do-a-final-sync)).
+The command creates a SQLite tracking database named after the team slug in the `--state-dir` directory. It's safe to run `sync_team` again at any point — each run picks up only what's changed since the last run, so you can use it to pull in a delta later (see [step 8](#8-verify-and-do-a-final-sync)).
 
 ## 7. Re-register channel webhooks (target server)
 
