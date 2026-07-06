@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Jul 6, 2026
+* **CHANGE** Session responses from the v1 API (for example `GET /api/sessions/` and `GET /api/sessions/{id}/`) now embed a lightweight experiment summary — `id`, `name`, `description`, `url`, and `version_number` — instead of the full experiment representation with its complete `versions` list. The `/api/experiments/` endpoints are unaffected.
+
 ## Jun 30, 2026
 * **BUG** Creating or editing an annotation queue with a name that already exists for your team now shows a clear validation error instead of a server error.
 
