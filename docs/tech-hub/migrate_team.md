@@ -150,10 +150,13 @@ The command creates a SQLite tracking database named after the team slug in the 
 Once the team's data has synced, channel webhooks still point at the source server. Re-point them by running:
 
 ```bash
-python manage.py reregister_webhooks --team-slug=<team-slug>
+python manage.py reregister_webhooks --team-slug "<team-slug>"
 ```
 
-This automatically updates webhooks for channels that support it, such as Telegram and Twilio.
+This automatically updates webhooks for channels that support it, such as Telegram and WhatsApp.
+
+!!! note "This step is the cutover"
+    Re-registering webhooks is the point where live traffic moves from the source to the target. Until you run it, incoming messages keep flowing to the source; afterwards they flow to the target. Individual channels may see a brief gap while the messaging provider propagates the new webhook URL.
 
 Some channels can't be updated automatically and need manual attention:
 

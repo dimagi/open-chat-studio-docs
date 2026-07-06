@@ -19,3 +19,4 @@ You need Super Admin, Pipeline, Experiment, or Team Administrator roles to acces
 - **[Tools Reference](tools.md)** — Full argument reference for all built-in tools and the LLM provider tools supported. For a conceptual overview, see [Tools Concepts](../concepts/tools/index.md).
 - **[Evaluations](evaluations/index.md)** — Reference for advanced features of Evaluations — a testing system for measuring chatbot performance against different metrics.
 - **[OCS API Access](api_access.md)** — Interact with OCS chatbots programmatically using the REST API. Useful for third-party integrations and automated evaluation.
+- **[Migrate a Team to Another Instance](migrate_team.md)** — Move a team's chatbots, configuration, and chat history from one OCS instance to another.
