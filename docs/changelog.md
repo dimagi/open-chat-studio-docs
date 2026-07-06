@@ -12,6 +12,7 @@ hide:
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
 ## Jul 6, 2026
+* **NEW** The session detail endpoint (`GET /api/v1/sessions/{id}/`) now returns a `usage` object with the session's total cost and a per-model breakdown of cost and token counts, so API consumers can see what a conversation cost. It appears only when retrieving a single session, not in list responses.
 * **CHANGE** Session responses from the v1 API (for example `GET /api/sessions/` and `GET /api/sessions/{id}/`) now embed a lightweight experiment summary — `id`, `name`, `description`, `url`, and `version_number` — instead of the full experiment representation with its complete `versions` list. The `/api/experiments/` endpoints are unaffected.
 
 ## Jun 30, 2026
