@@ -12,6 +12,7 @@ hide:
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
 ## Jul 7, 2026
+* **BUG** Fixed the code node's AI code-generation help text, which referenced a non-existent `abort_pipeline` function. It now correctly references `abort_with_message`, the function exposed to sandboxed code.
 * **BUG** Fixed pipelines occasionally returning a blank reply when the LLM sent a message along with a tool call and then followed up with empty content. The pipeline now surfaces the last non-empty response.
 
 ## Jul 6, 2026
