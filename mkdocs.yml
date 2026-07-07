@@ -121,6 +121,8 @@ nav:
     - UI Helpers:
       - Filter Tables with Natural Language: how-to/nl_filter.md
       - Find Objects: how-to/global_search.md
+    - Analytics:
+      - Track Chatbot Costs on the Dashboard: how-to/dashboard_cost_tracking.md
     - Sessions & Data:
       - Reset Sessions: how-to/reset_sessions.md
     - Evaluations:

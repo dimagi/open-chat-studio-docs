@@ -28,4 +28,6 @@ Here you’ll find answers to “How do I...?” types of questions. These guide
 
     [:octicons-arrow-right-24: Add a message provider as a channel](./deploy_to_different_channels.md)  
 
+    [:octicons-arrow-right-24: Track chatbot costs on the Dashboard](./dashboard_cost_tracking.md)  
+
 </div>
