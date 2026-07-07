@@ -12,6 +12,7 @@ hide:
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
 ## Jul 7, 2026
+* **BUG** Langfuse spans in the trace detail view now display in chronological order (sorted by start time) instead of the order returned by the Langfuse API.
 * **BUG** Fixed pipelines occasionally returning a blank reply when the LLM sent a message along with a tool call and then followed up with empty content. The pipeline now surfaces the last non-empty response.
 
 ## Jul 6, 2026
