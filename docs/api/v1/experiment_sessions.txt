@@ -154,6 +154,7 @@ ExperimentSessionWithMessages:
   - status: ChatbotSessionStatusEnum
   - platform: string
   - messages: array of Message (required)
+  - usage: Unknown (required)
   - tags: array of string (required)
   - state: Unknown
 
