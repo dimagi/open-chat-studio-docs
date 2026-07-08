@@ -968,7 +968,7 @@ AuthProviderDetail:
   - name: string (required)
 
 AuthProviderDetailTypeEnum:
-  - enum: [basic, api_key, bearer, commcare]
+  - enum: [basic, api_key, bearer, commcare, oauth_client_credentials]
 
 AuthProviderList:
   - cursor: string (required)
