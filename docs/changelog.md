@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Jul 8, 2026
+* **CHANGE** Generating a chat export now shows a live percentage progress bar instead of an indeterminate spinner, so you can see how far along a large export is.
+
 ## Jul 7, 2026
 * **BUG** Langfuse spans in the trace detail view now display in chronological order (sorted by start time) instead of the order returned by the Langfuse API.
 * **BUG** Fixed the code node's AI code-generation help text, which referenced a non-existent `abort_pipeline` function. It now correctly references `abort_with_message`, the function exposed to sandboxed code.
