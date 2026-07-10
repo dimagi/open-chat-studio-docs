@@ -13,6 +13,7 @@ hide:
 
 ## Jul 10, 2026
 * **BUG** Fixed a `NameError` when using the `re` (regular expressions) or `random` modules directly in a Code node's Python code. Both modules are now available for direct use, alongside `json`, `datetime`, and `time`.
+* **BUG** Fixed an error that prevented filtering notifications by date range (for example, "1 day"). Date filters now work as expected.
 
 ## Jul 8, 2026
 * **CHANGE** Generating a chat export now shows a live percentage progress bar instead of an indeterminate spinner, so you can see how far along a large export is.
