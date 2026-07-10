@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Jul 10, 2026
+* **BUG** Fixed an error that prevented filtering notifications by date range (for example, "1 day"). Date filters now work as expected.
+
 ## Jul 8, 2026
 * **CHANGE** Generating a chat export now shows a live percentage progress bar instead of an indeterminate spinner, so you can see how far along a large export is.
 
