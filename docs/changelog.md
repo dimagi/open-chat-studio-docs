@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Jul 10, 2026
+* **BUG** Fixed a `NameError` when using the `re` (regular expressions) or `random` modules directly in a Code node's Python code. Both modules are now available for direct use, alongside `json`, `datetime`, and `time`.
+
 ## Jul 8, 2026
 * **CHANGE** Generating a chat export now shows a live percentage progress bar instead of an indeterminate spinner, so you can see how far along a large export is.
 
