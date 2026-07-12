@@ -11,7 +11,7 @@ GET /api/sessions/
   Parameters:
     - cursor (query, string (optional)): The pagination cursor value.
     - experiment (query, string (optional)): Experiment ID to filter sessions by
-    - ordering (query, string (optional)): Which field to use when ordering the results.
+    - ordering (query, string (optional)): Which field to use when ordering the results. Available fields: `created_at`. Prefix a field with `-` for descending order (e.g. `-created_at`), or omit the prefix for ascending order (e.g. `created_at`). Defaults to `-created_at`.
     - page_size (query, integer (optional)): Number of results to return per page.
     - tags (query, string (optional)): A list of session tags (comma separated) to filter the results by
     - versions (query, string (optional)): Experiment versions (comma separated) to filter sessions by
@@ -154,6 +154,7 @@ ExperimentSessionWithMessages:
   - status: ChatbotSessionStatusEnum
   - platform: string
   - messages: array of Message (required)
+  - usage: Unknown (required)
   - tags: array of string (required)
   - state: Unknown
 
