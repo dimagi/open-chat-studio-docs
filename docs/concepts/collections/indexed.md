@@ -45,11 +45,12 @@ Remote indexes are hosted and managed by your LLM provider. Files are uploaded t
 
 !!! warning "OpenAI Remote Collection Limit"
 
-    When using OpenAI as your LLM provider with remote (OpenAI-hosted) indexed collections, you can select a **maximum of 2 collections per LLM node**. This limit is hardcoded in Open Chat Studio because engineers found empirically in production that using more than 2 remote collections with OpenAI causes issues. It will remain in place until further testing confirms that a higher number of collections can be used reliably.
+    When using OpenAI as your LLM provider with remote (OpenAI-hosted) indexed collections, you can select a **maximum of 2 collections per LLM node**. This is a hard limit imposed by OpenAI itself.
 
-    - **Local indexes** are NOT affected by this limit
-    - **Non-OpenAI providers** are NOT affected by this limit
     - If you attempt to select more than 2 remote collections with OpenAI, you will receive a validation error
+    - **Local indexes** are NOT affected by this limit — it only applies to OpenAI-hosted remote indexes
+    - **Non-OpenAI providers** are NOT affected by this limit
+    - This limit comes from OpenAI's API and won't change unless OpenAI raises it (although it's not specifically documented)
 
 ### Supported file types
 Supported files are determined by the selected provider:
