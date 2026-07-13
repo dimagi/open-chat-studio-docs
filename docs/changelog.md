@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Jul 13, 2026
+* **CHANGE** The Surveys feature has been removed. Following its deprecation on 2026-06-10, surveys were read-only for a 30-day export window that has now closed. Surveys can no longer be viewed, created, or linked to chatbots.
+
 ## Jul 10, 2026
 * **BUG** Fixed a `NameError` when using the `re` (regular expressions) or `random` modules directly in a Code node's Python code. Both modules are now available for direct use, alongside `json`, `datetime`, and `time`.
 * **BUG** Fixed an error that prevented filtering notifications by date range (for example, "1 day"). Date filters now work as expected.
