@@ -11,6 +11,27 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Jul 13, 2026
+* **CHANGE** The Surveys feature has been removed. Following its deprecation on 2026-06-10, surveys were read-only for a 30-day export window that has now closed. Surveys can no longer be viewed, created, or linked to chatbots.
+* **BUG** Fixed a validation error that could occur when using newer reasoning models (such as GPT-5.2 and GPT-5.5) with a temperature setting. Parameters that a model does not support are now filtered out automatically instead of causing an error.
+* **BUG** Sending a chat message with no text and no attachment now returns a clear "bad request" error instead of a server error.
+
+## Jul 10, 2026
+* **BUG** Fixed a `NameError` when using the `re` (regular expressions) or `random` modules directly in a Code node's Python code. Both modules are now available for direct use, alongside `json`, `datetime`, and `time`.
+* **BUG** Fixed an error that prevented filtering notifications by date range (for example, "1 day"). Date filters now work as expected.
+
+## Jul 8, 2026
+* **CHANGE** Generating a chat export now shows a live percentage progress bar instead of an indeterminate spinner, so you can see how far along a large export is.
+
+## Jul 7, 2026
+* **BUG** Langfuse spans in the trace detail view now display in chronological order (sorted by start time) instead of the order returned by the Langfuse API.
+* **BUG** Fixed the code node's AI code-generation help text, which referenced a non-existent `abort_pipeline` function. It now correctly references `abort_with_message`, the function exposed to sandboxed code.
+* **BUG** Fixed pipelines occasionally returning a blank reply when the LLM sent a message along with a tool call and then followed up with empty content. The pipeline now surfaces the last non-empty response.
+
+## Jul 6, 2026
+* **NEW** The session detail endpoint (`GET /api/v1/sessions/{id}/`) now returns a `usage` object with the session's total cost and a per-model breakdown of cost and token counts, so API consumers can see what a conversation cost. It appears only when retrieving a single session, not in list responses.
+* **CHANGE** Session responses from the v1 API (for example `GET /api/sessions/` and `GET /api/sessions/{id}/`) now embed a lightweight experiment summary — `id`, `name`, `description`, `url`, and `version_number` — instead of the full experiment representation with its complete `versions` list. The `/api/experiments/` endpoints are unaffected.
+
 ## Jun 30, 2026
 * **BUG** Creating or editing an annotation queue with a name that already exists for your team now shows a clear validation error instead of a server error.
 
