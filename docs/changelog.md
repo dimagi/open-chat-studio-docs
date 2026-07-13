@@ -14,6 +14,7 @@ hide:
 ## Jul 13, 2026
 * **CHANGE** The Surveys feature has been removed. Following its deprecation on 2026-06-10, surveys were read-only for a 30-day export window that has now closed. Surveys can no longer be viewed, created, or linked to chatbots.
 * **BUG** Fixed a validation error that could occur when using newer reasoning models (such as GPT-5.2 and GPT-5.5) with a temperature setting. Parameters that a model does not support are now filtered out automatically instead of causing an error.
+* **BUG** Sending a chat message with no text and no attachment now returns a clear "bad request" error instead of a server error.
 
 ## Jul 10, 2026
 * **BUG** Fixed a `NameError` when using the `re` (regular expressions) or `random` modules directly in a Code node's Python code. Both modules are now available for direct use, alongside `json`, `datetime`, and `time`.
