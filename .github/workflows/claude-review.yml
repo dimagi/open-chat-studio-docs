@@ -10,7 +10,7 @@ concurrency:
 
 jobs:
   review:
-    if: ${{ !contains(github.event.pull_request.labels.*.name, 'automated') }}
+    if: ${{ github.actor != 'dependabot[bot]' && !contains(github.event.pull_request.labels.*.name, 'automated') }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
