@@ -14,7 +14,7 @@ Understanding session status helps you:
 |--------|-------|---------------|
 | `SETUP` | Setting Up | A session has been created but the participant has not yet been contacted or arrived. This is the default starting point for every session. |
 | `PENDING` | Awaiting Participant | The participant has been invited (for example, by email) or prompted for consent, but has not yet agreed to start. |
-| `PENDING_PRE_SURVEY` | Awaiting Pre-Survey | The participant has consented and was waiting to complete a pre-conversation survey before the chat began. This status is no longer reachable — the pre-survey feature has been deprecated and removed. Existing sessions that reached this status before the change will remain here. |
+| `PENDING_PRE_SURVEY` | Awaiting Pre-Survey | The participant has consented and was waiting to complete a pre-conversation survey before the chat began. This status is no longer reachable — the Surveys feature has been permanently removed. Existing sessions that reached this status before the removal will remain here. |
 | `ACTIVE` | Active | The conversation is in progress. |
 | `PENDING_REVIEW` | Awaiting Final Review | The conversation has ended and is waiting for the participant to submit the post-conversation review or for an admin to review the session. |
 | `COMPLETE` | Complete | The session is fully finished. No further activity is expected. |
@@ -52,7 +52,7 @@ stateDiagram-v2
 ```
 
 !!! note "PENDING_PRE_SURVEY"
-    The `PENDING_PRE_SURVEY` status is no longer reachable. The pre-survey feature has been deprecated and the coupling between surveys and chatbots has been removed. Sessions that reached this status before the change will remain in it, but no new sessions will enter it. See [Setting up a Survey](../how-to/setting_up_a_survey.md) for deprecation details.
+    The `PENDING_PRE_SURVEY` status is no longer reachable. The Surveys feature has been permanently removed. Sessions that reached this status before the removal will remain in it, but no new sessions will enter it. See [Surveys (Removed)](../how-to/setting_up_a_survey.md) for details.
 
 ### Messaging channel flow
 
