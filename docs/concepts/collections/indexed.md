@@ -40,16 +40,16 @@ If you are new to indexed collections, start with a **Remote Index**. Switch to 
 ## Remote Index
 Remote indexes are hosted and managed by your LLM provider. Files are uploaded to the provider, which handles all indexing. The embedding model is chosen by the provider.
 
-### Supported providers
-- OpenAI (using the [responses API](https://platform.openai.com/docs/api-reference/responses))
+### Supported LLM providers
+- OpenAI
 
-!!! warning "OpenAI Remote Collection Limit"
+!!! warning "OpenAI limit of 2 Remote Index Collections"
 
-    When using OpenAI as your LLM provider with remote (OpenAI-hosted) indexed collections, you can select a **maximum of 2 collections per LLM node**. This is a limitation imposed by OpenAI itself.
+    When using remote (OpenAI-hosted) indexed collections, you can select a **maximum of 2 collections per LLM node**. This is a limitation imposed by OpenAI itself.
 
-    - If you attempt to select more than 2 remote collections with OpenAI, OCS will show you a validation error
+    - If you attempt to select more than 2 remote collections, OCS will show you a validation error
     - **Local indexes** are NOT affected by this limit — it only applies to OpenAI-hosted remote indexes
-    - This limit comes from OpenAI's API although it's not specifically documented
+    - This limit comes from OpenAI's API, although it's not specifically documented
 
 ### Supported file types
 Supported files are determined by the selected provider:
