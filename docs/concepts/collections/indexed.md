@@ -19,6 +19,10 @@ Common examples include:
 
 To search documents by meaning, OCS uses an **embedding model** — this technique is called **Retrieval-Augmented Generation (RAG)**. See [Local Index Optimization](../../tech-hub/local-index-optimization.md) for a full explanation.
 
+## Using it in a chatbot
+
+Once your collection is created and populated with files, [link it to an LLM node](./index.md#adding-a-collection-to-a-chatbot). Linking the collection isn't enough on its own — add the `{collection_index_summaries}` [prompt variable](../prompt_variables.md) to that node's prompt so the chatbot knows to search it.
+
 ## Which should I use?
 
 In OCS, there are two types of indexes:
