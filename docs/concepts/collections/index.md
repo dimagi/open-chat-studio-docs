@@ -9,7 +9,7 @@ Give your chatbot access to your files — grouped into a **collection** — whe
 
 1. Navigate to the **Collections** section in the sidebar, click "Add new", and choose a collection type: [Media Collection](./media.md) or [Indexed Collection (RAG)](./indexed.md).
 2. Once the collection is created, you will be able to upload files to it.
-3. For indexed collections, you'll also need to choose between a Remote or Local index before uploading — see [Which should I use?](./indexed.md#which-should-i-use).
+3. For indexed collections, you'll also need to choose between a Remote and a Local index before uploading — see [Which should I use?](./indexed.md#which-should-i-use).
 4. After your collection has been created, you can link it to any [LLM node][llm_node]. To actually access the collection's content, add the matching [prompt variable](../prompt_variables.md) to the node's prompt — `{media}` for media collections, or `{collection_index_summaries}` for indexed collections.
 
 ## Collections and published chatbots
