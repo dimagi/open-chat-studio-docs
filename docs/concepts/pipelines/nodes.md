@@ -16,11 +16,11 @@ graph LR
 
 A conversational node using AI models. You can configure:
 
-- A [prompt](../llm.md#prompt) for instructions on how to respond
+- A [prompt](../llm.md#prompt) for instructions on how to respond and using [prompt variables](../prompt_variables.md) to insert dynamic content
 - A [history mode](history.md) for conversation memory
 - [Temperature and effort parameters](../../how-to/adjust_llm_node_model_parameters.md) to shape output style and depth
 - [Tools](../tools/index.md) for additional actions
-- [Collections](../collections/index.md) to search an indexed collection and ground responses in your documents (RAG), or send files to participants from a media collection
+- [Collections](../collections/index.md) — select from your already-created collections: an indexed collection to search your documents and ground responses (RAG), or a media collection to send files to participants. Collections must be created first — see [Adding a collection to a chatbot](../collections/index.md#adding-a-collection-to-a-chatbot).
 - [Custom Actions](../llm_custom_action.md) to connect to external systems and retrieve information or complete tasks
 
 ## Routing Nodes
