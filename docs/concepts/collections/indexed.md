@@ -43,11 +43,10 @@ Remote indexes are hosted and managed by your LLM provider. Files are uploaded t
 ### Supported LLM providers
 - OpenAI
 
-!!! warning "OpenAI limit of 2 Remote Index Collections"
+!!! warning "OpenAI limit of 2 remote index collections"
 
-    When using remote (OpenAI-hosted) indexed collections, you can select a **maximum of 2 collections per LLM node**. This is a limitation imposed by OpenAI itself.
+    When using remote (OpenAI-hosted) indexed collections, you can select a **maximum of 2 collections** when configuring a LLM node.
 
-    - If you attempt to select more than 2 remote collections, OCS will show you a validation error
     - **Local indexes** are NOT affected by this limit — it only applies to OpenAI-hosted remote indexes
     - This limit comes from OpenAI's API, although it's not specifically documented
 
