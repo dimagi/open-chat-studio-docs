@@ -24,6 +24,9 @@ hide:
 * **CHANGE** Generating a chat export now shows a live percentage progress bar instead of an indeterminate spinner, so you can see how far along a large export is.
 
 ## Jul 7, 2026
+* **NEW** Team admins can now download a zip archive of all their team's files from the Team Management page. The export runs in the background with a progress bar, and a download link appears when it's ready.
+* **CHANGE** Deleting a team now requires typing the team's name in the confirmation modal before the delete button becomes active.
+* **BUG** Fixed team member permissions so that only team admins — not all team members — can access the Team Management page.
 * **BUG** Langfuse spans in the trace detail view now display in chronological order (sorted by start time) instead of the order returned by the Langfuse API.
 * **BUG** Fixed the code node's AI code-generation help text, which referenced a non-existent `abort_pipeline` function. It now correctly references `abort_with_message`, the function exposed to sandboxed code.
 * **BUG** Fixed pipelines occasionally returning a blank reply when the LLM sent a message along with a tool call and then followed up with empty content. The pipeline now surfaces the last non-empty response.
