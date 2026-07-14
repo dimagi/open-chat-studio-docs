@@ -128,7 +128,7 @@ nav:
       - Real-Time LLM Judge: how-to/evaluations/realtime_llm_judge.md
     - Migration & Deprecated:
       - how-to/assistants_migration.md
-      - Surveys (Deprecated): how-to/setting_up_a_survey.md
+      - Surveys (Removed): how-to/setting_up_a_survey.md
   - Concepts:
     - concepts/index.md
     - Chatbots:

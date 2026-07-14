@@ -1,15 +1,16 @@
 # Collections
 
-A collection is a group of files you can attach to a chatbot to give it access to content. There are two types of collections:
+Give your chatbot access to your files — grouped into a **collection** — whether that's sending them to users during a conversation, or letting the chatbot search them to answer questions. There are two types of collections, depending on what you want to do:
 
-- **[Media collection](./media.md)** - Send files — such as images, PDFs, video, or audio — to participants during a conversation.
-- **[Indexed collection](./indexed.md)** - Let your chatbot search your documents and ground its answers in that content (RAG).
+- **Want to send files to users in a conversation?** Use a **[Media collection](./media.md)** — share images, PDFs, video, or audio directly in the chat.
+- **Want your chatbot to answer questions using your documents?** Use an **[Indexed collection](./indexed.md)** — it searches your files and grounds its answers in that content (RAG).
 
 ## Adding a collection to a chatbot
 
-Navigate to the **Collections** section in the sidebar and click "Add new". Once the collection is created, you will be able to upload files to it.
-
-After your collection has been created and populated with files, you can link it to any [LLM node][llm_node].
+1. Navigate to the **Collections** section in the sidebar, click "Add new", and choose a collection type: [Media Collection](./media.md) or [Indexed Collection (RAG)](./indexed.md).
+2. Once the collection is created, you will be able to upload files to it.
+3. For indexed collections, you'll also need to choose between a Remote and a Local index before uploading — see [Which should I use?](./indexed.md#which-should-i-use).
+4. After your collection has been created, you can link it to any [LLM node][llm_node]. To actually access the collection's content, add the matching [prompt variable](../prompt_variables.md) to the node's prompt — `{media}` for media collections, or `{collection_index_summaries}` for indexed collections.
 
 ## Collections and published chatbots
 
@@ -28,4 +29,4 @@ The collection *structure* of a published chatbot version — which collections 
 
 For more detail on versioning in general, see [Versioning](../versioning.md).
 
-[llm_node]: ../pipelines/nodes.md
+[llm_node]: ../pipelines/nodes.md#llm-node

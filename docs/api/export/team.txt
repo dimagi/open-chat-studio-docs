@@ -726,7 +726,7 @@ GET /api/export/team/
   Responses:
     200:
       Content: application/json
-      Schema: TeamDetail
+      Schema: TeamExport
   Security:
     apiKeyAuth
     tokenAuth
@@ -968,7 +968,7 @@ AuthProviderDetail:
   - name: string (required)
 
 AuthProviderDetailTypeEnum:
-  - enum: [basic, api_key, bearer, commcare]
+  - enum: [basic, api_key, bearer, commcare, oauth_client_credentials]
 
 AuthProviderList:
   - cursor: string (required)
@@ -1806,7 +1806,6 @@ SyntheticVoiceList:
 
 TagDetail:
   - id: integer (required)
-  - slug: string (required)
   - created_at: string (required)
   - updated_at: string (required)
   - name: string (required)
@@ -1819,14 +1818,18 @@ TagList:
   - has_more: boolean (required)
   - results: array of TagDetail (required)
 
-TeamDetail:
+TeamExport:
   - id: integer (required)
   - feature_flags: array of string (required)
+  - has_public_key: boolean (required)
   - created_at: string (required)
   - updated_at: string (required)
   - name: string (required)
   - slug: string (required)
   - metadata: Unknown
+  - files_export_task_id: string
+  - is_migrating: boolean
+  - files_export: integer
 
 TimeoutTriggerDetail:
   - id: integer (required)

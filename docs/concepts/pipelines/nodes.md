@@ -4,8 +4,8 @@ A node is a discrete processing step in a [pipeline](index.md) that accepts a us
 
 ```mermaid
 graph LR
-  A@{ shape: stadium, label: "Input (ie data or prompt)" } --> B(Node);
-  B --> C@{ shape: stadium, label: "Output (ie LLM response)" };
+  A@{ shape: stadium, label: "Input (i.e. data or prompt)" } --> B(Node);
+  B --> C@{ shape: stadium, label: "Output (i.e. LLM response)" };
 ```
 
 !!! note Examples
@@ -13,30 +13,21 @@ graph LR
     See [chatbot workflow cookbook](../../how-to/workflow_cookbook.md) for examples of pipelines using different combinations of these node types.
 
 ## LLM Node
-A conversational node using AI models. You can configure this node.
+
+A conversational node using AI models. You can configure:
 
 - A [prompt](../llm.md#prompt) for instructions on how to respond
+- [Prompt variables](../prompt_variables.md) to insert dynamic content
 - A [history mode](history.md) for conversation memory
 - [Temperature and effort parameters](../../how-to/adjust_llm_node_model_parameters.md) to shape output style and depth
 - [Tools](../tools/index.md) for additional actions
+- [Collections](../collections/index.md) for indexed collections to ground responses in your documents (RAG), or a media collections to send files to participants.
+- [Custom Actions](../llm_custom_action.md) to connect to external systems and retrieve information or complete tasks
 
 ## Routing Nodes
 
-Routers are used to reduce cost, improve accuracy, and keep pipeline workflows flexible. A router will: receive input, analyze it, choose the next workflow step, and pass the request to the downstream node.
+Routers are used to reduce cost, improve accuracy, and keep pipeline workflows flexible. A router will receive input, analyze it, choose the next workflow step, and pass the request to the downstream node.
 See the [Router Node](./router_nodes.md) page for full details.
-
-## Python Node
-
-Execute custom Python code for logic, data processing, or external API calls.
-
-**Key capabilities:**
-
-- **[Utility functions](../../tech-hub/python_node.md#utility-functions)** — read and write [participant data](../../concepts/participant_data.md), [temporary state](../../tech-hub/python_node.md#temporary-state) (per pipeline run), and [session state](../../tech-hub/python_node.md#session-state) (per user session).
-- **[Attachments](../../tech-hub/python_node.md#attachments)** — access files uploaded by the user and read their contents (text, PDF, DOCX, XLSX, and [more](../../tech-hub/python_node.md#supported-file-types)).
-- **[HTTP client](../../tech-hub/external-api-calls/http_client.md)** — make secure HTTP requests to external APIs using the built-in `http` global.
-- **[Debugging](../../tech-hub/python_node.md#debugging-with-print)** — use `print()` to capture diagnostic output, visible in the trace detail view.
-
-See the [Python Node](../../tech-hub/python_node.md) page for full documentation.
 
 ## Render a Template Node
 
@@ -55,7 +46,22 @@ See the [Send an Email How-to Guide](../../how-to/send_email_node.md) for steps 
 See the [Render a Template and Send an Email Node](../../tech-hub/template_and_email_nodes.md#send-an-email-node) reference for recipient field syntax, template variables, and prompt examples.
 
 ## Extract Structured Data Node
+
 Extract structured data from the input. This node acts as a passthrough, meaning the output will be identical to the input, allowing it to be used in a pipeline without affecting the conversation.
 
 ## Update Participant Data Node
+
 Extract structured data and save it as participant data. This node is commonly used with [events](../events.md).
+
+## Python Node
+
+Execute custom Python code for logic, data processing, or external API calls.
+
+**Key capabilities:**
+
+- **[Utility functions](../../tech-hub/python_node.md#utility-functions)** — read and write [participant data](../../concepts/participant_data.md), [temporary state](../../tech-hub/python_node.md#temporary-state) (per pipeline run), and [session state](../../tech-hub/python_node.md#session-state) (per user session).
+- **[Attachments](../../tech-hub/python_node.md#attachments)** — access files uploaded by the user and read their contents (text, PDF, DOCX, XLSX, and [more](../../tech-hub/python_node.md#supported-file-types)).
+- **[HTTP client](../../tech-hub/external-api-calls/http_client.md)** — make secure HTTP requests to external APIs using the built-in `http` global.
+- **[Debugging](../../tech-hub/python_node.md#debugging-with-print)** — use `print()` to capture diagnostic output, visible in the trace detail view.
+
+See the [Python Node](../../tech-hub/python_node.md) page for full documentation.

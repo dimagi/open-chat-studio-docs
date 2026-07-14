@@ -7,7 +7,7 @@ Users can be assigned to specific groups upon invitation to the OCS platform ena
 | Permission                                       | Super Admin         | Team Admin | Experiment Admin | Chat Viewer | Analysis Admin | Analysis User | Assistant Admin | Event Admin | Pipeline Admin | Annotation Reviewer |
 |-------------------------------------------------|--------------------|------------|-----------------|-------------|---------------|--------------|----------------|-------------|---------------|---------------------|
 | **Can See Experiments**                         | ✅                 | ❌         | ✅              | ❌          | ❌            | ❌           | ❌             | ❌          | ❌            | ❌                  |
-| **Can View Safety Layers, Source Material, Surveys (deprecated), Consent Forms** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
+| **Can View Safety Layers, Source Material, Consent Forms** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
 | **Can See Tags**                                 | ✅                 | ❌         | ✅              | ❌          | ❌            | ❌           | ❌             | ❌          | ❌            | ❌                  |
 | **Can Access Prompt Builder**                   | ✅                 | ✅         | ✅              | ✅          | ✅            | ✅           | ✅             | ✅          | ✅            | ❌                  |
 | **Can View Graphs/Download Files**              | ✅                 | ❌         | ❌              | ✅          | ❌            | ❌           | ❌             | ❌          | ❌            | ❌                  |

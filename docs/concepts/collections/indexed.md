@@ -19,6 +19,10 @@ Common examples include:
 
 To search documents by meaning, OCS uses an **embedding model** — this technique is called **Retrieval-Augmented Generation (RAG)**. See [Local Index Optimization](../../tech-hub/local-index-optimization.md) for a full explanation.
 
+## Using it in a chatbot
+
+Once your collection is created and populated with files, [link it to an LLM node](./index.md#adding-a-collection-to-a-chatbot). Linking the collection isn't enough on its own — add the `{collection_index_summaries}` [prompt variable](../prompt_variables.md) to that node's prompt so the chatbot knows to search it.
+
 ## Which should I use?
 
 In OCS, there are two types of indexes:
@@ -40,16 +44,15 @@ If you are new to indexed collections, start with a **Remote Index**. Switch to 
 ## Remote Index
 Remote indexes are hosted and managed by your LLM provider. Files are uploaded to the provider, which handles all indexing. The embedding model is chosen by the provider.
 
-### Supported providers
-- OpenAI (using the [responses API](https://platform.openai.com/docs/api-reference/responses))
+### Supported LLM providers
+- OpenAI
 
-!!! warning "OpenAI Remote Collection Limit"
+!!! warning "OpenAI limit of 2 remote index collections"
 
-    When using OpenAI as your LLM provider with remote (OpenAI-hosted) indexed collections, you can select a **maximum of 2 collections per LLM node**. This is a limitation imposed by OpenAI's API, not Open Chat Studio.
+    When using remote (OpenAI-hosted) indexed collections, you can select a **maximum of 2 collections** when configuring a LLM node.
 
-    - **Local indexes** are NOT affected by this limit
-    - **Non-OpenAI providers** are NOT affected by this limit
-    - If you attempt to select more than 2 remote collections with OpenAI, you will receive a validation error
+    - **Local indexes** are NOT affected by this limit — it only applies to OpenAI-hosted remote indexes
+    - This limit comes from OpenAI's API, although it's not specifically documented
 
 ### Supported file types
 Supported files are determined by the selected provider:
