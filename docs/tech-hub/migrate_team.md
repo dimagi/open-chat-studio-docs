@@ -32,7 +32,7 @@ These need to be re-established on the target server after migration:
 
 - Team Admin access to the team on the source server.
 - The ability to run `manage.py` commands on the target server.
-- OpenSSL, or Python with the `cryptography` package, to generate a key pair.
+- A way to generate an RSA key pair — for example OpenSSL, Python with the `cryptography` package, or an online RSA key generator.
 
 ## 1. Set up the target server
 
@@ -85,6 +85,9 @@ with open("pubkey.pem", "wb") as f:
     ))
 ```
 
+!!! tip "No OpenSSL or Python?"
+    Any tool that produces a standard RSA-2048 PEM key pair works, including an in-browser generator such as [cryptotools.net/rsagen](https://cryptotools.net/rsagen). Prefer one that generates the keys locally in your browser so the private key never leaves your machine.
+
 Then:
 
 1. On the source server, register the **public key** (`pubkey.pem`) in the same **Data Export** section under Team Settings.
@@ -125,7 +128,7 @@ The arguments are:
 - `--source-url` — the base URL of the source server.
 - `--api-key` — the API key you created on the source server ([step 4](#4-create-an-api-key-source-server)).
 - `--team-slug` — the slug of the team you're migrating.
-- `--private-key-path` — the path to the private key you copied to the target server ([step 3](#3-generate-an-encryption-key-pair-and-register-the-public-key)).
+- `--private-key-path` — the path to the private key you copied to the target server ([step 3](#3-generate-an-encryption-key-pair-and-register-the-public-key)). Alternatively, set the `SYNC_TEAM_PRIVATE_KEY` environment variable to the private key's PEM contents instead of passing a path. If both are provided, `--private-key-path` takes precedence.
 - `--state-dir` — the directory where the checkpoint SQLite database is stored. Point every rerun at the same directory so the command can resume from where it left off.
 
 Where you run this depends on how you run OCS:
