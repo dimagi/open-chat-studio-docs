@@ -28,10 +28,18 @@ These need to be re-established on the target server after migration:
 - Slack installations
 - Open (unaccepted) team invitations
 
+!!! note "Team members come across"
+    Existing (accepted) team members are migrated along with the team, including their roles. The
+    sync links each member to an account with the same username if one already exists on the target,
+    and creates the account otherwise — newly created users are emailed a password-reset link so they
+    can set a password. Only *pending* invitations (above) are left behind, so re-invite those people
+    on the target.
+
 ## Prerequisites
 
 - Team Admin access to the team on the source server.
 - The ability to run `manage.py` commands on the target server.
+- Access to upload files to the target server's storage backend (for example, an S3-compatible bucket) — you'll move the team's files across in [step 2](#2-export-your-teams-files-source-server).
 - A way to generate an RSA key pair — for example OpenSSL, Python with the `cryptography` package, or an online RSA key generator.
 
 ## 1. Set up the target server
@@ -155,17 +163,25 @@ Once the team's data has synced, channel webhooks still point at the source serv
 python manage.py reregister_webhooks --team-slug "<team-slug>"
 ```
 
-This automatically updates webhooks for channels that support it, such as Telegram and WhatsApp.
+Whether a channel updates automatically depends on its **messaging provider**, not just the platform:
+
+- **Telegram** channels always update automatically.
+- **WhatsApp** and **Facebook Messenger** channels update automatically when they are served through **Twilio**.
 
 !!! note "This step is the cutover"
     Re-registering webhooks is the point where live traffic moves from the source to the target. Until you run it, incoming messages keep flowing to the source; afterwards they flow to the target. Individual channels may see a brief gap while the messaging provider propagates the new webhook URL.
 
-Some channels can't be updated automatically and need manual attention:
+The command prints a report of which channels it re-registered and which it couldn't. These need their webhooks re-registered by hand:
 
-- **Turn.io** — update the webhook URL in the Turn.io console.
+- **WhatsApp or Messenger via the Meta Cloud API** — reconfigure or recreate the channel on the target server.
+- **WhatsApp via Turn.io** — update the webhook URL in the Turn.io console.
+- **SureAdhere** — reconfigure the channel on the target server.
+
+A few channel types aren't handled by this command at all and must be repointed separately:
+
+- **Slack** — Slack apps are configured at the workspace level, not per channel; reinstall or reconnect the app against the target server.
 - **Web widget embeds** — re-embed the [chat widget](../chat_widget/index.md) pointing at the target server.
 - **API clients** — point them at the target server's base URL.
-- **Meta and Slack integrations** — reconfigure or recreate the channel on the target server.
 
 ## 8. Verify and do a final sync
 
@@ -174,7 +190,7 @@ Test each channel against the target server and confirm chatbots respond as expe
 ## After the migration
 
 !!! warning "Don't disable migration mode on the source"
-    Once migration is complete, leave migration mode **enabled** on the source server. Disabling it makes the source start sending the team's scheduled messages again, which will conflict with the now-live target server. Keep it enabled until the team is deleted from the source server.
+    Once migration is complete, leave migration mode **enabled** on the source server. Disabling it makes the source start sending the team's scheduled messages again, which will conflict with the now-live target server. Keep it enabled until the team is deleted from the source server. A Team Admin can delete the team from **Team Settings** on the source once you're confident the migration is complete and the target is serving all traffic.
 
 ## Troubleshooting
 
