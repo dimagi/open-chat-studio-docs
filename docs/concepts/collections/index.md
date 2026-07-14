@@ -1,51 +1,32 @@
 # Collections
 
-!!! info "Collections are only supported with pipeline bots"
+Give your chatbot access to your files — grouped into a **collection** — whether that's sending them to users during a conversation, or letting the chatbot search them to answer questions. There are two types of collections, depending on what you want to do:
 
-A collection in OCS refers to a collection of files. There are two types of collections:
+- **Want to send files to users in a conversation?** Use a **[Media collection](./media.md)** — share images, PDFs, video, or audio directly in the chat.
+- **Want your chatbot to answer questions using your documents?** Use an **[Indexed collection](./indexed.md)** — it searches your files and grounds its answers in that content (RAG).
 
-- [Media collection](./media.md)
-- [Indexed Collection (for RAG applications)](./indexed.md)
+## Adding a collection to a chatbot
 
-## Adding a collection to a bot
+1. Navigate to the **Collections** section in the sidebar, click "Add new", and choose a collection type: [Media Collection](./media.md) or [Indexed Collection (RAG)](./indexed.md).
+2. Once the collection is created, you will be able to upload files to it.
+3. For indexed collections, you'll also need to choose between a Remote and a Local index before uploading — see [Which should I use?](./indexed.md#which-should-i-use).
+4. After your collection has been created, you can link it to any [LLM node][llm_node]. To actually access the collection's content, add the matching [prompt variable](../prompt_variables.md) to the node's prompt — `{media}` for media collections, or `{collection_index_summaries}` for indexed collections.
 
-Navigate to the **Collections** section in the sidebar and click "Add new". Once the collection is created, you will be able to upload files to it.
+## Collections and published chatbots
 
-After your collection has been created and populated with files, you can link it to any [LLM node][llm_node].
+Collection content is a **live shared resource**: updates to your files in a collection reach your published chatbot automatically, without a republish. This applies whether you update a collection manually or via a scheduled [document-source](../../how-to/document_sources.md) sync.
 
-## Collections and published bots
+- Adding or removing files from a [media collection](./media.md) takes effect for users immediately.
+- Document-source syncs to an [indexed collection](./indexed.md#document-sources-for-indexed-collections) — for example, nightly Confluence or GitHub syncs — are applied to the published chatbot as each sync completes.
 
-Collection content is a **live shared resource**. When you update the files in a collection — either manually or through a scheduled document-source sync — those changes are reflected in your published bot automatically. You do not need to republish to pick up new or updated files.
+The collection *structure* of a published chatbot version — which collections are linked to which pipeline nodes — is still frozen at publish time. To change which collections a chatbot uses, you must publish a new version.
 
-This means:
+!!! note "What this means for drift detection"
+    Because collection content is live, adding files to a collection or waiting for a document-source sync no longer marks your chatbot as having unpublished changes. Only changes to the chatbot's pipeline configuration and settings are tracked as pending changes.
 
-- Adding or removing files from a media collection takes effect for users immediately.
-- Document-source syncs to a RAG index collection (for example, nightly Confluence or GitHub syncs) are applied to the published bot as each sync completes.
+!!! warning "Existing published bots"
+    This live-collection behavior applies to chatbots republished after this change was introduced (2026-06-03). Bots that were published before retain their previous frozen collection snapshot until the next time they are republished.
 
-The *structure* of a published version — which collections are linked to which pipeline nodes — is still frozen at publish time. To change which collections a bot uses, you must publish a new version.
+For more detail on versioning in general, see [Versioning](../versioning.md).
 
-For more detail on how versioning interacts with collections, see [Versioning](../versioning.md#what-is-frozen-and-what-is-live).
-
-## How are attachments sent?
-Whenever your bot references a particular file or document, it will be sent to the user as an attachment. Depending on the channel, attachments are delivered in different ways.
-
-### Web channels
-Attachments are directly downloadable by clicking on them.
-
-### Multimedia-unsupported channels
-By default, attachments are sent as download links appended to the bot's message. The user will see the file name and a corresponding download link at the end of the message. These channels do not yet support sending multimedia files:
-
-* Telegram
-* WhatsApp (Turn.io provider)
-* SureAdhere
-* Facebook Messenger
-* Slack
-
-### Multimedia-supported channels
-Channels that support sending multimedia files will receive each attachment as a separate message, following the bot's initial response. If a file type is not supported by the channel, or the file size exceeds the allowed limit, a download link will be appended to the bot's message instead. These channels support sending multimedia files:
-
-* API - See the [API documentation](https://openchatstudio.com/api/v1/docs/#tag/Channels/operation/new_api_message) for more information
-* WhatsApp (Twilio Provider) - Consult the [Twilio docs][twilio_docs] for supported file types.
-
-[llm_node]: ../pipelines/nodes.md
-[twilio_docs]: https://www.twilio.com/docs/whatsapp/guidance-whatsapp-media-messages
+[llm_node]: ../pipelines/nodes.md#llm-node

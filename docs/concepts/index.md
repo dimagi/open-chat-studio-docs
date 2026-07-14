@@ -1,76 +1,85 @@
 ---
 title: Concepts
-description: Conceptual Guide for Open Chat Studio
+description: Conceptual Guide for Open Chat Studio and AI-powered chatbots
 hide:
     - toc
 ---
 
 # Conceptual Guide
 
-This guide provides explanations of the key concepts behind the Open Chat Studio platform and AI applications more
-broadly.
+This guide explains the key concepts behind Open Chat Studio and AI-powered chatbots. Use it to understand what each feature is and why it exists.
 
-The conceptual guide does not cover step-by-step instructions or specific examples — those are found in
-the [How-to guides](../how-to/index.md).
+For step-by-step instructions on completing specific tasks, see the [How-to guides](../how-to/index.md). If you are new to OCS, start with the [Tutorials](../tutorials/index.md).
 
 ## Terms
+[Annotations](annotations/index.md)
+: A human review system that lets teams label and score chatbot sessions and messages against a defined schema — useful for quality assurance, content moderation, and building evaluation datasets.
+
 [Assistant](assistants.md)
-: A chatbot that uses OpenAI\`s Assistant API. Assistants can write and execute code and search and reference
-  information in uploaded files.
+: A legacy chatbot type powered by the OpenAI Assistants API. OpenAI has deprecated this API — see the [migration guide](../how-to/assistants_migration.md) if you currently use Assistants.
 
 [Authentication Provider](team/authentication_providers.md)
-: Authentication providers allow you to authenticate with external systems to access data or services.
+: Credentials — such as API keys, bearer tokens, or username/password pairs — used when your chatbot connects to external services via Custom Actions or Python nodes.
 
 [Channel](channels.md)
-: The platform through which a chat occurs (e.g., WhatsApp, Telegram, Web, Slack).
+: The platform through which a participant interacts with your chatbot — for example, WhatsApp, Telegram, the web, or Slack.
 
 [Chatbot](chatbots/index.md)
-: A chatbot in Open Chat Studio is a bot configuration that interacts with users across one or more channels.
+: In OCS, this is the top-level configuration for your conversational experience. It defines the chatbot's behavior, connects it to one or more channels, and is published to participants.
+
+[Collections](collections/index.md)
+: A group of files you attach to a chatbot to give it access to content — either as a media collection for file delivery, or an indexed collection for AI-powered document search (RAG).
 
 [Consent Forms](consent.md)
-: Forms that provide context to chatbot users on how their data will be used and who to contact regarding any concerns.
+: An agreement screen shown to participants before a conversation begins, letting them read how their data is used and confirm they agree before interacting with your chatbot.
 
 [Custom Actions](llm_custom_action.md)
-: Custom actions extend a bot's functionality by integrating with external systems and APIs.
+: Reusable connections to external services that let your chatbot retrieve information or complete tasks in another system — such as looking up an order status or creating a support ticket.
 
 [Evaluations](evaluations/index.md)
-: Evaluations is a testing system for measuring chatbot performance against different metrics.
+: A built-in testing system that runs your chatbot against sample conversations and scores the responses against criteria you define, such as accuracy, tone, or whether the bot stayed on topic.
 
 [Events](events.md)
-: Events are a way to trigger actions in the bot based on specific conditions.
+: Automated actions that fire when something specific happens in a chatbot session — for example, when a conversation starts, ends, or when a participant has been inactive for a set period.
 
 [Large Language Models (LLMs)](llm.md)
-: Large language models are a type of AI model that can generate human-like text, images and audio.
+: The AI model that powers your chatbot's ability to understand messages and generate responses. OCS lets you choose from a range of models and configure how they behave.
 
 [Messaging Provider](team/messaging_providers.md)
-: Messaging providers hold the configuration required to send messages to users on a specific channel.
+: A connection to a communication platform — such as WhatsApp or Slack — so chatbots can be deployed to that service.
 
 [Node](./pipelines/nodes.md)
-: A node is a single step in a chatbot's pipeline.
+: A single processing step in a pipeline. Each node performs one task, such as calling an LLM, running custom code, or routing the conversation based on its content.
 
 [Participant Data](participant_data.md)
-: Data that persists across sessions and is tied to the same `User, Channel, Chatbot` scope. It helps retain long-term user preferences and contextual information beyond a single session.
+: Custom information stored against each participant that persists across chatbot sessions. Use it to remember preferences, track progress, or personalize chatbot responses.
 
 [Pipelines](pipelines/index.md)
-: A pipeline is the visual workflow that controls how a chatbot processes input and produces output.
+: The drag-and-drop canvas where you build your chatbot's conversation logic by connecting nodes together. Every chatbot in OCS is powered by a pipeline.
 
 [Prompt](prompt_variables.md)
-: A prompt is the instructions that are given to the LLM to generate a response. Prompts can include text, source material, and other variables.
+: The instructions you write to guide your chatbot's responses. OCS supports prompt variables — placeholders like `{participant_data}` or `{source_material}` — that inject dynamic values into your prompt at runtime.
 
 [Session](sessions.md)
-: The scope of conversations between a user and a chatbot within a specific channel. Sessions are isolated, ensuring data privacy and contextual continuity for the duration of an interaction.
+: A conversation thread between a participant and your chatbot on a specific channel. Each session has its own history and is independent of other sessions.
 
 [Session Status](session_status.md)
-: The lifecycle state of a chat session (for example, setup, active, pending review, complete) and the transitions between those states.
+: A label that shows where a conversation is in its lifecycle — from first contact through to completion — and determines how OCS handles transitions between states.
 
 [Source Material](source_material.md)
-: Additional information that can be included in the bot prompt using the `{source_material}` prompt variable.
+: A knowledge base you attach to your chatbot — such as product documentation or FAQs — that it can reference when generating responses.
+
+[Tags](tags.md)
+: Labels applied to sessions or messages to categorize and organize interactions — for example, flagging conversations that need follow-up or segmenting sessions based on content.
+
+[Team](team/index.md)
+: The organizational unit in OCS. Each team has its own chatbots, data, and settings.
 
 [Tools](tools/index.md)
-: Tools let your chatbot take real actions during a conversation — such as performing calculations, scheduling reminders, or storing information about a participant — rather than only responding with text.
+: Built-in capabilities you enable per chatbot so it can do more than generate text — for example, schedule reminders, perform calculations, or remember information about a participant across sessions.
 
 [Tracing](tracing.md)
-: Tracing captures a chatbot's inputs, outputs, and decision-making process so bot developers can understand and debug their chatbot's behavior.
+: A record of every conversation turn showing what the chatbot received, what it returned, and how long it took. Use it to understand and debug unexpected chatbot behavior.
 
 [Versions](versioning.md)
-: The ability to create and manage different versions of a chatbot.
+: Snapshots of your chatbot's configuration that let you publish a stable version to participants while you continue developing and testing changes in the background.

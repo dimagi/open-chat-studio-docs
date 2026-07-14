@@ -16,18 +16,9 @@ Once a version is created, it cannot be edited or modified. This ensures that th
 
 ### What is frozen — and what is live
 
-Most of a published version's configuration is frozen at publish time. One exception is **collection content**:
+Most of a published version's configuration is frozen at publish time.
 
-- Changes to files in a linked [media collection](collections/media.md) — such as adding, removing, or replacing files — are reflected immediately in the published bot.
-- Scheduled [document-source syncs](collections/indexed.md#document-sources) to a linked RAG index collection are also applied to the published bot as they run.
-
-The collection *structure* (which collections are linked to which nodes) remains part of the frozen version. Only the *content* of those collections is treated as a live shared resource.
-
-!!! note "What this means for drift detection"
-    Because collection content is live, adding files to a collection or waiting for a document-source sync no longer marks your bot as having unpublished changes. Only changes to the bot's pipeline configuration and settings are tracked as pending changes.
-
-!!! warning "Existing published bots"
-    This live-collection behaviour applies to bots republished after this change was introduced (2026-06-03). Bots that were published before retain their previous frozen collection snapshot until the next time they are republished.
+One exception is **collection content**, which behaves as a live shared resource — updates reach the published bot without a republish. See [Collections and published chatbots](collections/index.md#collections-and-published-chatbots) for details on what's live versus frozen, and how this affects drift detection.
 
 ## Chatting to the unreleased version
 For testing, if you want to chat with the unreleased draft chatbot, go to the chatbot home page and click the speech bubble icon in the top-right corner. In the dropdown, select "Unreleased Version" instead of "Published Version" to open a web chat.

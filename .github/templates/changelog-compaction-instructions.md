@@ -15,7 +15,7 @@ For each calendar month earlier than the cutoff, replace all of its per-day sect
 month and year only. Use the **abbreviated month** form to match the file's existing
 day headings (`## Jun 22, 2026` → `## Jun 2026`, `## Apr 8, 2026` → `## Apr 2026`):
 
-```
+```markdown
 ## May 2026
 ```
 

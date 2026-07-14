@@ -1,0 +1,2002 @@
+API: Open Chat Studio export
+Description: Read-only, team-scoped endpoints for the Open Chat Studio data sync/export. **Unversioned and intended only for OCS export** — it carries no backwards-compatibility guarantee and may change without notice.
+
+TAG: Team
+
+ENDPOINTS:
+
+GET /api/export/analysis_queries/
+  Summary: Analysis Queries
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: AnalysisQueryList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/annotation_items/
+  Summary: Annotation Items
+  Description: Paginated by `updated_at`: a row modified while you page through it can reappear on a later page, so clients must treat results as upserts keyed by `id` rather than assuming each row is seen once.
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: AnnotationItemList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/annotation_queue_aggregates/
+  Summary: Annotation Queue Aggregates
+  Description: Paginated by `updated_at`: a row modified while you page through it can reappear on a later page, so clients must treat results as upserts keyed by `id` rather than assuming each row is seen once.
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: AnnotationQueueAggregateList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/annotation_queues/
+  Summary: Annotation Queues
+  Description: Paginated by `updated_at`: a row modified while you page through it can reappear on a later page, so clients must treat results as upserts keyed by `id` rather than assuming each row is seen once.
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: AnnotationQueueList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/annotations/
+  Summary: Annotations
+  Description: Paginated by `updated_at`: a row modified while you page through it can reappear on a later page, so clients must treat results as upserts keyed by `id` rather than assuming each row is seen once.
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: AnnotationList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/applied_tags/
+  Summary: Applied Tags
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: AppliedTagList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/auth_providers/
+  Summary: Auth Providers
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: AuthProviderList
+    400: Team has no registered public key; secret data cannot be sealed.
+      Content: application/json
+      Schema: SyncErrorDetail
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/chat_attachments/
+  Summary: Chat Attachments
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: ChatAttachmentList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/chat_messages/
+  Summary: Chat Messages
+  Description: Paginated by `updated_at`: a row modified while you page through it can reappear on a later page, so clients must treat results as upserts keyed by `id` rather than assuming each row is seen once.
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: ChatMessageList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/chatbot_channels/
+  Summary: Chatbot Channels
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: ExperimentChannelList
+    400: Team has no registered public key; secret data cannot be sealed.
+      Content: application/json
+      Schema: SyncErrorDetail
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/chatbots/
+  Summary: Chatbots
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: ExperimentList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/chats/
+  Summary: Chats
+  Description: Paginated by `updated_at`: a row modified while you page through it can reappear on a later page, so clients must treat results as upserts keyed by `id` rather than assuming each row is seen once.
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: ChatList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/collection_files/
+  Summary: Collection Files
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: CollectionFileList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/collections/
+  Summary: Collections
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: CollectionList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/consent_forms/
+  Summary: Consent Forms
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: ConsentFormList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/custom_action_operations/
+  Summary: Custom Action Operations
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: CustomActionOperationList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/custom_actions/
+  Summary: Custom Actions
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: CustomActionList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/custom_tagged_items/
+  Summary: Custom Tagged Items
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: CustomTaggedItemList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/dataset_auto_population_rules/
+  Summary: Dataset Auto Population Rules
+  Description: Paginated by `updated_at`: a row modified while you page through it can reappear on a later page, so clients must treat results as upserts keyed by `id` rather than assuming each row is seen once.
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: DatasetAutoPopulationRuleList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/document_sources/
+  Summary: Document Sources
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: DocumentSourceList
+    400: Team has no registered public key; secret data cannot be sealed.
+      Content: application/json
+      Schema: SyncErrorDetail
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/embedding_provider_models/
+  Summary: Embedding Provider Models
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: EmbeddingProviderModelList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/evaluation_configs/
+  Summary: Evaluation Configs
+  Description: Paginated by `updated_at`: a row modified while you page through it can reappear on a later page, so clients must treat results as upserts keyed by `id` rather than assuming each row is seen once.
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: EvaluationConfigList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/evaluation_datasets/
+  Summary: Evaluation Datasets
+  Description: Paginated by `updated_at`: a row modified while you page through it can reappear on a later page, so clients must treat results as upserts keyed by `id` rather than assuming each row is seen once.
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: EvaluationDatasetList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/evaluation_messages/
+  Summary: Evaluation Messages
+  Description: Paginated by `updated_at`: a row modified while you page through it can reappear on a later page, so clients must treat results as upserts keyed by `id` rather than assuming each row is seen once.
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: EvaluationMessageList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/evaluation_results/
+  Summary: Evaluation Results
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: EvaluationResultList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/evaluation_run_aggregates/
+  Summary: Evaluation Run Aggregates
+  Description: Paginated by `updated_at`: a row modified while you page through it can reappear on a later page, so clients must treat results as upserts keyed by `id` rather than assuming each row is seen once.
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: EvaluationRunAggregateList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/evaluation_runs/
+  Summary: Evaluation Runs
+  Description: Paginated by `updated_at`: a row modified while you page through it can reappear on a later page, so clients must treat results as upserts keyed by `id` rather than assuming each row is seen once.
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: EvaluationRunList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/evaluator_tag_rules/
+  Summary: Evaluator Tag Rules
+  Description: Paginated by `updated_at`: a row modified while you page through it can reappear on a later page, so clients must treat results as upserts keyed by `id` rather than assuming each row is seen once.
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: EvaluatorTagRuleList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/evaluators/
+  Summary: Evaluators
+  Description: Paginated by `updated_at`: a row modified while you page through it can reappear on a later page, so clients must treat results as upserts keyed by `id` rather than assuming each row is seen once.
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: EvaluatorList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/event_actions/
+  Summary: Event Actions
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: EventActionList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/event_users/
+  Summary: Event Users
+  Description: Paginated by `updated_at`: a row modified while you page through it can reappear on a later page, so clients must treat results as upserts keyed by `id` rather than assuming each row is seen once.
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: EventUserList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/file_chunk_embeddings/
+  Summary: File Chunk Embeddings
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: FileChunkEmbeddingList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/files/
+  Summary: Files
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: FileList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/llm_provider_models/
+  Summary: Llm Provider Models
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: LlmProviderModelList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/llm_providers/
+  Summary: Llm Providers
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: LlmProviderList
+    400: Team has no registered public key; secret data cannot be sealed.
+      Content: application/json
+      Schema: SyncErrorDetail
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/messaging_providers/
+  Summary: Messaging Providers
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: MessagingProviderList
+    400: Team has no registered public key; secret data cannot be sealed.
+      Content: application/json
+      Schema: SyncErrorDetail
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/notification_event_types/
+  Summary: Notification Event Types
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: EventTypeList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/notification_events/
+  Summary: Notification Events
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: NotificationEventList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/participant_data/
+  Summary: Participant Data
+  Description: Paginated by `updated_at`: a row modified while you page through it can reappear on a later page, so clients must treat results as upserts keyed by `id` rather than assuming each row is seen once.
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: ParticipantDataList
+    400: Team has no registered public key; secret data cannot be sealed.
+      Content: application/json
+      Schema: SyncErrorDetail
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/participants/
+  Summary: Participants
+  Description: Paginated by `updated_at`: a row modified while you page through it can reappear on a later page, so clients must treat results as upserts keyed by `id` rather than assuming each row is seen once.
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: ParticipantList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/pipeline_chat_histories/
+  Summary: Pipeline Chat Histories
+  Description: Paginated by `updated_at`: a row modified while you page through it can reappear on a later page, so clients must treat results as upserts keyed by `id` rather than assuming each row is seen once.
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: PipelineChatHistoryList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/pipeline_chat_messages/
+  Summary: Pipeline Chat Messages
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: PipelineChatMessagesList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/pipeline_nodes/
+  Summary: Pipeline Nodes
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: NodeList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/pipelines/
+  Summary: Pipelines
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: PipelineList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/pricing_rules/
+  Summary: Pricing Rules
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: PricingRuleList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/scheduled_messages/
+  Summary: Scheduled Messages
+  Description: Paginated by `updated_at`: a row modified while you page through it can reappear on a later page, so clients must treat results as upserts keyed by `id` rather than assuming each row is seen once.
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: ScheduledMessageList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/scores/
+  Summary: Scores
+  Description: Paginated by `updated_at`: a row modified while you page through it can reappear on a later page, so clients must treat results as upserts keyed by `id` rather than assuming each row is seen once.
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: ScoreList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/sessions/
+  Summary: Sessions
+  Description: Paginated by `updated_at`: a row modified while you page through it can reappear on a later page, so clients must treat results as upserts keyed by `id` rather than assuming each row is seen once.
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: ExperimentSessionList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/source_materials/
+  Summary: Source Materials
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: SourceMaterialList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/static_triggers/
+  Summary: Static Triggers
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: StaticTriggerList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/synthetic_voices/
+  Summary: Synthetic Voices
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: SyntheticVoiceList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/tags/
+  Summary: Tags
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: TagList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/team/
+  Summary: Team
+  Description: Returns the team resolved from the API key, as a single object.
+  Responses:
+    200:
+      Content: application/json
+      Schema: TeamExport
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/timeout_triggers/
+  Summary: Timeout Triggers
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: TimeoutTriggerList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/trace_providers/
+  Summary: Trace Providers
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: TraceProviderList
+    400: Team has no registered public key; secret data cannot be sealed.
+      Content: application/json
+      Schema: SyncErrorDetail
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/traces/
+  Summary: Traces
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: TraceList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/transcript_analyses/
+  Summary: Transcript Analyses
+  Description: Paginated by `updated_at`: a row modified while you page through it can reappear on a later page, so clients must treat results as upserts keyed by `id` rather than assuming each row is seen once.
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: TranscriptAnalysisList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/usage_records/
+  Summary: Usage Records
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: UsageRecordList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/user_comments/
+  Summary: User Comments
+  Description: Paginated by `updated_at`: a row modified while you page through it can reappear on a later page, so clients must treat results as upserts keyed by `id` rather than assuming each row is seen once.
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: UserCommentList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/user_notification_preferences/
+  Summary: User Notification Preferences
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: UserNotificationPreferencesList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/users/
+  Summary: Users
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: CustomUserList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+GET /api/export/voice_providers/
+  Summary: Voice Providers
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: VoiceProviderList
+    400: Team has no registered public key; secret data cannot be sealed.
+      Content: application/json
+      Schema: SyncErrorDetail
+  Security:
+    apiKeyAuth
+    tokenAuth
+
+SCHEMAS:
+
+ActionTypeEnum:
+  - enum: [log, end_conversation, send_message_to_bot, schedule_trigger, pipeline_start]
+
+AnalysisQueryDetail:
+  - id: integer (required)
+  - name: string
+  - prompt: string (required)
+  - output_format: string
+  - order: integer
+  - analysis: integer (required)
+
+AnalysisQueryList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of AnalysisQueryDetail (required)
+
+AnnotationDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - is_authoritative: boolean
+  - authoritative_set_at: string
+  - data: Unknown
+  - status: AnnotationDetailStatusEnum
+  - item: integer (required)
+  - reviewer: integer (required)
+  - authoritative_set_by: integer
+
+AnnotationDetailStatusEnum:
+  - enum: [draft, submitted]
+
+AnnotationItemDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - item_type: ItemTypeEnum (required)
+  - status: AnnotationItemDetailStatusEnum
+  - review_count: integer
+  - flags: Unknown
+  - queue: integer (required)
+  - session: integer (required)
+  - message: integer (required)
+
+AnnotationItemDetailStatusEnum:
+  - enum: [pending, in_progress, awaiting_resolution, completed, flagged]
+
+AnnotationItemList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of AnnotationItemDetail (required)
+
+AnnotationList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of AnnotationDetail (required)
+
+AnnotationQueueAggregateDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - aggregates: Unknown
+  - queue: integer (required)
+
+AnnotationQueueAggregateList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of AnnotationQueueAggregateDetail (required)
+
+AnnotationQueueDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - name: string (required)
+  - description: string
+  - schema: Unknown
+  - num_reviews_required: integer
+  - status: AnnotationQueueDetailStatusEnum
+  - created_by: integer
+  - assignees: array of integer
+
+AnnotationQueueDetailStatusEnum:
+  - enum: [active, paused, completed, archived]
+
+AnnotationQueueList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of AnnotationQueueDetail (required)
+
+AppliedTagDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - evaluation_result: integer (required)
+  - rule: integer (required)
+  - tag: integer (required)
+
+AppliedTagList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of AppliedTagDetail (required)
+
+AuthProviderDetail:
+  - id: integer (required)
+  - config: string (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - type: AuthProviderDetailTypeEnum (required)
+  - name: string (required)
+
+AuthProviderDetailTypeEnum:
+  - enum: [basic, api_key, bearer, commcare, oauth_client_credentials]
+
+AuthProviderList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of AuthProviderDetail (required)
+
+ChatAttachmentDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - tool_type: string (required)
+  - extra: Unknown
+  - chat: integer (required)
+  - files: array of integer
+
+ChatAttachmentList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of ChatAttachmentDetail (required)
+
+ChatDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - name: string
+  - translated_languages: array of string
+  - metadata: Unknown
+
+ChatList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of ChatDetail (required)
+
+ChatMessageDetail:
+  - id: integer (required)
+  - updated_at: string (required)
+  - created_at: string
+  - message_type: MessageTypeEnum (required)
+  - content: string (required)
+  - summary: string
+  - translations: Unknown
+  - metadata: Unknown
+  - chat: integer (required)
+
+ChatMessageList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of ChatMessageDetail (required)
+
+ChatbotSessionStatusEnum:
+  - enum: [setup, pending, active, pending-review, complete, unknown]
+
+CollectionDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - name: string (required)
+  - summary: string
+  - is_archived: boolean
+  - version_number: integer
+  - is_remote_index: boolean
+  - openai_vector_store_id: string
+  - is_index: boolean
+  - create_version_task_id: string
+  - working_version: integer
+  - llm_provider: integer
+  - embedding_provider_model: integer
+
+CollectionFileDetail:
+  - id: integer (required)
+  - status: Unknown
+  - metadata: Unknown
+  - external_id: string
+  - file: integer (required)
+  - collection: integer (required)
+  - document_source: integer
+
+CollectionFileList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of CollectionFileDetail (required)
+
+CollectionList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of CollectionDetail (required)
+
+ConditionTypeEnum:
+  - enum: [equals, range]
+
+ConfidenceEnum:
+  - enum: [exact, estimated, unknown]
+
+ConsentFormDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - name: string (required)
+  - consent_text: string (required)
+  - capture_identifier: boolean
+  - identifier_label: string
+  - identifier_type: IdentifierTypeEnum
+  - is_default: boolean (required)
+  - confirmation_text: string
+  - is_archived: boolean
+  - working_version: integer
+
+ConsentFormList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of ConsentFormDetail (required)
+
+CustomActionDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - name: string (required)
+  - description: string
+  - prompt: string
+  - server_url: string (required)
+  - api_schema: Unknown (required)
+  - _operations: Unknown
+  - allowed_operations: array of string
+  - healthcheck_path: string
+  - health_status: HealthStatusEnum
+  - last_health_check: string
+  - auth_provider: integer
+
+CustomActionList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of CustomActionDetail (required)
+
+CustomActionOperationDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - operation_id: string (required)
+  - _operation_schema: Unknown
+  - working_version: integer
+  - assistant: integer (required)
+  - node: integer
+  - custom_action: integer (required)
+
+CustomActionOperationList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of CustomActionOperationDetail (required)
+
+CustomTaggedItemDetail:
+  - id: integer (required)
+  - content_type: string (required)
+  - object_id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - user: integer
+  - tag: integer (required)
+
+CustomTaggedItemList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of CustomTaggedItemDetail (required)
+
+CustomUserDetail:
+  - id: integer (required)
+  - groups: array of string (required)
+  - last_login: string
+  - username: string (required)
+  - first_name: string
+  - last_name: string
+  - email: string
+  - is_active: boolean
+  - date_joined: string
+  - avatar: string
+  - language: string
+
+CustomUserList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of CustomUserDetail (required)
+
+DataTypeEnum:
+  - enum: [numeric, categorical, boolean]
+
+DatasetAutoPopulationRuleDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - filter_query_string: string
+  - is_enabled: boolean
+  - last_run_at: string
+  - last_run_status: Unknown
+  - last_error: string
+  - consecutive_failure_count: integer
+  - dataset: integer (required)
+  - source_experiment: integer (required)
+
+DatasetAutoPopulationRuleList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of DatasetAutoPopulationRuleDetail (required)
+
+DocumentSourceDetail:
+  - id: integer (required)
+  - config: string (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - source_type: Unknown (required)
+  - auto_sync_enabled: boolean
+  - last_sync: string
+  - sync_task_id: string
+  - is_archived: boolean
+  - collection: integer (required)
+  - auth_provider: integer
+  - working_version: integer
+
+DocumentSourceList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of DocumentSourceDetail (required)
+
+EmbeddingProviderModelDetail:
+  - id: integer (required)
+  - is_global: boolean (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - type: TypeB81Enum (required)
+  - name: string (required)
+
+EmbeddingProviderModelList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of EmbeddingProviderModelDetail (required)
+
+EvaluationConfigDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - name: string (required)
+  - version_selection_type: Unknown
+  - auto_run_on_append: boolean
+  - dataset: integer (required)
+  - experiment_version: integer
+  - base_experiment: integer
+  - evaluators: array of integer (required)
+
+EvaluationConfigList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of EvaluationConfigDetail (required)
+
+EvaluationDatasetDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - name: string (required)
+  - evaluation_mode: Unknown
+  - status: Unknown
+  - job_id: string
+  - error_message: string
+  - messages: array of integer (required)
+
+EvaluationDatasetList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of EvaluationDatasetDetail (required)
+
+EvaluationMessageDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - input: Unknown
+  - output: Unknown
+  - context: Unknown
+  - history: Unknown
+  - participant_data: Unknown
+  - session_state: Unknown
+  - metadata: Unknown
+  - input_chat_message: integer
+  - expected_output_chat_message: integer
+  - session: integer
+
+EvaluationMessageList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of EvaluationMessageDetail (required)
+
+EvaluationResultDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - output: Unknown (required)
+  - evaluator: integer (required)
+  - message: integer (required)
+  - run: integer (required)
+  - session: integer
+
+EvaluationResultList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of EvaluationResultDetail (required)
+
+EvaluationRunAggregateDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - aggregates: Unknown
+  - computed_at: string (required)
+  - run: integer (required)
+  - evaluator: integer (required)
+
+EvaluationRunAggregateList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of EvaluationRunAggregateDetail (required)
+
+EvaluationRunDetail:
+  - id: integer (required)
+  - updated_at: string (required)
+  - created_at: string (required)
+  - finished_at: string
+  - status: StatusA8fEnum
+  - type: EvaluationRunDetailTypeEnum
+  - job_id: string
+  - error_message: string
+  - config: integer (required)
+  - generation_experiment: integer
+  - user: integer
+  - scoped_messages: array of integer
+
+EvaluationRunDetailTypeEnum:
+  - enum: [full, preview, delta]
+
+EvaluationRunList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of EvaluationRunDetail (required)
+
+EvaluatorDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - name: string (required)
+  - type: string (required)
+  - params: Unknown
+  - evaluation_mode: Unknown
+
+EvaluatorList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of EvaluatorDetail (required)
+
+EvaluatorTagRuleDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - field_name: string (required)
+  - condition_type: ConditionTypeEnum (required)
+  - condition_value: Unknown
+  - evaluator: integer (required)
+  - tag: integer (required)
+
+EvaluatorTagRuleList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of EvaluatorTagRuleDetail (required)
+
+EventActionDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - action_type: ActionTypeEnum (required)
+  - params: Unknown
+
+EventActionList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of EventActionDetail (required)
+
+EventTypeDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - identifier: string (required)
+  - event_data: Unknown
+  - level: Unknown (required)
+
+EventTypeList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of EventTypeDetail (required)
+
+EventUserDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - read: boolean
+  - read_at: string
+  - muted_until: string
+  - event_type: integer (required)
+  - user: integer (required)
+
+EventUserList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of EventUserDetail (required)
+
+ExperimentChannelDetail:
+  - id: integer (required)
+  - extra_data: string (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - name: string (required)
+  - deleted: boolean
+  - external_id: string (required)
+  - platform: PlatformEnum
+  - widget_version: string
+  - widget_version_updated_at: string
+  - experiment: integer
+  - messaging_provider: integer
+
+ExperimentChannelList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of ExperimentChannelDetail (required)
+
+ExperimentDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - name: string (required)
+  - description: string
+  - seed_message: string
+  - public_id: string
+  - conversational_consent_enabled: boolean
+  - voice_response_behaviour: Unknown
+  - echo_transcript: boolean
+  - participant_allowlist: array of string
+  - version_number: integer
+  - is_default_version: boolean
+  - is_archived: boolean
+  - version_description: string
+  - debug_mode_enabled: boolean
+  - create_version_task_id: string
+  - file_uploads_enabled: boolean
+  - owner: integer (required)
+  - pipeline: integer
+  - consent_form: integer
+  - voice_provider: integer
+  - synthetic_voice: integer
+  - trace_provider: integer
+  - working_version: integer (required)
+
+ExperimentList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of ExperimentDetail (required)
+
+ExperimentSessionDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - external_id: string
+  - session_token_required: boolean
+  - status: ChatbotSessionStatusEnum
+  - consent_date: string
+  - ended_at: string
+  - reviewed_at: string
+  - seed_task_id: string
+  - state: Unknown
+  - platform: string
+  - experiment_versions: array of integer
+  - last_activity_at: string
+  - first_activity_at: string
+  - participant: integer (required)
+  - experiment: integer (required)
+  - chat: integer (required)
+  - experiment_channel: integer
+
+ExperimentSessionList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of ExperimentSessionDetail (required)
+
+FileChunkEmbeddingDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - chunk_number: integer (required)
+  - text: string (required)
+  - page_number: integer
+  - embedding: array of number (required)
+  - is_archived: boolean
+  - file: integer (required)
+  - collection: integer (required)
+  - working_version: integer
+
+FileChunkEmbeddingList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of FileChunkEmbeddingDetail (required)
+
+FileDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - name: string (required)
+  - file: string (required)
+  - external_source: string
+  - external_id: string
+  - content_size: integer
+  - content_type: string
+  - expiry_date: string
+  - summary: string
+  - purpose: PurposeEnum (required)
+  - is_archived: boolean
+  - metadata: Unknown
+  - unsupported_channels: Unknown
+  - working_version: integer
+
+FileList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of FileDetail (required)
+
+HealthStatusEnum:
+  - enum: [unknown, up, down]
+
+IdentifierTypeEnum:
+  - enum: [email, text]
+
+ItemTypeEnum:
+  - enum: [session, message]
+
+LlmProviderDetail:
+  - id: integer (required)
+  - config: string (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - type: TypeB81Enum (required)
+  - name: string (required)
+
+LlmProviderList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of LlmProviderDetail (required)
+
+LlmProviderModelDetail:
+  - id: integer (required)
+  - is_global: boolean (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - type: TypeB81Enum (required)
+  - name: string (required)
+  - max_token_limit: integer
+  - deprecated: boolean
+
+LlmProviderModelList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of LlmProviderModelDetail (required)
+
+MessageTypeEnum:
+  - enum: [human, ai, system]
+
+MessagingProviderDetail:
+  - id: integer (required)
+  - config: string (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - type: MessagingProviderDetailTypeEnum (required)
+  - name: string (required)
+  - extra_data: Unknown
+
+MessagingProviderDetailTypeEnum:
+  - enum: [twilio, turnio, sureadhere, slack, meta_cloud_api]
+
+MessagingProviderList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of MessagingProviderDetail (required)
+
+NodeDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - flow_id: string (required)
+  - type: string (required)
+  - label: string
+  - params: Unknown
+  - is_archived: boolean
+  - working_version: integer
+  - pipeline: integer (required)
+  - llm_provider: integer
+  - llm_provider_model: integer
+  - source_material: integer
+  - collection: integer
+  - assistant: integer
+  - synthetic_voice: integer
+  - collection_indexes: array of integer
+
+NodeList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of NodeDetail (required)
+
+NotificationEventDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - title: string (required)
+  - message: string (required)
+  - links: Unknown
+  - event_type: integer (required)
+
+NotificationEventList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of NotificationEventDetail (required)
+
+ParticipantDataDetail:
+  - id: integer (required)
+  - data: string (required)
+  - encryption_key: string (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - system_metadata: Unknown
+  - participant: integer (required)
+  - experiment: integer (required)
+
+ParticipantDataList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of ParticipantDataDetail (required)
+
+ParticipantDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - name: string
+  - identifier: string
+  - public_id: string
+  - platform: string (required)
+  - remote_id: string
+  - user: integer
+
+ParticipantList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of ParticipantDetail (required)
+
+PipelineChatHistoryDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - type: PipelineChatHistoryDetailTypeEnum (required)
+  - name: string (required)
+  - session: integer (required)
+
+PipelineChatHistoryDetailTypeEnum:
+  - enum: [node, named, global, none]
+
+PipelineChatHistoryList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of PipelineChatHistoryDetail (required)
+
+PipelineChatMessagesDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - node_id: string (required)
+  - human_message: string (required)
+  - ai_message: string (required)
+  - summary: string
+  - compression_marker: Unknown
+  - chat_history: integer (required)
+
+PipelineChatMessagesList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of PipelineChatMessagesDetail (required)
+
+PipelineDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - name: string (required)
+  - data: Unknown (required)
+  - version_number: integer
+  - is_archived: boolean
+  - working_version: integer
+
+PipelineList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of PipelineDetail (required)
+
+PlatformEnum:
+  - enum: [telegram, web, whatsapp, facebook, sureadhere, api, slack, commcare_connect, evaluations, embedded_widget, email]
+
+PricingRuleDetail:
+  - id: integer (required)
+  - provider_type: string (required)
+  - model_name: string (required)
+  - service_kind: ServiceKindEnum (required)
+  - unit_price: string (required)
+  - currency: string
+  - effective_from: string
+  - effective_to: string
+  - source: PricingRuleDetailSourceEnum
+  - notes: string
+  - created_at: string (required)
+  - created_by: integer
+
+PricingRuleDetailSourceEnum:
+  - enum: [seed, manual, import]
+
+PricingRuleList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of PricingRuleDetail (required)
+
+PurposeEnum:
+  - enum: [assistant, collection, evaluation_dataset, data_export, message_media]
+
+ScheduledMessageDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - external_id: string (required)
+  - next_trigger_date: string
+  - last_triggered_at: string
+  - total_triggers: integer
+  - is_complete: boolean
+  - custom_schedule_params: Unknown
+  - end_date: string
+  - cancelled_at: string
+  - action: integer
+  - experiment: integer (required)
+  - participant: integer (required)
+  - cancelled_by: integer
+
+ScheduledMessageList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of ScheduledMessageDetail (required)
+
+ScoreDetail:
+  - id: integer (required)
+  - target_content_type: string (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - target_object_id: integer (required)
+  - name: string (required)
+  - data_type: DataTypeEnum (required)
+  - value_numeric: string
+  - value_string: string
+  - source: ScoreDetailSourceEnum (required)
+  - automated_result: integer (required)
+  - review: integer (required)
+  - author: integer
+
+ScoreDetailSourceEnum:
+  - enum: [llm_judge, programmatic, human_review, user_feedback, system]
+
+ScoreList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of ScoreDetail (required)
+
+ServiceKindEnum:
+  - enum: [llm_input, llm_output, llm_cached_input, llm_cache_write]
+
+SourceMaterialDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - topic: string (required)
+  - description: string
+  - material: string (required)
+  - is_archived: boolean
+  - owner: integer (required)
+  - working_version: integer
+
+SourceMaterialList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of SourceMaterialDetail (required)
+
+StaticTriggerDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - type: StaticTriggerDetailTypeEnum (required)
+  - is_archived: boolean
+  - is_active: boolean
+  - action: integer (required)
+  - experiment: integer (required)
+  - working_version: integer
+
+StaticTriggerDetailTypeEnum:
+  - enum: [conversation_end, conversation_ended_by_user, conversation_ended_by_bot, conversation_ended_via_api, conversation_ended_by_event, conversation_ended_manually, last_timeout, conversation_start, new_human_message, new_bot_message, participant_joined]
+
+StaticTriggerList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of StaticTriggerDetail (required)
+
+StatusA8fEnum:
+  - enum: [pending, processing, completed, failed]
+
+SyncErrorDetail:
+  - detail: string (required)
+
+SyntheticVoiceDetail:
+  - id: integer (required)
+  - is_global: boolean (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - name: string (required)
+  - external_id: string (required)
+  - neural: boolean
+  - language: string (required)
+  - language_code: string (required)
+  - gender: Unknown (required)
+  - service: Unknown (required)
+  - voice_provider: integer (required)
+  - file: integer
+
+SyntheticVoiceList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of SyntheticVoiceDetail (required)
+
+TagDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - name: string (required)
+  - is_system_tag: boolean
+  - category: Unknown
+  - created_by: integer
+
+TagList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of TagDetail (required)
+
+TeamExport:
+  - id: integer (required)
+  - feature_flags: array of string (required)
+  - has_public_key: boolean (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - name: string (required)
+  - slug: string (required)
+  - metadata: Unknown
+  - files_export_task_id: string
+  - is_migrating: boolean
+  - files_export: integer
+
+TimeoutTriggerDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - delay: integer (required)
+  - total_num_triggers: integer
+  - is_archived: boolean
+  - is_active: boolean
+  - trigger_from_first_message: boolean
+  - config_changed_at: string (required)
+  - action: integer (required)
+  - experiment: integer (required)
+  - working_version: integer
+
+TimeoutTriggerList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of TimeoutTriggerDetail (required)
+
+TraceDetail:
+  - id: integer (required)
+  - timestamp: string (required)
+  - trace_id: string (required)
+  - status: TraceDetailStatusEnum
+  - duration: integer (required)
+  - participant_data: Unknown
+  - participant_data_diff: Unknown
+  - session_state: Unknown
+  - experiment_version_number: integer
+  - trace_metadata: Unknown
+  - error: string
+  - n_turns: integer
+  - n_toolcalls: integer
+  - n_total_tokens: integer
+  - n_prompt_tokens: integer
+  - n_completion_tokens: integer
+  - experiment: integer
+  - session: integer
+  - participant: integer
+  - input_message: integer
+  - output_message: integer
+
+TraceDetailStatusEnum:
+  - enum: [success, pending, error]
+
+TraceList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of TraceDetail (required)
+
+TraceProviderDetail:
+  - id: integer (required)
+  - config: string (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - type: TraceProviderDetailTypeEnum (required)
+  - name: string (required)
+
+TraceProviderDetailTypeEnum:
+  - enum: [langfuse]
+
+TraceProviderList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of TraceProviderDetail (required)
+
+TranscriptAnalysisDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - name: string (required)
+  - description: string
+  - status: StatusA8fEnum
+  - query_file: string
+  - result_file: string
+  - error_message: string
+  - job_id: string
+  - public_id: string (required)
+  - translation_language: string
+  - experiment: integer (required)
+  - created_by: integer (required)
+  - llm_provider: integer
+  - llm_provider_model: integer
+  - translation_llm_provider: integer
+  - translation_llm_provider_model: integer
+  - sessions: array of integer (required)
+
+TranscriptAnalysisList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of TranscriptAnalysisDetail (required)
+
+TypeB81Enum:
+  - enum: [openai, azure, anthropic, groq, perplexity, deepseek, google, google_vertex_ai, voyage]
+
+UsageRecordDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - timestamp: string (required)
+  - service_kind: ServiceKindEnum (required)
+  - provider_type: string (required)
+  - model_name: string (required)
+  - quantity: string
+  - unit_price: string
+  - cost: string
+  - currency: string
+  - confidence: ConfidenceEnum
+  - extra: Unknown
+  - experiment: integer
+  - session: integer
+  - participant: integer
+  - trace: integer
+  - pricing_rule: integer
+
+UsageRecordList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of UsageRecordDetail (required)
+
+UserCommentDetail:
+  - id: integer (required)
+  - content_type: string (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - comment: string
+  - object_id: integer (required)
+  - user: integer (required)
+
+UserCommentList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of UserCommentDetail (required)
+
+UserNotificationPreferencesDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - in_app_enabled: boolean
+  - in_app_level: Unknown
+  - email_enabled: boolean
+  - email_level: Unknown
+  - do_not_disturb_until: string
+  - user: integer (required)
+
+UserNotificationPreferencesList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of UserNotificationPreferencesDetail (required)
+
+VoiceProviderDetail:
+  - id: integer (required)
+  - config: string (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - type: VoiceProviderDetailTypeEnum (required)
+  - name: string (required)
+
+VoiceProviderDetailTypeEnum:
+  - enum: [aws, azure, openai, openaivoiceengine, elevenlabs, intron]
+
+VoiceProviderList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of VoiceProviderDetail (required)
+
+SECURITY:
+- API Key authentication (header: X-api-key)
+- HTTP bearer authentication

@@ -1,0 +1,136 @@
+# Claude Dependabot PR Review Workflow
+#
+# Automatically runs Claude analysis on Dependabot PRs to:
+# - Identify dependency changes and their versions
+# - Look up changelogs for updated packages / actions
+# - Assess breaking changes affecting the docs build
+# - Provide actionable recommendations
+#
+# Triggered on: Dependabot PRs (opened, synchronize)
+# Requirements: ANTHROPIC_API_KEY secret must be configured
+
+name: Claude Dependabot PR Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'PR number to analyze'
+        required: true
+        type: string
+
+jobs:
+  dependabot-review:
+    # Only run on Dependabot PRs, or manual dispatch for testing
+    if: github.actor == 'dependabot[bot]' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: read
+      id-token: write
+
+    steps:
+      - name: Resolve PR ref
+        id: pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR_NUMBER="${{ inputs.pr_number || github.event.pull_request.number }}"
+          echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
+          REF=$(gh pr view "$PR_NUMBER" --repo "${{ github.repository }}" --json headRefName --jq '.headRefName')
+          echo "ref=$REF" >> $GITHUB_OUTPUT
+
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ steps.pr.outputs.ref }}
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+
+      - name: Install dependencies
+        run: |
+          uv sync --locked
+
+      - name: Run Claude Dependabot Analysis
+        id: claude_review
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          allowed_bots: "dependabot[bot]"
+          claude_args: |
+            --allowedTools "Bash(uv:*),Bash(git:*),Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),Read,Edit,WebFetch,WebSearch"
+          prompt: |
+            You are reviewing PR #${{ steps.pr.outputs.pr_number }}.
+
+            You are Claude, an AI assistant reviewing Dependabot dependency update PRs for the
+            Open Chat Studio **documentation** site. This is a static docs site built with
+            Zensical (MkDocs-compatible), Python 3.13+, managed with uv. Dependabot here tracks
+            two ecosystems only: `uv` (Python packages in pyproject.toml / uv.lock) and
+            `github-actions` (versions pinned in .github/workflows/).
+
+            Your primary tasks are:
+            1. **Analyze the dependency changes** in this Dependabot PR
+            2. **Look up changelogs** for the updated dependencies / actions
+            3. **Identify breaking changes** that could affect the docs build or CI
+            4. **Provide an actionable recommendation**
+
+            ## Analysis Process:
+
+            1. **Identify Changed Dependencies**:
+               - Use `gh pr diff` to see what changed
+               - Parse pyproject.toml / uv.lock for Python package changes
+               - For github-actions updates, note the action and old → new version
+               - List all changes: old → new
+
+            2. **Changelog Research**:
+               - For each update, look up its changelog / release notes (WebFetch/WebSearch:
+                 GitHub releases, PyPI project pages, action repos)
+               - Focus on versions between old and new
+               - Identify: breaking changes, deprecations, security fixes
+
+            3. **Docs-Build Impact**:
+               - Pay special attention to packages that drive the build: zensical, mkdocs,
+                 mkdocstrings, and their plugins/themes. Breaking changes here can break the site.
+               - For github-actions bumps, check whether the new major version changes inputs
+                 or runtime the CI workflows rely on.
+               - Verify the build still works: run `uv sync --locked` then
+                 `uv run zensical build --clean --strict`. Report the result.
+
+            ## Output Format:
+
+            Post a single review comment (`gh pr comment`) with:
+
+            ### 🔍 Dependency Analysis Summary
+            - Updated packages / actions with version changes
+            - Overall risk assessment (LOW / MEDIUM / HIGH)
+
+            ### 📋 Changelog Review
+            For each update:
+            - **Name**: name (old_version → new_version)
+            - **Changes**: key changes
+            - **Breaking Changes**: any breaking changes
+            - **Security Fixes**: any security improvements
+
+            ### ⚠️ Build Impact
+            - **Strict build result**: pass / fail (with error if failed)
+            - **Breaking changes found**: Yes/No with details
+
+            ### 🛠️ Recommendation
+            - **Merge Recommendation**: APPROVE / REVIEW_NEEDED / HOLD
+            - **Follow-up**: any action needed
+
+            Be thorough but concise. Focus on whether this update is safe to merge for the docs site.

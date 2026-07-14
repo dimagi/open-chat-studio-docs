@@ -1,0 +1,32 @@
+API: Open Chat Studio export
+Description: Read-only, team-scoped endpoints for the Open Chat Studio data sync/export. **Unversioned and intended only for OCS export** — it carries no backwards-compatibility guarantee and may change without notice.
+
+TAG: Manifest
+
+ENDPOINTS:
+
+GET /api/export/manifest/
+  Summary: Manifest
+  Description: Returns the resource manifest: resource call order, per-model config, and a schema checksum clients can use to detect schema compatability.
+  Responses:
+    200:
+      Content: application/json
+      Schema: Manifest
+  Security:
+    (optional - no authentication required)
+
+SCHEMAS:
+
+Manifest:
+  - schema_checksum: string (required)
+  - entries: array of ManifestEntry (required)
+
+ManifestEntry:
+  - model: string (required)
+  - resource: string (required)
+  - cursor: string (required)
+  - secret: boolean (required)
+
+SECURITY:
+- API Key authentication (header: X-api-key)
+- HTTP bearer authentication

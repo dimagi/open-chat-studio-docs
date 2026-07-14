@@ -10,6 +10,7 @@ The following variables are currently supported:
 - `{participant_data}` - Information specific to this participant, bot and channel. See [here][participant_data] for more information.
 - `{current_datetime}` - This refers to the date and time at which the response is generated.
 - `{media}` - (pipelines only) This refers to the linked [media collection](./collections/media.md).
+- `{collection_index_summaries}` - This refers to the [indexed collections](./collections/indexed.md).
 - `{temp_state}` - (pipelines only) Access to the pipeline temporary state. See [Temporary State](../tech-hub/python_node.md#temporary-state).
 - `{session_state}` - (pipelines only) Access to the session state. See [Session State](../tech-hub/python_node.md#session-state)
 

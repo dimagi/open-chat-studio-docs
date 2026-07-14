@@ -29,7 +29,7 @@ Consider the conversation context: {context.topic}
 
 The available variables depend on the evaluator's evaluation mode.
 
-**Message-level variables**
+#### Message-level variables
 
 | Variable | Description |
 |---|---|
@@ -39,7 +39,7 @@ The available variables depend on the evaluator's evaluation mode.
 | `{context.[parameter]}` | Any context variable, e.g. `{context.topic}` |
 | `{full_history}` | Complete conversation history as formatted text |
 
-**Session-level variables**
+#### Session-level variables
 
 In session-level mode, `{input.content}` and `{output.content}` are empty. Use the following variables instead:
 

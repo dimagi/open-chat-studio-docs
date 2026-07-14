@@ -143,7 +143,7 @@ When the bot starts a new email thread (for example, via the [Trigger Bot Messag
 
 ### File attachments
 
-The email channel supports bidirectional file attachments.
+The email channel supports bidirectional file attachments. For a comparison of file support across all channels, see [channel file support](../concepts/channels.md#file-support).
 
 #### Inbound attachments (user to bot)
 
