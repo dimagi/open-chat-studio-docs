@@ -106,7 +106,7 @@ Then:
 
 ## 4. Create an API key (source server)
 
-Create an API key for your user on the source server — the sync command uses it to authenticate. The user the key belongs to must be a Team Admin of the team you're migrating. See [API Access](api_access.md) for how to generate an API key from your profile page.
+Create an API key for your user on the source server — the sync command uses it to authenticate. The user the key belongs to must be a Team Admin of the team you're migrating. The key only needs **read** permissions, since the sync command only reads data from the source. See [API Access](api_access.md) for how to generate an API key from your profile page.
 
 ## 5. Enable migration mode (source server)
 
@@ -136,7 +136,7 @@ The arguments are:
 - `--source-url` — the base URL of the source server.
 - `--api-key` — the API key you created on the source server ([step 4](#4-create-an-api-key-source-server)).
 - `--team-slug` — the slug of the team you're migrating.
-- `--private-key-path` — the path to the private key you copied to the target server ([step 3](#3-generate-an-encryption-key-pair-and-register-the-public-key)). Alternatively, set the `SYNC_TEAM_PRIVATE_KEY` environment variable to the private key's PEM contents instead of passing a path. If both are provided, `--private-key-path` takes precedence.
+- `--private-key-path` — the path to the private key you copied to the target server ([step 3](#3-generate-an-encryption-key-pair-and-register-the-public-key)). Alternatively, set the `SYNC_TEAM_PRIVATE_KEY` environment variable to the private key's PEM contents instead of passing a path. This is often easier in a containerized environment, where you can inject it as a secret rather than mounting a key file. If both are provided, `--private-key-path` takes precedence.
 - `--state-dir` — the directory where the checkpoint SQLite database is stored. Point every rerun at the same directory so the command can resume from where it left off.
 
 Where you run this depends on how you run OCS:
@@ -154,6 +154,9 @@ docker compose exec web python manage.py sync_team \
 ```
 
 The command creates a SQLite tracking database named after the team slug in the `--state-dir` directory. It's safe to run `sync_team` again at any point — each run picks up only what's changed since the last run, so you can use it to pull in a delta later (see [step 8](#8-verify-and-do-a-final-sync)).
+
+!!! warning "Persist the state directory in containerized environments"
+    In a containerized environment, the state directory won't survive container restarts or redeployments unless you persist it. Either bind mount `--state-dir` to a durable location on the host, or manually copy it out and back in if you plan to restart or redeploy the container before running the command again. If the state directory is lost, the next run starts from scratch instead of resuming.
 
 ## 7. Re-register channel webhooks (target server)
 
