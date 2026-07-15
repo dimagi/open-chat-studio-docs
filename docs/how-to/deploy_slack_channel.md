@@ -45,7 +45,7 @@ Once the channel is linked, users interact with the chatbot by mentioning it in 
 
 ## See also
 
-- [Deploy your chatbot to different platforms](deploy_to_different_channels.md)
+- [Deploy your chatbot to different channels](deploy_to_different_channels.md)
 - [Configure a messaging provider][6]
 
 [6]: ../tutorials/configure_msg_providers.md

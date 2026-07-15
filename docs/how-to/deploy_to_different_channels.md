@@ -1,4 +1,4 @@
-# Deploy your chatbot to different platforms
+# Deploy your chatbot to different channels
 
 To link a channel to your chatbot:
 

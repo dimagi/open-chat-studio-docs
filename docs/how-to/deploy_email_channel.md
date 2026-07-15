@@ -55,5 +55,5 @@ If a pipeline-produced file cannot be sent as an attachment (for example, it exc
 
 ## See also
 
-- [Deploy your chatbot to different platforms](deploy_to_different_channels.md)
+- [Deploy your chatbot to different channels](deploy_to_different_channels.md)
 - [Python Node documentation](../tech-hub/python_node.md)
