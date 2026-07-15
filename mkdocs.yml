@@ -119,6 +119,7 @@ nav:
       - how-to/deploy_to_different_channels.md
       - how-to/whatsapp_meta_cloud_api.md
       - how-to/deploy_email_channel.md
+      - how-to/deploy_slack_channel.md
     - UI Helpers:
       - Filter Tables with Natural Language: how-to/nl_filter.md
       - Find Objects: how-to/global_search.md
