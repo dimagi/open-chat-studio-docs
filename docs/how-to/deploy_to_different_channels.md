@@ -20,7 +20,7 @@ To link a channel to your chatbot:
 - [Facebook Messenger](#facebook-messenger)
 - [Slack](#slack)
 - [Email](#email)
-- [SureAdhere](#sureadhere-for-in-app-messaging)
+- [SureAdhere Mobile App](#sureadhere-for-secure-in-app-messaging)
 - [API](#api) — programmatic access, no setup required
 
 ## Web
@@ -87,7 +87,7 @@ The email channel lets users interact with your chatbot by sending and receiving
 
 See the [Email channel guide](deploy_email_channel.md) for full setup and configuration details.
 
-## SureAdhere for In-App Messaging
+## SureAdhere for secure In-App Messaging
 
 1. Enter the Tenant ID that was provided when you set up your SureAdhere account.
 2. After you submit the form, you will be provided with a webhook URL.

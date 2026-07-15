@@ -62,7 +62,7 @@ By default, attachments are sent as download links appended to the chatbot’s m
 
 * Telegram
 * WhatsApp (Turn.io provider)
-* SureAdhere
+* SureAdhere Mobile App
 * Facebook Messenger
 * Slack
 

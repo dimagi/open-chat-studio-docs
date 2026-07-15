@@ -14,7 +14,7 @@ The currently supported channels are:
 - Facebook Messenger
 - Slack
 - API
-- SureAdhere
+- SureAdhere In-App Messaging
 - Email
 
 ## File support

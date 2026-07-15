@@ -37,7 +37,7 @@ For step-by-step instructions on completing specific tasks, see the [How-to guid
 : Reusable connections to external services that let your chatbot retrieve information or complete tasks in another system — such as looking up an order status or creating a support ticket.
 
 [Evaluations](evaluations/index.md)
-: A built-in testing system that runs your chatbot against sample conversations and scores the responses against criteria you define, such as accuracy, tone, or whether the bot stayed on topic.
+: A built-in testing system that runs your chatbot against sample conversations and scores the responses against criteria you define, such as accuracy, tone, or whether the chatbot stayed on topic.
 
 [Events](events.md)
 : Automated actions that fire when something specific happens in a chatbot session — for example, when a conversation starts, ends, or when a participant has been inactive for a set period.
@@ -46,7 +46,7 @@ For step-by-step instructions on completing specific tasks, see the [How-to guid
 : The AI model that powers your chatbot's ability to understand messages and generate responses. OCS lets you choose from a range of models and configure how they behave.
 
 [Messaging Provider](team/messaging_providers.md)
-: A communication platform — such as Facebook, Telegram, Twilio or Slack — for chatbots to use as a channel to interact with participants.
+: An provider account you configure for a messaging service — such as Twilio, Turn.io, or Slack — that some channels require in order to send and receive messages for your chatbot.
 
 [Node](./pipelines/nodes.md)
 : A single processing step in a pipeline. Each node performs one task, such as calling an LLM, running custom code, or routing the conversation based on its content.

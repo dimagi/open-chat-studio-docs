@@ -1,11 +1,11 @@
 # Messaging Providers
 
-Messaging providers offer access to platforms such as WhatsApp, Facebook Messenger, Slack, and more.
+Messaging providers offer access to communication channels such as WhatsApp, Facebook Messenger, Slack, and more.
 Configuring a messaging provider lets you use the channel for your chatbot, so users can interact with it there.
 
 ## Supported providers
 
-Below is a list of supported messaging platforms in OCS:
+Below is a list of supported providers and their channels:
 
 - **Twilio**
     - WhatsApp
@@ -16,6 +16,7 @@ Below is a list of supported messaging platforms in OCS:
     - WhatsApp
 - **Slack**
 - **SureAdhere mobile app**
+    - In-App secure messaging
 
 ## Choosing a WhatsApp provider
 
