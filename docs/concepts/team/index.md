@@ -31,4 +31,8 @@ Every service-provider edit page has a **Show usages** button. Clicking it lists
 
 This is most useful before rotating an API key, deprecating a provider, or triaging a potentially leaked credential — it gives you an immediate picture of what would be affected.
 
+## Moving a team to another instance
+
+To move a team — its chatbots, configuration, and chat history — to a different OCS server, see [Migrate a Team to Another Instance](../../tech-hub/migrate_team.md).
+
 <!--- TODO: user management -->
