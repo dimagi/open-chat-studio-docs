@@ -201,6 +201,7 @@ nav:
       - api/index.md
       - api/getting_started_with_oauth.md
       - API Access: tech-hub/api_access.md
+    - Migrate a Team to Another Instance: tech-hub/migrate_team.md
   - Chat Widget:
     - chat_widget/index.md
     - chat_widget/reference.md
