@@ -5,14 +5,14 @@ To link a channel to your chatbot:
 1. Navigate to the **Chatbot** you wish to link to a channel.
 2. Click on the :material-plus: (plus) icon and select the [channel][2] from the dropdown.
 3. Complete the form and click **Create**.
-4. Follow the guide below to get the required information for the channel selected.
+4. Follow the guide below to get the required information for your selected channel.
 
 !!! info "The channel you want is not shown in the dropdown"
 
-    You may need to [Configure a messaging provider][6] for the platform before you can select it from the dropdown.
+    You may need to [configure a messaging provider][6] for the platform before you can select it from the dropdown.
     Not all channels require a messaging provider.
 
-## Details for linking to channels
+## Supported Channels
 
 - [Web Embedded Widget](#web) — built-in chat interface, no setup required
 - [Telegram](#telegram)
@@ -33,6 +33,7 @@ The web channel is OCS's built-in chat interface. It's enabled by default for ev
 2. Copy the chatbot token and paste it into the form on OCS. It will look something like this: `4839574812:AAFD39kkdpWt3ywyRZergyOLMaJhac60qc`.
 
 !!! info "Note"
+
     Depending on your use case, you probably want to disable group joins for your chatbot on Telegram. Since your Telegram chatbot is public, anyone can add it to a group, which could result in significant costs. To achieve this, use the [setjoingroups][5] setting in BotFather.
 
 ## WhatsApp
@@ -44,6 +45,7 @@ Open Chat Studio supports multiple WhatsApp providers. Choose the section below 
 When you create or edit a WhatsApp channel using a Twilio provider, Open Chat Studio automatically configures the webhook in your Twilio messaging service. When you delete the channel, the webhook is cleared automatically. You do not need to copy or paste any webhook URL.
 
 !!! info "Sandbox numbers and other exceptions"
+
     Automatic webhook configuration is not supported for Twilio sandbox numbers or in cases where OCS cannot reach the Twilio API. If auto-configuration fails, OCS will display manual setup instructions instead. Follow the steps in the [Twilio webhook configuration guide][3] and enter the following webhook URL in your messaging service settings:
 
     `https://openchatstudio.com/channels/whatsapp/incoming_message`
@@ -85,9 +87,9 @@ The email channel lets users interact with your chatbot by sending and receiving
 
 See the [Email channel guide](deploy_email_channel.md) for full setup and configuration details.
 
-## SureAdhere for In-App messaging
+## SureAdhere for In-App Messaging
 
-1. Enter the Tenant ID that would have been provided to you when setting up your SureAdhere account.
+1. Enter the Tenant ID that was provided when you set up your SureAdhere account.
 2. After you submit the form, you will be provided with a webhook URL.
 3. Copy this URL and navigate back to your provider's settings to configure it with this URL.
 
