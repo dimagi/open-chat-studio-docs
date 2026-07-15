@@ -11,6 +11,17 @@ To link a channel to your chatbot:
 
 You may need to [Configure a messaging provider][6] before you will be able to select it from the dropdown.
 
+## Jump to a channel
+
+- [Web](#web) — built-in chat interface, no setup required
+- [Telegram](#telegram)
+- [WhatsApp](#whatsapp) — Twilio, Turn.io, or [Meta Cloud API](#meta-cloud-api)
+- [Facebook Messenger](#facebook-messenger)
+- [Slack](#slack)
+- [Email](#email)
+- [SureAdhere](#sureadhere-for-in-app-messaging)
+- [API](#api) — programmatic access, no channel setup required
+
 ## Web
 
 The web channel is OCS's built-in chat interface. It's enabled by default for every chatbot — there's no provider to configure and nothing to link. Embed it on your own site with the [chat widget][chat-widget].
@@ -67,15 +78,15 @@ The Slack channel lets users interact with your chatbot from Slack, either in sp
 
 See the [Slack channel guide](deploy_slack_channel.md) for prerequisites, configuration options, and how chatbot mentions work.
 
-## SureAdhere for In-App messaging
-- Enter the Tenant ID that would have been provided to you when setting up your SureAdhere account.
-- After you submit the form, you will be provided with a webhook URL. Copy this URL and navigate back to your provider's settings to configure it with this URL.
-
 ## Email
 
 The email channel lets users interact with your chatbot by sending and receiving emails, including routing, thread continuity, and file attachments.
 
 See the [Email channel guide](deploy_email_channel.md) for full setup and configuration details.
+
+## SureAdhere for In-App messaging
+- Enter the Tenant ID that would have been provided to you when setting up your SureAdhere account.
+- After you submit the form, you will be provided with a webhook URL. Copy this URL and navigate back to your provider's settings to configure it with this URL.
 
 ## API
 
