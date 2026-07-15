@@ -1,20 +1,21 @@
 # Messaging Providers
 
-Messaging providers offer access to communication platforms such as WhatsApp, Facebook Messenger, Slack, and more. Connecting a chatbot to these services allows users to interact with the bot on the respective service.
+Messaging providers offer access to platforms such as WhatsApp, Facebook Messenger, Slack, and more.
+Configuring a messaging provider lets you use the channel for your chatbot, so users can interact with it there.
 
 ## Supported providers
 
-Below is a list of supported providers and their integrated platforms in OCS:
+Below is a list of supported messaging platforms in OCS:
 
-- Twilio
+- **Twilio**
     - WhatsApp
     - Facebook Messenger
-- Turn.io
+- **Turn.io**
     - WhatsApp
-- Meta Cloud API
+- **Meta Cloud API**
     - WhatsApp
-- Slack
-- SureAdhere
+- **Slack**
+- **SureAdhere mobile app**
 
 ## Choosing a WhatsApp provider
 
@@ -33,5 +34,6 @@ Open Chat Studio supports three WhatsApp providers. The table below summarises t
 Use **Meta Cloud API** when you want a direct connection to the WhatsApp Business Platform without routing traffic through a third-party service. Use **Twilio** or **Turn.io** when you already have an account with one of those providers.
 
 ## See also
+- [Channels](../channels.md)
 - [Configure a messaging provider](../../tutorials/configure_msg_providers.md)
 - [Deploy to WhatsApp via Meta Cloud API](../../how-to/whatsapp_meta_cloud_api.md)

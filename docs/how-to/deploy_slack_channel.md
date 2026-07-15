@@ -1,10 +1,10 @@
 # Deploy Your Chatbot to Slack
 
-The Slack channel lets users interact with your chatbot directly from Slack, either in specific channels or by mentioning the chatbot.
+Users can interact with your chatbot directly from Slack, either in specific Slack channels or by mentioning the chatbot.
 
 ## Prerequisites
 
-Before configuring a Slack channel for your chatbot, you need to set up a Slack messaging provider. This requires:
+Before configuring a Slack for your chatbot, you need to set up a Slack [messaging provider](../concepts/team/messaging_providers.md). This requires:
 
 - Admin access to your Slack workspace
 - Following the Slack OAuth and application installation flow

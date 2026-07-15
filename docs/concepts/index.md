@@ -22,7 +22,7 @@ For step-by-step instructions on completing specific tasks, see the [How-to guid
 : Credentials — such as API keys, bearer tokens, or username/password pairs — used when your chatbot connects to external services via Custom Actions or Python nodes.
 
 [Channel](channels.md)
-: The platform through which a participant interacts with your chatbot — for example, WhatsApp, Telegram, the web, or Slack.
+: How a participant interacts with your chatbot — for example, WhatsApp, Telegram, the web, or Slack.
 
 [Chatbot](chatbots/index.md)
 : In OCS, this is the top-level configuration for your conversational experience. It defines the chatbot's behavior, connects it to one or more channels, and is published to participants.
@@ -46,7 +46,7 @@ For step-by-step instructions on completing specific tasks, see the [How-to guid
 : The AI model that powers your chatbot's ability to understand messages and generate responses. OCS lets you choose from a range of models and configure how they behave.
 
 [Messaging Provider](team/messaging_providers.md)
-: A connection to a communication platform — such as WhatsApp or Slack — so chatbots can be deployed to that service.
+: A communication platform — such as WhatsApp or Slack — for chatbots to use as a channel to interact with participants.
 
 [Node](./pipelines/nodes.md)
 : A single processing step in a pipeline. Each node performs one task, such as calling an LLM, running custom code, or routing the conversation based on its content.

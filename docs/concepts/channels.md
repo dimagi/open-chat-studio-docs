@@ -1,6 +1,9 @@
 # Channels
 
-To enable users to interact with your chatbot through external social media platforms and similar services, OCS integrates with various [messaging providers][1]. This integration allows you to deploy your chatbot to external platforms. Once a platform is linked to your chatbot, users can communicate with it through that platform. In OCS, the term "channel" is synonymous with "platform."
+To enable users to interact with your chatbot through external social media platforms and similar services, OCS integrates with various [messaging providers][1]. This integration allows you to deploy your chatbot to external platforms. Once a platform is linked to your chatbot, users can communicate with it through that platform.
+
+!!! info "Channel vs. platform"
+    OCS uses "channel" and "platform" interchangeably. You'll mostly see "channel" in these docs, but some parts of the OCS UI use the label "Platform" for the same thing.
 
 The currently supported channels are:
 
