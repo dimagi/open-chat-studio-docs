@@ -19,7 +19,7 @@ The currently supported channels are:
 
 Channels differ in whether users can send files to the chatbot and whether the chatbot can send files back. When the chatbot produces a file that a channel cannot deliver — because the channel doesn't support file sending, or the file's type or size isn't allowed — OCS appends a download link to the chatbot's message instead, so the user can still get the file.
 
-| Channel | Users can send files | Bot can send files | Types and limits |
+| Channel | Users can send files | Chatbot can send files | Types and limits |
 |---|---|---|---|
 | Web / Chat widget | Yes | As download links | Uploads of up to 50 MB per file (50 MB total per message). Text files are always accepted, along with common document, image, audio and video formats. See the [widget file attachments reference][widget-files] for the full list. |
 | API | Yes | As attachment metadata | Same upload limits as the web channel. Files the chatbot produces are returned on the message as attachments with download links. |

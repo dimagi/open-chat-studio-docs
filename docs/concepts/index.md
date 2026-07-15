@@ -46,7 +46,7 @@ For step-by-step instructions on completing specific tasks, see the [How-to guid
 : The AI model that powers your chatbot's ability to understand messages and generate responses. OCS lets you choose from a range of models and configure how they behave.
 
 [Messaging Provider](team/messaging_providers.md)
-: A communication platform — such as WhatsApp or Slack — for chatbots to use as a channel to interact with participants.
+: A communication platform — such as Facebook, Twilio or Slack — for chatbots to use as a channel to interact with participants.
 
 [Node](./pipelines/nodes.md)
 : A single processing step in a pipeline. Each node performs one task, such as calling an LLM, running custom code, or routing the conversation based on its content.

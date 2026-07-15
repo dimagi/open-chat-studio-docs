@@ -27,7 +27,7 @@ Replying to a chatbot email continues the same conversation session. Sending a f
 
 ## Customizing the outbound subject
 
-When the chatbot starts a new email thread (for example, via the [Trigger chatbot Message](https://www.openchatstudio.com/api/v1/docs/#tag/Channels/operation/trigger_bot_message) API), the subject line defaults to "New message". To override this, set an `email_subject` value in [session state](../tech-hub/python_node.md#session-state) before the email is sent — for example from a pipeline's Python node, or via the `session_data` parameter when triggering the chatbot. Inbound reply threads always reuse the subject of the original email and are unaffected by this value.
+When the chatbot starts a new email thread (for example, via the [Trigger bot Message](https://www.openchatstudio.com/api/v1/docs/#tag/Channels/operation/trigger_bot_message) API), the subject line defaults to "New message". To override this, set an `email_subject` value in [session state](../tech-hub/python_node.md#session-state) before the email is sent — for example from a pipeline's Python node, or via the `session_data` parameter when triggering the chatbot. Inbound reply threads always reuse the subject of the original email and are unaffected by this value.
 
 ## File attachments
 

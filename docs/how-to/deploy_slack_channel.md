@@ -4,7 +4,7 @@ Users can interact with your chatbot directly from Slack, either in specific Sla
 
 ## Prerequisites
 
-Before configuring a Slack for your chatbot, you need to set up a Slack [messaging provider](../concepts/team/messaging_providers.md). This requires:
+Before configuring a Slack channel for your chatbot, you need to set up a Slack [messaging provider](../concepts/team/messaging_providers.md). This requires:
 
 - Admin access to your Slack workspace
 - Following the Slack OAuth and application installation flow
@@ -17,20 +17,20 @@ Once your Slack messaging provider is configured, you can link channels to your 
 There are three different ways to configure how your chatbot responds to messages in Slack. The chatbot checks each configuration in order of priority:
 
 ### 1. Respond to messages from a single channel (highest priority)
-    - Specify the channel name (with or without the '#' prefix) in the channel configuration form.
-    - This is the highest specificity - messages on this channel will only be responded to by this chatbot.
-    - Only one chatbot can be configured per Slack channel.
+- Specify the channel name (with or without the '#' prefix) in the channel configuration form.
+- This is the highest specificity - messages on this channel will only be responded to by this chatbot.
+- Only one chatbot can be configured per Slack channel.
 
 ### 2. Respond to messages from any channel using keyword matching
-    - Enter keywords separated by commas in the keyword field (e.g., `support, help, assistance`).
-    - Keywords are matched using exact word matching (case-insensitive) to the first word of the user's message.
-    - Multiple keywords can be used to trigger the chatbot.
-    - Keywords must be unique to this chatbot & Slack workspace combination.
+- Enter keywords separated by commas in the keyword field (e.g., `support, help, assistance`).
+- Keywords are matched using exact word matching (case-insensitive) to the first word of the user's message.
+- Multiple keywords can be used to trigger the chatbot.
+- Keywords must be unique to this chatbot & Slack workspace combination.
 
 ### 3. Respond to messages from all channels (lowest priority)
-    - The chatbot will respond to any message on any channel if it hasn't matched one of the previous two configurations.
-    - This is the lowest priority matching option.
-    - Only one chatbot per Slack workspace can be configured with this option.
+- The chatbot will respond to any message on any channel if it hasn't matched one of the previous two configurations.
+- This is the lowest priority matching option.
+- Only one chatbot per Slack workspace can be configured with this option.
 
 ## Chatbot Interaction
 
