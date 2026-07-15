@@ -11,8 +11,9 @@ To link a channel to your chatbot:
 
 You may need to [Configure a messaging provider][6] before you will be able to select it from the dropdown.
 
-## Web and API
-The web channel uses the web interface and is enabled by default for all chatbots. Likewise, all chatbots can be accessed via the [APIs][api].
+## Web
+
+The web channel is OCS's built-in chat interface. It's enabled by default for every chatbot — there's no provider to configure and nothing to link. Embed it on your own site with the [chat widget][chat-widget].
 
 ## Telegram
 - Follow [this guide][1] to create a Telegram chatbot.
@@ -66,7 +67,7 @@ The Slack channel lets users interact with your chatbot from Slack, either in sp
 
 See the [Slack channel guide](deploy_slack_channel.md) for prerequisites, configuration options, and how chatbot mentions work.
 
-## SureAdhere
+## SureAdhere for In-App messaging
 - Enter the Tenant ID that would have been provided to you when setting up your SureAdhere account.
 - After you submit the form, you will be provided with a webhook URL. Copy this URL and navigate back to your provider's settings to configure it with this URL.
 
@@ -76,6 +77,10 @@ The email channel lets users interact with your chatbot by sending and receiving
 
 See the [Email channel guide](deploy_email_channel.md) for full setup and configuration details.
 
+## API
+
+Every chatbot can also be reached programmatically through the OCS [APIs][api], which is useful for integrating with third-party systems or building custom front ends.
+
 [1]: https://core.telegram.org/bots#how-do-i-create-a-bot
 [2]: ../concepts/team/messaging_providers.md
 [3]: https://www.twilio.com/docs/WhatsApp/api#configuring-inbound-message-webhooks
@@ -84,3 +89,4 @@ See the [Email channel guide](deploy_email_channel.md) for full setup and config
 [6]: ../tutorials/configure_providers.md
 [api]: ../tech-hub/api_access.md
 [meta]: ./whatsapp_meta_cloud_api.md
+[chat-widget]: ../chat_widget/index.md
