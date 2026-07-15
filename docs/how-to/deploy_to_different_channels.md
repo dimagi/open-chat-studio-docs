@@ -2,44 +2,44 @@
 
 To link a channel to your chatbot:
 
-!!! info "Note"
-    Not all channels require a provider.
+1. Navigate to the **Chatbot** you wish to link to a channel.
+2. Click on the :material-plus: (plus) icon and select the [channel][2] from the dropdown.
+3. Complete the form and click **Create**.
+4. Follow the guide below to get the required information for the channel selected.
 
-1. Navigate to the **Chatbot** you wish to embed.
-2. Click on the :material-plus: (plus) icon and select the [provider][2] from the dropdown.
-3. Complete the form and click **Create**. Follow the guide below to get the required information for each channel.
+!!! info "The channel you want is not shown in the dropdown"
 
-You may need to [Configure a messaging provider][6] before you will be able to select it from the dropdown.
+    You may need to [Configure a messaging provider][6] for the platform before you can select it from the dropdown.
+    Not all channels require a messaging provider.
 
-## Jump to a channel
+## Details for linking to channels
 
-- [Web](#web) — built-in chat interface, no setup required
+- [Web Embedded Widget](#web) — built-in chat interface, no setup required
 - [Telegram](#telegram)
 - [WhatsApp](#whatsapp) — Twilio, Turn.io, or [Meta Cloud API](#meta-cloud-api)
 - [Facebook Messenger](#facebook-messenger)
 - [Slack](#slack)
 - [Email](#email)
 - [SureAdhere](#sureadhere-for-in-app-messaging)
-- [API](#api) — programmatic access, no channel setup required
+- [API](#api) — programmatic access, no setup required
 
 ## Web
 
-The web channel is OCS's built-in chat interface. It's enabled by default for every chatbot — there's no provider to configure and nothing to link. Embed it on your own site with the [chat widget][chat-widget].
+The web channel is OCS's built-in chat interface. It's enabled by default for every chatbot — there's no provider to configure and nothing to link. Embed it on your own website with the [chat widget][chat-widget].
 
 ## Telegram
-- Follow [this guide][1] to create a Telegram chatbot.
-- Copy the chatbot token and paste it into the form on OCS. It will look something like this: `4839574812:AAFD39kkdpWt3ywyRZergyOLMaJhac60qc`.
+
+1. Follow [this guide][1] to create a Telegram chatbot.
+2. Copy the chatbot token and paste it into the form on OCS. It will look something like this: `4839574812:AAFD39kkdpWt3ywyRZergyOLMaJhac60qc`.
 
 !!! info "Note"
-    Depending on your usecase, you probably want to disable group joins for your chatbot on Telegram. Since your telegram chatbot is public, anyone can add it to a group, which could end up costing you a lot. To achieve this, use the [setjoingroups][5] setting in BotFather.
+    Depending on your use case, you probably want to disable group joins for your chatbot on Telegram. Since your Telegram chatbot is public, anyone can add it to a group, which could result in significant costs. To achieve this, use the [setjoingroups][5] setting in BotFather.
 
 ## WhatsApp
 
 Open Chat Studio supports multiple WhatsApp providers. Choose the section below that matches the provider you have configured.
 
-### Twilio and Turn.io
-
-#### Twilio
+### Twilio
 
 When you create or edit a WhatsApp channel using a Twilio provider, Open Chat Studio automatically configures the webhook in your Twilio messaging service. When you delete the channel, the webhook is cleared automatically. You do not need to copy or paste any webhook URL.
 
@@ -48,7 +48,7 @@ When you create or edit a WhatsApp channel using a Twilio provider, Open Chat St
 
     `https://openchatstudio.com/channels/whatsapp/incoming_message`
 
-#### Turn.io
+### Turn.io
 
 Turn.io does not support automatic webhook configuration. After adding your WhatsApp number in Open Chat Studio, configure the webhook manually:
 
@@ -65,6 +65,7 @@ Meta Cloud API connects your chatbot directly to the WhatsApp Business Platform 
 See the [Meta Cloud API setup guide][meta] for full step-by-step instructions.
 
 ## Facebook Messenger
+
 !!! info "Note"
     It is assumed that you already have a Facebook page and a Twilio account with the Facebook page linked. Follow [this guide][4] if this is not the case.
 
@@ -85,8 +86,10 @@ The email channel lets users interact with your chatbot by sending and receiving
 See the [Email channel guide](deploy_email_channel.md) for full setup and configuration details.
 
 ## SureAdhere for In-App messaging
-- Enter the Tenant ID that would have been provided to you when setting up your SureAdhere account.
-- After you submit the form, you will be provided with a webhook URL. Copy this URL and navigate back to your provider's settings to configure it with this URL.
+
+1. Enter the Tenant ID that would have been provided to you when setting up your SureAdhere account.
+2. After you submit the form, you will be provided with a webhook URL.
+3. Copy this URL and navigate back to your provider's settings to configure it with this URL.
 
 ## API
 
