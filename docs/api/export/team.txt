@@ -1195,7 +1195,7 @@ EmbeddingProviderModelDetail:
   - is_global: boolean (required)
   - created_at: string (required)
   - updated_at: string (required)
-  - type: TypeB81Enum (required)
+  - type: TypeB19Enum (required)
   - name: string (required)
 
 EmbeddingProviderModelList:
@@ -1508,7 +1508,7 @@ LlmProviderDetail:
   - config: string (required)
   - created_at: string (required)
   - updated_at: string (required)
-  - type: TypeB81Enum (required)
+  - type: TypeB19Enum (required)
   - name: string (required)
 
 LlmProviderList:
@@ -1521,7 +1521,7 @@ LlmProviderModelDetail:
   - is_global: boolean (required)
   - created_at: string (required)
   - updated_at: string (required)
-  - type: TypeB81Enum (required)
+  - type: TypeB19Enum (required)
   - name: string (required)
   - max_token_limit: integer
   - deprecated: boolean
@@ -1923,8 +1923,8 @@ TranscriptAnalysisList:
   - has_more: boolean (required)
   - results: array of TranscriptAnalysisDetail (required)
 
-TypeB81Enum:
-  - enum: [openai, azure, anthropic, groq, perplexity, deepseek, google, google_vertex_ai, voyage]
+TypeB19Enum:
+  - enum: [openai, azure, anthropic, groq, perplexity, deepseek, minimax, google, google_vertex_ai, voyage]
 
 UsageRecordDetail:
   - id: integer (required)
