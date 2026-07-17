@@ -1990,7 +1990,7 @@ VoiceProviderDetail:
   - name: string (required)
 
 VoiceProviderDetailTypeEnum:
-  - enum: [aws, azure, openai, openaivoiceengine, elevenlabs, intron]
+  - enum: [aws, azure, openai, openaivoiceengine, elevenlabs, intron, minimax]
 
 VoiceProviderList:
   - cursor: string (required)
