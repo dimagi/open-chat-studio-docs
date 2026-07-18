@@ -1,10 +1,10 @@
 # Chatbot Workflow Cookbook
 
-## Split bot into multiple smaller bots
+## Split a chatbot into multiple smaller chatbots
 
-For complex bots it may be the case that a single LLM node with a large prompt does not perform well. For example, a bot that is expected to perform multiple different functions such as Role Play, Quiz, Q&A.
+For complex chatbots it may be the case that a single LLM node with a large prompt does not perform well. For example, a chatbot that is expected to perform multiple different functions such as Role Play, Quiz, Q&A.
 
-In such cases, it can be better to create smaller, narrowly focused prompts and use a router to select which 'mode' the bot is currently in.
+In such cases, it can be better to create smaller, narrowly focused prompts and use a router to select which 'mode' the chatbot is currently in.
 
 Here is a more complex example that uses a [LLM Router][router] to route the input to one of three linked nodes.
 
@@ -21,7 +21,7 @@ graph TB
 ```
 
 ## Safety check in parallel
-In this example, we are using a [**Router**][router] to determine if the user input complies with the usage policy of the bot. The router has two outputs, **safe** and **unsafe**. The **safe** output is not connected to any other nodes but the **unsafe** output is connected to a [**Python Node**][python] which will abort the pipeline with an error message.
+In this example, we are using a [**Router**][router] to determine if the user input complies with the usage policy of the chatbot. The router has two outputs, **safe** and **unsafe**. The **safe** output is not connected to any other nodes but the **unsafe** output is connected to a [**Python Node**][python] which will abort the pipeline with an error message.
 
 ```mermaid
 flowchart TD

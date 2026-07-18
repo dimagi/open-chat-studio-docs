@@ -5,7 +5,7 @@ Every [chat session](sessions.md) in Open Chat Studio has a **status** that refl
 Understanding session status helps you:
 
 - Predict how participants will move through your chatbot's flow.
-- Choose the right method to end a session from within the bot.
+- Choose the right method to end a session from within the chatbot.
 - Interpret session lists, exports, and reports correctly.
 
 ## The statuses
@@ -55,7 +55,7 @@ stateDiagram-v2
 Used for [channels](channels.md) such as Telegram, WhatsApp, the web widget, and the API.
 
 - **If [conversational consent](consent.md) is disabled** (the common case): the session is created directly in `ACTIVE`. The early statuses are skipped entirely.
-- **If conversational consent is enabled**: the bot walks the participant through a chat-driven consent flow, traversing `SETUP → PENDING → ACTIVE`.
+- **If conversational consent is enabled**: the chatbot walks the participant through a chat-driven consent flow, traversing `SETUP → PENDING → ACTIVE`.
 
 !!! note
     Messaging channel sessions do not typically reach `PENDING_REVIEW` or `COMPLETE` on their own. Those terminal statuses are driven by the post-conversation review form or an explicit end-conversation action.
@@ -71,7 +71,7 @@ A session moves to `PENDING_REVIEW` whenever the conversation ends. This can hap
 - Clicks **End chat** on the web chat page.
 - Sends `/reset` on a messaging channel (also surfaced as "Restart chat" on Telegram).
 
-**Bot-driven actions** (see [Ending sessions from a chatbot](#ending-sessions-from-a-chatbot) below):
+**Chatbot-driven actions** (see [Ending sessions from a chatbot](#ending-sessions-from-a-chatbot) below):
 
 - An LLM tool call ends the session.
 - A Python pipeline node calls `end_session()`.
@@ -106,11 +106,11 @@ The tool description presented to the LLM is: *"End the current chat session. Th
 
 In that description, "completed" means the conversation is finished — the session moves to `PENDING_REVIEW`. It does not move directly to the `COMPLETE` status, which only happens once the participant submits the post-conversation review.
 
-The session ends after the bot's reply is delivered to the participant.
+The session ends after the chatbot's reply is delivered to the participant.
 
 For full configuration details, see the [End Session tool reference](../tech-hub/tools.md#end-session).
 
-!!! warning "Not available for Assistant-style bots"
+!!! warning "Not available for Assistant-style chatbots"
     The End Session tool cannot be used with Assistant-style chatbots.
 
 Use this approach when the decision to end the conversation belongs to the LLM — for example, "end the session once the user confirms they are done".
@@ -141,12 +141,12 @@ Use this approach when the decision to end the conversation should be driven by 
 
 ## Observing how a session ended
 
-Regardless of what ends a session — participant, bot, admin, API caller, or event — you can attach further actions to the conversation-end event using static triggers. This lets you respond differently depending on who or what ended the conversation.
+Regardless of what ends a session — participant, chatbot, admin, API caller, or event — you can attach further actions to the conversation-end event using static triggers. This lets you respond differently depending on who or what ended the conversation.
 
 | Trigger type | Fires when |
 |--------------|------------|
 | The Conversation is Ended by the Participant | The participant ends the chat (web "End chat" or `/reset`). |
-| The Conversation is Ended by the Bot | The bot ends the chat (End Session tool or `end_session()`). |
+| The Conversation is Ended by the Bot | The chatbot ends the chat (End Session tool or `end_session()`). |
 | The Conversation is Ended via the API | An API caller ends the session. |
 | The Conversation is Ended by an Event | An "End the conversation" event action ended the session. |
 | The Conversation is Manually Ended by an Admin | A team member ended the session via the OCS admin. |

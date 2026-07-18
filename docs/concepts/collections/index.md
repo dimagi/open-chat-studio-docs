@@ -24,8 +24,8 @@ The collection *structure* of a published chatbot version — which collections 
 !!! note "What this means for drift detection"
     Because collection content is live, adding files to a collection or waiting for a document-source sync no longer marks your chatbot as having unpublished changes. Only changes to the chatbot's pipeline configuration and settings are tracked as pending changes.
 
-!!! warning "Existing published bots"
-    This live-collection behavior applies to chatbots republished after this change was introduced (2026-06-03). Bots that were published before retain their previous frozen collection snapshot until the next time they are republished.
+!!! warning "Existing published chatbots"
+    This live-collection behavior applies to chatbots republished after this change was introduced (2026-06-03). Chatbots that were published before retain their previous frozen collection snapshot until the next time they are republished.
 
 For more detail on versioning in general, see [Versioning](../versioning.md).
 

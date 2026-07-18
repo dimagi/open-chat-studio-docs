@@ -1,5 +1,5 @@
 # Python Node
-The Python node allows the bot builder to execute custom Python code to perform logic, data processing, or other tasks.
+The Python node allows the chatbot builder to execute custom Python code to perform logic, data processing, or other tasks.
 It provides the following:
 
  - [utility functions](#utility-functions) to interact with user data and pipeline state ([temporary](#temporary-state) and [session state](#session-state))
@@ -112,13 +112,13 @@ Here is an example of a temporary state dictionary:
 ```
 
 ## Session State
-The Python node can also access and modify the state of the participant's session. This state is a dictionary that is scoped to each session that the user might have with the bot.
+The Python node can also access and modify the state of the participant's session. This state is a dictionary that is scoped to each session that the user might have with the chatbot.
 
 The session state can be accessed and modified using the [get_session_state_key](#python_node.get_session_state_key) and [set_session_state_key](#python_node.set_session_state_key) utility functions. <!-- markdownlint-disable-line MD051 -->
 
 ## Attachments
 
-Part of the temporary state is a list of attachments. Attachments are files that the user has uploaded to the bot. Each attachment has the following fields:
+Part of the temporary state is a list of attachments. Attachments are files that the user has uploaded to the chatbot. Each attachment has the following fields:
 
 | Field                 | Description                                                           |
 |-----------------------|-----------------------------------------------------------------------|
