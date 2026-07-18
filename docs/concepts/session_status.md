@@ -134,7 +134,7 @@ Use this approach when the decision to end the conversation belongs to your cust
 
 Configure an [event](events.md) whose action is **End the conversation**:
 
-- **Static triggers** — fire on a lifecycle event such as a new bot message, a participant joining, or a conversation starting. Useful when you want the session to end as soon as the bot sends a specific goodbye message.
+- **Static triggers** — fire on a lifecycle event such as a new chatbot message, a participant joining, or a conversation starting. Useful when you want the session to end as soon as the chatbot sends a specific goodbye message.
 - **Timeout triggers** — fire after a period of inactivity. Useful for "end the session if the participant is silent for 30 minutes".
 
 Use this approach when the decision to end the conversation should be driven by lifecycle conditions outside the pipeline itself.

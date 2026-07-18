@@ -26,7 +26,7 @@ Static events are predefined triggers that occur based on specific actions or co
         When a specific end condition occurs (e.g., participant ends conversation), both the specific sub-trigger AND the generic "Conversation End" trigger will fire. This allows you to create both targeted events (using sub-triggers) and catch-all events (using the generic trigger) that respond to any conversation ending.
 
 - **Last Timeout**: Triggered when the last timeout of any configured timeout events occur.
-- **Human Safety Layer Triggered**: Triggered when the safety layer is activated by a message from the user.
+- **Human Safety Layer Triggered**: Triggered when the safety layer is activated by a message from the participant.
 - **Bot Safety Layer Triggered**: Triggered when the safety layer is activated by a response from the chatbot.
 - **Conversation Start**: Triggered when a new conversation is started.
 - **New Human Message**: Triggered when a new human message is received.
@@ -37,7 +37,7 @@ Static events are predefined triggers that occur based on specific actions or co
 
 Each event is associated with one action. The available actions are:
 
-- **End the conversation**: Ends the conversation with the user. See [How to reset sessions](../how-to/reset_sessions.md) and [Session Status](session_status.md).
-- **Prompt the bot to message the user**: Prompts the bot to message the user.
-- **Trigger a schedule**: This will create a once off or recurring schedule. Each time the schedule is triggered, the chatbot will be prompted to message the user.
+- **End the conversation**: Ends the conversation with the participant. See [How to reset sessions](../how-to/reset_sessions.md) and [Session Status](session_status.md).
+- **Prompt the bot to message the user**: Prompts the chatbot to message the participants.
+- **Trigger a schedule**: This will create a once off or recurring schedule. Each time the schedule is triggered, the chatbot will be prompted to message the participant.
 - **Start a pipeline**: This will run the given pipeline when the event triggers. The input to the pipeline can be configured.
