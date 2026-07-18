@@ -12,7 +12,7 @@ Use a Custom Action when you want your chatbot to work with another service in a
 
 ## What happens when you add one?
 
-Open Chat Studio includes built-in [tools](./tools/index.md) and also lets you add your own external services as Custom Actions, which then appear alongside Tools in your chatbot's configuration.
+Open Chat Studio includes built-in [tools](./tools/index.md) and also lets you add your own external services as Custom Actions, which then appear as "Custom Actions" in your chatbot's configuration.
 
 When you [create a Custom Action](./team/custom_actions.md), your chatbot can use it to call approved external services. This lets the chatbot send data to the connected service and use the response to help the user.
 
