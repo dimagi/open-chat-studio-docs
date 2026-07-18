@@ -17,7 +17,7 @@ Global settings are managed at the Team level. This includes:
 - [Messaging Providers](messaging_providers.md)
 - [Authentication Providers](authentication_providers.md)
 - [Custom Actions](custom_actions.md)
-- [Tracing providers](../tracing.md)
+- [Tracing Providers](../tracing.md)
 - [User Management](groups.md)
 
 ## Finding where a provider is used
