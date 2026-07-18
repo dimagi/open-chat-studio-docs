@@ -1,12 +1,12 @@
 # Deploy Your Chatbot to Email
 
-The email channel lets users interact with your chatbot by sending and receiving emails.
+The email channel lets participants interact with your chatbot by sending and receiving emails.
 
 ## Configuration
 
 When creating an email channel, the form has the following fields:
 
-- **Email address**: The inbound address that users send messages to. Incoming emails addressed to this value are routed to this chatbot.
+- **Email address**: The inbound address that participants send messages to. Incoming emails addressed to this value are routed to this chatbot.
 - **From address**: The address that appears in the "From" field of outgoing replies.
 - **Default channel**: When enabled, this channel acts as the fallback for inbound emails that do not match any other configured email address in your team.
 
@@ -33,9 +33,9 @@ When the chatbot starts a new email thread (for example, via the [Trigger bot Me
 
 The email channel supports bidirectional file attachments. For a comparison of file support across all channels, see [channel file support](../concepts/channels.md#file-support).
 
-### Inbound attachments (user to chatbot)
+### Inbound attachments (participant to chatbot)
 
-When a user emails files to the chatbot, each attachment is saved and made available to the LLM or pipeline as a file record. Attachments behave like files uploaded through any other channel: they appear in the `attachments` list in the pipeline's [temporary state](../tech-hub/python_node.md#attachments) and are passed to the LLM for processing.
+When a participant emails files to the chatbot, each attachment is saved and made available to the LLM or pipeline as a file record. Attachments behave like files uploaded through any other channel: they appear in the `attachments` list in the pipeline's [temporary state](../tech-hub/python_node.md#attachments) and are passed to the LLM for processing.
 
 The following attachments are rejected automatically:
 
@@ -45,9 +45,9 @@ The following attachments are rejected automatically:
 | Executable file type (e.g. `.exe`, `.sh`) | Bracketed note in the message text |
 | Content-type mismatch (declared MIME type does not match actual file bytes) | Bracketed note in the message text |
 
-Rejection notes are inserted inline into the user's message so the chatbot can read them and explain the problem to the user in its reply.
+Rejection notes are inserted inline into the participants's message so the chatbot can read them and explain the problem to the participant in its reply.
 
-### Outbound attachments (chatbot to user)
+### Outbound attachments (chatbot to participant)
 
 Files produced by the pipeline are sent as MIME attachments in the same threaded reply as the chatbot's text response. From a Python node, call `add_file_attachment()` to attach a file — see the [Python Node documentation](../tech-hub/python_node.md#python_node.add_file_attachment) for the full API reference and example.
 
