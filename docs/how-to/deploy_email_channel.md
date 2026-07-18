@@ -8,10 +8,10 @@ When creating an email channel, the form has the following fields:
 
 - **Email address**: The inbound address that users send messages to. Incoming emails addressed to this value are routed to this chatbot.
 - **From address**: The address that appears in the "From" field of outgoing replies.
-- **Default channel**: When enabled, this channel acts as the fallback for inbound emails that do not match any other configured email address in your workspace.
+- **Default channel**: When enabled, this channel acts as the fallback for inbound emails that do not match any other configured email address in your team.
 
 !!! info "Note"
-    Only one email channel per workspace can be set as the default.
+    Only one email channel per team can be set as the default.
 
 ## How routing works
 
@@ -19,7 +19,7 @@ Inbound emails are matched to the correct chatbot in this order:
 
 1. **In-Reply-To header** - If the email is a reply to a previous message sent by the chatbot, it is routed to the same channel and continues the existing conversation thread.
 2. **To address** - If no prior thread is found, the recipient address is matched against configured email channels.
-3. **Default channel** - If no address match is found, the email is delivered to the workspace's default email channel (if one is configured).
+3. **Default channel** - If no address match is found, the email is delivered to the team's default email channel (if one is configured).
 
 ## Thread continuity
 
