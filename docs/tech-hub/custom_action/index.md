@@ -1,6 +1,6 @@
 # Custom Actions
 
-Custom Actions let chatbots call external services through a managed integration based on an [OpenAPI Schema](https://swagger.io/specification/). This feature is similar to OpenAI [GPT Actions](https://platform.openai.com/docs/actions/introduction), but it is configured within Open Chat Studio and exposed as tools that your chatbot can use.
+Custom Actions let chatbots call external services through a managed integration based on an [OpenAPI Schema](https://swagger.io/specification/). This feature is similar to OpenAI [GPT Actions](https://platform.openai.com/docs/actions/introduction), but it is configured within Open Chat Studio, and each enabled operation appears as a selectable action in your chatbot's configuration.
 
 Use this guide if you are configuring or troubleshooting a Custom Action. For a non-technical overview, see [Custom Action](../../concepts/llm_custom_action.md).
 
