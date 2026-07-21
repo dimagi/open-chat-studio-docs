@@ -56,6 +56,9 @@ Before embedding, you must [create a chatbot in Open Chat Studio](../tutorials/f
 !!! note "Embed Key Required"
     The `embed-key` parameter is required for all embedded widget channels. If you are upgrading from a previous version, you must create a new Embedded Widget channel (following the steps above) to obtain your embed key.
 
+!!! info "Required authentication level"
+    Each embedded-widget channel also has a required authentication level — **None**, **Embed Key**, or **Session Token** — that controls how strictly OCS verifies requests from your widget. New channels default to **Session Token**, and you can change the level at any time from the channel's configuration form. See [Authentication Levels](reference.md#authentication-levels) for details.
+
 ## Test the Chatbot
 
 1. Open your website in a web browser.

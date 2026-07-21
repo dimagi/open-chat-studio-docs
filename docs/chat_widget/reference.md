@@ -71,6 +71,21 @@ The embed authentication feature allows you to:
 
 When an embed key is provided, it's automatically sent as an `X-Embed-Key` header with all API requests to authenticate the widget instance.
 
+### Authentication Levels
+
+Every embedded-widget channel also has a **required authentication level**, configured on the channel itself — in Open Chat Studio, on the channel's configuration form — rather than as a widget attribute. It controls how strictly OCS verifies requests for that channel:
+
+| Level | Behavior |
+|---|---|
+| **None** | The channel accepts requests without an embed key or session token, falling back to the chatbot's public or allowlisted access rules. This is a legacy setting kept for older deployments. |
+| **Embed Key** | The widget must send a valid `embed-key` (see [Implementation](#implementation) above). Requests can no longer rely on the public/allowlist fallback. |
+| **Session Token** | The strictest level. In addition to the embed key, OCS issues a short-lived session token when the chat starts and requires it on subsequent requests, including file uploads. Widget versions 0.9.0 and later handle this automatically, so no extra configuration is needed on your side. |
+
+New embedded-widget channels default to **Session Token**. Channels created before this setting existed keep the level that matches the widget version they were already running, so existing deployments aren't disrupted — you don't need to change anything unless you want to raise or lower the level.
+
+!!! tip "Changing the level"
+    You can change a channel's required authentication level at any time from its configuration form in Open Chat Studio. If you raise a channel to **Session Token**, confirm your embedded widget is on version 0.9.0 or later so it can handle session tokens automatically — see the [Changelog](changelog.md) for version details.
+
 ## :material-account: User Identification
 Control how users are identified across chat sessions to enable personalized experiences and session continuity.
 ### Overview

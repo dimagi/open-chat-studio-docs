@@ -12,6 +12,7 @@ hide:
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
 ## Jul 21, 2026
+* **NEW** Chat widget channels now have a per-channel authentication policy. Each channel stores a required auth level (none, embed key, or session token), which you can set on the channel's configuration. New embedded-widget channels require a session token by default; existing channels keep the level matching the widget version they were already running.
 * **NEW** Added a Usage API endpoint (`GET /api/v2/usage/`) for querying usage metrics. The first metric available is a participant's message count for the current calendar month, for example `?metric=messages&period=current_month&participant=<public_id>`. Access requires the `usage:read` OAuth scope.
 
 ## Jul 13, 2026
