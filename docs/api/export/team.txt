@@ -1660,6 +1660,7 @@ PipelineDetail:
   - name: string (required)
   - data: Unknown (required)
   - version_number: integer
+  - edit_revision: integer
   - is_archived: boolean
   - working_version: integer
 
