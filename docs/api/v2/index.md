@@ -10,6 +10,7 @@ Simplified per-tag references for LLM consumption:
 
 * [Chatbots](./chatbots.txt){:target="_blank"} — List, retrieve and inspect chatbots (v2; formerly 'experiments').
 * [Me](./me.txt){:target="_blank"} — Information about the authenticated user and the team the token is scoped to.
+* [Usage](./usage.txt){:target="_blank"} — Inspect team usage and activity data (message counts, and more).
 
 ## Endpoints
 
@@ -26,3 +27,9 @@ Simplified per-tag references for LLM consumption:
 | Method | Path | Summary |
 | --- | --- | --- |
 | GET | `/api/v2/me/` | Current User |
+
+### Usage
+
+| Method | Path | Summary |
+| --- | --- | --- |
+| GET | `/api/v2/usage/` | Usage |
