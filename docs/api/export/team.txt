@@ -1387,6 +1387,7 @@ ExperimentChannelDetail:
   - platform: PlatformEnum
   - widget_version: string
   - widget_version_updated_at: string
+  - required_auth_level: Unknown
   - experiment: integer
   - messaging_provider: integer
 
