@@ -155,11 +155,6 @@ docker compose exec web python manage.py sync_team \
 
 The command creates a SQLite tracking database named after the team slug in the `--state-dir` directory. It's safe to run `sync_team` again at any point — each run picks up only what's changed since the last run, so you can use it to pull in a delta later (see [step 8](#8-verify-and-do-a-final-sync)).
 
-!!! note "The target team is created in migration mode"
-    The first time `sync_team` runs for a team, it creates that team on the target server and automatically enables migration mode for it. This stops the newly created team from firing its scheduled messages and events immediately, which would otherwise duplicate what the still-live source server is already sending. Migration mode is a per-server setting and isn't part of the exported data, so `sync_team` sets it explicitly on the new team rather than copying a value from the source.
-
-    This only happens on creation. Reruns of `sync_team` load the existing team from the state directory and leave migration mode exactly as you've set it — see [After the migration](#after-the-migration) for what to do with it once you cut over.
-
 !!! warning "Persist the state directory in containerized environments"
     In a containerized environment, the state directory won't survive container restarts or redeployments unless you persist it. Either bind mount `--state-dir` to a durable location on the host, or manually copy it out and back in if you plan to restart or redeploy the container before running the command again. If the state directory is lost, the next run starts from scratch instead of resuming.
 
