@@ -155,6 +155,11 @@ docker compose exec web python manage.py sync_team \
 
 The command creates a SQLite tracking database named after the team slug in the `--state-dir` directory. It's safe to run `sync_team` again at any point — each run picks up only what's changed since the last run, so you can use it to pull in a delta later (see [step 8](#8-verify-and-do-a-final-sync)).
 
+!!! note "The target team is created in migration mode"
+    The first time `sync_team` runs for a team, it creates that team on the target server and automatically enables migration mode for it. This stops the newly created team from firing its scheduled messages and events immediately, which would otherwise duplicate what the still-live source server is already sending. Migration mode is a per-server setting and isn't part of the exported data, so `sync_team` sets it explicitly on the new team rather than copying a value from the source.
+
+    This only happens on creation. Reruns of `sync_team` load the existing team from the state directory and leave migration mode exactly as you've set it — see [After the migration](#after-the-migration) for what to do with it once you cut over.
+
 !!! warning "Persist the state directory in containerized environments"
     In a containerized environment, the state directory won't survive container restarts or redeployments unless you persist it. Either bind mount `--state-dir` to a durable location on the host, or manually copy it out and back in if you plan to restart or redeploy the container before running the command again. If the state directory is lost, the next run starts from scratch instead of resuming.
 
@@ -192,8 +197,20 @@ Test each channel against the target server and confirm chatbots respond as expe
 
 ## After the migration
 
-!!! warning "Don't disable migration mode on the source"
-    Once migration is complete, leave migration mode **enabled** on the source server. Disabling it makes the source start sending the team's scheduled messages again, which will conflict with the now-live target server. Keep it enabled until the team is deleted from the source server. A Team Admin can delete the team from **Team Settings** on the source once you're confident the migration is complete and the target is serving all traffic.
+Migration mode is a per-server setting, and the source and target need **opposite** settings once the target takes over as the live server:
+
+| Server | Migration mode | Why |
+|---|---|---|
+| Source | Keep **enabled** | Stops the source from sending the team's scheduled messages and events, now that the target is live and doing that instead. |
+| Target | **Disable** | Lets the target start sending the team's scheduled messages and events as the new live server. `sync_team` enabled it automatically when it created the team ([step 6](#6-run-the-sync-command-target-server)) so the target wouldn't double-send while the source was still live — turn it off once cutover is complete. |
+
+!!! warning "Getting either side backwards causes duplicate or missing messages"
+    - Disabling migration mode on the **source** while the team still exists there makes the source start sending scheduled messages and events again, duplicating what the target now sends.
+    - Leaving migration mode enabled on the **target** after cutover means neither server sends the team's scheduled messages and events — end users won't receive them at all.
+
+Disable migration mode for the team in the **Data Export** section under Team Settings on the target server. It's safe to rerun `sync_team` afterward: the auto-enable only happens the first time a team is created, so a later rerun — for example the delta sync in [step 8](#8-verify-and-do-a-final-sync) — loads the existing team from the state directory and won't turn migration mode back on.
+
+Leave migration mode enabled on the source until the team is deleted there. A Team Admin can delete the team from **Team Settings** on the source once you're confident the migration is complete and the target is serving all traffic.
 
 ## Troubleshooting
 
