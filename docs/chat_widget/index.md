@@ -10,6 +10,8 @@ The Open Chat Studio Widget is a customizable chat component that you embed dire
 - **Welcome Messages**: Greet users with personalized messages
 - **Starter Questions**: Guide users with pre-defined clickable questions
 - **File Uploads**: Allow users to attach files to their messages
+- **Read-Only Mode**: Pause conversations without removing the widget from the page
+- **Banner Notices**: Show an always-visible notice for outages, hours, or announcements
 - **Responsive Design**: Works seamlessly across desktop and mobile devices
 
 <div class="grid cards" markdown>
