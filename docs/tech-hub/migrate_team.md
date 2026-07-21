@@ -199,14 +199,6 @@ Migration mode is a per-server setting, and the source and target need **opposit
 | Source | Keep **enabled** | Stops the source from sending the team's scheduled messages and events, now that the target is live and doing that instead. |
 | Target | **Disable** | Lets the target start sending the team's scheduled messages and events as the new live server. `sync_team` enabled it automatically when it created the team ([step 6](#6-run-the-sync-command-target-server)) so the target wouldn't double-send while the source was still live — turn it off once cutover is complete. |
 
-!!! warning "Getting either side backwards causes duplicate or missing messages"
-    - Disabling migration mode on the **source** while the team still exists there makes the source start sending scheduled messages and events again, duplicating what the target now sends.
-    - Leaving migration mode enabled on the **target** after cutover means neither server sends the team's scheduled messages and events — end users won't receive them at all.
-
-Disable migration mode for the team in the **Data Export** section under Team Settings on the target server. It's safe to rerun `sync_team` afterward: the auto-enable only happens the first time a team is created, so a later rerun — for example the delta sync in [step 8](#8-verify-and-do-a-final-sync) — loads the existing team from the state directory and won't turn migration mode back on.
-
-Leave migration mode enabled on the source until the team is deleted there. A Team Admin can delete the team from **Team Settings** on the source once you're confident the migration is complete and the target is serving all traffic.
-
 ## Troubleshooting
 
 **Sync aborts with a schema/version mismatch error**
