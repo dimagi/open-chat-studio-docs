@@ -8,7 +8,7 @@ ENDPOINTS:
 
 GET /api/v2/usage/
   Summary: Usage
-  Description: Return team-scoped usage data. Currently reports human, AI, and total message counts for a calendar month, optionally narrowed to a single participant.
+  Description: Return team-scoped usage data for a calendar month. Each requested metric gets its own block: 'messages' (human/AI/total counts), 'sessions' (count), and 'participants' (distinct count). Optionally narrowed to a single participant.
   Parameters:
     - metric (query, array (required)): Metrics to return; repeat the parameter for several.
     - participant (query, string (optional)): Restrict to a single participant by their ``public_id``.
@@ -47,6 +47,8 @@ UsageResponse:
 
 UsageResults:
   - messages: MessageCounts
+  - sessions: integer
+  - participants: integer
 
 SECURITY:
 - OAuth2
