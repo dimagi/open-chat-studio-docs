@@ -8,7 +8,7 @@ ENDPOINTS:
 
 GET /api/v2/usage/
   Summary: Usage
-  Description: Return team-scoped usage data for a calendar month. Each requested metric gets its own block: 'messages' (human/AI/total counts), 'sessions' (count), and 'participants' (distinct count). Optionally narrowed to a single participant.
+  Description: Return team-scoped usage data for a calendar month. Each requested metric gets its own block: 'messages' (human/AI/total counts), 'sessions' (count), 'participants' (distinct count), 'cost' (total spend and currency), and 'tokens' (prompt/completion/total). Optionally narrowed to a single participant.
   Parameters:
     - metric (query, array (required)): Metrics to return; repeat the parameter for several.
     - participant (query, string (optional)): Restrict to a single participant by their ``public_id``.
@@ -30,9 +30,18 @@ GET /api/v2/usage/
 
 SCHEMAS:
 
+Cost:
+  - total: string (required)
+  - currency: string (required)
+
 MessageCounts:
   - human: integer (required)
   - ai: integer (required)
+  - total: integer (required)
+
+Tokens:
+  - prompt: integer (required)
+  - completion: integer (required)
   - total: integer (required)
 
 UsagePeriod:
@@ -49,6 +58,8 @@ UsageResults:
   - messages: MessageCounts
   - sessions: integer
   - participants: integer
+  - cost: Cost
+  - tokens: Tokens
 
 SECURITY:
 - OAuth2
