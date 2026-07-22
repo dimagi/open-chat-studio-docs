@@ -22,4 +22,4 @@ Messaging providers configured in your [Team](../concepts/team/index.md) setting
 - For WhatsApp Business Platform with Meta, see details [here](../how-to/deploy_to_different_channels.md#meta-cloud-api)
 - For Slack see details [here](../how-to/deploy_to_different_channels.md#slack)
 - For Facebook Messenger see details [here](../how-to/deploy_to_different_channels.md#facebook-messenger)
-- For SureAdhere secure In-App Messaging see details [here](../how-to/deploy_to_different_channels.md#sureadhere)
+- For SureAdhere secure In-App Messaging see details [here](../how-to/deploy_to_different_channels.md#sureadhere-for-secure-in-app-messaging)

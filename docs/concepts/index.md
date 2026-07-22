@@ -22,7 +22,7 @@ For step-by-step instructions on completing specific tasks, see the [How-to guid
 : Credentials — such as API keys, bearer tokens, or username/password pairs — used when your chatbot connects to external services via Custom Actions or Python nodes.
 
 [Channel](channels.md)
-: The platform through which a participant interacts with your chatbot — for example, WhatsApp, Telegram, the web, or Slack.
+: How a participant interacts with your chatbot — for example, WhatsApp, Telegram, the web, or Slack.
 
 [Chatbot](chatbots/index.md)
 : In OCS, this is the top-level configuration for your conversational experience. It defines the chatbot's behavior, connects it to one or more channels, and is published to participants.
@@ -37,7 +37,7 @@ For step-by-step instructions on completing specific tasks, see the [How-to guid
 : Reusable connections to external services that let your chatbot retrieve information or complete tasks in another system — such as looking up an order status or creating a support ticket.
 
 [Evaluations](evaluations/index.md)
-: A built-in testing system that runs your chatbot against sample conversations and scores the responses against criteria you define, such as accuracy, tone, or whether the bot stayed on topic.
+: A built-in testing system that runs your chatbot against sample conversations and scores the responses against criteria you define, such as accuracy, tone, or whether the chatbot stayed on topic.
 
 [Events](events.md)
 : Automated actions that fire when something specific happens in a chatbot session — for example, when a conversation starts, ends, or when a participant has been inactive for a set period.
@@ -45,8 +45,11 @@ For step-by-step instructions on completing specific tasks, see the [How-to guid
 [Large Language Models (LLMs)](llm.md)
 : The AI model that powers your chatbot's ability to understand messages and generate responses. OCS lets you choose from a range of models and configure how they behave.
 
+[LLM Service Provider](team/llm_providers.md)
+: The account you configure with an LLM service — such as OpenAI, Anthropic, or Google — so your chatbots can use its models.
+
 [Messaging Provider](team/messaging_providers.md)
-: A connection to a communication platform — such as WhatsApp or Slack — so chatbots can be deployed to that service.
+: An provider account you configure for a messaging service — such as Twilio, Turn.io, or Slack — that some channels require in order to send and receive messages for your chatbot.
 
 [Node](./pipelines/nodes.md)
 : A single processing step in a pipeline. Each node performs one task, such as calling an LLM, running custom code, or routing the conversation based on its content.
@@ -68,6 +71,9 @@ For step-by-step instructions on completing specific tasks, see the [How-to guid
 
 [Source Material](source_material.md)
 : A knowledge base you attach to your chatbot — such as product documentation or FAQs — that it can reference when generating responses.
+
+[Speech Service Provider](team/speech_providers.md)
+: The account you configure with a voice service — such as ElevenLabs — so your chatbot can convert speech to text and text to speech.
 
 [Tags](tags.md)
 : Labels applied to sessions or messages to categorize and organize interactions — for example, flagging conversations that need follow-up or segmenting sessions based on content.

@@ -30,7 +30,7 @@ Open Chat Studio (OCS) is an open source platform developed by Dimagi for buildi
 -   :material-chat-question:{ .lg .middle } [__What is a Chatbot?__](concepts/chatbots/index.md)
 -   :octicons-gear-24:{ .lg .middle } [__Configuring your Team__](concepts/team/index.md)
 -   :octicons-ai-model-24:{ .lg .middle } [__What is an LLM?__](concepts/llm.md)
--   :material-whatsapp:{ .lg .middle } [__Deploying your bot__](how-to/deploy_to_different_channels.md)
+-   :material-whatsapp:{ .lg .middle } [__Deploying your Chatbot__](how-to/deploy_to_different_channels.md)
 
 </div>
 

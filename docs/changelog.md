@@ -11,6 +11,10 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Jul 21, 2026
+* **NEW** Added a Usage API endpoint (`GET /api/v2/usage/`) for querying usage metrics. The first metric available is a participant's message count for the current calendar month, for example `?metric=messages&period=current_month&participant=<public_id>`. Access requires the `usage:read` OAuth scope.
+* **BUG** Fixed a database connection error that could cause long-running document collection syncs to fail. Large syncs now complete reliably even when fetching documents takes a long time.
+
 ## Jul 16, 2026
 * **BUG** Fixed an error that could occur with Anthropic models when a message contained only whitespace or empty text. Such messages are now handled correctly instead of failing.
 

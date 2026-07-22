@@ -111,7 +111,6 @@ ChatStartSessionRequest:
   - session_data: object
   - participant_remote_id: string
   - participant_name: string
-  - use_session_token: boolean
 
 ChatStartSessionResponse:
   - session_id: string (required)

@@ -192,8 +192,12 @@ Test each channel against the target server and confirm chatbots respond as expe
 
 ## After the migration
 
-!!! warning "Don't disable migration mode on the source"
-    Once migration is complete, leave migration mode **enabled** on the source server. Disabling it makes the source start sending the team's scheduled messages again, which will conflict with the now-live target server. Keep it enabled until the team is deleted from the source server. A Team Admin can delete the team from **Team Settings** on the source once you're confident the migration is complete and the target is serving all traffic.
+Migration mode is a per-server setting, and the source and target need **opposite** settings once the target takes over as the live server:
+
+| Server | Migration mode | Why |
+|---|---|---|
+| Source | Keep **enabled** | Stops the source from sending the team's scheduled messages and events, now that the target is live and doing that instead. |
+| Target | **Disable** | Lets the target start sending the team's scheduled messages and events as the new live server. `sync_team` enabled it automatically when it created the team ([step 6](#6-run-the-sync-command-target-server)) so the target wouldn't double-send while the source was still live — turn it off once cutover is complete. |
 
 ## Troubleshooting
 

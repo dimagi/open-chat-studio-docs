@@ -10,7 +10,7 @@ You can view and edit participant data on the **Participant Details** page. Open
 
 The **Session details** screen shows both the **Participant Data** and their **Participant Schedules** - the [reminders](../how-to/reminders.md) and scheduled messages set for that participant — in one place.
 
-To add a participant manually, use the Create action and provide an identifier, platform, and optional name. If a participant with that platform and identifier already exists for the team, the form links you to the existing record.
+To add a participant manually, use the Create action and provide an identifier, [platform](channels.md), and optional name. If a participant with that platform and identifier already exists for the team, the form links you to the existing record.
 
 ## Using participant data
 
