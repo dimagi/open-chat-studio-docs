@@ -17,6 +17,7 @@ hide:
 
 ## Jul 16, 2026
 * **BUG** Fixed an error that could occur with Anthropic models when a message contained only whitespace or empty text. Such messages are now handled correctly instead of failing.
+* **BUG** Fixed an error that could occur when viewing the traces table if a trace was not linked to a session. Such traces now display correctly instead of causing an error.
 
 ## Jul 13, 2026
 * **CHANGE** The Surveys feature has been removed. Following its deprecation on 2026-06-10, surveys were read-only for a 30-day export window that has now closed. Surveys can no longer be viewed, created, or linked to chatbots.
