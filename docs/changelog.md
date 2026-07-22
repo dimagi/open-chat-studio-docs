@@ -12,6 +12,7 @@ hide:
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
 ## Jul 22, 2026
+* **CHANGE** The maximum allowed timeout for outgoing HTTP requests (for example from a Code node) has been increased from 30 seconds to 60 seconds.
 * **BUG** Fixed an error that could prevent evaluation scores from saving when an LLM judge's output contained invalid characters. Such characters are now removed automatically so scores save correctly.
 
 ## Jul 21, 2026
