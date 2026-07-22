@@ -1388,6 +1388,8 @@ ExperimentChannelDetail:
   - widget_version: string
   - widget_version_updated_at: string
   - required_auth_level: Unknown
+  - pending_auth_level: Unknown
+  - auth_level_notified_at: string
   - experiment: integer
   - messaging_provider: integer
 
