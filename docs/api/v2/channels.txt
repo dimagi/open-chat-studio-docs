@@ -1,0 +1,59 @@
+API: Open Chat Studio v2
+Description: Build, deploy and monitor chatbots.
+
+TAG: Channels
+Description: Trigger bot messages or deliver messages directly to users on a channel.
+
+ENDPOINTS:
+
+POST /api/v2/trigger_bot/
+  Summary: Trigger the bot to send a message to the user, or deliver a message directly
+  Description: Trigger the bot to send a message to the user, or deliver a message directly.
+
+Provide either ``prompt_text`` (routes through the LLM/bot pipeline) or ``message_text``
+(sends the exact text to the participant without any LLM processing). Exactly one is required.
+
+The response ``channel`` is an object of ``{platform, data}``; for CommCare Connect, ``data``
+carries the ``external_channel_id`` of the session's Connect channel.
+  Request Body:
+    Content: application/json
+    Schema: TriggerBotMessageRequest
+  Responses:
+    200:
+      Content: application/json
+      Schema: TriggerBotMessageResponse
+    400:
+      Content: application/json
+      Schema: Unknown
+    404:
+      Content: application/json
+      Schema: Unknown
+  Security:
+    OAuth2
+      - Required scopes: chatbots:interact
+    apiKeyAuth
+    tokenAuth
+
+SCHEMAS:
+
+TriggerBotMessageRequest:
+  - identifier: string (required)
+  - platform: Unknown (required)
+  - experiment: string (required)
+  - prompt_text: string
+  - message_text: string
+  - start_new_session: boolean
+  - session_data: object
+  - participant_data: object
+
+TriggerBotMessageResponse:
+  - session_id: string (required)
+  - url: string (required)
+  - team: Unknown (required)
+  - channel: Unknown (required)
+
+SECURITY:
+- OAuth2
+  - Authorization Code Flow (authorization url: /o/authorize/, token url: /o/token/)
+- API Key authentication (header: X-api-key)
+- HTTP bearer authentication
