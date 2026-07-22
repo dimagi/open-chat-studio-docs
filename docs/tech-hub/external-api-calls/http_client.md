@@ -43,7 +43,7 @@ All methods accept the following keyword-only parameters:
 - `params` - URL query parameters
 - `json` - JSON data to send in the request body (mutually exclusive with `data` and `files`)
 - `data` - Form data (dict) or raw body content (str/bytes). Can be combined with `files` for multipart form uploads
-- `timeout` - Request timeout in seconds (automatically clamped between 1s and the system maximum)
+- `timeout` - Request timeout in seconds (automatically clamped between 1s and a maximum of 60s)
 - `files` - File upload data. See [File Uploads](#file-uploads) for details
 - `auth` - Name of an [Authentication Provider](../../concepts/team/authentication_providers.md) to inject credentials. This is a string, not a credentials tuple
 
@@ -99,7 +99,7 @@ The HTTP client includes several built-in security protections:
 
  - **Request/Response Size Limits**: Enforces maximum size limits on both requests and responses to prevent memory exhaustion.
 
- - **Timeout Clamping**: Automatically limits request timeouts to prevent indefinite hanging.
+ - **Timeout Clamping**: Automatically limits request timeouts to prevent indefinite hanging. Timeouts are clamped to a maximum of 60 seconds.
 
  - **Blocked Headers**: Certain sensitive headers are blocked to prevent security issues.
 
