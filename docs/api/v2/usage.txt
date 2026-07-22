@@ -1,0 +1,57 @@
+API: Open Chat Studio v2
+Description: Build, deploy and monitor chatbots.
+
+TAG: Usage
+Description: Inspect team usage and activity data (message counts, and more).
+
+ENDPOINTS:
+
+GET /api/v2/usage/
+  Summary: Usage
+  Description: Return team-scoped usage data for a calendar month. Each requested metric gets its own block: 'messages' (human/AI/total counts), 'sessions' (count), and 'participants' (distinct count). Optionally narrowed to a single participant.
+  Parameters:
+    - metric (query, array (required)): Metrics to return; repeat the parameter for several.
+    - participant (query, string (optional)): Restrict to a single participant by their ``public_id``.
+    - participant_identifier (query, string (optional)): Restrict to a single participant by their raw identifier (email/phone).
+    - period (query, string (optional)): Calendar month to report on, evaluated in the given timezone.
+
+* `current_month` - current_month
+* `previous_month` - previous_month
+    - tz (query, string (optional)): IANA timezone name defining calendar-month boundaries. Defaults to UTC.
+  Responses:
+    200:
+      Content: application/json
+      Schema: UsageResponse
+  Security:
+    OAuth2
+      - Required scopes: usage:read
+    apiKeyAuth
+    tokenAuth
+
+SCHEMAS:
+
+MessageCounts:
+  - human: integer (required)
+  - ai: integer (required)
+  - total: integer (required)
+
+UsagePeriod:
+  - start: string (required)
+  - end: string (required)
+  - timezone: string (required)
+
+UsageResponse:
+  - period: UsagePeriod (required)
+  - group_by: string (required)
+  - results: UsageResults (required)
+
+UsageResults:
+  - messages: MessageCounts
+  - sessions: integer
+  - participants: integer
+
+SECURITY:
+- OAuth2
+  - Authorization Code Flow (authorization url: /o/authorize/, token url: /o/token/)
+- API Key authentication (header: X-api-key)
+- HTTP bearer authentication

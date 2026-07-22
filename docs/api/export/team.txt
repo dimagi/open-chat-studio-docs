@@ -1387,6 +1387,7 @@ ExperimentChannelDetail:
   - platform: PlatformEnum
   - widget_version: string
   - widget_version_updated_at: string
+  - required_auth_level: Unknown
   - experiment: integer
   - messaging_provider: integer
 
@@ -1659,6 +1660,7 @@ PipelineDetail:
   - name: string (required)
   - data: Unknown (required)
   - version_number: integer
+  - edit_revision: integer
   - is_archived: boolean
   - working_version: integer
 
@@ -1990,7 +1992,7 @@ VoiceProviderDetail:
   - name: string (required)
 
 VoiceProviderDetailTypeEnum:
-  - enum: [aws, azure, openai, openaivoiceengine, elevenlabs, intron]
+  - enum: [aws, azure, openai, openaivoiceengine, elevenlabs, intron, minimax]
 
 VoiceProviderList:
   - cursor: string (required)
