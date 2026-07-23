@@ -29,7 +29,7 @@ Check your current HTML implementation and compare it with the [latest propertie
     sunset date shown on each entry, and may stop working. Upgrade to a supported version
     to stay current — see the [Quick Upgrade Steps](#quick-upgrade-steps) above.
 
-### v0.12.0 (2026-07-23)
+### v0.12.0
 
 * Expose the running widget version on the element. Read the `data-widget-version` attribute (e.g. `element.getAttribute('data-widget-version')`) or call the `getVersion()` method to tell which release is deployed on a page.
 
