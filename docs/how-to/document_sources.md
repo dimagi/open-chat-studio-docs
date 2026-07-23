@@ -74,9 +74,12 @@ OCS tracks the history of every sync run for each document source. Use the sync 
 
 Each document source displays a status indicator showing the outcome of the most recent sync:
 
-- **Error** — the last sync encountered a problem. The indicator is shown in red. Open the sync log for details.
+- **Error** — the last sync failed before it could process any files. The indicator is shown in red. Open the sync log for details.
+- **Completed with errors** — the sync finished, but one or more files failed to process. Every other file still synced and is searchable in the collection. Open the sync log to see how many files failed and which ones.
 - **Success** — the last sync completed without errors.
 - **In progress** — a sync is currently running. The indicator animates to show activity.
+
+While a sync is in progress, the collection's file list updates live, showing a running count of how many files have synced so far. You don't need to wait for the sync to finish or refresh the page to see files as they're added.
 
 ## Troubleshooting
 
@@ -87,6 +90,10 @@ Open the sync log for the failed run. Common causes:
 - Authentication credentials have expired or been revoked — update your authentication provider.
 - The Confluence space key or GitHub repository URL has changed — update the configuration field.
 - The Max Pages limit was reached before all pages were loaded — increase the limit or narrow your filter.
+
+### Sync shows "Completed with errors" status
+
+A single file that fails to process no longer stops the whole sync — the rest of the files still sync and are indexed normally. Open the sync log to see the failed-files count and the details for each failed file (for example, a file type OCS couldn't parse, or a page that couldn't be retrieved). Fix the underlying issue if possible, then trigger a new sync to retry those files.
 
 ### Pages are not updating after a sync
 

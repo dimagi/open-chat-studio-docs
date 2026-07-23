@@ -12,6 +12,10 @@ hide:
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
 ## Jul 23, 2026
+* **CHANGE** Document collection syncs are now more resilient: if a single file fails to process, the rest still sync and index. The sync log reports how many files failed, which ones, and shows a "completed with errors" state.
+* **CHANGE** While a document source is syncing, the files list now shows files as they are added with a running "N files synced so far" count, instead of a spinner until the sync finishes.
+* **BUG** The file search box in document collections now shows a working loading indicator while searching.
+* **BUG** Fixed notification toasts that were hard to read in dark mode.
 * **BUG** Fixed an error that could cause document synchronization to fail when a document had a very long identifier (such as a long URL from a JSON source). These documents now sync correctly instead of causing an error.
 
 ## Jul 22, 2026
