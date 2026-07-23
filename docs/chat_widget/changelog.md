@@ -29,11 +29,14 @@ Check your current HTML implementation and compare it with the [latest propertie
     sunset date shown on each entry, and may stop working. Upgrade to a supported version
     to stay current — see the [Quick Upgrade Steps](#quick-upgrade-steps) above.
 
+### v0.12.0 (2026-07-23)
+
+* Expose the running widget version on the element. Read the `data-widget-version` attribute (e.g. `element.getAttribute('data-widget-version')`) or call the `getVersion()` method to tell which release is deployed on a page.
+
 ### v0.11.0 (2026-07-23)
 
 * Add a `disabled` option that puts the widget into read-only mode. Chat history stays visible and scrollable, but the message composer and send controls are disabled and sending is blocked, and starter questions are hidden.
 * Add a configurable banner. Set `banner-message` to show an always-visible notice, and style it with `banner-style` (`default`/`info`/`warning`/`error`) and `banner-position` (`top`/`bottom`). The banner works on its own or together with `disabled`.
-* Expose the running widget version on the element. Read the `data-widget-version` attribute (e.g. `element.getAttribute('data-widget-version')`) or call the `getVersion()` method to tell which release is deployed on a page.
 
 ### v0.10.0 (2026-06-26)
 
