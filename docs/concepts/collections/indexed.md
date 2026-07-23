@@ -85,3 +85,9 @@ Instead of uploading files manually, you can connect OCS to an external document
 Currently supported sources: **Confluence** and **GitHub**.
 
 For configuration steps, authentication setup, and how to monitor sync status, see [Set Up Document Sources](../../how-to/document_sources.md).
+
+If a file fails to sync, the rest of the source's files still sync and remain searchable — only the failed file is skipped. See [Monitoring Sync Status](../../how-to/document_sources.md#monitoring-sync-status) for how to see which files failed and why.
+
+### Finding files by metadata
+
+Files added by a document source carry metadata about where they came from, such as a Confluence label or a GitHub file path. You can filter your collection's file list by this metadata to quickly find specific content — see [Filtering Synced Files by Metadata](../../how-to/document_sources.md#filtering-synced-files-by-metadata).
