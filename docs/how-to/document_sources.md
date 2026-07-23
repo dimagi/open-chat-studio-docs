@@ -81,15 +81,6 @@ Each document source displays a status indicator showing the outcome of the most
 
 While a sync is in progress, the collection's file list updates live, showing a running count of how many files have synced so far. You don't need to wait for the sync to finish or refresh the page to see files as they're added.
 
-## Filtering Synced Files by Metadata
-
-Each file added by a document source carries metadata — for example, the Confluence space or label it came from, or its path in the GitHub repository. On your collection's **Files** tab, you can filter the file list by this metadata to quickly find specific synced content, in addition to the free-text search box.
-
-When building a metadata filter, choose a metadata field, an operator, and a value. The **contains** operator matches when the field's value includes the text you enter — this also works for fields that hold a list of values (such as a list of Confluence labels or tags), matching if any item in the list includes your text. For example, a filter of `tags contains "urgent"` matches any file whose `tags` metadata includes `"urgent"`.
-
-!!! note
-    `contains` checks for one value at a time — it does not split a comma-separated value into multiple matches. To match several values, add a separate filter for each one.
-
 ## Troubleshooting
 
 ### Sync shows Error status

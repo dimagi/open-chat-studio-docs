@@ -12,7 +12,6 @@ hide:
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
 ## Jul 23, 2026
-* **NEW** Document collection metadata filters now support a `contains` operator that matches list-valued fields, for example finding files whose `tags` list contains `"urgent"`.
 * **CHANGE** Document collection syncs are now more resilient: if a single file fails to process, the rest still sync and index. The sync log reports how many files failed, which ones, and shows a "completed with errors" state.
 * **CHANGE** While a document source is syncing, the files list now shows files as they are added with a running "N files synced so far" count, instead of a spinner until the sync finishes.
 * **BUG** The file search box in document collections now shows a working loading indicator while searching.
