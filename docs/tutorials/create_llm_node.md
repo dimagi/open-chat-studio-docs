@@ -1,9 +1,9 @@
 ---
-title: Create an LLM Node
+title: Create and Configure an LLM Node
 description: Add and configure an LLM node — the core building block of most chatbots
 ---
 
-# Create an LLM Node
+# Configure an LLM Node
 
 The [LLM node](../concepts/pipelines/nodes.md#llm-node) is the heart of most chatbots in Open Chat Studio. It sends the conversation to an AI model and returns the model's reply. This tutorial walks you through adding an LLM node to a [pipeline](../concepts/pipelines/index.md) and setting up the handful of options you'll use most often.
 
@@ -12,21 +12,20 @@ By the end you will have a working LLM node that responds to messages using a mo
 !!! note "Before you start"
     You'll need:
 
-    - A chatbot open for editing. If you don't have one yet, follow [Create your first chatbot](first_chatbot.md).
+    - A new chatbot by following the [Create your first chatbot](first_chatbot.md) steps.
     - An [LLM provider](configure_providers.md) configured for your team so that models are available to choose from.
 
-## Step 1 — Open your pipeline
+## Step 1 — Open your chatbot
 
-1. Open your chatbot and switch to the **Pipeline** editor. This is the visual canvas where you build your chatbot's conversation flow.
-2. New chatbots usually start with a single LLM node already on the canvas, connected between the input and the output.
+1. New chatbots will have a [single LLM node already on the pipeline](../concepts/pipelines/index.md#a-simple-example), connected between the input and the output.
+2. Open your chatbot and view the **Pipeline** workflow. This is the visual canvas where you build your chatbot's conversation flow.
 
-If a node is already there, skip to [Step 3](#step-3-choose-a-model). Otherwise, add one in the next step.
+If an LLM node is already there, skip to [Step 3](#step-3--choose-a-model). Otherwise, add one in the next step.
 
 ## Step 2 — Add an LLM node
 
-1. On the pipeline canvas, add a new node (for example, using the **Add node** button or by dragging from the node panel).
+1. On the pipeline click the **Add node** button.
 2. Choose **LLM** from the list of node types.
-3. Connect the input to your new node, and connect the node's output to the pipeline output, so messages flow through it.
 
 ## Step 3 — Choose a model
 
@@ -74,14 +73,14 @@ See [Prompt variables](../concepts/prompt_variables.md) for the full list of sup
 
 By default, the node remembers earlier messages in the conversation so it can respond in context. This memory is controlled by the node's **history** setting.
 
-- Leave history on (the default) for normal back-and-forth conversations.
+- Leave history on (the default of `No History`) for normal back-and-forth conversations.
 - Adjust it if you want the node to ignore prior messages or manage a longer context differently.
 
-See [Pipeline History](../concepts/pipelines/history.md) for how each history mode behaves.
+See [LLM Node History](../concepts/pipelines/history.md) for how each history mode behaves.
 
 ## Step 7 — Adjust the response style (optional)
 
-Depending on the model you chose, the node exposes a **temperature** or an **effort** setting that shapes how the model responds. The defaults work well for most chatbots, so you can safely skip this at first.
+Depending on the LLM model you chose, the node exposes a **temperature** or an **effort** setting that shapes how the model responds. The defaults work well for most chatbots, so you can safely skip this at first.
 
 - **Temperature** — lower for consistent, predictable answers; higher for more varied, creative ones.
 - **Effort** — how much a reasoning model "thinks" before answering.
