@@ -549,6 +549,32 @@ widget.addEventListener('ocs:message:received', (e) => {
 });
 ```
 
+## :material-information-outline: Widget Version
+
+The widget stamps its build version onto the `<open-chat-studio-widget>` host element, so you can confirm which release is running on a deployed page without checking the CDN URL.
+
+### `data-widget-version` attribute
+
+Read the version straight from the DOM with `getAttribute`. This is the quickest way to check the version in the browser DevTools:
+
+```javascript
+document.querySelector('open-chat-studio-widget').getAttribute('data-widget-version');
+// "0.11.0"
+```
+
+!!! note
+    `data-widget-version` is set as soon as the widget script loads, even if `chatbot-id` is missing or invalid. You can rely on it to confirm the widget script itself loaded correctly, independent of chatbot configuration.
+
+### `getVersion()` method
+
+For programmatic access, call `getVersion()` on the element. Like other widget methods, it returns a `Promise`:
+
+```javascript
+const widget = document.querySelector('open-chat-studio-widget');
+const version = await widget.getVersion();
+console.log(version); // "0.11.0"
+```
+
 ## :material-clipboard-list: Properties Reference
 
 ### Core Configuration
