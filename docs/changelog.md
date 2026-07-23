@@ -16,6 +16,7 @@ hide:
 * **CHANGE** While a document source is syncing, the files list now shows files as they are added with a running "N files synced so far" count, instead of a spinner until the sync finishes.
 * **BUG** The file search box in document collections now shows a working loading indicator while searching.
 * **BUG** Fixed notification toasts that were hard to read in dark mode.
+* **BUG** Fixed an error that could cause document synchronization to fail when a document had a very long identifier (such as a long URL from a JSON source). These documents now sync correctly instead of causing an error.
 
 ## Jul 22, 2026
 * **CHANGE** The maximum allowed timeout for outgoing HTTP requests (for example from a Code node) has been increased from 30 seconds to 60 seconds.
