@@ -8,8 +8,9 @@ ENDPOINTS:
 
 GET /api/v2/usage/
   Summary: Usage
-  Description: Return team-scoped usage data for a time window. The window is either a calendar 'period' (current/previous month) or an explicit half-open 'start'/'end'. Each requested metric gets its own block: 'messages' (human/AI/total counts), 'sessions' (count), 'participants' (distinct count), 'cost' (total spend and currency), and 'tokens' (prompt/completion/total). With 'granularity' finer than 'total', results are one row per time bucket. Optionally narrowed to a single participant.
+  Description: Return team-scoped usage data for a time window. The window is either a calendar 'period' (current/previous month) or an explicit half-open 'start'/'end'. Each requested metric gets its own block: 'messages' (human/AI/total counts), 'sessions' (count), 'participants' (distinct count), 'cost' (total spend and currency), and 'tokens' (prompt/completion/total). With 'granularity' finer than 'total', results are one row per time bucket. With 'group_by' set, results are cursor-paginated breakdown rows — one per group, or one per (group, bucket) when combined with a finer granularity. Optionally narrowed by participant, chatbot, or platform.
   Parameters:
+    - chatbot (query, string (optional)): Restrict to a single chatbot by its ``public_id``.
     - end (query, string (optional)): Exclusive end of an explicit window (ISO date or datetime). Requires 'start'.
     - granularity (query, string (optional)): Time-bucketing of results. 'total' (default) returns a single object; the others return one row per bucket, each carrying 'bucket_start'.
 
@@ -17,6 +18,11 @@ GET /api/v2/usage/
 * `daily` - daily
 * `weekly` - weekly
 * `monthly` - monthly
+    - group_by (query, string (optional)): Break the results down by this dimension: one row per group, cursor-paginated. Combines with 'granularity' to give one row per (group, time bucket).
+
+* `participant` - participant
+* `chatbot` - chatbot
+* `platform` - platform
     - metric (query, array (required)): Metrics to return; repeat the parameter for several.
     - participant (query, string (optional)): Restrict to a single participant by their ``public_id``.
     - participant_identifier (query, string (optional)): Restrict to a single participant by their raw identifier (email/phone).
@@ -24,12 +30,24 @@ GET /api/v2/usage/
 
 * `current_month` - current_month
 * `previous_month` - previous_month
+    - platform (query, string (optional)): Restrict to a single channel platform by its slug (e.g. 'web', 'whatsapp').
+
+* `telegram` - telegram
+* `web` - web
+* `whatsapp` - whatsapp
+* `facebook` - facebook
+* `sureadhere` - sureadhere
+* `api` - api
+* `slack` - slack
+* `commcare_connect` - commcare_connect
+* `embedded_widget` - embedded_widget
+* `email` - email
     - start (query, string (optional)): Inclusive start of an explicit window (ISO date or datetime). Requires 'end'.
     - tz (query, string (optional)): IANA timezone name defining calendar and bucket boundaries. Defaults to UTC.
   Responses:
     200:
       Content: application/json
-      Schema: UsageResponse
+      Schema: UsageResponseOrGrouped
   Security:
     OAuth2
       - Required scopes: usage:read
@@ -38,16 +56,8 @@ GET /api/v2/usage/
 
 SCHEMAS:
 
-UsagePeriod:
-  - start: string (required)
-  - end: string (required)
-  - timezone: string (required)
-
-UsageResponse:
-  - period: UsagePeriod (required)
-  - granularity: string (required)
-  - group_by: string (required)
-  - results: Unknown (required)
+UsageResponseOrGrouped:
+  - type: unknown
 
 SECURITY:
 - OAuth2
