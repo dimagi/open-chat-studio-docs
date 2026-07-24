@@ -97,6 +97,7 @@ nav:
   - Tutorials:
     - tutorials/index.md
     - tutorials/first_chatbot.md
+    - Create an LLM Node: tutorials/create_llm_node.md
     - Configure LLM Providers: tutorials/configure_providers.md
     - Configure Message Providers: tutorials/configure_msg_providers.md
     - Create & Publish Versions: tutorials/versioning_steps.md
