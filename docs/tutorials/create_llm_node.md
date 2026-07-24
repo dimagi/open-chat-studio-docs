@@ -17,21 +17,21 @@ By the end you will have a working LLM node that responds to messages using a mo
 
 ## Step 1 — Open your chatbot
 
-1. New chatbots will have a [single LLM node already on the pipeline](../concepts/pipelines/index.md#a-simple-example), connected between the input and the output.
+1. New chatbots will be created with a [single LLM node already on the pipeline](../concepts/pipelines/index.md#a-simple-example), connected between the input and the output.
 2. Open your chatbot and view the **Pipeline** workflow. This is the visual canvas where you build your chatbot's conversation flow.
 
 If an LLM node is already there, skip to [Step 3](#step-3--choose-a-model). Otherwise, add one in the next step.
 
 ## Step 2 — Add an LLM node
 
-1. On the pipeline click the **Add node** button.
+1. On the pipeline click the purple :material-plus-box: (plus) icon button on the top left.
 2. Choose **LLM** from the list of node types.
 
 ## Step 3 — Choose a model
 
 The model determines which AI does the thinking.
 
-1. Click the LLM node to open its settings.
+1. Click the LLM node edit button (or the **Advanced** link) to open its settings.
 2. Find the **LLM Model** dropdown and pick a model.
 3. If you're unsure which to choose, start with a general-purpose model and the defaults.
 
@@ -42,7 +42,7 @@ The model determines which AI does the thinking.
 
 The [prompt](../concepts/llm.md#prompt) tells the model who it is and how to respond. It's the single most important setting on the node.
 
-1. In the node settings, find the prompt field.
+1. In the LLM node settings, find the prompt field.
 2. Describe the chatbot's role, tone, and any rules it should follow.
 
 A good starting prompt is short and specific:
@@ -89,7 +89,7 @@ For step-by-step guidance, see [Adjust LLM Node Model Parameters](../how-to/adju
 
 ## Step 8 — Save and test
 
-1. Click outside the node settings to save your changes.
+1. Click the **x** on the popup node settings to close the dialog and save your changes.
 2. Open the chat preview and send a test message.
 3. Confirm the reply reflects your prompt and model choice. Tweak the prompt and re-test until the responses look right.
 
