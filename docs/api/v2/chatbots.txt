@@ -8,6 +8,7 @@ ENDPOINTS:
 
 GET /api/v2/chatbots/
   Summary: List Chatbots
+  Description: List the chatbots belonging to the API key's team.
   Parameters:
     - cursor (query, string (optional)): The pagination cursor value.
     - page_size (query, integer (optional)): Number of results to return per page.
@@ -23,6 +24,7 @@ GET /api/v2/chatbots/
 
 GET /api/v2/chatbots/{id}/
   Summary: Retrieve Chatbot
+  Description: Retrieve a single chatbot by its ID.
   Parameters:
     - id (path, string (required)): Chatbot ID
   Responses:

@@ -8,7 +8,26 @@ ENDPOINTS:
 
 GET /api/v2/usage/
   Summary: Usage
-  Description: Return team-scoped usage data for a time window. The window is either a calendar 'period' (current/previous month) or an explicit half-open 'start'/'end'. Each requested metric gets its own block: 'messages' (human/AI/total counts), 'sessions' (count), 'participants' (distinct count), 'cost' (total spend and currency), and 'tokens' (prompt/completion/total). With 'granularity' finer than 'total', results are one row per time bucket. With 'group_by' set, results are cursor-paginated breakdown rows — one per group, or one per (group, bucket) when combined with a finer granularity. Optionally narrowed by participant, chatbot, or platform.
+  Description: Return team-scoped usage data for a time window.
+
+Each `metric` you request gets its own block in the response:
+
+- **`messages`** — human / AI / total message counts
+- **`sessions`** — session count
+- **`participants`** — distinct active-participant count
+- **`cost`** — total spend and currency
+- **`tokens`** — prompt / completion / total token counts
+
+**Time window.** Either a calendar `period` (current / previous month) or an explicit `start` / `end` range — `start` is included and `end` is excluded.
+
+**Shape of `results`.**
+
+- With `granularity` finer than `total`, `results` is one row per time bucket.
+- With `group_by` set, `results` is cursor-paginated breakdown rows — one per group, or one per (group, bucket) when combined with a finer granularity.
+
+Optionally narrowed by `participant`, `chatbot`, or `platform`.
+
+> **Tip:** The **Response samples** panel has worked examples for the common cases — pick one from the **Example** dropdown (single participant, cost + tokens, grouped breakdowns, and daily timeseries).
   Parameters:
     - chatbot (query, string (optional)): Restrict to a single chatbot by its ``public_id``.
     - end (query, string (optional)): Exclusive end of an explicit window (ISO date or datetime). Requires 'start'.
