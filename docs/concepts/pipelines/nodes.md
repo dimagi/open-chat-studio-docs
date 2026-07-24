@@ -10,7 +10,8 @@ graph LR
 
 !!! note Examples
 
-    See [chatbot workflow cookbook](../../how-to/workflow_cookbook.md) for examples of pipelines using different combinations of these node types.
+    1. See a [simple example](./index.md#a-simple-example) of a pipeline with one node.
+    2. See [chatbot workflow cookbook](../../how-to/workflow_cookbook.md) for examples of pipelines using different combinations of these node types.
 
 ## LLM Node
 
