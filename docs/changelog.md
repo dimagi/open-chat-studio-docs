@@ -11,6 +11,18 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Jul 24, 2026
+* **CHANGE** The Usage API (`GET /api/v2/usage/`) can now break usage down by `participant`, `chatbot`, or `platform` (one cursor-paginated row per group) and filter any metric to a single `chatbot` or `platform`.
+* **BUG** The Extract Structured Data node now validates property key names when you save the schema, showing a clear error instead of failing with a server error when a key uses characters that Anthropic models don't allow.
+* **BUG** Fixed an error that could cause a document collection sync to fail when the same document source was synced by two processes at the same time. Only one sync now runs per source at a time, and duplicate syncs are skipped.
+
+## Jul 23, 2026
+* **CHANGE** Document collection syncs are now more resilient: if a single file fails to process, the rest still sync and index. The sync log reports how many files failed, which ones, and shows a "completed with errors" state.
+* **CHANGE** While a document source is syncing, the files list now shows files as they are added with a running "N files synced so far" count, instead of a spinner until the sync finishes.
+* **BUG** The file search box in document collections now shows a working loading indicator while searching.
+* **BUG** Fixed notification toasts that were hard to read in dark mode.
+* **BUG** Fixed an error that could cause document synchronization to fail when a document had a very long identifier (such as a long URL from a JSON source). These documents now sync correctly instead of causing an error.
+
 ## Jul 22, 2026
 * **CHANGE** The maximum allowed timeout for outgoing HTTP requests (for example from a Code node) has been increased from 30 seconds to 60 seconds.
 * **BUG** Fixed an error that could prevent evaluation scores from saving when an LLM judge's output contained invalid characters. Such characters are now removed automatically so scores save correctly.
