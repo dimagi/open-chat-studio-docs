@@ -71,8 +71,14 @@ jobs:
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           allowed_bots: "dependabot[bot]"
+          # TEMPORARY debugging aids for the uv-ecosystem timeout (~183s, is_error:true,
+          # num_turns:1, total_cost_usd:0 on every Python dependency PR). show_full_output
+          # surfaces the real SDK/API error instead of the redacted summary; pinning a
+          # non-beta model rules out the default claude-opus-4-8[1m] (1M-context beta)
+          # resolution as the cause. Revert both once the root cause is confirmed/fixed.
+          show_full_output: true
           claude_args: |
-            --allowedTools "Bash(uv:*),Bash(git:*),Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),Read,Edit,WebFetch,WebSearch"
+            --model claude-sonnet-5 --allowedTools "Bash(uv:*),Bash(git:*),Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),Read,Edit,WebFetch,WebSearch"
           prompt: |
             You are reviewing PR #${{ steps.pr.outputs.pr_number }}.
 
