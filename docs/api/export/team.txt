@@ -1180,6 +1180,7 @@ DocumentSourceDetail:
   - auto_sync_enabled: boolean
   - last_sync: string
   - sync_task_id: string
+  - sync_started_at: string
   - is_archived: boolean
   - collection: integer (required)
   - auth_provider: integer
