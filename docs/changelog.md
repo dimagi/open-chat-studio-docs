@@ -14,7 +14,7 @@ hide:
 ## Jul 24, 2026
 * **CHANGE** The Usage API (`GET /api/v2/usage/`) can now break usage down by `participant`, `chatbot`, or `platform` (one cursor-paginated row per group) and filter any metric to a single `chatbot` or `platform`.
 * **BUG** The Extract Structured Data node now validates property key names when you save the schema, showing a clear error instead of failing with a server error when a key uses characters that Anthropic models don't allow.
-* **BUG** Fixed an error that could cause a document collection sync to fail when a file had no extractable text. Such files are now skipped with a warning in the sync log, and the rest of the sync continues.
+* **BUG** Fixed an error that could cause a document collection sync to fail when the same document source was synced by two processes at the same time. Only one sync now runs per source at a time, and duplicate syncs are skipped.
 
 ## Jul 23, 2026
 * **CHANGE** Document collection syncs are now more resilient: if a single file fails to process, the rest still sync and index. The sync log reports how many files failed, which ones, and shows a "completed with errors" state.
