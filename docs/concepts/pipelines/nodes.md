@@ -19,7 +19,7 @@ A conversational node using AI models. You can configure:
 
 - A [prompt](../llm.md#prompt) for instructions on how to respond
 - [Prompt variables](../prompt_variables.md) to insert dynamic content
-- A [history mode](history.md) for conversation memory
+- A [history setting](history.md) for conversation memory
 - [Temperature and effort parameters](../../how-to/adjust_llm_node_model_parameters.md) to shape output style and depth
 - [Tools](../tools/index.md) for additional actions
 - [Collections](../collections/index.md) for indexed collections to ground responses in your documents (RAG), or a media collections to send files to participants.

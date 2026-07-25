@@ -20,7 +20,7 @@ For example:
 
 1. **Linked Downstream Node**: Any node that appears after the current node in the pipeline flow.
 
-2. **Conversation Context**: The total set of information available to the pipeline at that moment. This includes the participants’s current message, their chat history (as determined by the router's own [history mode](history.md)), and known data (like whether they are a "new" or "returning" participant).
+2. **Conversation Context**: The total set of information available to the pipeline at that moment. This includes the participants’s current message, their chat history (as determined by the router's own [History setting](history.md)), and known data (like whether they are a "new" or "returning" participant).
 
 3. **Default Path**: The "safety net" route (marked with a blue *). If the router cannot confidently decide where to send the participant, it follows this path to prevent the conversation from breaking. [more](../../how-to/routers/index.md#the-default-output).
 
