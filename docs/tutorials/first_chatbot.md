@@ -12,4 +12,4 @@ I encourage you to follow along and create your own chatbot using these steps.
 
 ## Next steps
 
-Configure the basiscs for your [LLM Node](create_llm_node.md#step-4--write-a-prompt)
+Configure the basics for your [LLM Node](configure_llm_node.md)
