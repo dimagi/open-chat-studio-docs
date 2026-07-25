@@ -12,4 +12,4 @@ I encourage you to follow along and create your own chatbot using these steps.
 
 ## Next steps
 
-Configure the basics for your [LLM Node](configure_llm_node.md)
+Configure the basics for your [LLM Node](configure_llm_node.md).
