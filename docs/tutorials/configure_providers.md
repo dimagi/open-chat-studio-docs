@@ -1,6 +1,6 @@
-# Configure LLM Providers
+# Configure LLM Service Providers
 
-Providers are configured in your [Team](../concepts/team/index.md) settings under "LLM and Embedding Model Service Providers". Before configuring a provider, ensure that you have an active account at the provider and access to the necessary integration credentials.
+LLM service providers are configured in your [Team](../concepts/team/index.md) settings under "LLM and Embedding Model Service Providers". Before configuring a provider, ensure that you have an active account at the provider and access to the necessary integration credentials.
 
 ## Prerequisites
 
@@ -25,7 +25,7 @@ Providers are configured in your [Team](../concepts/team/index.md) settings unde
 ## Testing Your Configuration
 
 After adding a provider and models, it's recommended to:
-1. Create a test bot
+1. Create a test chatbot
 2. Configure it to use your new provider/model
 3. Send a test message to verify everything works correctly
 

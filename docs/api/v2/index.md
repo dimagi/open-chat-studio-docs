@@ -8,11 +8,18 @@ Build, deploy and monitor chatbots.
 
 Simplified per-tag references for LLM consumption:
 
+* [Channels](./channels.txt){:target="_blank"} — Trigger bot messages or deliver messages directly to users on a channel.
 * [Chatbots](./chatbots.txt){:target="_blank"} — List, retrieve and inspect chatbots (v2; formerly 'experiments').
 * [Me](./me.txt){:target="_blank"} — Information about the authenticated user and the team the token is scoped to.
 * [Usage](./usage.txt){:target="_blank"} — Inspect team usage and activity data (message counts, and more).
 
 ## Endpoints
+
+### Channels
+
+| Method | Path | Summary |
+| --- | --- | --- |
+| POST | `/api/v2/trigger_bot/` | Trigger the bot to send a message to the user, or deliver a message directly |
 
 ### Chatbots
 

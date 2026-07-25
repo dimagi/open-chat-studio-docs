@@ -77,13 +77,13 @@ See the [Meta Cloud API setup guide][meta] for full step-by-step instructions.
 
 ## Slack
 
-The Slack channel lets users interact with your chatbot from Slack, either in specific channels, via keyword matching, or by mentioning the chatbot workspace-wide.
+The Slack channel lets participants interact with your chatbot from Slack, either in specific channels, via keyword matching, or by mentioning the chatbot workspace-wide.
 
 See the [Slack channel guide](deploy_slack_channel.md) for prerequisites, configuration options, and how chatbot mentions work.
 
 ## Email
 
-The email channel lets users interact with your chatbot by sending and receiving emails, including routing, thread continuity, and file attachments.
+The email channel lets participants interact with your chatbot by sending and receiving emails, including routing, thread continuity, and file attachments.
 
 See the [Email channel guide](deploy_email_channel.md) for full setup and configuration details.
 

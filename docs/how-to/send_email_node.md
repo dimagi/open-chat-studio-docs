@@ -55,7 +55,7 @@ Use a [Router node](../concepts/pipelines/router_nodes.md) to detect whether the
 
 ### Route a completed intake form to the right team member
 
-After a bot collects structured information from a user (such as a support request or referral), use an LLM node to extract the key details, then add the Send an Email node to forward them to the appropriate contact. Set the recipient using a participant data field (e.g. `{{ participant_data.assigned_caseworker_email }}`) and use the LLM output as the body.
+After a chatbot collects structured information from a user (such as a support request or referral), use an LLM node to extract the key details, then add the Send an Email node to forward them to the appropriate contact. Set the recipient using a participant data field (e.g. `{{ participant_data.assigned_caseworker_email }}`) and use the LLM output as the body.
 
 ### Alert your team when a threshold is reached
 

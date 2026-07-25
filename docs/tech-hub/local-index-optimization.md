@@ -7,7 +7,7 @@ This page covers advanced configuration options for indexed collections. For a c
 
 ## Choosing an Embedding Model
 
-An embedding model converts your documents into a mathematical form that enables search by *meaning* rather than exact keywords. When a user asks a question, the chatbot finds content that is conceptually related — even if it uses different words. The quality and focus of the embedding model directly affects how relevant the retrieved content is.
+An embedding model converts your documents into a mathematical form that enables search by *meaning* rather than exact keywords. When a participant asks a question, the chatbot finds content that is conceptually related — even if it uses different words. The quality and focus of the embedding model directly affects how relevant the retrieved content is.
 
 When you create a local index, you select which embedding model to use. The model you choose affects how well the chatbot retrieves relevant content.
 

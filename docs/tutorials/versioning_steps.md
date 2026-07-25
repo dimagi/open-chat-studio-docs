@@ -12,7 +12,7 @@ Open your chatbot and make your changes in the pipeline editor. All edits apply 
 
 ## Step 2: Create a new version
 
-Once you have tested and are ready to release the chatbot to your users, create a new version by clicking the **Create Version** button in the versions table.
+Once you have tested and are ready to publish the chatbot to your users, create a new version by clicking the **Create Version** button in the versions table.
 
 ## Step 3: Review and save the version
 

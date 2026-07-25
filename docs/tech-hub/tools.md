@@ -43,7 +43,7 @@ To instruct the model to use a specific tool, refer to it by its tool name in yo
 
 ### Calculator
 
-Allows the bot to perform mathematical calculations reliably.
+Allows the chatbot to perform mathematical calculations reliably.
 
 - Name: `calculator`
 - Arguments:
@@ -51,7 +51,7 @@ Allows the bot to perform mathematical calculations reliably.
 
 ### Recurring reminders
 
-Allows the bot to schedule recurring reminders for the participant.
+Allows the chatbot to schedule recurring reminders for the participant.
 
 - Name: `recurring-reminder`
 - Arguments:
@@ -65,7 +65,7 @@ Allows the bot to schedule recurring reminders for the participant.
 
 ### One-off reminder
 
-Allows the bot to schedule a once-off reminder for the participant.
+Allows the chatbot to schedule a once-off reminder for the participant.
 
 - Name: `one-off-reminder`
 - Arguments:
@@ -75,7 +75,7 @@ Allows the bot to schedule a once-off reminder for the participant.
 
 ### Delete reminder
 
-Allows the bot to delete an existing reminder (either once-off or recurring).
+Allows the chatbot to delete an existing reminder (either once-off or recurring).
 
 - Name: `delete-reminder`
 - Arguments:
@@ -83,7 +83,7 @@ Allows the bot to delete an existing reminder (either once-off or recurring).
 
 ### Move reminder date
 
-Allows the bot to update the date or time of an existing reminder.
+Allows the chatbot to update the date or time of an existing reminder.
 
 - Name: `move-scheduled-message-date`
 - Arguments:
@@ -95,7 +95,7 @@ Allows the bot to update the date or time of an existing reminder.
 
 ### Update participant data
 
-Allows the bot to write a value to [participant data](../concepts/participant_data.md) at a specific key.
+Allows the chatbot to write a value to [participant data](../concepts/participant_data.md) at a specific key.
 
 - Name: `update-user-data`
 - Arguments:
@@ -122,7 +122,7 @@ Increments a numeric counter stored in [participant data](../concepts/participan
 
 ### Set session state key
 
-Allows the bot to set a key-value pair in the [session state](../concepts/sessions.md). Session state persists for the duration of the session and is useful in pipeline configurations for passing data across conversation turns.
+Allows the chatbot to set a key-value pair in the [session state](../concepts/sessions.md). Session state persists for the duration of the session and is useful in pipeline configurations for passing data across conversation turns.
 
 - Name: `set-session-state-key`
 - Arguments:
@@ -131,7 +131,7 @@ Allows the bot to set a key-value pair in the [session state](../concepts/sessio
 
 ### Get session state key
 
-Allows the bot to retrieve a value from the [session state](../concepts/sessions.md).
+Allows the chatbot to retrieve a value from the [session state](../concepts/sessions.md).
 
 - Name: `get-session-state`
 - Arguments:
@@ -168,7 +168,7 @@ The following tools are managed automatically by Open Chat Studio. You do not en
 
 ### Attach media
 
-Allows the bot to attach media when a media collection is configured.
+Allows the chatbot to attach media when a media collection is configured.
 
 - Name: `attach-media`
 - Arguments:
@@ -176,7 +176,7 @@ Allows the bot to attach media when a media collection is configured.
 
 ### File search
 
-Allows the bot to search indexed collections when a collection is configured.
+Allows the chatbot to search indexed collections when a collection is configured.
 
 - Name: `file-search`
 - Arguments:

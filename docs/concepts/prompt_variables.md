@@ -6,8 +6,8 @@ Prompt variables are a great way to make your prompt dynamic or tailored to the 
 
 The following variables are currently supported:
 
-- `{source_material}` - The [source material](../how-to/add_a_knowledge_base.md) linked to your bot.
-- `{participant_data}` - Information specific to this participant, bot and channel. See [here][participant_data] for more information.
+- `{source_material}` - The [source material](../how-to/add_a_knowledge_base.md) linked to your chatbot.
+- `{participant_data}` - Information specific to this participant, chatbot and channel. See [here][participant_data] for more information.
 - `{current_datetime}` - This refers to the date and time at which the response is generated.
 - `{media}` - (pipelines only) This refers to the linked [media collection](./collections/media.md).
 - `{collection_index_summaries}` - This refers to the [indexed collections](./collections/indexed.md).

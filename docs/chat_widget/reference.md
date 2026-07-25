@@ -164,6 +164,75 @@ These questions appear as blue-outlined buttons aligned to the right (similar to
 </open-chat-studio-widget>
 ```
 
+## :material-lock: Read-Only Mode
+
+Put the widget into a read-only state when your team is unavailable to respond, during maintenance windows, or whenever you need to pause conversations without hiding the widget entirely. Read-only mode is ideal for:
+
+- Enforcing business hours or on-call availability
+- Pausing conversations during scheduled maintenance
+- Temporarily suspending a chatbot without removing it from the page
+
+When enabled:
+
+- Chat history remains visible and scrollable, so users can still review past messages
+- The message composer and send button stay visible, but disabled
+- Sending is blocked entirely — even programmatic `sendMessage` calls return early, so the restriction cannot be bypassed from the host page
+- Starter questions are hidden
+
+```html
+<open-chat-studio-widget
+ chatbot-id="your-chatbot-id"
+ disabled="true">
+</open-chat-studio-widget>
+```
+
+!!! tip "Tell users why"
+    Pair `disabled` with a [banner](#banner) so users understand why they can't send messages, for example to display your support hours or an outage notice.
+
+## :material-bullhorn: Banner
+
+Display an always-visible notice above the chat history to communicate information that shouldn't scroll away with the conversation. Banners are useful for:
+
+- Announcing maintenance windows or outages
+- Sharing business hours or expected response times
+- Displaying compliance, legal, or privacy notices
+- Explaining why the chat is in [read-only mode](#read-only-mode)
+
+Set `banner-message` to show the banner. Use `banner-style` to match the tone of the notice, and `banner-position` to control where it appears.
+
+```html
+<open-chat-studio-widget
+ chatbot-id="your-chatbot-id"
+ banner-message="We're currently offline. We'll be back during business hours."
+ banner-style="warning"
+ banner-position="top">
+</open-chat-studio-widget>
+```
+
+### Banner Styles
+
+- **default** - Neutral notice styling
+- **info** - Informational notice
+- **warning** - Cautionary notice
+- **error** - Critical or urgent notice
+
+### Banner Position
+
+- **top** (default) - Displayed above the chat history
+- **bottom** - Displayed directly above the message input area
+
+The banner works on its own, or together with `disabled` to explain a read-only state:
+
+```html
+<open-chat-studio-widget
+ chatbot-id="your-chatbot-id"
+ disabled="true"
+ banner-message="This chat is temporarily unavailable. Please email support@example.com for help."
+ banner-style="error"
+ banner-position="bottom">
+</open-chat-studio-widget>
+```
+
 ## :material-paperclip: File Attachments
 Enable users to send files along with their messages. This feature is perfect for support scenarios where users need to share screenshots, documents, or other files.
 
@@ -517,6 +586,15 @@ widget.addEventListener('ocs:message:received', (e) => {
 | `persistent-session-expire` | `number` | Optional | `1440` (24 hours) | 0-43200 (30 days) | Minutes before session expires | `720` for 12 hours, `0` for never expire |
 | `allow-full-screen` | `boolean` | Optional | `true` | `true` \| `false` | Enable fullscreen mode button | `"false"` to hide fullscreen option |
 | `allow-attachments` | `boolean` | Optional | `false` | `true` \| `false` | Enable file upload functionality<br/>**Limits:** 50MB per file, 50MB total per message | `"true"` to enable file uploads |
+| `disabled` | `boolean` | Optional | `false` | `true` \| `false` | Puts the widget into [read-only mode](#read-only-mode): history stays visible, but the composer, send controls, and starter questions are disabled or hidden | `"true"` to make the widget read-only |
+
+### Banner Notice
+
+| Property | Type | Required | Default | Validation | Description | Example |
+|----------|------|----------|---------|------------|-------------|---------|
+| `banner-message` | `string` | Optional | `undefined` | - | Notice text shown in an always-visible [banner](#banner). The banner only displays when this is set | `"We're currently offline."` |
+| `banner-style` | `string` | Optional | `"default"` | `"default"` \| `"info"` \| `"warning"` \| `"error"` | Visual style of the banner | `"warning"` for a cautionary notice |
+| `banner-position` | `string` | Optional | `"top"` | `"top"` \| `"bottom"` | Where the banner appears. The bottom position sits directly above the input area | `"bottom"` to anchor above the composer |
 
 ### Messages & Content
 

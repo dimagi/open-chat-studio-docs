@@ -45,6 +45,9 @@ For step-by-step instructions on completing specific tasks, see the [How-to guid
 [Large Language Models (LLMs)](llm.md)
 : The AI model that powers your chatbot's ability to understand messages and generate responses. OCS lets you choose from a range of models and configure how they behave.
 
+[LLM Service Provider](team/llm_providers.md)
+: The account you configure with an LLM service — such as OpenAI, Anthropic, or Google — so your chatbots can use its models.
+
 [Messaging Provider](team/messaging_providers.md)
 : An provider account you configure for a messaging service — such as Twilio, Turn.io, or Slack — that some channels require in order to send and receive messages for your chatbot.
 
@@ -68,6 +71,9 @@ For step-by-step instructions on completing specific tasks, see the [How-to guid
 
 [Source Material](source_material.md)
 : A knowledge base you attach to your chatbot — such as product documentation or FAQs — that it can reference when generating responses.
+
+[Speech Service Provider](team/speech_providers.md)
+: The account you configure with a voice service — such as ElevenLabs — so your chatbot can convert speech to text and text to speech.
 
 [Tags](tags.md)
 : Labels applied to sessions or messages to categorize and organize interactions — for example, flagging conversations that need follow-up or segmenting sessions based on content.
