@@ -26,6 +26,6 @@ Get started creating a simple LLM chatbot, test it and deploy it without writing
 
     [:octicons-arrow-right-24: Setup an LLM provider for your team's chatbots](configure_providers.md)
 
-    [:octicons-arrow-right-24: Configure the basiscs for your LLM Node](configure_llm_node.md#step-3-choose-a-model)
+    [:octicons-arrow-right-24: Configure the basics for your LLM Node](configure_llm_node.md#step-3-choose-a-model)
 
 </div>

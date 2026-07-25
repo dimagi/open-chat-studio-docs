@@ -54,7 +54,7 @@ See [Adaptive thinking](#adaptive-thinking) in the parameter reference below for
 
 ## Step 6 — Save your changes
 
-1. Click outside the edit settings dialog to save.
+1. Click the **x** on the popup node settings to close the dialog and save your changes.
 2. Test your chatbot to confirm the output looks as expected.
 
 ## Troubleshooting

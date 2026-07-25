@@ -17,17 +17,16 @@ This tutorial walks you through adding an LLM node to a [pipeline](../concepts/p
 
 ## Step 1: Open your chatbot
 
-1. New chatbots will be created with a [single LLM node already on the pipeline](../concepts/pipelines/index.md#a-simple-example), connected between the input and the output.
-2. Open your chatbot and view the **Pipeline** workflow. This is the visual canvas where you build your chatbot's conversation flow.
+1. Open your chatbot and view the **Pipeline** workflow. This is the visual canvas where you build your chatbot's conversation flow.  
+2. New chatbots start with a [single LLM node already on the pipeline](../concepts/pipelines/index.md#a-simple-example), connected between the input and the output. If you see one, skip to [Step 2](#step-2-choose-a-model).  
 
-If an LLM node is already there, skip to [Step 3](#step-3-choose-a-model). Otherwise, add one in the next step.
+??? info "Adding an LLM node manually"  
+    If your pipeline has no LLM node:  
 
-## Step 2: Add an LLM node
+    1. On the pipeline, click the purple :material-plus-box: (plus) icon button on the top left.  
+    2. Choose **LLM** from the list of node types.  
 
-1. On the pipeline click the purple :material-plus-box: (plus) icon button on the top left.
-2. Choose **LLM** from the list of node types.
-
-## Step 3: Choose a model
+## Step 2: Choose a model
 
 The model determines which AI does the thinking.
 
@@ -38,7 +37,7 @@ The model determines which AI does the thinking.
 !!! tip "Not sure which model to pick?"
     See [Choose an LLM Model](../how-to/choose_llm_model.md) for help deciding between general-purpose and reasoning models. Only models from a [provider your team has configured](configure_providers.md) will appear here.
 
-## Step 4: Write a prompt
+## Step 3: Write a prompt
 
 The [prompt](../concepts/llm.md#prompt) tells the model who it is and how to respond. It's the single most important setting on the node.
 
@@ -56,29 +55,29 @@ If you don't know an answer, say so and suggest contacting support@acme.co.
 !!! tip
     Write instructions the way you'd brief a new teammate — state the goal, the tone, and what to do when unsure.
 
-## Step 5: Personalize with prompt variables (optional)
+## Step 4: Personalize with prompt variables (optional)
 
 [Prompt variables](../concepts/prompt_variables.md) let you drop dynamic information into the prompt, so each participant gets a tailored response.
 
 Insert a variable using curly braces. For example, to greet the participant by name:
 
 ```text
-You are a helpful assistant. The participant's details are: {participant_data}.
+You are a helpful assistant. The participant's details are: {participant_data.name}.
 Use their name when appropriate and keep replies concise.
 ```
 
 See [Prompt variables](../concepts/prompt_variables.md) for the full list of supported variables.
 
-## Step 6: Set the conversation history
+## Step 5: Set the conversation history
 
-By default, the node remembers earlier messages in the conversation so it can respond in context. This memory is controlled by the node's **history** setting.
+A LLM node can be configured to remembers earlier messages in the conversation so it can respond in context. This memory is controlled by the node's **history** setting.
 
-- For a normal back-and-forth chatbot, switch to `Global` history so the model can see the full conversation.  
-- Leave it on `No History` for stateless tasks like translations.
+- For a normal back-and-forth chatbot, switch to `Global` history so the model can see the full conversation.
+- Leave it on the default of `No History` for stateless tasks like translations.
 
 See [LLM Node History](../concepts/pipelines/history.md) for how each history mode behaves.
 
-## Step 7: Adjust the response style (optional)
+## Step 6: Adjust the response style (optional)
 
 Depending on the LLM model you chose, the node exposes a **temperature** or an **effort** setting that shapes how the model responds. The defaults work well for most chatbots, so you can safely skip this at first.
 
@@ -87,7 +86,7 @@ Depending on the LLM model you chose, the node exposes a **temperature** or an *
 
 For step-by-step guidance, see [Adjust LLM Node Model Parameters](../how-to/adjust_llm_node_model_parameters.md).
 
-## Step 8: Save and test
+## Step 7: Save and test
 
 1. Click the **x** on the popup node settings to close the dialog and save your changes.
 2. Open the chat preview and send a test message.
