@@ -42,6 +42,9 @@ For step-by-step instructions on completing specific tasks, see the [How-to guid
 [Events](events.md)
 : Automated actions that fire when something specific happens in a chatbot session — for example, when a conversation starts, ends, or when a participant has been inactive for a set period.
 
+[History Mode](pipelines/history.md)
+: A per-node setting on an LLM node that controls which part of a session's stored conversation is sent to the model when it generates a reply.
+
 [Large Language Models (LLMs)](llm.md)
 : The AI model that powers your chatbot's ability to understand messages and generate responses. OCS lets you choose from a range of models and configure how they behave.
 
