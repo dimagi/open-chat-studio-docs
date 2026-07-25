@@ -23,10 +23,10 @@ The **History** setting controls *which* messages a node's LLM sees: its own, th
 
 | History | What the LLM sees |
 |---|---|
-| [No History](#no-history) | Nothing from earlier in the conversation. This is the default. |
+| [Global](#global) | The full conversation the participant sees.  This is the default.|
 | [Node](#node) | Only this node's own past inputs and outputs. |
-| [Global](#global) | The full conversation the participant sees. |
 | [Named](#named) | A shared history that specific nodes contribute to together. |
+| [No History](#no-history) | Nothing from earlier in the conversation. |
 
 Each option is designed to solve a different problem, and in complex pipelines it is expected that a variety of History settings will be used across different nodes.
 
