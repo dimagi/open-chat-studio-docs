@@ -33,7 +33,7 @@ AI providers regularly update their model offerings. This means models available
 - **Deprecation**: When a model you are using is deprecated, you will receive an in-app notification recommending that you switch to a replacement model. Your chatbots and pipelines continue to work during this period, but you should update your configuration at your earliest convenience.
 - **Removal**: When a model is fully removed from the platform, Open Chat Studio **automatically** removes all references to it in your chatbots and pipelines. Where there is a clear replacement model, Open Chat Studio migrates usages of the old model to the recommended replacement. You will receive an in-app notification confirming that the removal or migration has taken place.
 
-Note!!!
+!!! Note
 
     No manual action is required when a model is removed — the platform handles the transition for you.
 

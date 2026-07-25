@@ -14,13 +14,13 @@ For example:
 
 1. **User Status (Data-Based)**: You can route new participants to a specialized onboarding flow while returning participants are sent straight to the main menu.
 
-2. **Topic Expertise (Intent-Based)**: You can detect when a particpant is asking about a complex technical issue and route that message to a specialist node instead of a general FAQ node.
+2. **Topic Expertise (Intent-Based)**: You can detect when a participant is asking about a complex technical issue and route that message to a specialist node instead of a general FAQ node.
 
 ## Useful Terms
 
 1. **Linked Downstream Node**: Any node that appears after the current node in the pipeline flow.
 
-2. **Conversation Context**: The total set of information available to the pipeline at that moment. This includes the participants’s current message, their chat history (as determined by the router's own [History setting](history.md)), and known data (like whether they are a "new" or "returning" participant).
+2. **Conversation Context**: The total set of information available to the pipeline at that moment. This includes the participant’s current message, their chat history (as determined by the router's own [History setting](history.md)), and known data (like whether they are a "new" or "returning" participant).
 
 3. **Default Path**: The "safety net" route (marked with a blue *). If the router cannot confidently decide where to send the participant, it follows this path to prevent the conversation from breaking. [more](../../how-to/routers/index.md#the-default-output).
 
