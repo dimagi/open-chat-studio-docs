@@ -25,6 +25,8 @@ A conversational node using AI models. You can configure:
 - [Collections](../collections/index.md) for indexed collections to ground responses in your documents (RAG), or a media collections to send files to participants.
 - [Custom Actions](../llm_custom_action.md) to connect to external systems and retrieve information or complete tasks
 
+See [Configure an LLM Node](../../tutorials/configure_llm_node.md) for a step-by-step tutorial on setting one up.
+
 ## Routing Nodes
 
 Routers are used to reduce cost, improve accuracy, and keep pipeline workflows flexible. A router will receive input, analyze it, choose the next workflow step, and pass the request to the downstream node.

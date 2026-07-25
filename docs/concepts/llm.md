@@ -50,6 +50,7 @@ These two parameters serve different purposes: temperature shapes *style*, effor
 
 For guidance on which model type to choose and when to use each parameter, see:
 
+- [Configure an LLM Node](../tutorials/configure_llm_node.md) — a step-by-step tutorial for setting up an LLM node
 - [Choose an LLM Model](../how-to/choose_llm_model.md) — helps you pick the right model for your use case
 - [Adjust LLM Node Model Parameters](../how-to/adjust_llm_node_model_parameters.md) — step-by-step instructions for changing these settings
 - [Parameter reference](../how-to/adjust_llm_node_model_parameters.md#parameter-reference) — full parameter details for advanced users

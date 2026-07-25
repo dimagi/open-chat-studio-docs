@@ -9,6 +9,8 @@ This guide walks you through adjusting the LLM model parameters on an [LLM node]
 !!! note "Before you start"
     Choose your LLM model first — see [Choose an LLM Model](choose_llm_model.md). The parameters available in the settings panel depend on the model you select.
 
+    If you don't have an LLM node set up yet, see [Configure an LLM Node](../tutorials/configure_llm_node.md) for a full walkthrough for the basic setup.
+
 ## Step 1 — Open the node settings
 
 1. Open your pipeline or chatbot for editing.
