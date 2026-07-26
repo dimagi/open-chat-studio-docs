@@ -20,7 +20,7 @@ LLM service providers are configured in your [Team](../concepts/team/index.md) s
 6. Save the configuration
 
 !!! note  
-    After saving, the provider page lists the LLM models it supports. Each model shows its [max token limit](../concepts/llm.md#max-token-limit).
+    After saving, the provider page lists the LLM models it supports. Each model shows its [max token limit](../concepts/llm.md#max-token-limit) and pricing.
 
 ## Testing Your Configuration
 
