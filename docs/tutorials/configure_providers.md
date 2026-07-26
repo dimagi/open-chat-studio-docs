@@ -31,7 +31,7 @@ After adding a provider and models, it's recommended to:
 
 ## Adding Custom LLM Models
 
-If your LLM provider list doesn't have a pre-configured model you want to use, you can add it under the "Custom LLM Models" section.
+To add a model that isn't pre-configured, edit the provider and use the :material-plus-box: button in the "Custom LLM Models" section. Use the exact model name from the provider's API, as described below.
 
 ### Model Naming Conventions
 
