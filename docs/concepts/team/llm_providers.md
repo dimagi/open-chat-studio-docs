@@ -18,7 +18,7 @@ LLM that has an API. Open Chat Studio currently supports the following providers
 
 Each service provider is pre-configured with the most common models for both AI inference and text embedding.
 
-If a model you need isn't pre-configured, add it yourself: edit the provider and use the :material-plus-box: button in the "Custom LLM Models" section. See [Adding Custom LLM Models](../../tutorials/configure_providers.md#adding-custom-llm-models) for step-by-step instructions.
+If a model you need isn't pre-configured, add it yourself: edit the provider and use the :material-plus-box: button in the "Custom LLM Models" section. See [Custom LLM Models](../../tech-hub/custom_llm_models.md) for step-by-step instructions and naming conventions.
 
 ## Model Lifecycle and Deprecation
 
@@ -27,10 +27,13 @@ AI providers regularly update their model offerings. This means models available
 - **Deprecation**: When a model you are using is deprecated, you will receive an in-app notification recommending that you switch to a replacement model. Your chatbots and pipelines continue to work during this period, but you should update your configuration at your earliest convenience.
 - **Removal**: When a model is fully removed from the platform, Open Chat Studio automatically removes all references to it in your chatbots and pipelines. Where there is a clear replacement model, Open Chat Studio migrates usages of the old model to the recommended replacement. You will receive an in-app notification confirming that the removal or migration has taken place.
 
-No manual action is required when a model is removed — the platform handles the transition for you.
+!!! note
+
+    No manual action is required when a model is removed — the platform handles the transition for you.
 
 ## See also
 
 - [Finding where a provider is used](index.md#finding-where-a-provider-is-used)
-- [Configure LLM Service Providers](../../tutorials/configure_providers.md) — set up a provider and add custom models
+- [Configure LLM Service Providers](../../tutorials/configure_providers.md) — set up a provider
+- [Custom LLM Models](../../tech-hub/custom_llm_models.md) — add a model that isn't pre-configured
 - [Large Language Models (LLMs)](../llm.md) — key LLM concepts such as tokens and context window

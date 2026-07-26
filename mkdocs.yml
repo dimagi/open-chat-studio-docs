@@ -181,6 +181,7 @@ nav:
       - concepts/assistants.md
   - Tech Hub:
     - tech-hub/index.md
+    - Custom LLM Models: tech-hub/custom_llm_models.md
     - Local Index Optimization: tech-hub/local-index-optimization.md
     - Tools Reference: tech-hub/tools.md
     - Python Node: tech-hub/python_node.md

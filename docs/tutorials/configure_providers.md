@@ -31,31 +31,4 @@ After adding a provider and models, it's recommended to:
 
 ## Adding Custom LLM Models
 
-To add a model that isn't pre-configured, edit the provider and use the :material-plus-box: button in the "Custom LLM Models" section. Use the exact model name from the provider's API, as described below.
-
-### Model Naming Conventions
-
-**Important**: Model names must match the exact format used by the provider's API. Use lowercase with hyphens as specified by the provider.
-
-#### OpenAI Models
-For OpenAI models, use the exact model names from their API documentation. Examples:
-- `gpt-4o` (not `GPT-4o` or `gpt4o`)
-- `gpt-5-nano-2025-08-07` (for specific snapshots)
-
-Find current model names at: https://platform.openai.com/docs/models (check the "snapshots" section for each model)
-
-#### Anthropic Models
-For Anthropic (Claude) models, use the names from the "Claude API" column in their documentation. Examples:
-- `claude-sonnet-4-6`
-- `claude-opus-4-6`
-- `claude-3-5-sonnet-20241022`
-- `claude-3-haiku-20240307`
-
-Find current model names at: https://docs.anthropic.com/en/docs/about-claude/models
-
-#### Google Models
-For Google (Gemini) models, use the names from the "Model Variant" column. Examples:
-- `gemini-2.5-flash-exp`
-- `gemini-1.5-pro`
-
-Find current model names at: https://ai.google.dev/gemini-api/docs/models
+If you need a model that isn't pre-configured, see [Custom LLM Models](../tech-hub/custom_llm_models.md) for how to add one and the exact naming format each provider requires.
