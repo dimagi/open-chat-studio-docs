@@ -20,10 +20,6 @@ Each service provider is pre-configured with the most common models for both AI 
 
 If a model you need isn't pre-configured, add it yourself: edit the provider and use the :material-plus-box: button in the "Custom LLM Models" section. See [Adding Custom LLM Models](../../tutorials/configure_providers.md#adding-custom-llm-models) for step-by-step instructions.
 
-## See also
-
-- [Finding where a provider is used](index.md#finding-where-a-provider-is-used)
-
 ## Model Lifecycle and Deprecation
 
 AI providers regularly update their model offerings. This means models available in Open Chat Studio may occasionally be deprecated or removed.
@@ -32,3 +28,9 @@ AI providers regularly update their model offerings. This means models available
 - **Removal**: When a model is fully removed from the platform, Open Chat Studio automatically removes all references to it in your chatbots and pipelines. Where there is a clear replacement model, Open Chat Studio migrates usages of the old model to the recommended replacement. You will receive an in-app notification confirming that the removal or migration has taken place.
 
 No manual action is required when a model is removed — the platform handles the transition for you.
+
+## See also
+
+- [Finding where a provider is used](index.md#finding-where-a-provider-is-used)
+- [Configure LLM Service Providers](../../tutorials/configure_providers.md) — set up a provider and add custom models
+- [Large Language Models (LLMs)](../llm.md) — key LLM concepts such as tokens and context window
