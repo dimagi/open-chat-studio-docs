@@ -16,7 +16,7 @@ LLM that has an API. Open Chat Studio currently supports the following providers
 
 ## LLM Models
 
-Each service provider is pre-configured with the most common models for both AI inference and text embedding.
+Each provider comes with its most commonly used models already available — models that power chatbot conversations, and embedding models used for searching [knowledge bases](../collections/indexed.md).
 
 If a model you need isn't pre-configured, add it yourself: edit the provider and use the :material-plus-box: button in the "Custom LLM Models" section. See [Custom LLM Models](../../tech-hub/custom_llm_models.md) for step-by-step instructions and naming conventions.
 
@@ -33,7 +33,7 @@ AI providers regularly update their model offerings. This means models available
 
 ## See also
 
-- [Finding where a provider is used](index.md#finding-where-a-provider-is-used)
+- [Finding where an LLM provider is used](index.md#finding-where-a-provider-is-used) — in your chatbots
 - [Configure LLM Service Providers](../../tutorials/configure_providers.md) — set up a provider
 - [Custom LLM Models](../../tech-hub/custom_llm_models.md) — add a model that isn't pre-configured
 - [Large Language Models (LLMs)](../llm.md) — key LLM concepts such as tokens and context window

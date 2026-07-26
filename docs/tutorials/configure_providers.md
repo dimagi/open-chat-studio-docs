@@ -1,10 +1,10 @@
 # Configure LLM Service Providers
 
-LLM service providers are configured in your [Team](../concepts/team/index.md) settings under "LLM and Embedding Model Service Providers". Before configuring a provider, ensure that you have an active account at the provider and access to the necessary integration credentials.
+LLM service providers are configured in your [Team](../concepts/team/index.md) settings under "LLM and Embedding Model Service Providers". Before configuring a provider, make sure you have an active account with the provider and its API key ready.
 
 ## Prerequisites
 
-**API Key Required**: You cannot create a provider without a valid API key. The API key is used for authentication between Open Chat Studio and the provider. You must:
+**API Key Required**: You cannot create a provider without a valid API key. The API key lets Open Chat Studio connect securely to your account with the provider. You must:
 
 1. Have an active account with the provider (OpenAI, Anthropic, Google, etc.)
 2. Generate an API key from your provider account
