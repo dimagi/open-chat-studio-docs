@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Jul 25, 2026
+* **NEW** Added support for the **Claude Opus 5** model from Anthropic. Opus 5 offers a 1M-token context window with adaptive thinking and configurable effort levels (low, medium, high, xhigh, max), and can now be selected for chatbots and pipelines.
+
 ## Jul 24, 2026
 * **CHANGE** The Usage API (`GET /api/v2/usage/`) can now break usage down by `participant`, `chatbot`, or `platform` (one cursor-paginated row per group) and filter any metric to a single `chatbot` or `platform`.
 * **BUG** The Extract Structured Data node now validates property key names when you save the schema, showing a clear error instead of failing with a server error when a key uses characters that Anthropic models don't allow.
