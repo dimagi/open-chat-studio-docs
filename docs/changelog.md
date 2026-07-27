@@ -12,6 +12,7 @@ hide:
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
 ## Jul 27, 2026
+* **NEW** Self-hosted deployments can now use S3-compatible object storage (such as MinIO, Cloudflare R2, Backblaze B2, Wasabi, or DigitalOcean Spaces) for file storage and WhatsApp voice audio, instead of only AWS S3. Existing AWS deployments are unaffected.
 * **BUG** Fixed an error that could cause document collection syncs to fail when several document sources were synced together in one batch. These syncs now run correctly.
 * **BUG** Fixed an error that prevented the OpenAI assistant creation and edit forms from loading correctly. These forms now work as expected.
 
