@@ -23,19 +23,19 @@ The new model is now available when configuring chatbots and pipelines that use 
 
 ### OpenAI models
 
-For OpenAI models, use the exact model name from their API documentation — for example, `gpt-4o` (not `GPT-4o` or `gpt4o`).
+For OpenAI models, use the exact model name from their API documentation — for example, `gpt-4o` (not `GPT-4o` or `gpt4o`), and `gpt-5-nano-2025-08-07` (for specific snapshots).
 
 Find current model names in [OpenAI's model documentation](https://platform.openai.com/docs/models).
 
 ### Anthropic models
 
-For Anthropic (Claude) models, use the exact name from the "Claude API" column in their documentation — for example, `claude-3-5-sonnet-20241022`.
+For Anthropic (Claude) models, use the exact name from the "Claude API" column in their documentation — for example, `claude-sonnet-4-6`,`claude-3-5-sonnet-20241022`.
 
 Find current model names in [Anthropic's model documentation](https://docs.anthropic.com/en/docs/about-claude/models).
 
 ### Google models
 
-For Google (Gemini) models, use the name from the "Model Variant" column — for example, `gemini-1.5-pro`.
+For Google (Gemini) models, use the name from the "Model Variant" column — for example, `gemini-3.5-flash-lite`.
 
 Find current model names in [Google's Gemini model documentation](https://ai.google.dev/gemini-api/docs/models).
 

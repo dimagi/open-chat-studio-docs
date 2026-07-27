@@ -1,6 +1,6 @@
 # LLM Service Providers
 
-An **LLM provider** is the company that hosts the AI models powering your chatbot — for example OpenAI, Anthropic, or Google. Building chatbots in Open Chat Studio requires access to [Large Language Models (LLMs)](../llm.md). You'll need an account with at least one provider. Enter its credentials in your [Team settings](../../tutorials/configure_llm_providers.md) so Open Chat Studio chatbots can access its models.
+An **LLM provider** is the company that hosts the AI models powering your chatbot — for example OpenAI, Anthropic, or Google. Building chatbots in Open Chat Studio requires access to [Large Language Models (LLMs)](../llm.md). You'll need an account with at least one provider. Enter its credentials in your Team settings so Open Chat Studio chatbots can access its models.
 
 Open Chat Studio is designed to be flexible, and can connect to any LLM provider that offers an API. It has built-in support for the following providers, each offering a range of models:
 
