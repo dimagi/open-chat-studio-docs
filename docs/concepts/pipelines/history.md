@@ -1,22 +1,21 @@
 # Conversation History
 
 !!! note "Definition"
+
     An LLM node's conversation memory is controlled by two independent, per-node settings: **History** decides *which* messages the model gets to see, and **History Mode** decides *how* those messages are compressed once there are too many. They apply only to nodes with an LLM response.
 
 AI models have no memory of their own — each request OCS sends is self-contained. Open Chat Studio always stores the full conversation in the chatbot's [session](../sessions.md) regardless of how a node is configured; [History](#history) and [History Mode](#history-mode) only control what's *sent to the model*, not what's saved.
-
-This choice matters because everything sent to the model — your prompt, the conversation history, and its reply — shares the same [token budget](../llm.md#max-token-limit). Sending more history gives the model more context, but costs more tokens and can slow responses down.
 
 ## History
 
 The **History** setting controls *which* messages a node's LLM sees: its own, the whole conversation, or a shared slice of it.
 
-### At a Glance
+### History Options
 
 | History | What the LLM sees |
 |---|---|
-| [Global](#global) | The full conversation the participant sees. This is the default. |
-| [Node](#node) | Only this node's own past inputs and outputs. This is the default for a [LLM Router](./router_nodes.md#llm-router-node) node. |
+| [Global](#global) | The full conversation the participant sees. This is the default for an [LLM Node](./nodes.md#llm-node). |
+| [Node](#node) | Only this node's own past inputs and outputs. This is the default for an [LLM Router](./router_nodes.md#llm-router-node) node. |
 | [Named](#named) | A shared history that specific nodes contribute to together. |
 | [No History](#no-history) | Nothing from earlier in the conversation. |
 
@@ -35,7 +34,7 @@ Nodes with `Global` history will supply the conversational history that the part
 A common use case will be in a [LLM Router](./router_nodes.md#llm-router-node) node where we want to maintain a history of the node outputs (e.g., for continuity of what 'part' of the chatbot the participant is interacting with), and we want to ensure that the history is using LLM outputs so that we don't unintentionally supply the LLM with few-shot examples of the wrong type of output.
 
 ### Named
-This option, called `Named`, allows you to specify a specific, named, history that can be shared between nodes. Each node using the same shared history will contribute their `input` and LLM output to the history.
+This option, allows you to specify a specific, named, history that can be shared between nodes. Each node using the same shared history will contribute their `input` and LLM output to the history.
 
 !!! warning "Named history is updated immediately"
 
@@ -51,9 +50,11 @@ Choosing `No History` means that when a completion is requested from the LLM, no
 
 ## History Mode
 
+This choice matters because everything sent to the LLM model — your prompt, the conversation history, and its reply — shares the same [token budget](../llm.md#max-token-limit). Sending more history gives the model more context, but costs more tokens and can slow responses down.
+
 Once a node has more history than fits comfortably in the model's token budget, something has to give. **History Mode** controls what happens to older messages when that limit is reached. It only has an effect when History is set to `Node`, `Global`, or `Named` — with `No History` there's nothing to compress.
 
-### At a Glance
+### History Mode Options
 
 | History Mode | What happens to older messages |
 |---|---|

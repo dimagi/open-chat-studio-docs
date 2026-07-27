@@ -12,7 +12,7 @@ In simple terms, a router checks the current conversation context and sends the 
 
 For example:
 
-1. **User Status (Data-Based)**: You can route new participants to a specialized onboarding flow while returning participants are sent straight to the main menu.
+1. **Participant Status (Data-Based)**: You can route new participants to a specialized onboarding flow while returning participants are sent straight to the main menu.
 
 2. **Topic Expertise (Intent-Based)**: You can detect when a participant is asking about a complex technical issue and route that message to a specialist node instead of a general FAQ node.
 

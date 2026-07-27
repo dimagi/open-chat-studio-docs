@@ -39,7 +39,7 @@ To ensure reliable routing, write your prompt as a classifier. Its goal is to re
 ## Technical Performance: History
 We strongly recommend using [Node history](../../concepts/pipelines/history.md#node) for an LLM Router.
 
-Why? If the router sees full conversation history, it can be biased by earlier routing decisions (for example, repeating "BILLING" because it selected it previously). Node history helps the LLM focus on the most recent user input.
+Why? If the router sees full conversation history, it can be biased by earlier routing decisions (for example, repeating "BILLING" because it selected it previously). Node history helps the LLM focus on the most recent participant input.
 
 ## LLM Model Selection
 You can choose a cheaper model if the complexity of classification of the message into one of the output keywords is low. Configure this in Advanced Settings.
