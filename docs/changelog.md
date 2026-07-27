@@ -12,8 +12,10 @@ hide:
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
 ## Jul 27, 2026
+* **NEW** You can now register client-credentials OAuth applications for machine-to-machine API access. The application is pinned to one of your teams when you register it, and tokens issued with `grant_type=client_credentials` act on that team without any interactive authorization step. Machine tokens are limited to an allow-list of API scopes and cannot use the user-identity scopes (`openid`, `profile`) or the `/me` endpoint. See [Getting started with OAuth2](api/getting_started_with_oauth.md#client-credentials-flow-machine-to-machine).
 * **NEW** Self-hosted deployments can now use S3-compatible object storage (such as MinIO, Cloudflare R2, Backblaze B2, Wasabi, or DigitalOcean Spaces) for file storage and WhatsApp voice audio, instead of only AWS S3. Existing AWS deployments are unaffected.
 * **NEW** Added support for the **Claude Opus 5** model from Anthropic. Opus 5 offers a 1M-token context window with adaptive thinking and configurable effort levels (low, medium, high, xhigh, max), and can now be selected for chatbots and pipelines.
+* **BUG** Fixed an issue where cancelling a scheduled message by its ID was not restricted to the caller's own participant and chatbot, so a scheduled message belonging to another team could be cancelled. Cancellation is now scoped correctly.
 * **BUG** Fixed an error that occurred when a document source was deleted while its sync was still running. The sync now finishes quietly instead of failing.
 * **BUG** Fixed an error that could cause document collection syncs to fail when several document sources were synced together in one batch. These syncs now run correctly.
 * **BUG** Fixed an error that prevented the OpenAI assistant creation and edit forms from loading correctly. These forms now work as expected.
