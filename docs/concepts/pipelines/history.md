@@ -15,7 +15,7 @@ The **History** setting controls *which* messages a node's LLM sees: its own, th
 | History | What the LLM sees |
 |---|---|
 | [Global](#global) | The full conversation the participant sees. This is the default for an [LLM Node](./nodes.md#llm-node). |
-| [Node](#node) | Only this node's own past inputs and outputs. This is the default for an [LLM Router](./router_nodes.md#llm-router-node) node. |
+| [Node](#node) | Only this node's own past inputs and outputs. This is the default for an [LLM Router Node](./router_nodes.md#llm-router-node). |
 | [Named](#named) | A shared history that specific nodes contribute to together. |
 | [No History](#no-history) | Nothing from earlier in the conversation. |
 
@@ -49,7 +49,7 @@ Choosing `No History` means that when a completion is requested from the LLM, no
 
 ## History Mode
 
-This choice matters because everything involved in a call to the LLM — your prompt, the conversation history, and its reply — shares the same [token budget](../llm.md#max-token-limit). Sending more history gives the model more context, but costs more tokens and can slow responses down.
+How much history a node sends matters because everything involved in a call to the LLM — your prompt, the conversation history, and its reply — shares the same [token budget](../llm.md#max-token-limit). Sending more history gives the model more context, but costs more tokens and can slow responses down.
 
 Once a node has more history than fits comfortably in the model's token budget, something has to give. **History Mode** controls what happens to older messages when that limit is reached. It only has an effect when History is set to `Node`, `Global`, or `Named` — with `No History` there's nothing to trim.
 

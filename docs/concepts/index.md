@@ -43,10 +43,10 @@ For step-by-step instructions on completing specific tasks, see the [How-to guid
 : Automated actions that fire when something specific happens in a chatbot session — for example, when a conversation starts, ends, or when a participant has been inactive for a set period.
 
 [History](pipelines/history.md)
-: A per-node setting on an LLM node that controls which part of a session's stored conversation is sent to the model when it generates a reply — its own history, the full conversation, a shared named history, or none at all.
+: A per-node setting on nodes that call an LLM, controlling which part of a session's stored conversation is sent to the model when it generates a reply — its own history, the full conversation, a shared named history, or none at all.
 
 [History Mode](pipelines/history.md#history-mode)
-: A per-node setting that controls how an LLM node's conversation history is compressed once it grows past a token or message limit — by summarizing, truncating, or capping the message count.
+: A per-node setting that controls how a node's conversation history is trimmed once it grows past a token or message limit — by summarizing, truncating, or capping the message count.
 
 [Large Language Models (LLMs)](llm.md)
 : The AI model that powers your chatbot's ability to understand messages and generate responses. OCS lets you choose from a range of models and configure how they behave.
@@ -55,7 +55,7 @@ For step-by-step instructions on completing specific tasks, see the [How-to guid
 : The account you configure with an LLM service — such as OpenAI, Anthropic, or Google — so your chatbots can use its models.
 
 [Messaging Provider](team/messaging_providers.md)
-: An provider account you configure for a messaging service — such as Twilio, Turn.io, or Slack — that some channels require in order to send and receive messages for your chatbot.
+: A provider account you configure for a messaging service — such as Twilio, Turn.io, or Slack — that some channels require in order to send and receive messages for your chatbot.
 
 [Node](./pipelines/nodes.md)
 : A single processing step in a pipeline. Each node performs one task, such as calling an LLM, running custom code, or routing the conversation based on its content.
