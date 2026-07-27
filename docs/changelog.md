@@ -12,6 +12,7 @@ hide:
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
 ## Jul 27, 2026
+* **NEW** Self-hosted deployments can now use S3-compatible object storage (such as MinIO, Cloudflare R2, Backblaze B2, Wasabi, or DigitalOcean Spaces) for file storage and WhatsApp voice audio, instead of only AWS S3. Existing AWS deployments are unaffected.
 * **NEW** Added support for the **Claude Opus 5** model from Anthropic. Opus 5 offers a 1M-token context window with adaptive thinking and configurable effort levels (low, medium, high, xhigh, max), and can now be selected for chatbots and pipelines.
 * **BUG** Fixed an error that occurred when a document source was deleted while its sync was still running. The sync now finishes quietly instead of failing.
 * **BUG** Fixed an error that could cause document collection syncs to fail when several document sources were synced together in one batch. These syncs now run correctly.
