@@ -40,6 +40,7 @@ Different providers may offer the same underlying model type but with different 
 
 ## Next steps
 
+- [Configure an LLM Node](../tutorials/configure_llm_node.md) — if you haven't set up an LLM node yet, start with this tutorial
 - [Adjust LLM Node Model Parameters](adjust_llm_node_model_parameters.md) — once you have chosen a model, learn how to fine-tune its settings
 - [LLM Providers](../concepts/team/llm_providers.md) — understand how providers are configured in your team
 - [Large Language Models](../concepts/llm.md) — a conceptual overview of how LLMs work

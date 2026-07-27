@@ -1563,6 +1563,8 @@ NodeDetail:
   - type: string (required)
   - label: string
   - params: Unknown
+  - position_x: number
+  - position_y: number
   - is_archived: boolean
   - working_version: integer
   - pipeline: integer (required)

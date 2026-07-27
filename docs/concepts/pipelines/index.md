@@ -31,6 +31,8 @@ In this simple pipeline:
 
 This is the complete conversation flow for a single-node chatbot.
 
+See [Configure an LLM Node](../../tutorials/configure_llm_node.md) for a step-by-step tutorial on building one like this.
+
 ## Complex Pipelines
 
 Most real-world chatbots are more complex than a single node. Pipelines become powerful when you combine multiple types of nodes to handle different tasks.
