@@ -2,7 +2,7 @@
 
 Add a model to a provider that isn't already pre-configured, using the exact model name format each provider expects.
 
-Before adding a custom model, make sure you understand [LLM Service Providers](../concepts/team/llm_providers.md) and have already [configured a provider](../tutorials/configure_providers.md).
+Before adding a custom model, make sure you understand [LLM Service Providers](../concepts/team/llm_providers.md) and have already [configured a provider](../tutorials/configure_llm_providers.md).
 
 ## Adding a custom model
 

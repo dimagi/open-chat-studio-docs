@@ -34,6 +34,6 @@ AI providers regularly update their model offerings. This means models available
 ## See also
 
 - [Finding where an LLM provider is used](index.md#finding-where-a-provider-is-used) — in your chatbots
-- [Configure LLM Service Providers](../../tutorials/configure_providers.md) — set up a provider
+- [Configure LLM Service Providers](../../tutorials/configure_llm_providers.md) — set up a provider
 - [Custom LLM Models](../../tech-hub/custom_llm_models.md) — add a model that isn't pre-configured
 - [Large Language Models (LLMs)](../llm.md) — key LLM concepts such as tokens and context window

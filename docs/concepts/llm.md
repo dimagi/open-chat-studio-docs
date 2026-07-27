@@ -50,6 +50,6 @@ These two parameters serve different purposes: temperature shapes *style*, effor
 
 To get started with LLMs in Open Chat Studio, or for guidance on which model type to choose and when to use each parameter, see:
 
-- [Configure an LLM Provider](../tutorials/configure_providers.md) — set up a provider so your chatbot can use its models
+- [Configure an LLM Provider](../tutorials/configure_llm_providers.md) — set up a provider so your chatbot can use its models
 - [Choose an LLM Model](../how-to/choose_llm_model.md) — helps you pick the right model for your use case
 - [Adjust LLM Node Model Parameters](../how-to/adjust_llm_node_model_parameters.md) — step-by-step instructions for changing these settings

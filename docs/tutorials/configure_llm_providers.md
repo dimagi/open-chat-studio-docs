@@ -31,4 +31,4 @@ After adding a provider and models, it's recommended to:
 
 ## Adding Custom LLM Models
 
-If you need a model that isn't pre-configured, see [Custom LLM Models](../tech-hub/custom_llm_models.md) for how to add one and the exact naming format each provider requires.
+If you need a model that isn't pre-configured in OCS, see [Custom LLM Models](../tech-hub/custom_llm_models.md) for how to add one and the exact naming format each provider requires.
