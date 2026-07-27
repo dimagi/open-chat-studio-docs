@@ -1295,6 +1295,11 @@ EvaluationRunDetail:
   - type: EvaluationRunDetailTypeEnum
   - job_id: string
   - error_message: string
+  - evaluator_ids: array of integer
+  - in_flight: array of integer
+  - batch_dispatched_at: string
+  - stall_count: integer
+  - taskbadger_task_id: string
   - config: integer (required)
   - generation_experiment: integer
   - user: integer
