@@ -12,6 +12,7 @@ hide:
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
 ## Jul 27, 2026
+* **NEW** Added support for the **Claude Opus 5** model from Anthropic. Opus 5 offers a 1M-token context window with adaptive thinking and configurable effort levels (low, medium, high, xhigh, max), and can now be selected for chatbots and pipelines.
 * **BUG** Fixed an error that occurred when a document source was deleted while its sync was still running. The sync now finishes quietly instead of failing.
 * **BUG** Fixed an error that could cause document collection syncs to fail when several document sources were synced together in one batch. These syncs now run correctly.
 * **BUG** Fixed an error that prevented the OpenAI assistant creation and edit forms from loading correctly. These forms now work as expected.
