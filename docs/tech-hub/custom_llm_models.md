@@ -14,29 +14,18 @@ Edit the provider and use the :material-plus-box: button in the "Custom LLM Mode
 
 ### OpenAI models
 
-For OpenAI models, use the exact model names from their API documentation. Examples:
+For OpenAI models, use the exact model name from their API documentation — for example, `gpt-4o` (not `GPT-4o` or `gpt4o`).
 
-- `gpt-4o` (not `GPT-4o` or `gpt4o`)
-- `gpt-5-nano-2025-08-07` (for specific snapshots)
-
-Find current model names at: https://platform.openai.com/docs/models (check the "snapshots" section for each model)
+Find current model names in [OpenAI's model documentation](https://platform.openai.com/docs/models).
 
 ### Anthropic models
 
-For Anthropic (Claude) models, use the names from the "Claude API" column in their documentation. Examples:
+For Anthropic (Claude) models, use the exact name from the "Claude API" column in their documentation — for example, `claude-3-5-sonnet-20241022`.
 
-- `claude-sonnet-4-6`
-- `claude-opus-4-6`
-- `claude-3-5-sonnet-20241022`
-- `claude-3-haiku-20240307`
-
-Find current model names at: https://docs.anthropic.com/en/docs/about-claude/models
+Find current model names in [Anthropic's model documentation](https://docs.anthropic.com/en/docs/about-claude/models).
 
 ### Google models
 
-For Google (Gemini) models, use the names from the "Model Variant" column. Examples:
+For Google (Gemini) models, use the name from the "Model Variant" column — for example, `gemini-1.5-pro`.
 
-- `gemini-2.5-flash-exp`
-- `gemini-1.5-pro`
-
-Find current model names at: https://ai.google.dev/gemini-api/docs/models
+Find current model names in [Google's Gemini model documentation](https://ai.google.dev/gemini-api/docs/models).
