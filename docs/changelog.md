@@ -13,6 +13,7 @@ hide:
 
 ## Jul 27, 2026
 * **BUG** Fixed an error that could cause document collection syncs to fail when several document sources were synced together in one batch. These syncs now run correctly.
+* **BUG** Fixed an error that prevented the OpenAI assistant creation and edit forms from loading correctly. These forms now work as expected.
 
 ## Jul 24, 2026
 * **CHANGE** The Usage API (`GET /api/v2/usage/`) can now break usage down by `participant`, `chatbot`, or `platform` (one cursor-paginated row per group) and filter any metric to a single `chatbot` or `platform`.
