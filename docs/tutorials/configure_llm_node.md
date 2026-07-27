@@ -13,7 +13,7 @@ This tutorial walks you through adding an LLM node to a [pipeline](../concepts/p
     You'll need:
 
     - A new chatbot by following the [Create your first chatbot](first_chatbot.md) steps.
-    - An [LLM provider](configure_providers.md) configured for your team so that models are available to choose from.
+    - An [LLM provider](configure_llm_providers.md) configured for your team so that models are available to choose from.
 
 ## Step 1: Open your chatbot
 
@@ -35,7 +35,7 @@ The model determines which AI does the thinking.
 3. If you're unsure which to choose, start with a general-purpose model and the defaults.
 
 !!! tip "Not sure which model to pick?"
-    See [Choose an LLM Model](../how-to/choose_llm_model.md) for help deciding between general-purpose and reasoning models. Only models from a [provider your team has configured](configure_providers.md) will appear here.
+    See [Choose an LLM Model](../how-to/choose_llm_model.md) for help deciding between general-purpose and reasoning models. Only models from a [provider your team has configured](configure_llm_providers.md) will appear here.
 
 ## Step 3: Write a prompt
 

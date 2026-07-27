@@ -58,7 +58,7 @@ Read and write data within the current session, or manage the session lifecycle.
 
 ## LLM provider tools
 
-Some LLM providers offer their own built-in tools — such as web search or code execution — that run inside the provider's infrastructure. Open Chat Studio can connect to some of these where the provider supports it.
+Some [LLM providers](../team/llm_providers.md) offer their own built-in tools — such as web search or code execution — that run inside the provider's infrastructure. Open Chat Studio can connect to some of these where the provider supports it.
 
 Support varies by provider. The full list of provider tools and their current support status is in the [Tools Reference](../../tech-hub/tools.md#llm-provider-tools).
 

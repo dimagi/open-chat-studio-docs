@@ -32,7 +32,7 @@ In OCS, there are two types of indexes:
 
 | | Remote Index | Local Index |
 |---|---|---|
-| **Managed by** | Your LLM provider (e.g. OpenAI) | OCS |
+| **Managed by** | Your [LLM provider](../team/llm_providers.md) (e.g. OpenAI) | OCS |
 | **Setup** | Simpler — the provider handles everything | More steps — you choose the embedding model |
 | **Embedding model** | Selected by the provider | You choose |
 | **Chunking** | Handled by provider, not configurable | Configurable per file set |

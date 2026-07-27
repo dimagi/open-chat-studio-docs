@@ -97,7 +97,7 @@ nav:
   - Tutorials:
     - tutorials/index.md
     - tutorials/first_chatbot.md
-    - Configure LLM Providers: tutorials/configure_providers.md
+    - Configure LLM Providers: tutorials/configure_llm_providers.md
     - Configure an LLM Node: tutorials/configure_llm_node.md
     - Configure Message Providers: tutorials/configure_msg_providers.md
     - Create & Publish Versions: tutorials/versioning_steps.md
@@ -107,6 +107,7 @@ nav:
     - Building Chatbots:
       - Choose an LLM Model: how-to/choose_llm_model.md
       - Adjust LLM Node Model Parameters: how-to/adjust_llm_node_model_parameters.md
+      - Add a Custom LLM Model: how-to/add_custom_llm_model.md
       - how-to/workflow_cookbook.md
       - how-to/add_a_knowledge_base.md
       - Router Nodes:
