@@ -1,12 +1,21 @@
-# Custom LLM Models
+# Add a Custom LLM Model
 
-Add a model to a provider that isn't already pre-configured, using the exact model name format each provider expects.
+If a model isn't pre-configured for your provider, add it yourself directly in Open Chat Studio.
 
-Before adding a custom model, make sure you understand [LLM Service Providers](../concepts/team/llm_providers.md) and have already [configured a provider](../tutorials/configure_llm_providers.md).
+## Prerequisites
 
-## Adding a custom model
+- A [configured LLM provider](../tutorials/configure_llm_providers.md) in your team
+- The exact model name, in the format required by the provider's API — see naming conventions below
 
-Edit the provider and use the :material-plus-box: button in the "Custom LLM Models" section. Enter the model name using the exact format from the provider's API — see the naming conventions below.
+## Steps
+
+1. Go to your team's **LLM and Embedding Model Service Providers** settings
+2. Edit the provider you want to add the model to
+3. In the "Custom LLM Models" section, click :material-plus-box:
+4. Enter the model name, using the exact format from the provider's API
+5. Save the provider
+
+The new model is now available when configuring chatbots and pipelines that use this provider.
 
 ## Model naming conventions
 
@@ -29,3 +38,7 @@ Find current model names in [Anthropic's model documentation](https://docs.anthr
 For Google (Gemini) models, use the name from the "Model Variant" column — for example, `gemini-1.5-pro`.
 
 Find current model names in [Google's Gemini model documentation](https://ai.google.dev/gemini-api/docs/models).
+
+## See also
+
+- [LLM Service Providers](../concepts/team/llm_providers.md) — what LLM providers are and how models work in OCS

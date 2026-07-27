@@ -17,7 +17,7 @@ Open Chat Studio is designed to be flexible, and can connect to any LLM provider
 
 Each provider comes with its most commonly used models already available in OCS — models that power chatbot conversations, and embedding models used for searching [knowledge bases](../collections/indexed.md).
 
-If a model you need isn't pre-configured, add it yourself: edit the provider and use the :material-plus-box: button in the "Custom LLM Models" section. See [Custom LLM Models](../../tech-hub/custom_llm_models.md) for step-by-step instructions and naming conventions.
+If a model you need isn't pre-configured, see [Add a Custom LLM Model](../../how-to/add_custom_llm_model.md) for how to add one.
 
 ## Model Lifecycle and Deprecation
 
@@ -34,5 +34,5 @@ LLM providers regularly update their model offerings. This means models availabl
 
 - [Configure LLM Service Providers](../../tutorials/configure_llm_providers.md) — set up a provider to use in your chatbots
 - [Finding where an LLM provider is used](index.md#finding-where-a-provider-is-used) — in your chatbots
-- [Custom LLM Models](../../tech-hub/custom_llm_models.md) — add a model that isn't pre-configured
+- [Add a Custom LLM Model](../../how-to/add_custom_llm_model.md) — add a model that isn't pre-configured, including naming conventions per provider
 - [Large Language Models (LLMs)](../llm.md) — key LLM concepts such as tokens and context window

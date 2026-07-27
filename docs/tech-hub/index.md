@@ -11,7 +11,6 @@ You need Super Admin, Pipeline, Experiment, or Team Administrator roles to acces
 
 ## What's covered here
 
-- **[Custom LLM Models](custom_llm_models.md)** — Add a model that isn't pre-configured for a provider, and the exact model-name format each provider expects.
 - **[Local Index Optimization](local-index-optimization.md)** — Advanced configuration for [indexed collections](../concepts/collections/indexed.md): embedding model selection, chunk size, chunk overlap, and per-document-type tuning guidance.
 - **[Custom Actions](custom_action/index.md)** — Integrate external services into chatbots via OpenAPI schemas. Covers configuration, health monitoring, and testing of Custom Actions.
 - **[Calling External APIs](external-api-calls/index.md)** — Use the built-in HTTP client inside Python nodes to securely call third-party APIs from a Pipeline workflow.
