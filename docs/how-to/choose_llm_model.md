@@ -34,7 +34,7 @@ If you are unsure, start with a general-purpose model and the default settings. 
 
 The model you choose determines which AI provider is used. For the full list of supported providers, see [LLM Providers](../concepts/team/llm_providers.md).
 
-Your team must have credentials configured for a provider before you can use its models. If the model you want is not listed, check with your team administrator or see the guide for [configuring LLM providers](../tutorials/configure_providers.md).
+Your team must have credentials configured for a provider before you can use its models. If the model you want is not listed, check with your team administrator or see the guide for [configuring LLM providers](../tutorials/configure_llm_providers.md).
 
 Different providers may offer the same underlying model type but with different pricing, speed, and availability. If your preferred model is unavailable or too slow, try the equivalent model from another provider.
 
