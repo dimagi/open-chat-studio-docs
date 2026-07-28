@@ -13,6 +13,8 @@ hide:
 
 ## Jul 28, 2026
 * **CHANGE** The **Show usages** page for a service provider now appears immediately with a loading indicator while it searches, and resolves faster. Pipelines that reference the provider from several nodes are now listed once instead of once per node.
+* **NEW** Turn.io WhatsApp messaging providers now have an optional **Webhook HMAC Secret**. When you set it (and configure the same secret in Turn.io), Open Chat Studio verifies the signature on every inbound Turn.io webhook and rejects requests with a missing or incorrect signature. Leaving it blank keeps the existing behaviour, so existing providers are unaffected. See [Set up WhatsApp with Turn.io](how-to/turnio_whatsapp.md).
+* **BUG** The Turn.io webhook endpoint now returns a clear error instead of a server error when it receives a non-POST request or a malformed request body.
 
 ## Jul 27, 2026
 * **NEW** You can now register client-credentials OAuth applications for machine-to-machine API access. The application is pinned to one of your teams when you register it, and tokens issued with `grant_type=client_credentials` act on that team without any interactive authorization step. Machine tokens are limited to an allow-list of API scopes and cannot use the user-identity scopes (`openid`, `profile`) or the `/me` endpoint. See [Getting started with OAuth2](api/getting_started_with_oauth.md#client-credentials-flow-machine-to-machine).

@@ -71,6 +71,9 @@ Turn.io does not support automatic webhook configuration, so you set the webhook
 
     Verification takes effect on the next request, so do step 6 straight away. Turn.io cancels its retries on a `4xx`, so a mismatched secret loses messages rather than delaying them. If messages stop arriving, clear the **Webhook HMAC Secret** field and save: delivery resumes immediately while you re-check the value in Turn.io.
 
+See the [Turn.io setup guide][turnio] for the full walkthrough, including how to secure the
+webhook with an optional signing secret.
+
 ### Meta Cloud API
 
 Meta Cloud API connects your chatbot directly to the WhatsApp Business Platform without a third-party intermediary. The setup requires a Meta for Developers account and a WhatsApp Business Account.
@@ -116,4 +119,5 @@ Every chatbot can also be reached programmatically through the OCS [APIs][api], 
 [6]: ../tutorials/configure_msg_providers.md
 [api]: ../tech-hub/api_access.md
 [meta]: ./whatsapp_meta_cloud_api.md
+[turnio]: ./turnio_whatsapp.md
 [chat-widget]: ../chat_widget/index.md
