@@ -13,6 +13,7 @@ hide:
 
 ## Jul 28, 2026
 * **CHANGE** The **Show usages** page for a service provider now appears immediately with a loading indicator while it searches, and resolves faster. Pipelines that reference the provider from several nodes are now listed once instead of once per node.
+* **BUG** The **Show usages** page for an LLM service provider now lists evaluators that use the provider. Previously these were left out, so a provider used only by evaluators appeared to be unused.
 
 ## Jul 27, 2026
 * **NEW** You can now register client-credentials OAuth applications for machine-to-machine API access. The application is pinned to one of your teams when you register it, and tokens issued with `grant_type=client_credentials` act on that team without any interactive authorization step. Machine tokens are limited to an allow-list of API scopes and cannot use the user-identity scopes (`openid`, `profile`) or the `/me` endpoint. See [Getting started with OAuth2](api/getting_started_with_oauth.md#client-credentials-flow-machine-to-machine).
