@@ -157,7 +157,7 @@ nav:
       - concepts/pipelines/index.md
       - Node Types: concepts/pipelines/nodes.md
       - Router Nodes: concepts/pipelines/router_nodes.md
-      - concepts/pipelines/history.md
+      - Conversation History: concepts/pipelines/history.md
       - concepts/pipelines/parallel.md
     - Team:
       - concepts/team/index.md
