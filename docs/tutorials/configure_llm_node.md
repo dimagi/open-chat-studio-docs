@@ -70,12 +70,9 @@ See [Prompt variables](../concepts/prompt_variables.md) for the full list of sup
 
 ## Step 5: Set the conversation history
 
-A LLM node can be configured to remembers earlier messages in the conversation so it can respond in context. This memory is controlled by the node's **history** setting.
+An LLM node can be configured to remember earlier messages in the conversation so it can respond in context. This memory is controlled by the node's **History** setting, which defaults to `Global` so the model can see the full conversation — the right choice for a normal back-and-forth chatbot.
 
-- For a normal back-and-forth chatbot, switch to `Global` history so the model can see the full conversation.
-- Leave it on the default of `No History` for stateless tasks like translations.
-
-See [LLM Node History](../concepts/pipelines/history.md) for how each history mode behaves.
+See [Conversation History](../concepts/pipelines/history.md) for how each history option behaves.
 
 ## Step 6: Adjust the response style (optional)
 
