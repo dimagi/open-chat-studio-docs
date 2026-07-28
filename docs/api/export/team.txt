@@ -1040,6 +1040,7 @@ CollectionDetail:
 CollectionFileDetail:
   - id: integer (required)
   - status: Unknown
+  - failure_reason: string
   - metadata: Unknown
   - external_id: string
   - file: integer (required)
