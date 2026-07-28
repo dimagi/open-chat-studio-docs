@@ -22,10 +22,10 @@ Global settings are managed at the Team level. This includes:
 
 ## Finding where a provider is used
 
-Every service-provider edit page has a **Show usages** button. Clicking it lists everything in your team that references that provider:
+Every service-provider edit page has a **Show usages** button. Clicking it opens a page that lists everything in your team that references that provider.
 
 - **Chatbots and assistants** — links go to the working version's edit page; references belonging to a published version are tagged with a version badge.
-- **Pipelines** — rolled up to their owning chatbot.
+- **Pipelines** — rolled up to their owning chatbot. Archived pipelines are included.
 - **Collections and document sources** — rolled up to the owning collection.
 - **Channels** — rolled up to their owning chatbot.
 
