@@ -28,6 +28,7 @@ Every service-provider edit page has a **Show usages** button. Clicking it opens
 - **Pipelines** — rolled up to their owning chatbot. Archived pipelines are included.
 - **Collections and document sources** — rolled up to the owning collection.
 - **Channels** — rolled up to their owning chatbot.
+- **Evaluators** — LLM evaluators that use the provider, for LLM service providers.
 
 This is most useful before rotating an API key, deprecating a provider, or triaging a potentially leaked credential — it gives you an immediate picture of what would be affected.
 
