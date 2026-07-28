@@ -71,8 +71,8 @@ Turn.io does not support automatic webhook configuration, so you set the webhook
 
     Verification takes effect on the next request, so do step 6 straight away. Turn.io cancels its retries on a `4xx`, so a mismatched secret loses messages rather than delaying them. If messages stop arriving, clear the **Webhook HMAC Secret** field and save: delivery resumes immediately while you re-check the value in Turn.io.
 
-See the [Turn.io setup guide][turnio] for the full walkthrough, including how to secure the
-webhook with an optional signing secret.
+See the [Turn.io setup guide][turnio] for the full walkthrough, including provider setup and
+troubleshooting.
 
 ### Meta Cloud API
 

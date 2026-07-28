@@ -1,17 +1,23 @@
 # Set Up WhatsApp with Turn.io
 
-This guide walks you through connecting a WhatsApp number to Open Chat Studio (OCS) using **Turn.io**, and
-securing the webhook with an optional signing secret. This is an alternative to using Twilio or
-Meta Cloud API as your WhatsApp provider.
+This guide walks you through connecting a WhatsApp number to Open Chat Studio (OCS) using **Turn.io**, and securing the webhook with an optional signing secret. This is an alternative to using Twilio or Meta Cloud API as your WhatsApp provider.
 
 ## Overview
 
 Setting up a WhatsApp channel via Turn.io involves these stages:
 
-1. [Add your provider to OCS](#1-add-your-provider-to-ocs)
-2. [Create a WhatsApp channel](#2-create-a-whatsapp-channel)
-3. [Configure the webhook in Turn.io](#3-configure-the-webhook-in-turnio)
-4. [Secure the webhook with a signing secret (optional)](#4-secure-the-webhook-with-a-signing-secret-optional)
+- [Set Up WhatsApp with Turn.io](#set-up-whatsapp-with-turnio)
+  - [Overview](#overview)
+  - [Prerequisites](#prerequisites)
+  - [1. Add Your Provider to OCS](#1-add-your-provider-to-ocs)
+  - [2. Create a WhatsApp Channel](#2-create-a-whatsapp-channel)
+  - [3. Configure the Webhook in Turn.io](#3-configure-the-webhook-in-turnio)
+  - [4. Secure the Webhook with a Signing Secret (Optional)](#4-secure-the-webhook-with-a-signing-secret-optional)
+  - [Troubleshooting](#troubleshooting)
+    - [Turn.io shows failed deliveries or has stopped retrying](#turnio-shows-failed-deliveries-or-has-stopped-retrying)
+    - [Messages are not reaching the chatbot](#messages-are-not-reaching-the-chatbot)
+    - [The webhook endpoint returns 405 or 400 responses](#the-webhook-endpoint-returns-405-or-400-responses)
+  - [See also](#see-also)
 
 ## Prerequisites
 
@@ -42,15 +48,15 @@ channel to your chatbot, selecting the Turn.io provider you just created.
 
 Turn.io does not support automatic webhook configuration, so this step must be done manually.
 
-1. In your Turn.io account, go to **Settings → API & Webhooks**.
-2. Select **Add a webhook**.
-3. Enter the following URL:
+1. In OCS, save the WhatsApp channel. OCS then displays a message beginning "Use the following
+   URL when setting up the webhook". Copy that URL.
+2. In your Turn.io account, go to **Settings → API & Webhooks**.
+3. Select **Add a webhook** and paste the URL from step 1.
 
-   `https://openchatstudio.com/channels/whatsapp/incoming_message`
-
-!!! warning "Self-hosted instances"
-    If you are running a self-hosted instance of Open Chat Studio, replace
-    `https://openchatstudio.com` with your own domain.
+!!! warning "Each chatbot has its own Turn.io webhook URL"
+    A Turn.io webhook URL contains the chatbot's ID, so it is specific to a single chatbot.
+    Always copy it from that chatbot's channel in OCS rather than typing it out or reusing one
+    from another chatbot.
 
 At this point, your WhatsApp channel is functional. The remaining steps are optional and add
 signature verification for extra security.
@@ -61,8 +67,8 @@ By default, OCS accepts any request sent to a Turn.io webhook URL without checki
 from. Adding a signing secret lets OCS verify that inbound requests genuinely came from Turn.io
 before processing them.
 
-1. In Turn.io, when you set up the webhook, configure a signing secret for that webhook. Copy the
-   secret value.
+1. In Turn.io, copy the webhook's **HMAC secret** from the same **Settings → API & Webhooks**
+   screen where you added the webhook. If it does not have one yet, generate it there first.
 2. In OCS, go to **Team Settings → Messaging Providers** and edit your Turn.io provider.
 3. Paste the same value into the **Webhook HMAC Secret** field.
 4. Click **Save**.
