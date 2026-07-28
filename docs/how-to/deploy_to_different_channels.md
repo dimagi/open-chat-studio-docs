@@ -60,6 +60,9 @@ Turn.io does not support automatic webhook configuration. After adding your What
 
    `https://openchatstudio.com/channels/whatsapp/incoming_message`
 
+See the [Turn.io setup guide][turnio] for the full walkthrough, including how to secure the
+webhook with an optional signing secret.
+
 ### Meta Cloud API
 
 Meta Cloud API connects your chatbot directly to the WhatsApp Business Platform without a third-party intermediary. The setup requires a Meta for Developers account and a WhatsApp Business Account.
@@ -105,4 +108,5 @@ Every chatbot can also be reached programmatically through the OCS [APIs][api], 
 [6]: ../tutorials/configure_msg_providers.md
 [api]: ../tech-hub/api_access.md
 [meta]: ./whatsapp_meta_cloud_api.md
+[turnio]: ./turnio_whatsapp.md
 [chat-widget]: ../chat_widget/index.md
