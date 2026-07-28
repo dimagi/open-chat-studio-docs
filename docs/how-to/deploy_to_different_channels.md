@@ -52,13 +52,24 @@ When you create or edit a WhatsApp channel using a Twilio provider, Open Chat St
 
 ### Turn.io
 
-Turn.io does not support automatic webhook configuration. After adding your WhatsApp number in Open Chat Studio, configure the webhook manually:
+Turn.io does not support automatic webhook configuration, so you set the webhook up by hand and paste the signing secret back into Open Chat Studio.
 
-1. In your Turn.io account, go to **Settings → API & Webhooks**.
-2. Select **Add a webhook**.
-3. Enter the following URL:
+1. In Open Chat Studio, save the WhatsApp channel. OCS then displays a message beginning "Use the following URL when setting up the webhook". Copy that URL.
+2. In your Turn.io account, go to **Settings → API & Webhooks**.
+3. Select **Add a webhook** and paste the URL from step 1.
+4. Copy the webhook's **HMAC secret** from the same Turn.io screen. If it does not have one yet, generate it there first.
+5. Back in Open Chat Studio, go to **Team Settings**, then in the **Messaging Providers** section edit the Turn.io provider, paste the value into **Webhook HMAC Secret**, and save.
+6. Send a test message on WhatsApp and confirm the chatbot replies.
 
-   `https://openchatstudio.com/channels/whatsapp/incoming_message`
+!!! warning "Each chatbot has its own Turn.io webhook URL"
+
+    A Turn.io webhook URL contains the chatbot's ID, so it is specific to a single chatbot. Always copy it from that chatbot's channel in OCS rather than typing it out or reusing one from another chatbot.
+
+!!! info "The HMAC secret is optional, but leaving it blank leaves the webhook unauthenticated"
+
+    When the secret is set, OCS verifies the signature on every incoming webhook and rejects anything that does not match with a `401`. When it is blank, the signature is not checked, which means anyone who knows the URL can send messages to your chatbot. Set it as soon as Turn.io is configured to sign.
+
+    Verification takes effect on the next request, so do step 6 straight away. Turn.io cancels its retries on a `4xx`, so a mismatched secret loses messages rather than delaying them. If messages stop arriving, clear the **Webhook HMAC Secret** field and save: delivery resumes immediately while you re-check the value in Turn.io.
 
 ### Meta Cloud API
 
