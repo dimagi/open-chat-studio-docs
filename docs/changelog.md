@@ -17,6 +17,8 @@ hide:
 
 ## Jul 28, 2026
 * **CHANGE** The **Show usages** page for a service provider now appears immediately with a loading indicator while it searches, and resolves faster. Pipelines that reference the provider from several nodes are now listed once instead of once per node.
+* **NEW** Turn.io WhatsApp messaging providers now have an optional **Webhook HMAC Secret**. When you set it (and configure the same secret in Turn.io), Open Chat Studio verifies the signature on every inbound Turn.io webhook and rejects requests with a missing or incorrect signature. Leaving it blank keeps the existing behaviour, so existing providers are unaffected. See [Set up WhatsApp with Turn.io](how-to/turnio_whatsapp.md).
+* **BUG** The Turn.io webhook endpoint now returns a clear error instead of a server error when it receives a non-POST request or a malformed request body.
 * **BUG** The **Show usages** page for an LLM service provider now lists evaluators that use the provider. Previously these were left out, so a provider used only by evaluators appeared to be unused.
 
 ## Jul 27, 2026
