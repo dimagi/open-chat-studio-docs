@@ -21,10 +21,8 @@ Each session is independent, meaning:
 
 ## History Management
 
-- As conversations progress, all previous messages within a session are stored as `history`.
-- If the session history exceeds a predefined maximum length, it is **summarized**, and the chatbot will only receive:
-  - A summary of older interactions.
-  - The most recent exchanges to maintain context.
+- As conversations progress, all previous messages within a session are stored as `history`, regardless of how the pipeline is configured.
+- What subset of that stored history reaches an LLM node, and whether it gets summarized or trimmed as it grows, is controlled per node. See [Conversation History](pipelines/history.md) for how this works.
 
 ## Participant Data
 

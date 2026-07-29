@@ -11,12 +11,17 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Jul 28, 2026
+* **CHANGE** The **Show usages** page for a service provider now appears immediately with a loading indicator while it searches, and resolves faster. Pipelines that reference the provider from several nodes are now listed once instead of once per node.
+* **BUG** The **Show usages** page for an LLM service provider now lists evaluators that use the provider. Previously these were left out, so a provider used only by evaluators appeared to be unused.
+
 ## Jul 27, 2026
 * **NEW** You can now register client-credentials OAuth applications for machine-to-machine API access. The application is pinned to one of your teams when you register it, and tokens issued with `grant_type=client_credentials` act on that team without any interactive authorization step. Machine tokens are limited to an allow-list of API scopes and cannot use the user-identity scopes (`openid`, `profile`) or the `/me` endpoint. See [Getting started with OAuth2](api/getting_started_with_oauth.md#client-credentials-flow-machine-to-machine).
 * **NEW** Self-hosted deployments can now use S3-compatible object storage (such as MinIO, Cloudflare R2, Backblaze B2, Wasabi, or DigitalOcean Spaces) for file storage and WhatsApp voice audio, instead of only AWS S3. Existing AWS deployments are unaffected.
 * **NEW** Added support for the **Claude Opus 5** model from Anthropic. Opus 5 offers a 1M-token context window with adaptive thinking and configurable effort levels (low, medium, high, xhigh, max), and can now be selected for chatbots and pipelines.
 * **NEW** Added support for **MiniMax** as an LLM provider. You can add MiniMax credentials in your Team settings and use MiniMax chat models (MiniMax-M3, MiniMax-M2.7, and MiniMax-M2) in your chatbots and pipelines. See [LLM Service Providers](concepts/team/llm_providers.md).
 * **NEW** Added **MiniMax** as a speech provider, so chatbots can synthesize spoken audio using MiniMax T2A text-to-speech voices. See [Speech Service Providers](concepts/team/speech_providers.md).
+* **BUG** Fixed an issue where only one filter per column was applied to a table, so date ranges (which use two filters on the same column, such as *after* and *before*) returned rows outside the range. All filters on a column are now combined, including in saved filters and dataset auto-population rules.
 * **BUG** Fixed an issue where cancelling a scheduled message by its ID was not restricted to the caller's own participant and chatbot, so a scheduled message belonging to another team could be cancelled. Cancellation is now scoped correctly.
 * **BUG** Fixed an error that occurred when a document source was deleted while its sync was still running. The sync now finishes quietly instead of failing.
 * **BUG** Fixed an error that could cause document collection syncs to fail when several document sources were synced together in one batch. These syncs now run correctly.

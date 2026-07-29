@@ -1,59 +1,77 @@
-# History Modes
+# Conversation History
 
-There are several supported history modes for LLM-based nodes in a pipeline. Each is designed to solve a unique problem. In complex pipelines it is expected that a variety of history modes will be used across different nodes.
+!!! note "Definition"
 
-!!! info "Only valid for LLM nodes"
+    An LLM node's conversation memory is controlled by two independent, per-node settings: **History** decides *which* messages the model gets to see, and **History Mode** decides *how* those messages are trimmed once there are too many. They apply only to nodes with an LLM response.
 
-    Note that `history` is only applicable to nodes that have an LLM response as they affect the conversational history sent to that LLM during inference, or completion.
+AI models have no memory of their own — each request OCS sends is self-contained. Open Chat Studio always stores the full conversation in the chatbot's [session](../sessions.md) regardless of how a node is configured; [History](#history) and [History Mode](#history-mode) only control what's *sent to the model*, not what's saved.
 
-## No History
-Nodes will default to `No History` as their history mode. This means that when a completion is requested from the LLM, no conversational history will be supplied. One common use case might be a formatting or translation node where the previous history may not be applicable to generating the correct output.
+## History
 
-## Node
+The **History** setting controls *which* messages a node's LLM sees: its own, the whole conversation, or a shared slice of it.
+
+### History Options
+
+| History | What the LLM sees |
+|---|---|
+| [Global](#global) | The full conversation the participant sees. This is the default for an [LLM Node](./nodes.md#llm-node). |
+| [Node](#node) | Only this node's own past inputs and outputs. This is the default for an [LLM Router Node](./router_nodes.md#llm-router-node). |
+| [Named](#named) | A shared history that specific nodes contribute to together. |
+| [No History](#no-history) | Nothing from earlier in the conversation. |
+
+Each option is designed to solve a different problem, and in complex pipelines it is expected that a variety of History settings will be used across different nodes.
+
+### Global
+Nodes with `Global` history will supply the conversational history that the participant would see to the LLM. The [simple example](index.md) uses a global history as the participant is interacting directly with a single LLM.
+
+### Node
 `Node` history will maintain a specific history for this particular node. The input to the node will be saved, along with the output from the LLM.
 
 !!! warning "LLM output is not necessarily the same as node output"
 
     In a [LLM Router](./router_nodes.md#llm-router-node) node, the `output` from the node will be the same as the `input` to that node. That is, once it has done its routing, it will be a passthrough for the `input`. The output of the LLM however, will be the classification label. This is an important distinction to keep in mind.
 
-A common use case will be in a [LLM Router](./router_nodes.md#llm-router-node) node where we want to maintain a history of the node outputs (e.g., for continuity of what 'part' of the chatbot the user is interacting with), and we want to ensure that the history is using LLM outputs so that we don't unintentionally supply the LLM with few-shot examples of the wrong type of output.
+A common use case is in a [LLM Router](./router_nodes.md#llm-router-node) node, where you want to maintain a history of the node outputs (e.g., for continuity of what 'part' of the chatbot the participant is interacting with), and you want to ensure that the history uses LLM outputs so that you don't unintentionally supply the LLM with few-shot examples of the wrong type of output.
 
-## Global
-Nodes with `Global` history will supply the conversational history that the user would see to the LLM. The [simple example](index.md) uses a global history as the user is interacting directly with a single LLM.
-
-## Named
-The final history mode is called `Named` and allows you to specify a specific, named, history that can be shared between nodes. Each node using the same shared history will contribute their `input` and LLM output to the history.
+### Named
+This option allows you to specify a specific, named history that can be shared between nodes. Each node using the same shared history contributes its `input` and LLM output to it.
 
 !!! warning "Named history is updated immediately"
 
-    If there are multiple nodes serially that use the same `Named` history, then each node will add to the history. In the case of serial nodes, this will result in multiple new history entries for every processed user message.
+    If there are multiple nodes in series that use the same `Named` history, then each node will add to the history. This will result in multiple new history entries for every processed participant message.
 
-The most common use case to this will be when we have multiple parallel nodes after an [LLM Router](./router_nodes.md#llm-router-node). In the [Advanced Pipelines Example](../../how-to/workflow_cookbook.md#split-a-chatbot-into-multiple-smaller-chatbots), the general, quiz, and roleplay LLM nodes would all likely use the same shared history, giving each node visibility into the larger conversation.
+The most common use case for this will be when you have multiple parallel nodes after an [LLM Router](./router_nodes.md#llm-router-node). In the [Advanced Pipelines Example](../../how-to/workflow_cookbook.md#split-a-chatbot-into-multiple-smaller-chatbots), the general, quiz, and roleplay LLM nodes would all likely use the same shared history, giving each node visibility into the larger conversation.
 
-Note that for this particular example, each of the nodes could use a `Global` history to achieve the same thing. However, if there was a translation or formatting node at before the final `output`, then the `Named` history mode would enable the interim nodes to share a history in the original language / formatting.
+Note that for this particular example, each of the nodes could use a `Global` history to achieve the same thing. However, if there was a translation or formatting node before the final `output`, then the `Named` history option would enable the interim nodes to share a history in the original language / formatting.
 
-## History Compression Management Options
+### No History
+Choosing `No History` means that when a completion is requested from the LLM, no conversational history will be supplied. One common use case might be a formatting or translation node where the previous history may not be applicable to generating the correct output.
 
-In addition to the basic history modes, pipeline authors have access to advanced history management options. These controls appear after selecting a basic history mode (No History, Node, Global, or Named) and help optimize token usage and conversation length.
+## History Mode
 
-The UI presents a "History Mode" dropdown with three options:
+How much history a node sends matters because everything involved in a call to the LLM — your prompt, the conversation history, and its reply — shares the same [token budget](../llm.md#max-token-limit). Sending more history gives the model more context, but costs more tokens and can slow responses down.
+
+Once a node has more history than fits comfortably in the model's token budget, something has to give. **History Mode** controls what happens to older messages when that limit is reached. It only has an effect when History is set to `Node`, `Global`, or `Named` — with `No History` there's nothing to trim.
+
+### History Mode Options
+
+| History Mode | What happens to older messages |
+|---|---|
+| [Summarize](#summarize) | Condensed into a summary once the token limit is reached. This is the default. |
+| [Truncate Tokens](#truncate-tokens) | Dropped once the token limit is reached, until back under it. |
+| [Max History Length](#max-history-length) | Dropped once the message count exceeds N. |
 
 ### Summarize
-The Summarize option compresses history when it exceeds a token limit by summarizing older messages while preserving more recent ones. If the token count exceeds the limit, older messages will be summarized while keeping the last few messages intact.
+Compresses older messages into a summary once the token limit is reached, keeping the most recent messages intact.
 
-**Input field**
- _**Token Limit**_: Sets the maximum number of tokens before summarization occurs. When this threshold is reached, the system will summarize older messages to reduce token count.
+**Token Limit**: Maximum number of tokens allowed before summarization occurs.
 
 ### Truncate Tokens
-The Truncate Tokens option removes older messages when a token limit is reached, ensuring the total token count stays below a specified threshold. If the token count exceeds the limit, older messages will be removed until the token count is below the limit.
+Removes older messages once the token limit is reached, until the total is back under the threshold.
 
-**Input field**
- _**Token Limit**_: Sets the maximum number of tokens before truncation occurs. When this threshold is reached, the system will remove older messages to reduce token count.
+**Token Limit**: Maximum number of tokens allowed before truncation occurs.
 
 ### Max History Length
-the last N (where N is the specified number) messages.
+Keeps only the most recent N messages, dropping older ones once that limit is reached.
 
-**Input field**
- _**Max History Length**_: Specifies how many of the most recent messages to keep in the history. Only this number of messages will be sent to the LLM.
-
-These history management options help pipeline authors balance context preservation with performance and cost considerations, particularly for long-running conversations or complex applications.
+**Max History Length**: Number of recent messages to keep. Only this number of messages will be sent to the LLM.
