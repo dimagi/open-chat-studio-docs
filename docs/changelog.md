@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Jul 29, 2026
+* **BUG** Fixed an error that caused chat exports to fail when the sessions list was filtered. The filters you selected are now applied correctly to the exported file.
+
 ## Jul 28, 2026
 * **CHANGE** The **Show usages** page for a service provider now appears immediately with a loading indicator while it searches, and resolves faster. Pipelines that reference the provider from several nodes are now listed once instead of once per node.
 * **BUG** The **Show usages** page for an LLM service provider now lists evaluators that use the provider. Previously these were left out, so a provider used only by evaluators appeared to be unused.
