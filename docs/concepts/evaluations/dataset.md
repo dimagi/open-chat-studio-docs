@@ -34,8 +34,6 @@ There are four ways to populate a dataset. The right choice depends on the data 
 
     **Session-level** datasets must be populated by cloning sessions, by configuring an [auto-population rule](../../tech-hub/evaluations/auto_population.md), or by importing sessions from an annotation queue.
 
-You don't have to populate a dataset right away. Datasets of either evaluation level can be created empty and populated later by cloning sessions into them.
-
 For step-by-step instructions for each method, see [Create a Dataset](../../how-to/evaluations/create-a-dataset.md). For the full field reference and CSV format details, see [Dataset Structure](../../tech-hub/evaluations/dataset-structure.md).
 
 ## Auto-Population Rules

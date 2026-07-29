@@ -36,8 +36,6 @@ Rows created by cloning keep a link back to their original session in OCS. This 
 
 Based on the evaluation level you have chosen, the system will clone either the message pairs (one row per message pair) or the sessions (one row is created per session). For details of the cloning field mappings, see [Tech Hub dataset structure](../../tech-hub/evaluations/dataset-structure.md#cloning-field-mappings).
 
-You don't have to select any sessions when you first create a dataset. Datasets of either evaluation level can be created empty and populated afterwards from the **Add Sessions** page on the dataset's edit view, using the same session selector described below.
-
 #### Steps for a message-level dataset
 
 1. Name the new dataset.
