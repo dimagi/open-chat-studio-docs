@@ -103,6 +103,9 @@ Delta runs appear alongside full runs in the evaluation run table. Full runs sco
 !!! warning
     Auto-run is triggered **only** by the auto-population path. Manually importing sessions via CSV or filter-import does not trigger automatic evaluation runs.
 
+!!! note "Ongoing cost"
+    Because auto-run keeps judging new sessions as they arrive, it keeps making LLM calls in the background. This adds to your team's total cost and usage over time, though it is never attributed to the source chatbot or its participants. See [Evaluation cost and usage](../../concepts/evaluations/evaluators.md#llm-evaluator) for details.
+
 ## Verifying it works
 
 After setup, confirm the pipeline is running end to end:

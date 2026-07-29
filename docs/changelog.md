@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Jul 29, 2026
+* **CHANGE** LLM usage from evaluators (such as LLM-as-judge calls) is now recorded and counted towards your team's total cost and token usage. Team totals may therefore rise if you run evaluations, since this spend was previously untracked. Evaluation spend is never attributed to an individual chatbot, participant, or conversation, so per-chatbot cost is unchanged — and filtering the dashboard's cost panel by chatbot or participant now excludes it, matching the Bot Performance column.
+
 ## Jul 28, 2026
 * **CHANGE** The **Show usages** page for a service provider now appears immediately with a loading indicator while it searches, and resolves faster. Pipelines that reference the provider from several nodes are now listed once instead of once per node.
 * **BUG** The **Show usages** page for an LLM service provider now lists evaluators that use the provider. Previously these were left out, so a provider used only by evaluators appeared to be unused.
