@@ -1944,6 +1944,7 @@ UsageRecordDetail:
   - created_at: string (required)
   - updated_at: string (required)
   - timestamp: string (required)
+  - source: UsageRecordDetailSourceEnum
   - service_kind: ServiceKindEnum (required)
   - provider_type: string (required)
   - model_name: string (required)
@@ -1957,7 +1958,11 @@ UsageRecordDetail:
   - session: integer
   - participant: integer
   - trace: integer
+  - evaluation_config: integer
   - pricing_rule: integer
+
+UsageRecordDetailSourceEnum:
+  - enum: [chat, evaluation]
 
 UsageRecordList:
   - cursor: string (required)
