@@ -12,6 +12,7 @@ hide:
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
 ## Jul 29, 2026
+* **CHANGE** When creating an evaluation dataset from chat sessions, or adding sessions to an existing one, you now choose a selection scope — **Selected only** or **All matching filters** — instead of pre-selecting every row. Filtered selections of any size can now be cloned into a session-level dataset, where large selections previously failed; message-level datasets remain capped at 1000 sessions. Datasets of either evaluation level can also now be created empty and populated later. See [Create a Dataset](how-to/evaluations/create-a-dataset.md).
 * **CHANGE** LLM usage from evaluators (such as LLM-as-judge calls) is now recorded and counted towards your team's total cost and token usage. Team totals may therefore rise if you run evaluations, since this spend was previously untracked. Evaluation spend is never attributed to an individual chatbot, participant, or conversation, so per-chatbot cost is unchanged — and filtering the dashboard's cost panel by chatbot or participant now excludes it, matching the Bot Performance column.
 * **BUG** Fixed an error that caused chat exports to fail when the sessions list was filtered. The filters you selected are now applied correctly to the exported file.
 
