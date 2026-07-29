@@ -12,6 +12,7 @@ hide:
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
 ## Jul 29, 2026
+* **CHANGE** LLM usage from evaluators (such as LLM-as-judge calls) is now recorded and counted towards your team's total cost and token usage. Team totals may therefore rise if you run evaluations, since this spend was previously untracked. Evaluation spend is never attributed to an individual chatbot, participant, or conversation, so per-chatbot cost is unchanged — and filtering the dashboard's cost panel by chatbot or participant now excludes it, matching the Bot Performance column.
 * **BUG** Fixed an error that caused chat exports to fail when the sessions list was filtered. The filters you selected are now applied correctly to the exported file.
 
 ## Jul 28, 2026
