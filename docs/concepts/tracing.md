@@ -69,6 +69,15 @@ When you export traces as CSV, the file includes a **Participant Data** column. 
 
 Tracing begins automatically with the next conversation after you configure a Langfuse provider.
 
+### Setting Up a Langfuse Provider
+
+When you create a new Langfuse provider, the **Host** field is prefilled with Langfuse's cloud URL. Leave it as-is if you use Langfuse Cloud, or change it if you run a self-hosted Langfuse instance.
+
+Once a Langfuse provider is configured and saved, its edit page shows the **organization** and **project** that your API keys belong to, with a link into the Langfuse UI for the project. This helps you confirm you've connected the right Langfuse account.
+
+!!! note
+    This organization and project information is best-effort. If Langfuse can't be reached, or your API keys aren't scoped to a single project, it's left blank — this doesn't prevent the provider from working.
+
 ### Trace Detail Page
 
 When Langfuse is configured, the trace detail page in Open Chat Studio includes:
