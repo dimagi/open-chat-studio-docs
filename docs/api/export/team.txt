@@ -1907,6 +1907,7 @@ TraceProviderDetail:
   - updated_at: string (required)
   - type: TraceProviderDetailTypeEnum (required)
   - name: string (required)
+  - metadata: Unknown
 
 TraceProviderDetailTypeEnum:
   - enum: [langfuse]
