@@ -1,5 +1,7 @@
 # Chatbot Workflow Cookbook
 
+This cookbook collects common pipeline-building patterns, showing how nodes combine to solve real chatbot problems. It assumes you're already familiar with [Pipelines](../concepts/pipelines/index.md) and the available [Node Types](../concepts/pipelines/nodes.md). The recipes below focus on the LLM, Router, and Python nodes.
+
 ## Split a chatbot into multiple smaller chatbots
 
 For complex chatbots it may be the case that a single LLM node with a large prompt does not perform well. For example, a chatbot that is expected to perform multiple different functions such as Role Play, Quiz, Q&A.
