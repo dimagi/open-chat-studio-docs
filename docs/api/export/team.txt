@@ -1032,10 +1032,13 @@ CollectionDetail:
   - is_remote_index: boolean
   - openai_vector_store_id: string
   - is_index: boolean
+  - enable_contextual_retrieval: boolean
   - create_version_task_id: string
   - working_version: integer
   - llm_provider: integer
   - embedding_provider_model: integer
+  - contextualizer_llm_model: integer
+  - contextualizer_llm_provider: integer
 
 CollectionFileDetail:
   - id: integer (required)
@@ -1322,6 +1325,8 @@ EvaluatorDetail:
   - type: string (required)
   - params: Unknown
   - evaluation_mode: Unknown
+  - llm_provider: integer
+  - llm_provider_model: integer
 
 EvaluatorList:
   - cursor: string (required)
@@ -1469,6 +1474,7 @@ FileChunkEmbeddingDetail:
   - updated_at: string (required)
   - chunk_number: integer (required)
   - text: string (required)
+  - context: string
   - page_number: integer
   - embedding: array of number (required)
   - is_archived: boolean
@@ -1901,6 +1907,7 @@ TraceProviderDetail:
   - updated_at: string (required)
   - type: TraceProviderDetailTypeEnum (required)
   - name: string (required)
+  - metadata: Unknown
 
 TraceProviderDetailTypeEnum:
   - enum: [langfuse]

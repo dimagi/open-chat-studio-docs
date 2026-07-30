@@ -26,9 +26,9 @@ Consider the conversation context: {context.topic}
 ```
 
 !!! note "Evaluation cost and usage"
-    Each time an LLM evaluator judges a message or session, it makes its own call to a language model. That call counts towards your team's total cost and usage — but it is never attributed to a specific chatbot, participant, or conversation. This means filtering your team's cost and usage reporting by chatbot or participant will not include evaluator spend, even though it still adds to your team's overall total.
+    An evaluation run can make two kinds of LLM calls: the evaluator's own judging call, and — if generation is enabled — the call that generates the response being judged. Both count towards your team's total cost and usage, but neither is attributed to a specific chatbot, participant, or conversation. This means filtering your team's cost and usage reporting by chatbot or participant will not include evaluation spend, even though it still adds to your team's overall total. For the same reason, the generated response's own cost is not counted as chat usage, so it will not appear on the session or conversation it was generated for.
 
-    This only applies to the evaluator's own judging call. If an evaluation also generates a response from your chatbot before judging it, that response is billed and attributed to the chatbot as usual, just like any other conversation.
+    If your team runs evaluations with generation enabled, your team's total cost may be higher than you remember, since this spend is now captured. No chatbot, participant, or conversation becomes more expensive — the cost was simply not being recorded before.
 
 ### Template Variables
 
