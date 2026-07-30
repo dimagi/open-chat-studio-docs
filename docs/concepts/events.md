@@ -1,6 +1,6 @@
 # Events
 
-Open Chat Studio provides an event system that allows you to define actions triggered by specific events within a [chat session](sessions.md). This functionality enables you to automate responses, manage session states, and enhance user interactions effectively.
+Open Chat Studio provides an event system that allows you to define actions triggered by specific events within a [chat session](sessions.md). This functionality enables you to automate responses, manage session states, and enhance participant interactions effectively.
 
 ## Overview
 

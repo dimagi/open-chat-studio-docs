@@ -1,6 +1,6 @@
 # Node Types
 
-A node is a discrete processing step in a [pipeline](index.md) that accepts a user’s input and produces an output to downstream nodes. Each node in the pipeline performs a specific task (like calling an LLM, running Python code, or routing based on logic) and processes data that flows through the pipeline.
+A node is a discrete processing step in a [pipeline](index.md) that accepts a participant's input and produces an output to downstream nodes. Each node in the pipeline performs a specific task (like calling an LLM, running Python code, or routing based on logic) and processes data that flows through the pipeline.
 
 ```mermaid
 graph LR
@@ -62,8 +62,8 @@ Execute custom Python code for logic, data processing, or external API calls.
 
 **Key capabilities:**
 
-- **[Utility functions](../../tech-hub/python_node.md#utility-functions)** — read and write [participant data](../../concepts/participant_data.md), [temporary state](../../tech-hub/python_node.md#temporary-state) (per pipeline run), and [session state](../../tech-hub/python_node.md#session-state) (per user session).
-- **[Attachments](../../tech-hub/python_node.md#attachments)** — access files uploaded by the user and read their contents (text, PDF, DOCX, XLSX, and [more](../../tech-hub/python_node.md#supported-file-types)).
+- **[Utility functions](../../tech-hub/python_node.md#utility-functions)** — read and write [participant data](../../concepts/participant_data.md), [temporary state](../../tech-hub/python_node.md#temporary-state) (per pipeline run), and [session state](../../tech-hub/python_node.md#session-state) (per participant session).
+- **[Attachments](../../tech-hub/python_node.md#attachments)** — access files uploaded by the participant and read their contents (text, PDF, DOCX, XLSX, and [more](../../tech-hub/python_node.md#supported-file-types)).
 - **[HTTP client](../../tech-hub/external-api-calls/http_client.md)** — make secure HTTP requests to external APIs using the built-in `http` global.
 - **[Debugging](../../tech-hub/python_node.md#debugging-with-print)** — use `print()` to capture diagnostic output, visible in the trace detail view.
 

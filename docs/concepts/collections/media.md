@@ -3,7 +3,7 @@ title: Media collections
 ---
 
 ## When should I use this?
-When you want your chatbot to be able to send multimedia files to users.
+When you want your chatbot to be able to send multimedia files to participant.
 
 ## Currently supported file types
 
@@ -19,7 +19,7 @@ When you want your chatbot to be able to send multimedia files to users.
 **Audio**
 .mp3, .wav
 
-Once a collection is linked, your chatbot will be able to send one or more files from it to users—either as a download link or directly—depending on the specific channel’s support for the file type and file size.
+Once a collection is linked, your chatbot will be able to send one or more files from it to participants — either as a download link or directly—depending on the specific channel’s support for the file type and file size.
 
 !!! note "Changes take effect on published chatbots immediately"
     Adding, removing, or replacing files in a media collection is reflected in the published chatbot without requiring a republish. See [Collections and published chatbots](index.md#collections-and-published-chatbots) for more detail.
@@ -50,7 +50,7 @@ You are a friendly assistant. Here’s some files that you can attach to your re
 
 ## How are attachments sent?
 
-Whenever your chatbot references a file, it is sent to the user as an attachment. Depending on the channel, attachments are delivered in different ways.
+Whenever your chatbot references a file, it is sent to the participant as an attachment. Depending on the channel, attachments are delivered in different ways.
 
 ### Web channels
 
@@ -58,7 +58,7 @@ Attachments are directly downloadable by clicking on them.
 
 ### Multimedia-unsupported channels
 
-By default, attachments are sent as download links appended to the chatbot’s message. The user will see the file name and a corresponding download link at the end of the message. These channels do not yet support sending multimedia files:
+By default, attachments are sent as download links appended to the chatbot’s message. The participant will see the file name and a corresponding download link at the end of the message. These channels do not yet support sending multimedia files:
 
 * Telegram
 * WhatsApp (Turn.io provider)

@@ -1,6 +1,6 @@
 # Versioning
 
-Versioning keeps your live chatbot stable while you make changes. You can edit and test your chatbot without impacting your users. For more details, see the tutorial on [creating and publishing versions](../tutorials/versioning_steps.md).
+Versioning keeps your live chatbot stable while you make changes. You can edit and test your chatbot without impacting your participants. For more details, see the tutorial on [creating and publishing versions](../tutorials/versioning_steps.md).
 
 Versioning tracks the history of your chatbot's configuration so you can review what changed, and roll back to a previous version if needed.
 
@@ -8,11 +8,11 @@ Versioning tracks the history of your chatbot's configuration so you can review 
 
 * *Unreleased Version*. This is the version of the chatbot you are currently editing. It is a draft that has not been versioned or published.
 
-* *Published Version*. This is the version that users will interact with — through the web, WhatsApp, or any other channel you have set up, including the public link.
+* *Published Version*. This is the version that participants will interact with — through the web, WhatsApp, or any other channel you have set up, including the public link.
 
 ## What is a Chatbot Version?
 
-Once a version is created, it cannot be edited or modified. This ensures that the users' experience remains stable even if chatbot editors are changing the unreleased version.
+Once a version is created, it cannot be edited or modified. This ensures that the participants' experience remains stable even if chatbot editors are changing the unreleased version.
 
 ### What is frozen — and what is live
 
@@ -61,4 +61,4 @@ If your current working version contains changes that have not yet been released
 
 !!! warning "Modifying Assistants in OpenAI referenced by released versions"
 
-    As mentioned above, the copied assistant will be read-only in OCS, however, in OpenAI changes can still be made to that copy of the assistant. *We recommend advising your team to not modify this assistant if it references a released version.* This can cause unexpected behavior to the version and to its end users. To ensure that the released version acts as expected this assistant should remain as-is.
+    As mentioned above, the copied assistant will be read-only in OCS, however, in OpenAI changes can still be made to that copy of the assistant. *We recommend advising your team to not modify this assistant if it references a released version.* This can cause unexpected behavior to the version and to its end users (participants). To ensure that the released version acts as expected this assistant should remain as-is.
