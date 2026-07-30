@@ -1,6 +1,6 @@
 # Chatbot Workflow Cookbook
 
-This cookbook collects common pipeline-building patterns, showing how nodes combine to solve real chatbot problems. It assumes you are already familiar with [Pipelines](../concepts/pipelines/index.md) and the available [Node Types](../concepts/pipelines/nodes.md). The recipes below focus on the LLM, Router, and Python nodes.
+This cookbook collects common pipeline-building patterns, showing how nodes combine to solve real chatbot problems. It assumes you are already familiar with [Pipelines](../concepts/pipelines/index.md) and the available [Node Types](../concepts/pipelines/nodes.md). The recipes below focus on the LLM, router, and Python nodes.
 
 ## Split a chatbot into multiple smaller chatbots
 
@@ -8,7 +8,7 @@ For complex chatbots it may be the case that a single LLM node with a large prom
 
 In such cases, it can be better to create smaller, narrowly focused prompts and use a [router][router_nodes] to select which 'mode' the chatbot is currently in.
 
-Here is an example that uses an [LLM Router Node][router_nodes] to route the input to one of three linked downstream nodes. See [LLM Router Configuration](../how-to/routers/llm_router.md) for the step-by-step configuration used here.
+Here is an example that uses an [LLM Router Node](../concepts/pipelines/router_nodes.md#llm-router-node)to route the input to one of three linked downstream nodes. See [LLM Router Configuration](./routers/llm_router.md) for the step-by-step configuration used here.
 
 ```mermaid
 graph TB
