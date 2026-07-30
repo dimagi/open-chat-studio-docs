@@ -1322,6 +1322,8 @@ EvaluatorDetail:
   - type: string (required)
   - params: Unknown
   - evaluation_mode: Unknown
+  - llm_provider: integer
+  - llm_provider_model: integer
 
 EvaluatorList:
   - cursor: string (required)
