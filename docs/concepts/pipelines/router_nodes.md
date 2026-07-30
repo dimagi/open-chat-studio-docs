@@ -38,6 +38,8 @@ The LLM Router uses an AI model to read the incoming message and classify its in
 
     See [Router Nodes in How-to Guides](../../how-to/routers/index.md) for configuration details and best practices.
 
+See a working example in the [Workflow Cookbook: Split a chatbot into multiple smaller chatbots](../../how-to/workflow_cookbook.md#split-a-chatbot-into-multiple-smaller-chatbots), where an LLM Router classifies input into `GENERAL`, `ROLEPLAY`, and `QUIZ` paths.
+
 ### Static Router Node
 The Static Router does not use an AI model and does not read the participant's message. Instead, it looks up a specific value stored in your [data source](../../how-to/routers/static_router.md#supported-data-sources).
 

@@ -22,7 +22,7 @@ Here you’ll find answers to “How do I...?” types of questions. These guide
 
     [:octicons-arrow-right-24: Adjust LLM Node model parameters](./adjust_llm_node_model_parameters.md)
 
-    [:octicons-arrow-right-24: Chatbots with complex Workflows](./workflow_cookbook.md)  
+    [:octicons-arrow-right-24: Chatbot Workflow Cookbook: routers, safety checks, file uploads, and more](./workflow_cookbook.md)  
 
     [:octicons-arrow-right-24: Add a knowledge base](./add_a_knowledge_base.md)
 

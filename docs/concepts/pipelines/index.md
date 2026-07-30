@@ -62,6 +62,8 @@ Common node types include:
 
  - **[Update Participant Data Node](nodes.md#update-participant-data-node)** — Saves information about the user for later use in the conversation.
 
+For worked examples combining these node types, see the [Workflow Cookbook](../../how-to/workflow_cookbook.md).
+
 ## How a Pipeline Runs
 
 Open Chat Studio (OCS) executes your pipeline in organized steps, running nodes in parallel when possible.
