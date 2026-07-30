@@ -40,7 +40,7 @@ This option allows you to specify a specific, named history that can be shared b
 
     If there are multiple nodes in series that use the same `Named` history, then each node will add to the history. This will result in multiple new history entries for every processed participant message.
 
-The most common use case for this will be when you have multiple parallel nodes after an [LLM Router](./router_nodes.md#llm-router-node). In the [Advanced Pipelines Example](../../how-to/workflow_cookbook.md#split-a-chatbot-into-multiple-smaller-chatbots), the general, quiz, and roleplay LLM nodes would all likely use the same shared history, giving each node visibility into the larger conversation.
+The most common use case for this will be when you have multiple parallel nodes after an [LLM Router](./router_nodes.md#llm-router-node). In the [Workflow Cookbook](../../how-to/workflow_cookbook.md#split-a-chatbot-into-multiple-smaller-chatbots), the general, quiz, and roleplay LLM nodes would all likely use the same shared history, giving each node visibility into the larger conversation.
 
 Note that for this particular example, each of the nodes could use a `Global` history to achieve the same thing. However, if there was a translation or formatting node before the final `output`, then the `Named` history option would enable the interim nodes to share a history in the original language / formatting.
 
