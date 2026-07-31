@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Jul 31, 2026
+* **CHANGE** The evaluation runs page now tracks the progress of all in-progress runs together instead of polling for each run separately, so the page stays responsive when several runs are processing at once. Progress bars update in place, and the table refreshes on its own as each run finishes.
+
 ## Jul 30, 2026
 * **CHANGE** When an evaluation run generates a response from your chatbot before judging it, that generation is now recorded and counted towards your team's total cost, as evaluation spend. Team totals may therefore rise if you run evaluations with generation enabled, since this spend was previously not recorded at all. Existing records are unchanged, and no chatbot, participant, or conversation becomes more expensive. See [Evaluation cost and usage](concepts/evaluations/evaluators.md#llm-evaluator).
 
