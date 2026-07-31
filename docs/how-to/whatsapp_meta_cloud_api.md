@@ -302,7 +302,7 @@ This is almost always caused by the system user's access token not having permis
 
 ### The out-of-service-window template message is not being sent
 
-If the bot is not reaching users after the 24-hour service window expires:
+If the bot is not reaching participants after the 24-hour service window expires:
 
 - Confirm that the template named `ocs_out_of_service_window` exists in your Meta Business account under **WhatsApp Manager** > **Account tools** > **Message templates**.
 - Confirm the template status is **Approved**. Templates that are pending review or that have been rejected cannot be sent.

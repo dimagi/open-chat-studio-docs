@@ -3,7 +3,7 @@ title: Media collections
 ---
 
 ## When should I use this?
-When you want your chatbot to be able to send multimedia files to participant.
+When you want your chatbot to be able to send multimedia files to participants.
 
 ## Currently supported file types
 

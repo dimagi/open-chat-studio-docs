@@ -61,4 +61,4 @@ If your current working version contains changes that have not yet been released
 
 !!! warning "Modifying Assistants in OpenAI referenced by released versions"
 
-    As mentioned above, the copied assistant will be read-only in OCS, however, in OpenAI changes can still be made to that copy of the assistant. *We recommend advising your team to not modify this assistant if it references a released version.* This can cause unexpected behavior to the version and to its end users (participants). To ensure that the released version acts as expected this assistant should remain as-is.
+    As mentioned above, the copied assistant will be read-only in OCS, however, in OpenAI changes can still be made to that copy of the assistant. *We recommend advising your team to not modify this assistant if it references a released version.* This can cause unexpected behavior to the version and to its chatbot participants. To ensure that the released version acts as expected this assistant should remain as-is.

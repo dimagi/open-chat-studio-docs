@@ -13,6 +13,7 @@ Use this guide to end a current [session](../concepts/sessions.md) and start a n
 - For messaging channels (such as WhatsApp and Telegram), use `/reset` or an automatic method.
 
 !!! note
+
     Resetting a session clears the conversation history — the bot will have no memory of previous exchanges. Participant data is not removed.
 
 ## User-Initiated manual reset of a session
@@ -27,14 +28,14 @@ This command is available on all channels except **Web Chat Widget** and **Slack
 
 ### Reset manually from the web UI
 
-This allows users to customize how the transition between sessions occurs.
+This allows participants to customize how the transition between sessions occurs.
 
 1. As a participant, view the chat widget on the web chat interface.
 2. Click the "End chat" button.
 3. Choose whether to trigger [end conversation events](../concepts/events.md) or skip them
 4. Enter a chat message for the new session.
 
-If your chatbot has been configured with a seed message, this is pre-filled and then can be edited by the user.
+If your chatbot has been configured with a seed message, this is pre-filled and then can be edited by the OCS user.
 
 ### Reset manually from the OCS Admin UI
 

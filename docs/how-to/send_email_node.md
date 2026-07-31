@@ -51,7 +51,7 @@ The variables available for the Subject, Recipient, and Body fields are [listed 
 
 ### Notify your team of an emergency
 
-Use a [Router node](../concepts/pipelines/router_nodes.md) to detect whether the participant needs urgent assistance. In the router's emergency branch, add the Send an Email node with the recipient set to your team address and the body describing the situation. This lets you escalate extraordinary circumstances — such as a usparticipanter in crisis — without waiting for the session to end.
+Use a [Router node](../concepts/pipelines/router_nodes.md) to detect whether the participant needs urgent assistance. In the router's emergency branch, add the Send an Email node with the recipient set to your team address and the body describing the situation. This lets you escalate extraordinary circumstances — such as a participanter in crisis — without waiting for the session to end.
 
 ### Route a completed intake form to the right team member
 
