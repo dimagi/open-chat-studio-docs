@@ -1883,9 +1883,6 @@ TraceDetail:
   - error: string
   - n_turns: integer
   - n_toolcalls: integer
-  - n_total_tokens: integer
-  - n_prompt_tokens: integer
-  - n_completion_tokens: integer
   - experiment: integer
   - session: integer
   - participant: integer
