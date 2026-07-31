@@ -61,7 +61,7 @@ For step-by-step instructions on completing specific tasks, see the [How-to guid
 : A single processing step in a pipeline. Each node performs one task, such as calling an LLM, running custom code, or routing the conversation based on its content.
 
 [Participant Data](participant_data.md)
-: Custom information stored against each participant that persists across chatbot sessions. Use it to remember preferences, track progress, or personalize chatbot responses.
+: Custom information stored against each participant — the person chatting with a deployed chatbot — that persists across chatbot sessions. Use it to remember preferences, track progress, or personalize chatbot responses.
 
 [Pipelines](pipelines/index.md)
 : The drag-and-drop canvas where you build your chatbot's conversation logic by connecting nodes together. Every chatbot in OCS is powered by a pipeline.
