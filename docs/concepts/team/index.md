@@ -19,6 +19,7 @@ Global settings are managed at the Team level. This includes:
 - [Custom Actions](custom_actions.md)
 - [Tracing Providers](../tracing.md)
 - [User Management](groups.md)
+- [OAuth Applications](../../api/getting_started_with_oauth.md) — Team Admins can register OAuth applications so external integrations can act on behalf of the team
 
 ## Finding where a provider is used
 

@@ -23,7 +23,9 @@ For a detailed explanation of the OAuth 2.0 authorization code flow, see [OAuth 
 
 ## Step 1: Register your application with OpenChatStudio
 
-Register your application with Open Chat Studio.
+OAuth applications belong to a team, and you register them from that team's admin page. Team Admins and Super Admins can register and manage OAuth applications for their own team; the application belongs to whichever team's admin page you registered it from — there's no separate field to choose the team.
+
+If you need a **global** application that isn't tied to any single team, a Super Admin can register one instead from the site-admin page. Global applications only support the authorization code flow described below — see [Client-credentials flow](#client-credentials-flow-machine-to-machine) for why client-credentials isn't available for them.
 
 You'll receive:
 
@@ -71,7 +73,7 @@ code_challenge = base64.urlsafe_b64encode(
 | `code_challenge_method` | Yes | Must be `S256` (SHA256) |
 | `state` | Recommended | Random string to prevent CSRF attacks. Store this and validate the response |
 | `scope` | No | Space-separated list of scopes. See available scopes in the [API docs](https://openchatstudio.com/api/docs/). If omitted, defaults to all scopes |
-| `team` | No | Specific team to scope the token to |
+| `team` | No | Only relevant for **global** (team-less) applications — lets the user pick which of their teams the token is scoped to. For an application registered under a team's admin page, the token is always scoped to that team, the user isn't asked to choose, and this parameter has no effect. If the authorizing user isn't a member of the application's team, authorization is refused |
 
 ### Example Request
 
@@ -103,7 +105,7 @@ https://your-server/callback/?error=access_denied&error_description=The+user+den
 
 Common error codes:
 
-- `access_denied`: User rejected the authorization request
+- `access_denied`: User rejected the authorization request, or (for a team-owned application) the authorizing user isn't a member of the application's team
 - `invalid_request`: Missing or invalid parameters
 - `unauthorized_client`: Client not authorized to use this flow
 - `server_error`: Authorization server encountered an error
@@ -286,12 +288,13 @@ Use this flow for automated integrations, backend jobs, or any service that call
 ### How it's different from the authorization code flow
 
 - **No user.** The resulting access token carries no user identity. It cannot be used to sign in as, or act on behalf of, a specific person.
-- **Team is fixed at registration.** In the authorization code flow, the user picks a team interactively at `/authorize`. A client-credentials application has no user to make that choice, so **you choose the team when you register the application**, and every token it issues is scoped to that team. One application maps to exactly one team — register a separate application for each team you need to integrate with.
+- **Team is fixed by where you registered.** A client-credentials application has no user to pick a team interactively, so it must belong to a team, and every token it issues is scoped to that team. The team comes from **which team's admin page you registered the application on** — there's no separate team field to fill in, and it can't be changed later without registering a new application under the correct team. One application maps to exactly one team — register a separate application for each team you need to integrate with.
+- **Global applications can't use this flow.** An application registered from the site-admin page (rather than a team's admin page) has no team, so it supports the authorization code flow only — there's no team to scope a client-credentials token to.
 - **No `/authorize` step, no consent screen, and no refresh token.** Request a token directly from the token endpoint whenever you need one, or when your current token expires.
 
 ### Step 1: Register a client-credentials application
 
-Register an OAuth application and select the client-credentials grant type. When registering, choose the team the application should be pinned to — this cannot be changed later without registering a new application.
+From your team's admin page, register an OAuth application and select the client-credentials grant type. The application is automatically pinned to that team — this can't be changed later without registering a new application from the correct team's admin page.
 
 You'll receive:
 
@@ -360,6 +363,7 @@ Machine tokens can only be granted **API resource scopes**. User-identity scopes
 - **User-only endpoints don't work.** Endpoints that require a signed-in user, such as `/me`, or any endpoint gated on a user permission, refuse or ignore machine tokens.
 - **No user is recorded as the actor.** Records created or modified using a machine token leave "created by" / "added by" / "cancelled by" style fields empty, since there is no user behind the token.
 - **Chat participants come from the request body, not the token.** For chat interactions (`chatbots:interact`), the participant is identified using the OpenAI-standard `user` field in the request body, rather than from the token.
+- **An application with no team can't issue usable tokens.** If a client-credentials application has no team (for example, an older application from before applications were team-scoped), token requests won't resolve to any team's data. Ask a Super Admin to assign the application to a team from the site-admin page.
 
 ### Best practices
 
