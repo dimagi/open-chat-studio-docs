@@ -1295,6 +1295,7 @@ EvaluationRunDetail:
   - updated_at: string (required)
   - created_at: string (required)
   - finished_at: string
+  - finalized_at: string
   - status: StatusA8fEnum
   - type: EvaluationRunDetailTypeEnum
   - job_id: string
@@ -1883,9 +1884,6 @@ TraceDetail:
   - error: string
   - n_turns: integer
   - n_toolcalls: integer
-  - n_total_tokens: integer
-  - n_prompt_tokens: integer
-  - n_completion_tokens: integer
   - experiment: integer
   - session: integer
   - participant: integer
@@ -1907,6 +1905,7 @@ TraceProviderDetail:
   - updated_at: string (required)
   - type: TraceProviderDetailTypeEnum (required)
   - name: string (required)
+  - metadata: Unknown
 
 TraceProviderDetailTypeEnum:
   - enum: [langfuse]
