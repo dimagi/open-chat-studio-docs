@@ -14,6 +14,7 @@ hide:
 ## Aug 3, 2026
 * **CHANGE** OAuth applications are now registered and managed from your team's admin page instead of your user profile, and every application belongs to a team. Team Admins can now manage their team's applications, and tokens issued for a team's application always act on that team. Applications that existed before this change are not assigned to a team and can only be managed by superusers — any existing client-credentials application needs a team assigned to it before it can issue usable tokens again. See [Getting started with OAuth2](api/getting_started_with_oauth.md).
 * **BUG** Fixed a JavaScript error on the evaluation dataset creation form that could occur if the page was still loading, which sometimes left the JSON editors uninitialized.
+* **BUG** Fixed an error that occurred when a chatbot produced an empty response on Telegram. Empty responses are now skipped instead of failing.
 
 ## Jul 30, 2026
 * **CHANGE** When an evaluation run generates a response from your chatbot before judging it, that generation is now recorded and counted towards your team's total cost, as evaluation spend. Team totals may therefore rise if you run evaluations with generation enabled, since this spend was previously not recorded at all. Existing records are unchanged, and no chatbot, participant, or conversation becomes more expensive. See [Evaluation cost and usage](concepts/evaluations/evaluators.md#llm-evaluator).
