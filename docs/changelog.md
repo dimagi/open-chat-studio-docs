@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Aug 3, 2026
+* **BUG** Fixed a JavaScript error on the evaluation dataset creation form that could occur if the page was still loading, which sometimes left the JSON editors uninitialized.
+
 ## Jul 30, 2026
 * **CHANGE** When an evaluation run generates a response from your chatbot before judging it, that generation is now recorded and counted towards your team's total cost, as evaluation spend. Team totals may therefore rise if you run evaluations with generation enabled, since this spend was previously not recorded at all. Existing records are unchanged, and no chatbot, participant, or conversation becomes more expensive. See [Evaluation cost and usage](concepts/evaluations/evaluators.md#llm-evaluator).
 
