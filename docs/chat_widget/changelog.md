@@ -31,6 +31,7 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 ### v0.12.0
 
+* Remove `.bmp` and `.svg` from the file picker's image types. These formats aren't accepted by the LLM providers, and the server now rejects them at upload with a clear error message.
 * Expose the running widget version on the element. Read the `data-widget-version` attribute (e.g. `element.getAttribute('data-widget-version')`) or call the `getVersion()` method to tell which release is deployed on a page.
 
 ### v0.11.0 (2026-07-23)
