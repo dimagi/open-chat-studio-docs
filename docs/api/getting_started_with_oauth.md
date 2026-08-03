@@ -23,9 +23,9 @@ For a detailed explanation of the OAuth 2.0 authorization code flow, see [OAuth 
 
 ## Step 1: Register your application with OpenChatStudio
 
-OAuth applications belong to a team, and you register them from that team's admin page. Team Admins and Super Admins can register and manage OAuth applications for their own team; the application belongs to whichever team's admin page you registered it from — there's no separate field to choose the team.
+OAuth applications belong to a team, and you register them from that team's admin page. Team Admins and Super Admins can register and manage OAuth applications for their own team; the application belongs to whichever team's admin page you registered it from.
 
-If you need a **global** application that isn't tied to any single team, a Super Admin can register one instead from the site-admin page. Global applications only support the authorization code flow described below — see [Client-credentials flow](#client-credentials-flow-machine-to-machine) for why client-credentials isn't available for them.
+If you need a **global** application that isn't tied to any single team, a super user can register one instead from the site-admin page. Global applications only support the authorization code flow described below — see [Client-credentials flow](#client-credentials-flow-machine-to-machine) for why client-credentials isn't available for them.
 
 You'll receive:
 
@@ -363,7 +363,6 @@ Machine tokens can only be granted **API resource scopes**. User-identity scopes
 - **User-only endpoints don't work.** Endpoints that require a signed-in user, such as `/me`, or any endpoint gated on a user permission, refuse or ignore machine tokens.
 - **No user is recorded as the actor.** Records created or modified using a machine token leave "created by" / "added by" / "cancelled by" style fields empty, since there is no user behind the token.
 - **Chat participants come from the request body, not the token.** For chat interactions (`chatbots:interact`), the participant is identified using the OpenAI-standard `user` field in the request body, rather than from the token.
-- **An application with no team can't issue usable tokens.** If a client-credentials application has no team (for example, an older application from before applications were team-scoped), token requests won't resolve to any team's data. Ask a Super Admin to assign the application to a team from the site-admin page.
 
 ### Best practices
 
