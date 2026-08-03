@@ -155,7 +155,7 @@ Open Chat Studio validates the phone number against your WhatsApp Business Accou
 
 ### What is the 24-hour service window?
 
-WhatsApp restricts when businesses can send messages to users. Once a user sends a message to your business number, a **24-hour service window** opens. During that window, your chatbot can reply freely. After 24 hours of inactivity from the user, the window closes and the WhatsApp API rejects any outbound messages.
+WhatsApp restricts when businesses can send messages to participants. Once a participant sends a message to your business number, a **24-hour service window** opens. During that window, your chatbot can reply freely. After 24 hours of inactivity from the participant, the window closes and the WhatsApp API rejects any outbound messages.
 
 Without a fallback, a bot reply sent outside the service window is silently dropped. The out-of-service-window template message feature prevents this by automatically substituting a pre-approved WhatsApp message template when the window has expired.
 

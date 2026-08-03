@@ -17,7 +17,7 @@ When building chatbots, an LLM powers the chatbot's ability to understand and re
 
 ## Prompt
 
-A prompt is the input or instructions given to the LLM to guide its response. It sets the context for the chatbot. Prompts can be as simple as a participant question or as detailed as a conversation framework or role-play setup.
+A prompt is the input or instructions given to the LLM to guide its response. It sets the context for the chatbot. Prompts can be as simple as a single question or as detailed as a conversation framework or role-play setup.
 
 **Example:** "You are a helpful assistant. Answer questions clearly and concisely."
 

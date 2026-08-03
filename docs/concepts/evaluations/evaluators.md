@@ -9,7 +9,7 @@ Each evaluator works in one of two **evaluation modes** — **message-level** (j
 ## Evaluator Types
 
 ### LLM Evaluator
-The LLM Evaluator uses language models to evaluate responses based on a custom prompt. This can be used as an [LLM-as-judge](../../how-to/evaluations/realtime_llm_judge.md) to evaluate the performance of a chatbot, or to gain insight into the properties of both the participant and assistant messages.
+The LLM Evaluator uses language models to evaluate responses based on a custom prompt. This can be used as an [LLM-as-judge](../../how-to/evaluations/realtime_llm_judge.md) to evaluate the performance of a chatbot, or to gain insight into the properties of both the user and assistant messages.
 
 For the how-to guide, see [Set Up a Real-Time LLM Judge](../../how-to/evaluations/realtime_llm_judge.md).
 

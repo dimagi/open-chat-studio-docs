@@ -35,7 +35,7 @@ This allows participants to customize how the transition between sessions occurs
 3. Choose whether to trigger [end conversation events](../concepts/events.md) or skip them
 4. Enter a chat message for the new session.
 
-If your chatbot has been configured with a seed message, this is pre-filled and then can be edited by the OCS user.
+If your chatbot has been configured with a seed message, this is pre-filled and then can be edited by the participant.
 
 ### Reset manually from the OCS Admin UI
 

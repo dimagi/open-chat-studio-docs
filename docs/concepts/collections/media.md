@@ -19,7 +19,7 @@ When you want your chatbot to be able to send multimedia files to participants.
 **Audio**
 .mp3, .wav
 
-Once a collection is linked, your chatbot will be able to send one or more files from it to participants — either as a download link or directly—depending on the specific channel’s support for the file type and file size.
+Once a collection is linked, your chatbot will be able to send one or more files from it to participants — either as a download link or directly — depending on the specific channel’s support for the file type and file size.
 
 !!! note "Changes take effect on published chatbots immediately"
     Adding, removing, or replacing files in a media collection is reflected in the published chatbot without requiring a republish. See [Collections and published chatbots](index.md#collections-and-published-chatbots) for more detail.
