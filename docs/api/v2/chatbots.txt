@@ -88,6 +88,9 @@ ChatbotInspect:
   - trace_provider: Unknown (required)
   - channels: array of Channel (required)
   - pipeline: Unknown (required)
+  - pipeline_valid: boolean (required)
+  - pipeline_errors: Unknown (required)
+  - unwired_handles: object (required)
   - events: InspectEvents (required)
 
 ChatbotVersion:
