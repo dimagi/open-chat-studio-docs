@@ -8,7 +8,7 @@ Chat sessions in Open Chat Studio define the scope of conversations between a pa
 
 A session is uniquely defined by:
 
-- **Participant**: The individual engaging with the chatbot. See [Participant Data](participant_data.md).
+- **Participant**: The individual engaging with the chatbot.
 - **Channel**: The platform through which the chat occurs (e.g., WhatsApp, Telegram, Web, Slack). See [channels](channels.md).
 - **Chatbot**: The specific chatbot handling the conversation.
 
@@ -43,7 +43,7 @@ On the **Web** channel, participants can have **anonymous sessions**, where:
 
 For **Single-Session Channels** like **WhatsApp** and **Telegram**, the current session continues until it is explicitly ended.
 
-However, sessions can be reset either [manually](../how-to/reset_sessions.md#user-initiated-manual-reset-of-a-session) by the participant or [automatically](../how-to/reset_sessions.md#reset-sessions-automatically).
+However, sessions can be reset either [manually](../how-to/reset_sessions.md#manual-reset-of-a-session) by the participant or [automatically](../how-to/reset_sessions.md#reset-sessions-automatically).
 
 When a session is reset:
 

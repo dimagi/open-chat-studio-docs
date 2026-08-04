@@ -4,12 +4,12 @@ title: How to reset sessions
 
 # How to reset sessions
 
-Use this guide to end a current [session](../concepts/sessions.md) and start a new one.
+This guide explains how to end a current [session](../concepts/sessions.md) and start a new one.
 
 ## Before you begin
 
-- Confirm which [channel](../concepts/channels.md) your chatbot uses.
-- Resets can be done [manually](#manual-reset-of-a-session) or [automatically](#reset-sessions-automatically).
+- Confirm which [channel](../concepts/channels.md) your chatbot uses — this determines which reset options are available to you.
+- Resets can be triggered [manually](#manual-reset-of-a-session) or [automatically](#reset-sessions-automatically).
 
 !!! note
 
@@ -27,11 +27,10 @@ This command is available on all channels except **Web Chat Widget** and **Slack
 
 ### Participant reset manually from the Web Chat Widget
 
-This allows participants to customize how the transition between sessions occurs.
-
 1. As a participant, view the chat widget on the web chat interface.
-2. Click the "End chat" button.
-3. Enter a chat message for the new session.
+2. Click the "New Chat" button.
+3. Confirm that you want to start a new chat.
+4. Continue chatting to start a fresh session.
 
 ### OCS User reset manually from the OCS Admin UI
 
