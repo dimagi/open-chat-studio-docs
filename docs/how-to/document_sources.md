@@ -93,7 +93,7 @@ Open the sync log for the failed run. Common causes:
 
 ### Sync shows "Completed with errors" status
 
-A single file that fails to process no longer stops the whole sync — the rest of the files still sync and are indexed normally. Open the sync log to see the failed-files count and the details for each failed file (for example, a file type OCS couldn't parse, or a page that couldn't be retrieved). Fix the underlying issue if possible, then trigger a new sync to retry those files.
+A single file that fails to process no longer stops the whole sync — the rest of the files still sync and are indexed normally. Open the sync log to see the failed-files count and the details for each failed file (for example, a corrupted or password-protected PDF, a file type OCS couldn't parse, or a page that couldn't be retrieved). Fix the underlying issue if possible, then trigger a new sync to retry those files.
 
 ### Pages are not updating after a sync
 

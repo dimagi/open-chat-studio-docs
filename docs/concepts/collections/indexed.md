@@ -69,6 +69,9 @@ Local indexes are hosted and managed by OCS. When you create a local index, you 
 - **Supported file types**: pdf, txt, csv, docx
 - **Supported embedding models**: You can see the list of embedding models for the LLM provider you have selected.
 
+!!! note "PDF text extraction"
+    OCS reads PDF files page by page, which gives more accurate results for documents with tables. If a PDF can't be opened — for example, if it's corrupted or password-protected — the file fails with a clear error instead of being indexed as unreadable text. For files that come from a document source, see [Monitoring Sync Status](../../how-to/document_sources.md#monitoring-sync-status) to check which files failed and why.
+
 ### Chunking and Optimization
 
 When you upload a document to a local index, OCS breaks it into smaller parts called **chunks** and stores them in the index. The default chunking settings work well for most use cases.
@@ -81,6 +84,9 @@ Instead of uploading files manually, you can connect OCS to an external document
 
 !!! note "Document-source updates reach published chatbots automatically"
     When a document-source sync runs and updates the collection's content, those changes are applied to your published chatbot without requiring a republish. See [Collections and published chatbots](./index.md#collections-and-published-chatbots) for more detail.
+
+!!! note "Re-syncing can change retrieval results slightly"
+    Re-syncing or re-uploading a file re-reads its text from scratch, so the resulting chunks may differ slightly from before — even if the file itself hasn't changed. This is expected and not harmful, but it means a sync isn't guaranteed to leave retrieval results exactly as they were.
 
 Currently supported sources: **Confluence** and **GitHub**.
 

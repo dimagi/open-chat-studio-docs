@@ -11,6 +11,10 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Aug 4, 2026
+* **CHANGE** PDF files in collections are now read with a new text extractor that is faster and more accurate, especially on documents with tables, and reads each page separately. A PDF that can't be opened (for example a corrupted or password-protected file) now fails with a clear error instead of being indexed as unreadable text. Because the extracted text differs slightly from before, re-syncing or re-uploading an existing file regenerates its chunks and embeddings even if the file itself hasn't changed. See [Indexed Collections](concepts/collections/indexed.md#indexing-options).
+* **BUG** Fixed the file list in a collection disappearing while a document source was syncing — it was replaced by the sync status on its own, which also stopped the file search box from working.
+
 ## Aug 3, 2026
 * **CHANGE** OAuth applications are now registered and managed from your team's admin page instead of your user profile, and every application belongs to a team. Team Admins can now manage their team's applications, and tokens issued for a team's application always act on that team. Applications that existed before this change are not assigned to a team and can only be managed by superusers — any existing client-credentials application needs a team assigned to it before it can issue usable tokens again. See [Getting started with OAuth2](api/getting_started_with_oauth.md).
 * **BUG** Fixed a JavaScript error on the evaluation dataset creation form that could occur if the page was still loading, which sometimes left the JSON editors uninitialized.
