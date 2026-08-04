@@ -82,9 +82,6 @@ Instead of uploading files manually, you can connect OCS to an external document
 !!! note "Document-source updates reach published chatbots automatically"
     When a document-source sync runs and updates the collection's content, those changes are applied to your published chatbot without requiring a republish. See [Collections and published chatbots](./index.md#collections-and-published-chatbots) for more detail.
 
-!!! note "Re-syncing can change retrieval results slightly"
-    Re-syncing or re-uploading a file re-reads its text from scratch, so the resulting chunks may differ slightly from before — even if the file itself hasn't changed. This is expected and not harmful, but it means a sync isn't guaranteed to leave retrieval results exactly as they were.
-
 Currently supported sources: **Confluence** and **GitHub**.
 
 For configuration steps, authentication setup, and how to monitor sync status, see [Set Up Document Sources](../../how-to/document_sources.md).
