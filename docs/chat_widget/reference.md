@@ -251,8 +251,11 @@ Enable users to send files along with their messages. This feature is perfect fo
 - Microsoft Excel: .xls, .xlsx
 
 #### Images:
-- Common formats: .jpg, .jpeg, .png, .gif, .bmp, .webp
-- Vector graphics: .svg
+- Supported formats: .jpg, .jpeg, .png, .gif, .webp
+- `.bmp` and `.svg` are **not** supported and are rejected at upload
+
+!!! note
+    Image support varies slightly by the chatbot's LLM provider. Most providers accept PNG, JPEG, GIF, and WEBP. Google Gemini models accept PNG, JPEG, WEBP, HEIC, and HEIF, but not GIF.
 
 #### Media:
 - Video files: .mp4, .mov, .avi
@@ -265,6 +268,8 @@ When attachments are sent to the LLM:
 - **PDFs and images** are sent directly to the LLM API as native file attachments (where supported by the model).
 - **Word (.doc, .docx) and Excel (.xls, .xlsx) documents** are automatically converted to plain text before being sent to the LLM.
 - **Text files and CSVs** are sent as plain text content.
+
+Files are validated on upload by their contents, not just their extension — if a file's contents don't match its extension (for example, SVG data renamed to `photo.jpg`), the upload is rejected. Attachments are never silently dropped: if an image reaches the LLM in a format that provider doesn't support, the whole message fails with a clear error naming the file and the formats that provider accepts, rather than a raw provider error.
 
 ### File Size Limits
 
