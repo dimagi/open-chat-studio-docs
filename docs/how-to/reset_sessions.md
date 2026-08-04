@@ -4,7 +4,7 @@ title: How to reset sessions
 
 # How to reset sessions
 
-Use this guide to end a current [session](../concepts/sessions.md) and start a new one. Resets can be done [manually](#user-initiated-manual-reset-of-a-session) or [automatically](#reset-sessions-automatically).
+Use this guide to end a current [session](../concepts/sessions.md) and start a new one. Resets can be done [manually](#manual-reset-of-a-session) or [automatically](#reset-sessions-automatically).
 
 ## Before you begin
 
@@ -16,9 +16,9 @@ Use this guide to end a current [session](../concepts/sessions.md) and start a n
 
     Resetting a session clears the conversation history — the bot will have no memory of previous exchanges. Participant data is not removed.
 
-## User-Initiated manual reset of a session
+## Manual reset of a session
 
-### Reset manually from chat channel
+### Participant reset manually from chat channel
 
 1. As a participant, view the conversation in the chatbot channel
 2. Send `/reset` (case-insensitive) as a text command
@@ -26,7 +26,7 @@ Use this guide to end a current [session](../concepts/sessions.md) and start a n
 
 This command is available on all channels except **Web Chat Widget** and **Slack**.
 
-### Reset manually from the web UI
+### Participant reset manually from the Web Chat Widget
 
 This allows participants to customize how the transition between sessions occurs.
 
@@ -35,12 +35,12 @@ This allows participants to customize how the transition between sessions occurs
 3. Choose whether to trigger [end conversation events](../concepts/events.md) or skip them
 4. Enter a chat message for the new session.
 
-If your chatbot has been configured with a seed message, this is pre-filled and then can be edited by the participant.
+### OCS User reset manually from the OCS Admin UI
 
-### Reset manually from the OCS Admin UI
+When viewing the session detail on the Chatbot Review page, an OCS user with permission to manage sessions has two options:
 
-When viewing the session detail, the "End Session" button ends the current session.
-- For more on ending sessions see [Session Status](../concepts/session_status.md#pending_review)
+- **End Session** — ends the current session. This does not start a new one.
+- **New Session** — ends the current session and starts a new one. This option is only available for non-Web channels.
 
 ## Reset sessions automatically
 
