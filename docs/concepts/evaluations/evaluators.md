@@ -30,6 +30,8 @@ Consider the conversation context: {context.topic}
 
     If your team runs evaluations with generation enabled, your team's total cost may be higher than you remember, since this spend is now captured. No chatbot, participant, or conversation becomes more expensive — the cost was simply not being recorded before.
 
+    The dashboard's Cost Tracking panel shows this split directly: its daily-spend chart plots chat spend and evaluation spend as separate series, so you can see how much of your total comes from evaluations. Filtering the panel by chatbot, participant, or platform switches the chart to chat spend only, for the same reason the totals above aren't attributed to a single entity — the panel's headline total is unaffected either way, since it always included evaluation spend.
+
 ### Template Variables
 
 The available variables depend on the evaluator's evaluation mode.
