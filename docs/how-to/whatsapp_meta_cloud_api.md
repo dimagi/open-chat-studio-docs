@@ -13,7 +13,7 @@ Setting up a WhatsApp channel via Meta Cloud API involves four main stages:
 
 ## Supported media types
 
-The Meta Cloud API integration supports sending and receiving media messages in addition to text. When a user sends an image or document to your WhatsApp number, OCS downloads it, links it to the conversation, and passes it to the LLM automatically — no extra configuration is required.
+The Meta Cloud API integration supports sending and receiving media messages in addition to text. When a participant sends an image or document to your WhatsApp number, OCS downloads it, links it to the conversation, and passes it to the LLM automatically — no extra configuration is required.
 
 The following media types are accepted:
 
@@ -155,7 +155,7 @@ Open Chat Studio validates the phone number against your WhatsApp Business Accou
 
 ### What is the 24-hour service window?
 
-WhatsApp restricts when businesses can send messages to users. Once a user sends a message to your business number, a **24-hour service window** opens. During that window, your chatbot can reply freely. After 24 hours of inactivity from the user, the window closes and the WhatsApp API rejects any outbound messages.
+WhatsApp restricts when businesses can send messages to participants. Once a participant sends a message to your business number, a **24-hour service window** opens. During that window, your chatbot can reply freely. After 24 hours of inactivity from the participant, the window closes and the WhatsApp API rejects any outbound messages.
 
 Without a fallback, a bot reply sent outside the service window is silently dropped. The out-of-service-window template message feature prevents this by automatically substituting a pre-approved WhatsApp message template when the window has expired.
 
@@ -302,7 +302,7 @@ This is almost always caused by the system user's access token not having permis
 
 ### The out-of-service-window template message is not being sent
 
-If the bot is not reaching users after the 24-hour service window expires:
+If the bot is not reaching participants after the 24-hour service window expires:
 
 - Confirm that the template named `ocs_out_of_service_window` exists in your Meta Business account under **WhatsApp Manager** > **Account tools** > **Message templates**.
 - Confirm the template status is **Approved**. Templates that are pending review or that have been rejected cannot be sent.

@@ -25,7 +25,7 @@ Channels differ in whether participants can send files to the chatbot and whethe
 |---|---|---|---|
 | Web / Chat widget | Yes | As download links | Uploads of up to 50 MB per file (50 MB total per message). Text files are always accepted, along with common document, image, audio and video formats. See the [widget file attachments reference][widget-files] for the full list. |
 | API | Yes | As attachment metadata | Same upload limits as the web channel. Files the chatbot produces are returned on the message as attachments with download links. |
-| Telegram | No | Yes | Outgoing: images up to 10 MB; audio, video and documents up to 50 MB. Photos and documents sent by users are not accepted. |
+| Telegram | No | Yes | Outgoing: images up to 10 MB; audio, video and documents up to 50 MB. Photos and documents sent by participants are not accepted. |
 | WhatsApp | Yes | Yes | Incoming: images and documents (a caption becomes the message text). Outgoing: images up to 5 MB, audio and video up to 16 MB, documents up to 100 MB. Applies to all providers (Twilio, Turn.io, Meta Cloud API). |
 | Facebook Messenger | No | As download links | No files in either direction; text and voice messages only. |
 | Slack | No | Yes | Outgoing: images, audio, video and documents up to 50 MB. |

@@ -90,7 +90,7 @@ For step-by-step guidance, see [Adjust LLM Node Model Parameters](../how-to/adju
 3. Confirm the reply reflects your prompt and model choice. Tweak the prompt and re-test until the responses look right.
 
 !!! tip
-    When you're happy with the behaviour, [create a version](versioning_steps.md) so users keep a stable experience while you continue editing.
+    When you're happy with the behaviour, [create a version](versioning_steps.md) so participants keep a stable experience while you continue editing.
 
 ## Next steps
 

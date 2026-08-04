@@ -1,4 +1,4 @@
-Prompt variables are a great way to make your prompt dynamic or tailored to the participant by injecting data into specified placeholders. These variables are predefined and look like this:
+Prompt variables are a great way to make your prompt dynamic or tailored to the [participant](./participant_data.md) by injecting data into specified placeholders. These variables are predefined and look like this:
 
 ```text
 {variable}

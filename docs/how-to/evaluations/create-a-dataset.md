@@ -26,7 +26,7 @@ This guide walks you through each method for populating an evaluation dataset. B
 
 ### Clone from Sessions
 
-Cloning turns real past conversations into dataset rows automatically. Use this method when you want to evaluate chatbot behavior against actual user interactions.
+Cloning turns real past conversations into dataset rows automatically. Use this method when you want to evaluate chatbot behavior against actual participant interactions.
 
 Rows created by cloning keep a link back to their original session in OCS. This link lets you navigate directly from a dataset row to the original conversation when reviewing evaluation output. It also makes those sessions eligible for import into an annotation queue for human review. Rows added by manual entry or CSV upload do not have a session link and are not eligible for annotation queue import.
 

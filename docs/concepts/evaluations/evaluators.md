@@ -77,7 +77,7 @@ The system automatically validates the LLM's output against the specified types 
 |-------------|------|-------------|
 | expected_helpfulness | integer | The helpfulness, on a scale of 1-5, of the expected assistant message |
 | actual_helpfulness | integer | The helpfulness, on a scale of 1-5, of the actual assistant message |
-| user_sentiment | choice | The sentiment of the user message (options: positive, neutral, negative) |
+| user_sentiment | choice | The sentiment of the participant message (options: positive, neutral, negative) |
 | confidence_score | float | Confidence in the evaluation, from 0.0 to 1.0 |
 
 See [Tag Rules](./tag_rules.md) to automatically tag sessions or messages based on these output values.
@@ -90,7 +90,7 @@ See [Python Evaluator](../../tech-hub/evaluations/python_evaluator.md) for the f
 
 ## Clearing Run History
 
-The evaluation runs page includes a **Clear all** button that deletes the entire run history for an evaluation config in a single action. This button is only shown to users who have delete permission for evaluation runs.
+The evaluation runs page includes a **Clear all** button that deletes the entire run history for an evaluation config in a single action. This button is only shown to OCS users who have delete permission for evaluation runs.
 
 Clearing run history also removes the tags that those runs applied to their targets. Only tags that were applied by the evaluator's tag rules are removed — tags that a person added by hand are left untouched.
 
