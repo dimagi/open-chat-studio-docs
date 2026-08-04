@@ -69,9 +69,6 @@ Local indexes are hosted and managed by OCS. When you create a local index, you 
 - **Supported file types**: pdf, txt, csv, docx
 - **Supported embedding models**: You can see the list of embedding models for the LLM provider you have selected.
 
-!!! note "PDF text extraction"
-    OCS reads PDF files page by page, which gives more accurate results for documents with tables. If a PDF can't be opened — for example, if it's corrupted or password-protected — the file fails with a clear error instead of being indexed as unreadable text. For files that come from a document source, see [Monitoring Sync Status](../../how-to/document_sources.md#monitoring-sync-status) to check which files failed and why.
-
 ### Chunking and Optimization
 
 When you upload a document to a local index, OCS breaks it into smaller parts called **chunks** and stores them in the index. The default chunking settings work well for most use cases.
