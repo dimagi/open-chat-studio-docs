@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Aug 5, 2026
+* **BUG** Fixed an empty participant message breaking the rest of a conversation. Previously, a blank message (such as an empty Connect message or a silent voice transcript) was answered normally but then caused every following message in that session to fail. New empty messages are handled correctly, and sessions already affected recover on their own.
+
 ## Aug 4, 2026
 * **CHANGE** PDF files in collections are now read with a new text extractor that is faster and more accurate, especially on documents with tables, and reads each page separately. A PDF that can't be opened (for example a corrupted or password-protected file) now fails with a clear error instead of being indexed as unreadable text. Because the extracted text differs slightly from before, re-syncing or re-uploading an existing file regenerates its chunks and embeddings even if the file itself hasn't changed. See [Indexed Collections](concepts/collections/indexed.md#indexing-options).
 * **BUG** Fixed teams being notified more than once about the same deprecated model. Previously, deprecating a new model re-announced every model deprecated before it, so earlier notices flipped back to unread and a second email went out. Each team is now told about a given model once. See [Model Lifecycle and Deprecation](concepts/team/llm_providers.md#model-lifecycle-and-deprecation).
