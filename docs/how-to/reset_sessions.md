@@ -37,7 +37,7 @@ This command is available on all channels except **Web Chat Widget** and **Slack
 3. Confirm that you want to start a new chat.
 4. Continue chatting to start a fresh session.
 
-### OCS User reset manually from the OCS Admin UI
+### OCS user reset manually from the OCS Admin UI
 
 When viewing the session detail on the Chatbot Review page, an OCS user with permission to manage sessions has two options:
 
@@ -46,7 +46,7 @@ When viewing the session detail on the Chatbot Review page, an OCS user with per
 
 ## Reset sessions automatically
 
-For details on how to end sessions from a chatbot see [Session Status](../concepts/session_status.md#ending-sessions-from-a-chatbot)
+For details on how to end sessions from a chatbot see [Ending Sessions from a Chatbot](../tech-hub/ending_sessions.md)
 
 ### Reset automatically via API
 
