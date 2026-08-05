@@ -18,6 +18,7 @@ Each session is independent and isolated, meaning:
 - When a participant interacts with a chatbot, the chatbot receives the session's history to maintain context.
 - **Multi-Session Channels**: Channels such as **Web**, **API**, and **Slack** allow multiple active sessions per participant, enabling parallel conversations.
 - **Single-Session Channels**: Platforms like **WhatsApp**, **Telegram**, and **SureAdhere** support only one active session per participant at a time.
+- **Status**: Every session has a status that tracks where the participant is in their chat journey. See [Session Status](session_status.md).
 
 ## History Management
 
@@ -43,6 +44,6 @@ On the **Web** channel, participants can have **anonymous sessions**, where:
 
 For **Single-Session Channels** like **WhatsApp** and **Telegram**, the current session continues until it is explicitly ended.
 
-However, sessions can be reset either [manually](../how-to/reset_sessions.md#manual-reset-of-a-session) by the participant or [automatically](../how-to/reset_sessions.md#reset-sessions-automatically).
+Sessions can be reset either [manually](../how-to/reset_sessions.md#manual-reset-of-a-session) by the participant or [automatically](../how-to/reset_sessions.md#reset-sessions-automatically).
 
 For task-focused setup instructions, see [How to reset sessions](../how-to/reset_sessions.md).

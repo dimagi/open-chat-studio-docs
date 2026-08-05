@@ -71,11 +71,11 @@ A session moves to `PENDING_REVIEW` whenever the conversation ends. This can hap
 - Clicks **End chat** on the web chat page.
 - Sends `/reset` on a messaging channel (also surfaced as "Restart chat" on Telegram).
 
-**Chatbot-driven actions** (see [Ending sessions from a chatbot](../tech-hub/ending_sessions.md)):
+**Chatbot-driven actions** — the chatbot itself ends the session, using one of three methods described in [Ending sessions from a chatbot](../tech-hub/ending_sessions.md):
 
-- An LLM tool call ends the session.
-- A Python pipeline node calls `end_session()`.
-- An [event](events.md) with an **End the conversation** action fires.
+- The LLM calls the [End Session tool](../tech-hub/ending_sessions.md#the-end-session-tool).
+- A Python pipeline node calls [`end_session()`](../tech-hub/ending_sessions.md#the-end_session-helper-in-a-python-node).
+- An [event](events.md) fires with an [End the conversation action](../tech-hub/ending_sessions.md#events-with-an-end-the-conversation-action).
 
 **Team member actions:**
 
@@ -93,12 +93,6 @@ There is exactly one path to `COMPLETE`: the participant is redirected to the re
 ### UNKNOWN
 
 No deliberate action places a session in `UNKNOWN`. It exists as a defensive fallback. If you see sessions landing here, this indicates an unexpected state — worth investigating rather than ignoring.
-
-## Ending sessions from a chatbot programatically
-
-There are three ways to end a session programmatically from within your chatbot: an LLM node can be given the **End Session** tool, a Python pipeline node can call the `end_session()` helper, or an [event](events.md) can be configured with an **End the conversation** action. All three behave identically once triggered — the session moves to `PENDING_REVIEW`, the end time is recorded, and any configured conversation-end events fire.
-
-For configuration details on each option, see [Ending sessions from a chatbot](../tech-hub/ending_sessions.md).
 
 ## Observing how a session ended
 
