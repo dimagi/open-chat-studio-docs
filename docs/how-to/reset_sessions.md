@@ -4,16 +4,21 @@ title: How to reset sessions
 
 # How to reset sessions
 
-This guide explains how to end a current [session](../concepts/sessions.md) and start a new one.
+This guide explains how to end a current chatbot [session](../concepts/sessions.md) and start a new one.
 
-## Before you begin
+When a session is reset:
 
-- Confirm which [channel](../concepts/channels.md) your chatbot uses — this determines which reset options are available to you.
-- Resets can be triggered [manually](#manual-reset-of-a-session) or [automatically](#reset-sessions-automatically).
+- The current session is marked as completed.
+- A new session is started with a fresh history.
 
 !!! note
 
-    Resetting a session clears the conversation history — the bot will have no memory of previous exchanges. Participant data is not removed.
+    Resetting a session clears the conversation history — the chatbot will have no memory of previous exchanges. [participant data](../concepts/participant_data.md) is not removed.
+
+## Before you begin
+
+- Confirm which [channel](../concepts/channels.md) your chatbot uses — this determines which reset options are available.
+- Resets can be triggered [manually](#manual-reset-of-a-session) or [automatically](#reset-sessions-automatically).
 
 ## Manual reset of a session
 

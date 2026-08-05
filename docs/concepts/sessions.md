@@ -12,7 +12,7 @@ A session is uniquely defined by:
 - **Channel**: The platform through which the chat occurs (e.g., WhatsApp, Telegram, Web, Slack). See [channels](channels.md).
 - **Chatbot**: The specific chatbot handling the conversation.
 
-Each session is independent, meaning:
+Each session is independent and isolated, meaning:
 
 - The session's data is bound to that session only and is not shared with other sessions.
 - When a participant interacts with a chatbot, the chatbot receives the session's history to maintain context.
@@ -44,12 +44,5 @@ On the **Web** channel, participants can have **anonymous sessions**, where:
 For **Single-Session Channels** like **WhatsApp** and **Telegram**, the current session continues until it is explicitly ended.
 
 However, sessions can be reset either [manually](../how-to/reset_sessions.md#manual-reset-of-a-session) by the participant or [automatically](../how-to/reset_sessions.md#reset-sessions-automatically).
-
-When a session is reset:
-
-- The current session is marked as completed.
-- A new session is started with a fresh history.
-
-This means that, aside from participant data, the chatbot loses all information about the previous conversation — including the fact that it even took place.
 
 For task-focused setup instructions, see [How to reset sessions](../how-to/reset_sessions.md).
