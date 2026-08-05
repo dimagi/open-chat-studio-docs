@@ -77,7 +77,7 @@ The system automatically validates the LLM's output against the specified types 
 |-------------|------|-------------|
 | expected_helpfulness | integer | The helpfulness, on a scale of 1-5, of the expected assistant message |
 | actual_helpfulness | integer | The helpfulness, on a scale of 1-5, of the actual assistant message |
-| user_sentiment | choice | The sentiment of the participant message (options: positive, neutral, negative) |
+| user_sentiment | choice | The sentiment of the user message (options: positive, neutral, negative) |
 | confidence_score | float | Confidence in the evaluation, from 0.0 to 1.0 |
 
 See [Tag Rules](./tag_rules.md) to automatically tag sessions or messages based on these output values.
