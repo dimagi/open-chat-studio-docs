@@ -1,9 +1,5 @@
 # Router Nodes
 
-!!! note Examples
-
-    See [chatbot workflow cookbook](../../how-to/workflow_cookbook.md) for examples of complex pipelines using Routers.
-
 ## Routers
 
 Router nodes are decision points in your pipeline. Instead of following one fixed path, a pipeline with a router can choose different paths based on what the participant says or what your system already knows about the participant.
@@ -37,6 +33,8 @@ The LLM Router uses an AI model to read the incoming message and classify its in
 !!! tip "For configuration steps"
 
     See [Router Nodes in How-to Guides](../../how-to/routers/index.md) for configuration details and best practices.
+
+See a working example in the [Chatbot Workflow Cookbook](../../how-to/workflow_cookbook.md#split-a-chatbot-into-multiple-smaller-chatbots), where an LLM Router classifies input into `GENERAL`, `ROLEPLAY`, and `QUIZ` paths.
 
 ### Static Router Node
 The Static Router does not use an AI model and does not read the participant's message. Instead, it looks up a specific value stored in your [data source](../../how-to/routers/static_router.md#supported-data-sources).

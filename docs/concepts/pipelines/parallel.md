@@ -27,6 +27,8 @@ flowchart LR
     PythonNode
 ```
 
+See this pattern used in the Workflow Cookbook: [Safety check in parallel](../../how-to/workflow_cookbook.md#safety-check-in-parallel), where an unconnected **safe** output lets compliant messages pass through unchanged.
+
 ## Multiple outputs
 Connecting multiple outputs from one node (e.g. a router node) to the output of another node is allowed. If more than one of the outputs from the node have a value, the first one will be passed to the next node as input.
 
@@ -48,6 +50,8 @@ flowchart LR
     Router -.outputB.-> LLM
     LLM --> out([Output])
 ```
+
+See this pattern used in the Workflow Cookbook: [Router for classification](../../how-to/workflow_cookbook.md#router-for-classification), where multiple category outputs feed into the same Python node.
 
 ## Uneven branches
 
