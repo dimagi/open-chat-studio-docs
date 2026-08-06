@@ -13,7 +13,7 @@ When a session is reset:
 
 !!! note
 
-    Resetting a session clears the conversation history — the chatbot will have no memory of previous exchanges. [participant data](../concepts/participant_data.md) is not removed.
+    Resetting a session clears the conversation history — the chatbot will have no memory of previous exchanges. [Participant data](../concepts/participant_data.md) is not removed.
 
 ## Before you begin
 
@@ -22,17 +22,17 @@ When a session is reset:
 
 ## Manual reset of a session
 
-### Participant reset manually from chatbot channel
+### Participant reset manually from messaging channel
 
-1. As a participant, view the conversation in the chatbot channel
-2. Send `/reset` (case-insensitive) as a text command
+1. As a participant, view the conversation in the messaging channel.
+2. Send `/reset` (case-insensitive) as a text command.
 3. Continue chatting to start a fresh session.
 
 This command is available on all channels except **Web** and **Slack**.
 
-### Participant reset manually from the Web Chat
+### Participant reset manually from the web chat page
 
-1. As a participant viewing the OCS's own hosted web chat page
+1. As a participant, view the OCS's web chat page.
 2. Click the "End chat and give feedback" button.
 3. Confirm that you want to end the chat.
 4. Continue chatting to start a fresh session.
