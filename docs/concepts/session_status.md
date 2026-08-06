@@ -77,7 +77,7 @@ A session moves to `PENDING_REVIEW` whenever the conversation ends. This can hap
 - A Python pipeline node calls [`end_session()`](../tech-hub/ending_sessions.md#the-end_session-helper-in-a-python-node).
 - An [event](events.md) fires with an [End the conversation action](../tech-hub/ending_sessions.md#events-with-an-end-the-conversation-action).
 
-**Team member actions:**
+**OCS User actions:**
 
 - Clicks **End Session** button on a Chatbot Review session detail page in the OCS admin.
 - Clicks **New Session** button on a messaging channel session (ie non-web channels), which ends the old session as a side effect.
@@ -104,7 +104,7 @@ Regardless of what ends a session — participant, chatbot, admin, API caller, o
 | The Conversation is Ended by the Bot | The chatbot ends the chat (End Session tool or `end_session()`). |
 | The Conversation is Ended via the API | An API caller ends the session. |
 | The Conversation is Ended by an Event | An "End the conversation" event action ended the session. |
-| The Conversation is Manually Ended by an Admin | A team member ended the session via the OCS admin. |
+| The Conversation is Manually Ended by a User | A team member ended the session via the OCS admin. |
 
 The generic **Conversation End** trigger fires for all of the above. Use it when you want to take the same action regardless of how the session ended. See [Events](events.md) for more detail.
 

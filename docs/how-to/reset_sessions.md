@@ -22,7 +22,7 @@ When a session is reset:
 
 ## Manual reset of a session
 
-### Participant reset manually from chat channel
+### Participant reset manually from chatbot channel
 
 1. As a participant, view the conversation in the chatbot channel
 2. Send `/reset` (case-insensitive) as a text command
@@ -34,10 +34,10 @@ This command is available on all channels except **Web** and **Slack**.
 
 1. As a participant viewing the OCS's own hosted web chat page
 2. Click the "End chat and give feedback" button.
-3. Confirm that you want to start a new chat.
+3. Confirm that you want to end the chat.
 4. Continue chatting to start a fresh session.
 
-### OCS user reset manually from the OCS Admin UI
+### User reset manually from the OCS Admin UI
 
 When viewing the session detail on the Chatbot Review page, an OCS user with permission to manage sessions has two options:
 

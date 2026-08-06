@@ -46,4 +46,4 @@ For **Single-Session Channels** like **WhatsApp** and **Telegram**, the current 
 
 Sessions can be reset either [manually](../how-to/reset_sessions.md#manual-reset-of-a-session) by the participant or [automatically](../how-to/reset_sessions.md#reset-sessions-automatically).
 
-For task-focused setup instructions, see [How to reset sessions](../how-to/reset_sessions.md).
+For task-focused details, see [How to reset sessions](../how-to/reset_sessions.md).
