@@ -13,11 +13,11 @@ title: Large Language Model
 
 <small>The definition above was authored by the famous LLM that powers ChatGPT: GPT-4 developed by OpenAI.</small>
 
-When building chatbots, an LLM powers the chatbot's ability to understand and respond to user inputs, effectively acting as the brain behind the chatbot.
+When building chatbots, an LLM powers the chatbot's ability to understand and respond to participant inputs, effectively acting as the brain behind the chatbot.
 
 ## Prompt
 
-A prompt is the input or instructions given to the LLM to guide its response. It sets the context for the chatbot. Prompts can be as simple as a user question or as detailed as a conversation framework or role-play setup.
+A prompt is the input or instructions given to the LLM to guide its response. It sets the context for the chatbot. Prompts can be as simple as a single question or as detailed as a conversation framework or role-play setup.
 
 **Example:** "You are a helpful assistant. Answer questions clearly and concisely."
 

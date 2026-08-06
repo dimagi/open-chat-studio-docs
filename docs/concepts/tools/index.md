@@ -18,7 +18,7 @@ Each tool name below links to its full argument details in the [Tools Reference]
 
 Tools in Open Chat Studio fall into two categories:
 
-- **[User-configurable tools](#user-configurable-tools)** — tools you enable on each chatbot
+- **[User-configurable tools](#user-configurable-tools)** — tools you as an OCS user enable on each chatbot
 - **[LLM provider tools](#llm-provider-tools)** — tools provided by AI models that are available for OCS chatbots to use
 
 ## User-configurable tools

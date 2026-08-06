@@ -24,12 +24,16 @@ If a model you need isn't pre-configured, see [Add a Custom LLM Model](../../how
 
 LLM providers regularly update their model offerings. This means models available in Open Chat Studio may occasionally be deprecated or removed.
 
-- **Deprecation**: When a model you are using is deprecated, you will receive an in-app notification recommending that you switch to a replacement model. Your chatbots and pipelines continue to work during this period, but you should update your chatbot configuration at your earliest convenience.
+- **Deprecation**: When a model you are using is deprecated, you will receive an in-app notification recommending that you switch to a replacement model. Your team receives this notification only once per deprecated model, not on every subsequent release. Your chatbots and pipelines continue to work during this period, but you should update your chatbot configuration at your earliest convenience.
 - **Removal**: When a model is fully removed from the platform, Open Chat Studio updates your chatbots and pipelines automatically. If a clear replacement model exists, it switches the chatbots to that model; otherwise, it clears the reference to the removed model. Either way, you'll receive an in-app notification confirming what changed.
 
 !!! note
 
     No manual action is required when a model is removed — the platform handles the transition for you.
+
+!!! note "The affected chatbots list is a snapshot"
+
+    A deprecation notice lists the chatbots that were using the model at the time it was sent. If you point additional chatbots at the same deprecated model afterwards, they won't be added to that earlier notice.
 
 ## See also
 

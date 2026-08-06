@@ -25,9 +25,9 @@ Here's the simplest possible chatbot pipeline — it has just **one node**:
 
 In this simple pipeline:
 
-1. A user sends a message
+1. A participant sends a message
 2. The [LLM node](nodes.md#llm-node) receives the message and uses AI to generate a response
-3. The response is sent back to the user
+3. The response is sent back to the participant
 
 This is the complete conversation flow for a single-node chatbot.
 
@@ -50,7 +50,7 @@ Common node types include:
 
  - **[LLM Node](nodes.md#llm-node)** — Processes messages using an AI model. Handles natural conversations, answering questions, and generating responses.
 
- - **[Routing Nodes](nodes.md#routing-nodes)** — Makes decisions about which path the conversation should take based on the message content. Useful for directing different types of questions to different handling logic, or routing based on user intent.
+ - **[Routing Nodes](nodes.md#routing-nodes)** — Makes decisions about which path the conversation should take based on the message content. Useful for directing different types of questions to different handling logic, or routing based on participant intent.
 
  - **[Python Node](nodes.md#python-node)** — Runs custom code to handle complex logic, fetch data from external systems, process attachments, or manipulate participant data.
 
@@ -60,7 +60,7 @@ Common node types include:
 
  - **[Extract Structured Data Node](nodes.md#extract-structured-data-node)** — Pulls specific information from conversations and structures it for downstream processing.
 
- - **[Update Participant Data Node](nodes.md#update-participant-data-node)** — Saves information about the user for later use in the conversation.
+ - **[Update Participant Data Node](nodes.md#update-participant-data-node)** — Saves information about the participant for later use in the conversation.
 
 For worked examples combining these node types, see the [Workflow Cookbook](../../how-to/workflow_cookbook.md).
 
@@ -68,11 +68,11 @@ For worked examples combining these node types, see the [Workflow Cookbook](../.
 
 Open Chat Studio (OCS) executes your pipeline in organized steps, running nodes in parallel when possible.
 
-When a user sends a message, OCS processes the pipeline in repeating passes:
+When a participant sends a message, OCS processes the pipeline in repeating passes:
 
 **Plan** → **Execute** → **Update** → Repeat
 
-1. **Plan**: Identify which nodes are ready to run. On the first pass, this is the node(s) directly connected to the user's input. On later passes, any node whose dependencies have been satisfied is ready.
+1. **Plan**: Identify which nodes are ready to run. On the first pass, this is the node(s) directly connected to the participant's input. On later passes, any node whose dependencies have been satisfied is ready.
 
 2. **Execute**: Run all ready nodes in parallel. Each node processes independently — it cannot see the results of other nodes running in the same pass.
 

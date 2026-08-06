@@ -1,7 +1,7 @@
 # Messaging Providers
 
 Messaging providers offer access to communication channels such as WhatsApp, Facebook Messenger, Slack, and more.
-Configuring a messaging provider lets you use the channel for your chatbot, so users can interact with it there.
+Configuring a messaging provider lets you use the channel for your chatbot, so participants can interact with it there.
 
 ## Supported providers
 

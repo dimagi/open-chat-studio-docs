@@ -1,6 +1,6 @@
 # Participant Data
 
-Participant data is custom information you store against a participant to personalize their experience. You can use it to remember preferences, track progress, or pass context into your chatbot's prompts.
+Participant data is custom information you store against a participant — the person chatting with a deployed chatbot — to personalize their experience. You can use it to remember preferences, track progress, or pass context into your chatbot's prompts.
 
 Each participant record is tied to a specific [channel](./channels.md) (such as WhatsApp or the web) and a specific chatbot. The same person using two different channels, or two different chatbots, will have separate participant records for each. OCS does not automatically merge these records.
 
