@@ -8,7 +8,7 @@ Chat sessions in Open Chat Studio define the scope of conversations between a pa
 
 A session is uniquely defined by:
 
-- **Participant**: The individual engaging with the chatbot. See [Participant Data](participant_data.md).
+- **Participant**: The individual engaging with the chatbot.
 - **Channel**: The platform through which the chat occurs (e.g., WhatsApp, Telegram, Web, Slack). See [channels](channels.md).
 - **Chatbot**: The specific chatbot handling the conversation.
 
@@ -18,6 +18,8 @@ Each session is independent, meaning:
 - When a participant interacts with a chatbot, the chatbot receives the session's history to maintain context.
 - **Multi-Session Channels**: Channels such as **Web**, **API**, and **Slack** allow multiple active sessions per participant, enabling parallel conversations.
 - **Single-Session Channels**: Platforms like **WhatsApp**, **Telegram**, and **SureAdhere** support only one active session per participant at a time.
+
+Every session has a status that tracks where the participant is in their chat journey. See [Session Status](session_status.md).
 
 ## History Management
 
@@ -43,13 +45,6 @@ On the **Web** channel, participants can have **anonymous sessions**, where:
 
 For **Single-Session Channels** like **WhatsApp** and **Telegram**, the current session continues until it is explicitly ended.
 
-However, sessions can be reset either [manually](../how-to/reset_sessions.md#user-initiated-manual-reset-of-a-session) by the participant or [automatically](../how-to/reset_sessions.md#reset-sessions-automatically).
+Sessions can be reset either [manually](../how-to/reset_sessions.md#manual-reset-of-a-session) by the participant or [automatically](../how-to/reset_sessions.md#reset-sessions-automatically).
 
-When a session is reset:
-
-- The current session is marked as completed.
-- A new session is started with a fresh history.
-
-This means that, aside from participant data, the chatbot loses all information about the previous conversation — including the fact that it even took place.
-
-For task-focused setup instructions, see [How to reset sessions](../how-to/reset_sessions.md).
+For task-focused details, see [How to reset sessions](../how-to/reset_sessions.md).

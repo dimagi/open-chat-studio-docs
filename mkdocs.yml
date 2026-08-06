@@ -186,6 +186,7 @@ nav:
     - tech-hub/index.md
     - Local Index Optimization: tech-hub/local-index-optimization.md
     - Tools Reference: tech-hub/tools.md
+    - Ending Sessions from a Chatbot: tech-hub/ending_sessions.md
     - Python Node: tech-hub/python_node.md
     - Render a Template and Send an Email Nodes: tech-hub/template_and_email_nodes.md
     - Call External APIs:
