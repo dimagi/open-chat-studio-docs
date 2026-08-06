@@ -68,7 +68,7 @@ A session moves to `PENDING_REVIEW` whenever the conversation ends. This can hap
 
 **Participant actions:**
 
-- Clicks **End chat** on the web chat page.
+- Clicks **End chat and give feedback** on the OCS hosted web chat page.
 - Sends `/reset` on a messaging channel (also surfaced as "Restart chat" on Telegram).
 
 **Chatbot-driven actions** — the chatbot itself ends the session, using one of three methods described in [Ending sessions from a chatbot](../tech-hub/ending_sessions.md):
@@ -79,8 +79,8 @@ A session moves to `PENDING_REVIEW` whenever the conversation ends. This can hap
 
 **Team member actions:**
 
-- Clicks **End Session** on a Chatbot Review session detail page in the OCS admin.
-- Clicks **New Session** on a messaging channel session, which ends the old session as a side effect.
+- Clicks **End Session** button on a Chatbot Review session detail page in the OCS admin.
+- Clicks **New Session** button on a messaging channel session (ie non-web channels), which ends the old session as a side effect.
 
 **API:**
 
@@ -100,7 +100,7 @@ Regardless of what ends a session — participant, chatbot, admin, API caller, o
 
 | Trigger type | Fires when |
 |--------------|------------|
-| The Conversation is Ended by the Participant | The participant ends the chat (web "End chat" or `/reset`). |
+| The Conversation is Ended by the Participant | The participant ends the chat (web "End chat and give feedback" or `/reset`). |
 | The Conversation is Ended by the Bot | The chatbot ends the chat (End Session tool or `end_session()`). |
 | The Conversation is Ended via the API | An API caller ends the session. |
 | The Conversation is Ended by an Event | An "End the conversation" event action ended the session. |

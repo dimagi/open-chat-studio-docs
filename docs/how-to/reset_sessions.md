@@ -28,12 +28,12 @@ When a session is reset:
 2. Send `/reset` (case-insensitive) as a text command
 3. Continue chatting to start a fresh session.
 
-This command is available on all channels except **Web Chat Widget** and **Slack**.
+This command is available on all channels except **Web** and **Slack**.
 
-### Participant reset manually from the Web Chat Widget
+### Participant reset manually from the Web Chat
 
-1. As a participant, view the chat widget on the web chat interface.
-2. Click the "New Chat" button.
+1. As a participant viewing the OCS's own hosted web chat page
+2. Click the "End chat and give feedback" button.
 3. Confirm that you want to start a new chat.
 4. Continue chatting to start a fresh session.
 
