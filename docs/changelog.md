@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Aug 7, 2026
+* **BUG** Fixed the **End Session** tool failing on chatbots that use a Gemini model. The chat returned an error as soon as the tool was enabled, because Gemini rejected the tool definition Open Chat Studio sent. See [Ending Sessions from a Chatbot](tech-hub/ending_sessions.md).
+
 ## Aug 5, 2026
 * **BUG** Fixed an empty participant message breaking the rest of a conversation. Previously, a blank message (such as an empty Connect message or a silent voice transcript) was answered normally but then caused every following message in that session to fail. New empty messages are handled correctly, and sessions already affected recover on their own.
 
