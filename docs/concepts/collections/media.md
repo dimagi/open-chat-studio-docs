@@ -2,7 +2,7 @@
 title: Media collections
 ---
 
-# Media collections
+# Media Collections
 
 ## When should I use this?
 When you want your chatbot to be able to send multimedia files to participants.
