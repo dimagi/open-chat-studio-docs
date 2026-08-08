@@ -1,5 +1,3 @@
-# Add a Knowledge Base
-
 Adding knowledge to your bot depends on the type of bot you are building.
 
 ## Base LLM and Pipeline

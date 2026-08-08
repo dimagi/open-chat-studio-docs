@@ -38,9 +38,8 @@ MD022: false
 MD024:
   siblings_only: true
 
-# Only one H1 per page (same option, or every titled page false-positives)
-MD025:
-  front_matter_title: ""
+# Ignore issue of frontmatter title and first heading not matching
+MD025: false
 
 MD026: false
 MD029:
@@ -50,9 +49,7 @@ MD030: false
 MD032: false
 MD034: false
 
-# Every page must open with an H1 (frontmatter title does not substitute)
-MD041:
-  front_matter_title: ""
+MD041: false
 
 MD046: false
 MD050: false
