@@ -1,3 +1,5 @@
+# Open Chat Studio Documentation
+
 [![OCS Logo](docs/assets/logo.png)](https://github.com/dimagi/open-chat-studio)
 
 This repository contains the user documentation for [Open Chat Studio](https://github.com/dimagi/open-chat-studio).
