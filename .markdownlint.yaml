@@ -29,27 +29,31 @@ MD033:
 # List markers can be either - or *
 MD004: false
 
-# Ingore unorded list indentation check
+# Ignore unordered list indentation check
 MD007: false
 
-# Ignore need for blank lines around headings, lists, and code blocks
+# Ignore need for blank lines around headings
 MD022: false
 
 MD024:
   siblings_only: true
 
-# Ignore issue of frontmatter title and first heading not matching
-MD025: false
+# Only one H1 per page (frontmatter title doesn't count, so a real H1 isn't a duplicate)
+MD025:
+  front_matter_title: ""
 
 MD026: false
 MD029:
   style: one_or_ordered
 MD030: false
 
+# Ignore need for blank lines around lists
 MD032: false
 MD034: false
 
-MD041: false
+# Every page must open with an H1 (frontmatter title does not substitute)
+MD041:
+  front_matter_title: ""
 
 MD046: false
 MD050: false
