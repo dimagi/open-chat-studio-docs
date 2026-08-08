@@ -187,7 +187,7 @@ When enabled:
 ```
 
 !!! tip "Tell users why"
-    Pair `disabled` with a [banner](#banner) so users understand why they can't send messages, for example to display your support hours or an outage notice.
+    Pair `disabled` with a [banner](#banner) so users understand why they can't send messages, for example to display your support hours or an outage notice. <!-- markdownlint-disable-line MD051 -->
 
 ## :material-bullhorn: Banner
 
@@ -196,7 +196,7 @@ Display an always-visible notice above the chat history to communicate informati
 - Announcing maintenance windows or outages
 - Sharing business hours or expected response times
 - Displaying compliance, legal, or privacy notices
-- Explaining why the chat is in [read-only mode](#read-only-mode)
+- Explaining why the chat is in [read-only mode](#read-only-mode) <!-- markdownlint-disable-line MD051 -->
 
 Set `banner-message` to show the banner. Use `banner-style` to match the tone of the notice, and `banner-position` to control where it appears.
 
@@ -577,6 +577,11 @@ widget.addEventListener('ocs:message:received', (e) => {
 | `user-id` | `string` | Optional | Auto-generated | Alphanumeric + underscore/dash | Unique user identifier for session continuity<br/>**Auto-format:** `ocs:1703123456789_a7x9k2m8f` | `"user_12345"` or `"customer@email.com"` |
 | `user-name` | `string` | Optional | `undefined` | Max 200 chars | Display name sent to chat API for personalization | `"John Smith"` or `"Customer #12345"` |
 
+<!-- The #read-only-mode and #banner anchors below are valid at build time.
+     markdownlint cannot resolve them because the target headings contain
+     :material-*: emoji shortcodes, which MkDocs strips when slugifying. -->
+<!-- markdownlint-disable MD051 -->
+
 ### Chat Behavior & Sessions
 
 | Property | Type | Required | Default | Validation | Description | Example |
@@ -595,6 +600,8 @@ widget.addEventListener('ocs:message:received', (e) => {
 | `banner-message` | `string` | Optional | `undefined` | - | Notice text shown in an always-visible [banner](#banner). The banner only displays when this is set | `"We're currently offline."` |
 | `banner-style` | `string` | Optional | `"default"` | `"default"` \| `"info"` \| `"warning"` \| `"error"` | Visual style of the banner | `"warning"` for a cautionary notice |
 | `banner-position` | `string` | Optional | `"top"` | `"top"` \| `"bottom"` | Where the banner appears. The bottom position sits directly above the input area | `"bottom"` to anchor above the composer |
+
+<!-- markdownlint-enable MD051 -->
 
 ### Messages & Content
 
