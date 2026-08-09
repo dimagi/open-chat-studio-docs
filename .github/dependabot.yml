@@ -12,3 +12,8 @@ updates:
     schedule:
       interval: "monthly"
       day: "tuesday"
+
+  - package-ecosystem: "pre-commit"
+    directory: "/"
+    schedule:
+      interval: "monthly"
