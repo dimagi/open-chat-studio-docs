@@ -11,7 +11,7 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "monthly"
+      interval: "weekly"
       day: "tuesday"
     cooldown:
       default-days: 7
@@ -20,7 +20,7 @@ updates:
     directory: "/"
     open-pull-requests-limit: 5
     schedule:
-      interval: "monthly"
+      interval: "weekly"
       day: "tuesday"
     # Only touch pyproject.toml when the new version falls outside the declared
     # constraint (e.g. pinned or capped deps). Otherwise update uv.lock alone,
