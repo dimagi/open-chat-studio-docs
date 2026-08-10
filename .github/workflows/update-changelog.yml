@@ -18,11 +18,8 @@ on:
         required: true
         type: number
 
-permissions:
-  contents: write
-  pull-requests: write
-  issues: write
-  id-token: write
+# Restrict default permissions — job overrides as needed
+permissions: {}
 
 # Prevent concurrent runs for the same PR to avoid conflicts
 concurrency:
@@ -32,6 +29,13 @@ concurrency:
 jobs:
   update-changelog-and-docs:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      id-token: write
+      issues: write
+      pull-requests: write
+
     env:
       WIDGET_PATH_PREFIX: "components/"
       WIDGET_CHANGELOG: "docs/chat_widget/changelog.md"

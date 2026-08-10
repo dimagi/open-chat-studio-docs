@@ -21,6 +21,9 @@ on:
         required: true
         type: string
 
+# Restrict default permissions — job overrides as needed
+permissions: {}
+
 jobs:
   dependabot-review:
     # Only run on Dependabot PRs, or manual dispatch for testing

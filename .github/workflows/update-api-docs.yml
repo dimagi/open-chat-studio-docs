@@ -7,13 +7,17 @@ on:
     - cron: '0 2 * * *'  # Daily at 2 AM UTC
   workflow_dispatch:  # Allow manual trigger
 
-permissions:
-  contents: write
-  pull-requests: write
+# Restrict default permissions — job overrides as needed
+permissions: {}
 
 jobs:
   update-docs:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
