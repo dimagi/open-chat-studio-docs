@@ -2,6 +2,8 @@
 title: Surveys (Removed)
 ---
 
+# Surveys (Removed)
+
 !!! warning "Surveys have been permanently removed"
     The Surveys feature has been permanently removed from Open Chat Studio.
 
