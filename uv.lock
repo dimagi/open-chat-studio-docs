@@ -325,6 +325,10 @@ dependencies = [
 ]
 
 [package.dev-dependencies]
+confluence = [
+    { name = "markdown" },
+    { name = "requests" },
+]
 dev = [
     { name = "prek" },
     { name = "pytest" },
@@ -340,6 +344,10 @@ requires-dist = [
 ]
 
 [package.metadata.requires-dev]
+confluence = [
+    { name = "markdown", specifier = ">=3.8.1" },
+    { name = "requests", specifier = ">=2.34.2" },
+]
 dev = [
     { name = "prek", specifier = ">=0.4.11" },
     { name = "pytest", specifier = ">=9.1.1" },

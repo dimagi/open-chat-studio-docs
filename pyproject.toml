@@ -17,6 +17,10 @@ dev = [
     "prek>=0.4.11",
     "pytest>=9.1.1",
 ]
+confluence = [
+    "requests>=2.34.2",
+    "markdown>=3.8.1",
+]
 
 [tool.uv]
 default-groups = ["dev"]

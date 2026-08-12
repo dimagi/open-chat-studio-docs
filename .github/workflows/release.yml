@@ -15,6 +15,9 @@ on:
         description: 'Name for the release'
         required: false
 
+# Restrict default permissions — job overrides as needed
+permissions: {}
+
 jobs:
   create-weekly-release:
     permissions:

@@ -11,21 +11,22 @@ on:
         description: "Release tag to sync (e.g. v2026.04.13). Must be an existing release."
         required: true
 
+# Restrict default permissions — job overrides as needed
+permissions: {}
+
 jobs:
   update-confluence:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
 
     steps:
       - name: Check out repository
         uses: actions/checkout@v7
 
-      - name: Set up Python
-        uses: actions/setup-python@v7
-        with:
-          python-version: "3.12"
-
-      - name: Install dependencies
-        run: pip install requests markdown
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
 
       - name: Resolve release info from manual input
         if: github.event_name == 'workflow_dispatch'
@@ -63,4 +64,4 @@ jobs:
           CONFLUENCE_EMAIL: ${{ secrets.CONFLUENCE_EMAIL }}
           CONFLUENCE_API_TOKEN: ${{ secrets.CONFLUENCE_API_TOKEN }}
           CONFLUENCE_PAGE_ID: "3032678414"
-        run: python scripts/update_confluence_release.py
+        run: uv run --locked --only-group confluence python scripts/update_confluence_release.py

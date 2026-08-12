@@ -7,23 +7,22 @@ on:
     - cron: '0 2 * * *'  # Daily at 2 AM UTC
   workflow_dispatch:  # Allow manual trigger
 
-permissions:
-  contents: write
-  pull-requests: write
+# Restrict default permissions — job overrides as needed
+permissions: {}
 
 jobs:
   update-docs:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
         with:
           fetch-depth: 0
-
-      - name: Set up Python
-        uses: actions/setup-python@v7
-        with:
-          python-version: '3.13'
 
       - name: Install uv
         uses: astral-sh/setup-uv@v7
@@ -31,7 +30,7 @@ jobs:
           enable-cache: true
 
       - name: Install dependencies
-        run: uv sync
+        run: uv sync --locked
 
       - name: Fetch OpenAPI schema directory
         env:
