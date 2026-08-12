@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Aug 12, 2026
+* **CHANGE** The legacy embedded web chat endpoints (the old `/embed/start/` iframe flow), [deprecated on Jun 4, 2026](#jun-4-2026) with a removal date of 2026-08-03, have now been removed. Sites still using the old embed code get an error pointing at the successor and must move to the current [chat widget](chat_widget/index.md).
+
 ## Aug 7, 2026
 * **BUG** Fixed the **End Session** tool failing on chatbots that use a Gemini model. The chat returned an error as soon as the tool was enabled, because Gemini rejected the tool definition Open Chat Studio sent. See [Ending Sessions from a Chatbot](tech-hub/ending_sessions.md).
 
