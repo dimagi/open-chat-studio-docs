@@ -19,7 +19,7 @@ dev = [
 ]
 confluence = [
     "requests>=2.34.2",
-    "markdown>=3.8.1",
+    "markdown>=3.10.3",
 ]
 
 [tool.uv]
