@@ -12,6 +12,8 @@ hide:
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
 ## Aug 12, 2026
+* **CHANGE** Starting a chat session through the chat API is now restricted for logged-in callers: being signed in to Open Chat Studio no longer grants access to every chatbot. A request authenticated with a browser session must now either come from a member of the chatbot's team or include that chatbot's widget embed key. Anonymous requests are unaffected.
+* **BUG** Deleting a chatbot's embedded widget channel now revokes its embed key. Previously the key still granted access to sessions that the deleted channel had already started.
 * **CHANGE** The legacy embedded web chat endpoints (the old `/embed/start/` iframe flow), [deprecated on Jun 4, 2026](#jun-4-2026) with a removal date of 2026-08-03, have now been removed. Sites still using the old embed code get an error pointing at the successor and must move to the current [chat widget](chat_widget/index.md).
 
 ## Aug 7, 2026
