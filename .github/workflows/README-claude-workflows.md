@@ -16,6 +16,8 @@ The `ANTHROPIC_API_KEY` secret must be set under **Settings > Secrets and variab
 | `.github/workflows/claude-dependabot.yml` | Claude Dependabot PR Review | Dependabot PR opened or updated, manual dispatch |
 | `.github/workflows/claude-review.yml` | PR Review | PR opened, marked ready for review, or reopened (skips Dependabot PRs and PRs labelled `automated`) |
 
+`.github/workflows/update-changelog.yml` also runs `anthropics/claude-code-action` and requires `ANTHROPIC_API_KEY`, but has its own dedicated doc — see [README-changelog-automation.md](README-changelog-automation.md).
+
 ## Forked PRs
 Fork PRs run with restricted permissions and no access to secrets. This specifically affects `claude-review.yml`, which triggers directly on `pull_request` — reviews do **not** run on fork PRs. `claude.yml` is unaffected: it triggers on comment/review events (`issue_comment`, `pull_request_review_comment`, `pull_request_review`, `issues`), which run in the base repo's context with full token access regardless of whether the underlying PR is from a fork.
 
