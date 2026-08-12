@@ -12,6 +12,7 @@ hide:
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
 ## Aug 12, 2026
+* **NEW** Public web chat now has its own request limit, separate from the general API allowance, and each conversation gets its own budget so one visitor cannot use up everyone else's. Self-hosted deployments configure it with the `RATE_LIMIT_PUBLIC_CHAT` setting; it ships in log-only mode, so no requests are blocked on the default configuration.
 * **CHANGE** The legacy embedded web chat endpoints (the old `/embed/start/` iframe flow), [deprecated on Jun 4, 2026](#jun-4-2026) with a removal date of 2026-08-03, have now been removed. Sites still using the old embed code get an error pointing at the successor and must move to the current [chat widget](chat_widget/index.md).
 
 ## Aug 7, 2026
