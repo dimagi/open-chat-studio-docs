@@ -44,11 +44,15 @@ See the [Zensical documentation](https://zensical.org/docs/authoring/markdown/) 
 
 Note: This project uses `mkdocs.yml` for site configuration, since Zensical is compatible with the MkDocs configuration format.
 
-Before pushing, run the strict build to catch broken internal links (CI will fail if you don't):
+Before pushing, run the build to catch broken internal links (CI will fail if you don't):
 
 ```shell
-uv run zensical build --clean --strict
+uv run zensical build --clean
 ```
+
+`strict: true` is set in `mkdocs.yml`, so the build fails on broken references without
+needing the `--strict` flag. `zensical serve` reports the same warnings in its console
+output but keeps serving rather than aborting.
 
 ### API docs
 
