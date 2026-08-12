@@ -4,15 +4,17 @@ This process keeps user-facing documentation and changelog entries aligned after
 
 Workflows in this docs repository and in the [OCS repository](https://github.com/dimagi/open-chat-studio/tree/main/.github/workflows) work together. The source workflow sends PR context to this docs repository, Claude updates changelog and docs when needed, and a docs PR is opened only when there is a meaningful content change.
 
-This page is for maintainers of this [process](https://developers.openchatstudio.com/developer_guides/user_docs/). It explains how the workflow is organized, where to make updates, and how to troubleshoot issues.
+This page is for maintainers of the [user documentation and changelog process](https://developers.openchatstudio.com/developer_guides/user_docs/). It explains how the workflow is organized, where to make updates, and how to troubleshoot issues.
+
+For the other Claude workflows in this repo (code review, Dependabot review, ad-hoc `@claude` mentions, release summaries), see [README-claude-workflows.md](README-claude-workflows.md).
 
 ## Maintenance Notes
 
 Use this map to decide where to make updates:
 
-- `.github/templates/`: Changelog section templates and the (`changelog-instructions.md`) which is the top-level instruction spec Claude receives — it orchestrates all three tasks, delegating documentation writing to the zensical-technical-writer agent.
-  - `changelog-compaction-instructions.md` also lives here but no workflow currently references it — confirm whether it's unwired-but-planned or dead before relying on it.
-- `.claude/agents/`: Writing and PR review standards used by Claude. The `zensical-technical-writer` agent handles all documentation writing decisions for this workflow.
+- `.github/templates/`: Changelog section templates and `changelog-instructions.md`, the top-level instruction spec Claude receives — it orchestrates all three tasks, delegating documentation writing to the zensical-technical-writer agent.
+  - `changelog-compaction-instructions.md` also lives here but **no** workflow currently references it — confirm whether it's unwired-but-planned or dead before relying on it.
+- `.claude/agents/`: Agent definitions used by Claude across workflows. This workflow only uses `zensical-technical-writer`, which handles all documentation writing decisions; `documentation-pr-reviewer` (used by `claude-review.yml`) isn't part of this process.
 
 > **Note on `.claude/commands/`:** The `/write-docs` slash command is a human-facing shortcut for interactive Claude Code sessions — it simply invokes the same `zensical-technical-writer` agent. The automated workflow calls the agent directly via the `Task` tool and does not use slash commands.
 

@@ -8,26 +8,31 @@ These workflows use [`anthropics/claude-code-action`](https://github.com/anthrop
 
 The `ANTHROPIC_API_KEY` secret must be set under **Settings > Secrets and variables > Actions** in the repository. All Claude workflows require it.
 
-## Workflow files
+`claude.yml` additionally requires `OCS_AGENT_APP_ID` (variable) and `OCS_AGENT_PRIVATE_KEY` (secret) — credentials for the `ocs-agent` GitHub App, used to mint a token so it can push branches and open PRs. See [README-changelog-automation.md](README-changelog-automation.md#required-secrets) for more on this app.
+
+## Workflow Files
 
 | File | Actions UI name | Trigger |
 |---|---|---|
 | `.github/workflows/claude.yml` | Claude Code | `@claude` mention in an issue/PR comment or review; issue opened or assigned with `@claude` in the title or body |
 | `.github/workflows/claude-dependabot.yml` | Claude Dependabot PR Review | Dependabot PR opened or updated, manual dispatch |
 | `.github/workflows/claude-review.yml` | PR Review | PR opened, marked ready for review, or reopened (skips Dependabot PRs and PRs labelled `automated`) |
+| `.github/workflows/release.yml` | Weekly Release Summary | Weekly schedule (Mondays 9am UTC), or manual dispatch with `release_tag`/`release_name` inputs |
 
 `.github/workflows/update-changelog.yml` also runs `anthropics/claude-code-action` and requires `ANTHROPIC_API_KEY`, but has its own dedicated doc — see [README-changelog-automation.md](README-changelog-automation.md).
 
 ## Forked PRs
 Fork PRs run with restricted permissions and no access to secrets. This specifically affects `claude-review.yml`, which triggers directly on `pull_request` — reviews do **not** run on fork PRs. `claude.yml` is unaffected: it triggers on comment/review events (`issue_comment`, `pull_request_review_comment`, `pull_request_review`, `issues`), which run in the base repo's context with full token access regardless of whether the underlying PR is from a fork.
 
-## Tool allowlist
+## Tool Allowlist
 
-Each run is restricted to an explicit allowlist of tools defined in the `claude_args` field of the workflow file. Claude cannot call anything outside that list. If it needs a tool that isn't permitted, the run fails rather than silently taking an unintended action.
+Each run is restricted to an explicit allowlist of tools. Claude cannot call anything outside that list. If it needs a tool that isn't permitted, the run fails rather than silently taking an unintended action.
+
+Most workflows set the allowlist directly via `--allowedTools` in the `claude_args` field. `release.yml` is the exception: its `claude_args` only sets `--model`, and the allowlist instead comes from the invoked slash command's own `allowed-tools` frontmatter (e.g. `.claude/commands/create-release.md`).
 
 For more information on `claude_args`, see [GitHub for claude-code-action usage guide](https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md).
 
-## Custom commands and agents
+## Custom Commands and Agents
 
 `claude-review.yml` doesn't use any external plugin or marketplace. Its prompt invokes `/review-pr`, a local slash command defined at `.claude/commands/review-pr.md`, which launches the local `documentation-pr-reviewer` subagent (`.claude/agents/documentation-pr-reviewer.md`).
 
@@ -37,6 +42,6 @@ For more information on `claude_args`, see [GitHub for claude-code-action usage 
 
 `claude-review.yml` is the one workflow that defines concurrency: it groups runs by PR number and sets `cancel-in-progress: true`, so a new push to a PR cancels any in-progress review of that PR, since a review of stale code is wasted spend.
 
-## Branch and label conventions
+## Branch and Label Conventions
 
 - **Branches** — all Claude-created branches are namespaced under `claude/` (e.g. `claude/123-20240518-143022` — issue number, date, time). Easy to target with branch protection rules. (This naming comes from `claude-code-action`'s own defaults — it isn't configured anywhere in this repo's workflow files.)
