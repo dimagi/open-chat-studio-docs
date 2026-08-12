@@ -164,7 +164,7 @@ These questions appear as blue-outlined buttons aligned to the right (similar to
 </open-chat-studio-widget>
 ```
 
-## :material-lock: Read-Only Mode
+## :material-lock: Read-Only Mode {#read-only-mode}
 
 Put the widget into a read-only state when your team is unavailable to respond, during maintenance windows, or whenever you need to pause conversations without hiding the widget entirely. Read-only mode is ideal for:
 
@@ -189,7 +189,7 @@ When enabled:
 !!! tip "Tell users why"
     Pair `disabled` with a [banner](#banner) so users understand why they can't send messages, for example to display your support hours or an outage notice.
 
-## :material-bullhorn: Banner
+## :material-bullhorn: Banner {#banner}
 
 Display an always-visible notice above the chat history to communicate information that shouldn't scroll away with the conversation. Banners are useful for:
 
