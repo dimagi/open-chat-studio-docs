@@ -11,6 +11,7 @@ This page is for maintainers of this [process](https://developers.openchatstudio
 Use this map to decide where to make updates:
 
 - `.github/templates/`: Changelog section templates and the (`changelog-instructions.md`) which is the top-level instruction spec Claude receives — it orchestrates all three tasks, delegating documentation writing to the zensical-technical-writer agent.
+  - `changelog-compaction-instructions.md` also lives here but no workflow currently references it — confirm whether it's unwired-but-planned or dead before relying on it.
 - `.claude/agents/`: Writing and PR review standards used by Claude. The `zensical-technical-writer` agent handles all documentation writing decisions for this workflow.
 
 > **Note on `.claude/commands/`:** The `/write-docs` slash command is a human-facing shortcut for interactive Claude Code sessions — it simply invokes the same `zensical-technical-writer` agent. The automated workflow calls the agent directly via the `Task` tool and does not use slash commands.
@@ -29,8 +30,10 @@ Troubleshooting and process changes can involve both repositories:
 - **`OCS_AGENT_PRIVATE_KEY`** (secret) and **`OCS_AGENT_APP_ID`** (variable): credentials for
   the `ocs-agent` GitHub App (org Settings → GitHub Apps). The app must be installed on both
   the OCS repo and this docs repo with contents, issues, and pull request write permissions.
-  Workflows mint a short-lived installation token from these, so automated PRs and comments
-  are attributed to `ocs-agent[bot]`.
+  Workflows mint a short-lived installation token from these, so the PR itself and any
+  `gh pr`/`gh issue` comments are attributed to `ocs-agent[bot]`. The git **commits** on
+  the branch are attributed to `github-actions[bot]` instead — the workflow sets that
+  identity via `git config` before Claude runs, and Claude's own commits inherit it too.
 - **`ANTHROPIC_API_KEY`**: Claude API key.
 
 ## Troubleshooting
