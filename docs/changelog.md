@@ -14,6 +14,9 @@ hide:
 ## Aug 14, 2026
 * **NEW** Added support for the **Gemini 3.7 Flash** model, which can now be selected on both the Google (Gemini API) and Google Vertex AI providers.
 
+## Aug 13, 2026
+* **CHANGE** Chatting to a chatbot from the chatbot management pages now opens the embedded chat widget in a popup on the page, instead of navigating away to the full-page chat. This covers the chat dropdown on the chatbot home page, the chat button on each row of the versions table (which opens a widget pinned to that version), and **Continue Chat** on a sessions list, which reopens the session in a widget headed with the version it is bound to. The redundant **New Session** button has been removed from the chatbots list.
+
 ## Aug 12, 2026
 * **CHANGE** The legacy embedded web chat endpoints (the old `/embed/start/` iframe flow), [deprecated on Jun 4, 2026](#jun-4-2026) with a removal date of 2026-08-03, have now been removed. Sites still using the old embed code get an error pointing at the successor and must move to the current [chat widget](chat_widget/index.md).
 
