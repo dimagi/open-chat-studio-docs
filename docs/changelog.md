@@ -13,7 +13,7 @@ hide:
 
 ## Aug 14, 2026
 * **NEW** Added support for the **Gemini 3.7 Flash** model, which can now be selected on both the Google (Gemini API) and Google Vertex AI providers.
-* **CHANGE** Client-credentials OAuth applications can now only chat with the chatbots you select for them. Previously such an application could converse with every chatbot in its team; it is now refused for any chatbot that isn't on its list, and an empty list means no chatbots at all — so every existing client-credentials application needs its chatbots selected before it can chat again. Choose them when you register or edit the application on your team's admin page. Only client-credentials tokens are affected; API key and user-authorized access is unchanged. See [Getting started with OAuth2](api/getting_started_with_oauth.md#client-credentials-flow-machine-to-machine).
+* **CHANGE** Client-credentials OAuth applications can now only chat with the chatbots you select for them. Previously such an application could converse with every chatbot in its team; it is now refused for any chatbot that isn't on its list, and an empty list means no chatbots at all. Only client-credentials tokens are affected; API key and user-authorized access is unchanged. See [Getting started with OAuth2](api/getting_started_with_oauth.md#client-credentials-flow-machine-to-machine).
 
 ## Aug 12, 2026
 * **CHANGE** The legacy embedded web chat endpoints (the old `/embed/start/` iframe flow), [deprecated on Jun 4, 2026](#jun-4-2026) with a removal date of 2026-08-03, have now been removed. Sites still using the old embed code get an error pointing at the successor and must move to the current [chat widget](chat_widget/index.md).
