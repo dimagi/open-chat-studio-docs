@@ -1,47 +1,72 @@
-# Maintaining Claude Code Agent Workflows
+# GitHub Automation with Claude
 
-For engineers responsible for extending, debugging, or operating the GitHub workflows. For day-to-day usage of similar workflows on the main project, see [docs/developer_guides/claude_code_agent.md](https://developers.openchatstudio.com/developer_guides/claude_code_agent).
+For engineers responsible for extending, debugging, or operating the GitHub workflows on this user documentation repo. The main OCS project has similar workflows, see [developer_guides/claude_github_automation.md](https://developers.openchatstudio.com/developer_guides/claude_github_automation/).
 
-These workflows use [`anthropics/claude-code-action`](https://github.com/anthropics/claude-code-action) to run Claude Code inside GitHub Actions. Each run gives Claude access to the repository, a shell, and the GitHub CLI. Claude autonomously reads code, writes changes, runs tests, and opens PRs based on its instructions.
+These workflows use [`anthropics/claude-code-action`](https://github.com/anthropics/claude-code-action) to run Claude Code inside GitHub Actions. Each run gives Claude access to the repository, a shell, and the GitHub CLI.
 
-## Setup
-
-The `ANTHROPIC_API_KEY` secret must be set under **Settings > Secrets and variables > Actions** in the repository. All Claude workflows require it.
-
-`claude.yml` additionally requires `OCS_AGENT_APP_ID` (variable) and `OCS_AGENT_PRIVATE_KEY` (secret) — credentials for the `ocs-agent` GitHub App, used to mint a token so it can push branches and open PRs. See [README-changelog-automation.md](README-changelog-automation.md#required-secrets) for more on this app.
-
-## Workflow Files
+## GitHub workflows
 
 | File | Actions UI name | Trigger |
 |---|---|---|
-| `.github/workflows/claude.yml` | Claude Code | `@claude` mention in an issue/PR comment or review; issue opened or assigned with `@claude` in the title or body |
-| `.github/workflows/claude-dependabot.yml` | Claude Dependabot PR Review | Dependabot PR opened or updated, manual dispatch |
-| `.github/workflows/claude-review.yml` | PR Review | PR opened, marked ready for review, or reopened (skips Dependabot PRs and PRs labelled `automated`) |
-| `.github/workflows/release.yml` | Weekly Release Summary | Weekly schedule (Mondays 9am UTC), or manual dispatch with `release_tag`/`release_name` inputs |
+| `claude.yml` | Claude Code | `@claude` mention in an issue/PR comment or review; issue opened or assigned with `@claude` in the title or body |
+| `claude-dependabot.yml` | Claude Dependabot PR Review | Dependabot PR opened or updated, or manual dispatch |
+| `claude-review.yml` | PR Review | PR opened, marked ready for review, or reopened (skips Dependabot PRs and PRs labelled `automated`) |
+| `release.yml` | Weekly Release Summary | Weekly schedule (Mondays 9am UTC), or manual dispatch with `release_tag`/`release_name` inputs |
+| `update-changelog.yml`| Update Changelog and Docs from OCS PR | See [README-changelog-automation.md](README-changelog-automation.md) |
 
-`.github/workflows/update-changelog.yml` also runs `anthropics/claude-code-action` and requires `ANTHROPIC_API_KEY`, but has its own dedicated doc — see [README-changelog-automation.md](README-changelog-automation.md).
+## Pipelines
 
-## Forked PRs
-Fork PRs run with restricted permissions and no access to secrets. This specifically affects `claude-review.yml`, which triggers directly on `pull_request` — reviews do **not** run on fork PRs. `claude.yml` is unaffected: it triggers on comment/review events (`issue_comment`, `pull_request_review_comment`, `pull_request_review`, `issues`), which run in the base repo's context with full token access regardless of whether the underlying PR is from a fork.
+End-to-end view of what each workflow actually does: which Claude command or instruction spec it
+invokes, whether that delegates to a subagent, and what comes out the other end.
 
-## Tool Allowlist
+Commands live in `.claude/commands/`, agents in `.claude/agents/`. A command is a human-typable slash command
+and is usable from a workflow's `prompt:`. An agent is never invoked directly — only launched by a
+command or, for automation, called straight through the `Task` tool.
 
-Each run is restricted to an explicit allowlist of tools. Claude cannot call anything outside that list. If it needs a tool that isn't permitted, the run fails rather than silently taking an unintended action.
+| Workflow | Command / Instruction Spec | Subagent | Outcome |
+|---|---|---|---|
+| `claude.yml` | none — freeform prompt taken from the `@claude` mention itself | none | Whatever the mention asks, using the allowlisted tools (edit, build, push, open PR, etc.) |
+| `claude-dependabot.yml` | none — freeform inline prompt in the workflow | none | Adds a PR comment on the dependabot PR analyzing the dependency bump and flagging breaking changes |
+| `claude-review.yml` | [`/review-pr`](../../.claude/commands/review-pr.md) | [`documentation-pr-reviewer`](../../.claude/agents/documentation-pr-reviewer.md) | Adds PR comments: Approve / Request Changes / Comment |
+| `release.yml` | [`/create-release <tag> <title>`](../../.claude/commands/create-release.md) | none — the command does the work itself | Creates a draft GitHub release summarizing the changelog diff for the week |
+| `update-changelog.yml` | [`changelog-instructions.md`](../templates/changelog-instructions.md) rendered into the workflow's `prompt:` | [`zensical-technical-writer`](../../.claude/agents/zensical-technical-writer.md) | Creates PR with doc updates — see [README-changelog-automation.md](README-changelog-automation.md) |
+| *(manual only, no workflow)* | [`/write-docs`](../../.claude/commands/write-docs.md) | [`zensical-technical-writer`](../../.claude/agents/zensical-technical-writer.md) | Docs content written or updated |
 
-Most workflows set the allowlist directly via `--allowedTools` in the `claude_args` field. `release.yml` is the exception: its `claude_args` only sets `--model`, and the allowlist instead comes from the invoked slash command's own `allowed-tools` frontmatter (e.g. `.claude/commands/create-release.md`).
+## Setup
 
-For more information on `claude_args`, see [GitHub for claude-code-action usage guide](https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md).
+Secrets and variables are configured under **Settings > Secrets and variables > Actions**:
+`ANTHROPIC_API_KEY` (every workflow), plus `OCS_AGENT_APP_ID` / `OCS_AGENT_PRIVATE_KEY` for
+`claude.yml` and `update-changelog.yml`, which push branches and open PRs as the `ocs-agent`
+bot. See each workflow file for exactly how they're used.
 
-## Custom Commands and Agents
+## Forked Repos
 
-`claude-review.yml` doesn't use any external plugin or marketplace. Its prompt invokes `/review-pr`, a local slash command defined at `.claude/commands/review-pr.md`, which launches the local `documentation-pr-reviewer` subagent (`.claude/agents/documentation-pr-reviewer.md`).
+A PR from a forked repo runs its `pull_request`-triggered workflows with a read-only `GITHUB_TOKEN` and no access to this repo's Actions secrets.
 
-## Concurrency
+Any workflow here triggered by `pull_request` (check the Trigger column in the Github workflows table above) is affected: the job still starts, but fails inside the `claude-code-action` step once it tries to authenticate — it isn't skipped. Workflows triggered by comment/review events instead are unaffected — those always run in the base repo's context with full secrets access, regardless of the underlying PR's origin.
 
-`claude.yml` has no `concurrency:` block, so it has no built-in queuing or cancellation — multiple triggers for the same issue or PR (e.g. several `@claude` mentions in quick succession) can run simultaneously.
+### Tool Allowlist
 
-`claude-review.yml` is the one workflow that defines concurrency: it groups runs by PR number and sets `cancel-in-progress: true`, so a new push to a PR cancels any in-progress review of that PR, since a review of stale code is wasted spend.
+The explicit per-run tool allowlist is the main safeguard against a compromised or malicious prompt (e.g. a hostile issue/PR body) taking unintended action.
 
-## Branch and Label Conventions
+If Claude tries to use a tool that isn't permitted, that call is denied and it continues without it — the run won't fail. A missing tool usually surfaces as an incomplete result rather than an error, so check the run transcript for denied tool calls if the output looks truncated.
 
-- **Branches** — all Claude-created branches are namespaced under `claude/` (e.g. `claude/123-20240518-143022` — issue number, date, time). Easy to target with branch protection rules. (This naming comes from `claude-code-action`'s own defaults — it isn't configured anywhere in this repo's workflow files.)
+### Concurrency
+
+`claude-review.yml` groups runs by PR number with `cancel-in-progress: true`. Note this only cancels on reopen / ready-for-review, not on push — the workflow doesn't listen for `synchronize`, so pushing to an open PR neither starts a new review nor cancels a running one.
+
+`update-changelog.yml` also sets concurrency, grouped by PR number but with `cancel-in-progress: false`, so an in-flight changelog run finishes rather than being superseded.
+
+## Troubleshooting
+
+Issues that can show up on any of these workflows. For workflow-specific troubleshooting, see that workflow's own doc (e.g. [README-changelog-automation.md](README-changelog-automation.md#troubleshooting) for `update-changelog.yml`).
+
+- **Run fails immediately in the `claude-code-action` step on a `pull_request`-triggered workflow:** Expected if the PR is from a forked repo — see Forked Repos above.
+- **Output looks incomplete, or a step Claude should have taken didn't happen:** Check the run transcript for denied tool calls — see Tool Allowlist above.
+- **Authentication or permission failures:** Verify `ANTHROPIC_API_KEY` is valid. For `claude.yml` and `update-changelog.yml` (which use the `ocs-agent` app), also verify the app's private key matches `OCS_AGENT_PRIVATE_KEY` and the app is still installed on the relevant repo(s).
+- **Output quality needs improvement:** Comment on the generated PR with `@claude` and specify what to revise.
+- **For systemic quality issues:** Update the relevant command or agent in `.claude/commands/` / `.claude/agents/` rather than correcting each PR manually.
+
+## Best Practices
+
+1. [Background to using Claude custom Subagents](https://docs.anthropic.com/en/docs/claude-code/sub-agents)
