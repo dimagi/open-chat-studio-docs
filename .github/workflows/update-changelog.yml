@@ -121,6 +121,7 @@ jobs:
           PAYLOAD_PR_URL: ${{ github.event.client_payload.pr_url }}
           PAYLOAD_PR_AUTHOR: ${{ github.event.client_payload.pr_author }}
           PAYLOAD_PR_BODY: ${{ github.event.client_payload.pr_body }}
+          PAYLOAD_PR_MERGED_AT: ${{ github.event.client_payload.pr_merged_at }}
           INPUT_PR_NUMBER: ${{ inputs.pr_number }}
           DETERMINED_BASE_BRANCH: ${{ steps.determine_branch.outputs.base_branch }}
           DETERMINED_IS_WIDGET: ${{ steps.determine_branch.outputs.is_widget_change }}
@@ -151,6 +152,13 @@ jobs:
               echo "$PAYLOAD_PR_BODY"
               echo "OCS_DOCS_EOF"
             } >> $GITHUB_OUTPUT
+
+            # Older dispatch payloads omit the merge date — fall back to the API
+            MERGED_AT="$PAYLOAD_PR_MERGED_AT"
+            if [ -z "$MERGED_AT" ]; then
+              MERGED_AT=$(gh api "repos/${SOURCE_REPO}/pulls/${PAYLOAD_PR_NUMBER}" --jq '.merged_at // ""') || MERGED_AT=""
+            fi
+            echo "pr_merged_at=$MERGED_AT" >> $GITHUB_OUTPUT
           else
             echo "pr_number=$INPUT_PR_NUMBER" >> $GITHUB_OUTPUT
             # Fetch PR details using GitHub API
@@ -181,6 +189,7 @@ jobs:
               echo "OCS_DOCS_EOF"
             } >> $GITHUB_OUTPUT
 
+            echo "pr_merged_at=$(echo "$PR_DATA" | jq -r '.merged_at // ""')" >> $GITHUB_OUTPUT
           fi
 
           # Use base branch from determine_branch step (already determined correctly)
@@ -256,25 +265,39 @@ jobs:
 
       - name: Check for changes and push
         id: check_changes
+        env:
+          BASE_BRANCH: ${{ steps.set_vars.outputs.base_branch }}
+          IS_WIDGET_CHANGE: ${{ steps.set_vars.outputs.is_widget_change }}
+          PR_NUMBER: ${{ steps.set_vars.outputs.pr_number }}
         run: |
-          BASE_BRANCH="${{ steps.set_vars.outputs.base_branch }}"
+          # Claude is asked to commit its own work, but sometimes edits files and
+          # skips the commit. Committing anything it left behind keeps the PR from
+          # being created against an empty branch ("No commits between ...").
+          git add -A
+          if ! git diff --cached --quiet; then
+            echo "Committing changes Claude left uncommitted:"
+            git diff --cached --name-only
+            git commit -m "update changelog and docs from OCS PR #${PR_NUMBER}"
+          fi
 
-          if git diff --quiet origin/$BASE_BRANCH; then
+          # Only committed history counts — an empty branch cannot become a PR.
+          if [ "$(git rev-list --count origin/$BASE_BRANCH..HEAD)" -eq 0 ]; then
             echo "has_changes=false" >> $GITHUB_OUTPUT
             echo "No changes made by Claude"
           else
             echo "has_changes=true" >> $GITHUB_OUTPUT
 
             # Determine which changelog file to check based on widget change flag
-            if [ "${{ steps.set_vars.outputs.is_widget_change }}" == "true" ]; then
+            if [ "$IS_WIDGET_CHANGE" == "true" ]; then
               CHANGELOG_FILE="${{ env.WIDGET_CHANGELOG }}"
             else
               CHANGELOG_FILE="${{ env.MAIN_CHANGELOG }}"
             fi
 
             # Check what was changed
-            CHANGELOG_CHANGED=$(git diff --name-only origin/$BASE_BRANCH | grep -c "$CHANGELOG_FILE" || true)
-            DOCS_CHANGED=$(git diff --name-only origin/$BASE_BRANCH | grep -v "$CHANGELOG_FILE" | grep -c "docs/" || true)
+            CHANGED_FILES=$(git diff --name-only origin/$BASE_BRANCH..HEAD)
+            CHANGELOG_CHANGED=$(echo "$CHANGED_FILES" | grep -c "$CHANGELOG_FILE" || true)
+            DOCS_CHANGED=$(echo "$CHANGED_FILES" | grep -v "$CHANGELOG_FILE" | grep -c "docs/" || true)
 
             # Ensure we have numeric values (grep -c returns 0 when no matches, but with exit code 1)
             CHANGELOG_CHANGED=${CHANGELOG_CHANGED:-0}
