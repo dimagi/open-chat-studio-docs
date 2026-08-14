@@ -12,7 +12,7 @@ hide:
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
 ## Aug 14, 2026
-* **NEW** Added support for the **Gemini 3.7 Flash** model, which can now be selected on both the Google (Gemini API) and Google Vertex AI providers. It has a 1M-token context window, and cost tracking is set up so usage is priced correctly from the start. See [LLM Service Providers](concepts/team/llm_providers.md).
+* **NEW** Added support for the **Gemini 3.7 Flash** model, which can now be selected on both the Google (Gemini API) and Google Vertex AI providers.
 
 ## Aug 12, 2026
 * **CHANGE** The legacy embedded web chat endpoints (the old `/embed/start/` iframe flow), [deprecated on Jun 4, 2026](#jun-4-2026) with a removal date of 2026-08-03, have now been removed. Sites still using the old embed code get an error pointing at the successor and must move to the current [chat widget](chat_widget/index.md).
