@@ -43,6 +43,12 @@ reply = completion.choices[0].message
     200:
       Content: application/json
       Schema: CreateChatCompletionResponse
+    403:
+      Content: application/json
+      Schema: Unknown
+    404:
+      Content: application/json
+      Schema: Unknown
   Security:
     OAuth2
       - Required scopes: chatbots:interact
@@ -88,6 +94,12 @@ reply = completion.choices[0].message
     200:
       Content: application/json
       Schema: CreateChatCompletionResponse
+    403:
+      Content: application/json
+      Schema: Unknown
+    404:
+      Content: application/json
+      Schema: Unknown
   Security:
     OAuth2
       - Required scopes: chatbots:interact
