@@ -47,9 +47,13 @@ Any workflow here triggered by `pull_request` (check the code) is affected: the 
 
 ## Tool Allowlist
 
-The explicit per-run tool allowlist is the main safeguard against a compromised or malicious prompt (e.g. a hostile issue/PR body) taking unintended action. Note that the agent frontmatter tool list is **not** the security boundary — the workflow run-level allowlist is
+The explicit per-run tool allowlist is the main safeguard against a compromised or malicious prompt (e.g. a hostile issue/PR body) taking unintended action.
 
-If Claude tries to use a tool that isn't permitted, that call is denied and it continues without it — the run won't fail. A missing tool usually surfaces as an incomplete result rather than an error, so check the run transcript for denied tool calls if the output looks truncated.
+Two places can set it. Most workflows pass `--allowedTools` in `claude_args` directly — when present, that's what's enforced. `release.yml` is the exception: its `claude_args` sets no `--allowedTools` at all (only `--model`), so the allowlist instead comes entirely from the invoked command's own frontmatter — `.claude/commands/create-release.md`'s `allowed-tools:`. When editing a command invoked by a workflow with no `--allowedTools` of its own, that command's frontmatter *is* the security boundary; keep it and the workflow in sync for every other case.
+
+!!! note "Warning"
+
+    If Claude tries to use a tool that isn't permitted, that call is denied and it continues without it — **the run won't fail**. A missing tool usually surfaces as an **incomplete result rather than an error**, so check the run transcript for denied tool calls if the output looks truncated.
 
 ## Labels
 
