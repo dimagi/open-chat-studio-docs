@@ -13,6 +13,7 @@ hide:
 
 ## Aug 14, 2026
 * **NEW** Added support for the **Gemini 3.7 Flash** model, which can now be selected on both the Google (Gemini API) and Google Vertex AI providers.
+* **CHANGE** A chat session's session token now expires 7 days after the session was created, instead of 7 days after its last message. Continuing to chat no longer extends the window, so a conversation ends a week after it started rather than a week after it went quiet — long-running anonymous conversations that had been kept alive by the old sliding window will stop at their next message. Signed-in participants are unaffected, so the logged-in chat page and **Continue Chat** keep working past 7 days.
 * **CHANGE** Client-credentials OAuth applications can now only chat with the chatbots you select for them. Previously such an application could converse with every chatbot in its team; it is now refused for any chatbot that isn't on its list, and an empty list means no chatbots at all. Only client-credentials tokens are affected; API key and user-authorized access is unchanged. See [Getting started with OAuth2](api/getting_started_with_oauth.md#client-credentials-flow-machine-to-machine).
 
 ## Aug 13, 2026
