@@ -30,6 +30,9 @@ If the participant doesn't exist yet, they are created automatically.
     400:
       Content: application/json
       Schema: Unknown
+    403:
+      Content: application/json
+      Schema: Unknown
     404:
       Content: application/json
       Schema: Unknown
