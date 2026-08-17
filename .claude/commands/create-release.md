@@ -1,5 +1,5 @@
 ---
-allowed-tools: Bash(gh release list:*),Bash(gh release view:*),Bash(gh release create:*),Bash(git diff:*),Read
+allowed-tools: Bash(gh release list:*),Bash(gh release create:*),Bash(git diff:*),Read
 description: Create a new release with changelog
 argument-hint: [release-tag] [release-title]
 ---
