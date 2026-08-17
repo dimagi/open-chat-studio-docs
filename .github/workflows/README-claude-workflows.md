@@ -47,7 +47,9 @@ Any workflow here triggered by `pull_request` (check the code) is affected: the 
 
 The explicit per-run tool allowlist is the main safeguard against a compromised or malicious prompt (e.g. a hostile issue/PR body) taking unintended action.
 
-Every workflow passes `--allowedTools` in `claude_args` directly — that's what's enforced. Each also invokes a command with its own `allowed-tools:` frontmatter (e.g. `.claude/commands/create-release.md`); keep the two lists in sync, since the command frontmatter is what governs if the command is ever run manually/interactively outside its workflow.
+Every workflow passes `--allowedTools` in `claude_args` directly — that's what's enforced. Some workflows invoke a command with its own `allowed-tools:` frontmatter (e.g. `.claude/commands/create-release.md`), and some of those commands launch a subagent via `Task` with its own `tools:` frontmatter (e.g. `documentation-pr-reviewer`).
+
+None of these further declarations expand what's enforced — only the workflow's `--allowedTools` does — so a tool named further down the chain but missing from the workflow's list is simply unusable there, no matter what the command or agent frontmatter claims. Keep all of these in sync: right now `documentation-pr-reviewer`'s `tools:` includes `WebFetch`/`WebSearch` for link-checking, but neither `claude-review.yml` nor `review-pr.md` grants them, so that capability is currently dead when the agent runs through this pipeline. The command frontmatter is also what governs if a command is ever run manually/interactively outside its workflow.
 
 > [!WARNING]
 > If Claude tries to use a tool that isn't permitted, that call is denied and it continues without it — **the run won't fail**. A missing tool usually surfaces as an **incomplete result rather than an error**, so check the run transcript for denied tool calls if the output looks truncated.
