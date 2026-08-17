@@ -1,8 +1,8 @@
 # GitHub Automation with Claude
 
-For engineers responsible for extending, debugging, or operating the GitHub workflows on this user documentation repo. The main OCS project has similar workflows, see [the developer guide on GitHub automation with Claude]](https://developers.openchatstudio.com/developer_guides/claude_github_automation/).
+For engineers responsible for extending, debugging, or operating the GitHub workflows on this user documentation repo. The main OCS project has similar workflows, see [the developer guide on GitHub automation with Claude](https://developers.openchatstudio.com/developer_guides/claude_github_automation/).
 
-These workflows use [`anthropics/claude-code-action`](https://github.com/anthropics/claude-code-action) to run Claude Code inside GitHub Actions. Each run gives Claude access to the repository, a shell, and the GitHub CLI.
+These workflows use [`anthropics/claude-code-action`](https://github.com/anthropics/claude-code-action) to run Claude Code inside GitHub Actions.
 
 ## GitHub workflows
 
@@ -19,9 +19,7 @@ These workflows use [`anthropics/claude-code-action`](https://github.com/anthrop
 End-to-end view of what each workflow actually does: which Claude command or instruction spec it
 invokes, whether that delegates to a subagent, and what comes out the other end.
 
-Commands live in `.claude/commands/`, agents in `.claude/agents/`. A command is a human-typable slash command
-and is usable from a workflow's `prompt:`. An agent is never invoked directly — only launched by a
-command or, for automation, called straight through the `Task` tool.
+Commands live in `.claude/commands/`, agents in `.claude/agents/` ([background](https://docs.anthropic.com/en/docs/claude-code/sub-agents)).
 
 | Workflow | Command / Instruction Spec | Subagent | Outcome |
 |---|---|---|---|
@@ -49,11 +47,10 @@ Any workflow here triggered by `pull_request` (check the code) is affected: the 
 
 The explicit per-run tool allowlist is the main safeguard against a compromised or malicious prompt (e.g. a hostile issue/PR body) taking unintended action.
 
-Two places can set it. Most workflows pass `--allowedTools` in `claude_args` directly — when present, that's what's enforced. `release.yml` is the exception: its `claude_args` sets no `--allowedTools` at all (only `--model`), so the allowlist instead comes entirely from the invoked command's own frontmatter — `.claude/commands/create-release.md`'s `allowed-tools:`. When editing a command invoked by a workflow with no `--allowedTools` of its own, that command's frontmatter *is* the security boundary; keep it and the workflow in sync for every other case.
+Every workflow passes `--allowedTools` in `claude_args` directly — that's what's enforced. Each also invokes a command with its own `allowed-tools:` frontmatter (e.g. `.claude/commands/create-release.md`); keep the two lists in sync, since the command frontmatter is what governs if the command is ever run manually/interactively outside its workflow.
 
-!!! note "Warning"
-
-    If Claude tries to use a tool that isn't permitted, that call is denied and it continues without it — **the run won't fail**. A missing tool usually surfaces as an **incomplete result rather than an error**, so check the run transcript for denied tool calls if the output looks truncated.
+> [!WARNING]
+> If Claude tries to use a tool that isn't permitted, that call is denied and it continues without it — **the run won't fail**. A missing tool usually surfaces as an **incomplete result rather than an error**, so check the run transcript for denied tool calls if the output looks truncated.
 
 ## Labels
 
@@ -77,7 +74,3 @@ Issues that can show up on any of these workflows. For workflow-specific trouble
 - **Authentication or permission failures:** Verify `ANTHROPIC_API_KEY` is valid. For `claude.yml` and `update-changelog.yml` (which use the `ocs-agent` app), also verify the app's private key matches `OCS_AGENT_PRIVATE_KEY` and the app is still installed on the relevant repo(s).
 - **Output quality needs improvement:** Comment on the generated PR with `@claude` and specify what to revise.
 - **For systemic quality issues:** Update the relevant command or agent in `.claude/commands/` / `.claude/agents/` rather than correcting each PR manually.
-
-## Best Practices
-
-1. [Background to using Claude custom Subagents](https://docs.anthropic.com/en/docs/claude-code/sub-agents)
