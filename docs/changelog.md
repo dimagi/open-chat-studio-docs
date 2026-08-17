@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Aug 17, 2026
+* **NEW** You can now temporarily disable an individual channel instead of deleting it, using the **Enabled** toggle in the channel's configuration dialog. While a channel is off, incoming messages are not processed or recorded at all, and you can optionally set a static reply that is sent to anyone who messages the channel — leaving it blank keeps the bot silent. Disabled channels are highlighted in the channel list.
+
 ## Aug 14, 2026
 * **NEW** Added support for the **Gemini 3.7 Flash** model, which can now be selected on both the Google (Gemini API) and Google Vertex AI providers.
 * **CHANGE** Client-credentials OAuth applications can now only chat with the chatbots you select for them. Previously such an application could converse with every chatbot in its team; it is now refused for any chatbot that isn't on its list, and an empty list means no chatbots at all. Only client-credentials tokens are affected; API key and user-authorized access is unchanged. See [Getting started with OAuth2](api/getting_started_with_oauth.md#client-credentials-flow-machine-to-machine).
