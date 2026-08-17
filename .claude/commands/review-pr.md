@@ -1,5 +1,5 @@
 ---
-allowed-tools: Task,Read,Grep,Glob,Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*)
+allowed-tools: Task,Read,Grep,Glob,mcp__github_inline_comment__create_inline_comment,Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*)
 description: Review a pull request
 ---
 
@@ -16,8 +16,8 @@ Then launch the documentation-pr-reviewer agent with context about:
 
 The agent will provide structured feedback following documentation best practices. Only post feedback that is noteworthy and actionable.
 
-Use inline comments via `gh pr comment` for specific line issues.
-Use top-level comments for overall observations.
+Use `mcp__github_inline_comment__create_inline_comment` for feedback tied to a specific file/line.
+Use `gh pr comment` for a top-level summary comment covering overall observations.
 Keep all feedback concise and constructive.
 
 ---
