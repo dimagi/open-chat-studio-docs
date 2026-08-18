@@ -21,8 +21,8 @@ permissions: {}
 jobs:
   create-weekly-release:
     permissions:
-      contents: write
-      id-token: write
+      contents: write # read permission for checkout. Write for git push
+      #id-token: write # Not needed for app token generation.
     runs-on: ubuntu-latest
 
     steps:

@@ -16,9 +16,9 @@ jobs:
     if: ${{ github.actor != 'dependabot[bot]' && !contains(github.event.pull_request.labels.*.name, 'automated') }}
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: read  # for checkout
       pull-requests: write
-      id-token: write
+      #id-token: write # Not needed for GitHub App token generation.
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7

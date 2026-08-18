@@ -22,12 +22,13 @@ jobs:
       (github.event_name == 'issues' && (contains(github.event.issue.body, '@claude') || contains(github.event.issue.title, '@claude')))
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: write # read permission for checkout. Write for git push
       pull-requests: write
       issues: write
-      id-token: write
+      #id-token: write # Not needed for app token generation.
     steps:
       - name: Generate app token
+      # Security token for this repo with write permissions to create PR and push changes.
         id: app-token
         uses: actions/create-github-app-token@v3
         with:

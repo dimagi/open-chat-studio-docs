@@ -32,9 +32,9 @@ jobs:
     timeout-minutes: 30
 
     permissions:
-      contents: read
+      contents: read  # for checkout
       pull-requests: write
-      id-token: write
+      #id-token: write # Not needed for GitHub App token generation.
 
     steps:
       - name: Resolve PR ref
