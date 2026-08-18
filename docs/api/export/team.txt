@@ -1396,6 +1396,8 @@ ExperimentChannelDetail:
   - updated_at: string (required)
   - name: string (required)
   - deleted: boolean
+  - enabled: boolean
+  - disabled_message: string
   - external_id: string (required)
   - platform: PlatformEnum
   - widget_version: string

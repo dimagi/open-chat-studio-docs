@@ -14,6 +14,7 @@ hide:
 ## Aug 18, 2026
 * **CHANGE** When several branches merge into one node, that node now takes its input from the branch that arrived most recently, and `node_inputs` holds every input that has arrived so far instead of just one. Previously the input depended on the order the connections happened to be drawn, so the same graph could feed a merge node a different branch — any node with more than one incoming connection may now receive a different input than before. See [Which input a node receives](concepts/pipelines/parallel.md#which-input-a-node-receives).
 * **BUG** Fixed merge nodes that wait until they have a set number of inputs (for example a Python node checking `len(node_inputs)`) never completing, which made the pipeline return nothing. See [Optional Parallel Branches](concepts/pipelines/parallel.md#optional-parallel-branches).
+* **BUG** Fixed Python node code failing with `NameError: name 'enumerate' is not defined`. The `enumerate` builtin can now be used in your scripts. See [Python Node](tech-hub/python_node.md).
 
 ## Aug 14, 2026
 * **NEW** Added support for the **Gemini 3.7 Flash** model, which can now be selected on both the Google (Gemini API) and Google Vertex AI providers.
