@@ -22,7 +22,7 @@ jobs:
   create-weekly-release:
     permissions:
       contents: write # read permission for checkout. Write for git push
-      #id-token: write # Not needed for app token generation.
+      id-token: write # Needed for Claude Code Action
     runs-on: ubuntu-latest
 
     steps:

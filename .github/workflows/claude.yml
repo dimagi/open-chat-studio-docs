@@ -25,7 +25,7 @@ jobs:
       contents: write # read permission for checkout. Write for git push
       pull-requests: write
       issues: write
-      id-token: write # Not needed for app token generation.
+      id-token: write # Needed for Claude Code Action
     steps:
       - name: Generate app token
       # Security token for this repo with write permissions to create PR and push changes.
