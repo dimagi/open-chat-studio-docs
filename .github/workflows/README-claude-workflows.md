@@ -30,18 +30,14 @@ Commands live in `.claude/commands/`, agents in `.claude/agents/` ([background](
 | `update-changelog.yml` | [`changelog-instructions.md`](../templates/changelog-instructions.md) rendered into the workflow's `prompt:` | [`zensical-technical-writer`](../../.claude/agents/zensical-technical-writer.md) | Creates PR with doc updates — see [README-changelog-automation.md](README-changelog-automation.md) |
 | *(manual only, no workflow)* | [`/write-docs`](../../.claude/commands/write-docs.md) | [`zensical-technical-writer`](../../.claude/agents/zensical-technical-writer.md) | Docs content written or updated |
 
-## Setup
+## Setup secrets and permissions
 
-Secrets and variables are configured under **Settings > Secrets and variables > Actions**:
-`ANTHROPIC_API_KEY` (every workflow), plus `OCS_AGENT_APP_ID` / `OCS_AGENT_PRIVATE_KEY` for
-`claude.yml` and `update-changelog.yml`, which push branches and open PRs as the `ocs-agent`
-bot. See each workflow file for exactly how they're used.
-
-## Forked Repos
-
-A PR from a forked repo runs its `pull_request`-triggered workflows with a read-only `GITHUB_TOKEN` and no access to this repo's Actions secrets.
-
-Any workflow here triggered by `pull_request` (check the code) is affected: the job still starts, but fails inside the `claude-code-action` step once it tries to authenticate — it isn't skipped. Workflows triggered by comment/review events instead are unaffected — those always run in the base repo's context with full secrets access, regardless of the underlying PR's origin.
+- **`OCS_AGENT_PRIVATE_KEY`** (secret) and **`OCS_AGENT_APP_ID`** (variable): credentials for
+  the `ocs-agent` GitHub App (org Settings → GitHub Apps). The GitHub app must be installed on the repo with contents, issues, and pull request write permissions.
+- Workflows mint a short-lived installation token from these, so the PR itself and any
+  `gh pr`/`gh issue` comments are attributed to `ocs-agent[bot]`.
+- The token's actual write capabilities come from the GitHub App's own permission grant, not from any workflow's `permissions:` block — which only governs the default `GITHUB_TOKEN` and is bypassed wherever the app token is used instead.
+- **`ANTHROPIC_API_KEY`**: Claude API key.
 
 ## Tool Allowlist
 
@@ -67,12 +63,18 @@ PR makes it eligible for the AI review above.
 
 `update-changelog.yml` also sets concurrency, grouped by PR number but with `cancel-in-progress: false`, so an in-flight changelog run finishes rather than being superseded.
 
+## Forked Repos
+
+A PR from a forked repo runs its `pull_request`-triggered workflows with a read-only `GITHUB_TOKEN` and no access to this repo's Actions secrets.
+
+Any workflow here triggered by `pull_request` (check the code) is affected: the job still starts, but fails inside the `claude-code-action` step once it tries to authenticate — it isn't skipped. Workflows triggered by comment/review events instead are unaffected — those always run in the base repo's context with full secrets access, regardless of the underlying PR's origin.
+
 ## Troubleshooting
 
 Issues that can show up on any of these workflows. For workflow-specific troubleshooting, see that workflow's own doc (e.g. [README-changelog-automation.md](README-changelog-automation.md#troubleshooting) for `update-changelog.yml`).
 
 - **Run fails immediately in the `claude-code-action` step on a `pull_request`-triggered workflow:** Expected if the PR is from a forked repo — see Forked Repos above.
 - **Output looks incomplete, or a step Claude should have taken didn't happen:** Check the run transcript for denied tool calls — see Tool Allowlist above.
-- **Authentication or permission failures:** Verify `ANTHROPIC_API_KEY` is valid. For `claude.yml` and `update-changelog.yml` (which use the `ocs-agent` app), also verify the app's private key matches `OCS_AGENT_PRIVATE_KEY` and the app is still installed on the relevant repo(s).
+- **Authentication or permission failures:** Verify `ANTHROPIC_API_KEY` is valid. For `claude.yml` and `update-changelog.yml` (which use the `ocs-agent` app), also verify the GitHub app's private key matches `OCS_AGENT_PRIVATE_KEY` and the GitHub app is still installed on the relevant repo(s). Token minting fails if either repo is missing from the installation.
 - **Output quality needs improvement:** Comment on the generated PR with `@claude` and specify what to revise.
 - **For systemic quality issues:** Update the relevant command or agent in `.claude/commands/` / `.claude/agents/` rather than correcting each PR manually.
