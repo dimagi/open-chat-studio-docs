@@ -11,6 +11,11 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Aug 18, 2026
+* **CHANGE** When several branches merge into one node, that node now takes its input from the branch that arrived most recently, and `node_inputs` holds every input that has arrived so far instead of just one. Previously the input depended on the order the connections happened to be drawn, so the same graph could feed a merge node a different branch — any node with more than one incoming connection may now receive a different input than before. See [Which input a node receives](concepts/pipelines/parallel.md#which-input-a-node-receives).
+* **BUG** Fixed merge nodes that wait until they have a set number of inputs (for example a Python node checking `len(node_inputs)`) never completing, which made the pipeline return nothing. See [Optional Parallel Branches](concepts/pipelines/parallel.md#optional-parallel-branches).
+* **BUG** Fixed Python node code failing with `NameError: name 'enumerate' is not defined`. The `enumerate` builtin can now be used in your scripts. See [Python Node](tech-hub/python_node.md).
+
 ## Aug 17, 2026
 * **NEW** You can now temporarily disable an individual channel instead of deleting it, using the **Enabled** toggle in the channel's configuration dialog. While a channel is off, incoming messages are not processed or recorded at all, and you can optionally set a static reply that is sent to anyone who messages the channel — leaving it blank keeps the bot silent. Disabled channels are highlighted in the channel list.
 
