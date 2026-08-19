@@ -1033,6 +1033,9 @@ CollectionDetail:
   - openai_vector_store_id: string
   - is_index: boolean
   - enable_contextual_retrieval: boolean
+  - search_language: Unknown
+  - search_dense_weight: number
+  - search_fetch_k: integer
   - create_version_task_id: string
   - working_version: integer
   - llm_provider: integer
