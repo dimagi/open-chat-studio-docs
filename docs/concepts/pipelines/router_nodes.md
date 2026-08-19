@@ -18,7 +18,7 @@ For example:
 
 2. **Conversation Context**: The total set of information available to the pipeline at that moment. This includes the participant’s current message, their chat history (as determined by the router's own [History setting](history.md)), and known data (like whether they are a "new" or "returning" participant).
 
-3. **Default Path**: The "safety net" route (marked with a blue *). If the router cannot confidently decide where to send the participant, it follows this path to prevent the conversation from breaking. [more](../../how-to/routers/index.md#the-default-output).
+3. **Default Path**: The "safety net" route (marked with a blue *). If the router cannot confidently decide where to send the participant, it follows this path to prevent the conversation from breaking. [Read more about the default output](../../how-to/routers/index.md#the-default-output).
 
 ## Router Types
 There are two distinct ways to route a conversation in OCS. The choice depends on whether you are routing based on what the participant means or what the system knows.
