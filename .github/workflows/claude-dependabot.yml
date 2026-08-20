@@ -69,7 +69,7 @@ jobs:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           allowed_bots: "dependabot[bot]"
           claude_args: |
-            --allowedTools "Bash(uv sync:*),Bash(uv run zensical build:*),Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),Read,WebFetch,WebSearch"
+            --allowedTools "Bash(uv sync --locked),Bash(uv run zensical build --clean),Bash(git:*),Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),Read,Edit,WebFetch,WebSearch"
           prompt: |
             You are reviewing PR #${{ steps.pr.outputs.pr_number }}.
 
@@ -105,7 +105,7 @@ jobs:
                - For github-actions bumps, check whether the new major version changes inputs
                  or runtime the CI workflows rely on.
                - Verify the build still works: run `uv sync --locked` then
-                 `uv run zensical build --clean `. Report the result.
+                 `uv run zensical build --clean`. Report the result.
 
             ## Output Format:
 

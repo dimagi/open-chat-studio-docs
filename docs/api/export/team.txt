@@ -1033,6 +1033,9 @@ CollectionDetail:
   - openai_vector_store_id: string
   - is_index: boolean
   - enable_contextual_retrieval: boolean
+  - search_language: Unknown
+  - search_dense_weight: number
+  - search_fetch_k: integer
   - create_version_task_id: string
   - working_version: integer
   - llm_provider: integer
@@ -1405,6 +1408,8 @@ ExperimentChannelDetail:
   - required_auth_level: Unknown
   - pending_auth_level: Unknown
   - auth_level_notified_at: string
+  - credential_mode: Unknown
+  - session_token_lifetime: string
   - experiment: integer
   - messaging_provider: integer
 
