@@ -23,6 +23,8 @@ To link a channel to your chatbot:
 - [SureAdhere Mobile App](#sureadhere-for-secure-in-app-messaging)
 - [API](#api) — programmatic access, no setup required
 
+Once a channel is linked, you can [temporarily disable it](#disabling-a-channel) without deleting its configuration.
+
 ## Web
 
 The web channel is OCS's built-in chat interface. It's enabled by default for every chatbot — there's no provider to configure and nothing to link. Embed it on your own website with the [chat widget][chat-widget].
@@ -111,6 +113,32 @@ See the [Email channel guide](deploy_email_channel.md) for full setup and config
 
 Every chatbot can also be reached programmatically through the OCS [APIs][api], which is useful for integrating with third-party systems or building custom front ends.
 
+## Disabling a channel
+
+Instead of deleting a channel, you can pause it with the **Enabled** toggle in the channel's configuration dialog. This keeps the channel's settings in place so you can turn it back on later. See [Disabling a channel][disabling-concept] for what this does and why you might use it.
+
+To disable a channel:
+
+1. Navigate to the **Chatbot** the channel is linked to.
+2. Open the channel from the list and switch off **Enabled**.
+3. Optionally, enter a **Disabled message** — a static reply sent to anyone who messages the channel, or tries to start a chat on it, while it's off. Leave it blank to keep the channel silent instead.
+4. Click **Save**.
+
+Disabled channels are highlighted in the chatbot's channel list, so you can see at a glance which ones are off.
+
+What participants and admins see depends on where they try to reach the disabled channel:
+
+| Entry point | What happens |
+|---|---|
+| Chat widget or API | Starting a chat fails. The widget currently shows a generic "Failed to start chat session" error rather than your configured disabled message. |
+| Public web chat link (consent/start page) | The page shows an error instead of starting the conversation. |
+| OCS console (starting a chat from the chatbot management pages) | An error message is shown in place of the chat. |
+| Slack | If a disabled message is set, it's sent back; otherwise the channel stays silent with no visible error. |
+| Messaging an already-disabled channel on any platform | The message isn't processed or recorded. If a disabled message is set, it's sent back as the reply; otherwise the bot stays silent. |
+
+!!! info "Known limitations"
+    Starting a session directly through the API still succeeds even while the channel is disabled — only messages sent afterwards on that session are blocked. Evaluation runs and pipeline test runs are unaffected by a channel's disabled state and continue to work as normal.
+
 [1]: https://core.telegram.org/bots#how-do-i-create-a-bot
 [2]: ../concepts/team/messaging_providers.md
 [3]: https://www.twilio.com/docs/WhatsApp/api#configuring-inbound-message-webhooks
@@ -118,6 +146,7 @@ Every chatbot can also be reached programmatically through the OCS [APIs][api], 
 [5]: https://core.Telegram.org/bots/features#:~:text=/setjoingroups%20%E2%80%93%20toggle%20whether%20your%20bot%20can%20be%20added%20to%20groups%20or%20not.%20All%20bots%20must%20be%20able%20to%20process%20direct%20messages%2C%20but%20if%20your%20bot%20was%20not%20designed%20to%20work%20in%20groups%2C%20you%20can%20disable%20this.
 [6]: ../tutorials/configure_msg_providers.md
 [api]: ../tech-hub/api_access.md
+[disabling-concept]: ../concepts/channels.md#disabling-a-channel
 [meta]: ./whatsapp_meta_cloud_api.md
 [turnio]: ./turnio_whatsapp.md
 [chat-widget]: ../chat_widget/index.md
