@@ -6,7 +6,7 @@ Built with [Zensical](https://zensical.org/) (MkDocs-compatible), Python 3.13+, 
 ## Commands
 
 ```bash
-uv sync                                  # Install / sync dependencies
+uv sync --locked                         # Install / sync deps; fails if uv.lock is stale
 uv run zensical serve                    # Local dev server (auto-reload)
 uv run zensical build --clean            # Same build CI runs — fails on broken refs
 uv run pytest scripts/tests              # Run the (small) test suite for scripts/
