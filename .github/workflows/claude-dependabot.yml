@@ -106,7 +106,7 @@ jobs:
                - For github-actions bumps, check whether the new major version changes inputs
                  or runtime the CI workflows rely on.
                - Verify the build still works: run `uv sync --locked` then
-                 `uv run zensical build --clean `. Report the result.
+                 `uv run zensical build --clean`. Report the result.
 
             ## Output Format:
 
