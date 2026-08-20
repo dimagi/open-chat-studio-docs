@@ -20,7 +20,7 @@ Assuming you've already cloned this repository:
 
     ```shell
     uv venv
-    uv sync
+    uv sync --locked
     ```
 
 3. Install the pre-commit hooks
