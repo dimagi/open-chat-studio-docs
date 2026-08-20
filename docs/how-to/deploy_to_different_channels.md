@@ -23,6 +23,8 @@ To link a channel to your chatbot:
 - [SureAdhere Mobile App](#sureadhere-for-secure-in-app-messaging)
 - [API](#api) — programmatic access, no setup required
 
+Once a channel is linked, you can [temporarily disable it][disable] without deleting its configuration.
+
 ## Web
 
 The web channel is OCS's built-in chat interface. It's enabled by default for every chatbot — there's no provider to configure and nothing to link. Embed it on your own website with the [chat widget][chat-widget].
@@ -118,6 +120,7 @@ Every chatbot can also be reached programmatically through the OCS [APIs][api], 
 [5]: https://core.Telegram.org/bots/features#:~:text=/setjoingroups%20%E2%80%93%20toggle%20whether%20your%20bot%20can%20be%20added%20to%20groups%20or%20not.%20All%20bots%20must%20be%20able%20to%20process%20direct%20messages%2C%20but%20if%20your%20bot%20was%20not%20designed%20to%20work%20in%20groups%2C%20you%20can%20disable%20this.
 [6]: ../tutorials/configure_msg_providers.md
 [api]: ../tech-hub/api_access.md
+[disable]: ./disable_a_channel.md
 [meta]: ./whatsapp_meta_cloud_api.md
 [turnio]: ./turnio_whatsapp.md
 [chat-widget]: ../chat_widget/index.md

@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Aug 20, 2026
+* **CHANGE** Turning off a channel's **Enabled** toggle now stops new conversations and bot-initiated messages, where before it only stopped incoming ones. Previously a disabled channel still allowed new conversations to be started (from the chat widget, the public web chat link, Slack, or the chatbot management pages) and still sent out scheduled messages, event action messages and API-triggered messages. New sessions on a disabled channel are now refused, and bot-initiated messages to a disabled channel are no longer sent. Two API endpoints are still exceptions — see [Known limitations](how-to/disable_a_channel.md#known-limitations). See [Disabling a channel](concepts/channels.md#disabling-a-channel).
+
 ## Aug 18, 2026
 * **CHANGE** When several branches merge into one node, that node now takes its input from the branch that arrived most recently, and `node_inputs` holds every input that has arrived so far instead of just one. Previously the input depended on the order the connections happened to be drawn, so the same graph could feed a merge node a different branch — any node with more than one incoming connection may now receive a different input than before. See [Which input a node receives](concepts/pipelines/parallel.md#which-input-a-node-receives).
 * **BUG** Fixed merge nodes that wait until they have a set number of inputs (for example a Python node checking `len(node_inputs)`) never completing, which made the pipeline return nothing. See [Optional Parallel Branches](concepts/pipelines/parallel.md#optional-parallel-branches).
