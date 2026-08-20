@@ -1408,6 +1408,8 @@ ExperimentChannelDetail:
   - required_auth_level: Unknown
   - pending_auth_level: Unknown
   - auth_level_notified_at: string
+  - credential_mode: Unknown
+  - session_token_lifetime: string
   - experiment: integer
   - messaging_provider: integer
 
