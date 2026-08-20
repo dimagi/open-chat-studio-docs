@@ -1,0 +1,141 @@
+API: Open Chat Studio v2
+Description: Build, deploy and monitor chatbots.
+
+TAG: Pipelines
+Description: Discover the pipeline node types an agent may build and the resource ids it may reference.
+
+ENDPOINTS:
+
+GET /api/v2/pipeline/nodes/
+  Summary: List Pipeline Node Types
+  Description: The node types a pipeline can contain, with the JSON Schema of each one's `params` and the outputs its edges leave by. Deprecated types are omitted.
+
+Static per deploy: revalidate a cached copy with `If-None-Match` against the `ETag`.
+  Responses:
+    200:
+      Content: application/json
+      Schema: array of NodeType
+  Security:
+    OAuth2
+      - Required scopes: chatbots:read
+    apiKeyAuth
+    tokenAuth
+
+GET /api/v2/pipeline/nodes/{node_type}/
+  Summary: Retrieve a Pipeline Node Type
+  Description: One node type, as `/pipeline/nodes/` serves it. A deprecated type is not retrievable either -- it is not something a client may build.
+
+Static per deploy: revalidate a cached copy with `If-None-Match` against the `ETag`.
+  Parameters:
+    - node_type (path, string (required)): The type's name, as carried in the `type` field of a `/pipeline/nodes/` entry.
+  Responses:
+    200:
+      Content: application/json
+      Schema: NodeType
+    404: No such node type, or the type is deprecated and therefore not listed.
+      Content: application/json
+      Schema: NodeTypeNotFound
+  Security:
+    OAuth2
+      - Required scopes: chatbots:read
+    apiKeyAuth
+    tokenAuth
+
+GET /api/v2/pipeline/options/
+  Summary: List Pipeline Node Options
+  Description: The values each node param accepts, scoped to the API key's team.
+
+A key holds the values for the node param of the same name: write one of `source_material`'s entries into a node's `source_material_id`, one of `collection_index`'s into `collection_index_ids`.
+
+The variable lists are the exception, because no param is named for the list it draws on and two different params are both named `prompt`. Jinja params -- `template_string` and `SendEmail`'s fields -- draw from `template_variables` and are written double-braced (`{{input}}`); an LLM node's `prompt` draws from `llm_prompt_variables` and a router's from `router_prompt_variables`, both written single-braced (`{source_material}`). Fetch `/pipeline/options/{node_type}/` to receive only the list that applies -- the sets are not interchangeable.
+  Responses:
+    200:
+      Content: application/json
+      Schema: PipelineOptions
+  Security:
+    OAuth2
+      - Required scopes: chatbots:read
+    apiKeyAuth
+    tokenAuth
+
+GET /api/v2/pipeline/options/{node_type}/
+  Summary: List One Node Type's Options
+  Description: The keys this node type's params can reference, plus its `default_llm_provider` where it has one -- `/pipeline/options/` cut down to what building this one node needs. Which of the three variable lists applies is settled here rather than left to the client: the sets are not interchangeable.
+  Parameters:
+    - node_type (path, string (required)): The type's name, as carried in the `type` field of a `/pipeline/nodes/` entry.
+  Responses:
+    200:
+      Content: application/json
+      Schema: PipelineOptions
+    404: No such node type, or the type is deprecated and therefore not listed.
+      Content: application/json
+      Schema: NodeTypeNotFound
+  Security:
+    OAuth2
+      - Required scopes: chatbots:read
+    apiKeyAuth
+    tokenAuth
+
+SCHEMAS:
+
+LlmProviderModelOption:
+  - value: integer (required)
+  - label: string (required)
+  - type: string (required)
+  - max_token_limit: integer
+
+NodeType:
+  - type: string (required)
+  - description: string (required)
+  - documentation_url: string
+  - outputs: Unknown (required)
+  - schema: object (required)
+
+NodeTypeNotFound:
+  - detail: string (required)
+  - valid_types: array of string (required)
+
+PipelineOptions:
+  - llm_provider_id: array of ProviderOption
+  - llm_provider_model_id: array of LlmProviderModelOption
+  - synthetic_voice_id: array of SyntheticVoiceOption
+  - source_material: array of ResourceOption
+  - collection: array of ResourceOption
+  - collection_index: array of ResourceOption
+  - tools: array of ToolOption
+  - custom_actions: array of ToolOption
+  - built_in_tools: object
+  - tool_config: object
+  - template_variables: array of PromptVariable
+  - llm_prompt_variables: array of PromptVariable
+  - router_prompt_variables: array of PromptVariable
+  - default_llm_provider: Unknown
+
+PromptVariable:
+  - label: string (required)
+  - description: string (required)
+
+ProviderOption:
+  - value: integer (required)
+  - label: string (required)
+  - type: string (required)
+
+ResourceOption:
+  - value: integer (required)
+  - label: string (required)
+
+SyntheticVoiceOption:
+  - value: integer (required)
+  - label: string (required)
+  - type: string (required)
+  - provider_id: integer (required)
+
+ToolOption:
+  - value: string (required)
+  - label: string (required)
+
+SECURITY:
+- OAuth2
+  - Authorization Code Flow (authorization url: /o/authorize/, token url: /o/token/)
+- API Key authentication (header: X-api-key)
+- HTTP bearer authentication
