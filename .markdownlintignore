@@ -8,11 +8,12 @@
 site/
 .venv/
 
-# Ignore Claude Code agent definitions as it just refers to AGENTS.md and fails linting
+# CLAUDE.md is just an @-include pointing at AGENTS.md, so it fails MD041 (no H1)
 CLAUDE.md
 
-# Ignore Claude commands files (for now)
+# Ignore Claude commands and agent definitions (for now) — prompt bodies, not docs
 .claude/commands
-
-# Ignore Claude agents markdown files (for now)
 .claude/agents
+
+# Generated from the OCS OpenAPI schema by the update-api-docs workflow; not hand-edited
+docs/api/

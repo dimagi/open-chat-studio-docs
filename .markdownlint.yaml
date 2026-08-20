@@ -1,6 +1,8 @@
 default: true
 
-# Enable rules that are important for AI agent parsing, structural integrity and link/reference correctness
+# All rules are on by default; the ones below are disabled because they don't fit this
+# project's style, or tuned. Rules that stay enabled are the ones that matter most for
+# AI agent parsing, structural integrity, and link/reference correctness (MD041, MD051, MD059).
 
 # List markers can be either - or *
 MD004: false
@@ -59,7 +61,8 @@ MD041:
 MD046: false
 MD050: false
 
-# Link-fragment validation to catch broken in-document links after heading changes
+# Link-fragment validation to catch broken in-document links after heading changes.
+# Scope: same-document fragments only — cross-file `foo.md#anchor` links are not checked.
 MD051: true
 
 MD053: false
