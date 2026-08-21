@@ -82,7 +82,7 @@ The current category is {temp_state.category}
 
 ## Reading participant-uploaded files
 
-This workflow allows participants to upload files that your chatbot can process and analyze. Supported file types are listed [here][code_node_supported_file_types].
+This workflow allows participants to upload files that your chatbot can process and analyze. See the [supported file types][code_node_supported_file_types] for details.
 
 ### Setup Steps
 
