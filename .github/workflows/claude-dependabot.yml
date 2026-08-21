@@ -32,10 +32,9 @@ jobs:
     timeout-minutes: 30
 
     permissions:
-      contents: read
+      contents: read  # for checkout
       pull-requests: write
-      issues: read
-      id-token: write
+      id-token: write # Needed for Claude Code Action
 
     steps:
       - name: Resolve PR ref
