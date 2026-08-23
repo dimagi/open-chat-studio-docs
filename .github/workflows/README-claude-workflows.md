@@ -23,28 +23,21 @@ Commands live in `.claude/commands/`, agents in `.claude/agents/` ([background](
 
 ## Required secrets and permissions
 
-Secret requirements differ per workflow — check the Requirements: line in each workflow file's header comment.
+Secret requirements differ per workflow — check the `Requirements:` line in each workflow file's header comment.
 
-- **`OCS_AGENT_PRIVATE_KEY`** (secret) and **`OCS_AGENT_APP_ID`** (variable): credentials for
-  the `ocs-agent` GitHub App (org Settings → GitHub Apps). The GitHub app must be installed on the repo with contents, issues, and pull request write permissions.
-- Workflows mint a short-lived installation token from these, so the PR itself and any
-  `gh pr`/`gh issue` comments are attributed to `ocs-agent[bot]`.
-- The token's actual write capabilities come from the GitHub App's own permission grant, not from any workflow's `permissions:` block — which only governs the default `GITHUB_TOKEN` and is bypassed wherever the app token is used instead.
+Two independent mechanisms scope what Claude can do in every run: the `permissions:` block (what the default `GITHUB_TOKEN` can access) and `--allowedTools` in `claude_args` (which tools run without a permission prompt). Getting either wrong is the main way a compromised or malicious prompt — e.g. a hostile issue/PR body — could take unintended action, so treat changes to them as security-sensitive. See [claude-code-action's security docs](https://github.com/anthropics/claude-code-action/blob/main/docs/security.md) and the [Claude Code CLI reference](https://code.claude.com/docs/en/cli-reference) for how they actually behave.
 
-Two independent mechanisms scope what Claude can do in every run: the `permissions:` block (what the `GITHUB_TOKEN` can access) and `--allowedTools` in `claude_args` (which tools **run without a prompt for permission**). Getting either wrong is the main way a compromised or malicious prompt — e.g. a hostile issue/PR body — could take unintended action, so treat changes to them as security-sensitive. See [claude-code-action's security docs](https://github.com/anthropics/claude-code-action/blob/main/docs/security.md) and the [Claude Code CLI reference](https://code.claude.com/docs/en/cli-reference) for how they actually behave.
+**`permissions:`** — Workflows using the `ocs-agent` GitHub App (check each workflow's header for which ones) mint a short-lived installation token instead, so their PRs and comments are attributed to `ocs-agent[bot]`. That token's write capabilities come from the App's own permission grant (org Settings → GitHub Apps), **not** from the workflow's `permissions:` block — so `permissions:` is effectively bypassed wherever the app token is used.
 
-Every workflow passes `--allowedTools` in `claude_args` directly — that's what's enforced. Some workflows invoke a command with its own `allowed-tools:` frontmatter (e.g. `.claude/commands/create-release.md`), and some of those commands launch a subagent via `Task` with its own `tools:` frontmatter (e.g. `documentation-pr-reviewer`).
-
-None of these further declarations expand what's enforced — only the workflow's `--allowedTools` does — so a tool named further down the chain but missing from the workflow's list is simply unusable there, no matter what the command or agent frontmatter claims. Keep all of these in sync: right now `documentation-pr-reviewer`'s `tools:` includes `WebFetch`/`WebSearch` for link-checking, but neither `claude-review.yml` nor `review-pr.md` grants them, so that capability is currently dead when the agent runs through this pipeline. The command frontmatter is also what governs if a command is ever run manually/interactively outside its workflow.
+**`--allowedTools`** — Only the workflow's own `--allowedTools` in `claude_args` is enforced. Commands (`.claude/commands/`) and agents (`.claude/agents/`) can declare their own `allowed-tools:` / `tools:` frontmatter, but those never expand what the workflow allows — a tool missing from the workflow's list is unusable no matter what a command or agent claims.
+Keep them in sync: `documentation-pr-reviewer`'s `tools:` includes `WebFetch`/`WebSearch` for link-checking, but neither `claude-review.yml` nor `review-pr.md` grants them, so that capability is currently dead in that pipeline. (Command frontmatter also governs what's available if the command is ever run manually/interactively, outside its workflow.)
 
 > [!WARNING]
 > If Claude tries to use a tool that isn't permitted, that call is denied and it continues without it — **the run won't fail**. A missing tool usually surfaces as an **incomplete result rather than an error**, so check the run transcript for denied tool calls if the output looks truncated.
 
 ## GitHub labels used by these workflows
 
-The `automated` label exists so bot-authored docs PRs don't loop back into the AI review in `claude-review.yml`. It's applied by the workflow that opens each such PR, not by Claude, and removing the label makes that PR eligible for review again.
-
-See the relevant workflow's header comment for exactly how and when it sets the label.
+The `automated` label exists so bot-authored docs PRs don't loop back into the AI review in `claude-review.yml` — see each relevant workflow's header comment for exactly how and when it's applied or checked.
 
 ## Forked Repos
 
@@ -58,7 +51,7 @@ Issues that can show up on any of these workflows. For workflow-specific trouble
 
 - **Run fails immediately in the `claude-code-action` step on a `pull_request`-triggered workflow:** Expected if the PR is from a forked repo — see Forked Repos above.
 - **Output looks incomplete, or a step Claude should have taken didn't happen:** Check the run transcript for denied tool calls — see Tool Allowlist above.
-- **Authentication or permission failures:** Verify `ANTHROPIC_API_KEY` is valid. For `claude.yml` and `update-changelog.yml` (which use the `ocs-agent` app), also verify the app's private key matches `OCS_AGENT_PRIVATE_KEY` and the app is still installed on the relevant repo(s).
+- **Authentication or permission failures:** Verify `ANTHROPIC_API_KEY` is valid. If the workflow uses the `ocs-agent` app (check its header comment), also verify the GitHub app's private key matches `OCS_AGENT_PRIVATE_KEY` and the app is still installed on the relevant repo(s) — token minting fails if either repo is missing from the installation.
 - **Output quality needs improvement:** Comment on the generated PR with `@claude` and specify what to revise.
 - **For systemic quality issues:** Update the relevant command or agent in `.claude/commands/` / `.claude/agents/` rather than correcting each PR manually.
 
