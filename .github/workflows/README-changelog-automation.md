@@ -8,12 +8,11 @@ This page is for maintainers of the [user documentation and changelog process](h
 
 | Stage | What happens |
 |---|---|
-| **1. Trigger** | An OCS PR merges → the OCS repo's dispatch workflow fires `repository_dispatch` (`ocs_changelog_update`) with PR context. Can also be run manually via `workflow_dispatch` with a PR number. |
+| **1. Trigger** | An OCS PR merges, or a maintainer runs it manually — see the workflow's header comment for exact trigger conditions. |
 | **2. Classify & branch** | Detects whether the PR touches `components/` (widget) to pick the base branch (`main` or `widget-develop`), then creates a working branch `changelog-pr-<pr>-<run>`. |
 | **3. Build instructions** | Renders [`changelog-instructions.md`](../templates/changelog-instructions.md) with the PR's title/body/author/widget-flag, pulling in the matching changelog-section template. |
-| **4. Run Claude** | Claude updates the changelog directly; if the PR needs docs, it invokes [`zensical-technical-writer`](../../.claude/agents/zensical-technical-writer.md). Commits locally — does **not** open a PR itself. No changes → no PR (see Troubleshooting). |
-| **5. Open PR** | Workflow (not Claude) opens the PR — titled by what changed (Changelog / Changelog + Docs / `[Widget]` prefix), labelled `automated`, and assigned to the source PR's author. |
-| **6. On failure** | Comments on the source OCS PR with a link to the failed run. |
+| **4. Run Claude** | Claude updates the changelog directly, invoking [`zensical-technical-writer`](../../.claude/agents/zensical-technical-writer.md) if the PR also needs docs changes. |
+| **5. Open PR** | Workflow (not Claude) opens the PR, titled by what changed (Changelog / Changelog + Docs / `[Widget]` prefix). |
 
 ## Maintenance Notes
 
@@ -33,9 +32,7 @@ Troubleshooting and process changes can involve both repositories:
 
 ### Required Secrets
 
-`ANTHROPIC_API_KEY`, `OCS_AGENT_APP_ID`, `OCS_AGENT_PRIVATE_KEY` — see
-[README-claude-workflows.md#setup-secrets-and-permissions](README-claude-workflows.md#setup-secrets-and-permissions)
-for where these are configured, and the workflow file itself for exactly how they're used.
+See the Requirements: line in the workflow file's header comment.
 
 ## Troubleshooting
 
@@ -45,6 +42,6 @@ issues common to all Claude workflows (auth failures, fork PRs, output quality).
 Specific to`update-changelog.yml`:
 
 - **Manual trigger:** Open GitHub Actions, select `Update Changelog and Docs from OCS PR`, and enter the OCS PR number. Safe to rerun for the same PR.
-- **No PR created:** Check workflow runs in both repositories. If there was no docs/changelog change, no docs PR is expected.
+- **No PR created:** Check workflow runs in both repositories.
 - **Unexpected target branch or classification:** Check workflow logs in the source and receiving repos to verify how the PR was classified.
 - **widget-develop branch missing:** Handled automatically — the workflow creates it from `main` before pushing. If that push fails (e.g. branch protection), create it manually: `git checkout -b widget-develop main && git push origin widget-develop`. See [Developer guide with details on branching and app/widget release flow](https://developers.openchatstudio.com/developer_guides/user_docs/)
