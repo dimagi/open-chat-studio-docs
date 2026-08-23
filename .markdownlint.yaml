@@ -1,36 +1,21 @@
 default: true
 
-# Line length — reduce progressively after long lines are fixed
-MD013:
-  line_length: 650
-  code_blocks: false
-  tables: false
-  headings: false
-
-# Inline HTML: MkDocs Material uses <br>, <kbd>, attribute lists, etc.
-MD033:
-  allowed_elements:
-    - a
-    - br
-    - details
-    - div
-    - figcaption
-    - figure
-    - iframe
-    - kbd
-    - small
-    - span
-    - sub
-    - summary
-    - sup
-
-# Disable rules that are not relevant to our style guide
+# All rules are on by default; the ones below are disabled because they don't fit this
+# project's style, or tuned. Rules that stay enabled are the ones that matter most for
+# AI agent parsing, structural integrity, and link/reference correctness (MD041, MD051, MD059).
 
 # List markers can be either - or *
 MD004: false
 
 # Ignore unordered list indentation check
 MD007: false
+
+# Line length — reduce progressively after long lines are fixed
+MD013:
+  line_length: 650
+  code_blocks: false
+  tables: false
+  headings: false
 
 # Ignore need for blank lines around headings
 MD022: false
@@ -49,6 +34,24 @@ MD030: false
 
 # Ignore need for blank lines around lists
 MD032: false
+
+# Inline HTML: MkDocs Material uses <br>, <kbd>, attribute lists, etc.
+MD033:
+  allowed_elements:
+    - a
+    - br
+    - details
+    - div
+    - figcaption
+    - figure
+    - iframe
+    - kbd
+    - small
+    - span
+    - sub
+    - summary
+    - sup
+
 MD034: false
 
 # Every page must open with an H1 (frontmatter title does not substitute)
@@ -57,8 +60,17 @@ MD041:
 
 MD046: false
 MD050: false
+
+# Link-fragment validation to catch broken in-document links after heading changes.
+# Scope: same-document fragments only — cross-file `foo.md#anchor` links are not checked.
+MD051: true
+
 MD053: false
 MD054: false
 MD058: false
-MD059: false
+
+# Require descriptive link text (no "click here") — agents extracting a link
+# out of context need the anchor text itself to say what it points to.
+MD059: true
+
 MD060: false
