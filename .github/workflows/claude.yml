@@ -4,7 +4,8 @@
 
 # Triggered on: `@claude` mention in an issue comment, PR review comment, or
 # PR review; or an issue opened/assigned with `@claude` in the title or body
-# Requirements: ANTHROPIC_API_KEY secret must be configured
+# Requirements: ANTHROPIC_API_KEY secret, and OCS_AGENT_APP_ID (var) /
+# OCS_AGENT_PRIVATE_KEY (secret) for the ocs-agent GitHub App token
 #
 # Notes:
 # - No concurrency group is set, so overlapping triggers on the same
