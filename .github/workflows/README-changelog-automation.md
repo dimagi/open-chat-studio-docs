@@ -20,7 +20,7 @@ This page is for maintainers of the [user documentation and changelog process](h
 Where to make changes:
 
 - **Prompt and task logic** — `.github/templates/changelog-instructions.md` and the `main-changelog-section.md` / `widget-changelog-section.md` templates it pulls in (Pipeline stage 3 above).
-- **Documentation-writing behavior** — `.claude/agents/zensical-technical-writer.md` (Pipeline stage 4 above). This agent is shared with the manual `/write-docs` command — see [README-claude-workflows.md#pipelines](README-claude-workflows.md#pipelines) for how it's used elsewhere.
+- **Documentation-writing behavior** — `.claude/agents/zensical-technical-writer.md` (Pipeline stage 4 above). This agent is shared with the manual `/write-docs` command — see [README-claude-workflows.md#github-workflows](README-claude-workflows.md#github-workflows) for how it's used elsewhere.
 
 Behavior changes often require touching both `.github/templates/` and `.claude/agents/` together.
 
@@ -34,8 +34,8 @@ Troubleshooting and process changes can involve both repositories:
 ### Required Secrets
 
 `ANTHROPIC_API_KEY`, `OCS_AGENT_APP_ID`, `OCS_AGENT_PRIVATE_KEY` — see
-[README-claude-workflows.md#setup](README-claude-workflows.md#setup) for where these are
-configured, and the workflow file itself for exactly how they're used.
+[README-claude-workflows.md#setup-secrets-and-permissions](README-claude-workflows.md#setup-secrets-and-permissions)
+for where these are configured, and the workflow file itself for exactly how they're used.
 
 ## Troubleshooting
 
