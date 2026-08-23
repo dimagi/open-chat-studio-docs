@@ -1,3 +1,21 @@
+# Claude Code Workflow
+#
+# Runs Claude Code against issues and PR/issue conversations.
+
+# Triggered on: `@claude` mention in an issue comment, PR review comment, or
+# PR review; or an issue opened/assigned with `@claude` in the title or body
+# Requirements: ANTHROPIC_API_KEY secret must be configured
+#
+# Notes:
+# - No concurrency group is set, so overlapping triggers on the same
+#   issue/PR run in parallel rather than queuing or cancelling each other.
+# - The `claude` job has no actor/permission gate of its own — it relies on
+#   claude-code-action's built-in check that the triggering user has write
+#   access to this repo. A mention or review from anyone without write
+#   access (most fork PR authors included) fails the "Run Claude Code" step
+#   with "Action failed with error: User does not have write access on this
+#   repository" rather than being silently skipped.
+
 name: Claude Code
 
 on:

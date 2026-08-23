@@ -1,3 +1,19 @@
+# PR Review Workflow
+#
+# Runs the documentation-pr-reviewer subagent (via /review-pr) against a PR's
+# diff and posts feedback as PR comments — a top-level summary plus inline
+# comments on specific files/lines.
+#
+# Triggered on: pull_request (opened, ready_for_review, reopened) — skips
+# Dependabot PRs and PRs labelled `automated`
+# Requirements: ANTHROPIC_API_KEY secret must be configured
+#
+# Notes:
+# - Grouped by PR number (`cancel-in-progress: true`), so a new trigger on
+#   the same PR cancels a run already in progress.
+# - Not triggered on `synchronize` — pushing new commits to an open PR does
+#   not start a new review or cancel one already running.
+
 name: PR Review
 
 on:
