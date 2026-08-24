@@ -31,8 +31,8 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write
-      id-token: write
+      contents: write # read permission for checkout. Write for git push
+      id-token: write # Needed for Claude Code Action
       issues: write
       pull-requests: write
 
@@ -53,8 +53,8 @@ jobs:
           private-key: ${{ secrets.OCS_AGENT_PRIVATE_KEY }}
           owner: dimagi
           repositories: |
-            open-chat-studio-docs
-            open-chat-studio
+            open-chat-studio-docs     # Write: create PRs and branches
+            open-chat-studio          # Write: post failure comments on source PR
 
       - name: Determine base branch
         id: determine_branch
