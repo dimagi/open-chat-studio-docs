@@ -16,9 +16,9 @@ jobs:
     if: ${{ github.actor != 'dependabot[bot]' && !contains(github.event.pull_request.labels.*.name, 'automated') }}
     runs-on: ubuntu-latest
     permissions:
-      contents: read  # for checkout
+      contents: read
       pull-requests: write
-      id-token: write # Needed for Claude Code Action
+      id-token: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7

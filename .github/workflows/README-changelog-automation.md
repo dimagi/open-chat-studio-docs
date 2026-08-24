@@ -47,5 +47,4 @@ Specific to`update-changelog.yml`:
 - **Manual trigger:** Open GitHub Actions, select `Update Changelog and Docs from OCS PR`, and enter the OCS PR number. Safe to rerun for the same PR.
 - **No PR created:** Check workflow runs in both repositories. If there was no docs/changelog change, no docs PR is expected.
 - **Unexpected target branch or classification:** Check workflow logs in the source and receiving repos to verify how the PR was classified.
-- **Authentication or permission failures:** See [README-claude-workflows.md#troubleshooting](README-claude-workflows.md#troubleshooting) and additionally check that the GitHub app is still installed on the relevant repo(s). Token minting fails if either repo is missing from the installation.
 - **widget-develop branch missing:** Handled automatically — the workflow creates it from `main` before pushing. If that push fails (e.g. branch protection), create it manually: `git checkout -b widget-develop main && git push origin widget-develop`. See [Developer guide with details on branching and app/widget release flow](https://developers.openchatstudio.com/developer_guides/user_docs/)
