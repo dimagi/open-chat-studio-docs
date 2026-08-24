@@ -12,6 +12,7 @@ hide:
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
 ## Aug 24, 2026
+* **NEW** You can now send a one-off **Broadcast message** to every participant of a chatbot from the chatbot home page, choosing which of its channels to send on. Broadcasting requires permission to invite participants, and only reaches participants who have already messaged the bot on the selected channel. See [Broadcast a Message to Participants](how-to/broadcast_messages.md#broadcasting-a-message).
 * **CHANGE** Various security enhancements for code running in a [Python node](tech-hub/python_node.md).
 * **BUG** Fixed augmented assignment (for example `count += 1`) raising an error in [Python node](tech-hub/python_node.md) code. Common in-place operators can now be used as expected.
 * **BUG** Fixed an error raised by the code in a [Python node](tech-hub/python_node.md) causing the message to fail without a reply. The participant now receives a generic error response, and the error is recorded against the message so you can see what went wrong.
