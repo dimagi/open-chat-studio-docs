@@ -37,6 +37,13 @@ The following additional arguments are provided:
         return important(input)
     ```
 
+### Code Restrictions
+
+Python node code runs in a restricted environment. Keep the following in mind when writing your code:
+
+- **Shared objects are read-only.** You cannot assign to attributes or items of shared, global objects such as imported modules or classes — for example, `json.dumps = my_function` is not allowed. Data created during your node's own execution, such as your own dictionaries, lists, and objects like [`Attachment`](#attachments), remain fully writable, so normal code that reads and modifies its own data is unaffected.
+- **Augmented assignment works.** Common in-place operators, such as `count += 1`, can be used as you would expect.
+
 ## Utility Functions
 
 The Python node provides a set of utility functions that can be used to interact with the participant's data and the pipeline state.
@@ -115,6 +122,10 @@ Here is an example of a temporary state dictionary:
 The Python node can also access and modify the state of the participant's session. This state is a dictionary that is scoped to each session that the participant might have with the chatbot.
 
 The session state can be accessed and modified using the [get_session_state_key](#python_node.get_session_state_key) and [set_session_state_key](#python_node.set_session_state_key) utility functions. <!-- markdownlint-disable-line MD051 -->
+
+!!! note
+
+    Certain reserved keys used internally by Open Chat Studio cannot be overwritten with `set_session_state_key`. This is enforced every time the function runs, so it cannot be bypassed by calling the function under another name or by building the key name dynamically (for example, through string concatenation).
 
 ## Attachments
 

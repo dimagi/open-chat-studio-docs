@@ -71,6 +71,9 @@ def set_session_state_key(key_name: str, data: Any) -> None:
     Sets the value of the session state key with the given name to the provided data.
     This will override any existing data for the key.
 
+    Certain keys are reserved for internal use by Open Chat Studio and cannot be overwritten,
+    no matter how the key name is constructed or how this function is called.
+
     See also: [Session State](python_node.md#session-state)
     """
 

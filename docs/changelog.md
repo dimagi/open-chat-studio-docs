@@ -12,6 +12,8 @@ hide:
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
 ## Aug 24, 2026
+* **CHANGE** Code in a [Python node](tech-hub/python_node.md) can no longer assign to attributes or items of shared, global objects such as imported modules and classes (for example `json.dumps = my_function`). Your own data — dictionaries, lists, and objects created during the run such as attachments — is still fully writable, so normal node code is unaffected. Reserved session state keys are also now refused every time `set_session_state_key` runs, rather than only when the node's code is saved. See [Code Restrictions](tech-hub/python_node.md#code-restrictions).
+* **BUG** Fixed augmented assignment (for example `count += 1`) raising an error in [Python node](tech-hub/python_node.md) code. Common in-place operators can now be used as expected.
 * **BUG** Fixed an error raised by the code in a [Python node](tech-hub/python_node.md) causing the message to fail without a reply. The participant now receives a generic error response, and the error is recorded against the message so you can see what went wrong.
 
 ## Aug 20, 2026
