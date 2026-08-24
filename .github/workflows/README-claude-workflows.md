@@ -16,7 +16,7 @@ Commands live in `.claude/commands/`, agents in `.claude/agents/` ([background](
 |---|---|---|---|---|
 | `claude.yml` | Claude Code | Freeform `@claude` assistant for issue/PR conversations | none — freeform prompt taken from the mention itself | none |
 | `claude-dependabot.yml` | Claude Dependabot PR Review | Flags breaking changes / build impact in Dependabot PRs | none — freeform inline prompt in the workflow | none |
-| `claude-review.yml` | PR Review | Automated documentation review on every PR | [`/review-pr`](../../.claude/commands/review-pr.md) | [`documentation-pr-reviewer`](../../.claude/agents/documentation-pr-reviewer.md) |
+| `claude-review.yml` | PR Review | Automated documentation review on PRs (skips Dependabot PRs and PRs labelled `automated`) | [`/review-pr`](../../.claude/commands/review-pr.md) | [`documentation-pr-reviewer`](../../.claude/agents/documentation-pr-reviewer.md) |
 | `release.yml` | Weekly Release Summary | Drafts a GitHub release from the changelog | [`/create-release <tag> <title>`](../../.claude/commands/create-release.md) | none — the command does the work itself |
 | `update-changelog.yml` | Update Changelog and Docs from OCS PR | Syncs changelog/docs from merged OCS PRs — see [README-changelog-automation.md](README-changelog-automation.md) | [`changelog-instructions.md`](../templates/changelog-instructions.md) rendered into the workflow's `prompt:` | [`zensical-technical-writer`](../../.claude/agents/zensical-technical-writer.md) |
 | *(manual only, no workflow)* | — | Ad-hoc docs writing outside any workflow | [`/write-docs`](../../.claude/commands/write-docs.md) | [`zensical-technical-writer`](../../.claude/agents/zensical-technical-writer.md) |
@@ -43,13 +43,11 @@ When you add or change a command or agent, check that the `--allowedTools` set i
 
 ## GitHub labels used by these workflows
 
-The `automated` label exists so bot-authored docs PRs don't loop back into the AI review in `claude-review.yml` — see each relevant workflow's header comment for exactly how and when it's applied or checked.
+The `automated` label exists so bot-authored docs PRs don't loop back into the AI review in `claude-review.yml`. It's applied by both `update-changelog.yml` and the unrelated, non-Claude `update-api-docs.yml` — removing the label from a PR created by either one makes it eligible for the AI review.
 
 ## Forked Repos
 
-A PR from a forked repo runs its `pull_request`-triggered workflows with a read-only `GITHUB_TOKEN` and no access to this repo's Actions secrets.
-
-Of the workflows above, `claude-dependabot.yml` and `claude-review.yml` are `pull_request`-triggered and therefore affected: the job still starts, but fails inside the `claude-code-action` step once it tries to authenticate — it isn't skipped. The comment/review/issue-triggered `claude.yml`, and the schedule/dispatch-triggered `release.yml` and `update-changelog.yml`, are unaffected — those always run in the base repo's context with full secrets access, regardless of any PR's origin.
+The Claude job using `claude-code-action` step, fails with "User does not have write access on this repository" as its designed to only be triggered by users with write access to the repo.
 
 ## Troubleshooting
 
