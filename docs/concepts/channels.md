@@ -52,7 +52,6 @@ See [Disable a channel](../how-to/disable_a_channel.md) for how to turn a channe
 ## See also
 - [Disable a channel](../how-to/disable_a_channel.md)
 - [Deploying your chatbot to different channels](../how-to/deploy_to_different_channels.md)
-- [Broadcast a message to participants](../how-to/broadcast_messages.md)
 
 [1]: ./team/messaging_providers.md
 [widget-files]: ../chat_widget/reference.md#file-attachments
