@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Aug 24, 2026
+* **BUG** Fixed an error raised by the code in a [Python node](tech-hub/python_node.md) causing the message to fail without a reply. The participant now receives a generic error response, and the error is recorded against the message so you can see what went wrong.
+
 ## Aug 20, 2026
 * **CHANGE** Turning off a channel's **Enabled** toggle now stops new conversations and bot-initiated messages, where before it only stopped incoming ones. Previously a disabled channel still allowed new conversations to be started (from the chat widget, the public web chat link, Slack, or the chatbot management pages) and still sent out scheduled messages, event action messages and API-triggered messages. New sessions on a disabled channel are now refused, and bot-initiated messages to a disabled channel are no longer sent. Two API endpoints are still exceptions — see [Known limitations](how-to/disable_a_channel.md#known-limitations). See [Disabling a channel](concepts/channels.md#disabling-a-channel).
 
