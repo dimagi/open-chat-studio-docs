@@ -19,8 +19,8 @@
 #   manual run is still going) are not cancelled or queued.
 # - Job permissions are scoped, so don't add pull-requests/issues back without a reason.
 # - claude_args sets --allowedTools explicitly, mirroring create-release.md's
-#   own allowed-tools frontmatter. Keep the two in sync
-#   — see README-claude-workflows.md's Security section.
+#   own allowed-tools frontmatter. Keep the two in sync and see
+#   README-claude-workflows.md's Security section.
 
 name: Weekly Release Summary
 
@@ -45,8 +45,8 @@ permissions: {}
 jobs:
   create-weekly-release:
     permissions:
-      contents: write # read for checkout; write for `gh release create` (releases are in the `contents` scope
-      id-token: write # Needed for Claude Code Action
+      contents: write  # Read for checkout; write for `gh release create` (releases are in the `contents` scope)
+      id-token: write  # Needed for Claude Code Action
     runs-on: ubuntu-latest
 
     steps:
@@ -77,7 +77,7 @@ jobs:
           prompt: /create-release ${{ env.RELEASE_TAG }} "${{ env.RELEASE_NAME }}"
           claude_args: |
             --model claude-sonnet-4-6
-            --allowedTools "Bash(gh release list:*),Bash(gh release view:*),Bash(gh release create:*),Bash(git diff:*),Read"
+            --allowedTools "Bash(gh release list:*),Bash(gh release create:*),Bash(git diff:*),Read"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

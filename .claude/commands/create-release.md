@@ -1,5 +1,5 @@
 ---
-allowed-tools: Bash(gh release list:*),Bash(gh release view:*),Bash(gh release create:*),Bash(git diff:*),Read
+allowed-tools: Bash(gh release list:*),Bash(gh release create:*),Bash(git diff:*),Read
 description: Create a new draft GitHub release from the changelog
 argument-hint: [release-tag] [release-title]
 ---
@@ -45,10 +45,15 @@ Create a new GitHub release by comparing the current changelog with the previous
    - Focus on user-facing changes
    - Where possible include links to the documentation
        - The documentation and changelog are hosted at https://docs.openchatstudio.com/
-       - Only include links that already appear in the changelog diff — copy
-         them verbatim and convert relative paths to absolute URLs using that
-         base. Do not invent, guess, or fetch documentation URLs; if you're
-         not sure a link from the diff is correct, leave it out.
+       - Only include links that already appear in the changelog diff. Do not
+         invent, guess, or fetch documentation URLs; if you're not sure a
+         link from the diff is correct, leave it out.
+       - Convert relative paths to absolute URLs using that base. The site
+         serves clean directory URLs, not raw markdown files, so also: strip
+         any leading `./`, strip the trailing `.md` extension, and add a
+         trailing slash before any `#anchor`.
+         Example: `./tech-hub/tools.md#set-session-state-key` →
+         `https://docs.openchatstudio.com/tech-hub/tools/#set-session-state-key`
 
 4. **Create the GitHub release:**
    - Use `gh release create --draft` with tag: $1
