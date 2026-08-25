@@ -41,10 +41,8 @@ permissions: {}
 jobs:
   create-weekly-release:
     permissions:
-      contents: write
-      pull-requests: write
-      issues: write
-      id-token: write
+      contents: write  # Read for checkout; write for `gh release create` (releases are in the `contents` scope)
+      id-token: write  # Needed for Claude Code Action
     runs-on: ubuntu-latest
 
     steps:
@@ -75,6 +73,7 @@ jobs:
           prompt: /create-release ${{ env.RELEASE_TAG }} "${{ env.RELEASE_NAME }}"
           claude_args: |
             --model claude-sonnet-4-6
+            --allowedTools "Bash(gh release list:*),Bash(gh release create:*),Bash(git diff:*),Read"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
