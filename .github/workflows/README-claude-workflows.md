@@ -50,7 +50,7 @@ The `automated` label exists so bot-authored docs PRs don't loop back into the A
 Engineers contributing from a fork may trigger these workflows by opening a pull request (or commenting on one) against this repo.
 
 - **`claude-review.yml`** is `pull_request`-triggered. A PR from a fork fails because the Claude Code Action cannot obtain an OIDC token.
-- **`claude.yml`** While this is not `pull_request`-triggered (it fires on comments, reviews, and issues), it fails via `claude-code-action`'s own actor check: the user does have write access to this repo.
+- **`claude.yml`** While this is not `pull_request`-triggered (it fires on comments, reviews, and issues), it fails via `claude-code-action`'s own actor check unless the user has write access to this repo.
 
 `claude-dependabot.yml`, `release.yml`, and `update-changelog.yml` aren't meant to be reused on a forked repo — they're wired to this repo's own release process and to the OCS repo's changelog dispatch.
 
@@ -58,7 +58,7 @@ Engineers contributing from a fork may trigger these workflows by opening a pull
 
 Issues that can show up on any of these workflows. For workflow-specific troubleshooting, see that workflow's own doc (e.g. [README-changelog-automation.md](README-changelog-automation.md#troubleshooting) for `update-changelog.yml`).
 
-- **Run fails immediately in the `claude-code-action` step for forked repos:** See Forked Repos above.
+- **Run fails immediately in the `claude-code-action` step for forked repos:** See Fork Limitations above.
 - **Output looks incomplete, or a step Claude should have taken didn't happen:** Check the run transcript for denied tool calls — see [Security: Tool Allowlists](#security-secrets-permissions--tool-allowlists) section above.
 - **Authentication or permission failures:** Verify `ANTHROPIC_API_KEY` is valid. If the workflow uses the `ocs-agent` app (check its header comment), also verify the GitHub app's private key matches `OCS_AGENT_PRIVATE_KEY` and the app is still installed on the relevant repo(s) — token minting fails if either repo is missing from the installation.
 - **Output quality needs improvement:** Comment on the generated PR with `@claude` and specify what to revise.

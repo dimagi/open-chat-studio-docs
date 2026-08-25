@@ -39,7 +39,7 @@ See the Requirements: line in the workflow file's header comment.
 See [README-claude-workflows.md#troubleshooting](README-claude-workflows.md#troubleshooting) for
 issues common to all Claude workflows (auth failures, fork PRs, output quality).
 
-Specific to`update-changelog.yml`:
+Specific to `update-changelog.yml`:
 
 - **Manual trigger:** Open GitHub Actions, select `Update Changelog and Docs from OCS PR`, and enter the OCS PR number. Safe to rerun for the same PR.
 - **No PR created:** Check workflow runs in both repositories.
