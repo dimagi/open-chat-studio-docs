@@ -27,7 +27,7 @@ Requirements differ per workflow. Check the `Requirements:` line in each workflo
 
 ## Security: Permissions & Tool Allowlists
 
-Two independent mechanisms combine to shape a workflows run:
+Two independent mechanisms combine to shape a workflow's run:
 
 - `--allowedTools` in `claude_args`, which controls what Claude itself will attempt to invoke.
 - The `permissions:` block, which controls what the job's `GITHUB_TOKEN` can actually reach on GitHub — including when Claude's own `gh`/git calls use it.
@@ -65,7 +65,7 @@ Engineers contributing from a fork may trigger these workflows by opening a pull
 Issues that can show up on any of these workflows. For workflow-specific troubleshooting, see that workflow's own doc (e.g. [README-changelog-automation.md](README-changelog-automation.md#troubleshooting) for `update-changelog.yml`).
 
 - **Run fails immediately in the `claude-code-action` step for forked repos:** See [Fork Limitations](#fork-limitations) above.
-- **Output looks incomplete, or a step Claude should have taken didn't happen:** Check the run transcript for allowed tool calls — see [Gotchas & checklist](#gotchas--checklist).
+- **Output looks incomplete, or a step Claude should have taken didn't happen:** Check the run transcript for denied tool calls — see [Gotchas & checklist](#gotchas--checklist).
 - **Authentication or permission failures:** Verify `ANTHROPIC_API_KEY` is valid. If the workflow uses the `ocs-agent` app (check its header comment), also verify the GitHub app's private key matches `OCS_AGENT_PRIVATE_KEY` and the app is still installed on the relevant repo(s) — token minting fails if either repo is missing from the installation.
 - **Output quality needs improvement:** Comment on the generated PR with `@claude` and specify what to revise.
 - **For systemic quality issues:** Update the relevant command or agent in `.claude/commands/` / `.claude/agents/` rather than correcting each PR manually.

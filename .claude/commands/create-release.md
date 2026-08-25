@@ -58,10 +58,10 @@ Create a new GitHub release by comparing the current changelog with the previous
          3. Otherwise, convert the relative path:
             a. Split off any `#anchor` from the rest of the link.
             b. Strip a leading `./` or `/` from the remaining path.
-            c. If the filename is `index.md`, drop the whole filename (leaving just
-               its parent directory); otherwise strip just the `.md` extension.
-            d. Append a trailing slash, then re-append the `#anchor` from step (a)
-               if there was one.
+            c. If the filename is `index.md`, drop it, keeping the parent directory
+               path; otherwise strip just the `.md` extension.
+            d. Ensure the path ends in exactly one trailing slash, then re-append
+               the `#anchor` from step (a) if there was one.
          Example: `./tech-hub/tools.md#set-session-state-key` →
          `https://docs.openchatstudio.com/tech-hub/tools/#set-session-state-key`
          Example: `./chat_widget/index.md` →
