@@ -1437,7 +1437,7 @@ ExperimentDetail:
   - debug_mode_enabled: boolean
   - create_version_task_id: string
   - file_uploads_enabled: boolean
-  - owner: integer (required)
+  - owner: integer
   - pipeline: integer
   - consent_form: integer
   - voice_provider: integer
