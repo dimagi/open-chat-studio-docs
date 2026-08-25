@@ -1,13 +1,18 @@
 # Claude Dependabot PR Review Workflow
 #
-# Automatically runs Claude analysis on Dependabot PRs to:
-# - Identify dependency changes and their versions
-# - Look up changelogs for updated packages / actions
-# - Assess breaking changes affecting the docs build
-# - Provide actionable recommendations
+# Analyzes a Dependabot PR's dependency changes, looks up changelogs, checks
+# for breaking changes and docs-build impact, and posts a single review
+# comment with a recommendation (APPROVE / REVIEW_NEEDED / HOLD).
 #
-# Triggered on: Dependabot PRs (opened, synchronize)
+# Triggered on: Dependabot PRs (opened, synchronize) — job only runs when the
+# PR author is dependabot[bot]; or workflow_dispatch with a required
+# pr_number input (manual run, e.g. for testing)
 # Requirements: ANTHROPIC_API_KEY secret must be configured
+#
+# Notes:
+# - Uses the default GITHUB_TOKEN, not the ocs-agent app token.
+# - No concurrency group, so overlapping runs on the same PR are not
+#   cancelled or queued.
 
 name: Claude Dependabot PR Review
 

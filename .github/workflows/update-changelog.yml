@@ -1,10 +1,22 @@
-# Workflow: Update Changelog and Docs from OCS PR
+# Update Changelog and Docs from OCS PR Workflow
 #
-# This workflow automatically updates changelog and documentation when PRs are merged
-# in the open-chat-studio repository. It can be triggered via repository_dispatch events
-# or manually using workflow_dispatch.
+# Updates docs/changelog.md (or docs/chat_widget/changelog.md for widget
+# PRs) via Claude, then opens a PR here with the changes. The PR is opened
+# by the workflow itself (not Claude) — labelled `automated` and assigned to
+# the source PR's author. No changes were made → no PR is opened.
 #
-# See README-changelog-automation.md for more.
+# Triggered on: repository_dispatch (`ocs_changelog_update`) sent from the
+# OCS repo's dispatch workflow after a PR merges there; or workflow_dispatch
+# with a required pr_number input (manual re-run for a given OCS PR)
+# Requirements: ANTHROPIC_API_KEY secret, and OCS_AGENT_APP_ID (var) /
+# OCS_AGENT_PRIVATE_KEY (secret) for the ocs-agent GitHub App token
+#
+# Notes:
+# - Grouped by OCS PR number (`cancel-in-progress: false`), so a second
+#   trigger for the same PR waits for the in-progress run to finish.
+# - On failure, comments on the source OCS PR with a link to the failed run.
+#
+# See README-changelog-automation.md for the full pipeline and maintenance notes.
 
 name: Update Changelog and Docs from OCS PR
 
