@@ -48,16 +48,26 @@ Create a new GitHub release by comparing the current changelog with the previous
        - Only include links that already appear in the changelog diff. Do not
          invent, guess, or fetch documentation URLs; if you're not sure a
          link from the diff is correct, leave it out.
-       - Convert relative paths to absolute URLs using that base. The site
-         serves clean directory URLs, not raw markdown files, so also: strip
-         any leading `./`, strip the trailing `.md` extension, and add a
-         trailing slash before any `#anchor`.
+       - Convert relative paths to absolute URLs using that base. The site serves clean
+         directory URLs, not raw markdown files. Apply these checks in order and stop
+         at the first one that applies:
+         1. If the link is already an absolute URL (starts with `http://`, `https://`,
+            or another scheme like `mailto:`), leave it exactly as it is.
+         2. If the link is only an `#anchor` with no path, it points at the changelog
+            page itself — prefix it with `https://docs.openchatstudio.com/changelog/`.
+         3. Otherwise, convert the relative path:
+            a. Split off any `#anchor` from the rest of the link.
+            b. Strip a leading `./` or `/` from the remaining path.
+            c. If the filename is `index.md`, drop the whole filename (leaving just
+               its parent directory); otherwise strip just the `.md` extension.
+            d. Append a trailing slash, then re-append the `#anchor` from step (a)
+               if there was one.
          Example: `./tech-hub/tools.md#set-session-state-key` →
          `https://docs.openchatstudio.com/tech-hub/tools/#set-session-state-key`
          Example: `./chat_widget/index.md` →
          `https://docs.openchatstudio.com/chat_widget/`
-       - A link that is only an `#anchor` with no path points at the changelog page itself — prefix it with
-        `https://docs.openchatstudio.com/changelog/`.
+         Example: `concepts/sessions.md` →
+         `https://docs.openchatstudio.com/concepts/sessions/`
 
 4. **Create the GitHub release:**
    - Use `gh release create --draft` with tag: $1
