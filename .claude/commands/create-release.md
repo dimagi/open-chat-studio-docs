@@ -45,8 +45,10 @@ Create a new GitHub release by comparing the current changelog with the previous
    - Focus on user-facing changes
    - Where possible include links to the documentation
        - The documentation and changelog are hosted at https://docs.openchatstudio.com/
-       - If the changelog includes links, copy those and convert them to absolute URLs.
-       - Verify that the links exist before adding.
+       - Only include links that already appear in the changelog diff — copy
+         them verbatim and convert relative paths to absolute URLs using that
+         base. Do not invent, guess, or fetch documentation URLs; if you're
+         not sure a link from the diff is correct, leave it out.
 
 4. **Create the GitHub release:**
    - Use `gh release create --draft` with tag: $1

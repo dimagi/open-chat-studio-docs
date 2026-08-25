@@ -45,7 +45,7 @@ permissions: {}
 jobs:
   create-weekly-release:
     permissions:
-      contents: write # read permission for checkout. Write for git push
+      contents: write # read for checkout; write for `gh release create` (releases are in the `contents` scope
       id-token: write # Needed for Claude Code Action
     runs-on: ubuntu-latest
 
