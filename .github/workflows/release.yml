@@ -42,8 +42,6 @@ jobs:
   create-weekly-release:
     permissions:
       contents: write
-      pull-requests: write
-      issues: write
       id-token: write
     runs-on: ubuntu-latest
 
@@ -75,6 +73,7 @@ jobs:
           prompt: /create-release ${{ env.RELEASE_TAG }} "${{ env.RELEASE_NAME }}"
           claude_args: |
             --model claude-sonnet-4-6
+            --allowedTools "Bash(gh release list:*),Bash(gh release view:*),Bash(gh release create:*),Bash(git diff:*),Read"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
