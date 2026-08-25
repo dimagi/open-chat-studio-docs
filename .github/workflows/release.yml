@@ -17,6 +17,10 @@
 #   does not publish it.
 # - No concurrency group, so overlapping runs (e.g. schedule firing while a
 #   manual run is still going) are not cancelled or queued.
+# - Job permissions are scoped, so don't add pull-requests/issues back without a reason.
+# - claude_args sets --allowedTools explicitly, mirroring create-release.md's
+#   own allowed-tools frontmatter. Keep the two in sync
+#   — see README-claude-workflows.md's Security section.
 
 name: Weekly Release Summary
 
@@ -41,8 +45,8 @@ permissions: {}
 jobs:
   create-weekly-release:
     permissions:
-      contents: write
-      id-token: write
+      contents: write # read permission for checkout. Write for git push
+      id-token: write # Needed for Claude Code Action
     runs-on: ubuntu-latest
 
     steps:
