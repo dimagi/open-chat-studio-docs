@@ -13,10 +13,10 @@
 # - Uses the default GITHUB_TOKEN, not the ocs-agent app token.
 # - No concurrency group, so overlapping runs on the same PR are not
 #   cancelled or queued.
-# - --allowedTools needs WebFetch/WebSearch for changelog lookups and are this
-#   workflow's main untrusted-content path (a malicious release note could
-#   try to steer Claude) — keep the rest of the tool list minimal for that
-#   reason rather than widening it.
+# - WebFetch/WebSearch are kept in --allowedTools for changelog lookups; they're
+#   also this workflow's main untrusted-content path (a malicious release note
+#   could try to steer Claude) — keep the rest of the tool list minimal for
+#   that reason rather than widening it.
 
 name: Claude Dependabot PR Review
 
