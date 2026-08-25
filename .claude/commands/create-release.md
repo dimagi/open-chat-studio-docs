@@ -54,6 +54,10 @@ Create a new GitHub release by comparing the current changelog with the previous
          trailing slash before any `#anchor`.
          Example: `./tech-hub/tools.md#set-session-state-key` →
          `https://docs.openchatstudio.com/tech-hub/tools/#set-session-state-key`
+         Example: `./chat_widget/index.md` →
+         `https://docs.openchatstudio.com/chat_widget/`
+       - A link that is only an `#anchor` with no path points at the changelog page itself — prefix it with
+        `https://docs.openchatstudio.com/changelog/`.
 
 4. **Create the GitHub release:**
    - Use `gh release create --draft` with tag: $1
