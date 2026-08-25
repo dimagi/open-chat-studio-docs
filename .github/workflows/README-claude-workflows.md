@@ -74,6 +74,10 @@ Issues that can show up on any of these workflows. For workflow-specific trouble
 - **Output quality needs improvement:** Comment on the generated PR with `@claude` and specify what to revise.
 - **For systemic quality issues:** Update the relevant command or agent in `.claude/commands/` / `.claude/agents/` rather than correcting each PR manually.
 
+## How to test a workflow from a fork
+This section has been added to test how workflows run when doing PRs from a fork. 
+Create an ANTHROPIC_API_KEY secret for the forked repo
+
 ## Best Practices
 
 1. [Background to using Claude custom Subagents](https://docs.anthropic.com/en/docs/claude-code/sub-agents)
