@@ -16,6 +16,9 @@
 #   access (most fork PR authors included) fails the "Run Claude Code" step
 #   with "Action failed with error: User does not have write access on this
 #   repository" rather than being silently skipped.
+# - claude-code-action picks its own push target from context (existing
+#   branch for an open PR, a new branch for issues/closed PRs) — independent
+#   of the ref this workflow's own Checkout repository step resolves.
 
 name: Claude Code
 
