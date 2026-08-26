@@ -31,6 +31,7 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 ### v0.12.0
 
+* Add an `authTokenProvider` property for chatbots whose Chat Widget & API channel requires an OAuth token. Set it to a function returning a token (or a promise for one); the widget calls it each time a chat session starts and sends the result as a bearer token. `authTokenProvider` is a JavaScript property with no HTML attribute equivalent, and your own backend must mint the tokens, so a copy-paste snippet embed cannot use this mode. See [OAuth credential mode](reference.md#oauth-credential-mode) — note that the channel setting this depends on is not yet configurable in Open Chat Studio.
 * Remove `.bmp` and `.svg` from the file picker's image types. These formats aren't accepted by the LLM providers, and the server now rejects them at upload with a clear error message.
 * Expose the running widget version on the element. Read the `data-widget-version` attribute (e.g. `element.getAttribute('data-widget-version')`) or call the `getVersion()` method to tell which release is deployed on a page.
 
