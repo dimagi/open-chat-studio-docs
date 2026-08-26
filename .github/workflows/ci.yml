@@ -1,3 +1,15 @@
+# CI Workflow
+#
+# Builds the Zensical docs site and publishes it to GitHub Pages.
+#
+# Triggered on: push to main
+# Requirements: none — deploy-pages authenticates via the job's own Pages/OIDC
+# permissions, no external secrets needed
+#
+# Notes:
+# - No concurrency group, so back-to-back pushes to main queue independent
+#   deploy runs rather than a newer push superseding an older, in-flight one.
+
 name: ci
 on:
   push:
@@ -14,9 +26,10 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     permissions:
-      contents: read
-      pages: write
-      id-token: write
+      contents: read   # needed for checkout
+      pages: write     # needed by actions/deploy-pages
+      id-token: write  # needed by actions/deploy-pages (OIDC)
+
     steps:
       - uses: actions/configure-pages@v6
       - uses: actions/checkout@v7
