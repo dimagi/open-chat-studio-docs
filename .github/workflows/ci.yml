@@ -7,8 +7,9 @@
 # permissions, no external secrets needed
 #
 # Notes:
-# - No concurrency group, so back-to-back pushes to main queue independent
-#   deploy runs rather than a newer push superseding an older, in-flight one.
+# - No concurrency group, so back-to-back pushes to main can deploy in parallel
+#   with no ordering guarantee — a slower, older run can finish after a newer one
+#   and leave stale content live.
 
 name: ci
 on:
