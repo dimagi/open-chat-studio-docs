@@ -60,6 +60,11 @@ The embed authentication feature allows you to:
 - Provide secure access control for sensitive or premium content
 - Track and manage different embedded deployments
 
+Two authentication mechanisms are available, depending on how the channel is configured on the server:
+
+- **Embed key** (default) — a static key sent as an `X-Embed-Key` header. See [Implementation](#implementation) below.
+- **OAuth credential mode** — a bearer token supplied by your own backend via the `authTokenProvider` JS property. See [OAuth Credential Mode](#oauth-credential-mode) below.
+
 ### Implementation
 
 ```html
@@ -70,6 +75,80 @@ The embed authentication feature allows you to:
 ```
 
 When an embed key is provided, it's automatically sent as an `X-Embed-Key` header with all API requests to authenticate the widget instance.
+
+### OAuth Credential Mode
+
+!!! note "Not yet configurable in Open Chat Studio"
+    OAuth credential mode is a setting on the "Chat Widget & API" channel itself, and the channel
+    configuration screen does not yet offer a control for it. Widget support has landed ahead of that
+    control, so for now you cannot switch a channel into OAuth mode. Setting `authTokenProvider` on a
+    channel using the default embed-key mode has no effect, and existing embeds are unaffected.
+
+When a channel is configured for OAuth credential mode, the widget must present an OAuth bearer token to start a chat session. You provide that token by setting the `authTokenProvider` JS property on the widget element:
+
+```javascript
+document.querySelector('open-chat-studio-widget').authTokenProvider = async ({ forceRefresh }) => {
+  const response = await fetch(`/api/get-widget-token?force_refresh=${forceRefresh}`, { credentials: 'include' });
+  const { token } = await response.json();
+  return token;
+};
+```
+
+`authTokenProvider` is a **JS property only** — there is no HTML attribute equivalent, because its value is a function and HTML attributes can only hold strings. A copy-paste HTML embed snippet cannot use OAuth mode on its own; the host page needs a small `<script>` block, like the one above, that selects the widget element and assigns the property.
+
+#### How it works
+
+- The widget calls `authTokenProvider` at the start of every session and sends the returned token as an `Authorization: Bearer <token>` header on the `chat/start/` request only. The header is **not** sent on message-send, poll, or upload requests.
+- The widget passes a single options object to the function — `{ forceRefresh: boolean }` — described in [The `forceRefresh` argument](#the-forcerefresh-argument) below.
+- The function can return a token string directly, or a `Promise` that resolves to one.
+- The widget never stores or caches the token itself. It calls the provider every time it starts a session — including when a previous session expires and the widget starts a new one automatically. The widget does not run a refresh timer; `forceRefresh` is the only signal it gives the host page about token freshness.
+- If `authTokenProvider` returns a falsy value (`undefined`, `null`, or an empty string), the widget sends the request with no `Authorization` header. On an OAuth-mode channel the server will then refuse to start the session.
+- If `authTokenProvider` **throws**, the widget does *not* fall back to an unauthenticated request — session start fails and the widget shows "Could not obtain an authentication token". The thrown error's own text is deliberately not surfaced in the chat (it is logged to the browser console instead), so that a message quoting a token is never written to the persisted transcript.
+
+#### The `forceRefresh` argument
+
+Your provider is allowed to cache tokens — on your backend, or in the browser for the lifetime of the page. `forceRefresh` tells you when a cached token is acceptable and when it is not:
+
+| `forceRefresh` | When the widget passes it | What your provider should do |
+|----------------|---------------------------|------------------------------|
+| `false`        | The first call for a given session start | Return a token. An existing cached token is fine, as long as it is still valid. |
+| `true`         | The retry call, after `chat/start/` came back `401` with the previous token | Bypass your cache and mint a genuinely new token. |
+
+```javascript
+let cached;
+
+document.querySelector('open-chat-studio-widget').authTokenProvider = async ({ forceRefresh }) => {
+  if (cached && !forceRefresh) {
+    return cached;
+  }
+  const response = await fetch('/api/get-widget-token', { credentials: 'include' });
+  cached = (await response.json()).token;
+  return cached;
+};
+```
+
+!!! warning "Returning the same token for `forceRefresh: true` cancels the retry"
+    The widget only resends `chat/start/` if the refreshed token **differs** from the one that
+    was just rejected (see [Retry behavior on 401](#retry-behavior-on-401)). A provider that
+    ignores `forceRefresh` and returns its cached value again — or returns a falsy value — gets no
+    retry, and the session start fails with the original `401`.
+
+Because the argument is an object, a zero-argument provider such as `async () => token` is still valid JavaScript and works for the initial call — but it can never distinguish the retry, so it forfeits the behavior above. Read `forceRefresh` if you cache anything.
+
+#### Mint tokens on your server, not in the browser
+
+Minting an OAuth token uses a client-credentials flow, which requires a client secret. That secret must never be exposed in a web page. `authTokenProvider` should call an endpoint on your own backend — one that holds the secret, talks to Open Chat Studio to obtain a token, and returns just the token to the browser. The example above shows this pattern: the browser calls your `/api/get-widget-token` endpoint, and your server does the actual client-credentials exchange with Open Chat Studio.
+
+#### Retry behavior on 401
+
+If Open Chat Studio rejects the token with an `HTTP 401` on `chat/start/`, the widget calls `authTokenProvider` again — this time with `{ forceRefresh: true }` — and retries the session-start request **exactly once**, but only if the newly returned token is different from the one that was just rejected. `chat/start/` is rate-limited, so the widget avoids resending an identical request that would waste your quota for no benefit.
+
+!!! note "401 vs. 403"
+    A `401` means the token itself was refused (missing, expired, or invalid), which triggers the retry described above. A `403` means the session or resource is forbidden for an otherwise-valid caller — this is a distinct case and does not trigger a token refresh or retry.
+
+#### Version requirement
+
+OAuth credential mode support requires widget version **0.12.0** or later. See [Widget Version](#widget-version) for how to check the version running on a page.
 
 ## :material-account: User Identification
 Control how users are identified across chat sessions to enable personalized experiences and session continuity.
@@ -589,6 +668,7 @@ console.log(version); // "0.11.0"
 | `chatbot-id` | `string` | **REQUIRED** | - | Your chatbot ID from Open Chat Studio | `"183312ac-cbe5-4c91-9e7b-d9df96b088e4"` |
 | `api-base-url` | `string` | Optional | `"https://openchatstudio.com"` | API base URL for your Open Chat Studio instance | `"https://your-domain.com"` |
 | `embed-key` | `string` | Optional | `undefined` | Authentication key for embedded channels | `"your-embed-auth-key"` |
+| `authTokenProvider` | `function` | Optional | `undefined` | **JS property only — no HTML attribute.** Function (or async function) returning an OAuth bearer token string, called fresh at the start of every session. Used for [OAuth credential mode](#oauth-credential-mode). Requires widget **0.12.0+** | `() => fetchTokenFromMyBackend()` |
 
 ### Button & UI Customization
 
