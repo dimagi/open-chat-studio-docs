@@ -126,7 +126,6 @@ ChatbotDetail:
   - debug_mode_enabled: boolean (required)
   - conversational_consent_enabled: boolean (required)
   - consent_form_id: integer (required)
-  - participant_allowlist: array of string (required)
   - seed_message: string (required)
   - file_uploads_enabled: boolean (required)
 
@@ -167,7 +166,6 @@ InspectSettings:
   - echo_transcript: boolean (required)
   - debug_mode_enabled: boolean (required)
   - file_uploads_enabled: boolean (required)
-  - participant_allowlist: array of string (required)
 
 InspectStaticTrigger:
   - id: integer (required)
@@ -205,7 +203,6 @@ PatchedChatbotWrite:
   - debug_mode_enabled: boolean
   - conversational_consent_enabled: boolean
   - consent_form_id: integer
-  - participant_allowlist: array of string
   - seed_message: string
   - file_uploads_enabled: boolean
 
