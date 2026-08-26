@@ -1,3 +1,18 @@
+# Update Confluence Release Table Workflow
+#
+# Publishes a row to the Confluence release table for a published GitHub release —
+# runs scripts/update_confluence_release.py with the release's tag, URL, and body
+# pulled from either the triggering release event or a manual re-run.
+#
+# Triggered on: release (published); or workflow_dispatch with a required
+# release_tag input (manual re-run/backfill for an existing release)
+# Requirements: CONFLUENCE_BASE_URL, CONFLUENCE_EMAIL, CONFLUENCE_API_TOKEN secrets
+#
+# Notes:
+# - update_confluence_release.py always inserts a new row — rerunning for a tag
+#   that's already on the page adds a duplicate row rather than updating it in
+#   place, so only backfill tags that aren't there yet.
+
 name: Update Confluence Release Table
 
 on:
@@ -32,8 +47,9 @@ jobs:
         if: github.event_name == 'workflow_dispatch'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_TAG_INPUT: ${{ github.event.inputs.release_tag }}
         run: |
-          TAG="${{ github.event.inputs.release_tag }}"
+          TAG="$RELEASE_TAG_INPUT"
           gh release view "$TAG" --json body,tagName,url > release.json
           {
             echo "RELEASE_TAG=$(jq -r .tagName release.json)"
