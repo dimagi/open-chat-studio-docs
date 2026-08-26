@@ -43,10 +43,11 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write
-      id-token: write
-      issues: write
-      pull-requests: write
+      contents: write  # read permission for checkout. Write for git push
+      id-token: write  # Needed for Claude Code Action
+      # NOTE: gh pr create/edit and issue-comment calls all pass the ocs-agent
+      # app token explicitly (steps.app-token) — they don't consume this
+      # default GITHUB_TOKEN, so issues:write / pull-requests:write aren't needed here.
 
     env:
       WIDGET_PATH_PREFIX: "components/"
