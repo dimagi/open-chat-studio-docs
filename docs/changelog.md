@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Aug 26, 2026
+* **CHANGE** The participant allowlist has been removed. Chatbots can no longer be limited to a list of participant identifiers — the setting is gone from the chatbot settings, and WhatsApp, Telegram and Slack channels now answer anyone who messages them. A chatbot whose public web link was switched off by an allowlist is reachable again at its existing link, and its **Share** dialog no longer hides it. The `participant_allowlist` field has also been removed from the v2 API — sending it when creating or updating a chatbot now returns an error.
+
 ## Aug 24, 2026
 * **NEW** You can now send a one-off **Broadcast message** to every participant of a chatbot from the chatbot home page, choosing which of its channels to send on. Broadcasting requires permission to invite participants, and only reaches participants who have already messaged the bot on the selected channel.
 * **CHANGE** Various security enhancements for code running in a [Python node](tech-hub/python_node.md).
