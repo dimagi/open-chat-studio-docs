@@ -13,6 +13,7 @@ hide:
 
 ## Aug 27, 2026
 * **CHANGE** v0.12.0 of the Chat Widget is released, adding OAuth credential mode, tab-scoped session persistence, a version readout on the element, a "Start new chat" button in kiosk mode, and participant timezone reporting. See the [widget changelog](chat_widget/changelog.md#v0120-2026-08-27) for details.
+* **CHANGE** Open Chat Studio now hands out v0.12.0 in the embed code for new and existing [Embedded Widget](chat_widget/index.md) channels, and any channel still pinned to v0.11.0 is flagged with an update-available notice. Pages that copied an older snippet keep working on the version they pinned — copy the embed code again to move to v0.12.0.
 * **BUG** Fixed broadcasts to WhatsApp participants outside the 24-hour service window failing to send. Meta rejects a message template containing line breaks, so multi-paragraph messages never arrived. Such messages now have their line breaks and repeated spaces collapsed into single spaces, arriving as a single paragraph, and the broadcast dialog tells you so before you send. See [Out-of-service-window template messages](how-to/whatsapp_meta_cloud_api.md#out-of-service-window-template-messages).
 
 ## Aug 24, 2026
