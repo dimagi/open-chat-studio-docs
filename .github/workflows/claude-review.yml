@@ -1,3 +1,19 @@
+# PR Review Workflow
+#
+# Runs the documentation-pr-reviewer subagent (via /review-pr) against a PR's
+# diff and posts feedback as PR comments — a top-level summary plus inline
+# comments on specific files/lines.
+#
+# Triggered on: pull_request (opened, ready_for_review, reopened) — skips
+# Dependabot PRs and PRs labelled `automated`
+# Requirements: ANTHROPIC_API_KEY secret must be configured
+#
+# Notes:
+# - Grouped by PR number (`cancel-in-progress: true`), so a new trigger on
+#   the same PR cancels a run already in progress.
+# - Not triggered on `synchronize` — pushing new commits to an open PR does
+#   not start a new review or cancel one already running.
+
 name: PR Review
 
 on:
@@ -7,6 +23,9 @@ on:
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
   cancel-in-progress: true
+
+# Restrict default permissions — job overrides as needed
+permissions: {}
 
 jobs:
   review:
@@ -28,4 +47,4 @@ jobs:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           prompt: "/review-pr REPO: ${{ github.repository }} PR_NUMBER: ${{ github.event.pull_request.number }}"
           claude_args: |
-            --allowedTools "mcp__github_inline_comment__create_inline_comment,Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*)"
+            --allowedTools "Task,Read,Grep,Glob,mcp__github_inline_comment__create_inline_comment,Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*)"

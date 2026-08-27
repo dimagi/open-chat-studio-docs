@@ -25,6 +25,11 @@ Generated answer: {generated_response}
 Consider the conversation context: {context.topic}
 ```
 
+!!! note "Evaluation cost and usage"
+    An evaluation run can make two kinds of LLM calls: the evaluator's own judging call, and — if generation is enabled — the call that generates the response being judged. Both count towards your team's total cost and usage, but neither is attributed to a specific chatbot, participant, or conversation. This means filtering your team's cost and usage reporting by chatbot or participant will not include evaluation spend, even though it still adds to your team's overall total. For the same reason, the generated response's own cost is not counted as chat usage, so it will not appear on the session or conversation it was generated for.
+
+    If your team runs evaluations with generation enabled, your team's total cost may be higher than you remember, since this spend is now captured. No chatbot, participant, or conversation becomes more expensive — the cost was simply not being recorded before.
+
 ### Template Variables
 
 The available variables depend on the evaluator's evaluation mode.
@@ -85,7 +90,7 @@ See [Python Evaluator](../../tech-hub/evaluations/python_evaluator.md) for the f
 
 ## Clearing Run History
 
-The evaluation runs page includes a **Clear all** button that deletes the entire run history for an evaluation config in a single action. This button is only shown to users who have delete permission for evaluation runs.
+The evaluation runs page includes a **Clear all** button that deletes the entire run history for an evaluation config in a single action. This button is only shown to OCS users who have delete permission for evaluation runs.
 
 Clearing run history also removes the tags that those runs applied to their targets. Only tags that were applied by the evaluator's tag rules are removed — tags that a person added by hand are left untouched.
 

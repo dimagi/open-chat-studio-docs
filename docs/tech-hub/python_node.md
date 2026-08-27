@@ -23,7 +23,7 @@ The `input` parameter is a string that contains the input to the node. The retur
 
 The following additional arguments are provided:
 
-* `node_inputs: list[str]` - A list of all the inputs to the node at the time of execution. This will be the same as `[input]` except when the node is part of a workflow with [parallel branches](../concepts/pipelines/parallel.md).
+* `node_inputs: list[str]` - All the inputs that have reached the node at the time of execution, oldest first, with `input` as the last entry. This will be the same as `[input]` except when the node is part of a workflow with [parallel branches](../concepts/pipelines/parallel.md#which-input-a-node-receives).
 
 !!! warning
 

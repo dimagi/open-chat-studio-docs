@@ -1032,14 +1032,21 @@ CollectionDetail:
   - is_remote_index: boolean
   - openai_vector_store_id: string
   - is_index: boolean
+  - enable_contextual_retrieval: boolean
+  - search_language: Unknown
+  - search_dense_weight: number
+  - search_fetch_k: integer
   - create_version_task_id: string
   - working_version: integer
   - llm_provider: integer
   - embedding_provider_model: integer
+  - contextualizer_llm_model: integer
+  - contextualizer_llm_provider: integer
 
 CollectionFileDetail:
   - id: integer (required)
   - status: Unknown
+  - failure_reason: string
   - metadata: Unknown
   - external_id: string
   - file: integer (required)
@@ -1180,6 +1187,7 @@ DocumentSourceDetail:
   - auto_sync_enabled: boolean
   - last_sync: string
   - sync_task_id: string
+  - sync_started_at: string
   - is_archived: boolean
   - collection: integer (required)
   - auth_provider: integer
@@ -1290,10 +1298,16 @@ EvaluationRunDetail:
   - updated_at: string (required)
   - created_at: string (required)
   - finished_at: string
+  - finalized_at: string
   - status: StatusA8fEnum
   - type: EvaluationRunDetailTypeEnum
   - job_id: string
   - error_message: string
+  - evaluator_ids: array of integer
+  - in_flight: array of integer
+  - batch_dispatched_at: string
+  - stall_count: integer
+  - taskbadger_task_id: string
   - config: integer (required)
   - generation_experiment: integer
   - user: integer
@@ -1315,6 +1329,8 @@ EvaluatorDetail:
   - type: string (required)
   - params: Unknown
   - evaluation_mode: Unknown
+  - llm_provider: integer
+  - llm_provider_model: integer
 
 EvaluatorList:
   - cursor: string (required)
@@ -1383,6 +1399,8 @@ ExperimentChannelDetail:
   - updated_at: string (required)
   - name: string (required)
   - deleted: boolean
+  - enabled: boolean
+  - disabled_message: string
   - external_id: string (required)
   - platform: PlatformEnum
   - widget_version: string
@@ -1390,6 +1408,8 @@ ExperimentChannelDetail:
   - required_auth_level: Unknown
   - pending_auth_level: Unknown
   - auth_level_notified_at: string
+  - credential_mode: Unknown
+  - session_token_lifetime: string
   - experiment: integer
   - messaging_provider: integer
 
@@ -1417,7 +1437,7 @@ ExperimentDetail:
   - debug_mode_enabled: boolean
   - create_version_task_id: string
   - file_uploads_enabled: boolean
-  - owner: integer (required)
+  - owner: integer
   - pipeline: integer
   - consent_form: integer
   - voice_provider: integer
@@ -1462,6 +1482,7 @@ FileChunkEmbeddingDetail:
   - updated_at: string (required)
   - chunk_number: integer (required)
   - text: string (required)
+  - context: string
   - page_number: integer
   - embedding: array of number (required)
   - is_archived: boolean
@@ -1562,6 +1583,8 @@ NodeDetail:
   - type: string (required)
   - label: string
   - params: Unknown
+  - position_x: number
+  - position_y: number
   - is_archived: boolean
   - working_version: integer
   - pipeline: integer (required)
@@ -1833,6 +1856,7 @@ TeamExport:
   - metadata: Unknown
   - files_export_task_id: string
   - is_migrating: boolean
+  - created_by: integer (required)
   - files_export: integer
 
 TimeoutTriggerDetail:
@@ -1868,9 +1892,6 @@ TraceDetail:
   - error: string
   - n_turns: integer
   - n_toolcalls: integer
-  - n_total_tokens: integer
-  - n_prompt_tokens: integer
-  - n_completion_tokens: integer
   - experiment: integer
   - session: integer
   - participant: integer
@@ -1892,6 +1913,7 @@ TraceProviderDetail:
   - updated_at: string (required)
   - type: TraceProviderDetailTypeEnum (required)
   - name: string (required)
+  - metadata: Unknown
 
 TraceProviderDetailTypeEnum:
   - enum: [langfuse]
@@ -1935,6 +1957,7 @@ UsageRecordDetail:
   - created_at: string (required)
   - updated_at: string (required)
   - timestamp: string (required)
+  - source: UsageRecordDetailSourceEnum
   - service_kind: ServiceKindEnum (required)
   - provider_type: string (required)
   - model_name: string (required)
@@ -1948,7 +1971,11 @@ UsageRecordDetail:
   - session: integer
   - participant: integer
   - trace: integer
+  - evaluation_config: integer
   - pricing_rule: integer
+
+UsageRecordDetailSourceEnum:
+  - enum: [chat, evaluation]
 
 UsageRecordList:
   - cursor: string (required)

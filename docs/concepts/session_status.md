@@ -68,19 +68,19 @@ A session moves to `PENDING_REVIEW` whenever the conversation ends. This can hap
 
 **Participant actions:**
 
-- Clicks **End chat** on the web chat page.
+- Clicks **End chat and give feedback** on the web chat page.
 - Sends `/reset` on a messaging channel (also surfaced as "Restart chat" on Telegram).
 
-**Chatbot-driven actions** (see [Ending sessions from a chatbot](#ending-sessions-from-a-chatbot) below):
+**Chatbot-driven actions** — the chatbot itself ends the session, using one of three methods described in [Ending sessions from a chatbot](../tech-hub/ending_sessions.md):
 
-- An LLM tool call ends the session.
-- A Python pipeline node calls `end_session()`.
-- An [event](events.md) with an **End the conversation** action fires.
+- The LLM calls the [End Session tool](../tech-hub/ending_sessions.md#the-end-session-tool).
+- A Python pipeline node calls [`end_session()`](../tech-hub/ending_sessions.md#the-end_session-helper-in-a-python-node).
+- An [event](events.md) fires with an [End the conversation action](../tech-hub/ending_sessions.md#events-with-an-end-the-conversation-action).
 
-**Team member actions:**
+**OCS User actions:**
 
-- Clicks **End session** on a session detail page in the OCS admin.
-- Clicks **New session** on a messaging channel session, which ends the old session as a side effect.
+- Clicks **End Session** button on a Chatbot Review session detail page in the OCS admin.
+- Clicks **New Session** button on a messaging channel session (ie non-web channels), which ends the old session as a side effect.
 
 **API:**
 
@@ -94,62 +94,17 @@ There is exactly one path to `COMPLETE`: the participant is redirected to the re
 
 No deliberate action places a session in `UNKNOWN`. It exists as a defensive fallback. If you see sessions landing here, this indicates an unexpected state — worth investigating rather than ignoring.
 
-## Ending sessions from a chatbot
-
-You have three ways to end a session programmatically from within your chatbot. All three behave identically once triggered — the session moves to `PENDING_REVIEW`, the end time is recorded, and any configured conversation-end [events](events.md) fire.
-
-### The End Session tool
-
-Add the **End Session** tool to your LLM node's tool list. The LLM can then choose to end the chat when it judges the conversation is over.
-
-The tool description presented to the LLM is: *"End the current chat session. This will mark the session as completed. New messages will result in a new session being created."*
-
-In that description, "completed" means the conversation is finished — the session moves to `PENDING_REVIEW`. It does not move directly to the `COMPLETE` status, which only happens once the participant submits the post-conversation review.
-
-The session ends after the chatbot's reply is delivered to the participant.
-
-For full configuration details, see the [End Session tool reference](../tech-hub/tools.md#end-session).
-
-!!! warning "Not available for Assistant-style chatbots"
-    The End Session tool cannot be used with Assistant-style chatbots.
-
-Use this approach when the decision to end the conversation belongs to the LLM — for example, "end the session once the user confirms they are done".
-
-### The `end_session()` helper in a Python node
-
-Inside a [Python pipeline node](../tech-hub/python_node.md), the runtime exposes an `end_session()` helper:
-
-```python
-def main(input, **kwargs):
-    if should_finish(input):
-        end_session()
-    return "Goodbye!"
-```
-
-Calling `end_session()` ends the session after the pipeline finishes and the response is delivered. The returned message is still sent to the participant first.
-
-Use this approach when the decision to end the conversation belongs to your custom logic — for example, a state-machine progression or a specific sentinel input from the participant.
-
-### Events with an "End the conversation" action
-
-Configure an [event](events.md) whose action is **End the conversation**:
-
-- **Static triggers** — fire on a lifecycle event such as a new chatbot message, a participant joining, or a conversation starting. Useful when you want the session to end as soon as the chatbot sends a specific goodbye message.
-- **Timeout triggers** — fire after a period of inactivity. Useful for "end the session if the participant is silent for 30 minutes".
-
-Use this approach when the decision to end the conversation should be driven by lifecycle conditions outside the pipeline itself.
-
 ## Observing how a session ended
 
 Regardless of what ends a session — participant, chatbot, admin, API caller, or event — you can attach further actions to the conversation-end event using static triggers. This lets you respond differently depending on who or what ended the conversation.
 
 | Trigger type | Fires when |
 |--------------|------------|
-| The Conversation is Ended by the Participant | The participant ends the chat (web "End chat" or `/reset`). |
+| The Conversation is Ended by the Participant | The participant ends the chat (web "End chat and give feedback" or `/reset`). |
 | The Conversation is Ended by the Bot | The chatbot ends the chat (End Session tool or `end_session()`). |
 | The Conversation is Ended via the API | An API caller ends the session. |
 | The Conversation is Ended by an Event | An "End the conversation" event action ended the session. |
-| The Conversation is Manually Ended by an Admin | A team member ended the session via the OCS admin. |
+| The Conversation is Manually Ended by a User | A team member ended the session via the OCS admin. |
 
 The generic **Conversation End** trigger fires for all of the above. Use it when you want to take the same action regardless of how the session ended. See [Events](events.md) for more detail.
 

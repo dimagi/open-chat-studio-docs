@@ -6,6 +6,7 @@ Speech service providers enable voice capabilities in Open Chat Studio, includin
 
 - **ElevenLabs** — TTS, STT, and voice management including custom voice cloning
 - **intron.io** — TTS with 90 African and international accent voices
+- **MiniMax** — TTS using MiniMax T2A voices
 
 ## ElevenLabs
 
@@ -57,3 +58,27 @@ intron.io is a text-to-speech platform specialising in African language voices. 
 When you create an intron.io provider, OCS automatically creates 90 voices — one male and one female variant for each of 45 accents. Example accents include Afrikaans, Hausa, Igbo, Kinyarwanda, Luganda, Swahili, Xhosa, Yoruba, and Zulu, alongside a further 36 African and international accents.
 
 Voice seeding is idempotent: saving or re-saving the provider will not create duplicate voices.
+
+## MiniMax
+
+[MiniMax](https://platform.minimax.io) is an AI platform whose T2A (text-to-audio) API synthesizes spoken audio from text.
+
+### Capabilities
+
+| Capability | Details |
+|---|---|
+| Text-to-Speech (TTS) | Converts text to audio using the MiniMax T2A v2 API |
+| Voice catalogue | Built-in MiniMax voices seeded automatically on provider creation |
+
+MiniMax provides text-to-speech only — it does not offer speech-to-text.
+
+### Setup
+
+1. Obtain an API key and Group ID from the [MiniMax platform](https://platform.minimax.io).
+2. In Open Chat Studio, navigate to **Team Settings → Speech Service Providers**.
+3. Add a new provider, select **MiniMax**, and enter your API key and Group ID. You can optionally set the T2A model; a sensible default is filled in for you.
+4. On creation, OCS automatically seeds the available MiniMax voices.
+
+### Voices
+
+When you create a MiniMax provider, OCS automatically seeds its built-in MiniMax voices, so they are ready to select in your chatbots. Voice seeding is idempotent: saving or re-saving the provider will not create duplicate voices.

@@ -2,6 +2,7 @@ site_name: Open Chat Studio Documentation
 site_url: https://docs.openchatstudio.com
 repo_url: https://github.com/dimagi/open-chat-studio-docs
 edit_uri: edit/main/docs/
+strict: true
 theme:
   name: material
   logo: assets/logo.png
@@ -97,7 +98,8 @@ nav:
   - Tutorials:
     - tutorials/index.md
     - tutorials/first_chatbot.md
-    - Configure LLM Providers: tutorials/configure_providers.md
+    - Configure LLM Providers: tutorials/configure_llm_providers.md
+    - Configure an LLM Node: tutorials/configure_llm_node.md
     - Configure Message Providers: tutorials/configure_msg_providers.md
     - Create & Publish Versions: tutorials/versioning_steps.md
   - How-to Guides:
@@ -106,6 +108,7 @@ nav:
     - Building Chatbots:
       - Choose an LLM Model: how-to/choose_llm_model.md
       - Adjust LLM Node Model Parameters: how-to/adjust_llm_node_model_parameters.md
+      - Add a Custom LLM Model: how-to/add_custom_llm_model.md
       - how-to/workflow_cookbook.md
       - how-to/add_a_knowledge_base.md
       - Router Nodes:
@@ -117,9 +120,11 @@ nav:
       - Set Up Document Sources: how-to/document_sources.md
     - Channels & Deployment:
       - how-to/deploy_to_different_channels.md
+      - how-to/disable_a_channel.md
       - Deploy chatbot to Email: how-to/deploy_email_channel.md
       - Deploy chatbot to Slack: how-to/deploy_slack_channel.md
       - how-to/whatsapp_meta_cloud_api.md
+      - how-to/turnio_whatsapp.md
     - UI Helpers:
       - Filter Tables with Natural Language: how-to/nl_filter.md
       - Find Objects: how-to/global_search.md
@@ -154,7 +159,7 @@ nav:
       - concepts/pipelines/index.md
       - Node Types: concepts/pipelines/nodes.md
       - Router Nodes: concepts/pipelines/router_nodes.md
-      - concepts/pipelines/history.md
+      - Conversation History: concepts/pipelines/history.md
       - concepts/pipelines/parallel.md
     - Team:
       - concepts/team/index.md
@@ -183,6 +188,7 @@ nav:
     - tech-hub/index.md
     - Local Index Optimization: tech-hub/local-index-optimization.md
     - Tools Reference: tech-hub/tools.md
+    - Ending Sessions from a Chatbot: tech-hub/ending_sessions.md
     - Python Node: tech-hub/python_node.md
     - Render a Template and Send an Email Nodes: tech-hub/template_and_email_nodes.md
     - Call External APIs:

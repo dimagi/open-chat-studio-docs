@@ -1,3 +1,5 @@
+# Open Chat Studio Documentation
+
 [![OCS Logo](docs/assets/logo.png)](https://github.com/dimagi/open-chat-studio)
 
 This repository contains the user documentation for [Open Chat Studio](https://github.com/dimagi/open-chat-studio).
@@ -18,7 +20,7 @@ Assuming you've already cloned this repository:
 
     ```shell
     uv venv
-    uv sync
+    uv sync --locked
     ```
 
 3. Install the pre-commit hooks
@@ -42,11 +44,15 @@ See the [Zensical documentation](https://zensical.org/docs/authoring/markdown/) 
 
 Note: This project uses `mkdocs.yml` for site configuration, since Zensical is compatible with the MkDocs configuration format.
 
-Before pushing, run the strict build to catch broken internal links (CI will fail if you don't):
+Before pushing, run the build to catch broken internal links (CI will fail if you don't):
 
 ```shell
-uv run zensical build --clean --strict
+uv run zensical build --clean
 ```
+
+`strict: true` is set in `mkdocs.yml`, so the build fails on broken references without
+needing the `--strict` flag. `zensical serve` reports the same warnings in its console
+output but keeps serving rather than aborting.
 
 ### API docs
 

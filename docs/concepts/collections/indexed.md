@@ -13,7 +13,7 @@ Common examples include:
 - A **customer support chatbot** that answers questions from your product documentation or FAQs
 - An **HR assistant** that looks up company policies from an internal wiki or handbook
 - A **research tool** that searches across uploaded reports, studies, or reference materials
-- An **onboarding guide** that walks new users through your own uploaded training content
+- An **onboarding guide** that walks new participants through your own uploaded training content
 
 ## How it works
 
@@ -32,7 +32,7 @@ In OCS, there are two types of indexes:
 
 | | Remote Index | Local Index |
 |---|---|---|
-| **Managed by** | Your LLM provider (e.g. OpenAI) | OCS |
+| **Managed by** | Your [LLM provider](../team/llm_providers.md) (e.g. OpenAI) | OCS |
 | **Setup** | Simpler — the provider handles everything | More steps — you choose the embedding model |
 | **Embedding model** | Selected by the provider | You choose |
 | **Chunking** | Handled by provider, not configurable | Configurable per file set |
@@ -85,3 +85,5 @@ Instead of uploading files manually, you can connect OCS to an external document
 Currently supported sources: **Confluence** and **GitHub**.
 
 For configuration steps, authentication setup, and how to monitor sync status, see [Set Up Document Sources](../../how-to/document_sources.md).
+
+If a file fails to sync, the rest of the source's files still sync and remain searchable — only the failed file is skipped. See [Monitoring Sync Status](../../how-to/document_sources.md#monitoring-sync-status) for how to see which files failed and why.

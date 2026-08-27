@@ -4,7 +4,7 @@
 
 This guide will help you upgrade from previous versions of the Open Chat Studio Widget to the latest version. Please follow these steps carefully to ensure a smooth transition and also review any changes and upgrade steps between your current version and the latest version.
 
-## :octicons-rocket-24: Quick Upgrade Steps
+## :octicons-rocket-24: Quick Upgrade Steps {#quick-upgrade-steps}
 
 ### 1. Update the script tags
 

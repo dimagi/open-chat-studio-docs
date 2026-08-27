@@ -11,6 +11,91 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Aug 27, 2026
+* **BUG** Fixed broadcasts to WhatsApp participants outside the 24-hour service window failing to send. Meta rejects a message template containing line breaks, so multi-paragraph messages never arrived. Such messages now have their line breaks and repeated spaces collapsed into single spaces, arriving as a single paragraph, and the broadcast dialog tells you so before you send. See [Out-of-service-window template messages](how-to/whatsapp_meta_cloud_api.md#out-of-service-window-template-messages).
+
+## Aug 24, 2026
+* **NEW** You can now send a one-off **Broadcast message** to every participant of a chatbot from the chatbot home page, choosing which of its channels to send on. Broadcasting requires permission to invite participants, and only reaches participants who have already messaged the bot on the selected channel.
+* **CHANGE** Various security enhancements for code running in a [Python node](tech-hub/python_node.md).
+* **BUG** Fixed augmented assignment (for example `count += 1`) raising an error in [Python node](tech-hub/python_node.md) code. Common in-place operators can now be used as expected.
+* **BUG** Fixed an error raised by the code in a [Python node](tech-hub/python_node.md) causing the message to fail without a reply. The participant now receives a generic error response, and the error is recorded against the message so you can see what went wrong.
+
+## Aug 20, 2026
+* **CHANGE** Turning off a channel's **Enabled** toggle now stops new conversations and bot-initiated messages, where before it only stopped incoming ones. Previously a disabled channel still allowed new conversations to be started (from the chat widget, the public web chat link, Slack, or the chatbot management pages) and still sent out scheduled messages, event action messages and API-triggered messages. New sessions on a disabled channel are now refused, and bot-initiated messages to a disabled channel are no longer sent. Two API endpoints are still exceptions — see [Known limitations](how-to/disable_a_channel.md#known-limitations). See [Disabling a channel](concepts/channels.md#disabling-a-channel).
+
+## Aug 18, 2026
+* **CHANGE** When several branches merge into one node, that node now takes its input from the branch that arrived most recently, and `node_inputs` holds every input that has arrived so far instead of just one. Previously the input depended on the order the connections happened to be drawn, so the same graph could feed a merge node a different branch — any node with more than one incoming connection may now receive a different input than before. See [Which input a node receives](concepts/pipelines/parallel.md#which-input-a-node-receives).
+* **BUG** Fixed merge nodes that wait until they have a set number of inputs (for example a Python node checking `len(node_inputs)`) never completing, which made the pipeline return nothing. See [Optional Parallel Branches](concepts/pipelines/parallel.md#optional-parallel-branches).
+* **BUG** Fixed Python node code failing with `NameError: name 'enumerate' is not defined`. The `enumerate` builtin can now be used in your scripts. See [Python Node](tech-hub/python_node.md).
+
+## Aug 17, 2026
+* **NEW** You can now temporarily disable an individual channel instead of deleting it, using the **Enabled** toggle in the channel's configuration dialog. While a channel is off, incoming messages are not processed or recorded at all, and you can optionally set a static reply that is sent to anyone who messages the channel — leaving it blank keeps the bot silent. Disabled channels are highlighted in the channel list.
+
+## Aug 14, 2026
+* **NEW** Added support for the **Gemini 3.7 Flash** model, which can now be selected on both the Google (Gemini API) and Google Vertex AI providers.
+* **CHANGE** Client-credentials OAuth applications can now only chat with the chatbots you select for them. Previously such an application could converse with every chatbot in its team; it is now refused for any chatbot that isn't on its list, and an empty list means no chatbots at all. Only client-credentials tokens are affected; API key and user-authorized access is unchanged. See [Getting started with OAuth2](api/getting_started_with_oauth.md#client-credentials-flow-machine-to-machine).
+
+## Aug 13, 2026
+* **CHANGE** Chatting to a chatbot from the chatbot management pages now opens the embedded chat widget in a popup on the page, instead of navigating away to the full-page chat. This covers the chat dropdown on the chatbot home page, the chat button on each row of the versions table (which opens a widget pinned to that version), and **Continue Chat** on a sessions list, which reopens the session in a widget headed with the version it is bound to. The redundant **New Session** button has been removed from the chatbots list.
+
+## Aug 12, 2026
+* **CHANGE** The legacy embedded web chat endpoints (the old `/embed/start/` iframe flow), [deprecated on Jun 4, 2026](#jun-4-2026) with a removal date of 2026-08-03, have now been removed. Sites still using the old embed code get an error pointing at the successor and must move to the current [chat widget](chat_widget/index.md).
+
+## Aug 7, 2026
+* **BUG** Fixed the **End Session** tool failing on chatbots that use a Gemini model. The chat returned an error as soon as the tool was enabled, because Gemini rejected the tool definition Open Chat Studio sent. See [Ending Sessions from a Chatbot](tech-hub/ending_sessions.md).
+
+## Aug 5, 2026
+* **BUG** Fixed an empty participant message breaking the rest of a conversation. Previously, a blank message (such as an empty Connect message or a silent voice transcript) was answered normally but then caused every following message in that session to fail. New empty messages are handled correctly, and sessions already affected recover on their own.
+
+## Aug 4, 2026
+* **CHANGE** PDF files in collections are now read with a new text extractor that is faster and more accurate, especially on documents with tables, and reads each page separately. A PDF that can't be opened (for example a corrupted or password-protected file) now fails with a clear error instead of being indexed as unreadable text. Because the extracted text differs slightly from before, re-syncing or re-uploading an existing file regenerates its chunks and embeddings even if the file itself hasn't changed. See [Indexed Collections](concepts/collections/indexed.md#indexing-options).
+* **BUG** Fixed teams being notified more than once about the same deprecated model. Previously, deprecating a new model re-announced every model deprecated before it, so earlier notices flipped back to unread and a second email went out. Each team is now told about a given model once. See [Model Lifecycle and Deprecation](concepts/team/llm_providers.md#model-lifecycle-and-deprecation).
+* **BUG** Fixed the file list in a collection disappearing while a document source was syncing — it was replaced by the sync status on its own, which also stopped the file search box from working.
+* **BUG** Date ranges on a table (two filters on the same column, such as *after* and *before*) are now kept in full everywhere. Reloading or sharing a filtered link restores both bounds as two filter rows, and choosing **All matching filters** when creating an evaluation dataset or adding sessions to an annotation queue no longer drops one of the bounds, which had been quietly including sessions outside the range.
+
+## Aug 3, 2026
+* **CHANGE** OAuth applications are now registered and managed from your team's admin page instead of your user profile, and every application belongs to a team. Team Admins can now manage their team's applications, and tokens issued for a team's application always act on that team. Applications that existed before this change are not assigned to a team and can only be managed by superusers — any existing client-credentials application needs a team assigned to it before it can issue usable tokens again. See [Getting started with OAuth2](api/getting_started_with_oauth.md).
+* **BUG** Fixed a JavaScript error on the evaluation dataset creation form that could occur if the page was still loading, which sometimes left the JSON editors uninitialized.
+* **BUG** Fixed an error that occurred when a chatbot produced an empty response on Telegram. Empty responses are now skipped instead of failing.
+
+## Jul 30, 2026
+* **CHANGE** When an evaluation run generates a response from your chatbot before judging it, that generation is now recorded and counted towards your team's total cost, as evaluation spend. Team totals may therefore rise if you run evaluations with generation enabled, since this spend was previously not recorded at all. Existing records are unchanged, and no chatbot, participant, or conversation becomes more expensive. See [Evaluation cost and usage](concepts/evaluations/evaluators.md#llm-evaluator).
+
+## Jul 29, 2026
+* **CHANGE** When creating an evaluation dataset from chat sessions, or adding sessions to an existing one, you now choose a selection scope — **Selected only** or **All matching filters** — instead of pre-selecting every row. Filtered selections of any size can now be cloned into a session-level dataset, where large selections previously failed; message-level datasets remain capped at 1000 sessions. Datasets of either evaluation level can also now be created empty and populated later. See [Create a Dataset](how-to/evaluations/create-a-dataset.md).
+* **CHANGE** LLM usage from evaluators (such as LLM-as-judge calls) is now recorded and counted towards your team's total cost and token usage. Team totals may therefore rise if you run evaluations, since this spend was previously untracked. Evaluation spend is never attributed to an individual chatbot, participant, or conversation, so per-chatbot cost is unchanged — and filtering the dashboard's cost panel by chatbot or participant now excludes it, matching the Bot Performance column.
+* **BUG** Fixed an error that caused chat exports to fail when the sessions list was filtered. The filters you selected are now applied correctly to the exported file.
+
+## Jul 28, 2026
+* **CHANGE** The **Show usages** page for a service provider now appears immediately with a loading indicator while it searches, and resolves faster. Pipelines that reference the provider from several nodes are now listed once instead of once per node.
+* **NEW** Turn.io WhatsApp messaging providers now have an optional **Webhook HMAC Secret**. When you set it (and configure the same secret in Turn.io), Open Chat Studio verifies the signature on every inbound Turn.io webhook and rejects requests with a missing or incorrect signature. Leaving it blank keeps the existing behaviour, so existing providers are unaffected. See [Set up WhatsApp with Turn.io](how-to/turnio_whatsapp.md).
+* **BUG** The Turn.io webhook endpoint now returns a clear error instead of a server error when it receives a non-POST request or a malformed request body.
+* **BUG** The **Show usages** page for an LLM service provider now lists evaluators that use the provider. Previously these were left out, so a provider used only by evaluators appeared to be unused.
+
+## Jul 27, 2026
+* **NEW** You can now register client-credentials OAuth applications for machine-to-machine API access. The application is pinned to one of your teams when you register it, and tokens issued with `grant_type=client_credentials` act on that team without any interactive authorization step. Machine tokens are limited to an allow-list of API scopes and cannot use the user-identity scopes (`openid`, `profile`) or the `/me` endpoint. See [Getting started with OAuth2](api/getting_started_with_oauth.md#client-credentials-flow-machine-to-machine).
+* **NEW** Self-hosted deployments can now use S3-compatible object storage (such as MinIO, Cloudflare R2, Backblaze B2, Wasabi, or DigitalOcean Spaces) for file storage and WhatsApp voice audio, instead of only AWS S3. Existing AWS deployments are unaffected.
+* **NEW** Added support for the **Claude Opus 5** model from Anthropic. Opus 5 offers a 1M-token context window with adaptive thinking and configurable effort levels (low, medium, high, xhigh, max), and can now be selected for chatbots and pipelines.
+* **NEW** Added support for **MiniMax** as an LLM provider. You can add MiniMax credentials in your Team settings and use MiniMax chat models (MiniMax-M3, MiniMax-M2.7, and MiniMax-M2) in your chatbots and pipelines. See [LLM Service Providers](concepts/team/llm_providers.md).
+* **NEW** Added **MiniMax** as a speech provider, so chatbots can synthesize spoken audio using MiniMax T2A text-to-speech voices. See [Speech Service Providers](concepts/team/speech_providers.md).
+* **BUG** Fixed an issue where only one filter per column was applied to a table, so date ranges (which use two filters on the same column, such as *after* and *before*) returned rows outside the range. All filters on a column are now combined, including in saved filters and dataset auto-population rules.
+* **BUG** Fixed an issue where cancelling a scheduled message by its ID was not restricted to the caller's own participant and chatbot, so a scheduled message belonging to another team could be cancelled. Cancellation is now scoped correctly.
+* **BUG** Fixed an error that occurred when a document source was deleted while its sync was still running. The sync now finishes quietly instead of failing.
+* **BUG** Fixed an error that could cause document collection syncs to fail when several document sources were synced together in one batch. These syncs now run correctly.
+* **BUG** Fixed an error that prevented the OpenAI assistant creation and edit forms from loading correctly. These forms now work as expected.
+
+## Jul 24, 2026
+* **CHANGE** The Usage API (`GET /api/v2/usage/`) can now break usage down by `participant`, `chatbot`, or `platform` (one cursor-paginated row per group) and filter any metric to a single `chatbot` or `platform`.
+* **BUG** The Extract Structured Data node now validates property key names when you save the schema, showing a clear error instead of failing with a server error when a key uses characters that Anthropic models don't allow.
+* **BUG** Fixed an error that could cause a document collection sync to fail when the same document source was synced by two processes at the same time. Only one sync now runs per source at a time, and duplicate syncs are skipped.
+
+## Jul 23, 2026
+* **CHANGE** Document collection syncs are now more resilient: if a single file fails to process, the rest still sync and index. The sync log reports how many files failed, which ones, and shows a "completed with errors" state.
+* **CHANGE** While a document source is syncing, the files list now shows files as they are added with a running "N files synced so far" count, instead of a spinner until the sync finishes.
+* **BUG** The file search box in document collections now shows a working loading indicator while searching.
+* **BUG** Fixed notification toasts that were hard to read in dark mode.
+* **BUG** Fixed an error that could cause document synchronization to fail when a document had a very long identifier (such as a long URL from a JSON source). These documents now sync correctly instead of causing an error.
+
 ## Jul 22, 2026
 * **CHANGE** The maximum allowed timeout for outgoing HTTP requests (for example from a Code node) has been increased from 30 seconds to 60 seconds.
 * **BUG** Fixed an error that could prevent evaluation scores from saving when an LLM judge's output contained invalid characters. Such characters are now removed automatically so scores save correctly.

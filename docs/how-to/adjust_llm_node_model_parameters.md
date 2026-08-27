@@ -9,6 +9,8 @@ This guide walks you through adjusting the LLM model parameters on an [LLM node]
 !!! note "Before you start"
     Choose your LLM model first — see [Choose an LLM Model](choose_llm_model.md). The parameters available in the settings panel depend on the model you select.
 
+    If you don't have an LLM node set up yet, see [Configure an LLM Node](../tutorials/configure_llm_node.md) for a full walkthrough for the basic setup.
+
 ## Step 1 — Open the node settings
 
 1. Open your pipeline or chatbot for editing.
@@ -52,7 +54,7 @@ See [Adaptive thinking](#adaptive-thinking) in the parameter reference below for
 
 ## Step 6 — Save your changes
 
-1. Click outside the edit settings dialog to save.
+1. Click the **x** on the popup node settings to close the dialog and save your changes.
 2. Test your chatbot to confirm the output looks as expected.
 
 ## Troubleshooting

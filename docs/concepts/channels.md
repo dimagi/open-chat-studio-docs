@@ -25,7 +25,7 @@ Channels differ in whether participants can send files to the chatbot and whethe
 |---|---|---|---|
 | Web / Chat widget | Yes | As download links | Uploads of up to 50 MB per file (50 MB total per message). Text files are always accepted, along with common document, image, audio and video formats. See the [widget file attachments reference][widget-files] for the full list. |
 | API | Yes | As attachment metadata | Same upload limits as the web channel. Files the chatbot produces are returned on the message as attachments with download links. |
-| Telegram | No | Yes | Outgoing: images up to 10 MB; audio, video and documents up to 50 MB. Photos and documents sent by users are not accepted. |
+| Telegram | No | Yes | Outgoing: images up to 10 MB; audio, video and documents up to 50 MB. Photos and documents sent by participants are not accepted. |
 | WhatsApp | Yes | Yes | Incoming: images and documents (a caption becomes the message text). Outgoing: images up to 5 MB, audio and video up to 16 MB, documents up to 100 MB. Applies to all providers (Twilio, Turn.io, Meta Cloud API). |
 | Facebook Messenger | No | As download links | No files in either direction; text and voice messages only. |
 | Slack | No | Yes | Outgoing: images, audio, video and documents up to 50 MB. |
@@ -35,7 +35,22 @@ Channels differ in whether participants can send files to the chatbot and whethe
 !!! info "Voice notes"
     Voice notes are handled separately from file attachments. On channels with voice support (Telegram, WhatsApp and Facebook Messenger), a voice note from the participant is transcribed and processed as a regular message rather than being treated as a file.
 
+## Disabling a channel
+
+Every linked channel has an **Enabled** toggle. Turning it off is a way to pause a channel — for maintenance, to retire it temporarily, or to stop unwanted traffic — without deleting the channel and losing its configuration.
+
+While a channel is disabled:
+
+- **Participants can't start a new conversation on it.** This covers the embedded chat widget, the public web chat link, Slack, and starting a chat from the chatbot's management pages in OCS itself. Two API endpoints are exceptions — see [Known limitations](../how-to/disable_a_channel.md#known-limitations).
+- **The chatbot doesn't send anything to that channel on its own.** Scheduled messages, [event action](events.md) messages, and messages triggered through the API are all held back rather than delivered.
+- **Messages sent to the channel are ignored.** They aren't processed or recorded, and the chatbot doesn't reply — unless you've configured a disabled message.
+
+A **disabled message** is an optional static reply for the channel. When a participant messages a disabled channel, or tries to start a conversation on it, this message is sent back in place of a chatbot response. It's only ever sent as a reply to something a participant did — it's never pushed out on its own, so it won't appear alongside a scheduled or event message that got suppressed. Leaving it blank keeps the channel silent instead. Staff starting a chat from the OCS console see a generic error rather than this message.
+
+See [Disable a channel](../how-to/disable_a_channel.md) for how to turn a channel off and what participants see on each entry point.
+
 ## See also
+- [Disable a channel](../how-to/disable_a_channel.md)
 - [Deploying your chatbot to different channels](../how-to/deploy_to_different_channels.md)
 
 [1]: ./team/messaging_providers.md

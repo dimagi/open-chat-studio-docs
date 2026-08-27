@@ -1,6 +1,6 @@
 # Deploy Your Chatbot to Slack
 
-Users can interact with your chatbot directly from Slack, either in specific Slack channels or by mentioning the chatbot.
+Participants can interact with your chatbot directly from Slack, either in specific Slack channels or by mentioning the chatbot.
 
 ## Prerequisites
 
@@ -23,7 +23,7 @@ There are three different ways to configure how your chatbot responds to message
 
 ### 2. Respond to messages from any channel using keyword matching
 - Enter keywords separated by commas in the keyword field (e.g., `support, help, assistance`).
-- Keywords are matched using exact word matching (case-insensitive) to the first word of the user's message.
+- Keywords are matched using exact word matching (case-insensitive) to the first word of the participant's message.
 - Multiple keywords can be used to trigger the chatbot.
 - Keywords must be unique to this chatbot & Slack workspace combination.
 
@@ -34,7 +34,7 @@ There are three different ways to configure how your chatbot responds to message
 
 ## Chatbot Interaction
 
-Once the channel is linked, users interact with the chatbot by mentioning it in Slack messages. The chatbot mention name is determined by your Slack app configuration. For example, on the Dimagi hosted instance of Open Chat Studio, the chatbot is mentioned using `@Dimagi Bots`.
+Once the channel is linked, participants interact with the chatbot by mentioning it in Slack messages. The chatbot mention name is determined by your Slack app configuration. For example, on the Dimagi hosted instance of Open Chat Studio, the chatbot is mentioned using `@Dimagi Bots`.
 
 !!! info "Priority and Precedence"
     If multiple chatbots could match a message, the chatbot with the most specific configuration wins:

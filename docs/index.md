@@ -17,10 +17,7 @@ Open Chat Studio (OCS) is an open source platform developed by Dimagi for buildi
 * **Deploy:** Launch your chatbots on the web and using mobile [messaging apps](concepts/channels.md) such as Telegram and WhatsApp
 
 * **Enable Access for All:** Anyone you share a chatbot with will be able to access it, either through a web link or
-  directly
-  on messaging platforms such as WhatsApp or Telegram. Chatbot users do not need to have an account on Open Chat Studio to use
-  your
-  chatbots.
+  directly on messaging platforms such as WhatsApp or Telegram. Chatbot participants do not need to have an account on Open Chat Studio to use your chatbots.
 
 * **View and Download Data:** View and export conversation data from your chatbots in CSV format.
 

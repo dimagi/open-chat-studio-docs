@@ -1,4 +1,6 @@
-Prompt variables are a great way to make your prompt dynamic or tailored to the participant by injecting data into specified placeholders. These variables are predefined and look like this:
+# Prompt Variables
+
+Prompt variables are a great way to make your prompt dynamic or tailored to the [participant](./participant_data.md) by injecting data into specified placeholders. These variables are predefined and look like this:
 
 ```text
 {variable}
@@ -7,7 +9,7 @@ Prompt variables are a great way to make your prompt dynamic or tailored to the 
 The following variables are currently supported:
 
 - `{source_material}` - The [source material](../how-to/add_a_knowledge_base.md) linked to your chatbot.
-- `{participant_data}` - Information specific to this participant, chatbot and channel. See [here][participant_data] for more information.
+- `{participant_data}` - Information specific to this participant, chatbot and channel. See [participant data][participant_data] for details.
 - `{current_datetime}` - This refers to the date and time at which the response is generated.
 - `{media}` - (pipelines only) This refers to the linked [media collection](./collections/media.md).
 - `{collection_index_summaries}` - This refers to the [indexed collections](./collections/indexed.md).
@@ -15,10 +17,12 @@ The following variables are currently supported:
 - `{session_state}` - (pipelines only) Access to the session state. See [Session State](../tech-hub/python_node.md#session-state)
 
 !!! info "Localizing injected datetime"
+
     The injected datetime will be localized to the participant's timezone if it exists in their participant data. When a participant uses the web UI, their browser's timezone will automatically be saved to their participant data.
 
 !!! info "A note on prompt caching"
-    Some LLM providers, like OpenAI, use a technique called "prompt caching" to reduce latency and costs (See [here][prompt_caching]). This happens automatically. However, caching is only effective for static data, i.e. data that does not change. To take full advantage of this caching mechanism, you should place prompt variables near the end of your prompt whenever possible
+
+    Some [LLM providers](team/llm_providers.md), like OpenAI, use a technique called [prompt caching][prompt_caching] to reduce latency and costs. This happens automatically. However, caching is only effective for static data, i.e. data that does not change. To take full advantage of this caching mechanism, you should place prompt variables near the end of your prompt whenever possible
 
 [participant_data]: ../concepts/participant_data.md
 [prompt_caching]: https://platform.openai.com/docs/guides/prompt-caching
@@ -83,4 +87,5 @@ User segment: {session_state.remote_context.user_segment}
 ```
 
 !!! note "Remote Context Availability"
+
     The `remote_context` key in session state is only populated when explicitly provided via the API when sending messages. If no context is passed, this key will not be present in the session state. See the [Chat API documentation](../api/v1/chat.txt) for details on passing context with messages.

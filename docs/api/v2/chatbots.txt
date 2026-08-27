@@ -8,6 +8,7 @@ ENDPOINTS:
 
 GET /api/v2/chatbots/
   Summary: List Chatbots
+  Description: List the chatbots belonging to the API key's team.
   Parameters:
     - cursor (query, string (optional)): The pagination cursor value.
     - page_size (query, integer (optional)): Number of results to return per page.
@@ -21,8 +22,25 @@ GET /api/v2/chatbots/
     apiKeyAuth
     tokenAuth
 
+POST /api/v2/chatbots/
+  Summary: Create Chatbot
+  Description: Create a chatbot's working (draft) version, seeded with a Start -> LLM -> End pipeline. Nothing is published: use POST /api/v2/chatbots/{id}/versions/ for that. On a team with no LLM provider the seed is Start + End with no edge between them, so the new chatbot reports pipeline_valid: false until you wire it. A key that is not listed below is rejected rather than ignored.
+  Request Body:
+    Content: application/json
+    Schema: ChatbotCreate
+  Responses:
+    201:
+      Content: application/json
+      Schema: ChatbotDetail
+  Security:
+    OAuth2
+      - Required scopes: chatbots:write
+    apiKeyAuth
+    tokenAuth
+
 GET /api/v2/chatbots/{id}/
   Summary: Retrieve Chatbot
+  Description: Retrieve a single chatbot by its ID.
   Parameters:
     - id (path, string (required)): Chatbot ID
   Responses:
@@ -32,6 +50,25 @@ GET /api/v2/chatbots/{id}/
   Security:
     OAuth2
       - Required scopes: chatbots:read
+    apiKeyAuth
+    tokenAuth
+
+PATCH /api/v2/chatbots/{id}/
+  Summary: Update Chatbot
+  Description: Update the working (draft) chatbot's settings and its wiring to existing resources. The writable fields are the ones the chatbot settings page edits, with references given as ids (listed by GET /api/v2/pipeline/options/). GET /api/v2/chatbots/{id}/inspect/ returns more than this -- names, types and resolved values that describe a reference rather than address it -- so it is not a template for this body. Only the keys you send are changed, and a key that is not listed below is rejected rather than ignored. The response includes read-only fields (id, pipeline_id, version_number) that the request does not accept.
+  Parameters:
+    - id (path, string (required)): Chatbot ID
+  Request Body:
+    Content: application/json
+    Schema: PatchedChatbotWrite
+  Responses:
+    200:
+      Content: application/json
+      Schema: ChatbotDetail
+    403: The caller is authenticated but not authorised to modify this chatbot: either its role lacks permission to change chatbots, or it is a machine (client-credentials) token whose application is not authorised for this chatbot. Retrying will not help; the application's chatbot list has to change.
+  Security:
+    OAuth2
+      - Required scopes: chatbots:write
     apiKeyAuth
     tokenAuth
 
@@ -71,6 +108,27 @@ Chatbot:
   - version_number: integer
   - versions: array of ChatbotVersion (required)
 
+ChatbotCreate:
+  - name: string (required)
+  - description: string
+
+ChatbotDetail:
+  - id: string (required)
+  - pipeline_id: integer (required)
+  - version_number: integer (required)
+  - name: string (required)
+  - description: string (required)
+  - voice_provider_id: integer (required)
+  - synthetic_voice_id: integer (required)
+  - voice_response_behaviour: Unknown (required)
+  - echo_transcript: boolean (required)
+  - trace_provider_id: integer (required)
+  - debug_mode_enabled: boolean (required)
+  - conversational_consent_enabled: boolean (required)
+  - consent_form_id: integer (required)
+  - seed_message: string (required)
+  - file_uploads_enabled: boolean (required)
+
 ChatbotInspect:
   - id: string (required)
   - name: string (required)
@@ -86,6 +144,9 @@ ChatbotInspect:
   - trace_provider: Unknown (required)
   - channels: array of Channel (required)
   - pipeline: Unknown (required)
+  - pipeline_valid: boolean (required)
+  - pipeline_errors: Unknown (required)
+  - unwired_handles: object (required)
   - events: InspectEvents (required)
 
 ChatbotVersion:
@@ -105,7 +166,6 @@ InspectSettings:
   - echo_transcript: boolean (required)
   - debug_mode_enabled: boolean (required)
   - file_uploads_enabled: boolean (required)
-  - participant_allowlist: array of string (required)
 
 InspectStaticTrigger:
   - id: integer (required)
@@ -131,6 +191,20 @@ PaginatedChatbotList:
   - previous: string
   - results: array of Chatbot (required)
   - count: integer
+
+PatchedChatbotWrite:
+  - name: string
+  - description: string
+  - voice_provider_id: integer
+  - synthetic_voice_id: integer
+  - voice_response_behaviour: Unknown
+  - echo_transcript: boolean
+  - trace_provider_id: integer
+  - debug_mode_enabled: boolean
+  - conversational_consent_enabled: boolean
+  - consent_form_id: integer
+  - seed_message: string
+  - file_uploads_enabled: boolean
 
 PlatformEnum:
   - enum: [telegram, web, whatsapp, facebook, sureadhere, api, slack, commcare_connect, evaluations, embedded_widget, email]

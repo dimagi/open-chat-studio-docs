@@ -6,21 +6,25 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "mkdocs-git-revision-date-localized-plugin>=1.5.3",
-    "zensical>=0.0.46",
+    "zensical>=0.0.53",
     "mkdocs-redirects>=1.2.3",
-    "mkdocstrings[python]>=1.0.4",
+    "mkdocstrings[python]>=1.0.6",
     "requests>=2.34.2",
 ]
 
 [dependency-groups]
 dev = [
-    "prek>=0.4.6",
+    "prek>=0.4.12",
     "pytest>=9.1.1",
+]
+confluence = [
+    "requests>=2.34.2",
+    "markdown>=3.10.3",
 ]
 
 [tool.uv]
 default-groups = ["dev"]
 
 [build-system]
-requires = ["uv_build>=0.11.26,<0.12.0"]
+requires = ["uv_build>=0.12.1,<0.13.0"]
 build-backend = "uv_build"

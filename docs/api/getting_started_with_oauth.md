@@ -4,7 +4,10 @@ title: OAuth2
 
 # Getting started with OAuth2
 
-OpenChatStudio uses OAuth2 with the Authorization Code Flow with PKCE (Proof Key for Code Exchange) to enable secure third-party integrations.
+OpenChatStudio supports two OAuth2 grant types:
+
+- **Authorization code flow with PKCE** — for applications that act on behalf of a signed-in user. The user interactively grants permission, and the token acts as that user. See [How OAuth 2.0 works](#how-oauth-20-works) below.
+- **Client-credentials flow** — for server-side and automated integrations that call the API without a user present. See [Client-credentials flow (machine-to-machine)](#client-credentials-flow-machine-to-machine).
 
 ## How OAuth 2.0 works
 
@@ -20,7 +23,9 @@ For a detailed explanation of the OAuth 2.0 authorization code flow, see [OAuth 
 
 ## Step 1: Register your application with OpenChatStudio
 
-Register your application with Open Chat Studio.
+OAuth applications belong to a team, and you register them from that team's admin page. Team Admins and Super Admins can register and manage OAuth applications for their own team; the application belongs to whichever team's admin page you registered it from.
+
+If you need a **global** application that isn't tied to any single team, a super user can register one instead from the site-admin page. Global applications only support the authorization code flow described below — see [Client-credentials flow](#client-credentials-flow-machine-to-machine) for why client-credentials isn't available for them.
 
 You'll receive:
 
@@ -68,7 +73,7 @@ code_challenge = base64.urlsafe_b64encode(
 | `code_challenge_method` | Yes | Must be `S256` (SHA256) |
 | `state` | Recommended | Random string to prevent CSRF attacks. Store this and validate the response |
 | `scope` | No | Space-separated list of scopes. See available scopes in the [API docs](https://openchatstudio.com/api/docs/). If omitted, defaults to all scopes |
-| `team` | No | Specific team to scope the token to |
+| `team` | No | Only relevant for **global** (team-less) applications — lets the user pick which of their teams the token is scoped to. For an application registered under a team's admin page, the token is always scoped to that team, the user isn't asked to choose, and this parameter has no effect. If the authorizing user isn't a member of the application's team, authorization is refused |
 
 ### Example Request
 
@@ -100,7 +105,7 @@ https://your-server/callback/?error=access_denied&error_description=The+user+den
 
 Common error codes:
 
-- `access_denied`: User rejected the authorization request
+- `access_denied`: User rejected the authorization request, or (for a team-owned application) the authorizing user isn't a member of the application's team
 - `invalid_request`: Missing or invalid parameters
 - `unauthorized_client`: Client not authorized to use this flow
 - `server_error`: Authorization server encountered an error
@@ -273,3 +278,94 @@ curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGc..." \
 ```
 
 The UserInfo endpoint returns the same claims as the `id_token`, providing a standard way to retrieve user identity information when needed.
+
+## Client-credentials flow (machine-to-machine)
+
+The client-credentials flow lets a server-side integration call the OpenChatStudio API directly, without a user signing in or granting consent. There is no `/authorize` step and no refresh token — your application authenticates directly with the token endpoint using its client ID and secret, and requests a new token whenever the current one expires.
+
+Use this flow for automated integrations, backend jobs, or any service that calls the API on its own behalf rather than a user's.
+
+### How it's different from the authorization code flow
+
+- **No user.** The resulting access token carries no user identity. It cannot be used to sign in as, or act on behalf of, a specific person.
+- **Team is fixed by where you registered.** A client-credentials application has no user to pick a team interactively, so it must belong to a team, and every token it issues is scoped to that team. The team comes from **which team's admin page you registered the application on** — there's no separate team field to fill in, and it can't be changed later without registering a new application under the correct team. One application maps to exactly one team — register a separate application for each team you need to integrate with.
+- **Global applications can't use this flow.** An application registered from the site-admin page (rather than a team's admin page) has no team, so it supports the authorization code flow only — there's no team to scope a client-credentials token to.
+- **No `/authorize` step, no consent screen, and no refresh token.** Request a token directly from the token endpoint whenever you need one, or when your current token expires.
+
+### Step 1: Register a client-credentials application
+
+From your team's admin page, register an OAuth application and select the client-credentials grant type. The application is automatically pinned to that team — this can't be changed later without registering a new application from the correct team's admin page.
+
+You'll receive:
+
+- **Client ID**: A public identifier for your application
+- **Client secret**: A confidential secret used to request tokens (keep this secure and server-side only!)
+
+### Step 2: Request an access token
+
+Send a POST request to the token endpoint with your client credentials.
+
+**Token endpoint:** `https://www.openchatstudio.com/o/token/`
+
+#### Required POST Parameters
+
+| Parameter | Required | Description |
+|-----------|----------|-------------|
+| `grant_type` | Yes | Must be `client_credentials` |
+| `client_id` | Yes | Your client ID |
+| `client_secret` | Yes | Your client secret (keep this server-side!) |
+| `scope` | No | Space-separated list of scopes to request. See [Scopes](#scopes) below |
+
+#### Example Request
+
+```bash
+curl -X POST https://www.openchatstudio.com/o/token/ \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=${CLIENT_ID}" \
+  -d "client_secret=${CLIENT_SECRET}" \
+  -d "scope=chatbot:read session:read"
+```
+
+#### Response
+
+```json
+{
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGc...",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+  "scope": "chatbot:read session:read"
+}
+```
+
+There is no `refresh_token` and no `id_token` in this response. When the access token expires, repeat this request to get a new one.
+
+### Step 3: Use the access token
+
+Use the access token exactly as you would with the authorization code flow — include it in the `Authorization` header:
+
+```bash
+curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGc..." \
+  https://www.openchatstudio.com/api/...
+```
+
+Every request made with this token resolves to the team the application was pinned to at registration.
+
+### Scopes
+
+Machine tokens can only be granted **API resource scopes**. User-identity scopes (`openid`, `profile`) are never granted to a client-credentials token — requesting them fails when you request the token. See the available API scopes in the [API docs](https://openchatstudio.com/api/docs/).
+
+!!! warning "Authorization is entirely scope-based"
+    A machine token has no user, so it has none of the permissions that normally come from a user's team membership. The token's scope, together with the team it's pinned to, is the **entire** authorization decision — anything not explicitly granted by scope is denied. Requesting a broad scope such as `chatbot:write` is equivalent to granting your integration full write access to that resource across the pinned team, so scope each application to the narrowest set of permissions the integration actually needs.
+
+### Limitations
+
+- **User-only endpoints don't work.** Endpoints that require a signed-in user, such as `/me`, or any endpoint gated on a user permission, refuse or ignore machine tokens.
+- **No user is recorded as the actor.** Records created or modified using a machine token leave "created by" / "added by" / "cancelled by" style fields empty, since there is no user behind the token.
+- **Chat participants come from the request body, not the token.** For chat interactions (`chatbots:interact`), the participant is identified using the OpenAI-standard `user` field in the request body, rather than from the token.
+
+### Best practices
+
+- Keep the client secret server-side; never embed it in a browser, mobile app, or other client the end user can inspect.
+- Register a dedicated application per integration so you can revoke or rotate its credentials independently of other integrations.
+- Scope each application to the narrowest set of scopes the integration needs.

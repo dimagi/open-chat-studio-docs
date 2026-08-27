@@ -2,7 +2,7 @@
 
 Messaging providers offer access to communication platforms such as WhatsApp, Facebook Messenger, Slack, and more.
 
-If you want a Chat Widget on a website, you dont need to setup a Message Provider. See details [here](../chat_widget/index.md)
+If you want a Chat Widget on a website, you don't need to set up a Message Provider. See [details on the Chat Widget](../chat_widget/index.md)
 
 ## Steps
 
@@ -17,9 +17,9 @@ Before configuring a provider, ensure that you have an active account at the pro
 
 Messaging providers configured in your [Team](../concepts/team/index.md) settings under "Messaging Providers".
 
-- For WhatsApp, see details [here](../how-to/deploy_to_different_channels.md#whatsapp)
-- For Telegram, see details [here](../how-to/deploy_to_different_channels.md#telegram)
-- For WhatsApp Business Platform with Meta, see details [here](../how-to/deploy_to_different_channels.md#meta-cloud-api)
-- For Slack see details [here](../how-to/deploy_to_different_channels.md#slack)
-- For Facebook Messenger see details [here](../how-to/deploy_to_different_channels.md#facebook-messenger)
-- For SureAdhere secure In-App Messaging see details [here](../how-to/deploy_to_different_channels.md#sureadhere-for-secure-in-app-messaging)
+- [WhatsApp](../how-to/deploy_to_different_channels.md#whatsapp)
+- [Telegram](../how-to/deploy_to_different_channels.md#telegram)
+- [WhatsApp Business Platform with Meta](../how-to/deploy_to_different_channels.md#meta-cloud-api)
+- [Slack](../how-to/deploy_to_different_channels.md#slack)
+- [Facebook Messenger](../how-to/deploy_to_different_channels.md#facebook-messenger)
+- [SureAdhere secure In-App Messaging](../how-to/deploy_to_different_channels.md#sureadhere-for-secure-in-app-messaging)

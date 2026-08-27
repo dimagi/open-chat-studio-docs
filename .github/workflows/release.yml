@@ -1,3 +1,23 @@
+# Weekly Release Summary Workflow
+#
+# Runs /create-release to draft a GitHub release summarizing changelog.md
+# entries since the last release, then posts a Slack notification linking to
+# it.
+#
+# Triggered on: weekly schedule (Mondays 9:00 AM UTC); or workflow_dispatch
+# with a required release_tag input and optional release_name input
+# Requirements: ANTHROPIC_API_KEY secret must be configured; SLACK_WEBHOOK_URL
+# secret optional — the Slack step skips itself (not the job) when unset
+#
+# Notes:
+# - Scheduled runs auto-generate the tag/name from the current date
+#   (`vYYYY.MM.DD` / "Weekly Release <date>"); manual runs use the provided
+#   release_tag/release_name inputs instead.
+# - /create-release always creates the release as a draft — this workflow
+#   does not publish it.
+# - No concurrency group, so overlapping runs (e.g. schedule firing while a
+#   manual run is still going) are not cancelled or queued.
+
 name: Weekly Release Summary
 
 on:
@@ -15,13 +35,14 @@ on:
         description: 'Name for the release'
         required: false
 
+# Restrict default permissions — job overrides as needed
+permissions: {}
+
 jobs:
   create-weekly-release:
     permissions:
-      contents: write
-      pull-requests: write
-      issues: write
-      id-token: write
+      contents: write  # Read for checkout; write for `gh release create` (releases are in the `contents` scope)
+      id-token: write  # Needed for Claude Code Action
     runs-on: ubuntu-latest
 
     steps:
@@ -52,6 +73,7 @@ jobs:
           prompt: /create-release ${{ env.RELEASE_TAG }} "${{ env.RELEASE_NAME }}"
           claude_args: |
             --model claude-sonnet-4-6
+            --allowedTools "Bash(gh release list:*),Bash(gh release create:*),Bash(git diff:*),Read"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

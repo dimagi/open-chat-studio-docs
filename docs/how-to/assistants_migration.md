@@ -2,6 +2,8 @@
 title: Migrate Assistants
 ---
 
+# Migrate Assistants
+
 OpenAI has [deprecated](https://platform.openai.com/docs/deprecations#2025-08-20-assistants-api) Assistants and will completely remove support on 2026-08-26.
 
 Open Chat Studio supports all the features of Assistants in alternative ways as shown in the table below:

@@ -1,0 +1,19 @@
+# Not all markdown is for documentation, so some folders are ignored
+# Some folders are set to be ignored as we rollout fixes
+
+# Workflow templates - a top-level heading would change their meaning, so MD041 must not apply to them.
+.github/templates/
+
+# Build output and virtualenv
+site/
+.venv/
+
+# CLAUDE.md is just an @-include pointing at AGENTS.md, so it fails MD041 (no H1)
+CLAUDE.md
+
+# Ignore Claude commands and agent definitions (for now) — prompt bodies, not docs
+.claude/commands
+.claude/agents
+
+# Generated from the OCS OpenAPI schema by the update-api-docs workflow; not hand-edited
+docs/api/

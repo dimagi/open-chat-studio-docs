@@ -1,10 +1,22 @@
-# Workflow: Update Changelog and Docs from OCS PR
+# Update Changelog and Docs from OCS PR Workflow
 #
-# This workflow automatically updates changelog and documentation when PRs are merged
-# in the open-chat-studio repository. It can be triggered via repository_dispatch events
-# or manually using workflow_dispatch.
+# Updates docs/changelog.md (or docs/chat_widget/changelog.md for widget
+# PRs) via Claude, then opens a PR here with the changes. The PR is opened
+# by the workflow itself (not Claude) — labelled `automated` and assigned to
+# the source PR's author. No changes were made → no PR is opened.
 #
-# See README-changelog-automation.md for more.
+# Triggered on: repository_dispatch (`ocs_changelog_update`) sent from the
+# OCS repo's dispatch workflow after a PR merges there; or workflow_dispatch
+# with a required pr_number input (manual re-run for a given OCS PR)
+# Requirements: ANTHROPIC_API_KEY secret, and OCS_AGENT_APP_ID (var) /
+# OCS_AGENT_PRIVATE_KEY (secret) for the ocs-agent GitHub App token
+#
+# Notes:
+# - Grouped by OCS PR number (`cancel-in-progress: false`), so a second
+#   trigger for the same PR waits for the in-progress run to finish.
+# - On failure, comments on the source OCS PR with a link to the failed run.
+#
+# See README-changelog-automation.md for the full pipeline and maintenance notes.
 
 name: Update Changelog and Docs from OCS PR
 
@@ -18,11 +30,8 @@ on:
         required: true
         type: number
 
-permissions:
-  contents: write
-  pull-requests: write
-  issues: write
-  id-token: write
+# Restrict default permissions — job overrides as needed
+permissions: {}
 
 # Prevent concurrent runs for the same PR to avoid conflicts
 concurrency:
@@ -32,6 +41,15 @@ concurrency:
 jobs:
   update-changelog-and-docs:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write  # read permission for checkout. Write for git push
+      id-token: write  # Needed for Claude Code Action
+      # NOTE: gh pr create/edit, gh issue comment, and the claude-code-action
+      # step's github_token: all pass the ocs-agent app token explicitly
+      # (steps.app-token) — none consume this default GITHUB_TOKEN, so
+      # issues:write / pull-requests:write aren't needed here.
+
     env:
       WIDGET_PATH_PREFIX: "components/"
       WIDGET_CHANGELOG: "docs/chat_widget/changelog.md"
@@ -117,6 +135,7 @@ jobs:
           PAYLOAD_PR_URL: ${{ github.event.client_payload.pr_url }}
           PAYLOAD_PR_AUTHOR: ${{ github.event.client_payload.pr_author }}
           PAYLOAD_PR_BODY: ${{ github.event.client_payload.pr_body }}
+          PAYLOAD_PR_MERGED_AT: ${{ github.event.client_payload.pr_merged_at }}
           INPUT_PR_NUMBER: ${{ inputs.pr_number }}
           DETERMINED_BASE_BRANCH: ${{ steps.determine_branch.outputs.base_branch }}
           DETERMINED_IS_WIDGET: ${{ steps.determine_branch.outputs.is_widget_change }}
@@ -147,6 +166,13 @@ jobs:
               echo "$PAYLOAD_PR_BODY"
               echo "OCS_DOCS_EOF"
             } >> $GITHUB_OUTPUT
+
+            # Older dispatch payloads omit the merge date — fall back to the API
+            MERGED_AT="$PAYLOAD_PR_MERGED_AT"
+            if [ -z "$MERGED_AT" ]; then
+              MERGED_AT=$(gh api "repos/${SOURCE_REPO}/pulls/${PAYLOAD_PR_NUMBER}" --jq '.merged_at // ""') || MERGED_AT=""
+            fi
+            echo "pr_merged_at=$MERGED_AT" >> $GITHUB_OUTPUT
           else
             echo "pr_number=$INPUT_PR_NUMBER" >> $GITHUB_OUTPUT
             # Fetch PR details using GitHub API
@@ -177,6 +203,7 @@ jobs:
               echo "OCS_DOCS_EOF"
             } >> $GITHUB_OUTPUT
 
+            echo "pr_merged_at=$(echo "$PR_DATA" | jq -r '.merged_at // ""')" >> $GITHUB_OUTPUT
           fi
 
           # Use base branch from determine_branch step (already determined correctly)
@@ -252,25 +279,39 @@ jobs:
 
       - name: Check for changes and push
         id: check_changes
+        env:
+          BASE_BRANCH: ${{ steps.set_vars.outputs.base_branch }}
+          IS_WIDGET_CHANGE: ${{ steps.set_vars.outputs.is_widget_change }}
+          PR_NUMBER: ${{ steps.set_vars.outputs.pr_number }}
         run: |
-          BASE_BRANCH="${{ steps.set_vars.outputs.base_branch }}"
+          # Claude is asked to commit its own work, but sometimes edits files and
+          # skips the commit. Committing anything it left behind keeps the PR from
+          # being created against an empty branch ("No commits between ...").
+          git add -A
+          if ! git diff --cached --quiet; then
+            echo "Committing changes Claude left uncommitted:"
+            git diff --cached --name-only
+            git commit -m "update changelog and docs from OCS PR #${PR_NUMBER}"
+          fi
 
-          if git diff --quiet origin/$BASE_BRANCH; then
+          # Only committed history counts — an empty branch cannot become a PR.
+          if [ "$(git rev-list --count origin/$BASE_BRANCH..HEAD)" -eq 0 ]; then
             echo "has_changes=false" >> $GITHUB_OUTPUT
             echo "No changes made by Claude"
           else
             echo "has_changes=true" >> $GITHUB_OUTPUT
 
             # Determine which changelog file to check based on widget change flag
-            if [ "${{ steps.set_vars.outputs.is_widget_change }}" == "true" ]; then
+            if [ "$IS_WIDGET_CHANGE" == "true" ]; then
               CHANGELOG_FILE="${{ env.WIDGET_CHANGELOG }}"
             else
               CHANGELOG_FILE="${{ env.MAIN_CHANGELOG }}"
             fi
 
             # Check what was changed
-            CHANGELOG_CHANGED=$(git diff --name-only origin/$BASE_BRANCH | grep -c "$CHANGELOG_FILE" || true)
-            DOCS_CHANGED=$(git diff --name-only origin/$BASE_BRANCH | grep -v "$CHANGELOG_FILE" | grep -c "docs/" || true)
+            CHANGED_FILES=$(git diff --name-only origin/$BASE_BRANCH..HEAD)
+            CHANGELOG_CHANGED=$(echo "$CHANGED_FILES" | grep -c "$CHANGELOG_FILE" || true)
+            DOCS_CHANGED=$(echo "$CHANGED_FILES" | grep -v "$CHANGELOG_FILE" | grep -c "docs/" || true)
 
             # Ensure we have numeric values (grep -c returns 0 when no matches, but with exit code 1)
             CHANGELOG_CHANGED=${CHANGELOG_CHANGED:-0}

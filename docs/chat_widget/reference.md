@@ -49,7 +49,7 @@ open-chat-studio-widget {
 -   :simple-css:{ .sm .middle } See [CSS Styling](styling.md) for more customization options.
 </div>
 
-## :material-shield-key: Embed Authentication
+## :material-shield-key: Embed Authentication {#embed-authentication}
 Secure your embedded widgets with authentication keys for controlled access to specific channels.
 
 ### Overview
@@ -150,7 +150,7 @@ If Open Chat Studio rejects the token with an `HTTP 401` on `chat/start/`, the w
 
 OAuth credential mode support requires widget version **0.12.0** or later. See [Widget Version](#widget-version) for how to check the version running on a page.
 
-## :material-account: User Identification
+## :material-account: User Identification {#user-identification}
 Control how users are identified across chat sessions to enable personalized experiences and session continuity.
 ### Overview
 The chat widget uses user identification to:
@@ -208,7 +208,7 @@ function updateChatUser(user) {
 }
 ```
 
-## :material-hand-wave: Welcome Messages
+## :material-hand-wave: Welcome Messages {#welcome-messages}
 
 Enhance user experience by displaying personalized greeting messages when the chat opens. These messages appear as bot messages at the beginning of the conversation. Welcome messages are perfect for:
 
@@ -225,7 +225,7 @@ Pass welcome messages as a JSON array string. Each message appears as a separate
 </open-chat-studio-widget>
 ```
 
-## :material-folder-question: Starter Questions
+## :material-folder-question: Starter Questions {#starter-questions}
 
 Accelerate user engagement with pre-defined clickable questions that address common queries. These starter questions help users quickly find what they're looking for without having to type, which improves the user experience. Starter questions are ideal for:
 
@@ -246,7 +246,7 @@ These questions appear as blue-outlined buttons aligned to the right (similar to
 </open-chat-studio-widget>
 ```
 
-## :material-lock: Read-Only Mode
+## :material-lock: Read-Only Mode {#read-only-mode}
 
 Put the widget into a read-only state when your team is unavailable to respond, during maintenance windows, or whenever you need to pause conversations without hiding the widget entirely. Read-only mode is ideal for:
 
@@ -271,7 +271,7 @@ When enabled:
 !!! tip "Tell users why"
     Pair `disabled` with a [banner](#banner) so users understand why they can't send messages, for example to display your support hours or an outage notice.
 
-## :material-bullhorn: Banner
+## :material-bullhorn: Banner {#banner}
 
 Display an always-visible notice above the chat history to communicate information that shouldn't scroll away with the conversation. Banners are useful for:
 
@@ -315,7 +315,7 @@ The banner works on its own, or together with `disabled` to explain a read-only 
 </open-chat-studio-widget>
 ```
 
-## :material-paperclip: File Attachments
+## :material-paperclip: File Attachments {#file-attachments}
 Enable users to send files along with their messages. This feature is perfect for support scenarios where users need to share screenshots, documents, or other files.
 
 ```html
@@ -370,7 +370,7 @@ Files are validated on upload by their contents, not just their extension — if
 
 See [CSS Styling](styling.md#file-attachments) for customization options
 
-## :material-translate: Internationalization
+## :material-translate: Internationalization {#internationalization}
 
 The chat widget supports multiple languages and custom translations for all UI text elements.
 
@@ -520,11 +520,11 @@ The session data is set to expire after 24 hours. This is also configurable by u
 
     Session persistence works in conjunction with [User Identification](#user-identification). Different users will have separate persistent sessions.
 
-## :material-clock-outline: Browser Timezone
+## :material-clock-outline: Browser Timezone {#browser-timezone}
 
 When a chat session starts, the widget automatically detects the visitor's browser timezone (for example `America/New_York`) and sends it to Open Chat Studio, which stores it on the participant. This lets the chatbot refer to dates and times in the user's local time. No attribute or configuration is needed to enable this — it happens automatically for every session start.
 
-## :material-lightbulb: Page Context
+## :material-lightbulb: Page Context {#page-context}
 
 Pass page-specific context to the bot with each message to enable more personalized and relevant responses. The context is automatically included with every user message and helps the bot understand the current page state and user environment.
 
@@ -604,7 +604,7 @@ widget.pageContext = {
 
     The page context is persisted in the session state on the server side and is accessible via `session_state.remote_context`. See [accessing remote context](../concepts/prompt_variables.md#accessing-remote-context) for more details.
 
-## :material-lightning-bolt: Events
+## :material-lightning-bolt: Events {#events}
 
 The widget dispatches custom events on the `<open-chat-studio-widget>` host element. All events are dispatched with `bubbles: true` and `composed: true`, so they escape the shadow DOM and are catchable anywhere on the host page using standard `addEventListener`.
 
@@ -643,7 +643,7 @@ widget.addEventListener('ocs:message:received', (e) => {
 });
 ```
 
-## :material-information-outline: Widget Version
+## :material-information-outline: Widget Version {#widget-version}
 
 The widget stamps its build version onto the `<open-chat-studio-widget>` host element, so you can confirm which release is running on a deployed page without checking the CDN URL.
 
@@ -669,7 +669,7 @@ const version = await widget.getVersion();
 console.log(version); // "0.11.0"
 ```
 
-## :material-clipboard-list: Properties Reference
+## :material-clipboard-list: Properties Reference {#properties-reference}
 
 ### Core Configuration
 

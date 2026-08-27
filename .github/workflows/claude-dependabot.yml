@@ -1,13 +1,22 @@
 # Claude Dependabot PR Review Workflow
 #
-# Automatically runs Claude analysis on Dependabot PRs to:
-# - Identify dependency changes and their versions
-# - Look up changelogs for updated packages / actions
-# - Assess breaking changes affecting the docs build
-# - Provide actionable recommendations
+# Analyzes a Dependabot PR's dependency changes, looks up changelogs, checks
+# for breaking changes and docs-build impact, and posts a single review
+# comment with a recommendation (APPROVE / REVIEW_NEEDED / HOLD).
 #
-# Triggered on: Dependabot PRs (opened, synchronize)
+# Triggered on: Dependabot PRs (opened, synchronize) — job only runs when the
+# PR author is dependabot[bot]; or workflow_dispatch with a required
+# pr_number input (manual run, e.g. for testing)
 # Requirements: ANTHROPIC_API_KEY secret must be configured
+#
+# Notes:
+# - Uses the default GITHUB_TOKEN, not the ocs-agent app token.
+# - No concurrency group, so overlapping runs on the same PR are not
+#   cancelled or queued.
+# - WebFetch/WebSearch are kept in --allowedTools for changelog lookups; they're
+#   also this workflow's main untrusted-content path (a malicious release note
+#   could try to steer Claude) — keep the rest of the tool list minimal for
+#   that reason rather than widening it.
 
 name: Claude Dependabot PR Review
 
@@ -21,6 +30,9 @@ on:
         required: true
         type: string
 
+# Restrict default permissions — job overrides as needed
+permissions: {}
+
 jobs:
   dependabot-review:
     # Only run on Dependabot PRs, or manual dispatch for testing
@@ -31,8 +43,7 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
-      issues: read
-      id-token: write
+      id-token: write  # Needed for Claude Code Action
 
     steps:
       - name: Resolve PR ref
@@ -51,11 +62,6 @@ jobs:
           ref: ${{ steps.pr.outputs.ref }}
           fetch-depth: 1
 
-      - name: Set up Python
-        uses: actions/setup-python@v7
-        with:
-          python-version: '3.13'
-
       - name: Set up uv
         uses: astral-sh/setup-uv@v7
         with:
@@ -72,7 +78,7 @@ jobs:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           allowed_bots: "dependabot[bot]"
           claude_args: |
-            --allowedTools "Bash(uv:*),Bash(git:*),Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),Read,Edit,WebFetch,WebSearch"
+            --allowedTools "Bash(uv sync --locked),Bash(uv run zensical build --clean),Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),Read,WebFetch,WebSearch"
           prompt: |
             You are reviewing PR #${{ steps.pr.outputs.pr_number }}.
 
@@ -108,7 +114,7 @@ jobs:
                - For github-actions bumps, check whether the new major version changes inputs
                  or runtime the CI workflows rely on.
                - Verify the build still works: run `uv sync --locked` then
-                 `uv run zensical build --clean --strict`. Report the result.
+                 `uv run zensical build --clean`. Report the result.
 
             ## Output Format:
 
@@ -126,7 +132,7 @@ jobs:
             - **Security Fixes**: any security improvements
 
             ### ⚠️ Build Impact
-            - **Strict build result**: pass / fail (with error if failed)
+            - **Build result**: pass / fail (with error if failed)
             - **Breaking changes found**: Yes/No with details
 
             ### 🛠️ Recommendation

@@ -5,7 +5,7 @@ title: Large Language Model
 # Large Language Models (LLMs)
 
 !!! note "Definition"
-    A Large Language Model (or LLM) is a type of artificial intelligence software that is trained on a vast amount of text data. Its
+    A Large Language Model (or LLM) is a type of artificial intelligence (or AI) software that is trained on a vast amount of text data. Its
     primary function is to understand, interpret, and generate human language. This training allows it to produce text-based
     responses, answer questions, translate between languages, and perform various other language-related tasks.
 
@@ -13,11 +13,11 @@ title: Large Language Model
 
 <small>The definition above was authored by the famous LLM that powers ChatGPT: GPT-4 developed by OpenAI.</small>
 
-When building chatbots, an LLM powers the chatbot's ability to understand and respond to user inputs, effectively acting as the brain behind the chatbot.
+When building chatbots, an LLM powers the chatbot's ability to understand and respond to participant inputs, effectively acting as the brain behind the chatbot.
 
 ## Prompt
 
-A prompt is the input or instructions given to the LLM to guide its response. It sets the context for the chatbot. Prompts can be as simple as a user question or as detailed as a conversation framework or role-play setup.
+A prompt is the input or instructions given to the LLM to guide its response. It sets the context for the chatbot. Prompts can be as simple as a single question or as detailed as a conversation framework or role-play setup.
 
 **Example:** "You are a helpful assistant. Answer questions clearly and concisely."
 
@@ -48,8 +48,8 @@ These two parameters serve different purposes: temperature shapes *style*, effor
 
 ## Related pages
 
-For guidance on which model type to choose and when to use each parameter, see:
+To get started with LLMs in Open Chat Studio, or for guidance on which model type to choose and when to use each parameter, see:
 
+- [Configure an LLM Provider](../tutorials/configure_llm_providers.md) — set up a provider so your chatbot can use its models
 - [Choose an LLM Model](../how-to/choose_llm_model.md) — helps you pick the right model for your use case
 - [Adjust LLM Node Model Parameters](../how-to/adjust_llm_node_model_parameters.md) — step-by-step instructions for changing these settings
-- [Parameter reference](../how-to/adjust_llm_node_model_parameters.md#parameter-reference) — full parameter details for advanced users

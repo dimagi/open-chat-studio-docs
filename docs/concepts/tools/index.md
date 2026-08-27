@@ -18,7 +18,7 @@ Each tool name below links to its full argument details in the [Tools Reference]
 
 Tools in Open Chat Studio fall into two categories:
 
-- **[User-configurable tools](#user-configurable-tools)** — tools you enable on each chatbot
+- **[User-configurable tools](#user-configurable-tools)** — tools you as an OCS user enable on each chatbot
 - **[LLM provider tools](#llm-provider-tools)** — tools provided by AI models that are available for OCS chatbots to use
 
 ## User-configurable tools
@@ -58,7 +58,7 @@ Read and write data within the current session, or manage the session lifecycle.
 
 ## LLM provider tools
 
-Some LLM providers offer their own built-in tools — such as web search or code execution — that run inside the provider's infrastructure. Open Chat Studio can connect to some of these where the provider supports it.
+Some [LLM providers](../team/llm_providers.md) offer their own built-in tools — such as web search or code execution — that run inside the provider's infrastructure. Open Chat Studio can connect to some of these where the provider supports it.
 
 Support varies by provider. The full list of provider tools and their current support status is in the [Tools Reference](../../tech-hub/tools.md#llm-provider-tools).
 

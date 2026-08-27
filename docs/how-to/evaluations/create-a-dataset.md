@@ -26,7 +26,7 @@ This guide walks you through each method for populating an evaluation dataset. B
 
 ### Clone from Sessions
 
-Cloning turns real past conversations into dataset rows automatically. Use this method when you want to evaluate chatbot behavior against actual user interactions.
+Cloning turns real past conversations into dataset rows automatically. Use this method when you want to evaluate chatbot behavior against actual participant interactions.
 
 Rows created by cloning keep a link back to their original session in OCS. This link lets you navigate directly from a dataset row to the original conversation when reviewing evaluation output. It also makes those sessions eligible for import into an annotation queue for human review. Rows added by manual entry or CSV upload do not have a session link and are not eligible for annotation queue import.
 
@@ -39,8 +39,14 @@ Based on the evaluation level you have chosen, the system will clone either the 
 #### Steps for a message-level dataset
 
 1. Name the new dataset.
-2. Select at least one session to clone from (use the filters to narrow the list).
-3. You can filter the list of sessions by details like: chatbot, date range, version, etc.
+2. Use the filters to narrow the list of sessions by details like chatbot, date range, version, etc.
+3. Choose a selection scope:
+    - **Selected only** — clone only the sessions you check individually.
+    - **All matching filters** — clone every session that matches your current filters, without checking them one by one.
+
+    !!! warning
+        Message-level datasets support up to 1000 sessions when using **All matching filters**. If your filters match more sessions than that, narrow them before creating the dataset. The page warns you when the limit is exceeded.
+
 4. Click the **View Session** button to see more details to understand if this data is useful or not
 5. Choose how much of each session to include:
     - **Filtered messages** — clones only the messages that match the active filter parameters.
@@ -50,8 +56,10 @@ Based on the evaluation level you have chosen, the system will clone either the 
 #### Steps for a session-level dataset
 
 1. Name the dataset.
-2. Select the sessions you want to clone from. You don't have to select a session if you want to auto-populate later.
-3. You can filter the list of sessions by details like: chatbot, date range, version, etc.
+2. Use the filters to narrow the list of sessions by details like chatbot, date range, version, etc.
+3. Choose a selection scope:
+    - **Selected only** — clone only the sessions you check individually.
+    - **All matching filters** — clone every session that matches your current filters. There is no limit on how many sessions this can match.
 4. Click **Create Dataset** to create the dataset rows.
 
 ---

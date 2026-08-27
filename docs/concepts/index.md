@@ -42,6 +42,12 @@ For step-by-step instructions on completing specific tasks, see the [How-to guid
 [Events](events.md)
 : Automated actions that fire when something specific happens in a chatbot session — for example, when a conversation starts, ends, or when a participant has been inactive for a set period.
 
+[History](pipelines/history.md)
+: A per-node setting on nodes that call an LLM, controlling which part of a session's stored conversation is sent to the model when it generates a reply — its own history, the full conversation, a shared named history, or none at all.
+
+[History Mode](pipelines/history.md#history-mode)
+: A per-node setting that controls how a node's conversation history is trimmed once it grows past a token or message limit — by summarizing, truncating, or capping the message count.
+
 [Large Language Models (LLMs)](llm.md)
 : The AI model that powers your chatbot's ability to understand messages and generate responses. OCS lets you choose from a range of models and configure how they behave.
 
@@ -49,13 +55,16 @@ For step-by-step instructions on completing specific tasks, see the [How-to guid
 : The account you configure with an LLM service — such as OpenAI, Anthropic, or Google — so your chatbots can use its models.
 
 [Messaging Provider](team/messaging_providers.md)
-: An provider account you configure for a messaging service — such as Twilio, Turn.io, or Slack — that some channels require in order to send and receive messages for your chatbot.
+: A provider account you configure for a messaging service — such as Twilio, Turn.io, or Slack — that some channels require in order to send and receive messages for your chatbot.
 
 [Node](./pipelines/nodes.md)
 : A single processing step in a pipeline. Each node performs one task, such as calling an LLM, running custom code, or routing the conversation based on its content.
 
+[Participant](participant_data.md)
+: The person chatting with a deployed chatbot through any channel — as distinct from an OCS user, who builds and manages chatbots.
+
 [Participant Data](participant_data.md)
-: Custom information stored against each participant that persists across chatbot sessions. Use it to remember preferences, track progress, or personalize chatbot responses.
+: Custom information stored against each participant — the person chatting with a deployed chatbot — that persists across chatbot sessions. Use it to remember preferences, track progress, or personalize chatbot responses.
 
 [Pipelines](pipelines/index.md)
 : The drag-and-drop canvas where you build your chatbot's conversation logic by connecting nodes together. Every chatbot in OCS is powered by a pipeline.

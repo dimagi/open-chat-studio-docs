@@ -6,9 +6,9 @@ Built with [Zensical](https://zensical.org/) (MkDocs-compatible), Python 3.13+, 
 ## Commands
 
 ```bash
-uv sync                                  # Install / sync dependencies
+uv sync --locked                         # Install / sync deps; fails if uv.lock is stale
 uv run zensical serve                    # Local dev server (auto-reload)
-uv run zensical build --clean --strict   # Same build CI runs — fails on broken refs
+uv run zensical build --clean            # Same build CI runs — fails on broken refs
 uv run pytest scripts/tests              # Run the (small) test suite for scripts/
 ```
 
@@ -70,8 +70,10 @@ and produces a markdown summary. Releases are created as drafts.
 
 ## Gotchas
 
-- `zensical build --strict` (CI) fails on broken internal links — `serve` does not.
-  Run the strict build locally before pushing if you've added cross-references.
+- `strict: true` in `mkdocs.yml` makes `zensical build` fail on broken internal links
+  without needing `--strict`, so a plain local build matches CI. `serve` still only
+  *warns* (it keeps serving so the dev loop isn't broken) — watch its console output,
+  or run a build before pushing if you've added cross-references.
 - `docs/api/` is regenerated from OpenAPI by the `update-api-docs` workflow. Don't hand-edit.
 - `uv` self-ignores `.venv/` and `.cache/` by dropping `.gitignore` files inside them,
   so the repo `.gitignore` doesn't need entries for those.

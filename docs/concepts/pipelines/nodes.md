@@ -1,6 +1,6 @@
 # Node Types
 
-A node is a discrete processing step in a [pipeline](index.md) that accepts a user’s input and produces an output to downstream nodes. Each node in the pipeline performs a specific task (like calling an LLM, running Python code, or routing based on logic) and processes data that flows through the pipeline.
+A node is a discrete processing step in a [pipeline](index.md) that accepts a participant's input and produces an output to downstream nodes. Each node in the pipeline performs a specific task (like calling an LLM, running Python code, or routing based on logic) and processes data that flows through the pipeline.
 
 ```mermaid
 graph LR
@@ -10,7 +10,8 @@ graph LR
 
 !!! note Examples
 
-    See [chatbot workflow cookbook](../../how-to/workflow_cookbook.md) for examples of pipelines using different combinations of these node types.
+    1. See a [simple example](./index.md#a-simple-example) of a pipeline with one node.
+    2. See [chatbot workflow cookbook](../../how-to/workflow_cookbook.md) for examples of pipelines using different combinations of these node types.
 
 ## LLM Node
 
@@ -18,11 +19,13 @@ A conversational node using AI models. You can configure:
 
 - A [prompt](../llm.md#prompt) for instructions on how to respond
 - [Prompt variables](../prompt_variables.md) to insert dynamic content
-- A [history mode](history.md) for conversation memory
+- A [history setting](history.md) for conversation memory
 - [Temperature and effort parameters](../../how-to/adjust_llm_node_model_parameters.md) to shape output style and depth
 - [Tools](../tools/index.md) for additional actions
 - [Collections](../collections/index.md) for indexed collections to ground responses in your documents (RAG), or a media collections to send files to participants.
 - [Custom Actions](../llm_custom_action.md) to connect to external systems and retrieve information or complete tasks
+
+See [Configure an LLM Node](../../tutorials/configure_llm_node.md) for a step-by-step tutorial on setting one up.
 
 ## Routing Nodes
 
@@ -59,8 +62,8 @@ Execute custom Python code for logic, data processing, or external API calls.
 
 **Key capabilities:**
 
-- **[Utility functions](../../tech-hub/python_node.md#utility-functions)** — read and write [participant data](../../concepts/participant_data.md), [temporary state](../../tech-hub/python_node.md#temporary-state) (per pipeline run), and [session state](../../tech-hub/python_node.md#session-state) (per user session).
-- **[Attachments](../../tech-hub/python_node.md#attachments)** — access files uploaded by the user and read their contents (text, PDF, DOCX, XLSX, and [more](../../tech-hub/python_node.md#supported-file-types)).
+- **[Utility functions](../../tech-hub/python_node.md#utility-functions)** — read and write [participant data](../../concepts/participant_data.md), [temporary state](../../tech-hub/python_node.md#temporary-state) (per pipeline run), and [session state](../../tech-hub/python_node.md#session-state) (per participant session).
+- **[Attachments](../../tech-hub/python_node.md#attachments)** — access files uploaded by the participant and read their contents (text, PDF, DOCX, XLSX, and others — see [supported file types](../../tech-hub/python_node.md#supported-file-types)).
 - **[HTTP client](../../tech-hub/external-api-calls/http_client.md)** — make secure HTTP requests to external APIs using the built-in `http` global.
 - **[Debugging](../../tech-hub/python_node.md#debugging-with-print)** — use `print()` to capture diagnostic output, visible in the trace detail view.
 

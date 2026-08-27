@@ -4,52 +4,55 @@ title: How to reset sessions
 
 # How to reset sessions
 
-Use this guide to end a current [session](../concepts/sessions.md) and start a new one. Resets can be done [manually](#user-initiated-manual-reset-of-a-session) or [automatically](#reset-sessions-automatically).
+This guide explains how to end a current chatbot [session](../concepts/sessions.md) and start a new one.
+
+When a session is reset:
+
+- The current session is marked as completed.
+- A new session is started with a fresh history.
+
+!!! note
+
+    Resetting a session clears the conversation history — the chatbot will have no memory of previous exchanges. [Participant data](../concepts/participant_data.md) is not removed.
 
 ## Before you begin
 
-- Confirm which [channel](../concepts/channels.md) your chatbot uses.
-- For **Web Chat Widget** and **Slack**, use the session reset button in the UI.
-- For messaging channels (such as WhatsApp and Telegram), use `/reset` or an automatic method.
+- Confirm which [channel](../concepts/channels.md) your chatbot uses — this determines which reset options are available.
+- Resets can be triggered [manually](#manual-reset-of-a-session) or [automatically](#reset-sessions-automatically).
 
-!!! note
-    Resetting a session clears the conversation history — the bot will have no memory of previous exchanges. Participant data is not removed.
+## Manual reset of a session
 
-## User-Initiated manual reset of a session
+### Participant reset manually from messaging channel
 
-### Reset manually from chat channel
-
-1. As a participant, view the conversation in the chatbot channel
-2. Send `/reset` (case-insensitive) as a text command
+1. As a participant, view the conversation in the messaging channel.
+2. Send `/reset` (case-insensitive) as a text command.
 3. Continue chatting to start a fresh session.
 
-This command is available on all channels except **Web Chat Widget** and **Slack**.
+This command is available on all channels except **Web** and **Slack**.
 
-### Reset manually from the web UI
+### Participant reset manually from the web chat page
 
-This allows users to customize how the transition between sessions occurs.
+1. As a participant, view the OCS's web chat page.
+2. Click the "End chat and give feedback" button.
+3. Confirm that you want to end the chat.
+4. Continue chatting to start a fresh session.
 
-1. As a participant, view the chat widget on the web chat interface.
-2. Click the "End chat" button.
-3. Choose whether to trigger [end conversation events](../concepts/events.md) or skip them
-4. Enter a chat message for the new session.
+### User reset manually from the OCS Admin UI
 
-If your chatbot has been configured with a seed message, this is pre-filled and then can be edited by the user.
+When viewing the session detail on the Chatbot Review page, an OCS user with permission to manage sessions has two options:
 
-### Reset manually from the OCS Admin UI
-
-When viewing the session detail, the "End Session" button ends the current session.
-- For more on ending sessions see [Session Status](../concepts/session_status.md#pending_review)
+- **End Session** — ends the current session. This does not start a new one.
+- **New Session** — ends the current session and starts a new one. This option is only available for non-Web channels.
 
 ## Reset sessions automatically
 
-For details on how to end sessions from a chatbot see [Session Status](../concepts/session_status.md#ending-sessions-from-a-chatbot)
+For details on how to end sessions from a chatbot see [Ending Sessions from a Chatbot](../tech-hub/ending_sessions.md)
 
 ### Reset automatically via API
 
 Use this when your integration controls when conversations should restart.
 
- - When using the [Trigger Bot Message](https://openchatstudio.com/api/v1/docs/#tag/Channels/operation/trigger_bot_message) API, you can set `"start_new_session": true`, which will end the current session and start a new one before messaging the user.
+ - When using the [Trigger Bot Message](https://openchatstudio.com/api/v1/docs/#tag/Channels/operation/trigger_bot_message) API, you can set `"start_new_session": true`, which will end the current session and start a new one before messaging the participant.
 
 ## Related concepts
 

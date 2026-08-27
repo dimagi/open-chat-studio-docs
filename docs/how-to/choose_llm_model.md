@@ -34,12 +34,13 @@ If you are unsure, start with a general-purpose model and the default settings. 
 
 The model you choose determines which AI provider is used. For the full list of supported providers, see [LLM Providers](../concepts/team/llm_providers.md).
 
-Your team must have credentials configured for a provider before you can use its models. If the model you want is not listed, check with your team administrator or see the guide for [configuring LLM providers](../tutorials/configure_providers.md).
+Your team must have credentials configured for a provider before you can use its models. If the model you want is not listed, check with your team administrator or see the guide for [configuring LLM providers](../tutorials/configure_llm_providers.md).
 
 Different providers may offer the same underlying model type but with different pricing, speed, and availability. If your preferred model is unavailable or too slow, try the equivalent model from another provider.
 
 ## Next steps
 
+- [Configure an LLM Node](../tutorials/configure_llm_node.md) — if you haven't set up an LLM node yet, start with this tutorial
 - [Adjust LLM Node Model Parameters](adjust_llm_node_model_parameters.md) — once you have chosen a model, learn how to fine-tune its settings
 - [LLM Providers](../concepts/team/llm_providers.md) — understand how providers are configured in your team
 - [Large Language Models](../concepts/llm.md) — a conceptual overview of how LLMs work

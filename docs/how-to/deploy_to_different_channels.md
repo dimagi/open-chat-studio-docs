@@ -23,6 +23,8 @@ To link a channel to your chatbot:
 - [SureAdhere Mobile App](#sureadhere-for-secure-in-app-messaging)
 - [API](#api) — programmatic access, no setup required
 
+Once a channel is linked, you can [temporarily disable it][disable] without deleting its configuration.
+
 ## Web
 
 The web channel is OCS's built-in chat interface. It's enabled by default for every chatbot — there's no provider to configure and nothing to link. Embed it on your own website with the [chat widget][chat-widget].
@@ -52,13 +54,27 @@ When you create or edit a WhatsApp channel using a Twilio provider, Open Chat St
 
 ### Turn.io
 
-Turn.io does not support automatic webhook configuration. After adding your WhatsApp number in Open Chat Studio, configure the webhook manually:
+Turn.io does not support automatic webhook configuration, so you set the webhook up by hand and paste the signing secret back into Open Chat Studio.
 
-1. In your Turn.io account, go to **Settings → API & Webhooks**.
-2. Select **Add a webhook**.
-3. Enter the following URL:
+1. In Open Chat Studio, save the WhatsApp channel. OCS then displays a message beginning "Use the following URL when setting up the webhook". Copy that URL.
+2. In your Turn.io account, go to **Settings → API & Webhooks**.
+3. Select **Add a webhook** and paste the URL from step 1.
+4. Copy the webhook's **HMAC secret** from the same Turn.io screen. If it does not have one yet, generate it there first.
+5. Back in Open Chat Studio, go to **Team Settings**, then in the **Messaging Providers** section edit the Turn.io provider, paste the value into **Webhook HMAC Secret**, and save.
+6. Send a test message on WhatsApp and confirm the chatbot replies.
 
-   `https://openchatstudio.com/channels/whatsapp/incoming_message`
+!!! warning "Each chatbot has its own Turn.io webhook URL"
+
+    A Turn.io webhook URL contains the chatbot's ID, so it is specific to a single chatbot. Always copy it from that chatbot's channel in OCS rather than typing it out or reusing one from another chatbot.
+
+!!! info "The HMAC secret is optional, but leaving it blank leaves the webhook unauthenticated"
+
+    When the secret is set, OCS verifies the signature on every incoming webhook and rejects anything that does not match with a `401`. When it is blank, the signature is not checked, which means anyone who knows the URL can send messages to your chatbot. Set it as soon as Turn.io is configured to sign.
+
+    Verification takes effect on the next request, so do step 6 straight away. Turn.io cancels its retries on a `4xx`, so a mismatched secret loses messages rather than delaying them. If messages stop arriving, clear the **Webhook HMAC Secret** field and save: delivery resumes immediately while you re-check the value in Turn.io.
+
+See the [Turn.io setup guide][turnio] for the full walkthrough, including provider setup and
+troubleshooting.
 
 ### Meta Cloud API
 
@@ -104,5 +120,7 @@ Every chatbot can also be reached programmatically through the OCS [APIs][api], 
 [5]: https://core.Telegram.org/bots/features#:~:text=/setjoingroups%20%E2%80%93%20toggle%20whether%20your%20bot%20can%20be%20added%20to%20groups%20or%20not.%20All%20bots%20must%20be%20able%20to%20process%20direct%20messages%2C%20but%20if%20your%20bot%20was%20not%20designed%20to%20work%20in%20groups%2C%20you%20can%20disable%20this.
 [6]: ../tutorials/configure_msg_providers.md
 [api]: ../tech-hub/api_access.md
+[disable]: ./disable_a_channel.md
 [meta]: ./whatsapp_meta_cloud_api.md
+[turnio]: ./turnio_whatsapp.md
 [chat-widget]: ../chat_widget/index.md

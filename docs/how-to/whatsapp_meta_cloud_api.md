@@ -13,7 +13,7 @@ Setting up a WhatsApp channel via Meta Cloud API involves four main stages:
 
 ## Supported media types
 
-The Meta Cloud API integration supports sending and receiving media messages in addition to text. When a user sends an image or document to your WhatsApp number, OCS downloads it, links it to the conversation, and passes it to the LLM automatically — no extra configuration is required.
+The Meta Cloud API integration supports sending and receiving media messages in addition to text. When a participant sends an image or document to your WhatsApp number, OCS downloads it, links it to the conversation, and passes it to the LLM automatically — no extra configuration is required.
 
 The following media types are accepted:
 
@@ -155,7 +155,7 @@ Open Chat Studio validates the phone number against your WhatsApp Business Accou
 
 ### What is the 24-hour service window?
 
-WhatsApp restricts when businesses can send messages to users. Once a user sends a message to your business number, a **24-hour service window** opens. During that window, your chatbot can reply freely. After 24 hours of inactivity from the user, the window closes and the WhatsApp API rejects any outbound messages.
+WhatsApp restricts when businesses can send messages to participants. Once a participant sends a message to your business number, a **24-hour service window** opens. During that window, your chatbot can reply freely. After 24 hours of inactivity from the participant, the window closes and the WhatsApp API rejects any outbound messages.
 
 Without a fallback, a bot reply sent outside the service window is silently dropped. The out-of-service-window template message feature prevents this by automatically substituting a pre-approved WhatsApp message template when the window has expired.
 
@@ -189,12 +189,20 @@ You must create a WhatsApp message template in your Meta Business account before
 !!! warning "Template approval required"
     The template cannot be used until Meta approves it. Approval typically takes a few minutes to a few hours but may take longer. Until approval is granted, the fallback will fail silently.
 
+### Message formatting
+
+Meta rejects template sends when the `bot_message` variable contains line breaks, tabs, or long runs of spaces. To avoid this, OCS collapses any run of whitespace in the bot's message — including line breaks and tabs — into a single space before inserting it into the template. This means a multi-paragraph bot reply arrives as a single paragraph when it is sent as a fallback template message.
+
+Only the substituted `bot_message` text is flattened this way. The approved template's own static text keeps whatever line breaks it was approved with in Meta Business Manager.
+
 ### Character limits
 
 | Element | Limit |
 |---|---|
 | Template static text | 100 characters |
 | Dynamic message content (`bot_message`) | 974 characters |
+
+Whitespace flattening happens before OCS checks the character limit, so the limit is measured against the message Meta actually receives. Flattening only ever shortens the text, so it never causes a message to exceed the limit.
 
 If the bot's outgoing message exceeds 974 characters, OCS automatically splits it at word boundaries and sends it across multiple template messages.
 
@@ -302,7 +310,7 @@ This is almost always caused by the system user's access token not having permis
 
 ### The out-of-service-window template message is not being sent
 
-If the bot is not reaching users after the 24-hour service window expires:
+If the bot is not reaching participants after the 24-hour service window expires:
 
 - Confirm that the template named `ocs_out_of_service_window` exists in your Meta Business account under **WhatsApp Manager** > **Account tools** > **Message templates**.
 - Confirm the template status is **Approved**. Templates that are pending review or that have been rejected cannot be sent.
