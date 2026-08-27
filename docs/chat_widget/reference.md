@@ -60,6 +60,11 @@ The embed authentication feature allows you to:
 - Provide secure access control for sensitive or premium content
 - Track and manage different embedded deployments
 
+Two authentication mechanisms are available, depending on how the channel is configured on the server:
+
+- **Embed key** (default) — a static key sent as an `X-Embed-Key` header. See [Implementation](#implementation) below.
+- **OAuth credential mode** — a bearer token supplied by your own backend via the `authTokenProvider` JS property. See [OAuth Credential Mode](#oauth-credential-mode) below.
+
 ### Implementation
 
 ```html
@@ -70,6 +75,80 @@ The embed authentication feature allows you to:
 ```
 
 When an embed key is provided, it's automatically sent as an `X-Embed-Key` header with all API requests to authenticate the widget instance.
+
+### OAuth Credential Mode
+
+!!! note "Not yet configurable in Open Chat Studio"
+    OAuth credential mode is a setting on the "Chat Widget & API" channel itself, and the channel
+    configuration screen does not yet offer a control for it. Widget support has landed ahead of that
+    control, so for now you cannot switch a channel into OAuth mode. Setting `authTokenProvider` on a
+    channel using the default embed-key mode has no effect, and existing embeds are unaffected.
+
+When a channel is configured for OAuth credential mode, the widget must present an OAuth bearer token to start a chat session. You provide that token by setting the `authTokenProvider` JS property on the widget element:
+
+```javascript
+document.querySelector('open-chat-studio-widget').authTokenProvider = async ({ forceRefresh }) => {
+  const response = await fetch(`/api/get-widget-token?force_refresh=${forceRefresh}`, { credentials: 'include' });
+  const { token } = await response.json();
+  return token;
+};
+```
+
+`authTokenProvider` is a **JS property only** — there is no HTML attribute equivalent, because its value is a function and HTML attributes can only hold strings. A copy-paste HTML embed snippet cannot use OAuth mode on its own; the host page needs a small `<script>` block, like the one above, that selects the widget element and assigns the property.
+
+#### How it works
+
+- The widget calls `authTokenProvider` at the start of every session and sends the returned token as an `Authorization: Bearer <token>` header on the `chat/start/` request only. The header is **not** sent on message-send, poll, or upload requests.
+- The widget passes a single options object to the function — `{ forceRefresh: boolean }` — described in [The `forceRefresh` argument](#the-forcerefresh-argument) below.
+- The function can return a token string directly, or a `Promise` that resolves to one.
+- The widget never stores or caches the token itself. It calls the provider every time it starts a session — including when a previous session expires and the widget starts a new one automatically. The widget does not run a refresh timer; `forceRefresh` is the only signal it gives the host page about token freshness.
+- If `authTokenProvider` returns a falsy value (`undefined`, `null`, or an empty string), the widget sends the request with no `Authorization` header. On an OAuth-mode channel the server will then refuse to start the session.
+- If `authTokenProvider` **throws**, the widget does *not* fall back to an unauthenticated request — session start fails and the widget shows "Could not obtain an authentication token". The thrown error's own text is deliberately not surfaced in the chat (it is logged to the browser console instead), so that a message quoting a token is never written to the persisted transcript.
+
+#### The `forceRefresh` argument
+
+Your provider is allowed to cache tokens — on your backend, or in the browser for the lifetime of the page. `forceRefresh` tells you when a cached token is acceptable and when it is not:
+
+| `forceRefresh` | When the widget passes it | What your provider should do |
+|----------------|---------------------------|------------------------------|
+| `false`        | The first call for a given session start | Return a token. An existing cached token is fine, as long as it is still valid. |
+| `true`         | The retry call, after `chat/start/` came back `401` with the previous token | Bypass your cache and mint a genuinely new token. |
+
+```javascript
+let cached;
+
+document.querySelector('open-chat-studio-widget').authTokenProvider = async ({ forceRefresh }) => {
+  if (cached && !forceRefresh) {
+    return cached;
+  }
+  const response = await fetch('/api/get-widget-token', { credentials: 'include' });
+  cached = (await response.json()).token;
+  return cached;
+};
+```
+
+!!! warning "Returning the same token for `forceRefresh: true` cancels the retry"
+    The widget only resends `chat/start/` if the refreshed token **differs** from the one that
+    was just rejected (see [Retry behavior on 401](#retry-behavior-on-401)). A provider that
+    ignores `forceRefresh` and returns its cached value again — or returns a falsy value — gets no
+    retry, and the session start fails with the original `401`.
+
+Because the argument is an object, a zero-argument provider such as `async () => token` is still valid JavaScript and works for the initial call — but it can never distinguish the retry, so it forfeits the behavior above. Read `forceRefresh` if you cache anything.
+
+#### Mint tokens on your server, not in the browser
+
+Minting an OAuth token uses a client-credentials flow, which requires a client secret. That secret must never be exposed in a web page. `authTokenProvider` should call an endpoint on your own backend — one that holds the secret, talks to Open Chat Studio to obtain a token, and returns just the token to the browser. The example above shows this pattern: the browser calls your `/api/get-widget-token` endpoint, and your server does the actual client-credentials exchange with Open Chat Studio.
+
+#### Retry behavior on 401
+
+If Open Chat Studio rejects the token with an `HTTP 401` on `chat/start/`, the widget calls `authTokenProvider` again — this time with `{ forceRefresh: true }` — and retries the session-start request **exactly once**, but only if the newly returned token is different from the one that was just rejected. `chat/start/` is rate-limited, so the widget avoids resending an identical request that would waste your quota for no benefit.
+
+!!! note "401 vs. 403"
+    A `401` means the token itself was refused (missing, expired, or invalid), which triggers the retry described above. A `403` means the session or resource is forbidden for an otherwise-valid caller — this is a distinct case and does not trigger a token refresh or retry.
+
+#### Version requirement
+
+OAuth credential mode support requires widget version **0.12.0** or later. See [Widget Version](#widget-version) for how to check the version running on a page.
 
 ## :material-account: User Identification {#user-identification}
 Control how users are identified across chat sessions to enable personalized experiences and session continuity.
@@ -104,7 +183,10 @@ Identified Users
 
 When no user-id is provided, the widget automatically creates a unique identifier:
 
-- Example: ocs:1703123456789_a7x9k2m8f
+- Example: `ocs:550e8400-e29b-41d4-a716-446655440000`
+
+!!! note
+    Widget versions before **0.12.0** generated IDs in an older `ocs:1703123456789_a7x9k2m8f` (timestamp + random suffix) format. This is not a breaking change — IDs already stored in a visitor's browser keep working, and only newly generated IDs use the UUID format.
 
 Persistence Behavior:
 
@@ -251,8 +333,11 @@ Enable users to send files along with their messages. This feature is perfect fo
 - Microsoft Excel: .xls, .xlsx
 
 #### Images:
-- Common formats: .jpg, .jpeg, .png, .gif, .bmp, .webp
-- Vector graphics: .svg
+- Supported formats: .jpg, .jpeg, .png, .gif, .webp
+- `.bmp` and `.svg` are **not** supported and are rejected at upload
+
+!!! note
+    Image support varies slightly by the chatbot's LLM provider. Most providers accept PNG, JPEG, GIF, and WEBP. Google Gemini models accept PNG, JPEG, WEBP, HEIC, and HEIF, but not GIF.
 
 #### Media:
 - Video files: .mp4, .mov, .avi
@@ -265,6 +350,8 @@ When attachments are sent to the LLM:
 - **PDFs and images** are sent directly to the LLM API as native file attachments (where supported by the model).
 - **Word (.doc, .docx) and Excel (.xls, .xlsx) documents** are automatically converted to plain text before being sent to the LLM.
 - **Text files and CSVs** are sent as plain text content.
+
+Files are validated on upload by their contents, not just their extension — if a file's contents don't match its extension (for example, SVG data renamed to `photo.jpg`), the upload is rejected. Attachments are never silently dropped: if an image reaches the LLM in a format that provider doesn't support, the whole message fails with a clear error naming the file and the formats that provider accepts, rather than a raw provider error.
 
 ### File Size Limits
 
@@ -420,15 +507,22 @@ By default, the widget will save the chat messages and the widget's open/closed 
 
 To disable this feature, set the `persistent-session="false"` attribute on the widget element.
 
+!!! note "Single-tab persistence"
+    Requires widget **0.12.0+**. Set `persistent-session="tab"` to scope persistence to a single browser tab: the widget keeps the session in `sessionStorage` instead of `localStorage`, so the conversation survives a reload of that tab but is forgotten as soon as the tab is closed. This differs from the default `true`, which persists across tabs and browser restarts via `localStorage`. Clearing a session only clears the storage the current widget instance is using, so a `"tab"` widget on one page can't clear a session held by a `true` widget on another page at the same origin, or vice versa.
+
 !!! note
 
     The session persistence is associated with the `chatbot-id`. If the `chatbot-id` changes, any previous session data will be ignored.
 
-The session data is set to expire after 24 hours. This is also configurable by using the `persistent-session-expire` attribute. The value is interpreted as *"the number of minutes since the last message before the session expires"*. Setting this attribute to `0` will disable the expiration entirely.
+The session data is set to expire after 24 hours. This is also configurable by using the `persistent-session-expire` attribute. The value is interpreted as *"the number of minutes since the last message before the session expires"*. Setting this attribute to `0` will disable the expiration entirely. This still applies to `persistent-session="tab"` sessions, so a tab-scoped session left open (rather than closed) is reaped on the same schedule as any other.
 
 !!! note
 
     Session persistence works in conjunction with [User Identification](#user-identification). Different users will have separate persistent sessions.
+
+## :material-clock-outline: Browser Timezone {#browser-timezone}
+
+When a chat session starts, the widget automatically detects the visitor's browser timezone (for example `America/New_York`) and sends it to Open Chat Studio, which stores it on the participant. This lets the chatbot refer to dates and times in the user's local time. No attribute or configuration is needed to enable this — it happens automatically for every session start.
 
 ## :material-lightbulb: Page Context {#page-context}
 
@@ -549,6 +643,32 @@ widget.addEventListener('ocs:message:received', (e) => {
 });
 ```
 
+## :material-information-outline: Widget Version {#widget-version}
+
+The widget stamps its build version onto the `<open-chat-studio-widget>` host element, so you can confirm which release is running on a deployed page without checking the CDN URL.
+
+### `data-widget-version` attribute
+
+Read the version straight from the DOM with `getAttribute`. This is the quickest way to check the version in the browser DevTools:
+
+```javascript
+document.querySelector('open-chat-studio-widget').getAttribute('data-widget-version');
+// "0.12.0"
+```
+
+!!! note
+    `data-widget-version` is set as soon as the widget script loads, even if `chatbot-id` is missing or invalid. You can rely on it to confirm the widget script itself loaded correctly, independent of chatbot configuration.
+
+### `getVersion()` method
+
+For programmatic access, call `getVersion()` on the element. Like other widget methods, it returns a `Promise`:
+
+```javascript
+const widget = document.querySelector('open-chat-studio-widget');
+const version = await widget.getVersion();
+console.log(version); // "0.12.0"
+```
+
 ## :material-clipboard-list: Properties Reference {#properties-reference}
 
 ### Core Configuration
@@ -558,6 +678,7 @@ widget.addEventListener('ocs:message:received', (e) => {
 | `chatbot-id` | `string` | **REQUIRED** | - | Your chatbot ID from Open Chat Studio | `"183312ac-cbe5-4c91-9e7b-d9df96b088e4"` |
 | `api-base-url` | `string` | Optional | `"https://openchatstudio.com"` | API base URL for your Open Chat Studio instance | `"https://your-domain.com"` |
 | `embed-key` | `string` | Optional | `undefined` | Authentication key for embedded channels | `"your-embed-auth-key"` |
+| `authTokenProvider` | `function` | Optional | `undefined` | **JS property only — no HTML attribute.** Function (or async function) returning an OAuth bearer token string, called fresh at the start of every session. Used for [OAuth credential mode](#oauth-credential-mode). Requires widget **0.12.0+** | `() => fetchTokenFromMyBackend()` |
 
 ### Button & UI Customization
 
@@ -574,7 +695,7 @@ widget.addEventListener('ocs:message:received', (e) => {
 
 | Property | Type | Required | Default | Validation | Description | Example |
 |----------|------|----------|---------|------------|-------------|---------|
-| `user-id` | `string` | Optional | Auto-generated | Alphanumeric + underscore/dash | Unique user identifier for session continuity<br/>**Auto-format:** `ocs:1703123456789_a7x9k2m8f` | `"user_12345"` or `"customer@email.com"` |
+| `user-id` | `string` | Optional | Auto-generated | None | Unique user identifier for session continuity<br/>**Auto-format:** `ocs:<uuid v4>`, e.g. `ocs:550e8400-e29b-41d4-a716-446655440000` | `"user_12345"` or `"customer@email.com"` |
 | `user-name` | `string` | Optional | `undefined` | Max 200 chars | Display name sent to chat API for personalization | `"John Smith"` or `"Customer #12345"` |
 
 ### Chat Behavior & Sessions
@@ -582,7 +703,7 @@ widget.addEventListener('ocs:message:received', (e) => {
 | Property | Type | Required | Default | Validation | Description | Example |
 |----------|------|----------|---------|------------|-------------|---------|
 | `pageContext` | `object` | Optional | `undefined` | Plain JS object | Optional context data to send with each message for personalization<br/>**Note:** Context is cleared after each message | `{"user_role": "admin", "page_location": "dashboard"}` |
-| `persistent-session` | `boolean` | Optional | `true` | `true` \| `false` | Save chat history in browser localStorage | `"false"` to disable session saving |
+| `persistent-session` | `boolean \| "tab"` | Optional | `true` | `true` \| `false` \| `"tab"` | Save chat history in browser localStorage. `"tab"` scopes persistence to the current browser tab via sessionStorage instead — see [Persistent Sessions](#persistent-sessions). Requires widget **0.12.0+** for `"tab"` | `"false"` to disable session saving, `"tab"` to persist only for the current tab |
 | `persistent-session-expire` | `number` | Optional | `1440` (24 hours) | 0-43200 (30 days) | Minutes before session expires | `720` for 12 hours, `0` for never expire |
 | `allow-full-screen` | `boolean` | Optional | `true` | `true` \| `false` | Enable fullscreen mode button | `"false"` to hide fullscreen option |
 | `allow-attachments` | `boolean` | Optional | `false` | `true` \| `false` | Enable file upload functionality<br/>**Limits:** 50MB per file, 50MB total per message | `"true"` to enable file uploads |
