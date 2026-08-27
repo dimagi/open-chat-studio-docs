@@ -183,7 +183,10 @@ Identified Users
 
 When no user-id is provided, the widget automatically creates a unique identifier:
 
-- Example: ocs:1703123456789_a7x9k2m8f
+- Example: `ocs:550e8400-e29b-41d4-a716-446655440000`
+
+!!! note
+    Widget versions before **0.12.0** generated IDs in an older `ocs:1703123456789_a7x9k2m8f` (timestamp + random suffix) format. This is not a breaking change — IDs already stored in a visitor's browser keep working, and only newly generated IDs use the UUID format.
 
 Persistence Behavior:
 
@@ -504,15 +507,22 @@ By default, the widget will save the chat messages and the widget's open/closed 
 
 To disable this feature, set the `persistent-session="false"` attribute on the widget element.
 
+!!! note "Single-tab persistence"
+    Requires widget **0.12.0+**. Set `persistent-session="tab"` to scope persistence to a single browser tab: the widget keeps the session in `sessionStorage` instead of `localStorage`, so the conversation survives a reload of that tab but is forgotten as soon as the tab is closed. This differs from the default `true`, which persists across tabs and browser restarts via `localStorage`. Clearing a session only clears the storage the current widget instance is using, so a `"tab"` widget on one page can't clear a session held by a `true` widget on another page at the same origin, or vice versa.
+
 !!! note
 
     The session persistence is associated with the `chatbot-id`. If the `chatbot-id` changes, any previous session data will be ignored.
 
-The session data is set to expire after 24 hours. This is also configurable by using the `persistent-session-expire` attribute. The value is interpreted as *"the number of minutes since the last message before the session expires"*. Setting this attribute to `0` will disable the expiration entirely.
+The session data is set to expire after 24 hours. This is also configurable by using the `persistent-session-expire` attribute. The value is interpreted as *"the number of minutes since the last message before the session expires"*. Setting this attribute to `0` will disable the expiration entirely. This still applies to `persistent-session="tab"` sessions, so a tab-scoped session left open (rather than closed) is reaped on the same schedule as any other.
 
 !!! note
 
     Session persistence works in conjunction with [User Identification](#user-identification). Different users will have separate persistent sessions.
+
+## :material-clock-outline: Browser Timezone
+
+When a chat session starts, the widget automatically detects the visitor's browser timezone (for example `America/New_York`) and sends it to Open Chat Studio, which stores it on the participant. This lets the chatbot refer to dates and times in the user's local time. No attribute or configuration is needed to enable this — it happens automatically for every session start.
 
 ## :material-lightbulb: Page Context
 
@@ -685,7 +695,7 @@ console.log(version); // "0.11.0"
 
 | Property | Type | Required | Default | Validation | Description | Example |
 |----------|------|----------|---------|------------|-------------|---------|
-| `user-id` | `string` | Optional | Auto-generated | Alphanumeric + underscore/dash | Unique user identifier for session continuity<br/>**Auto-format:** `ocs:1703123456789_a7x9k2m8f` | `"user_12345"` or `"customer@email.com"` |
+| `user-id` | `string` | Optional | Auto-generated | Alphanumeric + underscore/dash | Unique user identifier for session continuity<br/>**Auto-format:** `ocs:<uuid v4>`, e.g. `ocs:550e8400-e29b-41d4-a716-446655440000` | `"user_12345"` or `"customer@email.com"` |
 | `user-name` | `string` | Optional | `undefined` | Max 200 chars | Display name sent to chat API for personalization | `"John Smith"` or `"Customer #12345"` |
 
 ### Chat Behavior & Sessions
@@ -693,7 +703,7 @@ console.log(version); // "0.11.0"
 | Property | Type | Required | Default | Validation | Description | Example |
 |----------|------|----------|---------|------------|-------------|---------|
 | `pageContext` | `object` | Optional | `undefined` | Plain JS object | Optional context data to send with each message for personalization<br/>**Note:** Context is cleared after each message | `{"user_role": "admin", "page_location": "dashboard"}` |
-| `persistent-session` | `boolean` | Optional | `true` | `true` \| `false` | Save chat history in browser localStorage | `"false"` to disable session saving |
+| `persistent-session` | `boolean \| "tab"` | Optional | `true` | `true` \| `false` \| `"tab"` | Save chat history in browser localStorage. `"tab"` scopes persistence to the current browser tab via sessionStorage instead — see [Persistent Sessions](#persistent-sessions). Requires widget **0.12.0+** for `"tab"` | `"false"` to disable session saving, `"tab"` to persist only for the current tab |
 | `persistent-session-expire` | `number` | Optional | `1440` (24 hours) | 0-43200 (30 days) | Minutes before session expires | `720` for 12 hours, `0` for never expire |
 | `allow-full-screen` | `boolean` | Optional | `true` | `true` \| `false` | Enable fullscreen mode button | `"false"` to hide fullscreen option |
 | `allow-attachments` | `boolean` | Optional | `false` | `true` \| `false` | Enable file upload functionality<br/>**Limits:** 50MB per file, 50MB total per message | `"true"` to enable file uploads |

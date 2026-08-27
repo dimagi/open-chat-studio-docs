@@ -34,6 +34,10 @@ Check your current HTML implementation and compare it with the [latest propertie
 * Add an `authTokenProvider` property for chatbots whose Chat Widget & API channel requires an OAuth token. Set it to a function returning a token (or a promise for one); the widget calls it each time a chat session starts and sends the result as a bearer token. `authTokenProvider` is a JavaScript property with no HTML attribute equivalent, and your own backend must mint the tokens, so a copy-paste snippet embed cannot use this mode. See [OAuth credential mode](reference.md#oauth-credential-mode) — note that the channel setting this depends on is not yet configurable in Open Chat Studio.
 * Remove `.bmp` and `.svg` from the file picker's image types. These formats aren't accepted by the LLM providers, and the server now rejects them at upload with a clear error message.
 * Expose the running widget version on the element. Read the `data-widget-version` attribute (e.g. `element.getAttribute('data-widget-version')`) or call the `getVersion()` method to tell which release is deployed on a page.
+* Add `persistent-session="tab"` to scope session persistence to a single browser tab. The conversation survives a reload of that tab (it is kept in `sessionStorage`) but is forgotten when the tab is closed. The existing `true` (browser local storage, still the default) and `false` values are unchanged, and clearing a session now only clears the storage the widget itself is using.
+* Show a "Start new chat" button in kiosk mode once the session has ended, so a shared device can be handed to the next person without reloading the page. The button is hidden for read-only widgets and for widgets resuming a specific `session-id`.
+* Auto-generated user IDs are now `ocs:<uuid v4>` instead of a timestamp-based string. IDs already stored in a browser keep working.
+* Send the browser's timezone when a chat session starts. Open Chat Studio stores it on the participant, so the chatbot can refer to dates and times in the user's local time. Unrecognised timezones are ignored rather than failing the session.
 
 ### v0.11.0 (2026-07-23)
 
