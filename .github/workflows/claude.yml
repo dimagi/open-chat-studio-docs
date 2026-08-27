@@ -45,8 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       id-token: write # Needed for Claude Code Action
-      # No step consumes the default GITHUB_TOKEN — checkout and
-      # claude-code-action both use the ocs-agent app token instead.
+      # Checkout and claude-code-action both use the ocs-agent app token.
 
     steps:
       - name: Check for a real @claude mention
@@ -74,35 +73,12 @@ jobs:
           app-id: ${{ vars.OCS_AGENT_APP_ID }}
           private-key: ${{ secrets.OCS_AGENT_PRIVATE_KEY }}
 
-      - name: Resolve checkout ref
-        id: resolve-ref
-        if: steps.check.outputs.triggered == 'true'
-        env:
-          GH_TOKEN: ${{ steps.app-token.outputs.token }}
-          PR_HEAD_REF: ${{ github.event.pull_request.head.ref }}
-          ISSUE_PR_URL: ${{ github.event.issue.pull_request.url }}
-          ISSUE_NUMBER: ${{ github.event.issue.number }}
-          DEFAULT_REF: ${{ github.ref }}
-        run: |
-          set -euo pipefail
-          if [ -n "$PR_HEAD_REF" ]; then
-            # pull_request_review / pull_request_review_comment: head ref is in the payload
-            ref="$PR_HEAD_REF"
-          elif [ -n "$ISSUE_PR_URL" ]; then
-            # issue_comment on a PR: payload has no head ref, so look it up
-            ref=$(gh api "repos/${{ github.repository }}/pulls/$ISSUE_NUMBER" --jq .head.ref)
-          else
-            # issues event, or issue_comment on a plain issue: no PR branch involved
-            ref="$DEFAULT_REF"
-          fi
-          echo "ref=$ref" >> "$GITHUB_OUTPUT"
-
       - name: Checkout repository
         if: steps.check.outputs.triggered == 'true'
         uses: actions/checkout@v7
         with:
           fetch-depth: 0
-          ref: ${{ steps.resolve-ref.outputs.ref }}
+          ref: ${{ github.event.pull_request.head.ref || github.ref }}
           token: ${{ steps.app-token.outputs.token }}
 
       - name: Install uv
