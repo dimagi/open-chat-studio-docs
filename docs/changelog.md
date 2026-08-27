@@ -12,6 +12,7 @@ hide:
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
 ## Aug 27, 2026
+* **CHANGE** v0.12.0 of the Chat Widget is released, adding OAuth credential mode, tab-scoped session persistence, a version readout on the element, a "Start new chat" button in kiosk mode, and participant timezone reporting. See the [widget changelog](chat_widget/changelog.md#v0120-2026-08-27) for details.
 * **BUG** Fixed broadcasts to WhatsApp participants outside the 24-hour service window failing to send. Meta rejects a message template containing line breaks, so multi-paragraph messages never arrived. Such messages now have their line breaks and repeated spaces collapsed into single spaces, arriving as a single paragraph, and the broadcast dialog tells you so before you send. See [Out-of-service-window template messages](how-to/whatsapp_meta_cloud_api.md#out-of-service-window-template-messages).
 
 ## Aug 24, 2026
