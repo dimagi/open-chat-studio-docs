@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Aug 27, 2026
+* **BUG** Fixed broadcasts to WhatsApp participants outside the 24-hour service window failing to send. Meta rejects a message template containing line breaks, so multi-paragraph messages never arrived. Such messages now have their line breaks and repeated spaces collapsed into single spaces, arriving as a single paragraph, and the broadcast dialog tells you so before you send. See [Out-of-service-window template messages](how-to/whatsapp_meta_cloud_api.md#out-of-service-window-template-messages).
+
 ## Aug 24, 2026
 * **NEW** You can now send a one-off **Broadcast message** to every participant of a chatbot from the chatbot home page, choosing which of its channels to send on. Broadcasting requires permission to invite participants, and only reaches participants who have already messaged the bot on the selected channel.
 * **CHANGE** Various security enhancements for code running in a [Python node](tech-hub/python_node.md).
