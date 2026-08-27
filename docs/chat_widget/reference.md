@@ -695,7 +695,7 @@ console.log(version); // "0.12.0"
 
 | Property | Type | Required | Default | Validation | Description | Example |
 |----------|------|----------|---------|------------|-------------|---------|
-| `user-id` | `string` | Optional | Auto-generated | Alphanumeric + underscore/dash | Unique user identifier for session continuity<br/>**Auto-format:** `ocs:<uuid v4>`, e.g. `ocs:550e8400-e29b-41d4-a716-446655440000` | `"user_12345"` or `"customer@email.com"` |
+| `user-id` | `string` | Optional | Auto-generated | None | Unique user identifier for session continuity<br/>**Auto-format:** `ocs:<uuid v4>`, e.g. `ocs:550e8400-e29b-41d4-a716-446655440000` | `"user_12345"` or `"customer@email.com"` |
 | `user-name` | `string` | Optional | `undefined` | Max 200 chars | Display name sent to chat API for personalization | `"John Smith"` or `"Customer #12345"` |
 
 ### Chat Behavior & Sessions
