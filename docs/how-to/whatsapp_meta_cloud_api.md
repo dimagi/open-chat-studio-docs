@@ -195,12 +195,6 @@ Meta rejects template sends when the `bot_message` variable contains line breaks
 
 Only the substituted `bot_message` text is flattened this way. The approved template's own static text keeps whatever line breaks it was approved with in Meta Business Manager.
 
-!!! info "Broadcast dialog warning"
-    When sending a broadcast, the OCS dialog displays a note warning you that line breaks will be removed from your message for any participant who is outside the service window.
-
-!!! note "Whitespace-only messages are not sent"
-    If a bot's message consists only of whitespace once it is collapsed, OCS does not send a template message for it.
-
 ### Character limits
 
 | Element | Limit |
