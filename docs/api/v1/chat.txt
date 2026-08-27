@@ -120,6 +120,7 @@ ChatStartSessionRequest:
   - session_data: object
   - participant_remote_id: string
   - participant_name: string
+  - timezone: string
 
 ChatStartSessionResponse:
   - session_id: string (required)
