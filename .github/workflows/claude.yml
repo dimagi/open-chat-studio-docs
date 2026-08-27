@@ -10,32 +10,15 @@
 # Notes:
 # - No concurrency group is set, so overlapping triggers on the same
 #   issue/PR run in parallel rather than queuing or cancelling each other.
-# - The job-level `if:` is a cheap substring pre-filter (Actions expression
-#   syntax has no regex), so the job doesn't get dispatched at all for the
-#   common case of a comment/issue that never mentions `@claude`. The "Check
-#   for a real @claude mention" step then does a precise word-boundary regex
-#   match (via grep -P) so things like `foo@claude.ai` or `@claude-bot` don't
-#   fall through to checkout/build/Claude invocation — remaining steps are
-#   gated on its output.
 # - claude-code-action picks its own push target from context (existing
 #   branch for an open PR, a new branch for issues/closed PRs) — independent
-#   of the ref this workflow's own Checkout repository step resolves.
-# - `issue_comment` events (the common case: an `@claude` comment in ordinary
-#   PR conversation) carry no `pull_request` object in the payload — only
-#   `pull_request_review`/`pull_request_review_comment` do. So for
-#   issue_comment on a PR, the "Resolve checkout ref" step looks up the PR's
-#   head ref via the GitHub API instead of falling back to the default
-#   branch (which would silently build/test the wrong code).
+#   of the ref the "Resolve checkout ref" step resolves.
 #
 # Security Notes:
-# - Untrusted comment/issue text is passed in via `env:`,
-#   never interpolated directly into the `run:` script.
 # - The `claude` job has no actor/permission gate of its own — it relies on
 #   claude-code-action's built-in check that the triggering user has write
-#   access to this repo. A mention or review from anyone without write
-#   access (most fork PR authors included) fails the "Run Claude Code" step
-#   with "Action failed with error: User does not have write access on this
-#   repository" rather than being silently skipped.
+#   access to this repo, failing the "Run Claude Code" step loudly (not
+#   silently skipping) for anyone else.
 
 name: Claude Code
 
@@ -61,12 +44,15 @@ jobs:
       (github.event_name == 'issues' && (contains(github.event.issue.body, '@claude') || contains(github.event.issue.title, '@claude')))
     runs-on: ubuntu-latest
     permissions:
-      id-token: write  # Needed for Claude Code Action
-      # NOTE:no step consumes the default GITHUB_TOKEN, using the ocs-agent app token
+      id-token: write # Needed for Claude Code Action
+      # No step consumes the default GITHUB_TOKEN — checkout and
+      # claude-code-action both use the ocs-agent app token instead.
 
     steps:
       - name: Check for a real @claude mention
         id: check
+        # Untrusted comment/issue text goes through env:, never interpolated
+        # directly into the script below, to avoid shell injection.
         env:
           COMMENT_BODY: ${{ github.event.comment.body }}
           REVIEW_BODY: ${{ github.event.review.body }}
