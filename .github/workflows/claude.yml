@@ -10,15 +10,26 @@
 # Notes:
 # - No concurrency group is set, so overlapping triggers on the same
 #   issue/PR run in parallel rather than queuing or cancelling each other.
+# - The job-level `if:` is a cheap substring pre-filter (Actions expression
+#   syntax has no regex), so the job doesn't get dispatched at all for the
+#   common case of a comment/issue that never mentions `@claude`. The "Check
+#   for a real @claude mention" step then does a precise word-boundary regex
+#   match (via grep -P) so things like `foo@claude.ai` or `@claude-bot` don't
+#   fall through to checkout/build/Claude invocation — remaining steps are
+#   gated on its output.
+# - claude-code-action picks its own push target from context (existing
+#   branch for an open PR, a new branch for issues/closed PRs) — independent
+#   of the ref this workflow's own Checkout repository step resolves.
+#
+# Security Notes:
+# - Untrusted comment/issue text is passed in via `env:`,
+#   never interpolated directly into the `run:` script.
 # - The `claude` job has no actor/permission gate of its own — it relies on
 #   claude-code-action's built-in check that the triggering user has write
 #   access to this repo. A mention or review from anyone without write
 #   access (most fork PR authors included) fails the "Run Claude Code" step
 #   with "Action failed with error: User does not have write access on this
 #   repository" rather than being silently skipped.
-# - claude-code-action picks its own push target from context (existing
-#   branch for an open PR, a new branch for issues/closed PRs) — independent
-#   of the ref this workflow's own Checkout repository step resolves.
 
 name: Claude Code
 
@@ -45,16 +56,34 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       id-token: write  # Needed for Claude Code Action
+      # NOTE:no step consumes the default GITHUB_TOKEN, using the ocs-agent app token
 
     steps:
+      - name: Check for a real @claude mention
+        id: check
+        env:
+          COMMENT_BODY: ${{ github.event.comment.body }}
+          REVIEW_BODY: ${{ github.event.review.body }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+        run: |
+          text="$COMMENT_BODY"$'\n'"$REVIEW_BODY"$'\n'"$ISSUE_BODY"$'\n'"$ISSUE_TITLE"
+          if grep -Piq '(?<!\w)@claude(?![\w-])' <<< "$text"; then
+            echo "triggered=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "triggered=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Generate app token
         id: app-token
+        if: steps.check.outputs.triggered == 'true'
         uses: actions/create-github-app-token@v3
         with:
           app-id: ${{ vars.OCS_AGENT_APP_ID }}
           private-key: ${{ secrets.OCS_AGENT_PRIVATE_KEY }}
 
       - name: Checkout repository
+        if: steps.check.outputs.triggered == 'true'
         uses: actions/checkout@v7
         with:
           fetch-depth: 0
@@ -62,9 +91,11 @@ jobs:
           token: ${{ steps.app-token.outputs.token }}
 
       - name: Install uv
+        if: steps.check.outputs.triggered == 'true'
         uses: astral-sh/setup-uv@v7
 
       - name: Install dependencies
+        if: steps.check.outputs.triggered == 'true'
         run: uv sync --locked
 
       - name: Run Claude Code
