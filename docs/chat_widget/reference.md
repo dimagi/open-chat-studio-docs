@@ -653,7 +653,7 @@ Read the version straight from the DOM with `getAttribute`. This is the quickest
 
 ```javascript
 document.querySelector('open-chat-studio-widget').getAttribute('data-widget-version');
-// "0.11.0"
+// "0.12.0"
 ```
 
 !!! note
@@ -666,7 +666,7 @@ For programmatic access, call `getVersion()` on the element. Like other widget m
 ```javascript
 const widget = document.querySelector('open-chat-studio-widget');
 const version = await widget.getVersion();
-console.log(version); // "0.11.0"
+console.log(version); // "0.12.0"
 ```
 
 ## :material-clipboard-list: Properties Reference {#properties-reference}
