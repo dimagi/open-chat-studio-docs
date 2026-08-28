@@ -6,10 +6,11 @@ Built with [Zensical](https://zensical.org/) (MkDocs-compatible), Python 3.13+, 
 ## Commands
 
 ```bash
-uv sync --locked                         # Install / sync deps; fails if uv.lock is stale
-uv run zensical serve                    # Local dev server (auto-reload)
-uv run zensical build --clean            # Same build CI runs — fails on broken refs
-uv run pytest scripts/tests              # Run the (small) test suite for scripts/
+uv sync --locked                                # Install / sync deps; fails if uv.lock is stale
+uv run zensical serve                           # Local dev server (auto-reload)
+uv run zensical build --clean                   # Same build CI runs — fails on broken refs
+uv run pytest scripts/tests                     # Run the (small) test suite for scripts/
+uv run prek run markdownlint-cli2 --all-files   # Run the pre-commit checks for markdown
 ```
 
 Do **not** invoke `mkdocs` directly — the project uses Zensical, which reads `mkdocs.yml`
