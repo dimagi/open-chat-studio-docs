@@ -36,8 +36,12 @@ repos:
   # ---------------------------------------------------------------------------
   # Markdown quality
   # ---------------------------------------------------------------------------
-  - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.49.1
+  # cli2 (not classic markdownlint-cli): supports per-directory config
+  # cascading via .markdownlint.yaml + `extends`, so individual rules can be
+  # overridden for a subtree instead of ignoring the whole file. See
+  # .github/templates/.markdownlint.yaml for an example. Config is
+  # auto-discovered — do not pass --config, it would disable the cascade.
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.23.2
     hooks:
-      - id: markdownlint
-        args: [--config, .markdownlint.yaml]
+      - id: markdownlint-cli2
