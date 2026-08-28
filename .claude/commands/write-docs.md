@@ -6,13 +6,13 @@ description: Write or update user documentation for Open Chat Studio
 
 Use the Task tool to launch the zensical-technical-writer agent to write or update documentation.
 
-## Provide the agent with:
+## Provide the agent with
 - What documentation needs to be created or updated
 - The purpose and target audience for the documentation
 - Any specific requirements or constraints
 - Context about related features or concepts
 
-## The agent will handle:
+## The agent will handle
 - Understanding the Zensical structure and navigation
 - Following documentation standards and writing style
 - Using appropriate markdown features and extensions
