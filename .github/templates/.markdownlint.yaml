@@ -1,0 +1,8 @@
+# These files are interpolated verbatim into AI prompts (see
+# .github/workflows/update-changelog.yml), so a top-level heading would change
+# their meaning. Inherit every other rule from the root config and disable
+# only MD041 for this directory — cascading config beats an inline
+# `<!-- markdownlint-disable -->` comment, which would otherwise leak into the
+# live prompt as literal text.
+extends: ../../.markdownlint.yaml
+MD041: false
