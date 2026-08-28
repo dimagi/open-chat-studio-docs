@@ -45,3 +45,11 @@ repos:
     rev: v0.23.2
     hooks:
       - id: markdownlint-cli2
+
+  # ---------------------------------------------------------------------------
+  # Detects secrets in git repositories, including passwords, API keys, and tokens
+  # ---------------------------------------------------------------------------
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.30.1
+    hooks:
+      - id: gitleaks
