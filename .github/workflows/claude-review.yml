@@ -13,6 +13,14 @@
 #   the same PR cancels a run already in progress.
 # - Not triggered on `synchronize` — pushing new commits to an open PR does
 #   not start a new review or cancel one already running.
+#
+# Security Notes:
+# - The `claude` job has no actor/permission gate of its own — it relies on
+#   claude-code-action's built-in check that the triggering user has write
+#   access to this repo. For anyone without write access (most fork PR authors
+#   included) fails the "Run Claude Code" step with "Action failed with error:
+#   User does not have write access on this repository" rather than being
+#   silently skipped
 
 name: PR Review
 
