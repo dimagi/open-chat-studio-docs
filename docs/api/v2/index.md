@@ -26,6 +26,7 @@ Simplified per-tag references for LLM consumption:
 
 | Method | Path | Summary |
 | --- | --- | --- |
+| GET | `/api/v2/chatbot/options/` | List Chatbot Setting Options |
 | GET | `/api/v2/chatbots/` | List Chatbots |
 | POST | `/api/v2/chatbots/` | Create Chatbot |
 | GET | `/api/v2/chatbots/{id}/` | Retrieve Chatbot |

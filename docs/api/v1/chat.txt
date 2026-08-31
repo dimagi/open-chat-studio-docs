@@ -86,6 +86,9 @@ POST /api/chat/start/
     401:
       Content: application/json
       Schema: ChatAccessDenied
+    409:
+      Content: application/json
+      Schema: ChatStartSessionRefused
   Security:
     chatOAuth2
       - Required scopes: chat:start
@@ -113,6 +116,10 @@ ChatSendMessageResponse:
   - task_id: string (required)
   - status: Unknown (required)
   - error: string
+
+ChatStartSessionRefused:
+  - error: string (required)
+  - code: string (required)
 
 ChatStartSessionRequest:
   - chatbot_id: string (required)
