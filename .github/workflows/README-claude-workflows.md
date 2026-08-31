@@ -2,7 +2,7 @@
 
 For engineers responsible for extending, debugging, or operating the GitHub workflows. The main OCS project has similar workflows, see [the developer guide on GitHub automation with Claude](https://developers.openchatstudio.com/developer_guides/claude_github_automation/).
 
-These workflows use [`anthropics/claude-code-action`](https://github.com/anthropics/claude-code-action) to run [Claude Code inside GitHub Actions](https://code.claude.com/docs/en/github-actions). If you're writing or reviewing one of these workflows, start from [AGENTS.md](AGENTS.md) in this directory.
+These workflows use [`anthropics/claude-code-action`](https://github.com/anthropics/claude-code-action) to run Claude Code inside GitHub Actions. Each run gives Claude access to the repository, a shell, and the GitHub CLI.
 
 ## GitHub workflows
 
@@ -21,16 +21,26 @@ Commands live in `.claude/commands/`, agents in `.claude/agents/` ([background](
 
 ## Security: Permissions & Tool Allowlists
 
-These workflows use `permissions:` block, Claude's `--allowedTools`, and an installation access token for the `ocs-agent` GitHub App. See best practices for using them in [AGENTS.md](AGENTS.md) in this directory.
+Two independent mechanisms combine to shape a workflow's run:
 
-### Command and agent tool frontmatter
+- `--allowedTools` in `claude_args`, which controls what Claude itself will attempt to invoke.
+- The `permissions:` block, which controls what the job's `GITHUB_TOKEN` can actually reach on GitHub — including when Claude's own `gh`/git calls use it.
 
-The commands and subagents in the table carry their own tool frontmatter in their `.md` files, and the two kinds behave differently:
+### How it works
 
-- A Claude subagent's `tools:` ([reference](https://code.claude.com/docs/en/sub-agents)) is the flag for restricting tool availability. Omitting `tools:` inherits every tool available to subagents, so a subagent meant to be narrow has to list them explicitly.
-- A Claude command's `allowed-tools:` ([reference](https://code.claude.com/docs/en/skills#frontmatter-reference)) lists tools that run without a permission prompt. It does not restrict which tools are available. Keep it no wider than the workflow grant to Claude via `claude_args`.
+**`permissions:`** These can be **bypassed** in a workflow when the `ocs-agent` GitHub App (check each workflow's header for which ones) mints a short-lived installation token. That token's write capabilities come from the App's own permission grant (org Settings → GitHub Apps), **not** from the workflow's `permissions:` block. So any action that uses the `ocs-agent` will have the PRs and comments attributed to `ocs-agent[bot]`.
 
-When adding or changing a command or agent, check that the workflow's `claude_args` still covers what it needs. A tool an agent's `tools:` names that neither the action's base set nor `claude_args` covers is dead on arrival, and shows up as a silently truncated result rather than an error — see [Troubleshooting](#troubleshooting).
+**`--allowedTools`** — Claude Code itself is only launched with the `--allowedTools` value set in the workflow's `claude_args`; that's what's enforced at run time. Commands (`.claude/commands/`) and agents (`.claude/agents/`) can declare their own `allowed-tools:` / `tools:` frontmatter, but that never expands what Claude is actually allowed to use: a tool missing from the workflow's `claude_args` stays unusable no matter what a command or agent claims to need. (That frontmatter still governs what's available if the command is ever run manually, outside its workflow.)
+
+See [claude-code-action's security docs](https://github.com/anthropics/claude-code-action/blob/main/docs/security.md) and the [Claude Code CLI reference](https://code.claude.com/docs/en/cli-reference) for how these actually behave.
+
+### Gotchas & checklist
+
+Getting either mechanism wrong is the main way a compromised or malicious prompt (for example, a hostile issue or PR body) could take unintended action — treat changes to permissions and tool allowlists as security-sensitive.
+
+- **Adding or changing a command/agent?** Check that the `--allowedTools` set in the workflow's `claude_args` still covers what it actually needs — a tool the frontmatter gains but `claude_args` doesn't is dead on arrival, and shows up as a silently truncated result rather than an error. Keep the frontmatter no wider than the workflow grant, so the two layers agree instead of relying on `claude_args` alone.
+- **Adding or changing a `permissions:` block?** Trace whether each scope is actually consumed by the default `GITHUB_TOKEN` — don't assume it is. A step that passes its own `token:`/`github_token:`/`GH_TOKEN:` (e.g. the `ocs-agent` app token) never touches the job's `permissions:`-governed default token for that call. `token:` is easy to miss: it's the key `actions/checkout` and `peter-evans/create-pull-request` use.
+- **Output looks incomplete, or a step Claude should have taken didn't happen?** A denied tool call doesn't fail the run — it's silently skipped and Claude continues without it. Check the run transcript for denied tool calls; that's the usual cause of a truncated-looking result.
 
 ## GitHub labels used by these workflows
 
@@ -52,7 +62,7 @@ GitHub gives a `pull_request` run from a fork no secrets and a read-only `permis
 Issues that can show up on any of these workflows. For workflow-specific troubleshooting, see that workflow's own doc (e.g. [README-changelog-automation.md](README-changelog-automation.md#troubleshooting) for `update-changelog.yml`).
 
 - **Run fails immediately in the `claude-code-action` step for forked repos:** See [Fork Limitations](#fork-limitations) above.
-- **Output looks incomplete, or a step Claude should have taken didn't happen:** A denied tool call doesn't fail the run — it's silently skipped and Claude continues without it. Check the run transcript for denied calls; that's the usual cause of a truncated-looking result.
-- **Authentication or permission failures:** Verify `ANTHROPIC_API_KEY` is valid. If the workflow uses the `ocs-agent` GitHub App (check its header comment), also verify the GitHub app's private key matches `OCS_AGENT_PRIVATE_KEY` and the app is still installed on the relevant repo(s) — token minting fails if either repo is missing from the installation.
+- **Output looks incomplete, or a step Claude should have taken didn't happen:** Check the run transcript for denied tool calls — see [Gotchas & checklist](#gotchas--checklist).
+- **Authentication or permission failures:** Verify `ANTHROPIC_API_KEY` is valid. If the workflow uses the `ocs-agent` app (check its header comment), also verify the GitHub app's private key matches `OCS_AGENT_PRIVATE_KEY` and the app is still installed on the relevant repo(s) — token minting fails if either repo is missing from the installation.
 - **Output quality needs improvement:** Comment on the generated PR with `@claude` and specify what to revise.
 - **For systemic quality issues:** Update the relevant command or agent in `.claude/commands/` / `.claude/agents/` rather than correcting each PR manually.
