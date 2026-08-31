@@ -207,7 +207,7 @@ PatchedChatbotWrite:
   - file_uploads_enabled: boolean
 
 PlatformEnum:
-  - enum: [telegram, web, whatsapp, facebook, sureadhere, api, slack, commcare_connect, evaluations, embedded_widget, email]
+  - enum: [telegram, web, whatsapp, facebook, sureadhere, api, slack, commcare_connect, evaluations, embedded_widget, email, public]
 
 SECURITY:
 - OAuth2
