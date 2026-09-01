@@ -141,17 +141,13 @@ The provider is now available to use when creating channels.
 1. Navigate to the **Chatbot** you want to deploy to WhatsApp.
 2. Click the **+** (plus) icon to add a channel and select **WhatsApp**.
 3. In the **Messaging Provider** field, select the Meta Cloud API provider you just created.
-4. Enter the **WhatsApp phone number**:
-    - If OCS has never checked this provider before, the field is a free-text box. Enter the number associated with your WhatsApp Business Account, including the country code (for example `+12025550123`).
-    - If OCS has already checked this provider — either because a previous channel was saved on it, or because someone clicked **Refresh** on the provider's detail page (see [Automatic template and number checks](#automatic-template-and-number-checks)) — the field is instead a picker listing the numbers known to the WhatsApp Business Account. Select the number you want to use.
+4. In the **WhatsApp phone number** field, choose the number to associate with this channel. If you need to enter it manually, include the country code (for example `+12025550123`).
 5. Click **Create**.
 
-When you save a channel using the free-text box, OCS checks the number you entered against your WhatsApp Business Account and stores its phone number ID automatically. This also populates the provider's cache of known numbers, so the next channel created on this provider gets the picker instead of the free-text box. If this check fails, confirm that:
+Open Chat Studio validates the phone number against your WhatsApp Business Account and stores the phone number ID automatically. If validation fails, check that:
 
 - The phone number is registered under the WhatsApp Business Account ID you provided.
 - The System User Access Token has the required permissions.
-
-When you select a number from the picker, there is nothing to validate — you're choosing directly from the numbers Meta reports for the account.
 
 ---
 
@@ -325,8 +321,6 @@ This is almost always caused by the system user's access token not having permis
 - Generate a new access token for the system user after updating permissions.
 
 ### Phone number validation failed during channel creation
-
-This only applies when the phone number field is the free-text box, which is the case if the provider has never been checked before. Once a provider has synced numbers, the field becomes a picker, and there is nothing to mistype.
 
 - Verify that the phone number is registered under the WhatsApp Business Account ID you provided.
 - Verify that the System User Access Token has the `whatsapp_business_management` permission.
