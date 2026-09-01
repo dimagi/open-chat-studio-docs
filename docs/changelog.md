@@ -11,6 +11,11 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Sep 1, 2026
+* **NEW** A Meta Cloud API messaging provider's page now reports whether its `new_bot_message` template is usable and which WhatsApp numbers the account owns, with a **Refresh** button to re-check on demand and a form to send a real test message through the template. The checks run automatically when the provider is created. See [Set Up WhatsApp with Meta Cloud API](how-to/whatsapp_meta_cloud_api.md).
+* **CHANGE** Adding a WhatsApp channel on a Meta Cloud API provider now offers the account's WhatsApp numbers as a picker instead of a free-text box, once that provider's numbers have been checked. A provider that hasn't been checked yet keeps the free-text box, and saving the channel populates it.
+* **CHANGE** The broadcast dialog now warns before you send when a selected channel's provider has no usable out-of-service-window template, or when the message contains line breaks (which Meta flattens inside a template). Disabled channels are also now listed, greyed out and un-selectable, rather than being left out entirely.
+
 ## Aug 31, 2026
 * **NEW** Added a **Public link** channel, which gives a chatbot its own hosted chat page on Open Chat Studio — share the link and anyone can chat, with no embedding required. The channel dialog shows the link with a copy button and a **Regenerate link** action, and welcome messages and starter questions are configured as channel settings. Visitors always reach the published version, and regenerating the link, disabling the channel or deleting it revokes the old link and ends any conversations still live on it. This feature is gated behind the `flag_public_channel` feature flag.
 * **NEW** Evaluator prompts can now read a participant's data and a session's state through the `{participant_data.[key]}` and `{session_state.[key]}` variables, in both message-level and session-level mode, and [Python evaluators](tech-hub/evaluations/python_evaluator.md) receive both as keyword arguments. Previously a prompt referring to either of them left an error in every row of the run instead of a score. See [Template Variables](concepts/evaluations/evaluators.md#template-variables).

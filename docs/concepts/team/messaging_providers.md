@@ -34,6 +34,8 @@ Open Chat Studio supports three WhatsApp providers. The table below summarises t
 
 Use **Meta Cloud API** when you want a direct connection to the WhatsApp Business Platform without routing traffic through a third-party service. Use **Twilio** or **Turn.io** when you already have an account with one of those providers.
 
+Meta Cloud API providers automatically verify that their out-of-service-window message template is usable and keep track of which WhatsApp numbers the account owns, refreshing this information on demand. See [Set up WhatsApp with Meta Cloud API](../../how-to/whatsapp_meta_cloud_api.md) for details.
+
 ## Verifying Turn.io webhook requests
 
 Turn.io messaging providers support an optional **Webhook HMAC Secret**. When you set one, Open
