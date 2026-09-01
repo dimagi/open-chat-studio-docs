@@ -67,7 +67,7 @@ jobs:
           echo "RELEASE_NAME=${{ github.event.inputs.release_name || github.event.inputs.release_tag }}" >> $GITHUB_ENV
 
       - name: Create Release with Claude
-        uses: anthropics/claude-code-action@v1.0.190
+        uses: anthropics/claude-code-action@v1.0.206
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           prompt: /create-release ${{ env.RELEASE_TAG }} "${{ env.RELEASE_NAME }}"

@@ -269,7 +269,7 @@ jobs:
       - name: Run Claude Code to generate changelog and update docs
         id: claude
         timeout-minutes: 10
-        uses: anthropics/claude-code-action@v1.0.190
+        uses: anthropics/claude-code-action@v1.0.206
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           github_token: ${{ steps.app-token.outputs.token }}
