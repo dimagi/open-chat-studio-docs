@@ -141,7 +141,7 @@ The provider is now available to use when creating channels.
 1. Navigate to the **Chatbot** you want to deploy to WhatsApp.
 2. Click the **+** (plus) icon to add a channel and select **WhatsApp**.
 3. In the **Messaging Provider** field, select the Meta Cloud API provider you just created.
-4. In the **WhatsApp phone number** field, choose the number to associate with this channel. If you need to enter it manually, include the country code (for example `+12025550123`).
+4. Enter the **WhatsApp phone number** associated with your WhatsApp Business Account (include the country code, for example `+12025550123`).
 5. Click **Create**.
 
 Open Chat Studio validates the phone number against your WhatsApp Business Account and stores the phone number ID automatically. If validation fails, check that:
@@ -189,35 +189,11 @@ You must create a WhatsApp message template in your Meta Business account before
 !!! warning "Template approval required"
     The template cannot be used until Meta approves it. Approval typically takes a few minutes to a few hours but may take longer. Until approval is granted, the fallback will fail silently.
 
-### Automatic template and number checks
-
-When you create a Meta Cloud API provider, OCS automatically checks Meta's Graph API to confirm the `new_bot_message` template is usable, and to find out which WhatsApp numbers the Business Account owns. OCS runs both checks again whenever you click **Refresh** on the provider's detail page.
-
-The provider's detail page reports the results:
-
-- Whether the template is usable, or an explanation of what is wrong with it.
-- The WhatsApp numbers known to the Business Account.
-
-For the template to be reported as usable, all of the following must be true:
-
-- A template named `new_bot_message` exists in the WhatsApp Business Account.
-- Its status is **Approved**.
-- Its language matches the provider's **Template Language Code**.
-- Its body has a text variable named `bot_message`.
-
-The provider's detail page also includes a form for sending a real test message through the template, so you can confirm end-to-end delivery without waiting for a participant's service window to expire.
-
-!!! info "Never checked yet"
-    If the provider has never been checked — for example, immediately after it is created and before OCS's automatic check completes — the page reports that plainly rather than claiming the template is broken.
-
 ### Message formatting
 
 Meta rejects template sends when the `bot_message` variable contains line breaks, tabs, or long runs of spaces. To avoid this, OCS collapses any run of whitespace in the bot's message — including line breaks and tabs — into a single space before inserting it into the template. This means a multi-paragraph bot reply arrives as a single paragraph when it is sent as a fallback template message.
 
 Only the substituted `bot_message` text is flattened this way. The approved template's own static text keeps whatever line breaks it was approved with in Meta Business Manager.
-
-!!! info "Broadcast messages use the same template"
-    The broadcast dialog for sending a one-off message to all participants of a chatbot relies on this same `new_bot_message` template for any channel outside its service window. Before sending, it warns you if a ticked channel's provider has no usable template, or if the message contains line breaks, since Meta flattens them the same way described above.
 
 ### Character limits
 
@@ -324,7 +300,7 @@ This is almost always caused by the system user's access token not having permis
 
 - Verify that the phone number is registered under the WhatsApp Business Account ID you provided.
 - Verify that the System User Access Token has the `whatsapp_business_management` permission.
-- Confirm there are no typos in the Account ID, access token, or phone number fields.
+- Confirm there are no typos in the Account ID or access token fields.
 
 ### Messages are delivered but the chatbot does not respond
 
@@ -336,10 +312,11 @@ This is almost always caused by the system user's access token not having permis
 
 If the bot is not reaching participants after the 24-hour service window expires:
 
-- Start with the Meta Cloud API provider's detail page in OCS. It reports whether the `new_bot_message` template is currently usable, and includes a **Refresh** button to re-check it against Meta. This is the fastest way to diagnose the problem.
-- If the page reports the template as not usable, or reports that it has never been checked, use Meta Business Manager as a fallback: under **WhatsApp Manager** > **Account tools** > **Message templates**, confirm that a template named `new_bot_message` exists, its status is **Approved**, and its language matches the **Template Language Code** configured on the provider.
-- Confirm that the template body has a text variable named `bot_message`, and that the static text surrounding it does not exceed 100 characters.
-- If the template was recently approved, wait a few minutes, then click **Refresh** on the provider's page to pick up the change — there can be a short propagation delay on Meta's side.
+- Confirm that the template named `ocs_out_of_service_window` exists in your Meta Business account under **WhatsApp Manager** > **Account tools** > **Message templates**.
+- Confirm the template status is **Approved**. Templates that are pending review or that have been rejected cannot be sent.
+- Confirm that the **Template Language Code** in your OCS provider settings matches the language of the approved template exactly (for example, `en` vs `en_US`).
+- Confirm that the template body variable is named `{{1}}` and that the static text surrounding it does not exceed 100 characters.
+- If the template was recently approved, wait a few minutes and try again — there may be a short propagation delay.
 
 ---
 
