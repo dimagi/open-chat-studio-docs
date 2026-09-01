@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Sep 1, 2026
+* **NEW** An embedded widget channel can now require an **OAuth** token instead of its embed key, using the new **Credential mode** setting on the channel. In OAuth mode every request is validated against a token minted by your own backend, the embed snippet shown in Open Chat Studio includes a sample `authTokenProvider` implementation, and the widget must be on version 0.12.0 or later. Existing channels keep the embed-key mode they already have. Leaving the channel's allowed domains blank marks the channel as a server-only integration, so any request from a browser is refused. See [OAuth credential mode](chat_widget/reference.md#oauth-credential-mode).
+
 ## Aug 31, 2026
 * **NEW** Added a **Public link** channel, which gives a chatbot its own hosted chat page on Open Chat Studio — share the link and anyone can chat, with no embedding required. The channel dialog shows the link with a copy button and a **Regenerate link** action, and welcome messages and starter questions are configured as channel settings. Visitors always reach the published version, and regenerating the link, disabling the channel or deleting it revokes the old link and ends any conversations still live on it. This feature is gated behind the `flag_public_channel` feature flag.
 * **NEW** Evaluator prompts can now read a participant's data and a session's state through the `{participant_data.[key]}` and `{session_state.[key]}` variables, in both message-level and session-level mode, and [Python evaluators](tech-hub/evaluations/python_evaluator.md) receive both as keyword arguments. Previously a prompt referring to either of them left an error in every row of the run instead of a score. See [Template Variables](concepts/evaluations/evaluators.md#template-variables).
