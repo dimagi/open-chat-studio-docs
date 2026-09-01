@@ -189,12 +189,20 @@ You must create a WhatsApp message template in your Meta Business account before
 !!! warning "Template approval required"
     The template cannot be used until Meta approves it. Approval typically takes a few minutes to a few hours but may take longer. Until approval is granted, the fallback will fail silently.
 
+### Message formatting
+
+Meta rejects template sends when the `bot_message` variable contains line breaks, tabs, or long runs of spaces. To avoid this, OCS collapses any run of whitespace in the bot's message — including line breaks and tabs — into a single space before inserting it into the template. This means a multi-paragraph bot reply arrives as a single paragraph when it is sent as a fallback template message.
+
+Only the substituted `bot_message` text is flattened this way. The approved template's own static text keeps whatever line breaks it was approved with in Meta Business Manager.
+
 ### Character limits
 
 | Element | Limit |
 |---|---|
 | Template static text | 100 characters |
 | Dynamic message content (`bot_message`) | 974 characters |
+
+Whitespace flattening happens before OCS checks the character limit, so the limit is measured against the message Meta actually receives. Flattening only ever shortens the text, so it never causes a message to exceed the limit.
 
 If the bot's outgoing message exceeds 974 characters, OCS automatically splits it at word boundaries and sends it across multiple template messages.
 

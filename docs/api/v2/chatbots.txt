@@ -6,6 +6,25 @@ Description: List, retrieve and inspect chatbots (v2; formerly 'experiments').
 
 ENDPOINTS:
 
+GET /api/v2/chatbot/options/
+  Summary: List Chatbot Setting Options
+  Description: The values each chatbot setting accepts, scoped to the API key's team.
+
+A key holds the values for the setting of the same name: write one of `consent_form`'s entries into a chatbot's `consent_form`, one of `voice_response_behaviour`'s into `voice_response_behaviour`.
+
+Only the settings drawn from a fixed set of values appear. A free-text setting (`name`, `seed_message`) or a boolean one (`file_uploads_enabled`) constrains nothing and so has no entry here.
+
+`voice_provider` and `synthetic_voice` are chosen as a pair: a voice is only speakable by a provider of the same `type`, and a voice carrying a `provider_id` belongs to that one provider. Only the voices a listed provider can speak are offered, so a team that has configured no voice provider is offered no voice either.
+  Responses:
+    200:
+      Content: application/json
+      Schema: ChatbotOptions
+  Security:
+    OAuth2
+      - Required scopes: chatbots:read
+    apiKeyAuth
+    tokenAuth
+
 GET /api/v2/chatbots/
   Summary: List Chatbots
   Description: List the chatbots belonging to the API key's team.
@@ -126,7 +145,6 @@ ChatbotDetail:
   - debug_mode_enabled: boolean (required)
   - conversational_consent_enabled: boolean (required)
   - consent_form_id: integer (required)
-  - participant_allowlist: array of string (required)
   - seed_message: string (required)
   - file_uploads_enabled: boolean (required)
 
@@ -150,11 +168,22 @@ ChatbotInspect:
   - unwired_handles: object (required)
   - events: InspectEvents (required)
 
+ChatbotOptions:
+  - voice_provider: array of ProviderOption
+  - synthetic_voice: array of SyntheticVoiceOption
+  - voice_response_behaviour: array of ChoiceOption
+  - trace_provider: array of ProviderOption
+  - consent_form: array of ResourceOption
+
 ChatbotVersion:
   - name: string (required)
   - version_number: integer
   - is_default_version: boolean
   - version_description: string
+
+ChoiceOption:
+  - value: string (required)
+  - label: string (required)
 
 InspectEvents:
   - static_triggers: array of InspectStaticTrigger (required)
@@ -167,7 +196,6 @@ InspectSettings:
   - echo_transcript: boolean (required)
   - debug_mode_enabled: boolean (required)
   - file_uploads_enabled: boolean (required)
-  - participant_allowlist: array of string (required)
 
 InspectStaticTrigger:
   - id: integer (required)
@@ -205,12 +233,26 @@ PatchedChatbotWrite:
   - debug_mode_enabled: boolean
   - conversational_consent_enabled: boolean
   - consent_form_id: integer
-  - participant_allowlist: array of string
   - seed_message: string
   - file_uploads_enabled: boolean
 
 PlatformEnum:
-  - enum: [telegram, web, whatsapp, facebook, sureadhere, api, slack, commcare_connect, evaluations, embedded_widget, email]
+  - enum: [telegram, web, whatsapp, facebook, sureadhere, api, slack, commcare_connect, evaluations, embedded_widget, email, public]
+
+ProviderOption:
+  - value: integer (required)
+  - label: string (required)
+  - type: string (required)
+
+ResourceOption:
+  - value: integer (required)
+  - label: string (required)
+
+SyntheticVoiceOption:
+  - value: integer (required)
+  - label: string (required)
+  - type: string (required)
+  - provider_id: integer (required)
 
 SECURITY:
 - OAuth2

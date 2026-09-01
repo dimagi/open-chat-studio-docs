@@ -43,10 +43,12 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write
-      id-token: write
-      issues: write
-      pull-requests: write
+      contents: write  # read permission for checkout. Write for git push
+      id-token: write  # Needed for Claude Code Action
+      # NOTE: gh pr create/edit, gh issue comment, and the claude-code-action
+      # step's github_token: all pass the ocs-agent app token explicitly
+      # (steps.app-token) — none consume this default GITHUB_TOKEN, so
+      # issues:write / pull-requests:write aren't needed here.
 
     env:
       WIDGET_PATH_PREFIX: "components/"
@@ -267,7 +269,7 @@ jobs:
       - name: Run Claude Code to generate changelog and update docs
         id: claude
         timeout-minutes: 10
-        uses: anthropics/claude-code-action@v1
+        uses: anthropics/claude-code-action@v1.0.190
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           github_token: ${{ steps.app-token.outputs.token }}

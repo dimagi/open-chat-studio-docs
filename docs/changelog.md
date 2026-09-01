@@ -11,6 +11,14 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Aug 31, 2026
+* **NEW** Added a **Public link** channel, which gives a chatbot its own hosted chat page on Open Chat Studio — share the link and anyone can chat, with no embedding required. The channel dialog shows the link with a copy button and a **Regenerate link** action, and welcome messages and starter questions are configured as channel settings. Visitors always reach the published version, and regenerating the link, disabling the channel or deleting it revokes the old link and ends any conversations still live on it. This feature is gated behind the `flag_public_channel` feature flag.
+* **NEW** Evaluator prompts can now read a participant's data and a session's state through the `{participant_data.[key]}` and `{session_state.[key]}` variables, in both message-level and session-level mode, and [Python evaluators](tech-hub/evaluations/python_evaluator.md) receive both as keyword arguments. Previously a prompt referring to either of them left an error in every row of the run instead of a score. See [Template Variables](concepts/evaluations/evaluators.md#template-variables).
+
+## Aug 27, 2026
+* **CHANGE** v0.12.0 of the Chat Widget is released, adding OAuth credential mode, tab-scoped session persistence, a version readout on the element, a "Start new chat" button in kiosk mode, and participant timezone reporting. See the [widget changelog](chat_widget/changelog.md#v0120-2026-08-27) for details.
+* **BUG** Fixed broadcasts to WhatsApp participants outside the 24-hour service window failing to send. Meta rejects a message template containing line breaks, so multi-paragraph messages never arrived. Such messages now have their line breaks and repeated spaces collapsed into single spaces, arriving as a single paragraph, and the broadcast dialog tells you so before you send. See [Out-of-service-window template messages](how-to/whatsapp_meta_cloud_api.md#out-of-service-window-template-messages).
+
 ## Aug 26, 2026
 * **CHANGE** The participant allowlist has been removed. Chatbots can no longer be limited to a list of participant identifiers — the setting is gone from the chatbot settings, and WhatsApp, Telegram and Slack channels now answer anyone who messages them. A chatbot whose public web link was switched off by an allowlist is reachable again at its existing link, and its **Share** dialog no longer hides it. The `participant_allowlist` field has also been removed from the v2 API — sending it when creating or updating a chatbot now returns an error.
 

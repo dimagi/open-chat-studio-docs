@@ -45,6 +45,7 @@ See [claude-code-action's security docs](https://github.com/anthropics/claude-co
 Getting either mechanism wrong is the main way a compromised or malicious prompt (for example, a hostile issue or PR body) could take unintended action — treat changes to permissions and tool allowlists as security-sensitive.
 
 - **Adding or changing a command/agent?** Check that the `--allowedTools` set in the workflow's `claude_args` still covers what it actually needs. For example, `documentation-pr-reviewer`'s `tools:` frontmatter lists `WebFetch`/`WebSearch` for link-checking, but neither `claude-review.yml` nor `review-pr.md` grants them — so that capability is currently dead in that pipeline.
+- **Adding or changing a `permissions:` block?** Trace whether each scope is actually consumed by the default `GITHUB_TOKEN` — don't assume it is. A step that passes its own `token:`/`github_token:`/`GH_TOKEN:` (e.g. the `ocs-agent` app token) never touches the job's `permissions:`-governed default token for that call. `token:` is easy to miss: it's the key `actions/checkout` and `peter-evans/create-pull-request` use.
 - **Output looks incomplete, or a step Claude should have taken didn't happen?** A denied tool call doesn't fail the run — it's silently skipped and Claude continues without it. Check the run transcript for denied tool calls; that's the usual cause of a truncated-looking result.
 
 ## GitHub labels used by these workflows
