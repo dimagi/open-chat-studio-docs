@@ -1,8 +1,9 @@
-# These files are interpolated verbatim into AI prompts (see
-# .github/workflows/update-changelog.yml), so a top-level heading would change
-# their meaning. Inherit every other rule from the root config and disable
-# only MD041 for this directory — cascading config beats an inline
-# `<!-- markdownlint-disable -->` comment, which would otherwise leak into the
-# live prompt as literal text.
-extends: ../../.markdownlint.yaml
+# Files in this directory are interpolated verbatim into AI prompts (see
+# .github/workflows/update-changelog.yml) as they are treated as prompt templates
+# for the model to read, not as Markdown to render.
+#
+# Inherit the prompt fence rules
+extends: ../../.markdownlint-prompts.yaml
+
+# A top-level heading would change their meaning so disable MD041 for this directory
 MD041: false

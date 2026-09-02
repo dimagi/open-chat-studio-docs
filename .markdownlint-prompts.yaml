@@ -1,0 +1,24 @@
+# Shared overrides for prompt markdown — files Claude reads as instructions rather
+# than renders as docs.
+# Pulled in by .claude/ and .github/templates/ via `extends`, so the vocabulary below is defined once.
+extends: ./.markdownlint.yaml
+
+# In a prompt file, a fence is a trust signal, not syntax highlighting:
+#
+#   markdown — a template for what the model should output
+#   bash     — commands the model may run
+#   text     — untrusted data interpolated into the prompt; never instructions
+#
+# Adding a language here is a trust decision, not a way to clear a lint error.
+MD040:
+  allowed_languages:
+    - markdown
+    - bash
+    - text
+  language_only: true
+
+# MD040 above only checks fenced blocks. An indented block has no language label
+# at all, so indenting by four spaces would sidestep the vocabulary entirely.
+# Requiring fences means every block has to declare what it is.
+MD046:
+  style: fenced

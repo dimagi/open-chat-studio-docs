@@ -78,14 +78,11 @@ and produces a markdown summary. Releases are created as drafts.
 - `docs/api/` is regenerated from OpenAPI by the `update-api-docs` workflow. Don't hand-edit.
 - `uv` self-ignores `.venv/` and `.cache/` by dropping `.gitignore` files inside them,
   so the repo `.gitignore` doesn't need entries for those.
-- Markdown linting runs on `markdownlint-cli2`, not classic `markdownlint-cli`. Rule
-  settings live in `.markdownlint.yaml`; cli2-specific settings (notably the `ignores:`
-  exclusion list) live in `.markdownlint-cli2.yaml`. `.markdownlintignore` is **not read
-  at all** — don't re-add one expecting it to do anything.
-- To exempt a single rule for one directory without ignoring the whole file, add a
-  `.markdownlint.yaml` there with `extends: <relative-path-to-root-config>` plus the
-  rule override — see `.github/templates/.markdownlint.yaml`, which disables MD041
-  since those files are interpolated into AI prompts and can't carry a top-level heading.
+- Markdown linting runs on `markdownlint-cli2`, not classic `markdownlint-cli`. Rules live
+  in `.markdownlint.yaml`, cli2 settings in `.markdownlint-cli2.yaml`; `.markdownlintignore`
+  is not needed.
+- Config cascades per directory via `extends`. Prompt files are linted more strictly — a new
+  prompt directory extends `.markdownlint-prompts.yaml`, everything else the root config.
 
 ## Custom Tooling
 

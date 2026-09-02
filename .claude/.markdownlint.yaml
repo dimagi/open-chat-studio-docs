@@ -1,0 +1,4 @@
+# Agent and command definitions are prompts, not docs — inherit the prompt fence
+# vocabulary. Cascades to .claude/agents/ and .claude/commands/.
+
+extends: ../.markdownlint-prompts.yaml
