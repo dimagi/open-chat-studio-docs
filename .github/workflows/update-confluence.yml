@@ -51,12 +51,13 @@ jobs:
         run: |
           TAG="$RELEASE_TAG_INPUT"
           gh release view "$TAG" --json body,tagName,url > release.json
+          DELIMITER="RELEASE_BODY_EOF_$(openssl rand -hex 16)"
           {
             echo "RELEASE_TAG=$(jq -r .tagName release.json)"
             echo "RELEASE_URL=$(jq -r .url release.json)"
-            echo "RELEASE_BODY<<RELEASE_BODY_EOF"
+            echo "RELEASE_BODY<<$DELIMITER"
             jq -r .body release.json
-            echo "RELEASE_BODY_EOF"
+            echo "$DELIMITER"
           } >> "$GITHUB_ENV"
 
       - name: Resolve release info from release event
@@ -66,12 +67,13 @@ jobs:
           EVENT_URL: ${{ github.event.release.html_url }}
           EVENT_BODY: ${{ github.event.release.body }}
         run: |
+          DELIMITER="RELEASE_BODY_EOF_$(openssl rand -hex 16)"
           {
             echo "RELEASE_TAG=$EVENT_TAG"
             echo "RELEASE_URL=$EVENT_URL"
-            echo "RELEASE_BODY<<RELEASE_BODY_EOF"
+            echo "RELEASE_BODY<<$DELIMITER"
             printf '%s\n' "$EVENT_BODY"
-            echo "RELEASE_BODY_EOF"
+            echo "$DELIMITER"
           } >> "$GITHUB_ENV"
 
       - name: Update Confluence release table
