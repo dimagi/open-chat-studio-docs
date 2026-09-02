@@ -61,6 +61,7 @@ Optionally narrowed by `participant`, `chatbot`, or `platform`.
 * `commcare_connect` - commcare_connect
 * `embedded_widget` - embedded_widget
 * `email` - email
+* `public` - public
     - start (query, string (optional)): Inclusive start of an explicit window (ISO date or datetime). Requires 'end'.
     - tz (query, string (optional)): IANA timezone name defining calendar and bucket boundaries. Defaults to UTC.
   Responses:
