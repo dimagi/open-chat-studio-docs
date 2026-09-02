@@ -5,6 +5,7 @@ argument-hint: [release-tag] [release-title]
 ---
 
 # Create Release Command
+
 Create a new GitHub release by comparing the current changelog with the previous release.
 
 ## Release Configuration
