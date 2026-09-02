@@ -29,7 +29,7 @@ MD025:
 
 MD026: false
 MD029:
-  style: one_or_ordered
+  style: ordered
 MD030: false
 
 # Ignore need for blank lines around lists
@@ -54,6 +54,9 @@ MD033:
 
 MD034: false
 
+# Keep these rules for fenced code blocks, which are used for AI prompt templates and for code examples in docs.
+MD038: true
+MD040: true
 # Every page must open with an H1 (frontmatter title does not substitute)
 MD041:
   front_matter_title: ""
