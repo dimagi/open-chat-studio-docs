@@ -5,5 +5,7 @@
 # Inherit the prompt fence rules
 extends: ../../.markdownlint-prompts.yaml
 
-# A top-level heading would change their meaning so disable MD041 for this directory
+# A top-level heading will break the heading hierarcy as these templates are fragments
+# spliced into a larger prompt.
+# So disable MD041 for this directory which would force a top-level heading.
 MD041: false

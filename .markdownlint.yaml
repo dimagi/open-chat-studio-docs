@@ -54,10 +54,10 @@ MD033:
 
 MD034: false
 
-# Keep these rules enabled.
-# For fenced code blocks, which are used for AI prompt templates and for code examples in docs.
-MD038: true
-MD040: true
+# Both are enabled by `default: true`; listed explicitly so the intent survives future edits.
+MD038: true   # no stray spaces inside inline code spans
+MD040: true   # every fenced block declares a language (see .markdownlint-prompts.yaml
+              # for the restricted vocabulary applied to prompt files)
 
 # Every page must open with an H1 (frontmatter title does not substitute)
 MD041:
