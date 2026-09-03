@@ -1011,6 +1011,7 @@ ChatMessageDetail:
   - summary: string
   - translations: Unknown
   - metadata: Unknown
+  - external_ids: array of string
   - chat: integer (required)
 
 ChatMessageList:
