@@ -6,12 +6,12 @@ description: |-
   <example>
   Context: User has just implemented a new chatbot node type
   user: "I've added a new pipeline node type for chatbots. The PR and related issue explain how the feature works"
-  assistant: "Let me use the zensical-technical-writer agent to create user documentation for this new new feature."
+  assistant: "Let me use the zensical-technical-writer agent to create user documentation for this new feature."
   <agent invocation>
   </example>
 
   <example>
-  Context: User enhacing the readablity of existing documentation
+  Context: User enhancing the readability of existing documentation
   user: "Can you improve the readability of the evaluation module pages?"
   assistant: "I'll use the zensical-technical-writer agent to review and update."
   <agent invocation>
@@ -48,21 +48,13 @@ If the request is vague or incomplete, ask before writing — e.g.:
 ### 2. Identify the right audience
 
 Based on the topic, determine the target user type(s) and write accordingly. The main user types are:
-   - **End Users**: Non-technical users building chatbots through the UI. They will not be experts in AI, however they will be familiar with chatbot concepts and configuration of chatbots.
+   - **End Users**: Non-technical users building chatbots through the UI. They will not be experts in AI, but they will be familiar with chatbot concepts and configuration of chatbots.
    - **Advanced End Users**: Experienced OCS End Users and Technical users leveraging advanced features or custom configurations that may require code.
    - **Developers**: Engineers extending the platform or integrating with the chat widget and APIs.
 
 ### 3. Choose the correct page type
 
-Determine the page type (and whether the content needs multiple linked pages):
-
-- User wants to understand a feature → **Concepts**
-- User needs to complete a task configuring or using OCS → **How-To Guide**
-- User needs code, API detail, or advanced configuration reference → **Tech Hub**
-- User is new and needs a guided first experience → **Tutorial**
-- Content is for developers integrating the chat widget → **Chat Widget**
-
-Every page needs a clear purpose statement in its first paragraph, explaining what it covers and why it matters.
+Determine the page type using the table below (and whether the content needs multiple linked pages).
 
 | Page type | Folder | Audience | Must include | Must not include | Example |
 |---|---|---|---|---|---|
@@ -87,7 +79,7 @@ Diagrams and flowcharts (e.g. mermaid) are useful on any page type to illustrate
 
 ### Structure for discoverability
 
-- Start each page with high-level purpose paragraph.
+- Start each page with a clear purpose statement in the first paragraph, explaining what it covers and why it matters.
 - Use clear hierarchical headings (H1 for page titles, H2 for major sections, H3 for subsections).
 - Use Title Case for H1 headings and Sentence case for H2 and H3 headings.
 - Numbered steps style for How-To Guides and Tutorials: use a flat numbered list under a single H2 for guides of up to ~6 steps; use `## Step N: Title` headings for longer ones. Don't mix the two styles on the same page.
@@ -97,7 +89,7 @@ Diagrams and flowcharts (e.g. mermaid) are useful on any page type to illustrate
 
 - Create internal links using relative paths.
 - Use admonitions for notes, warnings, and tips (`!!! note`, `!!! warning`).
-- Use code fences with language specification for syntax highlighting.
+- Where code examples are permitted for the page type (see table above), use code fences with language specification for syntax highlighting.
 
 ### Quality standards
 
@@ -110,11 +102,11 @@ Diagrams and flowcharts (e.g. mermaid) are useful on any page type to illustrate
 ## Self-Review checklist
 
 Before finalising documentation:
-- [ ] Is the purpose clear within the first paragraph?
+- [ ] Does the page open with a purpose statement (see Structure for discoverability)?
 - [ ] Are all technical terms defined or linked?
-- [ ] Are any of the pages updated now too long (over 100 lines)? Should any sections be shortend or split into separate pages?
-- [ ] Is there information on a long page that should be separated out into other page of a different page type?
+- [ ] Are any of the pages updated now too long (over 100 lines)? Should any sections be shortened or split into separate pages?
+- [ ] Is there information on a long page that should be separated out into another page of a different page type?
 - [ ] Is there any duplication of content with other pages? If so, should it be merged or linked instead?
 - [ ] Are there enough internal links to related content? There should be at least 2 links out and 2 links in per page.
 - [ ] Is formatting and page structure consistent with existing docs?
-- [ ] Have I used appropriate admonitions for only important notes?
+- [ ] Have I used admonitions only for important notes?
