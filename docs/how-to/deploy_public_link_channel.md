@@ -16,7 +16,7 @@ A public link gives your chatbot a hosted chat page that anyone can open — no 
 3. Set a **Welcome message** and, optionally, **Starter questions** for the channel. These greet visitors when they open the page.
 4. Click **Create**.
 
-The channel dialog then shows your link — something like `https://<your-instance>/c/<token>/` — with a **copy** button. You can also copy it from the **Copy link** chip next to the channel button on the chatbot's home page.
+The channel dialog then shows your link — something like `https://www.openchatstudio.com/c/<token>/` — with a **copy** button. You can also copy it from the **Copy link** chip next to the channel button on the chatbot's home page.
 
 Only one public link can be added per chatbot. If you already have one, add its welcome message and starter questions by opening the existing channel instead.
 
