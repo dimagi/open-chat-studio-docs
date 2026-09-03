@@ -23,6 +23,7 @@ description: |-
   assistant: "Since you've made changes to the OCS UI, let me use the zensical-technical-writer agent to update the relevant documentation sections."
   <agent invocation>
   </example>
+tools: Read, Write, Edit, Glob, Grep, WebFetch(domain:github.com,domain:raw.githubusercontent.com)
 model: sonnet
 color: green
 ---
