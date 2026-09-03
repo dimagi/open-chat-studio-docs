@@ -16,11 +16,15 @@ LLM service providers are configured in your Team settings under "LLM and Embedd
 2. Navigate to "LLM and Embedding Model Service Providers"
 3. Click "Add Provider"
 4. Select your provider from the dropdown (see [supported providers](../concepts/team/llm_providers.md) for the full list)
-5. Enter your API key
+5. Enter your API key, plus any other details your provider needs — for example, a [LiteLLM](../concepts/team/llm_providers.md) provider also requires the **Base URL** of your proxy
 6. Save the configuration
 
+!!! tip "Base URL"
+
+    You don't need to include the `/v1` suffix on a LiteLLM Base URL — Open Chat Studio appends it if it's missing, so `https://litellm.example.com` is saved as `https://litellm.example.com/v1`.
+
 !!! note  
-    After saving, the provider page lists the LLM models it supports. Each model shows its [max token limit](../concepts/llm.md#max-token-limit) and pricing.
+    After saving, the provider page lists the LLM models it supports. Each model shows its [max token limit](../concepts/llm.md#max-token-limit) and pricing. A provider with no pre-configured models, such as LiteLLM, shows an empty list until you add a [custom model](../how-to/add_custom_llm_model.md).
 
 ## Testing Your Configuration
 

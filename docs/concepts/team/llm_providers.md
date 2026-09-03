@@ -13,12 +13,17 @@ Open Chat Studio is designed to be flexible, and can connect to any LLM provider
 * [Google Gemini](https://ai.google.dev/gemini-api/docs/models)
 * [MiniMax](https://platform.minimax.io)
 * [Voyage AI (embedding only)](https://docs.voyageai.com/docs/embeddings)
+* [LiteLLM](https://docs.litellm.ai/docs/simple_proxy) (bring your own proxy)
 
 ## LLM Models
 
 Each provider comes with its most commonly used models already available in OCS — models that power chatbot conversations, and embedding models used for searching [knowledge bases](../collections/indexed.md).
 
 If a model you need isn't pre-configured, see [Add a Custom LLM Model](../../how-to/add_custom_llm_model.md) for how to add one.
+
+!!! note "LiteLLM has no pre-configured models"
+
+    LiteLLM connects to a model gateway you run yourself, so Open Chat Studio has no way to know in advance which models it serves. After adding a LiteLLM provider, add every model you want to use as a [custom model](../../how-to/add_custom_llm_model.md).
 
 ## Model Lifecycle and Deprecation
 
