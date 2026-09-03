@@ -56,19 +56,17 @@ Based on the topic, determine the target user type(s) and write accordingly. The
    - **Advanced End Users**: Experienced OCS End Users and Technical users leveraging advanced features or custom configurations that may require code.
    - **Developers**: Engineers extending the platform or integrating with the chat widget and APIs.
 
-The Audience column in the page-type table below refers to these three types: "All users" spans all three, "Advanced end users & developers" excludes End Users, and "Developers only" means Developers alone. Tutorials target End Users specifically, encountering the feature for the first time.
-
 ### 3. Choose the correct page type
 
 Determine the page type using the table below (and whether the content needs multiple linked pages).
 
 | Page type | Folder | Audience | Must include | Must not include | Example |
 |---|---|---|---|---|---|
-| Concepts | `concepts/` | All users | High-level "why"/"what" explanation, simple language | Jargon, API instructions, code examples — link to Tech Hub/How-To instead | `concepts/sessions.md` |
-| How-To Guide | `how-to/` | All users | Prerequisites, numbered steps (imperative verbs), prose example use cases, expected outcomes, brief common-issues list | Code snippets, in-depth troubleshooting/diagnostics — link to Tech Hub instead | `how-to/adjust_llm_node_model_parameters.md` |
-| Tech Hub | `tech-hub/` | Advanced end users & developers | Code examples with expected output, API references, in-depth troubleshooting, architecture/implementation detail | Repeating Concepts/How-To content — link to it instead | `tech-hub/template_and_email_nodes.md` |
-| Tutorial | `tutorials/` | End Users (first-time) | Numbered steps (imperative verbs), simple real-world application | Advanced features, complex config, code, API references, common pitfalls — write a How-To Guide instead | `tutorials/configure_llm_node.md` |
-| Chat Widget | `chat_widget/` | Developers only | Prerequisites, code examples, API references, troubleshooting | General OCS/end-user content | — |
+| Concepts | `concepts/` | End users, advanced users, developers | High-level "why"/"what" explanation, simple language | Jargon, API instructions, code examples — link to Tech Hub/How-To instead | `concepts/sessions.md` |
+| How-To Guide | `how-to/` | End users, advanced users, developers | Prerequisites, numbered steps (imperative verbs), prose example use cases, expected outcomes, brief common-issues list | Code snippets, in-depth troubleshooting/diagnostics — link to Tech Hub instead | `how-to/adjust_llm_node_model_parameters.md` |
+| Tech Hub | `tech-hub/` | Advanced users, developers | Code examples with expected output, API references, in-depth troubleshooting, architecture/implementation detail | Repeating Concepts/How-To content — link to it instead | `tech-hub/template_and_email_nodes.md` |
+| Tutorial | `tutorials/` | End users (first-time) | Numbered steps (imperative verbs), simple real-world application | Advanced features, complex config, code, API references, common pitfalls — write a How-To Guide instead | `tutorials/configure_llm_node.md` |
+| Chat Widget | `chat_widget/` | Developers | Prerequisites, code examples, API references, troubleshooting | General OCS/end-user content | `chat_widget/reference.md` |
 
 Diagrams and flowcharts (e.g. mermaid) are useful on any page type to illustrate concepts or steps — use sparingly on Tutorials, which should stay simple for first-time users.
 
@@ -110,7 +108,7 @@ Diagrams and flowcharts (e.g. mermaid) are useful on any page type to illustrate
 Before finalising documentation:
 - [ ] Does the page open with a purpose statement (see Structure for discoverability)?
 - [ ] Are all technical terms defined or linked?
-- [ ] Are any of the pages updated now too long (over 100 lines)? Should any sections be shortened or split into separate pages?
+- [ ] Are any of the pages updated now too long (over 100 lines of markdown source)? Should any sections be shortened or split into separate pages?
 - [ ] Is there information on a long page that should be separated out into another page of a different page type?
 - [ ] Is there any duplication of content with other pages? If so, should it be merged or linked instead?
 - [ ] Are there enough internal links to related content?.
