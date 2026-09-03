@@ -15,6 +15,7 @@ To link a channel to your chatbot:
 ## Supported Channels
 
 - [Web Embedded Widget](#web) — built-in chat interface, no setup required
+- [Public Link](#public-link) — hosted chat page, no embedding required
 - [Telegram](#telegram)
 - [WhatsApp](#whatsapp) — Twilio, Turn.io, or [Meta Cloud API](#meta-cloud-api)
 - [Facebook Messenger](#facebook-messenger)
@@ -28,6 +29,12 @@ Once a channel is linked, you can [temporarily disable it][disable] without dele
 ## Web
 
 The web channel is OCS's built-in chat interface. It's enabled by default for every chatbot — there's no provider to configure and nothing to link. Embed it on your own website with the [chat widget][chat-widget].
+
+## Public Link
+
+A public link gives your chatbot its own hosted chat page — share the link and anyone can chat, with no embedding required.
+
+See the [public link setup guide][public-link] for how to add one, share and regenerate the link, and troubleshoot common issues.
 
 ## Telegram
 
@@ -124,3 +131,4 @@ Every chatbot can also be reached programmatically through the OCS [APIs][api], 
 [meta]: ./whatsapp_meta_cloud_api.md
 [turnio]: ./turnio_whatsapp.md
 [chat-widget]: ../chat_widget/index.md
+[public-link]: ./deploy_public_link_channel.md

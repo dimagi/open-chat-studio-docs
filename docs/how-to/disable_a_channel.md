@@ -19,6 +19,7 @@ What happens depends on where they try to reach the disabled channel:
 |---|---|
 | Chat widget, and `POST /api/chat/start/` | Starting a chat is refused. The widget currently shows a generic "Failed to start chat session" error rather than your configured disabled message. |
 | Public web chat link (consent/start page) | The page shows your disabled message instead of starting the conversation. |
+| [Public link][public-link] channel page | Visitors see a banner instead of a live widget, rather than a disabled message. Any conversation still open on the link is also ended — same as when the link is regenerated or the channel is deleted. |
 | OCS console (starting a chat from the chatbot management pages) | A generic error is shown in place of the chat; your disabled message isn't used here. |
 | Slack | If a disabled message is set, it's sent back; otherwise the channel stays silent with no visible error. |
 | Messaging an already-disabled channel on any platform | The message isn't processed or recorded. If a disabled message is set, it's sent back as the reply; otherwise the bot stays silent. |
@@ -49,3 +50,4 @@ Nothing that happened while the channel was off is replayed:
 
 [disabling-concept]: ../concepts/channels.md#disabling-a-channel
 [deploy]: ./deploy_to_different_channels.md
+[public-link]: ./deploy_public_link_channel.md
