@@ -37,8 +37,7 @@ immediately and doesn't wait for delivery to finish.
 The dialog only lists the chatbot's own messaging channels — the platforms
 your participants message the bot on, such as Telegram, WhatsApp, or Email.
 
-- The chatbot's API, Web, and Evaluations platforms are never listed, because
-  they aren't channels a participant messages the bot on directly.
+- The chatbot's API, Web, and Evaluations platforms do not support broadcast messages.
 - Disabled channels are left out too, because a disabled channel drops
   anything the bot tries to send on it. See [Disable a channel][disable] and
   [Disabling a channel][disabling-concept] if you need to re-enable one before
