@@ -142,6 +142,7 @@ ChatbotDetail:
   - voice_response_behaviour: Unknown (required)
   - echo_transcript: boolean (required)
   - trace_provider_id: integer (required)
+  - trace_sample_rate: number (required)
   - debug_mode_enabled: boolean (required)
   - conversational_consent_enabled: boolean (required)
   - consent_form_id: integer (required)
@@ -161,6 +162,7 @@ ChatbotInspect:
   - consent_form: Unknown (required)
   - voice: Unknown (required)
   - trace_provider: Unknown (required)
+  - trace_sample_rate: number
   - channels: array of Channel (required)
   - pipeline: Unknown (required)
   - pipeline_valid: boolean (required)
@@ -230,6 +232,7 @@ PatchedChatbotWrite:
   - voice_response_behaviour: Unknown
   - echo_transcript: boolean
   - trace_provider_id: integer
+  - trace_sample_rate: number
   - debug_mode_enabled: boolean
   - conversational_consent_enabled: boolean
   - consent_form_id: integer
