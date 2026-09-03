@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Sep 2, 2026
+* **CHANGE** The OpenAI Assistants pages have been removed. The **Assistants** entry is gone from the sidebar, and assistants can no longer be created, viewed, edited or archived in Open Chat Studio — the assistant URLs now return a "not found" error. Assistants no longer appear in the delete-team confirmation, no longer block deleting an LLM provider or a custom action, and no longer appear in deprecated-model reporting, and the file-upload controls that assistants added to the chat input bar are gone. File links in historical chat messages now show as plain text instead of downloads. Chatbots and pipelines that use an assistant node still open and still run as before. See [Migrate Assistants](how-to/assistants_migration.md).
+
 ## Sep 1, 2026
 * **NEW** An embedded widget channel can now require an **OAuth** token instead of its embed key, using the new **Credential mode** setting on the channel. In OAuth mode every request is validated against a token minted by your own backend, the embed snippet shown in Open Chat Studio includes a sample `authTokenProvider` implementation, and the widget must be on version 0.12.0 or later. Existing channels keep the embed-key mode they already have. Leaving the channel's allowed domains blank marks the channel as a server-only integration, so any request from a browser is refused. See [OAuth credential mode](chat_widget/reference.md#oauth-credential-mode).
 * **NEW** A Meta Cloud API messaging provider's page now reports whether its `new_bot_message` template is usable and which WhatsApp numbers the account owns, with a **Refresh** button to re-check on demand and a form to send a real test message through the template. The checks run automatically when the provider is created. See [Set Up WhatsApp with Meta Cloud API](how-to/whatsapp_meta_cloud_api.md).

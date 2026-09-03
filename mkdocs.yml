@@ -125,6 +125,7 @@ nav:
       - Deploy chatbot to Slack: how-to/deploy_slack_channel.md
       - how-to/whatsapp_meta_cloud_api.md
       - how-to/turnio_whatsapp.md
+      - Send a Broadcast Message: how-to/broadcast_message.md
     - UI Helpers:
       - Filter Tables with Natural Language: how-to/nl_filter.md
       - Find Objects: how-to/global_search.md
