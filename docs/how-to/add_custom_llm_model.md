@@ -39,6 +39,10 @@ For Google (Gemini) models, use the name from the "Model Variant" column — for
 
 Find current model names in [Google's Gemini model documentation](https://ai.google.dev/gemini-api/docs/models).
 
+### LiteLLM models
+
+A [LiteLLM](../concepts/team/llm_providers.md) provider ships with no pre-configured models, so you must add every model it should offer. Use the exact name your proxy is configured to serve it under — for example, `gpt-4o` or `claude-sonnet-4-6` — depending on the backend models your proxy exposes. Check your proxy's configuration to confirm the exact names.
+
 ## See also
 
 - [LLM Service Providers](../concepts/team/llm_providers.md) — what LLM providers are and how models work in OCS
