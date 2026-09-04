@@ -78,6 +78,7 @@ plugins:
 - redirects:
     redirect_maps:
       'concepts/team/tracing_providers.md': 'concepts/tracing.md'
+      'tutorials/notifications.md': 'how-to/manage_notifications.md'
 - mkdocstrings:
     enabled: true
     default_handler: python
@@ -134,6 +135,7 @@ nav:
       - Reset Sessions: how-to/reset_sessions.md
     - Monitoring & Debugging:
       - Configure Langfuse Trace Sampling: how-to/configure_langfuse_trace_sampling.md
+      - Manage Notifications: how-to/manage_notifications.md
     - Evaluations:
       - Create a Dataset: how-to/evaluations/create-a-dataset.md
       - Real-Time LLM Judge: how-to/evaluations/realtime_llm_judge.md
@@ -157,6 +159,7 @@ nav:
       - concepts/events.md
       - concepts/tags.md
       - concepts/tracing.md
+      - concepts/notifications.md
       - concepts/tools/index.md
       - Experiments: concepts/experiment/index.md
     - Pipelines:
