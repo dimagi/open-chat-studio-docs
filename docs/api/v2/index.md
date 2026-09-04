@@ -11,7 +11,7 @@ Simplified per-tag references for LLM consumption:
 * [Channels](./channels.txt){:target="_blank"} — Trigger bot messages or deliver messages directly to users on a channel.
 * [Chatbots](./chatbots.txt){:target="_blank"} — List, retrieve and inspect chatbots (v2; formerly 'experiments').
 * [Me](./me.txt){:target="_blank"} — Information about the authenticated user and the team the token is scoped to.
-* [Pipelines](./pipelines.txt){:target="_blank"} — Discover the pipeline node types an agent may build and the resource ids it may reference.
+* [Pipelines](./pipelines.txt){:target="_blank"} — Discover the node types a pipeline may contain and the resource ids it may reference, and edit a chatbot's pipeline a node at a time.
 * [Usage](./usage.txt){:target="_blank"} — Inspect team usage and activity data (message counts, and more).
 
 ## Endpoints
@@ -43,6 +43,9 @@ Simplified per-tag references for LLM consumption:
 
 | Method | Path | Summary |
 | --- | --- | --- |
+| POST | `/api/v2/chatbots/{id}/pipeline/nodes/` | Add a Pipeline Node |
+| PATCH | `/api/v2/chatbots/{id}/pipeline/nodes/{node_id}/` | Edit a Pipeline Node |
+| DELETE | `/api/v2/chatbots/{id}/pipeline/nodes/{node_id}/` | Remove a Pipeline Node |
 | GET | `/api/v2/pipeline/nodes/` | List Pipeline Node Types |
 | GET | `/api/v2/pipeline/nodes/{node_type}/` | Retrieve a Pipeline Node Type |
 | GET | `/api/v2/pipeline/options/` | List Pipeline Node Options |

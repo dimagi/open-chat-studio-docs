@@ -28,6 +28,30 @@ GET /api/chat/{session_id}/{task_id}/poll/
     cookieAuth
     embedKeyAuth
 
+POST /api/chat/{session_id}/consent/
+  Summary: Record that the participant accepted the chatbot's consent form
+  Description: Record consent for the form version the participant was shown.
+
+A `form_version_id` that is not the session version's current form is refused with `409`
+and the current block, so the widget re-renders rather than recording consent to text the
+participant never saw.
+  Parameters:
+    - session_id (path, string (required)): Session ID
+  Request Body:
+    Content: application/json
+    Schema: ChatConsentRequest
+  Responses:
+    204: No response body
+    400:
+      Content: application/json
+      Schema: ChatConsentSessionEnded
+    409:
+      Content: application/json
+      Schema: ChatConsentStale
+  Security:
+    cookieAuth
+    embedKeyAuth
+
 POST /api/chat/{session_id}/message/
   Summary: Send a message to a chat session
   Parameters:
@@ -39,6 +63,9 @@ POST /api/chat/{session_id}/message/
     202:
       Content: application/json
       Schema: ChatSendMessageResponse
+    403:
+      Content: application/json
+      Schema: ChatConsentRequired
   Security:
     cookieAuth
     embedKeyAuth
@@ -69,6 +96,9 @@ POST /api/chat/{session_id}/upload/
     201:
       Content: application/json
       Schema: ChatUploadFileResponse
+    403:
+      Content: application/json
+      Schema: ChatConsentRequired
   Security:
     cookieAuth
     embedKeyAuth
@@ -101,10 +131,32 @@ ChatAccessDenied:
   - error: string (required)
   - code: string (required)
 
+ChatConsent:
+  - required: boolean (required)
+  - form_version_id: integer (required)
+  - text: string (required)
+
+ChatConsentRequest:
+  - form_version_id: integer (required)
+
+ChatConsentRequired:
+  - error: string (required)
+  - code: string (required)
+  - consent: ChatConsent (required)
+
+ChatConsentSessionEnded:
+  - error: string (required)
+
+ChatConsentStale:
+  - error: string (required)
+  - code: string (required)
+  - consent: ChatConsent (required)
+
 ChatPollResponse:
   - messages: array of Message (required)
   - has_more: boolean (required)
   - session_status: Unknown (required)
+  - consent: Unknown (required)
 
 ChatSendMessageRequestWithAttachments:
   - message: string (required)
@@ -134,6 +186,7 @@ ChatStartSessionResponse:
   - session_token: string
   - chatbot: Unknown (required)
   - participant: Unknown (required)
+  - consent: Unknown (required)
 
 ChatTaskPoll:
   - message: Message

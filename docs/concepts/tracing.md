@@ -86,4 +86,21 @@ When the panel loads, it automatically selects the first span that has an error 
 !!! note
     The span tree panel only appears when a Langfuse tracing provider is configured for your chatbot. If no Langfuse provider is configured, no trace information exists for the session, or the Langfuse API returns an error, the panel is hidden and the rest of the page is unaffected.
 
+### Trace Sampling
+
+Sending every conversation turn to Langfuse can generate a lot of trace volume for a high-traffic chatbot. **Trace sampling** lets you send only a fraction of turns to Langfuse, while builtin tracing keeps recording every turn in Open Chat Studio as usual — sampling only affects data sent to Langfuse.
+
+Sampling is controlled by a **sample rate**, a number from `0.0` to `1.0` representing the fraction of turns sent to Langfuse. For example, a rate of `0.1` sends roughly 1 in 10 turns.
+
+There are two places to set a sample rate:
+
+- **Sample rate** on the Langfuse tracing provider — a team-wide default used by any chatbot that doesn't set its own rate.
+- **Trace sample rate** in a chatbot's settings — overrides the team-wide default for that chatbot. Leave it blank to inherit the provider's rate.
+
+A rate of exactly `0.0` stops Langfuse traces being sent for that chatbot entirely — no tracer is created. Builtin tracing is unaffected and continues to record every turn.
+
+Changing a sample rate applies immediately, starting with the next conversation turn — there's no cache delay to wait out.
+
+For the exact steps, see [Configure Langfuse Trace Sampling](../how-to/configure_langfuse_trace_sampling.md).
+
 [langfuse]: https://langfuse.com/docs
