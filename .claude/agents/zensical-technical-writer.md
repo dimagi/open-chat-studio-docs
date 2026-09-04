@@ -50,17 +50,8 @@ Based on the topic, determine the target user type(s) and write accordingly. The
 
 ### 3. Choose the correct page type
 
-Determine the page type using the table below (and whether the content needs multiple linked pages).
-
-| Page type | Folder | Audience | Must include | Must not include | Example |
-|---|---|---|---|---|---|
-| Concepts | `concepts/` | End users, advanced users, developers | High-level "why"/"what" explanation, simple language | Jargon, API instructions, code examples — link to Tech Hub/How-To instead | `concepts/sessions.md` |
-| How-To Guide | `how-to/` | End users, advanced users, developers | Prerequisites, numbered steps (imperative verbs), prose example use cases, expected outcomes, brief common-issues list | Code snippets, in-depth troubleshooting/diagnostics — link to Tech Hub instead | `how-to/adjust_llm_node_model_parameters.md` |
-| Tech Hub | `tech-hub/` | Advanced users, developers | Code examples with expected output, API references, in-depth troubleshooting, architecture/implementation detail | Repeating Concepts/How-To content — link to it instead | `tech-hub/template_and_email_nodes.md` |
-| Tutorial | `tutorials/` | End users (first-time) | Numbered steps (imperative verbs), simple real-world application | Advanced features, complex config, code, API references, common pitfalls — write a How-To Guide instead | `tutorials/configure_llm_node.md` |
-| Chat Widget | `chat_widget/` | Developers | Prerequisites, code examples, API references, troubleshooting | General OCS/end-user content | `chat_widget/reference.md` |
-
-Diagrams and flowcharts (e.g. mermaid) are useful on any page type to illustrate concepts or steps — use sparingly on Tutorials, which should stay simple for first-time users.
+Determine the page type using `.claude/checklists/page-type-contract.md`
+(and whether the content needs multiple linked pages).
 
 ### 4. Write or update the page or pages
 
@@ -69,7 +60,7 @@ Diagrams and flowcharts (e.g. mermaid) are useful on any page type to illustrate
 
 ### 5. Review and edit the draft
 
-- Self-check against the Self-Review checklist below
+- Self-check against the checklist in `.claude/checklists/doc-self-review.md`
 
 ## Editorial conventions
 
@@ -84,6 +75,7 @@ Diagrams and flowcharts (e.g. mermaid) are useful on any page type to illustrate
 ### Follow Zensical best practices
 
 - Create internal links using relative paths.
+- Use semantic linefeeds (one sentence per line) for easier editing and version control.
 - Use admonitions for notes, warnings, and tips (`!!! note`, `!!! warning`).
 - Where code examples are permitted for the page type (see table above), use code fences with language specification for syntax highlighting.
 
@@ -97,12 +89,5 @@ Diagrams and flowcharts (e.g. mermaid) are useful on any page type to illustrate
 
 ## Self-Review checklist
 
-Before finalising documentation:
-- [ ] Does the page open with a purpose statement (see Structure for discoverability)?
-- [ ] Are all technical terms defined or linked?
-- [ ] Are any of the pages updated now too long (over 100 lines of markdown source)? Should any sections be shortened or split into separate pages?
-- [ ] Is there information on a long page that should be separated out into another page of a different page type?
-- [ ] Is there any duplication of content with other pages? If so, should it be merged or linked instead?
-- [ ] Are there enough internal links to related content?.
-- [ ] Is formatting and page structure consistent with existing docs?
-- [ ] Have I used admonitions only for genuine notes, warnings, or tips (not as a formatting crutch)?
+See `.claude/checklists/doc-self-review.md` (shared with the
+`documentation-pr-reviewer` agent — edit it there, not here, if the bar changes).

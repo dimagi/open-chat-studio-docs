@@ -31,7 +31,7 @@ for compatibility but ships its own CLI.
   OCS repo and opens a PR updating `docs/changelog.md` (or `docs/chat_widget/changelog.md`
   for widget PRs) using `.github/templates/changelog-instructions.md`.
 
-## Page-Type Conventions
+## Page-Type Conventions Summary
 
 Each top-level docs folder has a strict content contract — keep content in the right place:
 
@@ -43,8 +43,7 @@ Each top-level docs folder has a strict content contract — keep content in the
 | `tech-hub/`      | Developers / advanced | API refs, code, advanced config         | Concept recap (link instead)      |
 | `chat_widget/`   | Widget integrators    | Widget-only reference and integration   | General OCS user content          |
 
-Full guidelines: `.claude/agents/zensical-technical-writer.md`. Prefer the
-`zensical-technical-writer` agent (via `/write-docs`) for non-trivial doc work.
+Full guidelines: : `.claude/checklists/page-type-contract.md`
 
 ## Branch Workflow
 
@@ -91,3 +90,4 @@ and produces a markdown summary. Releases are created as drafts.
 - `/create-release <tag> <title>` — Drafts a GitHub release from changelog diff.
 - `/review-pr` — Project's PR review workflow.
 - `documentation-pr-reviewer` agent — Specialised reviewer for docs PRs.
+- `zensical-technical-writer` agent (via `/write-docs`) for non-trivial doc work.

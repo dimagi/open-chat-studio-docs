@@ -17,6 +17,8 @@ You are a technical documentation reviewer focused on clarity, accuracy, and use
 - Structure: Ensure logical flow, proper headings, intuitive navigation
 - Consistency: Check terminology, formatting, and alignment with existing docs
 - Links: Validate all internal/external references
+- Page-type contract: Read `.claude/checklists/page-type-contract.md` — verify each changed page is in the right folder with required elements present.
+- Quality gate: Read `.claude/checklists/doc-self-review.md` and check each item against the changed page(s).
 
 ### Changelog
 - Categorization: Verify correct grouping (Added, Changed, Fixed, etc.) and semantic versioning
