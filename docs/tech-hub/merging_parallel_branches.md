@@ -1,12 +1,12 @@
 # Merging Parallel Branches
 
-When parallel branches in a pipeline merge back into one node, that node can run more than once, or receive only some of the branches it expects. This page shows the Python node patterns for handling both cases predictably: `require_node_outputs`, which aborts a run until specific named nodes have all produced output, and the lower-level `wait_for_next_input`, for merges that don't map to a fixed list of node names.
+When parallel branches in a pipeline merge back into one node, that node can run more than once, or receive only some of the branches it expects. This page shows the Python node patterns for handling both cases predictably. `require_node_outputs` aborts a run until specific named nodes have all produced output. The lower-level `wait_for_next_input` handles merges that don't map to a fixed list of node names.
 
 For the execution model that causes a merge node to run more than once, and the meaning of `input` and `node_inputs`, see [Which input a node receives](../concepts/pipelines/parallel.md#which-input-a-node-receives) and [Uneven branches](../concepts/pipelines/parallel.md#uneven-branches) in Parallel Pipelines.
 
 ## Merging branches that always run
 
-Take a pipeline where two branches of different lengths — one running through `NodeA` then `NodeC`, the other through `NodeB` — merge into `NodeD`. Because the branches take a different number of steps to arrive, `NodeD` executes twice: once when only `NodeB` has produced output, and again once `NodeC` catches up. If `NodeD` should only do its real work once both branches are in, use `require_node_outputs` to abort the first run:
+Take a pipeline where two branches of different lengths — one running through `NodeA` then `NodeC`, the other through `NodeB` — merge into `NodeD`. Because the branches take a different number of steps to arrive, `NodeD` executes twice. It runs once when only `NodeB` has produced output, then again once `NodeC` catches up. If `NodeD` should only do its real work once both branches are in, use `require_node_outputs` to abort the first run:
 
 ```python
 def main(input, **kwargs):
@@ -31,7 +31,7 @@ def main(input, **kwargs):
 
 ## Merging branches that are optional
 
-`require_node_outputs` assumes every named node will eventually produce output. That doesn't hold when a router sends a message down only one of several branches — the branches it didn't choose never run. Consider a pipeline where `NodeA` always runs in parallel with a `Router`, and the router sends its input to exactly one of `NodeB` or `NodeC`; all three feed into a `Merge` node.
+`require_node_outputs` assumes every named node will eventually produce output. That doesn't hold when a router sends a message down only one of several branches — the branches it didn't choose never run. Consider a pipeline where `NodeA` always runs in parallel with a `Router`, and the router sends its input to exactly one of `NodeB` or `NodeC`. All three feed into a `Merge` node.
 
 ```mermaid
 flowchart LR

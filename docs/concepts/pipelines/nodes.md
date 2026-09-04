@@ -54,7 +54,7 @@ Uses an LLM to extract structured data from the input against a JSON schema you 
 
 ## Update Participant Data Node
 
-Uses an LLM to extract structured data the same way as the Extract Structured Data node, but saves the result as [participant data](../../concepts/participant_data.md) instead of passing it downstream. This node is a passthrough — its output is identical to its input, so it can be inserted into a pipeline without changing what the next node receives. It is commonly used with [events](../events.md).
+Uses an LLM to extract structured data the same way as the Extract Structured Data node. Instead of passing the result downstream, it saves it as [participant data](../../concepts/participant_data.md). This node is a passthrough — its output is identical to its input. It can be inserted into a pipeline without changing what the next node receives, and is commonly used with [events](../events.md).
 
 ## Python Node
 
