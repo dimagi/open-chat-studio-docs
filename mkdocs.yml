@@ -132,6 +132,8 @@ nav:
       - Find Objects: how-to/global_search.md
     - Sessions & Data:
       - Reset Sessions: how-to/reset_sessions.md
+    - Monitoring & Debugging:
+      - Configure Langfuse Trace Sampling: how-to/configure_langfuse_trace_sampling.md
     - Evaluations:
       - Create a Dataset: how-to/evaluations/create-a-dataset.md
       - Real-Time LLM Judge: how-to/evaluations/realtime_llm_judge.md
