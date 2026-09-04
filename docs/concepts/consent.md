@@ -9,6 +9,15 @@ Consent forms allow chatbot makers to provide context to chatbot participants on
 
 A default consent form is created for each team. You can customize this default form or create new forms by navigating to the "Consent Forms" section of Open Chat Studio.
 
+## Consent forms and published versions
+
+When you [publish a version](versioning.md) of your chatbot, the wording of its consent form at that moment is kept with that version. Editing your working consent form afterwards does not change what already-published versions show — participants always see the wording that belongs to the version they are chatting with.
+
+To put revised wording in front of participants, edit the consent form and then publish a new version. Participants who consented to the old wording are asked to consent again.
+
+!!! note
+    Versions published before September 2026 do not have their own copy of the consent form and continue to follow the working form until you publish the chatbot again.
+
 ## What to put in a consent form
 
 Some common elements you may want to include in a consent form are:
