@@ -12,6 +12,7 @@ hide:
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
 ## Sep 3, 2026
+* **NEW** You can now sample the traces sent to Langfuse instead of sending every conversation turn, using a team-wide **Sample rate** on the Langfuse tracing provider and a per-chatbot **Trace sample rate** override that inherits the team default when left blank. Setting a chatbot's rate to `0.0` stops its Langfuse traces entirely. Builtin tracing is unaffected and still records every turn, and rate changes take effect on the next turn. The `trace_sample_rate` field is also available on the v2 chatbots write API. See [Configure Langfuse Trace Sampling](how-to/configure_langfuse_trace_sampling.md).
 * **CHANGE** The chatbot inspect API (`GET /api/v2/chatbots/{id}/inspect/`) no longer returns an `assistant` key on a pipeline node, and the `AssistantNodeParams` schema has been removed. Only clients inspecting pipelines that contain an assistant node are affected — those nodes are still listed, with their type reported as before and their stored settings returned in the generic node params shape (minus the internal assistant id). See the [Chatbots API reference](api/v2/chatbots.txt).
 
 ## Sep 2, 2026
