@@ -6,15 +6,97 @@ Description: Discover the node types a pipeline may contain and the resource ids
 
 ENDPOINTS:
 
+POST /api/v2/chatbots/{id}/pipeline/edges/
+  Summary: Wire Pipeline Nodes
+  Description: Add edges to the chatbot's working (draft) pipeline, wiring one node's output handle to another node's input.
+
+The wires go in a **list** under `wires` — a single wire is a list of one, and at most 100 go in one call — and a call carrying several is all or nothing: if any one of them is refused, none of them are stored and the pipeline is left exactly as the call found it. So a whole branch lands in one call with no half-wired state to unpick:
+
+```json
+{
+  "wires": [
+    {"source": "RouterNode-9f8e7", "target": "LLMResponseWithPrompt-d3e4f", "source_handle": "output_0"},
+    {"source": "RouterNode-9f8e7", "target": "CodeNode-a1b2c", "source_handle": "output_1"},
+    {"source": "CodeNode-a1b2c", "target": "EndNode-b2c3d"}
+  ]
+}
+```
+
+`source` and `target` are enough for most nodes: a handle you leave out means the only one the node has. A router is the exception — it exposes one handle per branch, so name the branch to wire in `source_handle`. No node is moved on the canvas.
+
+Each edge's `id` is assigned by the server and cannot be chosen. It is what the `pipeline_edge_delete` endpoint takes, and `edges` reports them in the order the body named them.
+
+Wiring a pair that is already wired the same way is refused rather than stored twice, so a wire is safe to retry. A wire that leaves the *graph* wrong is not refused: it lands, and comes back in `pipeline_errors` for you to repair.
+  Parameters:
+    - id (path, string (required)): Chatbot ID
+  Request Body:
+    Content: application/json
+    Schema: WireBody
+  Responses:
+    201:
+      Content: application/json
+      Schema: EdgeWrite
+    400: Nothing was wired. Refusals come back under `wires`, **keyed by the position in the list of the wire at fault** — so one call reports everything wrong with it, and a wire that is fine is absent rather than empty.
+
+Each wire's entry is in turn keyed by the field at fault: a `source` or `target` that is not a node in this pipeline, a `source_handle` the source node does not offer (or a missing one where the node offers a choice), a `target_handle` that is not the target's input, a server-assigned key the client tried to set (`id`), or an unrecognised key on the wire.
+
+```json
+{
+  "wires": {
+    "0": {"source": ["This pipeline has no node 'CodeNode-nope1'."]},
+    "2": {"source_handle": ["..."]}
+  }
+}
+```
+
+A duplicate edge is reported under the wire's `non_field_errors`, with the existing edge's id between single quotes:
+
+> These nodes are already wired this way, by edge '&lt;edge_id&gt;'. Nothing was changed.
+
+So a client whose first attempt's response it never saw can recover the edge id rather than re-reading the pipeline. A body wiring the same pair twice is refused the same way, naming the index of the first of the two.
+
+A `source` that offers no output handles at all is refused under `source`, and the message says whether that is fixable: a router with no `keywords` set yet needs a PATCH first, whereas the End node can never be a source.
+
+A `wires` that is not a list, is an empty one, or names more than 100 wires is refused as a message on the field itself, before any wire in it is looked at; a body that is not an object at all is refused under `non_field_errors`.
+    403: The caller is authenticated but not authorised to modify this chatbot: either its role lacks permission to change chatbots, or it is a machine (client-credentials) token whose application is not authorised for this chatbot.
+    404: No such chatbot.
+  Security:
+    OAuth2
+      - Required scopes: chatbots:write
+    apiKeyAuth
+    tokenAuth
+
+DELETE /api/v2/chatbots/{id}/pipeline/edges/{edge_id}/
+  Summary: Unwire two Pipeline Nodes
+  Description: Remove an edge from the chatbot's working (draft) pipeline. Both nodes stay, and stay where they are on the canvas.
+
+The hole this leaves is reported rather than refused: unwiring usually breaks the path to the End node, which comes back under `pipeline_errors.node[<end node id>].root` for you to repair, and both ends of the edge reappear in `unwired_handles`.
+
+Repeating a delete answers 404, so a retry cannot disturb the graph the first call left.
+  Parameters:
+    - edge_id (path, string (required)): The edge's server-assigned id, as returned by a wire or by the `chatbot_inspect` endpoint.
+    - id (path, string (required)): Chatbot ID
+  Responses:
+    200:
+      Content: application/json
+      Schema: PipelineWrite
+    403: The caller is authenticated but not authorised to modify this chatbot: either its role lacks permission to change chatbots, or it is a machine (client-credentials) token whose application is not authorised for this chatbot.
+    404: No such chatbot, or no such edge in this chatbot's pipeline.
+  Security:
+    OAuth2
+      - Required scopes: chatbots:write
+    apiKeyAuth
+    tokenAuth
+
 POST /api/v2/chatbots/{id}/pipeline/nodes/
   Summary: Add a Pipeline Node
   Description: Add a node to the chatbot's working (draft) pipeline.
 
-`type` alone is enough: the node is created with that type's defaults, which the response reports and which you can then change with PATCH. The node is not wired to anything, so it appears in `unwired_handles` until you connect it — that is advisory, not an error.
+`type` alone is enough: the node is created with that type's defaults, which the response reports and which you can then change with PATCH. It is not wired to anything, so it appears in `unwired_handles` until you connect it — that is advisory, not an error.
 
-The node's `node_id` and its position on the canvas are assigned by the server and cannot be chosen. It is parked clear to the right of the nodes already there, and the End node is moved further right if the new node reaches it, so the End node stays the rightmost node on the canvas.
+The node's `node_id` and its position on the canvas are assigned by the server and cannot be chosen.
 
-What `params` may hold depends on `type`, so the examples below show a full body for each type. `GET /api/v2/pipeline/nodes/{node_type}/` is the authoritative JSON Schema for one type, and `GET /api/v2/pipeline/options/{node_type}/` serves the ids its resource params may name.
+What `params` may hold depends on `type`, so the examples below show a full body for each type. The `pipeline_node_retrieve` endpoint is the authoritative JSON Schema for one type, and the `pipeline_node_options` endpoint serves the ids its resource params may name.
   Parameters:
     - id (path, string (required)): Chatbot ID
   Request Body:
@@ -24,9 +106,9 @@ What `params` may hold depends on `type`, so the examples below show a full body
     201:
       Content: application/json
       Schema: NodeWrite
-    400: The body is not one this endpoint can act on. Errors are keyed by the field at fault, and param-level errors are nested under `params`. This covers an unrecognised body key, a server-assigned key the client tried to set (`node_id`, `position`), and a param naming a resource this team cannot reach.
+    400: The body is not one this endpoint can act on. Errors are keyed by the field at fault, with param-level errors nested under `params`: an unrecognised body key, a server-assigned key the client tried to set (`node_id`, `position`), or a param naming a resource this team cannot reach.
 
-A param the type does not declare is *not* an error: it is dropped, and the response reports the params the node actually holds. Nor is a param whose value the type cannot parse — that is stored and reported in `pipeline_errors`, the same as a missing required one, so a node can be built up over several calls.
+A param the type does not declare is dropped rather than refused, and a param whose value the type cannot parse is stored and reported in `pipeline_errors` — so a node can be built up over several calls.
     403: The caller is authenticated but not authorised to modify this chatbot: either its role lacks permission to change chatbots, or it is a machine (client-credentials) token whose application is not authorised for this chatbot.
     404: No such chatbot, or no such node `type`. An unknown type names the valid ones in `valid_types`; the Start and End types are refused here too, since the server creates those with the pipeline.
   Security:
@@ -39,12 +121,12 @@ PATCH /api/v2/chatbots/{id}/pipeline/nodes/{node_id}/
   Summary: Edit a Pipeline Node
   Description: Change a node's params or its label. Params merge key by key, so send only what you want to change; everything else is left as it is.
 
-Editing a router's `keywords` regenerates its output handles — they are positional, so `output_0` serves `keywords[0]` — and the response carries the new list. The node's edges follow their keyword: dropping a keyword deletes the edge that served it, and a keyword that merely moved keeps its target on whichever handle it moved to. A renamed keyword counts as one branch gone and another new, so its edge goes and the new branch comes back unwired. Handle names are not stable across a keyword edit, so re-read `output_handles` after one.
+Editing a router's `keywords` regenerates its output handles — they are positional, so `output_0` serves `keywords[0]` — and the response carries the new list. The node's edges follow their keyword: dropping a keyword deletes the edge that served it, and a renamed keyword counts as one branch gone and another new. Handle names are not stable across a keyword edit, so re-read `output_handles` after one.
 
-What `params` may hold depends on the node's type, not on the verb: the `POST` examples name every param of each type, and the examples here are partial bodies instead, since a PATCH writes only the keys you send. `GET /api/v2/pipeline/nodes/{node_type}/` is the authoritative JSON Schema for one type, and `GET /api/v2/pipeline/options/{node_type}/` serves the ids its resource params may name.
+What `params` may hold depends on the node's type, not on the verb: the `POST` examples name every param of each type, and the examples here are partial bodies instead. The `pipeline_node_retrieve` endpoint is the authoritative JSON Schema for one type, and the `pipeline_node_options` endpoint serves the ids its resource params may name.
   Parameters:
     - id (path, string (required)): Chatbot ID
-    - node_id (path, string (required)): The node's server-assigned id, as returned by a write or by GET /api/v2/chatbots/{id}/inspect/.
+    - node_id (path, string (required)): The node's server-assigned id, as returned by a write or by the `chatbot_inspect` endpoint.
   Request Body:
     Content: application/json
     Schema: PatchedNodeUpdate
@@ -52,9 +134,9 @@ What `params` may hold depends on the node's type, not on the verb: the `POST` e
     200:
       Content: application/json
       Schema: NodeWrite
-    400: The body is not one this endpoint can act on. Errors are keyed by the field at fault, and param-level errors are nested under `params`. This covers an unrecognised body key, a server-assigned key the client tried to set (`node_id`, `position`), and a param naming a resource this team cannot reach.
+    400: The body is not one this endpoint can act on. Errors are keyed by the field at fault, with param-level errors nested under `params`: an unrecognised body key, a server-assigned key the client tried to set (`node_id`, `position`), or a param naming a resource this team cannot reach.
 
-A param the type does not declare is *not* an error: it is dropped, and the response reports the params the node actually holds. Nor is a param whose value the type cannot parse — that is stored and reported in `pipeline_errors`, the same as a missing required one, so a node can be built up over several calls.
+A param the type does not declare is dropped rather than refused, and a param whose value the type cannot parse is stored and reported in `pipeline_errors` — so a node can be built up over several calls.
     403: The caller is authenticated but not authorised to modify this chatbot: either its role lacks permission to change chatbots, or it is a machine (client-credentials) token whose application is not authorised for this chatbot.
     404: No such chatbot or node, or the node is of a type this API does not publish and so cannot describe the params of.
     409: The node is part of the pipeline's structure (the Start or End node) and cannot be edited or deleted through the API.
@@ -73,7 +155,7 @@ The hole this leaves is reported rather than refused: unsplicing a node usually 
 The Start and End nodes cannot be removed — nor edited. They are part of the pipeline's structure and cannot be added back through the API.
   Parameters:
     - id (path, string (required)): Chatbot ID
-    - node_id (path, string (required)): The node's server-assigned id, as returned by a write or by GET /api/v2/chatbots/{id}/inspect/.
+    - node_id (path, string (required)): The node's server-assigned id, as returned by a write or by the `chatbot_inspect` endpoint.
   Responses:
     200:
       Content: application/json
@@ -159,6 +241,18 @@ GET /api/v2/pipeline/options/{node_type}/
 
 SCHEMAS:
 
+EdgeCreate:
+  - source: string (required)
+  - target: string (required)
+  - source_handle: string
+  - target_handle: string
+
+EdgeWrite:
+  - edges: array of WrittenEdge (required)
+  - pipeline_valid: boolean (required)
+  - pipeline_errors: PipelineBuildErrors (required)
+  - unwired_handles: object (required)
+
 InspectOutputHandle:
   - handle: string (required)
   - label: string (required)
@@ -243,6 +337,16 @@ SyntheticVoiceOption:
 ToolOption:
   - value: string (required)
   - label: string (required)
+
+WireBody:
+  - wires: array of EdgeCreate (required)
+
+WrittenEdge:
+  - id: string (required)
+  - source: string (required)
+  - target: string (required)
+  - source_handle: string (required)
+  - target_handle: string (required)
 
 WrittenNode:
   - node_id: string (required)
