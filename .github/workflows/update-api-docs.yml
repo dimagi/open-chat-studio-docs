@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: read  # read permission for checkout — PR creation uses the ocs-agent app token, not this
+      contents: read  # needed for checkout and the cross-repo `gh api` read; PR creation uses the ocs-agent app token
 
     steps:
       - name: Checkout repository
@@ -92,7 +92,8 @@ jobs:
         with:
           app-id: ${{ vars.OCS_AGENT_APP_ID }}
           private-key: ${{ secrets.OCS_AGENT_PRIVATE_KEY }}
-
+          permission-contents: write
+          permission-pull-requests: write
       - name: Create Pull Request
         if: steps.check_changes.outputs.has_changes == 'true'
         uses: peter-evans/create-pull-request@v8
