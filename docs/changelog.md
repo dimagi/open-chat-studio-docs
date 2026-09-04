@@ -13,6 +13,8 @@ hide:
 
 ## Sep 4, 2026
 * **NEW** Added support for OpenAI's **GPT-6 Astra** model, which can now be selected on the OpenAI provider. It offers a 1,050,000-token context window and configurable reasoning effort (low, medium, high, xhigh, max); temperature and top-p are not supported. Note that prompts longer than 272,000 tokens are billed by OpenAI at a higher rate than the cost Open Chat Studio reports.
+* **NEW** The **Export** button on a chatbot session's **Messages** tab now downloads that single session's messages as a CSV.
+* **CHANGE** The chatbot session detail page has been redesigned.
 * **CHANGE** An LLM provider's page now has a single **Models** tab in place of the separate default chat, custom and embedding model tables. Filter the combined list by role using the chips above it; the counts always match what the list is showing.
 * **CHANGE** An LLM provider's page now shows the standing state of its credentials — verified, never checked, or rejected with the provider's own error message — instead of a flash message that disappeared on the next page load. The save button tells you up front whether saving will verify, and saving again re-runs a check that previously failed. The manual **Test Connection** button has been removed, since it tested the saved credentials rather than what was on screen. Voyage AI is embeddings-only and is never verified. See [LLM Service Providers](concepts/team/llm_providers.md).
 
