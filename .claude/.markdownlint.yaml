@@ -1,0 +1,6 @@
+# Claude Agent and command definitions are prompts, not templates or user documentation.
+
+# They must inherit the standard common prompt rules
+# These linting rules cascades to both .claude/agents/ and .claude/commands/.
+
+extends: ../.markdownlint-prompts.yaml

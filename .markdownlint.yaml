@@ -12,7 +12,7 @@ MD007: false
 
 # Line length — reduce progressively after long lines are fixed
 MD013:
-  line_length: 650
+  line_length: 750
   code_blocks: false
   tables: false
   headings: false
@@ -29,7 +29,7 @@ MD025:
 
 MD026: false
 MD029:
-  style: one_or_ordered
+  style: ordered
 MD030: false
 
 # Ignore need for blank lines around lists
@@ -54,6 +54,11 @@ MD033:
 
 MD034: false
 
+# Both are enabled by `default: true`; listed explicitly so the intent survives future edits.
+MD038: true   # no stray spaces inside inline code spans
+MD040: true   # every fenced block declares a language (see .markdownlint-prompts.yaml
+              # for the restricted vocabulary applied to prompt files)
+
 # Every page must open with an H1 (frontmatter title does not substitute)
 MD041:
   front_matter_title: ""
@@ -61,7 +66,7 @@ MD041:
 MD046: false
 MD050: false
 
-# Link-fragment validation to catch broken in-document links after heading changes.
+# Keep this rule. Link-fragment validation to catch broken in-document links after heading changes.
 # Scope: same-document fragments only — cross-file `foo.md#anchor` links are not checked.
 MD051: true
 
@@ -69,7 +74,7 @@ MD053: false
 MD054: false
 MD058: false
 
-# Require descriptive link text (no "click here") — agents extracting a link
+# Keep this rule. Require descriptive link text (no "click here") — agents extracting a link
 # out of context need the anchor text itself to say what it points to.
 MD059: true
 

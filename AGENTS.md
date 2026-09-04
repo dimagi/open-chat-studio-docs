@@ -6,10 +6,11 @@ Built with [Zensical](https://zensical.org/) (MkDocs-compatible), Python 3.13+, 
 ## Commands
 
 ```bash
-uv sync --locked                         # Install / sync deps; fails if uv.lock is stale
-uv run zensical serve                    # Local dev server (auto-reload)
-uv run zensical build --clean            # Same build CI runs — fails on broken refs
-uv run pytest scripts/tests              # Run the (small) test suite for scripts/
+uv sync --locked                                # Install / sync deps; fails if uv.lock is stale
+uv run zensical serve                           # Local dev server (auto-reload)
+uv run zensical build --clean                   # Same build CI runs — fails on broken refs
+uv run pytest scripts/tests                     # Run the (small) test suite for scripts/
+uv run prek run markdownlint-cli2 --all-files   # Run the pre-commit checks for markdown
 ```
 
 Do **not** invoke `mkdocs` directly — the project uses Zensical, which reads `mkdocs.yml`
@@ -77,6 +78,12 @@ and produces a markdown summary. Releases are created as drafts.
 - `docs/api/` is regenerated from OpenAPI by the `update-api-docs` workflow. Don't hand-edit.
 - `uv` self-ignores `.venv/` and `.cache/` by dropping `.gitignore` files inside them,
   so the repo `.gitignore` doesn't need entries for those.
+- Markdown linting runs on `markdownlint-cli2`, not classic `markdownlint-cli`. Rules live  
+  in `.markdownlint.yaml`, cli2 settings (including `ignores`) in `.markdownlint-cli2.yaml`.  
+  cli2 does **not** read `.markdownlintignore`.  
+- cli2 auto-discovers a `.markdownlint.yaml` per directory and applies it to that directory's  
+  files. A subdirectory config replaces rather than merges, so always `extends` the parent to  
+  keep the root rules.
 
 ## Custom Tooling
 

@@ -3,7 +3,11 @@ allowed-tools: Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*)
 description: Review a pull request
 ---
 
+# Review Pull Request Command
+
 Review documentation and changelog PRs using the doc-pr-reviewer subagent.
+
+## Steps
 
 First, fetch the PR details to understand what files are being changed:
 1. Use `gh pr view` to get PR overview

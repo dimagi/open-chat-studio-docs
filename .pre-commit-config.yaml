@@ -36,11 +36,12 @@ repos:
   # ---------------------------------------------------------------------------
   # Markdown quality
   # ---------------------------------------------------------------------------
-  - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.49.1
+  # cli2 (not classic markdownlint-cli): config is auto-discovered and cascades
+  # per directory — do not pass --config, it would disable the cascade.
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.23.2
     hooks:
-      - id: markdownlint
-        args: [--config, .markdownlint.yaml]
+      - id: markdownlint-cli2
 
   # ---------------------------------------------------------------------------
   # Detects secrets in git repositories, including passwords, API keys, and tokens

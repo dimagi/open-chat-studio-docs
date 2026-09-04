@@ -1,0 +1,11 @@
+# Files in this directory are interpolated verbatim into AI prompts (see
+# .github/workflows/update-changelog.yml) as they are treated as prompt templates
+# for the model to read, not as Markdown to render.
+#
+# Inherit the prompt fence rules
+extends: ../../.markdownlint-prompts.yaml
+
+# A top-level heading will break the heading hierarcy as these templates are fragments
+# spliced into a larger prompt.
+# So disable MD041 for this directory which would force a top-level heading.
+MD041: false

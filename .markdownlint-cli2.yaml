@@ -1,0 +1,13 @@
+# markdownlint-cli2-specific settings. Rule config stays in .markdownlint.yaml
+# (a plain .markdownlint.* file in the same directory overrides this file's
+# `config` property, so the two coexist cleanly).
+ignores:
+  # Build output and virtualenv
+  - site/**
+  - .venv/**
+
+  # CLAUDE.md is just an @-include pointing at AGENTS.md, so it fails MD041 (no H1)
+  - CLAUDE.md
+
+  # Generated from the OCS OpenAPI schema by the update-api-docs workflow; not hand-edited
+  - docs/api/**
