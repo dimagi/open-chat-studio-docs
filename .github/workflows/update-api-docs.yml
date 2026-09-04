@@ -1,3 +1,18 @@
+# Update API Documentation Workflow
+#
+# Regenerates docs/api/ from the OCS OpenAPI schema — fetches the schema files
+# from the OCS repo, runs them through src/ocs_docs/openapi_to_docs.py, and opens
+# a PR with the result if anything changed. docs/api/ is generated; don't hand-edit.
+#
+# Triggered on: repository_dispatch (`ocs_api_update`) from the OCS repo; a daily
+# schedule (02:00 UTC) as a backstop; or workflow_dispatch (manual)
+# Requirements: OCS_AGENT_APP_ID (var) / OCS_AGENT_PRIVATE_KEY (secret) for the
+# ocs-agent GitHub App token used to open the PR
+#
+# Notes:
+# - Labelled `automated`, same as update-changelog.yml's PRs — keeps these PRs
+#   out of the AI review in claude-review.yml (see README-claude-workflows.md).
+
 name: Update API Documentation
 
 on:
@@ -15,14 +30,14 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write
-      pull-requests: write
+      contents: read  # needed for checkout and the cross-repo `gh api` read; PR creation uses the ocs-agent app token
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Install uv
         uses: astral-sh/setup-uv@v7
@@ -77,7 +92,8 @@ jobs:
         with:
           app-id: ${{ vars.OCS_AGENT_APP_ID }}
           private-key: ${{ secrets.OCS_AGENT_PRIVATE_KEY }}
-
+          permission-contents: write
+          permission-pull-requests: write
       - name: Create Pull Request
         if: steps.check_changes.outputs.has_changes == 'true'
         uses: peter-evans/create-pull-request@v8
