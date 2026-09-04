@@ -16,7 +16,7 @@ For example:
 
 1. **Linked Downstream Node**: Any node that appears after the current node in the pipeline flow.
 
-2. **Conversation Context**: The information a router evaluates to make its decision. For an [LLM Router](#llm-router-node), this is the participant's current message plus its own [History setting](history.md). A [Static Router](#static-router-node) does not evaluate the message or history at all — it looks up a value already stored as data (see [Router Types](#router-types)).
+2. **Conversation Context**: The information a router evaluates to make its decision. For an [LLM Router](#llm-router-node), this is the participant's current message and, when enabled by the [History setting](history.md), the configured conversation history. A [Static Router](#static-router-node) does not evaluate the message or history at all — it looks up a value already stored as data (see [Router Types](#router-types)).
 
 3. **Default Path**: The "safety net" route (marked with a blue *). If the router cannot confidently decide where to send the participant, it follows this path to prevent the conversation from breaking. [Read more about the default output](../../how-to/routers/index.md#the-default-output).
 
