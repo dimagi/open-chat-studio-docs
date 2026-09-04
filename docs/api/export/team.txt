@@ -1539,6 +1539,7 @@ LlmProviderDetail:
   - updated_at: string (required)
   - type: LlmProviderTypeEnum (required)
   - name: string (required)
+  - extra_data: Unknown
 
 LlmProviderList:
   - cursor: string (required)

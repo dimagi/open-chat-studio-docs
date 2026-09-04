@@ -17,7 +17,7 @@ Different embedding models have different strengths:
 - Others are optimised for long, technical documents (reports, manuals, legal text).
 - Models trained on domain-specific data (medical, legal, code) can outperform general-purpose models in those domains.
 
-You can view the available embedding models for each provider when creating or editing the [LLM provider in your team](../concepts/team/llm_providers.md) settings. If you are unsure which model to choose, start with the default offered by your LLM provider — it is optimised for general-purpose retrieval.
+You can view the available embedding models for a provider on the **Models** tab of its page in your [team's LLM provider](../concepts/team/llm_providers.md) settings, filtering the list down to embedding models. If you are unsure which model to choose, start with the default offered by your LLM provider — it is optimised for general-purpose retrieval.
 
 ## Chunking and Optimization
 

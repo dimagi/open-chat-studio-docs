@@ -23,8 +23,14 @@ LLM service providers are configured in your Team settings under "LLM and Embedd
 
     You don't need to include the `/v1` suffix on a LiteLLM Base URL — Open Chat Studio appends it if it's missing, so `https://litellm.example.com` is saved as `https://litellm.example.com/v1`.
 
-!!! note  
-    After saving, the provider page lists the LLM models it supports. Each model shows its [max token limit](../concepts/llm.md#max-token-limit) and pricing. A provider with no pre-configured models, such as LiteLLM, shows an empty list until you add a [custom model](../how-to/add_custom_llm_model.md).
+!!! note
+    After saving, the provider page shows a **Models** tab listing the LLM models it supports, with filter chips to switch between chat and embedding models. Each model shows its [max token limit](../concepts/llm.md#max-token-limit) and pricing. A provider with no pre-configured models, such as LiteLLM, shows an empty list until you add a [custom model](../how-to/add_custom_llm_model.md).
+
+## Verifying Your Credentials
+
+Saving a provider checks its credentials against the provider's API, unless they're already [verified](../concepts/team/llm_providers.md#credential-verification). The save button tells you upfront whether saving will run this check.
+
+The provider page then shows the standing result — **Verified**, **Never checked**, or **Rejected** with the provider's own error message — so you can always see where a provider's credentials stand, not just at the moment you save. See [Credential Verification](../concepts/team/llm_providers.md#credential-verification) for details.
 
 ## Testing Your Configuration
 
