@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Sep 3, 2026
+* **CHANGE** The chatbot inspect API (`GET /api/v2/chatbots/{id}/inspect/`) no longer returns an `assistant` key on a pipeline node, and the `AssistantNodeParams` schema has been removed. Only clients inspecting pipelines that contain an assistant node are affected — those nodes are still listed, with their type reported as before and their stored settings returned in the generic node params shape (minus the internal assistant id). See the [Chatbots API reference](api/v2/chatbots.txt).
+
 ## Sep 2, 2026
 * **CHANGE** The OpenAI Assistants pages have been removed. The **Assistants** entry is gone from the sidebar, and assistants can no longer be created, viewed, edited or archived in Open Chat Studio — the assistant URLs now return a "not found" error. Assistants no longer appear in the delete-team confirmation, no longer block deleting an LLM provider or a custom action, and no longer appear in deprecated-model reporting, and the file-upload controls that assistants added to the chat input bar are gone. File links in historical chat messages now show as plain text instead of downloads. Chatbots and pipelines that use an assistant node still open and still run as before. See [Migrate Assistants](how-to/assistants_migration.md).
 
