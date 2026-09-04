@@ -1011,6 +1011,7 @@ ChatMessageDetail:
   - summary: string
   - translations: Unknown
   - metadata: Unknown
+  - external_ids: array of string
   - chat: integer (required)
 
 ChatMessageList:
@@ -1432,6 +1433,7 @@ ExperimentDetail:
   - conversational_consent_enabled: boolean
   - voice_response_behaviour: Unknown
   - echo_transcript: boolean
+  - trace_sample_rate: number
   - participant_allowlist: array of string
   - version_number: integer
   - is_default_version: boolean
@@ -1537,6 +1539,7 @@ LlmProviderDetail:
   - updated_at: string (required)
   - type: LlmProviderTypeEnum (required)
   - name: string (required)
+  - extra_data: Unknown
 
 LlmProviderList:
   - cursor: string (required)
