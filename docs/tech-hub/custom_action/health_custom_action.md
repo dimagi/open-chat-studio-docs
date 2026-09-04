@@ -1,7 +1,6 @@
 # Custom Action Health Monitoring
 
-Open Chat Studio regularly checks whether each Custom Action is available
-so you can see whether the connection is working.
+Open Chat Studio regularly checks whether each Custom Action is available so you can see whether the connection is working.
 
 ## How Custom Action health checks work
 
@@ -48,5 +47,4 @@ A Custom Action can report one of the following states:
 
 ## See also
 
-- [Notifications](../../concepts/notifications.md) — how health check failures and other
-  issues are surfaced to your team
+- [Notifications](../../concepts/notifications.md) — how health check failures and other issues are surfaced to your team

@@ -7,8 +7,7 @@ and shows them in a bell-icon notification center and, optionally, by email.
 ## Why notifications exist
 
 Chatbots run continuously across channels like WhatsApp, Slack, and the web, often with no one watching in real time.
-A [custom action](llm_custom_action.md) can start failing,
-or a message can fail to reach a participant, and go unnoticed until someone complains.
+A [Custom Action](llm_custom_action.md) can start failing, or a message can fail to reach a participant, and go unnoticed until someone complains.
 Notifications close that gap by telling you as soon as something needs attention.
 
 ## What triggers a notification
@@ -20,8 +19,7 @@ Notifications close that gap by telling you as soon as something needs attention
 - An LLM model your team uses being deprecated or removed
 - A [custom action](llm_custom_action.md) failing its periodic [health check](../tech-hub/custom_action/health_custom_action.md)
 
-Repeated occurrences of the same issue are grouped into a single notification thread,
-rather than creating a new entry every time.
+Repeated occurrences of the same issue are grouped into a single notification thread, rather than creating a new entry every time.
 
 ## Severity levels
 
@@ -31,11 +29,9 @@ You can require a minimum severity before something reaches your notification li
 
 ## Scope: personal list, team-owned data
 
-Notifications belong to a [team](team/index.md), like most data in Open Chat Studio,
-but the notification list you see is personal to you:
+Notifications belong to a [team](team/index.md), like most data in Open Chat Studio, but the notification list you see is personal to you:
 
-- The bell and list show notifications from every team you belong to,
-  so you don't need to switch teams to stay informed.
+- The bell and list show notifications from every team you belong to, so you don't need to switch teams to stay informed.
 - Whether a notification is read, unread, or muted is tracked per user —
   marking one as read doesn't affect your teammates' view of the same event.
 - Some notifications only go to team members who could act on them.

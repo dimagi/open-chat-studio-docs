@@ -16,8 +16,7 @@ the alerts Open Chat Studio sends when something needs your attention across you
 5. Back on the list, click **Mark all read** to clear every notification currently shown by your filters.
 
 !!! tip "Reduce noise from one notification"
-    If a notification keeps repeating for an issue you're already tracking,
-    click **Mute** next to it and choose how long to silence it for —
+    If a notification keeps repeating for an issue you're already tracking, click **Mute** next to it and choose how long to silence it for —
     anywhere from a few hours to a month, or indefinitely.
 
 ## Turn on Do Not Disturb
@@ -41,9 +40,7 @@ Do Not Disturb only affects your own notifications, not your teammates'.
 4. Under **Email Notifications**, toggle email on or off and choose the minimum severity level for emails.
 5. Click **Save Preferences**.
 
-For example, you could keep in-app notifications on for everything,
-but only enable email for Error-level issues
-so you're not emailed about routine information.
+For example, you could keep in-app notifications on for everything, but only enable email for Error-level issues so you're not emailed about routine information.
 
 ## Next steps
 
