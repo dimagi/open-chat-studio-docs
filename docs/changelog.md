@@ -11,6 +11,10 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Sep 4, 2026
+* **CHANGE** An LLM provider's page now has a single **Models** tab in place of the separate default chat, custom and embedding model tables. Filter the combined list by role using the chips above it; the counts always match what the list is showing.
+* **CHANGE** An LLM provider's page now shows the standing state of its credentials — verified, never checked, or rejected with the provider's own error message — instead of a flash message that disappeared on the next page load. The save button tells you up front whether saving will verify, and saving again re-runs a check that previously failed. The manual **Test Connection** button has been removed, since it tested the saved credentials rather than what was on screen. Voyage AI is embeddings-only and is never verified. See [LLM Service Providers](concepts/team/llm_providers.md).
+
 ## Sep 3, 2026
 * **NEW** The notifications list now has toggle buttons for filtering by level (Info, Warning, Error) and, if you belong to fewer than three teams, by team — alongside the existing filter panel. A notification that has occurred more than once shows a count of how many times it recurred (`×3`), and the notification detail page now names the team in its breadcrumb.
 * **NEW** You can now sample the traces sent to Langfuse instead of sending every conversation turn, using a team-wide **Sample rate** on the Langfuse tracing provider and a per-chatbot **Trace sample rate** override that inherits the team default when left blank. Setting a chatbot's rate to `0.0` stops its Langfuse traces entirely. Builtin tracing is unaffected and still records every turn, and rate changes take effect on the next turn. The `trace_sample_rate` field is also available on the v2 chatbots write API. See [Configure Langfuse Trace Sampling](how-to/configure_langfuse_trace_sampling.md).
