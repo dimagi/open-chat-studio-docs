@@ -55,7 +55,7 @@ flowchart LR
     LLM --> out([Output])
 ```
 
-See this pattern used in the Workflow Cookbook: [Router for classification](../../how-to/workflow_cookbook.md#router-for-classification), where multiple category outputs feed into the same Python node.
+See this pattern used in the Workflow Cookbook: [Router for classification](../../how-to/workflow_cookbook.md#router-for-classification), where multiple category outputs feed into the same [Python node](nodes.md#python-node).
 
 ## Which input a node receives
 
@@ -96,18 +96,7 @@ To understand why this happens, see [how a pipeline runs](index.md#how-a-pipelin
 
 If `NodeD` needs to see both `NodeB` and `NodeC` before it does its real work — merging both branches exactly once, rather than running twice — write that logic in a Python node using the `require_node_outputs` or `wait_for_next_input` utility functions. The same functions handle the related case where a branch is optional and may not run at all. See [Merging Parallel Branches](../../tech-hub/merging_parallel_branches.md) for worked examples of both.
 
-<div class="grid cards" markdown>
+## See also
 
--   :material-hexagon-multiple-outline:{ .lg .middle } __More Example Workflows__
-
-    ---
-
-    [:octicons-arrow-right-24: Workflow Cookbook](../../how-to/workflow_cookbook.md)
-
--   :material-code-braces:{ .lg .middle } __Merging Branches in Code__
-
-    ---
-
-    [:octicons-arrow-right-24: Merging Parallel Branches](../../tech-hub/merging_parallel_branches.md)
-
-</div>
+- [Workflow Cookbook](../../how-to/workflow_cookbook.md)
+- [Merging Parallel Branches](../../tech-hub/merging_parallel_branches.md)
