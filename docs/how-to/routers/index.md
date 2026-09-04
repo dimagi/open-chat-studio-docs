@@ -34,4 +34,6 @@ To keep system tags organized, OCS follows this naming convention:
 Example: If you have a Router node named `support_triage` and it selects the output keyword `BILLING`, the resulting tag is:
 `support_triage:BILLING`
 
+If the router falls back to its [Default Output](#the-default-output) — because nothing matched, or an error occurred — OCS appends `:default` to the tag, for example `support_triage:GENERAL:default`. This makes fallback routes easy to filter for separately when reviewing tags.
+
 Ensure your `node_name` is descriptive (for example, `intent_classifier`) so tags are easy to interpret.
