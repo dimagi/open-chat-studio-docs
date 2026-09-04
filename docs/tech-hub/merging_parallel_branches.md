@@ -1,12 +1,15 @@
 # Merging Parallel Branches
 
-When parallel branches in a pipeline merge back into one node, that node can run more than once, or receive only some of the branches it expects. This page shows the Python node patterns for handling both cases predictably. `require_node_outputs` aborts a run until specific named nodes have all produced output. The lower-level `wait_for_next_input` handles merges that don't map to a fixed list of node names.
+You can manage a merge node running more than once, or receiving only some of its expected branches, by using a `PythonNode` with some utility functions:
+
+* `require_node_outputs`: This function will abort any node run if all the requested data is not available.
+* `wait_for_next_input`: This is a lower level function that can be used when `require_node_outputs` isn't suitable.
 
 For the execution model that causes a merge node to run more than once, and the meaning of `input` and `node_inputs`, see [Which input a node receives](../concepts/pipelines/parallel.md#which-input-a-node-receives) and [Uneven branches](../concepts/pipelines/parallel.md#uneven-branches) in Parallel Pipelines.
 
 ## Merging branches that always run
 
-Take a pipeline where two branches of different lengths — one running through `NodeA` then `NodeC`, the other through `NodeB` — merge into `NodeD`. Because the branches take a different number of steps to arrive, `NodeD` executes twice. It runs once when only `NodeB` has produced output, then again once `NodeC` catches up. If `NodeD` should only do its real work once both branches are in, use `require_node_outputs` to abort the first run:
+In the [uneven branches example](../concepts/pipelines/parallel.md#uneven-branches), we could use the following code in `NodeD` to merge the outputs:
 
 ```python
 def main(input, **kwargs):
@@ -17,7 +20,7 @@ def main(input, **kwargs):
     return f"{b}\n{c}"
 ```
 
-Using the lower-level `wait_for_next_input` function you can do the same thing without naming the nodes explicitly:
+Using the lower level `wait_for_next_input` function we can do the same thing:
 
 ```python
 def main(input, **kwargs):
@@ -31,7 +34,7 @@ def main(input, **kwargs):
 
 ## Merging branches that are optional
 
-`require_node_outputs` assumes every named node will eventually produce output. That doesn't hold when a router sends a message down only one of several branches — the branches it didn't choose never run. Consider a pipeline where `NodeA` always runs in parallel with a `Router`, and the router sends its input to exactly one of `NodeB` or `NodeC`. All three feed into a `Merge` node.
+This shows a use case for the `wait_for_next_input` function. We have a pipeline which has parallel branches and a merge node but not all the branches will execute.
 
 ```mermaid
 flowchart LR
@@ -45,9 +48,9 @@ flowchart LR
     Merge --> out([Output])
 ```
 
-The `Merge` node will get output from `NodeA` and from either `NodeB` or `NodeC` — never both. `require_node_outputs` can't express "one of these two," so use `wait_for_next_input` instead:
+The `Merge` node will get outputs from `NodeA` and either `NodeB` or `NodeC`. We can't use `require_node_outputs` because not all outputs will be generated. Instead we need to use the `wait_for_next_input` function:
 
-=== "Option 1: check specific nodes"
+=== "Option 1"
 
     ```python
     def main(input, **kwargs):
@@ -61,11 +64,11 @@ The `Merge` node will get output from `NodeA` and from either `NodeB` or `NodeC`
         return f"{a}\n{b_or_c}"
     ```
 
-    `NodeA`'s output doesn't need a similar check — the pipeline's execution order guarantees it's already available by the time `NodeB` or `NodeC` finishes.
+    Note that we don't need to check if we have output from `NodeA` since it will be guaranteed to be available by the time `NodeB` or `NodeC` execute due to the execution order.
 
-=== "Option 2: count inputs"
+=== "Option 2"
 
-    This option uses the [`node_inputs`](../concepts/pipelines/parallel.md#which-input-a-node-receives) keyword argument, which lists every input available to the current run. Since `Merge` should wait for `NodeA` and (`NodeB` or `NodeC`), it can simply wait until it has at least two inputs:
+    This option makes use of the [`node_inputs`](python_node.md#additional-keyword-arguments) keyword argument which contains a list of all the inputs available to the current node execution. Since we want to wait until we have inputs from `NodeA and (NodeB or NodeC)` we can check that the inputs list has at least two values.
 
     ```python
     def main(input, **kwargs):
