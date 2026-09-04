@@ -20,6 +20,7 @@ Notifications close that gap by telling you as soon as something needs attention
 - A [Custom Action](llm_custom_action.md) failing its periodic [health check](../tech-hub/custom_action/health_custom_action.md)
 
 Repeated occurrences of the same issue are grouped into a single notification thread, rather than creating a new entry every time.
+The notification list shows how many times an issue has recurred, such as `×3`, once it's happened more than once.
 
 ## Severity levels
 

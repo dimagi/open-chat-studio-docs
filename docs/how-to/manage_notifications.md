@@ -12,9 +12,14 @@ and setting your notification preferences.
    It shows notifications from every team you belong to.
 3. Use the filters at the top of the page to narrow the list —
    by team, severity level, or read/unread status.
+   Toggle buttons for level, and for team if you belong to fewer than three teams, sit next to the filter panel for quick access.
 4. Click any notification to open it.
    This shows the full detail, including any links to the affected chatbot or session, and automatically marks it as read.
+   The breadcrumb at the top names the team the notification belongs to, since the list mixes all of your teams together.
 5. Back on the list, click **Mark all read** to mark every notification currently matching your filters as read.
+
+A notification row shows a count, like `×3`, once that same issue has
+[recurred](../concepts/notifications.md#what-triggers-a-notification) more than once.
 
 !!! tip "Reduce noise from one notification"
     If a notification keeps repeating for an issue you're already tracking, click **Mute** next to it and choose how long to silence it for —
