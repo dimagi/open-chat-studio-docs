@@ -51,7 +51,7 @@ Full guidelines: `.claude/checklists/page-type-contract.md`
 - `/write-docs` — Launches `zensical-technical-writer` agent with proper context.
 - `/review-pr` — Launches the `documentation-pr-reviewer` agent with PR context.
 - `documentation-pr-reviewer` agent — Specialised reviewer for docs PRs.
-- `zensical-technical-writer` agent for creating and updating non-trivial doc work.
+- `zensical-technical-writer` agent — For creating and updating non-trivial doc work.
 
 ## Changelog
 
