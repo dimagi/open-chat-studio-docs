@@ -55,7 +55,7 @@ Determine the page type using `.claude/checklists/page-type-contract.md`
 
 ### 4. Write or update the page or pages
 
-- Use the correct page type template and include its required elements (see the table above).
+- Use the correct page type template and include its required elements (see `.claude/checklists/page-type-contract.md`).
 - Follow the editorial conventions below — voice, terminology, structure, formatting. If a convention is undefined for a situation, match the closest existing pattern in the current docs rather than inventing a new style.
 
 ### 5. Review and edit the draft
@@ -77,7 +77,7 @@ Determine the page type using `.claude/checklists/page-type-contract.md`
 - Create internal links using relative paths.
 - Use semantic linefeeds (one sentence per line) for easier editing and version control.
 - Use admonitions for notes, warnings, and tips (`!!! note`, `!!! warning`).
-- Where code examples are permitted for the page type (see table above), use code fences with language specification for syntax highlighting.
+- Where code examples are permitted for the page type (see `.claude/checklists/page-type-contract.md`), use code fences with language specification for syntax highlighting.
 
 ### Quality standards
 

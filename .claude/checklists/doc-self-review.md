@@ -7,6 +7,6 @@
 - [ ] All OCS terminology and technical terms are defined on first use or linked to a Concept page.
 - [ ] Enough internal links to and from related content.
 - [ ] Formatting and page structure are consistent with existing docs.
-- [ ] Are sentences under 25 words.
-- [ ] Are there semantic linefeeds (one sentence per line)
+- [ ] Sentences are under 25 words.
+- [ ] Semantic linefeeds are used (one sentence per line).
 - [ ] Admonitions (`!!! note`, `!!! warning`) are used only for genuine notes, warnings, or tips — not as a formatting crutch.

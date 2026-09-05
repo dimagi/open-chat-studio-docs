@@ -29,15 +29,15 @@ Do **not** invoke `mkdocs` directly — the project uses Zensical, which reads `
 
 Each top-level docs folder has a strict content contract — keep content in the right place:
 
-| Folder           | Audience              | Contains                                | Must not contain                         |
-|------------------|-----------------------|-----------------------------------------|------------------------------------------|
-| `tutorials/`     | All users             | Guided, end-to-end walkthroughs         | Advanced config, code, references        |
-| `how-to/`        | All users             | Task-focused step-by-steps              | Code snippets, in-depth troubleshooting  |
-| `concepts/`      | All users             | "What" and "why" explanations           | API/code, jargon                         |
-| `tech-hub/`      | Developers / advanced | API refs, code, advanced config         | Concept recap (link instead)             |
-| `chat_widget/`   | Widget integrators    | Widget-only reference and integration   | General OCS user content                 |
+| Folder           | Audience                | Contains                                | Must not contain                         |
+|------------------|--------------------------|-----------------------------------------|------------------------------------------|
+| `tutorials/`     | End users (first-time)  | Guided, end-to-end walkthroughs         | Advanced config, code, references        |
+| `how-to/`        | All users               | Task-focused step-by-steps              | Code snippets, in-depth troubleshooting  |
+| `concepts/`      | All users               | "What" and "why" explanations           | API/code, jargon                         |
+| `tech-hub/`      | Developers / advanced   | API refs, code, advanced config         | Concept recap (link instead)             |
+| `chat_widget/`   | Widget integrators      | Widget-only reference and integration   | General OCS user content                 |
 
-Full guidelines: : `.claude/checklists/page-type-contract.md`
+Full guidelines: `.claude/checklists/page-type-contract.md`
 
 ## Branch Workflow
 

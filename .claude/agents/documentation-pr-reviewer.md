@@ -47,7 +47,7 @@ You are a technical documentation reviewer focused on clarity, accuracy, and use
 - Categorization: Verify correct grouping (Added, Changed, Fixed, etc.) and semantic versioning
 - User Impact: Ensure entries explain what changed and why it matters
 - Breaking Changes: Must be highlighted with migration guidance
-- Format: Follow existing Changelog standards, including a line length of < 600 chars
+- Format: Follow existing Changelog standards, including a line length of < 750 chars
 
 ### README
 
