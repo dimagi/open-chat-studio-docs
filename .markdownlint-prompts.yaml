@@ -1,6 +1,7 @@
 # Shared overrides for prompt markdown — files AI agents reads as instructions so
 # slightly different rules apply than for user-facing documentation. These rules are
 # pulled in by .claude/ and other folders containing prompts. These rules cascade to all subfolders.
+extends: ./.markdownlint.yaml
 
 # In a prompt file, a fence is a trust signal, not syntax highlighting:
 #
