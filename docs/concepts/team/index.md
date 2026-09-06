@@ -10,7 +10,15 @@ As an OCS user, you can belong to several teams at once, with different roles in
 
 ## Team configuration
 
-Global settings are managed at the Team level, from the [Integrations](integrations.md) page. It lists every provider your team has connected — LLM & embedding, Speech, Messaging, Authentication, and Tracing — as rows in a single table, with category filter pills to narrow the list and a single **Add integration** button to connect a new one.
+Global settings are managed at the Team level, from the [Integrations](integrations.md) page. It lists every external service provider your team has connected, as rows in a single table you can filter by category:
+
+- LLM & embedding
+- Speech
+- Messaging
+- Authentication
+- Tracing
+
+A single **Add integration** button connects a new provider in any category.
 
 ## Finding where a provider is used
 
@@ -27,5 +35,12 @@ This is most useful before rotating an API key, deprecating a provider, or triag
 ## Moving a team to another instance
 
 To move a team — its chatbots, configuration, and chat history — to a different OCS server, see [Migrate a Team to Another Instance](../../tech-hub/migrate_team.md).
+
+## See also
+
+- [Integrations](integrations.md)
+- [Custom Actions](custom_actions.md)
+- [User Groups](groups.md)
+- [OAuth Applications](../../api/getting_started_with_oauth.md) — Team Admins can register OAuth applications so external integrations can act on behalf of the team
 
 <!--- TODO: user management -->

@@ -1,6 +1,6 @@
 # Integrations
 
-Every external service your team connects to — models, speech, messaging, authentication, and tracing — is managed from one place: the **Integrations** table in Team Settings.
+Every external service your team connects to — LLM models, speech, messaging, authentication, and tracing — is managed from one place: the **Integrations** table in Team Settings.
 
 ## The Integrations table
 
@@ -14,7 +14,14 @@ Depending on your permissions, each row also offers **Edit** and **Delete** acti
 
 ### Filtering by category
 
-Category filter pills above the table — **All**, **LLM & embedding**, **Speech**, **Messaging**, **Authentication**, and **Tracing** — narrow the table down to one category at a time. Each pill shows a live count of integrations in that category, including categories with none configured yet.
+Category filter pills above the table narrow it down to one category at a time. Each pill shows a live count of integrations in that category, including categories with none configured yet:
+
+- **All**
+- **LLM & embedding**
+- **Speech**
+- **Messaging**
+- **Authentication**
+- **Tracing**
 
 !!! note "MCP"
     An **MCP** category appears alongside the others once MCP servers are generally available. Until then it's only visible on teams with that feature enabled.
@@ -29,7 +36,7 @@ This table and its single **Add integration** entry point replace the separate p
 - [Speech Service Providers](speech_providers.md)
 - [Messaging Providers](messaging_providers.md)
 - [Authentication Providers](authentication_providers.md)
-- [Tracing](../tracing.md)
+- [Tracing Providers](../tracing.md)
 
 ## See also
 

@@ -1,6 +1,6 @@
 # Configure LLM Service Providers
 
-LLM service providers are configured from the [Integrations](../concepts/team/integrations.md) page in your Team Settings, filtered to the **LLM & embedding** category. Before configuring a provider, make sure you have an active account with the provider and its API key ready.
+LLM service providers are configured from **Team Settings → [Integrations](../concepts/team/integrations.md)**, filtered to the **LLM & embedding** category. Before configuring a provider, make sure you have an active account with the provider and its API key ready.
 
 ## Prerequisites
 
@@ -12,7 +12,7 @@ LLM service providers are configured from the [Integrations](../concepts/team/in
 
 ## Adding a New Provider
 
-1. Go to your Team Settings' [Integrations](../concepts/team/integrations.md) page
+1. Go to **Team Settings → [Integrations](../concepts/team/integrations.md)**
 2. Click **Add integration**, then choose your provider from the **LLM & embedding** group (see [supported providers](../concepts/team/llm_providers.md) for the full list)
 3. Enter your API key, plus any other details your provider needs — for example, a [LiteLLM](../concepts/team/llm_providers.md) provider also requires the **Base URL** of your proxy
 4. Save the configuration
