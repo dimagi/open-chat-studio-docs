@@ -7,13 +7,13 @@ title: Configure Langfuse Trace Sampling
 This guide walks you through reducing how much [Langfuse trace](../concepts/tracing.md#langfuse-external-tracing) data a chatbot sends, by setting a sample rate — either as a team-wide default or as a per-chatbot override. This is useful for high-traffic chatbots where sending every turn to Langfuse creates more trace volume than you need.
 
 !!! note "Before you start"
-    You need a Langfuse tracing provider already configured for your team. See [Langfuse External Tracing](../concepts/tracing.md#langfuse-external-tracing) for what it does, and open your Team settings' **Tracing Providers** page to add or edit one.
+    You need a Langfuse tracing provider already configured for your team. See [Langfuse External Tracing](../concepts/tracing.md#langfuse-external-tracing) for what it does, and open your Team Settings' [Integrations](../concepts/team/integrations.md) page — filtered to **Tracing** — to add or edit one.
 
 ## Set a team-wide default sample rate
 
 Use this when you want every chatbot on the team to send a reduced, consistent fraction of traces to Langfuse by default.
 
-1. Go to your Team settings and open **Tracing Providers**.
+1. Go to your Team Settings' [Integrations](../concepts/team/integrations.md) page and filter by **Tracing**.
 2. Select the Langfuse provider you want to update.
 3. Set the **Sample rate** field to a decimal between `0.0` and `1.0`.
 4. Save the provider.

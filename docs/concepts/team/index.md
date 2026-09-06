@@ -10,9 +10,7 @@ As an OCS user, you can belong to several teams at once, with different roles in
 
 ## Team configuration
 
-Global settings are managed at the Team level. The Team configuration page lists all of your team's integrations — LLM services, speech services, messaging, authentication, custom actions, tracing, and more — as rows in a single table.
-
-Category filter pills above the table let you narrow the list down to one integration type at a time, and a single **Add integration** button gives you one entry point for connecting any new provider, regardless of category.
+Global settings are managed at the Team level, from the [Integrations](integrations.md) page. It lists every provider your team has connected — LLM & embedding, Speech, Messaging, Authentication, and Tracing — as rows in a single table, with category filter pills to narrow the list and a single **Add integration** button to connect a new one.
 
 ## Finding where a provider is used
 

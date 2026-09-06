@@ -122,17 +122,16 @@ Before connecting OCS to Meta, you need to configure a messaging provider in OCS
 
 To add the provider in OCS:
 
-1. Navigate to your **Team Settings** in OCS.
-2. Go to **Messaging Providers** and click **Add Provider**.
-3. From the **Type** dropdown, select **Meta Cloud API**.
-4. Fill in the form with the values gathered above:
+1. Navigate to your **Team Settings → [Integrations](../concepts/team/integrations.md)** in OCS.
+2. Click **Add integration**, then choose **Meta Cloud API** from the **Messaging** group.
+3. Fill in the form with the values gathered above:
     - **Name** — a label to identify this provider (e.g., `My WhatsApp Business`)
     - **WhatsApp Business Account ID**
     - **System User Access Token**
     - **App Secret**
     - **Webhook Verify Token**
     - **Template Language Code** — the language code for the out-of-service-window template (defaults to `en`; see [Out-of-service-window template messages](#out-of-service-window-template-messages) below)
-5. Click **Save**.
+4. Click **Save**.
 
 The provider is now available to use when creating channels.
 
@@ -216,7 +215,7 @@ The **Template Language Code** field in the Meta Cloud API provider form tells O
 
 To update the language code:
 
-1. Navigate to **Team Settings** > **Messaging Providers** in OCS.
+1. Navigate to **Team Settings → [Integrations](../concepts/team/integrations.md)** in OCS and filter by **Messaging**.
 2. Click **Edit** on your Meta Cloud API provider.
 3. Update the **Template Language Code** field.
 4. Click **Save**.
