@@ -6,7 +6,7 @@
 - [ ] Page opens with a purpose statement: what it covers and why it matters.
 - [ ] All OCS terminology and technical terms are defined on first use or linked to a Concept page.
 - [ ] Enough internal links to and from related content.
-- [ ] Formatting and page structure are consistent with existing docs - except where guidelines are specific
+- [ ] Semantic linefeeds (one sentence per line) are used in newly written or edited paragraphs.
 - [ ] Sentences are under 25 words.
 - [ ] Semantic linefeeds are used (one sentence per line) and not breaking lines by fixed column width.
 - [ ] Admonitions (`!!! note`, `!!! warning`) are used only for genuine notes, warnings, or tips — not as a formatting crutch.

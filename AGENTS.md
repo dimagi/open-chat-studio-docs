@@ -37,7 +37,7 @@ Each top-level docs folder has a strict content contract — keep content in the
 | `tech-hub/`      | Advanced users, developers             | API refs, code, advanced config         |
 | `chat_widget/`   | Developers                             | Widget-only reference and integration   |
 
-See full guidelines: `.claude/checklists/page-type-contract.md` for detail when creating new pages or editing long pages > 100 lines.
+See full guidelines: `.claude/checklists/page-type-contract.md`.
 
 ## Branch Workflow
 
