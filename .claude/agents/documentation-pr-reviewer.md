@@ -36,8 +36,9 @@ You are a technical documentation reviewer focused on clarity, accuracy, and use
 
 - Page-type contract: Read `.claude/checklists/page-type-contract.md` — verify each changed page is in the right folder with required elements present.
 - Quality gate: Read `.claude/checklists/doc-self-review.md` and check each item against the changed page(s).
-- Clarity: Flag jargon, very technical AI terminology, ambiguity, or complex explanations
-- Accuracy: Verify UI/feature claims against the OCS source at https://github.com/dimagi/open-chat-studio/ (see its `CONTEXT.md` for terminology); if you cannot fetch it, say so explicitly in your final report.
+- Clarity: Flag jargon, ambiguity, or complex explanations
+- Accuracy: Verify UI/feature claims against the OCS source at https://github.com/dimagi/open-chat-studio/; if you cannot fetch it, say so explicitly in your final report.
+- Use the CONTEXT.md file (https://github.com/dimagi/open-chat-studio/blob/main/CONTEXT.md) to verify terminology, concepts, and features, and to resolve any terminology ambiguities in the codebase and UI.
 - Structure: Ensure logical flow, proper headings, intuitive navigation
 - Consistency: Check terminology, formatting, and alignment with existing docs
 - Links: Validate all internal references
