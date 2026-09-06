@@ -2,7 +2,7 @@
 hide:
   - toc
 ---
-# Teams
+# Team Settings
 
 Open Chat Studio supports multiple organizations/departments working in the same system while keeping their data completely separate. Each organization is called a **Team**. Teams have their own settings, private data, and chatbots.
 
@@ -10,25 +10,18 @@ As an OCS user, you can belong to several teams at once, with different roles in
 
 ## Team configuration
 
-Global settings are managed at the Team level. This includes:
+Global settings are managed at the Team level. The Team configuration page lists all of your team's integrations — LLM services, speech services, messaging, authentication, custom actions, tracing, and more — as rows in a single table.
 
-- [LLM Service Providers](llm_providers.md)
-- [Speech Service Providers](speech_providers.md)
-- [Messaging Providers](messaging_providers.md)
-- [Authentication Providers](authentication_providers.md)
-- [Custom Actions](custom_actions.md)
-- [Tracing Providers](../tracing.md)
-- [User Management](groups.md)
-- [OAuth Applications](../../api/getting_started_with_oauth.md) — Team Admins can register OAuth applications so external integrations can act on behalf of the team
+Category filter pills above the table let you narrow the list down to one integration type at a time, and a single **Add integration** button gives you one entry point for connecting any new provider, regardless of category.
 
 ## Finding where a provider is used
 
-Every service-provider edit page has a **Show usages** button. Clicking it opens a page that lists everything in your team that references that provider.
+Every provider's edit page has a **Usages** tab. Opening it lists everything in your team that references that provider.
 
-- **Chatbots and assistants** — links go to the working version's edit page; references belonging to a published version are tagged with a version badge.
+- **Chatbots** — links go to the working version's edit page; references belonging to a published version are tagged with a version badge.
 - **Pipelines** — rolled up to their owning chatbot. Archived pipelines are included.
-- **Collections and document sources** — rolled up to the owning collection.
 - **Channels** — rolled up to their owning chatbot.
+- **Collections** — rolled up to the owning collection.
 - **Evaluators** — LLM evaluators that use the provider, for LLM service providers.
 
 This is most useful before rotating an API key, deprecating a provider, or triaging a potentially leaked credential — it gives you an immediate picture of what would be affected.
