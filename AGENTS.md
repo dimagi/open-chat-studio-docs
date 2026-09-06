@@ -30,14 +30,14 @@ Do **not** invoke `mkdocs` directly — the project uses Zensical, which reads `
 Each top-level docs folder has a strict content contract — keep content in the right place:
 
 | Folder           | Audience                | Contains                                | Must not contain                         |
-|------------------|--------------------------|-----------------------------------------|------------------------------------------|
-| `tutorials/`     | End users (first-time)  | Guided, end-to-end walkthroughs         | Advanced config, code, references        |
+|------------------|-------------------------|-----------------------------------------|------------------------------------------|
+| `tutorials/`     | All users (first-time)  | Guided, end-to-end walkthroughs         | Advanced config, code, references        |
 | `how-to/`        | All users               | Task-focused step-by-steps              | Code snippets, in-depth troubleshooting  |
 | `concepts/`      | All users               | "What" and "why" explanations           | API/code, jargon                         |
 | `tech-hub/`      | Developers / advanced   | API refs, code, advanced config         | Concept recap (link instead)             |
-| `chat_widget/`   | Widget integrators      | Widget-only reference and integration   | General OCS user content                 |
+| `chat_widget/`   | Developers              | Widget-only reference and integration   | General OCS user content                 |
 
-Full guidelines: `.claude/checklists/page-type-contract.md`
+See full guidelines: `.claude/checklists/page-type-contract.md` for detail when creating new pages or editing long pages > 100 lines.
 
 ## Branch Workflow
 
@@ -62,14 +62,13 @@ Manual edits are fine but should match the existing style.
 
 ## Releases
 
-Use `/create-release <tag> <title>` to draft a GitHub release from the diff of `docs/changelog.md` since the last release. Releases are created as drafts for human review.
+Use `/create-release <tag> <title>` to draft a GitHub release from the diff of `docs/changelog.md` since the last release. Releases are human reviewed.
 
 ## Gotchas
 
-- `strict: true` in `mkdocs.yml` makes `zensical build` fail on broken internal links without needing `--strict`, so a plain local build matches CI. `serve` still only *warns* (it keeps serving so the dev loop isn't broken) — watch its console output,
-  or run a build before pushing if you've added cross-references.
+- `strict: true` in `mkdocs.yml` makes `zensical build` fail on broken internal links without needing `--strict`, so a plain local build matches CI. `serve` still only *warns* (it keeps serving so the dev loop isn't broken) — watch its console output, or run a build before pushing if you've added cross-references.
 - `docs/api/` is regenerated from OpenAPI by the `update-api-docs` workflow. Don't hand-edit.
 - `uv` self-ignores `.venv/` and `.cache/` by dropping `.gitignore` files inside them, so the repo `.gitignore` doesn't need entries for those.
-- Markdown linting runs on `markdownlint-cli2`, not classic `markdownlint-cli`. Rules live in `.markdownlint.yaml`, cli2 settings (including `ignores`) in `.markdownlint-cli2.yaml`.  
-  cli2 does **not** read `.markdownlintignore`.  
+- Markdown linting runs on `markdownlint-cli2`, not classic `markdownlint-cli`. Rules live in `.markdownlint.yaml`, cli2 settings (including `ignores`) in `.markdownlint-cli2.yaml`.
+  cli2 does **not** read `.markdownlintignore`.
 - cli2 auto-discovers a `.markdownlint.yaml` per directory and applies it to that directory's files. A subdirectory config replaces rather than merges, so always `extends` the parent to keep the root rules.
