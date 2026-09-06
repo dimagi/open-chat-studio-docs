@@ -12,3 +12,15 @@ ignores:
 
   # Generated from the OCS OpenAPI schema by the update-api-docs workflow; not hand-edited
   - docs/api/**
+
+# AGENTS.md files are read by Claude Code as system-context instructions, not rendered as
+# docs — same trust model as .claude/agents/*.md and .github/templates/*.md. They share a
+# directory with human-facing docs (README.md, README-*.md), so scope this to the exact
+# files rather than a directory cascade.
+overrides:
+  - filter:
+      - AGENTS.md
+      - .github/workflows/AGENTS.md
+    config:
+      extends: ./.markdownlint-prompts.yaml
+    combine: replace
