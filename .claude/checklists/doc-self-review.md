@@ -1,6 +1,6 @@
 # Documentation Self-Review Checklist
 
-- [ ] Page is no more than ~100 lines of markdown source, or split if longer.
+- [ ] Page is no more than ~100 lines of markdown source, or split into multiple pages if longer.
 - [ ] Content that belongs to a different page type (see `page-type-contract.md`) is separated into its own page rather than mixed in.
 - [ ] No duplication with other existing pages — merged or linked instead.
 - [ ] Page opens with a purpose statement: what it covers and why it matters.
@@ -8,5 +8,5 @@
 - [ ] Enough internal links to and from related content.
 - [ ] Formatting and page structure are consistent with existing docs.
 - [ ] Sentences are under 25 words.
-- [ ] Semantic linefeeds are used (one sentence per line).
+- [ ] Semantic linefeeds are used (one sentence per line) and not breaking lines by fixed column width.
 - [ ] Admonitions (`!!! note`, `!!! warning`) are used only for genuine notes, warnings, or tips — not as a formatting crutch.

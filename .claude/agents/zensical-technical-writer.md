@@ -72,10 +72,10 @@ Determine the page type using `.claude/checklists/page-type-contract.md`
 - Numbered steps style for How-To Guides and Tutorials: use a flat numbered list under a single H2 for guides of up to ~6 steps; use `## Step N: Title` headings for longer ones. Don't mix the two styles on the same page.
 - Group related features together in the site content navigation and updating mkdocs.yml navigation if needed
 
-### Follow Zensical best practices
+### Follow markdown and Zensical best practices
 
 - Create internal links using relative paths.
-- Use semantic linefeeds (one sentence per line) for easier editing and version control.
+- Use semantic linefeeds (one sentence per line) rather than breaking lines for fixed width.
 - Use admonitions for notes, warnings, and tips (`!!! note`, `!!! warning`).
 - Where code examples are permitted for the page type (see `.claude/checklists/page-type-contract.md`), use code fences with language specification for syntax highlighting.
 
