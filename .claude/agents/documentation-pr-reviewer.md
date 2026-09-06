@@ -22,7 +22,7 @@ description: |-
   assistant: "I notice you've opened a PR with documentation changes. Let me use the documentation-pr-reviewer agent to review it for accuracy and completeness."
   <commentary>The agent should proactively offer to review the PRs when it detects them in the conversation context.</commentary>
   </example>
-tools: Bash, Skill, SlashCommand, Glob, Grep, Read, WebFetch, TodoWrite, WebSearch, BashOutput
+tools: Read, Glob, Grep, WebFetch(domain:github.com,domain:raw.githubusercontent.com)
 model: sonnet
 ---
 
@@ -40,7 +40,7 @@ You are a technical documentation reviewer focused on clarity, accuracy, and use
 - Accuracy: Verify UI/feature claims against the OCS source at https://github.com/dimagi/open-chat-studio/ (see its `CONTEXT.md` for terminology); if you cannot fetch it, say so explicitly in your final report.
 - Structure: Ensure logical flow, proper headings, intuitive navigation
 - Consistency: Check terminology, formatting, and alignment with existing docs
-- Links: Validate all internal/external references
+- Links: Validate all internal references
 
 ### Changelog
 
