@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Sep 7, 2026
+* **CHANGE** The **Create from assistant** button has been removed from the Collections page. It built an [indexed collection](concepts/collections/indexed.md) from an OpenAI assistant's file-search files, a migration path for a feature that has itself been removed. Create an indexed collection and upload the files to it directly instead.
+
 ## Sep 4, 2026
 * **NEW** Added support for OpenAI's **GPT-6 Astra** model, which can now be selected on the OpenAI provider. It offers a 1,050,000-token context window and configurable reasoning effort (low, medium, high, xhigh, max); temperature and top-p are not supported. Note that prompts longer than 272,000 tokens are billed by OpenAI at a higher rate than the cost Open Chat Studio reports.
 * **NEW** The **Export** button on a chatbot session's **Messages** tab now downloads that single session's messages as a CSV.
