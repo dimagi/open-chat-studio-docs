@@ -1,3 +1,18 @@
+# Update Confluence Release Table Workflow
+#
+# Publishes a row to the Confluence release table for a published GitHub release —
+# runs scripts/update_confluence_release.py with the release's tag, URL, and body
+# pulled from either the triggering release event or a manual re-run.
+#
+# Triggered on: release (published); or workflow_dispatch with a required
+# release_tag input (manual re-run/backfill for an existing release)
+# Requirements: CONFLUENCE_BASE_URL, CONFLUENCE_EMAIL, CONFLUENCE_API_TOKEN secrets
+#
+# Notes:
+# - update_confluence_release.py always inserts a new row — rerunning for a tag
+#   that's already on the page adds a duplicate row rather than updating it in
+#   place, so only backfill tags that aren't there yet.
+
 name: Update Confluence Release Table
 
 on:
@@ -24,6 +39,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v7
+        with:
+          persist-credentials: false
 
       - name: Install uv
         uses: astral-sh/setup-uv@v7
@@ -32,15 +49,17 @@ jobs:
         if: github.event_name == 'workflow_dispatch'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_TAG_INPUT: ${{ github.event.inputs.release_tag }}
         run: |
-          TAG="${{ github.event.inputs.release_tag }}"
+          TAG="$RELEASE_TAG_INPUT"
           gh release view "$TAG" --json body,tagName,url > release.json
+          DELIMITER="RELEASE_BODY_EOF_$(openssl rand -hex 16)"
           {
             echo "RELEASE_TAG=$(jq -r .tagName release.json)"
             echo "RELEASE_URL=$(jq -r .url release.json)"
-            echo "RELEASE_BODY<<RELEASE_BODY_EOF"
+            echo "RELEASE_BODY<<$DELIMITER"
             jq -r .body release.json
-            echo "RELEASE_BODY_EOF"
+            echo "$DELIMITER"
           } >> "$GITHUB_ENV"
 
       - name: Resolve release info from release event
@@ -50,12 +69,13 @@ jobs:
           EVENT_URL: ${{ github.event.release.html_url }}
           EVENT_BODY: ${{ github.event.release.body }}
         run: |
+          DELIMITER="RELEASE_BODY_EOF_$(openssl rand -hex 16)"
           {
             echo "RELEASE_TAG=$EVENT_TAG"
             echo "RELEASE_URL=$EVENT_URL"
-            echo "RELEASE_BODY<<RELEASE_BODY_EOF"
+            echo "RELEASE_BODY<<$DELIMITER"
             printf '%s\n' "$EVENT_BODY"
-            echo "RELEASE_BODY_EOF"
+            echo "$DELIMITER"
           } >> "$GITHUB_ENV"
 
       - name: Update Confluence release table
