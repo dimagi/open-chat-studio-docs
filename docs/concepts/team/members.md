@@ -55,3 +55,4 @@ Removing a member revokes their access immediately; they must be invited again t
 - [Team Settings](index.md)
 - [User Groups](groups.md)
 - [Integrations](integrations.md)
+- [Developers](developer.md)

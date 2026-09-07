@@ -1,9 +1,9 @@
 # Developers
 
-The **Developers** section of Team Settings groups the tools your team uses to extend and integrate with Open Chat Studio: [Custom Actions](#custom-actions) and [OAuth applications](#oauth-applications).
+The **Developers** section of Team Settings groups the tools your team uses to extend and integrate with Open Chat Studio: [Custom actions](#custom-actions) and [OAuth applications](#oauth-applications).
 Both are available only to **Team Admins** and **Super Admins** — see [User Groups](groups.md) for what each role can access.
 
-## Custom Actions
+## Custom actions
 
 A [Custom Action](../llm_custom_action.md) lets a chatbot call an external HTTP service during a conversation, using an OpenAPI schema you provide.
 The Developers section lists every Custom Action registered for your team, and lets you add, edit, or run a manual health check on one.
@@ -34,4 +34,5 @@ For the full technical integration guide — endpoints, PKCE setup, requesting a
 - [Team Settings](index.md)
 - [Custom Actions](custom_actions.md)
 - [Getting Started with OAuth2](../../api/getting_started_with_oauth.md)
+- [Members & Access](members.md)
 - [User Groups](groups.md)

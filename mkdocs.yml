@@ -171,13 +171,13 @@ nav:
     - Team Settings:
       - concepts/team/index.md
       - Integrations: concepts/team/integrations.md
-      - Members & Access: concepts/team/members.md
       - concepts/team/llm_providers.md
       - concepts/team/speech_providers.md
       - concepts/team/authentication_providers.md
       - concepts/team/messaging_providers.md
-      - Custom Actions: concepts/team/custom_actions.md
+      - Members & Access: concepts/team/members.md
       - Developers: concepts/team/developer.md
+      - Custom Actions: concepts/team/custom_actions.md
       - User Groups: concepts/team/groups.md
     - Collections:
       - concepts/collections/index.md

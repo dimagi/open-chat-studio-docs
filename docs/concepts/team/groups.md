@@ -23,7 +23,7 @@ Users can be put in one or multiple groups.
 ### Notes
 
 - **Super Admin** grants full access to every team resource and is assigned by default to whoever creates a team.
-- **Chatbot Admin** already has full access to a chatbot's sessions as part of managing it, so the read-only "View chat transcripts and sessions" row above mainly applies to **Chat Viewer** and **Annotation Reviewer**.
+- **Chatbot Admin** already has full access to a chatbot's sessions as part of managing it. The read-only "View chat transcripts and sessions" row above mainly applies to **Chat Viewer** and **Annotation Reviewer**.
 - **Annotation Reviewer** access is limited to annotation queues and chat transcripts — it doesn't include managing queues, chatbots, or other app areas.
 - A team must always keep at least one **Team Admin** (or Super Admin); OCS blocks removing the last one.
 
