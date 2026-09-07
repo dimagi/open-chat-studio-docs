@@ -1,6 +1,6 @@
 # Configure LLM Service Providers
 
-LLM service providers are configured in your Team settings under "LLM and Embedding Model Service Providers". Before configuring a provider, make sure you have an active account with the provider and its API key ready.
+LLM service providers are configured from **Team Settings → [Integrations](../concepts/team/integrations.md)**, filtered to the **LLM & embedding** category. Before configuring a provider, make sure you have an active account with the provider and its API key ready.
 
 ## Prerequisites
 
@@ -12,19 +12,17 @@ LLM service providers are configured in your Team settings under "LLM and Embedd
 
 ## Adding a New Provider
 
-1. Go to your team settings
-2. Navigate to "LLM and Embedding Model Service Providers"
-3. Click "Add Provider"
-4. Select your provider from the dropdown (see [supported providers](../concepts/team/llm_providers.md) for the full list)
-5. Enter your API key, plus any other details your provider needs — for example, a [LiteLLM](../concepts/team/llm_providers.md) provider also requires the **Base URL** of your proxy
-6. Save the configuration
+1. Go to **Team Settings → [Integrations](../concepts/team/integrations.md)**
+2. Click **Add integration**, then choose your provider from the **LLM & embedding** group (see [supported providers](../concepts/team/llm_providers.md) for the full list)
+3. Enter your API key, plus any other details your provider needs — for example, a [LiteLLM](../concepts/team/llm_providers.md) provider also requires the **Base URL** of your proxy
+4. Save the configuration
 
 !!! tip "Base URL"
 
     You don't need to include the `/v1` suffix on a LiteLLM Base URL — Open Chat Studio appends it if it's missing, so `https://litellm.example.com` is saved as `https://litellm.example.com/v1`.
 
 !!! note
-    After saving, the provider page shows a **Models** tab listing the LLM models it supports, with filter chips to switch between chat and embedding models. Each model shows its [max token limit](../concepts/llm.md#max-token-limit) and pricing. A provider with no pre-configured models, such as LiteLLM, shows an empty list until you add a [custom model](../how-to/add_custom_llm_model.md).
+    After saving, the provider page shows a **Models** tab listing the LLM models it supports, with filter pills — **All**, **Chat**, **Embedding**, and **Custom** — to narrow the list. Each model shows its [max token limit](../concepts/llm.md#max-token-limit) and pricing. A provider with no pre-configured models, such as LiteLLM, shows an empty list until you add a [custom model](../how-to/add_custom_llm_model.md).
 
 ## Verifying Your Credentials
 
