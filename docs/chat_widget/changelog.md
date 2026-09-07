@@ -29,6 +29,10 @@ Check your current HTML implementation and compare it with the [latest propertie
     sunset date shown on each entry, and may stop working. Upgrade to a supported version
     to stay current — see the [Quick Upgrade Steps](#quick-upgrade-steps) above.
 
+### v0.13.0
+
+* Collect a chatbot's consent form in the widget. If the chatbot's published version has a consent form, the welcome message and starter questions behave as usual, and the participant is only asked to consent when they send their first message: the composer is replaced by the consent text and an "I agree" button, and accepting sends the message they already typed. The browser remembers the acceptance against the consent form's version, so a returning participant isn't asked again and republishing the form asks everyone again with the new text. Whether an acceptance survives the visit follows `persistent-session` — see [consent forms](reference.md#consent-forms).
+
 ### v0.12.0 (2026-08-27)
 
 * Add an `authTokenProvider` property for chatbots whose Chat Widget & API channel requires an OAuth token. Set it to a function returning a token (or a promise for one); the widget calls it each time a chat session starts and sends the result as a bearer token. `authTokenProvider` is a JavaScript property with no HTML attribute equivalent, and your own backend must mint the tokens, so a copy-paste snippet embed cannot use this mode. See [OAuth credential mode](reference.md#oauth-credential-mode) — note that the channel setting this depends on is not yet configurable in Open Chat Studio.
