@@ -52,6 +52,6 @@ This section is only visible to Team Admins. See [Migrate a Team to Another Inst
 ## See also
 
 - [Integrations](integrations.md)
-- [Members & Access](members.md)
+- [Members & access](members.md)
 - [Developers](developer.md) — Custom Actions and OAuth applications
 - [User Groups](groups.md)

@@ -34,5 +34,5 @@ For the full technical integration guide — endpoints, PKCE setup, requesting a
 - [Team Settings](index.md)
 - [Custom Actions](custom_actions.md)
 - [Getting Started with OAuth2](../../api/getting_started_with_oauth.md)
-- [Members & Access](members.md)
+- [Members & access](members.md)
 - [User Groups](groups.md)
