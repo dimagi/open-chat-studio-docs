@@ -12,6 +12,7 @@ hide:
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
 ## Sep 7, 2026
+* **BUG** Long messages sent over Twilio channels (WhatsApp, SMS) are now split correctly when they contain emoji or special symbols such as em-dashes. Twilio counts those characters twice against its 1,600-character limit, so messages containing them could previously be rejected and never reach the participant.
 * **CHANGE** The **Create from assistant** button has been removed from the Collections page. It built an [indexed collection](concepts/collections/indexed.md) from an OpenAI assistant's file-search files, a migration path for a feature that has itself been removed. Create an indexed collection and upload the files to it directly instead.
 
 ## Sep 4, 2026
