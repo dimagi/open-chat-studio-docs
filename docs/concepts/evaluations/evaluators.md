@@ -42,6 +42,8 @@ The available variables depend on the evaluator's evaluation mode.
 | `{output.content}` | The dataset message's AI response content. This may be an expected/reference answer (for manually created datasets) or the actual AI response (for session-cloned datasets). |
 | `{generated_response}` | The generated response from your chatbot (if generation is enabled) |
 | `{context.[parameter]}` | Any context variable, e.g. `{context.topic}` |
+| `{participant_data.[key]}` | Any field from the participant's data, e.g. `{participant_data.name}` |
+| `{session_state.[key]}` | Any field from the session's state, e.g. `{session_state.step}` |
 | `{full_history}` | Complete conversation history as formatted text |
 
 #### Session-level variables
@@ -52,11 +54,13 @@ In session-level mode, `{input.content}` and `{output.content}` are empty. Use t
 |---|---|
 | `{full_history}` | The full session transcript captured at the time of the last AI message |
 | `{context.[parameter]}` | Any context variable, e.g. `{context.current_datetime}` |
+| `{participant_data.[key]}` | Any field from the participant's data, e.g. `{participant_data.name}` |
+| `{session_state.[key]}` | Any field from the session's state, e.g. `{session_state.step}` |
 
 !!! note
     Generation is not available for session-level datasets, so `{generated_response}` is not applicable in session-level prompts.
 
-See [Evaluation Datasets](dataset.md) for how data is mapped into these fields.
+See [Evaluation Datasets](dataset.md) for how data is mapped into these fields, and [Dataset Structure](../../tech-hub/evaluations/dataset-structure.md#dataset-fields) for where `participant_data` and `session_state` come from.
 
 ### Output Schema
 
