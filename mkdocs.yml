@@ -168,8 +168,9 @@ nav:
       - Router Nodes: concepts/pipelines/router_nodes.md
       - Conversation History: concepts/pipelines/history.md
       - concepts/pipelines/parallel.md
-    - Team:
+    - Team Settings:
       - concepts/team/index.md
+      - Integrations: concepts/team/integrations.md
       - concepts/team/llm_providers.md
       - concepts/team/speech_providers.md
       - concepts/team/authentication_providers.md

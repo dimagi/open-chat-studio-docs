@@ -67,7 +67,7 @@ Turn.io does not support automatic webhook configuration, so you set the webhook
 2. In your Turn.io account, go to **Settings → API & Webhooks**.
 3. Select **Add a webhook** and paste the URL from step 1.
 4. Copy the webhook's **HMAC secret** from the same Turn.io screen. If it does not have one yet, generate it there first.
-5. Back in Open Chat Studio, go to **Team Settings**, then in the **Messaging Providers** section edit the Turn.io provider, paste the value into **Webhook HMAC Secret**, and save.
+5. Back in Open Chat Studio, go to **Team Settings → [Integrations](../concepts/team/integrations.md)**, filter by **Messaging**, edit the Turn.io provider, paste the value into **Webhook HMAC Secret**, and save.
 6. Send a test message on WhatsApp and confirm the chatbot replies.
 
 !!! warning "Each chatbot has its own Turn.io webhook URL"

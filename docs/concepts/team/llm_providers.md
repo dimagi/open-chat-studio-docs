@@ -15,11 +15,17 @@ Open Chat Studio is designed to be flexible, and can connect to any LLM provider
 * [Voyage AI (embedding only)](https://docs.voyageai.com/docs/embeddings)
 * [LiteLLM](https://docs.litellm.ai/docs/simple_proxy) (bring your own proxy)
 
+Once a provider is saved, its edit page splits into tabs:
+
+- **Configuration** — where credentials live, along with their [verification state](#credential-verification).
+- **Models** — every model available for this provider.
+- **Usages** — everywhere in your team that references this provider (see [Finding where a provider is used](index.md#finding-where-a-provider-is-used)).
+
 ## LLM Models
 
 Each provider comes with its most commonly used models already available in OCS — models that power chatbot conversations, and embedding models used for searching [knowledge bases](../collections/indexed.md).
 
-On a provider's page, the **Models** tab lists every model it offers. Filter chips above the list let you switch between chat models and embedding models, and each chip shows how many models match — so the count always matches what's filtered below it.
+On the **Models** tab, filter pills — **All**, **Chat**, **Embedding**, and **Custom** — narrow the list to one kind of model at a time, and each pill shows a live count of models matching that filter. Use **Add custom model** to add a model that isn't pre-configured.
 
 If a model you need isn't pre-configured, see [Add a Custom LLM Model](../../how-to/add_custom_llm_model.md) for how to add one.
 
