@@ -6,12 +6,25 @@ ignores:
   - site/**
   - .venv/**
 
-  # CLAUDE.md files are just an @-include pointing at AGENTS.md, so they dont need linting
+  # CLAUDE.md files are just an @-include pointing at AGENTS.md, so they fail MD041 (no H1)
   - CLAUDE.md
+  - .github/workflows/CLAUDE.md
   - .github/workflows/CLAUDE.md
 
   # Generated from the OCS OpenAPI schema by the update-api-docs workflow; not hand-edited
   - docs/api/**
+
+# AGENTS.md files are read by Claude Code as system-context instructions, not rendered as
+# docs — same trust model as .claude/agents/*.md and .github/templates/*.md. They share a
+# directory with human-facing docs (README.md, README-*.md), so scope this to the exact
+# files rather than a directory cascade.
+overrides:
+  - filter:
+      - AGENTS.md
+      - .github/workflows/AGENTS.md
+    config:
+      extends: ./.markdownlint-prompts.yaml
+    combine: replace
 
 # AGENTS.md files are read by Claude Code as system-context instructions, not rendered as
 # docs — same trust model as .claude/agents/*.md and .github/templates/*.md. They share a
