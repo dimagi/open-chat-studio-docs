@@ -29,7 +29,7 @@ Use this when a single chatbot needs a different rate than the team default — 
 3. Set the **Trace sample rate** field to a decimal between `0.0` and `1.0`.
 4. Save.
 
-Leave **Trace sample rate** blank to inherit the team-wide **Sample rate** from the chatbot's [trace provider](../concepts/team/index.md#team-configuration).
+Leave **Trace sample rate** blank to inherit the team-wide **Sample rate** from the chatbot's [trace provider](../concepts/team/integrations.md).
 
 !!! tip "Turning off Langfuse tracing for one chatbot"
     Setting **Trace sample rate** to exactly `0.0` stops Langfuse traces for that chatbot completely, without removing the provider or affecting other chatbots. Builtin tracing keeps recording every turn for that chatbot as usual.
