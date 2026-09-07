@@ -26,7 +26,7 @@ Using the lower level `wait_for_next_input` function you can do the same thing:
 def main(input, **kwargs):
     b = get_node_output("NodeB")
     c = get_node_output("NodeC")
-    if b is None and c is None:
+    if b is None or c is None:
         # abort until both are available
         wait_for_next_input()
     return f"{b}\n{c}"
@@ -56,7 +56,7 @@ The `Merge` node will get outputs from `NodeA` and either `NodeB` or `NodeC`. Yo
     def main(input, **kwargs):
         b = get_node_output("NodeB")
         c = get_node_output("NodeC")
-        b_or_c = b or c
+        b_or_c = b is None or c is None
         if not b_or_c:
             # wait until we have either b or c
             wait_for_next_input()
