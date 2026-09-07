@@ -17,6 +17,7 @@ Global settings are managed at the Team level, from the [Integrations](integrati
 - Messaging
 - Authentication
 - Tracing
+- MCP (only visible on teams with that feature enabled)
 
 A single **Add integration** button connects a new provider in any category.
 
@@ -37,6 +38,10 @@ This is most useful before rotating an API key, deprecating a provider, or triag
 The [Members & access](members.md) section lists everyone with access to your team, active members and pending invitations together in one table.
 Team Admins invite people, assign them roles, and remove access from there.
 
+## Extending and integrating with your chatbots
+
+The [Developers](developer.md) section groups the tools for extending Open Chat Studio: [Custom Actions](custom_actions.md), which let a chatbot call an external HTTP service, and OAuth applications, which let external systems read or write your team's data through the API.
+
 ## Moving a team to another instance
 
 To move a team — its chatbots, configuration, and chat history — to a different OCS server, see [Migrate a Team to Another Instance](../../tech-hub/migrate_team.md).
@@ -45,6 +50,5 @@ To move a team — its chatbots, configuration, and chat history — to a differ
 
 - [Integrations](integrations.md)
 - [Members & Access](members.md)
-- [Custom Actions](custom_actions.md)
+- [Developers](developer.md) — Custom Actions and OAuth applications
 - [User Groups](groups.md)
-- [OAuth Applications](../../api/getting_started_with_oauth.md) — Team Admins can register OAuth applications so external integrations can act on behalf of the team
