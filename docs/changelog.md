@@ -11,6 +11,10 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Sep 7, 2026
+* **CHANGE** OpenAI Assistants no longer run. The assistant pipeline node has been removed, so a pipeline that still holds one opens in the editor with that node marked as a **Removed Node** but no longer builds — its chatbot cannot answer participants until you delete the node and put an [LLM node](concepts/pipelines/nodes.md#llm-node) in its place. OpenAI retired the Assistants API on 26 August 2026, so these chatbots had already stopped working in practice. Your assistant records are not deleted by this release, but nothing in Open Chat Studio can reach them any more and a later release will remove them for good. See [Migrate Assistants](how-to/assistants_migration.md).
+* **CHANGE** The `upload_to_assistant` field on a [Python node](tech-hub/python_node.md#attachments) attachment is now inert. It is always `False` and has no effect, and is kept only so that code reading it keeps working.
+
 ## Sep 4, 2026
 * **NEW** Added support for OpenAI's **GPT-6 Astra** model, which can now be selected on the OpenAI provider. It offers a 1,050,000-token context window and configurable reasoning effort (low, medium, high, xhigh, max); temperature and top-p are not supported. Note that prompts longer than 272,000 tokens are billed by OpenAI at a higher rate than the cost Open Chat Studio reports.
 * **NEW** The **Export** button on a chatbot session's **Messages** tab now downloads that single session's messages as a CSV.

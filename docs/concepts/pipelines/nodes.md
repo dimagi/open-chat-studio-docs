@@ -68,3 +68,9 @@ Execute custom Python code for logic, data processing, or external API calls.
 - **[Debugging](../../tech-hub/python_node.md#debugging-with-print)** — use `print()` to capture diagnostic output, visible in the trace detail view.
 
 See the [Python Node](../../tech-hub/python_node.md) page for full documentation.
+
+## Removed Nodes
+
+When a node type is retired from Open Chat Studio, a pipeline that still contains one of those nodes keeps opening in the editor, but the node renders as a **Removed Node** — a badge, plus a message naming the node type to use instead. The pipeline itself no longer builds, so its chatbot cannot run until you delete the removed node and put a supported one in its place.
+
+The assistant node is a node type in this state: see [OpenAI Assistants (Removed)](../assistants.md) for background and the [migration guide](../../how-to/assistants_migration.md) for how to replace one.

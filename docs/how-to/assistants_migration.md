@@ -4,7 +4,10 @@ title: Migrate Assistants
 
 # Migrate Assistants
 
-OpenAI has [deprecated](https://platform.openai.com/docs/deprecations#2025-08-20-assistants-api) Assistants and will completely remove support on 2026-08-26.
+OpenAI [retired](https://platform.openai.com/docs/deprecations#2025-08-20-assistants-api) the Assistants API on 26 August 2026. Open Chat Studio has removed the assistant pipeline node as a result — a pipeline that still contains an assistant node no longer builds, so its chatbot cannot run until you replace that node. See the [OpenAI Assistants (Removed)](../concepts/assistants.md) page for background.
+
+!!! warning "Affected chatbots are already down"
+    A chatbot whose pipeline still holds an assistant node cannot answer participants. Follow the steps below to replace that node with an LLM node and bring it back.
 
 Open Chat Studio supports all the features of Assistants in alternative ways as shown in the table below:
 
@@ -32,7 +35,7 @@ To use OpenAI's code interpreter tool without using Assistants:
 
 ### General Steps
 
-1. **Create an indexed collection** using the same files your assistant uses under its "file search" tool.
+1. **Create an indexed collection** using the same files your assistant used under its "file search" tool.
 2. **Set up or update your chatbot** to reference this collection.
 
 ### Step 1: Create the Collection
@@ -42,6 +45,9 @@ Click on the **"Collections"** tab in the sidebar and click the **"Create from A
 - Select the assistant you'd like to migrate.
 - Give your new collection a name.
 - Click **"Create Collection"**.
+
+!!! note
+    This button is the last place in Open Chat Studio that still lists your assistants. The Assistants pages themselves have been removed, so you can no longer open an assistant to check its configuration or files beforehand — select it by name here.
 
 #### What Happens Behind the Scenes?
 
@@ -55,7 +61,8 @@ Click on the **"Collections"** tab in the sidebar and click the **"Create from A
 Once your collection is created:
 
 - Open your Chatbot's pipeline editor.
-- Add an [LLM node][llm-node] to the pipeline. If you have been using an assistant node, this LLM node should **replace** your assistant node.
+- If the pipeline still contains an assistant node, it renders as a **Removed Node** and the pipeline will not build. Delete it.
+- Add an [LLM node][llm-node] to the pipeline in its place.
 - Within the node, select your **newly created indexed collection**.
 
 You're done!
