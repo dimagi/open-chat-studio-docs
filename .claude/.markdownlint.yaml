@@ -1,6 +1,7 @@
-# Claude Agent and command definitions are prompts, not templates or user documentation.
+# Files in this directory include Claude Agent and command definitions
+# which are prompts parsed by Claude Agents
 
-# They must inherit the standard common prompt rules
-# These linting rules cascades to both .claude/agents/ and .claude/commands/.
+# They inherit the basic linting rules as well as the common prompt rules
+# These linting rules cascade to all folders in the .claude folder.
 
 extends: ../.markdownlint-prompts.yaml
