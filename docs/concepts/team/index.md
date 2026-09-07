@@ -32,6 +32,11 @@ Every provider's edit page has a **Usages** tab. Opening it lists everything in 
 
 This is most useful before rotating an API key, deprecating a provider, or triaging a potentially leaked credential — it gives you an immediate picture of what would be affected.
 
+## Managing members
+
+The [Members & access](members.md) section lists everyone with access to your team, active members and pending invitations together in one table.
+Team Admins invite people, assign them roles, and remove access from there.
+
 ## Moving a team to another instance
 
 To move a team — its chatbots, configuration, and chat history — to a different OCS server, see [Migrate a Team to Another Instance](../../tech-hub/migrate_team.md).
@@ -39,8 +44,7 @@ To move a team — its chatbots, configuration, and chat history — to a differ
 ## See also
 
 - [Integrations](integrations.md)
+- [Members & Access](members.md)
 - [Custom Actions](custom_actions.md)
 - [User Groups](groups.md)
 - [OAuth Applications](../../api/getting_started_with_oauth.md) — Team Admins can register OAuth applications so external integrations can act on behalf of the team
-
-<!--- TODO: user management -->
