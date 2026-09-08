@@ -60,7 +60,7 @@ Use **Allowed Operations** to select which actions from the external service you
 
 ## Health checks
 
-Open Chat Studio monitors Custom Actions by automatically checking the configured service every 5 minutes.
+Open Chat Studio monitors Custom Actions by automatically checking the configured service every hour.
 
 - You can also trigger a [manual health check](./health_custom_action.md#manual-health-checks) from the UI. Manual checks run immediately and return the current status without waiting for the scheduled check.
 - If the [health status](./health_custom_action.md#health-status-values) indicates that the service is not **Up**, follow the troubleshooting guidance on that page.

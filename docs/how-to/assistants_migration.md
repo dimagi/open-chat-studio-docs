@@ -4,9 +4,11 @@ title: Migrate Assistants
 
 # Migrate Assistants
 
-OpenAI has [deprecated](https://platform.openai.com/docs/deprecations#2025-08-20-assistants-api) Assistants and will completely remove support on 2026-08-26.
+OpenAI [deprecated](https://platform.openai.com/docs/deprecations#2025-08-20-assistants-api) Assistants and removed support for the Assistants API on 2026-08-26.
+Open Chat Studio's Assistants pages were removed on 2026-09-02 — assistants can no longer be created, viewed, edited, or archived in OCS.
 
-Open Chat Studio supports all the features of Assistants in alternative ways as shown in the table below:
+If a chatbot or pipeline still uses an assistant node, it keeps running, but you can no longer manage that assistant from OCS.
+Use this guide to move it onto native OCS features, as shown in the table below:
 
 | Assistant Feature | Replacement Feature                                                                             |
 |-------------------|-------------------------------------------------------------------------------------------------|
@@ -37,18 +39,12 @@ To use OpenAI's code interpreter tool without using Assistants:
 
 ### Step 1: Create the Collection
 
-Click on the **"Collections"** tab in the sidebar and click the **"Create from Assistant"** button in the top right.
+Create the collection manually — there's no automated import from an assistant, since assistants are no longer visible in OCS.
 
-- Select the assistant you'd like to migrate.
-- Give your new collection a name.
-- Click **"Create Collection"**.
-
-#### What Happens Behind the Scenes?
-
-- A new **indexed collection** is created using the same LLM provider as your assistant.
-- All files from the assistant’s "file search" tool are **copied** to this new collection.
-- A **vector store** is created at OpenAI for the collection.
-- The assistant’s original vector store and files remain unchanged.
+- Click on the **"Collections"** tab in the sidebar and click **"Add new"**.
+- Choose **[Indexed Collection][collections]** and give it a name.
+- Choose between a [Remote Index](../concepts/collections/indexed.md#remote-index) and a [Local Index](../concepts/collections/indexed.md#local-index). A remote index is closest to how an assistant's "file search" tool worked — the files are indexed by the LLM provider you select, so pick the same provider your assistant used.
+- Upload the same files your assistant used for its "file search" tool. If you no longer have local copies, download them from your file storage at OpenAI.
 
 ### Step 2: Update your chatbot
 

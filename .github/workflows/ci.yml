@@ -1,3 +1,16 @@
+# CI Workflow
+#
+# Builds the Zensical docs site and publishes it to GitHub Pages.
+#
+# Triggered on: push to main
+# Requirements: none — deploy-pages authenticates via the job's own Pages/OIDC
+# permissions, no external secrets needed
+#
+# Notes:
+# - No concurrency group, so back-to-back pushes to main can deploy in parallel
+#   with no ordering guarantee — a slower, older run can finish after a newer one
+#   and leave stale content live.
+
 name: ci
 on:
   push:
@@ -14,12 +27,15 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     permissions:
-      contents: read
-      pages: write
-      id-token: write
+      contents: read   # needed for checkout
+      pages: write     # needed by actions/deploy-pages
+      id-token: write  # needed by actions/deploy-pages (OIDC)
+
     steps:
       - uses: actions/configure-pages@v6
       - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
 
       - name: Install uv
         uses: astral-sh/setup-uv@v7

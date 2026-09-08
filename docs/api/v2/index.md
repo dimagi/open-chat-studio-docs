@@ -43,6 +43,8 @@ Simplified per-tag references for LLM consumption:
 
 | Method | Path | Summary |
 | --- | --- | --- |
+| POST | `/api/v2/chatbots/{id}/pipeline/edges/` | Wire Pipeline Nodes |
+| DELETE | `/api/v2/chatbots/{id}/pipeline/edges/{edge_id}/` | Unwire two Pipeline Nodes |
 | POST | `/api/v2/chatbots/{id}/pipeline/nodes/` | Add a Pipeline Node |
 | PATCH | `/api/v2/chatbots/{id}/pipeline/nodes/{node_id}/` | Edit a Pipeline Node |
 | DELETE | `/api/v2/chatbots/{id}/pipeline/nodes/{node_id}/` | Remove a Pipeline Node |

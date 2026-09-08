@@ -8,11 +8,11 @@ Open Chat Studio lets you filter data tables by typing a plain-English query ins
 
 Natural language filtering is available on the following tables:
 
-- Sessions
-- Messages
-- Traces
-- Participants
-- Notifications
+- [Sessions](../concepts/sessions.md)
+- [Messages](../concepts/team/messaging_providers.md)
+- [Traces](../concepts/tracing.md)
+- [Participants](../concepts/participant_data.md)
+- [Notifications](../concepts/notifications.md)
 
 ## How to use it
 

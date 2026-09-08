@@ -60,6 +60,9 @@ For step-by-step instructions on completing specific tasks, see the [How-to guid
 [Node](./pipelines/nodes.md)
 : A single processing step in a pipeline. Each node performs one task, such as calling an LLM, running custom code, or routing the conversation based on its content.
 
+[Notifications](notifications.md)
+: Alerts about problems with your chatbots — such as failed integrations or delivery errors — shown in-app and optionally by email, across every team you belong to.
+
 [Participant](participant_data.md)
 : The person chatting with a deployed chatbot through any channel — as distinct from an OCS user, who builds and manages chatbots.
 

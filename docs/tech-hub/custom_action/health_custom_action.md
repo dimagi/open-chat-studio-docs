@@ -4,7 +4,9 @@ Open Chat Studio regularly checks whether each Custom Action is available so you
 
 ## How Custom Action health checks work
 
-Automatic checks run every 5 minutes.
+Automatic checks run once every hour.
+If a check finds that a previously working Custom Action has gone down,
+a [notification](../../concepts/notifications.md) is sent to team members who can manage Custom Actions.
 
 ## Viewing health status
 
@@ -15,7 +17,8 @@ You can view the health status of your Custom Actions in two places in [Team Set
 
 ## Manual health checks
 
-In addition to automatic monitoring, you can manually trigger a health check at any time. This is useful when:
+In addition to automatic monitoring, you can manually trigger a health check at any time.
+This is useful when:
 
 - you have just configured a new Custom Action and want to verify connectivity immediately
 - you have made changes to your external service and want to confirm that it is still reachable
@@ -41,3 +44,7 @@ A Custom Action can report one of the following states:
     - the OpenAPI schema matches the deployed API
     - the external service is running and accepting connections
     - any firewall or network rules allow connections from Open Chat Studio
+
+## See also
+
+- [Notifications](../../concepts/notifications.md) — how health check failures and other issues are surfaced to your team
