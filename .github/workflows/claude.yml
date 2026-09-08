@@ -43,6 +43,7 @@ jobs:
       (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@claude')) ||
       (github.event_name == 'issues' && (contains(github.event.issue.body, '@claude') || contains(github.event.issue.title, '@claude')))
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions:
       id-token: write  # Needed for Claude Code Action
 
@@ -53,6 +54,9 @@ jobs:
         with:
           app-id: ${{ vars.OCS_AGENT_APP_ID }}
           private-key: ${{ secrets.OCS_AGENT_PRIVATE_KEY }}
+          permission-contents: write
+          permission-pull-requests: write
+          permission-issues: write
 
       - name: Checkout repository
         uses: actions/checkout@v7
@@ -75,3 +79,4 @@ jobs:
           github_token: ${{ steps.app-token.outputs.token }}
           claude_args: |
             --allowedTools "mcp__github_inline_comment__create_inline_comment,Bash(gh pr comment:*),Bash(gh pr create:*),Bash(gh pr diff:*),Bash(gh pr view:*),Bash(gh issue comment:*),Bash(gh issue edit:*),Bash(git add:*),Bash(git commit:*),Bash(git push:*),Bash(uv run zensical build:*),Bash(uv run zensical serve:*),Bash(uv sync --locked),Bash(uv run pytest:*),Read,Write,Edit"
+            --max-turns 60
