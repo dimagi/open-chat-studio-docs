@@ -1,6 +1,7 @@
 # Find Where a Provider Is Used
 
-Before rotating an API key, deprecating a provider, or triaging a potentially leaked credential, you need to know everywhere in your team that provider is referenced. Open Chat Studio surfaces this on the provider's own edit page, so you don't have to search chatbots, pipelines, and collections one by one.
+Before rotating an API key, deprecating a provider, or triaging a leaked credential, you need to know everywhere that provider is referenced.
+Open Chat Studio surfaces this on the provider's own edit page, so you don't have to search chatbots, pipelines, and collections one by one.
 
 ## Prerequisites
 

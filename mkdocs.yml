@@ -178,8 +178,9 @@ nav:
         - concepts/team/authentication_providers.md
         - concepts/team/messaging_providers.md
       - Members & Access: concepts/team/members.md
-      - Developers: concepts/team/developer.md
-      - Custom Actions: concepts/team/custom_actions.md
+      - Developers:
+        - concepts/team/developer.md
+        - Custom Actions: concepts/team/custom_actions.md
       - User Groups: concepts/team/groups.md
     - Collections:
       - concepts/collections/index.md
