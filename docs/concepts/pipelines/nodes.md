@@ -13,6 +13,22 @@ graph LR
     1. See a [simple example](./index.md#a-simple-example) of a pipeline with one node.
     2. See [chatbot workflow cookbook](../../how-to/workflow_cookbook.md) for examples of pipelines using different combinations of these node types.
 
+## Node Warnings and Errors
+
+The pipeline editor highlights nodes that need your attention:
+
+- A **red border** means the node has a configuration **error**. The pipeline cannot run until you fix it.
+- An **amber border**, together with a warning triangle in the node's header, means the node has a **warning**. Warnings are advisory — the pipeline still saves, runs, accepts a test message, and can be [versioned](../versioning.md).
+
+If a node has both an error and a warning, the red border takes precedence, since the error is the more urgent of the two.
+
+A node carries a warning when:
+
+- Its **node type** has been deprecated and will be removed in a future release.
+- Its **LLM model** has been [deprecated](../team/llm_providers.md#model-lifecycle-and-deprecation). The triangle names the deprecated model and the model to switch to, and the **LLM Model** field in the node's settings shows the same notice.
+
+A node that is affected by both shows a single triangle carrying both messages.
+
 ## LLM Node
 
 A conversational node using AI models. You can configure:

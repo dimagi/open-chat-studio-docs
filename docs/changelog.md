@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Sep 10, 2026
+* **BUG** Deprecating an LLM model no longer stops the chatbots using it. Previously those bots started replying with a configuration error the moment the deprecation shipped, and their pipelines could no longer be tested or versioned. A deprecated model now keeps working until it is removed, and the pipeline editor flags each affected node with a warning naming the model and its replacement so you can migrate in your own time. See [Model Lifecycle and Deprecation](concepts/team/llm_providers.md#model-lifecycle-and-deprecation).
+
 ## Sep 9, 2026
 * **CHANGE** Chatbot [events](concepts/events.md) — static triggers, timeout triggers and scheduled messages — are now available to every team. They were previously gated behind the `flag_events` feature flag, so a team administrator had to turn them on. Teams that already had the flag enabled see no change.
 
