@@ -11,6 +11,12 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Sep 10, 2026
+* **BUG** A file that fails to index in a [remote-index collection](concepts/collections/indexed.md#remote-index) now shows the LLM provider's own explanation — a rejected API key, an exceeded quota, a dropped connection — in the tooltip on its error badge. Previously the tooltip was empty, named only the internal error type, or gave the same generic message whatever the cause, and you had to check the server log to find out why. Note that the text comes from the provider verbatim, so it may include details the provider chose to include.
+* **BUG** A file whose indexing fails in an unexpected way now ends up marked as failed, with the reason shown. Previously such a file stayed **In progress** indefinitely, its badge spinning against a job that had already stopped.
+* **BUG** A file that belongs to more than one collection now records its indexing status and error reason per collection. Previously a failure in one collection overwrote the file's status in the others.
+* **BUG** Changing a collection's LLM provider now clears the previous provider's indexing error reasons, so old failures no longer show against files waiting to be re-indexed.
+
 ## Sep 9, 2026
 * **CHANGE** Chatbot [events](concepts/events.md) — static triggers, timeout triggers and scheduled messages — are now available to every team. They were previously gated behind the `flag_events` feature flag, so a team administrator had to turn them on. Teams that already had the flag enabled see no change.
 
