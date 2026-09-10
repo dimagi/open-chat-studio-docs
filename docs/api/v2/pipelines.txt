@@ -252,6 +252,7 @@ EdgeWrite:
   - pipeline_valid: boolean (required)
   - pipeline_errors: PipelineBuildErrors (required)
   - unwired_handles: object (required)
+  - deprecated_models: object (required)
 
 InspectOutputHandle:
   - handle: string (required)
@@ -284,6 +285,7 @@ NodeWrite:
   - pipeline_valid: boolean (required)
   - pipeline_errors: PipelineBuildErrors (required)
   - unwired_handles: object (required)
+  - deprecated_models: object (required)
 
 PatchedNodeUpdate:
   - label: string
@@ -314,6 +316,7 @@ PipelineWrite:
   - pipeline_valid: boolean (required)
   - pipeline_errors: PipelineBuildErrors (required)
   - unwired_handles: object (required)
+  - deprecated_models: object (required)
 
 PromptVariable:
   - label: string (required)

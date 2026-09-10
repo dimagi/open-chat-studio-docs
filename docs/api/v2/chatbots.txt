@@ -168,6 +168,7 @@ ChatbotInspect:
   - pipeline_valid: boolean (required)
   - pipeline_errors: Unknown (required)
   - unwired_handles: object (required)
+  - deprecated_models: object (required)
   - events: InspectEvents (required)
 
 ChatbotOptions:
