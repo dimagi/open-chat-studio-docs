@@ -21,16 +21,12 @@ You are a friendly bot. Be sure to reference the source material before answerin
 {source_material}
 ```
 
-## Assistant
-To add knowledge to your assistant, you must upload files to serve as the source material. When creating or editing your assistant, select the *file_search* or *code_interpreter* checkboxes to allow the assistant to read files.
+## Assistant (Removed)
 
-- [File search][file_search]: This allows the bot to search and reference information provided in uploaded files.
-- [Code Interpreter][code_interpreter]: This allows the bot to write and execute code to accomplish tasks.
+Assistant-type bots have been [removed](../concepts/assistants.md), so files can no longer be added to an assistant's *file_search* or *code_interpreter* tools. To give an LLM node the same file search knowledge, put the files in an [Indexed Collection](../concepts/collections/indexed.md) — the [migration guide](assistants_migration.md) walks through moving an assistant's files across.
 
 ### See also
 - [Source Material][source_material_concept]
 
 [source_material_concept]: ../concepts/source_material.md
 [prompt_variables_concept]: ../concepts/prompt_variables.md
-[file_search]: https://platform.openai.com/docs/assistants/tools/file-search
-[code_interpreter]: https://platform.openai.com/docs/assistants/tools/code-interpreter

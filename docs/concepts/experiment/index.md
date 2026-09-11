@@ -8,10 +8,10 @@ An Experiment links all the configuration and data for a chatbot including parti
 
 ### Experiment Types
 
-There are three different types of chatbots that you can build in Open Chat Studio:
+There were three different types of chatbots that you could build in Open Chat Studio:
 
 - Base language model
-- Assistant
+- Assistant (since [removed](../assistants.md))
 - Pipeline
 
 #### Base language model
@@ -21,19 +21,19 @@ This kind of bot is the most commonly used and simple to configure. It is backed
 Bots configured in this way have all the basic features (memory, source material etc.) and can also use some of the advanced features like Scheduling and Reminders.
 
 #### Assistant
-Assistant bots make use of OpenAI [Assistants][4]. The main advantage of using Assistants is that your bot gets access to the OpenAI tools:
+
+!!! warning "Removed"
+    Assistant-type bots have been [removed](../assistants.md) — OpenAI retired the Assistants API on 26 August 2026. See the [migration guide](../../how-to/assistants_migration.md) if you still need to move a chatbot off this type.
+
+Assistant bots made use of OpenAI [Assistants][4]. The main advantage of using Assistants was that your bot got access to the OpenAI tools:
 
 ##### Code Interpreter
-This allows the bot to write and execute code to accomplish tasks.
+This allowed the bot to write and execute code to accomplish tasks. An [LLM node](../pipelines/nodes.md#llm-node) offers the same capability as a builtin tool.
 
 For more information see the [OpenAI docs][5].
 
 ##### File Search
-!!! warning
-
-    The functionality described here is planned to be replaced by [Indexed Collections][indexed-collections] in the future. It’s recommended to start using Indexed Collections instead to ensure forward compatibility.
-
-This allows the bot to search and reference information provided in uploaded files. Unless your bot needs either of these capabilities, you should use a Base Language Model type bot.
+This allowed the bot to search and reference information provided in uploaded files. [Indexed Collections][indexed-collections] replace it.
 
 For more information see the [OpenAI docs][6].
 
