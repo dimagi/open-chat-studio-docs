@@ -1862,6 +1862,7 @@ TeamExport:
   - metadata: Unknown
   - files_export_task_id: string
   - is_migrating: boolean
+  - require_mfa: boolean
   - created_by: integer (required)
   - files_export: integer
 
