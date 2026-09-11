@@ -174,14 +174,6 @@ Use the following CSS variables to style the button appearance.
 
 By default, the Markdown code colours are relative to the respective message text and background colours, but they can be overridden.
 
-!!! note "The user message properties no longer have an effect"
-
-    Messages typed by the participant render as plain text, so a user bubble never contains
-    a code block. `--code-bg-user-color`, `--code-border-user-color` and
-    `--code-text-user-color` are kept for backwards compatibility but no longer change
-    anything you can see, and may be removed in a future release. Bot, system and welcome
-    messages still render Markdown, so the `-assistant-color` properties are unaffected.
-
 | Name                            | Description                                                                                                             |
 |---------------------------------|-------------------------------------------------------------------------------------------------------------------------|
 | `--code-bg-assistant-color`     | Code background in assistant messages {{color_swatch_plain('#f2f3f5') }}<br/>(--message-assistant-bg-color + 50% white) |
