@@ -174,14 +174,22 @@ Use the following CSS variables to style the button appearance.
 
 By default, the Markdown code colours are relative to the respective message text and background colours, but they can be overridden.
 
+!!! note "The user message properties no longer have an effect"
+
+    Messages typed by the participant render as plain text, so a user bubble never contains
+    a code block. `--code-bg-user-color`, `--code-border-user-color` and
+    `--code-text-user-color` are kept for backwards compatibility but no longer change
+    anything you can see, and may be removed in a future release. Bot, system and welcome
+    messages still render Markdown, so the `-assistant-color` properties are unaffected.
+
 | Name                            | Description                                                                                                             |
 |---------------------------------|-------------------------------------------------------------------------------------------------------------------------|
 | `--code-bg-assistant-color`     | Code background in assistant messages {{color_swatch_plain('#f2f3f5') }}<br/>(--message-assistant-bg-color + 50% white) |
 | `--code-border-assistant-color` | Code border in assistant messages {{color_swatch_plain('#ced0d4')}}<br/>(--message-assistant-bg-color + 10% black)      |
 | `--code-text-assistant-color`   | Code text color in assistant messages {{color_swatch_plain('#1f2937')}}<br/>(--message-assistant-text-color)            |
-| `--code-bg-user-color`          | Code background in user messages {{color_swatch_plain('#629bf8')}}<br/>(--message-user-bg-color + 20% white)            |
-| `--code-border-user-color`      | Code border in user messages {{color_swatch_plain('#3575dd')}}<br/>(--message-user-bg-color + 20% black)                |
-| `--code-text-user-color`        | Code text color in user messages {{color_swatch_plain('#ffffff')}}<br/>(--message-user-text-color)                      |
+| `--code-bg-user-color`          | **No effect.** Code background in user messages {{color_swatch_plain('#629bf8')}}<br/>(--message-user-bg-color + 20% white) |
+| `--code-border-user-color`      | **No effect.** Code border in user messages {{color_swatch_plain('#3575dd')}}<br/>(--message-user-bg-color + 20% black) |
+| `--code-text-user-color`        | **No effect.** Code text color in user messages {{color_swatch_plain('#ffffff')}}<br/>(--message-user-text-color)       |
 
 ## Error message
 
