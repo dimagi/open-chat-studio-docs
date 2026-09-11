@@ -6,8 +6,9 @@ ignores:
   - site/**
   - .venv/**
 
-  # CLAUDE.md is just an @-include pointing at AGENTS.md, so it fails MD041 (no H1)
+  # CLAUDE.md files are just an @-include pointing at AGENTS.md, so they dont need linting
   - CLAUDE.md
+  - .github/workflows/CLAUDE.md
 
   # Generated from the OCS OpenAPI schema by the update-api-docs workflow; not hand-edited
   - docs/api/**

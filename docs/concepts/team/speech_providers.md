@@ -23,8 +23,8 @@ Speech service providers enable voice capabilities in Open Chat Studio, includin
 ### Setup
 
 1. Obtain an API key from your [ElevenLabs account](https://elevenlabs.io).
-2. In Open Chat Studio, navigate to **Team Settings → Speech Service Providers**.
-3. Add a new provider, select **ElevenLabs**, and enter your API key.
+2. In Open Chat Studio, open **Team Settings → [Integrations](integrations.md)**.
+3. Click **Add integration**, choose **ElevenLabs** from the **Speech** group, and enter your API key.
 4. On creation, OCS will automatically sync available voices from your ElevenLabs catalog.
 
 ### Voices
@@ -49,8 +49,8 @@ intron.io is a text-to-speech platform specialising in African language voices. 
 ### Setup
 
 1. Obtain an API key from your intron.io account.
-2. In Open Chat Studio, navigate to **Team Settings → Speech Service Providers**.
-3. Add a new provider, select **intron.io**, and enter your API key.
+2. In Open Chat Studio, open **Team Settings → [Integrations](integrations.md)**.
+3. Click **Add integration**, choose **intron.io** from the **Speech** group, and enter your API key.
 4. On creation, OCS will automatically seed all available voices for the provider.
 
 ### Voices
@@ -75,8 +75,8 @@ MiniMax provides text-to-speech only — it does not offer speech-to-text.
 ### Setup
 
 1. Obtain an API key and Group ID from the [MiniMax platform](https://platform.minimax.io).
-2. In Open Chat Studio, navigate to **Team Settings → Speech Service Providers**.
-3. Add a new provider, select **MiniMax**, and enter your API key and Group ID. You can optionally set the T2A model; a sensible default is filled in for you.
+2. In Open Chat Studio, open **Team Settings → [Integrations](integrations.md)**.
+3. Click **Add integration**, choose **MiniMax** from the **Speech** group, and enter your API key and Group ID. You can optionally set the T2A model; a sensible default is filled in for you.
 4. On creation, OCS automatically seeds the available MiniMax voices.
 
 ### Voices

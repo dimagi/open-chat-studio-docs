@@ -12,7 +12,8 @@ See the [OpenAI Assistants (Removed)](../concepts/assistants.md) page for backgr
 !!! warning "Affected chatbots are already down"
     A chatbot whose pipeline still holds an assistant node cannot answer participants. Follow the steps below to replace that node with an LLM node and bring it back.
 
-Open Chat Studio supports all the features of Assistants in alternative ways as shown in the table below:
+If a chatbot or pipeline still uses an assistant node, it keeps running, but you can no longer manage that assistant from OCS.
+Use this guide to move it onto native OCS features, as shown in the table below:
 
 | Assistant Feature | Replacement Feature                                                                             |
 |-------------------|-------------------------------------------------------------------------------------------------|

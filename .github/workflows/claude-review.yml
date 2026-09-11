@@ -47,4 +47,14 @@ jobs:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           prompt: "/review-pr REPO: ${{ github.repository }} PR_NUMBER: ${{ github.event.pull_request.number }}"
           claude_args: |
-            --allowedTools "Task,Read,Grep,Glob,mcp__github_inline_comment__create_inline_comment,Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*)"
+            --allowedTools "Task,
+            Read,
+            Grep,
+            Glob,
+            mcp__github_inline_comment__create_inline_comment,
+            Bash(gh pr comment:*),
+            Bash(gh pr diff:*),
+            Bash(gh pr view:*),
+            WebFetch(domain:github.com,domain:raw.githubusercontent.com),
+            Bash(uv run prek run *),
+            Bash(uv run zensical build --clean *)"
