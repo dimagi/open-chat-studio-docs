@@ -11,7 +11,15 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Sep 10, 2026
+* **BUG** Deprecating an LLM model no longer stops the chatbots using it. Previously those bots started replying with a configuration error the moment the deprecation shipped, and their pipelines could no longer be tested or versioned. A deprecated model now keeps working until it is removed, and the pipeline editor flags each affected node with a warning naming the model and its replacement so you can migrate in your own time. See [Model Lifecycle and Deprecation](concepts/team/llm_providers.md#model-lifecycle-and-deprecation).
+
+## Sep 9, 2026
+* **CHANGE** Chatbot [events](concepts/events.md) — static triggers, timeout triggers and scheduled messages — are now available to every team. They were previously gated behind the `flag_events` feature flag, so a team administrator had to turn them on. Teams that already had the flag enabled see no change.
+
 ## Sep 7, 2026
+* **BUG** Long messages sent over Twilio channels (WhatsApp, SMS) are now split correctly when they contain emoji or special symbols such as em-dashes. Twilio counts those characters twice against its 1,600-character limit, so messages containing them could previously be rejected and never reach the participant.
+* **CHANGE** The **Create from assistant** button has been removed from the Collections page. It built an [indexed collection](concepts/collections/indexed.md) from an OpenAI assistant's file-search files, a migration path for a feature that has itself been removed. Create an indexed collection and upload the files to it directly instead.
 * **CHANGE** OpenAI Assistants no longer run. The assistant pipeline node has been removed, so a pipeline that still holds one opens in the editor with that node marked as a **Removed Node** but no longer builds — its chatbot cannot answer participants until you delete the node and put an [LLM node](concepts/pipelines/nodes.md#llm-node) in its place. OpenAI retired the Assistants API on 26 August 2026, so these chatbots had already stopped working in practice. Your assistant records are not deleted by this release, but nothing in Open Chat Studio can reach them any more and a later release will remove them for good. See [Migrate Assistants](how-to/assistants_migration.md).
 * **CHANGE** The `upload_to_assistant` field on a [Python node](tech-hub/python_node.md#attachments) attachment is now inert. It is always `False` and has no effect, and is kept only so that code reading it keeps working.
 
