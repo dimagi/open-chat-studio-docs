@@ -59,6 +59,16 @@ Supported files are determined by the selected provider:
 
 - OpenAI - See the [OpenAI docs](https://platform.openai.com/docs/assistants/tools/file-search/supported-files#supported-files)
 
+### Checking why a file failed to index
+
+If a file fails to index, its entry in the collection's file list shows a red status badge.
+Hover over the badge to see why it failed — for example, a rejected API key, an exceeded quota, or a dropped connection.
+This message comes directly from your LLM provider.
+
+!!! note "Provider error messages are shown as-is"
+    OCS doesn't filter or mask the provider's error message.
+    Some providers redact sensitive details automatically — OpenAI, for example, masks your API key in its own error message — but not every provider does.
+
 ## Local Index
 
 Local indexes are hosted and managed by OCS. When you create a local index, you choose which embedding model to use. Different models suit different types of content, so choosing the right one can improve retrieval accuracy. See [Local Index Optimization](../../tech-hub/local-index-optimization.md#choosing-an-embedding-model) for guidance.

@@ -12,6 +12,10 @@ hide:
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
 ## Sep 10, 2026
+* **BUG** A file that fails to index in a [remote-index collection](concepts/collections/indexed.md#remote-index) now shows the LLM provider's own explanation — a rejected API key, an exceeded quota, a dropped connection — in the tooltip on its error badge. Previously the tooltip was empty, named only the internal error type, or gave the same generic message whatever the cause, and you had to check the server log to find out why. Note that the text comes from the provider verbatim, so it may include details the provider chose to include.
+* **BUG** A file whose indexing fails in an unexpected way now ends up marked as failed, with the reason shown. Previously such a file stayed **In progress** indefinitely, its badge spinning against a job that had already stopped.
+* **BUG** A file that belongs to more than one collection now records its indexing status and error reason per collection. Previously a failure in one collection overwrote the file's status in the others.
+* **BUG** Changing a collection's LLM provider now clears the previous provider's indexing error reasons, so old failures no longer show against files waiting to be re-indexed.
 * **BUG** Deprecating an LLM model no longer stops the chatbots using it. Previously those bots started replying with a configuration error the moment the deprecation shipped, and their pipelines could no longer be tested or versioned. A deprecated model now keeps working until it is removed, and the pipeline editor flags each affected node with a warning naming the model and its replacement so you can migrate in your own time. See [Model Lifecycle and Deprecation](concepts/team/llm_providers.md#model-lifecycle-and-deprecation).
 
 ## Sep 9, 2026
