@@ -31,6 +31,7 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 ### v0.13.0
 
+* Render messages typed by the participant as plain text. Markdown and HTML in a user message now appear exactly as typed instead of being formatted, so the `--code-bg-user-color`, `--code-border-user-color` and `--code-text-user-color` CSS properties no longer have any effect. Bot, system and welcome messages still render markdown as before.
 * Collect a chatbot's consent form in the widget. If the chatbot's published version has a consent form, the welcome message and starter questions behave as usual, and the participant is only asked to consent when they send their first message: the composer is replaced by the consent text and an "I agree" button, and accepting sends the message they already typed. The browser remembers the acceptance against the consent form's version, so a returning participant isn't asked again and republishing the form asks everyone again with the new text. Whether an acceptance survives the visit follows `persistent-session` — see [consent forms](reference.md#consent-forms).
 
 ### v0.12.0 (2026-08-27)

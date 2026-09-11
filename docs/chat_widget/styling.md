@@ -179,9 +179,9 @@ By default, the Markdown code colours are relative to the respective message tex
 | `--code-bg-assistant-color`     | Code background in assistant messages {{color_swatch_plain('#f2f3f5') }}<br/>(--message-assistant-bg-color + 50% white) |
 | `--code-border-assistant-color` | Code border in assistant messages {{color_swatch_plain('#ced0d4')}}<br/>(--message-assistant-bg-color + 10% black)      |
 | `--code-text-assistant-color`   | Code text color in assistant messages {{color_swatch_plain('#1f2937')}}<br/>(--message-assistant-text-color)            |
-| `--code-bg-user-color`          | Code background in user messages {{color_swatch_plain('#629bf8')}}<br/>(--message-user-bg-color + 20% white)            |
-| `--code-border-user-color`      | Code border in user messages {{color_swatch_plain('#3575dd')}}<br/>(--message-user-bg-color + 20% black)                |
-| `--code-text-user-color`        | Code text color in user messages {{color_swatch_plain('#ffffff')}}<br/>(--message-user-text-color)                      |
+| `--code-bg-user-color`          | **(Removed in v0.13)** Code background in user messages {{color_swatch_plain('#629bf8')}}<br/>(--message-user-bg-color + 20% white) |
+| `--code-border-user-color`      | **(Removed in v0.13)** Code border in user messages {{color_swatch_plain('#3575dd')}}<br/>(--message-user-bg-color + 20% black) |
+| `--code-text-user-color`        | **(Removed in v0.13)** Code text color in user messages {{color_swatch_plain('#ffffff')}}<br/>(--message-user-text-color)       |
 
 ## Error message
 
