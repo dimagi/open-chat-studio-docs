@@ -190,8 +190,7 @@ nav:
       - concepts/annotations/index.md
       - concepts/annotations/queues.md
       - Annotating: concepts/annotations/annotating.md
-    - Assistants:
-      - concepts/assistants.md
+    - OpenAI Assistants (Removed): concepts/assistants.md
   - Tech Hub:
     - tech-hub/index.md
     - Local Index Optimization: tech-hub/local-index-optimization.md

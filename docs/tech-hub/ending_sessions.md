@@ -16,9 +16,6 @@ The session ends after the chatbot's reply is delivered to the participant.
 
 For full configuration details, see the [End Session tool reference](tools.md#end-session).
 
-!!! warning "Not available for Assistant-style chatbots"
-    The End Session tool cannot be used with Assistant-style chatbots.
-
 Use this approach when the decision to end the conversation belongs to the LLM — for example, "end the session once the user confirms they are done".
 
 ## The `end_session()` helper in a Python node
