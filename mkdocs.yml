@@ -197,6 +197,7 @@ nav:
     - Tools Reference: tech-hub/tools.md
     - Ending Sessions from a Chatbot: tech-hub/ending_sessions.md
     - Python Node: tech-hub/python_node.md
+    - Merging Parallel Branches: tech-hub/merging_parallel_branches.md
     - Render a Template and Send an Email Nodes: tech-hub/template_and_email_nodes.md
     - Call External APIs:
       - tech-hub/external-api-calls/index.md

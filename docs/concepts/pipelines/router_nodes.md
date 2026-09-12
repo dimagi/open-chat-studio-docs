@@ -4,7 +4,7 @@
 
 Router nodes are decision points in your pipeline. Instead of following one fixed path, a pipeline with a router can choose different paths based on what the participant says or what your system already knows about the participant.
 
-In simple terms, a router checks the current conversation context and sends the input (participant message plus available data) to the most relevant downstream node. This allows your chatbot to adapt in real time.
+In simple terms, a router evaluates a condition, chooses one of its configured paths, and passes the input through unchanged to the node on that path. This allows your chatbot to adapt in real time. What the router evaluates depends on its type — see [Router Types](#router-types) below.
 
 For example:
 
@@ -16,7 +16,7 @@ For example:
 
 1. **Linked Downstream Node**: Any node that appears after the current node in the pipeline flow.
 
-2. **Conversation Context**: The total set of information available to the pipeline at that moment. This includes the participant’s current message, their chat history (as determined by the router's own [History setting](history.md)), and known data (like whether they are a "new" or "returning" participant).
+2. **Conversation Context**: The information a router evaluates to make its decision. For an [LLM Router](#llm-router-node), this is the participant's current message and, when enabled by the [History setting](history.md), the configured conversation history. A [Static Router](#static-router-node) does not evaluate the message or history at all — it looks up a value already stored as data (see [Router Types](#router-types)).
 
 3. **Default Path**: The "safety net" route (marked with a blue *). If the router cannot confidently decide where to send the participant, it follows this path to prevent the conversation from breaking. [Read more about the default output](../../how-to/routers/index.md#the-default-output).
 

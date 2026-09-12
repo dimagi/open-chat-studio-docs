@@ -63,6 +63,10 @@ The Python node provides a set of utility functions that can be used to interact
 ### ::: python_node.end_session
 ### ::: python_node.add_file_attachment
 
+!!! tip "Merging parallel branches"
+
+    For worked examples using `require_node_outputs` and `wait_for_next_input` to merge branches that run an uneven number of times, or that only sometimes run, see [Merging Parallel Branches](merging_parallel_branches.md).
+
 ## Debugging with print()
 
 You can use `print()` inside your Python Node code to capture debug or diagnostic output. Any printed text is collected and stored as `console` data in the node's trace span, making it visible in the [trace detail view](../concepts/tracing.md) and in Langfuse spans if Langfuse tracing is configured.

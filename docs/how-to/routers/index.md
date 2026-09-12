@@ -25,7 +25,7 @@ To understand how participants move through your chatbot, you can enable Output 
 - [Tracing](../../concepts/tracing.md): Configure this for path-level analysis for debugging.
 
 ### Tag naming convention
-To keep system tags organized, OCS follows this naming convention:
+To keep [system tags](../../concepts/tags.md#system-tags) organized, OCS follows this naming convention:
 
 ```text
 <node_name>:<route_name>
@@ -33,5 +33,7 @@ To keep system tags organized, OCS follows this naming convention:
 
 Example: If you have a Router node named `support_triage` and it selects the output keyword `BILLING`, the resulting tag is:
 `support_triage:BILLING`
+
+If the router falls back to its [Default Output](#the-default-output) — because nothing matched, or an error occurred — OCS appends `:default` to the tag, making the full form `<node_name>:<route_name>:default`. For example, `support_triage:GENERAL:default`. This makes fallback routes easy to filter for separately when reviewing tags.
 
 Ensure your `node_name` is descriptive (for example, `intent_classifier`) so tags are easy to interpret.
