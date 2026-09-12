@@ -22,3 +22,7 @@ Users can be assigned to specific groups upon invitation to the OCS platform ena
 | **Can View Annotation Aggregate Results**       | ✅                 | ❌         | ❌              | ❌          | ❌            | ❌           | ❌             | ❌          | ❌            | ✅                  |
 | **Can Manage Annotation Queues**                | ✅                 | ❌         | ❌              | ❌          | ❌            | ❌           | ❌             | ❌          | ❌            | ❌                  |
 | **Additional Notes**                         | **Full Access, Default Role** | - | **Cannot see sessions** | - | - | - | - | - | - | **Annotation queues only; cannot manage queues, add sessions, export results, or access other app areas** |
+
+## See also
+- [Members & access](members.md)
+- [Team Settings](index.md)

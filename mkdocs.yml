@@ -136,6 +136,7 @@ nav:
     - Monitoring & Debugging:
       - Configure Langfuse Trace Sampling: how-to/configure_langfuse_trace_sampling.md
       - Manage Notifications: how-to/manage_notifications.md
+      - Find Where a Provider Is Used: how-to/find_provider_usages.md
     - Evaluations:
       - Create a Dataset: how-to/evaluations/create-a-dataset.md
       - Real-Time LLM Judge: how-to/evaluations/realtime_llm_judge.md
@@ -171,11 +172,15 @@ nav:
     - Team Settings:
       - concepts/team/index.md
       - Integrations: concepts/team/integrations.md
-      - concepts/team/llm_providers.md
-      - concepts/team/speech_providers.md
-      - concepts/team/authentication_providers.md
-      - concepts/team/messaging_providers.md
-      - Custom Actions: concepts/team/custom_actions.md
+      - Providers:
+        - concepts/team/llm_providers.md
+        - concepts/team/speech_providers.md
+        - concepts/team/authentication_providers.md
+        - concepts/team/messaging_providers.md
+      - Members & Access: concepts/team/members.md
+      - Developers:
+        - concepts/team/developer.md
+        - Custom Actions: concepts/team/custom_actions.md
       - User Groups: concepts/team/groups.md
     - Collections:
       - concepts/collections/index.md

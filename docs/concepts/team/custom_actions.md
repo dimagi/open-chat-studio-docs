@@ -1,6 +1,6 @@
 # Custom Actions
 
-Use Team Settings to create and manage Custom Actions for your team.
+Use the [Developers](developer.md) section of Team Settings to create and manage Custom Actions for your team.
 
 To learn what Custom Actions are and how they work in chats, see [Custom Action](../llm_custom_action.md). For technical setup details and troubleshooting, see the [Custom Action Tech Hub Guide](../../tech-hub/custom_action/index.md).
 
@@ -21,7 +21,7 @@ In Team Settings, you can:
 
 ### 2) Add the Custom Action
 
-- Go to Team Settings, scroll to the **Custom Actions** section, and select **Add new**.
+- Go to Team Settings, open the **Developers** section, and select **Add action** under **Custom actions**.
 - For field-level technical requirements, including the Base URL, OpenAPI schema format, and health check behavior, see the [Custom Action Tech Hub Guide](../../tech-hub/custom_action/index.md#team-settings-fields).
 
 ### 3) Enable actions for your chatbot
