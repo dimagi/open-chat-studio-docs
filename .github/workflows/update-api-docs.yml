@@ -12,6 +12,9 @@
 # Notes:
 # - Labelled `automated`, same as update-changelog.yml's PRs — keeps these PRs
 #   out of the AI review in claude-review.yml (see README-claude-workflows.md).
+# - Assigned like update-changelog.yml: to the author of the OCS PR that
+#   changed the schema (resolved from the dispatched commit sha), or to the
+#   actor for manual runs. Scheduled runs have no author, so no assignee.
 
 name: Update API Documentation
 
@@ -85,6 +88,31 @@ jobs:
             echo "has_changes=true" >> $GITHUB_OUTPUT
           fi
 
+      - name: Determine assignee
+        if: steps.check_changes.outputs.has_changes == 'true'
+        id: assignee
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          EVENT_NAME: ${{ github.event_name }}
+          PAYLOAD_SHA: ${{ github.event.client_payload.sha }}
+          ACTOR: ${{ github.actor }}
+        run: |
+          ASSIGNEE=""
+          if [ "$EVENT_NAME" == "repository_dispatch" ] && [ -n "$PAYLOAD_SHA" ]; then
+            # Author of the OCS PR that introduced the schema change; fall back
+            # to the commit author if the commit wasn't merged via a PR.
+            ASSIGNEE=$(gh api "repos/dimagi/open-chat-studio/commits/${PAYLOAD_SHA}/pulls" \
+              --jq '(.[0].user.login // "")') || ASSIGNEE=""
+            if [ -z "$ASSIGNEE" ]; then
+              ASSIGNEE=$(gh api "repos/dimagi/open-chat-studio/commits/${PAYLOAD_SHA}" \
+                --jq '(.author.login // "")') || ASSIGNEE=""
+            fi
+          elif [ "$EVENT_NAME" == "workflow_dispatch" ]; then
+            ASSIGNEE="$ACTOR"
+          fi
+          echo "assignee=$ASSIGNEE" >> "$GITHUB_OUTPUT"
+          echo "Assignee: ${ASSIGNEE:-<none>}"
+
       - name: Generate app token
         if: steps.check_changes.outputs.has_changes == 'true'
         id: app-token
@@ -96,6 +124,7 @@ jobs:
           permission-pull-requests: write
       - name: Create Pull Request
         if: steps.check_changes.outputs.has_changes == 'true'
+        id: create-pr
         uses: peter-evans/create-pull-request@v8
         with:
           token: ${{ steps.app-token.outputs.token }}
@@ -106,6 +135,15 @@ jobs:
             - Automated update of API documentation from OpenAPI schema
           branch: update-api-docs-${{ github.run_number }}
           delete-branch: true
-          assignees: snopoke
           team-reviewers: dimagi/open-chat-studio
           labels: automated
+
+      - name: Assign Pull Request
+        if: steps.create-pr.outputs.pull-request-number != '' && steps.assignee.outputs.assignee != ''
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          PR_NUMBER: ${{ steps.create-pr.outputs.pull-request-number }}
+          ASSIGNEE: ${{ steps.assignee.outputs.assignee }}
+        run: |
+          # Won't fail the workflow if the user doesn't have access to this repo
+          gh pr edit "$PR_NUMBER" --add-assignee "$ASSIGNEE" || echo "Could not assign @$ASSIGNEE (user may not have access to this repo)"
