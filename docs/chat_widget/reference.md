@@ -98,10 +98,10 @@ document.querySelector('open-chat-studio-widget').authTokenProvider = async ({ f
 
 #### How it works
 
-- The widget calls `authTokenProvider` at the start of every session and sends the returned token as an `Authorization: Bearer <token>` header on the `chat/start/` request only. The header is **not** sent on message-send, poll, or upload requests.
+- The widget calls `authTokenProvider` at the start of every session, and also to renew a live session's token (see [Session token renewal](#session-token-renewal) below). It sends the returned token as an `Authorization: Bearer <token>` header on the `chat/start/` request and on the session-token renewal request. The header is **not** sent on message-send, poll, or upload requests.
 - The widget passes a single options object to the function — `{ forceRefresh: boolean }` — described in [The `forceRefresh` argument](#the-forcerefresh-argument) below.
 - The function can return a token string directly, or a `Promise` that resolves to one.
-- The widget never stores or caches the token itself. It calls the provider every time it starts a session — including when a previous session expires and the widget starts a new one automatically. The widget does not run a refresh timer; `forceRefresh` is the only signal it gives the host page about token freshness.
+- The widget never stores or caches the `authTokenProvider` token itself — it holds only the session token that Open Chat Studio issues in exchange for it (see [Session token renewal](#session-token-renewal)). It calls the provider every time it starts a session — including when a previous session expires and the widget starts a new one automatically.
 - If `authTokenProvider` returns a falsy value (`undefined`, `null`, or an empty string), the widget sends the request with no `Authorization` header. On an OAuth-mode channel the server will then refuse to start the session.
 - If `authTokenProvider` **throws**, the widget does *not* fall back to an unauthenticated request — session start fails and the widget shows "Could not obtain an authentication token". The thrown error's own text is deliberately not surfaced in the chat (it is logged to the browser console instead), so that a message quoting a token is never written to the persisted transcript.
 
