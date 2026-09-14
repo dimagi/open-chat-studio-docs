@@ -12,6 +12,8 @@ hide:
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
 ## Sep 14, 2026
+* **CHANGE** The **Assistant Admin** team role has been removed — the last user-visible leftover of the [OpenAI Assistants removal](concepts/assistants.md). It can no longer be granted to a member or attached to an invitation, and existing memberships in it are gone, leaving seven roles on the members page. It was the only role granting full file management (add, change, delete), so anyone who relied on it for that needs another role — the roles that still reach files are view-only. See [User Groups](concepts/team/groups.md).
+* **CHANGE** The warning shown when changing a [collection's](concepts/collections/index.md) LLM provider no longer says the operation might break the assistant. The other three points are unchanged.
 * **BUG** A contact card shared with a chatbot over [WhatsApp (Meta Cloud API)](how-to/whatsapp_meta_cloud_api.md) no longer causes the message to fail. Contact and location messages are now parsed without error and simply carry no attachment.
 * **BUG** Voice notes sent over a [Turn.io WhatsApp](how-to/turnio_whatsapp.md) channel are downloaded again. A recent fix had dropped their audio, so voice messages could not be transcribed or played back.
 

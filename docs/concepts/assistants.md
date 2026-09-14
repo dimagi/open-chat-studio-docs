@@ -16,5 +16,7 @@ title: OpenAI Assistants (Removed)
 
     - If a pipeline still contains an assistant node, replace it with an [LLM node](pipelines/nodes.md#llm-node) before that chatbot can run again.
     - Open Chat Studio offers each of the assistant capabilities in another form — threads as [sessions](sessions.md), code interpreter as an LLM node builtin tool, and file search as an [indexed collection](collections/indexed.md).
+    - The **Assistant Admin** [team role](team/groups.md) has also been removed — it can no longer be granted to a member or attached to an invitation.
+      It was the only role granting full file management (add, change, delete), so anyone who relied on it for that needs another role.
 
     See the [migration guide](../how-to/assistants_migration.md) for step-by-step instructions on replacing an assistant node.
