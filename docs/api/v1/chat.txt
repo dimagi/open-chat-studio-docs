@@ -15,9 +15,6 @@ GET /api/chat/{session_id}/{task_id}/poll/
     200:
       Content: application/json
       Schema: ChatTaskPoll
-    400:
-      Content: application/json
-      Schema: ChatTaskPollUserError
     404:
       Content: application/json
       Schema: ChatTaskPollNotFound
@@ -201,10 +198,6 @@ ChatTaskPollNotFound:
 
 ChatTaskPollStatusEnum:
   - enum: [processing, complete]
-
-ChatTaskPollUserError:
-  - error: string
-  - status: string (required)
 
 ChatUploadFileRequest:
   - files: array of string (required)
