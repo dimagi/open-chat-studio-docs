@@ -11,6 +11,10 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Sep 14, 2026
+* **BUG** A contact card shared with a chatbot over [WhatsApp (Meta Cloud API)](how-to/whatsapp_meta_cloud_api.md) no longer causes the message to fail. Contact and location messages are now parsed without error and simply carry no attachment.
+* **BUG** Voice notes sent over a [Turn.io WhatsApp](how-to/turnio_whatsapp.md) channel are downloaded again. A recent fix had dropped their audio, so voice messages could not be transcribed or played back.
+
 ## Sep 10, 2026
 * **BUG** A file that fails to index in a [remote-index collection](concepts/collections/indexed.md#remote-index) now shows the LLM provider's own explanation — a rejected API key, an exceeded quota, a dropped connection — in the tooltip on its error badge. Previously the tooltip was empty, named only the internal error type, or gave the same generic message whatever the cause, and you had to check the server log to find out why. Note that the text comes from the provider verbatim, so it may include details the provider chose to include.
 * **BUG** A file whose indexing fails in an unexpected way now ends up marked as failed, with the reason shown. Previously such a file stayed **In progress** indefinitely, its badge spinning against a job that had already stopped.
