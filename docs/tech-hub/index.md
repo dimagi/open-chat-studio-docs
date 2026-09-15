@@ -15,6 +15,7 @@ You need Super Admin, Pipeline, Experiment, or Team Administrator roles to acces
 - **[Custom Actions](custom_action/index.md)** — Integrate external services into chatbots via OpenAPI schemas. Covers configuration, health monitoring, and testing of Custom Actions.
 - **[Calling External APIs](external-api-calls/index.md)** — Use the built-in HTTP client inside Python nodes to securely call third-party APIs from a Pipeline workflow.
 - **[Python Node](python_node.md)** — Write custom Python code inside a Pipeline to perform logic, process data, manage session state, and make HTTP requests to external services.
+- **[Merging Parallel Branches](merging_parallel_branches.md)** — Python node patterns for merging pipeline branches predictably, including branches that run an uneven number of times or run conditionally.
 - **[Render a Template and Send an Email Nodes](template_and_email_nodes.md)** — Full Jinja2 variable reference, recipient field syntax, and examples for the Render a Template and Send an Email pipeline nodes.
 - **[Tools Reference](tools.md)** — Full argument reference for all built-in tools and the LLM provider tools supported. For a conceptual overview, see [Tools Concepts](../concepts/tools/index.md).
 - **[Evaluations](evaluations/index.md)** — Reference for advanced features of Evaluations — a testing system for measuring chatbot performance against different metrics.

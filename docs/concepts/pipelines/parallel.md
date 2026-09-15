@@ -1,5 +1,6 @@
 # Parallel Pipelines
-Nodes in a pipeline can run in parallel, allowing multiple operations to proceed simultaneously.
+
+Nodes in a pipeline can run in parallel, allowing multiple operations to proceed simultaneously. This follows directly from [how a pipeline runs](index.md#how-a-pipeline-runs): every node whose dependencies are satisfied executes in the same pass.
 
 ```mermaid
 flowchart LR
@@ -9,15 +10,17 @@ flowchart LR
 ```
 
 !!! warning "Limitations"
+
     **Cycles**
 
     Configurations that result in cycles (recursive loops) are not supported.
 
-    **Multiple Exectuion**
+    **Multiple execution**
 
-    In cases where the branches of a workflow do not have the same number of nodes and then merge, nodes after the merge will be executed more than once without special handling. See the section below on [Uneven Banches](#uneven-branches)
+    When the branches of a workflow have different lengths and then merge, the node after the merge runs more than once unless you handle this deliberately. See [Uneven branches](#uneven-branches) below.
 
 ## Dangling nodes
+
 Nodes without connected outputs (dangling nodes) are supported and will execute in turn. The outputs of these nodes will still be recorded in the pipeline state.
 
 ```mermaid
@@ -30,7 +33,8 @@ flowchart LR
 See this pattern used in the Workflow Cookbook: [Safety check in parallel](../../how-to/workflow_cookbook.md#safety-check-in-parallel), where an unconnected **safe** output lets compliant messages pass through unchanged.
 
 ## Multiple outputs
-Connecting multiple outputs from one node (e.g. a router node) to the output of another node is allowed. If the node produces more than one output over the course of the run, the most recent one is passed on as input — see [Which input a node receives](#which-input-a-node-receives).
+
+Connecting multiple outputs from one node (e.g. a router node) to the input of another node is allowed. If the node produces more than one output over the course of the run, the most recent one is passed on as input — see [Which input a node receives](#which-input-a-node-receives).
 
 ```mermaid
 flowchart LR
@@ -51,7 +55,7 @@ flowchart LR
     LLM --> out([Output])
 ```
 
-See this pattern used in the Workflow Cookbook: [Router for classification](../../how-to/workflow_cookbook.md#router-for-classification), where multiple category outputs feed into the same Python node.
+See this pattern used in the Workflow Cookbook: [Router for classification](../../how-to/workflow_cookbook.md#router-for-classification), where multiple category outputs feed into the same [Python node](nodes.md#python-node).
 
 ## Which input a node receives
 
@@ -88,89 +92,11 @@ The execution steps are as follows:
 
 Notice how `NodeD` gets executed twice. The first time it runs, only `NodeB` has reached it, so `NodeB`'s output is its `input` and its single `node_inputs` entry. By the second run `NodeC` has finished, so `NodeC`'s output becomes the `input` and `node_inputs` holds both.
 
-To understand why this happens you need to understand the [execution model](index.md#how-a-pipeline-runs).
+To understand why this happens, see [how a pipeline runs](index.md#how-a-pipeline-runs).
 
-You can manage this challenge by using a `PythonNode` with some utility functions:
+If `NodeD` needs to see both `NodeB` and `NodeC` before it does its real work — merging both branches exactly once, rather than running twice — write that logic in a Python node using the `require_node_outputs` or `wait_for_next_input` utility functions. The same functions handle the related case where a branch is optional and may not run at all. See [Merging Parallel Branches](../../tech-hub/merging_parallel_branches.md) for worked examples of both.
 
-* `require_node_outputs`: This function will abort any node run if all the requested data is not available.
-* `wait_for_next_input`: This is a lower level function that can be used when `require_node_outputs` isn't suitable.
+## See also
 
-In the example above, we could use the following code in `NodeD` to merge the outputs:
-
-```python
-def main(input, **kwargs):
-    # this will abort the first run since only `NodeB` has outputs
-    require_node_outputs("NodeB", "NodeC")
-    b = get_node_output("NodeB")
-    c = get_node_output("NodeC")
-    return f"{b}\n{c}"
-```
-
-Using the lower level `wait_for_next_input` function we can do the same thing:
-
-```python
-def main(input, **kwargs):
-    b = get_node_output("NodeB")
-    c = get_node_output("NodeC")
-    if b is None and c is None:
-        # abort until both are available
-        wait_for_next_input()
-    return f"{b}\n{c}"
-```
-
-## Optional Parallel Branches
-
-This shows a use case for the `wait_for_next_input` function. We have a pipeline which has parallel branches and a merge node but not all the branches will execute.
-
-```mermaid
-flowchart LR
-    start([Input]) --> Router
-    start --> NodeA
-    Router -.-> NodeB
-    Router -.-> NodeC
-    NodeA --> Merge
-    NodeB --> Merge
-    NodeC --> Merge
-    Merge --> out([Output])
-```
-
-The `Merge` node will get outputs from `NodeA` and either `NodeB` or `NodeC`. We can't use `require_node_outputs` because not all outputs will be generated. Instead we need to use the `wait_for_next_input` function:
-
-=== "Option 1"
-
-    ```python
-    def main(input, **kwargs):
-        b = get_node_output("NodeB")
-        c = get_node_output("NodeC")
-        b_or_c = b or c
-        if not b_or_c:
-            # wait until we have either b or c
-            wait_for_next_input()
-        a = get_node_output("NodeA")
-        return f"{a}\n{b_or_c}"
-    ```
-
-    Note that we don't need to check if we have output from `NodeA` since it will be guaranteed to be available by the time `NodeB` or `NodeC` execute due to the execution order.
-
-=== "Option 2"
-
-    This option makes use of the [`node_inputs`](../../tech-hub/python_node.md#additional-keyword-arguments) keyword argument which contains a list of all the inputs available to the current node execution. Since we want to wait until we have inputs from `NodeA and (NodeB or NodeC)` we can check that the inputs list has at least two values.
-
-    ```python
-    def main(input, **kwargs):
-        all_inputs = kwargs.get("node_inputs", [])
-        if len(all_inputs) < 2:
-            # wait until we have at least two inputs
-            wait_for_next_input()
-        return "\n".join(all_inputs)
-    ```
-
-<div class="grid cards" markdown>
-
--   :material-hexagon-multiple-outline:{ .lg .middle } __More Example Workflows__
-
-    ---
-
-    [:octicons-arrow-right-24: Workflow Cookbook](../../how-to/workflow_cookbook.md)
-
-</div>
+- [Workflow Cookbook](../../how-to/workflow_cookbook.md)
+- [Merging Parallel Branches](../../tech-hub/merging_parallel_branches.md)
