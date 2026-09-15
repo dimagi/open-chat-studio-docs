@@ -25,7 +25,7 @@ When you register an application, you choose one of two grant types:
 
 !!! note "Global applications"
     Applications registered from Team Settings always belong to your team, and every token they issue is scoped to it.
-    A Super Admin can also register a **global** application, not tied to any team, from the site-admin area — but only with the authorization code grant type.
+    If you require a **global** application that can create tokens across multiple teams you must request one from a site admin.
 
 For the full technical integration guide — endpoints, PKCE setup, requesting and refreshing tokens, and available scopes — see [Getting Started with OAuth2](../../api/getting_started_with_oauth.md).
 
