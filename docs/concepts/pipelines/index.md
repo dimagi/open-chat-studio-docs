@@ -50,7 +50,7 @@ Common node types include:
 
  - **[LLM Node](nodes.md#llm-node)** — Processes messages using an AI model. Handles natural conversations, answering questions, and generating responses.
 
- - **[Routing Nodes](nodes.md#routing-nodes)** — Makes decisions about which path the conversation should take based on the message content. Useful for directing different types of questions to different handling logic, or routing based on participant intent.
+ - **[Routing Nodes](nodes.md#routing-nodes)** — Makes decisions about which path the conversation should take, based on message content or on data already known about the participant. Useful for directing different types of questions to different handling logic, or routing on participant attributes like subscription tier.
 
  - **[Python Node](nodes.md#python-node)** — Runs custom code to handle complex logic, fetch data from external systems, process attachments, or manipulate participant data.
 

@@ -63,6 +63,10 @@ The Python node provides a set of utility functions that can be used to interact
 ### ::: python_node.end_session
 ### ::: python_node.add_file_attachment
 
+!!! tip "Merging parallel branches"
+
+    For worked examples using `require_node_outputs` and `wait_for_next_input` to merge branches that run an uneven number of times, or that only sometimes run, see [Merging Parallel Branches](merging_parallel_branches.md).
+
 ## Debugging with print()
 
 You can use `print()` inside your Python Node code to capture debug or diagnostic output. Any printed text is collected and stored as `console` data in the node's trace span, making it visible in the [trace detail view](../concepts/tracing.md) and in Langfuse spans if Langfuse tracing is configured.
@@ -125,7 +129,7 @@ Part of the temporary state is a list of attachments. Attachments are files that
 | `name`                | The name of the file                                                  |
 | `size`                | The size of the file in bytes                                         |
 | `content_type`        | The MIME type of the file                                             |
-| `upload_to_assistant` | Whether the file should be uploaded to the assistant as an attachment |
+| `upload_to_assistant` | Unused. Kept for compatibility only — it is always `False` and has no effect. |
 | `read_bytes()`        | Reads the attachment content as bytes.                                |
 | `read_text()`         | Reads the attachment content as text.                                 |
 
@@ -136,7 +140,6 @@ attachment = Attachment(
     name="proposal.pdf",
     size=1234,
     content_type="application/pdf",
-    upload_to_assistant=False,
 )
 content = attachment.read_text()
 ```
@@ -152,4 +155,4 @@ The Python node currently only supports reading the contents of the following fi
 - Outlook
 - PPTX
 
-Other file types can still be uploaded to assistants but the Python Node is not able to read the file contents using the `read_text()` method on the attachment.
+Other file types can still be uploaded as attachments, but the Python Node is not able to read their contents using the `read_text()` method on the attachment.
