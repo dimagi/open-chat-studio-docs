@@ -19,7 +19,7 @@ Once a provider is saved, its edit page splits into tabs:
 
 - **Configuration** — where credentials live, along with their [verification state](#credential-verification).
 - **Models** — every model available for this provider.
-- **Usages** — everywhere in your team that references this provider (see [Finding where a provider is used](index.md#finding-where-a-provider-is-used)).
+- **Usages** — everywhere in your team that references this provider (see [Find Where a Provider Is Used](../../how-to/find_provider_usages.md)).
 
 ## LLM Models
 
@@ -65,6 +65,6 @@ LLM providers regularly update their model offerings. This means models availabl
 ## See also
 
 - [Configure LLM Service Providers](../../tutorials/configure_llm_providers.md) — set up a provider to use in your chatbots
-- [Finding where an LLM provider is used](index.md#finding-where-a-provider-is-used) — in your chatbots
+- [Find Where a Provider Is Used](../../how-to/find_provider_usages.md) — in your chatbots
 - [Add a Custom LLM Model](../../how-to/add_custom_llm_model.md) — add a model that isn't pre-configured, including naming conventions per provider
 - [Large Language Models (LLMs)](../llm.md) — key LLM concepts such as tokens and context window

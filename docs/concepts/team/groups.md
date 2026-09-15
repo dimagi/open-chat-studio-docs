@@ -31,3 +31,7 @@ Users can be assigned to specific groups upon invitation to the OCS platform ena
 
 **Can Manage Files** covers adding, changing, and deleting files — for example, in [collections](../collections/index.md) — and only **Super Admin** grants it.
 A role with view-only file access, such as **Chat Viewer**, can see and download files but not add, change, or delete them.
+
+## See also
+- [Members & access](members.md)
+- [Team Settings](index.md)

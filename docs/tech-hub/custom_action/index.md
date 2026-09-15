@@ -35,7 +35,7 @@ Before creating a Custom Action, make sure you have:
 2. an [OpenAPI Schema](https://swagger.io/specification/) in JSON or YAML format
 3. an [Authentication Provider](../../concepts/team/authentication_providers.md), if the API requires authentication
 
-Once you have this information, go to [Team Settings](../../concepts/team/custom_actions.md) and enter the details described below.
+Once you have this information, go to the **Developers** section of [Team Settings](../../concepts/team/developer.md) and enter the details described below.
 
 ## Team Settings fields
 
