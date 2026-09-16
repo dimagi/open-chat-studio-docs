@@ -69,6 +69,7 @@ Simplified per-tag references for LLM consumption:
 | GET | `/api/export/pipelines/` | Pipelines |
 | GET | `/api/export/pricing_rules/` | Pricing Rules |
 | GET | `/api/export/scheduled_messages/` | Scheduled Messages |
+| GET | `/api/export/scheduled_triggers/` | Scheduled Triggers |
 | GET | `/api/export/scores/` | Scores |
 | GET | `/api/export/sessions/` | Sessions |
 | GET | `/api/export/source_materials/` | Source Materials |
