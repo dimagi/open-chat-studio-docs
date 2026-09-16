@@ -105,6 +105,26 @@ document.querySelector('open-chat-studio-widget').authTokenProvider = async ({ f
 - If `authTokenProvider` returns a falsy value (`undefined`, `null`, or an empty string), the widget sends the request with no `Authorization` header. On an OAuth-mode channel the server will then refuse to start the session.
 - If `authTokenProvider` **throws**, the widget does *not* fall back to an unauthenticated request — session start fails and the widget shows "Could not obtain an authentication token". The thrown error's own text is deliberately not surfaced in the chat (it is logged to the browser console instead), so that a message quoting a token is never written to the persisted transcript.
 
+#### Session token renewal
+
+When Open Chat Studio accepts the bearer token on `chat/start/`, it issues a **session token** that the
+widget uses for the rest of the conversation. That session token has a limited lifetime. The widget tracks
+when it expires and renews it in the background — calling `authTokenProvider` for a fresh OAuth token and
+exchanging it for a new session token — so the participant keeps chatting on the same session instead of
+being told the session expired.
+
+- Renewal only happens when `authTokenProvider` is set. Embed-key channels are unaffected.
+- Renewal is a background request, not something the participant did, so it does **not** count as
+  participant activity for `persistent-session-expire` (see [Persistent Sessions](#persistent-sessions)).
+  An idle session still expires on its normal schedule.
+- If renewal fails, the session ends the way it did before: the participant is told the session expired and
+  can start a new chat.
+
+!!! note "Requires widget 0.13.0+ and a backend that supports renewal"
+    Renewal needs widget **0.13.0** or later *and* an Open Chat Studio instance that supports session token
+    renewal. Against an older backend the widget falls back to the previous behaviour — when the session
+    token expires the chat ends with "session expired, start a new chat".
+
 #### The `forceRefresh` argument
 
 Your provider is allowed to cache tokens — on your backend, or in the browser for the lifetime of the page. `forceRefresh` tells you when a cached token is acceptable and when it is not:
@@ -148,7 +168,7 @@ If Open Chat Studio rejects the token with an `HTTP 401` on `chat/start/`, the w
 
 #### Version requirement
 
-OAuth credential mode support requires widget version **0.12.0** or later. See [Widget Version](#widget-version) for how to check the version running on a page.
+OAuth credential mode support requires widget version **0.12.0** or later. [Session token renewal](#session-token-renewal) additionally requires widget version **0.13.0** or later and a backend that supports it. See [Widget Version](#widget-version) for how to check the version running on a page.
 
 ## :material-account: User Identification {#user-identification}
 Control how users are identified across chat sessions to enable personalized experiences and session continuity.
@@ -516,6 +536,10 @@ To disable this feature, set the `persistent-session="false"` attribute on the w
 
 The session data is set to expire after 24 hours. This is also configurable by using the `persistent-session-expire` attribute. The value is interpreted as *"the number of minutes since the last message before the session expires"*. Setting this attribute to `0` will disable the expiration entirely. This still applies to `persistent-session="tab"` sessions, so a tab-scoped session left open (rather than closed) is reaped on the same schedule as any other.
 
+!!! note "Token renewal is not activity"
+    [Session token renewal](#session-token-renewal) happens in the background, so it does not reset the
+    `persistent-session-expire` countdown. Only participant messages do.
+
 !!! note
 
     Session persistence works in conjunction with [User Identification](#user-identification). Different users will have separate persistent sessions.
@@ -678,7 +702,7 @@ console.log(version); // "0.13.0"
 | `chatbot-id` | `string` | **REQUIRED** | - | Your chatbot ID from Open Chat Studio | `"183312ac-cbe5-4c91-9e7b-d9df96b088e4"` |
 | `api-base-url` | `string` | Optional | `"https://openchatstudio.com"` | API base URL for your Open Chat Studio instance | `"https://your-domain.com"` |
 | `embed-key` | `string` | Optional | `undefined` | Authentication key for embedded channels | `"your-embed-auth-key"` |
-| `authTokenProvider` | `function` | Optional | `undefined` | **JS property only — no HTML attribute.** Function (or async function) returning an OAuth bearer token string, called fresh at the start of every session. Used for [OAuth credential mode](#oauth-credential-mode). Requires widget **0.12.0+** | `() => fetchTokenFromMyBackend()` |
+| `authTokenProvider` | `function` | Optional | `undefined` | **JS property only — no HTML attribute.** Function (or async function) returning an OAuth bearer token string, called at the start of every session and to renew a live session's token. Used for [OAuth credential mode](#oauth-credential-mode). Requires widget **0.12.0+**, or **0.13.0+** for [session token renewal](#session-token-renewal) | `() => fetchTokenFromMyBackend()` |
 
 ### Button & UI Customization
 
