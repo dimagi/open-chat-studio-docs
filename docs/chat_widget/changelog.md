@@ -18,6 +18,8 @@ This guide will help you upgrade from previous versions of the Open Chat Studio 
   ></script>
 ```
 
+Go to https://www.npmjs.com/package/open-chat-studio-widget to get the latest version number.
+
 ### 2. Review Your Implementation
 Check your current HTML implementation and compare it with the [latest properties reference](reference.md#properties-reference).
 
