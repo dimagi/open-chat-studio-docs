@@ -266,6 +266,25 @@ These questions appear as blue-outlined buttons aligned to the right (similar to
 </open-chat-studio-widget>
 ```
 
+## :material-clipboard-check: Consent Forms {#consent-forms}
+
+If the chatbot's published version has a [consent form](../concepts/consent.md), the widget collects consent
+in the chat itself. There is nothing to configure on the widget.
+
+Consent is requested when the participant sends their **first** message, not when the chat opens: the welcome
+message and starter questions behave as usual, and only when the participant tries to send something is the
+message composer replaced by the consent text and an **I agree** button. Accepting sends the message they had
+already typed.
+
+The browser remembers the acceptance against the **version** of the consent form, so a returning participant
+isn't asked again, while [publishing a new version](../concepts/consent.md#consent-forms-and-published-versions)
+with revised wording asks everyone again. Whether an acceptance survives the visit follows
+[`persistent-session`](#persistent-sessions) — a widget with `persistent-session="false"` asks again on the
+next page load, and `persistent-session="tab"` forgets the acceptance when the tab is closed.
+
+!!! note "Version requirement"
+    Consent collection in the widget requires widget version **0.13.0** or later.
+
 ## :material-lock: Read-Only Mode {#read-only-mode}
 
 Put the widget into a read-only state when your team is unavailable to respond, during maintenance windows, or whenever you need to pause conversations without hiding the widget entirely. Read-only mode is ideal for:
