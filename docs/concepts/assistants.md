@@ -5,12 +5,11 @@ title: OpenAI Assistants (Removed)
 # OpenAI Assistants (Removed)
 
 !!! warning "OpenAI Assistants have been removed from Open Chat Studio"
-    OpenAI retired the Assistants API on 26 August 2026. Open Chat Studio has removed the feature in two steps:
+    OpenAI retired the Assistants API on 26 August 2026. Open Chat Studio has removed the feature in three steps:
 
     - The Assistants pages were removed first — assistants can no longer be created, viewed, edited, or archived through the UI, and the Assistants entry no longer appears in the sidebar.
-    - The assistant pipeline node and its runtime have now been removed too. A pipeline that still contains an assistant node opens in the pipeline editor, but the node renders as a **Removed Node** and the pipeline no longer builds — its chatbot cannot run until you replace that node.
-
-    Your assistant records themselves are not deleted by this change — they are simply unreachable, since nothing in Open Chat Studio can use or display them any more. A later release will delete them for good.
+    - The assistant pipeline node and its runtime were removed next. A pipeline that still contains an assistant node opens in the pipeline editor, but the node renders as a **Removed Node** and the pipeline no longer builds — its chatbot cannot run until you replace that node.
+    - All stored assistant records have now been deleted permanently and irreversibly, along with their tool resources and any custom action operation that was attached to an assistant. Custom actions themselves, and operations attached to pipeline nodes, are not affected. The audit log retains a history of the deleted records, but the data itself cannot be recovered.
 
     **What this means for you:**
 

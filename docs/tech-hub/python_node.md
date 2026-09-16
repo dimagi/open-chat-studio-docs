@@ -129,9 +129,12 @@ Part of the temporary state is a list of attachments. Attachments are files that
 | `name`                | The name of the file                                                  |
 | `size`                | The size of the file in bytes                                         |
 | `content_type`        | The MIME type of the file                                             |
-| `upload_to_assistant` | Unused. Kept for compatibility only — it is always `False` and has no effect. |
 | `read_bytes()`        | Reads the attachment content as bytes.                                |
 | `read_text()`         | Reads the attachment content as text.                                 |
+
+!!! warning "`upload_to_assistant` has been removed"
+    The `upload_to_assistant` field no longer exists on `Attachment`, following the removal of [OpenAI Assistants](../concepts/assistants.md) from Open Chat Studio.
+    If your Python node code reads or assigns it, remove that code — it will now raise an error at runtime.
 
 Here is an example of an attachment object:
 
