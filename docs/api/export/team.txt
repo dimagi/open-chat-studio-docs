@@ -640,6 +640,19 @@ GET /api/export/scheduled_messages/
     apiKeyAuth
     tokenAuth
 
+GET /api/export/scheduled_triggers/
+  Summary: Scheduled Triggers
+  Parameters:
+    - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
+    - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+  Responses:
+    200:
+      Content: application/json
+      Schema: ScheduledTriggerList
+  Security:
+    apiKeyAuth
+    tokenAuth
+
 GET /api/export/scores/
   Summary: Scores
   Description: Paginated by `updated_at`: a row modified while you page through it can reappear on a later page, so clients must treat results as upserts keyed by `id` rather than assuming each row is seen once.
@@ -1752,6 +1765,27 @@ ScheduledMessageList:
   - cursor: string (required)
   - has_more: boolean (required)
   - results: array of ScheduledMessageDetail (required)
+
+ScheduledTriggerDetail:
+  - id: integer (required)
+  - created_at: string (required)
+  - updated_at: string (required)
+  - trigger_date: string (required)
+  - trigger_time: string (required)
+  - timezone: string (required)
+  - scheduled_at: string (required)
+  - active_session_window_days: integer
+  - fired_at: string
+  - is_archived: boolean
+  - is_active: boolean
+  - action: integer (required)
+  - experiment: integer (required)
+  - working_version: integer
+
+ScheduledTriggerList:
+  - cursor: string (required)
+  - has_more: boolean (required)
+  - results: array of ScheduledTriggerDetail (required)
 
 ScoreDetail:
   - id: integer (required)
