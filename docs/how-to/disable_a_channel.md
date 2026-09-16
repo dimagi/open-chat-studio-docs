@@ -33,6 +33,8 @@ Two API endpoints still open a session on a disabled channel:
 
 `POST /api/chat/start/`, which the chat widget uses, *is* refused — see the table above.
 
+The session-token renewal endpoint, `POST /api/chat/{session_id}/token/`, re-reads the channel on every call, so disabling, deleting, or reconfiguring the channel takes effect on the very next renewal. See [Chat API session tokens][session-tokens].
+
 Evaluation runs and pipeline test runs are unaffected by a channel's disabled state and continue to work as normal.
 
 ## Re-enabling a channel
@@ -47,7 +49,9 @@ Nothing that happened while the channel was off is replayed:
 ## See also
 - [Channels][disabling-concept] — what disabling does and why you might use it
 - [Deploying your chatbot to different channels][deploy]
+- [Chat API session tokens][session-tokens]
 
 [disabling-concept]: ../concepts/channels.md#disabling-a-channel
 [deploy]: ./deploy_to_different_channels.md
 [public-link]: ./deploy_public_link_channel.md
+[session-tokens]: ../tech-hub/chat_api_session_tokens.md#renewing-a-session-token

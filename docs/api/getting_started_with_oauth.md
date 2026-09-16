@@ -369,3 +369,29 @@ Machine tokens can only be granted **API resource scopes**. User-identity scopes
 - Keep the client secret server-side; never embed it in a browser, mobile app, or other client the end user can inspect.
 - Register a dedicated application per integration so you can revoke or rotate its credentials independently of other integrations.
 - Scope each application to the narrowest set of scopes the integration needs.
+
+## Tokens for starting chat sessions
+
+An OAuth access token requested with the `chat:start` scope **and no other scope** expires after **60 seconds** by default, instead of the usual 10 hours.
+Add any other scope alongside `chat:start` and the token keeps the normal, long lifetime.
+
+This short lifetime targets one use case: a backend that mints an OAuth token and hands it to a browser.
+The browser then calls `POST /api/chat/start/` directly, using that token.
+The chat widget's [OAuth credential mode](../chat_widget/reference.md#oauth-credential-mode) works this way — your server mints the token, and the widget presents it to start the session.
+Scope that token to `chat:start` alone, and a leaked token is only useful for a minute.
+
+### Renewing the session
+
+`POST /api/chat/start/` returns a **session token**, which itself expires — five minutes after it was issued by default, or the channel's configured **Session token lifetime**.
+Rather than starting a new session once it expires, renew it instead.
+Mint a fresh `chat:start`-scoped OAuth token and call `POST /api/chat/{session_id}/token/` to get a new session token for the same session.
+See [Chat API session tokens](../tech-hub/chat_api_session_tokens.md) for the renewal endpoint's full behavior.
+
+### Self-hosted: configuring the lifetimes
+
+Self-hosted deployments can override both lifetimes with environment variables:
+
+| Variable | Default | Controls |
+|---|---|---|
+| `OAUTH_ACCESS_TOKEN_EXPIRE_SECONDS` | `36000` (10 hours) | Lifetime of an OAuth access token that does **not** consist solely of the `chat:start` scope. |
+| `OAUTH_CHAT_START_TOKEN_EXPIRE_SECONDS` | `60` | Lifetime of an OAuth access token requested with the `chat:start` scope alone. |
