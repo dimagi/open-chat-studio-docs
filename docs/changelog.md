@@ -11,6 +11,10 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Sep 16, 2026
+* **CHANGE** Stored OpenAI assistant records have been deleted, completing the [OpenAI Assistants removal](concepts/assistants.md). Every assistant, its tool resources, and any [custom action](concepts/team/custom_actions.md) operation that was attached to an assistant are gone permanently and cannot be recovered — custom actions themselves, and operations attached to pipeline nodes, are unaffected. A pipeline that still holds an assistant node behaves as before: the node renders as a **Removed Node** and the pipeline does not build until you replace it with an [LLM node](concepts/pipelines/nodes.md#llm-node). See [Migrate Assistants](how-to/assistants_migration.md).
+* **CHANGE** The `upload_to_assistant` field has been removed from [Python node](tech-hub/python_node.md#attachments) attachments. It has had no effect since Sep 7, but code that reads or assigns it now fails at runtime, so remove those references.
+
 ## Sep 14, 2026
 * **BUG** When a participant sends something the chatbot cannot use — an image in a format the LLM provider rejects, or a voice note to a chatbot with no [speech provider](concepts/team/speech_providers.md) configured for transcription — they now get a reply explaining what to change on every [channel](concepts/channels.md). The web chat page, the [embedded widget](chat_widget/index.md) and the [Chat API](api/v1/index.md) previously discarded that reply and showed raw error text instead, and the occurrence was recorded as a failure even on the channels that did deliver it.
 * **BUG** A voice note now always appears in the chat history and on the conversation's trace, whatever went wrong with it. Previously the reply about a voice note could arrive with the note itself missing from the history, so it read as a non-sequitur.
