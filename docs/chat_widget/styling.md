@@ -172,7 +172,11 @@ Use the following CSS variables to style the button appearance.
 
 ## Markdown code
 
-By default, the Markdown code colours are relative to the respective message text and background colours, but they can be overridden.
+By default, the Markdown code colours are relative to the assistant message text and background colours, but they can be overridden.
+
+!!! warning "User messages no longer render Markdown"
+    As of v0.13.0 participant messages are shown as plain text, so `--code-bg-user-color`,
+    `--code-border-user-color` and `--code-text-user-color` have no effect.
 
 | Name                            | Description                                                                                                             |
 |---------------------------------|-------------------------------------------------------------------------------------------------------------------------|
