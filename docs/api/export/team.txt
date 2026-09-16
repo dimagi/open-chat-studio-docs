@@ -1130,7 +1130,6 @@ CustomActionOperationDetail:
   - operation_id: string (required)
   - _operation_schema: Unknown
   - working_version: integer
-  - assistant: integer
   - node: integer
   - custom_action: integer (required)
 
@@ -1614,7 +1613,6 @@ NodeDetail:
   - llm_provider_model: integer
   - source_material: integer
   - collection: integer
-  - assistant: integer
   - synthetic_voice: integer
   - collection_indexes: array of integer
 
@@ -1742,7 +1740,7 @@ PricingRuleList:
   - results: array of PricingRuleDetail (required)
 
 PurposeEnum:
-  - enum: [assistant, collection, evaluation_dataset, data_export, message_media]
+  - enum: [collection, evaluation_dataset, data_export, message_media]
 
 ScheduledMessageDetail:
   - id: integer (required)
