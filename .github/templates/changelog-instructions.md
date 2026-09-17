@@ -30,6 +30,7 @@ ${CHANGELOG_INSTRUCTIONS}
 - Be concise but informative
 - Focus on user-facing changes
 - Use active voice (e.g., "Added support for..." not "Support was added for...")
+- No mannered prose — no metaphor or flourish where a literal phrase states it directly
 - Don't include internal implementation details unless they affect users
 - Match the style and tone of existing changelog entries
 - If the PR is purely internal/refactoring with no user impact, you can skip the changelog entry

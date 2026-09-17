@@ -8,5 +8,6 @@
 - [ ] Enough internal links to and from related content.
 - [ ] Semantic linefeeds (one sentence per line) are used in newly written or edited paragraphs.
 - [ ] Sentences are under 25 words.
+- [ ] No mannered prose — no metaphor or flourish where a literal phrase says it directly ("a dial worth turning" → "a parameter worth varying").
 - [ ] Semantic linefeeds are used (one sentence per line) and not breaking lines by fixed column width.
 - [ ] Admonitions (`!!! note`, `!!! warning`) are used only for genuine notes, warnings, or tips — not as a formatting crutch.

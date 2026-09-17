@@ -83,6 +83,7 @@ Determine the page type using `.claude/checklists/page-type-contract.md`
 
 - Use active voice and present tense.
 - Keep sentences under 25 words.
+- No mannered prose. Mannered prose substitutes metaphor and flourish for direct statement: "a dial worth turning" instead of "a parameter worth varying", "this point earns its keep" instead of "this point still matters". Such phrases display the writer rather than convey the idea, and they are imprecise — metaphors drag in connotations you did not choose. Say what you mean; when a literal phrase is available, use it.
 - Define technical terms on first use or link to a Concept page.
 - Maintain consistent terminology throughout.
 - Use inclusive, accessible language.
