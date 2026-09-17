@@ -14,6 +14,12 @@ Source Material is a feature that allows you to provide specific content, inform
 
 - Organization and Structure: Well-organized Source Materials make it easier for the chatbot to retrieve and use the information. It's useful to structure your content in a clear, concise manner, with appropriate labels for different sections.
 
+## Deleting source material
+
+You can't delete a Source Material while a chatbot still references it — whether the reference is in a published version or in the working draft. Attempting to delete it shows a list of every chatbot that still references it, so you know what to update first. [Collections](./collections/index.md) are protected in the same way.
+
+To delete it, first clear the Source Material from each referencing [node](./pipelines/nodes.md), or delete the referencing chatbots, then try again.
+
 ## See also
 - [Prompt variables](./prompt_variables.md)
 - [Add a knowledge base](../how-to/add_a_knowledge_base.md)

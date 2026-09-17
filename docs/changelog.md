@@ -12,6 +12,7 @@ hide:
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
 ## Sep 16, 2026
+* **CHANGE** Deleting a [source material](concepts/source_material.md) that a chatbot still uses is now blocked, with a message naming the chatbots that reference it — the same protection [collections](concepts/collections/index.md) already had. Published chatbots and in-progress drafts both count as references. Previously the deletion silently succeeded and the chatbot kept running, quietly dropping that content from its prompt with no error and no warning.
 * **CHANGE** Stored OpenAI assistant records have been deleted, completing the [OpenAI Assistants removal](concepts/assistants.md). Every assistant, its tool resources, and any [custom action](concepts/team/custom_actions.md) operation that was attached to an assistant are gone permanently and cannot be recovered — custom actions themselves, and operations attached to pipeline nodes, are unaffected. A pipeline that still holds an assistant node behaves as before: the node renders as a **Removed Node** and the pipeline does not build until you replace it with an [LLM node](concepts/pipelines/nodes.md#llm-node). See [Migrate Assistants](how-to/assistants_migration.md).
 * **CHANGE** The `upload_to_assistant` field has been removed from [Python node](tech-hub/python_node.md#attachments) attachments. It has had no effect since Sep 7, but code that reads or assigns it now fails at runtime, so remove those references.
 
