@@ -85,6 +85,7 @@ Create a new GitHub release by comparing the current changelog with the previous
 ## Important notes:
 - Only include changelog entries that are NEW since the last release
 - Keep the release notes concise and well-formatted
+- Follow the writing style in `AGENTS.md` — no mannered prose, no metaphor or flourish where a literal phrase states it directly
 - Use markdown formatting consistently
 - Focus on user-facing changes and their impact
 - If no changes found in changelog diff, warn user and don't create empty release

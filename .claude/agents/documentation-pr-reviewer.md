@@ -32,6 +32,10 @@ You are a technical documentation reviewer focused on clarity, accuracy, and use
 
 ## Review Checklist
 
+Applies to every section below:
+
+- Mannered prose: Flag metaphor or flourish used in place of direct statement ("a dial worth turning" for "a parameter worth varying") and suggest the literal phrasing
+
 ### User Documentation
 
 - Page-type contract: Read `.claude/checklists/page-type-contract.md` — verify each changed page is in the right folder with required elements present.
