@@ -40,7 +40,7 @@ For step-by-step instructions on completing specific tasks, see the [How-to guid
 : A built-in testing system that runs your chatbot against sample conversations and scores the responses against criteria you define, such as accuracy, tone, or whether the chatbot stayed on topic.
 
 [Events](events.md)
-: Automated actions that fire when something specific happens in a chatbot session — for example, when a conversation starts, ends, or when a participant has been inactive for a set period.
+: Automated actions that fire when something specific happens in a chatbot session, after a period of inactivity, or at a date and time you schedule.
 
 [History](pipelines/history.md)
 : A per-node setting on nodes that call an LLM, controlling which part of a session's stored conversation is sent to the model when it generates a reply — its own history, the full conversation, a shared named history, or none at all.
