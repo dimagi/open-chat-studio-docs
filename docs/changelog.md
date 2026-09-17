@@ -11,6 +11,10 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Sep 17, 2026
+* **CHANGE** The embed snippet copied from an [embedded widget](chat_widget/index.md) channel now loads v0.13.0 of the Chat Widget, and the widget hosted by Open Chat Studio itself — the web chat page and the [public link](how-to/deploy_public_link_channel.md) page — has been updated to that version too. v0.13.0 collects a chatbot's consent form in the widget, renews the session token in the background on OAuth credential mode channels, and renders participant-typed messages as plain text. An embedded widget channel whose script tag still points at an older version is flagged with an **update available** badge; update the version in the `<script>` tag on your own site to pick it up. See the [widget changelog](chat_widget/changelog.md#v0130-2026-09-16) for details.
+* **CHANGE** A chatbot with a [consent form](concepts/consent.md) now asks embedded widget participants to consent, on their first message, once that embed is on widget v0.13.0 or later. Widget embeds on earlier versions are unaffected.
+
 ## Sep 16, 2026
 * **CHANGE** Stored OpenAI assistant records have been deleted, completing the [OpenAI Assistants removal](concepts/assistants.md). Every assistant, its tool resources, and any [custom action](concepts/team/custom_actions.md) operation that was attached to an assistant are gone permanently and cannot be recovered — custom actions themselves, and operations attached to pipeline nodes, are unaffected. A pipeline that still holds an assistant node behaves as before: the node renders as a **Removed Node** and the pipeline does not build until you replace it with an [LLM node](concepts/pipelines/nodes.md#llm-node). See [Migrate Assistants](how-to/assistants_migration.md).
 * **CHANGE** The `upload_to_assistant` field has been removed from [Python node](tech-hub/python_node.md#attachments) attachments. It has had no effect since Sep 7, but code that reads or assigns it now fails at runtime, so remove those references.
