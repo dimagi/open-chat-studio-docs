@@ -47,6 +47,24 @@ Verification runs automatically whenever you save a provider whose credentials h
 
     [Voyage AI](https://docs.voyageai.com/docs/embeddings) is an embeddings-only provider and is never offered credential verification.
 
+## Provider errors during a conversation
+
+Credential verification catches many problems early, but a provider can still refuse an individual request during a live conversation.
+For example, your account balance can run out mid-month, a key can be revoked after it last passed verification, or a model can be withdrawn.
+
+Open Chat Studio sorts these refusals into two groups:
+
+- **Configuration errors**: your team's account or setup is at fault, not the request — an exhausted balance, a revoked or invalid key, or a withdrawn model. These errors are terminal, so they are never retried. The participant gets the chatbot's usual error reply immediately, and your team gets a [notification](../notifications.md) naming the provider's own reason.
+- **Transient errors**: real rate limits, provider outages, and network faults. These are retried automatically, and only reach the participant as an error if every retry fails.
+
+!!! note "Detection differs by provider"
+
+    - **OpenAI** recognizes an exhausted balance, an invalid key, and a withdrawn model as configuration errors.
+    - **Anthropic** recognizes an exhausted balance by matching the wording of Anthropic's own error message. If Anthropic changes that wording, the case falls back to being treated as transient. The participant still gets the usual reply, and your team is still notified — just without the specific reason.
+    - **Google Gemini** recognizes an invalid key and a withdrawn model, but reports an exhausted balance the same way it reports a per-minute rate limit. That case is treated as transient and retried, so your team is not told that the account has run out of credit.
+
+The notification's wording comes from the provider verbatim, so it may include whatever detail the provider chose to give.
+
 ## Model Lifecycle and Deprecation
 
 LLM providers regularly update their model offerings. This means models available in Open Chat Studio may occasionally be deprecated or removed.
