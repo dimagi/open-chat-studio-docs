@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Sep 17, 2026
+* **BUG** When a chatbot's [LLM provider](concepts/team/llm_providers.md) refuses a request for a reason only your team can fix — an exhausted account balance, a revoked or invalid API key, a model the provider has withdrawn — the participant now gets the chatbot's standard error reply and your team gets a [notification](concepts/notifications.md) naming the provider's own explanation. Previously the conversation turn was dropped without a reply. Note that Google Gemini reports an exhausted balance the same way it reports a rate limit, so that case is still treated as temporary and retried rather than reported.
+
 ## Sep 16, 2026
 * **CHANGE** Stored OpenAI assistant records have been deleted, completing the [OpenAI Assistants removal](concepts/assistants.md). Every assistant, its tool resources, and any [custom action](concepts/team/custom_actions.md) operation that was attached to an assistant are gone permanently and cannot be recovered — custom actions themselves, and operations attached to pipeline nodes, are unaffected. A pipeline that still holds an assistant node behaves as before: the node renders as a **Removed Node** and the pipeline does not build until you replace it with an [LLM node](concepts/pipelines/nodes.md#llm-node). See [Migrate Assistants](how-to/assistants_migration.md).
 * **CHANGE** The `upload_to_assistant` field has been removed from [Python node](tech-hub/python_node.md#attachments) attachments. It has had no effect since Sep 7, but code that reads or assigns it now fails at runtime, so remove those references.
