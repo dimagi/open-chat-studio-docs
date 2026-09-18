@@ -11,6 +11,13 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Sep 18, 2026
+* **NEW** Ten GPT-5 and GPT-6 models can now be selected on the **Azure OpenAI** provider: GPT-6 Astra, GPT-5.6 Terra, GPT-5.6 Sol, GPT-5.6 Luna, GPT-5.5, GPT-5.4, GPT-5.4 Pro, GPT-5.4 Mini, GPT-5.4 Nano and GPT-5.2. They were previously available only on the OpenAI provider.
+* **NEW** Added **Gemini 3.1 Pro Preview** and **Gemini 3.1 Flash Lite** on the Google (Gemini API) provider, **Qwen3.8 27B** on Groq, and **MiniMax-M2.5** on MiniMax.
+* **CHANGE** Seven models that their providers have retired were removed. Chatbots and pipelines using them were switched to a replacement automatically, and affected teams were notified: Anthropic's `claude-3-5-haiku-latest` (now Claude Haiku 4.5) and `claude-3-7-sonnet-20250219` (now Claude Sonnet 4.6), OpenAI's `gpt-5.3` (now GPT-5.4) and `gpt-5.3-instant` (now GPT-5.4 Mini), Groq's `gemma2-9b-it` (now GPT-OSS 20B), and Perplexity's `llama-3.1-sonar-small-128k-chat` and `llama-3.1-sonar-large-128k-chat` (now Sonar and Sonar Pro). See [Model Lifecycle and Deprecation](concepts/team/llm_providers.md#model-lifecycle-and-deprecation).
+* **CHANGE** Reported costs have dropped for Claude Sonnet 5, Gemini 3.6 Flash (on both Google and Google Vertex AI), MiniMax-M3 and GPT-5.6 Sol, following price cuts by those providers. Cached-input and cache-write rates were also added for MiniMax-M2 and MiniMax-M3, whose usage of those services was previously reported as free.
+* **CHANGE** Corrected two context window sizes: MiniMax-M2.7 is 204,800 tokens rather than 200,000, and OpenAI's GPT-5.6 Terra, Sol and Luna are 1,050,000 tokens rather than 1,100,000.
+
 ## Sep 17, 2026
 * **BUG** When a chatbot's [LLM provider](concepts/team/llm_providers.md) refuses a request for a reason only your team can fix — an exhausted account balance, a revoked or invalid API key, a model the provider has withdrawn — the participant now gets the chatbot's standard error reply and your team gets a [notification](concepts/notifications.md) naming the provider's own explanation. Previously the conversation turn was dropped without a reply. Note that Google Gemini reports an exhausted balance the same way it reports a rate limit, so that case is still treated as temporary and retried rather than reported.
 
