@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Sep 18, 2026
+* **BUG** The **Download Latest Results** export on an [evaluation](concepts/evaluations/index.md) now writes its CSV as the results are read instead of holding the whole result set in memory, so exports from evaluation configs with many messages are far less likely to fail with a server error. The button also reports a percentage while the export runs, in place of the previous open-ended spinner. The CSV itself is unchanged.
+
 ## Sep 17, 2026
 * **BUG** When a chatbot's [LLM provider](concepts/team/llm_providers.md) refuses a request for a reason only your team can fix — an exhausted account balance, a revoked or invalid API key, a model the provider has withdrawn — the participant now gets the chatbot's standard error reply and your team gets a [notification](concepts/notifications.md) naming the provider's own explanation. Previously the conversation turn was dropped without a reply. Note that Google Gemini reports an exhausted balance the same way it reports a rate limit, so that case is still treated as temporary and retried rather than reported.
 
