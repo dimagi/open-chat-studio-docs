@@ -1574,7 +1574,7 @@ LlmProviderModelList:
   - results: array of LlmProviderModelDetail (required)
 
 LlmProviderTypeEnum:
-  - enum: [openai, azure, anthropic, groq, perplexity, deepseek, minimax, litellm, google, google_vertex_ai, voyage]
+  - enum: [openai, azure, anthropic, groq, perplexity, openrouter, deepseek, minimax, litellm, google, google_vertex_ai, voyage]
 
 MessageTypeEnum:
   - enum: [human, ai, system]
