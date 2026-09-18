@@ -1,8 +1,8 @@
-# Files in this directory are GitHub issue and pull request templates
+# Files in this directory are GitHub pull request templates (and any future issue templates)
 #
 # Inherit the base rules from the root .markdownlint.yaml file
 extends: ../.markdownlint.yaml
 
-# A top-level heading will break the heading hierarcy as these templates dont expect H1 headings.
+# A top-level heading will break the heading hierarchy as these templates don't expect H1
 # So disable MD041 for this directory which would force a top-level heading.
 MD041: false

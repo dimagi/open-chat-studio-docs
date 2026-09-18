@@ -1,5 +1,4 @@
-
-<!-- Classify by using a prefix i.e.: [Docs], [AgentOps] [DevOps] or [Dev Tooling] -->
+<!-- Classify by using a prefix i.e.: [Docs], [AgentOps] [DevOps] [Dev Tooling] or [Widget Docs]-->
 
 ## Summary: what and why
 <!-- Briefly in 1 sentence describe the goal, reason or impact -->
@@ -17,11 +16,12 @@ Related issue: #xyz
 ## Changes
 
 ### Scope
-<!-- Summarize the actual update. -->
-- Added / revised / separated / simplified
+Added / revised / separated / simplified
+<!-- Summarize the actual update.
 - Updated examples, screenshots, navigation, or configuration
 - Fixed terminology, accuracy, duplication or cross-references
 - Clarified workflow or product behavior
+-->
 
 ### Affected pages / sections
 <!-- List the page(s), section(s), or folders affected. -->
@@ -31,7 +31,7 @@ Related issue: #xyz
   - [ ] `docs/how-to/`
   - [ ] `docs/concepts/`
   - [ ] `docs/tech-hub/`
-  - [ ] `docs/chat_widget/`
+  - [ ] `docs/chat_widget/` — base must be `widget-develop`, not `main`, and must not be mixed with the folders above  
 - Automated process(s):
 
 ### Decisions and what not addressed in this PR
