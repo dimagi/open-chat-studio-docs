@@ -34,9 +34,9 @@ If a model you need isn't pre-configured, see [Add a Custom LLM Model](../../how
 
     LiteLLM connects to a model gateway you run yourself, so Open Chat Studio has no way to know in advance which models it serves. After adding a LiteLLM provider, add every model you want to use as a [custom model](../../how-to/add_custom_llm_model.md).
 
-!!! note "OpenRouter ships with only a few pre-configured models"
+!!! note "OpenRouter has no pre-configured models"
 
-    OpenRouter gives access to hundreds of models, but Open Chat Studio pre-configures only a handful of commonly used ones. To use any other model OpenRouter offers, add it as a [custom model](../../how-to/add_custom_llm_model.md#openrouter-models).
+    OpenRouter gives access to hundreds of models from many vendors, and Open Chat Studio doesn't pre-configure any of them. After adding an OpenRouter provider, add every model you want to use as a [custom model](../../how-to/add_custom_llm_model.md#openrouter-models).
 
 ## Credential Verification
 

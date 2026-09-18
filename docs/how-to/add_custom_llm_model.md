@@ -41,7 +41,7 @@ Find current model names in [Google's Gemini model documentation](https://ai.goo
 
 ### OpenRouter models
 
-For [OpenRouter](../concepts/team/llm_providers.md) models, use the namespaced `vendor/model` name OpenRouter assigns — for example, `openai/gpt-4.1-mini` or `anthropic/claude-sonnet-4.6`. This differs from the plain model names used by most other providers, so copy the name exactly as OpenRouter lists it.
+An [OpenRouter](../concepts/team/llm_providers.md) provider ships with no pre-configured models, so you must add every model you want to use. Use the namespaced `vendor/model` name OpenRouter assigns — for example, `openai/gpt-4.1-mini` or `anthropic/claude-sonnet-4.6`. This differs from the plain model names used by most other providers, so copy the name exactly as OpenRouter lists it.
 
 Find current model names in [OpenRouter's model list](https://openrouter.ai/models).
 
