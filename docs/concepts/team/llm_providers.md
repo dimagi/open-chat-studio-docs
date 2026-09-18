@@ -12,6 +12,7 @@ Open Chat Studio is designed to be flexible, and can connect to any LLM provider
 * [DeepSeek](https://api-docs.deepseek.com/quick_start/pricing)
 * [Google Gemini](https://ai.google.dev/gemini-api/docs/models)
 * [MiniMax](https://platform.minimax.io)
+* [OpenRouter](https://openrouter.ai/models) — an aggregator giving access to models from many vendors (OpenAI, Anthropic, Meta, Google, DeepSeek, and more) through a single API key
 * [Voyage AI (embedding only)](https://docs.voyageai.com/docs/embeddings)
 * [LiteLLM](https://docs.litellm.ai/docs/simple_proxy) (bring your own proxy)
 
@@ -32,6 +33,10 @@ If a model you need isn't pre-configured, see [Add a Custom LLM Model](../../how
 !!! note "LiteLLM has no pre-configured models"
 
     LiteLLM connects to a model gateway you run yourself, so Open Chat Studio has no way to know in advance which models it serves. After adding a LiteLLM provider, add every model you want to use as a [custom model](../../how-to/add_custom_llm_model.md).
+
+!!! note "OpenRouter ships with only a few pre-configured models"
+
+    OpenRouter gives access to hundreds of models, but Open Chat Studio pre-configures only a handful of commonly used ones. To use any other model OpenRouter offers, add it as a [custom model](../../how-to/add_custom_llm_model.md#openrouter-models).
 
 ## Credential Verification
 
