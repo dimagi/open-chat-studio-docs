@@ -1,8 +1,11 @@
 # Files in this directory are GitHub pull request templates (and any future issue templates)
-#
+# NOTE: This configuration also applies to subfolders like .github/workflows/
+# Acceptable that the MD041 rule is disabled as all other linting rules are enforced.
+
+
 # Inherit the base rules from the root .markdownlint.yaml file
 extends: ../.markdownlint.yaml
 
-# A top-level heading will break the heading hierarchy as these templates don't expect H1
-# So disable MD041 for this directory which would force a top-level heading.
+# GitHub renders the PR/issue title as the top heading, so these templates start at H2.
+# MD041 (require a top-level heading) would flag that intentional convention, so turn it off.
 MD041: false
