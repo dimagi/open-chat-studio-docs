@@ -15,6 +15,7 @@ GET /api/participants
     - identifier (query, string (optional)): Filter by participant identifier
     - page_size (query, integer (optional)): Number of results to return per page.
     - platform (query, string (optional)): Filter by platform (e.g. api, telegram, whatsapp)
+    - remote_id (query, string (optional)): Filter by participant remote ID
   Responses:
     200:
       Content: application/json
