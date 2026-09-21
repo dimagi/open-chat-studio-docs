@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Sep 21, 2026
+* **CHANGE** The [Usage API](api/v2/usage.txt) (`GET /api/v2/usage/`) accepts a new `participant_remote_id` filter, and the [participants list endpoint](api/v1/participants.txt) (`GET /api/participants/`) accepts a new `remote_id` filter. Both match the external participant ID supplied as `participant_remote_id` when a session is started through the [Chat API](api/v1/chat.txt), so you can query by your own user ID without first looking it up as an OCS participant ID. On the Usage API, `participant_remote_id` cannot be combined with `participant` or `participant_identifier`.
+
 ## Sep 18, 2026
 * **NEW** **OpenRouter** can now be added as an [LLM provider](concepts/team/llm_providers.md). OpenRouter routes requests to models from OpenAI, Anthropic, Meta, Google, DeepSeek and others through a single API key, so one provider entry gives your chatbots access to all of them. No models are pre-configured, so after adding the provider, add each model you want to use as a [custom model](how-to/add_custom_llm_model.md#openrouter-models).
 * **NEW** Ten GPT-5 and GPT-6 models can now be selected on the **Azure OpenAI** provider: GPT-6 Astra, GPT-5.6 Terra, GPT-5.6 Sol, GPT-5.6 Luna, GPT-5.5, GPT-5.4, GPT-5.4 Pro, GPT-5.4 Mini, GPT-5.4 Nano and GPT-5.2. They were previously available only on the OpenAI provider.
