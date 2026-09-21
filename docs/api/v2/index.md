@@ -31,7 +31,12 @@ Simplified per-tag references for LLM consumption:
 | POST | `/api/v2/chatbots/` | Create Chatbot |
 | GET | `/api/v2/chatbots/{id}/` | Retrieve Chatbot |
 | PATCH | `/api/v2/chatbots/{id}/` | Update Chatbot |
+| DELETE | `/api/v2/chatbots/{id}/` | Archive Chatbot |
 | GET | `/api/v2/chatbots/{id}/inspect/` | Inspect Chatbot |
+| POST | `/api/v2/chatbots/{id}/versions/` | Create a new version |
+| PATCH | `/api/v2/chatbots/{id}/versions/{version_number}/` | Make chatbot version the published one |
+| DELETE | `/api/v2/chatbots/{id}/versions/{version_number}/` | Archive a chatbot version |
+| GET | `/api/v2/chatbots/{id}/versions/status/` | Version creation status |
 
 ### Me
 
