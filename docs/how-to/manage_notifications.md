@@ -48,6 +48,6 @@ Do Not Disturb only affects your own notifications, not your teammates'.
 
 For example, you could keep in-app notifications on for everything, but only enable email for Error-level issues so you're not emailed about routine information.
 
-## Next steps
+## See also
 
 To learn more about how notifications are grouped, scoped, and delivered, see the [Notifications](../concepts/notifications.md) concept page.

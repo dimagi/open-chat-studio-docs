@@ -66,7 +66,7 @@ Support varies by provider. The full list of provider tools and their current su
 
 Open Chat Studio also manages a small set of internal tools automatically - `Attach media` and `File Search`. See the [Tools Reference](../../tech-hub/tools.md#internal-tools) for details.
 
-## Next steps
+## See also
 
 - To see full argument details for each user-configurable tool, see the [Tools Reference](../../tech-hub/tools.md).
 - To add your own tools in the form of custom integrations, see [Custom Actions](../llm_custom_action.md).

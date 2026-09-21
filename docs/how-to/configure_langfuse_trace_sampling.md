@@ -50,7 +50,7 @@ Those turns probably weren't sampled. Check whether the chatbot has a **Trace sa
 **Changing the rate didn't add span data to older traces.**
 Sampling only affects new turns. Traces recorded before the change keep whatever data they already have.
 
-## Related pages
+## See also
 
 - [Tracing](../concepts/tracing.md) — how builtin and Langfuse tracing work
 - [Teams](../concepts/team/index.md) — team-level configuration, including tracing providers

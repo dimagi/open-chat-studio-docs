@@ -79,7 +79,7 @@ The `Merge` node will get outputs from `NodeA` and either `NodeB` or `NodeC`. Yo
         return "\n".join(all_inputs)
     ```
 
-## Related pages
+## See also
 
 - [Parallel Pipelines](../concepts/pipelines/parallel.md) — the execution model behind uneven and optional branches
 - [Python Node](python_node.md) — full reference for `require_node_outputs`, `wait_for_next_input`, `get_node_output`, and the other Python node utility functions
