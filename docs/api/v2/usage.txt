@@ -25,7 +25,7 @@ Each `metric` you request gets its own block in the response:
 - With `granularity` finer than `total`, `results` is one row per time bucket.
 - With `group_by` set, `results` is cursor-paginated breakdown rows — one per group, or one per (group, bucket) when combined with a finer granularity.
 
-Optionally narrowed by `participant`, `chatbot`, or `platform`.
+Optionally narrowed by `participant`, `participant_identifier`, `participant_remote_id`, `chatbot`, or `platform`.
 
 > **Tip:** The **Response samples** panel has worked examples for the common cases — pick one from the **Example** dropdown (single participant, cost + tokens, grouped breakdowns, and daily timeseries).
   Parameters:
@@ -45,6 +45,7 @@ Optionally narrowed by `participant`, `chatbot`, or `platform`.
     - metric (query, array (required)): Metrics to return; repeat the parameter for several.
     - participant (query, string (optional)): Restrict to a single participant by their ``public_id``.
     - participant_identifier (query, string (optional)): Restrict to a single participant by their raw identifier (email/phone).
+    - participant_remote_id (query, string (optional)): Restrict to participants by their external-system remote ID.
     - period (query, string (optional)): Calendar month to report on, evaluated in the given timezone. Mutually exclusive with 'start'/'end'; defaults to the current month when no explicit window is given.
 
 * `current_month` - current_month
