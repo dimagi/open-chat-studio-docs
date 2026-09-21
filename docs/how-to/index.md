@@ -10,7 +10,7 @@ Here you’ll find answers to “How do I...?” types of questions. These guide
 ## Related content
 
  - For new users, see the [Tutorials](../tutorials/index.md) for getting started
- - For conceptual explanations about OCS and AI, see the [Conceptual guide](../concepts/index.md).
+ - For conceptual explanations about Open Chat Studio and AI, see the [Conceptual guide](../concepts/index.md).
 
 <div class="grid cards" markdown>
 

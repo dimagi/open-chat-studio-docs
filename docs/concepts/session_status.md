@@ -1,6 +1,6 @@
 # Session Status
 
-Every [chat session](sessions.md) in Open Chat Studio has a **status** that reflects where the participant is in their journey — from first contact through to a completed, reviewed conversation.
+Every [chat session](sessions.md) in Open Chat Studio (OCS) has a **status** that reflects where the participant is in their journey — from first contact through to a completed, reviewed conversation.
 
 Understanding session status helps you:
 
