@@ -46,6 +46,9 @@ hide:
 ## Sep 9, 2026
 * **CHANGE** Chatbot [events](concepts/events.md) — static triggers, timeout triggers and scheduled messages — are now available to every team. They were previously gated behind the `flag_events` feature flag, so a team administrator had to turn them on. Teams that already had the flag enabled see no change.
 
+## Sep 8, 2026
+* **NEW** Team administrators can require two-factor authentication for their team with the new **Require two-factor authentication** checkbox under **Members & access** on the team settings page. Once it is on, every member of that team — including the administrator who enabled it — must set up two-factor authentication before they can use Open Chat Studio, on any page and not just that team's. Members of teams that have not enabled it are unaffected. The setting is off by default.
+
 ## Sep 7, 2026
 * **BUG** Long messages sent over Twilio channels (WhatsApp, SMS) are now split correctly when they contain emoji or special symbols such as em-dashes. Twilio counts those characters twice against its 1,600-character limit, so messages containing them could previously be rejected and never reach the participant.
 * **CHANGE** The **Create from assistant** button has been removed from the Collections page. It built an [indexed collection](concepts/collections/indexed.md) from an OpenAI assistant's file-search files, a migration path for a feature that has itself been removed. Create an indexed collection and upload the files to it directly instead.
