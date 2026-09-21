@@ -11,6 +11,10 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Sep 21, 2026
+* **BUG** An [LLM evaluator](concepts/evaluations/evaluators.md) whose model declines to return structured output — it refuses, the provider blocks the reply, or it does not call the tool — now reports `The model did not return structured output:` followed by what the model said, in the same `error (<evaluator name>)` column. Previously the results grid showed `'NoneType' object has no attribute 'model_dump'`. A schema mismatch is still retried; a declined request is not, since asking again gets the same answer.
+* **BUG** A [router node](concepts/pipelines/router_nodes.md) whose model declines to return structured output now takes its default route instead of failing the participant's turn. The [Extract Structured Data](concepts/pipelines/nodes.md#extract-structured-data-node) and [Update Participant Data](concepts/pipelines/nodes.md#update-participant-data-node) nodes skip the part of the input the model gave nothing for and carry on, rather than failing the turn, and Update Participant Data leaves participant data unchanged if nothing at all could be extracted.
+
 ## Sep 18, 2026
 * **NEW** **OpenRouter** can now be added as an [LLM provider](concepts/team/llm_providers.md). OpenRouter routes requests to models from OpenAI, Anthropic, Meta, Google, DeepSeek and others through a single API key, so one provider entry gives your chatbots access to all of them. No models are pre-configured, so after adding the provider, add each model you want to use as a [custom model](how-to/add_custom_llm_model.md#openrouter-models).
 * **NEW** Ten GPT-5 and GPT-6 models can now be selected on the **Azure OpenAI** provider: GPT-6 Astra, GPT-5.6 Terra, GPT-5.6 Sol, GPT-5.6 Luna, GPT-5.5, GPT-5.4, GPT-5.4 Pro, GPT-5.4 Mini, GPT-5.4 Nano and GPT-5.2. They were previously available only on the OpenAI provider.

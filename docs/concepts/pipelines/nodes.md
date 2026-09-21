@@ -68,9 +68,13 @@ See the [Render a Template and Send an Email Node](../../tech-hub/template_and_e
 
 Uses an LLM to extract structured data from the input against a JSON schema you define. Unlike most other nodes, its output **replaces** the input: downstream nodes receive the extracted data (as JSON) rather than the original conversation text.
 
+If the model returns no structured data for part of the input — it refuses, the provider blocks the reply, or it never calls the required tool — the node skips that part and carries on rather than failing the conversation turn. This is rare in practice.
+
 ## Update Participant Data Node
 
 Uses an LLM to extract structured data the same way as the Extract Structured Data node. Instead of passing the result downstream, it saves it as [participant data](../../concepts/participant_data.md). This node is a passthrough — its output is identical to its input. It can be inserted into a pipeline without changing what the next node receives, and is commonly used with [events](../events.md).
+
+It handles a missing response the same way: any part of the input the model returns no structured data for is skipped, and if nothing at all could be extracted, participant data is left unchanged.
 
 ## Python Node
 
