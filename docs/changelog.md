@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Sep 21, 2026
+* **BUG** Fixed the charts on the superuser site admin dashboard failing to render after returning to the page with the browser's back button, which raised a JavaScript error and left the charts blank.
+
 ## Sep 18, 2026
 * **NEW** **OpenRouter** can now be added as an [LLM provider](concepts/team/llm_providers.md). OpenRouter routes requests to models from OpenAI, Anthropic, Meta, Google, DeepSeek and others through a single API key, so one provider entry gives your chatbots access to all of them. No models are pre-configured, so after adding the provider, add each model you want to use as a [custom model](how-to/add_custom_llm_model.md#openrouter-models).
 * **NEW** Ten GPT-5 and GPT-6 models can now be selected on the **Azure OpenAI** provider: GPT-6 Astra, GPT-5.6 Terra, GPT-5.6 Sol, GPT-5.6 Luna, GPT-5.5, GPT-5.4, GPT-5.4 Pro, GPT-5.4 Mini, GPT-5.4 Nano and GPT-5.2. They were previously available only on the OpenAI provider.
