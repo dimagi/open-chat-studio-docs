@@ -31,7 +31,7 @@ Static events are predefined triggers that occur based on specific actions or co
 - **Bot Safety Layer Triggered**: Triggered when the safety layer is activated by a response from the chatbot.
 - **Conversation Start**: Triggered when a new conversation is started.
 - **New Human Message**: Triggered when a new human message is received.
-- **New Bot Message**: Triggered when a new bot message is received.
+- **New Bot Message**: Triggered when a new chatbot message is received.
 - **Participant Joined Chatbot**: Triggered when a participant starts interacting with the chatbot for the very first time.
 
 ## Timeout Events

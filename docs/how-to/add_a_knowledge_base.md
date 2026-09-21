@@ -1,6 +1,6 @@
 # Add a Knowledge Base
 
-Adding knowledge to your bot depends on the type of bot you are building.
+Adding knowledge to your chatbot depends on the type of chatbot you are building.
 
 ## Base LLM and Pipeline
 ### Add your source material
