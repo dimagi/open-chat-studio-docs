@@ -13,6 +13,22 @@ graph LR
     1. See a [simple example](./index.md#a-simple-example) of a pipeline with one node.
     2. See [chatbot workflow cookbook](../../how-to/workflow_cookbook.md) for examples of pipelines using different combinations of these node types.
 
+## Node Warnings and Errors
+
+The pipeline editor highlights nodes that need your attention:
+
+- A **red border** means the node has a configuration **error**. The pipeline cannot run until you fix it.
+- An **amber border**, together with a warning triangle in the node's header, means the node has a **warning**. Warnings are advisory — the pipeline still saves, runs, accepts a test message, and can be [versioned](../versioning.md).
+
+If a node has both an error and a warning, the red border takes precedence, since the error is the more urgent of the two.
+
+A node carries a warning when:
+
+- Its **node type** has been deprecated and will be removed in a future release.
+- Its **LLM model** has been [deprecated](../team/llm_providers.md#model-lifecycle-and-deprecation). The triangle names the deprecated model and the model to switch to, and the **LLM Model** field in the node's settings shows the same notice.
+
+A node that is affected by both shows a single triangle carrying both messages.
+
 ## LLM Node
 
 A conversational node using AI models. You can configure:
@@ -50,11 +66,11 @@ See the [Render a Template and Send an Email Node](../../tech-hub/template_and_e
 
 ## Extract Structured Data Node
 
-Extract structured data from the input. This node acts as a passthrough, meaning the output will be identical to the input, allowing it to be used in a pipeline without affecting the conversation.
+Uses an LLM to extract structured data from the input against a JSON schema you define. Unlike most other nodes, its output **replaces** the input: downstream nodes receive the extracted data (as JSON) rather than the original conversation text.
 
 ## Update Participant Data Node
 
-Extract structured data and save it as participant data. This node is commonly used with [events](../events.md).
+Uses an LLM to extract structured data the same way as the Extract Structured Data node. Instead of passing the result downstream, it saves it as [participant data](../../concepts/participant_data.md). This node is a passthrough — its output is identical to its input. It can be inserted into a pipeline without changing what the next node receives, and is commonly used with [events](../events.md).
 
 ## Python Node
 
@@ -68,3 +84,9 @@ Execute custom Python code for logic, data processing, or external API calls.
 - **[Debugging](../../tech-hub/python_node.md#debugging-with-print)** — use `print()` to capture diagnostic output, visible in the trace detail view.
 
 See the [Python Node](../../tech-hub/python_node.md) page for full documentation.
+
+## Removed Nodes
+
+When a node type is retired from Open Chat Studio, a pipeline that still contains one of those nodes keeps opening in the editor, but the node renders as a **Removed Node** — a badge, plus a message naming the node type to use instead. The pipeline itself no longer builds, so its chatbot cannot run until you delete the removed node and put a supported one in its place.
+
+The assistant node is a node type in this state: see [OpenAI Assistants (Removed)](../assistants.md) for background and the [migration guide](../../how-to/assistants_migration.md) for how to replace one.

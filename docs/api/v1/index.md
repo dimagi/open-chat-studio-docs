@@ -34,6 +34,7 @@ Simplified per-tag references for LLM consumption:
 | POST | `/api/chat/{session_id}/consent/` | Record that the participant accepted the chatbot's consent form |
 | POST | `/api/chat/{session_id}/message/` | Send a message to a chat session |
 | GET | `/api/chat/{session_id}/poll/` | Poll for new messages in a chat session. Do not poll more than once every 30 seconds |
+| POST | `/api/chat/{session_id}/token/` | Renew a chat session's token |
 | POST | `/api/chat/{session_id}/upload/` | Upload files for a chat message |
 | POST | `/api/chat/start/` | Start a new chat session for a widget |
 

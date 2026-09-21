@@ -10,7 +10,7 @@ a [notification](../../concepts/notifications.md) is sent to team members who ca
 
 ## Viewing health status
 
-You can view the health status of your Custom Actions in two places in [Team Settings](../../concepts/team/index.md):
+You can view the health status of your Custom Actions in two places in the [Developers](../../concepts/team/developer.md) section of Team Settings:
 
 1. **Custom Actions table**: The list of Custom Actions gives you a quick view of which services are available, along with a status indicator.
 2. **Custom Action page**: When you open a Custom Action for your team, you can check its status while updating the configuration.

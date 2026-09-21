@@ -15,9 +15,6 @@ GET /api/chat/{session_id}/{task_id}/poll/
     200:
       Content: application/json
       Schema: ChatTaskPoll
-    400:
-      Content: application/json
-      Schema: ChatTaskPollUserError
     404:
       Content: application/json
       Schema: ChatTaskPollNotFound
@@ -84,6 +81,22 @@ GET /api/chat/{session_id}/poll/
   Security:
     cookieAuth
     embedKeyAuth
+
+POST /api/chat/{session_id}/token/
+  Summary: Renew a chat session's token
+  Description: Issue a new session token for an existing session, so the widget can continue the conversation after its current token expires. Called by the widget with a fresh client-credentials token from the host, the same `chat:start` token used for `POST /api/chat/start/`. Admission matches session start: the token must be for the session's chatbot, the Chat API Channel must be in OAuth token mode, and the channel's origin rule applies.
+  Parameters:
+    - session_id (path, string (required)): Session ID
+  Responses:
+    200:
+      Content: application/json
+      Schema: ChatSessionTokenResponse
+    401:
+      Content: application/json
+      Schema: ChatAccessDenied
+  Security:
+    chatOAuth2
+      - Required scopes: chat:start
 
 POST /api/chat/{session_id}/upload/
   Summary: Upload files for a chat message
@@ -169,6 +182,11 @@ ChatSendMessageResponse:
   - status: Unknown (required)
   - error: string
 
+ChatSessionTokenResponse:
+  - session_id: string (required)
+  - session_token: string (required)
+  - expires_at: string (required)
+
 ChatStartSessionRefused:
   - error: string (required)
   - code: string (required)
@@ -183,7 +201,8 @@ ChatStartSessionRequest:
 
 ChatStartSessionResponse:
   - session_id: string (required)
-  - session_token: string
+  - session_token: string (required)
+  - expires_at: string (required)
   - chatbot: Unknown (required)
   - participant: Unknown (required)
   - consent: Unknown (required)
@@ -201,10 +220,6 @@ ChatTaskPollNotFound:
 
 ChatTaskPollStatusEnum:
   - enum: [processing, complete]
-
-ChatTaskPollUserError:
-  - error: string
-  - status: string (required)
 
 ChatUploadFileRequest:
   - files: array of string (required)

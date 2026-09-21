@@ -16,9 +16,6 @@ The session ends after the chatbot's reply is delivered to the participant.
 
 For full configuration details, see the [End Session tool reference](tools.md#end-session).
 
-!!! warning "Not available for Assistant-style chatbots"
-    The End Session tool cannot be used with Assistant-style chatbots.
-
 Use this approach when the decision to end the conversation belongs to the LLM — for example, "end the session once the user confirms they are done".
 
 ## The `end_session()` helper in a Python node
@@ -42,5 +39,6 @@ Configure an [event](../concepts/events.md) whose action is **End the conversati
 
 - **Static triggers** — fire on a lifecycle event such as a new chatbot message, a participant joining, or a conversation starting. Useful when you want the session to end as soon as the chatbot sends a specific goodbye message.
 - **Timeout triggers** — fire after a period of inactivity. Useful for "end the session if the participant is silent for 30 minutes".
+- **Scheduled triggers** — fire once at a date and time you configure. Useful for ending a session at a fixed real-world deadline rather than based on conversation activity. See [Scheduled Events](../concepts/events.md#scheduled-events) for how these differ from the other trigger types.
 
 Use this approach when the decision to end the conversation should be driven by lifecycle conditions outside the pipeline itself.

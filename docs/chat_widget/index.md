@@ -28,8 +28,10 @@ Before embedding, you must [create a chatbot in Open Chat Studio](../tutorials/f
 1. Add the widget script to your site's `<head>` section:
 
       ```html
-      <script type='module' src='https://unpkg.com/open-chat-studio-widget@0.8.0/dist/open-chat-studio-widget/open-chat-studio-widget.esm.js' async></script>
+      <script type='module' src='https://unpkg.com/open-chat-studio-widget@{LATEST_VERSION_NUMBER}/dist/open-chat-studio-widget/open-chat-studio-widget.esm.js' async></script>
       ```
+
+      Go to https://www.npmjs.com/package/open-chat-studio-widget to get the latest version number.
 
 2. Getting the Embed Code
 

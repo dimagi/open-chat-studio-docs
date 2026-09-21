@@ -39,6 +39,22 @@ Each top-level docs folder has a strict content contract — keep content in the
 
 See full guidelines: `.claude/checklists/page-type-contract.md`.
 
+## Writing Style
+
+This applies to everything written here — docs pages, changelog entries, commit messages, PR descriptions, and agent output.
+
+Mannered prose substitutes metaphor and flourish for direct statement.
+Instead of "a parameter worth varying," the mannered writer produces "a dial worth turning."
+Instead of "this point still matters," they write "this point earns its keep."
+These phrases call attention to the writer instead of stating the idea, and readers notice.
+That is why mannered prose irritates: the reader has to do extra work to recover the plain meaning.
+It is also imprecise.
+A metaphor carries connotations the writer did not intend and cannot control.
+The fix is to say what you mean.
+When a literal phrase is available, use it.
+
+Remove all mannered prose before committing.
+
 ## Branch Workflow
 
 - **Default base = `main`.** Most doc changes target `main`.

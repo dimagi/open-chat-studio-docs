@@ -53,7 +53,7 @@ Stand up and configure the self-hosted OCS instance you're migrating to, if you 
 
 A team's files live in a storage backend (such as an S3-compatible bucket), so you move them across separately:
 
-1. On the source server, go to **Team Settings** and open the **Data Export** section. This section is only visible to Team Admins.
+1. On the source server, go to **Team Settings** and open the **Data** section. This section is only visible to Team Admins.
 2. Download all of the team's files as a zip.
 3. Unzip the archive and upload its contents to the target server's storage backend (for example, an S3-compatible bucket).
 
@@ -98,7 +98,7 @@ with open("pubkey.pem", "wb") as f:
 
 Then:
 
-1. On the source server, register the **public key** (`pubkey.pem`) in the same **Data Export** section under Team Settings.
+1. On the source server, register the **public key** (`pubkey.pem`) in the same **Data** section under Team Settings.
 2. Copy the **private key** (`privkey.pem`) to the target server. You'll pass its path to `sync_team` in [step 6](#6-run-the-sync-command-target-server).
 
 !!! warning "Keep the private key safe"
@@ -110,7 +110,7 @@ Create an API key for your user on the source server — the sync command uses i
 
 ## 5. Enable migration mode (source server)
 
-In the **Data Export** section on the source server, enable migration mode for the team. The sync endpoints refuse to serve a team that isn't in migration mode, so this step is required.
+In the **Data** section on the source server, enable migration mode for the team. The sync endpoints refuse to serve a team that isn't in migration mode, so this step is required.
 
 !!! warning "Effects of migration mode"
     While migration mode is enabled on the source:

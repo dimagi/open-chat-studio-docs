@@ -12,6 +12,7 @@ Open Chat Studio is designed to be flexible, and can connect to any LLM provider
 * [DeepSeek](https://api-docs.deepseek.com/quick_start/pricing)
 * [Google Gemini](https://ai.google.dev/gemini-api/docs/models)
 * [MiniMax](https://platform.minimax.io)
+* [OpenRouter](https://openrouter.ai/models) — an aggregator giving access to models from many vendors (OpenAI, Anthropic, Meta, Google, DeepSeek, and more) through a single API key
 * [Voyage AI (embedding only)](https://docs.voyageai.com/docs/embeddings)
 * [LiteLLM](https://docs.litellm.ai/docs/simple_proxy) (bring your own proxy)
 
@@ -19,7 +20,7 @@ Once a provider is saved, its edit page splits into tabs:
 
 - **Configuration** — where credentials live, along with their [verification state](#credential-verification).
 - **Models** — every model available for this provider.
-- **Usages** — everywhere in your team that references this provider (see [Finding where a provider is used](index.md#finding-where-a-provider-is-used)).
+- **Usages** — everywhere in your team that references this provider (see [Find Where a Provider Is Used](../../how-to/find_provider_usages.md)).
 
 ## LLM Models
 
@@ -32,6 +33,10 @@ If a model you need isn't pre-configured, see [Add a Custom LLM Model](../../how
 !!! note "LiteLLM has no pre-configured models"
 
     LiteLLM connects to a model gateway you run yourself, so Open Chat Studio has no way to know in advance which models it serves. After adding a LiteLLM provider, add every model you want to use as a [custom model](../../how-to/add_custom_llm_model.md).
+
+!!! note "OpenRouter has no pre-configured models"
+
+    OpenRouter gives access to hundreds of models from many vendors, and Open Chat Studio doesn't pre-configure any of them. After adding an OpenRouter provider, add every model you want to use as a [custom model](../../how-to/add_custom_llm_model.md#openrouter-models).
 
 ## Credential Verification
 
@@ -47,11 +52,29 @@ Verification runs automatically whenever you save a provider whose credentials h
 
     [Voyage AI](https://docs.voyageai.com/docs/embeddings) is an embeddings-only provider and is never offered credential verification.
 
+## Provider errors during a conversation
+
+Credential verification catches many problems early, but a provider can still refuse an individual request during a live conversation.
+For example, your account balance can run out mid-month, a key can be revoked after it last passed verification, or a model can be withdrawn.
+
+Open Chat Studio sorts these refusals into two groups:
+
+- **Configuration errors**: your team's account or setup is at fault, not the request — an exhausted balance, a revoked or invalid key, or a withdrawn model. These errors are terminal, so they are never retried. The participant gets the chatbot's usual error reply immediately, and your team gets a [notification](../notifications.md) naming the provider's own reason.
+- **Transient errors**: real rate limits, provider outages, and network faults. These are retried automatically, and only reach the participant as an error if every retry fails.
+
+!!! note "Detection differs by provider"
+
+    - **OpenAI** recognizes an exhausted balance, an invalid key, and a withdrawn model as configuration errors.
+    - **Anthropic** recognizes an exhausted balance by matching the wording of Anthropic's own error message. If Anthropic changes that wording, the case falls back to being treated as transient. The participant still gets the usual reply, and your team is still notified — just without the specific reason.
+    - **Google Gemini** recognizes an invalid key and a withdrawn model, but reports an exhausted balance the same way it reports a per-minute rate limit. That case is treated as transient and retried, so your team is not told that the account has run out of credit.
+
+The notification's wording comes from the provider verbatim, so it may include whatever detail the provider chose to give.
+
 ## Model Lifecycle and Deprecation
 
 LLM providers regularly update their model offerings. This means models available in Open Chat Studio may occasionally be deprecated or removed.
 
-- **Deprecation**: When a model you are using is deprecated, you will receive an [in-app notification](../notifications.md) recommending that you switch to a replacement model. Your team receives this notification only once per deprecated model, not on every subsequent release. Your chatbots and pipelines continue to work during this period, but you should update your chatbot configuration at your earliest convenience.
+- **Deprecation**: When a model you are using is deprecated, you will receive an [in-app notification](../notifications.md) recommending that you switch to a replacement model. Your team receives this notification only once per deprecated model, not on every subsequent release. A deprecated model keeps working until it is removed — your chatbots carry on responding, and you can still send test messages and publish new versions — but you should update your chatbot configuration at your earliest convenience. In the pipeline editor, each affected node is flagged with a [warning](../pipelines/nodes.md#node-warnings-and-errors) naming the deprecated model and the model to switch to, so you can see exactly what needs migrating.
 - **Removal**: When a model is fully removed from the platform, Open Chat Studio updates your chatbots and pipelines automatically. If a clear replacement model exists, it switches the chatbots to that model; otherwise, it clears the reference to the removed model. Either way, you'll receive an in-app notification confirming what changed.
 
 !!! note
@@ -65,6 +88,6 @@ LLM providers regularly update their model offerings. This means models availabl
 ## See also
 
 - [Configure LLM Service Providers](../../tutorials/configure_llm_providers.md) — set up a provider to use in your chatbots
-- [Finding where an LLM provider is used](index.md#finding-where-a-provider-is-used) — in your chatbots
+- [Find Where a Provider Is Used](../../how-to/find_provider_usages.md) — in your chatbots
 - [Add a Custom LLM Model](../../how-to/add_custom_llm_model.md) — add a model that isn't pre-configured, including naming conventions per provider
 - [Large Language Models (LLMs)](../llm.md) — key LLM concepts such as tokens and context window

@@ -18,6 +18,8 @@ This guide will help you upgrade from previous versions of the Open Chat Studio 
   ></script>
 ```
 
+Go to https://www.npmjs.com/package/open-chat-studio-widget to get the latest version number.
+
 ### 2. Review Your Implementation
 Check your current HTML implementation and compare it with the [latest properties reference](reference.md#properties-reference).
 
@@ -28,6 +30,12 @@ Check your current HTML implementation and compare it with the [latest propertie
     Versions marked :octicons-alert-16: **Deprecated** are no longer supported after the
     sunset date shown on each entry, and may stop working. Upgrade to a supported version
     to stay current — see the [Quick Upgrade Steps](#quick-upgrade-steps) above.
+
+### v0.13.0 (2026-09-16)
+
+* Render messages typed by the participant as plain text. Markdown and HTML in a user message now appear exactly as typed instead of being formatted, so the `--code-bg-user-color`, `--code-border-user-color` and `--code-text-user-color` CSS properties no longer have any effect. Bot, system and welcome messages still render markdown as before.
+* Keep OAuth credential mode conversations going past the session token's lifetime. The widget now tracks when the session token expires and renews it in the background, asking your `authTokenProvider` for a fresh token, so participants keep chatting on the same session instead of being told the session expired. Renewal only happens when `authTokenProvider` is set, and it doesn't count as participant activity for `persistent-session-expire`. It also needs an Open Chat Studio backend that supports session token renewal — against an older backend the widget falls back to the previous "session expired, start a new chat" behaviour. See [OAuth credential mode](reference.md#oauth-credential-mode).
+* Collect a chatbot's consent form in the widget. If the chatbot's published version has a consent form, the welcome message and starter questions behave as usual, and the participant is only asked to consent when they send their first message: the composer is replaced by the consent text and an "I agree" button, and accepting sends the message they already typed. The browser remembers the acceptance against the consent form's version, so a returning participant isn't asked again and republishing the form asks everyone again with the new text. Whether an acceptance survives the visit follows `persistent-session` — see [consent forms](reference.md#consent-forms).
 
 ### v0.12.0 (2026-08-27)
 

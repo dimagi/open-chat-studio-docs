@@ -4,11 +4,17 @@ title: Migrate Assistants
 
 # Migrate Assistants
 
-OpenAI [deprecated](https://platform.openai.com/docs/deprecations#2025-08-20-assistants-api) Assistants and removed support for the Assistants API on 2026-08-26.
+OpenAI [retired](https://platform.openai.com/docs/deprecations#2025-08-20-assistants-api) the Assistants API on 2026-08-26.
 Open Chat Studio's Assistants pages were removed on 2026-09-02 — assistants can no longer be created, viewed, edited, or archived in OCS.
+The assistant pipeline node was removed next, so a pipeline that still contains one no longer builds.
+All stored assistant records have since been deleted permanently.
+See the [OpenAI Assistants (Removed)](../concepts/assistants.md) page for background.
 
-If a chatbot or pipeline still uses an assistant node, it keeps running, but you can no longer manage that assistant from OCS.
-Use this guide to move it onto native OCS features, as shown in the table below:
+!!! warning "Affected chatbots are already down"
+    A chatbot whose pipeline still holds an assistant node cannot answer participants. Follow the steps below to replace that node with an LLM node and bring it back.
+
+Assistant records no longer exist in OCS — they have been permanently deleted.
+If a chatbot or pipeline still holds an assistant node, replace it with the native OCS features shown in the table below:
 
 | Assistant Feature | Replacement Feature                                                                             |
 |-------------------|-------------------------------------------------------------------------------------------------|
@@ -34,12 +40,12 @@ To use OpenAI's code interpreter tool without using Assistants:
 
 ### General Steps
 
-1. **Create an indexed collection** using the same files your assistant uses under its "file search" tool.
+1. **Create an indexed collection** using the same files your assistant used under its "file search" tool.
 2. **Set up or update your chatbot** to reference this collection.
 
 ### Step 1: Create the Collection
 
-Create the collection manually — there's no automated import from an assistant, since assistants are no longer visible in OCS.
+Create the collection manually — there's no automated import from an assistant, since assistant records no longer exist in OCS.
 
 - Click on the **"Collections"** tab in the sidebar and click **"Add new"**.
 - Choose **[Indexed Collection][collections]** and give it a name.
@@ -51,7 +57,8 @@ Create the collection manually — there's no automated import from an assistant
 Once your collection is created:
 
 - Open your Chatbot's pipeline editor.
-- Add an [LLM node][llm-node] to the pipeline. If you have been using an assistant node, this LLM node should **replace** your assistant node.
+- If the pipeline still contains an assistant node, it renders as a **Removed Node** and the pipeline will not build. Delete it.
+- Add an [LLM node][llm-node] to the pipeline in its place.
 - Within the node, select your **newly created indexed collection**.
 
 You're done!

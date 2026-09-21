@@ -16,7 +16,7 @@ For step-by-step instructions on completing specific tasks, see the [How-to guid
 : A human review system that lets teams label and score chatbot sessions and messages against a defined schema — useful for quality assurance, content moderation, and building evaluation datasets.
 
 [Assistant](assistants.md)
-: A legacy chatbot type powered by the OpenAI Assistants API. OpenAI has deprecated this API — see the [migration guide](../how-to/assistants_migration.md) if you currently use Assistants.
+: A retired chatbot type powered by the OpenAI Assistants API. OpenAI has retired this API and Open Chat Studio has removed the assistant pipeline node — see the [migration guide](../how-to/assistants_migration.md) if a pipeline still has an assistant node.
 
 [Authentication Provider](team/authentication_providers.md)
 : Credentials — such as API keys, bearer tokens, or username/password pairs — used when your chatbot connects to external services via Custom Actions or Python nodes.
@@ -40,7 +40,7 @@ For step-by-step instructions on completing specific tasks, see the [How-to guid
 : A built-in testing system that runs your chatbot against sample conversations and scores the responses against criteria you define, such as accuracy, tone, or whether the chatbot stayed on topic.
 
 [Events](events.md)
-: Automated actions that fire when something specific happens in a chatbot session — for example, when a conversation starts, ends, or when a participant has been inactive for a set period.
+: Automated actions that fire when something specific happens in a chatbot session, after a period of inactivity, or at a date and time you schedule.
 
 [History](pipelines/history.md)
 : A per-node setting on nodes that call an LLM, controlling which part of a session's stored conversation is sent to the model when it generates a reply — its own history, the full conversation, a shared named history, or none at all.

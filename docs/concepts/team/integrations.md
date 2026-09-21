@@ -41,4 +41,4 @@ This table and its single **Add integration** entry point replace the separate p
 ## See also
 
 - [Team Settings](index.md)
-- [Finding where a provider is used](index.md#finding-where-a-provider-is-used)
+- [Find Where a Provider Is Used](../../how-to/find_provider_usages.md)

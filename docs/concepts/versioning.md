@@ -53,12 +53,3 @@ If your current working version contains changes that have not yet been released
 
 !!! warning "Unreleased changes are permanently lost on revert"
     Once you confirm a revert, any edits in the unreleased working state that are not part of a saved version cannot be recovered. Create a new version first if you want to preserve those changes.
-
-## Versioning for OpenAI Assistants
-
-!!! info "Versioning chatbots that use OpenAI Assistants"
-    Yes, this is supported. When a new version is saved for a chatbot that uses an OpenAI Assistant, a snapshot copy of that assistant is automatically created — no extra setup needed. The original assistant remains available and can still be updated in the unreleased version.
-
-!!! warning "Modifying Assistants in OpenAI referenced by released versions"
-
-    As mentioned above, the copied assistant will be read-only in OCS, however, in OpenAI changes can still be made to that copy of the assistant. *We recommend advising your team to not modify this assistant if it references a released version.* This can cause unexpected behavior to the version and to its chatbot participants. To ensure that the released version acts as expected this assistant should remain as-is.
