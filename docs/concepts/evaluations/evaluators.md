@@ -75,7 +75,7 @@ The output schema defines the metrics that the LLM should attempt to output. Eac
 
 The system automatically validates the LLM's output against the specified types using a dynamically generated schema. If the output doesn't match the expected format, the system will retry up to 3 times before failing, ensuring reliable structured data.
 
-Occasionally the model returns no structured output at all — it refuses in prose, the provider blocks the reply, or it never calls the required tool. This is not retried, since asking again is likely to give the same result. Instead, the `error (<evaluator name>)` column for that row shows `The model did not return structured output:` followed by the model's own reply. It usually takes a provider refusal or safety block to reach this, so most runs never see it.
+Occasionally the model returns no structured output at all — it refuses in prose, the provider blocks the reply, or it never calls the required tool. This is not retried, since asking again is likely to give the same result. Instead, the `error (<evaluator name>)` column for that row shows `The model did not return structured output:` followed by the model's reply, or the provider's stop reason if it gave none. It usually takes a provider refusal or safety block to reach this, so most runs never see it.
 
 **Example Output Schema:**
 
