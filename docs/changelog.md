@@ -12,6 +12,7 @@ hide:
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
 ## Sep 21, 2026
+* **CHANGE** The [session endpoints](api/v1/experiment_sessions.txt) (`GET /api/sessions/` and `GET /api/sessions/{id}/`) now return two more fields: `ended_at`, the time the session ended (`null` while it is still open), and `participant_data`, the [participant's data](concepts/participant_data.md) as it stood after the session's last message. Both were already shown on the session details page.
 * **CHANGE** The [Usage API](api/v2/usage.txt) (`GET /api/v2/usage/`) accepts a new `participant_remote_id` filter, and the [participants list endpoint](api/v1/participants.txt) (`GET /api/participants/`) accepts a new `remote_id` filter. Both match the external participant ID supplied as `participant_remote_id` when a session is started through the [Chat API](api/v1/chat.txt), so you can query by your own user ID without first looking it up as an OCS participant ID. On the Usage API, `participant_remote_id` cannot be combined with `participant` or `participant_identifier`.
 
 ## Sep 18, 2026
