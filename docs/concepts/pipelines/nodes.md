@@ -68,7 +68,7 @@ See the [Render a Template and Send an Email Node](../../tech-hub/template_and_e
 
 Uses an LLM to extract structured data from the input against a JSON schema you define. Unlike most other nodes, its output **replaces** the input: downstream nodes receive the extracted data (as JSON) rather than the original conversation text.
 
-If the model returns no structured data for part of the input — it refuses, the provider blocks the reply, or it never calls the required tool — the node skips that part and carries on rather than failing the conversation turn. This is rare in practice.
+If the model returns no structured data for part of the input — it refuses, the provider blocks the reply, or it never calls the required tool — the node skips that part and carries on rather than failing the conversation turn. If nothing at all could be extracted, the node outputs an empty JSON object (`{}`). This is rare in practice.
 
 ## Update Participant Data Node
 
