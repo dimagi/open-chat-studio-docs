@@ -1050,12 +1050,15 @@ CollectionDetail:
   - search_language: Unknown
   - search_dense_weight: number
   - search_fetch_k: integer
+  - rerank_model: string
+  - rerank_top_n: integer
   - create_version_task_id: string
   - working_version: integer
   - llm_provider: integer
   - embedding_provider_model: integer
   - contextualizer_llm_model: integer
   - contextualizer_llm_provider: integer
+  - reranker_provider: integer
 
 CollectionFileDetail:
   - id: integer (required)

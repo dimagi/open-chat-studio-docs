@@ -91,6 +91,30 @@ PATCH /api/v2/chatbots/{id}/
     apiKeyAuth
     tokenAuth
 
+DELETE /api/v2/chatbots/{id}/
+  Summary: Archive Chatbot
+  Description: Archive the chatbot. This is a soft delete: the chatbot and its versions are hidden rather than destroyed, and a person can restore it in the web app. Nothing in this API reaches an archived chatbot, so a repeat of this call answers `404` -- which makes it safe to retry after an answer you never saw.
+
+**It is refused while a channel is attached.** Taking a chatbot off Telegram, WhatsApp or the chat widget removes its webhook at the provider, and this API cannot create a channel to put back, so detaching stays a person's job in the web app; the `409` names the channels to detach. The team-wide API, web and evaluations channels are not attachments and never stand in the way, so a chatbot created through this API archives freely.
+
+**It cancels every scheduled message the chatbot has**, finished and already-cancelled ones included, and they cannot be recovered. That is the right consequence of archiving -- and there is no endpoint to drain them first -- so the response reports how many went, rather than refusing.
+  Parameters:
+    - id (path, string (required)): Chatbot ID
+  Responses:
+    200:
+      Content: application/json
+      Schema: Archived
+    403: The caller is authenticated but not authorised to archive this chatbot: either its role lacks permission to delete chatbots, or it is a machine (client-credentials) token whose application is not authorised for this chatbot.
+    404: No such chatbot, or it is archived already.
+    409:
+      Content: application/json
+      Schema: ChannelsAttached
+  Security:
+    OAuth2
+      - Required scopes: chatbots:write
+    apiKeyAuth
+    tokenAuth
+
 GET /api/v2/chatbots/{id}/inspect/
   Summary: Inspect Chatbot
   Description: Return the chatbot's full configuration as a single read-only document.
@@ -107,7 +131,118 @@ GET /api/v2/chatbots/{id}/inspect/
     apiKeyAuth
     tokenAuth
 
+POST /api/v2/chatbots/{id}/versions/
+  Summary: Create a new version
+  Description: Snapshot the chatbot's working (draft) version as a new, immutable version. Nothing writes to a version: read it back with the `chatbot_inspect` endpoint's `version` parameter, and every other write endpoint keeps targeting the working version.
+
+A worker takes the snapshot, so the answer is `202` with no body. Poll the `chatbot_version_status` endpoint for the version number and the outcome.
+
+One version operation runs at a time per chatbot, creating a version and reverting alike; a second is refused with `409`.
+  Parameters:
+    - id (path, string (required)): Chatbot ID
+  Request Body:
+    Content: application/json
+    Schema: VersionCreate
+  Responses:
+    202: The version creation was accepted. Poll `chatbot_version_status` for its outcome.
+    400: The body carries a key this endpoint does not accept.
+    403: The caller is authenticated but not authorised for this chatbot's versions: either its role lacks permission to change chatbots, or it is a machine (client-credentials) token whose application is not authorised for this chatbot.
+    404: No such chatbot. Archived chatbots and existing versions are both outside this endpoint's reach: only a live working version can be snapshotted.
+    409: A version operation (another version creation, or a revert started in the UI) is already running for this chatbot.
+    422: Either the pipeline has errors and this version would be served to participants -- `make_default: true`, or a chatbot's first version, which is always the published one -- or the working version is identical to the newest one, so the snapshot would record no change. Nothing is snapshotted either way. Dangling handles are not errors: `unwired_handles` is advisory.
+      Content: application/json
+      Schema: VersionCreateRefused
+  Security:
+    OAuth2
+      - Required scopes: chatbots:write
+    apiKeyAuth
+    tokenAuth
+
+PATCH /api/v2/chatbots/{id}/versions/{version_number}/
+  Summary: Make chatbot version the published one
+  Description: Make this version the one participants are served, without snapshotting anything.
+
+Channels resolve the published version per message, so a live chatbot switches over from the next message on. The version that held it stops being served and is otherwise untouched -- a chatbot holds exactly one published version, so promoting one demotes the other.
+
+This is how an already-published version is served again; the `chatbot_version_create` endpoint's `make_default` covers the other case, a snapshot that goes live as it is taken. Promoting a version this way creates nothing, so it is never refused for having no changes to record.
+  Parameters:
+    - id (path, string (required)): Chatbot ID
+    - version_number (path, integer (required)): The version's number, as the `chatbot_inspect` endpoint reports it.
+  Request Body:
+    Content: application/json
+    Schema: PatchedPublishVersion
+  Responses:
+    200:
+      Content: application/json
+      Schema: VersionPublished
+    400: The body carries a key this endpoint does not accept, or asks to un-publish a version -- a chatbot always needs a published one.
+    403: The caller is authenticated but not authorised for this chatbot's versions: either its role lacks permission to change chatbots, or it is a machine (client-credentials) token whose application is not authorised for this chatbot.
+    404: No such chatbot, or it has no version under this number -- an archived chatbot and an archived version included.
+  Security:
+    OAuth2
+      - Required scopes: chatbots:write
+    apiKeyAuth
+    tokenAuth
+
+DELETE /api/v2/chatbots/{id}/versions/{version_number}/
+  Summary: Archive a chatbot version
+  Description: Archive one of the chatbot's versions. This is a soft delete: the version and the pipeline snapshot it owns are hidden rather than destroyed, and a person can restore it in the web app. Nothing in this API reaches an archived version, so a repeat of this call answers `404` -- which makes it safe to retry after an answer you never saw.
+
+**The published version is refused with `409`.** It is the version participants are served and a chatbot may hold only one, so archiving it would leave the chatbot with none; the `chatbot_version_publish` endpoint moves it to another version first.
+
+The working (draft) version has no number and is not reachable here. Archiving the whole chatbot is the `chatbot_archive` endpoint, which takes the channel guard and the scheduled messages with it -- neither of which a single version has.
+  Parameters:
+    - id (path, string (required)): Chatbot ID
+    - version_number (path, integer (required)): The version's number, as the `chatbot_inspect` endpoint reports it.
+  Responses:
+    200:
+      Content: application/json
+      Schema: VersionArchived
+    403: The caller is authenticated but not authorised to archive this chatbot's versions: either its role lacks permission to delete chatbots, or it is a machine (client-credentials) token whose application is not authorised for this chatbot.
+    404: No such chatbot, or it has no version under this number -- an archived chatbot and an already-archived version included.
+    409: This is the chatbot's published version.
+  Security:
+    OAuth2
+      - Required scopes: chatbots:write
+    apiKeyAuth
+    tokenAuth
+
+GET /api/v2/chatbots/{id}/versions/status/
+  Summary: Version creation status
+  Description: Report where this chatbot's version history stands, which is how a version the `chatbot_version_create` endpoint accepted is followed to its end.
+
+Poll this until `status` is terminal:
+
+- **`pending`** — a version operation is still running. Poll again.
+- **`completed`** — no operation is running and `version_number` names the chatbot's newest version. Read it back with the `chatbot_inspect` endpoint's `version` parameter to check what landed in it.
+
+**`completed` is not a receipt for your request.** This reports the chatbot's own state, not one task's outcome, so it cannot say which request produced the version it names. A version creation the worker raised on releases the lock without snapshotting anything, and polling then reports `completed` on the version that was already there — so check `version_number` against the one you expected rather than reading `completed` as proof the snapshot landed.
+
+A chatbot with no version at all has nothing to report and answers `404`.
+  Parameters:
+    - id (path, string (required)): Chatbot ID
+  Responses:
+    200:
+      Content: application/json
+      Schema: VersionStatus
+    403: The caller is authenticated but not authorised for this chatbot's versions: either its role lacks permission to change chatbots, or it is a machine (client-credentials) token whose application is not authorised for this chatbot.
+    404: No such chatbot, or it has never created a version.
+  Security:
+    OAuth2
+      - Required scopes: chatbots:read
+    apiKeyAuth
+    tokenAuth
+
 SCHEMAS:
+
+Archived:
+  - archived: boolean (required)
+  - cancelled_scheduled_messages: integer (required)
+
+AttachedChannel:
+  - id: integer (required)
+  - platform: PlatformEnum (required)
+  - name: string (required)
 
 Channel:
   - platform: PlatformEnum
@@ -119,6 +254,10 @@ Channel:
   - commcare_connect_bot_name: string
   - allow_all_domains: boolean
   - allowed_domains: array of string
+
+ChannelsAttached:
+  - detail: string (required)
+  - channels: array of AttachedChannel (required)
 
 Chatbot:
   - id: string (required)
@@ -240,6 +379,9 @@ PatchedChatbotWrite:
   - seed_message: string
   - file_uploads_enabled: boolean
 
+PatchedPublishVersion:
+  - is_published_version: boolean
+
 PlatformEnum:
   - enum: [telegram, web, whatsapp, facebook, sureadhere, api, slack, commcare_connect, evaluations, embedded_widget, email, public]
 
@@ -257,6 +399,25 @@ SyntheticVoiceOption:
   - label: string (required)
   - type: string (required)
   - provider_id: integer (required)
+
+VersionArchived:
+  - archived: boolean (required)
+
+VersionCreate:
+  - make_default: boolean
+  - version_description: string
+
+VersionCreateRefused:
+  - detail: string (required)
+  - pipeline_errors: Unknown
+
+VersionPublished:
+  - version_number: integer (required)
+  - is_published_version: boolean (required)
+
+VersionStatus:
+  - status: Unknown (required)
+  - version_number: integer
 
 SECURITY:
 - OAuth2
