@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Sep 22, 2026
+* **MIGRATION** The database tables behind the removed [OpenAI Assistants](concepts/assistants.md) feature have been dropped, together with the assistant references on pipeline nodes and [custom action](concepts/team/custom_actions.md) operations. Nothing changes in the app — the records themselves were deleted on Sep 16 — but the drop is permanent and cannot be reverted, and the **Super Admin** role loses its assistants permissions, which no longer grant access to anything. Self-hosted operators who have not yet run the `retire_assistant_file_purpose` command from the previous release should run it before deploying this one.
+
 ## Sep 21, 2026
 * **NEW** The [v2 chatbots API](api/v2/chatbots.txt) can now publish and archive a chatbot. One endpoint publishes a new version of the working draft, taking an optional `version_description`; a second reports the chatbot's publish state — `pending` while a publish is still running, or `completed` with the newest `version_number` once it has finished — so a client can poll for the outcome; and a third archives the chatbot. A publish is refused with a `422` listing `pipeline_errors` when the draft pipeline is not valid, and with a `409` when a publish or revert is already under way. Archiving is refused with a `409` listing the channels still attached to the chatbot, each with its id, platform and name, so you can find and remove them in the web app first.
 * **CHANGE** The [session endpoints](api/v1/experiment_sessions.txt) (`GET /api/sessions/` and `GET /api/sessions/{id}/`) now return two more fields: `ended_at`, the time the session ended (`null` while it is still open), and `participant_data`, the [participant's data](concepts/participant_data.md) as it stood after the session's last message. Both were already shown on the session details page.
