@@ -12,6 +12,7 @@ hide:
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
 ## Sep 22, 2026
+* **CHANGE** A newly added Google Gemini [LLM provider](concepts/team/llm_providers.md) now starts on `gemini-3.5-flash`, and on `gemini-3.6-flash` for translation. `gemini-2.5-flash` and `gemini-2.5-pro` are marked deprecated, because Google no longer serves them to new API users, and teams using either one were notified of the replacement. As with any deprecation, both models keep working until they are removed. See [Model Lifecycle and Deprecation](concepts/team/llm_providers.md#model-lifecycle-and-deprecation).
 * **MIGRATION** The database tables behind the removed [OpenAI Assistants](concepts/assistants.md) feature have been dropped, together with the assistant references on pipeline nodes and [custom action](concepts/team/custom_actions.md) operations. Nothing changes in the app — the records themselves were deleted on Sep 16 — but the drop is permanent and cannot be reverted, and the **Super Admin** role loses its assistants permissions, which no longer grant access to anything. Self-hosted operators who have not yet run the `retire_assistant_file_purpose` command from the previous release should run it before deploying this one.
 
 ## Sep 21, 2026
