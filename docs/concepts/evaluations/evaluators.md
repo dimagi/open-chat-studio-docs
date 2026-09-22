@@ -92,6 +92,28 @@ Use the Python Evaluator when you need deterministic rules, custom string matchi
 
 See [Python Evaluator](../../tech-hub/evaluations/python_evaluator.md) for the function signature, arguments, and a worked example.
 
+## Archiving Evaluators
+
+Deleting an evaluator that has produced results or aggregates archives it instead of deleting it, so that data is not lost. An evaluator with no run history is still deleted outright.
+
+The delete confirmation dialog tells you which will happen before you confirm.
+
+Archived evaluators keep their results, aggregates, and applied tags. They still show up on the past runs and exports that used them, and you can still open and edit an archived evaluator. An **Archived** badge marks them in the evaluator list and in the evaluations table.
+
+Archived evaluators are excluded from new work:
+
+- They don't appear in the evaluator picker when you create a new evaluation config.
+- They are skipped by every new run, including automatic delta runs triggered when a dataset is appended.
+
+The one exception is editing an evaluation config that already uses an archived evaluator. In that case, the picker still shows the config's own archived evaluators, labelled **Archived**, so you can untick one to remove it without losing the ability to edit the rest of the config. Archived evaluators that aren't already on the config are not offered.
+
+Running a config whose evaluators are all archived is refused with an error, since it would produce no results.
+
+Use **Unarchive** on an archived evaluator to restore it. Once unarchived, it becomes available in the picker again and can be used in new runs.
+
+!!! note
+    Neither archiving nor deleting an evaluator is allowed while a run that uses it is in progress.
+
 ## Clearing Run History
 
 The evaluation runs page includes a **Clear all** button that deletes the entire run history for an evaluation config in a single action. This button is only shown to OCS users who have delete permission for evaluation runs.
