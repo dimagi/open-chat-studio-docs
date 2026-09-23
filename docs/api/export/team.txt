@@ -1347,6 +1347,7 @@ EvaluatorDetail:
   - name: string (required)
   - type: string (required)
   - params: Unknown
+  - is_archived: boolean
   - evaluation_mode: Unknown
   - llm_provider: integer
   - llm_provider_model: integer
