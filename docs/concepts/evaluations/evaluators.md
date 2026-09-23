@@ -105,11 +105,11 @@ Archived evaluators are excluded from new work:
 - They don't appear in the evaluator picker when you create a new evaluation config.
 - They are skipped by every new run, including automatic delta runs triggered when a dataset is appended.
 
-The one exception is editing an evaluation config that already uses an archived evaluator. In that case, the picker still shows the config's own archived evaluators, labelled **Archived**, so you can untick one to remove it without losing the ability to edit the rest of the config. Archived evaluators that aren't already on the config are not offered.
+The one exception is editing an evaluation config that already uses an archived evaluator. In that case, the picker still shows the config's own archived evaluators, with an *(archived)* suffix on the name, so you can untick one to remove it without losing the ability to edit the rest of the config. Archived evaluators that aren't already on the config are not offered.
 
 Running a config whose evaluators are all archived is refused with an error, since it would produce no results.
 
-Use **Unarchive** on an archived evaluator to restore it. Once unarchived, it becomes available in the picker again and can be used in new runs.
+An archived evaluator cannot be deleted while its results exist, so the **Delete** action is not shown for it. Use **Unarchive** to restore it instead. Once unarchived, it becomes available in the picker again and can be used in new runs. The **Unarchive** action is only shown to users who have delete permission for evaluators.
 
 !!! note
     Neither archiving nor deleting an evaluator is allowed while a run that uses it is in progress.
