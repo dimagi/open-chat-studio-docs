@@ -12,6 +12,8 @@ hide:
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
 ## Sep 22, 2026
+* **CHANGE** Deleting an [evaluator](concepts/evaluations/evaluators.md#archiving-evaluators) that has already produced results now archives it instead of deleting it, so its results, aggregates and applied tags are kept and past runs and exports still show them. An archived evaluator carries an **Archived** badge, can still be opened and edited, and no longer appears in the evaluator picker or takes part in new runs — except on an evaluation config that already uses it, where it stays in the picker so you can untick it. Use **Unarchive** to make it usable again. An evaluator with no run history is still deleted outright, and a config whose evaluators are all archived cannot be run.
+* **MIGRATION** The team-sync export schema gained the evaluator `is_archived` field, so its checksum has changed. Self-hosted operators running `sync_team` with schema enforcement between two servers must upgrade both sides to this release before syncing.
 * **MIGRATION** The database tables behind the removed [OpenAI Assistants](concepts/assistants.md) feature have been dropped, together with the assistant references on pipeline nodes and [custom action](concepts/team/custom_actions.md) operations. Nothing changes in the app — the records themselves were deleted on Sep 16 — but the drop is permanent and cannot be reverted, and the **Super Admin** role loses its assistants permissions, which no longer grant access to anything. Self-hosted operators who have not yet run the `retire_assistant_file_purpose` command from the previous release should run it before deploying this one.
 
 ## Sep 21, 2026
