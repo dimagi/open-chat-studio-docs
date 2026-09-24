@@ -21,8 +21,6 @@ theme:
     - navigation.tracking
     - navigation.top
     - search.highlight
-    - search.share
-    - search.suggest
     - toc.follow
     - content.action.edit
     - content.action.view
