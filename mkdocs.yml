@@ -73,8 +73,6 @@ plugins:
 - macros
 - redirects:
     redirect_maps:
-      'concepts/team/tracing_providers.md': 'concepts/tracing.md'
-      'tutorials/notifications.md': 'how-to/manage_notifications.md'
 - mkdocstrings:
     enabled: true
     default_handler: python
