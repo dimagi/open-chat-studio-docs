@@ -101,7 +101,7 @@ Regardless of what ends a session — participant, chatbot, admin, API caller, o
 | Trigger type | Fires when |
 |--------------|------------|
 | The Conversation is Ended by the Participant | The participant ends the chat (web "End chat and give feedback" or `/reset`). |
-| The Conversation is Ended by the chatbot | The chatbot ends the chat (End Session tool or `end_session()`). |
+| The Conversation is Ended by the Bot | The chatbot ends the chat (End Session tool or `end_session()`). |
 | The Conversation is Ended via the API | An API caller ends the session. |
 | The Conversation is Ended by an Event | An "End the conversation" event action ended the session. |
 | The Conversation is Manually Ended by a User | A team member ended the session via the OCS admin. |
