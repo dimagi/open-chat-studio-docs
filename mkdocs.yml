@@ -74,7 +74,6 @@ markdown_extensions:
 plugins:
 - search
 - macros
-- git-revision-date-localized
 - redirects:
     redirect_maps:
       'concepts/team/tracing_providers.md': 'concepts/tracing.md'
