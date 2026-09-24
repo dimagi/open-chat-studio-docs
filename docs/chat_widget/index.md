@@ -1,6 +1,6 @@
 # Open Chat Studio Widget
 
-The Open Chat Studio (OCS) Widget is a customizable chat component that you embed directly into any website. It gives your users a conversational interface powered by your OCS chatbot, without requiring them to visit a separate page.
+The Open Chat Studio Widget is a customizable chat component that you embed directly into any website. It gives your users a conversational interface powered by your OCS chatbot, without requiring them to visit a separate page.
 
 ## Features
 
