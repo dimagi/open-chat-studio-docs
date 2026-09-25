@@ -15,15 +15,12 @@ theme:
     - navigation.instant
     - navigation.instant.prefetch
     - navigation.instant.progress
-    - navigation.prune
     - navigation.sections
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.tracking
     - navigation.top
     - search.highlight
-    - search.share
-    - search.suggest
     - toc.follow
     - content.action.edit
     - content.action.view
@@ -65,7 +62,6 @@ markdown_extensions:
       pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
   - toc:
@@ -74,11 +70,8 @@ markdown_extensions:
 plugins:
 - search
 - macros
-- git-revision-date-localized
 - redirects:
     redirect_maps:
-      'concepts/team/tracing_providers.md': 'concepts/tracing.md'
-      'tutorials/notifications.md': 'how-to/manage_notifications.md'
 - mkdocstrings:
     enabled: true
     default_handler: python
