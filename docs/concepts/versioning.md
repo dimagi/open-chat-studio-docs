@@ -6,9 +6,9 @@ Versioning tracks the history of your chatbot's configuration so you can review 
 
 ## Terminology
 
-* *Unreleased Version*. This is the version of the chatbot you are currently editing. It is a draft that has not been versioned or published.
+- **Unreleased Version**. This is the version of the chatbot you are currently editing. It is a draft that has not been versioned or published.
 
-* *Published Version*. This is the version that participants will interact with — through the web, WhatsApp, or any other channel you have set up, including the public link.
+- **Published Version**. This is the version that participants will interact with — through the web, WhatsApp, or any other channel you have set up, including the public link.
 
 ## What is a Chatbot Version?
 
