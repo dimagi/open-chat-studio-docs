@@ -15,7 +15,7 @@ This guide walks you through adjusting the LLM model parameters on an [LLM node]
 
 1. Open your pipeline or chatbot for editing.
 2. Click the LLM node you want to configure.
-3. Select "Advanced" to expand the settings panel.
+3. Select **Advanced** to expand the settings panel.
 
 ## Step 2 — Select a model
 

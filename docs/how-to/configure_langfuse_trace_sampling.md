@@ -40,7 +40,7 @@ A chatbot handles 100,000 conversation turns a day, and the team's Langfuse plan
 
 ## Expected outcome
 
-New conversation turns immediately follow the updated rate — there's no delay before it takes effect. Turns that aren't sampled still appear in the builtin [trace table](../concepts/tracing.md#trace-table); they just won't have Langfuse span data or a "View in Langfuse" link on their trace detail page.
+New conversation turns immediately follow the updated rate — there's no delay before it takes effect. Turns that aren't sampled still appear in the builtin [trace table](../concepts/tracing.md#trace-table); they just won't have Langfuse span data or a **View in Langfuse** link on their trace detail page.
 
 ## Common issues
 
