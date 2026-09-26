@@ -178,7 +178,7 @@ You must create a WhatsApp message template in your Meta Business account before
     | Template name | `new_bot_message` |
     | Language | Select the language that matches your **Template Language Code** in OCS |
 
-3. In the **Body** section, add a single text variable named `bot_message`. This variable will be replaced with the bot's actual message when sent.
+3. In the **Body** section, add a single text variable named `bot_message`. This variable will be replaced with the chatbot's actual message when sent.
 
 4. Submit the template and wait for Meta to approve it.
 
@@ -190,7 +190,7 @@ You must create a WhatsApp message template in your Meta Business account before
 
 ### Message formatting
 
-Meta rejects template sends when the `bot_message` variable contains line breaks, tabs, or long runs of spaces. To avoid this, OCS collapses any run of whitespace in the bot's message — including line breaks and tabs — into a single space before inserting it into the template. This means a multi-paragraph chatbot reply arrives as a single paragraph when it is sent as a fallback template message.
+Meta rejects template sends when the `bot_message` variable contains line breaks, tabs, or long runs of spaces. To avoid this, OCS collapses any run of whitespace in the chatbot's message — including line breaks and tabs — into a single space before inserting it into the template. This means a multi-paragraph chatbot reply arrives as a single paragraph when it is sent as a fallback template message.
 
 Only the substituted `bot_message` text is flattened this way. The approved template's own static text keeps whatever line breaks it was approved with in Meta Business Manager.
 
@@ -203,7 +203,7 @@ Only the substituted `bot_message` text is flattened this way. The approved temp
 
 Whitespace flattening happens before OCS checks the character limit, so the limit is measured against the message Meta actually receives. Flattening only ever shortens the text, so it never causes a message to exceed the limit.
 
-If the bot's outgoing message exceeds 974 characters, OCS automatically splits it at word boundaries and sends it across multiple template messages.
+If the chatbot's outgoing message exceeds 974 characters, OCS automatically splits it at word boundaries and sends it across multiple template messages.
 
 ### Set the template language code in OCS
 
