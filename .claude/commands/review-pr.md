@@ -5,7 +5,7 @@ description: Review a pull request
 
 # Review Pull Request Command
 
-Review documentation and changelog PRs using the doc-pr-reviewer subagent.
+Review documentation and changelog PRs using the documentation-pr-reviewer subagent.
 
 ## Steps
 

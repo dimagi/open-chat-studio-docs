@@ -11,7 +11,6 @@
 - [ ] Sentences are under 25 words.
 - [ ] No mannered prose — no metaphor or flourish where a literal phrase says it directly ("a dial worth turning" → "a parameter worth varying").
 - [ ] Admonitions (`!!! note`, `!!! warning`) are used only for genuine notes, warnings, or tips — not as a formatting crutch.
-- [ ] "Chatbot", not "bot" — except product labels, code identifiers, and third-party names (e.g. Telegram bot).
-- [ ] Introduction and landing pages spell out "Open Chat Studio (OCS)" on first use; other pages may use "OCS".
-- [ ] "Participant" for the person chatting with a chatbot; "user" for a team member using OCS.
-- [ ] UI labels are bold (**Send**), not quoted.
+- [ ] "Chatbot", not "bot" — except where the text quotes a UI string, code identifier, or product name verbatim (e.g. **New Bot Message**, `bot_message`, Multi-bot, Telegram bot).
+- [ ] "Participant" for the person chatting with a chatbot; "user" for a team member using OCS — example prompts, code, and code comments keep their own wording.
+- [ ] Names of UI controls the reader clicks or selects are bold. Keep quotes for literal error messages.
