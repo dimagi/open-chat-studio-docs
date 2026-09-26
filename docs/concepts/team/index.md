@@ -15,6 +15,8 @@ Team Settings is organized into four sections:
 - **[Developers](developer.md)** — manage Custom Actions and OAuth applications for extending and integrating with your chatbots.
 - **Data** — export your team's files, and migrate the team to another OCS instance.
 
+Alongside these sections, Team Settings links to [Feature Flags](feature_flags.md) — a separate page where Team Admins turn experimental features on or off for the team.
+
 ## Integrations
 
 Global settings are managed at the Team level, from the [Integrations](integrations.md) page. It lists every external service provider your team has connected, as rows in a single table you can filter by category:
@@ -54,4 +56,5 @@ This section is only visible to Team Admins. See [Migrate a Team to Another Inst
 - [Integrations](integrations.md)
 - [Members & access](members.md)
 - [Developers](developer.md) — Custom Actions and OAuth applications
+- [Feature Flags](feature_flags.md) — experimental features your team can turn on
 - [User Groups](groups.md)
