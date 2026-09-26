@@ -25,7 +25,7 @@ You are a friendly chatbot. Be sure to reference the source material before answ
 
 Assistant-type chatbots have been [removed](../concepts/assistants.md), so files can no longer be added to an assistant's *file_search* or *code_interpreter* tools. To give an LLM node the same file search knowledge, put the files in an [Indexed Collection](../concepts/collections/indexed.md) — the [migration guide](assistants_migration.md) walks through moving an assistant's files across.
 
-### See also
+## See also
 - [Source Material][source_material_concept]
 
 [source_material_concept]: ../concepts/source_material.md
