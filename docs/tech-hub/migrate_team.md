@@ -53,8 +53,8 @@ Stand up and configure the self-hosted OCS instance you're migrating to, if you 
 
 A team's files live in a storage backend (such as an S3-compatible bucket), so you move them across separately:
 
-1. On the source server, go to **Team Settings** and open the **Data** section. This section is only visible to Team Admins.
-2. Download all of the team's files as a zip.
+1. On the source server, go to **Team Settings** and open the **Data** section, headed **Data & migration**. This section is only visible to Team Admins.
+2. In the **Download team files** card, select **Download** to export all of the team's files as a zip. See [Data & Migration](../concepts/team/data_migration.md) for what the export contains and how long it stays available.
 3. Unzip the archive and upload its contents to the target server's storage backend (for example, an S3-compatible bucket).
 
 !!! note "Preserve the folder layout"
@@ -62,7 +62,7 @@ A team's files live in a storage backend (such as an S3-compatible bucket), so y
 
 ## 3. Generate an encryption key pair and register the public key
 
-Secrets such as provider credentials are encrypted in transit. The source seals them to a public key you register; only the holder of the matching private key — the target server — can unseal them.
+Secrets such as provider credentials are encrypted in transit. The source seals them to a public key you register in the **Migration public key** card; only the holder of the matching private key — the target server — can unseal them.
 
 Generate an RSA key pair with OpenSSL:
 
@@ -98,7 +98,7 @@ with open("pubkey.pem", "wb") as f:
 
 Then:
 
-1. On the source server, register the **public key** (`pubkey.pem`) in the same **Data** section under Team Settings.
+1. On the source server, paste the public key (`pubkey.pem`) into the **Public Key** field of the **Migration public key** card, in the same **Data** section under Team Settings, and select **Save key**.
 2. Copy the **private key** (`privkey.pem`) to the target server. You'll pass its path to `sync_team` in [step 6](#6-run-the-sync-command-target-server).
 
 !!! warning "Keep the private key safe"
@@ -110,13 +110,16 @@ Create an API key for your user on the source server — the sync command uses i
 
 ## 5. Enable migration mode (source server)
 
-In the **Data** section on the source server, enable migration mode for the team. The sync endpoints refuse to serve a team that isn't in migration mode, so this step is required.
+In the **Data** section on the source server, turn on the **Migration mode** checkbox in the **Migration public key** card and select **Save key**. The `sync_team` command checks that migration mode is enabled on the source before it continues, and stops with "Migration mode needs to be enabled on the source team before you can continue." if it isn't, so this step is required.
 
 !!! warning "Effects of migration mode"
     While migration mode is enabled on the source:
 
-    - The source stops sending the team's scheduled messages.
+    - Scheduled messages, event triggers, timeout triggers, and scheduled triggers all stop firing.
     - Live chat traffic is unaffected and continues to work normally.
+    - A banner appears on every page of the team: "This team is undergoing a migration. Do not create or edit chatbots until the migration is complete."
+
+    See [Data & Migration](../concepts/team/data_migration.md) for what each of these controls does.
 
 ## 6. Run the sync command (target server)
 
