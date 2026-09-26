@@ -54,7 +54,7 @@ Stand up and configure the self-hosted OCS instance you're migrating to, if you 
 A team's files live in a storage backend (such as an S3-compatible bucket), so you move them across separately:
 
 1. On the source server, go to **Team Settings** and open the **Data** section, headed **Data & migration**. This section is only visible to Team Admins.
-2. In the **Download team files** card, select **Download** to export all of the team's files as a zip. See [Data & Migration](../concepts/team/data_migration.md) for what the export contains and how long it stays available.
+2. In the **Download team files** card, select **Download** to export all of the team's files as a zip. See [Download Team Files](../how-to/download_team_files.md) for what the export contains and how long it stays available.
 3. Unzip the archive and upload its contents to the target server's storage backend (for example, an S3-compatible bucket).
 
 !!! note "Preserve the folder layout"
@@ -118,8 +118,6 @@ In the **Data** section on the source server, turn on the **Migration mode** che
     - Scheduled messages, event triggers, timeout triggers, and scheduled triggers all stop firing.
     - Live chat traffic is unaffected and continues to work normally.
     - A banner appears on every page of the team: "This team is undergoing a migration. Do not create or edit chatbots until the migration is complete."
-
-    See [Data & Migration](../concepts/team/data_migration.md) for what each of these controls does.
 
 ## 6. Run the sync command (target server)
 
