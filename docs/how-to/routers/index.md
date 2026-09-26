@@ -13,7 +13,7 @@ For router-specific configuration, see:
 Every router needs a "safety net" so the conversation never reaches a dead end. This is called the Default Output.
 
 - The Indicator: The default output is marked with a blue asterisk (*) in the node configuration.
-- The Logic: If the router cannot find a match for your configured outputs, or if a technical error occurs, the message is automatically directed to the downstream node connected to this Default Output.
+- The Logic: If the router cannot find a match for your configured outputs, or if a technical error occurs — including when an LLM Router's model returns no classification at all — the message is automatically directed to the downstream node connected to this Default Output.
 - Customization: You can change the Default Output by clicking the blue * next to a different output keyword in your output list.
 
 <a id="route-tagging-observability"></a>
