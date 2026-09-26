@@ -1,6 +1,6 @@
 # Tools
 
-Tools let your chatbot take real actions during a conversation — not just respond with text. When a tool is enabled, the LLM can decide to use it at the right moment, and Open Chat Studio executes the tool on the LLM model's behalf.
+Tools let your chatbot take real actions during a conversation — not just respond with text. When a tool is enabled, the LLM can decide to use it at the right moment, and Open Chat Studio (OCS) executes the tool on the LLM model's behalf.
 
 For example, a chatbot with the Calculator tool can perform accurate arithmetic. A chatbot with reminder tools can schedule a message to be sent to the participant at a future time. Without tools, a chatbot can only generate text.
 
@@ -66,7 +66,7 @@ Support varies by provider. The full list of provider tools and their current su
 
 Open Chat Studio also manages a small set of internal tools automatically - `Attach media` and `File Search`. See the [Tools Reference](../../tech-hub/tools.md#internal-tools) for details.
 
-## Next steps
+## See also
 
 - To see full argument details for each user-configurable tool, see the [Tools Reference](../../tech-hub/tools.md).
 - To add your own tools in the form of custom integrations, see [Custom Actions](../llm_custom_action.md).

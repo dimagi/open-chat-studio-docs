@@ -1,7 +1,7 @@
 # Send a broadcast message
 
 A broadcast is a one-off message you send to every participant of a chatbot, on
-one or more of its channels, without waiting for them to message the bot first.
+one or more of its channels, without waiting for them to message the chatbot first.
 Use it to share an announcement, a service update, or a reminder.
 
 ## Prerequisites
@@ -27,17 +27,17 @@ short while to reach everyone after you click **Send**.
 ## Which channels you can choose
 
 The dialog only lists the chatbot's own messaging channels — the platforms
-your participants message the bot on, such as Telegram, WhatsApp, or Email.
+your participants message the chatbot on, such as Telegram, WhatsApp, or Email.
 
 - The chatbot's API, Web, and Evaluations platforms do not support broadcast messages.
 - Disabled channels are left out too.
 
-!!! note "A broadcast only reaches participants who have messaged the bot before"
+!!! note "A broadcast only reaches participants who have messaged the chatbot before"
     On each channel you select, the broadcast is delivered to participants
-    using the address from their most recent conversation with the bot on
-    that channel. If someone has never messaged the bot on a particular
+    using the address from their most recent conversation with the chatbot on
+    that channel. If someone has never messaged the chatbot on a particular
     channel, OCS has no address to deliver to, so the broadcast can't reach
-    them there — even if they've messaged the bot on a different channel.
+    them there — even if they've messaged the chatbot on a different channel.
 
 ## Message length and formatting
 

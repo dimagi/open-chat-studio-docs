@@ -7,11 +7,6 @@ description: How to accomplish common tasks in Open Chat Studio
 
 Here you’ll find answers to “How do I...?” types of questions. These guides are **goal-oriented** and concrete; they're meant to help you complete a specific task.
 
-## Related content
-
- - For new users, see the [Tutorials](../tutorials/index.md) for getting started
- - For conceptual explanations about OCS and AI, see the [Conceptual guide](../concepts/index.md).
-
 <div class="grid cards" markdown>
 
 -   :material-clock-fast:{ .lg .middle } __Useful User Guides__
@@ -29,3 +24,8 @@ Here you’ll find answers to “How do I...?” types of questions. These guide
     [:octicons-arrow-right-24: Add a message provider as a channel](./deploy_to_different_channels.md)  
 
 </div>
+
+## See also
+
+ - For new users, see the [Tutorials](../tutorials/index.md) for getting started
+ - For conceptual explanations about Open Chat Studio (OCS) and AI, see the [Conceptual guide](../concepts/index.md).

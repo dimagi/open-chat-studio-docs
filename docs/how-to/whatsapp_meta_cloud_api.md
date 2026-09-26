@@ -25,7 +25,7 @@ The following media types are accepted:
 | Document | PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, TXT | 100 MB |
 
 !!! warning "Size limits are enforced before sending"
-    Files that exceed the per-type size limit are rejected before the send attempt is made. Ensure any media attached to bot responses falls within the limits above to avoid delivery failures.
+    Files that exceed the per-type size limit are rejected before the send attempt is made. Ensure any media attached to chatbot responses falls within the limits above to avoid delivery failures.
 
 ---
 
@@ -156,7 +156,7 @@ Open Chat Studio validates the phone number against your WhatsApp Business Accou
 
 WhatsApp restricts when businesses can send messages to participants. Once a participant sends a message to your business number, a **24-hour service window** opens. During that window, your chatbot can reply freely. After 24 hours of inactivity from the participant, the window closes and the WhatsApp API rejects any outbound messages.
 
-Without a fallback, a bot reply sent outside the service window is silently dropped. The out-of-service-window template message feature prevents this by automatically substituting a pre-approved WhatsApp message template when the window has expired.
+Without a fallback, a chatbot reply sent outside the service window is silently dropped. The out-of-service-window template message feature prevents this by automatically substituting a pre-approved WhatsApp message template when the window has expired.
 
 !!! info "Automatic fallback"
     The fallback is automatic — no manual toggle is required. When the service window has expired, OCS attempts to send the configured template in place of the original message. If the template has not been created in Meta, the attempt fails gracefully without interrupting service.
@@ -178,7 +178,7 @@ You must create a WhatsApp message template in your Meta Business account before
     | Template name | `new_bot_message` |
     | Language | Select the language that matches your **Template Language Code** in OCS |
 
-3. In the **Body** section, add a single text variable named `bot_message`. This variable will be replaced with the bot's actual message when sent.
+3. In the **Body** section, add a single text variable named `bot_message`. This variable will be replaced with the chatbot's actual message when sent.
 
 4. Submit the template and wait for Meta to approve it.
 
@@ -190,7 +190,7 @@ You must create a WhatsApp message template in your Meta Business account before
 
 ### Message formatting
 
-Meta rejects template sends when the `bot_message` variable contains line breaks, tabs, or long runs of spaces. To avoid this, OCS collapses any run of whitespace in the bot's message — including line breaks and tabs — into a single space before inserting it into the template. This means a multi-paragraph bot reply arrives as a single paragraph when it is sent as a fallback template message.
+Meta rejects template sends when the `bot_message` variable contains line breaks, tabs, or long runs of spaces. To avoid this, OCS collapses any run of whitespace in the chatbot's message — including line breaks and tabs — into a single space before inserting it into the template. This means a multi-paragraph chatbot reply arrives as a single paragraph when it is sent as a fallback template message.
 
 Only the substituted `bot_message` text is flattened this way. The approved template's own static text keeps whatever line breaks it was approved with in Meta Business Manager.
 
@@ -203,7 +203,7 @@ Only the substituted `bot_message` text is flattened this way. The approved temp
 
 Whitespace flattening happens before OCS checks the character limit, so the limit is measured against the message Meta actually receives. Flattening only ever shortens the text, so it never causes a message to exceed the limit.
 
-If the bot's outgoing message exceeds 974 characters, OCS automatically splits it at word boundaries and sends it across multiple template messages.
+If the chatbot's outgoing message exceeds 974 characters, OCS automatically splits it at word boundaries and sends it across multiple template messages.
 
 ### Set the template language code in OCS
 
@@ -309,7 +309,7 @@ This is almost always caused by the system user's access token not having permis
 
 ### The out-of-service-window template message is not being sent
 
-If the bot is not reaching participants after the 24-hour service window expires:
+If the chatbot is not reaching participants after the 24-hour service window expires:
 
 - Confirm that the template named `ocs_out_of_service_window` exists in your Meta Business account under **WhatsApp Manager** > **Account tools** > **Message templates**.
 - Confirm the template status is **Approved**. Templates that are pending review or that have been rejected cannot be sent.
@@ -322,5 +322,5 @@ If the bot is not reaching participants after the 24-hour service window expires
 ## See also
 
 - [Messaging providers](../concepts/team/messaging_providers.md)
-- [Deploy your bot to different platforms](deploy_to_different_channels.md)
+- [Deploy your chatbot to different platforms](deploy_to_different_channels.md)
 - [Meta WhatsApp Business Platform documentation](https://developers.facebook.com/docs/whatsapp/cloud-api)

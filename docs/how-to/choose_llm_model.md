@@ -38,7 +38,7 @@ Your team must have credentials configured for a provider before you can use its
 
 Different providers may offer the same underlying model type but with different pricing, speed, and availability. If your preferred model is unavailable or too slow, try the equivalent model from another provider.
 
-## Next steps
+## See also
 
 - [Configure an LLM Node](../tutorials/configure_llm_node.md) — if you haven't set up an LLM node yet, start with this tutorial
 - [Adjust LLM Node Model Parameters](adjust_llm_node_model_parameters.md) — once you have chosen a model, learn how to fine-tune its settings
