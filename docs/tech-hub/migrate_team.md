@@ -210,7 +210,7 @@ Migration mode is a per-server setting, and the source and target need **opposit
 **Files are missing or broken on the target**
 : The synced file records point at storage keys from the source. Confirm the files were uploaded to the target's storage backend under the exact same keys as in the exported zip (see [step 2](#2-export-your-teams-files-source-server)).
 
-## See Also
+## See also
 
 - [Team Settings](../concepts/team/index.md)
 - [API Access](api_access.md)
