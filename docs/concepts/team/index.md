@@ -13,7 +13,7 @@ Team Settings is organized into four sections:
 - **[Integrations](integrations.md)** — configure and manage the external services your chatbots use: LLM & embedding, Speech, Messaging, Authentication, and Tracing providers.
 - **[Members](members.md)** — invite people to the team, and manage their roles and access.
 - **[Developers](developer.md)** — manage Custom Actions and OAuth applications for extending and integrating with your chatbots.
-- **Data** — export your team's files, and migrate the team to another OCS instance.
+- **[Data & Migration](data_migration.md)** — export your team's files, and migrate the team to another OCS instance.
 
 Alongside these sections, Team Settings links to [Feature Flags](feature_flags.md) — a separate page where Team Admins turn experimental features on or off for the team.
 
@@ -41,20 +41,17 @@ Team Admins invite people, assign them roles, and remove access from there.
 
 The [Developers](developer.md) section groups the tools for extending Open Chat Studio: [Custom Actions](custom_actions.md), which let a chatbot call an external HTTP service, and OAuth applications, which let external systems read or write your team's data through the API.
 
-## Data
+## Data & Migration
 
-Team Admins can also manage the team's data from Team Settings:
-
-- **Download team files** — export a zip archive of every file belonging to the team.
-- **Migration public key** — register the public key OCS uses to seal secrets when migrating the team to another instance, and turn on migration mode to pause scheduled messages and event triggers while a migration is in progress.
-- **Danger Zone** — permanently delete the team.
-
-This section is only visible to Team Admins. See [Migrate a Team to Another Instance](../../tech-hub/migrate_team.md) for the full walkthrough of moving a team — its chatbots, configuration, and chat history — to a different OCS server.
+The [Data & Migration](data_migration.md) section lets Team Admins export the team's files, register a migration public key, and delete the team.
+This section is only visible to Team Admins.
+See [Migrate a Team to Another Instance](../../tech-hub/migrate_team.md) for the full walkthrough of moving a team — its chatbots, configuration, and chat history — to a different OCS server.
 
 ## See also
 
 - [Integrations](integrations.md)
 - [Members & access](members.md)
 - [Developers](developer.md) — Custom Actions and OAuth applications
+- [Data & Migration](data_migration.md) — export team files and migrate to another instance
 - [Feature Flags](feature_flags.md) — experimental features your team can turn on
 - [User Groups](groups.md)
