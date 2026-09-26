@@ -61,7 +61,7 @@ Respond with the fields defined in the output schema.
 | `goal_completion` | choices | Options: `yes`, `partial`, `no` |
 | `quality_score` | integer | Scale of 1–5 |
 
-Define the output schema fields to match what you reference in the prompt. The evaluator validates the LLM's output against the schema and retries if the output does not match — see [Output Schema](../../concepts/evaluations/evaluators.md#output-schema) for the retry behavior.
+Define the output schema fields to match what you reference in the prompt. The evaluator validates the LLM's output against the schema and retries if the output does not match — see [Output Schema](../../concepts/evaluations/evaluators.md#output-schema) for the retry behavior, and what happens if the model returns no structured output at all.
 
 See [Evaluators](../../concepts/evaluations/evaluators.md) for full details on output schema types and template variables.
 
