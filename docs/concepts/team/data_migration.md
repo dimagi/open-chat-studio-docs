@@ -1,18 +1,18 @@
 # Data & Migration
 
-The **Data & migration** section of Team Settings is where Team Admins export the team's files, prepare a migration to another OCS instance, and delete the team.
+The **Data & migration** section of Team Settings is where Team Admins [export the team's files](#downloading-team-files), prepare a [migration to another OCS instance](#migrating-to-another-instance), and [delete the team](#deleting-a-team).
 
 ## Downloading team files
 
-The **Download team files** card exports every file belonging to the team as a single zip archive.
-Use it to back up the team's files, or before moving them to another OCS instance as part of a migration.
+Use this feature to back up the team's files into a single zip archive, or before moving them to another OCS instance as part of a migration.
 See [Download Team Files](../../how-to/download_team_files.md) for how to start an export and what it contains.
 
 ## Migrating to another instance
 
 Team Admins can migrate a team's chatbots, configuration, and chat history to another OCS instance — for example, moving to a self-hosted server.
+
 The **Migration public key** and **Migration mode** controls in this section are part of that process.
-See [Migrate a Team to Another OCS Instance](../../tech-hub/migrate_team.md) for the full procedure, including what each control does.
+See [Migrate a Team to Another OCS Instance](../../tech-hub/migrate_team.md) for the full procedure.
 
 ## Deleting a team
 

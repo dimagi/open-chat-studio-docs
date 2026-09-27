@@ -8,14 +8,13 @@ Open Chat Studio (OCS) supports multiple organizations/departments working in th
 
 As an OCS user, you can belong to several teams at once, with different roles in each — for example, an Admin on one team and a Viewer on another. Roles are managed with [User Groups](groups.md).
 
-Team Settings is organized into four sections:
+Team Settings is organized into sections:
 
 - **[Integrations](integrations.md)** — configure and manage the external services your chatbots use: LLM & embedding, Speech, Messaging, Authentication, and Tracing providers.
 - **[Members](members.md)** — invite people to the team, and manage their roles and access.
 - **[Developers](developer.md)** — manage Custom Actions and OAuth applications for extending and integrating with your chatbots.
-- **[Data & Migration](data_migration.md)** — export your team's files, and migrate the team to another OCS instance.
-
-Alongside these sections, Team Settings links to [Feature Flags](feature_flags.md) — a separate page where Team Admins turn experimental features on or off for the team.
+- **[Data](data_migration.md)** — export your team's files, and migrate the team to another OCS instance.
+- **[Feature Flags](feature_flags.md)** — where Team Admins turn experimental features on or off for the team.
 
 ## Integrations
 
@@ -39,7 +38,7 @@ Team Admins invite people, assign them roles, and remove access from there.
 
 ## Developers
 
-The [Developers](developer.md) section groups the tools for extending Open Chat Studio: [Custom Actions](custom_actions.md), which let a chatbot call an external HTTP service, and OAuth applications, which let external systems read or write your team's data through the API.
+The [Developers](developer.md) section groups the tools for extending OCS: [Custom Actions](custom_actions.md), which let a chatbot call an external HTTP service, and OAuth applications, which let external systems read or write your team's data through the API.
 
 ## Data & Migration
 
