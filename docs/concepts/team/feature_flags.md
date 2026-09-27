@@ -1,8 +1,6 @@
 # Feature Flags
 
 The **Feature Flags** page in Team Settings is where Team Admins switch experimental Open Chat Studio (OCS) features on and off for their team.
-It lists each experimental feature your team can control, with a checkbox for turning it on.
-A change you save takes effect immediately, for every member of the team.
 
 ## What a feature flag is
 
