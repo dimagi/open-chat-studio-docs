@@ -16,6 +16,12 @@ Each row is either an active member or a pending invitation:
 
 You can search by name or email, or filter by **Role** to see everyone with a particular [User Group](groups.md), or **Status** to show only **Active** members or only **Invited** people.
 
+## Requiring two-factor authentication
+
+Selecting the **Require two-factor authentication** checkbox, means every member of the team — including the admin who turned it on — must set up two-factor authentication before they can use OCS.
+Members of teams that haven't turned it on are unaffected.
+The setting is off by default.
+
 ## Inviting a new member
 
 Team Admins can select **Invite people**.
