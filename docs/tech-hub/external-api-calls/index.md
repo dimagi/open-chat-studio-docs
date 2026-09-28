@@ -8,7 +8,7 @@ This guide explains how to call external APIs from inside a Pipeline. You use a 
 
 ## Example workflow
 
-This workflow demonstrates how to integrate external APIs into your chatbot with the [HTTP Client][http_client]. The HTTP client allows your bot to fetch data from external services, submit information, or interact with third-party APIs securely.
+This workflow demonstrates how to integrate external APIs into your chatbot with the [HTTP Client][http_client]. The HTTP client allows your chatbot to fetch data from external services, submit information, or interact with third-party APIs securely.
 
 ### Prerequisites
 

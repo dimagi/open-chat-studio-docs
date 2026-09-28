@@ -15,7 +15,7 @@ This guide walks you through adjusting the LLM model parameters on an [LLM node]
 
 1. Open your pipeline or chatbot for editing.
 2. Click the LLM node you want to configure.
-3. Select "Advanced" to expand the settings panel.
+3. Select **Advanced** to expand the settings panel.
 
 ## Step 2 — Select a model
 
@@ -65,7 +65,7 @@ Your team may not have that provider configured. Ask your team administrator or 
 **Responses are being cut off.**
 The max output token limit may be too low. Raise it in the node settings. If you are using a [reasoning model](choose_llm_model.md#two-model-types), this is especially common — see [Max output tokens](#max-output-tokens) in the parameter reference below.
 
-## Related pages
+## See also
 
 - [Choose an LLM Model](choose_llm_model.md) — guidance on picking the right model for your use case
 - [Large Language Models](../concepts/llm.md) — conceptual overview of temperature and effort

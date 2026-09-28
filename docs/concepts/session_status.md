@@ -1,6 +1,6 @@
 # Session Status
 
-Every [chat session](sessions.md) in Open Chat Studio has a **status** that reflects where the participant is in their journey — from first contact through to a completed, reviewed conversation.
+Every [chat session](sessions.md) in Open Chat Studio (OCS) has a **status** that reflects where the participant is in their journey — from first contact through to a completed, reviewed conversation.
 
 Understanding session status helps you:
 
@@ -69,7 +69,7 @@ A session moves to `PENDING_REVIEW` whenever the conversation ends. This can hap
 **Participant actions:**
 
 - Clicks **End chat and give feedback** on the web chat page.
-- Sends `/reset` on a messaging channel (also surfaced as "Restart chat" on Telegram).
+- Sends `/reset` on a messaging channel (also surfaced as **Restart chat** on Telegram).
 
 **Chatbot-driven actions** — the chatbot itself ends the session, using one of three methods described in [Ending sessions from a chatbot](../tech-hub/ending_sessions.md):
 

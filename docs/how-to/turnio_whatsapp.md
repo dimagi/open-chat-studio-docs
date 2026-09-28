@@ -132,5 +132,5 @@ These are safeguards unrelated to the signing secret:
 ## See also
 
 - [Messaging providers](../concepts/team/messaging_providers.md)
-- [Deploy your bot to different platforms](deploy_to_different_channels.md)
+- [Deploy your chatbot to different platforms](deploy_to_different_channels.md)
 - [Set up WhatsApp with Meta Cloud API](whatsapp_meta_cloud_api.md)

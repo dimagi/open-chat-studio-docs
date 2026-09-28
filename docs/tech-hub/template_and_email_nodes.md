@@ -92,7 +92,7 @@ Here is your update: {{ input }}
 To unsubscribe, reply STOP.
 ```
 
-## Related Pages
+## See also
 
 - [Node Types](../concepts/pipelines/nodes.md) — plain-English overview of all pipeline nodes
 - [Parallel Branches](../concepts/pipelines/parallel.md) — how `node_inputs` behaves when multiple branches converge

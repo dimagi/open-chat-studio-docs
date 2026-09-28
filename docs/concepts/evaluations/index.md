@@ -13,7 +13,7 @@ In Open Chat Studio, evaluations can be run against existing conversation messag
 - **Evaluators** define the logic for analyzing messages and generating evaluation metrics, either as an [LLM-as-judge prompt](./evaluators.md#llm-evaluator) or [custom python code](./evaluators.md#python-evaluator). Each evaluator takes individual messages from a dataset and optionally a generated response, then outputs structured results in a table. You can apply many evaluators to a dataset in parallel, and the outputs of each will be added as new columns to the table.
 - **[Tag Rules](./tag_rules.md)** automatically tag sessions or messages whose evaluator output meets a condition you define, such as a low confidence score or negative sentiment, so you can jump straight to the conversations that need attention.
 
-## Next steps
+## See also
 
 - [Create a Dataset](../../how-to/evaluations/create-a-dataset.md) — build your first dataset by cloning sessions, importing from an annotation queue, or uploading a CSV.
 - [Evaluations Reference](../../tech-hub/evaluations/index.md) — evaluation execution and other advanced details.

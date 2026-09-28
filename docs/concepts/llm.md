@@ -46,7 +46,7 @@ Open Chat Studio exposes two main "knobs" for shaping how a model responds: **te
 
 These two parameters serve different purposes: temperature shapes *style*, effort shapes *substance*.
 
-## Related pages
+## See also
 
 To get started with LLMs in Open Chat Studio, or for guidance on which model type to choose and when to use each parameter, see:
 

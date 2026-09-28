@@ -6,9 +6,9 @@ Versioning tracks the history of your chatbot's configuration so you can review 
 
 ## Terminology
 
-* *Unreleased Version*. This is the version of the chatbot you are currently editing. It is a draft that has not been versioned or published.
+- **Unreleased Version**. This is the version of the chatbot you are currently editing. It is a draft that has not been versioned or published.
 
-* *Published Version*. This is the version that participants will interact with — through the web, WhatsApp, or any other channel you have set up, including the public link.
+- **Published Version**. This is the version that participants will interact with — through the web, WhatsApp, or any other channel you have set up, including the public link.
 
 ## What is a Chatbot Version?
 
@@ -18,16 +18,16 @@ Once a version is created, it cannot be edited or modified. This ensures that th
 
 Most of a published version's configuration is frozen at publish time.
 
-One exception is **collection content**, which behaves as a live shared resource — updates reach the published bot without a republish. See [Collections and published chatbots](collections/index.md#collections-and-published-chatbots) for details on what's live versus frozen, and how this affects drift detection.
+One exception is **collection content**, which behaves as a live shared resource — updates reach the published chatbot without a republish. See [Collections and published chatbots](collections/index.md#collections-and-published-chatbots) for details on what's live versus frozen, and how this affects drift detection.
 
 ## Chatting to the unreleased version
-For testing, if you want to chat with the unreleased draft chatbot, go to the chatbot home page and click the speech bubble icon in the top-right corner. In the dropdown, select "Unreleased Version" instead of "Published Version" to open a web chat.
+For testing, if you want to chat with the unreleased draft chatbot, go to the chatbot home page and click the speech bubble icon in the top-right corner. In the dropdown, select **Unreleased Version** instead of **Published Version** to open a web chat.
 
 When chatting with an unpublished version, a banner will appear indicating that it is not the published version and showing the version number.
 
 ![Web chat unpublished version banner](images/version_web_chat.png)
 
-Only bot editors can chat with the unreleased version because it is not available through [channels](channels.md).
+Only chatbot editors can chat with the unreleased version because it is not available through [channels](channels.md).
 
 !!! note "Behavior before versioning"
     Previously, all channels always used the unreleased version.
