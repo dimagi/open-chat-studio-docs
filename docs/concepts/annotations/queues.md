@@ -25,6 +25,21 @@ Each field has a **name** and an optional **description** to guide reviewers.
 | `tone` | choices (professional, neutral, inappropriate) | Describe the tone of the conversation |
 | `notes` | string | Any additional observations |
 
+### Field Order
+
+Each field card in the schema builder has a drag handle and up/down buttons (▲▼) for reordering.
+
+The order you set is used everywhere fields are displayed: the annotation form, the annotations list on an item, CSV and JSONL exports, the aggregate scores panel, and the summary column in the queue's items table.
+
+Once an item in the queue has a submitted review, the queue's set of fields locks — you can no longer add or remove a field, or change its type, because that would invalidate earlier annotations.
+Reordering is not affected by the lock.
+Annotations are stored by field name, so changing the display order doesn't change what was recorded, and you can keep reordering fields at any time, including after the lock.
+
+A queue that has never been saved since field ordering was introduced has no order of its own, and its fields keep appearing as they did before. Open the queue's form and save it to give it an explicit order.
+
+!!! tip "Keyboard and screen reader support"
+    Use the up/down buttons instead of dragging if you prefer not to use drag-and-drop.
+
 ## Creating a Queue
 
 Navigate to **Annotation Queues** in the left sidebar and click **New Queue**.
@@ -121,6 +136,7 @@ After annotations are submitted, **aggregate scores** are automatically computed
 | Categorical (choices) | Mode, distribution percentages per option |
 
 Aggregates are recomputed after each annotation submission, so you always see up-to-date stats.
+They are listed in the queue's [field order](#field-order).
 
 !!! note "Multi-reviewer aggregation"
     For multi-reviewer queues, aggregates prefer the **authoritative** annotation per item when one is set. Items without an authoritative pick fall back to averaging across all submitted annotations for that item.
@@ -128,6 +144,7 @@ Aggregates are recomputed after each annotation submission, so you always see up
 ## Exporting Results
 
 From the queue detail page (requires queue management permissions), you can export all submitted annotations. Both formats pivot the results so that **each reviewer's answers appear side by side**, making it easy to compare reviewers on the same item.
+Both also list fields in the queue's [field order](#field-order).
 
 | Format | Structure |
 |--------|-----------|

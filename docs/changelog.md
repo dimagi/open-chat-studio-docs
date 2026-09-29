@@ -11,6 +11,11 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Sep 29, 2026
+* **NEW** [Annotation queue](concepts/annotations/queues.md) fields now appear in the order you arrange them. Each field in the schema builder has a drag handle and up/down buttons, and the order you set carries through to the annotation form, the previous-reviews panel, CSV and JSONL exports, the aggregate scores panel, the summary column in the items table, and the delete-confirmation dialog. Re-ordering stays available after a queue's schema has locked, because it changes only how fields are presented, not what was recorded. Existing queues keep the order they show today until someone saves the queue form.
+* **BUG** The summary column in an annotation queue's items table now shows the first three fields in the queue's field order. Previously the three it picked came from how the schema happened to be stored, so they matched neither the order the fields were created in nor any order you could control.
+* **MIGRATION** The team-sync export schema gained the annotation queue `field_order` field, so its checksum has changed. Self-hosted operators running `sync_team` with schema enforcement between two servers must upgrade both sides to this release before syncing.
+
 ## Sep 22, 2026
 * **CHANGE** Deleting an [evaluator](concepts/evaluations/evaluators.md#archiving-evaluators) that has already produced results now archives it instead of deleting it, so its results, aggregates and applied tags are kept and past runs and exports still show them. An archived evaluator carries an **Archived** badge, can still be opened and edited, and no longer appears in the evaluator picker or takes part in new runs — except on an evaluation config that already uses it, where it stays in the picker so you can untick it. Use **Unarchive** to make it usable again. An evaluator with no run history is still deleted outright, and a config whose evaluators are all archived cannot be run.
 * **MIGRATION** The team-sync export schema gained the evaluator `is_archived` field, so its checksum has changed. Self-hosted operators running `sync_team` with schema enforcement between two servers must upgrade both sides to this release before syncing.
