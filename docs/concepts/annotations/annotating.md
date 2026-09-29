@@ -16,7 +16,7 @@ From the queue detail page, click **Start Annotating**. This begins a sequential
 The annotation UI has two panels:
 
 - **Left panel** — the item content (chat history, participant data, session state)
-- **Right panel** — the annotation form with the queue's schema fields
+- **Right panel** — the annotation form with the queue's schema fields, shown in the [order the queue's author set](queues.md#field-order)
 
 For session items, the left panel shows:
 
