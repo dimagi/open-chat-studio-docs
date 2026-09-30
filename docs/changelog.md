@@ -11,6 +11,10 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Sep 30, 2026
+* **NEW** Added **Claude Sonnet 5.5** on the Anthropic provider, and **GPT-6.1 Sol** on both the OpenAI and Azure OpenAI providers. Both are reasoning models with a configurable effort level, and both are priced, so their usage is costed like any other model. See [LLM Providers](concepts/team/llm_providers.md#llm-models).
+* **CHANGE** Reported costs for **GPT-4o mini** on Azure OpenAI have dropped by about 10%, to Microsoft's current list price of $0.15 per million input tokens and $0.60 per million output tokens.
+
 ## Sep 29, 2026
 * **NEW** [Annotation queue](concepts/annotations/queues.md) fields now appear in the order you arrange them. Each field in the schema builder has a drag handle and up/down buttons, and the order you set carries through to the annotation form, the previous-reviews panel, CSV and JSONL exports, the aggregate scores panel, the summary column in the items table, and the delete-confirmation dialog. Re-ordering stays available after a queue's schema has locked, because it changes only how fields are presented, not what was recorded. Existing queues keep the order they show today until someone saves the queue form.
 * **BUG** The summary column in an annotation queue's items table now shows the first three fields in the queue's field order. Previously the three it picked came from how the schema happened to be stored, so they matched neither the order the fields were created in nor any order you could control.
