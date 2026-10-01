@@ -18,28 +18,19 @@ Related issue:
 
 ### Scope
 <!-- Summarize the actual update.
-Added / revised / separated / simplified
+Examples:
 - Updated examples, screenshots, navigation, or configuration
 - Fixed terminology, accuracy, duplication or cross-references
-- Clarified workflow or product behavior
+- Clarified workflow behavior
 -->
 
 ### Affected pages / sections
-<!-- List the page(s), section(s), or folders affected. -->
-- Page(s) / section(s):
-- Folder(s):
-  - [ ] `docs/tutorials/`
-  - [ ] `docs/how-to/`
-  - [ ] `docs/concepts/`
-  - [ ] `docs/tech-hub/`
-  - [ ] `docs/chat_widget/` — base must be `widget-develop`, not `main`, and must not be mixed with the folders above
-- Automated process(s):
 
 ### Decisions and out of scope for PR
 <!-- Useful to constrain what AI agents surface in PR reviews -->
 
-## Validation
-- [ ] This follows the relevant page-type contract.
+## Validation manually done
+- [ ] Changes follow the relevant page-type contract.
 - [ ] Examples and UI features/behavior were manually checked.
 - [ ] Internal links and cross-references were manually reviewed for user value.
 - [ ] Terminology matches current OCS naming and behavior.
