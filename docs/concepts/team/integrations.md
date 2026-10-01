@@ -4,7 +4,7 @@ Every external service your team connects to — [LLM models](./llm_providers.md
 
 ## The Integrations table
 
-Depending on your permissions, each row also offers **Edit** and **Delete** actions. Deleting an integration warns you first, since it removes the integration from anywhere it's currently being used.
+Depending on your permissions, each row offers **Edit** and **Delete** actions. Deleting an integration warns you first, since it removes the integration from anywhere it's currently being used.
 
 ### Filtering by category
 
