@@ -16,16 +16,16 @@ See [Migrate a Team to Another OCS Instance](../../tech-hub/migrate_team.md) for
 
 ## Deleting a team
 
-The **Danger Zone** card holds a single **Delete Team** button, which opens a "Really delete team?" modal.
+Team Admins can permanently delete a team from the **Danger Zone** card, which contains the **Delete Team** action.
+Deletion is a cascade delete: removing the team also removes everything that belongs to it.
 
-- Type the team's name, not its slug, into the field labelled `Type <team name> to confirm`.
-- Choose who gets emailed once deletion finishes: **Send email notification to myself** (preselected), **Send email notification to admins**, or **Send email notification to all members of the team**.
-- Select **Delete team** to confirm, or **Cancel** to back out.
+To prevent accidental deletion, OCS asks the Team Admin to confirm by typing the team's name (not its slug).
+The Team Admin also chooses an email address to notify when deletion finishes.
+Deletion runs in the background, so this email is the only indication that it has completed.
 
 !!! warning
     Deleting a team cannot be undone.
-    It is a cascade delete: removing the team removes everything that belongs to it.
-    Deletion runs in the background — the email you chose is the only signal that it has finished.
+    To keep a copy of the team's files, [download them](#downloading-team-files) before deleting.
 
 ## See also
 
