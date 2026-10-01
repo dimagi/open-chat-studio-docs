@@ -9,7 +9,7 @@ Give your chatbot access to your files — grouped into a **collection** — whe
 
 1. Navigate to the **Collections** section in the sidebar, click "Add new", and choose a collection type: [Media Collection](./media.md) or [Indexed Collection (RAG)](./indexed.md).
 2. Once the collection is created, you will be able to upload files to it.
-3. For indexed collections, you'll also need to choose between a Remote and a Local index before uploading — see [Which should I use?](./indexed.md#which-should-i-use).
+3. For indexed collections, you'll also need to choose between a Remote and a Local index before uploading — see [Which should I use?](./indexes.md#which-should-i-use).
 4. After your collection has been created, you can link it to any [LLM node][llm_node]. To actually access the collection's content, add the matching [prompt variable](../prompt_variables.md) to the node's prompt — `{media}` for media collections, or `{collection_index_summaries}` for indexed collections.
 
 ## Collections and published chatbots
@@ -17,7 +17,7 @@ Give your chatbot access to your files — grouped into a **collection** — whe
 Collection content is a **live shared resource**: updates to your files in a collection reach your published chatbot automatically, without a republish. This applies whether you update a collection manually or via a scheduled [document-source](../../how-to/document_sources.md) sync.
 
 - Adding or removing files from a [media collection](./media.md) takes effect for participants immediately.
-- Document-source syncs to an [indexed collection](./indexed.md#document-sources-for-indexed-collections) — for example, nightly Confluence or GitHub syncs — are applied to the published chatbot as each sync completes.
+- Document-source syncs to an [indexed collection](./document_sources.md) — for example, nightly Confluence or GitHub syncs — are applied to the published chatbot as each sync completes.
 
 The collection *structure* of a published chatbot version — which collections are linked to which pipeline nodes — is still frozen at publish time. To change which collections a chatbot uses, you must publish a new version.
 

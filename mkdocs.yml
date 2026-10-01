@@ -178,7 +178,10 @@ nav:
     - Collections:
       - concepts/collections/index.md
       - concepts/collections/media.md
-      - Indexed Collection: concepts/collections/indexed.md
+      - Indexed Collections:
+        - concepts/collections/indexed.md
+        - Local and Remote Indexes: concepts/collections/indexes.md
+        - Document Sources: concepts/collections/document_sources.md
     - Evaluations:
       - concepts/evaluations/index.md
       - concepts/evaluations/dataset.md
