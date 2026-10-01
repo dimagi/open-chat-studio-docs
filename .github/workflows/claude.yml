@@ -10,12 +10,15 @@
 # Notes:
 # - No concurrency group is set, so overlapping triggers on the same
 #   issue/PR run in parallel rather than queuing or cancelling each other.
+# - claude-code-action picks its own push target from context (existing
+#   branch for an open PR, a new branch for issues/closed PRs) — independent
+#   of the ref the "Resolve checkout ref" step resolves.
+#
+# Security Notes:
 # - The `claude` job has no actor/permission gate of its own — it relies on
 #   claude-code-action's built-in check that the triggering user has write
-#   access to this repo. A mention or review from anyone without write
-#   access (most fork PR authors included) fails the "Run Claude Code" step
-#   with "Action failed with error: User does not have write access on this
-#   repository" rather than being silently skipped.
+#   access to this repo, failing the "Run Claude Code" step loudly (not
+#   silently skipping) for anyone else.
 
 name: Claude Code
 
@@ -40,11 +43,10 @@ jobs:
       (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@claude')) ||
       (github.event_name == 'issues' && (contains(github.event.issue.body, '@claude') || contains(github.event.issue.title, '@claude')))
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions:
-      contents: write
-      pull-requests: write
-      issues: write
-      id-token: write
+      id-token: write  # Needed for Claude Code Action
+
     steps:
       - name: Generate app token
         id: app-token
@@ -52,6 +54,9 @@ jobs:
         with:
           app-id: ${{ vars.OCS_AGENT_APP_ID }}
           private-key: ${{ secrets.OCS_AGENT_PRIVATE_KEY }}
+          permission-contents: write
+          permission-pull-requests: write
+          permission-issues: write
 
       - name: Checkout repository
         uses: actions/checkout@v7
@@ -74,3 +79,4 @@ jobs:
           github_token: ${{ steps.app-token.outputs.token }}
           claude_args: |
             --allowedTools "mcp__github_inline_comment__create_inline_comment,Bash(gh pr comment:*),Bash(gh pr create:*),Bash(gh pr diff:*),Bash(gh pr view:*),Bash(gh issue comment:*),Bash(gh issue edit:*),Bash(git add:*),Bash(git commit:*),Bash(git push:*),Bash(uv run zensical build:*),Bash(uv run zensical serve:*),Bash(uv sync --locked),Bash(uv run pytest:*),Read,Write,Edit"
+            --max-turns 60
