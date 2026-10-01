@@ -1,4 +1,4 @@
-# Members & Access
+# Members
 
 The **Members & access** section of Team Settings is where Team Admins [invite people](#inviting-a-new-member), review who has access, and [control what each person can do](#editing-a-members-role).
 Active members and pending invitations appear together in one table, so you always see the full picture of who can reach your team.
@@ -24,14 +24,16 @@ The setting is off by default.
 
 ## Inviting a new member
 
-Team Admins can select **Invite people**.
-Selecting **Send Invitation** emails them a link to join the team.
-An invited person appears in the table immediately, with **Invited** status, until they accept.
+Team Admins add people to the team by invitation, using **Invite people**.
+Each invitation is an emailed link to join the team, sent when the Team Admin selects **Send Invitation**.
 
-While an invitation is pending, its row offers two actions:
+An invitation is treated as a member-in-waiting.
+The invited person appears in the [members table](#the-members-table) straight away with **Invited** status, and stays there until they accept.
 
-- **Resend** — sends the invitation email again.
-- **Cancel** — withdraws the invitation.
+A pending invitation can be managed in two ways:
+
+- **Resend** sends the invitation email again, for example if the original was missed.
+- **Cancel** withdraws the invitation, so the link no longer gives access to the team.
 
 ## Editing a member's role
 
