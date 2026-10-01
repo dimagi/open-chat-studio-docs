@@ -18,7 +18,7 @@ You can search by name or email, or filter by **Role** to see everyone with a pa
 
 ## Requiring two-factor authentication
 
-Selecting the **Require two-factor authentication** checkbox, means every member of the team — including the admin who turned it on — must set up two-factor authentication before they can use OCS.
+Selecting the **Require two-factor authentication** checkbox means every member of the team — including the admin who turned it on — must set up two-factor authentication before they can use OCS.
 Members of teams that haven't turned it on are unaffected.
 The setting is off by default.
 
