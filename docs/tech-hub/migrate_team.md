@@ -110,7 +110,7 @@ Create an API key for your user on the source server — the sync command uses i
 
 ## 5. Enable migration mode (source server)
 
-In the **Data** section on the source server, turn on the **Migration mode** checkbox in the **Migration public key** card and select **Save key**. The `sync_team` command checks that migration mode is enabled on the source before it continues, and stops with "Migration mode needs to be enabled on the source team before you can continue." if it isn't, so this step is required.
+In the **Data** section on the source server, turn on the **Migration mode** checkbox in the **Migration public key** card and select **Save key**. This step is required: `sync_team` checks that migration mode is enabled on the source before it continues, and stops with the error "Migration mode needs to be enabled on the source team before you can continue." if it isn't.
 
 !!! warning "Effects of migration mode"
     While migration mode is enabled on the source:
