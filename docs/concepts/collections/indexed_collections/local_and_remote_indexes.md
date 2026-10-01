@@ -19,7 +19,8 @@ An [indexed collection](./index.md) stores its files in an index that the chatbo
 | **Collections per LLM node** | Max 2 (OpenAI limit) | Unlimited |
 | **Best for** | Getting started quickly | More control, or more than 2 collections |
 
-If you are new to indexed collections, start with a **Remote Index**. Switch to a Local Index if you need more than 2 collections or want to [choose a specific embedding model](../../../tech-hub/local-index-optimization.md#choosing-an-embedding-model) for your content type.
+!!! tip "Start with a Remote Index"
+    If you are new to indexed collections, start with a **Remote Index**. Switch to a Local Index if you need more than 2 collections or want to [choose a specific embedding model](../../../tech-hub/local-index-optimization.md#choosing-an-embedding-model) for your content type.
 
 ## Remote Index
 Remote indexes are hosted and managed by your LLM provider. Files are uploaded to the provider, which handles all indexing. The embedding model is chosen by the provider.

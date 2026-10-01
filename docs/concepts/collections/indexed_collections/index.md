@@ -1,7 +1,7 @@
 ---
-title: Indexed Collection (for RAG applications)
+title: Indexed Collections (for RAG applications)
 ---
-# Indexed Collection (for RAG applications)
+# Indexed Collections (for RAG applications)
 
 An indexed collection lets your chatbot search through your documents to find relevant information before responding. Instead of relying on the AI's built-in knowledge, the chatbot retrieves answers from files you upload — such as PDFs, reports, or wiki pages.
 
@@ -23,7 +23,7 @@ To search documents by meaning, OCS uses an **embedding model** — this techniq
 
 Once your collection is created and populated with files, [link it to an LLM node](../index.md#adding-a-collection-to-a-chatbot). Linking the collection isn't enough on its own — add the `{collection_index_summaries}` [prompt variable](../../prompt_variables.md) to that node's prompt so the chatbot knows to search it.
 
-## Next steps
+## See also
 
-- [Local and Remote Indexes](./local_and_remote_indexes.md) — choose where your files are indexed and how.
+- [Local](./local_and_remote_indexes.md#local-index) or [Remote](./local_and_remote_indexes.md#remote-index) Indexes — choose where your files are indexed and how.
 - [Document Sources](./document_sources.md) — sync files automatically from Confluence or GitHub.
