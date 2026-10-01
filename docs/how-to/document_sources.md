@@ -11,7 +11,7 @@ For a conceptual overview, see [Document Sources](../concepts/collections/docume
 
 ## Prerequisites
 
-- An [indexed collection](../concepts/collections/indexed.md) already created in OCS.
+- An [indexed collection](../concepts/collections/indexed_collections.md) already created in OCS.
 - An [authentication provider](../concepts/team/authentication_providers.md) configured for your chosen source type.
 
 ## Add a Document Source

@@ -3,7 +3,7 @@ title: Local and Remote Indexes
 ---
 # Local and Remote Indexes
 
-An [indexed collection](./indexed.md) stores its files in an index that the chatbot searches. In OCS, there are two types of indexes:
+An [indexed collection](./indexed_collections.md) stores its files in an index that the chatbot searches. In OCS, there are two types of indexes:
 
 - [Remote Index](#remote-index)
 - [Local Index](#local-index)

@@ -25,5 +25,5 @@ Once your collection is created and populated with files, [link it to an LLM nod
 
 ## Next steps
 
-- [Local and Remote Indexes](./indexes.md) — choose where your files are indexed and how.
+- [Local and Remote Indexes](./local_and_remote_indexes.md) — choose where your files are indexed and how.
 - [Document Sources](./document_sources.md) — sync files automatically from Confluence or GitHub.

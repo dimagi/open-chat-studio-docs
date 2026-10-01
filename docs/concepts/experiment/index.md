@@ -48,4 +48,4 @@ This can be useful if you want to build a complex chatbot that performs differen
 [4]: https://platform.openai.com/docs/assistants/overview
 [5]: https://platform.openai.com/docs/assistants/tools/code-interpreter
 [6]: https://platform.openai.com/docs/assistants/tools/file-search
-[indexed-collections]: ../collections/indexed.md
+[indexed-collections]: ../collections/indexed_collections.md

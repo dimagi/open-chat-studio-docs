@@ -24,7 +24,7 @@ Once a provider is saved, its edit page splits into tabs:
 
 ## LLM Models
 
-Each provider comes with its most commonly used models already available in OCS — models that power chatbot conversations, and embedding models used for searching [knowledge bases](../collections/indexed.md).
+Each provider comes with its most commonly used models already available in OCS — models that power chatbot conversations, and embedding models used for searching [knowledge bases](../collections/indexed_collections.md).
 
 On the **Models** tab, filter pills — **All**, **Chat**, **Embedding**, and **Custom** — narrow the list to one kind of model at a time, and each pill shows a live count of models matching that filter. Use **Add custom model** to add a model that isn't pre-configured.
 

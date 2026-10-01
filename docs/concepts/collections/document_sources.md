@@ -3,7 +3,7 @@ title: Document Sources
 ---
 # Document Sources
 
-Instead of uploading files manually, you can connect OCS to an external document source — such as a Confluence space or GitHub repository — and have it fetch and index content automatically on a schedule. This keeps your OCS [indexed collection](./indexed.md) (for both remote and local indexes) current without manual uploads.
+Instead of uploading files manually, you can connect OCS to an external document source — such as a Confluence space or GitHub repository — and have it fetch and index content automatically on a schedule. This keeps your OCS [indexed collection](./indexed_collections.md) (for both remote and local indexes) current without manual uploads.
 
 !!! note "Document-source updates reach published chatbots automatically"
     When a document-source sync runs and updates the collection's content, those changes are applied to your published chatbot without requiring a republish. See [Collections and published chatbots](./index.md#collections-and-published-chatbots) for more detail.
