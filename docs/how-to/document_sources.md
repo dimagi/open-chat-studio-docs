@@ -7,11 +7,11 @@ Document sources let OCS automatically fetch and index content from an external 
 
 OCS currently supports two document source types: **[GitHub](#github)** and **[Confluence](#confluence)**. Decide which one you need before you start, since the authentication provider and configuration fields differ for each.
 
-For a conceptual overview, see [Document Sources](../concepts/collections/document_sources.md).
+For a conceptual overview, see [Document Sources](../concepts/collections/indexed_collections/document_sources.md).
 
 ## Prerequisites
 
-- An [indexed collection](../concepts/collections/indexed_collections.md) already created in OCS.
+- An [indexed collection](../concepts/collections/indexed_collections/index.md) already created in OCS.
 - An [authentication provider](../concepts/team/authentication_providers.md) configured for your chosen source type.
 
 ## Add a Document Source
