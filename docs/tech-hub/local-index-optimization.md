@@ -40,3 +40,19 @@ In most cases the default chunking strategy works well. You can customise it per
 - **Structured data (tables, forms)**: Experiment with overlap settings — tables often lose meaning when split mid-row.
 
 !!! warning "Changing the chunking strategy after upload requires re-indexing your files."
+
+## CSV/TSV row import limits
+
+Importing a `.csv` or `.tsv` file as individual rows is an alternative to chunking.
+It's available for local indexes only.
+See [Importing CSV/TSV rows](../concepts/collections/indexed.md#importing-csvtsv-rows) for the concept, and [Import CSV/TSV Rows into a Collection](../how-to/import_csv_tsv_rows.md) for the steps.
+
+Three limits apply to a row import:
+
+| Limit | Default | What it controls |
+|---|---|---|
+| `COLLECTION_ROW_IMPORT_MAX_ROWS` | 10,000 | Maximum number of rows a single import can hold |
+| `COLLECTION_ROW_IMPORT_MAX_ROW_TOKENS` | 2,000 | Maximum tokens allowed per rendered row before it's rejected |
+| `COLLECTION_FILE_MAX_METADATA_COLUMNS` | 16 | Maximum number of columns that can be kept as metadata per row |
+
+These are constants in the application settings, not environment variables, so self-hosted operators who need different limits must override the settings values in their deployment.
