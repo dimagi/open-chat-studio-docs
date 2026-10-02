@@ -174,7 +174,6 @@ nav:
       - Members: concepts/team/members.md
       - Developers:
         - concepts/team/developer.md
-        - Custom Actions: concepts/team/custom_actions.md
       - Data: concepts/team/data_migration.md
       - Feature Flags: concepts/team/feature_flags.md
       - User Groups: concepts/team/groups.md
