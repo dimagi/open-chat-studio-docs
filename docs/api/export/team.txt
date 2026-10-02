@@ -946,6 +946,7 @@ AnnotationQueueDetail:
   - name: string (required)
   - description: string
   - schema: Unknown
+  - field_order: array of string
   - num_reviews_required: integer
   - status: AnnotationQueueDetailStatusEnum
   - created_by: integer
