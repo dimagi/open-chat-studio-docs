@@ -38,7 +38,7 @@ Team Admins invite people, assign them roles, and remove access from there.
 
 ## Developers
 
-The [Developers](developer.md) section groups the tools for extending OCS: [Custom Actions](custom_actions.md), which let a chatbot call an external HTTP service, and OAuth applications, which let external systems read or write your team's data through the API.
+The [Developers](developer.md) section groups the tools for extending OCS: [Custom Actions](../../tech-hub/custom_action/index.md), which let a chatbot call an external HTTP service, and OAuth applications, which let external systems read or write your team's data through the API.
 
 ## Data & Migration
 

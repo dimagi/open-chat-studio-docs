@@ -1,7 +1,7 @@
 # Custom Action Testing
 
 ## Prerequisite
-Before testing, make sure the Custom Action is enabled for your chatbot — see [creating a Custom Action](../../concepts/team/custom_actions.md)
+Before testing, make sure the Custom Action is enabled for your chatbot — see [creating a Custom Action](./index.md#enabling-actions-for-a-chatbot)
 
 ## How to test
 To test the Custom Action, you can open a chat with your Chatbot and type a message that triggers the action. The chatbot will make a request to the external service and return the response to you.
