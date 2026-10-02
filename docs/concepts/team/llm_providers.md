@@ -59,7 +59,7 @@ For example, your account balance can run out mid-month, a key can be revoked af
 
 Open Chat Studio sorts these refusals into two groups:
 
-- **Configuration errors**: your team's account or setup is at fault, not the request — an exhausted balance, a revoked or invalid key, or a withdrawn model. These errors are terminal, so they are never retried. The participant gets the chatbot's usual error reply immediately, and your team gets a [notification](../notifications.md) naming the provider's own reason.
+- **Configuration errors**: your team's account or setup is at fault, not the request — an exhausted balance, a revoked or invalid key, or a withdrawn model. An [LLM node](../pipelines/nodes.md#llm-node)'s [max output tokens](../../how-to/adjust_llm_node_model_parameters.md#max-output-tokens) limit can also be too low for the model to produce any visible text. These errors are terminal, so they are never retried. The participant gets the chatbot's usual error reply immediately. Your team gets a [notification](../notifications.md) naming the provider's reason, or for an output-token limit, naming the node and the provider's stop reason.
 - **Transient errors**: real rate limits, provider outages, and network faults. These are retried automatically, and only reach the participant as an error if every retry fails.
 
 !!! note "Detection differs by provider"

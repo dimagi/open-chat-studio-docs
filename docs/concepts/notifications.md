@@ -17,6 +17,7 @@ Notifications close that gap by telling you as soon as something needs attention
 - A file or message failing to deliver to a participant
 - A [tool](tools/index.md) failing during execution
 - An LLM provider [refusing a request for a reason only your team can fix](../concepts/team/llm_providers.md#provider-errors-during-a-conversation) — an exhausted balance, a revoked key, or a withdrawn model
+- An LLM node's [max output token limit](../concepts/team/llm_providers.md#provider-errors-during-a-conversation) leaving no room for a reply
 - An LLM model your team uses being [deprecated or removed](../concepts/team/llm_providers.md#model-lifecycle-and-deprecation)
 - A [Custom Action](llm_custom_action.md) failing its periodic [health check](../tech-hub/custom_action/health_custom_action.md)
 

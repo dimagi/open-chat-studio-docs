@@ -43,6 +43,26 @@ A conversational node using AI models. You can configure:
 
 See [Configure an LLM Node](../../tutorials/configure_llm_node.md) for a step-by-step tutorial on setting one up.
 
+### Declined or blocked replies
+
+The model can decline to answer a message, or the LLM provider's content filter can block the reply.
+Either way, the participant gets an explanation instead of silence or a repeated earlier answer:
+
+- "The assistant declined to answer the last message."
+- "The last message was blocked by the provider's content filter."
+
+The chatbot rephrases this explanation in its own voice where it can, and sends the text verbatim where it can't.
+In the pipeline editor's chat preview, a declined or blocked test message shows the same text as an error instead of a reply.
+
+The declined or blocked message stays in the chat record.
+It's left out of the [conversation history](history.md) sent to the model on later turns.
+That stops one blocked message from making every later reply fail the same way.
+
+!!! note "A block can be reported against the wrong message"
+
+    No provider tells OCS exactly which message tripped its content filter — some only report that the request as a whole was blocked.
+    If a filter triggers on the system prompt or an earlier turn, OCS still reports it against the participant's current message.
+
 ## Routing Nodes
 
 Routers are used to reduce cost, improve accuracy, and keep pipeline workflows flexible. A router will receive input, analyze it, choose the next workflow step, and pass the request to the downstream node.

@@ -65,11 +65,17 @@ Your team may not have that provider configured. Ask your team administrator or 
 **Responses are being cut off.**
 The max output token limit may be too low. Raise it in the node settings. If you are using a [reasoning model](choose_llm_model.md#two-model-types), this is especially common — see [Max output tokens](#max-output-tokens) in the parameter reference below.
 
+**My team got a configuration-error notification naming this node.**
+The max output token limit is too low for the model to produce any visible text.
+This is most often because a reasoning model's thinking used the whole budget.
+Raise the limit in the node settings.
+
 ## See also
 
 - [Choose an LLM Model](choose_llm_model.md) — guidance on picking the right model for your use case
 - [Large Language Models](../concepts/llm.md) — conceptual overview of temperature and effort
 - [LLM Providers](../concepts/team/llm_providers.md) — configuring provider credentials
+- [Notifications](../concepts/notifications.md) — what triggers a notification and how to manage them
 
 ---
 
@@ -106,12 +112,16 @@ Set the effort level to guide how much the model reasons; set Max output tokens 
 !!! note "Distinct from the max token limit"
     This is a different limit from the model's [max token limit](../concepts/llm.md#max-token-limit). Both limits apply simultaneously.
 
-This is a hard cap on generated **output** tokens only — it does not affect input consumption. If reached, the output is truncated mid-sentence and OCS may not display an explicit error.
+This is a hard cap on generated **output** tokens only — it does not affect input consumption.
+If the model has already produced some text when the cap is reached, the output is simply truncated mid-sentence, with no explicit error.
+If the cap is reached before the model produces any visible text, your team gets a [configuration-error notification](../concepts/notifications.md).
+It names the node and the provider's stop reason, and the participant gets the chatbot's usual error reply.
 
 OCS provides a default based on the LLM provider default (this varies by model and may be conservative).
 
 !!! warning "Reasoning models — shared budget"
-    On reasoning models, thinking tokens and visible-reply tokens draw from the same max output tokens budget. If the thinking phase exhausts the budget, the model silently produces no visible output.
+    On reasoning models, thinking tokens and visible-reply tokens draw from the same max output tokens budget.
+    If the thinking phase exhausts the budget before the model produces any visible output, your team gets a configuration-error notification naming this node.
 
     For `high` or `max` effort level, a safe starting point is 2–4× your expected reply length.
 
