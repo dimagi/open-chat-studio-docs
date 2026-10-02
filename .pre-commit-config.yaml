@@ -39,7 +39,7 @@ repos:
   # cli2 (not classic markdownlint-cli): config is auto-discovered and cascades
   # per directory — do not pass --config, it would disable the cascade.
   - repo: https://github.com/DavidAnson/markdownlint-cli2
-    rev: v0.23.2
+    rev: v0.23.3
     hooks:
       - id: markdownlint-cli2
 
