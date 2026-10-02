@@ -6,6 +6,9 @@
 
 AI models have no memory of their own — each request OCS sends is self-contained. Open Chat Studio always stores the full conversation in the chatbot's [session](../sessions.md) regardless of how a node is configured; [History](#history) and [History Mode](#history-mode) only control what's *sent to the model*, not what's saved.
 
+There's one exception: a [declined or blocked reply](nodes.md#declined-or-blocked-replies) still stays in the chat record.
+It's left out of what's sent to the model on later turns, whatever the node's History setting.
+
 ## History
 
 The **History** setting controls *which* messages a node's LLM sees: its own, the whole conversation, or a shared slice of it.
