@@ -172,8 +172,7 @@ nav:
         - concepts/team/authentication_providers.md
         - concepts/team/messaging_providers.md
       - Members: concepts/team/members.md
-      - Developers:
-        - concepts/team/developer.md
+      - Developers: concepts/team/developer.md
       - Data: concepts/team/data_migration.md
       - Feature Flags: concepts/team/feature_flags.md
       - User Groups: concepts/team/groups.md
