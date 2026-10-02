@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Oct 2, 2026
+* **NEW** **Generate Chat Export** on a chatbot's **Sessions** tab now opens a dialog where you choose which columns go into the CSV. Every column is selected to begin with, and **Select all** and **Clear all** change them all at once. Message ID and Message Type are always included. The file keeps the export's usual column order whatever order you tick the columns in.
+
 ## Sep 29, 2026
 * **NEW** [Annotation queue](concepts/annotations/queues.md) fields now appear in the order you arrange them. Each field in the schema builder has a drag handle and up/down buttons, and the order you set carries through to the annotation form, the previous-reviews panel, CSV and JSONL exports, the aggregate scores panel, the summary column in the items table, and the delete-confirmation dialog. Re-ordering stays available after a queue's schema has locked, because it changes only how fields are presented, not what was recorded. Existing queues keep the order they show today until someone saves the queue form.
 * **BUG** The summary column in an annotation queue's items table now shows the first three fields in the queue's field order. Previously the three it picked came from how the schema happened to be stored, so they matched neither the order the fields were created in nor any order you could control.
