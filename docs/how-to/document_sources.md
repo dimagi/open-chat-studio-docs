@@ -12,7 +12,7 @@ For the idea behind document sources, see [Document Sources](../concepts/collect
 - An [indexed collection](../concepts/collections/indexed_collections/index.md).
   You can't add document sources to a media collection.
 - An [authentication provider](../concepts/team/authentication_providers.md) of the type your source needs: Bearer Token for GitHub, Basic Auth for Confluence.
-- The details of the content to load, such as a repository URL or a Confluence space key.
+- The details of the source content to load, such as a GitHub repository URL or a Confluence space key.
 
 ## Set up a document source
 
@@ -84,4 +84,3 @@ If files still show a failed status in the file list, click **Retry Failed Uploa
 
 - [Document Sources reference](../tech-hub/document_sources.md): fields, authentication, and sync behavior for each source.
 - [Authentication Providers](../concepts/team/authentication_providers.md): create the credentials a source needs.
-- [Indexed Collections](../concepts/collections/indexed_collections/index.md): how the indexed content is used by a chatbot.

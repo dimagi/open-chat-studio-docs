@@ -195,7 +195,7 @@ nav:
   - Tech Hub:
     - tech-hub/index.md
     - Local Index Optimization: tech-hub/local-index-optimization.md
-    - Document Sources: tech-hub/document_sources.md
+    - Document Sources Reference: tech-hub/document_sources.md
     - Tools Reference: tech-hub/tools.md
     - Ending Sessions from a Chatbot: tech-hub/ending_sessions.md
     - Python Node: tech-hub/python_node.md

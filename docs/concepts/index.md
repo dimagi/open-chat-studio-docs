@@ -28,10 +28,10 @@ For step-by-step instructions on completing specific tasks, see the [How-to guid
 : In OCS, this is the top-level configuration for your conversational experience. It defines the chatbot's behavior, connects it to one or more channels, and is published to participants.
 
 [Collections](collections/index.md)
-: A group of files you attach to a chatbot to give it access to content — either as a media collection for file delivery, or an indexed collection for AI-powered document search (RAG).
+: A group of files you attach to a chatbot. A media collection lets the chatbot send files to participants. An indexed collection lets the chatbot search your documents and base its answers on them, instead of relying only on what the AI model already knows. This technique is called retrieval-augmented generation (RAG), and it helps reduce made-up answers.
 
 [Document Sources](collections/indexed_collections/document_sources.md)
-: A connection from an indexed collection to an external system, such as a Confluence space or GitHub repository, that fetches and indexes content automatically so you don't upload files by hand.
+: A connection between an indexed collection and an external system, such as a Confluence space or GitHub repository. OCS fetches the content and keeps it in sync, so the chatbot answers from current documentation without you re-uploading files by hand.
 
 [Consent Forms](consent.md)
 : An agreement screen shown to participants before a conversation begins, letting them read how their data is used and confirm they agree before interacting with your chatbot.

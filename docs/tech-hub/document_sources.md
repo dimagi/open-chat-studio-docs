@@ -1,24 +1,22 @@
 ---
 title: Document Sources Reference
-description: Configuration fields, authentication, sync behavior, and troubleshooting for GitHub and Confluence document sources
+description: Configuration, authentication, sync behavior, and troubleshooting for GitHub and Confluence document sources
 ---
 # Document Sources Reference
 
-This page is the reference for each document source type.
-It covers the fields you fill in, the authentication each source needs, how syncing behaves, and how to fix common problems.
-For what document sources are and when to use them, see [Document Sources](../concepts/collections/indexed_collections/document_sources.md).
-For the steps to add and manage one, see [Set Up and Manage Document Sources](../how-to/document_sources.md).
+Fields, authentication, sync behavior, and troubleshooting for GitHub and Confluence document sources.
+For what they are, see [Document Sources](../concepts/collections/indexed_collections/document_sources.md). For setup steps, see [Set Up and Manage Document Sources](../how-to/document_sources.md).
 
 ## Quick reference
 
-| Source | Authentication provider | A file is re-synced when | Citation |
+| Source | Authentication provider | A file is re-synced when | Source link shown with answers |
 |--------|-------------------------|--------------------------|----------|
 | [GitHub](#github) | [Bearer Token](../concepts/team/authentication_providers.md#bearer-token) | Its commit hash (`sha`) changes | Link to the file in the repository |
 | [Confluence](#confluence) | [Basic Auth](../concepts/team/authentication_providers.md#basic-auth) | The page's last-modified time changes | Page title, linked to the page |
 
 ## Shared behavior
 
-These rules apply to every source type.
+These rules apply to every document source type.
 
 - **Sync triggers.** Saving a new or edited source starts a sync, and you can start one manually.
   Sources with **Auto Sync** turned on also sync once a week.
@@ -39,7 +37,7 @@ Loads files from a repository on `github.com`.
 
 ### Authentication
 
-Use a Bearer Token authentication provider that holds a GitHub personal access token.
+Use a [Bearer Token](../concepts/team/authentication_providers.md#bearer-token) authentication provider that holds a GitHub personal access token.
 The token needs read access to the repository's contents.
 
 ### Configuration
@@ -64,12 +62,12 @@ File patterns match against the full path of each file, including folders.
 
 ## Confluence
 
-Loads pages from a Confluence site.
+Loads pages from an Atlassian Confluence site.
 OCS indexes each page as text converted from the page's HTML.
 
 ### Authentication
 
-Use a Basic Auth authentication provider.
+Use a [Basic Auth](../concepts/team/authentication_providers.md#basic-auth) authentication provider.
 Enter your Atlassian username as the **username** and an Atlassian API key as the **password**.
 
 ### Configuration
@@ -77,7 +75,7 @@ Enter your Atlassian username as the **username** and an Atlassian API key as th
 | Field | Description |
 |-------|-------------|
 | **Confluence Site URL** | The site address, for example `https://yoursite.atlassian.net/wiki`. |
-| **Space Key** | Load all pages from this space. |
+| **Space Key** | Load all pages from this Confluence space. |
 | **Label** | Load pages that have this label. |
 | **CQL Query** | Load pages that match this Confluence Query Language query. |
 | **Page IDs** | Load only these pages. Enter comma-separated numeric IDs. |
@@ -126,4 +124,3 @@ Fix the cause, then sync again to retry those files.
 
 - [Document Sources](../concepts/collections/indexed_collections/document_sources.md): the concept and when to use it.
 - [Set Up and Manage Document Sources](../how-to/document_sources.md): add a source and read the sync log.
-- [Authentication Providers](../concepts/team/authentication_providers.md): create the credentials a source needs.

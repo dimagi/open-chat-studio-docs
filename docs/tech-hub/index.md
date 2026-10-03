@@ -12,7 +12,7 @@ You need Super Admin, Pipeline, Experiment, or Team Administrator roles to acces
 ## What's covered here
 
 - **[Local Index Optimization](local-index-optimization.md)** — Advanced configuration for [indexed collections](../concepts/collections/indexed_collections/index.md): embedding model selection, chunk size, chunk overlap, and per-document-type tuning guidance.
-- **[Document Sources](document_sources.md)** — Reference for syncing an [indexed collection](../concepts/collections/indexed_collections/index.md) from GitHub or Confluence: configuration fields, authentication, sync behavior, and troubleshooting.
+- **[Document Sources Reference](document_sources.md)** — Reference for syncing an [indexed collection](../concepts/collections/indexed_collections/index.md) from GitHub or Confluence: configuration fields, authentication, sync behavior, and troubleshooting.
 - **[Custom Actions](custom_action/index.md)** — Integrate external services into chatbots via OpenAPI schemas. Covers configuration, health monitoring, and testing of Custom Actions.
 - **[Calling External APIs](external-api-calls/index.md)** — Use the built-in HTTP client inside Python nodes to securely call third-party APIs from a Pipeline workflow.
 - **[Python Node](python_node.md)** — Write custom Python code inside a Pipeline to perform logic, process data, manage session state, and make HTTP requests to external services.
