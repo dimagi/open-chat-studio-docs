@@ -30,14 +30,14 @@ For step-by-step instructions on completing specific tasks, see the [How-to guid
 [Collections](collections/index.md)
 : A group of files you attach to a chatbot. A media collection lets the chatbot send files to participants. An indexed collection lets the chatbot search your documents and base its answers on them, instead of relying only on what the AI model already knows. This technique is called retrieval-augmented generation (RAG), and it can reduce made-up answers.
 
-[Document Sources](collections/indexed_collections/document_sources.md)
-: A connection between an indexed collection and an external system, such as a Confluence space or GitHub repository. OCS fetches the content and keeps it in sync, so the chatbot answers from current documentation without you re-uploading files by hand.
-
 [Consent Forms](consent.md)
 : An agreement screen shown to participants before a conversation begins, letting them read how their data is used and confirm they agree before interacting with your chatbot.
 
 [Custom Actions](llm_custom_action.md)
 : Reusable connections to external services that let your chatbot retrieve information or complete tasks in another system — such as looking up an order status or creating a support ticket.
+
+[Document Sources](collections/indexed_collections/document_sources.md)
+: A connection between an indexed collection and an external system, such as a Confluence space or GitHub repository. OCS fetches the content and keeps it in sync, so the chatbot answers from current documentation without you re-uploading files by hand.
 
 [Evaluations](evaluations/index.md)
 : A built-in testing system that runs your chatbot against sample conversations and scores the responses against criteria you define, such as accuracy, tone, or whether the chatbot stayed on topic.
