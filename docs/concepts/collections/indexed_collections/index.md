@@ -17,7 +17,7 @@ Common examples include:
 
 ## How it works
 
-To search documents by meaning, OCS uses an **embedding model** — this technique is called **Retrieval-Augmented Generation (RAG)**. See [Local Index Optimization](../../../tech-hub/local-index-optimization.md) for a full explanation.
+To search documents by meaning, OCS uses an **embedding model** — this technique is called **Retrieval-Augmented Generation (RAG)**. See [Local Index Optimization](../../../tech-hub/collections/local-index-optimization.md) for a full explanation.
 
 ## Using it in a chatbot
 

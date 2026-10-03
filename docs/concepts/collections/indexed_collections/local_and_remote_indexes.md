@@ -20,7 +20,7 @@ An [indexed collection](./index.md) stores its files in an index that the chatbo
 | **Best for** | Getting started quickly | More control, or more than 2 collections |
 
 !!! tip "Start with a Remote Index"
-    If you are new to indexed collections, start with a **Remote Index**. Switch to a Local Index if you need more than 2 collections or want to [choose a specific embedding model](../../../tech-hub/local-index-optimization.md#choosing-an-embedding-model) for your content type.
+    If you are new to indexed collections, start with a **Remote Index**. Switch to a Local Index if you need more than 2 collections or want to [choose a specific embedding model](../../../tech-hub/collections/local-index-optimization.md#choosing-an-embedding-model) for your content type.
 
 ## Remote Index
 Remote indexes are hosted and managed by your LLM provider, which indexes your uploaded files and chooses the embedding model.
@@ -51,7 +51,7 @@ This message comes directly from your LLM provider.
 
 ## Local Index
 
-Local indexes are hosted and managed by OCS. When you create one, you choose the embedding model. See [Local Index Optimization](../../../tech-hub/local-index-optimization.md#choosing-an-embedding-model) for guidance.
+Local indexes are hosted and managed by OCS. When you create one, you choose the embedding model. See [Local Index Optimization](../../../tech-hub/collections/local-index-optimization.md#choosing-an-embedding-model) for guidance.
 
 ### Indexing Options
 
@@ -62,4 +62,4 @@ Local indexes are hosted and managed by OCS. When you create one, you choose the
 ### Chunking and Optimization
 
 OCS breaks uploaded documents into smaller parts called **chunks**. The default settings work well for most use cases.
-For chunk size, chunk overlap and embedding model selection, see [Local Index Optimization](../../../tech-hub/local-index-optimization.md).
+For chunk size, chunk overlap and embedding model selection, see [Local Index Optimization](../../../tech-hub/collections/local-index-optimization.md).

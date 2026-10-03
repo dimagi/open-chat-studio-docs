@@ -72,6 +72,7 @@ plugins:
 - macros
 - redirects:
     redirect_maps:
+      tech-hub/local-index-optimization.md: tech-hub/collections/local-index-optimization.md
 - mkdocstrings:
     enabled: true
     default_handler: python
@@ -194,8 +195,6 @@ nav:
     - OpenAI Assistants (Removed): concepts/assistants.md
   - Tech Hub:
     - tech-hub/index.md
-    - Local Index Optimization: tech-hub/local-index-optimization.md
-    - Document Sources Reference: tech-hub/document_sources.md
     - Tools Reference: tech-hub/tools.md
     - Ending Sessions from a Chatbot: tech-hub/ending_sessions.md
     - Python Node: tech-hub/python_node.md
@@ -208,6 +207,10 @@ nav:
       - tech-hub/custom_action/index.md
       - Custom Action Health: tech-hub/custom_action/health_custom_action.md
       - Custom Action Testing: tech-hub/custom_action/test_custom_action.md
+    - Collections:
+      - tech-hub/collections/index.md
+      - Local Index Optimization: tech-hub/collections/local-index-optimization.md
+      - Document Sources Reference: tech-hub/collections/document_sources.md
     - Evaluations:
       - tech-hub/evaluations/index.md
       - Dataset Structure: tech-hub/evaluations/dataset-structure.md

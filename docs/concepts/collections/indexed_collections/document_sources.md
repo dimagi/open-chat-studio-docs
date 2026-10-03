@@ -31,10 +31,10 @@ To upload files, create an indexed collection and use **Add Files**, as describe
 
 ## Supported sources
 
-- **[GitHub](../../../tech-hub/document_sources.md#github)**: files from a repository, filtered by branch, folder, and file name pattern.
-- **[Confluence](../../../tech-hub/document_sources.md#confluence)**: pages from a Confluence site, selected by space, label, query, or page ID.
+- **[GitHub](../../../tech-hub/collections/document_sources.md#github)**: files from a repository, filtered by branch, folder, and file name pattern.
+- **[Confluence](../../../tech-hub/collections/document_sources.md#confluence)**: pages from a Confluence site, selected by space, label, query, or page ID.
 
-See the [Document Sources reference](../../../tech-hub/document_sources.md) for what each source needs and how it behaves.
+See the [Document Sources reference](../../../tech-hub/collections/document_sources.md) for what each source needs and how it behaves.
 
 ## How syncing works
 
@@ -59,4 +59,4 @@ A snapshot is a fixed copy of a collection, so syncs never change it.
 ## See also
 
 - [Set Up and Manage Document Sources](../../../how-to/document_sources.md): add a source, run syncs, and read sync logs.
-- [Document Sources reference](../../../tech-hub/document_sources.md): configuration fields, authentication, and troubleshooting for each source type.
+- [Document Sources reference](../../../tech-hub/collections/document_sources.md): configuration fields, authentication, and troubleshooting for each source type.

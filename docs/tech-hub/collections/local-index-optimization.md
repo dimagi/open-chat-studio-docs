@@ -3,7 +3,7 @@ title: Local Index Optimization
 ---
 # Local Index Optimization
 
-This page covers advanced configuration options for [indexed collections](../concepts/collections/indexed_collections/index.md).
+This page covers advanced configuration options for [indexed collections](../../concepts/collections/indexed_collections/index.md).
 
 ## Choosing an Embedding Model
 
@@ -16,7 +16,7 @@ Different embedding models have different strengths:
 - Others are optimised for long, technical documents (reports, manuals, legal text).
 - Models trained on domain-specific data (medical, legal, code) can outperform general-purpose models in those domains.
 
-To see a provider's embedding models, open the **Models** tab of its page in your [team's LLM provider](../concepts/team/llm_providers.md) settings and filter for embedding models.
+To see a provider's embedding models, open the **Models** tab of its page in your [team's LLM provider](../../concepts/team/llm_providers.md) settings and filter for embedding models.
 If you are unsure which to choose, use the provider's default, which suits general-purpose retrieval.
 
 ## Chunking and Optimization

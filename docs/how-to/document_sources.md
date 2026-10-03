@@ -20,7 +20,7 @@ This guide covers adding a source, running syncs, and reading the sync status an
 3. In **Auth provider**, choose the authentication provider.
    The list shows only providers of the type this source accepts.
 4. Fill in the source fields.
-   The [reference](../tech-hub/document_sources.md) describes every field for [GitHub](../tech-hub/document_sources.md#github) and [Confluence](../tech-hub/document_sources.md#confluence).
+   The [reference](../tech-hub/collections/document_sources.md) describes every field for [GitHub](../tech-hub/collections/document_sources.md#github) and [Confluence](../tech-hub/collections/document_sources.md#confluence).
 5. Turn on **Auto Sync** if OCS should also sync the source once a week.
 6. Click **Save**.
 
@@ -74,9 +74,9 @@ If files still show a failed status in the file list, click **Retry Failed Uploa
 - **A sync is already in progress.**
   Wait for it to finish, then try again.
 - **The sync failed, or files or pages are missing.**
-  Check the message in **View Error**, then see [Troubleshooting](../tech-hub/document_sources.md#troubleshooting).
+  Check the message in **View Error**, then see [Troubleshooting](../tech-hub/collections/document_sources.md#troubleshooting).
 
 ## See also
 
-- [Document Sources reference](../tech-hub/document_sources.md): fields, authentication, and sync behavior for each source.
+- [Document Sources reference](../tech-hub/collections/document_sources.md): fields, authentication, and sync behavior for each source.
 - [Authentication Providers](../concepts/team/authentication_providers.md): create the credentials a source needs.
