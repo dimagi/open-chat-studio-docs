@@ -22,9 +22,9 @@ For when syncs start and what they change, see [How syncing works](../../concept
 - **One sync at a time.** If a sync is running, a second request is refused with a message.
   A sync that has run for more than two hours is treated as stalled, and the next request replaces it.
 - **Removed files.** A file that failed to process is not treated as removed.
-- **Chunking.** Synced files use a fixed chunk size and overlap that you can't change per source.
+- **Chunking.** In a local index, synced files use a fixed chunk size and overlap that you can't change per source.
   See [Chunking and Optimization](local-index-optimization.md#chunking-and-optimization) for the values.
-- **File limit.** The collection page shows a limit of 1000 files and disables **Add Files** and **Add Document Source** when it is reached.
+  In a remote index, the LLM provider chunks the files.
   A sync does not stop at this limit.
 - **Failure details.** The sync log lists at most 50 failed files per sync, followed by a count of the rest.
 
