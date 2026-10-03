@@ -30,6 +30,9 @@ For step-by-step instructions on completing specific tasks, see the [How-to guid
 [Collections](collections/index.md)
 : A group of files you attach to a chatbot to give it access to content — either as a media collection for file delivery, or an indexed collection for AI-powered document search (RAG).
 
+[Document Sources](collections/indexed_collections/document_sources.md)
+: A connection from an indexed collection to an external system, such as a Confluence space or GitHub repository, that fetches and indexes content automatically so you don't upload files by hand.
+
 [Consent Forms](consent.md)
 : An agreement screen shown to participants before a conversation begins, letting them read how their data is used and confirm they agree before interacting with your chatbot.
 

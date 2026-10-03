@@ -3,7 +3,7 @@
 Give your chatbot access to your files — grouped into a **collection** — whether that's sending them to participants during a conversation, or letting the chatbot search them to answer questions. There are two types of collections, depending on what you want to do:
 
 - **Want to send files to participants in a conversation?** Use a **[Media collection](./media_collections.md)** — share images, PDFs, video, or audio directly in the chat.
-- **Want your chatbot to answer questions using your documents?** Use an **[Indexed collection](./indexed_collections/index.md)** — it searches your files and grounds its answers in that content (RAG).
+- **Want your chatbot to answer questions using your documents?** Use an **[Indexed collection](./indexed_collections/index.md)** — it searches your files and grounds its answers in that content (RAG). Keep it current automatically with [Document Sources](./indexed_collections/document_sources.md) that sync from GitHub or Confluence.
 
 ## Adding a collection to a chatbot
 
@@ -14,10 +14,10 @@ Give your chatbot access to your files — grouped into a **collection** — whe
 
 ## Collections and published chatbots
 
-Collection content is a **live shared resource**: updates to your files in a collection reach your published chatbot automatically, without a republish. This applies whether you update a collection manually or via a scheduled [document-source](../../how-to/document_sources.md) sync.
+Collection content is a **live shared resource**: updates to your files in a collection reach your published chatbot automatically, without a republish. This applies whether you update a collection manually or via a [document-source](../../how-to/document_sources.md) sync.
 
 - Adding or removing files from a [media collection](./media_collections.md) takes effect for participants immediately.
-- [Document-source](./indexed_collections/document_sources.md) syncs to an [indexed collection](./indexed_collections/index.md) — for example, nightly Confluence or GitHub syncs — are applied to the published chatbot as each sync completes.
+- [Document-source](./indexed_collections/document_sources.md) syncs to an [indexed collection](./indexed_collections/index.md) — for example, Confluence or GitHub syncs — are applied to the published chatbot as each sync completes.
 
 The collection *structure* of a published chatbot version — which collections are linked to which pipeline nodes — is still frozen at publish time. To change which collections a chatbot uses, you must publish a new version.
 

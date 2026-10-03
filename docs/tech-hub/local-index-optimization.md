@@ -33,6 +33,9 @@ In most cases the default chunking strategy works well. You can customise it per
 | Chunk size    | How large each chunk is, measured in tokens             | Increase for long, dense documents; decrease for short snippets |
 | Chunk overlap | How much each chunk overlaps with the next              | Increase to preserve context across chunk boundaries            |
 
+Files synced by a [document source](document_sources.md) always use a chunk size of 800 tokens and an overlap of 400 tokens.
+You can't change these values per source.
+
 ### Guidelines
 
 - **Short documents or FAQs**: Use smaller chunks (e.g. 256–512 tokens) with low overlap. Each answer fits in one chunk, so large chunks add noise.
