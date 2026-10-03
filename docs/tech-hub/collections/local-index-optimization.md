@@ -3,13 +3,12 @@ title: Local Index Optimization
 ---
 # Local Index Optimization
 
-This page covers advanced configuration options for indexed collections. For a conceptual overview of how indexed collections work, see [Indexed Collection for RAG](../concepts/collections/indexed.md).
+This page covers advanced configuration options for [indexed collections](../../concepts/collections/indexed_collections/index.md).
 
 ## Choosing an Embedding Model
 
-An embedding model converts your documents into a mathematical form that enables search by *meaning* rather than exact keywords. When a participant asks a question, the chatbot finds content that is conceptually related — even if it uses different words. The quality and focus of the embedding model directly affects how relevant the retrieved content is.
-
-When you create a local index, you select which embedding model to use. The model you choose affects how well the chatbot retrieves relevant content.
+An embedding model converts your documents into a numeric form so the chatbot can search by *meaning* instead of exact keywords. It finds related content even when a participant uses different words.
+You choose the model when you create a local index, and it affects how relevant the retrieved content is.
 
 Different embedding models have different strengths:
 
@@ -17,21 +16,25 @@ Different embedding models have different strengths:
 - Others are optimised for long, technical documents (reports, manuals, legal text).
 - Models trained on domain-specific data (medical, legal, code) can outperform general-purpose models in those domains.
 
-You can view the available embedding models for a provider on the **Models** tab of its page in your [team's LLM provider](../concepts/team/llm_providers.md) settings, filtering the list down to embedding models. If you are unsure which model to choose, start with the default offered by your LLM provider — it is optimised for general-purpose retrieval.
+To see a provider's embedding models, open the **Models** tab of its page in your [team's LLM provider](../../concepts/team/llm_providers.md) settings and filter for embedding models.
+If you are unsure which to choose, use the provider's default, which suits general-purpose retrieval.
 
 ## Chunking and Optimization
 
 !!! info
     Chunking is configured in OCS for local indexes only. For remote indexes, the provider (e.g. OpenAI) handles chunking internally and it cannot be configured.
 
-When you upload a document to a local index, OCS breaks it into smaller parts called **chunks**. Each chunk is converted into a vector and stored in the index. The chunking strategy affects how accurately the chatbot retrieves relevant content.
-
-In most cases the default chunking strategy works well. You can customise it per set of uploaded files if needed:
+OCS breaks each document uploaded to a local index into smaller parts called **chunks**, converts each chunk into a vector and stores it in the index.
+The default chunking strategy works well in most cases.
+If needed, you can customise it per set of uploaded files:
 
 | Setting       | What it controls                                        | When to adjust                                                  |
 |---------------|---------------------------------------------------------|-----------------------------------------------------------------|
 | Chunk size    | How large each chunk is, measured in tokens             | Increase for long, dense documents; decrease for short snippets |
 | Chunk overlap | How much each chunk overlaps with the next              | Increase to preserve context across chunk boundaries            |
+
+Files synced by a [document source](document_sources.md) always use a chunk size of 800 tokens and an overlap of 400 tokens.
+You can't change these values per source.
 
 ### Guidelines
 
