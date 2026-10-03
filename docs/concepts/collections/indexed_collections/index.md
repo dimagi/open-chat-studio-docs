@@ -17,7 +17,7 @@ Common examples include:
 
 ## How it works
 
-To search documents by meaning, OCS uses an **embedding model** — this technique is called **Retrieval-Augmented Generation (RAG)**. See [Local Index Optimization](../../../tech-hub/collections/local-index-optimization.md) for a full explanation.
+To search documents by meaning, OCS uses an **embedding model**. Retrieving relevant passages and giving them to the AI model to answer from is called **Retrieval-Augmented Generation (RAG)**. See [Local Index Optimization](../../../tech-hub/collections/local-index-optimization.md) for a full explanation.
 
 ## Using it in a chatbot
 
@@ -29,9 +29,9 @@ A snapshot is a read-only copy of an indexed collection at a point in time.
 It includes the collection's files, their indexed content, and its [document sources](./document_sources.md).
 Use one to keep a reference copy before a large change, such as a big re-sync.
 
-To create a snapshot, click **Create snapshot** in the **Snapshots** section at the bottom of the collection page.
-OCS shows **Creating snapshot** while it works, which can take a while for large collections.
-Each snapshot is listed with a version number and date, such as `v1`. Click **View** to open it.
+You create a snapshot from the **Snapshots** section at the bottom of the collection page.
+Each snapshot is listed there with a version number and date, such as `v1`, and you can open it to see what it contains.
+Creating one can take a while for large collections, and the page shows its progress.
 
 Keep these limits in mind:
 

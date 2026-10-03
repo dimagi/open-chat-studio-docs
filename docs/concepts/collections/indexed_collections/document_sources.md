@@ -3,7 +3,7 @@ title: Document Sources
 ---
 # Document Sources
 
-A document source is a saved set of instructions that tells OCS where to read content from, for example a GitHub or Confluence.
+A document source is a saved set of instructions that tells OCS where to read content from, for example GitHub or Confluence.
 You add one or more document sources to an [indexed collection](./index.md).
 OCS reads the matching content, splits it into chunks and indexes it, which is the same processing applied to files you upload yourself.
 Document sources work with both [local and remote indexes](./local_and_remote_indexes.md).
@@ -26,8 +26,9 @@ Common examples include:
 | Keeping it current | OCS re-syncs it for you, and the chatbot uses the update without a republish | You replace the files by hand |
 | Best for | Content that changes often or is owned by other people | Files that rarely change, or that don't exist in GitHub or Confluence |
 
-You can use both in the same indexed collection: its page offers **Add Files** and **Add Document Source**, and both count toward the same file limit.
-To upload files, create an indexed collection and use **Add Files**, as described in [adding a collection to a chatbot](../index.md#adding-a-collection-to-a-chatbot).
+You can use both in the same indexed collection, and both count toward the same file limit.
+To upload files, see [adding a collection to a chatbot](../index.md#adding-a-collection-to-a-chatbot).
+To add a document source, see [Set Up and Manage Document Sources](../../../how-to/document_sources.md).
 
 ## Supported sources
 

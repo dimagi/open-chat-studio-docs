@@ -19,8 +19,8 @@ If a chatbot or pipeline still holds an assistant node, replace it with the nati
 | Assistant Feature | Replacement Feature                                                                             |
 |-------------------|-------------------------------------------------------------------------------------------------|
 | Threads           | Open Chat Studio [sessions](../concepts/sessions.md)                                            |
-| Code Interpreter  | [OpenAI Code Interpreter tool](../tech-hub/tools.md#openai-code-interpreter) in LLM nodes |
-| File Search       | [Indexed Collections](../concepts/collections/indexed_collections/index.md)                                       |
+| Code Interpreter  | [OpenAI Code Interpreter tool](../tech-hub/tools.md#openai-code-interpreter) in LLM nodes       |
+| File Search       | [Indexed Collections](../concepts/collections/indexed_collections/index.md)                     |
 
 ## Migrating Code Interpreter
 
