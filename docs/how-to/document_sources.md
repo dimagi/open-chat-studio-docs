@@ -3,9 +3,8 @@ title: Set Up and Manage Document Sources
 ---
 # Set Up and Manage Document Sources
 
-Document sources fetch and index content from GitHub or Confluence, so your indexed collection stays current without manual uploads.
+[Document sources](../concepts/collections/indexed_collections/document_sources.md) fetch and index content from GitHub or Confluence, so your [indexed collection](../concepts/collections/indexed_collections/index.md) stays current without manual uploads.
 This guide covers adding a source, running syncs, and reading the sync status and logs.
-For the idea behind document sources, see [Document Sources](../concepts/collections/indexed_collections/document_sources.md).
 
 ## Prerequisites
 
@@ -74,11 +73,8 @@ If files still show a failed status in the file list, click **Retry Failed Uploa
 
 - **A sync is already in progress.**
   Wait for it to finish, then try again.
-- **The sync failed.**
+- **The sync failed, or files or pages are missing.**
   Check the message in **View Error**, then see [Troubleshooting](../tech-hub/document_sources.md#troubleshooting).
-- **Pages are missing from a Confluence source.**
-  The source may have reached **Max Pages**.
-  See [Troubleshooting](../tech-hub/document_sources.md#troubleshooting).
 
 ## See also
 

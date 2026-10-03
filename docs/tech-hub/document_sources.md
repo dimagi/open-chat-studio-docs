@@ -4,8 +4,8 @@ description: Configuration, authentication, sync behavior, and troubleshooting f
 ---
 # Document Sources Reference
 
-Fields, authentication, sync behavior, and troubleshooting for GitHub and Confluence document sources.
-For what they are, see [Document Sources](../concepts/collections/indexed_collections/document_sources.md). For setup steps, see [Set Up and Manage Document Sources](../how-to/document_sources.md).
+Fields, authentication, sync behavior, and troubleshooting for GitHub and Confluence [document sources](../concepts/collections/indexed_collections/document_sources.md).
+To add a source or read its sync log, follow the guide to [set up and manage document sources](../how-to/document_sources.md).
 
 ## Quick reference
 
@@ -17,14 +17,11 @@ For what they are, see [Document Sources](../concepts/collections/indexed_collec
 ## Shared behavior
 
 These rules apply to every document source type.
+For when syncs start and what they change, see [How syncing works](../concepts/collections/indexed_collections/document_sources.md#how-syncing-works).
 
-- **Sync triggers.** Saving a new or edited source starts a sync, and you can start one manually.
-  Sources with **Auto Sync** turned on also sync once a week.
 - **One sync at a time.** If a sync is running, a second request is refused with a message.
   A sync that has run for more than two hours is treated as stalled, and the next request replaces it.
-- **Working collections only.** Auto Sync skips [snapshots](../concepts/collections/indexed_collections/index.md#snapshots).
-- **Removed files.** A file that is no longer in the source is deleted from the collection and counted as **Removed**.
-  A file that failed to process is not treated as removed.
+- **Removed files.** A file that failed to process is not treated as removed.
 - **Chunking.** Synced files use a fixed chunk size and overlap that you can't change per source.
   See [Chunking and Optimization](local-index-optimization.md#chunking-and-optimization) for the values.
 - **File limit.** The collection page shows a limit of 1000 files and disables **Add Files** and **Add Document Source** when it is reached.
@@ -95,7 +92,7 @@ OCS refuses to save the source if none or more than one is filled in.
 ### The source shows "Last Sync (with errors)" and the sync log says Failed
 
 The sync stopped before it finished.
-Open the sync log and select **View Error** to read the message.
+[Read the sync log](../how-to/document_sources.md#read-the-sync-log) to see the error message.
 Common causes:
 
 - The authentication provider's credentials have expired or been revoked.
@@ -110,8 +107,8 @@ Common causes:
 ### The sync log says "Completed with errors"
 
 Some files failed and the rest synced normally.
-Select **View failed files** to see each failed file and the reason, for example a file type OCS can't parse.
-Fix the cause, then sync again to retry those files.
+[Read the sync log](../how-to/document_sources.md#read-the-sync-log) to see each failed file and the reason, for example a file type OCS can't parse.
+Fix the cause, then [retry the failed files](../how-to/document_sources.md#retry-failed-files).
 
 ### Pages or files are missing from the collection
 

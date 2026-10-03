@@ -23,7 +23,7 @@ An [indexed collection](./index.md) stores its files in an index that the chatbo
     If you are new to indexed collections, start with a **Remote Index**. Switch to a Local Index if you need more than 2 collections or want to [choose a specific embedding model](../../../tech-hub/local-index-optimization.md#choosing-an-embedding-model) for your content type.
 
 ## Remote Index
-Remote indexes are hosted and managed by your LLM provider. Files are uploaded to the provider, which handles all indexing. The embedding model is chosen by the provider.
+Remote indexes are hosted and managed by your LLM provider, which indexes your uploaded files and chooses the embedding model.
 
 ### Supported LLM providers
 - OpenAI
@@ -32,8 +32,7 @@ Remote indexes are hosted and managed by your LLM provider. Files are uploaded t
 
     When using remote (OpenAI-hosted) indexed collections, you can select a **maximum of 2 collections** when configuring a LLM node.
 
-    - **Local indexes** are NOT affected by this limit — it only applies to OpenAI-hosted remote indexes
-    - This limit comes from OpenAI's API, although it's not specifically documented
+    The limit comes from OpenAI's API, although it's not specifically documented. Local indexes are not affected.
 
 ### Supported file types
 Supported files are determined by the selected provider:
@@ -52,7 +51,7 @@ This message comes directly from your LLM provider.
 
 ## Local Index
 
-Local indexes are hosted and managed by OCS. When you create a local index, you choose which embedding model to use. Different models suit different types of content, so choosing the right one can improve retrieval accuracy. See [Local Index Optimization](../../../tech-hub/local-index-optimization.md#choosing-an-embedding-model) for guidance.
+Local indexes are hosted and managed by OCS. When you create one, you choose the embedding model. See [Local Index Optimization](../../../tech-hub/local-index-optimization.md#choosing-an-embedding-model) for guidance.
 
 ### Indexing Options
 
@@ -62,6 +61,5 @@ Local indexes are hosted and managed by OCS. When you create a local index, you 
 
 ### Chunking and Optimization
 
-When you upload a document to a local index, OCS breaks it into smaller parts called **chunks** and stores them in the index. The default chunking settings work well for most use cases.
-
-For advanced configuration — including chunk size, chunk overlap, and embedding model selection — see [Local Index Optimization](../../../tech-hub/local-index-optimization.md).
+OCS breaks uploaded documents into smaller parts called **chunks**. The default settings work well for most use cases.
+For chunk size, chunk overlap and embedding model selection, see [Local Index Optimization](../../../tech-hub/local-index-optimization.md).
