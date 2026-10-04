@@ -26,6 +26,7 @@ ManifestEntry:
   - resource: string (required)
   - cursor: string (required)
   - secret: boolean (required)
+  - reread_under_selection: boolean (required)
 
 SECURITY:
 - API Key authentication (header: X-api-key)
