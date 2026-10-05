@@ -10,6 +10,7 @@ GET /api/export/analysis_queries/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -24,6 +25,7 @@ GET /api/export/annotation_items/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -38,6 +40,7 @@ GET /api/export/annotation_queue_aggregates/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -52,6 +55,7 @@ GET /api/export/annotation_queues/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -66,6 +70,7 @@ GET /api/export/annotations/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -79,6 +84,7 @@ GET /api/export/applied_tags/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -92,6 +98,7 @@ GET /api/export/auth_providers/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -108,6 +115,7 @@ GET /api/export/chat_attachments/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -122,6 +130,7 @@ GET /api/export/chat_messages/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -135,6 +144,7 @@ GET /api/export/chatbot_channels/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -151,6 +161,7 @@ GET /api/export/chatbots/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -165,6 +176,7 @@ GET /api/export/chats/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -178,6 +190,7 @@ GET /api/export/collection_files/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -191,6 +204,7 @@ GET /api/export/collections/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -204,6 +218,7 @@ GET /api/export/consent_forms/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -217,6 +232,7 @@ GET /api/export/custom_action_operations/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -230,6 +246,7 @@ GET /api/export/custom_actions/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -243,6 +260,7 @@ GET /api/export/custom_tagged_items/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -257,6 +275,7 @@ GET /api/export/dataset_auto_population_rules/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -270,6 +289,7 @@ GET /api/export/document_sources/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -286,6 +306,7 @@ GET /api/export/embedding_provider_models/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -300,6 +321,7 @@ GET /api/export/evaluation_configs/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -314,6 +336,7 @@ GET /api/export/evaluation_datasets/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -328,6 +351,7 @@ GET /api/export/evaluation_messages/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -341,6 +365,7 @@ GET /api/export/evaluation_results/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -355,6 +380,7 @@ GET /api/export/evaluation_run_aggregates/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -369,6 +395,7 @@ GET /api/export/evaluation_runs/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -383,6 +410,7 @@ GET /api/export/evaluator_tag_rules/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -397,6 +425,7 @@ GET /api/export/evaluators/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -410,6 +439,7 @@ GET /api/export/event_actions/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -424,6 +454,7 @@ GET /api/export/event_users/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -437,6 +468,7 @@ GET /api/export/file_chunk_embeddings/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -450,6 +482,7 @@ GET /api/export/files/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -463,6 +496,7 @@ GET /api/export/llm_provider_models/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -476,6 +510,7 @@ GET /api/export/llm_providers/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -492,6 +527,7 @@ GET /api/export/messaging_providers/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -508,6 +544,7 @@ GET /api/export/notification_event_types/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -521,6 +558,7 @@ GET /api/export/notification_events/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -535,6 +573,7 @@ GET /api/export/participant_data/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -552,6 +591,7 @@ GET /api/export/participants/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -566,6 +606,7 @@ GET /api/export/pipeline_chat_histories/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -579,6 +620,7 @@ GET /api/export/pipeline_chat_messages/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -592,6 +634,7 @@ GET /api/export/pipeline_nodes/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -605,6 +648,7 @@ GET /api/export/pipelines/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -618,6 +662,7 @@ GET /api/export/pricing_rules/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -632,6 +677,7 @@ GET /api/export/scheduled_messages/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -645,6 +691,7 @@ GET /api/export/scheduled_triggers/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -659,6 +706,7 @@ GET /api/export/scores/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -673,6 +721,7 @@ GET /api/export/sessions/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -686,6 +735,7 @@ GET /api/export/source_materials/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -699,6 +749,7 @@ GET /api/export/static_triggers/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -712,6 +763,7 @@ GET /api/export/synthetic_voices/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -725,6 +777,7 @@ GET /api/export/tags/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -749,6 +802,7 @@ GET /api/export/timeout_triggers/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -762,6 +816,7 @@ GET /api/export/trace_providers/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -778,6 +833,7 @@ GET /api/export/traces/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -792,6 +848,7 @@ GET /api/export/transcript_analyses/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -805,6 +862,7 @@ GET /api/export/usage_records/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -819,6 +877,7 @@ GET /api/export/user_comments/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -832,6 +891,7 @@ GET /api/export/user_notification_preferences/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -845,6 +905,7 @@ GET /api/export/users/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -858,6 +919,7 @@ GET /api/export/voice_providers/
   Parameters:
     - cursor (query, string (optional)): Keyset pagination cursor returned as `cursor` by the previous page.
     - limit (query, integer (optional)): Maximum rows per page (default 100, capped at 1000).
+    - selection (query, string (optional)): The chatbot selection the client is syncing. When it no longer matches the team's export allowlist the request is refused with 409, so a sync cannot mix two selections.
   Responses:
     200:
       Content: application/json
@@ -946,6 +1008,7 @@ AnnotationQueueDetail:
   - name: string (required)
   - description: string
   - schema: Unknown
+  - field_order: array of string
   - num_reviews_required: integer
   - status: AnnotationQueueDetailStatusEnum
   - created_by: integer
@@ -1497,6 +1560,10 @@ ExperimentSessionList:
   - has_more: boolean (required)
   - results: array of ExperimentSessionDetail (required)
 
+ExportableChatbot:
+  - public_id: string (required)
+  - name: string (required)
+
 FileChunkEmbeddingDetail:
   - id: integer (required)
   - created_at: string (required)
@@ -1506,6 +1573,8 @@ FileChunkEmbeddingDetail:
   - context: string
   - page_number: integer
   - embedding: array of number (required)
+  - metadata: Unknown
+  - content_hash: string
   - is_archived: boolean
   - file: integer (required)
   - collection: integer (required)
@@ -1891,16 +1960,15 @@ TeamExport:
   - id: integer (required)
   - feature_flags: array of string (required)
   - has_public_key: boolean (required)
+  - exportable_chatbots: array of ExportableChatbot (required)
   - created_at: string (required)
   - updated_at: string (required)
   - name: string (required)
   - slug: string (required)
   - metadata: Unknown
-  - files_export_task_id: string
   - is_migrating: boolean
   - require_mfa: boolean
   - created_by: integer (required)
-  - files_export: integer
 
 TimeoutTriggerDetail:
   - id: integer (required)
