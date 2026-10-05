@@ -69,6 +69,9 @@ The max output token limit may be too low. Raise it in the node settings. If you
 The max output token limit is too low for the model to produce any visible text.
 This is most often because a reasoning model's thinking used the whole budget.
 Raise the limit in the node settings.
+On Anthropic models, the same notification is sent when the conversation fills the model's context window.
+In that case, shorten the prompt or the history instead.
+Notifications come from published chatbot versions only, so a test in the pipeline editor doesn't send one.
 
 ## See also
 

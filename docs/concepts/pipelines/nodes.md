@@ -60,7 +60,7 @@ That stops one blocked message from making every later reply fail the same way.
 
 !!! note "A block can be reported against the wrong message"
 
-    No provider tells OCS exactly which message tripped its content filter — some only report that the request as a whole was blocked.
+    Providers don't tell OCS which message tripped their content filter, only that the request was blocked.
     If a filter triggers on the system prompt or an earlier turn, OCS still reports it against the participant's current message.
 
 ## Routing Nodes
