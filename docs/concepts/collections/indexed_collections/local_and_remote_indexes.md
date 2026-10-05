@@ -56,8 +56,8 @@ Local indexes are hosted and managed by OCS. When you create one, you choose the
 ### Indexing Options
 
 - **Supported LLM providers**: OpenAI, Voyage AI, Google Gemini
-- **Supported file types**: pdf, txt, csv, docx
-- **Supported embedding models**: You can see the list of embedding models for the LLM provider you have selected.
+- **Supported file types**: txt, md, pdf, doc, docx, pptx, html, json, and common code files (c, cs, cpp, java, php, py, rb, tex, css, js, sh, ts)
+- **Supported embedding models**: The embedding models available for the LLM provider you select.
 
 ### Chunking and Optimization
 
