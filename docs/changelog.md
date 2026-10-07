@@ -12,6 +12,8 @@ hide:
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
 ## Oct 7, 2026
+* **NEW** The Integrations table in [Team Settings](concepts/team/integrations.md) has a **Verification** column for LLM providers showing **Verified**, **Check failed** (linking to the provider's page with the error), or **Not checked**, together with when the check ran. Provider types that have no credential check show a dash.
+* **CHANGE** [Credential verification](concepts/team/llm_providers.md#credential-verification) no longer tests credentials against a deprecated model, which providers may have withdrawn. A failed check now says the credentials "could not be verified" instead of saying the provider rejected them, since the check can fail for reasons other than the credentials. The notice also says when the check ran, for example "Checked 3 days ago". Results from checks before this change show no time.
 * **CHANGE** Downloading a single [evaluation](concepts/evaluations/index.md) run's results, from the results page, the upload-template page or the runs table, now runs in the background. A progress bar shows while the file is prepared, followed by a download link, so large runs no longer time out. Rows in the file are now grouped by message. A failed run can now be downloaded with its partial results, and the download button is disabled while a run is still in progress.
 
 ## Oct 5, 2026
