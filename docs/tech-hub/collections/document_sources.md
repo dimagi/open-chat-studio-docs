@@ -11,7 +11,7 @@ To add a source or read its sync log, follow the guide to [set up and manage doc
 
 | Source | Authentication provider | A file is re-synced when | Source link shown with answers |
 |--------|-------------------------|--------------------------|----------|
-| [GitHub](#github) | [Bearer Token](../../concepts/team/authentication_providers.md#bearer-token) | Its commit hash (`sha`) changes | Link to the file in the repository |
+| [GitHub](#github) | [Bearer Token](../../concepts/team/authentication_providers.md#bearer-token) | Its content hash (`sha`) changes | Link to the file in the repository |
 | [Confluence](#confluence) | [Basic Auth](../../concepts/team/authentication_providers.md#basic-auth) | The page's last-modified time changes | Page title, linked to the page |
 
 ## Shared behavior
@@ -22,10 +22,9 @@ For when syncs start and what they change, see [How syncing works](../../concept
 - **One sync at a time.** If a sync is running, a second request is refused with a message.
   A sync that has run for more than two hours is treated as stalled, and the next request replaces it.
 - **Removed files.** A file that failed to process is not treated as removed.
-- **Chunking.** In a local index, synced files use a fixed chunk size and overlap that you can't change per source.
+- **Chunking.** Synced files use a fixed chunk size and overlap that you can't change per source, in both local and remote indexes.
   See [Chunking and Optimization](local-index-optimization.md#chunking-and-optimization) for the values.
-  In a remote index, the LLM provider chunks the files.
-  A sync does not stop at this limit.
+- **File limit.** A sync does not check the collection's 1000-file limit, so it can take a collection past it.
 - **Failure details.** The sync log lists at most 50 failed files per sync, followed by a count of the rest.
 
 ## GitHub

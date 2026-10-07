@@ -46,7 +46,7 @@ Each source has icon buttons beside its name.
 
 The line under the source name shows the state of the latest sync:
 
-- **Not yet synced**: no sync has run.
+- **Not yet synced**: no sync has succeeded yet, including when the first sync failed.
 - **Syncing**: a sync is running, with the date of the previous sync.
 - **Last Sync**: the last sync finished without errors.
 - **Last Sync (with errors)**: the last sync failed, or finished but some files failed.

@@ -15,7 +15,7 @@ An [indexed collection](./index.md) stores its files in an index that the chatbo
 | **Managed by** | Your [LLM provider](../../team/llm_providers.md) (e.g. OpenAI) | OCS |
 | **Setup** | Simpler — the provider handles everything | More steps — you choose the embedding model |
 | **Embedding model** | Selected by the provider | You choose |
-| **Chunking** | Handled by provider, not configurable | Configurable per file set |
+| **Chunking** | Done by the provider, using the chunk size and overlap you set in OCS | Done by OCS, using the chunk size and overlap you set |
 | **Collections per LLM node** | Max 2 (OpenAI limit) | Unlimited |
 | **Best for** | Getting started quickly | More control, or more than 2 collections |
 
@@ -35,9 +35,7 @@ Remote indexes are hosted and managed by your LLM provider, which indexes your u
     The limit comes from OpenAI's API, although it's not specifically documented. Local indexes are not affected.
 
 ### Supported file types
-Supported files are determined by the selected provider:
-
-- OpenAI - See the [OpenAI docs](https://platform.openai.com/docs/assistants/tools/file-search/supported-files#supported-files)
+Remote indexes accept the same file types as [local indexes](#indexing-options).
 
 ### Checking why a file failed to index
 

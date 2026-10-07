@@ -22,7 +22,7 @@ If you are unsure which to choose, use the provider's default, which suits gener
 ## Chunking and Optimization
 
 !!! info
-    Chunking is configured in OCS for local indexes only. For remote indexes, the provider (e.g. OpenAI) handles chunking internally and it cannot be configured.
+    Chunk size and overlap apply to remote indexes too. For a remote index, OCS passes them to the provider when it adds the files.
 
 OCS breaks each document uploaded to a local index into smaller parts called **chunks**, converts each chunk into a vector and stores it in the index.
 The default chunking strategy works well in most cases.
