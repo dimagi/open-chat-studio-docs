@@ -79,7 +79,7 @@ Local indexes are hosted and managed by OCS. When you create a local index, you 
 - **Supported file types**: pdf, txt, csv, docx
 - **Supported embedding models**: You can see the list of embedding models for the LLM provider you have selected.
 
-`.tsv` files are not accepted through regular file upload — only through [Importing CSV/TSV rows](#importing-csvtsv-rows).
+`.csv` and `.tsv` files are not accepted through regular file upload. Add them through [Importing CSV/TSV rows](#importing-csvtsv-rows) instead.
 
 ### Chunking and Optimization
 
@@ -89,19 +89,18 @@ For advanced configuration — including chunk size, chunk overlap, and embeddin
 
 ### Importing CSV/TSV rows
 
-You can import a `.csv` or `.tsv` file so each row becomes its own searchable record, instead of the whole file being chunked as plain text.
+You can import a `.csv` or `.tsv` file so each row becomes its own searchable record.
 Use **Add Files → Import CSV/TSV rows** on a local-index collection.
-Uploading a CSV through regular file upload still indexes it as text chunks, so row import is an alternative rather than a change to how uploads behave.
+This is the only way to add a CSV or TSV file to an indexed collection, because regular file upload doesn't accept them.
 
 Each row is indexed as one chunk.
-It renders as the sheet name, followed by `column: value` lines for the metadata columns you chose.
-Search results include the row number and chosen metadata next to the row's text.
-This lets a chatbot answer questions like "find the record like this one" against the sheet.
+The chunk text is the file name followed by one `column: value` line for every column in the row.
+The columns you tick are also stored as metadata on the row's chunk.
+When a chatbot searches the collection, each matching row comes back with its row number and its metadata.
 
 !!! note "Local indexes only"
     Row import works for local indexes only.
-    Remote (OpenAI) indexes do their own chunking and don't accept CSV/TSV row import.
-    Uploading a CSV to a remote index still indexes it as regular text chunks.
+    Remote (OpenAI) indexes don't offer the **Import CSV/TSV rows** option.
 
 See [Import CSV/TSV Rows into a Collection](../../how-to/import_csv_tsv_rows.md) for step-by-step instructions.
 
