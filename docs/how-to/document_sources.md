@@ -1,100 +1,82 @@
 ---
-title: Set Up Document Sources
+title: Set Up and Manage Document Sources
 ---
-# Set Up Document Sources
+# Set Up and Manage Document Sources
 
-Document sources let OCS automatically fetch and index content from an external system on a schedule. This keeps your indexed collection up to date without manual uploads.
-
-OCS currently supports two document source types: **[GitHub](#github)** and **[Confluence](#confluence)**. Decide which one you need before you start, since the authentication provider and configuration fields differ for each.
-
-For a conceptual overview, see [Indexed Collection for RAG](../concepts/collections/indexed.md#document-sources-for-indexed-collections).
+[Document sources](../concepts/collections/indexed_collections/document_sources.md) fetch and index content from GitHub or Confluence, so your [indexed collection](../concepts/collections/indexed_collections/index.md) stays current without manual uploads.
+This guide covers adding a source, running syncs, and reading the sync status and logs.
 
 ## Prerequisites
 
-- An [indexed collection](../concepts/collections/indexed.md) already created in OCS.
-- An [authentication provider](../concepts/team/authentication_providers.md) configured for your chosen source type.
+- An [indexed collection](../concepts/collections/indexed_collections/index.md).
+  You can't add document sources to a media collection.
+- An [authentication provider](../concepts/team/authentication_providers.md) of the type your source needs: Bearer Token for GitHub, Basic Auth for Confluence.
+- The details of the source content to load, such as a GitHub repository URL or a Confluence space key.
 
-## Add a Document Source
+## Set up a document source
 
-1. Navigate to your indexed collection and open the **Document Sources** tab.
-2. Click **Add document source** and select the source type: [GitHub](#github) or [Confluence](#confluence).
-3. Complete the configuration fields for your chosen source (see below).
-4. Click **Save**.
+1. Open your indexed collection from **Collections** in the sidebar.
+2. Click **Add Document Source** and choose **GitHub Repository** or **Confluence**.
+3. In **Auth provider**, choose the authentication provider.
+   The list shows only providers of the type this source accepts.
+4. Fill in the source fields.
+   The [reference](../tech-hub/collections/document_sources.md) describes every field for [GitHub](../tech-hub/collections/document_sources.md#github) and [Confluence](../tech-hub/collections/document_sources.md#confluence).
+5. Turn on **Auto Sync** if OCS should also sync the source once a week.
+6. Click **Save**.
 
-OCS runs an initial sync immediately and you can [monitor the sync status](#monitoring-sync-status).
+A sync starts right away.
+The source appears above the **Files** list with a status line, and the files appear as they sync.
+You don't need to refresh the page.
 
----
+For example, a support team can add a GitHub source with the file pattern `*.md` and the path filter `docs/`.
+The chatbot then answers from the repository's documentation, and each weekly sync picks up edits.
 
-## Confluence
+## Manage a document source
 
-Load pages from a Confluence site. You can filter which pages are loaded by space, label, CQL query, or individual page IDs.
+Each source has icon buttons beside its name.
 
-### Authentication
+| Button | What it does |
+|--------|--------------|
+| Circular arrows (**Sync Document Source**) | Starts a sync now. It is hidden while a sync is running. |
+| Pencil | Opens the source's fields. Saving starts a sync. |
+| List (**View Sync Logs**) | Opens the sync log. |
+| Trash | Deletes the source and the files it synced, after you confirm. |
 
-Use a [Basic Auth](../concepts/team/authentication_providers.md#basic-auth) authentication provider. Set your Atlassian username as the **username** and your Atlassian API key as the **password**.
+### Read the sync status
 
-### Configuration
+The line under the source name shows the state of the latest sync:
 
-| Field     | Description                                                               |
-|-----------|---------------------------------------------------------------------------|
-| Site URL  | The URL of your Confluence site (e.g. `https://yoursite.atlassian.net/wiki`) |
-| Max Pages | The maximum number of pages to load                                       |
-| Space Key | Load all pages from this space                                            |
-| Label     | Load pages that have this label                                           |
-| CQL       | A CQL query to select which pages to load                                 |
-| Page IDs  | Load only these specific pages (comma-separated IDs)                      |
+- **Not yet synced**: no sync has succeeded yet, including when the first sync failed.
+- **Syncing**: a sync is running, with the date of the previous sync.
+- **Last Sync**: the last sync finished without errors.
+- **Last Sync (with errors)**: the last sync failed, or finished but some files failed.
+  The red dot is the same for both, so open the sync log to tell them apart.
 
-!!! note
-    Only one of **Space Key**, **Label**, **CQL**, and **Page IDs** can be used at a time.
+While a sync runs, the file list shows how many files have synced so far.
 
----
+### Read the sync log
 
-## GitHub
+1. Click **View Sync Logs** to open the log, newest first.
+2. Check each entry's badge: **Success**, **Completed with errors**, **Failed**, or **In Progress**.
+3. Check the counts for **Added**, **Updated**, **Removed**, and **Failed** files.
+4. Click **View Error** on a failed run, or **View failed files** on a run that completed with errors, to read the details.
 
-Load files from a GitHub repository. You can filter by path prefix or filename patterns.
+Select **Show errors only** to hide everything except failed runs.
+Runs that completed with errors stay hidden by that filter.
 
-### Authentication
+### Retry failed files
 
-Use a [Bearer Token](../concepts/team/authentication_providers.md#bearer-token) authentication provider with a GitHub personal access token.
+Fix the cause shown in the log, then start another sync.
+If files still show a failed status in the file list, click **Retry Failed Uploads** at the top of the collection page.
 
-### Configuration
+## Common issues
 
-| Field          | Description                                                          |
-|----------------|----------------------------------------------------------------------|
-| Repository URL | GitHub repository URL (e.g. `https://github.com/user/repo`)          |
-| Branch         | Git branch to sync from                                              |
-| File Pattern   | File patterns to include. Prefix with `!` to exclude matching files. |
-| Path Filter    | Optional path prefix to filter files (e.g. `docs/`)                  |
+- **A sync is already in progress.**
+  Wait for it to finish, then try again.
+- **The sync failed, or files or pages are missing.**
+  Check the message in **View Error**, then see [Troubleshooting](../tech-hub/collections/document_sources.md#troubleshooting).
 
----
+## See also
 
-## Monitoring Sync Status
-
-OCS tracks the history of every sync run for each document source. Use the sync logs to confirm that syncs are completing successfully and to diagnose problems when they are not.
-
-Each document source displays a status indicator showing the outcome of the most recent sync:
-
-- **Error** — the last sync failed before it could process any files. The indicator is shown in red. Open the sync log for details.
-- **Completed with errors** — the sync finished, but one or more files failed to process. Every other file still synced and is searchable in the collection. Open the sync log to see how many files failed and which ones.
-- **Success** — the last sync completed without errors.
-- **In progress** — a sync is currently running. The indicator animates to show activity.
-
-While a sync is in progress, the collection's file list updates live, showing a running count of how many files have synced so far. You don't need to wait for the sync to finish or refresh the page to see files as they're added.
-
-## Troubleshooting
-
-### Sync shows Error status
-
-Open the sync log for the failed run. Common causes:
-
-- Authentication credentials have expired or been revoked — update your authentication provider.
-- The Confluence space key or GitHub repository URL has changed — update the configuration field.
-- The Max Pages limit was reached before all pages were loaded — increase the limit or narrow your filter.
-
-### Sync shows "Completed with errors" status
-
-A single file that fails to process no longer stops the whole sync — the rest of the files still sync and are indexed normally. Open the sync log to see the failed-files count and the details for each failed file (for example, a file type OCS couldn't parse, or a page that couldn't be retrieved). Fix the underlying issue if possible, then trigger a new sync to retry those files.
-
-### Pages are not updating after a sync
-
-Check that the correct Space Key, Label, CQL, or Page IDs are set. Only one filter field can be active at a time — if multiple are filled in, only one will be used.
+- [Document Sources reference](../tech-hub/collections/document_sources.md): fields, authentication, and sync behavior for each source.
+- [Authentication Providers](../concepts/team/authentication_providers.md): create the credentials a source needs.

@@ -16,7 +16,7 @@ Open Chat Studio surfaces this on the provider's own edit page, so you don't hav
 4. Review the categories listed. What you see depends on what references the provider:
     - **Chatbots** — every chatbot that uses the provider, whether directly or through one of its pipelines or channels. Links go to the working version's edit page; references belonging to a published version are tagged with a version badge.
     - **Unlinked Pipelines** / **Unlinked Channels** — pipelines or channels that reference the provider but aren't attached to any chatbot, including archived pipelines. They can't be grouped under a chatbot row, so they get their own category instead.
-    - **Collections** — collections whose document sources reference the provider, rolled up to the owning collection.
+    - **Collections** — collections whose [document sources](../concepts/collections/indexed_collections/document_sources.md) reference the provider, rolled up to the owning collection.
     - **Evaluators** — LLM evaluators that use the provider (LLM service providers only).
 
     Other object types that reference a provider can also appear, each as its own category named after that object type.
