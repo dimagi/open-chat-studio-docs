@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Oct 5, 2026
+* **NEW** [OAuth applications](api/getting_started_with_oauth.md#openid-connect-oidc) can now request a `teams` scope, shown on the consent screen as **List your teams**. Once granted, `/o/userinfo/` and the ID token include a `teams` claim listing the slug and name of every team the user belongs to, so a client that connects one team per token can show which teams are already connected and offer to connect the rest. The token is still scoped to a single team. Only global applications can request the scope, and it is not available to client-credentials tokens, which have no user.
+
 ## Oct 2, 2026
 * **NEW** **Generate Chat Export** on a chatbot's **Sessions** tab now opens a dialog where you choose which columns go into the CSV. Every column is selected to begin with, and **Select all** and **Clear all** change them all at once. Message ID and Message Type are always included. The file keeps the export's usual column order whatever order you tick the columns in.
 * **NEW** The **Migration** card in the **Data** section of [Team Settings](concepts/team/index.md) now lets Team Admins choose what a [team migration](tech-hub/migrate_team.md) exports: the whole team, or selected chatbots. Selecting a chatbot includes all of its versions, and team members, tags, pricing rules and notifications are always exported for the whole team. When a selection is active, the migration banner says how many chatbots are being migrated, and migration mode stops triggers and scheduled messages only for those chatbots — the rest of the team keeps running. The card warns you when a change would leave a chatbot firing on both servers.
