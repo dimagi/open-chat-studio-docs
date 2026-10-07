@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Oct 7, 2026
+* **CHANGE** Downloading a single [evaluation](concepts/evaluations/index.md) run's results, from the results page, the upload-template page or the runs table, now runs in the background. A progress bar shows while the file is prepared, followed by a download link, so large runs no longer time out. Rows in the file are now grouped by message. A failed run can now be downloaded with its partial results, and the download button is disabled while a run is still in progress.
+
 ## Oct 5, 2026
 * **NEW** [OAuth applications](api/getting_started_with_oauth.md#openid-connect-oidc) can now request a `teams` scope, shown on the consent screen as **List your teams**. Once granted, `/o/userinfo/` and the ID token include a `teams` claim listing the slug and name of every team the user belongs to, so a client that connects one team per token can show which teams are already connected and offer to connect the rest. The token is still scoped to a single team. Only global applications can request the scope, and it is not available to client-credentials tokens, which have no user.
 
