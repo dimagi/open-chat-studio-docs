@@ -51,12 +51,16 @@ Either way, the participant gets an explanation instead of silence or a repeated
 - "The assistant declined to answer the last message."
 - "The last message was blocked by the provider's content filter."
 
-The chatbot rephrases this explanation in its own voice where it can, and sends the text verbatim where it can't.
+OCS rephrases the explanation for the participant using the default model of your team's first LLM provider, not the chatbot's own model.
+If that call fails or returns nothing, the text is sent as written.
 In the pipeline editor's chat preview, a declined or blocked test message shows the same text as an error instead of a reply.
 
 The declined or blocked message stays in the chat record.
 It's left out of the [conversation history](history.md) sent to the model on later turns.
 That stops one blocked message from making every later reply fail the same way.
+The explanation reply stays in the history.
+
+A content-filter block on any node that calls a model, such as an LLM router, is reported the same way.
 
 !!! note "A block can be reported against the wrong message"
 

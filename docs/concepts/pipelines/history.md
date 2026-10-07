@@ -8,6 +8,7 @@ AI models have no memory of their own — each request OCS sends is self-contain
 
 There's one exception: when the model [declines to answer or the provider blocks the reply](nodes.md#declined-or-blocked-replies), the participant's message still stays in the chat record.
 It's left out of what's sent to the model on later turns, whatever the node's History setting.
+The explanation reply sent to the participant stays in the history.
 
 ## History
 
