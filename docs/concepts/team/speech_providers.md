@@ -35,6 +35,19 @@ When you create or edit an ElevenLabs provider, OCS fetches and stores the voice
 
 OCS does not support creating custom voices directly — manage your voice library in ElevenLabs and let OCS sync the results.
 
+### Text-to-speech models
+
+The ElevenLabs provider form includes a TTS model setting.
+The available models include:
+
+| Model | Notes |
+|---|---|
+| Multilingual v2 | Default |
+| v4 | Highest-quality option |
+| v4 Turbo | Real-time option |
+
+See the [ElevenLabs models documentation](https://elevenlabs.io/docs/models) for details on each model.
+
 ## intron.io
 
 intron.io is a text-to-speech platform specialising in African language voices. It provides synthetic voices across a wide range of African and international accents, making it a strong choice for teams serving African-language audiences.
