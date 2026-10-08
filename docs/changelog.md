@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Oct 8, 2026
+* **NEW** CommCare Connect chatbots can now send images and files, from a media collection or a code node, to participants in the Connect app. Attachments are end-to-end encrypted like the message text and expire after 90 days. A file over 2.5 MB, or any file beyond 10 files or 15 MB in one reply, is sent as a download link in the message text instead. Participants on app versions that cannot show attachments see a prompt to update the app in place of the message.
+
 ## Oct 7, 2026
 * **NEW** The Integrations table in [Team Settings](concepts/team/integrations.md) has a **Verification** column for LLM providers showing **Verified**, **Check failed** (linking to the provider's page with the error), or **Not checked**, together with when the check ran. Provider types that have no credential check show a dash.
 * **CHANGE** [Credential verification](concepts/team/llm_providers.md#credential-verification) no longer tests credentials against a deprecated model, which providers may have withdrawn. A failed check now says the credentials "could not be verified" instead of saying the provider rejected them, since the check can fail for reasons other than the credentials. The notice also says when the check ran, for example "Checked 3 days ago". Results from checks before this change show no time.
