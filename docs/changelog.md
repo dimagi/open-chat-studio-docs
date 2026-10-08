@@ -12,6 +12,7 @@ hide:
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
 ## Oct 8, 2026
+* **BUG** The [Trigger Bot Message](https://www.openchatstudio.com/api/v1/docs/#tag/Channels/operation/trigger_bot_message) API now returns a `400 Bad Request` error when called for the `api`, `embedded_widget` or `public` platforms, which cannot start conversations with participants. Previously these requests failed with a `500 Internal Server Error`.
 * **NEW** CommCare Connect chatbots can now send images and files, from a media collection or a code node, to participants in the Connect app. Attachments are end-to-end encrypted like the message text and expire after 90 days. A file over 2.5 MB, or any file beyond 10 files or 15 MB in one reply, is sent as a download link in the message text instead. Participants on app versions that cannot show attachments see a prompt to update the app in place of the message.
 
 ## Oct 7, 2026
