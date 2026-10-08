@@ -122,6 +122,7 @@ jobs:
           private-key: ${{ secrets.OCS_AGENT_PRIVATE_KEY }}
           permission-contents: write
           permission-pull-requests: write
+          permission-members: read  # resolve team-reviewers
       - name: Create Pull Request
         if: steps.check_changes.outputs.has_changes == 'true'
         id: create-pr
