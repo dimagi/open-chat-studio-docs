@@ -9,11 +9,11 @@ Each row becomes its own searchable record.
 Regular file upload doesn't accept CSV or TSV files, so row import is how you add them.
 Use this when your chatbot needs to look up individual rows, such as matching a participant's input against a product list or reference table.
 
-For a conceptual overview, see [Importing CSV/TSV rows](../concepts/collections/indexed.md#importing-csvtsv-rows).
+For a conceptual overview, see [Importing CSV/TSV rows](../concepts/collections/indexed_collections/local_and_remote_indexes.md#importing-csvtsv-rows).
 
 ## Prerequisites
 
-- An [indexed collection](../concepts/collections/indexed.md) using a **[Local Index](../concepts/collections/indexed.md#local-index)**. Remote (OpenAI) indexes don't offer row import.
+- An [indexed collection](../concepts/collections/indexed_collections/index.md) using a **[Local Index](../concepts/collections/indexed_collections/local_and_remote_indexes.md#local-index)**. Remote (OpenAI) indexes don't offer row import.
 - A `.csv` or `.tsv` file, within the standard file upload size limit.
 
 ## Import a file
@@ -54,7 +54,7 @@ The collection's **Index Inspector** page (the search icon) doesn't show the row
 - Each row can be at most 2,000 tokens once rendered as `column: value` lines.
 
 Both limits are checked when you preview the file, so an oversized row is reported before indexing starts.
-Self-hosted operators who need different limits can override the application settings — see [Local Index Optimization](../tech-hub/local-index-optimization.md#csvtsv-row-import-limits).
+Self-hosted operators who need different limits can override the application settings — see [Local Index Optimization](../tech-hub/collections/local-index-optimization.md#csvtsv-row-import-limits).
 
 ## Common issues
 
@@ -76,5 +76,6 @@ For a ragged row, the error message reports its row number.
 
 ## See also
 
-- [Indexed Collection for RAG](../concepts/collections/indexed.md) — how indexed collections and local indexes work
-- [Local Index Optimization](../tech-hub/local-index-optimization.md) — chunking configuration and row import limits
+- [Indexed Collections](../concepts/collections/indexed_collections/index.md) — how indexed collections work
+- [Local and Remote Indexes](../concepts/collections/indexed_collections/local_and_remote_indexes.md) — how local indexes work
+- [Local Index Optimization](../tech-hub/collections/local-index-optimization.md) — chunking configuration and row import limits
