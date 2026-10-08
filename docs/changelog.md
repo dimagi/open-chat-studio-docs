@@ -13,6 +13,7 @@ hide:
 
 ## Oct 8, 2026
 * **NEW** The LLM node has a **Metadata Filters** setting, shown once an indexed collection is selected, that limits the collection search to rows whose metadata matches every key and value you set, for example `district` = `Khayelitsha`. Matching is exact and case-sensitive, and remote indexes ignore the setting. Filtered searches match on words only, so results can differ from an unfiltered search. See [Filter Collection Search by Metadata](how-to/filter_collection_search_by_metadata.md).
+* **NEW** CommCare Connect chatbots can now send images and files, from a media collection or a code node, to participants in the Connect app. Attachments are end-to-end encrypted like the message text and expire after 90 days. A file over 2.5 MB, or any file beyond 10 files or 15 MB in one reply, is sent as a download link in the message text instead. Participants on app versions that cannot show attachments see a prompt to update the app in place of the message.
 
 ## Oct 7, 2026
 * **NEW** The Integrations table in [Team Settings](concepts/team/integrations.md) has a **Verification** column for LLM providers showing **Verified**, **Check failed** (linking to the provider's page with the error), or **Not checked**, together with when the check ran. Provider types that have no credential check show a dash.
