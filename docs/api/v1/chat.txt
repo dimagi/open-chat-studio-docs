@@ -49,6 +49,19 @@ participant never saw.
     cookieAuth
     embedKeyAuth
 
+GET /api/chat/{session_id}/files/{file_id}/content/
+  Summary: Download a file attached to a message in a chat session
+  Parameters:
+    - file_id (path, integer (required)): File ID
+    - session_id (path, string (required)): Session ID
+  Responses:
+    200:
+      Content: application/octet-stream
+      Schema: string
+  Security:
+    cookieAuth
+    embedKeyAuth
+
 POST /api/chat/{session_id}/message/
   Summary: Send a message to a chat session
   Parameters:
@@ -165,8 +178,23 @@ ChatConsentStale:
   - code: string (required)
   - consent: ChatConsent (required)
 
+ChatFile:
+  - name: string (required)
+  - content_type: string
+  - size: integer (required)
+  - content_url: string (required)
+  - download_url: string (required)
+
+ChatMessage:
+  - created_at: string (required)
+  - role: MessageRoleEnum (required)
+  - content: string (required)
+  - metadata: Unknown (required)
+  - tags: array of string (required)
+  - attachments: array of ChatFile (required)
+
 ChatPollResponse:
-  - messages: array of Message (required)
+  - messages: array of ChatMessage (required)
   - has_more: boolean (required)
   - session_status: Unknown (required)
   - consent: Unknown (required)
@@ -208,7 +236,7 @@ ChatStartSessionResponse:
   - consent: Unknown (required)
 
 ChatTaskPoll:
-  - message: Message
+  - message: ChatMessage
   - status: ChatTaskPollStatusEnum
 
 ChatTaskPollError:
@@ -226,20 +254,6 @@ ChatUploadFileRequest:
 
 ChatUploadFileResponse:
   - files: array of UploadedFile (required)
-
-File:
-  - name: string (required)
-  - content_type: string
-  - size: integer (required)
-  - content_url: string (required)
-
-Message:
-  - created_at: string (required)
-  - role: MessageRoleEnum (required)
-  - content: string (required)
-  - metadata: Unknown (required)
-  - tags: array of string (required)
-  - attachments: array of File (required)
 
 MessageRoleEnum:
   - enum: [system, user, assistant]
