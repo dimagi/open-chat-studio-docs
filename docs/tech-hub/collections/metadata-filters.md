@@ -14,7 +14,7 @@ Each filter has a key and a value, for example `district` = `Khayelitsha`.
 | Rule | Behavior |
 |---|---|
 | Keys | Must not be blank or duplicated. OCS rejects the node otherwise. |
-| Matching | A row or chunk must match every filter. |
+| Matching | A row must match every filter. |
 | Case | Exact and case-sensitive. |
 | Remote indexes | Ignore the setting. |
 
@@ -22,16 +22,15 @@ Each filter has a key and a value, for example `district` = `Khayelitsha`.
 
 When at least one filter is set, the search differs from an unfiltered search:
 
-- **Lexical search only.**
-  The search uses full-text matching.
-  OCS does not embed the query and does not combine vector and lexical results, whatever the hybrid search setting is.
+- **Full-text matching only.**
+  OCS does not embed the query, so the filtered search does not match by meaning.
 - **Any query word matches.**
   A row matches if it contains at least one word of the query.
   An unfiltered search does not work this way.
 - **Words split on punctuation.**
   OCS splits the query into words at punctuation.
 - **Queries without searchable words.**
-  If the query is empty, contains only punctuation, or contains only stopwords, the search returns the first matching rows in index order.
+  If the query is empty, contains only punctuation, or contains only stopwords, the search returns the first matching rows in the order they were indexed.
 - **Reranking still runs.**
   OCS reranks the filtered results.
 

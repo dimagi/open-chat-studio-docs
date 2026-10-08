@@ -39,7 +39,7 @@ A conversational node using AI models. You can configure:
 - [Temperature and effort parameters](../../how-to/adjust_llm_node_model_parameters.md) to shape output style and depth
 - [Tools](../tools/index.md) for additional actions
 - [Collections](../collections/index.md) for indexed collections to ground responses in your documents (RAG), or a media collections to send files to participants.
-- [Metadata filters](../../how-to/filter_collection_search_by_metadata.md) to limit an indexed collection search to rows or chunks with matching metadata
+- [Metadata filters](../../how-to/filter_collection_search_by_metadata.md) to limit an indexed collection search to rows with matching metadata
 - [Custom Actions](../llm_custom_action.md) to connect to external systems and retrieve information or complete tasks
 
 See [Configure an LLM Node](../../tutorials/configure_llm_node.md) for a step-by-step tutorial on setting one up.
