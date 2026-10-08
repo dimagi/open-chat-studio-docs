@@ -18,6 +18,7 @@ The currently supported channels are:
 - API
 - SureAdhere In-App Messaging
 - Email
+- CommCare Connect
 
 ## Public link
 
@@ -53,12 +54,23 @@ Channels differ in whether participants can send files to the chatbot and whethe
 | Slack | No | Yes | Outgoing: images, audio, video and documents up to 50 MB. |
 | Email | Yes | Yes | Attachments up to 20 MB in both directions. Executable file types are blocked. See [email file attachments][email-files] for details. |
 | SureAdhere | No | As download links | No files in either direction; text messages only. |
+| CommCare Connect | No | Yes | Images and files arrive in the Connect app with the message, encrypted end to end like the text. Each file can be up to 2.5 MB, and each reply can include up to 10 files and 15 MB in total. Attachments expire after 90 days. See [CommCare Connect attachments](#commcare-connect-attachments). |
 
 !!! info "Voice notes"
     Voice notes are handled separately from file attachments. On channels with voice support (Telegram, WhatsApp and Facebook Messenger), a voice note from the participant is transcribed and processed as a regular message rather than being treated as a file.
 
 !!! info "Public link"
     A public link hosts the same chat widget as the Web / Chat widget channel, so the same file support applies.
+
+### CommCare Connect attachments
+
+On the CommCare Connect channel, files and images that the chatbot sends are delivered in the Connect app together with the message.
+Files can come from a [media collection](collections/media_collections.md) (through the attach media tool) or from a Python node.
+
+- A file over 2.5 MB is sent as a download link in the message text instead.
+- If a reply has more than 10 files or more than 15 MB of files in total, the files that exceed the limit are sent as download links in the message text.
+- Attachments expire after 90 days.
+- Participants on an app version that cannot show attachments see "Your version of the app is too old to see this message. Please update your Android app." in place of any message that has attachments.
 
 ## Disabling a channel
 

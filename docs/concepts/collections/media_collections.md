@@ -74,5 +74,6 @@ Channels that support sending multimedia files will receive each attachment as a
 
 * API — see the [API documentation](https://openchatstudio.com/api/v1/docs/#tag/Channels/operation/new_api_message) for more information
 * WhatsApp (Twilio Provider) — consult the [Twilio docs][twilio_docs] for supported file types.
+* CommCare Connect — attachments are delivered in the Connect app with the message, not as a separate message. Files over 2.5 MB, or beyond 10 files or 15 MB in one reply, are sent as download links. See [CommCare Connect attachments](../channels.md#commcare-connect-attachments).
 
 [twilio_docs]: https://www.twilio.com/docs/whatsapp/guidance-whatsapp-media-messages
