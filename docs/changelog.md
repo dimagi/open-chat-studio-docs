@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Oct 8, 2026
+* **NEW** The LLM node has a **Metadata Filters** setting, shown once an indexed collection is selected, that limits the collection search to rows whose metadata matches every key and value you set, for example `district` = `Khayelitsha`. Matching is exact and case-sensitive. Filtered searches use full-text matching only and return rows containing any word of the query. Remote indexes ignore the setting. See [Filter Collection Search by Metadata](how-to/filter_collection_search_by_metadata.md).
+
 ## Oct 7, 2026
 * **NEW** The Integrations table in [Team Settings](concepts/team/integrations.md) has a **Verification** column for LLM providers showing **Verified**, **Check failed** (linking to the provider's page with the error), or **Not checked**, together with when the check ran. Provider types that have no credential check show a dash.
 * **CHANGE** [Credential verification](concepts/team/llm_providers.md#credential-verification) no longer tests credentials against a deprecated model, which providers may have withdrawn. A failed check now says the credentials "could not be verified" instead of saying the provider rejected them, since the check can fail for reasons other than the credentials. The notice also says when the check ran, for example "Checked 3 days ago". Results from checks before this change show no time.

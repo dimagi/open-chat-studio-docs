@@ -110,6 +110,7 @@ nav:
       - Send an Email: how-to/send_email_node.md
       - Schedule Reminders: how-to/reminders.md
       - Set Up and Manage Document Sources: how-to/document_sources.md
+      - Filter Collection Search by Metadata: how-to/filter_collection_search_by_metadata.md
     - Channels & Deployment:
       - how-to/deploy_to_different_channels.md
       - how-to/disable_a_channel.md
@@ -208,6 +209,7 @@ nav:
       - tech-hub/collections/index.md
       - Local Index Optimization: tech-hub/collections/local-index-optimization.md
       - Document Sources Reference: tech-hub/collections/document_sources.md
+      - Metadata Filters Reference: tech-hub/collections/metadata-filters.md
     - Evaluations:
       - tech-hub/evaluations/index.md
       - Dataset Structure: tech-hub/evaluations/dataset-structure.md
