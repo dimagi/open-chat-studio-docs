@@ -15,6 +15,9 @@
 # - Assigned like update-changelog.yml: to the author of the OCS PR that
 #   changed the schema (resolved from the dispatched commit sha), or to the
 #   actor for manual runs. Scheduled runs have no author, so no assignee.
+# - Uses one fixed branch, so each run updates the open PR rather than opening
+#   a new one. Open PRs from the old per-run `update-api-docs-<n>` branches are
+#   closed in favour of it.
 
 name: Update API Documentation
 
@@ -27,6 +30,10 @@ on:
 
 # Restrict default permissions — job overrides as needed
 permissions: {}
+
+concurrency:
+  group: update-api-docs
+  cancel-in-progress: false
 
 jobs:
   update-docs:
@@ -134,7 +141,7 @@ jobs:
           body: |
             ## Summary
             - Automated update of API documentation from OpenAPI schema
-          branch: update-api-docs-${{ github.run_number }}
+          branch: update-api-docs
           delete-branch: true
           team-reviewers: dimagi/open-chat-studio
           labels: automated
@@ -148,3 +155,15 @@ jobs:
         run: |
           # Won't fail the workflow if the user doesn't have access to this repo
           gh pr edit "$PR_NUMBER" --add-assignee "$ASSIGNEE" || echo "Could not assign @$ASSIGNEE (user may not have access to this repo)"
+
+      - name: Close superseded pull requests
+        if: steps.create-pr.outputs.pull-request-number != ''
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          PR_NUMBER: ${{ steps.create-pr.outputs.pull-request-number }}
+        run: |
+          gh pr list --state open --limit 100 --json number,headRefName \
+            --jq '.[] | select(.headRefName | test("^update-api-docs-[0-9]+$")) | .number' \
+          | while read -r number; do
+              gh pr close "$number" --delete-branch --comment "Superseded by #${PR_NUMBER}."
+            done
