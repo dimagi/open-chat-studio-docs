@@ -4,7 +4,16 @@ Every external service your team connects to — [LLM models](./llm_providers.md
 
 ## The Integrations table
 
-Depending on your permissions, each row offers **Edit** and **Delete** actions. Deleting an integration warns you first, since it removes the integration from anywhere it's currently being used.
+Each row is one configured integration, regardless of type. For every row you can see:
+
+- **Name** — the label you gave the integration when you created it.
+- **Category** — which of the categories below it belongs to.
+- **Provider** — the specific provider or service type, for example OpenAI or Twilio.
+- **Verification** — the [credential check](llm_providers.md#credential-verification) result for LLM providers, with when the check ran.
+  The value is **Verified**, **Check failed** (links to the provider's page with the error), or **Not checked**.
+  Provider types with no credential check show a dash.
+
+Depending on your permissions, each row offers **Edit** and **Delete** actions. Deleting an integration warns you first, since it also removes the integration from anywhere it's currently being used.
 
 ### Filtering by category
 

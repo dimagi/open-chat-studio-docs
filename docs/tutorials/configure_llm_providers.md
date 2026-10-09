@@ -28,7 +28,7 @@ LLM service providers are configured from **Team Settings → [Integrations](../
 
 Saving a provider checks its credentials against the provider's API, unless they're already [verified](../concepts/team/llm_providers.md#credential-verification). The save button tells you upfront whether saving will run this check.
 
-The provider page then shows the standing result — **Verified**, **Never checked**, or **Rejected** with the provider's own error message — so you can always see where a provider's credentials stand, not just at the moment you save. See [Credential Verification](../concepts/team/llm_providers.md#credential-verification) for details.
+The provider page then shows the standing result — **Verified**, **Not checked**, or **Check failed** with the provider's error message — and when the check ran. You can always see where a provider's credentials stand, not just at the moment you save. See [Credential Verification](../concepts/team/llm_providers.md#credential-verification) for details.
 
 ## Testing Your Configuration
 

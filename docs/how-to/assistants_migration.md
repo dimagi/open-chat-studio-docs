@@ -19,8 +19,8 @@ If a chatbot or pipeline still holds an assistant node, replace it with the nati
 | Assistant Feature | Replacement Feature                                                                             |
 |-------------------|-------------------------------------------------------------------------------------------------|
 | Threads           | Open Chat Studio [sessions](../concepts/sessions.md)                                            |
-| Code Interpreter  | [OpenAI Code Interpreter tool](../tech-hub/tools.md#openai-code-interpreter) in LLM nodes |
-| File Search       | [Indexed Collections](../concepts/collections/indexed.md)                                       |
+| Code Interpreter  | [OpenAI Code Interpreter tool](../tech-hub/tools.md#openai-code-interpreter) in LLM nodes       |
+| File Search       | [Indexed Collections](../concepts/collections/indexed_collections/index.md)                     |
 
 ## Migrating Code Interpreter
 
@@ -49,7 +49,7 @@ Create the collection manually — there's no automated import from an assistant
 
 - Click on the **"Collections"** tab in the sidebar and click **"Add new"**.
 - Choose **[Indexed Collection][collections]** and give it a name.
-- Choose between a [Remote Index](../concepts/collections/indexed.md#remote-index) and a [Local Index](../concepts/collections/indexed.md#local-index). A remote index is closest to how an assistant's "file search" tool worked — the files are indexed by the LLM provider you select, so pick the same provider your assistant used.
+- Choose between a [Remote Index](../concepts/collections/indexed_collections/local_and_remote_indexes.md#remote-index) and a [Local Index](../concepts/collections/indexed_collections/local_and_remote_indexes.md#local-index). A remote index is closest to how an assistant's "file search" tool worked — the files are indexed by the LLM provider you select, so pick the same provider your assistant used.
 - Upload the same files your assistant used for its "file search" tool. If you no longer have local copies, download them from your file storage at OpenAI.
 
 ### Step 2: Update your chatbot

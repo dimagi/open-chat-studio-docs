@@ -24,7 +24,7 @@ Once a provider is saved, its edit page splits into tabs:
 
 ## LLM Models
 
-Each provider comes with its most commonly used models already available in OCS — models that power chatbot conversations, and embedding models used for searching [knowledge bases](../collections/indexed.md).
+Each provider comes with its most commonly used models already available in OCS — models that power chatbot conversations, and embedding models used for searching [knowledge bases](../collections/indexed_collections/index.md).
 
 On the **Models** tab, filter pills — **All**, **Chat**, **Embedding**, and **Custom** — narrow the list to one kind of model at a time, and each pill shows a live count of models matching that filter. Use **Add custom model** to add a model that isn't pre-configured.
 
@@ -43,10 +43,17 @@ If a model you need isn't pre-configured, see [Add a Custom LLM Model](../../how
 Open Chat Studio checks your provider credentials against the provider's API and keeps showing the result on the provider's page, rather than as a one-off message. A provider's credentials show one of three states:
 
 - **Verified**: the credentials were confirmed to work.
-- **Never checked**: no successful check has run yet.
-- **Rejected**: the last check failed. The page shows the provider's own error message, so you can see exactly why.
+- **Not checked**: no successful check has run yet. If the notice shows a check time, the check ran but your team had no model to send it to.
+- **Check failed**: the last check failed. The page shows the provider's error message and says the credentials "could not be verified".
 
-Verification runs automatically whenever you save a provider whose credentials haven't yet passed a check — including a provider stuck in the **Rejected** state, so saving again after fixing a key re-checks it. A provider whose credentials are already **Verified** isn't re-checked unless you change its credentials. The save button tells you upfront whether saving will trigger a check.
+A failed check does not always mean the credentials are wrong. It can also fail for other reasons, such as a model the provider has withdrawn.
+The notice shows when the check ran, for example "Checked 3 days ago".
+Results from checks that ran before October 2026 have no check time, so none is shown.
+
+To run the check, Open Chat Studio sends a test request to a model configured for the provider.
+It tries deprecated models last.
+
+Verification runs automatically whenever you save a provider whose credentials haven't yet passed a check — including a provider in the **Check failed** state, so saving again after fixing a key re-checks it. A provider whose credentials are already **Verified** isn't re-checked unless you change its credentials. The save button tells you upfront whether saving will trigger a check.
 
 !!! note "Voyage AI is never verified"
 

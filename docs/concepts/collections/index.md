@@ -2,22 +2,22 @@
 
 Give your chatbot access to your files — grouped into a **collection** — whether that's sending them to participants during a conversation, or letting the chatbot search them to answer questions. There are two types of collections, depending on what you want to do:
 
-- **Want to send files to participants in a conversation?** Use a **[Media collection](./media.md)** — share images, PDFs, video, or audio directly in the chat.
-- **Want your chatbot to answer questions using your documents?** Use an **[Indexed collection](./indexed.md)** — it searches your files and grounds its answers in that content (RAG).
+- **Want to send files to participants in a conversation?** Use a **[Media collection](./media_collections.md)** — share images, PDFs, video, or audio directly in the chat.
+- **Want your chatbot to answer questions using your documents?** Use an **[Indexed collection](./indexed_collections/index.md)** — it searches your files and grounds its answers in that content (RAG). Keep it current automatically with [Document Sources](./indexed_collections/document_sources.md) that sync from GitHub or Confluence.
 
 ## Adding a collection to a chatbot
 
-1. Navigate to the **Collections** section in the sidebar, click "Add new", and choose a collection type: [Media Collection](./media.md) or [Indexed Collection (RAG)](./indexed.md).
+1. Navigate to the **Collections** section in the sidebar, click "Add new", and choose a collection type: [Media Collection](./media_collections.md) or [Indexed Collection (RAG)](./indexed_collections/index.md).
 2. Once the collection is created, you will be able to upload files to it.
-3. For indexed collections, you'll also need to choose between a Remote and a Local index before uploading — see [Which should I use?](./indexed.md#which-should-i-use).
+3. For indexed collections, you'll also need to choose between a Remote and a Local index before uploading — see [Which should I use?](./indexed_collections/local_and_remote_indexes.md#which-should-i-use).
 4. After your collection has been created, you can link it to any [LLM node][llm_node]. To actually access the collection's content, add the matching [prompt variable](../prompt_variables.md) to the node's prompt — `{media}` for media collections, or `{collection_index_summaries}` for indexed collections.
 
 ## Collections and published chatbots
 
-Collection content is a **live shared resource**: updates to your files in a collection reach your published chatbot automatically, without a republish. This applies whether you update a collection manually or via a scheduled [document-source](../../how-to/document_sources.md) sync.
+Collection content is a **live shared resource**: updates to your files in a collection reach your published chatbot automatically, without a republish. This applies whether you update a collection manually or via a [document-source](../../how-to/document_sources.md) sync.
 
-- Adding or removing files from a [media collection](./media.md) takes effect for participants immediately.
-- Document-source syncs to an [indexed collection](./indexed.md#document-sources-for-indexed-collections) — for example, nightly Confluence or GitHub syncs — are applied to the published chatbot as each sync completes.
+- Adding or removing files from a [media collection](./media_collections.md) takes effect for participants immediately.
+- [Document-source](./indexed_collections/document_sources.md) syncs to an [indexed collection](./indexed_collections/index.md) — for example, Confluence or GitHub syncs — are applied to the published chatbot as each sync completes.
 
 The collection *structure* of a published chatbot version — which collections are linked to which pipeline nodes — is still frozen at publish time. To change which collections a chatbot uses, you must publish a new version.
 
