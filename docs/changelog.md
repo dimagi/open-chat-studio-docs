@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Oct 9, 2026
+* **CHANGE** Participants can no longer send executable or installer files (such as `.exe`, `.msi` or `.dmg`) to a chatbot on any channel. Email already blocked these; the block now also applies to WhatsApp, the chat widget, the chat API and in-app chat. On the widget, chat API and in-app chat the upload is rejected with an error naming the file. On WhatsApp and email the file is dropped and a note is added to the message text so the chatbot can tell the participant. Windows executables are now also detected from the file contents, so an `.exe` renamed to `report.pdf` is rejected. See [channel file support](concepts/channels.md#file-support).
+
 ## Oct 8, 2026
 * **BUG** When syncing voices for an [ElevenLabs](concepts/team/speech_providers.md#elevenlabs) provider fails because the API key lacks a required permission, such as `voices_read`, Open Chat Studio now shows the error message returned by ElevenLabs so you can see which permission to add to the key. Previously a generic error was shown.
 * **BUG** The [Trigger Bot Message](https://www.openchatstudio.com/api/v1/docs/#tag/Channels/operation/trigger_bot_message) API now returns a `400 Bad Request` error when called for the `api`, `embedded_widget` or `public` platforms, which cannot start conversations with participants. Previously these requests failed with a `500 Internal Server Error`.
