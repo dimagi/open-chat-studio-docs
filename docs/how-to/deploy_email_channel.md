@@ -42,7 +42,7 @@ The following attachments are rejected automatically:
 | Rejection reason | How it appears to the chatbot |
 |---|---|
 | File exceeds 20 MB | Bracketed note in the message text, e.g. `[Attachment "report.zip" was rejected: file too large (max 20 MB)]` |
-| Executable file type (e.g. `.exe`, `.sh`) | Bracketed note in the message text |
+| Executable file type (e.g. `.exe`, `.sh`), including Windows executables renamed to another extension | Bracketed note in the message text |
 | Content-type mismatch (declared MIME type does not match actual file bytes) | Bracketed note in the message text |
 
 Rejection notes are inserted inline into the participants's message so the chatbot can read them and explain the problem to the participant in its reply.

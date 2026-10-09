@@ -46,15 +46,20 @@ Channels differ in whether participants can send files to the chatbot and whethe
 
 | Channel | Participants can send files | Chatbot can send files | Types and limits |
 |---|---|---|---|
-| Web / Chat widget | Yes | As download links | Uploads of up to 50 MB per file (50 MB total per message). Text files are always accepted, along with common document, image, audio and video formats. See the [widget file attachments reference][widget-files] for the full list. |
-| API | Yes | As attachment metadata | Same upload limits as the web channel. Files the chatbot produces are returned on the message as attachments with download links. |
+| Web / Chat widget | Yes | As download links | Uploads of up to 50 MB per file (50 MB total per message). Executable and installer files are rejected with an error naming the file. Text files are always accepted, along with common document, image, audio and video formats. See the [widget file attachments reference][widget-files] for the full list. |
+| API | Yes | As attachment metadata | Same upload limits and executable file restrictions as the web channel. Files the chatbot produces are returned on the message as attachments with download links. |
 | Telegram | No | Yes | Outgoing: images up to 10 MB; audio, video and documents up to 50 MB. Photos and documents sent by participants are not accepted. |
-| WhatsApp | Yes | Yes | Incoming: images and documents (a caption becomes the message text). Outgoing: images up to 5 MB, audio and video up to 16 MB, documents up to 100 MB. Applies to all providers (Twilio, Turn.io, Meta Cloud API). |
+| WhatsApp | Yes | Yes | Incoming: images and documents (a caption becomes the message text). Executable and installer files are dropped and a note is added to the message text. Outgoing: images up to 5 MB, audio and video up to 16 MB, documents up to 100 MB. Applies to all providers (Twilio, Turn.io, Meta Cloud API). |
 | Facebook Messenger | No | As download links | No files in either direction; text and voice messages only. |
 | Slack | No | Yes | Outgoing: images, audio, video and documents up to 50 MB. |
-| Email | Yes | Yes | Attachments up to 20 MB in both directions. Executable file types are blocked. See [email file attachments][email-files] for details. |
+| Email | Yes | Yes | Attachments up to 20 MB in both directions. Executable and installer files are dropped and a note is added to the message text. See [email file attachments][email-files] for details. |
 | SureAdhere | No | As download links | No files in either direction; text messages only. |
 | CommCare Connect | No | Yes | Images and files arrive in the Connect app with the message, encrypted end to end like the text. Each file can be up to 2.5 MB, and each reply can include up to 10 files and 15 MB in total. Attachments expire after 90 days. See [CommCare Connect attachments](#commcare-connect-attachments). |
+
+!!! info "Executable and installer files"
+    Participants cannot send executable or installer files (such as `.exe`, `.msi` and `.dmg`) on any channel.
+    The check also uses the detected file content, so a Windows executable renamed to `report.pdf` is rejected.
+    This restriction is always on and does not count as an abuse strike.
 
 !!! info "Voice notes"
     Voice notes are handled separately from file attachments. On channels with voice support (Telegram, WhatsApp and Facebook Messenger), a voice note from the participant is transcribed and processed as a regular message rather than being treated as a file.
