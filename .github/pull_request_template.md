@@ -1,4 +1,4 @@
-<!-- This template will be used for manual creations of PRs -->
+<!-- This template will be used for manual creations of PRs (human and AI) -->
 <!-- Manually classify if useful with a prefix e.g. [Docs], [AgentOps], [DevOps], [Dev Tooling] or [Widget] -->
 
 ## Summary: what and why
@@ -16,21 +16,28 @@ Related issue:
 ## Changes
 
 ### Scope
-<!-- Summarize the actual updates to provide information to the reviewer to make it easier to review the PR -->
+<!-- Summarize the actual updates in this PR to make it easier to review the PR -->
 
 ### Affected pages / sections
+- Page(s):
+- Folder(s):
+  - [ ] `docs/tutorials/`
+  - [ ] `docs/how-to/`
+  - [ ] `docs/concepts/`
+  - [ ] `docs/tech-hub/`
+  - [ ] `docs/chat_widget/`
+  - [ ] `docs/chat_widget/`
+- Tooling/process(s):
 
-### Out of scope for PR
-<!-- Useful to constrain what AI agents surface in PR reviews -->
+### Out of scope for this PR
+<!-- Also useful to constrain what AI agents surface in PR reviews -->
 
 ## Validation manually done
-- [ ] Changes follow the relevant page-type contract.
 - [ ] Examples and UI features/behavior were manually checked.
-- [ ] Internal links and cross-references were manually reviewed for user value.
+- [ ] Internal links and cross-references were manually reviewed for value.
 - [ ] Terminology matches current OCS naming and behavior.
-- [ ] Validation commands run are listed below:
+- These validation commands were manually run:
   - [ ] `uv run zensical build --clean`
-  - [ ] `uv run prek run markdownlint-cli2 --all-files`
   - [ ] `uv run prek run --all-files`
   - [ ] `uv run pytest scripts/tests`
 
