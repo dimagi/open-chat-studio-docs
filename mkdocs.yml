@@ -125,6 +125,7 @@ nav:
       - Find Objects: how-to/global_search.md
     - Sessions & Data:
       - Reset Sessions: how-to/reset_sessions.md
+      - Download Team Files: how-to/download_team_files.md
     - Monitoring & Debugging:
       - Configure Langfuse Trace Sampling: how-to/configure_langfuse_trace_sampling.md
       - Manage Notifications: how-to/manage_notifications.md
@@ -169,10 +170,10 @@ nav:
         - concepts/team/speech_providers.md
         - concepts/team/authentication_providers.md
         - concepts/team/messaging_providers.md
-      - Members & Access: concepts/team/members.md
-      - Developers:
-        - concepts/team/developer.md
-        - Custom Actions: concepts/team/custom_actions.md
+      - Members: concepts/team/members.md
+      - Developers: concepts/team/developer.md
+      - Data: concepts/team/data_migration.md
+      - Feature Flags: concepts/team/feature_flags.md
       - User Groups: concepts/team/groups.md
     - Collections:
       - concepts/collections/index.md
