@@ -19,24 +19,23 @@ Related issue:
 <!-- Summarize the actual updates in this PR to make it easier to review the PR -->
 
 ### Affected pages / sections
-- Page(s):
-- Folder(s):
+- Pages:
+- Folders:
   - [ ] `docs/tutorials/`
   - [ ] `docs/how-to/`
   - [ ] `docs/concepts/`
   - [ ] `docs/tech-hub/`
   - [ ] `docs/chat_widget/`
-  - [ ] `docs/chat_widget/`
-- Tooling/process(s):
+- Tooling/processes:
 
 ### Out of scope for this PR
-<!-- Also useful to constrain what AI agents surface in PR reviews -->
+<!-- List related work this PR deliberately does not address. Reviewers and AI agents should not raise these. -->
 
-## Validation manually done
+## Validation
 - [ ] Examples and UI features/behavior were manually checked.
-- [ ] Internal links and cross-references were manually reviewed for value.
+- [ ] Internal links and cross-references were manually reviewed for user value.
 - [ ] Terminology matches current OCS naming and behavior.
-- These validation commands were manually run:
+- Validation commands run (tick only those you ran):
   - [ ] `uv run zensical build --clean`
   - [ ] `uv run prek run --all-files`
   - [ ] `uv run pytest scripts/tests`
