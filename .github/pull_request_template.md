@@ -7,7 +7,7 @@
 ### Context
 <!-- Explain the gap, user problem, issue or product change that prompted this PR. -->
 <!-- Examples:
-- The current docs are outdated or incorrect and should align with current product
+- The current docs are outdated or incorrect and should match current product behavior.
 - Existing guidance leads to confusion or incorrect setup.
 - The automated processes or tooling need fixes/enhancements for accuracy/maintainability
 -->
