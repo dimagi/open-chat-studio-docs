@@ -51,6 +51,7 @@ jobs:
         uses: actions/checkout@v7
         with:
           fetch-depth: 0  # Fetch all history for all tags and branches
+          persist-credentials: false
 
       - name: Generate tag name for scheduled run
         if: github.event_name == 'schedule'
