@@ -65,7 +65,7 @@ Assuming you've already cloned this repository:
     uv run zensical serve
     ```
 
-5. Before pushing, run the build to catch broken internal links (CI will fail if you don't)
+5. Before pushing, run the build. It fails on broken internal links, as CI does, while `zensical serve` only warns about them:
 
     ```shell
     uv run zensical build --clean
