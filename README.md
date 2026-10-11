@@ -2,13 +2,20 @@
 
 [![OCS Logo](docs/assets/logo.png)](https://github.com/dimagi/open-chat-studio)
 
-This repository contains the **user documentation** for [Open Chat Studio](https://github.com/dimagi/open-chat-studio).
+This repository contains the **user documentation** for [Open Chat Studio](https://github.com/dimagi/open-chat-studio) (OCS), published at [docs.openchatstudio.com](https://docs.openchatstudio.com/).
 
-Open Chat Studio is a platform for building, deploying, and evaluating AI-powered chat applications. It provides tools for working with various LLMs (Large Language Models), creating chatbots, managing conversations, and integrating with different messaging platforms.
+OCS is a platform for building, deploying, and evaluating AI-powered chat applications. It provides tools for working with various LLMs (Large Language Models), creating chatbots, managing conversations, and integrating with different messaging platforms.
 
-The [AGENTS.md](AGENTS.md) file is a great place to start to understand the architecture, the page type conventions, custom tooling etc.
+## How the docs stay up to date
 
-## Docs Quickstart Setup
+OCS uses a **Docs-as-Code + LLM Augmentation approach**: the docs are markdown in git and go through pull requests like code. When a code PR merges in the OCS repo, Claude drafts a changelog entry and any needed docs updates, and opens a PR here for a person to review. Each week, a draft [GitHub release](https://github.com/dimagi/open-chat-studio-docs/releases) summarizes the new changelog entries for a person to review and publish.
+
+## Contributing
+
+- **Writing docs:** read [Contributing to user docs](https://developers.openchatstudio.com/contributing/user_docs/) for page types, writing guidance, and renaming pages. See the [Zensical documentation](https://zensical.org/docs/authoring/markdown/) for markdown features.
+- **Repo conventions:** [AGENTS.md](AGENTS.md) covers the architecture, commands, writing style, branch workflow (including `widget-develop` for chat widget docs), changelog format, and generated API docs.
+
+## Quickstart
 
 Assuming you've already cloned this repository:
 
@@ -36,6 +43,8 @@ Assuming you've already cloned this repository:
     ```shell
     uv run zensical serve
     ```
+
+The [AGENTS.md](AGENTS.md) file is the best place to start to understand the architecture, the page type conventions, and the custom tooling.
 
 ## Writing User Docs
 
