@@ -38,6 +38,7 @@ concurrency:
 jobs:
   update-docs:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     permissions:
       contents: read  # needed for checkout and the cross-repo `gh api` read; PR creation uses the ocs-agent app token
