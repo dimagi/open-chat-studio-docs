@@ -8,12 +8,31 @@ OCS is a platform for building, deploying, and evaluating AI-powered chat applic
 
 ## How the docs stay up to date
 
-OCS uses a **Docs-as-Code + LLM Augmentation approach**: the docs are markdown in git and go through pull requests like code. When a code PR merges in the OCS repo, Claude drafts a changelog entry and any needed docs updates, and opens a PR here for a person to review. Each week, a draft [GitHub release](https://github.com/dimagi/open-chat-studio-docs/releases) summarizes the new changelog entries for a person to review and publish.
+Most pages in this repo are written by automation, not by hand. OCS uses a **Docs-as-Code + LLM Augmentation approach**: the docs are markdown in git and go through pull requests like code. When a code PR merges in the [OCS repo](https://github.com/dimagi/open-chat-studio), a workflow here has Claude draft a changelog entry and any needed docs updates, and opens a PR for the code PR's author to review. Each week, another workflow drafts a [GitHub release](https://github.com/dimagi/open-chat-studio-docs/releases) from the new changelog entries for a person to review and publish.
 
-## Contributing
+The reasoning and the developer's part of the process are in the [user documentation and changelog process](https://developers.openchatstudio.com/developer_guides/user_docs/) guide. See also [changelog automation](https://developers.openchatstudio.com/developer_guides/user_docs/changelog_automation/) and [weekly release notes](https://developers.openchatstudio.com/developer_guides/user_docs/release_notes/).
 
-- **Writing docs:** read [Contributing to user docs](https://developers.openchatstudio.com/contributing/user_docs/) for page types, writing guidance, and renaming pages. See the [Zensical documentation](https://zensical.org/docs/authoring/markdown/) for markdown features.
-- **Repo conventions:** [AGENTS.md](AGENTS.md) covers the architecture, commands, writing style, branch workflow (including `widget-develop` for chat widget docs), changelog format, and generated API docs.
+## Where to start
+
+### Contributing documentation by hand
+
+Manual edits are for changes the automation does not cover: corrections, restructuring, new tutorials or concepts, and changes when the automation did not fire or cannot run (for example, on a fork).
+
+- Read [Contributing to user docs](https://developers.openchatstudio.com/contributing/user_docs/) for page types, writing guidance, and how to rename pages safely.
+- Read [AGENTS.md](AGENTS.md) for the page type conventions, writing style, commands and branch workflow. Chat widget docs go to `widget-develop`, everything else to `main`.
+- Use the [Zensical documentation](https://zensical.org/docs/authoring/markdown/) for markdown features.
+- If the automation missed an OCS PR, re-run it from GitHub Actions. Steps are in the [changelog automation guide](https://developers.openchatstudio.com/developer_guides/user_docs/changelog_automation/).
+
+### Improving the repo's processes, security, and tooling
+
+Start with these, and follow their links from there:
+
+- [AGENTS.md](AGENTS.md) for the architecture, commands, and tooling in this repo.
+- [.github/workflows/AGENTS.md](.github/workflows/AGENTS.md) for the security rules for writing or changing a workflow.
+- [README-changelog-automation.md](.github/workflows/README-changelog-automation.md) for the changelog and docs pipeline.
+- [README-claude-workflows.md](.github/workflows/README-claude-workflows.md) for every Claude workflow, command, and agent.
+
+Each workflow also documents its triggers, secrets, and caveats in its own header comment. Keep those comments current when you change a workflow.
 
 ## Quickstart
 
@@ -48,10 +67,6 @@ The [AGENTS.md](AGENTS.md) file is the best place to start to understand the arc
 
 ## Writing User Docs
 
-Read the [contributing to user docs](https://developers.openchatstudio.com/contributing/user_docs/) guide before making changes to the documentation. See the [Zensical documentation](https://zensical.org/docs/authoring/markdown/) for how to write markdown.
-
-Note: This project uses `mkdocs.yml` for site configuration, since Zensical is compatible with the MkDocs configuration format.
-
 Before pushing, run the build to catch broken internal links (CI will fail if you don't):
 
 ```shell
@@ -64,22 +79,16 @@ output but keeps serving rather than aborting.
 
 ### API docs
 
-[Open Chat Studio REST API docs](https://www.openchatstudio.com/api/docs/) are generated automatically based on the OpenAPI schema. This is done using the `src/ocs_docs/openapi_to_docs.py` utility.
+[Open Chat Studio REST API docs](https://www.openchatstudio.com/api/docs/) are generated automatically from the OpenAPI schema by `src/ocs_docs/openapi_to_docs.py`. Do not edit `docs/api/` by hand. To regenerate it locally:
 
 ```bash
 python src/ocs_docs/openapi_to_docs.py https://openchatstudio.com/api/schema -o docs/api
 ```
 
-See the [AGENTS.md](AGENTS.md) file for details on the GitHub Actions workflow.
-
 ### Chat Widget Docs
 
-Documentation for the embeddable [chat widget](https://docs.openchatstudio.com/chat_widget/) ships on a different cadence from the rest of Open Chat Studio. To keep those docs aligned with widget releases:
-
-- Start branches from `widget-develop`, and open the pull request against `widget-develop` so updates can be bundled into the next widget release.
-- Limit changes to the widget docs (and their assets) when targeting `widget-develop`; broader documentation updates should continue to go to `main`.
-- Release managers merge `widget-develop` back into `main` as part of the widget release process, so no extra action is needed once the PR is approved.
+Documentation for the embeddable [chat widget](https://docs.openchatstudio.com/chat_widget/) ships on a different cadence from the rest of Open Chat Studio.
 
 ### Changelog
 
-Changelog updates are largely automated. See the [changelog process developer guide](https://developers.openchatstudio.com/developer_guides/user_docs/changelog_automation/) for background on the automation and the [AGENTS.md](AGENTS.md) file for details.
+Changelog updates are largely automated, as described in [How the docs stay up to date](#how-the-docs-stay-up-to-date). Manual edits are fine but should match the existing style in `docs/changelog.md`. See [AGENTS.md](AGENTS.md#changelog) for the entry format.
