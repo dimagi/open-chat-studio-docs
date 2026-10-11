@@ -61,6 +61,7 @@ jobs:
         with:
           ref: ${{ steps.pr.outputs.ref }}
           fetch-depth: 1
+          persist-credentials: false
 
       - name: Set up uv
         uses: astral-sh/setup-uv@v7
