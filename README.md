@@ -19,7 +19,7 @@ The reasoning and the developer's part of the process are in the [user documenta
 Manual edits are for changes the automation does not cover: corrections, restructuring, new tutorials or concepts, and changes when the automation did not fire or cannot run (for example, on a fork).
 
 - Read [Contributing to user docs](https://developers.openchatstudio.com/contributing/user_docs/) for page types, writing guidance, and how to rename pages safely.
-- Read [AGENTS.md](AGENTS.md) for the page type conventions, writing style, commands and branch workflow. [Chat widget docs](https://docs.openchatstudio.com/chat_widget/) go to `widget-develop`, everything else to `main`.
+- Read [AGENTS.md](AGENTS.md) for the page type conventions, writing style, commands and branch workflow. Chat widget docs (`docs/chat_widget/`) go to `widget-develop`, everything else to `main`. Don't mix the two in one PR.
 - Use the [Zensical documentation](https://zensical.org/docs/authoring/markdown/) for markdown features.
 - If the automation missed an OCS PR, re-run it from GitHub Actions. Steps are in the [changelog automation guide](https://developers.openchatstudio.com/developer_guides/user_docs/changelog_automation/).
 - Don't edit `docs/api/`. It is generated from the OCS OpenAPI schema (see the [REST API docs](https://www.openchatstudio.com/api/docs/)) by `src/ocs_docs/openapi_to_docs.py`, run by the `update-api-docs` workflow.
