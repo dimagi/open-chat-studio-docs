@@ -8,7 +8,7 @@ OCS is a platform for building, deploying, and evaluating AI-powered chat applic
 
 ## How the docs stay up to date
 
-Most pages in this repo are written by automation, not by hand. OCS uses a **Docs-as-Code + LLM Augmentation approach**: the docs are markdown in git and go through pull requests like code. When a code PR merges in the [OCS repo](https://github.com/dimagi/open-chat-studio), a workflow here has Claude draft a changelog entry and any needed docs updates, and opens a PR assigned to the code PR's author for review. Each week, another workflow drafts a [GitHub release](https://github.com/dimagi/open-chat-studio-docs/releases) from the new changelog entries for a person to review and publish.
+Much of this repo is updated by automation: changelog entries, the API reference, and docs updates that follow code changes. OCS uses a Docs-as-Code + LLM Augmentation approach: the docs are markdown in git and go through pull requests like code. When a code PR merges in the [OCS repo](https://github.com/dimagi/open-chat-studio), a workflow here has Claude draft a changelog entry and any needed docs updates, and opens a PR assigned to the code PR's author for review. Each week, another workflow drafts a [GitHub release](https://github.com/dimagi/open-chat-studio-docs/releases) from the new changelog entries for a person to review and publish.
 
 The reasoning and the developer's part of the process are in the [user documentation and changelog process](https://developers.openchatstudio.com/developer_guides/user_docs/) guide. See also [changelog automation](https://developers.openchatstudio.com/developer_guides/user_docs/changelog_automation/) and [weekly release notes](https://developers.openchatstudio.com/developer_guides/user_docs/release_notes/).
 
