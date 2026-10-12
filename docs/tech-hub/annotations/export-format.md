@@ -3,6 +3,7 @@
 Reference for the CSV and JSONL files exported from an annotation queue. To run an export, see [Export Annotations](../../how-to/annotations/export-annotations.md).
 
 Both formats pivot the results so that **each reviewer's answers appear side by side**, making it easy to compare reviewers on the same item. Both list fields in the queue's [field order](../../concepts/annotations/queues.md#field-order).
+For the schema that defines these fields, see [Annotation Schema](../../concepts/annotations/queues.md#annotation-schema).
 
 | Format | Structure |
 |--------|-----------|
@@ -21,8 +22,8 @@ Each exported item carries these fields:
 | `item_type` | `session` or `message` |
 | `session_id` | External UUID of the linked session (for message items, the session of the message's chat) |
 | `flagged` | Whether the item is flagged |
-| `flags` | List of flag entries recorded on the item (empty when not flagged) |
-| `authoritative_annotator` | Email of the reviewer whose annotation was picked as authoritative for the item; blank if none has been picked. Auto-set on single-reviewer queues; chosen during resolution on multi-reviewer queues. |
+| `flags` | List of flag entries recorded on the item (empty when not flagged). See [Flag an Item](../../how-to/annotations/annotate-items.md#flag-an-item). |
+| `authoritative_annotator` | Email of the reviewer whose annotation was picked as authoritative for the item; blank if none has been picked. Auto-set on single-reviewer queues; chosen during resolution on multi-reviewer queues. See [Resolving Multi-Reviewer Conflicts](../../concepts/annotations/annotating.md#resolving-multi-reviewer-conflicts). |
 | `annotated_at` | Timestamp of the most recent annotation on the item |
 
 ## Reviewer Answers

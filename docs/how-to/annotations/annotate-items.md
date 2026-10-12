@@ -1,7 +1,8 @@
 # Annotate Queue Items
 
-This guide shows how to work through an annotation queue as a reviewer: submit annotations, edit them, skip items and flag items that cannot be annotated.
+This guide shows how to work through an annotation queue as a reviewer: submit annotations, edit them, skip items and flag items.
 To learn what the statuses mean, read [Annotating](../../concepts/annotations/annotating.md).
+For the bigger picture, see the [Annotations overview](../../concepts/annotations/index.md).
 
 ## Prerequisites
 
@@ -14,10 +15,6 @@ To learn what the statuses mean, read [Annotating](../../concepts/annotations/an
 1. In the left sidebar, open **Annotations**.
 2. Click the queue you want to work on.
 
-You see the queues you are assigned to.
-With queue management permissions, you see all team queues.
-With the **Annotation Reviewer** role, the navigation is limited to annotation pages.
-
 ## Annotate Items
 
 1. On the queue detail page, click **Start Annotating**.
@@ -26,12 +23,11 @@ With the **Annotation Reviewer** role, the navigation is limited to annotation p
    For a session, it shows the conversation history with roles and timestamps, a **Participant Data** tab and a **Session State** tab.
 3. Fill in the annotation form in the right panel.
    The fields appear in the order the queue's author set.
+   See [Annotation Schema](../../concepts/annotations/queues.md#annotation-schema) for the field types.
 4. Click **Submit**.
 
 The next item opens automatically.
 The page shows how many items you have reviewed out of the total in the queue.
-
-Each reviewer can submit one annotation per item.
 
 ## Edit Your Annotation
 
@@ -41,9 +37,7 @@ Each reviewer can submit one annotation per item.
 3. Change your answers and click **Save**.
    Click **Cancel** to discard your changes.
 
-Saving updates your annotation and recalculates the queue's aggregate scores.
-You cannot edit annotations from other reviewers.
-If you lack annotation permission, the item opens read-only.
+Saving updates your annotation and recalculates the queue's [aggregate scores](../../concepts/annotations/queues.md#aggregate-scores).
 
 ## Skip an Item
 
@@ -66,6 +60,11 @@ A queue manager can unflag the item, which returns it to the review workflow.
 
 ## Expected Outcome
 
-- Each submitted item shows your annotation in its annotations list.
-- Items that have all required reviews become **Completed**, or **Awaiting resolution** on queues that need more than one review. See [Item Status Lifecycle](../../concepts/annotations/annotating.md#item-status-lifecycle).
+- Items that have all required reviews become **Completed**, or **Awaiting resolution** on queues that need more than one review.
+  See [Item Status Lifecycle](../../concepts/annotations/annotating.md#item-status-lifecycle).
+  To resolve an **Awaiting resolution** item, see [Resolving Multi-Reviewer Conflicts](../../concepts/annotations/annotating.md#resolving-multi-reviewer-conflicts).
 - The queue's progress and aggregate scores on its detail page update after each submission.
+
+## See also
+
+To analyse the results outside Open Chat Studio, see [Export Annotations](export-annotations.md).

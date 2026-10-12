@@ -1,20 +1,19 @@
 # Create an Annotation Queue and Add Items
 
 This guide shows how to set up an annotation queue and fill it with the sessions you want reviewed.
-To understand what queues, schemas and reviews are before you start, read [Annotation Queues](../../concepts/annotations/queues.md).
+
+To understand what queues, schemas and reviews are before you start, read the [Annotations overview](../../concepts/annotations/index.md) and [Annotation Queues](../../concepts/annotations/queues.md).
 
 ## Prerequisites
 
-- Permission to manage annotation queues and add items to them. See [User Groups](../../concepts/team/groups.md) for which roles have it.
-- At least one chatbot with sessions, if you plan to add sessions from the session selector or from a session page.
-- An evaluation dataset whose sessions you want reviewed, if you plan to import from a dataset.
-  The dataset must have finished building and contain rows linked to sessions.
-  See [Create a Dataset](../evaluations/create-a-dataset.md).
+- Permission to manage annotation queues. See [User Groups](../../concepts/team/groups.md).
+- Chatbot sessions to review, or a finished [dataset](../evaluations/create-a-dataset.md) with rows linked to sessions.
 
 ## Create the Queue
 
 1. In the left sidebar, open **Annotations** and click **Add new**.
 2. Enter a **Name** and a **Description**, then set **Num reviews required** (1 to 10), the number of reviews each item needs.
+   See [Queue Settings](../../concepts/annotations/queues.md#queue-settings) for when to require more than one.
 3. In the **Schema Fields** section, add the fields reviewers will fill in.
    For each field, enter a name, choose a type and set any options.
    Add a description to guide reviewers.
@@ -22,6 +21,7 @@ To understand what queues, schemas and reviews are before you start, read [Annot
 4. Arrange the fields in the order you want reviewers to see them.
 5. Save the queue.
 6. On the queue detail page, click **Manage Assignees**, select the team members who will review items, and click **Save**.
+   See [Managing Assignees](../../concepts/annotations/queues.md#managing-assignees) for what happens when a queue has no assignees.
 
 !!! note
     Once a reviewer has submitted an annotation, you can no longer add or remove fields or change their types.
