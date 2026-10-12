@@ -15,7 +15,7 @@ Since this PR modifies main app files, update the **main changelog** at `${MAIN_
    - **CHANGE**: Modifications to existing features
    - **BUG**: Bug fixes
    - **MIGRATION**: Migration-related changes or breaking changes
-4. Write a clear, concise changelog entry (1-2 sentences max)
+4. Write a one-line changelog entry of 1-2 sentences, under 700 characters; put detail in the docs and link to it
 5. Format the merged date as "MMM D, YYYY" with no leading zero on single-digit days (e.g., "Oct 9, 2025", "Oct 22, 2025")
 6. **Date sections must be in reverse chronological order (newest dates at the top)**
 7. If a section for that date already exists, add your entry to it; otherwise create a new date section at the top
