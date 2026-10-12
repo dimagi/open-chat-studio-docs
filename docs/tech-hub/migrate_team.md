@@ -186,14 +186,21 @@ Press **Ctrl+C** to stop the command. When it stops, it prints a report of the r
 
 ## 7. Re-register channel webhooks (target server)
 
-Once the team's data has synced, channel webhooks still point at the source server. Re-point them by running:
+Once the team's data has synced, channel webhooks still point at the source server.
+
+!!! warning "Switch channels only after the full export, at a quiet time"
+    To prevent conflicts between data on the source and the target, run this step only when both of these are true:
+
+    1. `sync_team` has exported all rows from the source.
+    2. Traffic is quiet: `sync_team --follow` passes report 0 rows synced. This is typically late at night.
+
+    Leave `sync_team --follow` running in another shell while you switch over. See [Keep the sync running with --follow](#keep-the-sync-running-with-follow).
+
+Re-point the webhooks by running:
 
 ```bash
 python manage.py reregister_webhooks --team-slug "<team-slug>"
 ```
-
-To avoid losing messages that arrive during the switch, start `sync_team` with `--follow` before you run this command, and leave it running in another shell.
-See [Keep the sync running with --follow](#keep-the-sync-running-with-follow).
 
 Whether a channel updates automatically depends on its **messaging provider**, not just the platform:
 
@@ -222,10 +229,11 @@ Test each channel against the target server and confirm chatbots respond as expe
 If `sync_team --follow` is running:
 
 1. After all webhooks point at the target, watch the pass output.
-2. When the passes report no new rows for a few minutes, the remaining data has been copied.
+2. When the passes report 0 rows synced for a few minutes, the remaining data has been copied.
 3. Press **Ctrl+C** to stop the command.
 
 If you did not use `--follow`, run `sync_team` one more time to pull in any messages or updates that arrived on the source while you were switching channels over.
+Do this soon after the switch, while traffic is still quiet.
 
 ## After the migration
 
