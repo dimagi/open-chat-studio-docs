@@ -4,7 +4,7 @@ A dataset full of example conversations only becomes useful once it's been score
 
 You can run several evaluators over the same dataset at once, so a single evaluation run can check multiple things — accuracy, tone, safety — without re-running your chatbot for each one.
 
-Each evaluator works in one of two **evaluation modes** — **message-level** (judging a single response) or **session-level** (judging a whole conversation) — and must match the mode of the dataset it's used with. Evaluators using the wrong mode for a dataset are automatically disabled when configuring a run.
+Each evaluator works in one of two **evaluation modes** — **message-level** (judging a single response) or **session-level** (judging a whole conversation) — and must match the mode of the dataset it's used with. Evaluators using the wrong mode for a dataset are hidden when you set up an evaluation.
 
 ## Evaluator Types
 

@@ -11,7 +11,7 @@ This guide shows you how to create an evaluation, run it, and read the results. 
 
 Under **Evaluations**, click **Add new** and choose:
 
-- The **Dataset** and the **Evaluators** to run. Evaluators with a different evaluation level from the dataset are disabled.
+- The **Dataset** and the **Evaluators** to run. Evaluators with a different evaluation level from the dataset are hidden from the list.
 - Optional: **Run generation step before evaluation**, with a **Chatbot** and **Chatbot version**, to score a response your chatbot generates instead of the one stored in the dataset. Generation is available for message-level datasets only.
 - Optional: **Auto-run when new rows are auto-populated**. See [Set Up a Real-Time LLM Judge](realtime_llm_judge.md#step-5-create-an-evaluation-config-with-auto-run-enabled) for how this works and what it costs.
 
@@ -42,7 +42,7 @@ When a run completes, the run page shows:
 
 - **Results**: the number of scored rows.
 - **Failed messages**: shown only when some rows failed. See [Failed messages](#failed-messages).
-- **Cost** and token count, and **Duration**.
+- **Cost** and token count, and **Duration**. Cost shows **Not recorded** when no usage was recorded for the run.
 - Aggregate statistics for each evaluator output field.
 
 The results table has one row per message or session, with a column for each evaluator output field. If you defined tag rules, the **Applied Tags** column shows the tags each row received. Use the filter pills above the table to show only rows with a particular output value. Click a row to see its details.
@@ -55,9 +55,7 @@ Click **Download results** on a run page to download that run, or **Download Lat
 
 ## Correct Results
 
-To replace results with values from a CSV file, for example after a human reviews them:
-
-On a completed run, click **Edit results**. Use **Download Template** to get a file in the expected format, edit it, upload it, and map each CSV column to an evaluator output (or **Skip this column**).
+To update results with values from a CSV file, for example after a human reviews them, open a completed run and click **Edit results**. Use **Download Template** to get a file in the expected format, edit it, and upload it. Map each CSV column to an evaluator output, or choose **Skip this column**, then click **Upload Results**. Existing results are updated, new rows are added, and the run's aggregates are recalculated.
 
 ## Failed messages
 
@@ -79,7 +77,9 @@ Fix the cause, then run the evaluation again.
 !!! warning "Both actions are permanent"
     [Download the results](#download-results) you need first. Each button appears only for users with the matching delete permission.
 
+Neither action works while a run is pending or processing. Wait for the run to finish, then try again.
+
 ## Common Issues
 
-- **An evaluator is greyed out or missing when creating the evaluation.** Its [evaluation level](../../concepts/evaluations/dataset.md#evaluation-levels) does not match the dataset's, or it is [archived](../../concepts/evaluations/evaluators.md#archiving-evaluators).
+- **An evaluator is missing when creating the evaluation.** Its [evaluation level](../../concepts/evaluations/dataset.md#evaluation-levels) does not match the dataset's, or it is [archived](../../concepts/evaluations/evaluators.md#archiving-evaluators).
 - **Run Evaluation shows an error.** The evaluation has no evaluators, or all of them are archived.

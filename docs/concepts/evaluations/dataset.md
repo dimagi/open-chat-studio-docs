@@ -13,7 +13,7 @@ When you create a dataset, you choose an **Evaluation level**. It decides how th
 | **Message level** | A single Human/AI message pair | Individual responses, for accuracy, tone or correctness |
 | **Session level** | An entire conversation | Overall quality, goal completion, or coherence across turns |
 
-The level cannot be changed after the dataset is created. Evaluators must have the same level as the dataset, and incompatible ones are disabled when you set up an evaluation.
+The level cannot be changed after the dataset is created. Evaluators must have the same level as the dataset, and incompatible ones are hidden when you set up an evaluation.
 
 ## How Datasets Are Created
 
