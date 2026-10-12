@@ -33,9 +33,9 @@ Before creating a Custom Action, make sure you have:
 
 1. an HTTPS base URL for the external service
 2. an [OpenAPI Schema](https://swagger.io/specification/) in JSON or YAML format
-3. an [Authentication Provider](../../concepts/team/authentication_providers.md), if the API requires authentication
+3. an [Authentication Provider](../../concepts/team/authentication_providers.md), if the API requires authentication — create one from **Authentication Providers** in Team Settings
 
-Once you have this information, go to the **Developers** section of [Team Settings](../../concepts/team/developer.md) and enter the details described below.
+Once you have this information, go to the **Developers** section of [Team Settings](../../concepts/team/developer.md), select **Add action** under **Custom actions**, and enter the details described below.
 
 ## Team Settings fields
 
@@ -57,6 +57,12 @@ Use the following fields to configure the integration.
 - For many FastAPI services, the default schema path is `/openapi.json`.
 
 Use **Allowed Operations** to select which actions from the external service your chatbot is allowed to use.
+
+## Enabling actions for a chatbot
+
+After you save the Custom Action, its actions appear in the advanced settings for the [LLM node](../../concepts/pipelines/nodes.md). Select the actions you want to enable for the chatbot — once enabled, the LLM can call those actions when they are relevant to the conversation.
+
+To confirm an enabled action works, see [Custom Action Testing](./test_custom_action.md).
 
 ## Health checks
 
