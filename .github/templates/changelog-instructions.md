@@ -28,6 +28,7 @@ ${CHANGELOG_INSTRUCTIONS}
 
 **General Changelog Guidelines (both types):**
 - Be concise but informative
+- Each entry is one line, under 700 characters (markdownlint fails at 750); link to docs for detail instead of listing every option, limit or UI element
 - Focus on user-facing changes
 - Use active voice (e.g., "Added support for..." not "Support was added for...")
 - No mannered prose — no metaphor or flourish where a literal phrase states it directly

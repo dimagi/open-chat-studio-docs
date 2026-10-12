@@ -57,7 +57,26 @@ Local indexes are hosted and managed by OCS. When you create one, you choose the
 - **Supported file types**: txt, md, pdf, doc, docx, pptx, html, json, and common code files (c, cs, cpp, java, php, py, rb, tex, css, js, sh, ts)
 - **Supported embedding models**: The embedding models available for the LLM provider you select.
 
+`.csv` and `.tsv` files are not accepted through regular file upload. Add them through [Importing CSV/TSV rows](#importing-csvtsv-rows) instead.
+
 ### Chunking and Optimization
 
 OCS breaks uploaded documents into smaller parts called **chunks**. The default settings work well for most use cases.
 For chunk size, chunk overlap and embedding model selection, see [Local Index Optimization](../../../tech-hub/collections/local-index-optimization.md).
+
+### Importing CSV/TSV rows
+
+You can import a `.csv` or `.tsv` file so each row becomes its own searchable record.
+Use **Add Files → Import CSV/TSV rows** on a local-index collection.
+This is the only way to add a CSV or TSV file to an indexed collection, because regular file upload doesn't accept them.
+
+Each row is indexed as one chunk.
+The chunk text is the file name followed by one `column: value` line for every column in the row.
+The columns you tick are also stored as metadata on the row's chunk.
+When a chatbot searches the collection, each matching row comes back with its row number and its metadata.
+
+!!! note "Local indexes only"
+    Row import works for local indexes only.
+    Remote (OpenAI) indexes don't offer the **Import CSV/TSV rows** option.
+
+See [Import CSV/TSV Rows into a Collection](../../../how-to/import_csv_tsv_rows.md) for step-by-step instructions.

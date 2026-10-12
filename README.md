@@ -2,11 +2,41 @@
 
 [![OCS Logo](docs/assets/logo.png)](https://github.com/dimagi/open-chat-studio)
 
-This repository contains the user documentation for [Open Chat Studio](https://github.com/dimagi/open-chat-studio).
+This repository contains the **user documentation** for [Open Chat Studio](https://github.com/dimagi/open-chat-studio) (OCS), published at [docs.openchatstudio.com](https://docs.openchatstudio.com/).
 
-Open Chat Studio is a platform for building, deploying, and evaluating AI-powered chat applications. It provides tools for working with various LLMs (Large Language Models), creating chatbots, managing conversations, and integrating with different messaging platforms.
+OCS is a platform for building, deploying, and evaluating AI-powered chat applications. It provides tools for working with various LLMs (Large Language Models), creating chatbots, managing conversations, and integrating with different messaging platforms.
 
-## Docs Quickstart
+## How the docs stay up to date
+
+Much of this repo is updated by automation: changelog entries, the API reference, and docs updates that follow code changes. OCS uses a Docs-as-Code + LLM Augmentation approach: the docs are markdown in git and go through pull requests like code. When a code PR merges in the [OCS repo](https://github.com/dimagi/open-chat-studio), a workflow here has Claude draft a changelog entry and any needed docs updates, and opens a PR assigned to the code PR's author for review. Each week, another workflow drafts a [GitHub release](https://github.com/dimagi/open-chat-studio-docs/releases) from the new changelog entries for a person to review and publish.
+
+The reasoning and the developer's part of the process are in the [user documentation and changelog process](https://developers.openchatstudio.com/developer_guides/user_docs/) guide. See also [changelog automation](https://developers.openchatstudio.com/developer_guides/user_docs/changelog_automation/) and [weekly release notes](https://developers.openchatstudio.com/developer_guides/user_docs/release_notes/).
+
+## Where to start
+
+### Contributing documentation by hand
+
+Manual edits are for changes the automation does not cover: corrections, restructuring, new tutorials or concepts, and changes when the automation did not fire or cannot run (for example, on a fork).
+
+- Read [Contributing to user docs](https://developers.openchatstudio.com/contributing/user_docs/) for page types, writing guidance, and how to rename pages safely.
+- Read [AGENTS.md](AGENTS.md) for the page type conventions, writing style, commands and branch workflow. Chat widget docs (`docs/chat_widget/`) go to `widget-develop`, everything else to `main`. Don't mix the two in one PR.
+- Use the [Zensical documentation](https://zensical.org/docs/authoring/markdown/) for markdown features.
+- If the automation missed an OCS PR, re-run it from GitHub Actions. Steps are in the [changelog automation guide](https://developers.openchatstudio.com/developer_guides/user_docs/changelog_automation/).
+- Don't edit `docs/api/`. It is generated from the OCS OpenAPI schema (see the [REST API docs](https://www.openchatstudio.com/api/docs/)) by `src/ocs_docs/openapi_to_docs.py`, run by the `update-api-docs` workflow.
+- Manual changelog edits are fine. Match the existing style in `docs/changelog.md`; the entry format is in [AGENTS.md](AGENTS.md#changelog).
+
+### Improving the repo's processes, security, and tooling
+
+Start with these, and follow their links from there:
+
+- [AGENTS.md](AGENTS.md) for the architecture, commands, and tooling in this repo.
+- [.github/workflows/AGENTS.md](.github/workflows/AGENTS.md) for the security rules for writing or changing a workflow.
+- [README-changelog-automation.md](.github/workflows/README-changelog-automation.md) for the changelog and docs pipeline.
+- [README-claude-workflows.md](.github/workflows/README-claude-workflows.md) for every Claude workflow, command, and agent.
+
+Each workflow also documents its triggers, secrets, and caveats in its own header comment. Keep those comments current when you change a workflow.
+
+## Quickstart
 
 Assuming you've already cloned this repository:
 
@@ -35,43 +65,8 @@ Assuming you've already cloned this repository:
     uv run zensical serve
     ```
 
-### Writing User Docs
+5. Before pushing, run the build. It fails on broken internal links, as CI does, while `zensical serve` only warns about them:
 
-Read the [contributing to user docs](https://developers.openchatstudio.com/contributing/user_docs/) guide before making changes to the documentation.
-
-The [AGENTS.md](AGENTS.md) file is a great place to start to understand the architecture, the page type conventions, custom tooling etc.
-See the [Zensical documentation](https://zensical.org/docs/authoring/markdown/) for how to write markdown.
-
-Note: This project uses `mkdocs.yml` for site configuration, since Zensical is compatible with the MkDocs configuration format.
-
-Before pushing, run the build to catch broken internal links (CI will fail if you don't):
-
-```shell
-uv run zensical build --clean
-```
-
-`strict: true` is set in `mkdocs.yml`, so the build fails on broken references without
-needing the `--strict` flag. `zensical serve` reports the same warnings in its console
-output but keeps serving rather than aborting.
-
-### API docs
-
-API docs are generated automatically based on the OpenAPI schema. This is done using the `src/ocs_docs/openapi_to_docs.py` utility.
-
-```bash
-python src/ocs_docs/openapi_to_docs.py https://openchatstudio.com/api/schema -o docs/api
-```
-
-This utility is used in the `update-api-docs` GitHub action.
-
-## Chat Widget Docs
-
-Documentation for the embeddable chat widget lives under `docs/chat_widget/` and ships on a different cadence from the rest of Open Chat Studio. To keep those docs aligned with widget releases:
-
-- Start branches from `widget-develop`, and open the pull request against `widget-develop` so updates can be bundled into the next widget release.
-- Limit changes to the widget docs (and their assets) when targeting `widget-develop`; broader documentation updates should continue to go to `main`.
-- Release managers merge `widget-develop` back into `main` as part of the widget release process, so no extra action is needed once the PR is approved.
-
-## Changelog
-
-Changelog updates are largely automated. See the [changelog process developer guide](https://developers.openchatstudio.com/developer_guides/user_docs/) for background on the automation and the [AGENTS.md](AGENTS.md) file for details.
+    ```shell
+    uv run zensical build --clean
+    ```
