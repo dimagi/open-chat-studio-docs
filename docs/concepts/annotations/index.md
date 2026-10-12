@@ -1,20 +1,30 @@
 # Annotations
 
-Annotations are a **manual evaluation method**. Domain experts review chatbot sessions and messages in an annotation queue and record scores, labels and comments against a schema you define.
+Annotations are a **manual evaluation method**. Domain experts review chatbot sessions in an annotation queue and record scores, labels and comments against a schema you define.
 
 Use annotations when automated checks can't judge quality reliably, such as tone, correctness in your domain, or policy compliance. The human judgments give you ground truth for [evaluations](../evaluations/index.md): you can turn reviewed sessions into an [evaluation dataset](../evaluations/dataset.md), or check how closely an [LLM judge](../evaluations/evaluators.md#llm-evaluator) agrees with your reviewers.
 
+## Use Cases
+
+- **Quality assurance** — have reviewers rate conversation quality on a defined scale
+- **Content moderation** — flag problematic sessions and categorize issues
+- **Chatbot evaluation** — collect human judgments alongside automated [evaluations](../evaluations/index.md)
+- **Dataset labeling** — annotate sessions for downstream model training or fine-tuning
+- **Inter-rater agreement** — configure multiple reviews per item to measure how closely reviewers agree
+
 ## Overview
 
-The annotations system is built around **queues** — ordered lists of items that reviewers work through one at a time. Each queue defines a custom set of fields (the schema) that reviewers fill in for every item.
+Reviewers work through a **queue**, a list of sessions to review. Every reviewer answers the same set of questions, called the **schema**, for each session.
+
+For example, a team wants to know how well its support chatbot handles billing questions. It adds 50 billing sessions to a queue. The schema asks reviewers to rate helpfulness from 1 to 5 and to pick a tone from a list. Two reviewers annotate each session, and the team reads the average helpfulness score once they finish.
 
 ```mermaid
 flowchart LR
-    schema([Annotation Schema]) --> queue([Annotation Queue])
-    sessions([Sessions / Messages]) --> queue
-    queue --> reviewer1([Reviewer])
-    queue --> reviewer2([Reviewer])
-    reviewer1 --> annotation([Annotation])
+    sessions([Sessions]) --> queue([Annotation Queue])
+    schema([Schema: the questions]) --> queue
+    queue --> reviewer1([Reviewer 1])
+    queue --> reviewer2([Reviewer 2])
+    reviewer1 --> annotation([Annotations: their answers])
     reviewer2 --> annotation
     annotation --> aggregates([Aggregate Scores])
 ```
@@ -22,24 +32,16 @@ flowchart LR
 ### Key Components
 
 **[Annotation Queue](queues.md)**
-: The central object. Contains items to be reviewed, defines the annotation schema, manages assignees, and tracks progress.
-
-**Annotation Schema**
-: The set of fields reviewers fill in. Defined per queue. Supports integer, float, string, and choice (enum) field types.
+: A list of sessions to review, the questions to answer, and the people who answer them. The queue also tracks how far the review has got.
 
 **Annotation Items**
-: Individual sessions or messages added to a queue. Each item moves through a lifecycle: Pending → In Progress → Completed. On queues that need more than one review, items pass through Awaiting resolution before Completed. Reviewers can flag an item at any point before it completes. See [Item Status Lifecycle](annotating.md#item-status-lifecycle).
+: The sessions in a queue. Each item has a status that shows its progress, from Pending to Completed. See [Item Status Lifecycle](annotating.md#item-status-lifecycle).
 
-**Annotations**
-: A single reviewer's submitted responses for one item. Each reviewer can annotate each item only once, but can edit their own annotation afterwards. When reviewers disagree, one annotation is marked **authoritative** and used for aggregate scores.
+**Annotation Schema**
+: The questions every reviewer answers for every item, defined once per queue. Because all reviewers answer the same questions, their answers can be compared, summarised in aggregate scores and exported. The schema's structure is fixed once reviews begin, so earlier answers stay valid. See [Annotation Schema](queues.md#annotation-schema).
 
-## Use Cases
-
-- **Quality assurance** — have reviewers rate conversation quality on a defined scale
-- **Content moderation** — flag problematic sessions and categorize issues
-- **Chatbot evaluation** — collect human judgments alongside automated [evaluations](../evaluations/index.md), for example to check an LLM judge against reviewer scores
-- **Dataset labeling** — annotate sessions for downstream model training or fine-tuning, or [import them into an evaluation dataset](../../how-to/evaluations/create-a-dataset.md#import-from-an-annotation-queue)
-- **Inter-rater agreement** — configure multiple reviews per item to measure how closely reviewers agree
+**Annotation**
+: One reviewer's answers for one item. A reviewer annotates each item once and can edit their annotation afterwards.
 
 ## Roles
 
