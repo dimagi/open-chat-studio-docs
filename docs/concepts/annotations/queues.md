@@ -42,10 +42,10 @@ A queue that has never been saved since field ordering was introduced has no ord
 
 ## Queue Settings
 
-A queue has a name, an optional description, a schema, a list of assignees and a **Reviews required** setting. To set one up, see [Create an Annotation Queue and Add Items](../../how-to/annotations/create-a-queue.md).
+A queue has a name, an optional description, schema fields, and a **Num reviews required**. To set one up, see [Create an Annotation Queue and Add Items](../../how-to/annotations/create-a-queue.md).
 
 !!! tip "Multiple reviews"
-    Set **Reviews required** to more than 1 when you want several reviewers to annotate the same item independently, for example to measure inter-rater agreement or to get a consensus rating. An item is marked **Completed** only when it has received the required number of reviews.
+    Set **Num reviews required** to more than 1 when you want several reviewers to annotate the same item independently, for example to measure inter-rater agreement or to get a consensus rating. An item is marked **Completed** only when it has received the required number of reviews.
 
 ### Queue Status
 
@@ -58,25 +58,25 @@ A queue has a name, an optional description, a schema, a list of assignees and a
 
 ## Changing Reviews Required After Annotation Starts
 
-You can change the **Reviews required** setting on a queue even after annotation is underway.
+You can change the **Num reviews required** setting on a queue even after annotation is underway.
 Because this affects how item statuses are calculated, the system recomputes the status of every item that is not Flagged when you save the change.
 
 Before applying the change, a confirmation dialog summarises what will happen. Review it carefully before confirming.
 
 ### Effects of raising the requirement
 
-Increasing **Reviews required** can move items that were previously **Completed** back to **In Progress** or **Awaiting resolution** — if they no longer have enough reviews to meet the new threshold.
+Increasing **Num reviews required** can move items that were previously **Completed** back to **In Progress** or **Awaiting resolution** — if they no longer have enough reviews to meet the new threshold.
 
 ### Effects of lowering the requirement
 
-Decreasing **Reviews required** does not automatically complete items that still have unresolved reviews. Items where all required reviews are in but no authoritative annotation has been selected remain in **Awaiting resolution** until a reviewer picks one annotation as authoritative.
+Decreasing **Num reviews required** does not automatically complete items that still have unresolved reviews. Items where all required reviews are in but no authoritative annotation has been selected remain in **Awaiting resolution** until a reviewer picks one annotation as authoritative.
 
 ### Switching to multi-reviewer mode
 
-When you increase **Reviews required** from 1 to more than 1, any authoritative flags that were set automatically by the system are cleared. Authoritative flags that a reviewer set manually are kept. Aggregate scores are refreshed after the change.
+When you increase **Num reviews required** from 1 to more than 1, any authoritative flags that were set automatically by the system are cleared. Authoritative flags that a reviewer set manually are kept. Aggregate scores are refreshed after the change.
 
 !!! note
-    Flagged items are not affected by a change to **Reviews required** — their status remains **Flagged** until a manager unflags them.
+    Flagged items are not affected by a change to **Num reviews required** — their status remains **Flagged** until a manager unflags them.
 
 ## Adding Items
 

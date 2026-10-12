@@ -5,10 +5,6 @@ They submit an annotation, edit it, skip the item or flag it.
 This page explains how an item moves between statuses and how conflicting reviews are resolved.
 For the steps a reviewer follows, see [Annotate Queue Items](../../how-to/annotations/annotate-items.md).
 
-Flagging marks an item that cannot be annotated, such as one with missing content or a corrupted session.
-The reviewer must give a reason, which is recorded with their name and the time.
-Flagged items are excluded from the annotation sequence until a queue manager unflags them.
-
 ## Item Status Lifecycle
 
 ```mermaid
@@ -33,7 +29,7 @@ stateDiagram-v2
 | **Flagged** | Marked for follow-up; excluded from annotation workflow |
 
 !!! note "Single vs multi-reviewer queues"
-    On single-reviewer queues (the default, **Reviews required = 1**), the first submitted annotation is automatically marked as authoritative and the item moves straight to **Completed**. The authoritative workflow below only applies to queues configured with **Reviews required > 1**.
+    On single-reviewer queues (the default, **Num reviews required = 1**), the first submitted annotation is automatically marked as authoritative and the item moves straight to **Completed**. The authoritative workflow below only applies to queues configured with **Num reviews required > 1**.
 
 ## Resolving Multi-Reviewer Conflicts
 
@@ -49,8 +45,17 @@ Clicking **Mark authoritative** on an annotation flips the item to **Completed**
 !!! tip "Why this matters"
     Aggregate scores prefer the authoritative annotation when one is set; only when no annotation is authoritative do they fall back to averaging across all submitted annotations. Marking an authoritative answer therefore both resolves the conflict and ensures the queue's aggregate stats reflect the agreed answer.
 
+## Flagging Items
+
+Flagging marks an item that cannot be annotated, such as one with missing content or a corrupted session.
+The reviewer must give a reason, which is recorded with their name and the time.
+**Flagged** items are excluded from the annotation sequence until a queue manager unflags them.
+For the steps, see [Flag an Item](../../how-to/annotations/annotate-items.md#flag-an-item).
+
 ## Read-Only View
 
-When you open an item you've already annotated, the item content and the annotations list are shown without the submission form — each reviewer can only submit one annotation per item, but you can revise your own with the **Edit** action (see [Edit Your Annotation](../../how-to/annotations/annotate-items.md#edit-your-annotation)).
+Each reviewer can submit only one annotation per item.
+When you open an item you've already annotated, you see the item content and the annotations list without the submission form.
+To change your answers, see [Edit Your Annotation](../../how-to/annotations/annotate-items.md#edit-your-annotation).
 
 If you don't have annotation permissions, the item is fully read-only: you can see the content and any existing annotations, but cannot submit or edit.

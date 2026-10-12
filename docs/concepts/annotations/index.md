@@ -27,7 +27,7 @@ Two reviewers annotate each session, and the team reads the average helpfulness 
 
 ```mermaid
 flowchart LR
-    sessions([Sessions]) --> queue([Annotation Queue])
+    sessions([Session / Messages]) --> queue([Annotation Queue])
     schema([Schema: the questions]) --> queue
     queue --> reviewer1([Reviewer 1])
     queue --> reviewer2([Reviewer 2])
@@ -43,15 +43,14 @@ flowchart LR
   The queue also tracks its review progress.
 
 **Annotation Items**
-: The sessions in a queue.
-  Each item has a status that shows its progress, from **Pending** to **Completed**.
+: The sessions or messages in a queue.
+  Each item has a status that shows its progress, from **Pending** to **Completed** or **Flagged**.
   See [Item Status Lifecycle](annotating.md#item-status-lifecycle).
 
-**Annotation Schema**
+**[Annotation Schema](queues.md#annotation-schema)**
 : The questions every reviewer answers for every item, defined once per queue.
   Because all reviewers answer the same questions, their answers can be compared, summarised in aggregate scores and exported.
   The schema's structure is fixed once reviews begin, so earlier answers stay valid.
-  See [Annotation Schema](queues.md#annotation-schema).
 
 **Annotation**
 : One reviewer's answers for one item.
@@ -74,4 +73,4 @@ flowchart LR
 2. [Add sessions](../../how-to/annotations/create-a-queue.md#add-items-to-the-queue) to the queue
 3. Assignees [work through items](../../how-to/annotations/annotate-items.md) and submit annotations
 4. If the queue needs several reviews per item, reviewers [resolve conflicts](annotating.md#resolving-multi-reviewer-conflicts) by marking one annotation authoritative
-5. Review progress and [export results](../../how-to/annotations/export-annotations.md)
+5. [Review progress](queues.md#monitoring-progress) and [export results](../../how-to/annotations/export-annotations.md)
