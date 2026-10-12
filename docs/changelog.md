@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Oct 12, 2026
+* **BUG** The [evaluations](concepts/evaluations/index.md) table now loads faster, especially for teams with many evaluations. Previously it ran several extra database queries for each row.
+
 ## Oct 9, 2026
 * **CHANGE** Participants can no longer send executable or installer files (such as `.exe`, `.msi` or `.dmg`) to a chatbot on any channel. Email already blocked these; the block now also applies to WhatsApp, the chat widget, the chat API and in-app chat. On the widget, chat API and in-app chat the upload is rejected with an error naming the file. On WhatsApp and email the file is dropped and a note is added to the message text so the chatbot can tell the participant. Windows executables are now also detected from the file contents, so an `.exe` renamed to `report.pdf` is rejected. See [channel file support](concepts/channels.md#file-support).
 
