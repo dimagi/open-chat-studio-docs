@@ -244,15 +244,6 @@ Migration mode is a per-server setting, and the source and target need **opposit
 **Sync fails because secrets can't be unsealed**
 : The source has sealed secret fields for the team, but `sync_team` wasn't given a matching private key. Pass `--private-key-path` pointing at the private key from [step 3](#3-generate-an-encryption-key-pair-and-register-the-public-key).
 
-**Sync fails with `UnresolvedForeignKey`**
-: A row refers to a parent that the sync cannot find on the source, usually because the parent was deleted or is outside the chatbot selection. The sync re-reads the parent's data before it fails, so a parent created on the source during the run does not cause this error.
-
-**Sync pauses with rate-limit (429) responses**
-: The sync waits for the source's `Retry-After` period and retries automatically. No action is needed.
-
-**Data edited on the target is not overwritten by the sync**
-: This is expected. The sync keeps target edits to sessions, chats, participants, and participant data. The report lists how many rows were kept for each model.
-
 **Files are missing or broken on the target**
 : The synced file records point at storage keys from the source. Confirm the files were uploaded to the target's storage backend under the exact same keys as in the exported zip (see [step 2](#2-export-your-teams-files-source-server)).
 
