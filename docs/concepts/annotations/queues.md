@@ -45,7 +45,7 @@ A queue that has never been saved since field ordering was introduced has no ord
 A queue has a name, an optional description, a schema, a list of assignees and a **Reviews required** setting. To set one up, see [Create an Annotation Queue and Add Items](../../how-to/annotations/create-a-queue.md).
 
 !!! tip "Multiple reviews"
-    Setting **Reviews required** to more than 1 is useful when you want multiple reviewers to independently annotate the same item — for example, to measure inter-rater agreement or to get a consensus rating. An item is marked **Completed** only when it has received the required number of reviews.
+    Set **Reviews required** to more than 1 when you want several reviewers to annotate the same item independently, for example to measure inter-rater agreement or to get a consensus rating. An item is marked **Completed** only when it has received the required number of reviews.
 
 ### Queue Status
 
@@ -58,7 +58,8 @@ A queue has a name, an optional description, a schema, a list of assignees and a
 
 ## Changing Reviews Required After Annotation Starts
 
-You can change the **Reviews required** setting on a queue even after annotation is underway. Because this affects how item statuses are calculated, the system recomputes the status of every non-flagged item when you save the change.
+You can change the **Reviews required** setting on a queue even after annotation is underway.
+Because this affects how item statuses are calculated, the system recomputes the status of every item that is not Flagged when you save the change.
 
 Before applying the change, a confirmation dialog summarises what will happen. Review it carefully before confirming.
 

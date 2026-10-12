@@ -1,8 +1,13 @@
 # Annotating
 
-Reviewers work through a queue one item at a time. They submit an annotation, edit it, skip the item or flag it. This page explains how an item moves between statuses and how conflicting reviews are resolved. For the steps a reviewer follows, see [Annotate Queue Items](../../how-to/annotations/annotate-items.md).
+Reviewers work through a queue one item at a time.
+They submit an annotation, edit it, skip the item or flag it.
+This page explains how an item moves between statuses and how conflicting reviews are resolved.
+For the steps a reviewer follows, see [Annotate Queue Items](../../how-to/annotations/annotate-items.md).
 
-Flagging marks an item that cannot be annotated, such as one with missing content or a corrupted session. The reviewer must give a reason, which is recorded with their name and the time. Flagged items are excluded from the annotation sequence until a queue manager unflags them.
+Flagging marks an item that cannot be annotated, such as one with missing content or a corrupted session.
+The reviewer must give a reason, which is recorded with their name and the time.
+Flagged items are excluded from the annotation sequence until a queue manager unflags them.
 
 ## Item Status Lifecycle
 

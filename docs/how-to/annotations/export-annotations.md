@@ -5,11 +5,14 @@ The queue detail page shows aggregate scores.
 An export gives you every individual answer.
 Use it to compare how closely reviewers agree, to run your own statistics in a spreadsheet, or to prepare labelled sessions for model training.
 
-This guide shows how to download the submitted annotations from a queue as a CSV or JSONL file. For the columns and fields in each file, see [Annotation Export Format](../../tech-hub/annotations/export-format.md).
+This guide shows how to download the submitted annotations from a queue as a CSV or JSONL file.
+For the columns and fields in each file, see [Annotation Export Format](../../tech-hub/annotations/export-format.md).
 
 ## Prerequisites
 
-- A queue where at least one reviewer has submitted an annotation. See [Annotate Queue Items](annotate-items.md). Items in any status are exported, including items that are still waiting for more reviews. Items with no annotations are not.
+- A queue where at least one reviewer has submitted an annotation. See [Annotate Queue Items](annotate-items.md).
+  Items in any status are exported, including items that are still waiting for more reviews.
+  Items with no annotations are not exported, unless they are flagged.
 - Permission to view annotations. See [User Groups](../../concepts/team/groups.md).
 
 ## Export a Queue
@@ -21,4 +24,6 @@ This guide shows how to download the submitted annotations from a queue as a CSV
 
 ## Expected Outcome
 
-Your browser downloads a file named after the queue, ending in `_annotations.csv` or `_annotations.jsonl`. It contains every submitted annotation, with each reviewer's answers side by side. Flagged items are included even when they have no annotations.
+Your browser downloads a file named after the queue, ending in `_annotations.csv` or `_annotations.jsonl`.
+It contains every submitted annotation, with each reviewer's answers side by side.
+Flagged items are included even when they have no annotations.

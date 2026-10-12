@@ -27,7 +27,7 @@ Each exported item carries these fields:
 
 ## Reviewer Answers
 
-Each reviewer's answers to the schema fields are attached per format:
+Each reviewer's answers to the schema fields are added differently in each format:
 
 - **CSV** adds a `field` column (the schema field name) and one column per reviewer email. Each row is one item/field combination; the reviewer columns hold that reviewer's value, blank where they did not answer.
 - **JSONL** adds a `fields` object shaped `{field: {reviewer_email: value}}`. A field a reviewer did not answer is `null`, and values keep their JSON types (numbers stay numbers).
@@ -47,4 +47,4 @@ Example JSONL record:
 ```
 
 !!! note
-    In CSV exports, `flags` is JSON-serialized into a single cell. Use JSONL if you need to process flag entries or field values programmatically without parsing JSON from within a column.
+    In CSV exports, `flags` is serialized as JSON in a single cell. Use JSONL if you need to process flag entries or field values programmatically without parsing JSON from within a column.
