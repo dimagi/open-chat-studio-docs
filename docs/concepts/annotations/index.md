@@ -1,10 +1,12 @@
 # Annotations
 
-**Annotations** is a human review system for labeling and evaluating chatbot sessions and messages. It lets teams collect structured feedback from reviewers — useful for data quality checks, content moderation, chatbot evaluation, and training dataset creation.
+Annotations are a **manual evaluation method**. Domain experts review chatbot sessions and messages in an annotation queue and record scores, labels and comments against a schema you define.
+
+Use annotations when automated checks can't judge quality reliably, such as tone, correctness in your domain, or policy compliance. The human judgments give you ground truth for [evaluations](../evaluations/index.md): you can turn reviewed sessions into an [evaluation dataset](../evaluations/dataset.md), or check how closely an [LLM judge](../evaluations/evaluators.md#llm-evaluator) agrees with your reviewers.
 
 ## Overview
 
-The annotations system is built around **queues** — organized collections of items that reviewers work through sequentially. Each queue defines a custom set of fields (the schema) that reviewers fill in for every item.
+The annotations system is built around **queues** — ordered lists of items that reviewers work through one at a time. Each queue defines a custom set of fields (the schema) that reviewers fill in for every item.
 
 ```mermaid
 flowchart LR
@@ -26,18 +28,18 @@ flowchart LR
 : The set of fields reviewers fill in. Defined per queue. Supports integer, float, string, and choice (enum) field types.
 
 **Annotation Items**
-: Individual sessions added to a queue. Each item moves through a lifecycle: Pending → In Progress → Completed (or Flagged).
+: Individual sessions or messages added to a queue. Each item moves through a lifecycle: Pending → In Progress → Completed. On queues that need more than one review, items pass through Awaiting resolution before Completed. Reviewers can flag an item at any point before it completes. See [Item Status Lifecycle](annotating.md#item-status-lifecycle).
 
 **Annotations**
-: A single reviewer's submitted responses for one item. Each reviewer can annotate each item only once.
+: A single reviewer's submitted responses for one item. Each reviewer can annotate each item only once, but can edit their own annotation afterwards. When reviewers disagree, one annotation is marked **authoritative** and used for aggregate scores.
 
 ## Use Cases
 
 - **Quality assurance** — have reviewers rate conversation quality on a defined scale
 - **Content moderation** — flag problematic sessions and categorize issues
-- **Chatbot evaluation** — collect human judgments alongside automated [evaluations](../evaluations/index.md)
-- **Dataset labeling** — annotate sessions for downstream model training or fine-tuning
-- **Inter-rater reliability** — configure multiple reviews per item to measure reviewer agreement
+- **Chatbot evaluation** — collect human judgments alongside automated [evaluations](../evaluations/index.md), for example to check an LLM judge against reviewer scores
+- **Dataset labeling** — annotate sessions for downstream model training or fine-tuning, or [import them into an evaluation dataset](../../how-to/evaluations/create-a-dataset.md#import-from-an-annotation-queue)
+- **Inter-rater agreement** — configure multiple reviews per item to measure how closely reviewers agree
 
 ## Roles
 
@@ -51,7 +53,8 @@ flowchart LR
 
 ## Getting Started
 
-1. [Create an annotation queue](queues.md#creating-a-queue) with a schema and assignees
-2. [Add sessions](queues.md#adding-items) to the queue
-3. Assignees [work through items](annotating.md) and submit annotations
-4. Review progress and [export results](queues.md#exporting-results)
+1. [Create an annotation queue](../../how-to/annotations/create-a-queue.md) with a schema and assignees
+2. [Add sessions](../../how-to/annotations/create-a-queue.md#add-items-to-the-queue) to the queue
+3. Assignees [work through items](../../how-to/annotations/annotate-items.md) and submit annotations
+4. If the queue needs several reviews per item, reviewers [resolve conflicts](annotating.md#resolving-multi-reviewer-conflicts) by marking one annotation authoritative
+5. Review progress and [export results](queues.md#exporting-results)
