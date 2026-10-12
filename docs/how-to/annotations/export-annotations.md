@@ -1,6 +1,9 @@
 # Export Annotations
 
-Export annotations to analyse reviewers' answers outside Open Chat Studio. The queue detail page shows aggregate scores. An export gives you every individual answer. Use it, for example, to compare how closely reviewers agree, to run your own statistics in a spreadsheet, or to prepare labelled sessions for model training or fine-tuning.
+Export annotations to analyse reviewers' answers outside Open Chat Studio.
+The queue detail page shows aggregate scores.
+An export gives you every individual answer.
+Use it to compare how closely reviewers agree, to run your own statistics in a spreadsheet, or to prepare labelled sessions for model training.
 
 This guide shows how to download the submitted annotations from a queue as a CSV or JSONL file. For the columns and fields in each file, see [Annotation Export Format](../../tech-hub/annotations/export-format.md).
 
@@ -11,7 +14,7 @@ This guide shows how to download the submitted annotations from a queue as a CSV
 
 ## Export a Queue
 
-1. In the left sidebar, open **Annotations** and click the annotation queue you want get data from.
+1. In the left sidebar, open **Annotations** and click the annotation queue you want to get data from.
 2. On the queue detail page, click **Export CSV** or **Export JSONL**.
    - Use **CSV** to open the results in a spreadsheet.
    - Use **JSONL** to process the results programmatically.
