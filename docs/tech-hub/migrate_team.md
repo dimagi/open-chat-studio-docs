@@ -182,27 +182,7 @@ After each pass, the command prints a line in this form, then waits `--interval`
 pass N: X rows synced, last new row T ago
 ```
 
-To stop the command:
-
-- Press **Ctrl+C** (or send `SIGTERM`) once to stop after the current page finishes.
-- Press **Ctrl+C** a second time to abort immediately.
-
-When the command stops, it prints a report.
-The report includes the number of rows synced per model, plus the number of rows adopted and the number of rows kept because the target was edited (see [How the sync handles existing and changed data](#how-the-sync-handles-existing-and-changed-data)).
-
-### How the sync handles existing and changed data
-
-Each pass reads every resource page by page from its stored cursor and stores the cursor after each page commits.
-The sync applies these rules:
-
-- **Unchanged rows are skipped.** A row with the same source `updated_at` as at the last sync is not written again.
-- **Existing participants are adopted.** If a participant or participant data row has not been imported yet, and the target already has one with the same unique key, the sync maps the source row onto the target row. The target row is left unchanged.
-- **Target edits are kept.** If a session, chat, participant, or participant data row on the target has an `updated_at` later than the last revision the sync wrote, the sync leaves the row unchanged.
-- **Rows created during the sync are caught up.** If a row's parent has no translation yet, the sync re-reads the parent's resource and retries the row. This lets the sync keep up with a source that is still receiving traffic. If the parent is still missing, for example because it was deleted or is outside the chatbot selection, the sync fails with `UnresolvedForeignKey`.
-- **Rate limits are retried.** If the source returns a `429` response, the sync waits for the `Retry-After` period and retries. If the header is missing, it uses its normal backoff.
-
-!!! note "Known limitation"
-    A nullable foreign key that points to a parent created during the same run is set to null. It is not caught up.
+Press **Ctrl+C** to stop the command. When it stops, it prints a report of the rows it synced.
 
 ## 7. Re-register channel webhooks (target server)
 
