@@ -139,6 +139,8 @@ The arguments are:
 - `--team-slug` — the slug of the team you're migrating.
 - `--private-key-path` — the path to the private key you copied to the target server ([step 3](#3-generate-an-encryption-key-pair-and-register-the-public-key)). Alternatively, set the `SYNC_TEAM_PRIVATE_KEY` environment variable to the private key's PEM contents instead of passing a path. This is often easier in a containerized environment, where you can inject it as a secret rather than mounting a key file. If both are provided, `--private-key-path` takes precedence.
 - `--state-dir` — the directory where the checkpoint SQLite database is stored. Point every rerun at the same directory so the command can resume from where it left off.
+- `--follow` (optional) — keep the command running after the first pass and pull new rows from the source on a repeating interval. See [Keep the sync running with --follow](#keep-the-sync-running-with-follow).
+- `--interval` (optional) — the number of seconds to wait between passes when you use `--follow`. The default is 10.
 
 Where you run this depends on how you run OCS:
 
@@ -154,10 +156,53 @@ docker compose exec web python manage.py sync_team \
   --state-dir "/path/to/state-dir"
 ```
 
-The command creates a SQLite tracking database named after the team slug in the `--state-dir` directory. It's safe to run `sync_team` again at any point — each run picks up only what's changed since the last run, so you can use it to pull in a delta later (see [step 8](#8-verify-and-do-a-final-sync)).
+The command creates a SQLite tracking database named after the team slug in the `--state-dir` directory. It's safe to run `sync_team` again at any point — each run picks up only what's changed since the last run, so you can use it to pull in a delta later (see [step 8](#8-verify-and-do-a-final-sync)), or run it continuously with `--follow`.
 
 !!! warning "Persist the state directory in containerized environments"
     In a containerized environment, the state directory won't survive container restarts or redeployments unless you persist it. Either bind mount `--state-dir` to a durable location on the host, or manually copy it out and back in if you plan to restart or redeploy the container before running the command again. If the state directory is lost, the next run starts from scratch instead of resuming.
+
+### Keep the sync running with --follow
+
+By default, `sync_team` makes one pass over the source and exits.
+With `--follow`, it keeps running, so you can leave it running through the channel cutover in [step 7](#7-re-register-channel-webhooks-target-server) instead of doing a separate final run afterwards.
+
+```bash
+python manage.py sync_team \
+  --source-url "https://www.openchatstudio.com" \
+  --api-key "<your-api-key>" \
+  --team-slug "<team-slug>" \
+  --private-key-path "/path/to/privkey.pem" \
+  --state-dir "/path/to/state-dir" \
+  --follow
+```
+
+After each pass, the command prints a line in this form, then waits `--interval` seconds and starts the next pass from its stored cursors:
+
+```text
+pass N: X rows synced, last new row T ago
+```
+
+To stop the command:
+
+- Press **Ctrl+C** (or send `SIGTERM`) once to stop after the current page finishes.
+- Press **Ctrl+C** a second time to abort immediately.
+
+When the command stops, it prints a report.
+The report includes the number of rows synced per model, plus the number of rows adopted and the number of rows kept because the target was edited (see [How the sync handles existing and changed data](#how-the-sync-handles-existing-and-changed-data)).
+
+### How the sync handles existing and changed data
+
+Each pass reads every resource page by page from its stored cursor and stores the cursor after each page commits.
+The sync applies these rules:
+
+- **Unchanged rows are skipped.** A row with the same source `updated_at` as at the last sync is not written again.
+- **Existing participants are adopted.** If a participant or participant data row has not been imported yet, and the target already has one with the same unique key, the sync maps the source row onto the target row. The target row is left unchanged.
+- **Target edits are kept.** If a session, chat, participant, or participant data row on the target has an `updated_at` later than the last revision the sync wrote, the sync leaves the row unchanged.
+- **Rows created during the sync are caught up.** If a row's parent has no translation yet, the sync re-reads the parent's resource and retries the row. This lets the sync keep up with a source that is still receiving traffic. If the parent is still missing, for example because it was deleted or is outside the chatbot selection, the sync fails with `UnresolvedForeignKey`.
+- **Rate limits are retried.** If the source returns a `429` response, the sync waits for the `Retry-After` period and retries. If the header is missing, it uses its normal backoff.
+
+!!! note "Known limitation"
+    A nullable foreign key that points to a parent created during the same run is set to null. It is not caught up.
 
 ## 7. Re-register channel webhooks (target server)
 
@@ -166,6 +211,9 @@ Once the team's data has synced, channel webhooks still point at the source serv
 ```bash
 python manage.py reregister_webhooks --team-slug "<team-slug>"
 ```
+
+To avoid losing messages that arrive during the switch, start `sync_team` with `--follow` before you run this command, and leave it running in another shell.
+See [Keep the sync running with --follow](#keep-the-sync-running-with-follow).
 
 Whether a channel updates automatically depends on its **messaging provider**, not just the platform:
 
@@ -189,7 +237,15 @@ A few channel types aren't handled by this command at all and must be repointed 
 
 ## 8. Verify and do a final sync
 
-Test each channel against the target server and confirm chatbots respond as expected. Once you've confirmed everything is working, run `sync_team` one more time to pull in any messages or updates that arrived on the source while you were switching channels over.
+Test each channel against the target server and confirm chatbots respond as expected.
+
+If `sync_team --follow` is running:
+
+1. After all webhooks point at the target, watch the pass output.
+2. When the passes report no new rows for a few minutes, the remaining data has been copied.
+3. Press **Ctrl+C** to stop the command.
+
+If you did not use `--follow`, run `sync_team` one more time to pull in any messages or updates that arrived on the source while you were switching channels over.
 
 ## After the migration
 
@@ -207,6 +263,15 @@ Migration mode is a per-server setting, and the source and target need **opposit
 
 **Sync fails because secrets can't be unsealed**
 : The source has sealed secret fields for the team, but `sync_team` wasn't given a matching private key. Pass `--private-key-path` pointing at the private key from [step 3](#3-generate-an-encryption-key-pair-and-register-the-public-key).
+
+**Sync fails with `UnresolvedForeignKey`**
+: A row refers to a parent that the sync cannot find on the source, usually because the parent was deleted or is outside the chatbot selection. The sync re-reads the parent's data before it fails, so a parent created on the source during the run does not cause this error.
+
+**Sync pauses with rate-limit (429) responses**
+: The sync waits for the source's `Retry-After` period and retries automatically. No action is needed.
+
+**Data edited on the target is not overwritten by the sync**
+: This is expected. The sync keeps target edits to sessions, chats, participants, and participant data. The report lists how many rows were kept for each model.
 
 **Files are missing or broken on the target**
 : The synced file records point at storage keys from the source. Confirm the files were uploaded to the target's storage backend under the exact same keys as in the exported zip (see [step 2](#2-export-your-teams-files-source-server)).
