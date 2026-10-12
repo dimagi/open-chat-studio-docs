@@ -59,4 +59,4 @@ flowchart LR
 2. [Add sessions](../../how-to/annotations/create-a-queue.md#add-items-to-the-queue) to the queue
 3. Assignees [work through items](../../how-to/annotations/annotate-items.md) and submit annotations
 4. If the queue needs several reviews per item, reviewers [resolve conflicts](annotating.md#resolving-multi-reviewer-conflicts) by marking one annotation authoritative
-5. Review progress and [export results](queues.md#exporting-results)
+5. Review progress and [export results](../../how-to/annotations/export-annotations.md)

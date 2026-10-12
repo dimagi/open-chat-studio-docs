@@ -133,6 +133,7 @@ nav:
     - Annotations:
       - Create a Queue and Add Items: how-to/annotations/create-a-queue.md
       - Annotate Queue Items: how-to/annotations/annotate-items.md
+      - Export Annotations: how-to/annotations/export-annotations.md
     - Evaluations:
       - Create a Dataset: how-to/evaluations/create-a-dataset.md
       - Real-Time LLM Judge: how-to/evaluations/realtime_llm_judge.md
@@ -220,6 +221,8 @@ nav:
       - Dataset Structure: tech-hub/evaluations/dataset-structure.md
       - Python Evaluator: tech-hub/evaluations/python_evaluator.md
       - Auto-Population Rules: tech-hub/evaluations/auto_population.md
+    - Annotations:
+      - Export Format: tech-hub/annotations/export-format.md
     - OCS API:
       - api/index.md
       - api/getting_started_with_oauth.md
