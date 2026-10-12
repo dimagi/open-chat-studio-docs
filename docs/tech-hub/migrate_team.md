@@ -139,7 +139,7 @@ The arguments are:
 - `--team-slug` — the slug of the team you're migrating.
 - `--private-key-path` — the path to the private key you copied to the target server ([step 3](#3-generate-an-encryption-key-pair-and-register-the-public-key)). Alternatively, set the `SYNC_TEAM_PRIVATE_KEY` environment variable to the private key's PEM contents instead of passing a path. This is often easier in a containerized environment, where you can inject it as a secret rather than mounting a key file. If both are provided, `--private-key-path` takes precedence.
 - `--state-dir` — the directory where the checkpoint SQLite database is stored. Point every rerun at the same directory so the command can resume from where it left off.
-- `--follow` (optional) — keep the command running after the first pass and pull new rows from the source on a repeating interval. See [Keep the sync running with --follow](#keep-the-sync-running-with-follow).
+- `--follow` (optional) — keep the command running after the first pass and pull new rows from the source on a repeating interval. See [Run the sync continuously](#run-the-sync-continuously).
 - `--interval` (optional) — the number of seconds to wait between passes when you use `--follow`. The default is 10.
 
 Where you run this depends on how you run OCS:
@@ -161,7 +161,7 @@ The command creates a SQLite tracking database named after the team slug in the 
 !!! warning "Persist the state directory in containerized environments"
     In a containerized environment, the state directory won't survive container restarts or redeployments unless you persist it. Either bind mount `--state-dir` to a durable location on the host, or manually copy it out and back in if you plan to restart or redeploy the container before running the command again. If the state directory is lost, the next run starts from scratch instead of resuming.
 
-### Keep the sync running with --follow
+### Run the sync continuously
 
 By default, `sync_team` makes one pass over the source and exits.
 With `--follow`, it keeps running, so you can leave it running through the channel cutover in [step 7](#7-re-register-channel-webhooks-target-server) instead of doing a separate final run afterwards.
@@ -194,7 +194,7 @@ Once the team's data has synced, channel webhooks still point at the source serv
     1. `sync_team` has exported all rows from the source.
     2. Traffic is quiet: `sync_team --follow` passes report 0 rows synced. This is typically late at night.
 
-    Leave `sync_team --follow` running in another shell while you switch over. See [Keep the sync running with --follow](#keep-the-sync-running-with-follow).
+    Leave `sync_team --follow` running in another shell while you switch over. See [Run the sync continuously](#run-the-sync-continuously).
 
 Re-point the webhooks by running:
 
