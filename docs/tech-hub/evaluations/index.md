@@ -6,6 +6,8 @@ For a non-technical overview of datasets, evaluators, and how evaluation runs wo
 
 ## Evaluation Execution
 
+For the steps to create and start a run, see [Run an Evaluation](../../how-to/evaluations/run-an-evaluation.md).
+
 When an evaluation is run, each message from the dataset is first passed into the defined chatbot (if applicable). The result, with the added generation output, is then passed into each evaluator in parallel. The evaluators output structured data. This data is compiled into a table, whose rows are each message and the columns are the evaluator output.
 
 ```mermaid

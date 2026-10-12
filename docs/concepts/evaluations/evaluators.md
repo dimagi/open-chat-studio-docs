@@ -115,14 +115,3 @@ An archived evaluator cannot be deleted while its results exist, so the **Delete
 
 !!! note
     Neither archiving nor deleting an evaluator is allowed while a run that uses it is in progress.
-
-## Clearing Run History
-
-The evaluation runs page includes a **Clear all** button that deletes the entire run history for an evaluation config in a single action. This button is only shown to OCS users who have delete permission for evaluation runs.
-
-Clearing run history also removes the tags that those runs applied to their targets. Only tags that were applied by the evaluator's tag rules are removed — tags that a person added by hand are left untouched.
-
-!!! warning "Clearing run history is permanent"
-    Deleted runs and their results cannot be recovered. Export any results you need to keep before using **Clear all**.
-
-A confirmation prompt appears before the action runs.

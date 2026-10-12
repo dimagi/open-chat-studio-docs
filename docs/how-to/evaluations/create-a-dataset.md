@@ -102,3 +102,7 @@ Use this method to bulk-load message pairs from a file for a **message-level** d
 4. Click **Create Dataset**.
 
 For column naming conventions, dot-notation for nested fields, and JSON structure examples, see the [CSV Format](../../tech-hub/evaluations/dataset-structure.md#csv-format) reference.
+
+## Next Steps
+
+Pair the dataset with evaluators and score it. See [Run an Evaluation](run-an-evaluation.md).

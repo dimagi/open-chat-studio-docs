@@ -87,7 +87,7 @@ See [Tag Rules](../../concepts/evaluations/tag_rules.md) for the full set of con
 
 ## Step 5: Create an evaluation config with auto-run enabled
 
-Create an **evaluation config** that references:
+Create an **evaluation config** (see [Run an Evaluation](run-an-evaluation.md#create-an-evaluation)) that references:
 
 - The dataset from Step 1.
 - The LLM evaluator from Step 3.

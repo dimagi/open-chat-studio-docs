@@ -132,6 +132,7 @@ nav:
       - Find Where a Provider Is Used: how-to/find_provider_usages.md
     - Evaluations:
       - Create a Dataset: how-to/evaluations/create-a-dataset.md
+      - Run an Evaluation: how-to/evaluations/run-an-evaluation.md
       - Real-Time LLM Judge: how-to/evaluations/realtime_llm_judge.md
     - Migration & Deprecated:
       - how-to/assistants_migration.md
