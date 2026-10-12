@@ -103,6 +103,7 @@ nav:
       - Add a Custom LLM Model: how-to/add_custom_llm_model.md
       - how-to/workflow_cookbook.md
       - how-to/add_a_knowledge_base.md
+      - Import CSV/TSV Rows into a Collection: how-to/import_csv_tsv_rows.md
       - Router Nodes:
         - how-to/routers/index.md
         - Configure LLM Router: how-to/routers/llm_router.md

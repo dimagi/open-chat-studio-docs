@@ -31,6 +31,11 @@ Speech service providers enable voice capabilities in Open Chat Studio, includin
 
 When you create or edit an ElevenLabs provider, OCS fetches and stores the voices available in your ElevenLabs account. You can trigger a manual re-sync from the provider's edit page to pick up newly added voices.
 
+!!! note
+    Voice sync requires an API key with the `voices_read` permission.
+    If the key lacks this permission, ElevenLabs rejects the request and OCS shows the error message from ElevenLabs, for example that the key is missing the permission `voices_read`.
+    To fix this, update the key's permissions in ElevenLabs, then re-sync voices from the provider's edit page.
+
 **Custom voices:** Custom voices must be created directly in ElevenLabs. OCS does not support creating custom voices. Once created in ElevenLabs, they will be synced to OCS the next time a sync runs (automatically on provider creation, or manually on request).
 
 OCS does not support creating custom voices directly — manage your voice library in ElevenLabs and let OCS sync the results.
