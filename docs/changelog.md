@@ -13,6 +13,7 @@ hide:
 
 ## Oct 12, 2026
 * **BUG** The [evaluations](concepts/evaluations/index.md) table now loads faster, especially for teams with many evaluations. Previously it ran several extra database queries for each row.
+* **NEW** `sync_team` has a new `--follow` flag for the cutover: the command keeps running after the first pass and pulls new rows from the source every `--interval` seconds (default 10) until you stop it with Ctrl+C. `sync_team` also no longer stops when the source creates rows during the sync, retries after rate-limit responses from the source, and keeps edits made on the target to sessions, chats and participants. See [team migration](tech-hub/migrate_team.md).
 
 ## Oct 9, 2026
 * **CHANGE** Participants can no longer send executable or installer files (such as `.exe`, `.msi` or `.dmg`) to a chatbot on any channel. Email already blocked these; the block now also applies to WhatsApp, the chat widget, the chat API and in-app chat. On the widget, chat API and in-app chat the upload is rejected with an error naming the file. On WhatsApp and email the file is dropped and a note is added to the message text so the chatbot can tell the participant. Windows executables are now also detected from the file contents, so an `.exe` renamed to `report.pdf` is rejected. See [channel file support](concepts/channels.md#file-support).
