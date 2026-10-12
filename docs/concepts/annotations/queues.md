@@ -40,17 +40,9 @@ A queue that has never been saved since field ordering was introduced has no ord
 !!! tip "Keyboard and screen reader support"
     Use the up/down buttons instead of dragging if you prefer not to use drag-and-drop.
 
-## Creating a Queue
+## Queue Settings
 
-Navigate to **Annotation Queues** in the left sidebar and click **New Queue**.
-
-| Field | Description |
-|-------|-------------|
-| **Name** | Unique name for this queue within your team |
-| **Description** | Optional context for reviewers |
-| **Schema** | Add one or more annotation fields (see above) |
-| **Assignees** | Team members who will review items in this queue |
-| **Reviews required** | Number of independent reviews needed per item (1–10, default: 1) |
+A queue has a name, an optional description, a schema, a list of assignees and a **Reviews required** setting. To set one up, see [Create an Annotation Queue and Add Items](../../how-to/annotations/create-a-queue.md).
 
 !!! tip "Multiple reviews"
     Setting **Reviews required** to more than 1 is useful when you want multiple reviewers to independently annotate the same item — for example, to measure inter-rater agreement or to get a consensus rating. An item is marked **Completed** only when it has received the required number of reviews.
@@ -87,30 +79,7 @@ When you increase **Reviews required** from 1 to more than 1, any authoritative 
 
 ## Adding Items
 
-Items can be added to a queue in three ways.
-
-### 1. Session Selector
-
-From the queue detail page, click **Add Sessions**. This opens a filterable table of experiment sessions. You can then choose how many sessions to add:
-
-| Mode | Description |
-|------|-------------|
-| **Selected only** (default) | Add only the sessions you've checked |
-| **All matching filters** | Add every session matching the current filter criteria |
-| **Sample** | Add a random percentage of sessions matching the current filters |
-
-!!! note
-    A confirmation prompt is shown for bulk operations (all matching, or large samples).
-
-Sessions that are already in the queue are excluded from the selector.
-
-### 2. Import from Evaluations Dataset
-
-Click **Import from Dataset** on the queue detail page to add sessions from an existing [evaluations dataset](../evaluations/dataset.md). This is useful when you want to annotate the same set of sessions you used for automated evaluations.
-
-### 3. From a Session Detail Page
-
-On any session detail page, use the **Add to Queue** button to add that session directly to one or more annotation queues.
+Items are sessions that reviewers will annotate. You can add them from a filterable session selector, by importing the sessions of an [evaluation dataset](../evaluations/dataset.md), or from a session's detail page. Sessions already in the queue are skipped. For the steps, see [Create an Annotation Queue and Add Items](../../how-to/annotations/create-a-queue.md#add-items-to-the-queue).
 
 ## Monitoring Progress
 

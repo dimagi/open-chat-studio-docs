@@ -1,61 +1,8 @@
 # Annotating
 
-This page covers the reviewer workflow — how to work through an annotation queue, submit annotations, skip items, and flag items for follow-up.
+Reviewers work through a queue one item at a time. They submit an annotation, edit it, skip the item or flag it. This page explains how an item moves between statuses and how conflicting reviews are resolved. For the steps a reviewer follows, see [Annotate Queue Items](../../how-to/annotations/annotate-items.md).
 
-## Accessing Your Queues
-
-Navigate to **Annotation Queues** in the sidebar. You will see all queues you are assigned to (or all team queues, if you have queue management permissions).
-
-!!! note "Annotation Reviewer role"
-    If you have the **Annotation Reviewer** role, you will only see queues you are directly assigned to, and the navigation will be simplified to show only annotation-related pages.
-
-## Starting Annotation
-
-From the queue detail page, click **Start Annotating**. This begins a sequential review session — items are presented one at a time, oldest first.
-
-The annotation UI has two panels:
-
-- **Left panel** — the item content (chat history, participant data, session state)
-- **Right panel** — the annotation form with the queue's schema fields, shown in the [order the queue's author set](queues.md#field-order)
-
-For session items, the left panel shows:
-
-- Full conversation history with role indicators (human/assistant), message content, and timestamps
-- **Participant Data** tab — any data stored against the participant
-- **Session State** tab — the session's current state variables
-
-## Submitting an Annotation
-
-Fill in the annotation form fields and click **Submit**. Each reviewer can submit only one annotation per item.
-
-After submission, the next item is loaded automatically.
-
-!!! tip "Progress indicator"
-    The annotation page shows your personal progress (items you've reviewed vs. total items in the queue).
-
-## Editing Your Annotation
-
-If you need to revise an annotation you've already submitted, open the item from the queue and click **Edit** next to your annotation in the annotations list. The annotation form opens pre-filled with your existing responses — make your changes and click **Save**, or **Cancel** to discard them. Saving updates the annotation in place and recomputes the queue's aggregate stats.
-
-You can only edit your own annotations; annotations submitted by other reviewers remain read-only.
-
-## Skipping an Item
-
-If you want to come back to an item later, click **Skip**. The item will remain in the queue and you'll be shown the next one. Skipped items will appear again when you've gone through all other available items.
-
-## Flagging an Item
-
-If an item has an issue that prevents annotation — for example, missing content, a corrupted session, or content that needs admin review — use **Flag** and provide a reason.
-
-| Aspect | Detail |
-|--------|--------|
-| **Effect** | Item status changes to **Flagged** |
-| **Reason** | Required — explain why you flagged it |
-| **History** | Flag reasons are recorded with the reviewer's name and timestamp (append-only) |
-| **Unflagging** | Queue managers can unflag an item to return it to the review workflow |
-
-!!! note
-    Flagged items are excluded from the annotation workflow — they won't appear in the normal annotation sequence until unflagged by a manager.
+Flagging marks an item that cannot be annotated, such as one with missing content or a corrupted session. The reviewer must give a reason, which is recorded with their name and the time. Flagged items are excluded from the annotation sequence until a queue manager unflags them.
 
 ## Item Status Lifecycle
 
@@ -99,6 +46,6 @@ Clicking **Mark authoritative** on an annotation flips the item to **Completed**
 
 ## Read-Only View
 
-When you open an item you've already annotated, the item content and the annotations list are shown without the submission form — each reviewer can only submit one annotation per item, but you can revise your own via the **Edit** action (see [Editing Your Annotation](#editing-your-annotation)).
+When you open an item you've already annotated, the item content and the annotations list are shown without the submission form — each reviewer can only submit one annotation per item, but you can revise your own with the **Edit** action (see [Edit Your Annotation](../../how-to/annotations/annotate-items.md#edit-your-annotation)).
 
 If you don't have annotation permissions, the item is fully read-only: you can see the content and any existing annotations, but cannot submit or edit.
