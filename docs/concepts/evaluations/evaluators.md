@@ -6,9 +6,9 @@ You can run several evaluators over the same dataset at once, so a single evalua
 
 Each evaluator works in one of two **evaluation modes** — **message-level** (judging a single response) or **session-level** (judging a whole conversation) — and must match the mode of the dataset it's used with. Evaluators using the wrong mode for a dataset are hidden when you set up an evaluation.
 
-## Evaluator Types
+## Evaluator types
 
-### LLM Evaluator
+### LLM evaluator
 The LLM Evaluator uses language models to evaluate responses based on a custom prompt. This can be used as an [LLM-as-judge](../../how-to/evaluations/realtime_llm_judge.md) to evaluate the performance of a chatbot, or to gain insight into the properties of both the user and assistant messages.
 
 For the how-to guide, see [Set Up a Real-Time LLM Judge](../../how-to/evaluations/realtime_llm_judge.md).
@@ -30,7 +30,7 @@ Consider the conversation context: {context.topic}
 
     If your team runs evaluations with generation enabled, your team's total cost may be higher than you remember, since this spend is now captured. No chatbot, participant, or conversation becomes more expensive — the cost was simply not being recorded before.
 
-### Template Variables
+### Template variables
 
 The available variables depend on the evaluator's evaluation mode.
 
@@ -62,7 +62,7 @@ In session-level mode, `{input.content}` and `{output.content}` are empty. Use t
 
 See [Evaluation Datasets](dataset.md) for how data is mapped into these fields, and [Dataset Structure](../../tech-hub/evaluations/dataset-structure.md#dataset-fields) for where `participant_data` and `session_state` come from.
 
-### Output Schema
+### Output schema
 
 The output schema defines the metrics that the LLM should attempt to output. Each item in the schema will become a column in the output table. You can specify the data type for each field to ensure structured, validated output.
 
@@ -88,13 +88,13 @@ Occasionally the model returns no structured output at all — it refuses in pro
 
 See [Tag Rules](./tag_rules.md) to automatically tag sessions or messages based on these output values.
 
-### Python Evaluator
+### Python evaluator
 
 Use the Python Evaluator when you need deterministic rules, custom string matching, or logic that an LLM prompt cannot reliably express. It runs custom code against each message instead of an LLM prompt.
 
 See [Python Evaluator](../../tech-hub/evaluations/python_evaluator.md) for the function signature, arguments, and a worked example.
 
-## Archiving Evaluators
+## Archiving evaluators
 
 Deleting an evaluator that has produced results or aggregates archives it instead of deleting it, so that data is not lost. An evaluator with no run history is still deleted outright.
 

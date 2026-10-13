@@ -4,7 +4,7 @@ An evaluation needs example conversations to test against. A **dataset** is that
 
 A small set of realistic examples tells you more about your chatbot than scoring everything that exists. You can build a dataset from real conversations your chatbot has already had, or write your own test cases to check specific behaviors, including edge cases your chatbot has not met yet.
 
-## Evaluation Levels
+## Evaluation levels
 
 When you create a dataset, you choose an **Evaluation level**. It decides how the dataset is structured and which evaluators can use it.
 
@@ -15,7 +15,7 @@ When you create a dataset, you choose an **Evaluation level**. It decides how th
 
 The level cannot be changed after the dataset is created. Evaluators must have the same level as the dataset, and incompatible ones are hidden when you set up an evaluation.
 
-## How Datasets Are Created
+## How datasets are created
 
 Which methods are available depends on the evaluation level.
 
@@ -27,7 +27,7 @@ Which methods are available depends on the evaluation level.
 | [Upload a CSV](../../how-to/evaluations/create-a-dataset.md#upload-csv-file) | Yes | No | You have an existing test suite or data from another tool. |
 | [Auto-population rules](../../tech-hub/evaluations/auto_population.md) | No | Yes | You want new sessions from a live chatbot added continuously. |
 
-## Sharing Dataset Messages
+## Sharing dataset messages
 
 Each row in the dataset table has a link button that copies a direct link to that message. Anyone who opens the link is taken to the message, which is highlighted. Use it to refer to a specific test case in a discussion.
 
