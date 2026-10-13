@@ -68,6 +68,17 @@ After you save the Custom Action, its actions appear in the advanced settings fo
 
 To confirm an enabled action works, see [Custom Action Testing](./test_custom_action.md).
 
+## Failure notifications
+
+When a chatbot calls a Custom Action during a conversation and the call fails, Open Chat Studio creates an **Error** [notification](../../concepts/notifications.md):
+
+- **Custom Action '*name*' failed** means the request to the external service failed, for example because it returned an error status or could not be reached.
+- **Custom Action '*name*' encountered an error** means something else went wrong while running the action.
+
+The notification names the HTTP method and operation, includes the error message, and links to the Custom Action. It goes to team members who can view Custom Actions, and repeated failures are grouped into one thread.
+
+Failure notifications report calls made by chatbots. To monitor whether the service is reachable, see [Health checks](#health-checks).
+
 ## Health checks
 
 Open Chat Studio monitors Custom Actions by automatically checking the configured service every hour.
