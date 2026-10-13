@@ -44,7 +44,8 @@ flowchart LR
 
 **Annotation Items**
 : The sessions or messages in a queue.
-  Each item has a status that shows its progress, from **Pending** to **Completed** or **Flagged**.
+  Each item has a status that shows its progress: **Pending**, **In Progress**, **Awaiting resolution** (multi-reviewer queues only), then **Completed**.
+  A reviewer can also mark an item **Flagged** for follow-up.
   See [Item Status Lifecycle](annotating.md#item-status-lifecycle).
 
 **[Annotation Schema](queues.md#annotation-schema)**

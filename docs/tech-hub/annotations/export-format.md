@@ -25,7 +25,7 @@ Each exported item carries these fields:
 | `flagged` | Whether the item is flagged |
 | `flags` | List of flag entries recorded on the item (empty when not flagged). See [Flag an Item](../../how-to/annotations/annotate-items.md#flag-an-item). |
 | `authoritative_annotator` | Email of the reviewer whose annotation was picked as authoritative for the item; blank if none has been picked. Auto-set on single-reviewer queues; chosen during resolution on multi-reviewer queues. See [Resolving Multi-Reviewer Conflicts](../../concepts/annotations/annotating.md#resolving-multi-reviewer-conflicts). |
-| `annotated_at` | Timestamp of the most recent annotation on the item |
+| `annotated_at` | ISO 8601 creation timestamp of the item's most recent annotation. For a flagged item with no annotations, this is an empty string in both CSV and JSONL. |
 
 ## Reviewer Answers
 
