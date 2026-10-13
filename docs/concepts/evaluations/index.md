@@ -30,3 +30,4 @@ You run the evaluation with the current model and note the average score, then c
 
 - [Create a Dataset](../../how-to/evaluations/create-a-dataset.md) — build your first dataset by cloning sessions, importing from an [annotation queue](../annotations/queues.md), or uploading a CSV.
 - [Run an Evaluation](../../how-to/evaluations/run-an-evaluation.md) — create an evaluation, preview and run it, and read the results.
+- [Evaluations Reference](../../tech-hub/evaluations/index.md) — how evaluation runs execute, Python evaluators and auto-population.

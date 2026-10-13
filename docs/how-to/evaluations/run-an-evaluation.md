@@ -5,13 +5,13 @@ This guide shows you how to create an evaluation, run it, and read the results. 
 ## Prerequisites
 
 - A dataset with at least one row. See [Create a Dataset](create-a-dataset.md).
-- At least one evaluator whose evaluation level matches the dataset.
+- At least one evaluator whose **Evaluation mode** matches the dataset's **Evaluation level**.
 
 ## Create an evaluation
 
 Under **Evaluations**, click **Add new** and choose:
 
-- The **Dataset** and the **Evaluators** to run. Evaluators with a different evaluation level from the dataset are hidden from the list.
+- The **Dataset** and the **Evaluators** to run. Evaluators whose mode does not match the dataset's level are hidden from the list. Until you select a dataset, only Message-mode evaluators are shown.
 - Optional: **Run generation step before evaluation**, with a **Chatbot** and **Chatbot version**, to score a response your chatbot generates instead of the one stored in the dataset. Generation is available for message-level datasets only.
 - Optional: **Auto-run when new rows are auto-populated**. See [Set Up a Real-Time LLM Judge](realtime_llm_judge.md) for how this works and what it costs.
 
@@ -81,5 +81,5 @@ Neither action works while a run is pending or processing. Wait for the run to f
 
 ## Common issues
 
-- **An evaluator is missing when creating the evaluation.** Its [evaluation level](../../concepts/evaluations/dataset.md#evaluation-levels) does not match the dataset's, or it is [archived](../../concepts/evaluations/evaluators.md#archiving-evaluators).
+- **An evaluator is missing when creating the evaluation.** Its **Evaluation mode** does not match the dataset's [evaluation level](../../concepts/evaluations/dataset.md#evaluation-levels), or it is [archived](../../concepts/evaluations/evaluators.md#archiving-evaluators).
 - **Run Evaluation shows an error.** The evaluation has no evaluators, or all of them are archived.

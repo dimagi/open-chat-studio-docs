@@ -37,7 +37,7 @@ For full details of **how ingestion works once the rule is active**, see [Auto-P
 
 ## Step 3: Create a session-level LLM evaluator
 
-Create an LLM evaluator and set its evaluation mode to **session-level** so it is compatible with the dataset from Step 1.
+Create an LLM evaluator and set its **Evaluation mode** to **Session** so it is compatible with the dataset from Step 1.
 
 In session-level prompts, `{input.content}` and `{output.content}` are empty — use `{full_history}` and `{context.[parameter]}` instead. `{generated_response}` is not available for session-level evaluators. See [Template Variables](../../concepts/evaluations/evaluators.md#template-variables) for the full reference.
 

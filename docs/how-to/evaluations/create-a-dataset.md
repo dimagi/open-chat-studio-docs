@@ -10,7 +10,8 @@ This guide walks you through each method for populating an evaluation dataset. B
 ## Create dataset
 
 1. Click the **Add new** button to view the Create Dataset view.
-2. Choose the **Evaluation level** (message-level or session-level) — this cannot be changed later and determines which creation methods/modes are available to you.
+2. Choose the **Evaluation level** (**Message level** or **Session level**) — this cannot be changed later and determines which creation options are available to you.
+3. Choose a **Dataset creation mode** from the list below.
 
 ---
 ## The dataset creation modes
@@ -22,7 +23,7 @@ This guide walks you through each method for populating an evaluation dataset. B
 
 !!! note
 
-    Open Chat Studio will show you the creation modes you can use based on the Evaluation level you have chosen.
+    Open Chat Studio shows only the creation modes available for the Evaluation level you have chosen.
 
 ### Clone from sessions
 
@@ -105,4 +106,4 @@ For column naming conventions, dot-notation for nested fields, and JSON structur
 
 ## Next steps
 
-Pair the dataset with evaluators and score it. See [Run an Evaluation](run-an-evaluation.md).
+- Pair the dataset with evaluators and score it. See [Run an Evaluation](run-an-evaluation.md).
