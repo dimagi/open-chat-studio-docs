@@ -2,10 +2,22 @@
 
 This guide shows you how to create an evaluation, run it, and read the results. An evaluation combines a [dataset](../../concepts/evaluations/dataset.md) with one or more [evaluators](../../concepts/evaluations/evaluators.md). Each run scores the dataset and records the results.
 
+```mermaid
+flowchart LR
+    create[Create] --> preview{Check a sample?}
+    preview -- Yes --> p[Preview: 10 rows]
+    p --> run
+    preview -- No --> run[Run]
+    run --> results[Read results]
+    results -- Failed messages --> fix[Fix the cause]
+    fix --> run
+    results -- Looks right --> done[Download]
+````
+
 ## Prerequisites
 
 - A dataset with at least one row. See [Create a Dataset](create-a-dataset.md).
-- At least one evaluator whose **Evaluation mode** matches the dataset's **Evaluation level**.
+- At least one evaluator whose **[Evaluation mode](../../concepts/evaluations/evaluators.md)** matches the dataset's **[Evaluation level](../../concepts/evaluations/dataset.md#evaluation-levels)**.
 
 ## Create an evaluation
 
@@ -23,7 +35,7 @@ A preview scores a sample of 10 rows from the dataset. Use it to check your eval
 
 1. Open the evaluation from the **Evaluations** list.
 2. Click **Preview**.
-3. Review the results. If they look right, click **Run evaluation** on the preview page.
+3. Review the results. If they look right, click **Run evaluation** on the preview page to do the full run.
 
 Previews are deleted after one day.
 
