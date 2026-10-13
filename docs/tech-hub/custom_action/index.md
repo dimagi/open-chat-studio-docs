@@ -21,11 +21,11 @@ Use a [Python node](../python_node.md) instead when:
 
 ## How Custom Actions work
 
-When you create a Custom Action, Open Chat Studio parses the supplied OpenAPI schema, validates it, and extracts the supported API operations.
+For the end-to-end flow, see [Custom Action](../../concepts/llm_custom_action.md#how-it-works).
+Two details matter when you configure one:
 
-Each extracted operation becomes an action that can be enabled for a chatbot. This gives you control over which external operations the chatbot is allowed to use.
-
-When the chatbot invokes one of those actions, Open Chat Studio sends the HTTP request to the external service, applies any configured authentication, and passes the response back to the model for use in the conversation.
+- When you save a Custom Action, Open Chat Studio validates the OpenAPI schema and extracts the supported API operations. Each operation becomes an action you can allow.
+- When the chatbot invokes an action, Open Chat Studio sends the HTTP request to the external service and applies the configured authentication.
 
 ## Prerequisites
 
@@ -81,7 +81,4 @@ Failure notifications report calls made by chatbots. To monitor whether the serv
 
 ## Health checks
 
-Open Chat Studio monitors Custom Actions by automatically checking the configured service every hour.
-
-- You can also trigger a [manual health check](./health_custom_action.md#manual-health-checks) from the UI. Manual checks run immediately and return the current status without waiting for the scheduled check.
-- If the [health status](./health_custom_action.md#health-status-values) indicates that the service is not **Up**, follow the troubleshooting guidance on that page.
+Open Chat Studio checks Custom Actions every hour, and you can run a check on demand. See [Custom Action Health Monitoring](./health_custom_action.md) for health statuses, manual checks and troubleshooting.
