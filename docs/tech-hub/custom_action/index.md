@@ -33,7 +33,7 @@ Before creating a Custom Action, make sure you have:
 
 1. an HTTPS base URL for the external service
 2. an [OpenAPI Schema](https://swagger.io/specification/) in JSON or YAML format
-3. an [Authentication Provider](../../concepts/team/authentication_providers.md), if the API requires authentication — create one from **Authentication Providers** in Team Settings
+3. an [Authentication Provider](../../concepts/team/authentication_providers.md), if the API requires authentication — create one from **Integrations** in Team Settings
 
 Once you have this information, go to the **Developers** section of [Team Settings](../../concepts/team/developer.md), select **Add action** under **Custom actions**, and enter the details described below.
 
@@ -49,14 +49,18 @@ Use the following fields to configure the integration.
 **Health Check Path** is an optional path appended to the Base URL when Open Chat Studio runs a health check.
 
 - If you configure a path, the external service should respond successfully at that endpoint.
-- If you do not configure a path, the health check uses the base URL or root path.
+- If you leave it blank, Open Chat Studio looks in the API schema for a `GET` operation at `/health`, `/healthz`, `/healthcheck`, `/api/health`, `/status` or `/_health` and uses the first one it finds.
+- If the schema has none of these, no health checks run for the Custom Action and no health status is shown.
 
 **API Schema** is a JSON or YAML [OpenAPI Schema](https://swagger.io/specification/) document.
 
 - The schema should come from the external service you are integrating with.
 - For many FastAPI services, the default schema path is `/openapi.json`.
 
-Use **Allowed Operations** to select which actions from the external service your chatbot is allowed to use.
+**Allowed Operations** selects which actions from the external service your chatbot is allowed to use.
+
+- This field appears only when you edit a saved Custom Action, because the operations come from the saved API schema.
+- Save the Custom Action, then reopen it to choose the operations.
 
 ## Enabling actions for a chatbot
 
