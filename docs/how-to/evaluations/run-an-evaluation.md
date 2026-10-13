@@ -12,7 +12,7 @@ flowchart LR
     results -- Failed messages --> fix[Fix the cause]
     fix --> run
     results -- Looks right --> done[Download]
-````
+```
 
 ## Prerequisites
 
