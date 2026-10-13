@@ -101,6 +101,7 @@ nav:
       - Choose an LLM Model: how-to/choose_llm_model.md
       - Adjust LLM Node Model Parameters: how-to/adjust_llm_node_model_parameters.md
       - Add a Custom LLM Model: how-to/add_custom_llm_model.md
+      - Search and Get Prompt Help in the Pipeline Editor: how-to/pipeline_editor_search_and_prompt_help.md
       - how-to/workflow_cookbook.md
       - how-to/add_a_knowledge_base.md
       - Import CSV/TSV Rows into a Collection: how-to/import_csv_tsv_rows.md
