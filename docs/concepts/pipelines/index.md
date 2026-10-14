@@ -2,7 +2,7 @@
 
 ## What is a Pipeline?
 
-A **pipeline** is a visual workflow in Open Chat Studio that defines how a chatbot processes messages and generates responses. Think of it like a recipe or assembly line — each step in the pipeline does one specific job, and the steps are connected together to create a complete conversation flow.
+A **pipeline** is a visual workflow in Open Chat Studio that defines how a chatbot processes messages and generates responses. Each step in the pipeline does one specific job, and the steps are connected together to create a complete conversation flow.
 
 ## What is a Node?
 Each step in the pipeline is called a **node**. A node performs one specific task, such as:
@@ -35,14 +35,14 @@ See [Configure an LLM Node](../../tutorials/configure_llm_node.md) for a step-by
 
 ## Complex Pipelines
 
-Most real-world chatbots are more complex than a single node. Pipelines become powerful when you combine multiple types of nodes to handle different tasks.
+Most real-world chatbots are more complex than a single node. Most chatbots combine several types of nodes to handle different tasks.
 
 Breaking work into separate nodes lets you:
 
 - Keep logic focused and easy to understand
 - Reuse nodes across different parts of your pipeline
 - Test and modify individual steps without affecting the whole pipeline
-- Scale complex workflows without overwhelming a single AI prompt
+- Handle complex workflows without putting every instruction in one AI prompt
 
 ### Node Types for Complex Pipelines
 

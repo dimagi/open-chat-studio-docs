@@ -19,7 +19,7 @@ The **History** setting controls *which* messages a node's LLM sees: its own, th
 | [Named](#named) | A shared history that specific nodes contribute to together. |
 | [No History](#no-history) | Nothing from earlier in the conversation. |
 
-Each option is designed to solve a different problem, and in complex pipelines it is expected that a variety of History settings will be used across different nodes.
+Each option suits a different situation, and in complex pipelines it is expected that a variety of History settings will be used across different nodes.
 
 ### Global
 Nodes with `Global` history will supply the conversational history that the participant would see to the LLM. The [simple example](index.md) uses a global history as the participant is interacting directly with a single LLM.
@@ -51,7 +51,7 @@ Choosing `No History` means that when a completion is requested from the LLM, no
 
 How much history a node sends matters because everything involved in a call to the LLM — your prompt, the conversation history, and its reply — shares the same [token budget](../llm.md#max-token-limit). Sending more history gives the model more context, but costs more tokens and can slow responses down.
 
-Once a node has more history than fits comfortably in the model's token budget, something has to give. **History Mode** controls what happens to older messages when that limit is reached. It only has an effect when History is set to `Node`, `Global`, or `Named` — with `No History` there's nothing to trim.
+Once a node has more history than fits in the model's token budget, OCS must discard or condense older messages. **History Mode** controls what happens to older messages when that limit is reached. It only has an effect when History is set to `Node`, `Global`, or `Named` — with `No History` there's nothing to trim.
 
 ### History Mode Options
 

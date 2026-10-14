@@ -68,7 +68,7 @@ Inputs are ordered by when they arrived, never by the order the connections were
 
 !!! note "Reading the other branches"
 
-    `node_inputs` is available to the [Python node](../../tech-hub/python_node.md#additional-keyword-arguments) as a keyword argument, and to the template and email nodes as `{{ node_inputs }}`. A Python node can also read any completed node by name with `get_node_output("Node Name")`, which is the clearest option when you know which branches you are merging.
+    `node_inputs` is available to the [Python node](../../tech-hub/python_node.md#additional-keyword-arguments) as a keyword argument, and to the template and email nodes as `{{ node_inputs }}`. A Python node can also read any completed node by name with `get_node_output("Node Name")`, which is the most explicit option when you know which branches you are merging.
 
 ## Uneven branches
 
@@ -90,7 +90,7 @@ The execution steps are as follows:
 2. `NodeC` and `NodeD` in parallel
 3. `NodeD`
 
-Notice how `NodeD` gets executed twice. The first time it runs, only `NodeB` has reached it, so `NodeB`'s output is its `input` and its single `node_inputs` entry. By the second run `NodeC` has finished, so `NodeC`'s output becomes the `input` and `node_inputs` holds both.
+`NodeD` runs twice. The first time it runs, only `NodeB` has reached it, so `NodeB`'s output is its `input` and its single `node_inputs` entry. By the second run `NodeC` has finished, so `NodeC`'s output becomes the `input` and `node_inputs` holds both.
 
 To understand why this happens, see [how a pipeline runs](index.md#how-a-pipeline-runs).
 
