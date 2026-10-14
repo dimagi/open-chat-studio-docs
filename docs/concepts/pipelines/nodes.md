@@ -1,6 +1,6 @@
 # Node Types
 
-A node is a discrete processing step in a [pipeline](index.md) that accepts a participant's input and produces an output to downstream nodes. Each node performs a specific task, such as calling an LLM, running Python code, or routing based on logic.
+A node is a discrete processing step in a [pipeline](index.md) that accepts a participant's input and produces an output to downstream nodes. Each node performs a specific task, such as calling a [large language model (LLM)](../llm.md), running Python code, or routing based on logic.
 It processes data that flows through the pipeline.
 
 ```mermaid
@@ -70,7 +70,8 @@ See the [Render a Template and Send an Email Node](../../tech-hub/template_and_e
 
 ## Extract Structured Data Node
 
-Uses an LLM to extract structured data from the input against a JSON schema you define. Unlike most other nodes, its output **replaces** the input: downstream nodes receive the extracted data (as JSON) rather than the original conversation text.
+Uses an LLM to extract structured data from the input.
+You define a JSON schema, which is a structured list of the fields to extract and their types. Unlike most other nodes, its output **replaces** the input: downstream nodes receive the extracted data (as JSON) rather than the original conversation text.
 
 Sometimes the model returns no structured data for part of the input.
 This happens if it refuses, the provider blocks the reply, or it never calls the required tool.
@@ -106,3 +107,10 @@ The pipeline no longer builds, so its chatbot cannot run until you replace the r
 
 The assistant node is in this state.
 See [OpenAI Assistants (Removed)](../assistants.md) for background and the [migration guide](../../how-to/assistants_migration.md) for how to replace one.
+
+## See also
+
+- [Router Nodes](router_nodes.md)
+- [Conversation History](history.md)
+- [Parallel Pipelines](parallel.md)
+- [Workflow Cookbook](../../how-to/workflow_cookbook.md)

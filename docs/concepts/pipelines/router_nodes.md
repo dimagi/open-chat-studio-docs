@@ -26,7 +26,7 @@ For example:
 There are two distinct ways to route a conversation in OCS. The choice depends on whether you are routing based on what the participant means or what the system knows.
 
 ### LLM Router Node
-The LLM Router uses an AI model to read the incoming message and classify its intent.
+The LLM Router uses an AI model, specifically a [large language model (LLM)](../llm.md), to read the incoming message and classify its intent.
 
 - **How it works**: It acts as a classifier. You provide a prompt that tells the LLM how to categorize a message (for example, "If the participant is angry, output `ESCALATE`").
 - **Best for**: Handling unpredictable participant text.
@@ -49,3 +49,10 @@ The Static Router does not use an AI model and does not read the participant's m
 !!! tip "For configuration steps"
 
     See [Router Nodes in How-to Guides](../../how-to/routers/index.md) for configuration details and best practices.
+
+## See also
+
+- [Node Types](nodes.md)
+- [Conversation History](history.md)
+- [Router Nodes how-to guides](../../how-to/routers/index.md)
+- [Workflow Cookbook](../../how-to/workflow_cookbook.md)

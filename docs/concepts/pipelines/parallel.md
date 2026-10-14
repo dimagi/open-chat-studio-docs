@@ -105,5 +105,6 @@ The same functions handle the related case where a branch is optional and may no
 
 ## See also
 
+- [Node Types](nodes.md)
 - [Workflow Cookbook](../../how-to/workflow_cookbook.md)
 - [Merging Parallel Branches](../../tech-hub/merging_parallel_branches.md)

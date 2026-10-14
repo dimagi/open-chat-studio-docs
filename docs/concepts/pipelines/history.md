@@ -2,7 +2,7 @@
 
 !!! note "Definition"
 
-    An LLM node's conversation memory is controlled by two independent, per-node settings.
+    An [LLM](../llm.md) node's conversation memory is controlled by two independent, per-node settings.
     **History** decides *which* messages the model sees.
     **History Mode** decides *how* those messages are trimmed once there are too many.
     They apply only to nodes with an LLM response.
@@ -38,7 +38,7 @@ Nodes with `Global` history will supply the conversational history that the part
 
 A common use case is in a [LLM Router](./router_nodes.md#llm-router-node) node.
 There, you may want a history of the node outputs, for example to track which part of the chatbot the participant is using.
-The history should then use LLM outputs, so the LLM does not receive few-shot examples of the wrong type of output.
+The history should then use LLM outputs, so the LLM is not shown the wrong type of output as examples in its prompt (known as few-shot examples).
 
 ### Named
 This option allows you to specify a specific, named history that can be shared between nodes. Each node using the same shared history contributes its `input` and LLM output to it.
@@ -84,3 +84,10 @@ Removes older messages once the token limit is reached, until the total is back 
 Keeps only the most recent N messages, dropping older ones once that limit is reached.
 
 **Max History Length**: Number of recent messages to keep. Only this number of messages will be sent to the LLM.
+
+## See also
+
+- [Node Types](nodes.md#llm-node)
+- [Router Nodes](router_nodes.md)
+- [Large Language Models (LLMs)](../llm.md)
+- [Sessions](../sessions.md)
