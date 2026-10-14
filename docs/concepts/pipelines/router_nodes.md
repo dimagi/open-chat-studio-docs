@@ -1,7 +1,5 @@
 # Router Nodes
 
-## Routers
-
 Router nodes are decision points in your pipeline.
 Instead of following one fixed path, a router chooses a path based on the participant's message or on participant data your system already holds.
 
@@ -23,9 +21,11 @@ For example:
 3. **Default Path**: The fallback route (marked with a blue *). If the router cannot confidently decide where to send the participant, it follows this path to prevent the conversation from breaking. [Read more about the default output](../../how-to/routers/index.md#the-default-output).
 
 ## Router Types
+
 There are two distinct ways to route a conversation in OCS. The choice depends on whether you are routing based on what the participant means or what the system knows.
 
 ### LLM Router Node
+
 The LLM Router uses an AI model, specifically a [large language model (LLM)](../llm.md), to read the incoming message and classify its intent.
 
 - **How it works**: It acts as a classifier. You provide a prompt that tells the LLM how to categorize a message (for example, "If the participant is angry, output `ESCALATE`").
@@ -40,6 +40,7 @@ The LLM Router uses an AI model, specifically a [large language model (LLM)](../
 See a working example in the [Chatbot Workflow Cookbook](../../how-to/workflow_cookbook.md#split-a-chatbot-into-multiple-smaller-chatbots), where an LLM Router classifies input into `GENERAL`, `ROLEPLAY`, and `QUIZ` paths.
 
 ### Static Router Node
+
 The Static Router does not use an AI model and does not read the participant's message. Instead, it looks up a specific value stored in your [data source](../../how-to/routers/static_router.md#supported-data-sources).
 
 - **How it works**: It checks a pre-existing key or tag, such as participant profile data or session information, and follows the matching path.

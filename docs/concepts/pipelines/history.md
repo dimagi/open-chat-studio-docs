@@ -27,9 +27,11 @@ Each option suits a different situation.
 Complex pipelines usually use different History settings across nodes.
 
 ### Global
+
 Nodes with `Global` history will supply the conversational history that the participant would see to the LLM. The [simple example](index.md) uses a global history as the participant is interacting directly with a single LLM.
 
 ### Node
+
 `Node` history will maintain a specific history for this particular node. The input to the node will be saved, along with the output from the LLM.
 
 !!! warning "LLM output is not necessarily the same as node output"
@@ -41,6 +43,7 @@ There, you may want a history of the node outputs, for example to track which pa
 The history should then use LLM outputs, so the LLM is not shown the wrong type of output as examples in its prompt (known as few-shot examples).
 
 ### Named
+
 This option allows you to specify a specific, named history that can be shared between nodes. Each node using the same shared history contributes its `input` and LLM output to it.
 
 !!! warning "Named history is updated immediately"
@@ -54,6 +57,7 @@ Note that for this particular example, each of the nodes could use a `Global` hi
 Then the `Named` history option lets the interim nodes share a history in the original language or formatting.
 
 ### No History
+
 Choosing `No History` means that when a completion is requested from the LLM, no conversational history will be supplied. One common use case might be a formatting or translation node where the previous history may not be applicable to generating the correct output.
 
 ## History Mode
@@ -71,16 +75,19 @@ Once a node has more history than fits in the model's token budget, OCS must dis
 | [Max History Length](#max-history-length) | Dropped once the message count exceeds N. |
 
 ### Summarize
+
 Compresses older messages into a summary once the token limit is reached, keeping the most recent messages intact.
 
 **Token Limit**: Maximum number of tokens allowed before summarization occurs.
 
 ### Truncate Tokens
+
 Removes older messages once the token limit is reached, until the total is back under the threshold.
 
 **Token Limit**: Maximum number of tokens allowed before truncation occurs.
 
 ### Max History Length
+
 Keeps only the most recent N messages, dropping older ones once that limit is reached.
 
 **Max History Length**: Number of recent messages to keep. Only this number of messages will be sent to the LLM.

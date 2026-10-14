@@ -5,6 +5,7 @@
 A **pipeline** is a visual workflow in Open Chat Studio (OCS) that defines how a chatbot processes messages and generates responses. Each step in the pipeline does one specific job, and the steps are connected together to create a complete conversation flow.
 
 ## What is a Node?
+
 Each step in the pipeline is called a **node**. A node performs one specific task, such as:
 
 - Calling a [large language model (LLM)](../llm.md) to generate a response ([LLM node](nodes.md#llm-node))
@@ -50,21 +51,21 @@ Breaking work into separate nodes lets you:
 
 Common node types include:
 
- - **[LLM Node](nodes.md#llm-node)** — Processes messages using an AI model. Handles natural conversations, answering questions, and generating responses.
-   Conversation memory is controlled by the [history setting](history.md).
+- **[LLM Node](nodes.md#llm-node)** — Processes messages using an AI model. Handles natural conversations, answering questions, and generating responses.
+  Conversation memory is controlled by the [history setting](history.md).
 
- - **[Routing Nodes](nodes.md#routing-nodes)** — Chooses the path the conversation takes, based on message content or on data already known about the participant. Useful for directing different types of questions to different handling logic, or routing on participant attributes like subscription tier.
-   See [Router Nodes](router_nodes.md) for the two router types.
+- **[Routing Nodes](nodes.md#routing-nodes)** — Chooses the path the conversation takes, based on message content or on data already known about the participant. Useful for directing different types of questions to different handling logic, or routing on participant attributes like subscription tier.
+  See [Router Nodes](router_nodes.md) for the two router types.
 
- - **[Python Node](nodes.md#python-node)** — Runs custom code to handle complex logic, fetch data from external systems, process attachments, or manipulate participant data.
+- **[Python Node](nodes.md#python-node)** — Runs custom code to handle complex logic, fetch data from external systems, process attachments, or manipulate participant data.
 
- - **[Render Template Node](nodes.md#render-a-template-node)** — Formats responses using templates, allowing you to customize messages with dynamic data.
+- **[Render Template Node](nodes.md#render-a-template-node)** — Formats responses using templates, allowing you to customize messages with dynamic data.
 
- - **[Send Email Node](nodes.md#send-an-email-node)** — Sends emails as part of your pipeline, useful for notifications or confirmations.
+- **[Send Email Node](nodes.md#send-an-email-node)** — Sends emails as part of your pipeline, useful for notifications or confirmations.
 
- - **[Extract Structured Data Node](nodes.md#extract-structured-data-node)** — Pulls specific information from conversations and structures it for downstream processing.
+- **[Extract Structured Data Node](nodes.md#extract-structured-data-node)** — Pulls specific information from conversations and structures it for downstream processing.
 
- - **[Update Participant Data Node](nodes.md#update-participant-data-node)** — Saves information about the participant for later use in the conversation.
+- **[Update Participant Data Node](nodes.md#update-participant-data-node)** — Saves information about the participant for later use in the conversation.
 
 For worked examples combining these node types, see the [Workflow Cookbook](../../how-to/workflow_cookbook.md).
 
