@@ -38,7 +38,8 @@ See [Configure an LLM Node](../../tutorials/configure_llm_node.md) for a step-by
 
 ## Complex Pipelines
 
-Most real-world chatbots are more complex than a single node. They combine several types of nodes to handle different tasks.  
+Most real-world chatbots are more complex than a single node.
+They combine several types of nodes to handle different tasks.  
 
 Breaking work into separate nodes lets you:
 

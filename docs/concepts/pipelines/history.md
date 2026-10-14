@@ -95,7 +95,7 @@ Keeps only the most recent N messages, dropping older ones once that limit is re
 
 ## See also
 
-- [Node Types](nodes.md#llm-node)
+- [LLM Node](nodes.md#llm-node)
 - [Router Nodes](router_nodes.md)
 - [Large Language Models (LLMs)](../llm.md)
 - [Sessions](../sessions.md)

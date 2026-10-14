@@ -98,7 +98,7 @@ No deliberate action places a session in `UNKNOWN`. It exists as a defensive fal
 
 ## Observing how a session ended
 
-Whatever ends a session (participant, chatbot, admin, API caller, or event), you can attach further actions to it using [static triggers](events.md#static-events).
+Regardless of what ends a session — participant, chatbot, admin, API caller, or event — you can attach further actions to the conversation-end event using [static triggers](events.md#static-events).
 This lets you respond differently depending on who or what ended the conversation.
 
 | Trigger type | Fires when |
