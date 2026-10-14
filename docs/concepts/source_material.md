@@ -1,13 +1,17 @@
 # Source Material
 
-Source Material is a feature that allows you to provide specific content, information, or data which the chatbot can use as a reference or knowledge base. This is particularly useful for LLM-based chatbots, as it helps tailor the chatbot’s responses to be more aligned with your specific needs or the theme of the chatbot.
+Source Material lets you give your chatbot specific content, information, or data to use as a reference or knowledge base.
+This is particularly useful for [LLM](llm.md)-based chatbots, because it helps tailor their responses to your needs or the chatbot's theme.
 
 ## How to use source material
-- Content Integration: You can integrate specific documents or text into the chatbot. This could be information on a given health area in an FAQs format, program-specific data, or any other relevant content that you want your chatbot to reference.
+- Content Integration: You can integrate specific documents or text into the chatbot.
+  This could be health information in FAQ format, program-specific data, or other content you want your chatbot to reference.
 
-- Contextual Relevance: By providing this material, you're essentially giving the chatbot a more focused and relevant context to operate within. This means your chatbot can provide more accurate and tailored responses based on the Source Materials you've provided.
+- Contextual Relevance: This material gives the chatbot focused, relevant context.
+  Your chatbot can then provide more accurate and tailored responses based on the Source Materials you've provided.
 
-- Updating Information: Keep your Source Materials up-to-date. As you update program materials (for example guidelines for counselling or home visits), updating your Source Materials will help ensure your chatbot remains relevant and effective.
+- Updating Information: Keep your Source Materials up-to-date.
+  When program materials change (for example guidelines for counselling or home visits), update your Source Materials so your chatbot stays relevant and effective.
 
 ## Best Practices
 - Relevance and Accuracy: Ensure the materials are relevant to the conversations your chatbot will engage in.
@@ -16,10 +20,14 @@ Source Material is a feature that allows you to provide specific content, inform
 
 ## Deleting source material
 
-You can't delete a Source Material while a chatbot still references it — whether the reference is in a published version or in the working draft. Attempting to delete it shows a list of every chatbot that still references it, so you know what to update first. [Collections](./collections/index.md) are protected in the same way.
+You can't delete a Source Material while a chatbot still references it, in either a [published version](versioning.md) or the working draft.
+Attempting to delete it shows a list of every chatbot that still references it, so you know what to update first. [Collections](./collections/index.md) are protected in the same way.
 
 To delete it, first clear the Source Material from each referencing [node](./pipelines/nodes.md), or delete the referencing chatbots, then try again.
 
 ## See also
+
 - [Prompt variables](./prompt_variables.md)
 - [Add a knowledge base](../how-to/add_a_knowledge_base.md)
+- [Collections](./collections/index.md)
+- [Versioning](versioning.md)

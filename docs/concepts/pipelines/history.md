@@ -40,7 +40,8 @@ Nodes with `Global` history will supply the conversational history that the part
 
 A common use case is in a [LLM Router](./router_nodes.md#llm-router-node) node.
 There, you may want a history of the node outputs, for example to track which part of the chatbot the participant is using.
-The history should then use LLM outputs, so the LLM is not shown the wrong type of output as examples in its prompt (known as few-shot examples).
+The history should then use LLM outputs.
+This stops the LLM being shown the wrong type of output as examples in its prompt (known as few-shot examples).
 
 ### Named
 

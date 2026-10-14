@@ -18,12 +18,13 @@ When building chatbots, an LLM powers the chatbot's ability to understand and re
 ## Prompt
 
 A prompt is the input or instructions given to the LLM to guide its response. It sets the context for the chatbot. Prompts can be as simple as a single question or as detailed as a conversation framework or role-play setup.
+Use [prompt variables](prompt_variables.md) to insert dynamic values into a prompt.
 
 **Example:** "You are a helpful assistant. Answer questions clearly and concisely."
 
 ## Tokens
 
-Tokens are the building blocks of text that the LLM processes. A token might be a word, part of a word, or even just punctuation.
+Tokens are the units of text that the LLM processes. A token might be a word, part of a word, or even just punctuation.
 
 **Example:** The sentence *"Chatbots are cool."* is broken into 4 tokens:
 `Chatbots | are | cool | .`
@@ -32,9 +33,14 @@ Tokens are important because they determine the cost and the processing complexi
 
 ## Max Token Limit
 
-Every AI model has a maximum token limit — also called its **context window**. Max Token Limit is a fixed property of the model and is listed alongside the model name when viewing the models for the [team's LLM providers](../concepts/team/llm_providers.md).
+Every AI model has a maximum token limit — also called its **context window**.
+Max Token Limit is a fixed property of the model.
+It is listed alongside the model name in the models for the [team's LLM providers](../concepts/team/llm_providers.md).
 
-The context window is the total number of tokens the model can work with in one turn: your prompt, the conversation history, and the model's reply all share the same budget. When the budget runs out, the request may be truncated or fail.
+The context window is the total number of tokens the model can work with in one turn.
+Your prompt, the conversation history, and the model's reply all share the same budget.
+When the budget runs out, the request may be truncated or fail.
+See [Conversation History](pipelines/history.md) for how nodes limit the history they send.
 
 ## Model Parameters: Temperature and Effort
 
@@ -48,8 +54,11 @@ These two parameters serve different purposes: temperature shapes *style*, effor
 
 ## See also
 
-To get started with LLMs in Open Chat Studio, or for guidance on which model type to choose and when to use each parameter, see:
+For setup, model choice, and parameter guidance, see:
 
 - [Configure an LLM Provider](../tutorials/configure_llm_providers.md) — set up a provider so your chatbot can use its models
 - [Choose an LLM Model](../how-to/choose_llm_model.md) — helps you pick the right model for your use case
 - [Adjust LLM Node Model Parameters](../how-to/adjust_llm_node_model_parameters.md) — step-by-step instructions for changing these settings
+
+- [Conversation History](pipelines/history.md) — how nodes control the history sent to the model
+- [Prompt Variables](prompt_variables.md) — insert dynamic values into prompts
