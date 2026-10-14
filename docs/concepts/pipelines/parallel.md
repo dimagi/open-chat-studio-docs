@@ -99,9 +99,9 @@ The execution steps are as follows:
 
 To understand why this happens, see [how a pipeline runs](index.md#how-a-pipeline-runs).
 
-If `NodeD` must merge `NodeB` and `NodeC` exactly once, rather than running twice, write that logic in a Python node.
-Use the `require_node_outputs` or `wait_for_next_input` utility functions.
-The same functions handle the related case where a branch is optional and may not run at all. See [Merging Parallel Branches](../../tech-hub/merging_parallel_branches.md) for worked examples of both.
+If `NodeD` needs to see both `NodeB` and `NodeC` before it does its real work — merging both branches exactly once, rather than running twice — write that logic in a Python node using the `require_node_outputs` or `wait_for_next_input` utility functions.
+The same functions handle the related case where a branch is optional and may not run at all.
+See [Merging Parallel Branches](../../tech-hub/merging_parallel_branches.md) for worked examples of both.
 
 ## See also
 

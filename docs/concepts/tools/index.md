@@ -1,9 +1,11 @@
 # Tools
 
-Tools let your chatbot take real actions during a conversation — not just respond with text. When a tool is enabled, the [LLM](../llm.md) can decide to use it at the right moment.
-Open Chat Studio (OCS) then executes the tool on the LLM model's behalf.
+Tools let your chatbot take real actions during a conversation — not just respond with text.
 
 For example, a chatbot with the Calculator tool can perform accurate arithmetic. A chatbot with reminder tools can schedule a message to be sent to the participant at a future time. Without tools, a chatbot can only generate text.
+
+When a tool is enabled, the [LLM](../llm.md) can decide to use it at the right moment. For [user-configurable tools](#user-configurable-tools), Open Chat Studio (OCS) then executes the tool on the LLM model's behalf.
+[LLM provider tools](#llm-provider-tools) run in the provider's infrastructure instead.
 
 !!! tip
 
