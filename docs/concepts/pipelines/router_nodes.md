@@ -2,21 +2,23 @@
 
 ## Routers
 
-Router nodes are decision points in your pipeline. Instead of following one fixed path, a pipeline with a router can choose different paths based on what the participant says or what your system already knows about the participant.
+Router nodes are decision points in your pipeline.
+Instead of following one fixed path, a router chooses a path based on the participant's message or on participant data your system already holds.
 
-In simple terms, a router evaluates a condition, chooses one of its configured paths, and passes the input through unchanged to the node on that path. This allows your chatbot to adapt in real time. What the router evaluates depends on its type — see [Router Types](#router-types) below.
+A router evaluates a condition, chooses one of its configured paths, and passes the input unchanged to the node on that path. This allows your chatbot to adapt in real time. What the router evaluates depends on its type — see [Router Types](#router-types) below.
 
 For example:
 
 1. **Participant Status (Data-Based)**: You can route new participants to a specialized onboarding flow while returning participants are sent straight to the main menu.
 
-2. **Topic Expertise (Intent-Based)**: You can detect when a participant is asking about a complex technical issue and route that message to a specialist node instead of a general FAQ node.
+2. **Topic Expertise (Intent-Based)**: You can detect a complex technical question and route it to a specialist node instead of a general FAQ node.
 
 ## Useful Terms
 
 1. **Linked Downstream Node**: Any node that appears after the current node in the pipeline flow.
 
-2. **Conversation Context**: The information a router evaluates to make its decision. For an [LLM Router](#llm-router-node), this is the participant's current message and, when enabled by the [History setting](history.md), the configured conversation history. A [Static Router](#static-router-node) does not evaluate the message or history at all — it looks up a value already stored as data (see [Router Types](#router-types)).
+2. **Conversation Context**: The information a router evaluates to make its decision. For an [LLM Router](#llm-router-node), this is the participant's current message and, when enabled by the [History setting](history.md), the configured conversation history. A [Static Router](#static-router-node) does not evaluate the message or history.
+   It looks up a value already stored as data (see [Router Types](#router-types)).
 
 3. **Default Path**: The fallback route (marked with a blue *). If the router cannot confidently decide where to send the participant, it follows this path to prevent the conversation from breaking. [Read more about the default output](../../how-to/routers/index.md#the-default-output).
 

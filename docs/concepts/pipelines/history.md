@@ -2,9 +2,13 @@
 
 !!! note "Definition"
 
-    An LLM node's conversation memory is controlled by two independent, per-node settings: **History** decides *which* messages the model gets to see, and **History Mode** decides *how* those messages are trimmed once there are too many. They apply only to nodes with an LLM response.
+    An LLM node's conversation memory is controlled by two independent, per-node settings.
+    **History** decides *which* messages the model sees.
+    **History Mode** decides *how* those messages are trimmed once there are too many.
+    They apply only to nodes with an LLM response.
 
-AI models have no memory of their own — each request OCS sends is self-contained. Open Chat Studio always stores the full conversation in the chatbot's [session](../sessions.md) regardless of how a node is configured; [History](#history) and [History Mode](#history-mode) only control what's *sent to the model*, not what's saved.
+AI models have no memory of their own — each request OCS sends is self-contained. Open Chat Studio always stores the full conversation in the chatbot's [session](../sessions.md), however a node is configured.
+[History](#history) and [History Mode](#history-mode) only control what's *sent to the model*, not what's saved.
 
 ## History
 
@@ -19,7 +23,8 @@ The **History** setting controls *which* messages a node's LLM sees: its own, th
 | [Named](#named) | A shared history that specific nodes contribute to together. |
 | [No History](#no-history) | Nothing from earlier in the conversation. |
 
-Each option suits a different situation, and in complex pipelines it is expected that a variety of History settings will be used across different nodes.
+Each option suits a different situation.
+Complex pipelines usually use different History settings across nodes.
 
 ### Global
 Nodes with `Global` history will supply the conversational history that the participant would see to the LLM. The [simple example](index.md) uses a global history as the participant is interacting directly with a single LLM.
@@ -31,7 +36,9 @@ Nodes with `Global` history will supply the conversational history that the part
 
     In a [LLM Router](./router_nodes.md#llm-router-node) node, the `output` from the node will be the same as the `input` to that node. That is, once it has done its routing, it will be a passthrough for the `input`. The output of the LLM however, will be the classification label. This is an important distinction to keep in mind.
 
-A common use case is in a [LLM Router](./router_nodes.md#llm-router-node) node, where you want to maintain a history of the node outputs (e.g., for continuity of what 'part' of the chatbot the participant is interacting with), and you want to ensure that the history uses LLM outputs so that you don't unintentionally supply the LLM with few-shot examples of the wrong type of output.
+A common use case is in a [LLM Router](./router_nodes.md#llm-router-node) node.
+There, you may want a history of the node outputs, for example to track which part of the chatbot the participant is using.
+The history should then use LLM outputs, so the LLM does not receive few-shot examples of the wrong type of output.
 
 ### Named
 This option allows you to specify a specific, named history that can be shared between nodes. Each node using the same shared history contributes its `input` and LLM output to it.
@@ -40,16 +47,18 @@ This option allows you to specify a specific, named history that can be shared b
 
     If there are multiple nodes in series that use the same `Named` history, then each node will add to the history. This will result in multiple new history entries for every processed participant message.
 
-The most common use case for this will be when you have multiple parallel nodes after an [LLM Router](./router_nodes.md#llm-router-node). In the [Workflow Cookbook](../../how-to/workflow_cookbook.md#split-a-chatbot-into-multiple-smaller-chatbots), the general, quiz, and roleplay LLM nodes would all likely use the same shared history, giving each node visibility into the larger conversation.
+The most common use case for this will be when you have multiple parallel nodes after an [LLM Router](./router_nodes.md#llm-router-node). In the [Workflow Cookbook](../../how-to/workflow_cookbook.md#split-a-chatbot-into-multiple-smaller-chatbots), the general, quiz, and roleplay LLM nodes would likely share one history.
+This gives each node visibility into the larger conversation.
 
-Note that for this particular example, each of the nodes could use a `Global` history to achieve the same thing. However, if there was a translation or formatting node before the final `output`, then the `Named` history option would enable the interim nodes to share a history in the original language / formatting.
+Note that for this particular example, each of the nodes could use a `Global` history to achieve the same thing. However, a translation or formatting node might come before the final `output`.
+Then the `Named` history option lets the interim nodes share a history in the original language or formatting.
 
 ### No History
 Choosing `No History` means that when a completion is requested from the LLM, no conversational history will be supplied. One common use case might be a formatting or translation node where the previous history may not be applicable to generating the correct output.
 
 ## History Mode
 
-How much history a node sends matters because everything involved in a call to the LLM — your prompt, the conversation history, and its reply — shares the same [token budget](../llm.md#max-token-limit). Sending more history gives the model more context, but costs more tokens and can slow responses down.
+How much history a node sends matters because the prompt, the conversation history, and the reply share the same [token budget](../llm.md#max-token-limit). Sending more history gives the model more context, but costs more tokens and can slow responses down.
 
 Once a node has more history than fits in the model's token budget, OCS must discard or condense older messages. **History Mode** controls what happens to older messages when that limit is reached. It only has an effect when History is set to `Node`, `Global`, or `Named` — with `No History` there's nothing to trim.
 

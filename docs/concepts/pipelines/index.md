@@ -12,7 +12,9 @@ Each step in the pipeline is called a **node**. A node performs one specific tas
 - Making decisions about which way the conversation should go ([Router nodes](nodes.md#routing-nodes))
 - Sending emails or extracting data (specialty nodes)
 
-Pipelines are **visual** — you build them by dragging nodes onto a canvas and connecting them with lines, making chatbot logic easier to understand and maintain without writing complex code.
+Pipelines are **visual**.
+You build them by dragging nodes onto a canvas and connecting them with lines.
+This makes chatbot logic easier to understand and maintain without writing complex code.
 
 ## A Simple Example
 
@@ -50,7 +52,7 @@ Common node types include:
 
  - **[LLM Node](nodes.md#llm-node)** — Processes messages using an AI model. Handles natural conversations, answering questions, and generating responses.
 
- - **[Routing Nodes](nodes.md#routing-nodes)** — Makes decisions about which path the conversation should take, based on message content or on data already known about the participant. Useful for directing different types of questions to different handling logic, or routing on participant attributes like subscription tier.
+ - **[Routing Nodes](nodes.md#routing-nodes)** — Chooses the path the conversation takes, based on message content or on data already known about the participant. Useful for directing different types of questions to different handling logic, or routing on participant attributes like subscription tier.
 
  - **[Python Node](nodes.md#python-node)** — Runs custom code to handle complex logic, fetch data from external systems, process attachments, or manipulate participant data.
 
@@ -88,4 +90,5 @@ This repeats until all nodes have completed or a maximum step limit is reached.
 
 !!! tip "Chat widget context"
 
-    When you are viewing a pipeline in OCS, the in-app chat widget automatically receives the pipeline's structure (nodes and connections) and event trigger data as context. This means you can ask the assistant questions about the pipeline you are currently editing — for example, what a particular node does or how the flow is connected. The context updates automatically as you make changes to the pipeline.
+    When you view a pipeline in OCS, the in-app chat widget automatically receives its structure (nodes and connections) and event trigger data as context.
+    You can ask the assistant about the pipeline you are editing, for example what a node does or how the flow is connected. The context updates automatically as you make changes to the pipeline.
