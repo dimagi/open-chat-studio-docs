@@ -84,7 +84,7 @@ On the CommCare Connect channel, files and images that the chatbot sends are del
 Files can come from a [media collection](collections/media_collections.md) (through the attach media tool) or from a [Python node](pipelines/nodes.md#python-node).
 
 - A file over 2.5 MB is sent as a download link in the message text instead.
-- Files beyond 10 per reply, or beyond 15 MB in total per reply, are sent as download links in the message text.
+- If a reply has more than 10 files or more than 15 MB of files in total, the files that exceed the limit are sent as download links in the message text.
 - Attachments expire after 90 days.
 - Participants on an app version that cannot show attachments see "Your version of the app is too old to see this message. Please update your Android app." in place of any message that has attachments.
 

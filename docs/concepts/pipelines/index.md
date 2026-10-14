@@ -38,7 +38,7 @@ See [Configure an LLM Node](../../tutorials/configure_llm_node.md) for a step-by
 
 ## Complex Pipelines
 
-Most real-world chatbots are more complex than a single node. Most chatbots combine several types of nodes to handle different tasks.
+Most real-world chatbots are more complex than a single node. They combine several types of nodes to handle different tasks.  
 
 Breaking work into separate nodes lets you:
 
@@ -83,7 +83,7 @@ When a participant sends a message, OCS processes the pipeline in repeating pass
 
 3. **Update**: Share the results from all nodes so they're available for the next step.
 
-This repeats until all nodes have completed or the maximum number of passes (the step limit) is reached.
+This repeats until all nodes have completed or a maximum step limit is reached.
 
 !!! tip "Running nodes in parallel"
 

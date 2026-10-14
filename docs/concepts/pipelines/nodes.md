@@ -71,7 +71,7 @@ See the [Render a Template and Send an Email Node](../../tech-hub/template_and_e
 ## Extract Structured Data Node
 
 Uses an LLM to extract structured data from the input.
-You define a JSON schema, which is a structured list of the fields to extract and their types. Unlike most other nodes, its output **replaces** the input: downstream nodes receive the extracted data (as JSON) rather than the original conversation text.
+You define a JSON schema, which describes the fields to extract and their types. Unlike most other nodes, its output **replaces** the input: downstream nodes receive the extracted data (as JSON) rather than the original conversation text.
 
 Sometimes the model returns no structured data for part of the input.
 This happens if it refuses, the provider blocks the reply, or it never calls the required tool.

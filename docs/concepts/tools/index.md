@@ -71,5 +71,4 @@ Open Chat Studio also manages a small set of internal tools automatically - `Att
 
 - To see full argument details for each user-configurable tool, see the [Tools Reference](../../tech-hub/tools.md).
 - To add your own tools in the form of custom integrations, see [Custom Actions](../llm_custom_action.md).
-
 - To enable tools on a chatbot, see the [LLM Node](../pipelines/nodes.md#llm-node).

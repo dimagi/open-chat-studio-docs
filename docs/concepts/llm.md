@@ -54,11 +54,8 @@ These two parameters serve different purposes: temperature shapes *style*, effor
 
 ## See also
 
-For setup, model choice, and parameter guidance, see:
-
 - [Configure an LLM Provider](../tutorials/configure_llm_providers.md) — set up a provider so your chatbot can use its models
 - [Choose an LLM Model](../how-to/choose_llm_model.md) — helps you pick the right model for your use case
 - [Adjust LLM Node Model Parameters](../how-to/adjust_llm_node_model_parameters.md) — step-by-step instructions for changing these settings
-
 - [Conversation History](pipelines/history.md) — how nodes control the history sent to the model
 - [Prompt Variables](prompt_variables.md) — insert dynamic values into prompts
