@@ -2,13 +2,14 @@
 
 Participant data is custom information you store against a participant — the person chatting with a deployed chatbot — to personalize their experience. You can use it to remember preferences, track progress, or pass context into your chatbot's prompts.
 
-Each participant record is tied to a specific [channel](./channels.md) (such as WhatsApp or the web) and a specific chatbot. The same person using two different channels, or two different chatbots, will have separate participant records for each. OCS does not automatically merge these records.
+Each participant record is tied to a specific [channel](./channels.md) (such as WhatsApp or the web) and a specific chatbot. The same person using two different channels, or two different chatbots, will have separate participant records for each. Open Chat Studio (OCS) does not automatically merge these records.
 
 ## Managing participant records
 
 You can view and edit participant data on the **Participant Details** page. Open it by selecting a participant from the Participants list. You can also export and import participant data from the Participants list page.
 
-The **Session details** screen shows both the **Participant Data** and their **Participant Schedules** - the [reminders](../how-to/reminders.md) and scheduled messages set for that participant — in one place.
+The **Session details** screen shows the **Participant Data** and **Participant Schedules** in one place.
+Schedules are the [reminders](../how-to/reminders.md) and scheduled messages set for that participant.
 
 To add a participant manually, use the Create action and provide an identifier, [platform](channels.md), and optional name. If a participant with that platform and identifier already exists for the team, the form links you to the existing record.
 
@@ -38,9 +39,14 @@ The [Update Participant Data Node](pipelines/nodes.md#update-participant-data-no
 
 You can trigger participant data updates automatically using [events](events.md). This approach is useful when you want to extract and store information from a conversation without manual intervention.
 
-A common pattern is to use a timeout event to process conversation history after a period of inactivity. For example, you could configure an event to fire 15 minutes after the last message, run a pipeline that extracts tasks from the conversation, and then write those tasks to participant data using the Update Participant Data Node.
+A common pattern is to use a [timeout event](events.md#timeout-events) to process conversation history after a period of inactivity.
+For example, configure an event to fire 15 minutes after the last message.
+The event runs a pipeline that extracts tasks from the conversation.
+The Update Participant Data Node then writes those tasks to participant data.
 
-When using the [Update Participant Data Node](pipelines/nodes.md#update-participant-data-node) in a pipeline, you can provide a JSON schema to validate the structure of the data before it is saved. For example, to store a list of tasks extracted from a conversation:
+In the [Update Participant Data Node](pipelines/nodes.md#update-participant-data-node), you can provide a JSON schema.
+A JSON schema describes the expected fields and their types, and the data is validated against it before it is saved.
+For example, to store a list of tasks extracted from a conversation:
 
 ```json
 {
@@ -62,3 +68,10 @@ For the full details on using the API, see the [API docs](https://openchatstudio
 ## Participant Timezone for web channel
 
 The system automatically sets the `timezone` participant data property when a participant uses the web channel. It comes from the participant's browser and helps localize date and time values in prompts.
+
+## See also
+
+- [Prompt Variables](prompt_variables.md)
+- [Chat Sessions](sessions.md)
+- [Events](events.md)
+- [Tools](tools/index.md)

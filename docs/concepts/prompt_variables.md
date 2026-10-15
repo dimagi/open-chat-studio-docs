@@ -1,6 +1,7 @@
 # Prompt Variables
 
-Prompt variables are a great way to make your prompt dynamic or tailored to the [participant](./participant_data.md) by injecting data into specified placeholders. These variables are predefined and look like this:
+Prompt variables make your [prompt](llm.md#prompt) dynamic or tailored to the [participant](./participant_data.md) by injecting data into placeholders.
+These variables are predefined and look like this:
 
 ```text
 {variable}
@@ -35,7 +36,8 @@ The following prompt variables allow referencing specific parts of the data:
 * `{temp_state}`
 * `{session_state}`
 
-Subsets of the data can be accessed using dot notation. For example, if you have a participant data object that looks like this:
+Subsets of the data can be accessed using dot notation, which separates each level of nesting with a period.
+For example, if you have a participant data object that looks like this:
 
 ```json
 {
@@ -89,3 +91,10 @@ User segment: {session_state.remote_context.user_segment}
 !!! note "Remote Context Availability"
 
     The `remote_context` key in session state is only populated when explicitly provided via the API when sending messages. If no context is passed, this key will not be present in the session state. See the [Chat API documentation](../api/v1/chat.txt) for details on passing context with messages.
+
+## See also
+
+- [Participant Data](participant_data.md)
+- [Source Material](source_material.md)
+- [Large Language Models](llm.md)
+- [Node Types](pipelines/nodes.md#llm-node)
