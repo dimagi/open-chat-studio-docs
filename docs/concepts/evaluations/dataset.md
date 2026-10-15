@@ -4,6 +4,31 @@ An evaluation needs example conversations to test against. A **dataset** is that
 
 A small set of realistic examples tells you more about your chatbot than scoring everything that exists. You can build a dataset from real conversations your chatbot has already had, or write your own test cases to check specific behaviors, including edge cases your chatbot has not met yet.
 
+## Example
+
+A participant has this conversation with a clinic's appointment chatbot:
+
+> **User:** Can I book a check-up for Tuesday?
+>
+> **Bot:** Yes, there is a slot at 10:00 or 14:30. Which would you like?
+>
+> **User:** 14:30 please.
+>
+> **Bot:** Booked. You'll get a reminder the day before.
+
+A dataset can store this conversation in two ways, depending on its [evaluation level](#evaluation-levels).
+
+In a **message-level** dataset, the conversation becomes two rows. Each row holds one user message and the bot's reply, with the earlier turns as history:
+
+| Row | Human Message | AI Message | History |
+|---|---|---|---|
+| 1 | Can I book a check-up for Tuesday? | Yes, there is a slot at 10:00 or 14:30. Which would you like? | (none) |
+| 2 | 14:30 please. | Booked. You'll get a reminder the day before. | The two messages from row 1 |
+
+An evaluator scores each reply on its own. For example: "Did the bot offer times that were actually available?"
+
+In a **session-level** dataset, the conversation becomes one row that holds the whole transcript. An evaluator scores the conversation as a whole. For example: "Did the participant end up with a booking?"
+
 ## Evaluation levels
 
 When you create a dataset, you choose an **Evaluation level**. It decides how the dataset is structured and which evaluators can use it.
