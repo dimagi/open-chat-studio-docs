@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Oct 14, 2026
+* **NEW** Added a Copy action to the Evaluators page. It duplicates an evaluator, including its tag rules, with " (copy)" added to its name, and opens the copy for editing. Archived evaluators can also be copied. See [copying an evaluator](concepts/evaluations/evaluators.md#copying-an-evaluator).
+
 ## Oct 13, 2026
 * **MIGRATION** Removed the OpenAI models `o4-mini`, `o3-mini`, `gpt-4`, `gpt-4.1-nano` and `gpt-3.5-turbo` ahead of OpenAI's shutdown on Oct 23, 2026. Chatbots, pipelines, assistants and evaluators using them now use `gpt-5.6-sol` (replacing `o4-mini`, `o3-mini` and `gpt-4`) or `gpt-5.6-terra` (replacing `gpt-4.1-nano` and `gpt-3.5-turbo`), and affected teams receive an in-app notification. Azure OpenAI versions of these models are not affected. See [Model Lifecycle and Deprecation](concepts/team/llm_providers.md#model-lifecycle-and-deprecation).
 
