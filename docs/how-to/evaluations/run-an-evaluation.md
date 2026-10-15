@@ -73,13 +73,11 @@ To update results with values from a CSV file, for example after a human reviews
 
 A message fails when the chatbot cannot generate a response or an evaluator cannot return a result. Examples are a provider that has no credit left, a rate limit, or a model that returns no structured output.
 
-- Failed rows carry a badge in the results table. The **Errors** filter pill shows only those rows, and opening a row shows the reason.
-- Failed results are left out of the aggregates, tags, trends and scores.
-- When more than 5% of a run's messages fail, the run page shows a warning that groups the failures by cause and says what to do about each.
-- Your team gets a [notification](../../concepts/notifications.md) when a run completes with more than 5% failed messages, and when a run fails outright.
-- The downloaded CSV has a `generation_error` column for rows where generation failed.
+1. Click the **Errors** filter pill above the results table to show only the failed rows.
+2. Open a row to see the reason it failed.
+3. Fix the cause, then run the evaluation again.
 
-Fix the cause, then run the evaluation again.
+Failed rows are left out of the run's scores. For thresholds, notifications and the CSV error column, see [Failed messages](../../tech-hub/evaluations/index.md#failed-messages).
 
 ## Clear run history or delete the evaluation
 

@@ -39,7 +39,7 @@ For full details of **how ingestion works once the rule is active**, see [Auto-P
 
 Create an LLM evaluator and set its **Evaluation mode** to **Session** so it is compatible with the dataset from Step 1.
 
-In session-level prompts, `{input.content}` and `{output.content}` are empty — use `{full_history}` and `{context.[parameter]}` instead. `{generated_response}` is not available for session-level evaluators. See [Template Variables](../../concepts/evaluations/evaluators.md#template-variables) for the full reference.
+In session-level prompts, `{input.content}` and `{output.content}` are empty — use `{full_history}` and `{context.[parameter]}` instead. `{generated_response}` is not available for session-level evaluators. See [Template variables](../../tech-hub/evaluations/evaluator-reference.md#template-variables) for the full reference.
 
 **Example prompt:**
 
@@ -61,7 +61,7 @@ Respond with the fields defined in the output schema.
 | `goal_completion` | choice | Options: `yes`, `partial`, `no` |
 | `quality_score` | integer | Scale of 1–5 |
 
-Define the output schema fields to match what you reference in the prompt. The evaluator validates the LLM's output against the schema and retries if the output does not match — see [Output Schema](../../concepts/evaluations/evaluators.md#output-schema) for the retry behavior, and what happens if the model returns no structured output at all.
+Define the output schema fields to match what you reference in the prompt. The evaluator validates the LLM's output against the schema and retries if the output does not match — see [Output validation](../../tech-hub/evaluations/evaluator-reference.md#output-validation) for the retry behavior, and what happens if the model returns no structured output at all.
 
 See [Evaluators](../../concepts/evaluations/evaluators.md) for full details on output schema types and template variables.
 
