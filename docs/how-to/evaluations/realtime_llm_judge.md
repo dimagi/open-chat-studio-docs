@@ -39,7 +39,7 @@ For full details of **how ingestion works once the rule is active**, see [Auto-P
 
 Create an LLM evaluator and set its **Evaluation mode** to **Session** so it is compatible with the dataset from Step 1.
 
-In session-level prompts, `{input.content}` and `{output.content}` are empty — use `{full_history}` and `{context.[parameter]}` instead. `{generated_response}` is not available for session-level evaluators. See [Template variables](../../tech-hub/evaluations/evaluator-reference.md#template-variables) for the full reference.
+Session-level prompts use `{full_history}` for the conversation. See [Session-level variables](../../tech-hub/evaluations/evaluator-reference.md#session-level-variables) for the full list.
 
 **Example prompt:**
 
@@ -61,15 +61,11 @@ Respond with the fields defined in the output schema.
 | `goal_completion` | choice | Options: `yes`, `partial`, `no` |
 | `quality_score` | integer | Scale of 1–5 |
 
-Define the output schema fields to match what you reference in the prompt. The evaluator validates the LLM's output against the schema and retries if the output does not match — see [Output validation](../../tech-hub/evaluations/evaluator-reference.md#output-validation) for the retry behavior, and what happens if the model returns no structured output at all.
-
-See [Evaluators](../../concepts/evaluations/evaluators.md) for full details on output schema types and template variables.
+Define the output schema fields to match what you reference in the prompt. See [Output schema](../../concepts/evaluations/evaluators.md#output-schema) for the field types.
 
 ## Step 4 (optional): Add tag rules to flag results automatically
 
-[Tag rules](../../concepts/evaluations/tag_rules.md) apply a tag to a session automatically when an evaluator output field meets a condition. They run on every non-preview evaluation run and make it easy to surface sessions of interest without reviewing every row.
-
-In session mode, the tag is applied to the session's chat. Each application is recorded in the **Applied Tags** column on the run results page.
+[Tag rules](../../concepts/evaluations/tag_rules.md) apply a tag to a session automatically when an evaluator output field meets a condition. They make it easy to surface sessions of interest without reviewing every row.
 
 **Example rules using the output schema from Step 3:**
 
@@ -95,12 +91,7 @@ See [Tag Rules](../../concepts/evaluations/tag_rules.md) for the full set of con
 
 **What happens after auto-run is turned on:**
 
-When the auto-population rule (Step 2) adds new sessions to the dataset, any evaluation that uses that dataset and has auto-run turned on runs automatically against the newly added rows. These are **delta runs** — they score only the rows added in that ingestion cycle, not the entire dataset.
-
-Delta runs appear alongside full runs in the evaluation run table. Full runs score the entire dataset and are triggered manually; delta runs score only the newest rows and are triggered automatically.
-
-!!! warning
-    Auto-run is triggered **only** by the auto-population path. Manually importing sessions via CSV or filter-import does not trigger automatic evaluation runs.
+Each time the auto-population rule (Step 2) adds new sessions to the dataset, the evaluation runs automatically on just those rows. These are **delta runs**, and they appear alongside full runs in the runs list. Sessions you add to the dataset by hand do not start a run. See [Automatic delta evaluation runs](../../tech-hub/evaluations/auto_population.md#automatic-delta-evaluation-runs) for details.
 
 !!! note "Ongoing cost"
     Because auto-run keeps judging new sessions as they arrive, it keeps making LLM calls in the background. This adds to your team's total cost and usage over time, though it is never attributed to the source chatbot or its participants. See [Evaluation cost and usage](../../concepts/evaluations/evaluators.md#llm-evaluator) for details.
