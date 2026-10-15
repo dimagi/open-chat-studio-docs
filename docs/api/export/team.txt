@@ -105,7 +105,7 @@ GET /api/export/auth_providers/
       Schema: AuthProviderList
     400: Team has no registered public key; secret data cannot be sealed.
       Content: application/json
-      Schema: SyncErrorDetail
+      Schema: ErrorDetail
   Security:
     apiKeyAuth
     tokenAuth
@@ -151,7 +151,7 @@ GET /api/export/chatbot_channels/
       Schema: ExperimentChannelList
     400: Team has no registered public key; secret data cannot be sealed.
       Content: application/json
-      Schema: SyncErrorDetail
+      Schema: ErrorDetail
   Security:
     apiKeyAuth
     tokenAuth
@@ -296,7 +296,7 @@ GET /api/export/document_sources/
       Schema: DocumentSourceList
     400: Team has no registered public key; secret data cannot be sealed.
       Content: application/json
-      Schema: SyncErrorDetail
+      Schema: ErrorDetail
   Security:
     apiKeyAuth
     tokenAuth
@@ -517,7 +517,7 @@ GET /api/export/llm_providers/
       Schema: LlmProviderList
     400: Team has no registered public key; secret data cannot be sealed.
       Content: application/json
-      Schema: SyncErrorDetail
+      Schema: ErrorDetail
   Security:
     apiKeyAuth
     tokenAuth
@@ -534,7 +534,7 @@ GET /api/export/messaging_providers/
       Schema: MessagingProviderList
     400: Team has no registered public key; secret data cannot be sealed.
       Content: application/json
-      Schema: SyncErrorDetail
+      Schema: ErrorDetail
   Security:
     apiKeyAuth
     tokenAuth
@@ -580,7 +580,7 @@ GET /api/export/participant_data/
       Schema: ParticipantDataList
     400: Team has no registered public key; secret data cannot be sealed.
       Content: application/json
-      Schema: SyncErrorDetail
+      Schema: ErrorDetail
   Security:
     apiKeyAuth
     tokenAuth
@@ -823,7 +823,7 @@ GET /api/export/trace_providers/
       Schema: TraceProviderList
     400: Team has no registered public key; secret data cannot be sealed.
       Content: application/json
-      Schema: SyncErrorDetail
+      Schema: ErrorDetail
   Security:
     apiKeyAuth
     tokenAuth
@@ -926,7 +926,7 @@ GET /api/export/voice_providers/
       Schema: VoiceProviderList
     400: Team has no registered public key; secret data cannot be sealed.
       Content: application/json
-      Schema: SyncErrorDetail
+      Schema: ErrorDetail
   Security:
     apiKeyAuth
     tokenAuth
@@ -1289,6 +1289,9 @@ EmbeddingProviderModelList:
   - cursor: string (required)
   - has_more: boolean (required)
   - results: array of EmbeddingProviderModelDetail (required)
+
+ErrorDetail:
+  - detail: string (required)
 
 EvaluationConfigDetail:
   - id: integer (required)
@@ -1892,7 +1895,7 @@ SourceMaterialDetail:
   - description: string
   - material: string (required)
   - is_archived: boolean
-  - owner: integer (required)
+  - owner: integer
   - working_version: integer
 
 SourceMaterialList:
@@ -1918,9 +1921,6 @@ StaticTriggerList:
   - cursor: string (required)
   - has_more: boolean (required)
   - results: array of StaticTriggerDetail (required)
-
-SyncErrorDetail:
-  - detail: string (required)
 
 SyntheticVoiceDetail:
   - id: integer (required)
