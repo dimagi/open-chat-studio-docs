@@ -56,12 +56,6 @@ It asks an AI assistant to review the prompt and suggest a revision.
 The revision keeps exactly the same [prompt variables](../concepts/prompt_variables.md) as the original and uses only variables allowed for that node type.
 If the assistant cannot produce a valid revision, it returns the original prompt with a note that explains why.
 
-## Common issues
-
-- **Help is unavailable or returns an error.** Ask your server administrator to confirm the system agent models are configured.
-- **Find in pipeline does not match a field.** Hidden fields and select fields are not searched.
-- **A tool name is not suggested.** Check that the tool is enabled on that node and is not a built-in provider tool or a remote file search index.
-
 ## See also
 
 - [Node Types](../concepts/pipelines/nodes.md)
