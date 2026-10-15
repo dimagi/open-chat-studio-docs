@@ -45,6 +45,7 @@ A conversational node using AI models. You can configure:
 - [Custom Actions](../llm_custom_action.md) to connect to external systems and retrieve information or complete tasks
 
 See [Configure an LLM Node](../../tutorials/configure_llm_node.md) for a step-by-step tutorial on setting one up.
+To refer to enabled tools by name in the prompt, or to ask an AI assistant to review it, see [Search and Get Prompt Help in the Pipeline Editor](../../how-to/pipeline_editor_search_and_prompt_help.md).
 
 ## Routing Nodes
 
