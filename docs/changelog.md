@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Oct 15, 2026
+* **NEW** Added v2 API endpoints to list, retrieve, create, update and archive a team's source material (`/api/v2/source-material/`) and consent forms (`/api/v2/consent-forms/`). Changes apply to working versions only and reach published chatbots when they are next published. Client-credentials tokens can read these resources but not change them. See the [API documentation](api/index.md).
+
 ## Oct 14, 2026
 * **NEW** Added a Copy action to the Evaluators page. It duplicates an evaluator, including its tag rules, with " (copy)" added to its name, and opens the copy for editing. Archived evaluators can also be copied. See [copying an evaluator](concepts/evaluations/evaluators.md#copying-an-evaluator).
 
