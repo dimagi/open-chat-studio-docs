@@ -43,11 +43,11 @@ Binary fields are stored as 1 or 0. The labels you set are added to the field de
 
 ### No structured output
 
-Sometimes the model returns no structured output at all: it refuses in prose, the provider blocks the reply, or it never calls the required tool. This is not retried, because asking again is likely to give the same result. Instead, the `error (<evaluator name>)` column for that row shows `The model did not return structured output:` followed by the model's reply, or the provider's stop reason if it gave none. This usually takes a provider refusal or safety block, so most runs never see it.
+Sometimes the model returns no structured output at all: it refuses in prose, the provider blocks the reply, or it never calls the required tool. This is not retried, because asking again is likely to give the same result. Instead, the `error (<evaluator name>)` column for that row shows `The model did not return structured output:` followed by the model's reply, or the provider's stop reason if it gave none. This usually happens only after a provider refusal or safety block, so most runs never see it.
 
 ## Tag reconciliation on rerun
 
-A message or session either meets a tag rule's condition, or it does not. To keep tags consistent with the latest results, rerunning an evaluation reconciles the tags managed by its evaluators' tag rules:
+A message or session either meets a [tag rule's](../../concepts/evaluations/tag_rules.md) condition, or it does not. To keep tags consistent with the latest results, rerunning an evaluation reconciles the tags managed by its evaluators' tag rules:
 
 - For each message or session in the rerun's scope, any tag named by an evaluator's tag rules that was **not** applied by the latest run is removed from that message or session.
 - Reconciliation removes a tag regardless of who applied it. If a person added a tag that is also managed by a tag rule, and the new evaluator output does not meet that rule, the tag is removed.

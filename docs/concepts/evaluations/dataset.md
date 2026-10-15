@@ -18,27 +18,39 @@ A participant has this conversation with a clinic's appointment chatbot:
 
 A dataset can store this conversation in two ways, depending on its [evaluation level](#evaluation-levels).
 
-In a **message-level** dataset, the conversation becomes two rows. Each row holds one user message and the bot's reply, with the earlier turns as history:
+In a **message-level** dataset, the conversation becomes two rows. Each row holds one Human/AI message pair, the participant's message and the chatbot's reply, with the earlier turns as history:
 
 | Row | Human Message | AI Message | History |
 |---|---|---|---|
 | 1 | Can I book a check-up for Tuesday? | Yes, there is a slot at 10:00 or 14:30. Which would you like? | (none) |
 | 2 | 14:30 please. | Booked. You'll get a reminder the day before. | The two messages from row 1 |
 
-An evaluator scores each reply on its own. For example: "Did the bot offer times that were actually available?"
+An evaluator scores each reply separately, using the history for context. For example: "Did the chatbot offer times that were actually available?"
 
-In a **session-level** dataset, the conversation becomes one row that holds the whole transcript. An evaluator scores the conversation as a whole. For example: "Did the participant end up with a booking?"
+In a **session-level** dataset, the conversation becomes one row that holds all four messages. An evaluator scores the conversation as a whole. For example: "Did the participant end up with a booking?"
 
 ## Evaluation levels
 
-When you create a dataset, you choose an **Evaluation level**. It decides how the dataset is structured and which evaluators can use it.
+When you create a dataset, you choose its **Evaluation level**.
 
 | Level | Each row is | Use it to judge |
 |---|---|---|
 | **Message level** | A single Human/AI message pair | Individual responses, for accuracy, tone or correctness |
 | **Session level** | An entire conversation | Overall quality, goal completion, or coherence across turns |
 
-The level cannot be changed after the dataset is created. An [evaluator's](./evaluators.md) **Evaluation mode** must match the dataset's level.
+Choose **message level** if you want to:
+
+- Test a new chatbot version by having it generate fresh replies to score.
+- Write test cases by hand or upload them from a CSV file.
+
+Choose **session level** if you want to:
+
+- Judge whether whole conversations went well.
+- Add new conversations from a live chatbot automatically.
+
+You cannot change the level after the dataset is created.
+Each evaluator is also set to message or session level, and you can only use evaluators set to the same level as the dataset.
+See [Evaluators](./evaluators.md).
 
 ## How datasets are created
 

@@ -1,6 +1,6 @@
 # Dataset Structure Reference
 
-This page is a field-level reference for evaluation dataset rows: what each field contains, how session data maps to dataset fields when cloning, and how to format CSV uploads.
+This page is a field-level reference for evaluation dataset rows: what each field contains, how session data maps to dataset fields when [cloning](#cloning-field-mappings), and how to [format CSV uploads](#csv-format).
 
 For a conceptual overview of datasets and evaluation levels, see [Evaluation Datasets](../../concepts/evaluations/dataset.md). For step-by-step instructions on creating a dataset, see [Create a Dataset](../../how-to/evaluations/create-a-dataset.md).
 
