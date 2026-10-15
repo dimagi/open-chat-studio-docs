@@ -19,6 +19,7 @@ hide:
 
 ## Oct 13, 2026
 * **MIGRATION** Removed the OpenAI models `o4-mini`, `o3-mini`, `gpt-4`, `gpt-4.1-nano` and `gpt-3.5-turbo` ahead of OpenAI's shutdown on Oct 23, 2026. Chatbots, pipelines, assistants and evaluators using them now use `gpt-5.6-sol` (replacing `o4-mini`, `o3-mini` and `gpt-4`) or `gpt-5.6-terra` (replacing `gpt-4.1-nano` and `gpt-3.5-turbo`), and affected teams receive an in-app notification. Azure OpenAI versions of these models are not affected. See [Model Lifecycle and Deprecation](concepts/team/llm_providers.md#model-lifecycle-and-deprecation).
+* **NEW** The pipeline builder has three additions: a find button (or Ctrl/Cmd+F) that searches the text on every node and opens the matching node, tool-name autocomplete in LLM node prompts for the tools enabled on that node, and a **Help** button in LLM and Router prompt editors that asks an AI assistant to suggest a revised prompt you can edit, accept or reject. See [Search and get prompt help in the pipeline editor](how-to/pipeline_editor_search_and_prompt_help.md).
 
 ## Oct 12, 2026
 * **NEW** `sync_team` has a new `--follow` flag for the cutover: the command keeps running after the first pass and pulls new rows from the source every `--interval` seconds (default 10) until you stop it with Ctrl+C. `sync_team` also no longer stops when the source creates rows during the sync, retries after rate-limit responses from the source, and keeps edits made on the target to sessions, chats and participants. See [team migration](tech-hub/migrate_team.md).
