@@ -43,6 +43,7 @@ The condition options vary by the type of the output field:
 | choices (enum) | Apply the tag when the field equals one of the defined choice values (e.g. `sentiment == "negative"`) |
 | integer / float | Apply the tag when the field equals a specific value, or falls within a `min..max` range |
 | string | Apply the tag when the field equals a specific value |
+| binary | Apply the tag when the field equals 1 (the true label) or 0 (the false label). Ranges are not supported. |
 
 ## Example
 
@@ -53,5 +54,6 @@ Using the [example output schema](evaluators.md#output-schema) from the Evaluato
 | user_sentiment | negative-sentiment | equals `negative` |
 | expected_helpfulness | low-helpfulness | range `1..2` |
 | confidence_score | low-confidence | range `0.0..0.4` |
+| answered_question | not-answered | equals `0` |
 
 With these rules, any evaluation run will automatically tag messages or sessions that meet the conditions, without requiring manual review of every row.

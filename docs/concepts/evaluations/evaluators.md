@@ -72,6 +72,7 @@ The output schema defines the metrics that the LLM should attempt to output. Eac
 - **integer**: Whole numbers (e.g., counts, ratings)
 - **float**: Decimal numbers (e.g., confidence scores, percentages)
 - **choice (enum)**: Predefined options from a list
+- **binary**: A yes/no result, stored as 1 or 0. You can set the label shown for each value, such as **Correct** and **Incorrect**. The defaults are **True** and **False**. Run results show the share of rows that scored 1.
 
 The system automatically validates the LLM's output against the specified types using a dynamically generated schema. If the output doesn't match the expected format, the system will retry up to 3 times before failing, ensuring reliable structured data.
 
@@ -85,6 +86,7 @@ Occasionally the model returns no structured output at all — it refuses in pro
 | actual_helpfulness | integer | The helpfulness, on a scale of 1-5, of the actual assistant message |
 | user_sentiment | choice | The sentiment of the user message (options: positive, neutral, negative) |
 | confidence_score | float | Confidence in the evaluation, from 0.0 to 1.0 |
+| answered_question | binary | Whether the assistant message answered the user's question (labels: Answered, Not answered) |
 
 See [Tag Rules](./tag_rules.md) to automatically tag sessions or messages based on these output values.
 
