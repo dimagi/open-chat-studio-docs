@@ -23,6 +23,11 @@ To search documents by meaning, OCS uses an **embedding model**. Retrieving rele
 
 Once your collection is created and populated with files, [link it to an LLM node](../index.md#adding-a-collection-to-a-chatbot). Linking the collection isn't enough on its own — add the `{collection_index_summaries}` [prompt variable](../../prompt_variables.md) to that node's prompt so the chatbot knows to search it.
 
+### Limiting the search to matching metadata
+
+If several chatbots share one collection, you can set **Metadata Filters** on the LLM node so each chatbot searches only rows whose metadata matches.
+See [Filter Collection Search by Metadata](../../../how-to/filter_collection_search_by_metadata.md).
+
 ## Snapshots
 
 A snapshot is a read-only copy of an indexed collection at a point in time.
@@ -45,3 +50,4 @@ Keep these limits in mind:
 
 - [Local](./local_and_remote_indexes.md#local-index) or [Remote](./local_and_remote_indexes.md#remote-index) Indexes — choose where your files are indexed and how.
 - [Document Sources](./document_sources.md) — sync files automatically from Confluence or GitHub.
+- [Metadata Filters Reference](../../../tech-hub/collections/metadata-filters.md) — how filtered search behaves.
