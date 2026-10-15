@@ -13,9 +13,9 @@ For background on evaluations, datasets, and evaluators, see [Evaluations](../..
 
 ## Step 1: Create a session-level dataset
 
-You need a collection of test cases in a dataset for the evaluation to execute the chatbot against.
+The dataset holds the sessions that the evaluator scores. Each row is one complete session from your chatbot.
 
-Session-level datasets are the only dataset type that supports continuous auto-population from a live chatbot. The evaluation level is set at creation and **cannot be changed later**, so choose session-level before saving.
+Session-level datasets are the only dataset type that supports continuous auto-population from a live chatbot. The evaluation level is set at creation and **cannot be changed later**, so choose **Session level** before saving.
 
 See [Evaluation Datasets](../../concepts/evaluations/dataset.md) for an overview of evaluation levels and how session data maps into dataset fields.
 
@@ -58,7 +58,7 @@ Respond with the fields defined in the output schema.
 
 | Column name | Type | Notes |
 |---|---|---|
-| `goal_completion` | choices | Options: `yes`, `partial`, `no` |
+| `goal_completion` | choice | Options: `yes`, `partial`, `no` |
 | `quality_score` | integer | Scale of 1–5 |
 
 Define the output schema fields to match what you reference in the prompt. The evaluator validates the LLM's output against the schema and retries if the output does not match — see [Output Schema](../../concepts/evaluations/evaluators.md#output-schema) for the retry behavior, and what happens if the model returns no structured output at all.
@@ -85,18 +85,17 @@ With these rules in place, sessions where the goal was not met or where quality 
 
 See [Tag Rules](../../concepts/evaluations/tag_rules.md) for the full set of condition types.
 
-## Step 5: Create an evaluation config with auto-run enabled
+## Step 5: Create an evaluation with auto-run turned on
 
-Create an **evaluation config** (see [Run an Evaluation](run-an-evaluation.md#create-an-evaluation)) that references:
+1. Under **Evaluations**, click **Add new**. See [Create an evaluation](run-an-evaluation.md#create-an-evaluation) for the full form.
+2. Select the dataset from Step 1 as the **Dataset**.
+3. Select the LLM evaluator from Step 3 under **Evaluators**.
+4. Check **Auto-run when new rows are auto-populated**. This is what makes the judging happen automatically.
+5. Click **Create**.
 
-- The dataset from Step 1.
-- The LLM evaluator from Step 3.
+**What happens after auto-run is turned on:**
 
-Then enable the **auto-run** flag on the config. This is what makes the judging happen automatically.
-
-**What happens after auto-run is enabled:**
-
-When the auto-population rule (Step 2) adds new sessions to the dataset, any evaluation config referencing that dataset with auto-run set is triggered automatically against the newly added rows. These are **delta runs** — they score only the rows added in that ingestion cycle, not the entire dataset.
+When the auto-population rule (Step 2) adds new sessions to the dataset, any evaluation that uses that dataset and has auto-run turned on runs automatically against the newly added rows. These are **delta runs** — they score only the rows added in that ingestion cycle, not the entire dataset.
 
 Delta runs appear alongside full runs in the evaluation run table. Full runs score the entire dataset and are triggered manually; delta runs score only the newest rows and are triggered automatically.
 
