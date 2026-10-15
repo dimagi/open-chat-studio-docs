@@ -4,11 +4,11 @@ A dataset full of example conversations only becomes useful once it's been score
 
 You can run several evaluators over the same dataset at once, so a single evaluation run can check multiple things — accuracy, tone, safety — without re-running your chatbot for each one.
 
-Each evaluator works in one of two **evaluation modes** — **message-level** (judging a single response) or **session-level** (judging a whole conversation) — and must match the mode of the dataset it's used with. Evaluators using the wrong mode for a dataset are automatically disabled when configuring a run.
+Each evaluator has an **Evaluation mode**: **Message** (judging a single response) or **Session** (judging a whole conversation). It must match the [**Evaluation level** of the dataset](dataset.md#evaluation-levels) it is used with. Evaluators with the wrong mode for a dataset are hidden when you set up an evaluation.
 
-## Evaluator Types
+## Evaluator types
 
-### LLM Evaluator
+### LLM evaluator
 The LLM Evaluator uses language models to evaluate responses based on a custom prompt. This can be used as an [LLM-as-judge](../../how-to/evaluations/realtime_llm_judge.md) to evaluate the performance of a chatbot, or to gain insight into the properties of both the user and assistant messages.
 
 For the how-to guide, see [Set Up a Real-Time LLM Judge](../../how-to/evaluations/realtime_llm_judge.md).
@@ -30,7 +30,7 @@ Consider the conversation context: {context.topic}
 
     If your team runs evaluations with generation enabled, your team's total cost may be higher than you remember, since this spend is now captured. No chatbot, participant, or conversation becomes more expensive — the cost was simply not being recorded before.
 
-### Template Variables
+### Template variables
 
 The available variables depend on the evaluator's evaluation mode.
 
@@ -62,7 +62,7 @@ In session-level mode, `{input.content}` and `{output.content}` are empty. Use t
 
 See [Evaluation Datasets](dataset.md) for how data is mapped into these fields, and [Dataset Structure](../../tech-hub/evaluations/dataset-structure.md#dataset-fields) for where `participant_data` and `session_state` come from.
 
-### Output Schema
+### Output schema
 
 The output schema defines the metrics that the LLM should attempt to output. Each item in the schema will become a column in the output table. You can specify the data type for each field to ensure structured, validated output.
 
@@ -88,11 +88,33 @@ Occasionally the model returns no structured output at all — it refuses in pro
 
 See [Tag Rules](./tag_rules.md) to automatically tag sessions or messages based on these output values.
 
-### Python Evaluator
+### Python evaluator
 
 Use the Python Evaluator when you need deterministic rules, custom string matching, or logic that an LLM prompt cannot reliably express. It runs custom code against each message instead of an LLM prompt.
 
 See [Python Evaluator](../../tech-hub/evaluations/python_evaluator.md) for the function signature, arguments, and a worked example.
+
+## Copying an evaluator
+
+Copy an evaluator to reuse its configuration as a starting point for a new one.
+
+1. Go to **Evaluations** > **Evaluators**.
+2. Click the copy icon on the evaluator's row, between the edit and delete icons.
+3. Edit the copy on the page that opens, then click **Update**.
+
+The copy is named `<name> (copy)`.
+It has the same type, prompt, output schema, evaluation mode, provider, model, and [tag rules](./tag_rules.md) as the original.
+
+The copy starts active and is not part of any evaluation config.
+Results and aggregates are not copied.
+
+You can also copy an archived evaluator.
+This restores a retired configuration without changing the archived evaluator's history.
+
+!!! note
+    Copying requires both the add evaluator and change evaluator permissions.
+    The copy icon is hidden from users who lack either permission.
+    The default groups are not affected by this requirement.
 
 ## Archiving Evaluators
 
@@ -115,14 +137,3 @@ An archived evaluator cannot be deleted while its results exist, so the **Delete
 
 !!! note
     Neither archiving nor deleting an evaluator is allowed while a run that uses it is in progress.
-
-## Clearing Run History
-
-The evaluation runs page includes a **Clear all** button that deletes the entire run history for an evaluation config in a single action. This button is only shown to OCS users who have delete permission for evaluation runs.
-
-Clearing run history also removes the tags that those runs applied to their targets. Only tags that were applied by the evaluator's tag rules are removed — tags that a person added by hand are left untouched.
-
-!!! warning "Clearing run history is permanent"
-    Deleted runs and their results cannot be recovered. Export any results you need to keep before using **Clear all**.
-
-A confirmation prompt appears before the action runs.

@@ -53,8 +53,8 @@ Stand up and configure the self-hosted OCS instance you're migrating to, if you 
 
 A team's files live in a storage backend (such as an S3-compatible bucket), so you move them across separately:
 
-1. On the source server, go to **Team Settings** and open the **Data** section. This section is only visible to Team Admins.
-2. Download all of the team's files as a zip.
+1. On the source server, go to **Team Settings** and open the **Data** section, headed **Data & migration**. This section is only visible to Team Admins.
+2. In the **Download team files** card, select **Download** to export all of the team's files as a zip. See [Download Team Files](../how-to/download_team_files.md) for what the export contains and how long it stays available.
 3. Unzip the archive and upload its contents to the target server's storage backend (for example, an S3-compatible bucket).
 
 !!! note "Preserve the folder layout"
@@ -62,7 +62,7 @@ A team's files live in a storage backend (such as an S3-compatible bucket), so y
 
 ## 3. Generate an encryption key pair and register the public key
 
-Secrets such as provider credentials are encrypted in transit. The source seals them to a public key you register; only the holder of the matching private key — the target server — can unseal them.
+Secrets such as provider credentials are encrypted in transit. The source seals them to a public key you register in the **Migration public key** card; only the holder of the matching private key — the target server — can unseal them.
 
 Generate an RSA key pair with OpenSSL:
 
@@ -98,7 +98,7 @@ with open("pubkey.pem", "wb") as f:
 
 Then:
 
-1. On the source server, register the **public key** (`pubkey.pem`) in the same **Data** section under Team Settings.
+1. On the source server, paste the public key (`pubkey.pem`) into the **Public Key** field of the **Migration public key** card, in the same **Data** section under Team Settings, and select **Save key**.
 2. Copy the **private key** (`privkey.pem`) to the target server. You'll pass its path to `sync_team` in [step 6](#6-run-the-sync-command-target-server).
 
 !!! warning "Keep the private key safe"
@@ -110,13 +110,14 @@ Create an API key for your user on the source server — the sync command uses i
 
 ## 5. Enable migration mode (source server)
 
-In the **Data** section on the source server, enable migration mode for the team. The sync endpoints refuse to serve a team that isn't in migration mode, so this step is required.
+In the **Data** section on the source server, turn on the **Migration mode** checkbox in the **Migration public key** card and select **Save key**. This step is required. If migration mode isn't enabled, `sync_team` stops with the error: "Migration mode needs to be enabled on the source team before you can continue."
 
 !!! warning "Effects of migration mode"
     While migration mode is enabled on the source:
 
-    - The source stops sending the team's scheduled messages.
+    - Scheduled messages, event triggers, timeout triggers, and scheduled triggers all stop firing.
     - Live chat traffic is unaffected and continues to work normally.
+    - A banner appears on every page of the team: "This team is undergoing a migration. Do not create or edit chatbots until the migration is complete."
 
 ## 6. Run the sync command (target server)
 
@@ -138,6 +139,8 @@ The arguments are:
 - `--team-slug` — the slug of the team you're migrating.
 - `--private-key-path` — the path to the private key you copied to the target server ([step 3](#3-generate-an-encryption-key-pair-and-register-the-public-key)). Alternatively, set the `SYNC_TEAM_PRIVATE_KEY` environment variable to the private key's PEM contents instead of passing a path. This is often easier in a containerized environment, where you can inject it as a secret rather than mounting a key file. If both are provided, `--private-key-path` takes precedence.
 - `--state-dir` — the directory where the checkpoint SQLite database is stored. Point every rerun at the same directory so the command can resume from where it left off.
+- `--follow` (optional) — keep the command running after the first pass and pull new rows from the source on a repeating interval. See [Run the sync continuously](#run-the-sync-continuously).
+- `--interval` (optional) — the number of seconds to wait between passes when you use `--follow`. The default is 10.
 
 Where you run this depends on how you run OCS:
 
@@ -153,14 +156,43 @@ docker compose exec web python manage.py sync_team \
   --state-dir "/path/to/state-dir"
 ```
 
-The command creates a SQLite tracking database named after the team slug in the `--state-dir` directory. It's safe to run `sync_team` again at any point — each run picks up only what's changed since the last run, so you can use it to pull in a delta later (see [step 8](#8-verify-and-do-a-final-sync)).
+The command creates a SQLite tracking database named after the team slug in the `--state-dir` directory. It's safe to run `sync_team` again at any point — each run picks up only what's changed since the last run, so you can use it to pull in a delta later (see [step 8](#8-verify-and-do-a-final-sync)), or run it continuously with `--follow`.
 
 !!! warning "Persist the state directory in containerized environments"
     In a containerized environment, the state directory won't survive container restarts or redeployments unless you persist it. Either bind mount `--state-dir` to a durable location on the host, or manually copy it out and back in if you plan to restart or redeploy the container before running the command again. If the state directory is lost, the next run starts from scratch instead of resuming.
 
+### Run the sync continuously
+
+By default, `sync_team` makes one pass over the source and exits.
+With `--follow`, it keeps running, so you can leave it running through the channel cutover in [step 7](#7-re-register-channel-webhooks-target-server) instead of doing a separate final run afterwards.
+
+```bash
+python manage.py sync_team \
+  --source-url "https://www.openchatstudio.com" \
+  --api-key "<your-api-key>" \
+  --team-slug "<team-slug>" \
+  --private-key-path "/path/to/privkey.pem" \
+  --state-dir "/path/to/state-dir" \
+  --follow
+```
+
+After each pass, the command prints how many rows it synced, then waits `--interval` seconds and starts the next pass.
+
+Press **Ctrl+C** to stop the command. When it stops, it prints a report of the rows it synced.
+
 ## 7. Re-register channel webhooks (target server)
 
-Once the team's data has synced, channel webhooks still point at the source server. Re-point them by running:
+Once the team's data has synced, channel webhooks still point at the source server.
+
+!!! warning "Switch channels only after the full export, at a quiet time"
+    To prevent conflicts between data on the source and the target, run this step only when both of these are true:
+
+    1. `sync_team` has exported all rows from the source.
+    2. Traffic is quiet: `sync_team --follow` passes report 0 rows synced. This is typically late at night.
+
+    Leave `sync_team --follow` running in another shell while you switch over. See [Run the sync continuously](#run-the-sync-continuously).
+
+Re-point the webhooks by running:
 
 ```bash
 python manage.py reregister_webhooks --team-slug "<team-slug>"
@@ -188,7 +220,16 @@ A few channel types aren't handled by this command at all and must be repointed 
 
 ## 8. Verify and do a final sync
 
-Test each channel against the target server and confirm chatbots respond as expected. Once you've confirmed everything is working, run `sync_team` one more time to pull in any messages or updates that arrived on the source while you were switching channels over.
+Test each channel against the target server and confirm chatbots respond as expected.
+
+If `sync_team --follow` is running:
+
+1. After all webhooks point at the target, watch the pass output.
+2. When the passes report 0 rows synced for a few minutes, the remaining data has been copied.
+3. Press **Ctrl+C** to stop the command.
+
+If you did not use `--follow`, run `sync_team` one more time to pull in any messages or updates that arrived on the source while you were switching channels over.
+Do this soon after the switch, while traffic is still quiet.
 
 ## After the migration
 

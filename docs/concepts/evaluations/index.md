@@ -1,19 +1,33 @@
 # Evaluations
 
-Building a chatbot is the easy part. Knowing if it's actually working well — especially as you tweak prompts, swap models, or add new features — is harder. **Evaluations** let you check this systematically: run your chatbot against a set of sample conversations, and automatically score the results against criteria you define, such as accuracy, tone, or whether it stayed on topic.
+Building a chatbot is the easy part. Knowing whether it works well is harder.
 
-Running evaluations regularly gives you an early warning when a change makes responses worse, and proof when a change makes them better — instead of relying on spot-checking conversations by hand.
+**Evaluations** let you check this systematically. You run your chatbot against a set of sample conversations and score the results against criteria you define, such as accuracy, tone, or whether it stayed on topic.
 
-In Open Chat Studio, evaluations can be run against existing conversation messages already in the system, or against a custom set of test cases you upload.
+Running evaluations regularly gives you an early warning when a change to a prompt, model or pipeline makes responses worse, and proof when a change makes them better. You no longer need to spot-check conversations by hand.
 
-## Overview
+```mermaid
+flowchart LR
+    sessions([Past conversations]) --> dataset[Dataset]
+    manual([Hand-written or CSV test cases]) --> dataset
+    dataset --> evaluators["Evaluators (LLM judge or Python)"]
+    evaluators --> results[Results table]
+    results --> tags[Tag rules tag matching rows]
+    results --> compare[Compare runs over time]
+```
 
-- **Evaluations** are made up of a [dataset](./dataset.md) and one or more [evaluators](./evaluators.md).
-- **Datasets** are collections of test case messages that serve as the foundation for running evaluations. Datasets can either be created in a few different ways. See [Create a Dataset](../../how-to/evaluations/create-a-dataset.md) for step-by-step instructions. They are inputs for an evaluation.
-- **Evaluators** define the logic for analyzing messages and generating evaluation metrics, either as an [LLM-as-judge prompt](./evaluators.md#llm-evaluator) or [custom python code](./evaluators.md#python-evaluator). Each evaluator takes individual messages from a dataset and optionally a generated response, then outputs structured results in a table. You can apply many evaluators to a dataset in parallel, and the outputs of each will be added as new columns to the table.
-- **[Tag Rules](./tag_rules.md)** automatically tag sessions or messages whose evaluator output meets a condition you define, such as a low confidence score or negative sentiment, so you can jump straight to the conversations that need attention.
+- **[Dataset](./dataset.md)**: the conversations or test cases to score.
+- **[Evaluators](./evaluators.md)**: score each row, using an LLM prompt or Python code. Several evaluators can run on the same dataset.
+- **[Tag rules](./tag_rules.md)**: tag rows whose scores meet a condition, such as a low rating, so you can find them quickly.
 
-## See also
+## Example
 
-- [Create a Dataset](../../how-to/evaluations/create-a-dataset.md) — build your first dataset by cloning sessions, importing from an annotation queue, or uploading a CSV.
-- [Evaluations Reference](../../tech-hub/evaluations/index.md) — evaluation execution and other advanced details.
+Suppose you run a health clinic's appointment chatbot and want to switch it to a cheaper model, but you are not sure the answers will stay as good. You build a **dataset** from 50 real past conversations, including some that went badly, and create an **evaluator** that rates each response for helpfulness from 1 to 5.
+
+You run the evaluation with the current model and note the average score, then change the model and run it again. If the average drops, you know the change has a cost before any participant sees it. A **tag rule** can tag every response that scored 2 or lower, so you can open those conversations and see what went wrong.
+
+## Next steps
+
+- [Create a Dataset](../../how-to/evaluations/create-a-dataset.md) — build your first dataset by cloning sessions, importing from an [annotation queue](../annotations/queues.md), or uploading a CSV.
+- [Run an Evaluation](../../how-to/evaluations/run-an-evaluation.md) — create an evaluation, preview and run it, and read the results.
+- [Evaluations Reference](../../tech-hub/evaluations/index.md) — how evaluation runs execute, Python evaluators and auto-population.

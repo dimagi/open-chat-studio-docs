@@ -103,6 +103,7 @@ nav:
       - Add a Custom LLM Model: how-to/add_custom_llm_model.md
       - how-to/workflow_cookbook.md
       - how-to/add_a_knowledge_base.md
+      - Import CSV/TSV Rows into a Collection: how-to/import_csv_tsv_rows.md
       - Router Nodes:
         - how-to/routers/index.md
         - Configure LLM Router: how-to/routers/llm_router.md
@@ -125,12 +126,18 @@ nav:
       - Find Objects: how-to/global_search.md
     - Sessions & Data:
       - Reset Sessions: how-to/reset_sessions.md
+      - Download Team Files: how-to/download_team_files.md
     - Monitoring & Debugging:
       - Configure Langfuse Trace Sampling: how-to/configure_langfuse_trace_sampling.md
       - Manage Notifications: how-to/manage_notifications.md
       - Find Where a Provider Is Used: how-to/find_provider_usages.md
+    - Annotations:
+      - Create a Queue and Add Items: how-to/annotations/create-a-queue.md
+      - Annotate Queue Items: how-to/annotations/annotate-items.md
+      - Export Annotations: how-to/annotations/export-annotations.md
     - Evaluations:
       - Create a Dataset: how-to/evaluations/create-a-dataset.md
+      - Run an Evaluation: how-to/evaluations/run-an-evaluation.md
       - Real-Time LLM Judge: how-to/evaluations/realtime_llm_judge.md
     - Migration & Deprecated:
       - how-to/assistants_migration.md
@@ -169,10 +176,12 @@ nav:
         - concepts/team/speech_providers.md
         - concepts/team/authentication_providers.md
         - concepts/team/messaging_providers.md
-      - Members & Access: concepts/team/members.md
+      - Members: concepts/team/members.md
       - Developers:
         - concepts/team/developer.md
         - Custom Actions: concepts/team/custom_actions.md
+      - Data: concepts/team/data_migration.md
+      - Feature Flags: concepts/team/feature_flags.md
       - User Groups: concepts/team/groups.md
     - Collections:
       - concepts/collections/index.md
@@ -215,6 +224,8 @@ nav:
       - Dataset Structure: tech-hub/evaluations/dataset-structure.md
       - Python Evaluator: tech-hub/evaluations/python_evaluator.md
       - Auto-Population Rules: tech-hub/evaluations/auto_population.md
+    - Annotations:
+      - Export Format: tech-hub/annotations/export-format.md
     - OCS API:
       - api/index.md
       - api/getting_started_with_oauth.md

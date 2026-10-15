@@ -1,8 +1,11 @@
 # Tools
 
-Tools let your chatbot take real actions during a conversation — not just respond with text. When a tool is enabled, the LLM can decide to use it at the right moment, and Open Chat Studio (OCS) executes the tool on the LLM model's behalf.
+Tools let your chatbot take real actions during a conversation — not just respond with text.
 
 For example, a chatbot with the Calculator tool can perform accurate arithmetic. A chatbot with reminder tools can schedule a message to be sent to the participant at a future time. Without tools, a chatbot can only generate text.
+
+When a tool is enabled, the [LLM](../llm.md) can decide to use it at the right moment. For [user-configurable tools](#user-configurable-tools), Open Chat Studio (OCS) then executes the tool on the LLM model's behalf.
+[LLM provider tools](#llm-provider-tools) run in the provider's infrastructure instead.
 
 !!! tip
 
@@ -10,7 +13,7 @@ For example, a chatbot with the Calculator tool can perform accurate arithmetic.
 
 ## Calling a tool in a prompt
 
-Once a tool is enabled, the AI will use it when it judges it to be appropriate. You can also guide it explicitly by referring to the tool by name in your system prompt. For example:
+Once a tool is enabled, the AI will use it when it judges it to be appropriate. You can also guide it explicitly by referring to the tool by name in your system [prompt](../llm.md#prompt). For example:
 
 > When the participant asks to be reminded about something, use the `recurring-reminder` tool to schedule it.
 
@@ -46,7 +49,7 @@ Store and update information about a participant that persists across sessions. 
 
 Read and write data within the current session, or manage the session lifecycle. Data stored here is available only for the duration of the session. See [Sessions](../sessions.md) for more information.
 
-- **[Set session state key](../../tech-hub/tools.md#set-session-state-key)** — Stores a key-value pair in the session state, which persists for the duration of the current session. Useful in pipeline configurations where one part of the conversation needs to pass information to another.
+- **[Set session state key](../../tech-hub/tools.md#set-session-state-key)** — Stores a key-value pair (a named value) in the session state, which persists for the duration of the current session. Useful in [pipelines](../pipelines/index.md) where one part of the conversation needs to pass information to another.
 - **[Get session state key](../../tech-hub/tools.md#get-session-state-key)** — Retrieves a value previously stored in session state during the current session.
 - **[Append to session state](../../tech-hub/tools.md#append-to-session-state)** — Adds a value to a list in the session state. Use this to track items within a single session — for example, a list of topics discussed so far.
 - **[Increment session state counter](../../tech-hub/tools.md#increment-session-state-counter)** — Increments a numeric counter stored in session state. Use this to count events within a single session.
@@ -70,3 +73,4 @@ Open Chat Studio also manages a small set of internal tools automatically - `Att
 
 - To see full argument details for each user-configurable tool, see the [Tools Reference](../../tech-hub/tools.md).
 - To add your own tools in the form of custom integrations, see [Custom Actions](../llm_custom_action.md).
+- To enable tools on a chatbot, see the [LLM Node](../pipelines/nodes.md#llm-node).
