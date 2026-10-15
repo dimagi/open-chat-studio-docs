@@ -50,4 +50,5 @@ Keep these limits in mind:
 
 - [Local](./local_and_remote_indexes.md#local-index) or [Remote](./local_and_remote_indexes.md#remote-index) Indexes — choose where your files are indexed and how.
 - [Document Sources](./document_sources.md) — sync files automatically from Confluence or GitHub.
+- [Citations](./citations.md) — show links to the source files with your chatbot's answers.
 - [Metadata Filters Reference](../../../tech-hub/collections/metadata-filters.md) — how filtered search behaves.

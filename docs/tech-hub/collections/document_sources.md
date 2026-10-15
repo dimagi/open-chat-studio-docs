@@ -9,10 +9,10 @@ To add a source or read its sync log, follow the guide to [set up and manage doc
 
 ## Quick reference
 
-| Source | Authentication provider | A file is re-synced when | Source link shown with answers |
+| Source | Authentication provider | A file is re-synced when | [Citation](../../concepts/collections/indexed_collections/citations.md) link |
 |--------|-------------------------|--------------------------|----------|
-| [GitHub](#github) | [Bearer Token](../../concepts/team/authentication_providers.md#bearer-token) | Its content hash (`sha`) changes | Link to the file in the repository |
-| [Confluence](#confluence) | [Basic Auth](../../concepts/team/authentication_providers.md#basic-auth) | The page's last-modified time changes | Page title, linked to the page |
+| [GitHub](#github) | [Bearer Token](../../concepts/team/authentication_providers.md#bearer-token) | Its content hash (`sha`) changes | File path, linked to the copy stored in OCS |
+| [Confluence](#confluence) | [Basic Auth](../../concepts/team/authentication_providers.md#basic-auth) | The page's last-modified time changes | Page title, linked to the Confluence page |
 
 ## Shared behavior
 
