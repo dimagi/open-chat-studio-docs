@@ -18,7 +18,8 @@ There were three different types of chatbots that you could build in Open Chat S
 
 This kind of chatbot is the most commonly used and simple to configure. It is backed the standard language model APIs such as the OpenAI [chat completions API][1], Anthropic [messages API][2] or Google [Gemini API][3].
 
-Chatbots configured in this way have all the basic features (memory, source material etc.) and can also use some of the advanced features like Scheduling and Reminders.
+Chatbots configured this way have all the basic features, such as [memory](../pipelines/history.md) and [source material](../source_material.md).
+They can also use advanced features such as Scheduling and [Reminders](../../how-to/reminders.md).
 
 #### Assistant
 
@@ -40,7 +41,16 @@ For more information see the [OpenAI docs][6].
 #### Pipeline
 [Pipelines](../pipelines/index.md) allow you to create more complex chatbots by defining a ‘graph’ (in the computer science sense) of nodes. You can think of this graph as a workflow that flows from input to output. Each message to the chatbot is processed by the graph to produce a final output. A single response from the chatbot will be one successful path through the graph from the input node to the output node.
 
-This can be useful if you want to build a complex chatbot that performs different tasks depending on the participant’s request. Generally, trying to make a single chatbot prompt do multiple functions doesn’t work well so it is better to create multiple prompts for each task and then combine them using a Pipeline. This is similar to the Multi-bot setup but allows more flexibility and complexity.
+This can be useful if you want to build a complex chatbot that performs different tasks depending on the participant’s request.
+A single chatbot prompt that performs several functions generally works poorly.
+It is better to create one prompt per task and combine them using a Pipeline.
+This is similar to the Multi-bot setup but allows more flexibility and complexity.
+
+## See also
+
+- [Chatbots](../chatbots/index.md)
+- [Pipelines](../pipelines/index.md)
+- [OpenAI Assistants (Removed)](../assistants.md)
 
 [1]: https://platform.openai.com/docs/guides/text-generation
 [2]: https://docs.anthropic.com/en/api/messages
