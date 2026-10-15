@@ -23,6 +23,7 @@ Natural language filtering is available on the following tables:
     - `sessions from last week excluding WhatsApp`
     - `messages from participants in Ghana`
     - `failed traces from the past 3 days`
+    - `sessions not in any annotation queue` (teams with the human annotations feature flag)
 
 4. Click **✨ Generate**.
 

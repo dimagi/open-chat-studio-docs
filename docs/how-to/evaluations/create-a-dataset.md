@@ -61,6 +61,12 @@ Based on the evaluation level you have chosen, the system will clone either the 
 3. Choose a selection scope:
     - **Selected only** — clone only the sessions you check individually.
     - **All matching filters** — clone every session that matches your current filters. There is no limit on how many sessions this can match.
+
+    !!! tip
+        To pick sessions that no one has reviewed yet, set the **Annotation Queue** filter to **Not in any queue**.
+        This filter is available only if your team has the human annotations feature flag.
+        See [Seeing Queue Membership from the Sessions List](../../concepts/annotations/queues.md#seeing-queue-membership-from-the-sessions-list).
+
 4. Click **Create Dataset** to create the dataset rows.
 
 ---
