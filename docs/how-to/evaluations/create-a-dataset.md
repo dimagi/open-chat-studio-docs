@@ -7,13 +7,14 @@ This guide walks you through each method for populating an evaluation dataset. B
 - A team with at least one chatbot.
 - An existing dataset, or permission to create one. Datasets are created from the **Evaluations/Datasets** section in the left navigation.
 
-## Create Dataset
+## Create dataset
 
 1. Click the **Add new** button to view the Create Dataset view.
-2. Choose the **Evaluation level** (message-level or session-level) — this cannot be changed later and determines which creation methods/modes are available to you.
+2. Choose the **Evaluation level** (**Message level** or **Session level**) — this cannot be changed later and determines which creation options are available to you.
+3. Choose a **Dataset creation mode** from the list below.
 
 ---
-## The Dataset creation modes
+## The dataset creation modes
 
 1. [Clone from sessions](#clone-from-sessions)
 2. [Import from annotation queue](#import-from-an-annotation-queue)
@@ -22,9 +23,9 @@ This guide walks you through each method for populating an evaluation dataset. B
 
 !!! note
 
-    Open Chat Studio will show you the creation modes you can use based on the Evaluation level you have chosen.
+    Open Chat Studio shows only the creation modes available for the Evaluation level you have chosen.
 
-### Clone from Sessions
+### Clone from sessions
 
 Cloning turns real past conversations into dataset rows automatically. Use this method when you want to evaluate chatbot behavior against actual participant interactions.
 
@@ -64,7 +65,7 @@ Based on the evaluation level you have chosen, the system will clone either the 
 
 ---
 
-### Import from an Annotation Queue
+### Import from an annotation queue
 
 Use this method to populate a **session-level** dataset from sessions that have already been curated in an [annotation queue](../../concepts/annotations/queues.md). This is useful when your team has reviewed a set of conversations and you want to run automated scoring against the same set.
 
@@ -77,7 +78,7 @@ Imports are idempotent — sessions already present in the dataset are skipped. 
 
 ---
 
-### Create Manually
+### Create manually
 
 Use this method to write individual test cases by hand for a **message-level** dataset. This is particularly useful for testing specific behaviors or edge cases that have not appeared in real conversations yet.
 
@@ -102,3 +103,7 @@ Use this method to bulk-load message pairs from a file for a **message-level** d
 4. Click **Create Dataset**.
 
 For column naming conventions, dot-notation for nested fields, and JSON structure examples, see the [CSV Format](../../tech-hub/evaluations/dataset-structure.md#csv-format) reference.
+
+## Next steps
+
+- Pair the dataset with evaluators and score it. See [Run an Evaluation](run-an-evaluation.md).

@@ -37,7 +37,7 @@ For full details of **how ingestion works once the rule is active**, see [Auto-P
 
 ## Step 3: Create a session-level LLM evaluator
 
-Create an LLM evaluator and set its evaluation mode to **session-level** so it is compatible with the dataset from Step 1.
+Create an LLM evaluator and set its **Evaluation mode** to **Session** so it is compatible with the dataset from Step 1.
 
 In session-level prompts, `{input.content}` and `{output.content}` are empty — use `{full_history}` and `{context.[parameter]}` instead. `{generated_response}` is not available for session-level evaluators. See [Template Variables](../../concepts/evaluations/evaluators.md#template-variables) for the full reference.
 
@@ -87,7 +87,7 @@ See [Tag Rules](../../concepts/evaluations/tag_rules.md) for the full set of con
 
 ## Step 5: Create an evaluation config with auto-run enabled
 
-Create an **evaluation config** that references:
+Create an **evaluation config** (see [Run an Evaluation](run-an-evaluation.md#create-an-evaluation)) that references:
 
 - The dataset from Step 1.
 - The LLM evaluator from Step 3.

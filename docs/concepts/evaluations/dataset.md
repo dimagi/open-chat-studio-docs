@@ -1,47 +1,38 @@
 # Evaluation Datasets
 
-Every evaluation needs example conversations to test against — that's what a **dataset** provides. A dataset is the set of messages or sessions you want to score.
+An evaluation needs example conversations to test against. A **dataset** is that set of messages or sessions, and it is what the [evaluators](./evaluators.md) score.
 
-Dataset quality matters more than dataset size: a small, well-chosen set of realistic examples tells you more about how your chatbot behaves than scoring everything that happens to exist.
+A small set of realistic examples tells you more about your chatbot than scoring everything that exists. You can build a dataset from real conversations your chatbot has already had, or write your own test cases to check specific behaviors, including edge cases your chatbot has not met yet.
 
-You can build a dataset from real conversations your chatbot has already had, or write your own test cases to check specific behaviors — including edge cases your chatbot hasn't encountered yet.
+## Evaluation levels
 
-## Evaluation Levels
+When you create a dataset, you choose an **Evaluation level**. It decides how the dataset is structured and which evaluators can use it.
 
-When creating a dataset, you choose an **Evaluation level** that determines how the dataset is structured and which evaluators are compatible with it.
-
-| Level | Description | When to use |
+| Level | Each row is | Use it to judge |
 |---|---|---|
-| **Message level** | Each row represents a single Human/AI message pair | Judging individual responses for accuracy, tone, or correctness |
-| **Session level** | Each row represents an entire conversation | Judging overall conversation quality, goal completion, or coherence across turns |
+| **Message level** | A single Human/AI message pair | Individual responses, for accuracy, tone or correctness |
+| **Session level** | An entire conversation | Overall quality, goal completion, or coherence across turns |
 
-The evaluation level is set at dataset creation and cannot be changed later. Evaluators must share the same evaluation level as the dataset — incompatible evaluators are automatically disabled when configuring an evaluation run.
+The level cannot be changed after the dataset is created. An evaluator's **Evaluation mode** (Message or Session) must match the dataset's level, and incompatible evaluators are hidden when you set up an evaluation.
 
-## How Datasets Are Created
+## How datasets are created
 
-There are four ways to populate a dataset. The right choice depends on the data you have available and the evaluation level you selected.
+Which methods are available depends on the evaluation level.
 
-**Clone from a session** — turn real past conversations into test cases. Cloned rows keep a link back to their original session, which enables additional workflows such as importing into an annotation queue for human review.
+| Method | Message level | Session level | Use it when |
+|---|---|---|---|
+| [Clone from sessions](../../how-to/evaluations/create-a-dataset.md#clone-from-sessions) | Yes | Yes | You want to test against real past conversations. Cloned rows keep a link to their original session. |
+| [Import from an annotation queue](../../how-to/evaluations/create-a-dataset.md#import-from-an-annotation-queue) | No | Yes | Your team has already curated conversations for [human review](../annotations/queues.md) and you want to score the same set automatically. |
+| [Create rows manually](../../how-to/evaluations/create-a-dataset.md#create-manually) | Yes | No | You want to write targeted test cases or edge cases that have not happened yet. |
+| [Upload a CSV](../../how-to/evaluations/create-a-dataset.md#upload-csv-file) | Yes | No | You have an existing test suite or data from another tool. |
+| [Auto-population rules](../../tech-hub/evaluations/auto_population.md) | No | Yes | You want new sessions from a live chatbot added continuously. |
 
-**Import from an annotation queue** — pull sessions directly from an existing annotation queue into a session-level dataset. This is useful when you have already curated a set of conversations for human review and want to evaluate them automatically.
+## Sharing dataset messages
 
-**Create rows manually** — add individual message pairs by hand in the UI. This is useful for writing targeted test cases that cover specific behaviors or edge cases your chatbot has not yet encountered in real conversations.
+Each row in the dataset table has a link button that copies a direct link to that message. Anyone who opens the link is taken to the message, which is highlighted. Use it to refer to a specific test case in a discussion.
 
-**Upload a CSV** — bulk-load message pairs from a file. This is the fastest way to migrate an existing test suite or import data from another tool.
+## Next steps
 
-!!! note
-    Manual creation and CSV upload are only available for **message-level** datasets.
-
-    **Session-level** datasets must be populated by cloning sessions, by configuring an [auto-population rule](../../tech-hub/evaluations/auto_population.md), or by importing sessions from an annotation queue.
-
-For step-by-step instructions for each method, see [Create a Dataset](../../how-to/evaluations/create-a-dataset.md). For the full field reference and CSV format details, see [Dataset Structure](../../tech-hub/evaluations/dataset-structure.md).
-
-## Auto-Population Rules
-
-Session-level datasets can be continuously and automatically populated with new sessions from a live chatbot, instead of being created manually or from a one-off import. See [Auto-Population Rules](../../tech-hub/evaluations/auto_population.md) for how to configure rules and how ingestion works.
-
-## Sharing Dataset Messages
-
-When viewing dataset messages in the table, each row includes a link button that allows you to share a direct link to that specific message. When someone follows this link, the page automatically scrolls to the message and highlights it for easy identification.
-
-This feature is useful for collaborating with team members, referencing specific test cases in discussions, or documenting particular dataset examples. Click the link icon next to any message, and the URL will be copied to your clipboard with the message ID parameter included.
+- [Create a Dataset](../../how-to/evaluations/create-a-dataset.md) — step-by-step instructions for each method.
+- [Run an Evaluation](../../how-to/evaluations/run-an-evaluation.md) — score the dataset once you have evaluators.
+- [Dataset Structure](../../tech-hub/evaluations/dataset-structure.md) — field reference and CSV format.
