@@ -1,6 +1,6 @@
 # Annotate Queue Items
 
-This guide shows how to work through an annotation queue as a reviewer: submit annotations, edit them, skip items and flag items.
+This guide shows how to work through an annotation queue as a reviewer: submit annotations, edit them, skip items, flag items and resolve items that reviewers disagree on.
 To learn what the statuses mean, read [Annotating](../../concepts/annotations/annotating.md).
 For the bigger picture, see the [Annotations overview](../../concepts/annotations/index.md).
 
@@ -28,6 +28,7 @@ For the bigger picture, see the [Annotations overview](../../concepts/annotation
 
 The next item opens automatically.
 The page shows how many items you have reviewed out of the total in the queue.
+When no **Pending** or **In Progress** items are left for you, you return to the queue detail page.
 
 ## Edit Your Annotation
 
@@ -41,29 +42,44 @@ Saving updates your annotation and recalculates the queue's [aggregate scores](.
 
 ## Skip an Item
 
-Click **Skip** to leave an item for later.
-Skipped items stay in the queue and reappear after you have been through the other available items.
+Click **Skip** to move to the next item without annotating this one.
+The skipped item stays in the queue.
+Because items are served oldest first, it opens again after you submit the next item.
 
 ## Flag an Item
 
 Flag an item when something prevents you from annotating it, such as missing content, a corrupted session, or content that needs an admin to review.
 
 1. Click **Flag** on the annotation form.
-2. Enter the reason.
-   It is required.
+2. Optionally, enter a reason.
+   A reason helps whoever reviews the flag decide what to do.
 3. Click **Flag Item**.
 
-The item's status changes to **Flagged** and it no longer appears in your annotation sequence.
-The reason is recorded with your name and the time.
+The item's status changes to **Flagged** and it no longer appears in the annotation sequence.
+The flag is recorded with your name, the time and the reason.
 Later flags are added to the list instead of replacing it.
-A queue manager can unflag the item, which returns it to the review workflow.
+
+The **Flag** button is on the annotation form, so you can only flag an item you haven't annotated yet.
+To return a flagged item to the review workflow, see [Unflag an Item](manage-a-queue.md#unflag-an-item).
+
+## Resolve an Item Awaiting Resolution
+
+On queues that need more than one review, an item with all its reviews is **Awaiting resolution** until someone picks one annotation as the authoritative answer.
+See [Resolving Multi-Reviewer Conflicts](../../concepts/annotations/annotating.md#resolving-multi-reviewer-conflicts).
+
+1. On the queue detail page, find an item with the status **Awaiting resolution** in the **Items** table and click **Annotate**.
+2. Compare the annotations in the list.
+3. Click **Mark authoritative** next to the annotation you agree with.
+
+The item becomes **Completed**, and the chosen annotation shows an **Authoritative** badge.
+To choose a different annotation, click **Mark authoritative** on it.
+To undo the choice, click **Clear authoritative**.
 
 ## Expected Outcome
 
 - Items that have all required reviews become **Completed**, or **Awaiting resolution** on queues that need more than one review.
   See [Item Status Lifecycle](../../concepts/annotations/annotating.md#item-status-lifecycle).
-  To resolve an **Awaiting resolution** item, see [Resolving Multi-Reviewer Conflicts](../../concepts/annotations/annotating.md#resolving-multi-reviewer-conflicts).
-- The queue's progress and aggregate scores on its detail page update after each submission.
+- The queue's progress and [aggregate scores](../../concepts/annotations/queues.md#aggregate-scores) on its detail page update after each submission, edit and authoritative choice.
 
 ## See also
 
