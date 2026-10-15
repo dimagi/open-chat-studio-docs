@@ -19,12 +19,12 @@ Each session is independent, meaning:
 - **Multi-Session Channels**: Channels such as **Web**, **API**, and **Slack** allow multiple active sessions per participant, enabling parallel conversations.
 - **Single-Session Channels**: Platforms like **WhatsApp**, **Telegram**, and **SureAdhere** support only one active session per participant at a time.
 
-Every session has a status that tracks where the participant is in their chat journey. See [Session Status](session_status.md).
+Every session has a status that tracks the progress of the conversation. See [Session Status](session_status.md).
 
 ## History Management
 
-- As conversations progress, all previous messages within a session are stored as `history`, regardless of how the pipeline is configured.
-- What subset of that stored history reaches an LLM node, and whether it gets summarized or trimmed as it grows, is controlled per node. See [Conversation History](pipelines/history.md) for how this works.
+- As conversations progress, all previous messages within a session are stored as `history`, regardless of how the [pipeline](pipelines/index.md) is configured.
+- What subset of that stored history reaches an [LLM node](pipelines/nodes.md#llm-node), and whether it is summarized or trimmed as it grows, is controlled per node. See [Conversation History](pipelines/history.md) for how this works.
 
 ## Participant Data
 
@@ -48,3 +48,10 @@ For **Single-Session Channels** like **WhatsApp** and **Telegram**, the current 
 Sessions can be reset either [manually](../how-to/reset_sessions.md#manual-reset-of-a-session) by the participant or [automatically](../how-to/reset_sessions.md#reset-sessions-automatically).
 
 For task-focused details, see [How to reset sessions](../how-to/reset_sessions.md).
+
+## See also
+
+- [Session Status](session_status.md)
+- [Participant Data](participant_data.md)
+- [Channels](channels.md)
+- [Conversation History](pipelines/history.md)

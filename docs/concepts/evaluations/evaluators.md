@@ -94,6 +94,28 @@ Use the Python Evaluator when you need deterministic rules, custom string matchi
 
 See [Python Evaluator](../../tech-hub/evaluations/python_evaluator.md) for the function signature, arguments, and a worked example.
 
+## Copying an evaluator
+
+Copy an evaluator to reuse its configuration as a starting point for a new one.
+
+1. Go to **Evaluations** > **Evaluators**.
+2. Click the copy icon on the evaluator's row, between the edit and delete icons.
+3. Edit the copy on the page that opens, then click **Update**.
+
+The copy is named `<name> (copy)`.
+It has the same type, prompt, output schema, evaluation mode, provider, model, and [tag rules](./tag_rules.md) as the original.
+
+The copy starts active and is not part of any evaluation config.
+Results and aggregates are not copied.
+
+You can also copy an archived evaluator.
+This restores a retired configuration without changing the archived evaluator's history.
+
+!!! note
+    Copying requires both the add evaluator and change evaluator permissions.
+    The copy icon is hidden from users who lack either permission.
+    The default groups are not affected by this requirement.
+
 ## Archiving Evaluators
 
 Deleting an evaluator that has produced results or aggregates archives it instead of deleting it, so that data is not lost. An evaluator with no run history is still deleted outright.

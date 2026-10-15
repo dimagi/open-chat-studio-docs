@@ -55,10 +55,10 @@ stateDiagram-v2
 Used for [channels](channels.md) such as Telegram, WhatsApp, the web widget, and the API.
 
 - **If [conversational consent](consent.md) is disabled** (the common case): the session is created directly in `ACTIVE`. The early statuses are skipped entirely.
-- **If conversational consent is enabled**: the chatbot walks the participant through a chat-driven consent flow, traversing `SETUP → PENDING → ACTIVE`.
+- **If conversational consent is enabled**: the chatbot guides the participant through a consent flow in the chat, moving through `SETUP → PENDING → ACTIVE`.
 
 !!! note
-    Messaging channel sessions do not typically reach `PENDING_REVIEW` or `COMPLETE` on their own. Those terminal statuses are driven by the post-conversation review form or an explicit end-conversation action.
+    Messaging channel sessions do not typically reach `PENDING_REVIEW` or `COMPLETE` on their own. Those final (terminal) statuses are driven by the post-conversation review form or an explicit end-conversation action.
 
 ## Reaching the terminal statuses
 
@@ -74,7 +74,7 @@ A session moves to `PENDING_REVIEW` whenever the conversation ends. This can hap
 **Chatbot-driven actions** — the chatbot itself ends the session, using one of three methods described in [Ending sessions from a chatbot](../tech-hub/ending_sessions.md):
 
 - The LLM calls the [End Session tool](../tech-hub/ending_sessions.md#the-end-session-tool).
-- A Python pipeline node calls [`end_session()`](../tech-hub/ending_sessions.md#the-end_session-helper-in-a-python-node).
+- A Python [pipeline node](pipelines/nodes.md#python-node) calls [`end_session()`](../tech-hub/ending_sessions.md#the-end_session-helper-in-a-python-node).
 - An [event](events.md) fires with an [End the conversation action](../tech-hub/ending_sessions.md#events-with-an-end-the-conversation-action).
 
 **OCS User actions:**
@@ -88,15 +88,18 @@ A session moves to `PENDING_REVIEW` whenever the conversation ends. This can hap
 
 ### COMPLETE
 
-There is exactly one path to `COMPLETE`: the participant is redirected to the review page after the chat ends, and they submit the review form. If the participant closes the browser without submitting, the session remains in `PENDING_REVIEW` indefinitely.
+There is exactly one path to `COMPLETE`.
+After the chat ends, the participant is redirected to the review page and submits the review form.
+If the participant closes the browser without submitting, the session remains in `PENDING_REVIEW` indefinitely.
 
 ### UNKNOWN
 
-No deliberate action places a session in `UNKNOWN`. It exists as a defensive fallback. If you see sessions landing here, this indicates an unexpected state — worth investigating rather than ignoring.
+No deliberate action places a session in `UNKNOWN`. It exists as a defensive fallback. If you see sessions with this status, they are in an unexpected state, and you should investigate.
 
 ## Observing how a session ended
 
-Regardless of what ends a session — participant, chatbot, admin, API caller, or event — you can attach further actions to the conversation-end event using static triggers. This lets you respond differently depending on who or what ended the conversation.
+Regardless of what ends a session — participant, chatbot, admin, API caller, or event — you can attach further actions to the conversation-end event using [static triggers](events.md#static-events).
+This lets you respond differently depending on who or what ended the conversation.
 
 | Trigger type | Fires when |
 |--------------|------------|
@@ -116,10 +119,19 @@ Three statuses are treated as "this chat is over" for the purposes of filtering,
 - `COMPLETE`
 - `UNKNOWN`
 
-`UNKNOWN` is included here because sessions in this state will not progress further — they have left the normal flow and should not be treated as in-progress conversations. Only `COMPLETE` is considered fully done — meaning the participant has submitted the post-conversation review.
+`UNKNOWN` is included here because sessions in this state will not progress further.
+They have left the normal flow and should not be treated as in-progress conversations.
+Only `COMPLETE` is considered fully done, meaning the participant has submitted the post-conversation review.
 
 ## Things to keep in mind
 
 - **Status is managed automatically.** OCS transitions sessions through the flow. You do not need to set it manually.
 - **Channel sessions usually start in ACTIVE.** If you are wondering why a session is already active before any interaction, check whether [conversational consent](consent.md) is enabled on your chatbot.
 - **UNKNOWN is a fallback, not a destination.** If sessions are landing in `UNKNOWN`, something unexpected has occurred. Investigate rather than treating it as a normal terminal state.
+
+## See also
+
+- [Chat Sessions](sessions.md)
+- [Events](events.md)
+- [Consent Forms](consent.md)
+- [Ending sessions from a chatbot](../tech-hub/ending_sessions.md)

@@ -1,14 +1,15 @@
 # Notifications
 
 Notifications let you know when something needs attention in your chatbots, without having to check on them yourself.
-Open Chat Studio watches for problems like failed integrations, delivery errors, and deprecated models,
+Open Chat Studio (OCS) watches for problems like failed integrations, delivery errors, and deprecated models,
 and shows them in a bell-icon notification center and, optionally, by email.
 
 ## Why notifications exist
 
 Chatbots run continuously across channels like WhatsApp, Slack, and the web, often with no one watching in real time.
-A message can fail to reach a participant, or an LLM model your chatbot depends on can be deprecated, and go unnoticed until someone complains.
-Notifications close that gap by telling you as soon as something needs attention.
+A message can fail to reach a participant, or an LLM model your chatbot depends on can be deprecated.
+Either problem can go unnoticed until someone complains.
+Notifications tell you as soon as something needs attention.
 
 ## What triggers a notification
 
@@ -16,7 +17,7 @@ Notifications close that gap by telling you as soon as something needs attention
 - A voice message failing to transcribe or synthesize
 - A file or message failing to deliver to a participant
 - A [tool](tools/index.md) failing during execution
-- An LLM provider [refusing a request for a reason only your team can fix](../concepts/team/llm_providers.md#provider-errors-during-a-conversation) — an exhausted balance, a revoked key, or a withdrawn model
+- An LLM provider [refusing a request](../concepts/team/llm_providers.md#provider-errors-during-a-conversation) for a reason only your team can fix, such as an exhausted balance, revoked key, or withdrawn model
 - An LLM model your team uses being [deprecated or removed](../concepts/team/llm_providers.md#model-lifecycle-and-deprecation)
 - A [Custom Action](llm_custom_action.md) failing its periodic [health check](../tech-hub/custom_action/health_custom_action.md)
 - A [Custom Action](llm_custom_action.md) call [failing during a conversation](../tech-hub/custom_action/index.md#failure-notifications)
@@ -49,3 +50,10 @@ You can choose how you're notified, mute a repeating issue, or pause notificatio
 These settings are personal and don't affect what your teammates see.
 
 To try notifications yourself, see the [Manage Notifications](../how-to/manage_notifications.md) how-to guide.
+
+## See also
+
+- [Manage Notifications](../how-to/manage_notifications.md)
+- [Custom Actions](llm_custom_action.md)
+- [Tools](tools/index.md)
+- [LLM Providers](team/llm_providers.md)
