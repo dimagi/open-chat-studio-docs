@@ -37,7 +37,7 @@ Python evaluators receive the same values as function arguments. See [Python Eva
 
 ## Output validation
 
-OCS validates the LLM's output against the evaluator's output schema, using a schema generated from the field types. If the output does not match, or the provider returns a rate-limit error, the evaluator tries again. It makes up to 3 attempts in total before the row fails.
+OCS validates the LLM's output against the evaluator's output schema, using a schema generated from the field types. The evaluator tries again if the output does not match the schema, or if the provider returns a rate-limit or temporary error, such as a server error or timeout. It makes up to 3 attempts in total (the first call plus up to 2 retries) before the row fails.
 
 Binary fields are stored as 1 or 0. The labels you set are added to the field description sent to the model, in the form `1 = <true label>, 0 = <false label>`.
 
