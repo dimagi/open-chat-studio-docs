@@ -1,6 +1,6 @@
 # Auto-Population Rules
 
-Session-level datasets can be configured to **continuously ingest new sessions** from a source chatbot. Each dataset can have one or more **auto-population rules**, and each rule defines:
+Auto-population keeps a [session-level dataset](../../concepts/evaluations/dataset.md#evaluation-levels) up to date by adding new sessions from a source chatbot automatically, so you don't have to add them by hand. Each dataset can have one or more **auto-population rules**, and each rule defines:
 
 - **Source chatbot**: The chatbot whose sessions should be considered for ingestion.
 - **Filter criteria**: Standard session filters (tags, participant, channel, date range, etc.) that determine which sessions match the rule.

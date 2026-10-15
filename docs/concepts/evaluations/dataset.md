@@ -2,7 +2,7 @@
 
 An evaluation needs example conversations to test against. A **dataset** is that set of messages or sessions, and it is what the [evaluators](./evaluators.md) score.
 
-A small set of realistic examples tells you more about your chatbot than scoring everything that exists. You can build a dataset from real conversations your chatbot has already had, or write your own test cases to check specific behaviors, including edge cases your chatbot has not met yet.
+A small set of realistic examples tells you more about your chatbot than scoring everything that exists. You can build a dataset from real conversations your chatbot has already had, or write your own test cases to check specific behaviors, including edge cases that have not come up in real conversations yet.
 
 ## Example
 

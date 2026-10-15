@@ -1,6 +1,6 @@
 # Set Up a Real-Time LLM Judge
 
-This guide shows you how to configure an LLM-as-a-judge automated evaluator that scores new chatbot sessions automatically as they arrive, with no manual intervention required.
+This guide shows you how to set up an LLM-as-a-judge: an [LLM evaluator](../../concepts/evaluations/evaluators.md#llm-evaluator) that scores each new chatbot session automatically as it arrives. Use it to monitor the quality of a live chatbot without starting evaluation runs by hand.
 
 The pattern combines a [session-level dataset](../../concepts/evaluations/dataset.md#evaluation-levels) that continuously ingests new sessions from a chatbot with an [LLM evaluator](../../concepts/evaluations/evaluators.md#llm-evaluator) set to run automatically on each new batch.
 
@@ -21,7 +21,7 @@ See [Evaluation Datasets](../../concepts/evaluations/dataset.md) for an overview
 
 ## Step 2: Add an auto-population rule
 
-Once the dataset exists, add an auto-population rule to tell OCS which chatbot sessions should flow into it. For full details, see [Auto-Population Rules](../../tech-hub/evaluations/auto_population.md).
+Once the dataset exists, add an auto-population rule to tell OCS which chatbot sessions to add to it. For full details, see [Auto-Population Rules](../../tech-hub/evaluations/auto_population.md).
 
 Each rule requires:
 
@@ -65,7 +65,7 @@ Define the output schema fields to match what you reference in the prompt. See [
 
 ## Step 4 (optional): Add tag rules to flag results automatically
 
-[Tag rules](../../concepts/evaluations/tag_rules.md) apply a tag to a session automatically when an evaluator output field meets a condition. They make it easy to surface sessions of interest without reviewing every row.
+[Tag rules](../../concepts/evaluations/tag_rules.md) apply a tag to a session automatically when an evaluator output field meets a condition. Use them to find the sessions you need to review without checking every row.
 
 **Example rules using the output schema from Step 3:**
 
@@ -77,7 +77,7 @@ Define the output schema fields to match what you reference in the prompt. See [
 With these rules in place, sessions where the goal was not met or where quality scored 1 or 2 are tagged automatically after each evaluation run.
 
 !!! tip
-    Tagged sessions can be filtered in the session list, so your team can prioritise follow-up without wading through all results.
+    Tagged sessions can be filtered in the session list, so your team can follow up on them first without reviewing every result.
 
 See [Tag Rules](../../concepts/evaluations/tag_rules.md) for the full set of condition types.
 

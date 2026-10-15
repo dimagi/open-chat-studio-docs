@@ -1,12 +1,12 @@
 # Evaluator Reference
 
-This page is a reference for LLM evaluator prompts, output validation and tag rule reconciliation.
+This page is a reference for LLM evaluator prompts, output validation and tag rule reconciliation. Use it when writing an evaluator prompt or working out why a row failed or lost a tag.
 
 For what evaluators are and when to use each type, see [Evaluators](../../concepts/evaluations/evaluators.md). For tag rules, see [Tag Rules](../../concepts/evaluations/tag_rules.md).
 
 ## Template variables
 
-The variables available in an LLM evaluator prompt depend on the evaluator's evaluation mode. For where each value comes from, see [Dataset Structure](dataset-structure.md#dataset-fields).
+The variables available in an LLM evaluator prompt depend on the evaluator's [evaluation mode](../../concepts/evaluations/evaluators.md). For where each value comes from, see [Dataset Structure](dataset-structure.md#dataset-fields).
 
 ### Message-level variables
 
