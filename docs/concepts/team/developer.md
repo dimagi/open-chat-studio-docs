@@ -8,7 +8,7 @@ Both are available only to **Team Admins** and **Super Admins** — see [User Gr
 A [Custom Action](../llm_custom_action.md) lets a chatbot call an external HTTP service during a conversation, using an OpenAPI schema you provide.
 The Developers section lists every Custom Action registered for your team, and lets you add, edit, or run a manual health check on one.
 
-For the configuration steps — including how to add an authentication provider and enable actions on a chatbot — see [Custom Actions](custom_actions.md).
+For the configuration steps — including how to add an authentication provider and enable actions on a chatbot — see the [Custom Action Tech Hub Guide](../../tech-hub/custom_action/index.md).
 
 ## OAuth applications
 
@@ -32,7 +32,7 @@ For the full technical integration guide — endpoints, PKCE setup, requesting a
 ## See also
 
 - [Team Settings](index.md)
-- [Custom Actions](custom_actions.md)
+- [Custom Action Tech Hub Guide](../../tech-hub/custom_action/index.md)
 - [Getting Started with OAuth2](../../api/getting_started_with_oauth.md)
 - [Members & access](members.md)
 - [User Groups](groups.md)

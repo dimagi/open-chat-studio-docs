@@ -48,3 +48,4 @@ A Custom Action can report one of the following states:
 ## See also
 
 - [Notifications](../../concepts/notifications.md) — how health check failures and other issues are surfaced to your team
+- [Failure notifications](./index.md#failure-notifications) — alerts for Custom Action calls that fail during a conversation

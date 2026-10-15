@@ -1,29 +1,39 @@
 # Custom Action
 
-Custom Actions let your chatbot connect to other systems so it can retrieve information or complete tasks.
+A Custom Action lets your chatbot use another service during a conversation, so it can look up information or complete a task for the participant.
 
-For example, your chatbot can:
+For example, a chatbot can:
 
 - look up an order status
 - create a support ticket
 - get participant details from another system
 
-Use a Custom Action when you want your chatbot to work with another service in a reusable, managed way.
+## How it works
 
-## What happens when you add one?
+1. A Team Admin connects an external service to your team by adding it as a Custom Action.
+2. Open Chat Studio lists the actions the service offers, such as "get order status".
+3. The Team Admin chooses which of those actions your chatbots may use.
+4. When you build a chatbot, you turn on only the actions it needs in its [LLM node](pipelines/nodes.md#llm-node).
+5. During a conversation, the chatbot decides when an action is useful.
+   It sends the request to the service and uses the response in its reply.
 
-Open Chat Studio includes built-in [tools](./tools/index.md).
-You can also add your own external services as Custom Actions, which then appear as "Custom Actions" in your chatbot's configuration.
+## When to use a Custom Action
 
-When you [create a Custom Action](./team/custom_actions.md), your chatbot can use it to call approved external services. This lets the chatbot send data to the connected service and use the response to help the participant.
+Use a Custom Action for connections you want to set up once and reuse across chatbots.
 
-## Health Status Monitoring
+Open Chat Studio also includes built-in [tools](./tools/index.md) for common tasks.
+To check whether it suits your service, see [When to use a Custom Action](../tech-hub/custom_action/index.md#when-to-use-a-custom-action) in the Tech Hub guide.
 
-Open Chat Studio monitors these external service connections so you can quickly see whether there are technical issues. It regularly checks whether each Custom Action is available and displays its status.
+## Keeping track of problems
 
-For details on health status monitoring, see the Custom Action [Health Checks Tech Hub Guide](../tech-hub/custom_action/health_custom_action.md).
+Open Chat Studio checks each Custom Action regularly and shows whether the service is available.
+It also sends a [notification](notifications.md) when the service goes down or when a call fails during a conversation.
+
+## Next steps
+
+[Set up a Custom Action](../tech-hub/custom_action/index.md) covers the fields to fill in and how to enable actions on a chatbot.
 
 ## See also
 
-- [Tools](tools/index.md)
-- [Notifications](notifications.md)
+- [Custom Action health checks](../tech-hub/custom_action/health_custom_action.md)
+- [Team Settings: Developers](team/developer.md)
