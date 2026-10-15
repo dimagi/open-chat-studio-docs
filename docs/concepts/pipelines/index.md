@@ -2,17 +2,20 @@
 
 ## What is a Pipeline?
 
-A **pipeline** is a visual workflow in Open Chat Studio that defines how a chatbot processes messages and generates responses. Think of it like a recipe or assembly line — each step in the pipeline does one specific job, and the steps are connected together to create a complete conversation flow.
+A **pipeline** is a visual workflow in Open Chat Studio (OCS) that defines how a chatbot processes messages and generates responses. Each step in the pipeline does one specific job, and the steps are connected together to create a complete conversation flow.
 
 ## What is a Node?
+
 Each step in the pipeline is called a **node**. A node performs one specific task, such as:
 
-- Calling an AI model to generate a response ([LLM node](nodes.md#llm-node))
+- Calling a [large language model (LLM)](../llm.md) to generate a response ([LLM node](nodes.md#llm-node))
 - Running custom logic or code ([Python node](nodes.md#python-node))
 - Making decisions about which way the conversation should go ([Router nodes](nodes.md#routing-nodes))
 - Sending emails or extracting data (specialty nodes)
 
-Pipelines are **visual** — you build them by dragging nodes onto a canvas and connecting them with lines, making chatbot logic easier to understand and maintain without writing complex code.
+Pipelines are **visual**.
+You build them by dragging nodes onto a canvas and connecting them with lines.
+This makes chatbot logic easier to understand and maintain without writing complex code.
 
 ## A Simple Example
 
@@ -35,38 +38,41 @@ See [Configure an LLM Node](../../tutorials/configure_llm_node.md) for a step-by
 
 ## Complex Pipelines
 
-Most real-world chatbots are more complex than a single node. Pipelines become powerful when you combine multiple types of nodes to handle different tasks.
+Most real-world chatbots are more complex than a single node.
+They combine several types of nodes to handle different tasks.  
 
 Breaking work into separate nodes lets you:
 
 - Keep logic focused and easy to understand
 - Reuse nodes across different parts of your pipeline
 - Test and modify individual steps without affecting the whole pipeline
-- Scale complex workflows without overwhelming a single AI prompt
+- Handle complex workflows without putting every instruction in one AI prompt
 
 ### Node Types for Complex Pipelines
 
 Common node types include:
 
- - **[LLM Node](nodes.md#llm-node)** — Processes messages using an AI model. Handles natural conversations, answering questions, and generating responses.
+- **[LLM Node](nodes.md#llm-node)** — Processes messages using an AI model. Handles natural conversations, answering questions, and generating responses.
+  Conversation memory is controlled by the [history setting](history.md).
 
- - **[Routing Nodes](nodes.md#routing-nodes)** — Makes decisions about which path the conversation should take, based on message content or on data already known about the participant. Useful for directing different types of questions to different handling logic, or routing on participant attributes like subscription tier.
+- **[Routing Nodes](nodes.md#routing-nodes)** — Chooses the path the conversation takes, based on message content or on data already known about the participant. Useful for directing different types of questions to different handling logic, or routing on participant attributes like subscription tier.
+  See [Router Nodes](router_nodes.md) for the two router types.
 
- - **[Python Node](nodes.md#python-node)** — Runs custom code to handle complex logic, fetch data from external systems, process attachments, or manipulate participant data.
+- **[Python Node](nodes.md#python-node)** — Runs custom code to handle complex logic, fetch data from external systems, process attachments, or manipulate participant data.
 
- - **[Render Template Node](nodes.md#render-a-template-node)** — Formats responses using templates, allowing you to customize messages with dynamic data.
+- **[Render Template Node](nodes.md#render-a-template-node)** — Formats responses using templates, allowing you to customize messages with dynamic data.
 
- - **[Send Email Node](nodes.md#send-an-email-node)** — Sends emails as part of your pipeline, useful for notifications or confirmations.
+- **[Send Email Node](nodes.md#send-an-email-node)** — Sends emails as part of your pipeline, useful for notifications or confirmations.
 
- - **[Extract Structured Data Node](nodes.md#extract-structured-data-node)** — Pulls specific information from conversations and structures it for downstream processing.
+- **[Extract Structured Data Node](nodes.md#extract-structured-data-node)** — Pulls specific information from conversations and structures it for downstream processing.
 
- - **[Update Participant Data Node](nodes.md#update-participant-data-node)** — Saves information about the participant for later use in the conversation.
+- **[Update Participant Data Node](nodes.md#update-participant-data-node)** — Saves information about the participant for later use in the conversation.
 
 For worked examples combining these node types, see the [Workflow Cookbook](../../how-to/workflow_cookbook.md).
 
 ## How a Pipeline Runs
 
-Open Chat Studio (OCS) executes your pipeline in organized steps, running nodes in parallel when possible.
+OCS executes your pipeline in organized steps, running nodes in parallel when possible.
 
 When a participant sends a message, OCS processes the pipeline in repeating passes:
 
@@ -88,4 +94,9 @@ This repeats until all nodes have completed or a maximum step limit is reached.
 
 !!! tip "Chat widget context"
 
-    When you are viewing a pipeline in OCS, the in-app chat widget automatically receives the pipeline's structure (nodes and connections) and event trigger data as context. This means you can ask the assistant questions about the pipeline you are currently editing — for example, what a particular node does or how the flow is connected. The context updates automatically as you make changes to the pipeline.
+    When you view a pipeline in OCS, the in-app chat widget automatically receives its structure (nodes and connections) and event trigger data as context.
+    You can ask the assistant about the pipeline you are editing, for example what a node does or how the flow is connected. The context updates automatically as you make changes to the pipeline.
+
+## Next steps
+
+- [Node Types](nodes.md): what each node does and how to configure it.

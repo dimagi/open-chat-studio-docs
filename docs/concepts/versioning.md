@@ -8,7 +8,7 @@ Versioning tracks the history of your chatbot's configuration so you can review 
 
 - **Unreleased Version**. This is the version of the chatbot you are currently editing. It is a draft that has not been versioned or published.
 
-- **Published Version**. This is the version that participants will interact with — through the web, WhatsApp, or any other channel you have set up, including the public link.
+- **Published Version**. This is the version that participants interact with, through the web, WhatsApp, or any other [channel](channels.md) you have set up, including the public link.
 
 ## What is a Chatbot Version?
 
@@ -21,7 +21,9 @@ Most of a published version's configuration is frozen at publish time.
 One exception is **collection content**, which behaves as a live shared resource — updates reach the published chatbot without a republish. See [Collections and published chatbots](collections/index.md#collections-and-published-chatbots) for details on what's live versus frozen, and how this affects drift detection.
 
 ## Chatting to the unreleased version
-For testing, if you want to chat with the unreleased draft chatbot, go to the chatbot home page and click the speech bubble icon in the top-right corner. In the dropdown, select **Unreleased Version** instead of **Published Version** to open a web chat.
+To chat with the unreleased draft chatbot for testing, go to the chatbot home page.
+Click the speech bubble icon in the top-right corner.
+In the dropdown, select **Unreleased Version** instead of **Published Version** to open a web chat.
 
 When chatting with an unpublished version, a banner will appear indicating that it is not the published version and showing the version number.
 
@@ -45,11 +47,19 @@ Reverting replaces your current working (unreleased) state with a copy of an old
 
 ### The revert confirmation modal
 
-When you click **Revert** on a version, a confirmation modal opens instead of a plain confirm dialog. The modal shows a field- and node-level diff so you can see exactly what will change before committing. Added fields are highlighted and removed fields are marked, giving you a clear picture of the differences between your current working state and the target version.
+When you click **Revert** on a version, a confirmation modal opens instead of a plain confirm dialog. The modal lists what will change, field by field and node by node, so you can check before committing.
+Added fields are highlighted and removed fields are marked, so you can compare your current working state with the target version.
 
 ### Warning for unreleased changes
 
-If your current working version contains changes that have not yet been released (that is, they do not belong to any saved version), a warning appears in the modal. The warning tells you that reverting will overwrite those unreleased changes permanently. Review the diff carefully before confirming if you see this warning.
+If your current working version has unreleased changes (changes that do not belong to any saved version), a warning appears in the modal. The warning tells you that reverting will overwrite those unreleased changes permanently. Review the changes carefully before confirming if you see this warning.
 
 !!! warning "Unreleased changes are permanently lost on revert"
     Once you confirm a revert, any edits in the unreleased working state that are not part of a saved version cannot be recovered. Create a new version first if you want to preserve those changes.
+
+## See also
+
+- [Creating and publishing versions](../tutorials/versioning_steps.md)
+- [Collections and published chatbots](collections/index.md#collections-and-published-chatbots)
+- [Consent Forms](consent.md)
+- [Channels](channels.md)

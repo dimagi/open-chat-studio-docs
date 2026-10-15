@@ -1,0 +1,133 @@
+API: Open Chat Studio v2
+Description: Build, deploy and monitor chatbots.
+
+TAG: Source Material
+
+ENDPOINTS:
+
+GET /api/v2/source-material/
+  Summary: List Source Material
+  Description: List the team's source material. Archived ones are not listed.
+  Parameters:
+    - cursor (query, string (optional)): The pagination cursor value.
+    - page_size (query, integer (optional)): Number of results to return per page.
+  Responses:
+    200:
+      Content: application/json
+      Schema: PaginatedSourceMaterialResourceList
+  Security:
+    OAuth2
+      - Required scopes: chatbots:read
+    apiKeyAuth
+    tokenAuth
+
+POST /api/v2/source-material/
+  Summary: Create Source Material
+  Description: A key that is not listed below is rejected rather than ignored. A client-credentials token can write only when its application has access to all chatbots; otherwise its writes answer `403`.
+  Request Body:
+    Content: application/json
+    Schema: SourceMaterialResource
+  Responses:
+    201:
+      Content: application/json
+      Schema: SourceMaterialResource
+  Security:
+    OAuth2
+      - Required scopes: chatbots:write
+    apiKeyAuth
+    tokenAuth
+
+GET /api/v2/source-material/{id}/
+  Summary: Retrieve Source Material
+  Description: Retrieve the source material with this ID. An archived one answers `404`.
+  Parameters:
+    - id (path, integer (required)): Source Material ID
+  Responses:
+    200:
+      Content: application/json
+      Schema: SourceMaterialResource
+  Security:
+    OAuth2
+      - Required scopes: chatbots:read
+    apiKeyAuth
+    tokenAuth
+
+PATCH /api/v2/source-material/{id}/
+  Summary: Update Source Material
+  Description: Only the keys you send are changed, and a key that is not listed below is rejected rather than ignored. Published chatbot versions keep the content they were published with; publish the chatbot again to pick up the edit. A client-credentials token can write only when its application has access to all chatbots; otherwise its writes answer `403`.
+  Parameters:
+    - id (path, integer (required)): Source Material ID
+  Request Body:
+    Content: application/json
+    Schema: PatchedSourceMaterialResource
+  Responses:
+    200:
+      Content: application/json
+      Schema: SourceMaterialResource
+  Security:
+    OAuth2
+      - Required scopes: chatbots:write
+    apiKeyAuth
+    tokenAuth
+
+DELETE /api/v2/source-material/{id}/
+  Summary: Archive Source Material
+  Description: Archive the source material. This is a soft delete: it is hidden rather than destroyed, and a person can restore it in the web app. A repeat of this call answers `404`, which makes it safe to retry. It is refused with `409` while a pipeline node or a live chatbot version still uses it. The response lists each chatbot version and node that uses it. A client-credentials token can write only when its application has access to all chatbots; otherwise its writes answer `403`.
+  Parameters:
+    - id (path, integer (required)): Source Material ID
+  Responses:
+    200:
+      Content: application/json
+      Schema: ResourceArchived
+    404: No such resource, or it is archived already.
+    409:
+      Content: application/json
+      Schema: SourceMaterialInUse
+  Security:
+    OAuth2
+      - Required scopes: chatbots:write
+    apiKeyAuth
+    tokenAuth
+
+SCHEMAS:
+
+PaginatedSourceMaterialResourceList:
+  - next: string
+  - previous: string
+  - results: array of SourceMaterialResource (required)
+  - count: integer
+
+PatchedSourceMaterialResource:
+  - id: integer
+  - topic: string
+  - description: string
+  - material: string
+
+ReferencingChatbot:
+  - chatbot_id: string (required)
+  - version_number: integer (required)
+  - published: boolean (required)
+  - node_ids: array of string (required)
+
+ReferencingPipeline:
+  - name: string (required)
+
+ResourceArchived:
+  - archived: boolean (required)
+
+SourceMaterialInUse:
+  - detail: string (required)
+  - chatbots: array of ReferencingChatbot (required)
+  - other_pipelines: array of ReferencingPipeline (required)
+
+SourceMaterialResource:
+  - id: integer (required)
+  - topic: string (required)
+  - description: string
+  - material: string (required)
+
+SECURITY:
+- OAuth2
+  - Authorization Code Flow (authorization url: /o/authorize/, token url: /o/token/)
+- API Key authentication (header: X-api-key)
+- HTTP bearer authentication

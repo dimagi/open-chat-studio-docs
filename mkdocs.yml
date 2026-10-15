@@ -112,6 +112,7 @@ nav:
       - Send an Email: how-to/send_email_node.md
       - Schedule Reminders: how-to/reminders.md
       - Set Up and Manage Document Sources: how-to/document_sources.md
+      - Filter Collection Search by Metadata: how-to/filter_collection_search_by_metadata.md
     - Channels & Deployment:
       - how-to/deploy_to_different_channels.md
       - how-to/disable_a_channel.md
@@ -131,8 +132,13 @@ nav:
       - Configure Langfuse Trace Sampling: how-to/configure_langfuse_trace_sampling.md
       - Manage Notifications: how-to/manage_notifications.md
       - Find Where a Provider Is Used: how-to/find_provider_usages.md
+    - Annotations:
+      - Create a Queue and Add Items: how-to/annotations/create-a-queue.md
+      - Annotate Queue Items: how-to/annotations/annotate-items.md
+      - Export Annotations: how-to/annotations/export-annotations.md
     - Evaluations:
       - Create a Dataset: how-to/evaluations/create-a-dataset.md
+      - Run an Evaluation: how-to/evaluations/run-an-evaluation.md
       - Real-Time LLM Judge: how-to/evaluations/realtime_llm_judge.md
     - Migration & Deprecated:
       - how-to/assistants_migration.md
@@ -172,9 +178,7 @@ nav:
         - concepts/team/authentication_providers.md
         - concepts/team/messaging_providers.md
       - Members: concepts/team/members.md
-      - Developers:
-        - concepts/team/developer.md
-        - Custom Actions: concepts/team/custom_actions.md
+      - Developers: concepts/team/developer.md
       - Data: concepts/team/data_migration.md
       - Feature Flags: concepts/team/feature_flags.md
       - User Groups: concepts/team/groups.md
@@ -213,11 +217,14 @@ nav:
       - tech-hub/collections/index.md
       - Local Index Optimization: tech-hub/collections/local-index-optimization.md
       - Document Sources Reference: tech-hub/collections/document_sources.md
+      - Metadata Filters Reference: tech-hub/collections/metadata-filters.md
     - Evaluations:
       - tech-hub/evaluations/index.md
       - Dataset Structure: tech-hub/evaluations/dataset-structure.md
       - Python Evaluator: tech-hub/evaluations/python_evaluator.md
       - Auto-Population Rules: tech-hub/evaluations/auto_population.md
+    - Annotations:
+      - Export Format: tech-hub/annotations/export-format.md
     - OCS API:
       - api/index.md
       - api/getting_started_with_oauth.md
