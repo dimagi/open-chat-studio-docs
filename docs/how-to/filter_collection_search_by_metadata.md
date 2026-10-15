@@ -10,7 +10,7 @@ Use them when several chatbots share one [indexed collection](../concepts/collec
 
 - An [indexed collection](../concepts/collections/indexed_collections/index.md) with a [local index](../concepts/collections/indexed_collections/local_and_remote_indexes.md#local-index).
   Remote (OpenAI-hosted) indexes ignore metadata filters.
-- Rows that carry metadata. Rows imported from a CSV or TSV file carry the columns you chose to store as metadata.
+- Rows that carry metadata. Rows [imported from a CSV or TSV file](import_csv_tsv_rows.md) carry the columns you chose to store as metadata.
 - A chatbot with an [LLM node](../concepts/pipelines/nodes.md#llm-node) that is linked to the collection.
 
 ## Add metadata filters
