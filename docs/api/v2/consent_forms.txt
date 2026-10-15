@@ -1,0 +1,124 @@
+API: Open Chat Studio v2
+Description: Build, deploy and monitor chatbots.
+
+TAG: Consent Forms
+
+ENDPOINTS:
+
+GET /api/v2/consent-forms/
+  Summary: List Consent Forms
+  Description: List the team's consent forms. Archived ones are not listed.
+  Parameters:
+    - cursor (query, string (optional)): The pagination cursor value.
+    - page_size (query, integer (optional)): Number of results to return per page.
+  Responses:
+    200:
+      Content: application/json
+      Schema: PaginatedConsentFormResourceList
+  Security:
+    OAuth2
+      - Required scopes: chatbots:read
+    apiKeyAuth
+    tokenAuth
+
+POST /api/v2/consent-forms/
+  Summary: Create Consent Form
+  Description: A key that is not listed below is rejected rather than ignored. A client-credentials token can write only when its application has access to all chatbots; otherwise its writes answer `403`.
+  Request Body:
+    Content: application/json
+    Schema: ConsentFormResource
+  Responses:
+    201:
+      Content: application/json
+      Schema: ConsentFormResource
+  Security:
+    OAuth2
+      - Required scopes: chatbots:write
+    apiKeyAuth
+    tokenAuth
+
+GET /api/v2/consent-forms/{id}/
+  Summary: Retrieve Consent Form
+  Description: Retrieve the consent form with this ID. An archived one answers `404`.
+  Parameters:
+    - id (path, integer (required)): Consent Form ID
+  Responses:
+    200:
+      Content: application/json
+      Schema: ConsentFormResource
+  Security:
+    OAuth2
+      - Required scopes: chatbots:read
+    apiKeyAuth
+    tokenAuth
+
+PATCH /api/v2/consent-forms/{id}/
+  Summary: Update Consent Form
+  Description: Only the keys you send are changed, and a key that is not listed below is rejected rather than ignored. Published chatbot versions keep the content they were published with; publish the chatbot again to pick up the edit. A client-credentials token can write only when its application has access to all chatbots; otherwise its writes answer `403`.
+  Parameters:
+    - id (path, integer (required)): Consent Form ID
+  Request Body:
+    Content: application/json
+    Schema: PatchedConsentFormResource
+  Responses:
+    200:
+      Content: application/json
+      Schema: ConsentFormResource
+  Security:
+    OAuth2
+      - Required scopes: chatbots:write
+    apiKeyAuth
+    tokenAuth
+
+DELETE /api/v2/consent-forms/{id}/
+  Summary: Archive Consent Form
+  Description: Archive the consent form. This is a soft delete: it is hidden rather than destroyed, and a person can restore it in the web app. A repeat of this call answers `404`, which makes it safe to retry. Every chatbot draft using the form is moved onto the team's default consent form; published versions keep the form they were published with. The default form itself cannot be archived and answers `409`. A client-credentials token can write only when its application has access to all chatbots; otherwise its writes answer `403`.
+  Parameters:
+    - id (path, integer (required)): Consent Form ID
+  Responses:
+    200:
+      Content: application/json
+      Schema: ResourceArchived
+    404: No such resource, or it is archived already.
+    409:
+      Content: application/json
+      Schema: ErrorDetail
+  Security:
+    OAuth2
+      - Required scopes: chatbots:write
+    apiKeyAuth
+    tokenAuth
+
+SCHEMAS:
+
+ConsentFormResource:
+  - id: integer (required)
+  - name: string (required)
+  - consent_text: string (required)
+  - confirmation_text: string
+  - is_default: boolean (required)
+
+ErrorDetail:
+  - detail: string (required)
+
+PaginatedConsentFormResourceList:
+  - next: string
+  - previous: string
+  - results: array of ConsentFormResource (required)
+  - count: integer
+
+PatchedConsentFormResource:
+  - id: integer
+  - name: string
+  - consent_text: string
+  - confirmation_text: string
+  - is_default: boolean
+
+ResourceArchived:
+  - archived: boolean (required)
+
+SECURITY:
+- OAuth2
+  - Authorization Code Flow (authorization url: /o/authorize/, token url: /o/token/)
+- API Key authentication (header: X-api-key)
+- HTTP bearer authentication
