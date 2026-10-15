@@ -13,7 +13,7 @@ The target of the tag depends on the evaluator's mode:
 - **Message mode**: the tag is applied to the specific chat message being evaluated.
 - **Session mode**: the tag is applied to the session's chat.
 
-Each tag application is recorded in an audit log and displayed in the **Applied Tags** column on the run results page.
+Each tag application is recorded in an audit log and displayed in the **Applied Tags** column on the run results page. See [Run an Evaluation](../../how-to/evaluations/run-an-evaluation.md#read-the-results) for the results page, and [Clear Run History](../../how-to/evaluations/run-an-evaluation.md#clear-run-history-or-delete-the-evaluation) for how tags are removed.
 
 ## Tag reconciliation on rerun
 

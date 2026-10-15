@@ -4,7 +4,9 @@ This section covers Open Chat Studio's advanced evaluation features: writing cus
 
 For a non-technical overview of datasets, evaluators, and how evaluation runs work, see [Evaluations](../../concepts/evaluations/index.md).
 
-## Evaluation Execution
+## Evaluation execution
+
+For the steps to create and start a run, see [Run an Evaluation](../../how-to/evaluations/run-an-evaluation.md).
 
 When an evaluation is run, each message from the dataset is first passed into the defined chatbot (if applicable). The result, with the added generation output, is then passed into each evaluator in parallel. The evaluators output structured data. This data is compiled into a table, whose rows are each message and the columns are the evaluator output.
 
@@ -17,11 +19,11 @@ flowchart LR
     evaluator2 --> structured_output
 ```
 
-### Chatbot Generation
+### Chatbot generation
 
 Messages can also optionally be passed into a [chatbot](../../concepts/chatbots/index.md), whose generation output will be available to the evaluators.
 
-### Session Retention
+### Session retention
 
 When evaluations are run with chatbot generation enabled, temporary sessions are created to store the generated responses and conversation context. These evaluation sessions are automatically deleted after **30 days**.
 
