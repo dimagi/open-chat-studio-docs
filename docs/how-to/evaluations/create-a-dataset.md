@@ -35,17 +35,27 @@ Cloned rows keep a link to their original session. You can use it to open the co
 !!! warning
     Editing a cloned row breaks its link to the original session.
 
-A message-level dataset gets one row per Human/AI message pair. A session-level dataset gets one row per session. For details of the cloning field mappings, see [Tech Hub dataset structure](../../tech-hub/evaluations/dataset-structure.md#cloning-field-mappings).
+Follow the steps for the evaluation level you chose. For how session data maps to dataset fields, see [Cloning field mappings](../../tech-hub/evaluations/dataset-structure.md#cloning-field-mappings).
 
-1. Use the filters to narrow the list of sessions by details like chatbot, date range and version.
-2. Choose which sessions to clone:
-    - **Selected only**: clone only the sessions you check in the table.
-    - **All matching filters**: clone every session that matches your current filters, without checking them one by one.
+=== "Message level"
 
-    !!! warning
-        Message-level datasets can clone up to 1,000 sessions with **All matching filters**. If more match, narrow your filters. The page warns you when you're over the limit.
+    Each Human/AI message pair in the chosen sessions becomes one row.
 
-Every message in the chosen sessions is cloned. To clone only the messages that match your filters, create the dataset first, then [add messages](#add-to-an-existing-dataset) with **Filtered messages only**.
+    1. Use the filters to narrow the list of sessions by details like chatbot, date range and version.
+    2. Choose which sessions to clone:
+        - **Selected only**: clone only the sessions you check in the table.
+        - **All matching filters**: clone every session that matches your current filters, up to 1,000 sessions. If more match, narrow your filters. The page warns you when you're over the limit.
+
+    Every message in the chosen sessions is cloned. To clone only the messages that match your filters, create the dataset first, then [add messages](#add-to-an-existing-dataset) with **Filtered messages only**.
+
+=== "Session level"
+
+    Each chosen session becomes one row.
+
+    1. Use the filters to narrow the list of sessions by details like chatbot, date range and version.
+    2. Choose which sessions to clone:
+        - **Selected only**: clone only the sessions you check in the table.
+        - **All matching filters**: clone every session that matches your current filters. There is no limit on how many sessions this can match.
 
 ### Import from annotation queue
 
@@ -85,22 +95,26 @@ For column naming conventions, dot notation for nested fields, and JSON structur
 
 ## Add to an existing dataset
 
-1. Open the dataset.
-2. Click **Add Messages** (message-level) or **Add Sessions** (session-level) and choose a method:
+Follow the steps for your dataset's evaluation level.
 
-    | Option | Message level | Session level |
-    |--------|---------------|---------------|
-    | **Clone from sessions** / **Clone sessions** | Yes | Yes |
-    | **Import from annotation queue** | No | Yes |
-    | **Upload CSV** | Yes | No |
-    | **Add manually** | Yes | No |
+=== "Message level"
 
-When cloning into an existing dataset, you have two options the create form does not offer:
+    1. Open the dataset.
+    2. Click **Add Messages** and choose **Clone from sessions**, **Upload CSV** or **Add manually**.
 
-- **Sample**: add a sample of the matching sessions. Message-level only.
-- **Clone**: when filters are active on a message-level dataset, choose **All messages** or **Filtered messages only**. **Filtered messages only** clones just the messages that match the filters.
+    When cloning, you have two options the create form does not offer:
 
-Click **Add N to dataset** to add the rows. The button shows how many sessions will be added.
+    - **Sample**: add a sample of the matching sessions.
+    - **Clone**: when filters are active, choose **All messages** or **Filtered messages only**. **Filtered messages only** clones just the messages that match the filters.
+
+    Click **Add N to dataset** to add the rows. The button shows how many sessions will be added.
+
+=== "Session level"
+
+    1. Open the dataset.
+    2. Click **Add Sessions** and choose **Clone sessions** or **Import from annotation queue**.
+
+    When cloning, click **Add N to dataset** to add the rows. The button shows how many sessions will be added.
 
 **Export CSV** downloads the dataset's current rows. The **Download Template** link in the upload section gives you the same file, which you can edit and upload as a starting point.
 

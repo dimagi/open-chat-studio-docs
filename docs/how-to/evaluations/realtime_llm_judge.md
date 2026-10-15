@@ -39,7 +39,7 @@ For full details of **how ingestion works once the rule is active**, see [Auto-P
 
 Create an LLM evaluator and set its **Evaluation mode** to **Session** so it is compatible with the dataset from Step 1.
 
-Session-level prompts use `{full_history}` for the conversation. See [Session-level variables](../../tech-hub/evaluations/evaluator-reference.md#session-level-variables) for the full list.
+Session-level prompts use `{full_history}` for the conversation. See [Template variables](../../tech-hub/evaluations/evaluator-reference.md#template-variables) (**Session level** tab) for the full list.
 
 **Example prompt:**
 

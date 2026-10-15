@@ -8,30 +8,30 @@ For what evaluators are and when to use each type, see [Evaluators](../../concep
 
 The variables available in an LLM evaluator prompt depend on the evaluator's [evaluation mode](../../concepts/evaluations/evaluators.md). For where each value comes from, see [Dataset Structure](dataset-structure.md#dataset-fields).
 
-### Message-level variables
+=== "Message level"
 
-| Variable | Description |
-|---|---|
-| `{input.content}` | The human message content |
-| `{output.content}` | The dataset message's AI response content. This may be an expected/reference answer (for manually created datasets) or the actual AI response (for session-cloned datasets). |
-| `{generated_response}` | The generated response from your chatbot (if generation is enabled) |
-| `{context.[parameter]}` | Any context variable, e.g. `{context.topic}` |
-| `{participant_data.[key]}` | Any field from the participant's data, e.g. `{participant_data.name}` |
-| `{session_state.[key]}` | Any field from the session's state, e.g. `{session_state.step}` |
-| `{full_history}` | Complete conversation history as formatted text |
+    | Variable | Description |
+    |---|---|
+    | `{input.content}` | The human message content |
+    | `{output.content}` | The dataset message's AI response content. This may be an expected/reference answer (for manually created datasets) or the actual AI response (for session-cloned datasets). |
+    | `{generated_response}` | The generated response from your chatbot (if generation is enabled) |
+    | `{context.[parameter]}` | Any context variable, e.g. `{context.topic}` |
+    | `{participant_data.[key]}` | Any field from the participant's data, e.g. `{participant_data.name}` |
+    | `{session_state.[key]}` | Any field from the session's state, e.g. `{session_state.step}` |
+    | `{full_history}` | Complete conversation history as formatted text |
 
-### Session-level variables
+=== "Session level"
 
-In session-level mode, `{input.content}` and `{output.content}` are empty. Use the following variables instead:
+    In session-level mode, `{input.content}` and `{output.content}` are empty. Use the following variables instead:
 
-| Variable | Description |
-|---|---|
-| `{full_history}` | The full session transcript captured at the time of the last AI message |
-| `{context.[parameter]}` | Any context variable, e.g. `{context.current_datetime}` |
-| `{participant_data.[key]}` | Any field from the participant's data, e.g. `{participant_data.name}` |
-| `{session_state.[key]}` | Any field from the session's state, e.g. `{session_state.step}` |
+    | Variable | Description |
+    |---|---|
+    | `{full_history}` | The full session transcript captured at the time of the last AI message |
+    | `{context.[parameter]}` | Any context variable, e.g. `{context.current_datetime}` |
+    | `{participant_data.[key]}` | Any field from the participant's data, e.g. `{participant_data.name}` |
+    | `{session_state.[key]}` | Any field from the session's state, e.g. `{session_state.step}` |
 
-Generation is not available for session-level datasets, so `{generated_response}` does not apply in session-level prompts.
+    Generation is not available for session-level datasets, so `{generated_response}` does not apply in session-level prompts.
 
 Python evaluators receive the same values as function arguments. See [Python Evaluator](python_evaluator.md).
 
