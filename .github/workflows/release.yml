@@ -62,9 +62,12 @@ jobs:
 
       - name: Set manual release info
         if: github.event_name == 'workflow_dispatch'
+        env:
+          INPUT_RELEASE_TAG: ${{ github.event.inputs.release_tag }}
+          INPUT_RELEASE_NAME: ${{ github.event.inputs.release_name }}
         run: |
-          echo "RELEASE_TAG=${{ github.event.inputs.release_tag }}" >> $GITHUB_ENV
-          echo "RELEASE_NAME=${{ github.event.inputs.release_name || github.event.inputs.release_tag }}" >> $GITHUB_ENV
+          echo "RELEASE_TAG=$INPUT_RELEASE_TAG" >> "$GITHUB_ENV"
+          echo "RELEASE_NAME=${INPUT_RELEASE_NAME:-$INPUT_RELEASE_TAG}" >> "$GITHUB_ENV"
 
       - name: Create Release with Claude
         uses: anthropics/claude-code-action@v1.0.245
