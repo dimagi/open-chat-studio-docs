@@ -20,6 +20,7 @@ Notifications tell you as soon as something needs attention.
 - An LLM provider [refusing a request](../concepts/team/llm_providers.md#provider-errors-during-a-conversation) for a reason only your team can fix, such as an exhausted balance, revoked key, or withdrawn model
 - An LLM model your team uses being [deprecated or removed](../concepts/team/llm_providers.md#model-lifecycle-and-deprecation)
 - A [Custom Action](llm_custom_action.md) failing its periodic [health check](../tech-hub/custom_action/health_custom_action.md)
+- A [Custom Action](llm_custom_action.md) call [failing during a conversation](../tech-hub/custom_action/index.md#failure-notifications)
 
 Repeated occurrences of the same issue are grouped into a single notification thread, rather than creating a new entry every time.
 The notification list shows how many times an issue has recurred, such as `×3`, once it's happened more than once.
