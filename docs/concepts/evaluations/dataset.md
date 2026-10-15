@@ -13,7 +13,7 @@ When you create a dataset, you choose an **Evaluation level**. It decides how th
 | **Message level** | A single Human/AI message pair | Individual responses, for accuracy, tone or correctness |
 | **Session level** | An entire conversation | Overall quality, goal completion, or coherence across turns |
 
-The level cannot be changed after the dataset is created. An evaluator's **Evaluation mode** (Message or Session) must match the dataset's level, and incompatible evaluators are hidden when you set up an evaluation.
+The level cannot be changed after the dataset is created. An [evaluator's](./evaluators.md) **Evaluation mode** must match the dataset's level.
 
 ## How datasets are created
 
@@ -22,7 +22,7 @@ Which methods are available depends on the evaluation level.
 | Method | Message level | Session level | Use it when |
 |---|---|---|---|
 | [Clone from sessions](../../how-to/evaluations/create-a-dataset.md#clone-from-sessions) | Yes | Yes | You want to test against real past conversations. Cloned rows keep a link to their original session. |
-| [Import from an annotation queue](../../how-to/evaluations/create-a-dataset.md#import-from-an-annotation-queue) | No | Yes | Your team has already curated conversations for [human review](../annotations/queues.md) and you want to score the same set automatically. |
+| [Import from an annotation queue](../../how-to/evaluations/create-a-dataset.md#import-from-annotation-queue) | When creating the dataset only | Yes | Your team has already curated conversations for [human review](../annotations/queues.md) and you want to score the same set automatically. |
 | [Create rows manually](../../how-to/evaluations/create-a-dataset.md#create-manually) | Yes | No | You want to write targeted test cases or edge cases that have not happened yet. |
 | [Upload a CSV](../../how-to/evaluations/create-a-dataset.md#upload-csv-file) | Yes | No | You have an existing test suite or data from another tool. |
 | [Auto-population rules](../../tech-hub/evaluations/auto_population.md) | No | Yes | You want new sessions from a live chatbot added continuously. |

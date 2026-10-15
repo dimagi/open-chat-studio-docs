@@ -6,7 +6,7 @@ Session-level datasets can be configured to **continuously ingest new sessions**
 - **Filter criteria**: Standard session filters (tags, participant, channel, date range, etc.) that determine which sessions match the rule.
 
 !!! note
-    Auto-population is available for **session-level** datasets only. Message-level datasets must be populated by cloning, manual entry, or CSV upload.
+    Auto-population is available for **session-level** datasets only. Message-level datasets must be populated by one of the [other creation methods](../../concepts/evaluations/dataset.md#how-datasets-are-created).
 
     See [Evaluation Datasets](../../concepts/evaluations/dataset.md#evaluation-levels) for an overview of session-level vs. message-level datasets.
 

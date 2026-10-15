@@ -35,7 +35,7 @@ A preview scores a sample of 10 rows from the dataset. Use it to check your eval
 
 1. Open the evaluation from the **Evaluations** list.
 2. Click **Preview**.
-3. Review the results. If they look right, click **Run evaluation** on the preview page to do the full run.
+3. Review the results. If they look right, click **Run evaluation (N messages)** on the preview page to do the full run, where N is the number of rows in the dataset.
 
 Previews are deleted after one day.
 

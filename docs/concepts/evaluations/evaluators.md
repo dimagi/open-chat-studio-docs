@@ -2,7 +2,7 @@
 
 A dataset full of example conversations only becomes useful once it's been scored — that's the job of an **evaluator**. An evaluator looks at each message (and, optionally, your chatbot's generated response to it) and outputs a judgment: was it accurate, on-topic, polite, or whatever else matters for your use case.
 
-You can run several evaluators over the same dataset at once, so a single evaluation run can check multiple things — accuracy, tone, safety — without re-running your chatbot for each one.
+You can run several evaluators over the same [dataset](dataset.md) at once, so a single evaluation run can check multiple things — accuracy, tone, safety — without re-running your chatbot for each one.
 
 Each evaluator has an **Evaluation mode**: **Message** (judging a single response) or **Session** (judging a whole conversation). It must match the [**Evaluation level** of the dataset](dataset.md#evaluation-levels) it is used with. Evaluators with the wrong mode for a dataset are hidden when you set up an evaluation.
 
