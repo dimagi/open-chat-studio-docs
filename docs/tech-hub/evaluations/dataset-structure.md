@@ -19,7 +19,7 @@ Each dataset row contains the following fields. Not all fields are populated for
 
 ### Message-level datasets
 
-When cloning into a message-level dataset, session chat messages are paired into (human, AI) pairs and mapped to dataset fields as follows:
+When cloning into a message-level dataset, or importing from an annotation queue into one, session chat messages are paired into (human, AI) pairs and mapped to dataset fields as follows:
 
 | Session Data | Dataset Field | Description |
 |---|---|---|
@@ -29,8 +29,8 @@ When cloning into a message-level dataset, session chat messages are paired into
 | `message.comments` | `context.comments` | Any comments attached to either message |
 | `message.tags` | `context.tags` | Non-system tags from either message |
 | Prior messages in the session | `history` | All preceding messages, each with `message_type`, `content`, and `summary` (an AI-generated condensation of the message, if available) |
-| `trace.participant_data` | `participant_data` | Participant data captured at the time of the message |
-| `trace.session_state` | `session_state` | Session state captured at the time of the message |
+| `trace.participant_data` | `participant_data` | Participant data from the human message's trace, or empty if it has none |
+| `trace.session_state` | `session_state` | Session state from the human message's trace, or empty if it has none |
 
 ### Session-level datasets
 

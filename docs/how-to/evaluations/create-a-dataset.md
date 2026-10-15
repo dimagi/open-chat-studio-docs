@@ -63,7 +63,10 @@ Use this method to score sessions your team has already reviewed in an [annotati
 
 Select an **Annotation queue** that contains sessions. Archived queues are not listed.
 
-All sessions in the queue are added to the dataset. For a session-level dataset, each session becomes one row, using the same field mapping as [session-level cloning](../../tech-hub/evaluations/dataset-structure.md#session-level-datasets). For a message-level dataset, each session's messages become Human/AI message pairs.
+All sessions in the queue are added to the dataset, using the same field mapping as cloning:
+
+- For a session-level dataset, each session becomes one row. See [session-level cloning](../../tech-hub/evaluations/dataset-structure.md#session-level-datasets).
+- For a message-level dataset, each session's messages become Human/AI message pairs. See [message-level cloning](../../tech-hub/evaluations/dataset-structure.md#message-level-datasets), including how unpaired messages are handled.
 
 Sessions already in the dataset are skipped.
 
