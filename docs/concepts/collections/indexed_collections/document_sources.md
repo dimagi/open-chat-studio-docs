@@ -10,10 +10,6 @@ Document sources work with both [local and remote indexes](./local_and_remote_in
 
 ## When should I use this?
 
-Use a document source when your content already lives in a system that people keep up to date.
-
-Common examples include:
-
 - A **product documentation** repository on GitHub that your support chatbot should answer from
 - A **policy or FAQ space** in Confluence that your HR assistant should search
 - Any content that changes often, where manual re-uploads would leave the chatbot giving outdated answers
