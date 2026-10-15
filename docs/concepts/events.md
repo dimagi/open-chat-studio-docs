@@ -16,7 +16,8 @@ Each event has one action associated with it that is executed when the event occ
 
 Static events are predefined triggers that occur based on specific actions or conditions within the chat session. The available static events are:
 
-- **Conversation End**: A catch-all trigger that fires whenever any conversation ends, regardless of how it ended. This trigger is always fired alongside any of the specific conversation end sub-triggers listed below. Use this trigger when you want to perform an action for all conversation endings, or use the sub-triggers when you need to respond to specific end conditions.
+- **Conversation End**: A catch-all trigger that fires whenever any conversation ends, regardless of how it ended. This trigger is always fired alongside any of the specific conversation end sub-triggers listed below.
+    Use it to act on every conversation ending, or use the sub-triggers to respond to specific end conditions.
     - **The Conversation is Ended by the Participant**: Triggered when the participant explicitly ends the conversation.
     - **The Conversation is Ended by the Bot**: Triggered when the chatbot ends the conversation.
     - **The Conversation is Ended via the API**: Triggered when the conversation ends via an API call.
@@ -54,13 +55,14 @@ Configure:
 The form does not let you save a trigger date and time that has already passed.
 
 !!! note "Daylight saving time"
-    Open Chat Studio converts the date, time, and timezone you enter into UTC when you save the event.
+    Open Chat Studio converts the date, time, and timezone you enter into UTC (Coordinated Universal Time) when you save the event.
     Daylight saving changes in the chosen timezone can shift how the saved UTC time lines up with local time when the event fires.
     A local time that is ambiguous during a "fall back" transition resolves to standard time.
     A local time that does not exist during a "spring forward" transition is moved forward to the next valid time.
 
 A scheduled event fires only once, and cannot fire twice even if it is checked more than once around the trigger time.
-Open Chat Studio checks for due scheduled events roughly every 60 seconds, so an event fires within about a minute of its configured time rather than to the exact second.
+Open Chat Studio checks for due scheduled events roughly every 60 seconds.
+An event therefore fires within about a minute of its configured time, not at the exact second.
 To repeat an action on a recurring schedule, use the **Trigger a schedule** action described below, rather than creating multiple scheduled events.
 
 Like static and timeout events, a scheduled event only fires on a [published version](versioning.md) of a chatbot.
@@ -77,9 +79,18 @@ Each event is associated with one action. The available actions are:
 - **End the conversation**: Ends the conversation with the participant. See [Ending session with events](../tech-hub/ending_sessions.md#events-with-an-end-the-conversation-action) for more details.
 - **Prompt the bot to message the user**: Prompts the chatbot to message the participants.
 - **Trigger a schedule**: This will create a once off or recurring schedule. Each time the schedule is triggered, the chatbot will be prompted to message the participant. This action is a way to schedule a *message*, and is separate from a **Scheduled Event** trigger, which schedules *when a trigger fires*.
-- **Start a pipeline**: This will run the given pipeline when the event triggers. The input to the pipeline can be configured.
+- **Start a pipeline**: This will run the given [pipeline](pipelines/index.md) when the event triggers. The input to the pipeline can be configured.
 
 ## Event Logs
 
 Each time an event fires, whether its action succeeded or failed is recorded in that event's logs, viewable from the chatbot's **Events** tab.
-Actions that support it can be re-triggered from the event logs, so a failed action can be retried without waiting for the event to fire again.
+Actions that support it can be re-triggered from the event logs.
+This lets you retry a failed action without waiting for the event to fire again.
+
+## See also
+
+- [Chat Sessions](sessions.md)
+- [Session Status](session_status.md)
+- [Versioning](versioning.md)
+- [Participant Data](participant_data.md)
+- [Ending sessions from a chatbot](../tech-hub/ending_sessions.md)
