@@ -72,14 +72,22 @@ jobs:
 
       - name: Determine base branch
         id: determine_branch
+        # Event and payload values are passed via env (not ${{ }} interpolation in the script body)
+        # so untrusted input cannot inject shell commands.
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          EVENT_NAME: ${{ github.event_name }}
+          PAYLOAD_IS_WIDGET: ${{ github.event.client_payload.is_widget_change }}
+          INPUT_PR_NUMBER: ${{ inputs.pr_number }}
+          REPO: ${{ github.repository }}
         run: |
           # Determine base branch before checkout
-          if [ "${{ github.event_name }}" == "repository_dispatch" ]; then
-            IS_WIDGET="${{ github.event.client_payload.is_widget_change }}"
+          if [ "$EVENT_NAME" == "repository_dispatch" ]; then
+            IS_WIDGET="$PAYLOAD_IS_WIDGET"
           else
             echo "Fetching PR data to determine widget status..."
-            FILES=$(gh api "repos/${{ env.SOURCE_REPO }}/pulls/${{ inputs.pr_number }}/files" --paginate --jq '.[].filename') || { echo "Failed to fetch PR data"; exit 1; }
-            WIDGET_PREFIX="${{ env.WIDGET_PATH_PREFIX }}"
+            FILES=$(gh api "repos/${SOURCE_REPO}/pulls/${INPUT_PR_NUMBER}/files" --paginate --jq '.[].filename') || { echo "Failed to fetch PR data"; exit 1; }
+            WIDGET_PREFIX="$WIDGET_PATH_PREFIX"
             if echo "$FILES" | grep -q "^$WIDGET_PREFIX"; then
               IS_WIDGET="true"
             else
@@ -90,7 +98,7 @@ jobs:
           if [ "$IS_WIDGET" == "true" ]; then
             BASE_BRANCH="widget-develop"
             # Check if widget-develop exists on remote
-            if git ls-remote --exit-code --heads https://github.com/${{ github.repository }}.git widget-develop > /dev/null 2>&1; then
+            if git ls-remote --exit-code --heads "https://github.com/${REPO}.git" widget-develop > /dev/null 2>&1; then
               CHECKOUT_REF="widget-develop"
               CREATE_WIDGET_BRANCH="false"
             else
@@ -109,8 +117,6 @@ jobs:
           echo "create_widget_branch=$CREATE_WIDGET_BRANCH" >> $GITHUB_OUTPUT
           echo "is_widget_change=$IS_WIDGET" >> $GITHUB_OUTPUT
           echo "Using base branch: $BASE_BRANCH, checkout ref: $CHECKOUT_REF (widget change: $IS_WIDGET)"
-        env:
-          GH_TOKEN: ${{ steps.app-token.outputs.token }}
 
       - name: Checkout repository
         uses: actions/checkout@v7
@@ -211,17 +217,21 @@ jobs:
           echo "is_widget_change=$DETERMINED_IS_WIDGET" >> $GITHUB_OUTPUT
 
       - name: Create branch for changelog update
+        env:
+          CREATE_WIDGET_BRANCH: ${{ steps.determine_branch.outputs.create_widget_branch }}
+          PR_NUMBER: ${{ steps.set_vars.outputs.pr_number }}
+          RUN_NUMBER: ${{ github.run_number }}
         run: |
           # Create widget-develop from main if needed
-          if [ "${{ steps.determine_branch.outputs.create_widget_branch }}" == "true" ]; then
+          if [ "$CREATE_WIDGET_BRANCH" == "true" ]; then
             echo "Creating widget-develop branch from main..."
             git push origin HEAD:widget-develop
             echo "Created widget-develop branch"
           fi
 
-          BRANCH_NAME="changelog-pr-${{ steps.set_vars.outputs.pr_number }}-${{ github.run_number }}"
-          git checkout -b $BRANCH_NAME
-          echo "branch_name=$BRANCH_NAME" >> $GITHUB_ENV
+          BRANCH_NAME="changelog-pr-${PR_NUMBER}-${RUN_NUMBER}"
+          git checkout -b "$BRANCH_NAME"
+          echo "BRANCH_NAME=$BRANCH_NAME" >> "$GITHUB_ENV"
 
       - name: Create instruction file for Claude
         id: create_instructions
@@ -303,9 +313,9 @@ jobs:
 
             # Determine which changelog file to check based on widget change flag
             if [ "$IS_WIDGET_CHANGE" == "true" ]; then
-              CHANGELOG_FILE="${{ env.WIDGET_CHANGELOG }}"
+              CHANGELOG_FILE="$WIDGET_CHANGELOG"
             else
-              CHANGELOG_FILE="${{ env.MAIN_CHANGELOG }}"
+              CHANGELOG_FILE="$MAIN_CHANGELOG"
             fi
 
             # Check what was changed
@@ -321,12 +331,14 @@ jobs:
             echo "docs_changed=$DOCS_CHANGED" >> $GITHUB_OUTPUT
             echo "changelog_file=$CHANGELOG_FILE" >> $GITHUB_OUTPUT
 
-            echo "Pushing changes to origin/${{ env.branch_name }}..."
-            git push origin ${{ env.branch_name }} || { echo "Failed to push changes"; exit 1; }
+            echo "Pushing changes to origin/${BRANCH_NAME}..."
+            git push origin "$BRANCH_NAME" || { echo "Failed to push changes"; exit 1; }
           fi
 
       - name: Create Pull Request
         if: steps.check_changes.outputs.has_changes == 'true'
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
           # Store source PR title safely (may contain special characters)
           SOURCE_PR_TITLE=$(cat <<'EOF'
@@ -373,12 +385,10 @@ jobs:
           🤖 This PR was automatically generated using Claude to analyze the source PR and update the changelog and documentation accordingly." \
             --label "automated" \
             --base "${{ steps.set_vars.outputs.base_branch }}" \
-            --head "${{ env.branch_name }}" || { echo "Failed to create pull request"; exit 1; }
+            --head "${{ env.BRANCH_NAME }}" || { echo "Failed to create pull request"; exit 1; }
 
           # Try to assign after PR creation (won't fail the workflow if user doesn't exist)
-          gh pr edit "${{ env.branch_name }}" --add-assignee "${{ steps.set_vars.outputs.pr_author }}" || echo "Could not assign @${{ steps.set_vars.outputs.pr_author }} (user may not have access to this repo)"
-        env:
-          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          gh pr edit "${{ env.BRANCH_NAME }}" --add-assignee "${{ steps.set_vars.outputs.pr_author }}" || echo "Could not assign @${{ steps.set_vars.outputs.pr_author }} (user may not have access to this repo)"
 
       - name: Generate workflow summary
         if: always()
@@ -408,14 +418,16 @@ jobs:
 
       - name: Notify on failure
         if: failure()
-        run: |
-          # Comment on the source PR to notify about failure
-          gh issue comment ${{ steps.set_vars.outputs.pr_number }} \
-            --repo ${{ env.SOURCE_REPO }} \
-            --body "⚠️ Automated changelog update failed for this PR.
-
-          **Workflow Run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-
-          Please check the logs or manually update the changelog in the docs repository." || echo "Failed to post comment (PR may be inaccessible)"
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          PR_NUMBER: ${{ steps.set_vars.outputs.pr_number }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          # Comment on the source PR to notify about failure
+          gh issue comment "$PR_NUMBER" \
+            --repo "$SOURCE_REPO" \
+            --body "⚠️ Automated changelog update failed for this PR.
+
+          **Workflow Run:** $RUN_URL
+
+          Please check the logs or manually update the changelog in the docs repository." || echo "Failed to post comment (PR may be inaccessible)"
