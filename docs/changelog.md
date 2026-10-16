@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Oct 16, 2026
+* **CHANGE** The **Public link** channel is now available to every team. It no longer needs a feature flag to appear in the add-channel dropdown. See [Deploy your chatbot with a public link](how-to/deploy_public_link_channel.md).
+
 ## Oct 15, 2026
 * **NEW** Added v2 API endpoints to list, retrieve, create, update and archive a team's source material (`/api/v2/source-material/`) and consent forms (`/api/v2/consent-forms/`). Changes apply to working versions only and reach published chatbots when they are next published. Client-credentials tokens can read these resources but not change them. See the [API documentation](api/index.md).
 

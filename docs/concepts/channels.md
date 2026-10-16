@@ -33,9 +33,6 @@ The page shows your chatbot's name and description above the chat.
 It starts participants with the welcome message and starter questions you configure on the channel.
 Each chatbot can have one public link at a time.
 
-!!! info "Ask your admin if you don't see this option"
-    Public link is an opt-in feature. If it's missing from the add-channel menu, ask your Open Chat Studio admin to turn it on for your team.
-
 !!! warning "Not the same as the public web chat link"
     A public link is a channel you add to the chatbot, with its own link that you can regenerate. It's separate from the older **public web chat link** in the chatbot's **Share** dialog, which sends participants through a consent page first.
 
