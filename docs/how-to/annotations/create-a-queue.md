@@ -24,8 +24,8 @@ To understand what queues, schemas and reviews are before you start, read the [A
    See [Managing Assignees](../../concepts/annotations/queues.md#managing-assignees) for what happens when a queue has no assignees.
 
 !!! note
-    Once a reviewer has submitted an annotation, you can no longer add or remove fields or change their types.
-    You can still change their order.
+    Once a reviewer has submitted an annotation, you can no longer add or remove fields or change their settings.
+    You can still change their order and whether they are **Required**.
     See [Field Order](../../concepts/annotations/queues.md#field-order).
 
 ## Add Items to the Queue
@@ -70,3 +70,4 @@ Use this method to add a single session while you are reading it.
 - The queue appears in the **Annotation Queues** list for you and for each assignee you selected.
 - The queue detail page shows the items you added, all with the status **Pending**.
 - Assignees can click **Start Annotating**. See [Annotate Queue Items](annotate-items.md).
+- To change the queue later, remove items or delete it, see [Manage an Annotation Queue](manage-a-queue.md).

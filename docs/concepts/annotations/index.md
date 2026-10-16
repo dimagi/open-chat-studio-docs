@@ -61,8 +61,8 @@ flowchart LR
 
 | Role | Capabilities |
 |------|-------------|
-| Team Admin / Member (with queue permissions) | Create and manage queues, add sessions, export results, manage assignees, view aggregates |
-| **Annotation Reviewer** | View and annotate queues they are assigned to only, including viewing the chat sessions attached to each queue item. Cannot manage queues, export, or access other app areas. |
+| Team Admin / Member (with queue permissions) | Create, edit and delete queues, add and remove items, export results, manage assignees, view aggregates |
+| **Annotation Reviewer** | View and annotate queues they are assigned to only, including viewing the chat sessions attached to each queue item. Can flag and unflag items, mark annotations authoritative and view aggregates. Cannot manage queues, export, or access other app areas. |
 
 !!! note "Annotation Reviewer role"
     The **Annotation Reviewer** role is designed for external annotators or team members who should only have access to their assigned annotation work.
@@ -74,4 +74,5 @@ flowchart LR
 2. [Add sessions](../../how-to/annotations/create-a-queue.md#add-items-to-the-queue) to the queue
 3. Assignees [work through items](../../how-to/annotations/annotate-items.md) and submit annotations
 4. If the queue needs several reviews per item, reviewers [resolve conflicts](annotating.md#resolving-multi-reviewer-conflicts) by marking one annotation authoritative
-5. [Review progress](queues.md#monitoring-progress) and [export results](../../how-to/annotations/export-annotations.md)
+5. [Review progress](queues.md#monitoring-progress), [read the aggregate scores](queues.md#aggregate-scores) and [export results](../../how-to/annotations/export-annotations.md)
+6. [Manage the queue](../../how-to/annotations/manage-a-queue.md) as work goes on: unflag items, remove items, or delete the queue when you're done
