@@ -19,8 +19,8 @@ For the bigger picture, see the [Annotations overview](../../concepts/annotation
 
 1. On the queue detail page, click **Start Annotating**.
    Items open one at a time, oldest first.
-2. Read the item in the left panel.
-   For a session, it shows the conversation history with roles and timestamps, a **Participant Data** tab and a **Session State** tab.
+2. Read the session in the left panel.
+   It shows the conversation history with roles and timestamps, a **Participant Data** tab and a **Session State** tab.
 3. Fill in the annotation form in the right panel.
    The fields appear in the order the queue's author set.
    See [Annotation Schema](../../concepts/annotations/queues.md#annotation-schema) for the field types.
