@@ -56,4 +56,3 @@ A message or session either meets a [tag rule's](../../concepts/evaluations/tag_
 
 Tags whose names are not referenced by any tag rule on the run's evaluators are never touched by reconciliation.
 
-Each tag application is recorded in an audit log.
