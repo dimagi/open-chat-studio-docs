@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Oct 16, 2026
+* **NEW** Teams can now post notifications to Slack channels, with a minimum severity level per channel. Configure channels under **Team settings > Notifications**; a linked Slack workspace is required. See [Slack notification channels](concepts/notifications.md#slack-notification-channels).
+
 ## Oct 15, 2026
 * **NEW** Added v2 API endpoints to list, retrieve, create, update and archive a team's source material (`/api/v2/source-material/`) and consent forms (`/api/v2/consent-forms/`). Changes apply to working versions only and reach published chatbots when they are next published. Client-credentials tokens can read these resources but not change them. See the [API documentation](api/index.md).
 
