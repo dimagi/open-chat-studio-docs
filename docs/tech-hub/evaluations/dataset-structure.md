@@ -32,6 +32,7 @@ When cloning into a message-level dataset, or importing from an annotation queue
 | `trace.participant_data` | `participant_data` | Participant data from the human message's trace, or empty if it has none |
 | `trace.session_state` | `session_state` | Session state from the human message's trace, or empty if it has none |
 
+Messages without a partner still become rows. A human message with no reply, for example, because generation failed, becomes a row with an empty AI response. An AI message with no preceding human message, such as a scheduled message or a seed message, becomes a row with an empty human message.
 ### Session-level datasets
 
 When cloning into a session-level dataset, one row is created per session rather than one row per message pair. The full session transcript, captured at the time of the last AI message, carries the context the evaluator works from.
