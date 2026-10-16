@@ -40,7 +40,7 @@ Use this method to pick sessions by filter.
 1. On the queue detail page, click **Add Sessions**, then **Import from Chatbots**.
 2. Use the filters to narrow the table to the sessions you want.
    To skip sessions already in a queue, set **Annotation Queue** to **Not in any queue**.
-   See [Seeing Queue Membership from the Sessions List](../../concepts/annotations/queues.md#seeing-queue-membership-from-the-sessions-list).
+   See [Annotation Queues on the Sessions List](../../concepts/sessions.md#annotation-queues-on-the-sessions-list).
 3. Choose how many sessions to add:
     - **Selected only** (default): add only the sessions whose checkboxes you ticked.
     - **All matching filters**: add every session that matches the current filters.

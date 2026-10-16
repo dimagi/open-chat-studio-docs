@@ -65,7 +65,7 @@ Based on the evaluation level you have chosen, the system will clone either the 
     !!! tip
         To pick sessions that no one has reviewed yet, set the **Annotation Queue** filter to **Not in any queue**.
         This filter is available only if your team has the human annotations feature flag.
-        See [Seeing Queue Membership from the Sessions List](../../concepts/annotations/queues.md#seeing-queue-membership-from-the-sessions-list).
+        See [Annotation Queues on the Sessions List](../../concepts/sessions.md#annotation-queues-on-the-sessions-list).
 
 4. Click **Create Dataset** to create the dataset rows.
 

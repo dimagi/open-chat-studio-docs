@@ -82,31 +82,7 @@ When you increase **Num reviews required** from 1 to more than 1, any authoritat
 
 Items are sessions that reviewers will annotate. You can add them from a filterable session selector, by importing the sessions of an [evaluation dataset](../evaluations/dataset.md), or from a session's detail page. Sessions already in the queue are skipped. For the steps, see [Create an Annotation Queue and Add Items](../../how-to/annotations/create-a-queue.md#add-items-to-the-queue).
 
-### Seeing Queue Membership from the Sessions List
-
-The sessions list shows which queues each session is in, so you don't need to open the session.
-The **Annotation Queues** column shows one badge per queue, in the format `Queue · Status`, where the status is the session's item status in that queue.
-Queues of every status appear, and only session-level items count.
-
-To filter by membership, use the **Annotation Queue** filter:
-
-- Select one or more queues to show sessions in any of them.
-- Select **Not in any queue**, the first value in the list, to show sessions that are in no queue.
-- Select **Not in any queue** together with queue names to combine them with OR.
-  For example, **Not in any queue** and **Safety QA** shows unreviewed sessions plus the sessions already in Safety QA.
-- Use the **excludes** operator to get the complement of the selection.
-
-The filter stores queue IDs, so saved filters keep working after you rename a queue.
-The same filter is available in the dataset session pickers, the participants page and the queue's **Add Sessions** picker.
-
-!!! note
-    The column and filter appear only for teams with the human annotations feature flag.
-    The column is not shown in the sessions table on the participant details page or on the Session Analysis page.
-    The per-chatbot sessions page shows it.
-
-The sessions CSV export has a matching **Annotation Queues** column after **Session Tags**, for example `Safety QA (Completed), Tone (Pending)`.
-Columns after it move one position to the right.
-The header is always present so the layout is stable, but cells are empty for teams without the feature flag.
+Sessions already in a queue are marked on the sessions list, and the **Annotation Queue** filter there can pick out sessions that are in no queue. See [Annotation Queues on the Sessions List](../sessions.md#annotation-queues-on-the-sessions-list).
 
 ## Monitoring Progress
 
