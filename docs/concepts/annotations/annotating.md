@@ -63,7 +63,6 @@ Its annotations stay in place and still count towards the queue's aggregate scor
 Flagged items are always included in [exports](../../how-to/annotations/export-annotations.md), with their flag entries.
 
 Anyone with permission to change queue items can flag or unflag them, including users with the **Annotation Reviewer** role.
-Unflagging recalculates the item's status from its reviews and deletes all its flag entries.
 
 For the steps, see [Flag an Item](../../how-to/annotations/annotate-items.md#flag-an-item) and [Unflag an Item](../../how-to/annotations/manage-a-queue.md#unflag-an-item).
 

@@ -59,35 +59,9 @@ A queue has a name, an optional description, schema fields, and a **Num reviews 
 
 <!-- TODO(human): describe queue status accurately. See the conversation for what the code does. -->
 
-## Changing Reviews Required After Annotation Starts
-
-You can change the **Num reviews required** setting on a queue even after annotation is underway.
-Because this affects how item statuses are calculated, OCS recomputes the status of every item that is not Flagged when you save the change.
-
-Before applying the change, a confirmation dialog summarises what will happen. Review it carefully before confirming.
-
-### Effects of raising the requirement
-
-Increasing **Num reviews required** can move items that were previously **Completed** back to **In Progress** or **Awaiting resolution** — if they no longer have enough reviews to meet the new threshold.
-
-### Effects of lowering the requirement
-
-Decreasing **Num reviews required** does not automatically complete items that still have unresolved reviews. Items where all required reviews are in but no authoritative annotation has been selected remain in **Awaiting resolution** until a reviewer picks one annotation as authoritative.
-
-### Switching to multi-reviewer mode
-
-When you increase **Num reviews required** from 1 to more than 1, any authoritative annotations that OCS set automatically are cleared. Authoritative annotations that a reviewer chose are kept. Aggregate scores are refreshed after the change.
-
-!!! note
-    Flagged items are not affected by a change to **Num reviews required** — their status remains **Flagged** until someone unflags them.
-
 ## Adding Sessions
 
 Each session you add to a queue becomes an item in its **Items** table. You can add sessions from a filterable session selector, by importing the sessions of an [evaluation dataset](../evaluations/dataset.md), or from a session's detail page. Sessions already in the queue are skipped. For the steps, see [Create an Annotation Queue and Add Sessions](../../how-to/annotations/create-a-queue.md#add-sessions-to-the-queue).
-
-Removing a session from a queue permanently deletes its annotations, and deleting a queue deletes all its items and annotations.
-Neither changes the sessions themselves.
-For the steps, see [Manage an Annotation Queue](../../how-to/annotations/manage-a-queue.md).
 
 ## Monitoring Progress
 
@@ -141,7 +115,6 @@ You can export all submitted annotations from the queue detail page as CSV or JS
 ## Managing Assignees
 
 Use **Manage Assignees** on the queue detail page to add or remove reviewers. Assignees receive access to the queue and can see it in their annotation queue list.
-For the steps, see [Change the Reviewers](../../how-to/annotations/manage-a-queue.md#change-the-reviewers).
 
 !!! note
     If a queue has no assignees, any team member with the annotation permission can annotate items in it. Once assignees are added, only they can submit annotations.

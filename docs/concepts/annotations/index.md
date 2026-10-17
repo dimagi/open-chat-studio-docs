@@ -48,7 +48,7 @@ This table lists OCS terms and maps these to the terminology other AI evaluation
 |----------|------------|-------------|
 | **Session** | One conversation between a participant and your chatbot. | Conversation, sample, record |
 | **[Annotation queue](queues.md)** | A list of sessions to review, the questions to answer, and the people who answer them. The queue also tracks its review progress. | Annotation queue, labeling project |
-| **[Schema fields](queues.md#schema-fields)** | The questions reviewers answer, such as a rating from 1 to 5, a choice from a list, or a free-text comment. Once reviewing starts, OCS locks the schema: you can't add, remove or change the questions, so earlier answers stay valid. | Rubric, labeling schema, score configuration |
+| **[Schema fields](queues.md#schema-fields)** | The questions reviewers answer, such as a rating from 1 to 5, a choice from a list, or a free-text comment. | Rubric, labeling schema, score configuration |
 | **Annotation** | One reviewer's answers for one session. A reviewer annotates each session once and can edit their annotation afterwards. | Human label, human feedback, human score |
 | **Num reviews required** | How many reviewers annotate each session independently. | Annotator overlap, annotators per item |
 | **[Authoritative annotation](annotating.md#resolving-multi-reviewer-conflicts)** | The annotation chosen as the answer for a session when several reviewers disagree. | Gold label, adjudicated label, consensus label |
@@ -59,11 +59,6 @@ This table lists OCS terms and maps these to the terminology other AI evaluation
 The people who annotate a queue are its reviewers.
 The queue page calls them **assignees** (**Manage Assignees**).
 Give the **Annotation Reviewer** role to external annotators or team members who should see only the queues assigned to them.
-
-| Role | Capabilities |
-|------|-------------|
-| Team Admin / Member (with queue permissions) | Create, edit and delete queues, add and remove sessions, export results, manage assignees, view aggregates |
-| **Annotation Reviewer** | View and annotate queues they are assigned to only, including viewing each session in the queue. Can flag and unflag sessions, mark annotations authoritative and view aggregates. Cannot manage queues, export, or access other app areas. |
 
 ## Getting Started
 

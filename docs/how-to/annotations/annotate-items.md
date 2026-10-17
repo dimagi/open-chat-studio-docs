@@ -1,19 +1,19 @@
 # Annotate Queue Items
 
 This guide shows how to work through an annotation queue as a reviewer: submit annotations, edit them, skip items, flag items and resolve items that reviewers disagree on.
-To learn what the statuses mean, read [Annotating](../../concepts/annotations/annotating.md).
+To learn what the statuses mean, read [Item Status Lifecycle](../../concepts/annotations/annotating.md#item-status-lifecycle).
 For the bigger picture, see the [Annotations overview](../../concepts/annotations/index.md).
 
 ## Prerequisites
 
 - An annotation queue that contains sessions. See [Create an Annotation Queue and Add Sessions](create-a-queue.md).
-- Permission to add annotations, and either assignment to the queue or an empty assignee list.
-  See [User Groups](../../concepts/team/groups.md).
+- Assignment to the queue, or a queue with no assignees. See [Managing Assignees](../../concepts/annotations/queues.md#managing-assignees).
 
 ## Open Your Queue
 
 1. In the left sidebar, open **Annotations**.
 2. Click the queue you want to work on.
+   Reviewers with the **Annotation Reviewer** role see only the queues they are assigned to.
 
 ## Annotate Items
 
@@ -38,6 +38,8 @@ When no **Pending** or **In Progress** items are left for you, you return to the
 3. Change your answers and click **Save**.
    Click **Cancel** to discard your changes.
 
+If an item opens without the form, see [Read-Only View](../../concepts/annotations/annotating.md#read-only-view).
+
 Saving updates your annotation and recalculates the queue's [aggregate scores](../../concepts/annotations/queues.md#aggregate-scores).
 
 ## Skip an Item
@@ -56,16 +58,15 @@ Flag an item when something prevents you from annotating it, such as missing con
 3. Click **Flag Item**.
 
 The item's status changes to **Flagged** and it no longer appears in the annotation sequence.
-The flag is recorded with your name, the time and the reason.
-Later flags are added to the list instead of replacing it.
+See [Flagging Items](../../concepts/annotations/annotating.md#flagging-items) for what a flag records and how flagged items are treated.
 
 The **Flag** button is on the annotation form, so you can only flag an item you haven't annotated yet.
 To return a flagged item to the review workflow, see [Unflag an Item](manage-a-queue.md#unflag-an-item).
 
 ## Resolve an Item Awaiting Resolution
 
-On queues that need more than one review, an item with all its reviews is **Awaiting resolution** until someone picks one annotation as the authoritative answer.
-See [Resolving Multi-Reviewer Conflicts](../../concepts/annotations/annotating.md#resolving-multi-reviewer-conflicts).
+Do this on queues that need more than one review, for items with the status **Awaiting resolution**.
+See [Resolving Multi-Reviewer Conflicts](../../concepts/annotations/annotating.md#resolving-multi-reviewer-conflicts) for why and when.
 
 1. On the queue detail page, find an item with the status **Awaiting resolution** in the **Items** table and click **Annotate**.
 2. Compare the annotations in the list.
@@ -77,10 +78,11 @@ To undo the choice, click **Clear authoritative**.
 
 ## Expected Outcome
 
-- Items that have all required reviews become **Completed**, or **Awaiting resolution** on queues that need more than one review.
-  See [Item Status Lifecycle](../../concepts/annotations/annotating.md#item-status-lifecycle).
+- Items move through the statuses described in [Item Status Lifecycle](../../concepts/annotations/annotating.md#item-status-lifecycle).
 - The queue's progress and [aggregate scores](../../concepts/annotations/queues.md#aggregate-scores) on its detail page update after each submission, edit and authoritative choice.
 
 ## See also
 
-To analyse the results outside Open Chat Studio, see [Export Annotations](export-annotations.md).
+- To analyse the results outside Open Chat Studio, see [Export Annotations](export-annotations.md).
+- To unflag items, change reviewers or edit the queue, see [Manage an Annotation Queue](manage-a-queue.md).
+- To follow the [queue's progress](../../concepts/annotations/queues.md#monitoring-progress), use the **Progress** card on its detail page.
