@@ -13,17 +13,18 @@ For the bigger picture, see the [Annotations overview](../../concepts/annotation
 
 1. In the left sidebar, open **Annotations**.
 2. Click the queue you want to work on.
-   Reviewers with the **Annotation Reviewer** role see only the queues they are assigned to.
+   If you can't manage queues, you see only the queues you are assigned to.
 
 ## Annotate Items
 
 1. On the queue detail page, click **Start Annotating**.
    Sessions open one at a time, oldest first.
 2. Read the session in the left panel.
-   It shows the conversation history with roles and timestamps, a **Participant Data** tab and a **Session State** tab.
+   It shows the conversation history with timestamps, and an icon for who sent each message.
 3. Fill in the annotation form in the right panel.
    The fields appear in the order the queue's author set.
    See [Schema Fields](../../concepts/annotations/queues.md#schema-fields) for the field types.
+   Below the form, the **Participant Data** and **Session State** tabs show more context about the session.
 4. Click **Submit**.
 
 The next session opens automatically.
@@ -70,6 +71,8 @@ See [Resolving Multi-Reviewer Conflicts](../../concepts/annotations/annotating.m
 
 1. On the queue detail page, find an item with the status **Awaiting resolution** in the **Items** table and click **Annotate**.
 2. Compare the annotations in the list.
+   The list replaces the form only if you have already annotated the item, or the queue has assignees and you are not one of them.
+   See [Read-Only View](../../concepts/annotations/annotating.md#read-only-view).
 3. Click **Mark authoritative** next to the annotation you agree with.
 
 The item becomes **Completed**, and the chosen annotation shows an **Authoritative** badge.

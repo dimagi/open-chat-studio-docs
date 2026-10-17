@@ -14,12 +14,11 @@ See [Field Order](../../concepts/annotations/queues.md#field-order) for which ch
 
 You can change **Num reviews required** after annotation has started.
 OCS recomputes the status of every item that is not **Flagged** when you save.
-Before it applies the change, a confirmation dialog summarises what will happen.
-Review the dialog before you confirm.
+If reviews have already been submitted, a confirmation dialog warns that some completed items may reopen.
 
 - **Raising the number:** items that were **Completed** move back to **In Progress** or **Awaiting resolution** if they no longer have enough reviews.
-- **Lowering the number:** items are not completed automatically.
-  Items with all required reviews but no authoritative annotation stay **Awaiting resolution** until a reviewer [picks one](../../concepts/annotations/annotating.md#resolving-multi-reviewer-conflicts).
+- **Lowering the number:** items that now have enough reviews move to **Awaiting resolution**, or to **Completed** if they have a single review.
+  Items with two or more reviews stay **Awaiting resolution** until a reviewer [picks an authoritative annotation](../../concepts/annotations/annotating.md#resolving-multi-reviewer-conflicts).
 - **Going from 1 to more than 1:** authoritative annotations that OCS set automatically are cleared.
   Annotations that a reviewer marked authoritative are kept.
   Aggregate scores are refreshed.
