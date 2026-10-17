@@ -1,34 +1,38 @@
 # Annotations
 
-Annotations are a **manual evaluation method**.
-Domain experts review chatbot sessions in an annotation queue and record scores, labels and comments against a schema you define.
+Automated checks can tell you whether a chatbot's reply contains the right facts.
+They can't reliably tell you whether a clinician would trust the advice, or whether a reply follows your safeguarding policy.
+For that, people who know the subject need to read the conversations and record their judgment.
 
-Use annotations when automated checks can't judge quality reliably, such as tone, correctness in your domain, or policy compliance.
-The human judgments give you ground truth for [evaluations](../evaluations/index.md).
-You can turn reviewed sessions into an [evaluation dataset](../evaluations/dataset.md), or check how closely an [LLM judge](../evaluations/evaluators.md#llm-evaluator) agrees with your reviewers.
+**Annotations** are how you collect that judgment in Open Chat Studio (OCS).
+You choose the conversations to review, write the questions reviewers answer about each one, and assign the reviewers.
+OCS tracks progress, summarises the answers, and lets you export them.
+Other AI tools call this *human evaluation* or *data labeling*, and the results are often used as *ground truth*.
 
 ## Use Cases
 
-- **Quality assurance**: have reviewers rate conversation quality on a defined scale
-- **Content moderation**: flag problematic sessions and categorize issues
-- **Chatbot evaluation**: collect human judgments alongside automated [evaluations](../evaluations/index.md)
-- **Dataset labeling**: annotate sessions for downstream model training or fine-tuning
-- **Inter-rater agreement**: configure multiple reviews per item to measure how closely reviewers agree
+- **Quality assurance**: have reviewers rate conversations on a defined scale, alongside automated [evaluations](../evaluations/index.md)
+- **Content moderation**: categorise problems in conversations using a list of answers
+- **Dataset labeling**: annotate conversations to use for training or fine-tuning a model
+- **Inter-rater agreement**: collect several independent reviews per conversation, then export them to measure how closely reviewers agree
 
-## Overview
+## How It Works
 
-Reviewers work through a **queue**, a list of sessions to review.
-Every reviewer answers the same set of questions, called the **schema**, for each session.
+In OCS, each conversation between a participant and your chatbot is a **session**.
+You collect the sessions to review in an **annotation queue**.
+For each queue, you write the questions reviewers answer, such as "How helpful was the chatbot, from 1 to 5?"
+Each question is a field, and you add them under **Schema Fields** when you create the queue.
+Every reviewer answers the same fields for every session, so their answers can be compared and summarised.
 
 For example, a team wants to know how well its support chatbot handles billing questions.
 It adds 50 billing sessions to a queue.
-The schema asks reviewers to rate helpfulness from 1 to 5 and to pick a tone from a list.
-Two reviewers annotate each session, and the team reads the average helpfulness score once they finish.
+The queue's fields ask reviewers to rate helpfulness from 1 to 5 and to pick a tone from a list.
+Two reviewers answer the questions for each session, and the team reads the average helpfulness score once they finish.
 
 ```mermaid
 flowchart LR
-    sessions([Session / Messages]) --> queue([Annotation Queue])
-    schema([Schema: the questions]) --> queue
+    sessions([Sessions]) --> queue([Annotation Queue])
+    schema([Schema fields: the questions]) --> queue
     queue --> reviewer1([Reviewer 1])
     queue --> reviewer2([Reviewer 2])
     reviewer1 --> annotation([Annotations: their answers])
@@ -36,42 +40,30 @@ flowchart LR
     annotation --> aggregates([Aggregate Scores])
 ```
 
-### Key Components
+## Key Terms
 
-**[Annotation Queue](queues.md)**
-: A list of sessions to review, the questions to answer, and the people who answer them.
-  The queue also tracks its review progress.
+This table lists OCS terms and maps these to the terminology other AI evaluation tools commonly use for the same thing.
 
-**Annotation Items**
-: The sessions or messages in a queue.
-  Each item has a status that shows its progress: **Pending**, **In Progress**, **Awaiting resolution** (multi-reviewer queues only), then **Completed**.
-  A reviewer can also mark an item **Flagged** for follow-up.
-  See [Item Status Lifecycle](annotating.md#item-status-lifecycle).
+| OCS term | What it is | Also called |
+|----------|------------|-------------|
+| **Session** | One conversation between a participant and your chatbot. | Conversation, sample, record |
+| **[Annotation queue](queues.md)** | A list of sessions to review, the questions to answer, and the people who answer them. The queue also tracks its review progress. | Labeling project |
+| **[Schema fields](queues.md#schema-fields)** | The questions reviewers answer, such as a rating from 1 to 5, a choice from a list, or a free-text comment. | Rubric, labeling schema, score configuration |
+| **Annotation** | One reviewer's answers for one session. A reviewer annotates each session once and can edit their annotation afterwards. | Human label, human feedback, human score |
+| **Num reviews required** | How many reviewers annotate each session independently. | Annotator overlap, annotators per item |
+| **[Authoritative annotation](annotating.md#resolving-multi-reviewer-conflicts)** | The annotation chosen as the answer for a session when several reviewers disagree. | Gold label, adjudicated label, consensus label |
+| **[Aggregate scores](queues.md#aggregate-scores)** | A summary of the answers to each field across the whole queue, such as the mean or the most common answer. | Summary statistics |
 
-**[Annotation Schema](queues.md#annotation-schema)**
-: The questions every reviewer answers for every item, defined once per queue.
-  Because all reviewers answer the same questions, their answers can be compared, summarised in aggregate scores and exported.
-  The schema's structure is fixed once reviews begin, so earlier answers stay valid.
+## Reviewers
 
-**Annotation**
-: One reviewer's answers for one item.
-  A reviewer annotates each item once and can edit their annotation afterwards.
-
-## Roles
-
-| Role | Capabilities |
-|------|-------------|
-| Team Admin / Member (with queue permissions) | Create and manage queues, add sessions, export results, manage assignees, view aggregates |
-| **Annotation Reviewer** | View and annotate queues they are assigned to only, including viewing the chat sessions attached to each queue item. Cannot manage queues, export, or access other app areas. |
-
-!!! note "Annotation Reviewer role"
-    The **Annotation Reviewer** role is designed for external annotators or team members who should only have access to their assigned annotation work.
-    They won't see other parts of the application.
+The people who annotate a queue are its reviewers.
+The queue page calls them **assignees** (**Manage Assignees**).
 
 ## Getting Started
 
-1. [Create an annotation queue](../../how-to/annotations/create-a-queue.md) with a schema and assignees
-2. [Add sessions](../../how-to/annotations/create-a-queue.md#add-items-to-the-queue) to the queue
-3. Assignees [work through items](../../how-to/annotations/annotate-items.md) and submit annotations
-4. If the queue needs several reviews per item, reviewers [resolve conflicts](annotating.md#resolving-multi-reviewer-conflicts) by marking one annotation authoritative
-5. [Review progress](queues.md#monitoring-progress) and [export results](../../how-to/annotations/export-annotations.md)
+1. [Create an annotation queue](../../how-to/annotations/create-a-queue.md) with schema fields and reviewers
+2. [Add sessions](../../how-to/annotations/create-a-queue.md#add-sessions-to-the-queue) to the queue
+3. Reviewers [work through the sessions](../../how-to/annotations/annotate-items.md) and submit annotations
+4. If the queue needs several reviews per session, reviewers [resolve conflicts](annotating.md#resolving-multi-reviewer-conflicts) by marking one annotation authoritative
+5. [Review progress](queues.md#monitoring-progress), [read the aggregate scores](queues.md#aggregate-scores) and [export results](../../how-to/annotations/export-annotations.md)
+6. [Manage the queue](../../how-to/annotations/manage-a-queue.md) as work goes on: unflag items, remove sessions, or delete the queue when you're done
