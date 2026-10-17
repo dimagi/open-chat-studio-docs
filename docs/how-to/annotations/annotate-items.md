@@ -1,47 +1,58 @@
 # Annotate Queue Items
 
 This guide shows how to work through an annotation queue as a reviewer: submit annotations, edit them, skip items, flag items and resolve items that reviewers disagree on.
-To learn what the statuses mean, read [Item Status Lifecycle](../../concepts/annotations/annotating.md#item-status-lifecycle).
 For the bigger picture, see the [Annotations overview](../../concepts/annotations/index.md).
 
 ## Prerequisites
 
 - An annotation queue that contains sessions. See [Create an Annotation Queue and Add Sessions](create-a-queue.md).
-- Assignment to the queue, or a queue with no assignees. See [Managing Assignees](../../concepts/annotations/queues.md#managing-assignees).
 
 ## Open Your Queue
 
 1. In the left sidebar, open **Annotations**.
 2. Click the queue you want to work on.
-   If you can't manage queues, you see only the queues you are assigned to.
 
-## Annotate Items
+The queue detail page has two ways to start annotating.
+
+## Choose How to Annotate
+
+| Option | Where | What it does |
+|--------|-------|--------------|
+| **[Start Annotating](#start-annotating-a-queue)** | Button at the top of the page | Takes you through the queue in order, one session at a time. It serves only **Pending** and **In Progress** items that you haven't annotated yet, and continues until none are left. |
+| **[Annotate](#annotate-or-edit-a-single-item)** | Button in a row of the **Items** table | Opens that one item, whatever its status. Use it to annotate a specific session, to [edit your annotation](#annotate-or-edit-a-single-item) or to [resolve an item](#resolve-an-item-awaiting-resolution). |
+
+## Start Annotating a Queue
 
 1. On the queue detail page, click **Start Annotating**.
-   Sessions open one at a time, oldest first.
-2. Read the session in the left panel.
-   It shows the conversation history with timestamps, and an icon for who sent each message.
-3. Fill in the annotation form in the right panel.
-   The fields appear in the order the queue's author set.
-   See [Schema Fields](../../concepts/annotations/queues.md#schema-fields) for the field types.
-   Below the form, the **Participant Data** and **Session State** tabs show more context about the session.
+   The oldest **Pending** or **In Progress** item that you haven't annotated opens.
+2. Read the session conversation in the left panel.
+   It shows the participant's identifier, then all the messages in the session with timestamps and an icon for who sent each one.
+3. Fill in your answers in the right panel for the fields where the description will help clarify how to answer.
+   Below the form, the **Participant Data** and **Session State** tabs show more context to help you annotate.
 4. Click **Submit**.
+5. The next item opens automatically.
+   Repeat steps 2 to 4, or [skip](#skip-an-item) or [flag](#flag-an-item) an item you can't annotate.
 
-The next session opens automatically.
-The page shows how many items you have reviewed out of the total in the queue.
-When no **Pending** or **In Progress** items are left for you, you return to the queue detail page.
+The badge at the top of the page shows how many items you have reviewed out of the total number of items in the queue.
+The total includes items that are flagged or completed, so the count may not reach the total when you finish.
 
-## Edit Your Annotation
+## Annotate or Edit a Single Item
 
-1. Open the item you annotated.
-2. In the annotations list, click **Edit** next to your annotation.
-   The form opens with your previous answers.
-3. Change your answers and click **Save**.
-   Click **Cancel** to discard your changes.
+Use this to annotate a specific session out of queue, or to change an annotation you already submitted.
 
-If an item opens without the form, see [Read-Only View](../../concepts/annotations/annotating.md#read-only-view).
+1. On the queue detail page, click **Annotate** on the item's row in the **Items** table.
+   The item opens whatever its status.
+2. What you see depends on whether you have annotated the item:
 
-Saving updates your annotation and recalculates the queue's [aggregate scores](../../concepts/annotations/queues.md#aggregate-scores).
+    | Your situation | What opens |
+    |----------------|------------|
+    | You haven't annotated it | The annotation form to fill in the fields. |
+    | You already annotated it | The annotations form with the previous answers to the fields |
+
+3. Change them and click **Save**, or click **Cancel** to discard your changes.
+
+Saving an edit updates your annotation and recalculates the queue's [aggregate scores](../../concepts/annotations/queues.md#aggregate-scores).
+You can edit only your own annotations.
 
 ## Skip an Item
 
@@ -58,7 +69,7 @@ Flag an item when something prevents you from annotating it, such as missing con
    A reason helps whoever reviews the flag decide what to do.
 3. Click **Flag Item**.
 
-The item's status changes to **Flagged** and it no longer appears in the annotation sequence.
+The item's status changes to **Flagged**.
 See [Flagging Items](../../concepts/annotations/annotating.md#flagging-items) for what a flag records and how flagged items are treated.
 
 The **Flag** button is on the annotation form, so you can only flag an item you haven't annotated yet.
@@ -81,11 +92,10 @@ To undo the choice, click **Clear authoritative**.
 
 ## Expected Outcome
 
-- Items move through the statuses described in [Item Status Lifecycle](../../concepts/annotations/annotating.md#item-status-lifecycle).
-- The queue's progress and [aggregate scores](../../concepts/annotations/queues.md#aggregate-scores) on its detail page update after each submission, edit and authoritative choice.
+- Annotation items move through the statuses described in [Item Status Lifecycle](../../concepts/annotations/annotating.md#item-status-lifecycle).
+- The queue's [progress](../../concepts/annotations/queues.md#monitoring-progress) and [aggregate scores](../../concepts/annotations/queues.md#aggregate-scores) on its detail page update after each submission, edit and authoritative choice.
 
 ## See also
 
-- To analyse the results outside Open Chat Studio, see [Export Annotations](export-annotations.md).
+- To analyse the results outside OCS, see [Export Annotations](export-annotations.md).
 - To unflag items, change reviewers or edit the queue, see [Manage an Annotation Queue](manage-a-queue.md).
-- To follow the [queue's progress](../../concepts/annotations/queues.md#monitoring-progress), use the **Progress** card on its detail page.
