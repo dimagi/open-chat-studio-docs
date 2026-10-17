@@ -34,7 +34,7 @@ Each reviewer's answers to the schema fields are added differently in each forma
 - **CSV** adds a `field` column (the schema field name) and one column per reviewer email. Each row is one item/field combination; the reviewer columns hold that reviewer's value, blank where they did not answer.
 - **JSONL** adds a `fields` object shaped `{field: {reviewer_email: value}}`. A field a reviewer did not answer is `null`, and values keep their JSON types (numbers stay numbers).
 
-Binary fields export as `1` or `0`, not as the field's true and false labels.
+Binary fields export as `1` or `0`, not as the field's labels. See [Field Types](../../concepts/annotations/queues.md#field-types).
 
 Example JSONL record:
 

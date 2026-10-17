@@ -27,7 +27,8 @@ The queue detail page has two ways to start annotating.
    The oldest **Pending** or **In Progress** item that you haven't annotated opens.
 2. Read the session conversation in the left panel.
    It shows the participant's identifier, then all the messages in the session with timestamps and an icon for who sent each one.
-3. Fill in your answers in the right panel for the fields where the description will help clarify how to answer.
+3. Fill in your answers in the right panel.
+   Each field's description explains how to answer it.
    Below the form, the **Participant Data** and **Session State** tabs show more context to help you annotate.
 4. Click **Submit**.
 5. The next item opens automatically.
@@ -38,18 +39,15 @@ The total includes items that are flagged or completed, so the count may not rea
 
 ## Annotate or Edit a Single Item
 
-Use this to annotate a specific session out of queue, or to change an annotation you already submitted.
+Use this to annotate a specific session outside the **Start Annotating** sequence, or to change an annotation you already submitted.
 
 1. On the queue detail page, click **Annotate** on the item's row in the **Items** table.
    The item opens whatever its status.
-2. What you see depends on whether you have annotated the item:
-
-    | Your situation | What opens |
-    |----------------|------------|
-    | You haven't annotated it | The annotation form to fill in the fields. |
-    | You already annotated it | The annotations form with the previous answers to the fields |
-
-3. Change them and click **Save**, or click **Cancel** to discard your changes.
+2. If you haven't annotated the item, the annotation form opens.
+   Fill in your answers and click **Submit**.
+3. If you already annotated the item, the annotations list opens instead.
+   Click **Edit** next to your annotation, change your answers and click **Save**.
+   Click **Cancel** to discard your changes.
 
 Saving an edit updates your annotation and recalculates the queue's [aggregate scores](../../concepts/annotations/queues.md#aggregate-scores).
 You can edit only your own annotations.
@@ -77,7 +75,7 @@ To return a flagged item to the review workflow, see [Unflag an Item](manage-a-q
 
 ## Resolve an Item Awaiting Resolution
 
-Do this on queues that need more than one review, for items with the status **Awaiting resolution**.
+Use this when an item shows the status **Awaiting resolution**.
 See [Resolving Multi-Reviewer Conflicts](../../concepts/annotations/annotating.md#resolving-multi-reviewer-conflicts) for why and when.
 
 1. On the queue detail page, find an item with the status **Awaiting resolution** in the **Items** table and click **Annotate**.

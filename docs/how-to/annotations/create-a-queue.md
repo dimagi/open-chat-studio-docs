@@ -13,9 +13,10 @@ To understand what queues, schema fields and reviews are before you start, read 
 1. In the left sidebar, open **Annotations** and click **Add new**.
 2. Enter a **Name** and a **Description**, then set **Num reviews required** (1 to 10), the number of reviews each session needs.
    See [Queue Settings](../../concepts/annotations/queues.md#queue-settings) for when to require more than one.
-3. In the **Schema Fields** section, add the fields reviewers will fill in.  
-   See [Field Types](../../concepts/annotations/queues.md#field-types) for the available types and options.
+3. In the **Schema Fields** section, add the fields reviewers will fill in.
+   For each field, enter a name, choose a type and set any options.
    Add a description to guide reviewers.
+   See [Field Types](../../concepts/annotations/queues.md#field-types) for the available types and options.
 4. Arrange the fields in the order you want reviewers to see them.
 5. Save the queue.
 6. On the queue detail page, click **Manage Assignees**, select the team members who will review the sessions, and click **Save**.
