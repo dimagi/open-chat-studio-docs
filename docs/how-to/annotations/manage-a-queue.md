@@ -1,11 +1,11 @@
 # Manage an Annotation Queue
 
-This guide shows how to change an annotation queue after you have created it: edit its settings, change its reviewers, unflag items, remove items and delete the queue.
-To set up a new queue, see [Create an Annotation Queue and Add Items](create-a-queue.md).
+This guide shows how to change an annotation queue after you have created it: edit its settings, change its reviewers, unflag items, remove sessions and delete the queue.
+To set up a new queue, see [Create an Annotation Queue and Add Sessions](create-a-queue.md).
 
 ## Prerequisites
 
-- An annotation queue. See [Create an Annotation Queue and Add Items](create-a-queue.md).
+- An annotation queue. See [Create an Annotation Queue and Add Sessions](create-a-queue.md).
 - Permission to manage annotation queues. See [User Groups](../../concepts/team/groups.md).
   [Unflag an Item](#unflag-an-item) needs only permission to change queue items, which the **Annotation Reviewer** role has.
 
@@ -16,7 +16,7 @@ To set up a new queue, see [Create an Annotation Queue and Add Items](create-a-q
 3. Change the **Name**, **Description**, **Num reviews required** or schema fields.
 4. Click **Update**.
 
-Once a reviewer has submitted an annotation, the schema is locked.
+Once a reviewer has submitted an annotation, the schema fields are locked.
 You can still reorder fields and change whether each field is **Required**, but you can't add or remove fields or change any other field setting.
 See [Field Order](../../concepts/annotations/queues.md#field-order).
 
@@ -48,16 +48,16 @@ See [Item Status Lifecycle](../../concepts/annotations/annotating.md#item-status
     The entries no longer appear in the items table or in [exports](export-annotations.md).
     To keep a record of them, export the queue before you unflag.
 
-## Remove an Item
+## Remove a Session
 
-Remove an item when it doesn't belong in the queue, for example a session that was added by mistake.
+Remove a session when it doesn't belong in the queue, for example one that was added by mistake.
 
-1. On the queue detail page, find the item in the **Items** table.
+1. On the queue detail page, find the session in the **Items** table.
 2. Click the trash icon in its row.
    A dialog lists the annotations and flags that will be deleted.
 3. Click **Remove**.
 
-Removing an item permanently deletes it and all its annotations.
+Removing a session from the queue permanently deletes all its annotations.
 The session itself is not changed.
 If you add the session to the queue again, it returns as a new **Pending** item with no annotations.
 
@@ -77,4 +77,5 @@ The sessions themselves are not changed.
 
 - Changes to the queue's settings and reviewers appear on its detail page.
 - Unflagged items show their recalculated status in the **Items** table.
-- Removed items and deleted queues are gone, along with their annotations.
+- Removed sessions no longer appear in the queue, and deleted queues are gone.
+- The annotations of removed sessions and deleted queues are deleted with them.

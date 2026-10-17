@@ -46,7 +46,7 @@ This table lists OCS terms and maps these to the terminology other AI evaluation
 
 | OCS term | What it is | Also called |
 |----------|------------|-------------|
-| **Session** | One conversation between a participant and your chatbot. Once you add a session to a queue, the queue's **Items** table and its statuses call it an **item**. Each item has a status that shows its progress, described in [Item Status Lifecycle](annotating.md#item-status-lifecycle). | Conversation, sample, record |
+| **Session** | One conversation between a participant and your chatbot. | Conversation, sample, record |
 | **[Annotation queue](queues.md)** | A list of sessions to review, the questions to answer, and the people who answer them. The queue also tracks its review progress. | Annotation queue, labeling project |
 | **[Schema fields](queues.md#schema-fields)** | The questions reviewers answer, such as a rating from 1 to 5, a choice from a list, or a free-text comment. Once reviewing starts, OCS locks the schema: you can't add, remove or change the questions, so earlier answers stay valid. | Rubric, labeling schema, score configuration |
 | **Annotation** | One reviewer's answers for one session. A reviewer annotates each session once and can edit their annotation afterwards. | Human label, human feedback, human score |
@@ -68,7 +68,7 @@ Give the **Annotation Reviewer** role to external annotators or team members who
 ## Getting Started
 
 1. [Create an annotation queue](../../how-to/annotations/create-a-queue.md) with schema fields and reviewers
-2. [Add sessions](../../how-to/annotations/create-a-queue.md#add-items-to-the-queue) to the queue
+2. [Add sessions](../../how-to/annotations/create-a-queue.md#add-sessions-to-the-queue) to the queue
 3. Reviewers [work through the sessions](../../how-to/annotations/annotate-items.md) and submit annotations
 4. If the queue needs several reviews per session, reviewers [resolve conflicts](annotating.md#resolving-multi-reviewer-conflicts) by marking one annotation authoritative
 5. [Review progress](queues.md#monitoring-progress), [read the aggregate scores](queues.md#aggregate-scores) and [export results](../../how-to/annotations/export-annotations.md)

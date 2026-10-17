@@ -1,7 +1,8 @@
 # Annotating
 
-Reviewers work through a queue one item at a time.
-They submit an annotation, edit it, skip the item or flag it.
+Reviewers work through a queue one session at a time.
+Once you add a session to a queue, OCS calls it an **item**: the queue's **Items** table lists it, and its status shows its review progress.
+Reviewers submit an annotation, edit it, skip the item or flag it.
 This page explains how an item moves between statuses and how conflicting reviews are resolved.
 For the steps a reviewer follows, see [Annotate Queue Items](../../how-to/annotations/annotate-items.md).
 
@@ -49,7 +50,7 @@ For the steps, see [Resolve an Item Awaiting Resolution](../../how-to/annotation
 Clicking **Mark authoritative** on an annotation flips the item to **Completed** and shows an **Authoritative** badge on that row (with a tooltip recording who marked it and when). Selecting a different annotation moves the badge — only one annotation per item can be marked authoritative at a time. Use **Clear authoritative** to return the item to **Awaiting resolution**.
 
 !!! tip "Why this matters"
-    Aggregate scores prefer the authoritative annotation when one is set; only when no annotation is authoritative do they fall back to averaging across all submitted annotations. Marking an authoritative answer therefore both resolves the conflict and ensures the queue's aggregate stats reflect the agreed answer.
+    Aggregate scores prefer the authoritative annotation when one is set; only when no annotation is authoritative do they fall back to averaging across all submitted annotations. Marking an authoritative answer therefore both resolves the conflict and ensures the queue's aggregate scores reflect the agreed answer.
 
 ## Flagging Items
 

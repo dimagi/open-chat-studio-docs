@@ -6,7 +6,7 @@ For the bigger picture, see the [Annotations overview](../../concepts/annotation
 
 ## Prerequisites
 
-- An annotation queue that contains items. See [Create an Annotation Queue and Add Items](create-a-queue.md).
+- An annotation queue that contains sessions. See [Create an Annotation Queue and Add Sessions](create-a-queue.md).
 - Permission to add annotations, and either assignment to the queue or an empty assignee list.
   See [User Groups](../../concepts/team/groups.md).
 
@@ -18,15 +18,15 @@ For the bigger picture, see the [Annotations overview](../../concepts/annotation
 ## Annotate Items
 
 1. On the queue detail page, click **Start Annotating**.
-   Items open one at a time, oldest first.
+   Sessions open one at a time, oldest first.
 2. Read the session in the left panel.
    It shows the conversation history with roles and timestamps, a **Participant Data** tab and a **Session State** tab.
 3. Fill in the annotation form in the right panel.
    The fields appear in the order the queue's author set.
-   See [Annotation Schema](../../concepts/annotations/queues.md#annotation-schema) for the field types.
+   See [Schema Fields](../../concepts/annotations/queues.md#schema-fields) for the field types.
 4. Click **Submit**.
 
-The next item opens automatically.
+The next session opens automatically.
 The page shows how many items you have reviewed out of the total in the queue.
 When no **Pending** or **In Progress** items are left for you, you return to the queue detail page.
 

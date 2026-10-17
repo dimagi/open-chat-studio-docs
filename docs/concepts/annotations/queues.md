@@ -1,10 +1,10 @@
 # Annotation Queues
 
-An **Annotation Queue** is the central object in the annotations system. It defines what to review (the items), how to review it (the schema), who reviews it (the assignees), and how many reviews each item needs.
+An **annotation queue** is the central object in the annotations system. It defines what to review (the sessions), how to review it (the schema fields), who reviews it (the assignees), and how many reviews each session needs.
 
-## Annotation Schema
+## Schema Fields
 
-Before creating a queue, you need to decide what fields reviewers will fill in. These fields are defined as part of the queue's **schema**.
+Before creating a queue, you need to decide what fields reviewers will fill in. You add them in the **Schema Fields** section of the queue form.
 
 ### Field Types
 
@@ -22,7 +22,7 @@ Reviewers can't submit an annotation until they answer every required field.
 A **Binary** field stores the answer as `1` (the true label) or `0` (the false label), whatever the labels say.
 The labels appear only in the annotation form and the aggregate scores.
 
-**Example schema:**
+**Example schema fields:**
 
 | Field Name | Type | Description |
 |------------|------|-------------|
@@ -33,11 +33,12 @@ The labels appear only in the annotation form and the aggregate scores.
 
 ### Field Order
 
-Each field card in the schema builder has a drag handle and up/down buttons (▲▼) for reordering.
+Each field card in the **Schema Fields** section has a drag handle and up/down buttons (▲▼) for reordering.
 
 The order you set is used everywhere fields are displayed: the annotation form, the annotations list on an item, CSV and JSONL exports, the aggregate scores panel, and the summary column in the queue's items table.
 
-Once an item in the queue has a submitted review, the schema locks because changing it would invalidate earlier annotations.
+Once an item in the queue has a submitted review, the schema fields lock because changing them would invalidate earlier annotations.
+The queue form shows a banner saying the schema structure is locked.
 You can no longer add or remove a field or change its name, type, description or options.
 You can still change whether each field is **Required**, and reordering is not affected by the lock.
 Annotations are stored by field name, so changing the display order doesn't change what was recorded, and you can keep reordering fields at any time, including after the lock.
@@ -49,10 +50,10 @@ A queue that has never been saved since field ordering was introduced has no ord
 
 ## Queue Settings
 
-A queue has a name, an optional description, schema fields, and a **Num reviews required**. To set one up, see [Create an Annotation Queue and Add Items](../../how-to/annotations/create-a-queue.md).
+A queue has a name, an optional description, schema fields, and a **Num reviews required**. To set one up, see [Create an Annotation Queue and Add Sessions](../../how-to/annotations/create-a-queue.md).
 
 !!! tip "Multiple reviews"
-    Set **Num reviews required** to more than 1 when you want several reviewers to annotate the same item independently, for example to measure inter-rater agreement or to get a consensus rating. An item is marked **Completed** only when it has received the required number of reviews.
+    Set **Num reviews required** to more than 1 when you want several reviewers to annotate the same session independently, for example to measure inter-rater agreement or to get a consensus rating. A session is marked **Completed** only when it has received the required number of reviews.
 
 ### Queue Status
 
@@ -61,7 +62,7 @@ A queue has a name, an optional description, schema fields, and a **Num reviews 
 ## Changing Reviews Required After Annotation Starts
 
 You can change the **Num reviews required** setting on a queue even after annotation is underway.
-Because this affects how item statuses are calculated, the system recomputes the status of every item that is not Flagged when you save the change.
+Because this affects how item statuses are calculated, OCS recomputes the status of every item that is not Flagged when you save the change.
 
 Before applying the change, a confirmation dialog summarises what will happen. Review it carefully before confirming.
 
@@ -75,16 +76,16 @@ Decreasing **Num reviews required** does not automatically complete items that s
 
 ### Switching to multi-reviewer mode
 
-When you increase **Num reviews required** from 1 to more than 1, any authoritative flags that were set automatically by the system are cleared. Authoritative flags that a reviewer set manually are kept. Aggregate scores are refreshed after the change.
+When you increase **Num reviews required** from 1 to more than 1, any authoritative annotations that OCS set automatically are cleared. Authoritative annotations that a reviewer chose are kept. Aggregate scores are refreshed after the change.
 
 !!! note
-    Flagged items are not affected by a change to **Num reviews required** — their status remains **Flagged** until a manager unflags them.
+    Flagged items are not affected by a change to **Num reviews required** — their status remains **Flagged** until someone unflags them.
 
-## Adding Items
+## Adding Sessions
 
-Items are sessions that reviewers will annotate. You can add them from a filterable session selector, by importing the sessions of an [evaluation dataset](../evaluations/dataset.md), or from a session's detail page. Sessions already in the queue are skipped. For the steps, see [Create an Annotation Queue and Add Items](../../how-to/annotations/create-a-queue.md#add-items-to-the-queue).
+Each session you add to a queue becomes an item in its **Items** table. You can add sessions from a filterable session selector, by importing the sessions of an [evaluation dataset](../evaluations/dataset.md), or from a session's detail page. Sessions already in the queue are skipped. For the steps, see [Create an Annotation Queue and Add Sessions](../../how-to/annotations/create-a-queue.md#add-sessions-to-the-queue).
 
-Removing an item from a queue permanently deletes its annotations, and deleting a queue deletes all its items and annotations.
+Removing a session from a queue permanently deletes its annotations, and deleting a queue deletes all its items and annotations.
 Neither changes the sessions themselves.
 For the steps, see [Manage an Annotation Queue](../../how-to/annotations/manage-a-queue.md).
 

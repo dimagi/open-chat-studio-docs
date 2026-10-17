@@ -1,8 +1,8 @@
-# Create an Annotation Queue and Add Items
+# Create an Annotation Queue and Add Sessions
 
 This guide shows how to set up an annotation queue and fill it with the sessions you want reviewed.
 
-To understand what queues, schemas and reviews are before you start, read the [Annotations overview](../../concepts/annotations/index.md) and [Annotation Queues](../../concepts/annotations/queues.md).
+To understand what queues, schema fields and reviews are before you start, read the [Annotations overview](../../concepts/annotations/index.md) and [Annotation Queues](../../concepts/annotations/queues.md).
 
 ## Prerequisites
 
@@ -12,7 +12,7 @@ To understand what queues, schemas and reviews are before you start, read the [A
 ## Create the Queue
 
 1. In the left sidebar, open **Annotations** and click **Add new**.
-2. Enter a **Name** and a **Description**, then set **Num reviews required** (1 to 10), the number of reviews each item needs.
+2. Enter a **Name** and a **Description**, then set **Num reviews required** (1 to 10), the number of reviews each session needs.
    See [Queue Settings](../../concepts/annotations/queues.md#queue-settings) for when to require more than one.
 3. In the **Schema Fields** section, add the fields reviewers will fill in.
    For each field, enter a name, choose a type and set any options.
@@ -20,7 +20,7 @@ To understand what queues, schemas and reviews are before you start, read the [A
    See [Field Types](../../concepts/annotations/queues.md#field-types) for the available types and options.
 4. Arrange the fields in the order you want reviewers to see them.
 5. Save the queue.
-6. On the queue detail page, click **Manage Assignees**, select the team members who will review items, and click **Save**.
+6. On the queue detail page, click **Manage Assignees**, select the team members who will review the sessions, and click **Save**.
    See [Managing Assignees](../../concepts/annotations/queues.md#managing-assignees) for what happens when a queue has no assignees.
 
 !!! note
@@ -28,7 +28,7 @@ To understand what queues, schemas and reviews are before you start, read the [A
     You can still change their order and whether they are **Required**.
     See [Field Order](../../concepts/annotations/queues.md#field-order).
 
-## Add Items to the Queue
+## Add Sessions to the Queue
 
 You can add sessions in three ways.
 Sessions that are already in the queue are skipped each time.
@@ -70,4 +70,4 @@ Use this method to add a single session while you are reading it.
 - The queue appears in the **Annotation Queues** list for you and for each assignee you selected.
 - The queue detail page shows the items you added, all with the status **Pending**.
 - Assignees can click **Start Annotating**. See [Annotate Queue Items](annotate-items.md).
-- To change the queue later, remove items or delete it, see [Manage an Annotation Queue](manage-a-queue.md).
+- To change the queue later, remove sessions or delete it, see [Manage an Annotation Queue](manage-a-queue.md).

@@ -4,7 +4,7 @@ Reference for the CSV and JSONL files exported from an annotation queue. To run 
 
 Both formats show each reviewer's answers side by side and list fields in the queue's [field order](../../concepts/annotations/queues.md#field-order).
 For why and when to export, see [Exporting Results](../../concepts/annotations/queues.md#exporting-results).
-For the schema that defines these fields, see [Annotation Schema](../../concepts/annotations/queues.md#annotation-schema).
+For how these fields are defined, see [Schema Fields](../../concepts/annotations/queues.md#schema-fields).
 
 | Format | Structure |
 |--------|-----------|
