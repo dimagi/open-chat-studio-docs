@@ -36,21 +36,17 @@ See [Flagging Items](#flagging-items).
 ## Resolving Multi-Reviewer Conflicts
 
 When a multi-reviewer queue collects all required reviews for an item, the item enters **Awaiting resolution** until a reviewer picks one annotation as the authoritative answer.
-**Start Annotating** only serves **Pending** and **In Progress** items, so open an item awaiting resolution from the queue's **Items** table.
+Only one annotation per item can be authoritative, and choosing a different one replaces the earlier choice.
+Clearing the choice returns the item to **Awaiting resolution**.
 
-The annotations list replaces the annotation form once you have annotated the item yourself, or if the queue has assignees and you are not one of them.
-On that list, any team member who can open the item sees:
-
-- An amber **Awaiting resolution** banner at the top of the list
-- A **Mark authoritative** button next to each annotation
-
-The banner says an admin must make the choice, but no admin permission is needed.
+The item page shows a banner saying an admin must make the choice, but no admin permission is needed.
+Any team member who can open the item can do it.
 For the steps, see [Resolve an Item Awaiting Resolution](../../how-to/annotations/annotate-items.md#resolve-an-item-awaiting-resolution).
 
-Clicking **Mark authoritative** on an annotation flips the item to **Completed** and shows an **Authoritative** badge on that row (with a tooltip recording who marked it and when). Selecting a different annotation moves the badge — only one annotation per item can be marked authoritative at a time. Use **Clear authoritative** to return the item to **Awaiting resolution**.
-
-!!! tip "Why this matters"
-    Aggregate scores prefer the authoritative annotation when one is set; only when no annotation is authoritative do they fall back to averaging across all submitted annotations. Marking an authoritative answer therefore both resolves the conflict and ensures the queue's aggregate scores reflect the agreed answer.
+!!! tip "Effect on aggregate scores"
+    Aggregate scores use the authoritative annotation when one is set.
+    Only when no annotation is authoritative do they average across all submitted annotations.
+    Marking an authoritative annotation therefore resolves the conflict and makes the queue's aggregate scores reflect the agreed answer.
 
 ## Flagging Items
 
@@ -62,7 +58,7 @@ A **Flagged** item stays out of the annotation sequence until someone unflags it
 Its annotations stay in place and still count towards the queue's aggregate scores.
 Flagged items are always included in [exports](../../how-to/annotations/export-annotations.md), with their flag entries.
 
-Anyone with permission to change queue items can flag or unflag them, including users with the **Annotation Reviewer** role.
+Anyone with permission to change queue items can flag or unflag them.
 
 For the steps, see [Flag an Item](../../how-to/annotations/annotate-items.md#flag-an-item) and [Unflag an Item](../../how-to/annotations/manage-a-queue.md#unflag-an-item).
 
@@ -70,7 +66,7 @@ For the steps, see [Flag an Item](../../how-to/annotations/annotate-items.md#fla
 
 Each reviewer can submit only one annotation per item.
 When you open an item you've already annotated, you see the item content and the annotations list without the submission form.
-To change your answers, see [Edit Your Annotation](../../how-to/annotations/annotate-items.md#edit-your-annotation).
+To change your answers, see [Annotate or Edit a Single Item](../../how-to/annotations/annotate-items.md#annotate-or-edit-a-single-item).
 
 If the queue has assignees and you are not one of them, you also see the annotations list instead of the form.
 You can read the item and its annotations, but you can't submit one.
