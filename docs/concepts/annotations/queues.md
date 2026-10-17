@@ -119,7 +119,4 @@ You can export all submitted annotations from the queue detail page as CSV or JS
 Use **Manage Assignees** on the queue detail page to add or remove reviewers. Assignees receive access to the queue and can see it in their annotation queue list.
 
 !!! note
-    If a queue has no assignees, any team member with the annotation permission can annotate items in it. Once assignees are added, only they can submit annotations.
-
-    Team members who can't manage queues, such as those with the **Annotation Reviewer** role, see only the queues they are assigned to.
-    To give them access to a queue, assign them to it.
+    If a queue has no assignees, any team member can annotate items in it. Once assignees are added, only they can submit annotations.

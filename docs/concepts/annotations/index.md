@@ -54,11 +54,10 @@ This table lists OCS terms and maps these to the terminology other AI evaluation
 | **[Authoritative annotation](annotating.md#resolving-multi-reviewer-conflicts)** | The annotation chosen as the answer for a session when several reviewers disagree. | Gold label, adjudicated label, consensus label |
 | **[Aggregate scores](queues.md#aggregate-scores)** | A summary of the answers to each field across the whole queue, such as the mean or the most common answer. | Summary statistics |
 
-## Roles
+## Reviewers
 
 The people who annotate a queue are its reviewers.
 The queue page calls them **assignees** (**Manage Assignees**).
-Give the **Annotation Reviewer** role to external annotators or team members who should see only the queues assigned to them.
 
 ## Getting Started
 

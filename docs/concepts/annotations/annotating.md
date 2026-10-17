@@ -39,8 +39,6 @@ When a multi-reviewer queue collects all required reviews for an item, the item 
 Only one annotation per item can be authoritative, and choosing a different one replaces the earlier choice.
 Clearing the choice returns the item to **Awaiting resolution**.
 
-The item page shows a banner saying an admin must make the choice, but no admin permission is needed.
-Any team member who can open the item can do it.
 For the steps, see [Resolve an Item Awaiting Resolution](../../how-to/annotations/annotate-items.md#resolve-an-item-awaiting-resolution).
 
 !!! tip "Effect on aggregate scores"
@@ -57,8 +55,6 @@ Flagging an item again adds another entry rather than replacing the earlier one.
 A **Flagged** item stays out of the annotation sequence until someone unflags it.
 Its annotations stay in place and still count towards the queue's aggregate scores.
 Flagged items are always included in [exports](../../how-to/annotations/export-annotations.md), with their flag entries.
-
-Anyone with permission to change queue items can flag or unflag them.
 
 For the steps, see [Flag an Item](../../how-to/annotations/annotate-items.md#flag-an-item) and [Unflag an Item](../../how-to/annotations/manage-a-queue.md#unflag-an-item).
 
