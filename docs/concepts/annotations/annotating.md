@@ -19,7 +19,7 @@ stateDiagram-v2
 ```
 
 An item in any status can also be **Flagged**.
-Unflagging returns it to the status its reviews give it, as shown in the diagram.
+Unflagging returns it to the status its reviews give it.
 See [Flagging Items](#flagging-items).
 
 | Status | Meaning |
