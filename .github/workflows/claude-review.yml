@@ -5,7 +5,9 @@
 # comments on specific files/lines.
 #
 # Triggered on: pull_request (opened, ready_for_review, reopened) — skips
-# Dependabot PRs and PRs labelled `automated`
+# Dependabot PRs, PRs labelled `automated`, and PRs that only change
+# `.github/**` or `.claude/**` (this reviewer covers documentation, not
+# CI/CD or agent/command changes)
 # Requirements: ANTHROPIC_API_KEY secret must be configured
 #
 # Notes:
@@ -19,6 +21,9 @@ name: PR Review
 on:
   pull_request:
     types: [opened, ready_for_review, reopened]
+    paths-ignore:
+      - ".github/**"
+      - ".claude/**"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
