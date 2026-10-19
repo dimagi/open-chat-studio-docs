@@ -19,6 +19,9 @@
 #   set includes them.
 # - Uses the job's GITHUB_TOKEN (github_token below), so the `permissions:`
 #   block is the ceiling for what the job can do.
+# - A shell step runs before Claude and fails the job, with a fixed comment, if
+#   the PR changes anything outside `docs/` or `mkdocs.yml`. The model never
+#   sees such a PR.
 # - Grouped by PR number (`cancel-in-progress: true`), so a new trigger on
 #   the same PR cancels a run already in progress.
 # - Not triggered on `synchronize`, same as claude-review.yml.
@@ -49,6 +52,31 @@ jobs:
       contents: read # Checkout only
       pull-requests: write # Post review comments
     steps:
+      # Deterministic scope gate: no model involved. Lists every changed path,
+      # including the old path of renamed files, and stops the job before the
+      # Claude step if any is outside docs/ or mkdocs.yml (nav entries).
+      - name: Check changed files are in scope
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
+        run: |
+          paths=$(gh api "repos/${REPO}/pulls/${PR_NUMBER}/files" --paginate \
+            --jq '.[] | .filename, (.previous_filename // empty)')
+          out_of_scope=$(echo "$paths" | grep -v -E '^(docs/|mkdocs\.yml$)' || true)
+          if [ -n "$out_of_scope" ]; then
+            {
+              echo "This automated PR changes files outside \`docs/\` and \`mkdocs.yml\`, so the AI review was skipped. A person needs to review these changes:"
+              echo
+              echo '```text'
+              echo "$out_of_scope" | head -n 20 | tr -d '`'
+              echo '```'
+            } > "${RUNNER_TEMP}/scope-comment.md"
+            gh pr comment "$PR_NUMBER" --repo "$REPO" --body-file "${RUNNER_TEMP}/scope-comment.md"
+            echo "::error::PR changes files outside docs/ and mkdocs.yml"
+            exit 1
+          fi
+
       - name: Checkout repository
         uses: actions/checkout@v7
         with:
