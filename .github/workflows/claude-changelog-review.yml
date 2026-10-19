@@ -14,7 +14,9 @@
 # Notes:
 # - allowed_bots lists only ocs-agent[bot]; never '*'.
 # - Tools are read and comment only: no WebFetch, no `uv run`, no build or lint.
-#   Nothing from the PR is executed.
+#   Nothing from the PR is executed. --disallowedTools denies file editing and
+#   web tools explicitly, so they stay off even if the action's default tool
+#   set includes them.
 # - Uses the job's GITHUB_TOKEN (github_token below), so the `permissions:`
 #   block is the ceiling for what the job can do.
 # - Grouped by PR number (`cancel-in-progress: true`), so a new trigger on
@@ -62,6 +64,7 @@ jobs:
           prompt: "/review-changelog-pr REPO: ${{ github.repository }} PR_NUMBER: ${{ github.event.pull_request.number }}"
           claude_args: |
             --max-turns 25
+            --disallowedTools "Edit,MultiEdit,Write,NotebookEdit,WebFetch,WebSearch"
             --allowedTools "Task,
             Read,
             Grep,
