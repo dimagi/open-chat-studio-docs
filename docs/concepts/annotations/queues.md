@@ -58,7 +58,7 @@ A queue has a name, an optional description, schema fields, and a **Num reviews 
 ### Queue Status
 
 Every queue has a status badge, which shows **Active** for a new queue.
-You can't change the status in Open Chat Studio.
+In the current interface, queues always show **Active** because you can't change the status there.
 Only **Active** queues are offered when you add a session from a session's detail page.
 
 ## Adding Sessions

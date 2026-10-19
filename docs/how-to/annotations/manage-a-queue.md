@@ -14,7 +14,7 @@ See [Field Order](../../concepts/annotations/queues.md#field-order) for which ch
 
 You can change **Num reviews required** after annotation has started.
 OCS recomputes the status of every item that is not **Flagged** when you save.
-Annotations are never deleted, so you can change the number back.
+Annotations are kept, so you can change the number back. Authoritative marks that the system set automatically may be cleared, and they are set again when the item meets the requirement.  
 If reviews have already been submitted, a confirmation dialog warns that some completed items may reopen.
 
 ## Unflag an Item
