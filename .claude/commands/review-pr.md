@@ -1,5 +1,5 @@
 ---
-allowed-tools: Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),WebFetch(domain:github.com,domain:raw.githubusercontent.com),Bash(uv run prek run *),Bash(uv run zensical build --clean *)
+allowed-tools: Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),WebFetch(domain:github.com,domain:raw.githubusercontent.com),Bash(uv run prek run markdownlint-cli2 --all-files),Bash(uv run zensical build --clean)
 description: Review a pull request
 ---
 
