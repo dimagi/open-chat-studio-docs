@@ -22,7 +22,7 @@ description: |-
   assistant: "I notice you've opened a PR with documentation changes. Let me use the documentation-pr-reviewer agent to review it for accuracy and completeness."
   <commentary>The agent should proactively offer to review the PRs when it detects them in the conversation context.</commentary>
   </example>
-tools: Read, Glob, Grep, WebFetch(domain:github.com,domain:raw.githubusercontent.com),Bash(uv run prek run *),Bash(uv run zensical build --clean *)
+tools: Read, Glob, Grep, WebFetch(domain:github.com,domain:raw.githubusercontent.com),Bash(uv run prek run markdownlint-cli2 --all-files),Bash(uv run zensical build --clean)
 model: sonnet
 ---
 
@@ -64,7 +64,6 @@ Applies to every section below:
 
 - Run `uv run prek run markdownlint-cli2 --all-files` and report any failures.
 - Run `uv run zensical build --clean` and report any failures.
-- If the PR touches `.github/workflows/*.yml`, run `uv run prek run actionlint --files <paths>` and report any failures.
 
 ## Output Format
 
