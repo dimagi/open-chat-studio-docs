@@ -184,7 +184,7 @@ Press **Ctrl+C** to stop the command. When it stops, it prints a report of the r
 
 You can run `sync_team` while the source is still receiving traffic:
 
-- **New rows during a sync:** if the source creates a row whose parent the sync has already passed, the command re-reads the source to find the parent, then continues. It still stops if the parent was deleted or is outside the chatbots you selected.
+- **New rows during a sync:** if the source creates a row whose parent the sync has already passed, the command re-reads the source to find the parent, then continues. It still stops if the parent was deleted or belongs to a chatbot that isn't part of the sync.
 - **Rate limits:** if the source responds with a rate-limit error, the command waits and retries.
 - **Edits on the target:** if a session, chat, participant or participant data row was changed on the target after the sync last wrote it, the sync leaves the target version in place. The final report lists how many rows were kept this way.
 
