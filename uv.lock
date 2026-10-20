@@ -290,7 +290,7 @@ requires-dist = [
     { name = "mkdocs-redirects", specifier = ">=1.2.3" },
     { name = "mkdocstrings", extras = ["python"], specifier = ">=1.0.6" },
     { name = "requests", specifier = ">=2.34.2" },
-    { name = "zensical", specifier = ">=0.0.53" },
+    { name = "zensical", specifier = ">=0.0.69" },
 ]
 
 [package.metadata.requires-dev]
