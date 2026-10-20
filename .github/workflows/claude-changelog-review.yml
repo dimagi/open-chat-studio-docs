@@ -5,15 +5,17 @@
 # them. Posts comments only: a top-level summary plus inline comments.
 #
 # Triggered on: pull_request (opened, reopened, ready_for_review) — runs only
-# when the PR is authored by the ocs-agent app, comes from a `changelog-pr-*`
-# branch in this repo, and has "Changelog + Docs" in its title - this includes
-# "[Widget] Changelog + Docs:".
+# when the PR is authored by the ocs-agent app, targets `main` or
+# `widget-develop`, comes from a `changelog-pr-*` branch in this repo, and has
+# "Changelog + Docs" in its title (this includes "[Widget] Changelog + Docs").
 # update-api-docs PRs and "Changelog:"-only PRs do not match.
 # Requirements: ANTHROPIC_API_KEY secret
 #
 # Notes:
 # - allowed_bots lists only ocs-agent[bot]; never '*'.
-# - Tools are read and comment only: no WebFetch, no `uv run`, no build or lint.
+# - Tools are read and comment only: no WebFetch, no `uv run`, and no
+#   `gh pr view`, so the PR title and body (copied from the OCS PR) are never
+#   available to the model. The base branch is passed in the prompt.
 #   Nothing from the PR is executed. --disallowedTools denies file editing and
 #   web tools explicitly, so they stay off even if the action's default tool
 #   set includes them.
@@ -44,6 +46,7 @@ jobs:
     if: >-
       github.event.pull_request.user.login == 'ocs-agent[bot]' &&
       github.event.pull_request.head.repo.full_name == github.repository &&
+      contains(fromJSON('["main","widget-develop"]'), github.base_ref) &&
       startsWith(github.event.pull_request.head.ref, 'changelog-pr-') &&
       contains(github.event.pull_request.title, 'Changelog + Docs')
     runs-on: ubuntu-latest
@@ -89,7 +92,7 @@ jobs:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           github_token: ${{ github.token }}
           allowed_bots: "ocs-agent[bot]"
-          prompt: "/review-changelog-pr REPO: ${{ github.repository }} PR_NUMBER: ${{ github.event.pull_request.number }}"
+          prompt: "/review-changelog-pr REPO: ${{ github.repository }} PR_NUMBER: ${{ github.event.pull_request.number }} BASE_REF: ${{ github.base_ref }}"
           claude_args: |
             --max-turns 25
             --disallowedTools "Edit,MultiEdit,Write,NotebookEdit,WebFetch,WebSearch"
@@ -99,5 +102,4 @@ jobs:
             Glob,
             mcp__github_inline_comment__create_inline_comment,
             Bash(gh pr comment:*),
-            Bash(gh pr diff:*),
-            Bash(gh pr view:*)"
+            Bash(gh pr diff:*)"
