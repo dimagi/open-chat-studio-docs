@@ -11,6 +11,8 @@
 # Requirements: ANTHROPIC_API_KEY secret must be configured
 #
 # Notes:
+# - --disallowedTools denies file editing explicitly, so it stays off even if
+#   the action's default tool set includes it.
 # - Grouped by PR number (`cancel-in-progress: true`), so a new trigger on
 #   the same PR cancels a run already in progress.
 # - Not triggered on `synchronize` — pushing new commits to an open PR does
@@ -53,6 +55,7 @@ jobs:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           prompt: "/review-pr REPO: ${{ github.repository }} PR_NUMBER: ${{ github.event.pull_request.number }}"
           claude_args: |
+            --disallowedTools "Edit,MultiEdit,Write,NotebookEdit"
             --allowedTools "Task,
             Read,
             Grep,
