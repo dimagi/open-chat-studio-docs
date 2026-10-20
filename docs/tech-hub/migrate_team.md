@@ -176,7 +176,7 @@ python manage.py sync_team \
   --follow
 ```
 
-After each pass, the command prints how many rows it synced, then waits `--interval` seconds and starts the next pass.
+After each pass, the command prints how many rows it synced, then waits the interval (set by `--interval`, default 10 seconds) and starts the next pass.
 
 Press **Ctrl+C** to stop the command. When it stops, it prints a report of the rows it synced.
 
