@@ -29,6 +29,8 @@ Each changelog entry must be:
 
 ### Docs
 
+For each changed page other than the changelog, Read the whole file, not only the diff, and apply the checks below to the full page. Report problems on lines changed in this PR as findings. Report problems elsewhere on the page under Existing issues.
+
 1. Page-type contract: Read `.claude/checklists/page-type-contract.md` — flag if the changed page contains content that doesn't match the expected page type.
 2. Quality gate: Read `.claude/checklists/doc-self-review.md` and check each item against the changed pages.
 
@@ -45,3 +47,5 @@ Each changelog entry must be:
 **Suggestions**: Optional improvements
 
 **Minor Issues**: Typos, formatting, style nitpicks
+
+**Existing issues**: Problems on a changed page that this PR did not change

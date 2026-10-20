@@ -15,7 +15,7 @@ Arguments: $ARGUMENTS contains `REPO`, `PR_NUMBER` and `BASE_REF`. Pass `REPO` a
 
 1. Use `gh pr diff <PR_NUMBER> --repo <REPO>` to see the actual changes.
 2. Launch the changelog-pr-reviewer agent with `BASE_REF` and the full diff.
-3. Post findings. Use inline comments (`create_inline_comment`) for specific line issues and one top-level `gh pr comment <PR_NUMBER> --repo <REPO>` for the summary.
+3. Post findings. Use inline comments (`create_inline_comment`) for issues on lines in the diff and one top-level `gh pr comment <PR_NUMBER> --repo <REPO>` for the summary. Inline comments only attach to lines in the diff, so put findings on other lines, including Existing issues, in the summary.
 
 Only post feedback that is noteworthy and actionable. Post comments only: do not approve or request changes.
 
