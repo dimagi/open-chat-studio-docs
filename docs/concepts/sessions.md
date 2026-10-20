@@ -49,9 +49,36 @@ Sessions can be reset either [manually](../how-to/reset_sessions.md#manual-reset
 
 For task-focused details, see [How to reset sessions](../how-to/reset_sessions.md).
 
+## Annotation Queues on the Sessions List
+
+The sessions list shows which [annotation queues](annotations/queues.md) each session is in, so you don't need to open the session.
+The **Annotation Queues** column shows one badge per queue, in the format `Queue · Status`, where the status is the session's item status in that queue.
+Queues of every status appear, and only session-level items count.
+
+To filter by membership, use the **Annotation Queue** filter:
+
+- Select one or more queues to show sessions in any of them.
+- Select **Not in any queue**, the first value in the list, to show sessions that are in no queue.
+- Select **Not in any queue** together with queue names to combine them with OR.
+  For example, **Not in any queue** and **Safety QA** shows unreviewed sessions plus the sessions already in Safety QA.
+- Use the **excludes** operator to get the complement of the selection.
+
+The filter stores queue IDs, so saved filters keep working after you rename a queue.
+The same filter is available in the dataset session pickers, the participants page and the queue's **Add Sessions** picker.
+
+!!! note
+    The column and filter appear only for teams with the human annotations feature flag.
+    The column is not shown in the sessions table on the participant details page or on the Session Analysis page.
+    The per-chatbot sessions page shows it.
+
+The sessions CSV export has a matching **Annotation Queues** column after **Session Tags**, for example `Safety QA (Completed), Tone (Pending)`.
+Columns after it move one position to the right.
+The header is always present so the layout is stable, but cells are empty for teams without the feature flag.
+
 ## See also
 
 - [Session Status](session_status.md)
 - [Participant Data](participant_data.md)
 - [Channels](channels.md)
 - [Conversation History](pipelines/history.md)
+- [Annotation Queues](annotations/queues.md)

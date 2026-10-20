@@ -65,6 +65,8 @@ Only **Active** queues are offered when you add a session from a session's detai
 
 Each session you add to a queue becomes an item in its **Items** table. You can add sessions from a filterable session selector, by importing the sessions of an [evaluation dataset](../evaluations/dataset.md), or from a session's detail page. Sessions already in the queue are skipped. For the steps, see [Create an Annotation Queue and Add Sessions](../../how-to/annotations/create-a-queue.md#add-sessions-to-the-queue).
 
+Sessions already in a queue are marked on the sessions list, and the **Annotation Queue** filter there can pick out sessions that are in no queue. See [Annotation Queues on the Sessions List](../sessions.md#annotation-queues-on-the-sessions-list).
+
 ## Monitoring Progress
 
 The **Progress** card on the queue detail page shows:
