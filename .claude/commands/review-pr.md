@@ -9,9 +9,11 @@ Review documentation and changelog PRs using the documentation-pr-reviewer subag
 
 ## Steps
 
+Arguments: $ARGUMENTS contains `REPO` and `PR_NUMBER`. Pass both to every `gh` command as `<PR_NUMBER> --repo <REPO>`.
+
 First, fetch the PR details to understand what files are being changed:
-1. Use `gh pr view` to get PR overview
-2. Use `gh pr diff` to see the actual changes
+1. Use `gh pr view <PR_NUMBER> --repo <REPO>` to get PR overview
+2. Use `gh pr diff <PR_NUMBER> --repo <REPO>` to see the actual changes
 
 Then launch the documentation-pr-reviewer agent with context about:
 - What files are being modified (README, CHANGELOG, docs/, etc.)
@@ -21,7 +23,7 @@ Then launch the documentation-pr-reviewer agent with context about:
 The agent will provide structured feedback following documentation best practices. Only post feedback that is noteworthy and actionable.
 
 Use inline comments via `gh pr comment` for specific line issues.
-Use top-level comments for overall observations.
+Use top-level comments (`gh pr comment <PR_NUMBER> --repo <REPO>`) for overall observations.
 Keep all feedback concise and constructive.
 
 ---
