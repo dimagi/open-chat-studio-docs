@@ -1,8 +1,8 @@
 # Changelog PR Review Workflow
 #
 # Reviews the "Changelog + Docs" PRs that update-changelog.yml opens. Claude
-# writes those PRs from OCS PR text, so this is a second, read-only check on
-# them. Posts comments only: a top-level summary plus inline comments.
+# writes those PRs from OCS PR text, so this is a second, comment-only check
+# on them. Posts comments only: a top-level summary plus inline comments.
 #
 # Triggered on: pull_request (opened, reopened, ready_for_review) — runs only
 # when the PR is authored by the ocs-agent app, targets `main` or
@@ -48,7 +48,8 @@ jobs:
       github.event.pull_request.head.repo.full_name == github.repository &&
       contains(fromJSON('["main","widget-develop"]'), github.base_ref) &&
       startsWith(github.event.pull_request.head.ref, 'changelog-pr-') &&
-      contains(github.event.pull_request.title, 'Changelog + Docs')
+      (startsWith(github.event.pull_request.title, 'Changelog + Docs:') ||
+       startsWith(github.event.pull_request.title, '[Widget] Changelog + Docs:'))
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:

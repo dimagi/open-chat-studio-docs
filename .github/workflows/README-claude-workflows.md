@@ -15,14 +15,14 @@ Commands live in `.claude/commands/`, agents in `.claude/agents/` ([background](
 | `claude.yml` | Claude Code | Freeform `@claude` assistant for issue/PR conversations | none — freeform prompt taken from the mention itself | none |
 | `claude-dependabot.yml` | Claude Dependabot PR Review | Flags breaking changes / build impact in Dependabot PRs | none — freeform inline prompt in the workflow | none |
 | `claude-review.yml` | PR Review | Automated documentation review on PRs (skips Dependabot PRs and PRs labelled `automated`) | [`/review-pr`](../../.claude/commands/review-pr.md) | [`documentation-pr-reviewer`](../../.claude/agents/documentation-pr-reviewer.md) |
-| `claude-changelog-review.yml` | Changelog PR Review | **Read-only** review of the `Changelog + Docs` PRs that `update-changelog.yml` opens as `ocs-agent`; comments only | [`/review-changelog-pr`](../../.claude/commands/review-changelog-pr.md) | [`changelog-pr-reviewer`](../../.claude/agents/changelog-pr-reviewer.md) |
+| `claude-changelog-review.yml` | Changelog PR Review | **Comment-only** review of the `Changelog + Docs` PRs that `update-changelog.yml` opens as `ocs-agent` | [`/review-changelog-pr`](../../.claude/commands/review-changelog-pr.md) | [`changelog-pr-reviewer`](../../.claude/agents/changelog-pr-reviewer.md) |
 | `release.yml` | Weekly Release Summary | Drafts a GitHub release from the changelog | [`/create-release <tag> <title>`](../../.claude/commands/create-release.md) | none — the command does the work itself |
 | `update-changelog.yml` | Update Changelog and Docs from OCS PR | Syncs changelog/docs from merged OCS PRs — see [README-changelog-automation.md](README-changelog-automation.md) | [`changelog-instructions.md`](../templates/changelog-instructions.md) rendered into the workflow's `prompt:` | [`zensical-technical-writer`](../../.claude/agents/zensical-technical-writer.md) |
 | *(manual only, no workflow)* | — | Ad-hoc docs writing outside any workflow | [`/write-docs`](../../.claude/commands/write-docs.md) | [`zensical-technical-writer`](../../.claude/agents/zensical-technical-writer.md) |
 
 ## Security: Permissions & Tool Allowlists
 
-These workflows use `permissions:` block, Claude's `--allowedTools`, and sometimes an installation access token for the `ocs-agent` GitHub App. See best practices for using them in [AGENTS.md](AGENTS.md) in this directory.
+These workflows use `permissions:` block, Claude's `--allowedTools`, and sometimes an installation access token for the `ocs-agent` GitHub App — `claude.yml`, `update-api-docs.yml`, and `update-changelog.yml` mint one via `create-github-app-token`. See best practices for using them in [AGENTS.md](AGENTS.md) in this directory.
 
 ### Command and agent tool frontmatter
 
