@@ -12,6 +12,8 @@ hide:
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
 ## Oct 15, 2026
+* **NEW** Added an **Annotation Queues** column to the sessions list, showing each queue a session is in with the item's status, and an **Annotation Queue** filter with a **Not in any queue** option for finding sessions nobody has reviewed yet. Both require the human annotations feature flag. See [Annotation Queues on the Sessions List](concepts/sessions.md#annotation-queues-on-the-sessions-list).
+* **CHANGE** The session CSV export has a new **Annotation Queues** column directly after **Session Tags**, formatted `Queue name (Status), ...`. Every column after it moves one position to the right, so anyone reading the export by column position needs to adjust. The cells are empty for teams without the human annotations feature flag.
 * **NEW** Added v2 API endpoints to list, retrieve, create, update and archive a team's source material (`/api/v2/source-material/`) and consent forms (`/api/v2/consent-forms/`). Changes apply to working versions only and reach published chatbots when they are next published. Client-credentials tokens can read these resources but not change them. See the [API documentation](api/index.md).
 
 ## Oct 14, 2026
