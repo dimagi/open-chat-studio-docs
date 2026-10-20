@@ -75,7 +75,7 @@ POST /api/chat/{session_id}/message/
       Schema: ChatSendMessageResponse
     403:
       Content: application/json
-      Schema: ChatConsentRequired
+      Schema: ChatSendMessageForbidden
   Security:
     cookieAuth
     embedKeyAuth
@@ -142,6 +142,9 @@ POST /api/chat/start/
     401:
       Content: application/json
       Schema: ChatAccessDenied
+    403:
+      Content: application/json
+      Schema: ChatStartSessionForbidden
     409:
       Content: application/json
       Schema: ChatStartSessionRefused
@@ -199,6 +202,9 @@ ChatPollResponse:
   - session_status: Unknown (required)
   - consent: Unknown (required)
 
+ChatSendMessageForbidden:
+  - type: unknown
+
 ChatSendMessageRequestWithAttachments:
   - message: string (required)
   - context: object
@@ -214,6 +220,9 @@ ChatSessionTokenResponse:
   - session_id: string (required)
   - session_token: string (required)
   - expires_at: string (required)
+
+ChatStartSessionForbidden:
+  - type: unknown
 
 ChatStartSessionRefused:
   - error: string (required)

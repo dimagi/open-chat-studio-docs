@@ -34,6 +34,9 @@ POST /api/sessions/
     201:
       Content: application/json
       Schema: ExperimentSession
+    403:
+      Content: application/json
+      Schema: ForbiddenOrParticipantBlocked
   Security:
     OAuth2
       - Required scopes: sessions:write
@@ -166,6 +169,9 @@ File:
   - content_type: string
   - size: integer (required)
   - content_url: string (required)
+
+ForbiddenOrParticipantBlocked:
+  - type: unknown
 
 Message:
   - created_at: string (required)

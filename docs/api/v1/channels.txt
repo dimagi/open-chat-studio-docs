@@ -22,9 +22,9 @@ Provide either ``prompt_text`` (routes through the LLM/bot pipeline) or ``messag
     400:
       Content: application/json
       Schema: Unknown
-    403:
+    403: The OAuth application is not authorized for this chatbot, or the participant is blocked (`code` is `participant_blocked`)
       Content: application/json
-      Schema: Unknown
+      Schema: ForbiddenOrParticipantBlocked
     404:
       Content: application/json
       Schema: Unknown
@@ -45,9 +45,9 @@ POST /channels/api/{experiment_id}/incoming_message
     200:
       Content: application/json
       Schema: ApiResponseMessage
-    403:
+    403: The OAuth application is not authorized for this chatbot, or the participant is blocked (`code` is `participant_blocked`)
       Content: application/json
-      Schema: Unknown
+      Schema: ForbiddenOrParticipantBlocked
   Security:
     OAuth2
       - Required scopes: chatbots:interact
@@ -67,9 +67,9 @@ POST /channels/api/{experiment_id}/v{version}/incoming_message
     200:
       Content: application/json
       Schema: ApiResponseMessage
-    403:
+    403: The OAuth application is not authorized for this chatbot, or the participant is blocked (`code` is `participant_blocked`)
       Content: application/json
-      Schema: Unknown
+      Schema: ForbiddenOrParticipantBlocked
   Security:
     OAuth2
       - Required scopes: chatbots:interact
@@ -89,6 +89,9 @@ ApiResponseAttachment:
 ApiResponseMessage:
   - response: string (required)
   - attachments: array of ApiResponseAttachment (required)
+
+ForbiddenOrParticipantBlocked:
+  - type: unknown
 
 TriggerBotMessageRequest:
   - identifier: string (required)

@@ -82,6 +82,8 @@ When you increase **Num reviews required** from 1 to more than 1, any authoritat
 
 Items are sessions that reviewers will annotate. You can add them from a filterable session selector, by importing the sessions of an [evaluation dataset](../evaluations/dataset.md), or from a session's detail page. Sessions already in the queue are skipped. For the steps, see [Create an Annotation Queue and Add Items](../../how-to/annotations/create-a-queue.md#add-items-to-the-queue).
 
+Sessions already in a queue are marked on the sessions list, and the **Annotation Queue** filter there can pick out sessions that are in no queue. See [Annotation Queues on the Sessions List](../sessions.md#annotation-queues-on-the-sessions-list).
+
 ## Monitoring Progress
 
 The queue detail page shows a progress summary:
