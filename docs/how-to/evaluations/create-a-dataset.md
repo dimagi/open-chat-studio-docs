@@ -57,6 +57,11 @@ Follow the steps for the evaluation level you chose. For how session data maps t
         - **Selected only**: clone only the sessions you check in the table.
         - **All matching filters**: clone every session that matches your current filters. There is no limit on how many sessions this can match.
 
+!!! tip
+        To pick sessions that no one has reviewed yet, set the **Annotation Queue** filter to **Not in any queue**.
+        This filter is available only if your team has the human annotations feature flag.
+        See [Annotation Queues on the Sessions List](../../concepts/sessions.md#annotation-queues-on-the-sessions-list).  
+
 ### Import from annotation queue
 
 Use this method to score sessions your team has already reviewed in an [annotation queue](../../concepts/annotations/queues.md).
