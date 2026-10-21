@@ -113,6 +113,7 @@ nav:
       - Schedule Reminders: how-to/reminders.md
       - Set Up and Manage Document Sources: how-to/document_sources.md
       - Filter Collection Search by Metadata: how-to/filter_collection_search_by_metadata.md
+      - Archive and Un-archive a Chatbot: how-to/archive_chatbot.md
     - Channels & Deployment:
       - how-to/deploy_to_different_channels.md
       - how-to/disable_a_channel.md

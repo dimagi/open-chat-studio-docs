@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Oct 21, 2026
+* **NEW** Added an **Un-archive** button to the detail page of an archived chatbot, which restores the chatbot and all its versions. Reconnecting channels is optional and off by default; channels claimed by another chatbot while it was archived, and Slack channels, must be reconnected by hand. Scheduled messages deleted at archive time cannot be restored. See [Archive and un-archive a chatbot](how-to/archive_chatbot.md#un-archive-a-chatbot).
+
 ## Oct 16, 2026
 * **CHANGE** The **Public link** channel is now available to every team. It no longer needs a feature flag to appear in the add-channel dropdown. See [Deploy your chatbot with a public link](how-to/deploy_public_link_channel.md).
 
