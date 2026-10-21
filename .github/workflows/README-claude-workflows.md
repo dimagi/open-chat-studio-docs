@@ -20,6 +20,16 @@ Commands live in `.claude/commands/`, agents in `.claude/agents/` ([background](
 | `update-changelog.yml` | Update Changelog and Docs from OCS PR | Syncs changelog/docs from merged OCS PRs — see [README-changelog-automation.md](README-changelog-automation.md) | [`changelog-instructions.md`](../templates/changelog-instructions.md) rendered into the workflow's `prompt:` | [`zensical-technical-writer`](../../.claude/agents/zensical-technical-writer.md) |
 | *(manual only, no workflow)* | — | Ad-hoc docs writing outside any workflow | [`/write-docs`](../../.claude/commands/write-docs.md) | [`zensical-technical-writer`](../../.claude/agents/zensical-technical-writer.md) |
 
+## Design: workflow, command, subagent
+
+Each automation has up to three layers. Each has one job and only the access that job needs.
+
+- **Workflow:** decides whether to run and what the job may touch. It does deterministic checks in code, then sets permissions and tool and turn limits.
+- **Command:** the main agent's prompt. It fetches the input, calls the subagent, and posts or commits the result.
+- **Subagent:** optional. It does the focused work with fewer tools than the command. See [Command and agent tool frontmatter](#command-and-agent-tool-frontmatter) for how to restrict its tools.
+
+Add a subagent only to keep verbose reading out of the main context, to enforce a tool limit, or to get an independent review in a fresh context.
+
 ## Security: Permissions & Tool Allowlists
 
 These workflows use `permissions:` block, Claude's `--allowedTools`, and sometimes an installation access token for the `ocs-agent` GitHub App — `claude.yml`, `update-api-docs.yml`, and `update-changelog.yml` mint one via `create-github-app-token`. See best practices for using them in [AGENTS.md](AGENTS.md) in this directory.
