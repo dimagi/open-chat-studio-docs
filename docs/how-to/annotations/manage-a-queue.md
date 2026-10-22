@@ -1,7 +1,10 @@
 # Manage an Annotation Queue
 
 This guide covers what to know before you edit a queue, unflag an item, remove a session or delete a queue.
-To set up a new queue, see [Create an Annotation Queue and Add Sessions](create-a-queue.md).
+
+## Prerequisites  
+
+- An existing annotation queue. See [Create an Annotation Queue and Add Sessions](create-a-queue.md).
 
 ## Edit the Queue Settings
 
@@ -14,7 +17,7 @@ See [Field Order](../../concepts/annotations/queues.md#field-order) for which ch
 
 You can change **Num reviews required** after annotation has started.
 OCS recomputes the status of every item that is not **Flagged** when you save.
-Annotations are kept, so you can change the number back. Authoritative marks that the system set automatically may be cleared, and they are set again when the item meets the requirement.  
+Annotations are kept, so you can change the number back. Authoritative marks that the system set automatically may be cleared, and they are set again when the item meets the requirement.
 If reviews have already been submitted, a confirmation dialog warns that some completed items may reopen.
 
 ## Unflag an Item

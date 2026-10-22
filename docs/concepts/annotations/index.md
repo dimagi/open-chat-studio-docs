@@ -48,6 +48,7 @@ This table lists OCS terms and maps these to the terminology other AI evaluation
 |----------|------------|-------------|
 | **Session** | One conversation between a participant and your chatbot. | Conversation, sample, record |
 | **[Annotation queue](queues.md)** | A list of sessions to review, the questions to answer, and the people who answer them. The queue also tracks its review progress. | Labeling project |
+| **Item** | A session once it is in a queue. The queue's **Items** table lists it, and its status shows its review progress. See [Item Status Lifecycle](annotating.md#item-status-lifecycle). | Task, example |
 | **[Schema fields](queues.md#schema-fields)** | The questions reviewers answer, such as a rating from 1 to 5, a choice from a list, or a free-text comment. | Rubric, labeling schema, score configuration |
 | **Annotation** | One reviewer's answers for one session. A reviewer annotates each session once and can edit their annotation afterwards. | Human label, human feedback, human score |
 | **Num reviews required** | How many reviewers annotate each session independently. | Annotator overlap, annotators per item |
