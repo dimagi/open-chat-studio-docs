@@ -1,5 +1,5 @@
 ---
-allowed-tools: Bash(gh pr comment:*),Bash(gh pr diff:*),mcp__github_inline_comment__create_inline_comment
+allowed-tools: Read,Grep,Glob,Bash(gh pr comment:*),Bash(gh pr diff:*),mcp__github_inline_comment__create_inline_comment
 description: Review an automated changelog and docs PR
 ---
 
