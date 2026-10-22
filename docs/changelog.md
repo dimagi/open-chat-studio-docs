@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Oct 16, 2026
+* **CHANGE** The **Public link** channel is now available to every team. It no longer needs a feature flag to appear in the add-channel dropdown. See [Deploy your chatbot with a public link](how-to/deploy_public_link_channel.md).
+
 ## Oct 15, 2026
 * **NEW** Added an **Annotation Queues** column to the sessions list, showing each queue a session is in with the item's status, and an **Annotation Queue** filter with a **Not in any queue** option for finding sessions nobody has reviewed yet. Both require the human annotations feature flag. See [Annotation Queues on the Sessions List](concepts/sessions.md#annotation-queues-on-the-sessions-list).
 * **CHANGE** The session CSV export has a new **Annotation Queues** column directly after **Session Tags**, formatted `Queue name (Status), ...`. Every column after it moves one position to the right, so anyone reading the export by column position needs to adjust. The cells are empty for teams without the human annotations feature flag.
