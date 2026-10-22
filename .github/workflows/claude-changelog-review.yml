@@ -1,32 +1,19 @@
 # Changelog PR Review Workflow
 #
-# Reviews the "Changelog + Docs" PRs that update-changelog.yml opens. Claude
-# writes those PRs from OCS PR text, so this is a second, comment-only check
-# on them. Posts comments only: a top-level summary plus inline comments.
-#
-# Triggered on: pull_request (opened, reopened, ready_for_review) — runs only
-# when the PR is authored by the ocs-agent app, targets `main` or
-# `widget-develop`, comes from a `changelog-pr-*` branch in this repo, and has
-# "Changelog + Docs" in its title (this includes "[Widget] Changelog + Docs").
-# update-api-docs PRs and "Changelog:"-only PRs do not match.
-# Requirements: ANTHROPIC_API_KEY secret
+# Comment-only review of the "Changelog + Docs" PRs that update-changelog.yml
+# opens as ocs-agent. Claude writes those PRs from OCS PR text, so this is a
+# second check on them. update-api-docs PRs and "Changelog:"-only PRs are not
+# reviewed. Requires the ANTHROPIC_API_KEY secret. See
+# README-claude-workflows.md for the command this runs.
 #
 # Notes:
 # - allowed_bots lists only ocs-agent[bot]; never '*'.
-# - Tools are read and comment only: no WebFetch, no `uv run`, and no
-#   `gh pr view`, so the PR title and body (copied from the OCS PR) are never
-#   available to the model. The base branch is passed in the prompt.
-#   Nothing from the PR is executed. --disallowedTools denies file editing and
-#   web tools explicitly, so they stay off even if the action's default tool
-#   set includes them.
-# - Uses the job's GITHUB_TOKEN (github_token below), so the `permissions:`
-#   block is the ceiling for what the job can do.
-# - A shell step runs before Claude and fails the job, with a fixed comment, if
-#   the PR changes anything outside `docs/` or `mkdocs.yml`. The model never
-#   sees such a PR.
-# - Grouped by PR number (`cancel-in-progress: true`), so a new trigger on
-#   the same PR cancels a run already in progress.
+# - No `gh pr view`, so the PR title and body (copied from the OCS PR) never
+#   reach the model.
+# - A shell step fails the job before Claude runs if the PR touches anything
+#   outside `docs/` or `mkdocs.yml`; the model never sees such a PR.
 # - Not triggered on `synchronize`, same as claude-review.yml.
+
 
 name: Changelog PR Review
 

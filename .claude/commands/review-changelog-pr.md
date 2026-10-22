@@ -34,7 +34,7 @@ Check only the entry added in this PR, not older entries shown as diff context.
 
 ### Docs
 
-For each changed page other than the changelog, Read the whole file and apply these checks to the full page. Report problems on lines this PR did not change under Existing issues.
+For each changed page other than the changelog, read the whole file and apply these checks to the full page. Report problems on lines this PR did not change under Existing issues.
 
 - Page-type contract: `.claude/checklists/page-type-contract.md`.
 - Quality gate: `.claude/checklists/doc-self-review.md`.

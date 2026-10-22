@@ -15,7 +15,7 @@ Commands live in `.claude/commands/`, agents in `.claude/agents/` ([background](
 | `claude.yml` | Claude Code | Freeform `@claude` assistant for issue/PR conversations | none — freeform prompt taken from the mention itself | none |
 | `claude-dependabot.yml` | Claude Dependabot PR Review | Flags breaking changes / build impact in Dependabot PRs | none — freeform inline prompt in the workflow | none |
 | `claude-review.yml` | PR Review | Automated documentation review on PRs (skips Dependabot PRs and PRs labelled `automated`) | [`/review-pr`](../../.claude/commands/review-pr.md) | [`documentation-pr-reviewer`](../../.claude/agents/documentation-pr-reviewer.md) |
-| `claude-changelog-review.yml` | Changelog PR Review | **Comment-only** review of the `Changelog + Docs` PRs that `update-changelog.yml` opens as `ocs-agent` | [`/review-changelog-pr`](../../.claude/commands/review-changelog-pr.md) | none — the command does the work itself |
+| `claude-changelog-review.yml` | Changelog PR Review | **Comment-only** (enforced by the workflow's tools) review of the `Changelog + Docs` PRs that `update-changelog.yml` opens as `ocs-agent` | [`/review-changelog-pr REPO PR_NUMBER BASE_REF`](../../.claude/commands/review-changelog-pr.md) | none — the command does the work itself |
 | `release.yml` | Weekly Release Summary | Drafts a GitHub release from the changelog | [`/create-release <tag> <title>`](../../.claude/commands/create-release.md) | none — the command does the work itself |
 | `update-changelog.yml` | Update Changelog and Docs from OCS PR | Syncs changelog/docs from merged OCS PRs — see [README-changelog-automation.md](README-changelog-automation.md) | [`changelog-instructions.md`](../templates/changelog-instructions.md) rendered into the workflow's `prompt:` | [`zensical-technical-writer`](../../.claude/agents/zensical-technical-writer.md) |
 | *(manual only, no workflow)* | — | Ad-hoc docs writing outside any workflow | [`/write-docs`](../../.claude/commands/write-docs.md) | [`zensical-technical-writer`](../../.claude/agents/zensical-technical-writer.md) |
@@ -25,8 +25,10 @@ Commands live in `.claude/commands/`, agents in `.claude/agents/` ([background](
 Each automation has up to three layers. Each has one job and only the access that job needs.
 
 - **Workflow:** decides whether to run and what the job may touch. It does deterministic checks in code, then sets permissions and tool and turn limits.
-- **Command:** the main agent's prompt. It fetches the input, calls the subagent, and posts or commits the result.
+- **Command:** the main agent's prompt. It fetches the input, calls the subagent if there is one, and posts or commits the result.
 - **Subagent:** optional. It does the focused work with fewer tools than the command. See [Command and agent tool frontmatter](#command-and-agent-tool-frontmatter) for how to restrict its tools.
+
+The workflow's tool grant, not the command, is the security boundary. Run outside its workflow, a command has whatever tools that session allows, so the limits and untrusted-input handling described in the command do not hold.
 
 Add a subagent only to keep verbose reading out of the main context, to enforce a tool limit, or to get an independent review in a fresh context.
 
@@ -45,16 +47,13 @@ When adding or changing a command or agent, check that the workflow's `claude_ar
 
 ## GitHub labels used by these workflows
 
-The `automated` label exists so bot-authored docs PRs don't loop back into the AI review in `claude-review.yml`. It's applied by both `update-changelog.yml` and the unrelated, non-Claude `update-api-docs.yml` — removing the label from a PR created by either one makes it eligible for the AI review.
+The `automated` label exists so bot-authored docs PRs don't loop back into the AI review in `claude-review.yml`. It's applied by both `update-changelog.yml` and the unrelated, non-Claude `update-api-docs.yml` — removing the label from a PR created by either one makes it eligible for the AI review. The `Changelog + Docs` PRs get `claude-changelog-review.yml` instead.
 
 ## Fork Limitations
 
 Engineers contributing from a fork may trigger these workflows by opening a pull request (or commenting on one) against this repo.
 
-GitHub gives a `pull_request` run from a fork no secrets and a read-only `permissions` block, whatever the workflow declares. So `ANTHROPIC_API_KEY` is empty and `id-token: write` is never granted — don't design a workflow around either being present on a fork PR.
-
-- **`claude-review.yml`** is `pull_request`-triggered. A PR from a fork fails because the Claude Code Action cannot obtain an OIDC token.
-- **`claude.yml`** is not `pull_request`-triggered (it fires on comments, reviews, and issues), but it fails via `claude-code-action`'s own actor check unless the user has write access to this repo.
+GitHub gives a `pull_request` run from a fork no secrets and a read-only `permissions` block, whatever the workflow declares. So `ANTHROPIC_API_KEY` is empty and `id-token: write` is never granted — don't design a workflow around either being present on a fork PR. In practice a fork PR fails at the `claude-code-action` step. The exceptions are `claude.yml`, which fails the action's actor check unless the user has write access, and `claude-changelog-review.yml`, which its `if:` skips.
 
 `claude-dependabot.yml`, `release.yml`, and `update-changelog.yml` aren't meant to be reused on a forked repo — they're wired to this repo's own release process and to the OCS repo's changelog dispatch.
 
