@@ -265,6 +265,7 @@ Chatbot:
   - url: string (required)
   - version_number: integer
   - versions: array of ChatbotVersion (required)
+  - last_activity_at: string (required)
 
 ChatbotCreate:
   - name: string (required)

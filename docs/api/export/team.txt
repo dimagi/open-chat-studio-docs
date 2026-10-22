@@ -1088,6 +1088,8 @@ ChatMessageDetail:
   - translations: Unknown
   - metadata: Unknown
   - external_ids: array of string
+  - moderation_status: Unknown
+  - moderation_detail: Unknown
   - chat: integer (required)
 
 ChatMessageList:

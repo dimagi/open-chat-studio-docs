@@ -2,9 +2,6 @@
 
 A public link gives your chatbot a hosted chat page that anyone can open — no embedding or website required. See [Public link](../concepts/channels.md#public-link) for what it is and what visitors see.
 
-!!! info "This feature may not be turned on yet"
-    Public link is an opt-in feature. If it doesn't appear in the add-channel dropdown, ask your Open Chat Studio admin to turn it on for your team.
-
 ## Prerequisites
 
 - A **published version** of your chatbot. Visitors always reach the published version — if you haven't published one yet, they'll see a banner instead of the chat. See [Create & publish versions](../tutorials/versioning_steps.md).
@@ -37,8 +34,6 @@ If a link has been shared somewhere you no longer want it to work, open the chan
 
 - **Disable the channel** (the **Enabled** toggle) to pause it without losing its configuration. Visitors see a banner instead of the chat, and any conversation still open on the link is ended. Re-enable it later to bring the same link back.
 - **Delete the channel** to remove it and its link for good. This also ends any conversation still open on it.
-
-Turning off the *Public link* feature for your team (an admin-level setting) only hides the option from the add-channel dropdown for new channels — it doesn't revoke links you've already shared. Regenerate or delete the channel if you need to close off an existing link.
 
 See [Disabling a channel](../concepts/channels.md#disabling-a-channel) for how disabling works across channels generally.
 
