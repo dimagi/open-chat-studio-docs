@@ -1,10 +1,13 @@
 # Changelog Entry Checklist
 
-- [ ] One entry added, as one line of 1-2 sentences, under 700 characters (markdownlint fails at 750).
-- [ ] Main changelog (`docs/changelog.md`): under a date heading ("Oct 9, 2025", no leading zero), newest date first, with one prefix: `**NEW**`, `**CHANGE**`, `**BUG**`, `**MIGRATION**`.
-- [ ] Widget changelog (`docs/chat_widget/changelog.md`): under a version heading, with no date and no prefix.
-- [ ] Active voice: "Added support for..." not "Support was added for...".
-- [ ] A user can tell what changed and whether they need to act; internal details only if they affect users.
-- [ ] Detail better suited to a docs page (many options, limits or UI elements) is linked, not listed, and the link target exists.
-- [ ] Matches the style and tone of existing entries and is consistent with the docs changes in the same PR.
-- [ ] No mannered prose (see `AGENTS.md`): no metaphor or flourish where a literal phrase says it directly.
+Check only the entry added in this PR.
+
+- [ ] One line, under 700 characters (markdownlint fails at 750).
+- [ ] Main (`docs/changelog.md`): under a date heading such as "Oct 9, 2026" (no leading zero), newest first, with one prefix: `**NEW**`, `**CHANGE**`, `**BUG**`, `**MIGRATION**`.
+- [ ] Widget (`docs/chat_widget/changelog.md`): a bullet with no prefix under a version heading such as `v0.13.0 (2026-09-16)`.
+- [ ] The prefix fits: `MIGRATION` when the reader must act, `CHANGE` for altered behaviour, `NEW` for added capability.
+- [ ] A breaking or position-dependent change (renamed, removed, reordered) says what the reader must do.
+- [ ] Gated changes name the gate: feature flag, team, or self-hosted only.
+- [ ] Bold UI labels, backticked identifiers and flag names match the docs changes in this PR.
+- [ ] Links point to an existing file and heading.
+- [ ] No internal details (PR numbers, module names) and no mannered prose (see `AGENTS.md`).
