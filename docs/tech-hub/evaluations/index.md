@@ -39,7 +39,8 @@ For what a failed message is and how to find and fix failed rows, see [Run an Ev
 
 - Failed rows show a badge in the results table.
 - Failed results are left out of the aggregates, tags, trends and scores.
-- When more than 5% of a run's messages fail, the run page shows a warning that groups the failures by cause and says what to do about each.
+- When more than 5% of a run's messages fail, the run page shows a warning.
+  The warning groups the failures by cause and says what to do about each.
 - Your team gets a [notification](../../concepts/notifications.md) when a run completes with more than 5% failed messages, and when a run fails outright.
 - The downloaded CSV has a `generation_error` column for rows where generation failed.
 
@@ -47,5 +48,7 @@ For what a failed message is and how to find and fix failed rows, see [Run an Ev
 
 - **[Dataset Structure](./dataset-structure.md)** — field-level reference for dataset rows, cloning field mappings, history syntax, and CSV format details.
 - **[Evaluator Reference](./evaluator-reference.md)** — template variables for LLM evaluator prompts, output validation, and tag reconciliation on rerun.
-- **[Python Evaluator](./python_evaluator.md)** — write custom Python code to score messages, for deterministic rules or logic an LLM prompt can't reliably express. See [Evaluators](../../concepts/evaluations/evaluators.md#python-evaluator) for when to choose it over the LLM Evaluator.
-- **[Auto-Population Rules](./auto_population.md)** — continuously ingest new sessions into a session-level dataset from a live chatbot, and trigger automatic delta evaluation runs against the new rows. See [Set Up a Real-Time LLM Judge](../../how-to/evaluations/realtime_llm_judge.md) for a worked setup.
+- **[Python Evaluator](./python_evaluator.md)** — write custom Python code to score messages, for deterministic rules or logic an LLM prompt can't reliably express.
+  See [Evaluators](../../concepts/evaluations/evaluators.md#python-evaluator) for when to choose it over the LLM Evaluator.
+- **[Auto-Population Rules](./auto_population.md)** — continuously ingest new sessions from a live chatbot into a session-level dataset, and run delta evaluations on the new rows.
+  See [Set Up a Real-Time LLM Judge](../../how-to/evaluations/realtime_llm_judge.md) for a worked setup.

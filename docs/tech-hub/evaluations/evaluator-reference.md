@@ -1,12 +1,15 @@
 # Evaluator Reference
 
-This page is a reference for LLM evaluator prompts, output validation and tag rule reconciliation. Use it when writing an evaluator prompt or working out why a row failed or lost a tag.
+This page is a reference for LLM evaluator prompts, output validation and tag rule reconciliation.
+Use it when writing an evaluator prompt or working out why a row failed or lost a tag.
 
-For what evaluators are and when to use each type, see [Evaluators](../../concepts/evaluations/evaluators.md). For tag rules, see [Tag Rules](../../concepts/evaluations/tag_rules.md).
+For what evaluators are and when to use each type, see [Evaluators](../../concepts/evaluations/evaluators.md).
+For tag rules, see [Tag Rules](../../concepts/evaluations/tag_rules.md).
 
 ## Template variables
 
-The variables available in an LLM evaluator prompt depend on the evaluator's [evaluation mode](../../concepts/evaluations/evaluators.md). For where each value comes from, see [Dataset Structure](dataset-structure.md#dataset-fields).
+The variables available in an LLM evaluator prompt depend on the evaluator's [evaluation mode](../../concepts/evaluations/evaluators.md).
+For where each value comes from, see [Dataset Structure](dataset-structure.md#dataset-fields).
 
 === "Message level"
 
@@ -22,7 +25,8 @@ The variables available in an LLM evaluator prompt depend on the evaluator's [ev
 
 === "Session level"
 
-    In session-level mode, `{input.content}` and `{output.content}` are empty. Use the following variables instead:
+    In session-level mode, `{input.content}` and `{output.content}` are empty.
+    Use the following variables instead:
 
     | Variable | Description |
     |---|---|
@@ -33,7 +37,8 @@ The variables available in an LLM evaluator prompt depend on the evaluator's [ev
 
     Generation is not available for session-level datasets, so `{generated_response}` does not apply in session-level prompts.
 
-Python evaluators receive the same values as function arguments. See [Python Evaluator](python_evaluator.md).
+Python evaluators receive the same values as function arguments.
+See [Python Evaluator](python_evaluator.md).
 
 ## Output validation
 
@@ -54,20 +59,23 @@ They take the form `1 = <true label>, 0 = <false label>`.
 Sometimes the model returns no structured output at all.
 It may refuse in prose, the provider may block the reply, or it may never call the required tool.
 This is not retried, because asking again is likely to give the same result.
-Instead, the `error (<evaluator name>)` column for that row shows `The model did not return structured output:`.
-It is followed by the model's reply, or by the provider's stop reason if the model gave no reply.
+Instead, the `error (<evaluator name>)` column for that row shows `The model did not return structured output:` followed by the model's reply.  
+If the model gave no reply, the provider's stop reason is shown instead.  
+
 This usually happens only after a provider refusal or safety block, so most runs never see it.
 
 ## Tag reconciliation on rerun
 
-A message or session either meets a [tag rule's](../../concepts/evaluations/tag_rules.md) condition, or it does not. To keep tags consistent with the latest results, rerunning an evaluation reconciles the tags managed by its evaluators' tag rules:
+A message or session either meets a [tag rule's](../../concepts/evaluations/tag_rules.md) condition, or it does not.
+To keep tags consistent with the latest results, rerunning an evaluation reconciles the tags managed by its evaluators' tag rules:
 
 - OCS checks each message or session in the rerun's scope.
   It removes any tag that a tag rule names but the latest run did **not** apply.
 - Reconciliation removes a tag regardless of who applied it.
   A person may have added a tag that a tag rule also manages.
   If the new evaluator output does not meet that rule, the tag is removed.
-- **Full** runs, which score the entire dataset, reconcile every row. **Delta** runs, which score only rows added by [auto-population](auto_population.md#automatic-delta-evaluation-runs), reconcile only the rows in their scope.
+- **Full** runs, which score the entire dataset, reconcile every row.
+  **Delta** runs, which score only rows added by [auto-population](auto_population.md#automatic-delta-evaluation-runs), reconcile only the rows in their scope.
 - **Preview** runs neither apply nor remove tags.
 
 Tags whose names are not referenced by any tag rule on the run's evaluators are never touched by reconciliation.

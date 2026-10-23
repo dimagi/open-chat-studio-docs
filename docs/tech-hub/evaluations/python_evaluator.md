@@ -4,7 +4,8 @@ The Python Evaluator runs custom code against each message.
 It suits deterministic rules, custom string matching, or logic an LLM prompt can't reliably express.
 See [Evaluators](../../concepts/evaluations/evaluators.md#python-evaluator) for when to choose it over the [LLM Evaluator](../../concepts/evaluations/evaluators.md#llm-evaluator).
 
-The code **must** define a `main` function which takes the `input`, `output`, `context`, `full_history`, and `generated_response` as arguments, plus a `**kwargs` catch-all. It should return a `dict` whose keys will become columns in the output table.
+The code **must** define a `main` function which takes the `input`, `output`, `context`, `full_history`, and `generated_response` as arguments, plus a `**kwargs` catch-all.
+It should return a `dict` whose keys will become columns in the output table.
 
 ## Function Arguments
 
@@ -19,7 +20,8 @@ The code **must** define a `main` function which takes the `input`, `output`, `c
 
 ### Participant data and session state
 
-`kwargs` also carries `participant_data` and `session_state` — the same values available to LLM evaluator prompts as [`{participant_data.[key]}` and `{session_state.[key]}`](evaluator-reference.md#template-variables). See [Dataset Structure](dataset-structure.md#dataset-fields) for where these values come from.
+`kwargs` also carries `participant_data` and `session_state` — the same values available to LLM evaluator prompts as [`{participant_data.[key]}` and `{session_state.[key]}`](evaluator-reference.md#template-variables).
+See [Dataset Structure](dataset-structure.md#dataset-fields) for where these values come from.
 
 Read them with `kwargs.get(...)`, since they are keyword-only, not positional arguments:
 

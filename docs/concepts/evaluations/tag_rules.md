@@ -4,7 +4,8 @@ Running an evaluation against hundreds of messages produces a results table too 
 
 For example, you could flag every session with negative sentiment, or every response that scored below a threshold — so your team can go directly to the conversations that need attention instead of reviewing everything.
 
-Tag Rules are available only on [LLM evaluators](evaluators.md#llm-evaluator). They run automatically on every evaluation run except [previews](../../how-to/evaluations/run-an-evaluation.md#preview-the-evaluation).
+Tag Rules are available only on [LLM evaluators](evaluators.md#llm-evaluator).
+They run automatically on every evaluation run except [previews](../../how-to/evaluations/run-an-evaluation.md#preview-the-evaluation).
 To see tag rules used on a live chatbot, follow [Set Up a Real-Time LLM Judge](../../how-to/evaluations/realtime_llm_judge.md#step-4-optional-add-tag-rules-to-flag-results-automatically).
 
 ## How tags are applied
@@ -26,7 +27,7 @@ See [Tag reconciliation on rerun](../../tech-hub/evaluations/evaluator-reference
 
 Each rule has three parts:
 
-| Field | Description |
+| Form label | Description |
 |-------|-------------|
 | **Field** | The output schema field whose value is tested |
 | **Tag** | The tag to apply when the condition is met |

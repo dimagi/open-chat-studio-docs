@@ -7,7 +7,9 @@ It outputs a judgment on whatever matters for your use case, such as whether the
 You can run several evaluators over the same [dataset](dataset.md) at once.
 A single evaluation run can then check multiple things, such as accuracy, tone and safety, without re-running your chatbot for each one.
 
-Each evaluator has an **Evaluation mode**: **Message** (judging a single response) or **Session** (judging a whole conversation). It must match the [**Evaluation level** of the dataset](dataset.md#evaluation-levels) it is used with. Evaluators with the wrong mode for a dataset are hidden when you set up an evaluation.
+Each evaluator has an **Evaluation mode**: **Message** (judging a single response) or **Session** (judging a whole conversation).
+It must match the [**Evaluation level** of the dataset](dataset.md#evaluation-levels) it is used with.
+Evaluators with the wrong mode for a dataset are hidden when you set up an evaluation.
 
 ## Evaluator types
 
@@ -36,12 +38,14 @@ Consider the conversation context: {context.topic}
     The other, if generation is enabled, generates the response being judged.
     Both count towards your team's total cost and usage.
     Neither is attributed to a specific chatbot, participant, or conversation.
-    Filtering your team's cost and usage reporting by chatbot or participant therefore excludes evaluation spend, although it still adds to the team's total.
+    Filtering your team's cost and usage reporting by chatbot or participant therefore excludes evaluation spend.
+    That spend is still included in the team's total.
     For the same reason, a generated response's cost is not counted as chat usage.
-    It does not appear on the session or conversation it was generated for.
+    The cost does not appear on the session or conversation the response was generated for.
 
     If your team runs evaluations with generation enabled, your team's total cost may be higher than you remember, since this spend is now captured.
-    No chatbot, participant, or conversation became more expensive. The cost was not being recorded before.
+    No chatbot, participant, or conversation became more expensive.
+    The cost was not being recorded before.
 
 ### Template variables
 
@@ -54,7 +58,9 @@ See [Template variables](../../tech-hub/evaluations/evaluator-reference.md#templ
 
 ### Output schema
 
-The output schema defines the metrics that the LLM should attempt to output. Each item in the schema will become a column in the output table. You can specify the data type for each field to ensure structured, validated output.
+The output schema defines the metrics that the LLM should attempt to output.
+Each item in the schema becomes a column in the output table.
+You can specify the data type for each field to ensure structured, validated output.
 
 **Available Types:**
 
@@ -62,9 +68,13 @@ The output schema defines the metrics that the LLM should attempt to output. Eac
 - **integer**: Whole numbers (e.g., counts, ratings)
 - **float**: Decimal numbers (e.g., confidence scores, percentages)
 - **choice (enum)**: Predefined options from a list
-- **binary**: A yes/no result, stored as 1 or 0. You can set the label shown for each value, such as **Correct** and **Incorrect**. The defaults are **True** and **False**. Run results show the share of rows that scored 1.
+- **binary**: A yes/no result, stored as 1 or 0.
+  You can set the label shown for each value, such as **Correct** and **Incorrect**.
+  The defaults are **True** and **False**.
+  Run results show the share of rows that scored 1.
 
-OCS checks the LLM's output against these types and asks again if it doesn't match. See [Output validation](../../tech-hub/evaluations/evaluator-reference.md#output-validation) for the retry rules and what happens when the model gives no structured output.
+OCS checks the LLM's output against these types and asks again if it doesn't match.
+See [Output validation](../../tech-hub/evaluations/evaluator-reference.md#output-validation) for the retry rules and what happens when the model gives no structured output.
 
 **Example Output Schema:**
 
@@ -80,7 +90,8 @@ See [Tag Rules](./tag_rules.md) to automatically tag sessions or messages based 
 
 ### Python evaluator
 
-Use the Python Evaluator when you need deterministic rules, custom string matching, or logic that an LLM prompt cannot reliably express. It runs custom code against each message instead of an LLM prompt.
+Use the Python Evaluator when you need deterministic rules, custom string matching, or logic that an LLM prompt cannot reliably express.
+It runs custom code against each message instead of an LLM prompt.
 
 See [Python Evaluator](../../tech-hub/evaluations/python_evaluator.md) for the function signature, arguments, and a worked example.
 
@@ -108,11 +119,14 @@ This restores a retired configuration without changing the archived evaluator's 
 
 ## Archiving Evaluators
 
-Deleting an evaluator that has produced results or aggregates archives it instead of deleting it, so that data is not lost. An evaluator with no run history is still deleted outright.
+Deleting an evaluator that has produced results or aggregates archives it instead of deleting it, so that data is not lost.
+An evaluator with no run history is still deleted outright.
 
 The delete confirmation dialog tells you which will happen before you confirm.
 
-Archived evaluators keep their results, aggregates, and applied tags. They still show up on the past runs and exports that used them, and you can still open and edit an archived evaluator. An **Archived** badge marks them in the evaluator list and in the evaluations table.
+Archived evaluators keep their results, aggregates, and applied tags.
+They still show up on the past runs and exports that used them, and you can still open and edit an archived evaluator.
+An **Archived** badge marks them in the evaluator list and in the evaluations table.
 
 Archived evaluators are excluded from new work:
 
@@ -126,7 +140,10 @@ Archived evaluators that aren't already on the config are not offered.
 
 Running a config whose evaluators are all archived is refused with an error, since it would produce no results.
 
-An archived evaluator cannot be deleted while its results exist, so the **Delete** action is not shown for it. Use **Unarchive** to restore it instead. Once unarchived, it becomes available in the picker again and can be used in new runs. The **Unarchive** action is only shown to users who have delete permission for evaluators.
+An archived evaluator cannot be deleted while its results exist, so the **Delete** action is not shown for it.
+Use **Unarchive** to restore it instead.
+Once unarchived, it becomes available in the picker again and can be used in new runs.
+The **Unarchive** action is only shown to users who have delete permission for evaluators.
 
 !!! note
     Neither archiving nor deleting an evaluator is allowed while a run that uses it is in progress.
