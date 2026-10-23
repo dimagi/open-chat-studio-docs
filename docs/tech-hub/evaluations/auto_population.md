@@ -1,12 +1,12 @@
 # Auto-Population Rules
 
-Session-level datasets can be configured to **continuously ingest new sessions** from a source chatbot. Each dataset can have one or more **auto-population rules**, and each rule defines:
+Auto-population keeps a [session-level dataset](../../concepts/evaluations/dataset.md#evaluation-levels) up to date by adding new sessions from a source chatbot automatically, so you don't have to add them by hand. Each dataset can have one or more **auto-population rules**, and each rule defines:
 
 - **Source chatbot**: The chatbot whose sessions should be considered for ingestion.
 - **Filter criteria**: Standard session filters (tags, participant, channel, date range, etc.) that determine which sessions match the rule.
 
 !!! note
-    Auto-population is available for **session-level** datasets only. Message-level datasets must be populated by cloning, manual entry, or CSV upload.
+    Auto-population is available for **session-level** datasets only. Message-level datasets must be populated by one of the [other creation methods](../../concepts/evaluations/dataset.md#how-datasets-are-created).
 
     See [Evaluation Datasets](../../concepts/evaluations/dataset.md#evaluation-levels) for an overview of session-level vs. message-level datasets.
 
@@ -21,7 +21,7 @@ If a rule fails repeatedly (e.g. due to a misconfigured filter or a transient da
 
 ## Automatic delta evaluation runs
 
-Auto-population works together with the **auto-run** flag on evaluation configs. When new sessions are added to a dataset by an auto-population rule, any evaluation config that references that dataset *and* has the auto-run flag set will be triggered automatically against the newly added rows.
+Auto-population works together with the **Auto-run when new rows are auto-populated** setting on an evaluation (stored as `auto_run_on_append`). When new sessions are added to a dataset by an auto-population rule, any evaluation that uses that dataset *and* has this setting turned on runs automatically against the newly added rows.
 
 Each automatic run scores only the rows added in that ingestion cycle, producing a **delta** result set rather than re-evaluating every row in the dataset. The evaluation run table lists both **full** runs (which score the entire dataset) and **delta** runs (which score only newly added rows), so you can track results from manual full runs and automatic delta runs side by side.
 

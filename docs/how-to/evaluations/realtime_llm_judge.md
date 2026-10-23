@@ -1,6 +1,6 @@
 # Set Up a Real-Time LLM Judge
 
-This guide shows you how to configure an LLM-as-a-judge automated evaluator that scores new chatbot sessions automatically as they arrive, with no manual intervention required.
+This guide shows you how to set up an LLM-as-a-judge: an [LLM evaluator](../../concepts/evaluations/evaluators.md#llm-evaluator) that scores each new chatbot session automatically as it arrives. Use it to monitor the quality of a live chatbot without starting evaluation runs by hand.
 
 The pattern combines a [session-level dataset](../../concepts/evaluations/dataset.md#evaluation-levels) that continuously ingests new sessions from a chatbot with an [LLM evaluator](../../concepts/evaluations/evaluators.md#llm-evaluator) set to run automatically on each new batch.
 
@@ -13,15 +13,15 @@ For background on evaluations, datasets, and evaluators, see [Evaluations](../..
 
 ## Step 1: Create a session-level dataset
 
-You need a collection of test cases in a dataset for the evaluation to execute the chatbot against.
+The dataset holds the sessions that the evaluator scores. Each row is one complete session from your chatbot.
 
-Session-level datasets are the only dataset type that supports continuous auto-population from a live chatbot. The evaluation level is set at creation and **cannot be changed later**, so choose session-level before saving.
+Session-level datasets are the only dataset type that supports continuous auto-population from a live chatbot. The evaluation level is set at creation and **cannot be changed later**, so choose **Session level** before saving.
 
 See [Evaluation Datasets](../../concepts/evaluations/dataset.md) for an overview of evaluation levels and how session data maps into dataset fields.
 
 ## Step 2: Add an auto-population rule
 
-Once the dataset exists, add an auto-population rule to tell OCS which chatbot sessions should flow into it. For full details, see [Auto-Population Rules](../../tech-hub/evaluations/auto_population.md).
+Once the dataset exists, add an auto-population rule to tell OCS which chatbot sessions to add to it. For full details, see [Auto-Population Rules](../../tech-hub/evaluations/auto_population.md).
 
 Each rule requires:
 
@@ -39,7 +39,7 @@ For full details of **how ingestion works once the rule is active**, see [Auto-P
 
 Create an LLM evaluator and set its **Evaluation mode** to **Session** so it is compatible with the dataset from Step 1.
 
-In session-level prompts, `{input.content}` and `{output.content}` are empty — use `{full_history}` and `{context.[parameter]}` instead. `{generated_response}` is not available for session-level evaluators. See [Template Variables](../../concepts/evaluations/evaluators.md#template-variables) for the full reference.
+Session-level prompts use `{full_history}` for the conversation. See [Template variables](../../tech-hub/evaluations/evaluator-reference.md#template-variables) (**Session level** tab) for the full list.
 
 **Example prompt:**
 
@@ -58,18 +58,14 @@ Respond with the fields defined in the output schema.
 
 | Column name | Type | Notes |
 |---|---|---|
-| `goal_completion` | choices | Options: `yes`, `partial`, `no` |
+| `goal_completion` | choice | Options: `yes`, `partial`, `no` |
 | `quality_score` | integer | Scale of 1–5 |
 
-Define the output schema fields to match what you reference in the prompt. The evaluator validates the LLM's output against the schema and retries if the output does not match — see [Output Schema](../../concepts/evaluations/evaluators.md#output-schema) for the retry behavior, and what happens if the model returns no structured output at all.
-
-See [Evaluators](../../concepts/evaluations/evaluators.md) for full details on output schema types and template variables.
+Define the output schema fields to match what you reference in the prompt. See [Output schema](../../concepts/evaluations/evaluators.md#output-schema) for the field types.
 
 ## Step 4 (optional): Add tag rules to flag results automatically
 
-[Tag rules](../../concepts/evaluations/tag_rules.md) apply a tag to a session automatically when an evaluator output field meets a condition. They run on every non-preview evaluation run and make it easy to surface sessions of interest without reviewing every row.
-
-In session mode, the tag is applied to the session's chat. Each application is recorded in the **Applied Tags** column on the run results page.
+[Tag rules](../../concepts/evaluations/tag_rules.md) apply a tag to a session automatically when an evaluator output field meets a condition. Use them to find the sessions you need to review without checking every row.
 
 **Example rules using the output schema from Step 3:**
 
@@ -81,27 +77,21 @@ In session mode, the tag is applied to the session's chat. Each application is r
 With these rules in place, sessions where the goal was not met or where quality scored 1 or 2 are tagged automatically after each evaluation run.
 
 !!! tip
-    Tagged sessions can be filtered in the session list, so your team can prioritise follow-up without wading through all results.
+    Tagged sessions can be filtered in the session list, so your team can follow up on them first without reviewing every result.
 
 See [Tag Rules](../../concepts/evaluations/tag_rules.md) for the full set of condition types.
 
-## Step 5: Create an evaluation config with auto-run enabled
+## Step 5: Create an evaluation with auto-run turned on
 
-Create an **evaluation config** (see [Run an Evaluation](run-an-evaluation.md#create-an-evaluation)) that references:
+1. Under **Evaluations**, click **Add new**. See [Create an evaluation](run-an-evaluation.md#create-an-evaluation) for the full form.
+2. Select the dataset from Step 1 as the **Dataset**.
+3. Select the LLM evaluator from Step 3 under **Evaluators**.
+4. Check **Auto-run when new rows are auto-populated**. This is what makes the judging happen automatically.
+5. Click **Create**.
 
-- The dataset from Step 1.
-- The LLM evaluator from Step 3.
+**What happens after auto-run is turned on:**
 
-Then enable the **auto-run** flag on the config. This is what makes the judging happen automatically.
-
-**What happens after auto-run is enabled:**
-
-When the auto-population rule (Step 2) adds new sessions to the dataset, any evaluation config referencing that dataset with auto-run set is triggered automatically against the newly added rows. These are **delta runs** — they score only the rows added in that ingestion cycle, not the entire dataset.
-
-Delta runs appear alongside full runs in the evaluation run table. Full runs score the entire dataset and are triggered manually; delta runs score only the newest rows and are triggered automatically.
-
-!!! warning
-    Auto-run is triggered **only** by the auto-population path. Manually importing sessions via CSV or filter-import does not trigger automatic evaluation runs.
+Each time the auto-population rule (Step 2) adds new sessions to the dataset, the evaluation runs automatically on just those rows. These are **delta runs**, and they appear alongside full runs in the runs list. Sessions you add to the dataset by hand do not start a run. See [Automatic delta evaluation runs](../../tech-hub/evaluations/auto_population.md#automatic-delta-evaluation-runs) for details.
 
 !!! note "Ongoing cost"
     Because auto-run keeps judging new sessions as they arrive, it keeps making LLM calls in the background. This adds to your team's total cost and usage over time, though it is never attributed to the source chatbot or its participants. See [Evaluation cost and usage](../../concepts/evaluations/evaluators.md#llm-evaluator) for details.

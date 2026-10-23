@@ -16,7 +16,7 @@ flowchart LR
     results --> compare[Compare runs over time]
 ```
 
-- **[Dataset](./dataset.md)**: the conversations or test cases to score.
+- **[Dataset](./dataset.md)**: the sample conversations or test cases to score.
 - **[Evaluators](./evaluators.md)**: score each row, using an LLM prompt or Python code. Several evaluators can run on the same dataset.
 - **[Tag rules](./tag_rules.md)**: tag rows whose scores meet a condition, such as a low rating, so you can find them quickly.
 

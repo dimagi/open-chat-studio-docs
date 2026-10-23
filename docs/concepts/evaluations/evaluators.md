@@ -2,7 +2,7 @@
 
 A dataset full of example conversations only becomes useful once it's been scored — that's the job of an **evaluator**. An evaluator looks at each message (and, optionally, your chatbot's generated response to it) and outputs a judgment: was it accurate, on-topic, polite, or whatever else matters for your use case.
 
-You can run several evaluators over the same dataset at once, so a single evaluation run can check multiple things — accuracy, tone, safety — without re-running your chatbot for each one.
+You can run several evaluators over the same [dataset](dataset.md) at once, so a single evaluation run can check multiple things — accuracy, tone, safety — without re-running your chatbot for each one.
 
 Each evaluator has an **Evaluation mode**: **Message** (judging a single response) or **Session** (judging a whole conversation). It must match the [**Evaluation level** of the dataset](dataset.md#evaluation-levels) it is used with. Evaluators with the wrong mode for a dataset are hidden when you set up an evaluation.
 
@@ -32,35 +32,9 @@ Consider the conversation context: {context.topic}
 
 ### Template variables
 
-The available variables depend on the evaluator's evaluation mode.
+A prompt can include variables that are filled in for each row, such as the user's message, the chatbot's response, or the conversation so far. Which variables are available depends on the evaluator's evaluation mode. A session-level evaluator works from the whole conversation, not a single message.
 
-#### Message-level variables
-
-| Variable | Description |
-|---|---|
-| `{input.content}` | The human message content |
-| `{output.content}` | The dataset message's AI response content. This may be an expected/reference answer (for manually created datasets) or the actual AI response (for session-cloned datasets). |
-| `{generated_response}` | The generated response from your chatbot (if generation is enabled) |
-| `{context.[parameter]}` | Any context variable, e.g. `{context.topic}` |
-| `{participant_data.[key]}` | Any field from the participant's data, e.g. `{participant_data.name}` |
-| `{session_state.[key]}` | Any field from the session's state, e.g. `{session_state.step}` |
-| `{full_history}` | Complete conversation history as formatted text |
-
-#### Session-level variables
-
-In session-level mode, `{input.content}` and `{output.content}` are empty. Use the following variables instead:
-
-| Variable | Description |
-|---|---|
-| `{full_history}` | The full session transcript captured at the time of the last AI message |
-| `{context.[parameter]}` | Any context variable, e.g. `{context.current_datetime}` |
-| `{participant_data.[key]}` | Any field from the participant's data, e.g. `{participant_data.name}` |
-| `{session_state.[key]}` | Any field from the session's state, e.g. `{session_state.step}` |
-
-!!! note
-    Generation is not available for session-level datasets, so `{generated_response}` is not applicable in session-level prompts.
-
-See [Evaluation Datasets](dataset.md) for how data is mapped into these fields, and [Dataset Structure](../../tech-hub/evaluations/dataset-structure.md#dataset-fields) for where `participant_data` and `session_state` come from.
+See [Template variables](../../tech-hub/evaluations/evaluator-reference.md#template-variables) for the full list.
 
 ### Output schema
 
@@ -72,10 +46,9 @@ The output schema defines the metrics that the LLM should attempt to output. Eac
 - **integer**: Whole numbers (e.g., counts, ratings)
 - **float**: Decimal numbers (e.g., confidence scores, percentages)
 - **choice (enum)**: Predefined options from a list
+- **binary**: A yes/no result, stored as 1 or 0. You can set the label shown for each value, such as **Correct** and **Incorrect**. The defaults are **True** and **False**. Run results show the share of rows that scored 1.
 
-The system automatically validates the LLM's output against the specified types using a dynamically generated schema. If the output doesn't match the expected format, the system will retry up to 3 times before failing, ensuring reliable structured data.
-
-Occasionally the model returns no structured output at all — it refuses in prose, the provider blocks the reply, or it never calls the required tool. This is not retried, since asking again is likely to give the same result. Instead, the `error (<evaluator name>)` column for that row shows `The model did not return structured output:` followed by the model's reply, or the provider's stop reason if it gave none. It usually takes a provider refusal or safety block to reach this, so most runs never see it.
+OCS checks the LLM's output against these types and asks again if it doesn't match. See [Output validation](../../tech-hub/evaluations/evaluator-reference.md#output-validation) for the retry rules and what happens when the model gives no structured output.
 
 **Example Output Schema:**
 
@@ -85,6 +58,7 @@ Occasionally the model returns no structured output at all — it refuses in pro
 | actual_helpfulness | integer | The helpfulness, on a scale of 1-5, of the actual assistant message |
 | user_sentiment | choice | The sentiment of the user message (options: positive, neutral, negative) |
 | confidence_score | float | Confidence in the evaluation, from 0.0 to 1.0 |
+| answered_question | binary | Whether the assistant message answered the user's question (labels: Answered, Not answered) |
 
 See [Tag Rules](./tag_rules.md) to automatically tag sessions or messages based on these output values.
 
