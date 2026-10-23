@@ -1,6 +1,6 @@
 # Dataset Structure Reference
 
-This page is a field-level reference for evaluation dataset rows: what each field contains, how session data maps to dataset fields when cloning, and how to format CSV uploads.
+This page is a field-level reference for evaluation dataset rows: what each field contains, how session data maps to dataset fields when [cloning](#cloning-field-mappings), and how to [format CSV uploads](#csv-format).
 
 For a conceptual overview of datasets and evaluation levels, see [Evaluation Datasets](../../concepts/evaluations/dataset.md). For step-by-step instructions on creating a dataset, see [Create a Dataset](../../how-to/evaluations/create-a-dataset.md).
 
@@ -19,7 +19,7 @@ Each dataset row contains the following fields. Not all fields are populated for
 
 ### Message-level datasets
 
-When cloning into a message-level dataset, session chat messages are paired into (human, AI) pairs and mapped to dataset fields as follows:
+When cloning into a message-level dataset, or importing from an annotation queue into one, session chat messages are paired into (human, AI) pairs and mapped to dataset fields as follows:
 
 | Session Data | Dataset Field | Description |
 |---|---|---|
@@ -29,9 +29,10 @@ When cloning into a message-level dataset, session chat messages are paired into
 | `message.comments` | `context.comments` | Any comments attached to either message |
 | `message.tags` | `context.tags` | Non-system tags from either message |
 | Prior messages in the session | `history` | All preceding messages, each with `message_type`, `content`, and `summary` (an AI-generated condensation of the message, if available) |
-| `trace.participant_data` | `participant_data` | Participant data captured at the time of the message |
-| `trace.session_state` | `session_state` | Session state captured at the time of the message |
+| `trace.participant_data` | `participant_data` | Participant data from the human message's trace, or empty if it has none |
+| `trace.session_state` | `session_state` | Session state from the human message's trace, or empty if it has none |
 
+Messages without a partner still become rows. A human message with no reply, for example, because generation failed, becomes a row with an empty AI response. An AI message with no preceding human message, such as a scheduled message or a seed message, becomes a row with an empty human message.
 ### Session-level datasets
 
 When cloning into a session-level dataset, one row is created per session rather than one row per message pair. The full session transcript, captured at the time of the last AI message, carries the context the evaluator works from.
