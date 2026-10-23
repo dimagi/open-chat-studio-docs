@@ -59,8 +59,8 @@ They take the form `1 = <true label>, 0 = <false label>`.
 Sometimes the model returns no structured output at all.
 It may refuse in prose, the provider may block the reply, or it may never call the required tool.
 This is not retried, because asking again is likely to give the same result.
-Instead, the `error (<evaluator name>)` column for that row shows `The model did not return structured output:` followed by the model's reply.  
-If the model gave no reply, the provider's stop reason is shown instead.  
+Instead, the `error (<evaluator name>)` column for that row shows `The model did not return structured output:` followed by the model's reply.
+If the model gave no reply, the provider's stop reason is shown instead.
 
 This usually happens only after a provider refusal or safety block, so most runs never see it.
 
