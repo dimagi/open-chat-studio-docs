@@ -31,6 +31,10 @@ Check your current HTML implementation and compare it with the [latest propertie
     sunset date shown on each entry, and may stop working. Upgrade to a supported version
     to stay current — see the [Quick Upgrade Steps](#quick-upgrade-steps) above.
 
+### Unreleased
+
+* Let participants download files that the bot attaches to a message. Each attachment with a download link appears as a button in the message, and clicking it saves the file. If a download fails, the widget shows an error in the chat and the conversation continues. Adds the `attach.download` and `error.download` translation keys. See [File Attachments](reference.md#file-attachments).
+
 ### v0.13.0 (2026-09-16)
 
 * Render messages typed by the participant as plain text. Markdown and HTML in a user message now appear exactly as typed instead of being formatted, so the `--code-bg-user-color`, `--code-border-user-color` and `--code-text-user-color` CSS properties no longer have any effect. Bot, system and welcome messages still render markdown as before.
