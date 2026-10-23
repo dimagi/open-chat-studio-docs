@@ -57,3 +57,9 @@ def main(input: dict, output: dict, context: dict, full_history: str, generated_
         'topic': context.get('topic', 'unknown')
     }
 ```
+
+## See also
+
+- [Evaluators](../../concepts/evaluations/evaluators.md#python-evaluator): when to choose a Python evaluator over an LLM evaluator.
+- [Evaluator Reference](evaluator-reference.md#template-variables): the same values as LLM prompt variables.
+- [Dataset Structure](dataset-structure.md#dataset-fields): where `participant_data` and `session_state` come from.

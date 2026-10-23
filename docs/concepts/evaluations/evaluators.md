@@ -130,3 +130,10 @@ An archived evaluator cannot be deleted while its results exist, so the **Delete
 
 !!! note
     Neither archiving nor deleting an evaluator is allowed while a run that uses it is in progress.
+
+## See also
+
+- [Evaluator Reference](../../tech-hub/evaluations/evaluator-reference.md): template variables, output validation and tag reconciliation.
+- [Tag Rules](tag_rules.md): tag results that meet a condition.
+- [Evaluation Datasets](dataset.md): the rows that evaluators score.
+- [Run an Evaluation](../../how-to/evaluations/run-an-evaluation.md): pair evaluators with a dataset and run them.

@@ -62,7 +62,7 @@ Which methods are available depends on the evaluation level.
 | [Import from an annotation queue](../../how-to/evaluations/create-a-dataset.md#import-from-annotation-queue) | When creating the dataset only | Yes | Your team has already curated conversations for [human review](../annotations/queues.md) and you want to score the same set automatically. |
 | [Create rows manually](../../how-to/evaluations/create-a-dataset.md#create-manually) | Yes | No | You want to write targeted test cases or edge cases that have not happened yet. |
 | [Upload a CSV](../../how-to/evaluations/create-a-dataset.md#upload-csv-file) | Yes | No | You have an existing test suite or data from another tool. |
-| [Auto-population rules](../../tech-hub/evaluations/auto_population.md) | No | Yes | You want new sessions from a live chatbot added continuously. |
+| [Auto-population rules](../../tech-hub/evaluations/auto_population.md) | No | Yes | You want new sessions from a live chatbot added continuously. See [Set Up a Real-Time LLM Judge](../../how-to/evaluations/realtime_llm_judge.md). |
 
 ## Sharing dataset messages
 
