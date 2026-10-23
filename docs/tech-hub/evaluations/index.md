@@ -37,7 +37,7 @@ When evaluations are run with chatbot generation enabled, temporary sessions are
 
 For what a failed message is and how to find and fix failed rows, see [Run an Evaluation](../../how-to/evaluations/run-an-evaluation.md#failed-messages).
 
-- Failed rows carry a badge in the results table.
+- Failed rows show a badge in the results table.
 - Failed results are left out of the aggregates, tags, trends and scores.
 - When more than 5% of a run's messages fail, the run page shows a warning that groups the failures by cause and says what to do about each.
 - Your team gets a [notification](../../concepts/notifications.md) when a run completes with more than 5% failed messages, and when a run fails outright.

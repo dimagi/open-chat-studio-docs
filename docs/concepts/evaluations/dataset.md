@@ -8,13 +8,13 @@ A small set of realistic examples tells you more about your chatbot than scoring
 
 A participant has this conversation with a clinic's appointment chatbot:
 
-> **User:** Can I book a check-up for Tuesday?
+> **Participant:** Can I book a check-up for Tuesday?
 >
-> **Bot:** Yes, there is a slot at 10:00 or 14:30. Which would you like?
+> **Chatbot:** Yes, there is a slot at 10:00 or 14:30. Which would you like?
 >
-> **User:** 14:30 please.
+> **Participant:** 14:30 please.
 >
-> **Bot:** Booked. You'll get a reminder the day before.
+> **Chatbot:** Booked. You'll get a reminder the day before.
 
 A dataset can store this conversation in two ways, depending on its [evaluation level](#evaluation-levels).
 

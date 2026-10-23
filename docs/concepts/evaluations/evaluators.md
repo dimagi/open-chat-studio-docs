@@ -1,15 +1,20 @@
 # Evaluators
 
-A dataset full of example conversations only becomes useful once it's been scored — that's the job of an **evaluator**. An evaluator looks at each message (and, optionally, your chatbot's generated response to it) and outputs a judgment: was it accurate, on-topic, polite, or whatever else matters for your use case.
+A dataset of example conversations is useful only once it has been scored, and an **evaluator** does the scoring.
+An evaluator looks at each message and, optionally, your chatbot's generated response to it.
+It outputs a judgment on whatever matters for your use case, such as whether the response was accurate, on-topic or polite.
 
-You can run several evaluators over the same [dataset](dataset.md) at once, so a single evaluation run can check multiple things — accuracy, tone, safety — without re-running your chatbot for each one.
+You can run several evaluators over the same [dataset](dataset.md) at once.
+A single evaluation run can then check multiple things, such as accuracy, tone and safety, without re-running your chatbot for each one.
 
 Each evaluator has an **Evaluation mode**: **Message** (judging a single response) or **Session** (judging a whole conversation). It must match the [**Evaluation level** of the dataset](dataset.md#evaluation-levels) it is used with. Evaluators with the wrong mode for a dataset are hidden when you set up an evaluation.
 
 ## Evaluator types
 
 ### LLM evaluator
-The LLM Evaluator uses language models to evaluate responses based on a custom prompt. This can be used as an [LLM-as-judge](../../how-to/evaluations/realtime_llm_judge.md) to evaluate the performance of a chatbot, or to gain insight into the properties of both the user and assistant messages.
+The LLM Evaluator uses language models to evaluate responses based on a custom prompt.
+Use it as an [LLM-as-judge](../../how-to/evaluations/realtime_llm_judge.md) to evaluate the performance of a chatbot.
+It can also assess the properties of both the participant's and the chatbot's messages.
 
 For the how-to guide, see [Set Up a Real-Time LLM Judge](../../how-to/evaluations/realtime_llm_judge.md).
 
@@ -26,13 +31,24 @@ Consider the conversation context: {context.topic}
 ```
 
 !!! note "Evaluation cost and usage"
-    An evaluation run can make two kinds of LLM calls: the evaluator's own judging call, and — if generation is enabled — the call that generates the response being judged. Both count towards your team's total cost and usage, but neither is attributed to a specific chatbot, participant, or conversation. This means filtering your team's cost and usage reporting by chatbot or participant will not include evaluation spend, even though it still adds to your team's overall total. For the same reason, the generated response's own cost is not counted as chat usage, so it will not appear on the session or conversation it was generated for.
+    An evaluation run can make two kinds of LLM calls.
+    One is the evaluator's own judging call.
+    The other, if generation is enabled, generates the response being judged.
+    Both count towards your team's total cost and usage.
+    Neither is attributed to a specific chatbot, participant, or conversation.
+    Filtering your team's cost and usage reporting by chatbot or participant therefore excludes evaluation spend, although it still adds to the team's total.
+    For the same reason, a generated response's cost is not counted as chat usage.
+    It does not appear on the session or conversation it was generated for.
 
-    If your team runs evaluations with generation enabled, your team's total cost may be higher than you remember, since this spend is now captured. No chatbot, participant, or conversation becomes more expensive — the cost was simply not being recorded before.
+    If your team runs evaluations with generation enabled, your team's total cost may be higher than you remember, since this spend is now captured.
+    No chatbot, participant, or conversation became more expensive. The cost was not being recorded before.
 
 ### Template variables
 
-A prompt can include variables that are filled in for each row, such as the user's message, the chatbot's response, or the conversation so far. Which variables are available depends on the evaluator's evaluation mode. A session-level evaluator works from the whole conversation, not a single message.
+A prompt can include variables that are filled in for each row.
+Examples are the participant's message, the chatbot's response, or the conversation so far.
+Which variables are available depends on the evaluator's evaluation mode.
+A session-level evaluator works from the whole conversation, not a single message.
 
 See [Template variables](../../tech-hub/evaluations/evaluator-reference.md#template-variables) for the full list.
 
@@ -103,7 +119,10 @@ Archived evaluators are excluded from new work:
 - They don't appear in the evaluator picker when you create a new evaluation config.
 - They are skipped by every new run, including automatic delta runs triggered when a dataset is appended.
 
-The one exception is editing an evaluation config that already uses an archived evaluator. In that case, the picker still shows the config's own archived evaluators, with an *(archived)* suffix on the name, so you can untick one to remove it without losing the ability to edit the rest of the config. Archived evaluators that aren't already on the config are not offered.
+The one exception is editing an evaluation config that already uses an archived evaluator.
+In that case, the picker still shows the config's own archived evaluators, with an *(archived)* suffix on the name.
+You can untick one to remove it and still edit the rest of the config.
+Archived evaluators that aren't already on the config are not offered.
 
 Running a config whose evaluators are all archived is refused with an error, since it would produce no results.
 

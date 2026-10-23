@@ -1,6 +1,8 @@
 # Python Evaluator
 
-The Python Evaluator runs custom code against each message — useful for deterministic rules, custom string matching, or logic an LLM prompt can't reliably express. See [Evaluators](../../concepts/evaluations/evaluators.md#python-evaluator) for when to choose it over the [LLM Evaluator](../../concepts/evaluations/evaluators.md#llm-evaluator).
+The Python Evaluator runs custom code against each message.
+It suits deterministic rules, custom string matching, or logic an LLM prompt can't reliably express.
+See [Evaluators](../../concepts/evaluations/evaluators.md#python-evaluator) for when to choose it over the [LLM Evaluator](../../concepts/evaluations/evaluators.md#llm-evaluator).
 
 The code **must** define a `main` function which takes the `input`, `output`, `context`, `full_history`, and `generated_response` as arguments, plus a `**kwargs` catch-all. It should return a `dict` whose keys will become columns in the output table.
 
@@ -29,7 +31,10 @@ def main(input: dict, output: dict, context: dict, full_history: str, generated_
 ```
 
 !!! note
-    Don't add `participant_data` or `session_state` to your function's parameter list. Open Chat Studio checks that the positional arguments match the five listed above exactly, so a function declaring either of them positionally will be rejected. They are passed by keyword so that evaluators written before this feature keep working unchanged.
+    Don't add `participant_data` or `session_state` to your function's parameter list.
+    Open Chat Studio checks that the positional arguments match the five listed above exactly.
+    A function that declares either of them positionally is rejected.
+    They are passed by keyword so that evaluators written before this feature keep working unchanged.
 
 ## Example
 

@@ -37,22 +37,37 @@ Python evaluators receive the same values as function arguments. See [Python Eva
 
 ## Output validation
 
-OCS validates the LLM's output against the evaluator's output schema, using a schema generated from the field types. The evaluator tries again if the output does not match the schema, or if the provider returns a rate-limit or temporary error, such as a server error or timeout. It makes up to 3 attempts in total (the first call plus up to 2 retries) before the row fails.
+OCS validates the LLM's output against the evaluator's output schema, using a schema generated from the field types.
+The evaluator tries again in two cases:
 
-Binary fields are stored as 1 or 0. The labels you set are added to the field description sent to the model, in the form `1 = <true label>, 0 = <false label>`.
+- The output does not match the schema.
+- The provider returns a rate-limit or temporary error, such as a server error or timeout.
+
+It makes up to 3 attempts in total (the first call plus up to 2 retries) before the row fails.
+
+Binary fields are stored as 1 or 0.
+The labels you set are added to the field description that is sent to the model.
+They take the form `1 = <true label>, 0 = <false label>`.
 
 ### No structured output
 
-Sometimes the model returns no structured output at all: it refuses in prose, the provider blocks the reply, or it never calls the required tool. This is not retried, because asking again is likely to give the same result. Instead, the `error (<evaluator name>)` column for that row shows `The model did not return structured output:` followed by the model's reply, or the provider's stop reason if it gave none. This usually happens only after a provider refusal or safety block, so most runs never see it.
+Sometimes the model returns no structured output at all.
+It may refuse in prose, the provider may block the reply, or it may never call the required tool.
+This is not retried, because asking again is likely to give the same result.
+Instead, the `error (<evaluator name>)` column for that row shows `The model did not return structured output:`.
+It is followed by the model's reply, or by the provider's stop reason if the model gave no reply.
+This usually happens only after a provider refusal or safety block, so most runs never see it.
 
 ## Tag reconciliation on rerun
 
 A message or session either meets a [tag rule's](../../concepts/evaluations/tag_rules.md) condition, or it does not. To keep tags consistent with the latest results, rerunning an evaluation reconciles the tags managed by its evaluators' tag rules:
 
-- For each message or session in the rerun's scope, any tag named by an evaluator's tag rules that was **not** applied by the latest run is removed from that message or session.
-- Reconciliation removes a tag regardless of who applied it. If a person added a tag that is also managed by a tag rule, and the new evaluator output does not meet that rule, the tag is removed.
+- OCS checks each message or session in the rerun's scope.
+  It removes any tag that a tag rule names but the latest run did **not** apply.
+- Reconciliation removes a tag regardless of who applied it.
+  A person may have added a tag that a tag rule also manages.
+  If the new evaluator output does not meet that rule, the tag is removed.
 - **Full** runs, which score the entire dataset, reconcile every row. **Delta** runs, which score only rows added by [auto-population](auto_population.md#automatic-delta-evaluation-runs), reconcile only the rows in their scope.
 - **Preview** runs neither apply nor remove tags.
 
 Tags whose names are not referenced by any tag rule on the run's evaluators are never touched by reconciliation.
-

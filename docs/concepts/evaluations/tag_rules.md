@@ -27,9 +27,9 @@ Each rule has three parts:
 
 | Field | Description |
 |-------|-------------|
-| Output field | The output schema field whose value is tested |
-| Tag name | The tag to apply when the condition is met |
-| Condition | The value or range that triggers the tag |
+| **Field** | The output schema field whose value is tested |
+| **Tag** | The tag to apply when the condition is met |
+| **Condition** | The value or range that triggers the tag |
 
 The condition options vary by the type of the output field:
 
