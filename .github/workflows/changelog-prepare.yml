@@ -1,0 +1,147 @@
+# New Changelog Prepare (reusable)
+#
+# Fetches a merged OCS PR and renders the instructions Claude will follow.
+# Read-only: no checkout of the docs branch, no Claude, no writes. The rendered
+# prompt is returned as the `prompt` output.
+#
+# Called by: changelog-core-test.yml (manual harness); the widget and main
+# entry workflows will call it later. Nothing here knows about widget vs main;
+# the caller supplies every difference as an input.
+#
+# Requirements: OCS_AGENT_PRIVATE_KEY secret (passed by name, never inherited)
+# and the OCS_AGENT_APP_ID variable.
+#
+# Security:
+# The PR title and body are written by contributors, so they are untrusted. The
+# risks, and what this file does about each:
+# - Shell injection: PR text pasted into a run script can run as commands. Here
+#   it is read with jq from a file into env vars, and ${{ }} is never used
+#   inside a script.
+# - Output injection: PR text that contains the GITHUB_OUTPUT delimiter can add
+#   outputs of its own. The delimiter here is random for each run.
+# - Prompt injection: the text can tell Claude to do something else. This file
+#   only builds the prompt. The caller must limit what Claude can do (no write
+#   token, no Bash, a path check on the result).
+# - Re-injection: the `prompt` output is untrusted. Callers must pass it only
+#   as the Claude step's `prompt:` input, never through ${{ }} in a run script.
+# - Token scope: the app token is `pull-requests: read` on the OCS repo only.
+#   The job has `contents: read` and no persisted checkout credentials.
+# - Input checks: pr_number must be digits, section_template must be a plain
+#   .md file name, and the PR must be merged.
+# - Stale text: a manual run reads the PR body as it is now, which can differ
+#   from the body at merge time.
+#
+# NOTE:
+# - The rendered prompt, including the PR text, is printed to the run summary
+#   to help testing. Remove that line once the workflow is live. !!!!!
+
+name: New Changelog Prepare
+
+on:
+  workflow_call:
+    inputs:
+      pr_number:
+        description: 'OCS PR number'
+        required: true
+        type: string
+      changelog_file:
+        description: 'Changelog.md file Claude should update'
+        required: true
+        type: string
+      section_template:
+        description: 'Changelog section template under .github/templates/'
+        required: true
+        type: string
+      docs_agent:
+        description: 'Agent Claude hands documentation work to'
+        required: true
+        type: string
+    secrets:
+      OCS_AGENT_PRIVATE_KEY:
+        required: true
+    outputs:
+      prompt:
+        value: ${{ jobs.prepare.outputs.prompt }}
+
+# Restrict default permissions — job overrides as needed
+permissions: {}
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read # Checkout of the templates only
+    outputs:
+      prompt: ${{ steps.result.outputs.prompt }}
+    steps:
+      # Read-only on the OCS repo's pull requests; no access to the docs repo.
+      - name: Generate app token
+        id: app-token
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ vars.OCS_AGENT_APP_ID }}
+          private-key: ${{ secrets.OCS_AGENT_PRIVATE_KEY }}
+          owner: dimagi
+          repositories: open-chat-studio
+          permission-pull-requests: read
+
+      - name: Checkout templates
+        uses: actions/checkout@v7
+        with:
+          sparse-checkout: .github/templates
+          persist-credentials: false
+
+      - name: Fetch merged PR
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          PR_NUMBER: ${{ inputs.pr_number }}
+        run: |
+          # PR_NUMBER goes into the API path, so accept digits only.
+          [[ "$PR_NUMBER" =~ ^[0-9]+$ ]] || { echo "::error::pr_number must be an integer"; exit 1; }
+
+          gh api "repos/dimagi/open-chat-studio/pulls/${PR_NUMBER}" > "${RUNNER_TEMP}/pr.json"
+
+          # merged_at is null until the PR is merged, and jq -e fails on null.
+          jq -e '.merged_at' "${RUNNER_TEMP}/pr.json" > /dev/null \
+            || { echo "::error::OCS PR #${PR_NUMBER} is not merged"; exit 1; }
+
+      # Builds the changelog part of the prompt, which depends on the caller's inputs only.
+      - name: Render changelog section
+        env:
+          CHANGELOG_FILE: ${{ inputs.changelog_file }}
+          SECTION_TEMPLATE: ${{ inputs.section_template }}
+        run: |
+          # The template is read from .github/templates/, so allow a plain .md file name only.
+          [[ "$SECTION_TEMPLATE" =~ ^[A-Za-z0-9._-]+\.md$ ]] \
+            || { echo "::error::section_template must be a plain .md file name"; exit 1; }
+
+          envsubst '$CHANGELOG_FILE' < ".github/templates/${SECTION_TEMPLATE}" > "${RUNNER_TEMP}/section.md"
+
+      # Builds the full prompt, with the PR fields from "Fetch merged PR".
+      - name: Render prompt
+        env:
+          PR_NUMBER: ${{ inputs.pr_number }}
+          DOCS_AGENT: ${{ inputs.docs_agent }}
+        run: |
+          PR_TITLE=$(jq -r '.title' "${RUNNER_TEMP}/pr.json")
+          PR_BODY=$(jq -r '.body // ""' "${RUNNER_TEMP}/pr.json")
+          PR_URL=$(jq -r '.html_url' "${RUNNER_TEMP}/pr.json")
+          PR_AUTHOR=$(jq -r '.user.login' "${RUNNER_TEMP}/pr.json")
+          PR_MERGED_AT=$(jq -r '.merged_at' "${RUNNER_TEMP}/pr.json")
+          SECTION_INSTRUCTIONS=$(cat "${RUNNER_TEMP}/section.md")
+          export PR_TITLE PR_BODY PR_URL PR_AUTHOR PR_MERGED_AT SECTION_INSTRUCTIONS
+
+          # Explicit variable list: envsubst leaves any other ${...} text alone.
+          envsubst '$PR_NUMBER $PR_TITLE $PR_BODY $PR_URL $PR_AUTHOR $PR_MERGED_AT $DOCS_AGENT $SECTION_INSTRUCTIONS' \
+            < .github/templates/draft-instructions.md > "${RUNNER_TEMP}/prompt.md"
+
+      # Hands the prompt back to the caller.
+      - name: Return prompt
+        id: result
+        run: |
+          # Random delimiter: PR text cannot end the multiline output early.
+          DELIM="EOF_$(openssl rand -hex 16)"
+          { echo "prompt<<${DELIM}"; cat "${RUNNER_TEMP}/prompt.md"; echo "${DELIM}"; } >> "$GITHUB_OUTPUT"
+
+          { echo "## Rendered prompt"; echo; echo '``````text'; cat "${RUNNER_TEMP}/prompt.md"; echo '``````'; } >> "$GITHUB_STEP_SUMMARY"
