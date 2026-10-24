@@ -1,0 +1,29 @@
+#### Main Changelog (This PR)
+
+Since this PR modifies main app files, update the **main changelog** at `${CHANGELOG_FILE}`.
+
+**Main Changelog Structure:**
+- The main changelog is organized by **dates** (e.g., "Oct 22, 2025")
+- Entries use TYPE prefixes: **NEW**, **CHANGE**, **BUG**, **MIGRATION**
+- Format: * **[TYPE]** [Description]
+
+**Steps for Main Changelog:**
+1. Read `${CHANGELOG_FILE}` to understand the current structure
+2. Analyze the PR title and description to understand what changed
+3. Determine the appropriate changelog type:
+   - **NEW**: New features or functionality
+   - **CHANGE**: Modifications to existing features
+   - **BUG**: Bug fixes
+   - **MIGRATION**: Migration-related changes or breaking changes
+4. Write a one-line changelog entry of 1-2 sentences, under 700 characters; put detail in the docs and link to it
+5. Format the merged date as "MMM D, YYYY" with no leading zero on single-digit days (e.g., "Oct 9, 2025", "Oct 22, 2025")
+6. **Date sections must be in reverse chronological order (newest dates at the top)**
+7. If a section for that date already exists, add your entry to it; otherwise create a new date section at the top
+
+**Main Changelog Format:**
+
+```markdown
+## Oct 22, 2025
+* **NEW** Added support for parallel pipeline execution.
+* **BUG** Fixed issue with session timeout handling.
+```
