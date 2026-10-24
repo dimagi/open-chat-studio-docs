@@ -17,7 +17,7 @@ The code **must** define a `main` function which takes the `input`, `output`, `c
 
 ### Participant data and session state
 
-`kwargs` also carries `participant_data` and `session_state` — the same values available to LLM evaluator prompts as [`{participant_data.[key]}` and `{session_state.[key]}`](../../concepts/evaluations/evaluators.md#template-variables). See [Dataset Structure](dataset-structure.md#dataset-fields) for where these values come from.
+`kwargs` also carries `participant_data` and `session_state` — the same values available to LLM evaluator prompts as [`{participant_data.[key]}` and `{session_state.[key]}`](evaluator-reference.md#template-variables). See [Dataset Structure](dataset-structure.md#dataset-fields) for where these values come from.
 
 Read them with `kwargs.get(...)`, since they are keyword-only, not positional arguments:
 

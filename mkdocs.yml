@@ -222,6 +222,7 @@ nav:
     - Evaluations:
       - tech-hub/evaluations/index.md
       - Dataset Structure: tech-hub/evaluations/dataset-structure.md
+      - Evaluator Reference: tech-hub/evaluations/evaluator-reference.md
       - Python Evaluator: tech-hub/evaluations/python_evaluator.md
       - Auto-Population Rules: tech-hub/evaluations/auto_population.md
     - Annotations:
