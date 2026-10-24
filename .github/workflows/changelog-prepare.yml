@@ -62,6 +62,26 @@ on:
     outputs:
       prompt:
         value: ${{ jobs.prepare.outputs.prompt }}
+  # Temporary: manual trigger for testing on this branch. Remove it, and the
+  # run summary print below, before this workflow is used for real.
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'OCS PR number (must be merged)'
+        required: true
+        type: string
+      changelog_file:
+        description: 'Changelog file (widget: docs/chat_widget/changelog.md)'
+        default: docs/changelog.md
+        type: string
+      section_template:
+        description: 'Section template under .github/templates/'
+        type: choice
+        options: [draft-main-section.md, draft-widget-section.md]
+      docs_agent:
+        description: 'Agent Claude hands documentation work to'
+        default: zensical-technical-writer
+        type: string
 
 # Restrict default permissions — job overrides as needed
 permissions: {}
