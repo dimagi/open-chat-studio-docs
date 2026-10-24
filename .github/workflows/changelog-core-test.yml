@@ -1,0 +1,48 @@
+# Changelog Core Test Harness
+#
+# Manual caller for the shared changelog pieces. Runs them against an already
+# merged OCS PR; it never commits, pushes or opens a PR.
+#
+# Triggered on: workflow_dispatch with the OCS PR number and whether that PR is
+# a widget change. This harness does not check that `is_widget` matches the PR;
+# the entry workflows will (phase 2).
+# Requirements: OCS_AGENT_PRIVATE_KEY secret and OCS_AGENT_APP_ID variable.
+#
+# Notes:
+# - The widget/main differences live here, as inputs to the shared pieces. The
+#   entry workflows will pass the same values.
+
+name: Changelog Core Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'OCS PR number (must be merged)'
+        required: true
+        type: number
+      is_widget:
+        description: 'Use the widget settings'
+        required: true
+        type: boolean
+        default: false
+
+# Restrict default permissions — job overrides as needed
+permissions: {}
+
+concurrency:
+  group: changelog-core-test-${{ inputs.pr_number }}
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    permissions:
+      contents: read # Must cover what the called job requests
+    uses: ./.github/workflows/changelog-prepare.yml
+    with:
+      pr_number: ${{ format('{0}', inputs.pr_number) }}
+      changelog_file: ${{ inputs.is_widget && 'docs/chat_widget/changelog.md' || 'docs/changelog.md' }}
+      section_template: ${{ inputs.is_widget && 'draft-widget-section.md' || 'draft-main-section.md' }}
+      docs_agent: zensical-technical-writer
+    secrets:
+      OCS_AGENT_PRIVATE_KEY: ${{ secrets.OCS_AGENT_PRIVATE_KEY }}
