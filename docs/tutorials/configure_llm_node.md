@@ -89,13 +89,13 @@ For step-by-step guidance, see [Adjust LLM Node Model Parameters](../how-to/adju
 3. Confirm the reply reflects your prompt and model choice. Tweak the prompt and re-test until the responses look right.
 
 !!! tip
-    When you're happy with the behaviour, [create a version](versioning_steps.md) so participants keep a stable experience while you continue editing.
+    When you're happy with the behaviour, [create a version](versioning_steps.md) (see [Versioning](../concepts/versioning.md)) so participants keep a stable experience while you continue editing.
 
-## Next steps
+## See also
 
 You've built a working LLM node. When you're ready to do more, an LLM node can also:
 
 - Use [Tools](../concepts/tools/index.md) to take actions like scheduling reminders.
-- Ground answers in your own documents with [Collections](../concepts/collections/index.md) (RAG).
+- Ground answers in your own documents with [Collections](../concepts/collections/index.md) (retrieval-augmented generation, or RAG).
 - Connect to external systems with [Custom Actions](../concepts/llm_custom_action.md).
 - Combine with other [node types](../concepts/pipelines/nodes.md) to build richer workflows — see the [Workflow Cookbook](../how-to/workflow_cookbook.md) for examples.

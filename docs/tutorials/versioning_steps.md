@@ -8,7 +8,7 @@ When a chatbot is first created, it has two versions: a published version and an
 
 ## Step 1: Edit your chatbot
 
-Open your chatbot and make your changes in the pipeline editor. All edits apply to the unreleased version.
+Open your chatbot and make your changes in the [pipeline editor](../concepts/pipelines/index.md). All edits apply to the unreleased version.
 
 ## Step 2: Create a new version
 
@@ -52,3 +52,8 @@ A confirmation modal opens showing a field- and node-level diff between your cur
     If your current working state has edits that have not been saved as a version, the modal shows a warning. Reverting will permanently overwrite those changes. Create a new version first if you want to keep them.
 
 After reviewing the diff, click **Confirm** to replace your working state with a copy of the selected version. The reverted configuration becomes your new unreleased version, which you can edit or publish following Steps 2–5 above.
+
+## See also
+
+- [Versioning](../concepts/versioning.md)
+- [Configure an LLM Node](configure_llm_node.md)

@@ -23,3 +23,12 @@ Messaging providers configured in your [Team](../concepts/team/index.md) setting
 - [Slack](../how-to/deploy_to_different_channels.md#slack)
 - [Facebook Messenger](../how-to/deploy_to_different_channels.md#facebook-messenger)
 - [SureAdhere secure In-App Messaging](../how-to/deploy_to_different_channels.md#sureadhere-for-secure-in-app-messaging)
+
+## Next steps
+
+[Deploy your chatbot to a channel](../how-to/deploy_to_different_channels.md) once the provider is configured.
+
+## See also
+
+- [Messaging providers](../concepts/team/messaging_providers.md)
+- [Channels](../concepts/channels.md)

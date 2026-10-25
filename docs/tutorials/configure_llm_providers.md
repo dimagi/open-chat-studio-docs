@@ -1,6 +1,6 @@
 # Configure LLM Service Providers
 
-LLM service providers are configured from **Team Settings → [Integrations](../concepts/team/integrations.md)**, filtered to the **LLM & embedding** category. Before configuring a provider, make sure you have an active account with the provider and its API key ready.
+An [LLM provider](../concepts/team/llm_providers.md) is the service, such as OpenAI or Anthropic, that supplies the AI models behind your chatbots. LLM service providers are configured from **Team Settings → [Integrations](../concepts/team/integrations.md)**, filtered to the **LLM & embedding** category. Before configuring a provider, make sure you have an active account with the provider and its API key ready.
 
 ## Prerequisites
 
@@ -36,6 +36,11 @@ After adding a provider and models, it's recommended to:
 2. Configure it to use your new provider/model
 3. Send a test message to verify everything works correctly
 
-## Adding Custom LLM Models
+## Next steps
 
-If you need a model that isn't pre-configured in OCS, see [Add a Custom LLM Model](../how-to/add_custom_llm_model.md) for how to add one.
+Configure the basics for your [LLM Node](configure_llm_node.md).
+
+## See also
+
+- [Add a Custom LLM Model](../how-to/add_custom_llm_model.md) if you need a model that isn't pre-configured in OCS.
+- [Choose an LLM Model](../how-to/choose_llm_model.md)
