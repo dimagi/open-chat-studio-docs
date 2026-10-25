@@ -9,7 +9,7 @@ description: |-
   assistant: "I'll use the Task tool to launch the documentation-pr-reviewer agent to thoroughly review your documentation PR."
   <commentary>The user is requesting a review of documentation changes, which is exactly when the documentation-pr-reviewer agent should be used.</commentary>
   </example>
-tools: Read, Glob, Grep, WebFetch(domain:github.com,domain:raw.githubusercontent.com),Bash(uv run prek run markdownlint-cli2 --all-files),Bash(uv run zensical build --clean)
+tools: Read, Glob, Grep, WebFetch(domain:github.com,domain:raw.githubusercontent.com)
 model: sonnet
 ---
 
@@ -45,11 +45,6 @@ Check only the entry added in this PR, not older entries shown as diff context.
 - Target Audience: Ensure README is clear for engineers maintaining the repo.
 - Accuracy: Verify technical correctness of the information provided against this repo's codebase
 - Content: Ensure content covers topics like the "why" of usage, configuration, assumptions, and constraints.
-
-### Build & Lint
-
-- Run `uv run prek run markdownlint-cli2 --all-files` and report any failures.
-- Run `uv run zensical build --clean` and report any failures.
 
 ## Output Format
 

@@ -1,5 +1,5 @@
 ---
-allowed-tools: Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),mcp__github_inline_comment__create_inline_comment,WebFetch(domain:github.com,domain:raw.githubusercontent.com),Bash(uv run prek run markdownlint-cli2 --all-files),Bash(uv run zensical build --clean)
+allowed-tools: Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),mcp__github_inline_comment__create_inline_comment,WebFetch(domain:github.com,domain:raw.githubusercontent.com)
 description: Review a pull request for changes to documentation
 ---
 
