@@ -14,33 +14,43 @@ All edits apply to the unreleased version.
 
 ## Step 2: Create a new version
 
-Once you have tested and are ready to publish the chatbot to your participants, create a new version by clicking the **Create Version** button in the versions table.
+When you have tested the chatbot and are ready to publish it to your participants, create a new version.
+To do this, click the **Create Version** button in the versions table.
 
 ## Step 3: Review and save the version
 
-You will be taken to the create new version page, which shows you the difference between the most recent version and the unreleased version. The most recent version may be different from the currently published version.
+You will be taken to the create new version page, which shows you the difference between the most recent version and the unreleased version.
+The most recent version may be different from the currently published version.
 
 Pressing the **Create** button saves the current configuration of the chatbot and allocates it a version number.
 
 Here you can:
 
 - Add a description to help identify what changed.
-- Check **Set as Published Version** to make this version live immediately.  If you skip this checkbox, the version is saved but not yet published — you can publish it later via Step 5."
+- Check **Set as Published Version** to make this version live immediately.
+  If you skip this checkbox, the version is saved but not yet published.
+  You can publish it later in Step 5.
 
 ![Create new Chatbot Version View](images/version_create_view.png)
 
 ## Step 4: Confirm and test the version
 
-You will be directed back to the versions table. It may take a few minutes for the new version to be fully available and listed in the table. From the table, you can select which Chatbot version you want to open a web chat with for testing.
+You will be directed back to the versions table.
+It may take a few minutes for the new version to be fully available and listed in the table.
+From the table, you can select which Chatbot version you want to open a web chat with for testing.
 
 ## Step 5: Publish the version
-Click **View Details** on any version to see its summary and set it as published or archive it. Click the **Set as Published Version** button at the bottom of the dialog.
+Click **View Details** on any version to see its summary and set it as published or archive it.
+Click the **Set as Published Version** button at the bottom of the dialog.
 
 ![Chatbot Version Action Buttons](images/version_details_action_button.png)
 
 ## Step 6: Check what version is published
 
-To quickly see which version is currently published, look for the green version badge next to the chatbot name at the top of the chatbot home screen. In the example below, "v2" is the published version. You can also confirm this in the table by looking for the checkmark in the published row.
+To see which version is currently published, look for the green version badge.
+It is next to the chatbot name at the top of the chatbot home screen.
+In the example below, "v2" is the published version.
+You can also confirm this in the table by looking for the checkmark in the published row.
 
 ![Chatbot version table showing published version badge](images/version_table_after.png)
 

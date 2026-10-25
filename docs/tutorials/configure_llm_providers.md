@@ -6,7 +6,9 @@ You configure providers from **Team Settings → [Integrations](../concepts/team
 
 ## Prerequisites
 
-**API Key Required**: You cannot create a provider without a valid API key. The API key lets Open Chat Studio connect securely to your account with the provider. You must:
+**API Key Required**: You cannot create a provider without a valid API key.
+The API key lets Open Chat Studio connect securely to your account with the provider.
+You must:
 
 1. Have an active account with the provider (OpenAI, Anthropic, Google, etc.)
 2. Generate an API key from your provider account
@@ -16,12 +18,14 @@ You configure providers from **Team Settings → [Integrations](../concepts/team
 
 1. Go to **Team Settings → [Integrations](../concepts/team/integrations.md)**
 2. Click **Add integration**, then choose your provider from the **LLM & embedding** group (see [supported providers](../concepts/team/llm_providers.md) for the full list)
-3. Enter your API key, plus any other details your provider needs — for example, a [LiteLLM](../concepts/team/llm_providers.md) provider also requires the **Base URL** of your proxy
+3. Enter your API key, plus any other details your provider needs.
+   For example, a [LiteLLM](../concepts/team/llm_providers.md) provider also requires the **Base URL** of your proxy
 4. Save the configuration
 
 !!! tip "Base URL"
 
-    You don't need to include the `/v1` suffix on a LiteLLM **Base URL** — Open Chat Studio appends it if it's missing, so `https://litellm.example.com` is saved as `https://litellm.example.com/v1`.
+    You don't need to include the `/v1` suffix on a LiteLLM **Base URL**.
+    Open Chat Studio appends it if it's missing, so `https://litellm.example.com` is saved as `https://litellm.example.com/v1`.
 
 After saving, the provider page shows a **Models** tab listing the models it supports.
 See [LLM Models](../concepts/team/llm_providers.md#llm-models) for how to filter the list.
@@ -29,7 +33,8 @@ If your provider, such as LiteLLM, has no pre-configured models, [add a custom m
 
 ## Verifying Your Credentials
 
-Saving a provider checks its credentials against the provider's API, unless they're already [verified](../concepts/team/llm_providers.md#credential-verification). The save button tells you upfront whether saving will run this check.
+Saving a provider checks its credentials against the provider's API, unless they're already [verified](../concepts/team/llm_providers.md#credential-verification).
+The save button tells you upfront whether saving will run this check.
 
 The provider page then shows the result: **Verified**, **Not checked**, or **Check failed**.
 See [Credential Verification](../concepts/team/llm_providers.md#credential-verification) for what each state means.

@@ -4,7 +4,8 @@ Messaging providers offer access to communication platforms such as WhatsApp, Fa
 This tutorial shows how to choose a channel and add its provider to your team.
 Participants can then chat with your chatbot on the platform they already use.
 
-If you want a Chat Widget on a website, you don't need to set up a Message Provider. See [details on the Chat Widget](../chat_widget/index.md)
+If you want a Chat Widget on a website, you don't need to set up a messaging provider.
+See [details on the Chat Widget](../chat_widget/index.md).
 
 ## Steps
 
