@@ -1,6 +1,8 @@
 # Configure LLM Service Providers
 
-This tutorial shows how to connect an [LLM provider](../concepts/team/llm_providers.md), such as OpenAI or Anthropic, to your team. Your chatbots need a provider to get AI models that generate replies. You configure providers from **Team Settings → [Integrations](../concepts/team/integrations.md)**, filtered to the **LLM & embedding** category.
+This tutorial shows how to connect an [LLM provider](../concepts/team/llm_providers.md), such as OpenAI or Anthropic, to your team.
+Your chatbots need a provider to get AI models that generate replies.
+You configure providers from **Team Settings → [Integrations](../concepts/team/integrations.md)**, filtered to the **LLM & embedding** category.
 
 ## Prerequisites
 
@@ -21,13 +23,16 @@ This tutorial shows how to connect an [LLM provider](../concepts/team/llm_provid
 
     You don't need to include the `/v1` suffix on a LiteLLM **Base URL** — Open Chat Studio appends it if it's missing, so `https://litellm.example.com` is saved as `https://litellm.example.com/v1`.
 
-After saving, the provider page shows a **Models** tab listing the models it supports. See [LLM Models](../concepts/team/llm_providers.md#llm-models) for how to filter the list, and [add a custom model](../how-to/add_custom_llm_model.md) if your provider, such as LiteLLM, has none pre-configured.
+After saving, the provider page shows a **Models** tab listing the models it supports.
+See [LLM Models](../concepts/team/llm_providers.md#llm-models) for how to filter the list.
+If your provider, such as LiteLLM, has no pre-configured models, [add a custom model](../how-to/add_custom_llm_model.md).
 
 ## Verifying Your Credentials
 
 Saving a provider checks its credentials against the provider's API, unless they're already [verified](../concepts/team/llm_providers.md#credential-verification). The save button tells you upfront whether saving will run this check.
 
-The provider page then shows the result: **Verified**, **Not checked**, or **Check failed**. See [Credential Verification](../concepts/team/llm_providers.md#credential-verification) for what each state means.
+The provider page then shows the result: **Verified**, **Not checked**, or **Check failed**.
+See [Credential Verification](../concepts/team/llm_providers.md#credential-verification) for what each state means.
 
 ## Testing Your Configuration
 

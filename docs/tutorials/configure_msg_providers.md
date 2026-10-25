@@ -1,7 +1,8 @@
 # Configure Messaging Providers
 
 Messaging providers offer access to communication platforms such as WhatsApp, Facebook Messenger, Slack, and more.
-This tutorial shows how to choose a channel and add its provider to your team, so participants can chat with your chatbot on the platform they already use.
+This tutorial shows how to choose a channel and add its provider to your team.
+Participants can then chat with your chatbot on the platform they already use.
 
 If you want a Chat Widget on a website, you don't need to set up a Message Provider. See [details on the Chat Widget](../chat_widget/index.md)
 
@@ -16,7 +17,8 @@ Before configuring a provider, ensure that you have an active account at the pro
 
 ### 3) Add the messaging provider details to your Team
 
-Configure messaging providers from your [Team](../concepts/team/index.md) settings under **Integrations**. Click **Add integration** and choose your provider from the **Messaging** group.
+Configure messaging providers from your [Team](../concepts/team/index.md) settings under **Integrations**.
+Click **Add integration** and choose your provider from the **Messaging** group.
 
 - [WhatsApp](../how-to/deploy_to_different_channels.md#whatsapp)
 - [Telegram](../how-to/deploy_to_different_channels.md#telegram)

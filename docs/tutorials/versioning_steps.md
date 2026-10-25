@@ -1,6 +1,7 @@
 # Creating and Publishing Chatbot Versions
 
-These steps explain how to create and publish chatbot versions, so you can keep editing without affecting participants. They illustrate the [Versioning](../concepts/versioning.md) feature.
+These steps explain how to create and publish chatbot versions, so you can keep editing without affecting participants.
+They illustrate the [Versioning](../concepts/versioning.md) feature.
 
 When a chatbot is first created, it has two versions: a published version and an unreleased version, as shown below.
 
@@ -8,7 +9,8 @@ When a chatbot is first created, it has two versions: a published version and an
 
 ## Step 1: Edit your chatbot
 
-Open your chatbot and make your changes in the [pipeline editor](../concepts/pipelines/index.md). All edits apply to the unreleased version.
+Open your chatbot and make your changes in the [pipeline editor](../concepts/pipelines/index.md).
+All edits apply to the unreleased version.
 
 ## Step 2: Create a new version
 
@@ -46,12 +48,17 @@ To quickly see which version is currently published, look for the green version 
 
 If you need to go back to an older configuration, click **Revert**.
 
-A confirmation modal opens showing the differences between your current working state and the target version. Groups with changed fields are expanded, and each changed field shows a text diff. See [The revert confirmation modal](../concepts/versioning.md#the-revert-confirmation-modal) for details.
+A confirmation modal opens showing the differences between your current working state and the target version.
+Groups with changed fields are expanded, and each changed field shows a text diff.
+See [The revert confirmation modal](../concepts/versioning.md#the-revert-confirmation-modal) for details.
 
 !!! warning "Check for unreleased changes before reverting"
-    If your working state has unsaved edits, the modal warns that reverting permanently overwrites them. Create a new version first to keep them.
+    If your working state has unsaved edits, the modal warns that reverting permanently overwrites them.
+    Create a new version first to keep them.
 
-After reviewing the diff, click **Revert to vN** (where N is the version number) to replace your working state with a copy of the selected version. The reverted configuration becomes your new unreleased version, which you can edit or publish following Steps 2–5 above.
+After reviewing the diff, click **Revert to vN** (where N is the version number).
+This replaces your working state with a copy of the selected version.
+The reverted configuration becomes your new unreleased version, which you can edit or publish following Steps 2–5 above.
 
 ## See also
 

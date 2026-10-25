@@ -5,7 +5,8 @@ description: Add and configure an LLM node in a pipeline — the main component 
 
 # Configure an LLM Node
 
-The [LLM node](../concepts/pipelines/nodes.md#llm-node) is the main component of most chatbots in Open Chat Studio. It sends the conversation to an AI model and returns the model's reply.
+The [LLM node](../concepts/pipelines/nodes.md#llm-node) is the main component of most chatbots in Open Chat Studio.
+It sends the conversation to an AI model and returns the model's reply.
 
 This tutorial walks you through adding an LLM node to a [pipeline](../concepts/pipelines/index.md) and setting up the handful of options you'll use most often. By the end you will have a working LLM node that responds to messages using a model, a [prompt](../concepts/llm.md#prompt), and [conversation memory](../concepts/pipelines/history.md).
 
