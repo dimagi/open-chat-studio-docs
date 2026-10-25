@@ -15,7 +15,7 @@ Before configuring a provider, ensure that you have an active account at the pro
 
 ### 3) Add the messaging provider details to your Team
 
-Messaging providers configured in your [Team](../concepts/team/index.md) settings under "Messaging Providers".
+Messaging providers configured in your [Team](../concepts/team/index.md) settings under **Messaging Providers**.
 
 - [WhatsApp](../how-to/deploy_to_different_channels.md#whatsapp)
 - [Telegram](../how-to/deploy_to_different_channels.md#telegram)

@@ -19,7 +19,7 @@ LLM service providers are configured from **Team Settings → [Integrations](../
 
 !!! tip "Base URL"
 
-    You don't need to include the `/v1` suffix on a LiteLLM Base URL — Open Chat Studio appends it if it's missing, so `https://litellm.example.com` is saved as `https://litellm.example.com/v1`.
+    You don't need to include the `/v1` suffix on a LiteLLM **Base URL** — Open Chat Studio appends it if it's missing, so `https://litellm.example.com` is saved as `https://litellm.example.com/v1`.
 
 !!! note
     After saving, the provider page shows a **Models** tab listing the LLM models it supports, with filter pills — **All**, **Chat**, **Embedding**, and **Custom** — to narrow the list. Each model shows its [max token limit](../concepts/llm.md#max-token-limit) and pricing. A provider with no pre-configured models, such as LiteLLM, shows an empty list until you add a [custom model](../how-to/add_custom_llm_model.md).
