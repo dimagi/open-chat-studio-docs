@@ -56,6 +56,9 @@ Check only the entry added in this PR, not older entries shown as diff context.
 - **Existing issues**: problems on a changed page that this PR did not change.
 
 ## Decisions
+
+The recommendation is advisory and goes in the comment text only. Never submit an approval or a change request.
+
 - Request Changes: Accuracy issues, missing critical info, clarity problems
 - Approve: Clear, accurate, complete, follows best practices
 - Comment: Minor suggestions that don't block merging
