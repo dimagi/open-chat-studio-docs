@@ -46,12 +46,12 @@ To quickly see which version is currently published, look for the green version 
 
 If you need to go back to an older configuration, click **Revert**.
 
-A confirmation modal opens showing the differences between your current working state and the target version. Added fields are highlighted and removed fields are marked. See [The revert confirmation modal](../concepts/versioning.md#the-revert-confirmation-modal) for details.
+A confirmation modal opens showing the differences between your current working state and the target version. Groups with changed fields are expanded, and each changed field shows a text diff. See [The revert confirmation modal](../concepts/versioning.md#the-revert-confirmation-modal) for details.
 
 !!! warning "Check for unreleased changes before reverting"
     If your working state has unsaved edits, the modal warns that reverting permanently overwrites them. Create a new version first to keep them.
 
-After reviewing the diff, click **Confirm** to replace your working state with a copy of the selected version. The reverted configuration becomes your new unreleased version, which you can edit or publish following Steps 2–5 above.
+After reviewing the diff, click **Revert to vN** (where N is the version number) to replace your working state with a copy of the selected version. The reverted configuration becomes your new unreleased version, which you can edit or publish following Steps 2–5 above.
 
 ## See also
 
