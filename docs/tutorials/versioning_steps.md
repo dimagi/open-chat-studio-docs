@@ -1,6 +1,6 @@
 # Creating and Publishing Chatbot Versions
 
-These steps explain the workflow for creating new chatbot versions and publishing versions, illustrating the [Versioning](../concepts/versioning.md) feature.
+These steps explain how to create and publish chatbot versions, so you can keep editing without affecting participants. They illustrate the [Versioning](../concepts/versioning.md) feature.
 
 When a chatbot is first created, it has two versions: a published version and an unreleased version, as shown below.
 
@@ -46,10 +46,10 @@ To quickly see which version is currently published, look for the green version 
 
 If you need to go back to an older configuration, click **Revert**.
 
-A confirmation modal opens showing a field- and node-level diff between your current working state and the target version. Review the highlighted differences to confirm that this is the change you want to make.
+A confirmation modal opens showing the differences between your current working state and the target version. Added fields are highlighted and removed fields are marked. See [The revert confirmation modal](../concepts/versioning.md#the-revert-confirmation-modal) for details.
 
 !!! warning "Check for unreleased changes before reverting"
-    If your current working state has edits that have not been saved as a version, the modal shows a warning. Reverting will permanently overwrite those changes. Create a new version first if you want to keep them.
+    If your working state has unsaved edits, the modal warns that reverting permanently overwrites them. Create a new version first to keep them.
 
 After reviewing the diff, click **Confirm** to replace your working state with a copy of the selected version. The reverted configuration becomes your new unreleased version, which you can edit or publish following Steps 2–5 above.
 
