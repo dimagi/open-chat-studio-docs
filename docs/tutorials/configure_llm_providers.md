@@ -21,14 +21,13 @@ LLM service providers are configured from **Team Settings → [Integrations](../
 
     You don't need to include the `/v1` suffix on a LiteLLM **Base URL** — Open Chat Studio appends it if it's missing, so `https://litellm.example.com` is saved as `https://litellm.example.com/v1`.
 
-!!! note
-    After saving, the provider page shows a **Models** tab listing the LLM models it supports, with filter pills — **All**, **Chat**, **Embedding**, and **Custom** — to narrow the list. Each model shows its [max token limit](../concepts/llm.md#max-token-limit) and pricing. A provider with no pre-configured models, such as LiteLLM, shows an empty list until you add a [custom model](../how-to/add_custom_llm_model.md).
+After saving, the provider page shows a **Models** tab listing the LLM models it supports, with filter pills — **All**, **Chat**, **Embedding**, and **Custom** — to narrow the list. Each model shows its [max token limit](../concepts/llm.md#max-token-limit) and pricing. A provider with no pre-configured models, such as LiteLLM, shows an empty list until you add a [custom model](../how-to/add_custom_llm_model.md).
 
 ## Verifying Your Credentials
 
 Saving a provider checks its credentials against the provider's API, unless they're already [verified](../concepts/team/llm_providers.md#credential-verification). The save button tells you upfront whether saving will run this check.
 
-The provider page then shows the standing result — **Verified**, **Not checked**, or **Check failed** with the provider's error message — and when the check ran. You can always see where a provider's credentials stand, not just at the moment you save. See [Credential Verification](../concepts/team/llm_providers.md#credential-verification) for details.
+The provider page then shows the standing result — **Verified**, **Not checked**, or **Check failed** with the provider's error message — and when the check ran. You can check a provider's credential status at any time, not only when you save. See [Credential Verification](../concepts/team/llm_providers.md#credential-verification) for details.
 
 ## Testing Your Configuration
 

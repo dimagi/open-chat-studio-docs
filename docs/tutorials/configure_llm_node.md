@@ -1,19 +1,18 @@
 ---
 title: Configure an LLM Node
-description: Add and configure an LLM node in a pipeline — the core building block of most chatbots
+description: Add and configure an LLM node in a pipeline — the main component of most chatbots
 ---
 
 # Configure an LLM Node
 
-The [LLM node](../concepts/pipelines/nodes.md#llm-node) is the heart of most chatbots in Open Chat Studio. It sends the conversation to an AI model and returns the model's reply.
+The [LLM node](../concepts/pipelines/nodes.md#llm-node) is the main component of most chatbots in Open Chat Studio. It sends the conversation to an AI model and returns the model's reply.
 
 This tutorial walks you through adding an LLM node to a [pipeline](../concepts/pipelines/index.md) and setting up the handful of options you'll use most often. By the end you will have a working LLM node that responds to messages using a model, a [prompt](../concepts/llm.md#prompt), and [conversation memory](../concepts/pipelines/history.md).
 
-!!! note "Before you start"
-    You'll need:
+Before you start, you need:
 
-    - A new chatbot by following the [Create your first chatbot](first_chatbot.md) steps.
-    - An [LLM provider](configure_llm_providers.md) configured for your team so that models are available to choose from.
+- A new chatbot by following the [Create your first chatbot](first_chatbot.md) steps.
+- An [LLM provider](configure_llm_providers.md) configured for your team so that models are available to choose from.
 
 ## Step 1: Open your chatbot
 
@@ -28,7 +27,7 @@ This tutorial walks you through adding an LLM node to a [pipeline](../concepts/p
 
 ## Step 2: Choose a model
 
-The model determines which AI does the thinking.
+The model is the AI that generates the replies.
 
 1. Click the LLM node edit button (or the **Advanced** link) to open its settings.
 2. Find the **LLM Model** dropdown and pick a model.
