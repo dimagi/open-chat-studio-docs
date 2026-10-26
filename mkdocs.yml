@@ -142,7 +142,7 @@ nav:
     - Evaluations:
       - Create a Dataset: how-to/evaluations/create-a-dataset.md
       - Run an Evaluation: how-to/evaluations/run-an-evaluation.md
-      - Real-Time LLM Judge: how-to/evaluations/realtime_llm_judge.md
+      - Real-Time LLM-as-a-Judge: how-to/evaluations/realtime_llm_judge.md
     - Migration & Deprecated:
       - how-to/assistants_migration.md
       - Surveys (Removed): how-to/setting_up_a_survey.md

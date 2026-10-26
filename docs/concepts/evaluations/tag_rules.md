@@ -6,7 +6,7 @@ For example, you could flag every session with negative sentiment, or every resp
 
 Tag Rules are available only on [LLM evaluators](evaluators.md#llm-evaluator).
 They run automatically on every evaluation run except [previews](../../how-to/evaluations/run-an-evaluation.md#preview-the-evaluation).
-To see tag rules used on a live chatbot, follow [Set Up a Real-Time LLM Judge](../../how-to/evaluations/realtime_llm_judge.md#step-4-optional-add-tag-rules-to-flag-results-automatically).
+To see tag rules used on a live chatbot, follow [Set Up a Real-Time LLM-as-a-Judge](../../how-to/evaluations/realtime_llm_judge.md#step-4-optional-add-tag-rules-to-flag-results-automatically).
 
 ## How tags are applied
 

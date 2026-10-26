@@ -1,4 +1,4 @@
-# Set Up a Real-Time LLM Judge
+# Set Up a Real-Time LLM-as-a-Judge
 
 This guide shows you how to set up an LLM-as-a-judge: an [LLM evaluator](../../concepts/evaluations/evaluators.md#llm-evaluator) that scores each new chatbot session automatically as it arrives. Use it to monitor the quality of a live chatbot without starting evaluation runs by hand.
 

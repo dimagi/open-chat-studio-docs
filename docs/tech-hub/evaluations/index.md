@@ -51,4 +51,4 @@ For what a failed message is and how to find and fix failed rows, see [Run an Ev
 - **[Python Evaluator](./python_evaluator.md)** — write custom Python code to score messages, for deterministic rules or logic an LLM prompt can't reliably express.
   See [Evaluators](../../concepts/evaluations/evaluators.md#python-evaluator) for when to choose it over the LLM Evaluator.
 - **[Auto-Population Rules](./auto_population.md)** — continuously ingest new sessions from a live chatbot into a session-level dataset, and run delta evaluations on the new rows.
-  See [Set Up a Real-Time LLM Judge](../../how-to/evaluations/realtime_llm_judge.md) for a worked setup.
+  See [Set Up a Real-Time LLM-as-a-Judge](../../how-to/evaluations/realtime_llm_judge.md) for a worked setup.

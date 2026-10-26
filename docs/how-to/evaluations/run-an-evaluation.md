@@ -25,7 +25,7 @@ Under **Evaluations**, click **Add new** and choose:
 
 - The **Dataset** and the **Evaluators** to run. Evaluators whose mode does not match the dataset's level are hidden from the list. Until you select a dataset, only Message-mode evaluators are shown.
 - Optional: **Run generation step before evaluation**, with a **Chatbot** and **Chatbot version**, to score a response your chatbot generates instead of the one stored in the dataset. Generation is available for message-level datasets only.
-- Optional: **Auto-run when new rows are auto-populated**. See [Set Up a Real-Time LLM Judge](realtime_llm_judge.md) for how this works and what it costs.
+- Optional: **Auto-run when new rows are auto-populated**. See [Set Up a Real-Time LLM-as-a-Judge](realtime_llm_judge.md) for how this works and what it costs.
 
 Use **Edit** on the evaluation to change these later.
 
