@@ -265,6 +265,7 @@ Chatbot:
   - url: string (required)
   - version_number: integer
   - versions: array of ChatbotVersion (required)
+  - last_activity_at: string (required)
 
 ChatbotCreate:
   - name: string (required)
@@ -330,6 +331,18 @@ ChoiceOption:
 InspectEvents:
   - static_triggers: array of InspectStaticTrigger (required)
   - timeout_triggers: array of InspectTimeoutTrigger (required)
+  - scheduled_triggers: array of InspectScheduledTrigger (required)
+
+InspectScheduledTrigger:
+  - id: integer (required)
+  - trigger_date: string (required)
+  - trigger_time: string (required)
+  - timezone: string (required)
+  - active_session_window_days: integer
+  - scheduled_at: string (required)
+  - fired_at: string
+  - is_active: boolean
+  - action: InspectTriggerAction (required)
 
 InspectSettings:
   - seed_message: string (required)
@@ -347,14 +360,14 @@ InspectStaticTrigger:
 
 InspectTimeoutTrigger:
   - id: integer (required)
-  - delay_seconds: integer (required)
+  - delay: integer (required)
   - total_num_triggers: integer (required)
   - trigger_from_first_message: boolean (required)
   - is_active: boolean
   - action: InspectTriggerAction (required)
 
 InspectTriggerAction:
-  - type: Unknown (required)
+  - action_type: Unknown (required)
   - params: object (required)
   - pipeline: Unknown
 

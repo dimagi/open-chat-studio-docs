@@ -176,9 +176,17 @@ python manage.py sync_team \
   --follow
 ```
 
-After each pass, the command prints how many rows it synced, then waits `--interval` seconds and starts the next pass.
+After each pass, the command prints how many rows it synced, then waits the interval (set by `--interval`, default 10 seconds) and starts the next pass.
 
 Press **Ctrl+C** to stop the command. When it stops, it prints a report of the rows it synced.
+
+### Syncing from a busy source
+
+You can run `sync_team` while the source is still receiving traffic:
+
+- **New rows during a sync:** if the source creates a row whose parent the sync has already passed, the command re-reads the source to find the parent, then continues. It still stops if the parent was deleted or belongs to a chatbot that isn't part of the sync.
+- **Rate limits:** if the source responds with a rate-limit error, the command waits and retries.
+- **Edits on the target:** if a session, chat, participant or participant data row was changed on the target after the sync last wrote it, the sync leaves the target version in place. The final report lists how many rows were kept this way.
 
 ## 7. Re-register channel webhooks (target server)
 
@@ -188,7 +196,7 @@ Once the team's data has synced, channel webhooks still point at the source serv
     To prevent conflicts between data on the source and the target, run this step only when both of these are true:
 
     1. `sync_team` has exported all rows from the source.
-    2. Traffic is quiet: `sync_team --follow` passes report 0 rows synced. This is typically late at night.
+    2. Traffic is quiet: `sync_team --follow` passes have reported 0 rows synced for a few minutes.
 
     Leave `sync_team --follow` running in another shell while you switch over. See [Run the sync continuously](#run-the-sync-continuously).
 

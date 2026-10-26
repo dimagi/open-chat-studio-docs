@@ -11,10 +11,16 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Oct 23, 2026
+* **NEW** Added v2 API endpoints to create, update and archive a chatbot's static, timeout and scheduled triggers (`/api/v2/chatbots/{id}/static-triggers/`, `timeout-triggers/` and `scheduled-triggers/`). Changes apply to the working version, and requests are validated the same way as the trigger forms in the web app. Chatbot inspect now also lists scheduled triggers. See the [API documentation](api/index.md).
+
 ## Oct 16, 2026
+* **CHANGE** The **Public link** channel is now available to every team. It no longer needs a feature flag to appear in the add-channel dropdown. See [Deploy your chatbot with a public link](how-to/deploy_public_link_channel.md).
 * **NEW** Teams can now post notifications to Slack channels, with a minimum severity level per channel. Configure channels under **Team settings > Notifications**; a linked Slack workspace is required. See [Slack notification channels](concepts/notifications.md#slack-notification-channels).
 
 ## Oct 15, 2026
+* **NEW** Added an **Annotation Queues** column to the sessions list, showing each queue a session is in with the item's status, and an **Annotation Queue** filter with a **Not in any queue** option for finding sessions nobody has reviewed yet. Both require the human annotations feature flag. See [Annotation Queues on the Sessions List](concepts/sessions.md#annotation-queues-on-the-sessions-list).
+* **CHANGE** The session CSV export has a new **Annotation Queues** column directly after **Session Tags**, formatted `Queue name (Status), ...`. Every column after it moves one position to the right, so anyone reading the export by column position needs to adjust. The cells are empty for teams without the human annotations feature flag.
 * **NEW** Added v2 API endpoints to list, retrieve, create, update and archive a team's source material (`/api/v2/source-material/`) and consent forms (`/api/v2/consent-forms/`). Changes apply to working versions only and reach published chatbots when they are next published. Client-credentials tokens can read these resources but not change them. See the [API documentation](api/index.md).
 
 ## Oct 14, 2026
@@ -25,7 +31,7 @@ hide:
 * **NEW** The pipeline builder has three additions: a find button (or Ctrl/Cmd+F) that searches the text on every node and opens the matching node, tool-name autocomplete in LLM node prompts for the tools enabled on that node, and a **Help** button in LLM and Router prompt editors that asks an AI assistant to suggest a revised prompt you can edit, accept or reject. See [Search and get prompt help in the pipeline editor](how-to/pipeline_editor_search_and_prompt_help.md).
 
 ## Oct 12, 2026
-* **NEW** `sync_team` has a new `--follow` flag for the cutover: the command keeps running after the first pass and pulls new rows from the source every `--interval` seconds (default 10) until you stop it with Ctrl+C. `sync_team` also no longer stops when the source creates rows during the sync, retries after rate-limit responses from the source, and keeps edits made on the target to sessions, chats and participants. See [team migration](tech-hub/migrate_team.md).
+* **NEW** `sync_team` has a new `--follow` flag for the cutover: the command keeps running after the first pass and pulls new rows from the source on a configurable interval (default 10 seconds, set with `--interval`) until you stop it with Ctrl+C. `sync_team` also now finds the parent of a row the source created during the sync instead of stopping, unless the parent was deleted or belongs to a chatbot that isn't part of the sync. It also retries after rate-limit responses from the source, and keeps edits made on the target to sessions, chats, participants and participant data. See [team migration](tech-hub/migrate_team.md).
 
 ## Oct 9, 2026
 * **CHANGE** Participants can no longer send executable or installer files (such as `.exe`, `.msi` or `.dmg`) to a chatbot on any channel. Email already blocked these; the block now also applies to WhatsApp, the chat widget, the chat API and in-app chat. On the widget, chat API and in-app chat the upload is rejected with an error naming the file. On WhatsApp and email the file is dropped and a note is added to the message text so the chatbot can tell the participant. Windows executables are now also detected from the file contents, so an `.exe` renamed to `report.pdf` is rejected. See [channel file support](concepts/channels.md#file-support).

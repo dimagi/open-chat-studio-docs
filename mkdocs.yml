@@ -133,8 +133,9 @@ nav:
       - Manage Notifications: how-to/manage_notifications.md
       - Find Where a Provider Is Used: how-to/find_provider_usages.md
     - Annotations:
-      - Create a Queue and Add Items: how-to/annotations/create-a-queue.md
+      - Create a Queue and Add Sessions: how-to/annotations/create-a-queue.md
       - Annotate Queue Items: how-to/annotations/annotate-items.md
+      - Manage an Annotation Queue: how-to/annotations/manage-a-queue.md
       - Export Annotations: how-to/annotations/export-annotations.md
     - Evaluations:
       - Create a Dataset: how-to/evaluations/create-a-dataset.md
@@ -221,6 +222,7 @@ nav:
     - Evaluations:
       - tech-hub/evaluations/index.md
       - Dataset Structure: tech-hub/evaluations/dataset-structure.md
+      - Evaluator Reference: tech-hub/evaluations/evaluator-reference.md
       - Python Evaluator: tech-hub/evaluations/python_evaluator.md
       - Auto-Population Rules: tech-hub/evaluations/auto_population.md
     - Annotations:
