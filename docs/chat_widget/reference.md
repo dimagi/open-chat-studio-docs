@@ -407,6 +407,15 @@ Files are validated on upload by their contents, not just their extension — if
 5. Error messages appear for unsupported file types or files exceeding size limits
 6. Files are uploaded when the message is sent
 
+### Downloading Chatbot Attachments
+
+When the chatbot attaches a file to a message, the widget shows the file in the chat.
+If the attachment has a download URL, the widget renders it as a button.
+Clicking the button downloads the file.
+Attachments without a download URL show the file name as plain text.
+
+If a download fails, the widget shows an error message in the chat and the session continues.
+
 See [CSS Styling](styling.md#file-attachments) for customization options
 
 ## :material-translate: Internationalization {#internationalization}
@@ -459,6 +468,7 @@ Provide translations as a flat JSON object that uses dot-notation keys. These ke
   "attach.add": "Attach files",
   "attach.remove": "Remove file",
   "attach.success": "File attached",
+  "attach.download": "Download",
   "status.starting": "Starting chat...",
   "status.typing": "Preparing response",
   "status.uploading": "Uploading",
@@ -473,6 +483,7 @@ Provide translations as a flat JSON object that uses dot-notation keys. These ke
   "error.unsupportedType": "Unsupported file type",
   "error.connection": "Connection error. Please try again.",
   "error.sessionExpired": "Session expired. Please start a new chat.",
+  "error.download": "Download failed. Please try again.",
   "branding.poweredBy": "Powered by",
   "branding.buttonText": "",
   "branding.headerText": "",
@@ -496,6 +507,7 @@ Use the following reference when creating or updating translation bundles (mirro
   - `attach.add` — Adds file attachments.
   - `attach.remove` — Removes a pending attachment.
   - `attach.success` — Upload queued confirmation.
+  - `attach.download` — Label for the button that downloads a bot attachment.
 - **status**
   - `status.starting` — Shown while the session initializes.
   - `status.typing` — Typing indicator text (previously `typingIndicatorText`).
@@ -514,6 +526,7 @@ Use the following reference when creating or updating translation bundles (mirro
   - `error.unsupportedType` — Unsupported file format.
   - `error.connection` — Generic connection failure.
   - `error.sessionExpired` — Session expiration prompt.
+  - `error.download` — Error shown in the chat when an attachment download fails.
 - **branding**
   - `branding.poweredBy` — Footer "Powered by" label.
   - `branding.buttonText` — Optional launcher text override; leave blank to use widget props.
