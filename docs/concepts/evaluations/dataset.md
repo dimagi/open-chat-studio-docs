@@ -8,13 +8,13 @@ A small set of realistic examples tells you more about your chatbot than scoring
 
 A participant has this conversation with a clinic's appointment chatbot:
 
-> **User:** Can I book a check-up for Tuesday?
+> **Participant:** Can I book a check-up for Tuesday?
 >
-> **Bot:** Yes, there is a slot at 10:00 or 14:30. Which would you like?
+> **Chatbot:** Yes, there is a slot at 10:00 or 14:30. Which would you like?
 >
-> **User:** 14:30 please.
+> **Participant:** 14:30 please.
 >
-> **Bot:** Booked. You'll get a reminder the day before.
+> **Chatbot:** Booked. You'll get a reminder the day before.
 
 A dataset can store this conversation in two ways, depending on its [evaluation level](#evaluation-levels).
 
@@ -62,7 +62,7 @@ Which methods are available depends on the evaluation level.
 | [Import from an annotation queue](../../how-to/evaluations/create-a-dataset.md#import-from-annotation-queue) | When creating the dataset only | Yes | Your team has already curated conversations for [human review](../annotations/queues.md) and you want to score the same set automatically. |
 | [Create rows manually](../../how-to/evaluations/create-a-dataset.md#create-manually) | Yes | No | You want to write targeted test cases or edge cases that have not happened yet. |
 | [Upload a CSV](../../how-to/evaluations/create-a-dataset.md#upload-csv-file) | Yes | No | You have an existing test suite or data from another tool. |
-| [Auto-population rules](../../tech-hub/evaluations/auto_population.md) | No | Yes | You want new sessions from a live chatbot added continuously. |
+| [Auto-population rules](../../tech-hub/evaluations/auto_population.md) | No | Yes | You want new sessions from a live chatbot added continuously. See [Set Up a Real-Time LLM Judge](../../how-to/evaluations/realtime_llm_judge.md). |
 
 ## Sharing dataset messages
 
