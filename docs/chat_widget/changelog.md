@@ -33,7 +33,7 @@ Check your current HTML implementation and compare it with the [latest propertie
 
 ### Unreleased
 
-* Let participants download files that the bot attaches to a message. Each attachment with a download link appears as a button in the message, and clicking it saves the file. If a download fails, the widget shows an error in the chat and the conversation continues. Adds the `attach.download` and `error.download` translation keys. See [File Attachments](reference.md#file-attachments).
+* Let participants download files that the chatbot attaches to a message. Each attachment with a download link appears as a button in the message, and clicking it saves the file. If a download fails, the widget shows an error in the chat and the conversation continues. Adds the `attach.download` and `error.download` translation keys. See [Downloading Chatbot Attachments](reference.md#downloading-chatbot-attachments).
 
 ### v0.13.0 (2026-09-16)
 

@@ -407,15 +407,13 @@ Files are validated on upload by their contents, not just their extension — if
 5. Error messages appear for unsupported file types or files exceeding size limits
 6. Files are uploaded when the message is sent
 
-### Downloading Bot Attachments
+### Downloading Chatbot Attachments
 
-When the bot attaches a file to a message, the widget shows the file in the chat.
+When the chatbot attaches a file to a message, the widget shows the file in the chat.
 If the attachment has a download URL, the widget renders it as a button.
 Clicking the button downloads the file.
 Attachments without a download URL show the file name as plain text.
 
-The widget sends the session headers with the download request, and renews the session token if needed.
-It sends these headers only when the download URL is on the same origin as the API.
 If a download fails, the widget shows an error message in the chat and the session continues.
 
 See [CSS Styling](styling.md#file-attachments) for customization options
