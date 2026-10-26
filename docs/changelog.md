@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Oct 26, 2026
+* **MIGRATION** Started the 60-day retirement of the legacy web chat (the `/start/` link, email invitations and the logged-in chat page) in favour of the Public link channel. Old `/start/` links redirect to the chatbot's public link when one is live, invitations are read-only, and team admins get in-app reminders before the removal date. See [Moving off the legacy web chat](how-to/deploy_public_link_channel.md#moving-off-the-legacy-web-chat).
+
 ## Oct 23, 2026
 * **NEW** Added v2 API endpoints to create, update and archive a chatbot's static, timeout and scheduled triggers (`/api/v2/chatbots/{id}/static-triggers/`, `timeout-triggers/` and `scheduled-triggers/`). Changes apply to the working version, and requests are validated the same way as the trigger forms in the web app. Chatbot inspect now also lists scheduled triggers. See the [API documentation](api/index.md).
 

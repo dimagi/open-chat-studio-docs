@@ -25,6 +25,11 @@ Sessions flow through statuses automatically. The path depends on how the partic
 
 ### Web invitation flow
 
+!!! warning "Being retired"
+    The legacy web chat, including email invitations and the `/start/` link, is being retired.
+    New invitations can no longer be created.
+    See [Moving off the legacy web chat](../how-to/deploy_public_link_channel.md#moving-off-the-legacy-web-chat).
+
 Used when participants arrive via an invitation link or public web chat link. The path differs depending on whether the participant was invited by email or arrived via a public link.
 
 **Invitation email flow** — the session is created in `SETUP`, the email is sent, and the participant accepts consent on the invitation page:

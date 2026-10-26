@@ -37,6 +37,52 @@ If a link has been shared somewhere you no longer want it to work, open the chan
 
 See [Disabling a channel](../concepts/channels.md#disabling-a-channel) for how disabling works across channels generally.
 
+## Moving off the legacy web chat
+
+The legacy web chat is being retired in favour of the public link channel.
+It includes the public `/start/` link, email invitations, the server-rendered chat page, and the full-page chat for logged-in users.
+A 60-day transition window has started.
+Nothing is removed yet.
+The removal date is shown in the **Share** dialog and on the **Invitations** page.
+
+### What changes during the window
+
+- Invitations are read-only.
+  Pending sessions are still listed and links already sent still work, but you can't create or send new invitations.
+- Legacy chat pages send `Deprecation`, `Sunset`, and `Link` response headers.
+- The **Share** dialog and the **Invitations** page show the removal date and link to this guide.
+- An old `/start/` link redirects to the chatbot's public link.
+  This happens only if the chatbot has a published version and an enabled public link channel.
+
+### What changes after the removal date
+
+The legacy entry points return `410 Gone`.
+The message points visitors to the chatbot's public URL if it has a live public link, and to this documentation otherwise.
+Chats that visitors already started keep working, because only the entry points are blocked.
+
+### Move a chatbot to the public link
+
+1. [Publish a version](../tutorials/versioning_steps.md) of the chatbot if it doesn't have one.
+2. [Add the Public link channel](#add-a-public-link) and make sure it is enabled.
+3. Replace the old `/start/` link, or the invitation emails, with the new public link everywhere you shared it.
+4. Open the old link to confirm it redirects to the new one.
+
+!!! warning "Some legacy features aren't carried over"
+    The public link doesn't support invitations, message rating, or the end-of-chat review.
+    Check whether your workflow depends on them before you switch.
+
+### Notifications
+
+Team members who can add channels get an in-app notification when a chatbot still has legacy visitors and no live public link.
+A chatbot counts as affected if it had a web session in the last 30 days.
+You are notified when this is first detected, then 30, 14, 7, and 1 days before the removal date.
+
+!!! info "For self-hosted operators"
+    The `flag_sunset_legacy_web_chat_enforce` Waffle flag switches the legacy entry points to `410 Gone` after the removal date.
+    You can enable it per team or for everyone, and turn it off again without a deploy.
+    The flag appears in `/admin/flags/` only after a request has checked it.
+    A new Celery beat task, `notify_http_sunsets`, runs daily at 02:30 to send the notifications.
+
 ## Troubleshooting
 
 **Visitors see a banner instead of the chat**
