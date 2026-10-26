@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Oct 26, 2026
+* **NEW** With the abuse detection feature flag on, participant messages that contain HTML or script markup (such as `<script>`, `<iframe>`, `onclick=` or `javascript:`) are marked with a **rule: markup** badge in the session transcript. The chatbot still replies and no strike is given. Only team members see the badge.
+
 ## Oct 23, 2026
 * **NEW** Added v2 API endpoints to create, update and archive a chatbot's static, timeout and scheduled triggers (`/api/v2/chatbots/{id}/static-triggers/`, `timeout-triggers/` and `scheduled-triggers/`). Changes apply to the working version, and requests are validated the same way as the trigger forms in the web app. Chatbot inspect now also lists scheduled triggers. See the [API documentation](api/index.md).
 

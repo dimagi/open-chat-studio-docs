@@ -75,6 +75,21 @@ The sessions CSV export has a matching **Annotation Queues** column after **Sess
 Columns after it move one position to the right.
 The header is always present so the layout is stable, but cells are empty for teams without the feature flag.
 
+## Markup Badge in the Session Transcript
+
+When a team has the abuse detection feature flag, the session transcript marks participant messages that contain HTML or script markup with a **rule: markup** badge.
+Examples of markup that triggers the rule are `<script>`, `<iframe>`, `onclick=` inside a tag or after a quote, and `javascript:`.
+Ordinary text such as `one = 1` or `onClick={handle}` does not trigger the rule.
+
+- The chatbot still answers the message, and the message does not count as an abuse strike.
+- Only team members see the badge. Participants viewing their own transcript do not.
+- The check runs on messaging, web, and API channels. It does not run for evaluations.
+- The check is skipped when the feature flag is off.
+
+!!! note
+    Rule hits are stored in the message's moderation detail.
+    Adding a badge updates the message's `updated_at` time, so the message export API cursor returns the message again.
+
 ## See also
 
 - [Session Status](session_status.md)
