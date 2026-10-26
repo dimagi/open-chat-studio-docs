@@ -84,7 +84,9 @@ See [Output validation](../../tech-hub/evaluations/evaluator-reference.md#output
 | actual_helpfulness | integer | The helpfulness, on a scale of 1-5, of the actual assistant message |
 | user_sentiment | choice | The sentiment of the user message (options: positive, neutral, negative) |
 | confidence_score | float | Confidence in the evaluation, from 0.0 to 1.0 |
-| answered_question | binary | Whether the assistant message answered the user's question (labels: Answered, Not answered) |
+| user_sentiment | choice | The sentiment of the participant's message (options: positive, neutral, negative) |
+| confidence_score | float | Confidence in the evaluation, from 0.0 to 1.0 |
+| answered_question | binary | Whether the assistant message answered the participant's question (labels: Answered, Not answered) |
 
 See [Tag Rules](./tag_rules.md) to automatically tag sessions or messages based on these output values.
 
