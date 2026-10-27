@@ -6,6 +6,7 @@ For example, a support chatbot's evaluator might rate each session's goal comple
 
 ## Prerequisites
 
+- An evaluation whose dataset rows come from [cloning sessions](../../concepts/evaluations/dataset.md#how-datasets-are-created), importing from an annotation queue, or auto-population. Rules never tag rows created manually or uploaded from a CSV file. See [Tag Rules](../../concepts/evaluations/tag_rules.md).
 - An [LLM evaluator](../../concepts/evaluations/evaluators.md#llm-evaluator) with at least one field in its [output schema](../../concepts/evaluations/evaluators.md#output-schema). Python evaluators do not support tag rules.
 - Permission to change evaluators.
 
@@ -54,14 +55,14 @@ The run page itself does not show tags. See [How tag rules work](../../concepts/
 
 ## Common issues
 
-- **The Tag Rules section is missing.** The evaluator is a Python evaluator. Only LLM evaluators support tag rules.
+- **The Tag Rules section is missing.** The evaluator is a [Python evaluator](../../concepts/evaluations/evaluators.md#python-evaluator). Only LLM evaluators support tag rules.
 - **Add tag rule is disabled.** The output schema has no usable field yet. Add a choice, integer, float, string or binary field first.
 - **A field shows "(add choices to use)" and can't be selected.** It is a choice field with no choices. Add its choices to the output schema.
 - **No tags appeared.** Check each of these:
     - The run was a preview.
     - No row met the condition.
     - The row failed. Failed rows are never tagged.
-    - The row has no chat message to tag. This happens to message-level rows that were added manually or from a CSV file, and to cloned rows you edited, because editing breaks the link to the original session.
+    - The row has no chat message or session to tag. This is the most common cause. It happens to rows that were added manually or from a CSV file, and to cloned rows you edited, because editing breaks the link to the original session.
 - **A tag someone added by hand disappeared.** After each run, OCS removes a rule's tag from any row in the run that no longer meets the rule's condition, even a tag a person added. See [Tag reconciliation on rerun](../../tech-hub/evaluations/evaluator-reference.md#tag-reconciliation-on-rerun).
 
 ## See also
