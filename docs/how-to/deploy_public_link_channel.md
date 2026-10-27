@@ -40,32 +40,33 @@ See [Disabling a channel](../concepts/channels.md#disabling-a-channel) for how d
 ## Moving off the legacy web chat
 
 The legacy web chat is being retired in favour of the public link channel.
-It includes the public `/start/` link, email invitations, the server-rendered chat page, and the full-page chat for logged-in users.
-A 60-day transition window has started.
-Nothing is removed yet.
-The removal date is shown in the **Share** dialog and on the **Invitations** page.
+It includes the public `/start/` link, email invitations, the chat page those links open, and the full-page chat for logged-in users.
+Until the removal date, it keeps working.
+The removal date is shown in the chatbot's **Share** dialog and on the **Invitations** page.
 
-### What changes during the window
+### What changes before the removal date
 
 - Invitations are read-only.
   Pending sessions are still listed and links already sent still work, but you can't create or send new invitations.
-- Legacy chat pages send `Deprecation`, `Sunset`, and `Link` response headers.
 - The **Share** dialog and the **Invitations** page show the removal date and link to this guide.
 - An old `/start/` link redirects to the chatbot's public link.
-  This happens only if the chatbot has a published version and an enabled public link channel.
+  This happens only if the chatbot has a published version and an enabled public link.
 
 ### What changes after the removal date
 
-The legacy entry points return `410 Gone`.
-The message points visitors to the chatbot's public URL if it has a live public link, and to this documentation otherwise.
-Chats that visitors already started keep working, because only the entry points are blocked.
+After the removal date, the legacy entry points are switched off with a feature flag.
+On the hosted service, Open Chat Studio turns it on.
+Self-hosted operators turn it on themselves.
+Once it is on, the old `/start/` and invitation links return `410 Gone`.
+The message points visitors to the chatbot's public link if it has a live one, and to this guide otherwise.
+Chats that visitors already started keep working, because only the entry points are switched off.
 
 ### Move a chatbot to the public link
 
 1. [Publish a version](../tutorials/versioning_steps.md) of the chatbot if it doesn't have one.
-2. [Add the Public link channel](#add-a-public-link) and make sure it is enabled.
+2. [Add a public link](#add-a-public-link) and make sure the channel is enabled.
 3. Replace the old `/start/` link, or the invitation emails, with the new public link everywhere you shared it.
-4. Open the old link to confirm it redirects to the new one.
+4. If you used a `/start/` link, open it to confirm it redirects to the new public link.
 
 !!! warning "Some legacy features aren't carried over"
     The public link doesn't support invitations, message rating, or the end-of-chat review.
@@ -73,15 +74,11 @@ Chats that visitors already started keep working, because only the entry points 
 
 ### Notifications
 
-Team members who can add channels get an in-app notification when a chatbot still has legacy visitors and no live public link.
-A chatbot counts as affected if it had a web session in the last 30 days.
+Team members who can add channels get an in-app notification when a chatbot still has legacy web chat visitors and no live public link.
+A chatbot counts as affected if it had a legacy web chat session in the last 30 days.
 You are notified when this is first detected, then 30, 14, 7, and 1 days before the removal date.
 
-!!! info "For self-hosted operators"
-    The `flag_sunset_legacy_web_chat_enforce` Waffle flag switches the legacy entry points to `410 Gone` after the removal date.
-    You can enable it per team or for everyone, and turn it off again without a deploy.
-    The flag appears in `/admin/flags/` only after a request has checked it.
-    A new Celery beat task, `notify_http_sunsets`, runs daily at 02:30 to send the notifications.
+Self-hosted operators: the enforcement flag, the response headers, and the notification task are described in [Legacy web chat retirement](../tech-hub/legacy_web_chat_retirement.md).
 
 ## Troubleshooting
 
