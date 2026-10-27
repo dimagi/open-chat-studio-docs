@@ -1,4 +1,4 @@
-# Developers
+# Team Settings: Developers
 
 The **Developers** section of Team Settings groups the tools your team uses to extend and integrate with Open Chat Studio: [Custom actions](#custom-actions) and [OAuth applications](#oauth-applications).
 Both are available only to **Team Admins** and **Super Admins** — see [User Groups](groups.md) for what each role can access.
