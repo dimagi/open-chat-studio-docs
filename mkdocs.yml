@@ -133,6 +133,7 @@ nav:
     - Monitoring & Debugging:
       - Configure Langfuse Trace Sampling: how-to/configure_langfuse_trace_sampling.md
       - Manage Notifications: how-to/manage_notifications.md
+      - Send Notifications to Slack: how-to/send_notifications_to_slack.md
       - Find Where a Provider Is Used: how-to/find_provider_usages.md
     - Annotations:
       - Create a Queue and Add Sessions: how-to/annotations/create-a-queue.md
@@ -180,6 +181,7 @@ nav:
         - concepts/team/speech_providers.md
         - concepts/team/authentication_providers.md
         - concepts/team/messaging_providers.md
+      - Notifications: concepts/team/notifications.md
       - Members: concepts/team/members.md
       - Developers: concepts/team/developer.md
       - Data: concepts/team/data_migration.md
