@@ -4,6 +4,10 @@ Tags are labels applied to chats and messages to categorize and organize interac
 
 Tags can be created using the “Manage Tags” section.
 
+Tag names are limited to 100 characters.
+The **Message Tag** field on pipeline nodes rejects longer values with a validation error, so shorten the tag to fix it.
+Longer tags added by a router node (**Tag Output Message**) or the Python node `add_message_tag` function are cut to 100 characters when saved.
+
 ![Manage Tags section showing options to create and edit tags](../assets/images/tags_manage.png)
 
 ## Types Of Tags

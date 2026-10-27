@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Oct 27, 2026
+* **BUG** Fixed chatbot replies failing to save when a message tag was longer than 100 characters. The **Message Tag** field on pipeline nodes now shows a validation error for tags over 100 characters, and longer tags from router nodes or the Python node `add_message_tag` function are cut to 100 characters. See [Tags](concepts/tags.md).
+
 ## Oct 23, 2026
 * **NEW** Added v2 API endpoints to create, update and archive a chatbot's static, timeout and scheduled triggers (`/api/v2/chatbots/{id}/static-triggers/`, `timeout-triggers/` and `scheduled-triggers/`). Changes apply to the working version, and requests are validated the same way as the trigger forms in the web app. Chatbot inspect now also lists scheduled triggers. See the [API documentation](api/index.md).
 

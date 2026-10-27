@@ -100,7 +100,8 @@ def get_all_routes() -> dict:
 
 
 def add_message_tag(tag_name: str):
-    """Adds a tag to the output message. To add multiple tags, call this function multiple times."""
+    """Adds a tag to the output message. To add multiple tags, call this function multiple times.
+    Tag names longer than 100 characters are cut to 100 characters when saved."""
 
 
 def add_session_tag(tag_name: str):
