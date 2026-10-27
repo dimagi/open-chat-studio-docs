@@ -50,6 +50,8 @@ Your team may also have its notifications posted to a Slack channel, in addition
 Team Admins set this up for the whole team, and each Slack channel receives notifications at or above a [severity level](#severity-levels) they choose.
 
 Your personal notification settings, including [Do Not Disturb](../how-to/manage_notifications.md#turn-on-do-not-disturb), don't change what the team's Slack channels receive.
+Slack channels also aren't limited to the members who would see a notification in OCS.
+A custom-action failure, for example, is posted to every Slack channel at or above its level, even though only some members receive it in the app.
 
 ## Reducing noise
 

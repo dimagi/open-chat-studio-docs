@@ -31,8 +31,9 @@ If your team has no Slack workspace, the **Notifications** section shows this no
 The **Add channel** button is disabled until a workspace is linked.
 
 1. Click **Connect a Slack workspace** in the notice.
-   This link appears only if you have permission to add messaging providers.
+   This link appears only if you have permission to add messaging providers and Slack is configured on the instance.
    If you don't see it, your [User Group](../concepts/team/groups.md) may not include that permission.
+   On a self-hosted instance, check that [Slack is configured](../tech-hub/slack_notifications_self_hosted.md).
 2. Follow the Slack OAuth flow to add a Slack messaging provider.
    See [Configure a messaging provider](../tutorials/configure_msg_providers.md).
 3. Return to **Manage Team** > **Notifications**.
@@ -71,6 +72,7 @@ Each notification is posted as a Slack message containing:
 - The notification title, as the message header
 - The team name
 - The level
+- The notification message, under **Details**
 - Any links attached to the notification
 - A **View in OCS** link to the notification page
 
