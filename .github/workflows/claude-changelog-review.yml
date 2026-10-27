@@ -1,0 +1,92 @@
+# Changelog PR Review Workflow
+#
+# Comment-only review of the "Changelog + Docs" PRs that update-changelog.yml
+# opens as ocs-agent. Claude writes those PRs from OCS PR text, so this is a
+# second check on them. update-api-docs PRs and "Changelog:"-only PRs are not
+# reviewed. Requires the ANTHROPIC_API_KEY secret. See
+# README-claude-workflows.md for the command this runs.
+#
+# Notes:
+# - allowed_bots lists only ocs-agent[bot]; never '*'.
+# - No `gh pr view`, so the PR title and body (copied from the OCS PR) never
+#   reach the model.
+# - A shell step fails the job before Claude runs if the PR touches anything
+#   outside `docs/` or `mkdocs.yml`; the model never sees such a PR.
+# - Not triggered on `synchronize`, same as claude-review.yml.
+
+
+name: Changelog PR Review
+
+on:
+  pull_request:
+    types: [opened, reopened, ready_for_review]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+# Restrict default permissions — job overrides as needed
+permissions: {}
+
+jobs:
+  review:
+    if: >-
+      github.event.pull_request.user.login == 'ocs-agent[bot]' &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      contains(fromJSON('["main","widget-develop"]'), github.base_ref) &&
+      startsWith(github.event.pull_request.head.ref, 'changelog-pr-') &&
+      (startsWith(github.event.pull_request.title, 'Changelog + Docs:') ||
+       startsWith(github.event.pull_request.title, '[Widget] Changelog + Docs:'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read # Checkout only
+      pull-requests: write # Post review comments
+    steps:
+      # Deterministic scope gate: no model involved. Lists every changed path,
+      # including the old path of renamed files, and stops the job before the
+      # Claude step if any is outside docs/ or mkdocs.yml (nav entries).
+      - name: Check changed files are in scope
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
+        run: |
+          paths=$(gh api "repos/${REPO}/pulls/${PR_NUMBER}/files" --paginate \
+            --jq '.[] | .filename, (.previous_filename // empty)')
+          out_of_scope=$(echo "$paths" | grep -v -E '^(docs/|mkdocs\.yml$)' || true)
+          if [ -n "$out_of_scope" ]; then
+            {
+              echo "This automated PR changes files outside \`docs/\` and \`mkdocs.yml\`, so the AI review was skipped. A person needs to review these changes:"
+              echo
+              echo '```text'
+              echo "$out_of_scope" | head -n 20 | tr -d '`'
+              echo '```'
+            } > "${RUNNER_TEMP}/scope-comment.md"
+            gh pr comment "$PR_NUMBER" --repo "$REPO" --body-file "${RUNNER_TEMP}/scope-comment.md"
+            echo "::error::PR changes files outside docs/ and mkdocs.yml"
+            exit 1
+          fi
+
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Changelog and User Docs PR Review
+        uses: anthropics/claude-code-action@v1.0.245
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ github.token }}
+          allowed_bots: "ocs-agent[bot]"
+          prompt: "/review-changelog-pr REPO: ${{ github.repository }} PR_NUMBER: ${{ github.event.pull_request.number }} BASE_REF: ${{ github.base_ref }}"
+          claude_args: |
+            --max-turns 25
+            --disallowedTools "Edit,MultiEdit,Write,NotebookEdit,WebFetch,WebSearch"
+            --allowedTools "Read,
+            Grep,
+            Glob,
+            mcp__github_inline_comment__create_inline_comment,
+            Bash(gh pr comment:*),
+            Bash(gh pr diff:*)"

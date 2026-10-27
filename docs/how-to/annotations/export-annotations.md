@@ -12,7 +12,6 @@ For how exports fit into the review process, see [Exporting Results](../../conce
 ## Prerequisites
 
 - A queue with at least one submitted annotation. See [Annotate Queue Items](annotate-items.md).
-- Permission to view annotations. See [User Groups](../../concepts/team/groups.md).
 
 ## Export a Queue
 

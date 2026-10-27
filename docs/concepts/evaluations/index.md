@@ -16,7 +16,7 @@ flowchart LR
     results --> compare[Compare runs over time]
 ```
 
-- **[Dataset](./dataset.md)**: the conversations or test cases to score.
+- **[Dataset](./dataset.md)**: the sample conversations or test cases to score.
 - **[Evaluators](./evaluators.md)**: score each row, using an LLM prompt or Python code. Several evaluators can run on the same dataset.
 - **[Tag rules](./tag_rules.md)**: tag rows whose scores meet a condition, such as a low rating, so you can find them quickly.
 
@@ -30,4 +30,5 @@ You run the evaluation with the current model and note the average score, then c
 
 - [Create a Dataset](../../how-to/evaluations/create-a-dataset.md) — build your first dataset by cloning sessions, importing from an [annotation queue](../annotations/queues.md), or uploading a CSV.
 - [Run an Evaluation](../../how-to/evaluations/run-an-evaluation.md) — create an evaluation, preview and run it, and read the results.
+- [Set Up a Real-Time LLM Judge](../../how-to/evaluations/realtime_llm_judge.md) — score new sessions from a live chatbot automatically.
 - [Evaluations Reference](../../tech-hub/evaluations/index.md) — how evaluation runs execute, Python evaluators and auto-population.

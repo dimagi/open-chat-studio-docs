@@ -933,9 +933,6 @@ GET /api/export/voice_providers/
 
 SCHEMAS:
 
-ActionTypeEnum:
-  - enum: [log, end_conversation, send_message_to_bot, schedule_trigger, pipeline_start]
-
 AnalysisQueryDetail:
   - id: integer (required)
   - name: string
@@ -1088,6 +1085,8 @@ ChatMessageDetail:
   - translations: Unknown
   - metadata: Unknown
   - external_ids: array of string
+  - moderation_status: Unknown
+  - moderation_detail: Unknown
   - chat: integer (required)
 
 ChatMessageList:
@@ -1442,7 +1441,7 @@ EventActionDetail:
   - id: integer (required)
   - created_at: string (required)
   - updated_at: string (required)
-  - action_type: ActionTypeEnum (required)
+  - action_type: TriggerActionTypeEnum (required)
   - params: Unknown
 
 EventActionList:
@@ -1907,20 +1906,20 @@ StaticTriggerDetail:
   - id: integer (required)
   - created_at: string (required)
   - updated_at: string (required)
-  - type: StaticTriggerDetailTypeEnum (required)
+  - type: StaticTriggerTypeEnum (required)
   - is_archived: boolean
   - is_active: boolean
   - action: integer (required)
   - experiment: integer (required)
   - working_version: integer
 
-StaticTriggerDetailTypeEnum:
-  - enum: [conversation_end, conversation_ended_by_user, conversation_ended_by_bot, conversation_ended_via_api, conversation_ended_by_event, conversation_ended_manually, last_timeout, conversation_start, new_human_message, new_bot_message, participant_joined]
-
 StaticTriggerList:
   - cursor: string (required)
   - has_more: boolean (required)
   - results: array of StaticTriggerDetail (required)
+
+StaticTriggerTypeEnum:
+  - enum: [conversation_end, conversation_ended_by_user, conversation_ended_by_bot, conversation_ended_via_api, conversation_ended_by_event, conversation_ended_manually, last_timeout, conversation_start, new_human_message, new_bot_message, participant_joined]
 
 SyntheticVoiceDetail:
   - id: integer (required)
@@ -1968,6 +1967,7 @@ TeamExport:
   - metadata: Unknown
   - is_migrating: boolean
   - require_mfa: boolean
+  - auto_block_enabled: boolean
   - created_by: integer (required)
 
 TimeoutTriggerDetail:
@@ -2059,6 +2059,9 @@ TranscriptAnalysisList:
   - cursor: string (required)
   - has_more: boolean (required)
   - results: array of TranscriptAnalysisDetail (required)
+
+TriggerActionTypeEnum:
+  - enum: [log, end_conversation, send_message_to_bot, schedule_trigger, pipeline_start]
 
 UsageRecordDetail:
   - id: integer (required)
