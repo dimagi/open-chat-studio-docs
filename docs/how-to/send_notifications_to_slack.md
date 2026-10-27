@@ -36,12 +36,12 @@ The **Add channel** button is disabled until a workspace is linked.
    On a self-hosted instance, check that [Slack is configured](../tech-hub/slack_notifications_self_hosted.md).
 2. Follow the Slack OAuth flow to add a Slack messaging provider.
    See [Configure a messaging provider](../tutorials/configure_msg_providers.md).
-3. Return to **Manage Team** > **Notifications**.
+3. Return to **Team Settings → Notifications**.
    The **Add channel** button is now available.
 
 ## Add a channel
 
-1. Open **Manage Team** and select **Notifications** (bell icon).
+1. Open **Team Settings** and select **Notifications** (bell icon).
 2. Click **Add channel**.
 3. In **Slack workspace**, choose one of your team's Slack messaging providers.
 4. In **Channel name**, enter the Slack channel to post to, such as `#alerts`.

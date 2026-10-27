@@ -16,7 +16,7 @@ Your team needs a Slack messaging provider before you can add a channel.
 You can use several channels at different levels to send notifications to the right audience.
 For example, Error notifications can go to `#alerts` for the people who fix problems, and Info notifications to `#updates` for everyone else.
 
-Members' personal [notification settings](../notifications.md#slack-notification-channels) don't change what Slack channels receive, so you don't need to ask them to change anything.
+Members' personal [notification settings](../../how-to/manage_notifications.md#set-your-notification-preferences) don't change what Slack channels receive, so you don't need to ask them to change anything.
 
 See [Send Notifications to Slack](../../how-to/send_notifications_to_slack.md) to connect a workspace and add a channel.
 
