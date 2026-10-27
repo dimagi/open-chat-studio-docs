@@ -51,10 +51,9 @@ For example, you could keep in-app notifications on for everything, but only ena
 ## Notifications in Slack
 
 Your team may also have its notifications posted to a Slack channel.
-These team channels are separate from your personal settings: your notification preferences and Do Not Disturb don't change what is posted to Slack.
-If you want your team's notifications posted to Slack, ask a Team Admin to set it up. They can follow [Send Notifications to Slack](send_notifications_to_slack.md).
+Your preferences and Do Not Disturb don't change what is posted there.
+See [Slack notification channels](../concepts/notifications.md#slack-notification-channels), or ask a Team Admin to set it up using [Send Notifications to Slack](send_notifications_to_slack.md).
 
 ## See also
 
 To learn more about how notifications are grouped, scoped, and delivered, see the [Notifications](../concepts/notifications.md) concept page.
-Team Admins who want to post team notifications to Slack can follow [Send Notifications to Slack](send_notifications_to_slack.md).

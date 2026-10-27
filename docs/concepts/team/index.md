@@ -34,8 +34,7 @@ Every provider's edit page also has a **Usages** tab, showing everywhere in your
 
 ## Notifications
 
-The [Notifications](notifications.md) section is where Team Admins set up Slack channels to receive the team's notifications, so the whole team sees important events without opening OCS.
-It is set up once for the team and applies to every member.
+The [Notifications](notifications.md) section is where Team Admins set up Slack channels to receive the team's notifications.
 See [Send Notifications to Slack](../../how-to/send_notifications_to_slack.md) for the setup steps.
 
 ## Members

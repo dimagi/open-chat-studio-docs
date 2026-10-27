@@ -53,8 +53,8 @@ The **Add channel** button is disabled until a workspace is linked.
 When you save, OCS checks the channel name with Slack.
 If Slack can't find the channel, OCS still saves the name as you entered it.
 
-**Example:** Add an **Error** channel that posts to `#alerts` and an **Info** channel that posts to `#updates`.
-`#alerts` receives only Error notifications, and `#updates` receives all notifications.
+To send different levels to different audiences, add one channel for each level.
+See [Notification channels](../concepts/team/notifications.md#notification-channels) for an example.
 
 ## Edit, disable or delete a channel
 
