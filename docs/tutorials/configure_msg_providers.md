@@ -23,12 +23,12 @@ Click **Add integration** and choose your provider from the **Messaging** group.
 
 For provider-specific setup, see:
 
-- [WhatsApp](../how-to/deploy_to_different_channels.md#whatsapp)
-- [Telegram](../how-to/deploy_to_different_channels.md#telegram)
-- [WhatsApp Business Platform with Meta](../how-to/deploy_to_different_channels.md#meta-cloud-api)
-- [Slack](../how-to/deploy_to_different_channels.md#slack)
-- [Facebook Messenger](../how-to/deploy_to_different_channels.md#facebook-messenger)
-- [SureAdhere secure In-App Messaging](../how-to/deploy_to_different_channels.md#sureadhere-for-secure-in-app-messaging)
+- [WhatsApp](../how-to/channels/deploy_to_different_channels.md#whatsapp)
+- [Telegram](../how-to/channels/deploy_to_different_channels.md#telegram)
+- [WhatsApp Business Platform with Meta](../how-to/channels/deploy_to_different_channels.md#meta-cloud-api)
+- [Slack](../how-to/channels/deploy_to_different_channels.md#slack)
+- [Facebook Messenger](../how-to/channels/deploy_to_different_channels.md#facebook-messenger)
+- [SureAdhere secure In-App Messaging](../how-to/channels/deploy_to_different_channels.md#sureadhere-for-secure-in-app-messaging)
 
 ## Next steps
 

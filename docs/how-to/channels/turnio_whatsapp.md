@@ -27,7 +27,7 @@ Setting up a WhatsApp channel via Turn.io involves these stages:
 
 ## 1. Add Your Provider to OCS
 
-1. Navigate to your **Team Settings → [Integrations](../concepts/team/integrations.md)** in OCS.
+1. Navigate to your **Team Settings → [Integrations](../../concepts/team/integrations.md)** in OCS.
 2. Click **Add integration**, then choose **Turn.io** from the **Messaging** group.
 3. Fill in the form:
     - **Name** — a label to identify this provider (e.g., `My Turn.io Account`).
@@ -68,7 +68,7 @@ before processing them.
 
 1. In Turn.io, copy the webhook's **HMAC secret** from the same **Settings → API & Webhooks**
    screen where you added the webhook. If it does not have one yet, generate it there first.
-2. In OCS, open **Team Settings → [Integrations](../concepts/team/integrations.md)**, filter by **Messaging**, and edit your Turn.io provider.
+2. In OCS, open **Team Settings → [Integrations](../../concepts/team/integrations.md)**, filter by **Messaging**, and edit your Turn.io provider.
 3. Paste the same value into the **Webhook HMAC Secret** field.
 4. Click **Save**.
 
@@ -131,6 +131,6 @@ These are safeguards unrelated to the signing secret:
 
 ## See also
 
-- [Messaging providers](../concepts/team/messaging_providers.md)
+- [Messaging providers](../../concepts/team/messaging_providers.md)
 - [Deploy your chatbot to different platforms](deploy_to_different_channels.md)
 - [Set up WhatsApp with Meta Cloud API](whatsapp_meta_cloud_api.md)

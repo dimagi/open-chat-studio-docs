@@ -116,14 +116,14 @@ nav:
       - Set Up and Manage Document Sources: how-to/document_sources.md
       - Filter Collection Search by Metadata: how-to/filter_collection_search_by_metadata.md
     - Channels & Deployment:
-      - how-to/deploy_to_different_channels.md
-      - how-to/disable_a_channel.md
-      - Deploy chatbot with a Public Link: how-to/deploy_public_link_channel.md
-      - Deploy chatbot to Email: how-to/deploy_email_channel.md
-      - Deploy chatbot to Slack: how-to/deploy_slack_channel.md
-      - how-to/whatsapp_meta_cloud_api.md
-      - how-to/turnio_whatsapp.md
-      - Send a Broadcast Message: how-to/broadcast_message.md
+      - how-to/channels/deploy_to_different_channels.md
+      - how-to/channels/disable_a_channel.md
+      - Deploy chatbot with a Public Link: how-to/channels/deploy_public_link_channel.md
+      - Deploy chatbot to Email: how-to/channels/deploy_email_channel.md
+      - Deploy chatbot to Slack: how-to/channels/deploy_slack_channel.md
+      - how-to/channels/whatsapp_meta_cloud_api.md
+      - how-to/channels/turnio_whatsapp.md
+      - Send a Broadcast Message: how-to/channels/broadcast_message.md
     - UI Helpers:
       - Filter Tables with Natural Language: how-to/nl_filter.md
       - Find Objects: how-to/global_search.md

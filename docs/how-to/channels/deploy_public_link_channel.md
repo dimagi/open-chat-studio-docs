@@ -1,10 +1,10 @@
 # Deploy Your Chatbot with a Public Link
 
-A public link gives your chatbot a hosted chat page that anyone can open — no embedding or website required. See [Public link](../concepts/channels.md#public-link) for what it is and what visitors see.
+A public link gives your chatbot a hosted chat page that anyone can open — no embedding or website required. See [Public link](../../concepts/channels.md#public-link) for what it is and what visitors see.
 
 ## Prerequisites
 
-- A **published version** of your chatbot. Visitors always reach the published version — if you haven't published one yet, they'll see a banner instead of the chat. See [Create & publish versions](../tutorials/versioning_steps.md).
+- A **published version** of your chatbot. Visitors always reach the published version — if you haven't published one yet, they'll see a banner instead of the chat. See [Create & publish versions](../../tutorials/versioning_steps.md).
 
 ## Add a public link
 
@@ -35,7 +35,7 @@ If a link has been shared somewhere you no longer want it to work, open the chan
 - **Disable the channel** (the **Enabled** toggle) to pause it without losing its configuration. Visitors see a banner instead of the chat, and any conversation still open on the link is ended. Re-enable it later to bring the same link back.
 - **Delete the channel** to remove it and its link for good. This also ends any conversation still open on it.
 
-See [Disabling a channel](../concepts/channels.md#disabling-a-channel) for how disabling works across channels generally.
+See [Disabling a channel](../../concepts/channels.md#disabling-a-channel) for how disabling works across channels generally.
 
 ## Moving off the legacy web chat
 
@@ -96,6 +96,6 @@ Self-hosted operators: the enforcement flag, the response headers, and the notif
 
 ## See also
 
-- [Public link](../concepts/channels.md#public-link)
+- [Public link](../../concepts/channels.md#public-link)
 - [Deploying your chatbot to different channels](deploy_to_different_channels.md)
 - [Disable a channel](disable_a_channel.md)

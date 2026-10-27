@@ -42,7 +42,7 @@ from Turn.io, rejecting anything else. This protects your chatbot from spoofed o
 requests reaching your webhook endpoint. Leaving it blank keeps the previous behavior — webhooks
 are accepted without this check.
 
-See [Set up WhatsApp with Turn.io](../../how-to/turnio_whatsapp.md) for setup steps.
+See [Set up WhatsApp with Turn.io](../../how-to/channels/turnio_whatsapp.md) for setup steps.
 
 ## Slack providers and team notifications
 
@@ -52,6 +52,6 @@ See [Team Settings: Notifications](notifications.md).
 ## See also
 - [Channels](../channels.md)
 - [Configure a messaging provider](../../tutorials/configure_msg_providers.md)
-- [Set up WhatsApp with Turn.io](../../how-to/turnio_whatsapp.md)
-- [Deploy to WhatsApp via Meta Cloud API](../../how-to/whatsapp_meta_cloud_api.md)
+- [Set up WhatsApp with Turn.io](../../how-to/channels/turnio_whatsapp.md)
+- [Deploy to WhatsApp via Meta Cloud API](../../how-to/channels/whatsapp_meta_cloud_api.md)
 - [Send Notifications to Slack](../../how-to/send_notifications_to_slack.md)
