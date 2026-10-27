@@ -10,7 +10,7 @@ See [details on the Chat Widget](../chat_widget/index.md).
 ## Steps
 
 ### 1) Choose the communication channel
-OCS supports these [messaging providers](../concepts/team/messaging_providers.md)
+Choose one of the supported [messaging providers](../concepts/team/messaging_providers.md).
 
 ### 2) Create an account with the messaging service provider
 
@@ -18,8 +18,10 @@ Before configuring a provider, ensure that you have an active account at the pro
 
 ### 3) Add the messaging provider details to your Team
 
-Configure messaging providers from your [Team](../concepts/team/index.md) settings under **Integrations**.
+Go to **Team Settings → [Integrations](../concepts/team/integrations.md)**.
 Click **Add integration** and choose your provider from the **Messaging** group.
+
+For provider-specific setup, see:
 
 - [WhatsApp](../how-to/deploy_to_different_channels.md#whatsapp)
 - [Telegram](../how-to/deploy_to_different_channels.md#telegram)

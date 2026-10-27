@@ -16,11 +16,12 @@ You must:
 
 ## Adding a New Provider
 
-1. Go to **Team Settings → [Integrations](../concepts/team/integrations.md)**
-2. Click **Add integration**, then choose your provider from the **LLM & embedding** group (see [supported providers](../concepts/team/llm_providers.md) for the full list)
+1. Go to **Team Settings → [Integrations](../concepts/team/integrations.md)**.
+2. Click **Add integration**, then choose your provider from the **LLM & embedding** group.
+   See [supported providers](../concepts/team/llm_providers.md) for the full list.
 3. Enter your API key, plus any other details your provider needs.
-   For example, a [LiteLLM](../concepts/team/llm_providers.md) provider also requires the **Base URL** of your proxy
-4. Save the configuration
+   For example, a [LiteLLM](../concepts/team/llm_providers.md) provider also requires the **Base URL** of your proxy.
+4. Save the configuration.
 
 !!! tip "Base URL"
 
