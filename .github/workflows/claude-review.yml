@@ -9,6 +9,8 @@
 # Requirements: ANTHROPIC_API_KEY secret must be configured
 #
 # Notes:
+# - --disallowedTools denies file editing explicitly, so it stays off even if
+#   the action's default tool set includes it.
 # - Grouped by PR number (`cancel-in-progress: true`), so a new trigger on
 #   the same PR cancels a run already in progress.
 # - Not triggered on `synchronize` — pushing new commits to an open PR does
@@ -32,14 +34,15 @@ jobs:
     if: ${{ github.actor != 'dependabot[bot]' && !contains(github.event.pull_request.labels.*.name, 'automated') }}
     runs-on: ubuntu-latest
     permissions:
-      contents: read
-      pull-requests: write
-      id-token: write
+      contents: read # Checkout only
+      pull-requests: write # Post review comments
+      id-token: write # Needed for Claude Code Action
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
         with:
           fetch-depth: 1
+          persist-credentials: false
 
       - name: PR Review with Progress Tracking
         uses: anthropics/claude-code-action@v1.0.245
@@ -47,6 +50,7 @@ jobs:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           prompt: "/review-pr REPO: ${{ github.repository }} PR_NUMBER: ${{ github.event.pull_request.number }}"
           claude_args: |
+            --disallowedTools "Edit,MultiEdit,Write,NotebookEdit"
             --allowedTools "Task,
             Read,
             Grep,
@@ -55,6 +59,4 @@ jobs:
             Bash(gh pr comment:*),
             Bash(gh pr diff:*),
             Bash(gh pr view:*),
-            WebFetch(domain:github.com,domain:raw.githubusercontent.com),
-            Bash(uv run prek run *),
-            Bash(uv run zensical build --clean *)"
+            WebFetch(domain:github.com,domain:raw.githubusercontent.com)"
