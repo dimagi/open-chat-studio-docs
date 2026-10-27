@@ -21,8 +21,8 @@ For how notification channels and levels work, see [Team Settings: Notifications
 
 !!! note "Self-hosted instances"
 
-    The instance must have Slack configured with `SLACK_CLIENT_ID`, `SLACK_CLIENT_SECRET` and `SLACK_SIGNING_SECRET`.
-    If these are not set, nothing is posted to Slack.
+    Whoever runs the instance must configure Slack first, or nothing is posted to Slack.
+    See [Configure Slack for Notifications on a Self-Hosted Instance](../tech-hub/slack_notifications_self_hosted.md).
 
 ## Connect a Slack workspace
 
@@ -32,7 +32,7 @@ The **Add channel** button is disabled until a workspace is linked.
 
 1. Click **Connect a Slack workspace** in the notice.
    This link appears only if you have permission to add messaging providers.
-   If you don't see it, ask a team admin.
+   If you don't see it, your [User Group](../concepts/team/groups.md) may not include that permission.
 2. Follow the Slack OAuth flow to add a Slack messaging provider.
    See [Configure a messaging provider](../tutorials/configure_msg_providers.md).
 3. Return to **Manage Team** > **Notifications**.
@@ -50,8 +50,8 @@ The **Add channel** button is disabled until a workspace is linked.
 6. Leave **Enabled** selected to start posting, or clear it to save the channel without posting.
 7. Save the channel.
 
-When you save, OCS looks up the Slack channel ID for the channel name.
-If Slack can't find the channel, OCS stores the name as you entered it.
+When you save, OCS checks the channel name with Slack.
+If Slack can't find the channel, OCS still saves the name as you entered it.
 
 **Example:** Add an **Error** channel that posts to `#alerts` and an **Info** channel that posts to `#updates`.
 `#alerts` receives only Error notifications, and `#updates` receives all notifications.
@@ -64,6 +64,16 @@ Use the actions in the channel table:
 - To stop posting but keep the channel, edit it and clear **Enabled**.
 - To remove the channel, delete it.
 
+## What a Slack message contains
+
+Each notification is posted as a Slack message containing:
+
+- The notification title, as the message header
+- The team name
+- The level
+- Any links attached to the notification
+- A **View in OCS** link to the notification page
+
 ## Troubleshooting
 
 - **"This Slack workspace already has a notification channel at this level."**
@@ -72,11 +82,11 @@ Use the actions in the channel table:
 - **Nothing appears in Slack.**
   Check that **Enabled** is selected, the channel name is correct, and the Open Chat Studio Slack app is installed in the workspace.
   Check that the notification's level is at or above the channel's level.
-  On a self-hosted instance, check that Slack is configured.
+  On a self-hosted instance, check that [Slack is configured](../tech-hub/slack_notifications_self_hosted.md).
 - **The Add channel button is disabled.**
   Your team has no Slack workspace linked. See [Connect a Slack workspace](#connect-a-slack-workspace).
 - **The Notifications section is missing.**
-  You need the `view_notificationchannel` permission. Ask a team admin.
+  Your [User Group](../concepts/team/groups.md) needs the `view_notificationchannel` permission.
 
 ## See also
 
