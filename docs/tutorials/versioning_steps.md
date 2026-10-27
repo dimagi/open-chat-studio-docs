@@ -59,7 +59,6 @@ You can also confirm this in the table by looking for the checkmark in the publi
 If you need to go back to an older configuration, click **Revert**.
 
 A confirmation modal opens showing the differences between your current working state and the target version.
-Groups with changed fields are expanded, and each changed field shows a text diff.
 See [The revert confirmation modal](../concepts/versioning.md#the-revert-confirmation-modal) for details.
 
 !!! warning "Check for unreleased changes before reverting"

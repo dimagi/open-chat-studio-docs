@@ -19,8 +19,9 @@ Before you start, you need:
 ## Step 1: Open your chatbot
 
 1. Open your chatbot and view the **Pipeline** workflow.
-   This is the visual canvas where you build your chatbot's conversation flow.
+This is the visual canvas where you build your chatbot's conversation flow.
 2. New chatbots start with a [single LLM node already on the pipeline](../concepts/pipelines/index.md#a-simple-example), connected between the input and the output.
+
 If you see one, skip to [Step 2](#step-2-choose-a-model).
 
 ??? info "Adding an LLM node manually"
@@ -103,7 +104,7 @@ For step-by-step guidance, see [Adjust LLM Node Model Parameters](../how-to/adju
 !!! tip
     When you're happy with the behaviour, [create a version](versioning_steps.md) so participants keep a stable experience while you continue editing.
 
-## See also
+## Next steps
 
 You've built a working LLM node.
 When you're ready to do more, an LLM node can also:

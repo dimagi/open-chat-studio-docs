@@ -18,8 +18,10 @@ Before configuring a provider, ensure that you have an active account at the pro
 
 ### 3) Add the messaging provider details to your Team
 
-Configure messaging providers from your [Team](../concepts/team/index.md) settings under **Integrations**.
+Go to **Team Settings → [Integrations](../concepts/team/integrations.md)**.
 Click **Add integration** and choose your provider from the **Messaging** group.
+
+For provider-specific setup, see:
 
 - [WhatsApp](../how-to/deploy_to_different_channels.md#whatsapp)
 - [Telegram](../how-to/deploy_to_different_channels.md#telegram)
