@@ -46,11 +46,10 @@ Notifications belong to a [team](team/index.md), like most data in OCS, but the 
 
 ## Slack notification channels
 
-A team can also post notifications to Slack channels, in addition to the in-app and email notifications.
-Slack notification channels belong to the team, not to a user, and each channel has a minimum [severity level](#severity-levels).
-Posting to Slack does not depend on any team member's personal notification settings.
+Your team may also have its notifications posted to a Slack channel, in addition to the in-app and email notifications you receive.
+Team Admins set this up for the whole team, and each Slack channel receives notifications at or above a [severity level](#severity-levels) they choose.
 
-See [Team Settings: Notifications](team/notifications.md) for how notification channels work, and [Send Notifications to Slack](../how-to/send_notifications_to_slack.md) to set one up.
+Your personal notification settings, including [Do Not Disturb](../how-to/manage_notifications.md#turn-on-do-not-disturb), don't change what the team's Slack channels receive.
 
 ## Reducing noise
 
