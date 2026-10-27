@@ -43,6 +43,7 @@ See [Credential Verification](../concepts/team/llm_providers.md#credential-verif
 ## Testing Your Configuration
 
 After adding a provider and models, it's recommended to:
+
 1. Create a test chatbot
 2. Configure it to use your new provider/model
 3. Send a test message to verify everything works correctly

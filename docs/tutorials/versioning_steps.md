@@ -70,6 +70,10 @@ After reviewing the diff, click **Revert to vN** (where N is the version number)
 This replaces your working state with a copy of the selected version.
 The reverted configuration becomes your new unreleased version, which you can edit or publish following Steps 2–5 above.
 
+## Next steps
+
+[Deploy your chatbot to a channel](../how-to/deploy_to_different_channels.md) so participants can use the published version.
+
 ## See also
 
 - [Versioning](../concepts/versioning.md)
