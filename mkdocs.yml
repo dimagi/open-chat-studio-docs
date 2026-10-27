@@ -237,6 +237,7 @@ nav:
       - api/getting_started_with_oauth.md
       - API Access: tech-hub/api_access.md
     - Migrate a Team to Another Instance: tech-hub/migrate_team.md
+    - Configure Slack Notifications (Self-Hosted): tech-hub/slack_notifications_self_hosted.md
   - Chat Widget:
     - chat_widget/index.md
     - chat_widget/reference.md
