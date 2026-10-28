@@ -93,10 +93,12 @@ jobs:
           REPO: ${{ github.repository }}
         run: |
           # Restrict substitution to these variables so other $ in the template stay literal
+          # Random delimiter so a template line of "EOF" cannot end the output early
+          DELIMITER="EOF_$(openssl rand -hex 16)"
           {
-            echo "instructions<<EOF"
+            echo "instructions<<$DELIMITER"
             envsubst '${PR_NUMBER} ${REPO}' < trusted/.github/templates/dependabot-review-prompt.md
-            echo "EOF"
+            echo "$DELIMITER"
           } >> "$GITHUB_OUTPUT"
 
       - name: Set up uv
