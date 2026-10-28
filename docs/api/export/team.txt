@@ -1967,7 +1967,6 @@ TeamExport:
   - metadata: Unknown
   - is_migrating: boolean
   - require_mfa: boolean
-  - auto_block_enabled: boolean
   - created_by: integer (required)
 
 TimeoutTriggerDetail:
