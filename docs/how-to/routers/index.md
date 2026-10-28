@@ -21,7 +21,7 @@ Every router needs a "safety net" so the conversation never reaches a dead end. 
 ## Route Tagging & Tracing (Observability)
 To understand how participants move through your chatbot, you can enable Output Message Tagging. This is useful for debugging and analyzing routing performance.
 
-- [Tagging](../../concepts/tags.md): Toggle the **Tag Output Message** flag within the Router node settings.
+- [Tagging](../../concepts/tags.md): Toggle the **Tag Output Message** flag within the Router node settings. Tags longer than 100 characters are cut to 100 characters when saved.
 - [Tracing](../../concepts/tracing.md): Configure this for path-level analysis for debugging.
 
 ### Tag naming convention
