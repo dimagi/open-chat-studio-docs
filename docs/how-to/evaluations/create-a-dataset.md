@@ -130,4 +130,6 @@ Follow the steps for your dataset's evaluation level.
 
 ## Next steps
 
-- Pair the dataset with evaluators and score it. See [Run an Evaluation](run-an-evaluation.md).
+- Pair the dataset with evaluators and score it.
+  See [Run an Evaluation](run-an-evaluation.md).
+- To keep a session-level dataset up to date from a live chatbot, see [Set Up a Real-Time LLM Judge](realtime_llm_judge.md).

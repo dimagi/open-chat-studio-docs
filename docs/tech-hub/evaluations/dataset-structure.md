@@ -90,3 +90,9 @@ To supply participant data or session state as a single raw JSON object, use the
 ### Auto-generating history from the CSV
 
 When uploading a CSV, you can populate the history column automatically from the preceding rows rather than providing a separate history column. This option assumes the CSV represents the transcript of a single conversation in chronological order, and constructs the history for each row from all earlier rows in the file.
+
+## See also
+
+- [Evaluation Datasets](../../concepts/evaluations/dataset.md): evaluation levels and how datasets are created.
+- [Create a Dataset](../../how-to/evaluations/create-a-dataset.md): step-by-step instructions for each creation method.
+- [Evaluator Reference](evaluator-reference.md): template variables that read these dataset fields.
