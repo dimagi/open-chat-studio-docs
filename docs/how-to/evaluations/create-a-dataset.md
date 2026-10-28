@@ -48,6 +48,8 @@ Follow the steps for the evaluation level you chose. For how session data maps t
 
     Every message in the chosen sessions is cloned. To clone only the messages that match your filters, create the dataset first, then [add messages](#add-to-an-existing-dataset) with **Filtered messages only**.
 
+    While the clone runs, a progress bar shows how many sessions have been cloned.
+
 === "Session level"
 
     Each chosen session becomes one row.
@@ -58,9 +60,9 @@ Follow the steps for the evaluation level you chose. For how session data maps t
         - **All matching filters**: clone every session that matches your current filters. There is no limit on how many sessions this can match.
 
 !!! tip
-        To pick sessions that no one has reviewed yet, set the **Annotation Queue** filter to **Not in any queue**.
-        This filter is available only if your team has the human annotations feature flag.
-        See [Annotation Queues on the Sessions List](../../concepts/sessions.md#annotation-queues-on-the-sessions-list).  
+    To pick sessions that no one has reviewed yet, set the **Annotation Queue** filter to **Not in any queue**.
+    This filter is available only if your team has the human annotations feature flag.
+    See [Annotation Queues on the Sessions List](../../concepts/sessions.md#annotation-queues-on-the-sessions-list).
 
 ### Import from annotation queue
 
