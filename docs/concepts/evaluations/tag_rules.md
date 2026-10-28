@@ -4,6 +4,10 @@ Running an evaluation against hundreds of messages produces a results table too 
 
 For example, you could flag every session with negative sentiment, or every response that scored below a threshold — so your team can go directly to the conversations that need attention instead of reviewing everything.
 
+The tags are saved on the session or message in OCS, not only in the evaluation results.
+You can filter the [sessions list](../sessions.md#tags-on-the-sessions-list) by tag at any time.
+In session mode the tags also appear in its **Tags** column. In message mode they appear on the message in the session view.
+
 !!! warning "Tag rules do not work on every dataset"
     Tag rules can only tag a chat message or session that exists in OCS.
     Rows you create manually or upload from a CSV file have neither, so rules never tag them, even when the evaluator output meets the condition.

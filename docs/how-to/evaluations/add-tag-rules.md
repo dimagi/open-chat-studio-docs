@@ -53,6 +53,8 @@ Rules apply from the next run that uses the evaluator. Existing results are not 
 
 The run page itself does not show tags. See [How tag rules work](../../concepts/evaluations/tag_rules.md#how-tag-rules-work) for whether each tag is added to a message or a session.
 
+To find the tagged conversations, go to the sessions list and use the **Tags** filter. In message mode the **Tags** column of a matching session can be empty, because the tag is on a message. See [Tags on the Sessions List](../../concepts/sessions.md#tags-on-the-sessions-list).
+
 ## Common issues
 
 - **The Tag Rules section is missing.** The evaluator is a [Python evaluator](../../concepts/evaluations/evaluators.md#python-evaluator). Only LLM evaluators support tag rules.
