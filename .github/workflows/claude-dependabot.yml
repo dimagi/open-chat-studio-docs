@@ -13,8 +13,8 @@
 # - Uses the default GITHUB_TOKEN, not the ocs-agent app token.
 # - No concurrency group, so overlapping runs on the same PR are not
 #   cancelled or queued.
-# - WebFetch/WebSearch are kept in --allowedTools for changelog lookups;
-#   Keep the rest of the tool list minimal rather than widening it.
+# - WebFetch/WebSearch are the main untrusted-content path; keep the rest of
+#   the tool list minimal.
 # - The "Resolve PR ref" step fails unless the PR author is Dependabot, so a
 #   manual run cannot build or review an arbitrary PR's code.
 # - The prompt lives in .github/templates/dependabot-review-prompt.md and is
@@ -61,7 +61,7 @@ jobs:
             exit 1
           fi
           AUTHOR=$(gh pr view "$PR_NUMBER" --repo "$REPO" --json author --jq '.author.login')
-          # gh reports the bot login without the [bot] suffix
+          # gh reports the bot login as app/dependabot; also accept the REST form dependabot[bot]
           if [ "$AUTHOR" != "app/dependabot" ] && [ "$AUTHOR" != "dependabot[bot]" ]; then
             echo "PR #$PR_NUMBER is authored by $AUTHOR, not Dependabot; refusing to run." >&2
             exit 1
@@ -124,5 +124,17 @@ jobs:
           allowed_bots: "dependabot[bot]"
           claude_args: |
             --max-turns 70
-            --allowedTools "Bash(uv sync --locked),Bash(uv run zensical build --clean),Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),WebFetch(domain:github.com,domain:raw.githubusercontent.com,domain:pypi.org),WebSearch"
+            --disallowedTools "Edit,
+            MultiEdit,
+            Write,
+            NotebookEdit,
+            Read(//proc/**),
+            Read(//home/runner/work/_temp/**)"
+            --allowedTools "Bash(uv sync --locked),
+            Bash(uv run zensical build --clean),
+            Bash(gh pr comment:*),
+            Bash(gh pr diff:*),
+            Bash(gh pr view:*),
+            WebFetch(domain:github.com,domain:raw.githubusercontent.com,domain:pypi.org),
+            WebSearch"
           prompt: ${{ steps.build_prompt.outputs.instructions }}
