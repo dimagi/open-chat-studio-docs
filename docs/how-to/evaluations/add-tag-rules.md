@@ -10,8 +10,8 @@ A rule that tags every `no` session as `goal-not-met` lets your team find those 
 ## Prerequisites
 
 - An evaluation whose dataset rows come from [cloning sessions](../../concepts/evaluations/dataset.md#how-datasets-are-created), importing from an annotation queue, or auto-population.
-  Rules never tag rows created manually or uploaded from a CSV file.
-  See [Tag Rules](../../concepts/evaluations/tag_rules.md).
+  Rows created manually or from a CSV file are not tagged.
+  See [Tag Rules](../../concepts/evaluations/tag_rules.md) for why.
 - An [LLM evaluator](../../concepts/evaluations/evaluators.md#llm-evaluator) with at least one field in its [output schema](../../concepts/evaluations/evaluators.md#output-schema).
   Python evaluators do not support tag rules.
 - Permission to change evaluators.
@@ -63,7 +63,6 @@ Existing results are not tagged until you run the evaluation again.
 2. When the run completes, click **Download results**.
    The **Applied Tags** column lists the tags each row received.
 
-The run page itself does not show tags.
 See [How tag rules work](../../concepts/evaluations/tag_rules.md#how-tag-rules-work) for whether each tag is added to a message or a session.
 
 To find the tagged conversations, go to the sessions list and use the **Tags** filter.
@@ -94,6 +93,7 @@ See [Tags on the Sessions List](../../concepts/sessions.md#tags-on-the-sessions-
 - **A tag someone added by hand disappeared.**
   After each run, OCS removes a rule's tag from any row in the run that no longer meets the condition.
   This includes tags a person added by hand.
+  Previews do not apply or remove tags.
   See [Tag reconciliation on rerun](../../tech-hub/evaluations/evaluator-reference.md#tag-reconciliation-on-rerun).
 
 ## See also

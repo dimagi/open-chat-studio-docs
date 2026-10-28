@@ -33,6 +33,7 @@ See [Common issues](../../how-to/evaluations/add-tag-rules.md#common-issues) for
 Tags follow the latest results.
 After each run, a rule removes its tag from any message or session in the run that no longer meets its condition.
 This includes tags a person added by hand.
+Previews do not apply or remove tags.
 See [Tag reconciliation on rerun](../../tech-hub/evaluations/evaluator-reference.md#tag-reconciliation-on-rerun).
 
 ## See also
