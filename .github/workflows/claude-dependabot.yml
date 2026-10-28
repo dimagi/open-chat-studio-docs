@@ -83,15 +83,9 @@ jobs:
           sparse-checkout: .github/templates
           persist-credentials: false
 
-      - name: Set up uv
-        uses: astral-sh/setup-uv@v7
-        with:
-          enable-cache: true
-
-      - name: Install dependencies
-        run: |
-          uv sync --locked
-
+      # Render the prompt before any PR code runs (uv sync can execute package build
+      # hooks), so nothing from the PR can modify the template first. The step output
+      # is fixed once written.
       - name: Build review prompt
         id: build_prompt
         env:
@@ -104,6 +98,15 @@ jobs:
             envsubst '${PR_NUMBER} ${REPO}' < trusted/.github/templates/dependabot-review-prompt.md
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+
+      - name: Install dependencies
+        run: |
+          uv sync --locked
 
       - name: Run Claude Dependabot Analysis
         id: claude_review
