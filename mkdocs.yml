@@ -69,7 +69,9 @@ markdown_extensions:
 
 plugins:
 - search
-- macros
+- macros:
+    render_by_default: false
+    force_render_paths: chat_widget/styling.md
 - mkdocstrings:
     enabled: true
     default_handler: python
