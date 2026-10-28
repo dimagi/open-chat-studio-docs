@@ -15,6 +15,7 @@ In message mode they appear on the message in the session view.
     Tag rules can only tag a chat message or session that exists in OCS.
     Rows you create manually or upload from a CSV file have neither, so rules never tag them, even if the output meets the condition.
     Use tag rules with datasets built by [cloning sessions](dataset.md#how-datasets-are-created), importing from an annotation queue, or auto-population.
+    Editing a cloned row breaks its link to the session, so keep cloned rows unedited. See [Common issues](../../how-to/evaluations/add-tag-rules.md#common-issues).
 
 ## How tag rules work
 
