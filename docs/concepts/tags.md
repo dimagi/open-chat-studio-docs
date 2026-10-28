@@ -20,6 +20,23 @@ Tagged sessions can be found with the **Tags** filter on the [sessions list](ses
 
 ### Message tags
 These tags are added to specific messages within a participant session, either manually or by pipeline nodes.
+Pipeline nodes add message tags in three ways:
+
+- The **Message Tag** field adds a tag to the node's output message.
+  The LLM, Render a Template, Send an Email, Extract Structured Data, Update Participant Data, and Python nodes have this field.
+- A router's **Tag Output Message** setting tags the router's output message.
+  See [Route Tagging](../how-to/routers/index.md#route-tagging-tracing-observability).
+- The Python node's `add_message_tag` function adds tags from code.
+
+## Tags in a Session
+
+Open a session to see its tags and the tags on each message.
+Session tags appear in the **Tags** bar at the top.
+Message tags appear beside each message's timestamp.
+Hover over a tag to see who added it, for example "Added by Participant".
+To add tags to a message, click the pencil icon (:fontawesome-solid-pencil:) beside its tags.
+
+To find sessions by tag, see [Tags on the Sessions List](sessions.md#tags-on-the-sessions-list).
 
 ![Tags applied to sessions and messages in Open Chat Studio](../assets/images/tags_screenshot.png)
 
@@ -27,3 +44,4 @@ These tags are added to specific messages within a participant session, either m
 
 - [Chat Sessions](sessions.md)
 - [Tag Rules](evaluations/tag_rules.md)
+- [Python Node utility functions](../tech-hub/python_node.md#utility-functions)
