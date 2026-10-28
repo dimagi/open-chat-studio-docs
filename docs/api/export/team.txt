@@ -1931,7 +1931,7 @@ SyntheticVoiceDetail:
   - neural: boolean
   - language: string (required)
   - language_code: string (required)
-  - gender: Unknown (required)
+  - gender: Unknown
   - service: Unknown (required)
   - voice_provider: integer
   - file: integer
