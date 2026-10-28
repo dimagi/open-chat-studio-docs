@@ -48,6 +48,53 @@ Do Not Disturb only affects your own notifications, not your teammates'.
 
 For example, you could keep in-app notifications on for everything, but only enable email for Error-level issues so you're not emailed about routine information.
 
+## Post notifications to Slack
+
+Team admins can send the team's notifications to a Slack channel.
+See [Slack notification channels](../concepts/notifications.md#slack-notification-channels) for how this works.
+
+**Prerequisites:**
+
+- A Slack messaging provider connected to your team through Slack OAuth.
+  If your team has none, the Notifications section shows the message "No Slack workspace is linked to this team yet."
+  Click **Connect a Slack workspace** to add one.
+  This link appears only if you can add messaging providers.
+- The Open Chat Studio Slack app installed in your Slack workspace.
+- Permission to view, add, change, and delete notification channels.
+  Team admins have these permissions by default.
+- Self-hosted only: your administrator has configured Slack for the OCS instance.
+  Without this configuration, no messages are posted.
+
+**Add a channel:**
+
+1. Open **Team settings** (Manage Team) and find the **Notifications** section.
+   It lists your team's notification channels.
+2. Click **Add channel**.
+   The button is disabled until a Slack workspace is linked.
+3. In **Slack workspace**, choose one of your team's Slack messaging providers.
+4. In **Channel name**, enter the Slack channel to post to, such as `#alerts`.
+   The `#` is optional.
+5. In **Level**, choose **Info**, **Warning**, or **Error**.
+   OCS posts only notifications at or above this level.
+6. Leave **Enabled** selected to start posting, or clear it to save the channel without posting.
+7. Save the channel.
+
+OCS looks up the Slack channel ID for the name when you save.
+If Slack can't resolve the name, OCS stores it as you entered it.
+
+To change or remove a channel, use the edit and delete actions in the channel table.
+To pause posting without deleting a channel, clear **Enabled**.
+
+**Example:** Create one **Error** channel that posts to `#alerts` and one **Info** channel that posts to `#updates`.
+The on-call team sees only critical issues in `#alerts`, while `#updates` receives everything.
+
+**Common issues:**
+
+- **"This Slack workspace already has a notification channel at this level."** Edit the existing channel, or choose a different level.
+- **Nothing appears in Slack.** Check that **Enabled** is selected, the Slack app is installed in the workspace, and the channel name is correct.
+  On a self-hosted instance, confirm that Slack is configured.
+- **The Notifications section is missing.** You need permission to view notification channels. Ask a team admin.
+
 ## See also
 
 To learn more about how notifications are grouped, scoped, and delivered, see the [Notifications](../concepts/notifications.md) concept page.

@@ -19,20 +19,20 @@
 
 Many workflows use [`anthropics/claude-code-action`](https://github.com/anthropics/claude-code-action).
 
-### References
-
-- [`anthropics/claude-code-action`](https://github.com/anthropics/claude-code-action):
-  [security.md](https://github.com/anthropics/claude-code-action/blob/main/docs/security.md) for
-  actor checks, bot triggers, prompt injection and forks;
-- [Claude Code CLI reference](https://code.claude.com/docs/en/cli-reference) — flags `claude_args` passes through
-
 ### Security
 
 Treat anything Claude reads from an issue, PR, comment, or fetched page as untrusted; keep those workflows' tool lists minimal.
 
+Do deterministic checks (trigger, base branch, changed paths) in shell or `if:` before the Claude step. Give the agent a pass/fail check such as build or lint; if it reads untrusted content, run the check in the workflow and pass only the output.
+
 Use these `claude_args` flags:
 - `--allowedTools` lists tools Claude can execute without prompting for permission. Claude does not have access to execute arbitrary Bash commands by default so they must be explicitly listed.
 - `--max-turns` limit the number of conversation turns
+
+### References
+
+- [`claude-code-action` security.md](https://github.com/anthropics/claude-code-action/blob/main/docs/security.md) — actor checks, bot triggers, prompt injection and forks
+- [Claude Code CLI reference](https://code.claude.com/docs/en/cli-reference) — flags `claude_args` passes through
 
 ## Testing
 
