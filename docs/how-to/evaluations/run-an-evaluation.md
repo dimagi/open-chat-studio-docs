@@ -57,13 +57,15 @@ When a run completes, the run page shows:
 - **Cost** and token count, and **Duration**. Cost shows **Not recorded** when no usage was recorded for the run.
 - Aggregate statistics for each evaluator output field.
 
-The results table has one row per message or session, with a column for each evaluator output field. If you defined tag rules, the **Applied Tags** column shows the tags each row received. Use the filter pills above the table to show only rows with a particular output value. Click a row to see its details.
+The results table has one row per message or session, with a column for each evaluator output field. Use the filter pills above the table to show only rows with a particular output value. Click a row to see its details.
 
 The **Evaluation Runs** page also shows **Trends** across runs and your **Spend** on the evaluation for the last 30 days and for all time.
 
 ## Download results
 
 Click **Download results** on a run page to download that run, or **Download Latest Results** on the runs page for the evaluation's latest results. Large files are prepared in the background and a download link appears when ready.
+The downloaded file has an **Applied Tags** column, which lists the tags that [tag rules](add-tag-rules.md) applied to each row.
+The run page does not show tags.
 
 ## Correct results
 
