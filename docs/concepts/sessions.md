@@ -84,7 +84,7 @@ Open the session to see the tags on its messages.
 To find sessions by tag, use the **Tags** filter.
 It matches sessions that carry the tag on the session itself or on any of the messages in the session.
 
-Tags come from people and from [tag rules](evaluations/tag_rules.md), which tag sessions or messages automatically when an LLM evaluator's output meets a condition.
+ags come from people, pipeline nodes and [tag rules](evaluations/tag_rules.md), which tag sessions or messages automatically when an LLM evaluator's output meets a condition.
 For example, filter by a `goal-not-met` tag to review only the sessions an evaluation flagged, instead of reading every result.
 
 ## See also

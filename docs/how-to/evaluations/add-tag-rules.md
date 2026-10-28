@@ -27,8 +27,7 @@ A rule that tags every `no` session as `goal-not-met` lets your team find those 
 6. Under **Condition**, choose **Equals** or **Range**, then enter the value, or the **Min** and **Max**.
    See [Conditions by field type](#conditions-by-field-type).
 7. Repeat steps 3–6 for each rule you need.
-8. To remove a rule, click the trash icon on it.
-9. Click **Update**.
+8. Click **Update**.
 
 ### Conditions by field type
 

@@ -20,11 +20,12 @@ These tags are added to [sessions](sessions.md), either manually, by pipeline no
 Tagged sessions can be found with the **Tags** filter on the [sessions list](sessions.md#tags-on-the-sessions-list).
 
 ### Message tags
-These tags are added to specific messages within a participant session, either manually or by pipeline nodes.
+These tags are added to specific messages within a participant session, either manually, by pipeline nodes, or automatically by [tag rules](evaluations/tag_rules.md).
 Pipeline nodes add message tags in these ways:
 
 - The **Message Tag** field adds a tag to the node's output message.
-  The LLM, Render a Template, Send an Email, Extract Structured Data, Update Participant Data, and Python nodes have this field.
+  Many nodes have this field, such as the LLM, Render a Template, and Python nodes.
+  Check a node's settings to see whether it has one.
 - A router's **Tag Output Message** setting tags the router's output message.
   See [Route Tagging](../how-to/routers/index.md#route-tagging-tracing-observability).
 - The Python node's `add_message_tag` function adds tags from code.
