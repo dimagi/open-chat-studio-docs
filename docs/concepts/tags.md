@@ -8,6 +8,9 @@ The link appears only if you have permission to add tags.
 
 ![Manage Tags section showing options to create and edit tags](../assets/images/tags_manage.png)
 
+To add a tag, use the **Add new** button and enter a name.
+A tag name can be at most 100 characters long.
+
 ## Types Of Tags
 
 There are three types of tags.

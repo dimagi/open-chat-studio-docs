@@ -83,7 +83,8 @@ See [Tags on the Sessions List](../../concepts/sessions.md#tags-on-the-sessions-
     - The run was a preview.
     - No row met the condition.
     - The row failed.
-      Failed rows are never tagged.
+      Failed rows are never tagged, and a rule's tag from an earlier run is removed from a row that fails.  
+
     - The row has no chat message or session to tag.
       This is the most common cause.
       It happens to rows that were added manually or from a CSV file.

@@ -68,13 +68,26 @@ Use their name when appropriate and keep replies concise.
 
 See [Prompt variables](../concepts/prompt_variables.md) for the full list of supported variables.
 
-## Step 5: Set the conversation history
+## Step 5: Add a message tag (optional)
+
+A [message tag](../concepts/tags.md#message-tags) labels the reply this node sends, so you can find and review those messages later.
+For example, tag the replies of a node that handles billing questions with `billing`.
+
+1. In the LLM node settings, find the **Message Tag** field.
+2. Enter the tag, up to 100 characters.
+
+Every reply from this node now carries the tag.
+To see it, open a [session list](../concepts/sessions.md#tags-on-the-sessions-list).
+
+See [Tags](../concepts/tags.md) for the other ways tags are added.
+
+## Step 6: Set the conversation history
 
 An LLM node can be configured to remember earlier messages in the conversation so it can respond in context. This memory is controlled by the node's **History** setting, which defaults to `Global` so the model can see the full conversation — the right choice for a normal back-and-forth chatbot.
 
 See [Conversation History](../concepts/pipelines/history.md) for how each history option behaves.
 
-## Step 6: Adjust the response style (optional)
+## Step 7: Adjust the response style (optional)
 
 Depending on the LLM model you chose, the node exposes a **temperature** or an **effort** setting that shapes how the model responds. The defaults work well for most chatbots, so you can safely skip this at first.
 
@@ -83,7 +96,7 @@ Depending on the LLM model you chose, the node exposes a **temperature** or an *
 
 For step-by-step guidance, see [Adjust LLM Node Model Parameters](../how-to/adjust_llm_node_model_parameters.md).
 
-## Step 7: Save and test
+## Step 8: Save and test
 
 1. Click the **x** on the popup node settings to close the dialog and save your changes.
 2. Open the chat preview and send a test message.
