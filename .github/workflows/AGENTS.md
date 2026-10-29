@@ -5,7 +5,7 @@
 - Enforce the Principle of Least Privilege by starting with the most restrictive `permissions:` to modify permissions for the GITHUB_TOKEN
 - Never interpolate `${{ }}` into a `run:` script; pass it via `env:` (e.g. `TITLE: ${{ github.event.pull_request.title }}`) and use `"$TITLE"`.
 - Set `persist-credentials: false` on checkout unless the job runs git against the remote after it.
-- For multi-line $GITHUB_OUTPUT values, use a random delimiter (EOF_$(openssl rand -hex 16)) and add an echo before the closing delimiter, so the value always ends with a newline.
+- For multi-line `$GITHUB_OUTPUT` values, use a random delimiter `(EOF_$(openssl rand -hex 16))` and add an echo before the closing delimiter, so the value always ends with a newline.
 - Set `timeout-minutes` on every job; add a step-level one on the `claude-code-action` step.
 - Use GitHub’s concurrency controls to limit parallel runs
 
