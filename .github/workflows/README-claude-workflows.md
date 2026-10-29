@@ -36,7 +36,7 @@ Add a subagent only to keep verbose reading out of the main context, to enforce 
 
 Every workflow uses a `permissions:` block and Claude's `--allowedTools`.
 
-Workflows pass one of three tokens to `claude-code-action`: an installation token for the `ocs-agent` GitHub App, the default `GITHUB_TOKEN` (github_token: ${{ github.token }}), or none, in which case the action exchanges the job's OIDC token (`id-token: write`) for a Claude GitHub App token. The header comment of each workflow names the one it uses. See best practices in  [AGENTS.md](AGENTS.md) in this directory.
+Workflows pass one of three tokens to `claude-code-action`: an installation token for the `ocs-agent` GitHub App, the default `GITHUB_TOKEN` `(github_token: ${{ github.token }})`, or none, in which case the action exchanges the job's OIDC token (`id-token: write`) for a Claude GitHub App token. The header comment of each workflow names the one it uses. See best practices in [AGENTS.md](AGENTS.md) in this directory.
 
 ### Command and agent tool frontmatter
 
