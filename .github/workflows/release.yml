@@ -44,12 +44,14 @@ jobs:
       contents: write  # Read for checkout; write for `gh release create` (releases are in the `contents` scope)
       id-token: write  # Needed for Claude Code Action
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
       - name: Check out repository
         uses: actions/checkout@v7
         with:
           fetch-depth: 0  # Fetch all history for all tags and branches
+          persist-credentials: false
 
       - name: Generate tag name for scheduled run
         if: github.event_name == 'schedule'
@@ -68,6 +70,7 @@ jobs:
 
       - name: Create Release with Claude
         uses: anthropics/claude-code-action@v1.0.248
+        timeout-minutes: 5
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           prompt: /create-release ${{ env.RELEASE_TAG }} "${{ env.RELEASE_NAME }}"
