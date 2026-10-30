@@ -61,6 +61,7 @@ jobs:
         with:
           ref: ${{ steps.pr.outputs.ref }}
           fetch-depth: 1
+          persist-credentials: false
 
       - name: Set up uv
         uses: astral-sh/setup-uv@v7
@@ -73,7 +74,8 @@ jobs:
 
       - name: Run Claude Dependabot Analysis
         id: claude_review
-        uses: anthropics/claude-code-action@v1.0.245
+        uses: anthropics/claude-code-action@v1.0.248
+        timeout-minutes: 10
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           allowed_bots: "dependabot[bot]"

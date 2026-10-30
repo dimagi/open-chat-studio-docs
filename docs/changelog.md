@@ -11,14 +11,25 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Oct 28, 2026
+* **CHANGE** API validation errors for invalid items in a nested list field are now keyed by item index instead of returned as a list. For example, `{"messages": [{"timestamp": ["This field may not be null."]}]}` is now `{"messages": {"0": {"timestamp": ["This field may not be null."]}}}`. This affects 400 responses from endpoints that accept lists, such as the CommCare Connect messages endpoint, the OpenAI-compatible chat completions endpoint and the v1 and v2 write APIs. Successful responses are unchanged. See the [API documentation](api/index.md).
+
+## Oct 27, 2026
+* **BUG** Fixed chatbot replies failing to save when a router node or the Python node `add_message_tag` or `add_session_tag` function added a tag longer than 100 characters. These tags are now cut to 100 characters. The **Message Tag** field on pipeline nodes now accepts up to 100 characters. Existing pipelines with a longer tag show a validation error on the field and won't reply until the tag is shortened. See [Tags](concepts/tags.md).
+
 ## Oct 26, 2026
+* **CHANGE** Cloning sessions into a message-level evaluation dataset with **All matching filters** no longer has a 1,000-session limit, matching session-level datasets. While a clone runs, the progress bar shows how many sessions have been cloned. See [Create a Dataset](how-to/evaluations/create-a-dataset.md#clone-from-sessions).
 * **MIGRATION** Started the retirement of the legacy web chat (the `/start/` link, email invitations and the logged-in chat page) in favour of the public link channel. The removal date is shown in the chatbot's **Share** dialog. Old `/start/` links redirect to the chatbot's public link when one is live, invitations are read-only, and team members who can add channels get in-app reminders before the removal date. Enforcement after the removal date is controlled by a feature flag. See [Moving off the legacy web chat](how-to/deploy_public_link_channel.md#moving-off-the-legacy-web-chat).
 
 ## Oct 23, 2026
 * **NEW** Added v2 API endpoints to create, update and archive a chatbot's static, timeout and scheduled triggers (`/api/v2/chatbots/{id}/static-triggers/`, `timeout-triggers/` and `scheduled-triggers/`). Changes apply to the working version, and requests are validated the same way as the trigger forms in the web app. Chatbot inspect now also lists scheduled triggers. See the [API documentation](api/index.md).
 
+## Oct 21, 2026
+* **NEW** Added an **Un-archive** button to the detail page of an archived chatbot, which restores the chatbot and all its versions. Reconnecting channels is optional and off by default; channels claimed by another chatbot while it was archived, and Slack channels, must be reconnected by hand. Scheduled messages deleted at archive time cannot be restored. See [Archiving a chatbot](concepts/channels.md#archiving-a-chatbot).
+
 ## Oct 16, 2026
 * **CHANGE** The **Public link** channel is now available to every team. It no longer needs a feature flag to appear in the add-channel dropdown. See [Deploy your chatbot with a public link](how-to/deploy_public_link_channel.md).
+* **NEW** Teams can now post notifications to Slack channels, with a minimum severity level per channel. Configure channels under **Team settings > Notifications**; a linked Slack workspace is required. See [Slack notification channels](concepts/notifications.md#slack-notification-channels).
 
 ## Oct 15, 2026
 * **NEW** Added an **Annotation Queues** column to the sessions list, showing each queue a session is in with the item's status, and an **Annotation Queue** filter with a **Not in any queue** option for finding sessions nobody has reviewed yet. Both require the human annotations feature flag. See [Annotation Queues on the Sessions List](concepts/sessions.md#annotation-queues-on-the-sessions-list).

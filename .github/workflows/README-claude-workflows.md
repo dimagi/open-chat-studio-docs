@@ -8,7 +8,7 @@ These workflows use [`anthropics/claude-code-action`](https://github.com/anthrop
 
 Triggers, required secrets, and concurrency behavior are documented in each workflow's own header comment — this table is an index and a pointer to what each one delegates to, not the source of truth for how it runs.
 
-Commands live in `.claude/commands/`, agents in `.claude/agents/` ([background](https://docs.anthropic.com/en/docs/claude-code/sub-agents)).
+Commands live in `.claude/commands/`, agents in `.claude/agents/` ([background](https://code.claude.com/docs/en/sub-agents)).
 
 | File | Actions UI name | Purpose | Command / Instruction Spec | Subagent |
 |---|---|---|---|---|
@@ -34,7 +34,7 @@ Add a subagent only to keep verbose reading out of the main context, to enforce 
 
 ## Security: Permissions & Tool Allowlists
 
-These workflows use `permissions:` block, Claude's `--allowedTools`, and sometimes an installation access token for the `ocs-agent` GitHub App — `claude.yml`, `update-api-docs.yml`, and `update-changelog.yml` mint one via `create-github-app-token`. See best practices for using them in [AGENTS.md](AGENTS.md) in this directory.
+Every workflow uses a `permissions:` block and Claude's `--allowedTools`. Some also use an installation access token for the `ocs-agent` GitHub App; the rest use the default `GITHUB_TOKEN`. A workflow that uses the app lists it under `Requirements` in its header comment. See best practices for using them in [AGENTS.md](AGENTS.md) in this directory.
 
 ### Command and agent tool frontmatter
 
@@ -63,6 +63,6 @@ Issues that can show up on any of these workflows. For workflow-specific trouble
 
 - **Run fails immediately in the `claude-code-action` step for forked repos:** See [Fork Limitations](#fork-limitations) above.
 - **Output looks incomplete, or a step Claude should have taken didn't happen:** A denied tool call doesn't fail the run — it's silently skipped and Claude continues without it. Check the run transcript for denied calls; that's the usual cause of a truncated-looking result.
-- **Authentication or permission failures:** Verify `ANTHROPIC_API_KEY` is valid. If the workflow uses the `ocs-agent` GitHub App (check its header comment), also verify the GitHub app's private key matches `OCS_AGENT_PRIVATE_KEY` and the app is still installed on the relevant repo(s) — token minting fails if either repo is missing from the installation.
+- **Authentication or permission failures:** Verify `ANTHROPIC_API_KEY` is valid. If the workflow uses the `ocs-agent` GitHub App (check its header comment), also verify the GitHub app's private key matches `OCS_AGENT_PRIVATE_KEY` and the app is still installed on every repo the workflow's token requests — token minting fails if any of them is missing from the installation.
 - **Output quality needs improvement:** Comment on the generated PR with `@claude` and specify what to revise.
 - **For systemic quality issues:** Update the relevant command or agent in `.claude/commands/` / `.claude/agents/` rather than correcting each PR manually.
