@@ -27,6 +27,9 @@ For step-by-step instructions on completing specific tasks, see the [How-to guid
 [Chatbot](chatbots/index.md)
 : In OCS, this is the top-level configuration for your conversational experience. It defines the chatbot's behavior, connects it to one or more channels, and is published to participants.
 
+[Citations](collections/indexed_collections/citations.md)
+: Links shown with a chatbot's answer to the files it came from. They let participants check an answer against its source.
+
 [Collections](collections/index.md)
 : A group of files you attach to a chatbot. A media collection lets the chatbot send files to participants. An indexed collection lets the chatbot search your documents and base answers on them, not only on what the AI model already knows. This technique is called retrieval-augmented generation (RAG), and it can reduce made-up answers.
 

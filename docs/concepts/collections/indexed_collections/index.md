@@ -28,6 +28,12 @@ Once your collection is created and populated with files, [link it to an LLM nod
 If several chatbots share one collection, you can set **Metadata Filters** on the LLM node so each chatbot searches only rows whose metadata matches.
 See [Filter Collection Search by Metadata](../../../how-to/filter_collection_search_by_metadata.md).
 
+### Showing source links
+
+The LLM node's **Generate Citations** toggle is on by default.
+Answers then include links to the files they came from.
+See [Citations](./citations.md).
+
 ## Snapshots
 
 A snapshot is a read-only copy of an indexed collection at a point in time.
