@@ -1,10 +1,10 @@
 # Deploy Your Chatbot with a Public Link
 
-A public link gives your chatbot a hosted chat page that anyone can open — no embedding or website required. See [Public link](../concepts/channels.md#public-link) for what it is and what visitors see.
+A public link gives your chatbot a hosted chat page that anyone can open — no embedding or website required. See [Public link](../../concepts/channels.md#public-link) for what it is and what visitors see.
 
 ## Prerequisites
 
-- A **published version** of your chatbot. Visitors always reach the published version — if you haven't published one yet, they'll see a banner instead of the chat. See [Create & publish versions](../tutorials/versioning_steps.md).
+- A **published version** of your chatbot. Visitors always reach the published version — if you haven't published one yet, they'll see a banner instead of the chat. See [Create & publish versions](../../tutorials/versioning_steps.md).
 
 ## Add a public link
 
@@ -35,7 +35,7 @@ If a link has been shared somewhere you no longer want it to work, open the chan
 - **Disable the channel** (the **Enabled** toggle) to pause it without losing its configuration. Visitors see a banner instead of the chat, and any conversation still open on the link is ended. Re-enable it later to bring the same link back.
 - **Delete the channel** to remove it and its link for good. This also ends any conversation still open on it.
 
-See [Disabling a channel](../concepts/channels.md#disabling-a-channel) for how disabling works across channels generally.
+See [Disabling a channel](../../concepts/channels.md#disabling-a-channel) for how disabling works across channels generally.
 
 ## Moving off the legacy web chat
 
@@ -63,7 +63,7 @@ Chats that visitors already started keep working, because only the entry points 
 
 ### Move a chatbot to the public link
 
-1. [Publish a version](../tutorials/versioning_steps.md) of the chatbot if it doesn't have one.
+1. [Publish a version](../../tutorials/versioning_steps.md) of the chatbot if it doesn't have one.
 2. [Add a public link](#add-a-public-link) and make sure the channel is enabled.
 3. Replace the old `/start/` link, or the invitation emails, with the new public link everywhere you shared it.
 4. If you used a `/start/` link, open it to confirm it redirects to the new public link.
@@ -78,7 +78,7 @@ Team members who can add channels get an in-app notification when a chatbot stil
 A chatbot counts as affected if it had a legacy web chat session in the last 30 days.
 You are notified when this is first detected, then 30, 14, 7, and 1 days before the removal date.
 
-Self-hosted operators: the enforcement flag, the response headers, and the notification task are described in [Legacy web chat retirement](../tech-hub/legacy_web_chat_retirement.md).
+Self-hosted operators: the enforcement flag, the response headers, and the notification task are described in [Legacy web chat retirement](../../tech-hub/legacy_web_chat_retirement.md).
 
 ## Troubleshooting
 
@@ -96,6 +96,5 @@ Self-hosted operators: the enforcement flag, the response headers, and the notif
 
 ## See also
 
-- [Public link](../concepts/channels.md#public-link)
-- [Deploying your chatbot to different channels](deploy_to_different_channels.md)
+- [Deploy your chatbot to different channels](deploy_to_different_channels.md)
 - [Disable a channel](disable_a_channel.md)

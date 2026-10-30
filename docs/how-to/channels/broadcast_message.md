@@ -70,10 +70,10 @@ window will fail to deliver.
 - [Deploying your chatbot to different channels][deploy]
 - [Set Up WhatsApp with Meta Cloud API][whatsapp-meta]
 
-[groups]: ../concepts/team/groups.md
+[groups]: ../../concepts/team/groups.md
 [deploy]: ./deploy_to_different_channels.md
 [disable]: ./disable_a_channel.md
-[disabling-concept]: ../concepts/channels.md#disabling-a-channel
-[channels-concept]: ../concepts/channels.md
+[disabling-concept]: ../../concepts/channels.md#disabling-a-channel
+[channels-concept]: ../../concepts/channels.md
 [whatsapp-meta]: ./whatsapp_meta_cloud_api.md
 [whatsapp-template]: ./whatsapp_meta_cloud_api.md#out-of-service-window-template-messages

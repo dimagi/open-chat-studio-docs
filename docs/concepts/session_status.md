@@ -28,7 +28,7 @@ Sessions flow through statuses automatically. The path depends on how the partic
 !!! warning "Being retired"
     The legacy web chat, including email invitations and the `/start/` link, is being retired.
     New invitations can no longer be created.
-    See [Moving off the legacy web chat](../how-to/deploy_public_link_channel.md#moving-off-the-legacy-web-chat).
+    See [Moving off the legacy web chat](../how-to/channels/deploy_public_link_channel.md#moving-off-the-legacy-web-chat).
 
 Used when participants arrive via an invitation link or the public web chat link. The path differs depending on whether the participant was invited by email or arrived via the public web chat link.
 

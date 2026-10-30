@@ -36,7 +36,7 @@ Each chatbot can have one public link at a time.
 !!! warning "Not the same as the public web chat link"
     A public link is a channel you add to the chatbot, with its own link that you can regenerate. It's separate from the older **public web chat link** in the chatbot's **Share** dialog, which sends participants through a consent page first.
     The older link is part of the legacy web chat, which is being retired.
-    See [Moving off the legacy web chat](../how-to/deploy_public_link_channel.md#moving-off-the-legacy-web-chat).
+    See [Moving off the legacy web chat](../how-to/channels/deploy_public_link_channel.md#moving-off-the-legacy-web-chat).
 
 ### What visitors experience
 
@@ -95,7 +95,7 @@ The channel and its configuration are kept.
 
 While a channel is disabled:
 
-- **Participants can't start a new conversation on it.** This covers the embedded chat widget, the public web chat link, Slack, and starting a chat from the chatbot's management pages in OCS itself. Two API endpoints are exceptions — see [Known limitations](../how-to/disable_a_channel.md#known-limitations).
+- **Participants can't start a new conversation on it.** This covers the embedded chat widget, the public web chat link, Slack, and starting a chat from the chatbot's management pages in OCS itself. Two API endpoints are exceptions — see [Known limitations](../how-to/channels/disable_a_channel.md#known-limitations).
 - **The chatbot doesn't send anything to that channel on its own.** Scheduled messages, [event action](events.md) messages, and messages triggered through the API are all held back rather than delivered.
 - **Messages sent to the channel are ignored.** They aren't processed or recorded, and the chatbot doesn't reply — unless you've configured a disabled message.
 
@@ -108,7 +108,7 @@ Staff starting a chat from the OCS console see a generic error rather than this 
 !!! info "Public link is different"
     A disabled **public link** shows visitors a banner instead of the chat, rather than sending a disabled message. Disabling, deleting, or [regenerating the link][public-link-howto] also ends any conversations still open on it — see [Deploy your chatbot with a public link][public-link-howto].
 
-See [Disable a channel](../how-to/disable_a_channel.md) for how to turn a channel off and what participants see on each entry point.
+See [Disable a channel](../how-to/channels/disable_a_channel.md) for how to turn a channel off and what participants see on each entry point.
 
 ## Archiving a chatbot
 
@@ -118,18 +118,18 @@ While the chatbot is archived, another chatbot can use those identifiers.
 When you un-archive the chatbot, you can choose to reconnect its channels.
 OCS skips any channel whose identifier another chatbot now uses, and it always skips Slack channels.
 To reconnect a skipped channel, free its identifier on the other chatbot if needed, then add the channel again.
-See [Deploying your chatbot to different channels](../how-to/deploy_to_different_channels.md).
+See [Deploying your chatbot to different channels](../how-to/channels/deploy_to_different_channels.md).
 
 ## See also
 
-- [Disable a channel](../how-to/disable_a_channel.md)
-- [Deploying your chatbot to different channels](../how-to/deploy_to_different_channels.md)
+- [Disable a channel](../how-to/channels/disable_a_channel.md)
+- [Deploying your chatbot to different channels](../how-to/channels/deploy_to_different_channels.md)
 - [Deploy your chatbot with a public link][public-link-howto]
 - [Chat Sessions](sessions.md)
 - [Versioning](versioning.md)
 
 [1]: ./team/messaging_providers.md
 [widget-files]: ../chat_widget/reference.md#file-attachments
-[email-files]: ../how-to/deploy_email_channel.md#file-attachments
+[email-files]: ../how-to/channels/deploy_email_channel.md#file-attachments
 [chat-widget]: ../chat_widget/index.md
-[public-link-howto]: ../how-to/deploy_public_link_channel.md
+[public-link-howto]: ../how-to/channels/deploy_public_link_channel.md

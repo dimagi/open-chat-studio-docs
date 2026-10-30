@@ -1,4 +1,4 @@
-# Members
+# Team Settings: Members
 
 The **Members & access** section of Team Settings is where Team Admins [invite people](#inviting-a-new-member), review who has access, and [control what each person can do](#editing-a-members-role).
 Active members and pending invitations appear together in one table, so you always see the full picture of who can reach your team.

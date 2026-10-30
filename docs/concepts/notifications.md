@@ -46,27 +46,12 @@ Notifications belong to a [team](team/index.md), like most data in OCS, but the 
 
 ## Slack notification channels
 
-A team can also post notifications to a Slack channel, in addition to the in-app and email notifications.
-Slack notification channels belong to the team, not to a user, so one setup serves everyone on the team.
-Team admins configure them under **Team settings > Notifications**.
+Your team may also have its notifications posted to a Slack channel, in addition to the in-app and email notifications you receive.
+Team Admins set this up for the whole team, and each Slack channel receives notifications at or above a [severity level](#severity-levels) they choose.
 
-Each notification channel connects one Slack workspace and one Slack channel (such as `#alerts`) to a minimum severity [level](#severity-levels):
-
-- An **Info** channel receives every notification.
-- A **Warning** channel receives Warning and Error notifications.
-- An **Error** channel receives only Error notifications.
-
-A team can have only one notification channel for each Slack workspace and level.
-It can have several channels in the same workspace at different levels, for example Error notifications in `#alerts` and Info notifications in `#updates`.
-
-Each Slack message shows the notification title, the team name, and the level.
-It also includes any links attached to the notification and a **View in OCS** link to the notification page.
-
-Slack posting is independent of each team member's in-app and email notification preferences.
-Slack messages are sent in the background.
-If a message fails to post, the in-app and email notifications are not affected.
-
-To set up a channel, see [Post notifications to Slack](../how-to/manage_notifications.md#post-notifications-to-slack).
+Your personal notification settings, including [Do Not Disturb](../how-to/manage_notifications.md#turn-on-do-not-disturb), don't change what the team's Slack channels receive.
+Slack channels also aren't limited to the members who would see a notification in OCS.
+A custom-action failure, for example, is posted to every Slack channel at or above its level, even though only some members receive it in the app.
 
 ## Reducing noise
 
@@ -78,6 +63,8 @@ To try notifications yourself, see the [Manage Notifications](../how-to/manage_n
 ## See also
 
 - [Manage Notifications](../how-to/manage_notifications.md)
+- [Team Settings: Notifications](team/notifications.md)
+- [Send Notifications to Slack](../how-to/send_notifications_to_slack.md)
 - [Custom Actions](llm_custom_action.md)
 - [Tools](tools/index.md)
 - [LLM Providers](team/llm_providers.md)

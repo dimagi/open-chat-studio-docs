@@ -67,7 +67,7 @@ Turn.io does not support automatic webhook configuration, so you set the webhook
 2. In your Turn.io account, go to **Settings → API & Webhooks**.
 3. Select **Add a webhook** and paste the URL from step 1.
 4. Copy the webhook's **HMAC secret** from the same Turn.io screen. If it does not have one yet, generate it there first.
-5. Back in Open Chat Studio, go to **Team Settings → [Integrations](../concepts/team/integrations.md)**, filter by **Messaging**, edit the Turn.io provider, paste the value into **Webhook HMAC Secret**, and save.
+5. Back in Open Chat Studio, go to **Team Settings → [Integrations](../../concepts/team/integrations.md)**, filter by **Messaging**, edit the Turn.io provider, paste the value into **Webhook HMAC Secret**, and save.
 6. Send a test message on WhatsApp and confirm the chatbot replies.
 
 !!! warning "Each chatbot has its own Turn.io webhook URL"
@@ -121,14 +121,14 @@ See the [Email channel guide](deploy_email_channel.md) for full setup and config
 Every chatbot can also be reached programmatically through the OCS [APIs][api], which is useful for integrating with third-party systems or building custom front ends.
 
 [1]: https://core.telegram.org/bots#how-do-i-create-a-bot
-[2]: ../concepts/team/messaging_providers.md
+[2]: ../../concepts/team/messaging_providers.md
 [3]: https://www.twilio.com/docs/WhatsApp/api#configuring-inbound-message-webhooks
 [4]: https://www.twilio.com/docs/conversations/Facebook-messenger#setting-up-the-Facebook-messenger-channel
 [5]: https://core.Telegram.org/bots/features#:~:text=/setjoingroups%20%E2%80%93%20toggle%20whether%20your%20bot%20can%20be%20added%20to%20groups%20or%20not.%20All%20bots%20must%20be%20able%20to%20process%20direct%20messages%2C%20but%20if%20your%20bot%20was%20not%20designed%20to%20work%20in%20groups%2C%20you%20can%20disable%20this.
-[6]: ../tutorials/configure_msg_providers.md
-[api]: ../tech-hub/api_access.md
+[6]: ../../tutorials/configure_msg_providers.md
+[api]: ../../tech-hub/api_access.md
 [disable]: ./disable_a_channel.md
 [meta]: ./whatsapp_meta_cloud_api.md
 [turnio]: ./turnio_whatsapp.md
-[chat-widget]: ../chat_widget/index.md
+[chat-widget]: ../../chat_widget/index.md
 [public-link]: ./deploy_public_link_channel.md
