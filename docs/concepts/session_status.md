@@ -25,7 +25,12 @@ Sessions flow through statuses automatically. The path depends on how the partic
 
 ### Web invitation flow
 
-Used when participants arrive via an invitation link or public web chat link. The path differs depending on whether the participant was invited by email or arrived via a public link.
+!!! warning "Being retired"
+    The legacy web chat, including email invitations and the `/start/` link, is being retired.
+    New invitations can no longer be created.
+    See [Moving off the legacy web chat](../how-to/deploy_public_link_channel.md#moving-off-the-legacy-web-chat).
+
+Used when participants arrive via an invitation link or the public web chat link. The path differs depending on whether the participant was invited by email or arrived via the public web chat link.
 
 **Invitation email flow** — the session is created in `SETUP`, the email is sent, and the participant accepts consent on the invitation page:
 
@@ -39,7 +44,7 @@ stateDiagram-v2
     COMPLETE --> [*]
 ```
 
-**Public link flow** — the session is created and immediately moves out of `SETUP` as the participant accepts consent on arrival:
+**Public web chat link flow** — the session is created and immediately moves out of `SETUP` as the participant accepts consent on arrival:
 
 ```mermaid
 stateDiagram-v2
@@ -88,9 +93,12 @@ A session moves to `PENDING_REVIEW` whenever the conversation ends. This can hap
 
 ### COMPLETE
 
-There is exactly one path to `COMPLETE`.
-After the chat ends, the participant is redirected to the review page and submits the review form.
+A session reaches `COMPLETE` when the participant submits the review form after a legacy web chat ends.
 If the participant closes the browser without submitting, the session remains in `PENDING_REVIEW` indefinitely.
+
+!!! note "Public link sessions"
+    The public link has no end-of-chat review, so a chatbot moved to it doesn't reach `COMPLETE` this way.
+    Its sessions end in `PENDING_REVIEW`, and move to `COMPLETE` only when the public link is disabled, regenerated, or deleted, which ends every open conversation on it.
 
 ### UNKNOWN
 

@@ -22,3 +22,4 @@ You need Super Admin, Pipeline, Experiment, or Team Administrator roles to acces
 - **[Annotations](annotations/export-format.md)** — Reference for the CSV and JSONL files exported from an annotation queue.
 - **[OCS API Access](api_access.md)** — Interact with OCS chatbots programmatically using the REST API. Useful for third-party integrations and automated evaluation.
 - **[Migrate a Team to Another Instance](migrate_team.md)** — Move a team's chatbots, configuration, and chat history from one OCS instance to another.
+- **[Legacy Web Chat Retirement](legacy_web_chat_retirement.md)** — Operator reference for retiring the legacy web chat: the deprecation headers, the enforcement flag, and the notification task.
