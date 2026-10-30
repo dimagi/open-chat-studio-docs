@@ -7,7 +7,8 @@ A span is one step within a trace, such as an LLM call or a tool call.
 
 ## Builtin Tracing
 
-Builtin tracing is always available — no feature flag or external service is required. A trace is recorded automatically for every conversation turn.
+Builtin tracing is always available — no feature flag or external service is required.
+A trace is recorded automatically for every conversation turn.
 
 ### Trace Table
 
@@ -35,7 +36,8 @@ Each builtin trace captures:
 
 ### Trace Detail Page
 
-The trace detail page shows a **Changes during this trace** section below the participant data snapshot. Each field that changed during the turn is highlighted with a color-coded indicator:
+The trace detail page shows a **Changes during this trace** section below the participant data snapshot.
+Each field that changed during the turn is highlighted with a color-coded indicator:
 
 - Green — data that was added
 - Red — data that was removed
@@ -65,11 +67,13 @@ For each conversation turn, the input message row shows the participant data at 
 The AI response row shows it at the end of the trace.
 
 !!! note
-    Builtin tracing records top-level information only. It does not include span-level detail (individual LLM calls, tool calls, retrieval steps, etc.). To see spans, configure a [Langfuse](#langfuse-external-tracing) provider.
+    Builtin tracing records top-level information only.
+    It does not include span-level detail, such as individual LLM calls, tool calls, and retrieval steps.
+    To see spans, configure a [Langfuse](#langfuse-external-tracing) provider.
 
 ## Langfuse External Tracing
 
-[Langfuse][langfuse] is an optional external tracing provider. When Langfuse is configured for a chatbot, OCS sends detailed trace data to Langfuse and enriches the trace detail page with span-level information.
+[Langfuse][langfuse] is an optional external tracing provider. When Langfuse is configured for a chatbot, OCS sends detailed trace data to Langfuse and adds span-level information to the trace detail page.
 
 Tracing begins automatically with the next conversation after you configure a Langfuse provider.
 
@@ -100,14 +104,16 @@ Sending every conversation turn to Langfuse can generate a lot of trace volume f
 **Trace sampling** lets you send only a fraction of turns to Langfuse.
 Builtin tracing still records every turn in Open Chat Studio, because sampling only affects data sent to Langfuse.
 
-Sampling is controlled by a **sample rate**, a number from `0.0` to `1.0` representing the fraction of turns sent to Langfuse. For example, a rate of `0.1` sends roughly 1 in 10 turns.
+Sampling is controlled by a **sample rate**, a number from `0.0` to `1.0` representing the fraction of turns sent to Langfuse.
+For example, a rate of `0.1` sends roughly 1 in 10 turns.
 
 There are two places to set a sample rate:
 
 - **Sample Rate** on the Langfuse tracing provider — a team-wide default used by any chatbot that doesn't set its own rate.
 - **Trace sample rate** in a chatbot's settings — overrides the team-wide default for that chatbot. Leave it blank to inherit the provider's rate.
 
-A rate of exactly `0.0` stops Langfuse traces being sent for that chatbot entirely — no tracer is created. Builtin tracing is unaffected and continues to record every turn.
+A rate of exactly `0.0` stops Langfuse traces being sent for that chatbot entirely — no tracer is created.
+Builtin tracing is unaffected and continues to record every turn.
 
 Changing a sample rate applies immediately, starting with the next conversation turn, with no cache delay.
 

@@ -1,9 +1,11 @@
 # Channels
 
-A **channel** is how your chatbot interacts with participants — such as Telegram, WhatsApp, or Slack. Linking a channel lets participants chat directly on a platform they already use, instead of requiring them to visit a separate web page.
+A **channel** is how your chatbot interacts with participants — such as Telegram, WhatsApp, or Slack.
+Linking a channel lets participants chat directly on a platform they already use, instead of requiring them to visit a separate web page.
 
 !!! info "Channel vs. platform"
-    Open Chat Studio (OCS) uses "channel" and "platform" interchangeably. You'll mostly see "channel" in these docs, but some parts of the OCS UI use the label "Platform" for the same thing.
+    Open Chat Studio (OCS) uses "channel" and "platform" interchangeably.
+    You'll mostly see "channel" in these docs, but some parts of the OCS UI use the label **Platform** for the same thing.
 
 Some channels work out of the box.
 Others require you to first [configure a messaging provider][1], the account that handles message delivery for that platform.
@@ -34,15 +36,19 @@ It starts participants with the welcome message and starter questions you config
 Each chatbot can have one public link at a time.
 
 !!! warning "Not the same as the public web chat link"
-    A public link is a channel you add to the chatbot, with its own link that you can regenerate. It's separate from the older **public web chat link** in the chatbot's **Share** dialog, which sends participants through a consent page first.
+    A public link is a channel you add to the chatbot, with its own link that you can regenerate.
+    It's separate from the older **public web chat link** in the chatbot's **Share** dialog, which sends participants through a consent page first.
     The older link is part of the legacy web chat, which is being retired.
     See [Moving off the legacy web chat](../how-to/channels/deploy_public_link_channel.md#moving-off-the-legacy-web-chat).
 
 ### What visitors experience
 
-Visitors always reach your chatbot's [published version](versioning.md) — the same version participants get on any other channel. If you haven't published a version yet, or you've disabled the channel, visitors see a banner instead of a live chat. Team members are exempt from this: while logged in, they can open the page to preview an unpublished chatbot.
+Visitors always reach your chatbot's [published version](versioning.md) — the same version participants get on any other channel.
+If you haven't published a version yet, or you've disabled the channel, visitors see a banner instead of a live chat.
+Team members are exempt from this: while logged in, they can open the page to preview an unpublished chatbot.
 
-A visitor's conversation is tied to their browser tab: it survives a page reload but disappears once the tab is closed. On a shared or public computer, the next person cannot see the previous visitor's conversation.
+A visitor's conversation is tied to their browser tab: it survives a page reload but disappears once the tab is closed.
+On a shared or public computer, the next person cannot see the previous visitor's conversation.
 
 See [Deploy your chatbot with a public link][public-link-howto] for how to set one up, share it, and regenerate or remove it.
 
@@ -95,18 +101,22 @@ The channel and its configuration are kept.
 
 While a channel is disabled:
 
-- **Participants can't start a new conversation on it.** This covers the embedded chat widget, the public web chat link, Slack, and starting a chat from the chatbot's management pages in OCS itself. Two API endpoints are exceptions — see [Known limitations](../how-to/channels/disable_a_channel.md#known-limitations).
+- **Participants can't start a new conversation on it.**
+  This covers the embedded chat widget, the public web chat link, Slack, and starting a chat from the chatbot's management pages in OCS itself.
+  Two API endpoints are exceptions — see [Known limitations](../how-to/channels/disable_a_channel.md#known-limitations).
 - **The chatbot doesn't send anything to that channel on its own.** Scheduled messages, [event action](events.md) messages, and messages triggered through the API are all held back rather than delivered.
 - **Messages sent to the channel are ignored.** They aren't processed or recorded, and the chatbot doesn't reply — unless you've configured a disabled message.
 
-A **disabled message** is an optional static reply for the channel. When a participant messages a disabled channel or tries to start a conversation on it, this message replaces the chatbot's response.
+A **disabled message** is an optional static reply for the channel.
+When a participant messages a disabled channel or tries to start a conversation on it, this message replaces the chatbot's response.
 It is only sent as a reply to something a participant did.
 It is never sent on its own, so it does not appear alongside a suppressed scheduled or event message.
 Leaving it blank keeps the channel silent instead.
 Staff starting a chat from the OCS console see a generic error rather than this message.
 
 !!! info "Public link is different"
-    A disabled **public link** shows visitors a banner instead of the chat, rather than sending a disabled message. Disabling, deleting, or [regenerating the link][public-link-howto] also ends any conversations still open on it — see [Deploy your chatbot with a public link][public-link-howto].
+    A disabled **public link** shows visitors a banner instead of the chat, rather than sending a disabled message.
+    Disabling, deleting, or [regenerating the link][public-link-howto] also ends any conversations still open on it — see [Deploy your chatbot with a public link][public-link-howto].
 
 See [Disable a channel](../how-to/channels/disable_a_channel.md) for how to turn a channel off and what participants see on each entry point.
 

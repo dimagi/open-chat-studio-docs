@@ -7,7 +7,9 @@ Open Chat Studio provides an event system that allows you to define actions trig
 Events in Open Chat Studio are categorized into three types:
 
 1. **Static Events**: Triggered by specific actions or occurrences within the chat session.
-2. **Timeout Events**: Triggered after a specified duration of inactivity. By default, inactivity is measured from the last interaction, but you can configure a timeout to be measured from the first human message instead.
+2. **Timeout Events**: Triggered after a specified duration of inactivity.
+    By default, inactivity is measured from the last interaction.
+    You can configure a timeout to be measured from the first human message instead.
 3. **Scheduled Events**: Triggered once at a specific date, time, and timezone that you configure, rather than in response to anything happening in a session.
 
 Each event has one action associated with it that is executed when the event occurs.
@@ -74,11 +76,14 @@ If the chatbot has no session yet when the event fires, the failure is recorded 
 
 ## Event Actions
 
-Each event is associated with one action. The available actions are:
+Each event is associated with one action.
+The available actions are:
 
 - **End the conversation**: Ends the conversation with the participant. See [Ending session with events](../tech-hub/ending_sessions.md#events-with-an-end-the-conversation-action) for more details.
 - **Prompt the bot to message the user**: Prompts the chatbot to message the participants.
-- **Trigger a schedule**: This will create a once off or recurring schedule. Each time the schedule is triggered, the chatbot will be prompted to message the participant. This action is a way to schedule a *message*, and is separate from a **Scheduled Event** trigger, which schedules *when a trigger fires*.
+- **Trigger a schedule**: Creates a one-off or recurring schedule.
+  Each time the schedule is triggered, the chatbot is prompted to message the participant.
+  This action is a way to schedule a *message*, and is separate from a **Scheduled Event** trigger, which schedules *when a trigger fires*.
 - **Start a pipeline**: This will run the given [pipeline](pipelines/index.md) when the event triggers. The input to the pipeline can be configured.
 
 ## Event Logs
