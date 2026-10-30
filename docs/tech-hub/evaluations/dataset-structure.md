@@ -91,6 +91,24 @@ To supply participant data or session state as a single raw JSON object, use the
 
 When uploading a CSV, you can populate the history column automatically from the preceding rows rather than providing a separate history column. This option assumes the CSV represents the transcript of a single conversation in chronological order, and constructs the history for each row from all earlier rows in the file.
 
+### Formula characters in exports and uploads
+
+Spreadsheet applications such as Excel and Google Sheets treat a cell that starts with `=`, `+`, `-`, `@`, a tab, or a carriage return as a formula.
+To prevent this, CSV downloads of datasets and evaluation results prefix any such cell with an apostrophe (`'`).
+Results downloads also apply this to header cells, because evaluator field names and context keys are user-defined.
+
+On upload, one leading apostrophe is removed from any cell whose remainder starts with one of those characters.
+For dataset uploads (create from CSV, and update), this covers input, output, history, context, participant data, and session state values.
+For results uploads, it covers the mapped evaluator columns and their column names.
+A download followed by an upload therefore leaves the data unchanged.
+A stored value that already starts with an apostrophe, such as `'=x`, is exported as `''=x` and restored to `'=x`.
+
+The restore runs on every upload, not only on re-uploads of exported files.
+In a CSV you create yourself, `'-5` is stored as `-5`, and `''=x` is stored as `'=x`.
+
+This applies to CSV only.
+JSON and HTML exports are unchanged.
+
 ## See also
 
 - [Evaluation Datasets](../../concepts/evaluations/dataset.md): evaluation levels and how datasets are created.

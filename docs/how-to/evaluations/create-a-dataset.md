@@ -127,6 +127,8 @@ Follow the steps for your dataset's evaluation level.
     When cloning, click **Add N to dataset** to add the rows. The button shows how many sessions will be added.
 
 **Export CSV** downloads the dataset's current rows. The **Download Template** link in the upload section gives you the same file, which you can edit and upload as a starting point.
+Cells that start with `=`, `+`, `-`, `@`, a tab, or a carriage return are exported with a leading apostrophe, which upload removes.
+See [Formula characters in exports and uploads](../../tech-hub/evaluations/dataset-structure.md#formula-characters-in-exports-and-uploads).
 
 ## Next steps
 
