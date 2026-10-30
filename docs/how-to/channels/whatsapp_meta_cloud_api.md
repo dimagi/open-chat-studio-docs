@@ -322,5 +322,5 @@ If the chatbot is not reaching participants after the 24-hour service window exp
 ## See also
 
 - [Messaging providers](../../concepts/team/messaging_providers.md)
-- [Deploy your chatbot to different platforms](deploy_to_different_channels.md)
+- [Deploy your chatbot to different channels](deploy_to_different_channels.md)
 - [Meta WhatsApp Business Platform documentation](https://developers.facebook.com/docs/whatsapp/cloud-api)

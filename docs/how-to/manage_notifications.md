@@ -51,8 +51,7 @@ For example, you could keep in-app notifications on for everything, but only ena
 ## Notifications in Slack
 
 Your team may also have its notifications posted to a Slack channel.
-Your preferences and Do Not Disturb don't change what is posted there.
-See [Slack notification channels](../concepts/notifications.md#slack-notification-channels), or ask a Team Admin to set it up using [Send Notifications to Slack](send_notifications_to_slack.md).
+See [Slack notification channels](../concepts/notifications.md#slack-notification-channels) for how your settings relate to it, or ask a Team Admin to set it up using [Send Notifications to Slack](send_notifications_to_slack.md).
 
 ## See also
 

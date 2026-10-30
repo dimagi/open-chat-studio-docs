@@ -11,7 +11,7 @@ Every legacy chat route answers with the [RFC 8594](https://www.rfc-editor.org/r
 |---|---|
 | `Deprecation` | `true` |
 | `Sunset` | The removal date, as an HTTP date |
-| `Link` | `<https://docs.openchatstudio.com/how-to/deploy_public_link_channel/>; rel="successor-version"` |
+| `Link` | `<https://docs.openchatstudio.com/how-to/channels/deploy_public_link_channel/>; rel="successor-version"` |
 
 The removal date is the `LEGACY_WEB_CHAT_SUNSET_AT` constant in the application code, not an environment variable.
 

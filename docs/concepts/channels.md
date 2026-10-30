@@ -118,7 +118,7 @@ While the chatbot is archived, another chatbot can use those identifiers.
 When you un-archive the chatbot, you can choose to reconnect its channels.
 OCS skips any channel whose identifier another chatbot now uses, and it always skips Slack channels.
 To reconnect a skipped channel, free its identifier on the other chatbot if needed, then add the channel again.
-See [Deploying your chatbot to different channels](../how-to/channels/deploy_to_different_channels.md.
+See [Deploying your chatbot to different channels](../how-to/channels/deploy_to_different_channels.md).
 
 ## See also
 

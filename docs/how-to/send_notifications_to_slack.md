@@ -11,7 +11,7 @@ For how notification channels and levels work, see [Team Settings: Notifications
 
 !!! note "Self-hosted instances"
 
-    Whoever runs the instance must configure Slack first, or nothing is posted to Slack.
+    Whoever runs the instance must [configure Slack](https://developers.openchatstudio.com/developer_guides/code_systems/channels/slack_channel_integration/) first, or nothing is posted to Slack.
 
 ## Connect a Slack workspace
 
@@ -21,8 +21,7 @@ The **Add channel** button is disabled until a workspace is linked.
 
 1. Click **Connect a Slack workspace** in the notice.
    This link appears only if you have permission to add messaging providers and Slack is configured on the instance.
-   If you don't see it, your [User Group](../concepts/team/groups.md) may not include that permission.
-   On a self-hosted instance, check that Slack is configured.
+   If you don't see it, your [User Group](../concepts/team/groups.md) may not include that permission, or Slack may not be configured on the instance.
 2. Follow the Slack OAuth flow to add a Slack messaging provider.
    See [Configure a messaging provider](../tutorials/configure_msg_providers.md).
 3. Return to **Team Settings → Notifications**.
@@ -62,11 +61,10 @@ Use the actions in the channel table:
 - **Nothing appears in Slack.**
   Check that **Enabled** is selected, the channel name is correct, and the Open Chat Studio Slack app is installed in the workspace.
   Check that the notification's level is at or above the channel's level.
-  On a self-hosted instance, check that [Slack is configured](https://developers.openchatstudio.com/developer_guides/code_systems/channels/slack_channel_integration/).
 - **The Add channel button is disabled.**
   Your team has no Slack workspace linked. See [Connect a Slack workspace](#connect-a-slack-workspace).
 - **The Notifications section is missing.**
-  Your [User Group](../concepts/team/groups.md) needs the `view_notificationchannel` permission.
+  Your [User Group](../concepts/team/groups.md) needs permission to view notification channels.
 
 ## See also
 
