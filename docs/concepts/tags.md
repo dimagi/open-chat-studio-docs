@@ -2,7 +2,7 @@
 
 Tags are labels applied to chats and messages to categorize and organize interactions. For instance, tags can be used to mark messages that require follow-up or to segment participants based on their interactions.
 
-Tags can be created using the “Manage Tags” section.
+Tags can be created using the **Manage Tags** section.
 
 ![Manage Tags section showing options to create and edit tags](../assets/images/tags_manage.png)
 

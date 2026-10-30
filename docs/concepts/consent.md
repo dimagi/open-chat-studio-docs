@@ -8,7 +8,7 @@ Consent forms are displayed to participants before they start interacting with t
 !!! info "Using consent forms on WhatsApp, Telegram and other channels"
     If you deploy your chatbot on WhatsApp, Telegram, or any [channel](channels.md) other than Web, enable the **Conversational Consent** option to include a consent form.
 
-A default consent form is created for each team. You can customize this default form or create new forms by navigating to the "Consent Forms" section of Open Chat Studio.
+A default consent form is created for each team. You can customize this default form or create new forms by navigating to the **Consent Forms** section of Open Chat Studio.
 
 ## Consent forms and published versions
 
