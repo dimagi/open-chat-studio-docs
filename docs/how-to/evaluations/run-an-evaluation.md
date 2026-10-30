@@ -65,6 +65,10 @@ The **Evaluation Runs** page also shows **Trends** across runs and your **Spend*
 
 Click **Download results** on a run page to download that run, or **Download Latest Results** on the runs page for the evaluation's latest results. Large files are prepared in the background and a download link appears when ready.
 
+In the CSV, cells that start with `=`, `+`, `-`, `@`, a tab, or a carriage return are prefixed with an apostrophe so spreadsheet applications show them as text.
+Uploading the file again removes the apostrophe.
+See [Formula characters in exports and uploads](../../tech-hub/evaluations/dataset-structure.md#formula-characters-in-exports-and-uploads).
+
 ## Correct results
 
 To update results with values from a CSV file, for example after a human reviews them, open a completed run and click **Edit results**. Use **Download Template** to get a file in the expected format, edit it, and upload it. Map each CSV column to an evaluator output, or choose **Skip this column**, then click **Upload Results**. Existing results are updated, new rows are added, and the run's aggregates are recalculated.
