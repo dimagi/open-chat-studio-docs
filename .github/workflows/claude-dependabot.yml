@@ -7,16 +7,22 @@
 # Triggered on: Dependabot PRs (opened, synchronize) — job only runs when the
 # PR author is dependabot[bot]; or workflow_dispatch with a required
 # pr_number input (manual run, e.g. for testing)
-# Requirements: ANTHROPIC_API_KEY secret must be configured
+# Requirements: ANTHROPIC_API_KEY must be set as a Dependabot secret (Dependabot PRs
+# cannot read Actions secrets) and as an Actions secret (for workflow_dispatch runs)
 #
 # Notes:
-# - Uses the default GITHUB_TOKEN, not the ocs-agent app token.
+# - No github_token is passed, so claude-code-action exchanges the job's OIDC token
+#   (id-token: write) for a Claude GitHub App token and exposes it to the step as
+#   GITHUB_TOKEN. It is not the workflow's secrets.GITHUB_TOKEN or the ocs-agent token.
 # - No concurrency group, so overlapping runs on the same PR are not
 #   cancelled or queued.
-# - WebFetch/WebSearch are kept in --allowedTools for changelog lookups; they're
-#   also this workflow's main untrusted-content path (a malicious release note
-#   could try to steer Claude) — keep the rest of the tool list minimal for
-#   that reason rather than widening it.
+# - WebFetch/WebSearch are the main untrusted-content path; keep the rest of
+#   the tool list minimal.
+# - The "Resolve PR ref" step fails unless the PR author is Dependabot, so a
+#   manual run cannot build or review an arbitrary PR's code. The check covers who
+#   opened the PR, not who pushed to its branch.
+# - The prompt lives in .github/templates/dependabot-review-prompt.md and is
+#   rendered with envsubst (PR_NUMBER and REPO only), read from the default branch.
 
 name: Claude Dependabot PR Review
 
@@ -50,11 +56,23 @@ jobs:
         id: pr
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ inputs.pr_number || github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
         run: |
-          PR_NUMBER="${{ inputs.pr_number || github.event.pull_request.number }}"
-          echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
-          REF=$(gh pr view "$PR_NUMBER" --repo "${{ github.repository }}" --json headRefName --jq '.headRefName')
-          echo "ref=$REF" >> $GITHUB_OUTPUT
+          # workflow_dispatch input is free text; gh would also accept a branch name or URL
+          if ! [[ "$PR_NUMBER" =~ ^[0-9]+$ ]]; then
+            echo "pr_number must be a number, got: $PR_NUMBER" >&2
+            exit 1
+          fi
+          AUTHOR=$(gh pr view "$PR_NUMBER" --repo "$REPO" --json author --jq '.author.login')
+          # gh reports the bot login as app/dependabot; also accept the REST form dependabot[bot]
+          if [ "$AUTHOR" != "app/dependabot" ] && [ "$AUTHOR" != "dependabot[bot]" ]; then
+            echo "PR #$PR_NUMBER is authored by $AUTHOR, not Dependabot; refusing to run." >&2
+            exit 1
+          fi
+          echo "pr_number=$PR_NUMBER" >> "$GITHUB_OUTPUT"
+          REF=$(gh pr view "$PR_NUMBER" --repo "$REPO" --json headRefName --jq '.headRefName')
+          echo "ref=$REF" >> "$GITHUB_OUTPUT"
 
       - name: Checkout code
         uses: actions/checkout@v7
@@ -62,6 +80,37 @@ jobs:
           ref: ${{ steps.pr.outputs.ref }}
           fetch-depth: 1
           persist-credentials: false
+
+      # The prompt template comes from the default branch, not the PR branch, so a PR
+      # cannot change the instructions Claude receives. This must come after the root
+      # checkout, which would otherwise delete the trusted/ directory.
+      - name: Checkout prompt template
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          path: trusted
+          sparse-checkout: .github/templates
+          persist-credentials: false
+
+      # Render the prompt before any PR code runs (uv sync can execute package build
+      # hooks), so nothing from the PR can modify the template first. The step output
+      # is fixed once written.
+      - name: Build review prompt
+        id: build_prompt
+        env:
+          PR_NUMBER: ${{ steps.pr.outputs.pr_number }}
+          REPO: ${{ github.repository }}
+        run: |
+          # Restrict substitution to these variables so other $ in the template stay literal
+          # Random delimiter so a template line of "EOF" cannot end the output early
+          DELIMITER="EOF_$(openssl rand -hex 16)"
+          {
+            echo "instructions<<$DELIMITER"
+            envsubst '${PR_NUMBER} ${REPO}' < trusted/.github/templates/dependabot-review-prompt.md
+            # Ensure the delimiter starts its own line even if the template lacks a final newline
+            echo
+            echo "$DELIMITER"
+          } >> "$GITHUB_OUTPUT"
 
       - name: Set up uv
         uses: astral-sh/setup-uv@v7
@@ -72,6 +121,7 @@ jobs:
         run: |
           uv sync --locked
 
+      # For Claude max-turns, measured a max of about 35, so set as 70 below
       - name: Run Claude Dependabot Analysis
         id: claude_review
         uses: anthropics/claude-code-action@v1.0.248
@@ -80,65 +130,7 @@ jobs:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           allowed_bots: "dependabot[bot]"
           claude_args: |
-            --allowedTools "Bash(uv sync --locked),Bash(uv run zensical build --clean),Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),Read,WebFetch,WebSearch"
-          prompt: |
-            You are reviewing PR #${{ steps.pr.outputs.pr_number }}.
-
-            You are Claude, an AI assistant reviewing Dependabot dependency update PRs for the
-            Open Chat Studio **documentation** site. This is a static docs site built with
-            Zensical (MkDocs-compatible), Python 3.13+, managed with uv. Dependabot here tracks
-            two ecosystems only: `uv` (Python packages in pyproject.toml / uv.lock) and
-            `github-actions` (versions pinned in .github/workflows/).
-
-            Your primary tasks are:
-            1. **Analyze the dependency changes** in this Dependabot PR
-            2. **Look up changelogs** for the updated dependencies / actions
-            3. **Identify breaking changes** that could affect the docs build or CI
-            4. **Provide an actionable recommendation**
-
-            ## Analysis Process:
-
-            1. **Identify Changed Dependencies**:
-               - Use `gh pr diff` to see what changed
-               - Parse pyproject.toml / uv.lock for Python package changes
-               - For github-actions updates, note the action and old → new version
-               - List all changes: old → new
-
-            2. **Changelog Research**:
-               - For each update, look up its changelog / release notes (WebFetch/WebSearch:
-                 GitHub releases, PyPI project pages, action repos)
-               - Focus on versions between old and new
-               - Identify: breaking changes, deprecations, security fixes
-
-            3. **Docs-Build Impact**:
-               - Pay special attention to packages that drive the build: zensical, mkdocs,
-                 mkdocstrings, and their plugins/themes. Breaking changes here can break the site.
-               - For github-actions bumps, check whether the new major version changes inputs
-                 or runtime the CI workflows rely on.
-               - Verify the build still works: run `uv sync --locked` then
-                 `uv run zensical build --clean`. Report the result.
-
-            ## Output Format:
-
-            Post a single review comment (`gh pr comment`) with:
-
-            ### 🔍 Dependency Analysis Summary
-            - Updated packages / actions with version changes
-            - Overall risk assessment (LOW / MEDIUM / HIGH)
-
-            ### 📋 Changelog Review
-            For each update:
-            - **Name**: name (old_version → new_version)
-            - **Changes**: key changes
-            - **Breaking Changes**: any breaking changes
-            - **Security Fixes**: any security improvements
-
-            ### ⚠️ Build Impact
-            - **Build result**: pass / fail (with error if failed)
-            - **Breaking changes found**: Yes/No with details
-
-            ### 🛠️ Recommendation
-            - **Merge Recommendation**: APPROVE / REVIEW_NEEDED / HOLD
-            - **Follow-up**: any action needed
-
-            Be thorough but concise. Focus on whether this update is safe to merge for the docs site.
+            --max-turns 70
+            --disallowedTools "Edit,MultiEdit,Write,NotebookEdit,Read(//proc/**),Read(//home/runner/work/_temp/**)"
+            --allowedTools "Bash(uv run zensical build --clean),Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),WebFetch(domain:github.com),WebFetch(domain:raw.githubusercontent.com),WebFetch(domain:pypi.org),WebFetch(domain:mkdocstrings.github.io),WebFetch(domain:docs.pytest.org),WebSearch"
+          prompt: ${{ steps.build_prompt.outputs.instructions }}
