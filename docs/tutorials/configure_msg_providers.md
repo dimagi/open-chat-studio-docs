@@ -32,7 +32,7 @@ For provider-specific setup, see:
 
 ## Next steps
 
-[Deploy your chatbot to a channel](../how-to/deploy_to_different_channels.md) once the provider is configured.
+[Deploy your chatbot to a channel](../how-to/channels/deploy_to_different_channels.md) once the provider is configured.
 
 ## See also
 
