@@ -36,7 +36,7 @@ Each chatbot can have one public link at a time.
 !!! warning "Not the same as the public web chat link"
     A public link is a channel you add to the chatbot, with its own link that you can regenerate. It's separate from the older **public web chat link** in the chatbot's **Share** dialog, which sends participants through a consent page first.
     The older link is part of the legacy web chat, which is being retired.
-    See [Moving off the legacy web chat](../how-to/deploy_public_link_channel.md#moving-off-the-legacy-web-chat).
+    See [Moving off the legacy web chat](../how-to/channels/deploy_public_link_channel.md#moving-off-the-legacy-web-chat).
 
 ### What visitors experience
 

@@ -1,7 +1,7 @@
 # Legacy Web Chat Retirement
 
 Operator reference for the retirement of the legacy web chat: the public `/start/` link, email invitations, the chat page those links open, and the full-page chat for logged-in users.
-For what changes for chatbot builders and how to move a chatbot to the public link, see [Moving off the legacy web chat](../how-to/deploy_public_link_channel.md#moving-off-the-legacy-web-chat).
+For what changes for chatbot builders and how to move a chatbot to the public link, see [Moving off the legacy web chat](../how-to/channels/deploy_public_link_channel.md#moving-off-the-legacy-web-chat).
 
 ## Response headers
 
