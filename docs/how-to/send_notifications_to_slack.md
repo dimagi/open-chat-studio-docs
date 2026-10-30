@@ -62,7 +62,7 @@ Use the actions in the channel table:
 - **Nothing appears in Slack.**
   Check that **Enabled** is selected, the channel name is correct, and the Open Chat Studio Slack app is installed in the workspace.
   Check that the notification's level is at or above the channel's level.
-  On a self-hosted instance, check that Slack is configured.
+  On a self-hosted instance, check that [Slack is configured](https://developers.openchatstudio.com/developer_guides/code_systems/channels/slack_channel_integration/).
 - **The Add channel button is disabled.**
   Your team has no Slack workspace linked. See [Connect a Slack workspace](#connect-a-slack-workspace).
 - **The Notifications section is missing.**
