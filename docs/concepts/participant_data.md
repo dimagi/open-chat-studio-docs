@@ -10,13 +10,13 @@ Open Chat Studio (OCS) does not automatically merge these records.
 ## Managing participant records
 
 You can view and edit participant data on the **Participant Details** page.
-Open it by selecting a participant from the **Participants** list.
-You can also export and import participant data from the **Participants** list page.
+Open it by selecting a participant from the Participants list.
+You can also export and import participant data from the Participants list page.
 
-The **Session details** screen shows the **Participant Data** and **Schedules** in one place.
+The **Session details** screen shows the **Participant Data** and **Participant Schedules** in one place.
 Schedules are the [reminders](../how-to/reminders.md) and scheduled messages set for that participant.
 
-To add a participant manually, use the **Add new** button and provide an identifier, [platform](channels.md), and optional name.
+To add a participant manually, use the Create action and provide an identifier, [platform](channels.md), and optional name.
 If a participant with that platform and identifier already exists for the team, the form links you to the existing record.
 
 ## Using participant data

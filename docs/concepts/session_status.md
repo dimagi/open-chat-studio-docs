@@ -119,11 +119,11 @@ This lets you respond differently depending on who or what ended the conversatio
 
 | Trigger type | Fires when |
 |--------------|------------|
-| **The Conversation is Ended by the Participant** | The participant ends the chat (web **End chat and give feedback** or `/reset`). |
-| **The Conversation is Ended by the Bot** | The chatbot ends the chat (End Session tool or `end_session()`). |
-| **The Conversation is Ended via the API** | An API caller ends the session. |
-| **The Conversation is Ended by an Event** | An **End the conversation** event action ended the session. |
-| **The Conversation is Manually Ended by a User** | A team member ended the session via the OCS admin. |
+| The Conversation is Ended by the Participant | The participant ends the chat (web "End chat and give feedback" or `/reset`). |
+| The Conversation is Ended by the Bot | The chatbot ends the chat (End Session tool or `end_session()`). |
+| The Conversation is Ended via the API | An API caller ends the session. |
+| The Conversation is Ended by an Event | An "End the conversation" event action ended the session. |
+| The Conversation is Manually Ended by a User | A team member ended the session via the OCS admin. |
 
 The generic **Conversation End** trigger fires for all of the above.
 Use it when you want to take the same action regardless of how the session ended.
