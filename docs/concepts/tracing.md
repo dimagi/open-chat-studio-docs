@@ -2,7 +2,8 @@
 
 Tracing captures a chatbot's inputs, outputs, and decision-making process so chatbot developers can understand and debug their chatbot's behavior.
 
-Open Chat Studio provides **builtin tracing** for all users. You can optionally connect an external [Langfuse][langfuse] tracing provider to get additional span-level detail.
+Open Chat Studio provides **builtin tracing** for all users.
+You can optionally connect an external [Langfuse][langfuse] tracing provider to get additional span-level detail.
 A span is one step within a trace, such as an LLM call or a tool call.
 
 ## Builtin Tracing
@@ -12,7 +13,8 @@ A trace is recorded automatically for every conversation turn.
 
 ### Trace Table
 
-The trace table lists every recorded trace for your team. You can filter the table by:
+The trace table lists every recorded trace for your team.
+You can filter the table by:
 
 - **Chatbot** — show only traces from a specific chatbot
 - **Session ID** — show only traces from a single conversation session
@@ -73,7 +75,8 @@ The AI response row shows it at the end of the trace.
 
 ## Langfuse External Tracing
 
-[Langfuse][langfuse] is an optional external tracing provider. When Langfuse is configured for a chatbot, OCS sends detailed trace data to Langfuse and adds span-level information to the trace detail page.
+[Langfuse][langfuse] is an optional external tracing provider.
+When Langfuse is configured for a chatbot, OCS sends detailed trace data to Langfuse and adds span-level information to the trace detail page.
 
 Tracing begins automatically with the next conversation after you configure a Langfuse provider.
 
@@ -110,7 +113,8 @@ For example, a rate of `0.1` sends roughly 1 in 10 turns.
 There are two places to set a sample rate:
 
 - **Sample Rate** on the Langfuse tracing provider — a team-wide default used by any chatbot that doesn't set its own rate.
-- **Trace sample rate** in a chatbot's settings — overrides the team-wide default for that chatbot. Leave it blank to inherit the provider's rate.
+- **Trace sample rate** in a chatbot's settings — overrides the team-wide default for that chatbot.
+  Leave it blank to inherit the provider's rate.
 
 A rate of exactly `0.0` stops Langfuse traces being sent for that chatbot entirely — no tracer is created.
 Builtin tracing is unaffected and continues to record every turn.

@@ -10,7 +10,8 @@ Sessions are isolated, which keeps data private and preserves context for the du
 A session is uniquely defined by:
 
 - **Participant**: The individual engaging with the chatbot.
-- **Channel**: The platform through which the chat occurs (e.g., WhatsApp, Telegram, Web, Slack). See [channels](channels.md).
+- **Channel**: The platform through which the chat occurs (e.g., WhatsApp, Telegram, Web, Slack).
+  See [channels](channels.md).
 - **Chatbot**: The specific chatbot handling the conversation.
 
 Each session is independent, meaning:
@@ -20,7 +21,8 @@ Each session is independent, meaning:
 - **Multi-Session Channels**: Channels such as **Web**, **API**, and **Slack** allow multiple active sessions per participant, enabling parallel conversations.
 - **Single-Session Channels**: Platforms like **WhatsApp**, **Telegram**, and **SureAdhere** support only one active session per participant at a time.
 
-Every session has a status that tracks the progress of the conversation. See [Session Status](session_status.md).
+Every session has a status that tracks the progress of the conversation.
+See [Session Status](session_status.md).
 
 ## History Management
 

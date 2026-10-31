@@ -9,9 +9,12 @@ You can review what changed and roll back to a previous version if needed.
 
 ## Terminology
 
-- **Unreleased Version**. This is the version of the chatbot you are currently editing. It is a draft that has not been versioned or published.
+- **Unreleased Version**.
+  This is the version of the chatbot you are currently editing.
+  It is a draft that has not been versioned or published.
 
-- **Published Version**. This is the version that participants interact with, through the web, WhatsApp, or any other [channel](channels.md) you have set up, including the public link.
+- **Published Version**.
+  This is the version that participants interact with, through the web, WhatsApp, or any other [channel](channels.md) you have set up, including the public link.
 
 ## What is a Chatbot Version?
 
@@ -48,11 +51,13 @@ To publish a version, follow the tutorial on [creating and publishing versions](
 
 ## Reverting to a Previous Version
 
-Reverting replaces your current working (unreleased) state with a copy of an older version's configuration. The older version itself is not modified — a fresh copy becomes your new working state, ready to edit or publish.
+Reverting replaces your current working (unreleased) state with a copy of an older version's configuration.
+The older version itself is not modified — a fresh copy becomes your new working state, ready to edit or publish.
 
 ### The revert confirmation modal
 
-When you click **Revert** on a version, a confirmation modal opens instead of a plain confirm dialog. The modal lists what will change, field by field and node by node, so you can check before committing.
+When you click **Revert** on a version, a confirmation modal opens instead of a plain confirm dialog.
+The modal lists what will change, field by field and node by node, so you can check before committing.
 Added fields are highlighted and removed fields are marked, so you can compare your current working state with the target version.
 
 ### Warning for unreleased changes

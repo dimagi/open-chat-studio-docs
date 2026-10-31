@@ -28,7 +28,8 @@ Use it to personalize responses — for example, to greet the participant by nam
 
 ### Pipeline nodes
 
-[Pipeline nodes](pipelines/index.md#node-types-for-complex-pipelines) can read participant data. For more information on each node type and how they use participant data, see [Node Types](pipelines/nodes.md).
+[Pipeline nodes](pipelines/index.md#node-types-for-complex-pipelines) can read participant data.
+For more information on each node type and how they use participant data, see [Node Types](pipelines/nodes.md).
 
 ## Updating participant data
 

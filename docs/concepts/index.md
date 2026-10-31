@@ -19,7 +19,8 @@ If you are new to OCS, start with the [Tutorials](../tutorials/index.md).
 Use it for quality assurance, moderation, and evaluation datasets.
 
 [Assistant](assistants.md)
-: A retired chatbot type powered by the OpenAI Assistants API. OpenAI retired this API and Open Chat Studio removed the assistant pipeline node.
+: A retired chatbot type powered by the OpenAI Assistants API.
+OpenAI retired this API and Open Chat Studio removed the assistant pipeline node.
 See the [migration guide](../how-to/assistants_migration.md) if a pipeline still has an assistant node.
 
 [Authentication Provider](team/authentication_providers.md)
@@ -58,7 +59,8 @@ It scores the responses against criteria you define, such as accuracy, tone, or 
 : Automated actions that fire when something happens in a chatbot session, after a period of inactivity, or at a scheduled date and time.
 
 [History](pipelines/history.md)
-: A per-node setting on nodes that call an LLM. It controls which messages the model receives: the node's own history, the full conversation, a shared named history, or none.
+: A per-node setting on nodes that call an LLM.
+It controls which messages the model receives: the node's own history, the full conversation, a shared named history, or none.
 
 [History Mode](pipelines/history.md#history-mode)
 : A per-node setting that controls how a node's conversation history is trimmed once it passes a token or message limit.
@@ -117,7 +119,8 @@ It determines how OCS handles transitions between states.
 : Labels applied to sessions or messages to categorize and organize interactions — for example, flagging conversations that need follow-up or segmenting sessions based on content.
 
 [Team](team/index.md)
-: The organizational unit in OCS. Each team has its own chatbots, data, and settings.
+: The organizational unit in OCS.
+Each team has its own chatbots, data, and settings.
 
 [Tools](tools/index.md)
 : Built-in capabilities you enable per chatbot so it can do more than generate text.
