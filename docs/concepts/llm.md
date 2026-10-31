@@ -5,9 +5,9 @@ title: Large Language Model
 # Large Language Models (LLMs)
 
 !!! note "Definition"
-    A Large Language Model (or LLM) is a type of artificial intelligence (or AI) software that is trained on a vast amount of text data. Its
-    primary function is to understand, interpret, and generate human language. This training allows it to produce text-based
-    responses, answer questions, translate between languages, and perform various other language-related tasks.
+    A Large Language Model (or LLM) is a type of artificial intelligence (or AI) software that is trained on a vast amount of text data.
+    Its primary function is to understand, interpret, and generate human language.
+    This training allows it to produce text-based responses, answer questions, translate between languages, and perform various other language-related tasks.
 
     The term "large" in its name refers to the extensive volume of data it has been trained on and the complexity of its design, enabling it to handle complex language tasks.
 
@@ -17,14 +17,17 @@ When building chatbots, an LLM powers the chatbot's ability to understand and re
 
 ## Prompt
 
-A prompt is the input or instructions given to the LLM to guide its response. It sets the context for the chatbot. Prompts can be as simple as a single question or as detailed as a conversation framework or role-play setup.
+A prompt is the input or instructions given to the LLM to guide its response.
+It sets the context for the chatbot.
+Prompts can be as simple as a single question or as detailed as a conversation framework or role-play setup.
 Use [prompt variables](prompt_variables.md) to insert dynamic values into a prompt.
 
 **Example:** "You are a helpful assistant. Answer questions clearly and concisely."
 
 ## Tokens
 
-Tokens are the units of text that the LLM processes. A token might be a word, part of a word, or even just punctuation.
+Tokens are the units of text that the LLM processes.
+A token might be a word, part of a word, or even just punctuation.
 
 **Example:** The sentence *"Chatbots are cool."* is broken into 4 tokens:
 `Chatbots | are | cool | .`
@@ -44,13 +47,18 @@ See [Conversation History](pipelines/history.md) for how nodes limit the history
 
 ## Model Parameters: Temperature and Effort
 
-Open Chat Studio exposes two main "knobs" for shaping how a model responds: **temperature** and **effort**. Which one is available depends on the model you choose.
+Open Chat Studio exposes two main parameters that change how a model responds: **temperature** and **effort**.
+Which one is available depends on the model you choose.
 
-**Temperature** controls how creative or varied the responses are. A low temperature produces consistent, predictable answers. A high temperature produces more varied and imaginative ones.
+**Temperature** controls how creative or varied the responses are.
+A low temperature produces consistent, predictable answers.
+A high temperature produces more varied and imaginative ones.
 
-**Effort** controls how much internal "thinking" the model does before answering. It is used by [reasoning models](../how-to/choose_llm_model.md) that work through problems step-by-step. You set it as a level: `low`, `medium`, `high`, or `max`.
+**Effort** controls how much internal reasoning the model does before answering.
+It is used by [reasoning models](../how-to/choose_llm_model.md) that work through problems step-by-step.
+You set it as a level: `low`, `medium`, `high`, or `max`.
 
-These two parameters serve different purposes: temperature shapes *style*, effort shapes *substance*.
+These two parameters serve different purposes: temperature changes how varied the wording is, and effort changes how much reasoning goes into the answer.
 
 ## See also
 

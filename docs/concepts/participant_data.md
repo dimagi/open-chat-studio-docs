@@ -1,27 +1,35 @@
 # Participant Data
 
-Participant data is custom information you store against a participant — the person chatting with a deployed chatbot — to personalize their experience. You can use it to remember preferences, track progress, or pass context into your chatbot's prompts.
+Participant data is custom information you store against a participant — the person chatting with a deployed chatbot — to personalize their experience.
+You can use it to remember preferences, track progress, or pass context into your chatbot's prompts.
 
-Each participant record is tied to a specific [channel](./channels.md) (such as WhatsApp or the web) and a specific chatbot. The same person using two different channels, or two different chatbots, will have separate participant records for each. Open Chat Studio (OCS) does not automatically merge these records.
+Each participant record is tied to a specific [channel](./channels.md) (such as WhatsApp or the web) and a specific chatbot.
+The same person using two different channels, or two different chatbots, will have separate participant records for each.
+Open Chat Studio (OCS) does not automatically merge these records.
 
 ## Managing participant records
 
-You can view and edit participant data on the **Participant Details** page. Open it by selecting a participant from the Participants list. You can also export and import participant data from the Participants list page.
+You can view and edit participant data on the **Participant Details** page.
+Open it by selecting a participant from the Participants list.
+You can also export and import participant data from the Participants list page.
 
 The **Session details** screen shows the **Participant Data** and **Participant Schedules** in one place.
 Schedules are the [reminders](../how-to/reminders.md) and scheduled messages set for that participant.
 
-To add a participant manually, use the Create action and provide an identifier, [platform](channels.md), and optional name. If a participant with that platform and identifier already exists for the team, the form links you to the existing record.
+To add a participant manually, use the Create action and provide an identifier, [platform](channels.md), and optional name.
+If a participant with that platform and identifier already exists for the team, the form links you to the existing record.
 
 ## Using participant data
 
 ### Prompt variable
 
-You can access participant data with the `{participant_data}` [prompt variable](prompt_variables.md). Use it to personalize responses — for example, to greet the participant by name or tailor content to their preferences.
+You can access participant data with the `{participant_data}` [prompt variable](prompt_variables.md).
+Use it to personalize responses — for example, to greet the participant by name or tailor content to their preferences.
 
 ### Pipeline nodes
 
-[Pipeline nodes](pipelines/index.md#node-types-for-complex-pipelines) can read participant data. For more information on each node type and how they use participant data, see [Node Types](pipelines/nodes.md).
+[Pipeline nodes](pipelines/index.md#node-types-for-complex-pipelines) can read participant data.
+For more information on each node type and how they use participant data, see [Node Types](pipelines/nodes.md).
 
 ## Updating participant data
 
@@ -37,7 +45,8 @@ The [Update Participant Data Node](pipelines/nodes.md#update-participant-data-no
 
 ### Update with events
 
-You can trigger participant data updates automatically using [events](events.md). This approach is useful when you want to extract and store information from a conversation without manual intervention.
+You can trigger participant data updates automatically using [events](events.md).
+This approach is useful when you want to extract and store information from a conversation without manual intervention.
 
 A common pattern is to use a [timeout event](events.md#timeout-events) to process conversation history after a period of inactivity.
 For example, configure an event to fire 15 minutes after the last message.
@@ -61,13 +70,15 @@ For example, to store a list of tasks extracted from a conversation:
 
 ### Update with API
 
-You can also update the participant data using the API. This is useful if you want full control over the data or when you want to update the data based from an external system.
+You can also update the participant data using the API.
+This is useful when you want full control over the data or want to update it from an external system.
 
 For the full details on using the API, see the [API docs](https://openchatstudio.com/api/docs/).
 
 ## Participant Timezone for web channel
 
-The system automatically sets the `timezone` participant data property when a participant uses the web channel. It comes from the participant's browser and helps localize date and time values in prompts.
+The system automatically sets the `timezone` participant data property when a participant uses the web channel.
+It comes from the participant's browser and helps localize date and time values in prompts.
 
 ## See also
 

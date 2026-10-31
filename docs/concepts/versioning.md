@@ -1,24 +1,32 @@
 # Versioning
 
-Versioning keeps your live chatbot stable while you make changes. You can edit and test your chatbot without impacting your participants. For more details, see the tutorial on [creating and publishing versions](../tutorials/versioning_steps.md).
+Versioning keeps your live chatbot stable while you make changes.
+You can edit and test your chatbot without affecting your participants.
+For more details, see the tutorial on [creating and publishing versions](../tutorials/versioning_steps.md).
 
-Versioning tracks the history of your chatbot's configuration so you can review what changed, and roll back to a previous version if needed.
+Versioning tracks the history of your chatbot's configuration.
+You can review what changed and roll back to a previous version if needed.
 
 ## Terminology
 
-- **Unreleased Version**. This is the version of the chatbot you are currently editing. It is a draft that has not been versioned or published.
+- **Unreleased Version**.
+  This is the version of the chatbot you are currently editing.
+  It is a draft that has not been versioned or published.
 
-- **Published Version**. This is the version that participants interact with, through the web, WhatsApp, or any other [channel](channels.md) you have set up, including the public link.
+- **Published Version**.
+  This is the version that participants interact with, through the web, WhatsApp, or any other [channel](channels.md) you have set up, including the public link.
 
 ## What is a Chatbot Version?
 
-Once a version is created, it cannot be edited or modified. This ensures that the participants' experience remains stable even if chatbot editors are changing the unreleased version.
+Once a version is created, it cannot be edited or modified.
+This ensures that the participants' experience remains stable even if chatbot editors are changing the unreleased version.
 
 ### What is frozen — and what is live
 
 Most of a published version's configuration is frozen at publish time.
 
-One exception is **collection content**, which behaves as a live shared resource — updates reach the published chatbot without a republish. See [Collections and published chatbots](collections/index.md#collections-and-published-chatbots) for details on what's live versus frozen, and how this affects drift detection.
+One exception is **collection content**, which behaves as a live shared resource — updates reach the published chatbot without a republish.
+See [Collections and published chatbots](collections/index.md#collections-and-published-chatbots) for what is live and what is frozen, and how this affects drift detection.
 
 ## Chatting to the unreleased version
 To chat with the unreleased draft chatbot for testing, go to the chatbot home page.
@@ -43,19 +51,24 @@ To publish a version, follow the tutorial on [creating and publishing versions](
 
 ## Reverting to a Previous Version
 
-Reverting replaces your current working (unreleased) state with a copy of an older version's configuration. The older version itself is not modified — a fresh copy becomes your new working state, ready to edit or publish.
+Reverting replaces your current working (unreleased) state with a copy of an older version's configuration.
+The older version itself is not modified — a fresh copy becomes your new working state, ready to edit or publish.
 
 ### The revert confirmation modal
 
-When you click **Revert** on a version, a confirmation modal opens instead of a plain confirm dialog. The modal lists what will change, field by field and node by node, so you can check before committing.
+When you click **Revert** on a version, a confirmation modal opens instead of a plain confirm dialog.
+The modal lists what will change, field by field and node by node, so you can check before committing.
 Added fields are highlighted and removed fields are marked, so you can compare your current working state with the target version.
 
 ### Warning for unreleased changes
 
-If your current working version has unreleased changes (changes that do not belong to any saved version), a warning appears in the modal. The warning tells you that reverting will overwrite those unreleased changes permanently. Review the changes carefully before confirming if you see this warning.
+If your current working version has unreleased changes (changes that do not belong to any saved version), a warning appears in the modal.
+The warning tells you that reverting will overwrite those unreleased changes permanently.
+If you see this warning, review the changes carefully before confirming.
 
 !!! warning "Unreleased changes are permanently lost on revert"
-    Once you confirm a revert, any edits in the unreleased working state that are not part of a saved version cannot be recovered. Create a new version first if you want to preserve those changes.
+    Once you confirm a revert, any edits in the unreleased working state that are not part of a saved version cannot be recovered.
+    Create a new version first if you want to preserve those changes.
 
 ## See also
 
