@@ -1,4 +1,4 @@
-# Set Up a Real-Time LLM Judge
+# Set Up a Real-Time LLM-as-a-Judge
 
 This guide shows you how to set up an LLM-as-a-judge: an [LLM evaluator](../../concepts/evaluations/evaluators.md#llm-evaluator) that scores each new chatbot session automatically as it arrives. Use it to monitor the quality of a live chatbot without starting evaluation runs by hand.
 
@@ -65,21 +65,20 @@ Define the output schema fields to match what you reference in the prompt. See [
 
 ## Step 4 (optional): Add tag rules to flag results automatically
 
-[Tag rules](../../concepts/evaluations/tag_rules.md) apply a tag to a session automatically when an evaluator output field meets a condition. Use them to find the sessions you need to review without checking every row.
+[Tag rules](../../concepts/evaluations/tag_rules.md) apply a tag to a session automatically when an evaluator output field meets a condition.
+Use them to find the sessions you need to review without checking every row.
+Add them in the **Tag Rules** section of the evaluator form.
+See [Add Tag Rules](add-tag-rules.md) for the steps and the [condition types](add-tag-rules.md#conditions-by-field-type).
 
-**Example rules using the output schema from Step 3:**
+Example rules using the output schema from Step 3:
 
 | Output field | Tag name | Condition |
 |---|---|---|
 | `goal_completion` | `goal-not-met` | equals `no` |
 | `quality_score` | `low-quality` | range `1..2` |
 
-With these rules in place, sessions where the goal was not met or where quality scored 1 or 2 are tagged automatically after each evaluation run.
-
-!!! tip
-    Tagged sessions can be filtered in the session list, so your team can follow up on them first without reviewing every result.
-
-See [Tag Rules](../../concepts/evaluations/tag_rules.md) for the full set of condition types.
+With these rules, sessions where the goal was not met, or where quality scored 1 or 2, are tagged after each evaluation run.
+Filter the [sessions list](../../concepts/sessions.md#tags-on-the-sessions-list) by tag to follow up on them first.
 
 ## Step 5: Create an evaluation with auto-run turned on
 
@@ -102,12 +101,13 @@ After setup, confirm the pipeline is running end to end:
 
 1. **New sessions appear in the dataset** — once a new session matches the rule's filter, the dataset row count should increase within the [polling interval](../../tech-hub/evaluations/auto_population.md#how-ingestion-works).
 2. **Delta runs appear in the run table** — each ingestion cycle that adds new sessions should produce a corresponding delta run entry.
-3. **Tags appear on matching sessions** — if you configured tag rules, check the Applied Tags column on the run results page and verify that sessions meeting the conditions are tagged.
+3. **Tags appear on matching sessions** — if you configured tag rules, use the **Tags** filter on the [sessions list](../../concepts/sessions.md#tags-on-the-sessions-list) to check that sessions meeting the conditions are tagged.
 
 If sessions are not appearing, verify that the [auto-population rule](../../tech-hub/evaluations/auto_population.md) is still enabled.
 
 ## See also
 
 - [Auto-Population Rules](../../tech-hub/evaluations/auto_population.md): how ingestion, the lookback window and automatic delta runs work.
-- [Tag Rules](../../concepts/evaluations/tag_rules.md): the condition types available for flagging results.
+- [Add Tag Rules](add-tag-rules.md): the steps and condition types for adding a rule.
+- [Tag Rules](../../concepts/evaluations/tag_rules.md): why and when to use tag rules.
 - [Run an Evaluation](run-an-evaluation.md): create, preview and run an evaluation by hand.
