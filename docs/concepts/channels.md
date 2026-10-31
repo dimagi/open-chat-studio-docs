@@ -104,8 +104,10 @@ While a channel is disabled:
 - **Participants can't start a new conversation on it.**
   This covers the embedded chat widget, the public web chat link, Slack, and starting a chat from the chatbot's management pages in OCS itself.
   Two API endpoints are exceptions — see [Known limitations](../how-to/channels/disable_a_channel.md#known-limitations).
-- **The chatbot doesn't send anything to that channel on its own.** Scheduled messages, [event action](events.md) messages, and messages triggered through the API are all held back rather than delivered.
-- **Messages sent to the channel are ignored.** They aren't processed or recorded, and the chatbot doesn't reply — unless you've configured a disabled message.
+- **The chatbot doesn't send anything to that channel on its own.**
+  Scheduled messages, [event action](events.md) messages, and messages triggered through the API are all held back rather than delivered.
+- **Messages sent to the channel are ignored.**
+  They aren't processed or recorded, and the chatbot doesn't reply — unless you've configured a disabled message.
 
 A **disabled message** is an optional static reply for the channel.
 When a participant messages a disabled channel or tries to start a conversation on it, this message replaces the chatbot's response.

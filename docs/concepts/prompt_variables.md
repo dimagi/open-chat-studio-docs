@@ -20,7 +20,7 @@ The following variables are currently supported:
 !!! info "Localizing injected datetime"
 
     The injected datetime is localized to the participant's timezone if it exists in their participant data.
-When a participant uses the web UI, their browser's timezone is automatically saved to their participant data.
+    When a participant uses the web UI, their browser's timezone is automatically saved to their participant data.
 
 !!! info "A note on prompt caching"
 

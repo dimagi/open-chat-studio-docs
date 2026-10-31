@@ -22,7 +22,7 @@ You can reach a pre-filtered trace table from several places in Open Chat Studio
 
 - From a **trace detail page**, use **View session traces**, **View chatbot traces**, or **View participant traces** to open the trace table filtered accordingly.
 - From a **session transcript**, use the **View Traces** button to open the trace table pre-filtered to that session.
-- From the **chatbot list or detail page**, use the **View chatbot traces** link to open the trace table pre-filtered to that chatbot.
+- From the **chatbot list**, select the trend chart in a chatbot's row to open the trace table pre-filtered to that chatbot.
 
 Each builtin trace captures:
 

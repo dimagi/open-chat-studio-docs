@@ -125,7 +125,8 @@ This lets you respond differently depending on who or what ended the conversatio
 | **The Conversation is Ended by an Event** | An **End the conversation** event action ended the session. |
 | **The Conversation is Manually Ended by a User** | A team member ended the session via the OCS admin. |
 
-The generic **Conversation End** trigger fires for all of the above. Use it when you want to take the same action regardless of how the session ended.
+The generic **Conversation End** trigger fires for all of the above.
+Use it when you want to take the same action regardless of how the session ended.
 See [Events](events.md) for more detail.
 
 ## Status and reporting

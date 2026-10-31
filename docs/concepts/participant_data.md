@@ -9,7 +9,8 @@ Open Chat Studio (OCS) does not automatically merge these records.
 
 ## Managing participant records
 
-You can view and edit participant data on the **Participant Details** page. Open it by selecting a participant from the **Participants** list.
+You can view and edit participant data on the **Participant Details** page.
+Open it by selecting a participant from the **Participants** list.
 You can also export and import participant data from the **Participants** list page.
 
 The **Session details** screen shows the **Participant Data** and **Schedules** in one place.

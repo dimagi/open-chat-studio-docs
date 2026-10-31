@@ -10,7 +10,8 @@ hide:
 This guide explains the key concepts behind Open Chat Studio (OCS) and AI-powered chatbots.
 Use it to understand what each feature is and why it exists.
 
-For step-by-step instructions on completing specific tasks, see the [How-to guides](../how-to/index.md). If you are new to OCS, start with the [Tutorials](../tutorials/index.md).
+For step-by-step instructions on completing specific tasks, see the [How-to guides](../how-to/index.md).
+If you are new to OCS, start with the [Tutorials](../tutorials/index.md).
 
 ## Terms
 [Annotations](annotations/index.md)
@@ -41,10 +42,12 @@ This technique is called retrieval-augmented generation (RAG), and it can reduce
 : An agreement screen shown before a conversation begins, where participants read how their data is used and confirm they agree.
 
 [Custom Actions](llm_custom_action.md)
-: Reusable connections to external services. They let your chatbot look up information or complete tasks, such as checking an order status or creating a ticket.
+: Reusable connections to external services.
+They let your chatbot look up information or complete tasks, such as checking an order status or creating a ticket.
 
 [Document Sources](collections/indexed_collections/document_sources.md)
-: A connection between an indexed collection and an external system, such as a Confluence space or GitHub repository. OCS fetches the content and keeps it in sync.
+: A connection between an indexed collection and an external system, such as a Confluence space or GitHub repository.
+OCS fetches the content and keeps it in sync.
 The chatbot then answers from current documentation without you re-uploading files.
 
 [Evaluations](evaluations/index.md)
@@ -58,7 +61,8 @@ It scores the responses against criteria you define, such as accuracy, tone, or 
 : A per-node setting on nodes that call an LLM. It controls which messages the model receives: the node's own history, the full conversation, a shared named history, or none.
 
 [History Mode](pipelines/history.md#history-mode)
-: A per-node setting that controls how a node's conversation history is trimmed once it passes a token or message limit. Options are summarizing, truncating, or capping the message count.
+: A per-node setting that controls how a node's conversation history is trimmed once it passes a token or message limit.
+Options are summarizing, truncating, or capping the message count.
 
 [Large Language Models (LLMs)](llm.md)
 : The AI model that understands messages and generates your chatbot's responses.
@@ -68,10 +72,12 @@ OCS lets you choose from a range of models and configure how they behave.
 : The account you configure with an LLM service — such as OpenAI, Anthropic, or Google — so your chatbots can use its models.
 
 [Messaging Provider](team/messaging_providers.md)
-: A provider account you configure for a messaging service, such as Twilio, Turn.io, or Slack. Some channels require it to send and receive messages for your chatbot.
+: A provider account you configure for a messaging service, such as Twilio, Turn.io, or Slack.
+Some channels require it to send and receive messages for your chatbot.
 
 [Node](./pipelines/nodes.md)
-: A single processing step in a pipeline. Each node performs one task, such as calling an LLM, running custom code, or routing the conversation based on its content.
+: A single processing step in a pipeline.
+Each node performs one task, such as calling an LLM, running custom code, or routing the conversation based on its content.
 
 [Notifications](notifications.md)
 : Alerts about problems with your chatbots, such as failed integrations or delivery errors.

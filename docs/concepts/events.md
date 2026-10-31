@@ -79,12 +79,14 @@ If the chatbot has no session yet when the event fires, the failure is recorded 
 Each event is associated with one action.
 The available actions are:
 
-- **End the conversation**: Ends the conversation with the participant. See [Ending session with events](../tech-hub/ending_sessions.md#events-with-an-end-the-conversation-action) for more details.
+- **End the conversation**: Ends the conversation with the participant.
+  See [Ending session with events](../tech-hub/ending_sessions.md#events-with-an-end-the-conversation-action) for more details.
 - **Prompt the bot to message the user**: Prompts the chatbot to message the participants.
 - **Trigger a schedule**: Creates a one-off or recurring schedule.
   Each time the schedule is triggered, the chatbot is prompted to message the participant.
   This action is a way to schedule a *message*, and is separate from a **Scheduled Event** trigger, which schedules *when a trigger fires*.
-- **Start a pipeline**: This will run the given [pipeline](pipelines/index.md) when the event triggers. The input to the pipeline can be configured.
+- **Start a pipeline**: This will run the given [pipeline](pipelines/index.md) when the event triggers.
+  The input to the pipeline can be configured.
 
 ## Event Logs
 
