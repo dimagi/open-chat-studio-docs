@@ -11,12 +11,13 @@ They let participants check where an answer came from, and open the source file 
 ## When should I use this?
 
 - A **policy assistant** where staff must confirm the answer against the official policy document
-- A **support chatbot** that links participants to the full product documentation page
+- A **support chatbot** that links participants to the product documentation file an answer came from
 - A **research tool** where readers need to trace each answer back to the report it came from
 
 Turn citations off when source links would confuse participants.
-Also turn them off if you don't want to share file names or repository paths.
-Citations also give participants a download link to the file contents.
+Turn them off if you don't want participants to see file names or GitHub repository paths.
+Also turn them off if you don't want participants to download the contents of uploaded or GitHub files.
+Anyone with a download link can open it, without an OCS account.
 
 ## What participants see
 
@@ -37,11 +38,14 @@ The chatbot still answers from your files, but the answer has no source links.
 Citations work for every file in an indexed collection, whether you uploaded it or synced it from a document source.
 A document source only changes the citation text and link.
 
-Uploaded files are cited by file name.
-Uploaded files and GitHub files link to a download copy stored in OCS, so participants don't need access to the repository.
-Confluence citations link to the original page, so participants need access to that Confluence space to open it.
+Uploaded files and GitHub files link to a download copy stored in OCS.
+Participants can open them without access to the repository or an OCS account.
+The download link doesn't expire, so anyone who has it can download the file.
+Confluence citations link to the original page.
+Participants need access to that Confluence space to open it.
 
-For the citation text and link for each document source, see the [document sources quick reference](../../../tech-hub/collections/document_sources.md#quick-reference).
+Uploaded files are cited by file name.
+For the citation text and link of each document source, see the [document sources quick reference](../../../tech-hub/collections/document_sources.md#quick-reference).
 
 ## See also
 
