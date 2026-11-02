@@ -14,15 +14,12 @@ They let participants check where an answer came from, and open the source file 
 - A **support chatbot** that links participants to the product documentation file an answer came from
 - A **research tool** where readers need to trace each answer back to the report it came from
 
-Turn citations off when source links would confuse participants.
-Turn them off if you don't want participants to see file names or GitHub repository paths.
-Also turn them off if you don't want participants to download the contents of uploaded or GitHub files.
-Anyone with a download link can open it, without an OCS account.
-
 ## What participants see
 
 Citations appear as numbered references in the answer.
 A list of the cited sources, each with its link, appears at the end of the answer.
+
+![A chatbot web chat displays an answer with numbered citation references and linked sources below it](../../images/citations_in_chat.png)
 
 ## Turning citations on or off
 
@@ -33,6 +30,12 @@ The setting applies to every indexed collection selected on that node.
 Turning citations off does not stop the chatbot from searching the collection.
 The chatbot still answers from your files, but the answer has no source links.
 
+Turn citations off if:
+
+- source links would confuse participants
+- you don't want participants to see file names or GitHub repository paths
+- you don't want participants to download the contents of uploaded or GitHub files (see [What a citation links to](#what-a-citation-links-to))
+
 ## What a citation links to
 
 Citations work for every file in an indexed collection, whether you uploaded it or synced it from a document source.
@@ -40,7 +43,7 @@ A document source only changes the citation text and link.
 
 Uploaded files and GitHub files link to a download copy stored in OCS.
 Participants can open them without access to the repository or an OCS account.
-The download link doesn't expire, so anyone who has it can download the file.
+Anyone who has the link can download the file.
 Confluence citations link to the original page.
 Participants need access to that Confluence space to open it.
 
