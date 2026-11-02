@@ -33,6 +33,9 @@ See the [migration guide](../how-to/assistants_migration.md) if a pipeline still
 : In OCS, this is the top-level configuration for your conversational experience.
 It defines the chatbot's behavior, connects it to one or more channels, and is published to participants.
 
+[Citations](collections/indexed_collections/citations.md)
+: Links shown with a chatbot's answer to the files it came from. They let participants check an answer against its source.
+
 [Collections](collections/index.md)
 : A group of files you attach to a chatbot.
 A media collection lets the chatbot send files to participants.
