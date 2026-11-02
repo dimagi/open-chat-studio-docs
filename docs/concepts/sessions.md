@@ -75,9 +75,22 @@ The sessions CSV export has a matching **Annotation Queues** column after **Sess
 Columns after it move one position to the right.
 The header is always present so the layout is stable, but cells are empty for teams without the feature flag.
 
+## Tags on the Sessions List
+
+The **Tags** column shows only [tags](tags.md) applied to the session itself, followed by a tag icon (:fontawesome-solid-tags:).
+A session whose tags are all on individual messages shows just the icon.
+Open the session to see the tags on its messages.
+
+To find sessions by tag, use the **Tags** filter.
+It matches sessions that carry the tag on the session itself or on any of the messages in the session.
+
+Tags come from people, pipeline nodes and [tag rules](evaluations/tag_rules.md), which tag sessions or messages automatically when an LLM evaluator's output meets a condition.
+For example, filter by a `goal-not-met` tag to review only the sessions an evaluation flagged, instead of reading every result.
+
 ## See also
 
 - [Session Status](session_status.md)
+- [Tags](tags.md)
 - [Participant Data](participant_data.md)
 - [Channels](channels.md)
 - [Conversation History](pipelines/history.md)

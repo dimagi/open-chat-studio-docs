@@ -10,7 +10,7 @@ Running evaluations regularly gives you an early warning when a change to a prom
 flowchart LR
     sessions([Past conversations]) --> dataset[Dataset]
     manual([Hand-written or CSV test cases]) --> dataset
-    dataset --> evaluators["Evaluators (LLM judge or Python)"]
+    dataset --> evaluators["Evaluators (LLM-as-a-judge or Python)"]
     evaluators --> results[Results table]
     results --> tags[Tag rules tag matching rows]
     results --> compare[Compare runs over time]
@@ -30,5 +30,5 @@ You run the evaluation with the current model and note the average score, then c
 
 - [Create a Dataset](../../how-to/evaluations/create-a-dataset.md) — build your first dataset by cloning sessions, importing from an [annotation queue](../annotations/queues.md), or uploading a CSV.
 - [Run an Evaluation](../../how-to/evaluations/run-an-evaluation.md) — create an evaluation, preview and run it, and read the results.
-- [Set Up a Real-Time LLM Judge](../../how-to/evaluations/realtime_llm_judge.md) — score new sessions from a live chatbot automatically.
+- [Set Up a Real-Time LLM-as-a-Judge](../../how-to/evaluations/realtime_llm_judge.md) — score new sessions from a live chatbot automatically.
 - [Evaluations Reference](../../tech-hub/evaluations/index.md) — how evaluation runs execute, Python evaluators and auto-population.
