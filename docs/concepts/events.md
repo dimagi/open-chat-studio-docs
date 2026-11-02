@@ -89,7 +89,7 @@ The available actions are:
 - **Trigger a schedule**: Creates a one-off or recurring schedule.
   Each time the schedule is triggered, the chatbot is prompted to message the participant.
   This action is a way to schedule a *message*, and is separate from a **Scheduled Event** trigger, which schedules *when a trigger fires*.
-- **Start a pipeline**: This will run the given [pipeline](pipelines/index.md) when the event triggers.
+- **Start a pipeline**: Runs the given [pipeline](pipelines/index.md) when the event triggers.
   The input to the pipeline can be configured.
 
 ## Event Logs
