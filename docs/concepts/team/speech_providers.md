@@ -36,7 +36,7 @@ You can trigger a manual re-sync from the provider's edit page to pick up newly 
 !!! note
     Voice sync requires an API key with the `voices_read` permission.
     If the key lacks this permission, ElevenLabs rejects the request.
-OCS shows the error message from ElevenLabs, for example that the key is missing the permission `voices_read`.
+    OCS shows the error message from ElevenLabs, for example that the key is missing the permission `voices_read`.
     To fix this, update the key's permissions in ElevenLabs, then re-sync voices from the provider's edit page.
 
 **Custom voices:** Custom voices must be created directly in ElevenLabs.

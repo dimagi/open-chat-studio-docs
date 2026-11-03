@@ -6,7 +6,7 @@ Users can be put in one or multiple groups.
 
 !!! warning "Assistant Admin role removed"
     The **Assistant Admin** role has been removed.
-It can no longer be granted to a team member or attached to an invitation, and existing memberships in it are gone.
+    It can no longer be granted to a team member or attached to an invitation, and existing memberships in it are gone.
     It was the only role granting full file management (add, change, delete); the other roles that reach files, such as **Chat Viewer**, are view-only.
     If someone on your team relied on **Assistant Admin** for file management, assign them another role that covers what they need.
     See [OpenAI Assistants (Removed)](../assistants.md) for why this role existed.

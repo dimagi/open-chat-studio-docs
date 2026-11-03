@@ -49,7 +49,7 @@ This message comes directly from your LLM provider.
 !!! note "Provider error messages are shown as-is"
     OCS doesn't filter or mask the provider's error message.
     Some providers redact sensitive details automatically, but not every provider does.
-OpenAI, for example, masks your API key in its own error message.
+    OpenAI, for example, masks your API key in its own error message.
 
 ## Local Index
 

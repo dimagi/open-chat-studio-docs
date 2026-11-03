@@ -95,8 +95,8 @@ This repeats until all nodes have completed or a maximum step limit is reached.
 
 !!! tip "Running nodes in parallel"
 
-  Because multiple nodes can execute in the same pass, pipelines naturally support parallel processing.
-  See [Parallel Pipelines](./parallel.md) for details.
+    Because multiple nodes can execute in the same pass, pipelines naturally support parallel processing.
+    See [Parallel Pipelines](./parallel.md) for details.
 
 ## Asking the Assistant About a Pipeline
 
