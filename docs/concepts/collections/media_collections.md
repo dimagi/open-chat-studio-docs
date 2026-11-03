@@ -78,7 +78,7 @@ These channels do not yet support sending multimedia files:
 ### Multimedia-supported channels
 
 Channels that support sending multimedia files will receive each attachment as a separate message, following the chatbot’s initial response.
-If the channel does not support a file's type or size, a download link is appended to the chatbot’s message instead.
+If a file type is not supported by the channel, or the file size exceeds the allowed limit, a download link will be appended to the chatbot’s message instead.
 These channels support sending multimedia files:
 
 * API — see the [API documentation](https://openchatstudio.com/api/v1/docs/#tag/Channels/operation/new_api_message) for more information
