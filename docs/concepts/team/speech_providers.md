@@ -1,6 +1,7 @@
 # Speech Service Providers
 
-Speech service providers enable voice capabilities in Open Chat Studio, including text-to-speech (TTS) and speech-to-text (STT). Configuring a speech provider allows chatbots to synthesize spoken audio from text and transcribe audio input to text.
+Speech service providers enable voice capabilities in Open Chat Studio, including text-to-speech (TTS) and speech-to-text (STT).
+Configuring a speech provider allows chatbots to synthesize spoken audio from text and transcribe audio input to text.
 
 ## Supported providers
 
@@ -29,20 +30,25 @@ Speech service providers enable voice capabilities in Open Chat Studio, includin
 
 ### Voices
 
-When you create or edit an ElevenLabs provider, OCS fetches and stores the voices available in your ElevenLabs account. You can trigger a manual re-sync from the provider's edit page to pick up newly added voices.
+When you create or edit an ElevenLabs provider, OCS fetches and stores the voices available in your ElevenLabs account.
+You can trigger a manual re-sync from the provider's edit page to pick up newly added voices.
 
 !!! note
     Voice sync requires an API key with the `voices_read` permission.
-    If the key lacks this permission, ElevenLabs rejects the request and OCS shows the error message from ElevenLabs, for example that the key is missing the permission `voices_read`.
+    If the key lacks this permission, ElevenLabs rejects the request.
+OCS shows the error message from ElevenLabs, for example that the key is missing the permission `voices_read`.
     To fix this, update the key's permissions in ElevenLabs, then re-sync voices from the provider's edit page.
 
-**Custom voices:** Custom voices must be created directly in ElevenLabs. OCS does not support creating custom voices. Once created in ElevenLabs, they will be synced to OCS the next time a sync runs (automatically on provider creation, or manually on request).
+**Custom voices:** Custom voices must be created directly in ElevenLabs.
+OCS does not support creating custom voices.
+Once created in ElevenLabs, they will be synced to OCS the next time a sync runs (automatically on provider creation, or manually on request).
 
 OCS does not support creating custom voices directly — manage your voice library in ElevenLabs and let OCS sync the results.
 
 ## intron.io
 
-intron.io is a text-to-speech platform specialising in African language voices. It provides synthetic voices across a wide range of African and international accents, making it a strong choice for teams serving African-language audiences.
+intron.io is a text-to-speech platform specialising in African language voices.
+It provides synthetic voices across a wide range of African and international accents, making it a strong choice for teams serving African-language audiences.
 
 ### Capabilities
 
@@ -60,7 +66,8 @@ intron.io is a text-to-speech platform specialising in African language voices. 
 
 ### Voices
 
-When you create an intron.io provider, OCS automatically creates 90 voices — one male and one female variant for each of 45 accents. Example accents include Afrikaans, Hausa, Igbo, Kinyarwanda, Luganda, Swahili, Xhosa, Yoruba, and Zulu, alongside a further 36 African and international accents.
+When you create an intron.io provider, OCS automatically creates 90 voices — one male and one female variant for each of 45 accents.
+Example accents include Afrikaans, Hausa, Igbo, Kinyarwanda, Luganda, Swahili, Xhosa, Yoruba, and Zulu, alongside a further 36 African and international accents.
 
 Voice seeding is idempotent: saving or re-saving the provider will not create duplicate voices.
 
@@ -81,9 +88,11 @@ MiniMax provides text-to-speech only — it does not offer speech-to-text.
 
 1. Obtain an API key and Group ID from the [MiniMax platform](https://platform.minimax.io).
 2. In Open Chat Studio, open **Team Settings → [Integrations](integrations.md)**.
-3. Click **Add integration**, choose **MiniMax** from the **Speech** group, and enter your API key and Group ID. You can optionally set the T2A model; a sensible default is filled in for you.
+3. Click **Add integration**, choose **MiniMax** from the **Speech** group, and enter your API key and Group ID.
+   You can optionally set the T2A model; a sensible default is filled in for you.
 4. On creation, OCS automatically seeds the available MiniMax voices.
 
 ### Voices
 
-When you create a MiniMax provider, OCS automatically seeds its built-in MiniMax voices, so they are ready to select in your chatbots. Voice seeding is idempotent: saving or re-saving the provider will not create duplicate voices.
+When you create a MiniMax provider, OCS automatically seeds its built-in MiniMax voices, so they are ready to select in your chatbots.
+Voice seeding is idempotent: saving or re-saving the provider will not create duplicate voices.

@@ -1,6 +1,7 @@
 # Node Types
 
-A node is a discrete processing step in a [pipeline](index.md) that accepts a participant's input and produces an output to downstream nodes. Each node performs a specific task, such as calling a [large language model (LLM)](../llm.md), running Python code, or routing based on logic.
+A node is a discrete processing step in a [pipeline](index.md) that accepts a participant's input and produces an output to downstream nodes.
+Each node performs a specific task, such as calling a [large language model (LLM)](../llm.md), running Python code, or routing based on logic.
 It processes data that flows through the pipeline.
 
 ```mermaid
@@ -18,43 +19,50 @@ graph LR
 
 The pipeline editor highlights nodes that need your attention:
 
-- A **red border** means the node has a configuration **error**. The pipeline cannot run until you fix it.
-- An **amber border**, together with a warning triangle in the node's header, means the node has a **warning**. Warnings are advisory — the pipeline still saves, runs, accepts a test message, and can be [versioned](../versioning.md).
+- A **red border** means the node has a configuration **error**.
+  The pipeline cannot run until you fix it.
+- An **amber border**, together with a warning triangle in the node's header, means the node has a **warning**.
+  Warnings are advisory — the pipeline still saves, runs, accepts a test message, and can be [versioned](../versioning.md).
 
 If a node has both an error and a warning, the red border takes precedence because the error is more urgent.
 
 A node carries a warning when:
 
 - Its **node type** has been deprecated and will be removed in a future release.
-- Its **LLM model** has been [deprecated](../team/llm_providers.md#model-lifecycle-and-deprecation). The triangle names the deprecated model and the model to switch to.
+- Its **LLM model** has been [deprecated](../team/llm_providers.md#model-lifecycle-and-deprecation).
+  The triangle names the deprecated model and the model to switch to.
   The **LLM Model** field in the node's settings shows the same notice.
 
 A node that is affected by both shows a single triangle carrying both messages.
 
 ## LLM Node
 
-A conversational node using AI models. You can configure:
+A conversational node using AI models.
+You can configure:
 
 - A [prompt](../llm.md#prompt) for instructions on how to respond
 - [Prompt variables](../prompt_variables.md) to insert dynamic content
 - A [history setting](history.md) for conversation memory
 - [Temperature and effort parameters](../../how-to/adjust_llm_node_model_parameters.md) to shape output style and depth
 - [Tools](../tools/index.md) for additional actions
-- [Collections](../collections/index.md) for indexed collections to ground responses in your documents (RAG), or media collections to send files to participants. For indexed collections, the **Generate Citations** setting controls whether answers [show source links](../collections/indexed_collections/citations.md).
+- [Collections](../collections/index.md) for indexed collections to ground responses in your documents (RAG), or media collections to send files to participants.
+  For indexed collections, the **Generate Citations** setting controls whether answers [show source links](../collections/indexed_collections/citations.md).
 - [Metadata filters](../../how-to/filter_collection_search_by_metadata.md) to limit an indexed collection search to rows with matching metadata
 - [Custom Actions](../llm_custom_action.md) to connect to external systems and retrieve information or complete tasks
 
 See [Configure an LLM Node](../../tutorials/configure_llm_node.md) for a step-by-step tutorial on setting one up.
-To refer to enabled tools by name in the prompt, or to ask an AI assistant to review it, see [Search and Get Prompt Help in the Pipeline Editor](../../how-to/pipeline_editor_search_and_prompt_help.md).
+To name enabled tools in the prompt or get AI help reviewing it, see [Search and Get Prompt Help in the Pipeline Editor](../../how-to/pipeline_editor_search_and_prompt_help.md).
 
 ## Routing Nodes
 
-Routers are used to reduce cost, improve accuracy, and keep pipeline workflows flexible. A router will receive input, analyze it, choose the next workflow step, and pass the request to the downstream node.
+Routers are used to reduce cost, improve accuracy, and keep pipeline workflows flexible.
+A router will receive input, analyze it, choose the next workflow step, and pass the request to the downstream node.
 See the [Router Node](./router_nodes.md) page for full details.
 
 ## Render a Template Node
 
-The Render a Template node lets you shape the text flowing through a pipeline before it reaches the next step. You write a template that mixes fixed text with placeholders.
+The Render a Template node lets you shape the text flowing through a pipeline before it reaches the next step.
+You write a template that mixes fixed text with placeholders.
 At runtime, the node fills in the placeholders using information about the current message, the participant, and the pipeline state.
 
 Use this node to reformat a previous node's output, build a prompt for a downstream LLM node, or compose a personalized message.
@@ -63,7 +71,8 @@ See the [Render a Template and Send an Email Node](../../tech-hub/template_and_e
 
 ## Send an Email Node
 
-The Send an Email node sends an email as part of a pipeline run. The node acts as a passthrough: its output is identical to its input.
+The Send an Email node sends an email as part of a pipeline run.
+The node acts as a passthrough: its output is identical to its input.
 Inserting it into a pipeline does not change what the next node receives.
 
 See the [Send an Email How-to Guide](../../how-to/send_email_node.md) for steps and example use cases.
@@ -73,16 +82,21 @@ See the [Render a Template and Send an Email Node](../../tech-hub/template_and_e
 ## Extract Structured Data Node
 
 Uses an LLM to extract structured data from the input.
-You define a JSON schema, which describes the fields to extract and their types. Unlike most other nodes, its output **replaces** the input: downstream nodes receive the extracted data (as JSON) rather than the original conversation text.
+You define a JSON schema, which describes the fields to extract and their types.
+Unlike most other nodes, its output **replaces** the input: downstream nodes receive the extracted data (as JSON) rather than the original conversation text.
 
 Sometimes the model returns no structured data for part of the input.
 This happens if it refuses, the provider blocks the reply, or it never calls the required tool.
 The node skips that part instead of failing the conversation turn.
-If nothing at all could be extracted, the node outputs an empty JSON object (`{}`). This is rare in practice.
+If nothing at all could be extracted, the node outputs an empty JSON object (`{}`).
+This is rare in practice.
 
 ## Update Participant Data Node
 
-Uses an LLM to extract structured data the same way as the Extract Structured Data node. Instead of passing the result downstream, it saves it as [participant data](../../concepts/participant_data.md). This node is a passthrough — its output is identical to its input. It can be inserted into a pipeline without changing what the next node receives, and is commonly used with [events](../events.md).
+Uses an LLM to extract structured data the same way as the Extract Structured Data node.
+Instead of passing the result downstream, it saves it as [participant data](../../concepts/participant_data.md).
+This node is a passthrough — its output is identical to its input.
+It can be inserted into a pipeline without changing what the next node receives, and is commonly used with [events](../events.md).
 
 It handles a missing response the same way.
 The node skips any part of the input with no structured data.

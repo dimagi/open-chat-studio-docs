@@ -1,8 +1,12 @@
 # LLM Service Providers
 
-An **LLM provider** is the company that hosts the AI models powering your chatbot — for example OpenAI, Anthropic, or Google. Building chatbots in Open Chat Studio requires access to [Large Language Models (LLMs)](../llm.md). You'll need an account with at least one provider. Enter its credentials in your Team settings so Open Chat Studio chatbots can access its models.
+An **LLM provider** is the company that hosts the AI models powering your chatbot — for example OpenAI, Anthropic, or Google.
+Building chatbots in Open Chat Studio requires access to [Large Language Models (LLMs)](../llm.md).
+You'll need an account with at least one provider.
+Enter its credentials in your Team settings so Open Chat Studio chatbots can access its models.
 
-Open Chat Studio is designed to be flexible, and can connect to any LLM provider that offers an API. It has built-in support for the following providers, each offering a range of models:
+Open Chat Studio is designed to be flexible, and can connect to any LLM provider that offers an API.
+It has built-in support for the following providers, each offering a range of models:
 
 * [OpenAI](https://platform.openai.com/docs/models)
 * [Anthropic](https://docs.anthropic.com/en/docs/about-claude/models)
@@ -24,36 +28,49 @@ Once a provider is saved, its edit page splits into tabs:
 
 ## LLM Models
 
-Each provider comes with its most commonly used models already available in OCS — models that power chatbot conversations, and embedding models used for searching [knowledge bases](../collections/indexed_collections/index.md).
+Each provider comes with its most commonly used models already available in OCS.
+These include models that power chatbot conversations and embedding models used for searching [knowledge bases](../collections/indexed_collections/index.md).
 
-On the **Models** tab, filter pills — **All**, **Chat**, **Embedding**, and **Custom** — narrow the list to one kind of model at a time, and each pill shows a live count of models matching that filter. Use **Add custom model** to add a model that isn't pre-configured.
+On the **Models** tab, filter pills (**All**, **Chat**, **Embedding**, and **Custom**) narrow the list to one kind of model at a time.
+Each pill shows a live count of the models matching that filter.
+Use **Add custom model** to add a model that isn't pre-configured.
 
 If a model you need isn't pre-configured, see [Add a Custom LLM Model](../../how-to/add_custom_llm_model.md) for how to add one.
 
 !!! note "LiteLLM has no pre-configured models"
 
-    LiteLLM connects to a model gateway you run yourself, so Open Chat Studio has no way to know in advance which models it serves. After adding a LiteLLM provider, add every model you want to use as a [custom model](../../how-to/add_custom_llm_model.md).
+    LiteLLM connects to a model gateway you run yourself, so Open Chat Studio has no way to know in advance which models it serves.
+    After adding a LiteLLM provider, add every model you want to use as a [custom model](../../how-to/add_custom_llm_model.md).
 
 !!! note "OpenRouter has no pre-configured models"
 
-    OpenRouter gives access to hundreds of models from many vendors, and Open Chat Studio doesn't pre-configure any of them. After adding an OpenRouter provider, add every model you want to use as a [custom model](../../how-to/add_custom_llm_model.md#openrouter-models).
+    OpenRouter gives access to hundreds of models from many vendors, and Open Chat Studio doesn't pre-configure any of them.
+    After adding an OpenRouter provider, add every model you want to use as a [custom model](../../how-to/add_custom_llm_model.md#openrouter-models).
 
 ## Credential Verification
 
-Open Chat Studio checks your provider credentials against the provider's API and keeps showing the result on the provider's page, rather than as a one-off message. A provider's credentials show one of three states:
+Open Chat Studio checks your provider credentials against the provider's API.
+The result stays visible on the provider's page instead of appearing as a one-off message.
+A provider's credentials show one of three states:
 
 - **Verified**: the credentials were confirmed to work.
-- **Not checked**: no successful check has run yet. If the notice shows a check time, the check ran but your team had no model to send it to.
-- **Check failed**: the last check failed. The page shows the provider's error message and says the credentials "could not be verified".
+- **Not checked**: no successful check has run yet.
+  If the notice shows a check time, the check ran but your team had no model to send it to.
+- **Check failed**: the last check failed.
+  The page shows the provider's error message and says the credentials "could not be verified".
 
-A failed check does not always mean the credentials are wrong. It can also fail for other reasons, such as a model the provider has withdrawn.
+A failed check does not always mean the credentials are wrong.
+It can also fail for other reasons, such as a model the provider has withdrawn.
 The notice shows when the check ran, for example "Checked 3 days ago".
 Results from checks that ran before October 2026 have no check time, so none is shown.
 
 To run the check, Open Chat Studio sends a test request to a model configured for the provider.
 It tries deprecated models last.
 
-Verification runs automatically whenever you save a provider whose credentials haven't yet passed a check — including a provider in the **Check failed** state, so saving again after fixing a key re-checks it. A provider whose credentials are already **Verified** isn't re-checked unless you change its credentials. The save button tells you upfront whether saving will trigger a check.
+Verification runs automatically whenever you save a provider whose credentials haven't yet passed a check.
+This includes a provider in the **Check failed** state, so saving again after fixing a key re-checks it.
+A provider whose credentials are already **Verified** isn't re-checked unless you change its credentials.
+The save button tells you upfront whether saving will trigger a check.
 
 !!! note "Voyage AI is never verified"
 
@@ -62,27 +79,44 @@ Verification runs automatically whenever you save a provider whose credentials h
 ## Provider errors during a conversation
 
 Credential verification catches many problems early, but a provider can still refuse an individual request during a live conversation.
-For example, your account balance can run out mid-month, a key can be revoked after it last passed verification, or a model can be withdrawn.
+For example, your account balance can run out mid-month.
+A key can also be revoked after it last passed verification, or a model can be withdrawn.
 
 Open Chat Studio sorts these refusals into two groups:
 
-- **Configuration errors**: your team's account or setup is at fault, not the request — an exhausted balance, a revoked or invalid key, or a withdrawn model. These errors are terminal, so they are never retried. The participant gets the chatbot's usual error reply immediately, and your team gets a [notification](../notifications.md) naming the provider's own reason.
-- **Transient errors**: real rate limits, provider outages, and network faults. These are retried automatically, and only reach the participant as an error if every retry fails.
+- **Configuration errors**: your team's account or setup is at fault, not the request.
+  Examples are an exhausted balance, a revoked or invalid key, or a withdrawn model.
+  These errors are terminal, so they are never retried.
+  The participant gets the chatbot's usual error reply immediately, and your team gets a [notification](../notifications.md) naming the provider's own reason.
+- **Transient errors**: real rate limits, provider outages, and network faults.
+  These are retried automatically, and only reach the participant as an error if every retry fails.
 
 !!! note "Detection differs by provider"
 
     - **OpenAI** recognizes an exhausted balance, an invalid key, and a withdrawn model as configuration errors.
-    - **Anthropic** recognizes an exhausted balance by matching the wording of Anthropic's own error message. If Anthropic changes that wording, the case falls back to being treated as transient. The participant still gets the usual reply, and your team is still notified — just without the specific reason.
-    - **Google Gemini** recognizes an invalid key and a withdrawn model, but reports an exhausted balance the same way it reports a per-minute rate limit. That case is treated as transient and retried, so your team is not told that the account has run out of credit.
+    - **Anthropic** recognizes an exhausted balance by matching the wording of Anthropic's own error message.
+      If Anthropic changes that wording, the case falls back to being treated as transient.
+      The participant still gets the usual reply, and your team is still notified — just without the specific reason.
+    - **Google Gemini** recognizes an invalid key and a withdrawn model, but reports an exhausted balance the same way it reports a per-minute rate limit.
+      That case is treated as transient and retried, so your team is not told that the account has run out of credit.
 
 The notification's wording comes from the provider verbatim, so it may include whatever detail the provider chose to give.
 
 ## Model Lifecycle and Deprecation
 
-LLM providers regularly update their model offerings. This means models available in Open Chat Studio may occasionally be deprecated or removed.
+LLM providers regularly update their model offerings.
+This means models available in Open Chat Studio may occasionally be deprecated or removed.
 
-- **Deprecation**: When a model you are using is deprecated, you will receive an [in-app notification](../notifications.md) recommending that you switch to a replacement model. Your team receives this notification only once per deprecated model, not on every subsequent release. A deprecated model keeps working until it is removed — your chatbots carry on responding, and you can still send test messages and publish new versions — but you should update your chatbot configuration at your earliest convenience. In the pipeline editor, each affected node is flagged with a [warning](../pipelines/nodes.md#node-warnings-and-errors) naming the deprecated model and the model to switch to, so you can see exactly what needs migrating.
-- **Removal**: When a model is fully removed from the platform, Open Chat Studio updates your chatbots and pipelines automatically. If a clear replacement model exists, it switches the chatbots to that model; otherwise, it clears the reference to the removed model. Either way, you'll receive an in-app notification confirming what changed.
+- **Deprecation**: When a model you are using is deprecated, you will receive an [in-app notification](../notifications.md) recommending that you switch to a replacement model.
+  Your team receives this notification only once per deprecated model, not on every subsequent release.
+  A deprecated model keeps working until it is removed.
+Your chatbots carry on responding, and you can still send test messages and publish new versions.
+Update your chatbot configuration at your earliest convenience.
+  In the pipeline editor, each affected node is flagged with a [warning](../pipelines/nodes.md#node-warnings-and-errors).
+  The warning names the deprecated model and the model to switch to, so you can see exactly what needs migrating.
+- **Removal**: When a model is fully removed from the platform, Open Chat Studio updates your chatbots and pipelines automatically.
+  If a clear replacement model exists, it switches the chatbots to that model; otherwise, it clears the reference to the removed model.
+  Either way, you'll receive an in-app notification confirming what changed.
 
 !!! note
 
@@ -90,7 +124,8 @@ LLM providers regularly update their model offerings. This means models availabl
 
 !!! note "The affected chatbots list is a snapshot"
 
-    A deprecation notice lists the chatbots that were using the model at the time it was sent. If you point additional chatbots at the same deprecated model afterwards, they won't be added to that earlier notice.
+    A deprecation notice lists the chatbots that were using the model at the time it was sent.
+    If you point additional chatbots at the same deprecated model afterwards, they won't be added to that earlier notice.
 
 ## See also
 

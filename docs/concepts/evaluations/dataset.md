@@ -1,8 +1,11 @@
 # Evaluation Datasets
 
-An evaluation needs example conversations to test against. A **dataset** is that set of messages or sessions, and it is what the [evaluators](./evaluators.md) score.
+An evaluation needs example conversations to test against.
+A **dataset** is that set of messages or sessions, and it is what the [evaluators](./evaluators.md) score.
 
-A small set of realistic examples tells you more about your chatbot than scoring everything that exists. You can build a dataset from real conversations your chatbot has already had, or write your own test cases to check specific behaviors, including edge cases that have not come up in real conversations yet.
+A small set of realistic examples tells you more about your chatbot than scoring everything that exists.
+You can build a dataset from real conversations your chatbot has already had.
+You can also write your own test cases to check specific behaviors, including edge cases that have not come up yet.
 
 ## Example
 
@@ -18,16 +21,20 @@ A participant has this conversation with a clinic's appointment chatbot:
 
 A dataset can store this conversation in two ways, depending on its [evaluation level](#evaluation-levels).
 
-In a **message-level** dataset, the conversation becomes two rows. Each row holds one Human/AI message pair, the participant's message and the chatbot's reply, with the earlier turns as history:
+In a **message-level** dataset, the conversation becomes two rows.
+Each row holds one Human/AI message pair, the participant's message and the chatbot's reply, with the earlier turns as history:
 
 | Row | Human Message | AI Message | History |
 |---|---|---|---|
 | 1 | Can I book a check-up for Tuesday? | Yes, there is a slot at 10:00 or 14:30. Which would you like? | (none) |
 | 2 | 14:30 please. | Booked. You'll get a reminder the day before. | The two messages from row 1 |
 
-An evaluator scores each reply separately, using the history for context. For example: "Did the chatbot offer times that were actually available?"
+An evaluator scores each reply separately, using the history for context.
+For example: "Did the chatbot offer times that were actually available?"
 
-In a **session-level** dataset, the conversation becomes one row that holds all four messages. An evaluator scores the conversation as a whole. For example: "Did the participant end up with a booking?"
+In a **session-level** dataset, the conversation becomes one row that holds all four messages.
+An evaluator scores the conversation as a whole.
+For example: "Did the participant end up with a booking?"
 
 ## Evaluation levels
 
@@ -66,7 +73,9 @@ Which methods are available depends on the evaluation level.
 
 ## Sharing dataset messages
 
-Each row in the dataset table has a link button that copies a direct link to that message. Anyone who opens the link is taken to the message, which is highlighted. Use it to refer to a specific test case in a discussion.
+Each row in the dataset table has a link button that copies a direct link to that message.
+Anyone who opens the link is taken to the message, which is highlighted.
+Use it to refer to a specific test case in a discussion.
 
 ## Next steps
 

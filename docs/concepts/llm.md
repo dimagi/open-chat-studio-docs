@@ -22,7 +22,8 @@ It sets the context for the chatbot.
 Prompts can be as simple as a single question or as detailed as a conversation framework or role-play setup.
 Use [prompt variables](prompt_variables.md) to insert dynamic values into a prompt.
 
-**Example:** "You are a helpful assistant. Answer questions clearly and concisely."
+**Example:** "You are a helpful assistant.
+Answer questions clearly and concisely."
 
 ## Tokens
 
@@ -58,7 +59,9 @@ A high temperature produces more varied and imaginative ones.
 It is used by [reasoning models](../how-to/choose_llm_model.md) that work through problems step-by-step.
 You set it as a level: `low`, `medium`, `high`, or `max`.
 
-These two parameters serve different purposes: temperature changes how varied the wording is, and effort changes how much reasoning goes into the answer.
+These two parameters serve different purposes.
+Temperature changes how creative or varied the responses are.
+Effort changes how much reasoning goes into the answer.
 
 ## See also
 

@@ -4,9 +4,13 @@ hide:
 ---
 # Team Settings
 
-Open Chat Studio (OCS) supports multiple organizations/departments working in the same system while keeping their data completely separate. Each organization is called a **Team**. Teams have their own settings, private data, and chatbots.
+Open Chat Studio (OCS) supports multiple organizations/departments working in the same system while keeping their data completely separate.
+Each organization is called a **Team**.
+Teams have their own settings, private data, and chatbots.
 
-As an OCS user, you can belong to several teams at once, with different roles in each — for example, an Admin on one team and a Viewer on another. Roles are managed with [User Groups](groups.md).
+As an OCS user, you can belong to several teams at once, with a different role in each.
+For example, you can be an Admin on one team and a Viewer on another.
+Roles are managed with [User Groups](groups.md).
 
 Team Settings is organized into sections:
 
@@ -19,7 +23,8 @@ Team Settings is organized into sections:
 
 ## Integrations
 
-Global settings are managed at the Team level, from the [Integrations](integrations.md) page. It lists every external service provider your team has connected, as rows in a single table you can filter by category:
+Global settings are managed at the Team level, from the [Integrations](integrations.md) page.
+It lists every external service provider your team has connected, as rows in a single table you can filter by category:
 
 - LLM & embedding
 - Speech
@@ -30,7 +35,8 @@ Global settings are managed at the Team level, from the [Integrations](integrati
 
 A single **Add integration** button connects a new provider in any category.
 
-Every provider's edit page also has a **Usages** tab, showing everywhere in your team that provider is referenced — see [Find Where a Provider Is Used](../../how-to/find_provider_usages.md).
+Every provider's edit page also has a **Usages** tab that shows where your team references that provider.
+See [Find Where a Provider Is Used](../../how-to/find_provider_usages.md).
 
 ## Notifications
 
@@ -43,13 +49,17 @@ Team Admins invite people, assign them roles, and remove access from there.
 
 ## Developers
 
-The [Developers](developer.md) section groups the tools for extending OCS: [Custom Actions](../llm_custom_action.md), which let a chatbot call an external HTTP service (setup steps are in the [Custom Action Tech Hub Guide](../../tech-hub/custom_action/index.md)), and OAuth applications, which let external systems read or write your team's data through the API.
+The [Developers](developer.md) section groups the tools for extending OCS.
+[Custom Actions](../llm_custom_action.md) let a chatbot call an external HTTP service.
+Setup steps are in the [Custom Action Tech Hub Guide](../../tech-hub/custom_action/index.md).
+OAuth applications let external systems read or write your team's data through the API.
 
 ## Data & Migration
 
 The [Data & Migration](data_migration.md) section lets Team Admins export the team's files, register a migration public key, and delete the team.
 This section is only visible to Team Admins.
-See [Migrate a Team to Another Instance](../../tech-hub/migrate_team.md) for the full walkthrough of moving a team — its chatbots, configuration, and chat history — to a different OCS server.
+See [Migrate a Team to Another Instance](../../tech-hub/migrate_team.md) for the full walkthrough of moving a team to a different OCS server.
+The move includes its chatbots, configuration, and chat history.
 
 ## See also
 

@@ -1,10 +1,11 @@
 # Team Settings: Data & Migration
 
-The **Data & migration** section of Team Settings is where Team Admins [export the team's files](#downloading-team-files), prepare a [migration to another OCS instance](#migrating-to-another-instance), and [delete the team](#deleting-a-team).
+In the **Data & migration** section of Team Settings, Team Admins [export the team's files](#downloading-team-files), prepare a [migration](#migrating-to-another-instance), and [delete the team](#deleting-a-team).
 
 ## Downloading team files
 
-Use this feature to back up the team's files into a single zip archive, or before moving them to another OCS instance as part of a migration.
+Use this feature to back up the team's files into a single zip archive.
+You can also use it before moving them to another OCS instance as part of a migration.
 See [Download Team Files](../../how-to/download_team_files.md) for how to start an export and what it contains.
 
 ## Migrating to another instance

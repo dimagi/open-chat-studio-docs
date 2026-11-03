@@ -24,7 +24,8 @@ OpenAI retired this API and Open Chat Studio removed the assistant pipeline node
 See the [migration guide](../how-to/assistants_migration.md) if a pipeline still has an assistant node.
 
 [Authentication Provider](team/authentication_providers.md)
-: Credentials — such as API keys, bearer tokens, or username/password pairs — used when your chatbot connects to external services via Custom Actions or Python nodes.
+: Credentials, such as API keys, bearer tokens, or username/password pairs.
+    Your chatbot uses them to connect to external services via Custom Actions or Python nodes.
 
 [Channel](channels.md)
 : How a participant interacts with your chatbot — for example, WhatsApp, Telegram, the web, or Slack.
@@ -34,7 +35,8 @@ See the [migration guide](../how-to/assistants_migration.md) if a pipeline still
 It defines the chatbot's behavior, connects it to one or more channels, and is published to participants.
 
 [Citations](collections/indexed_collections/citations.md)
-: Links shown with a chatbot's answer to the files it came from. They let participants check an answer against its source.
+: Links shown with a chatbot's answer to the files it came from.
+    They let participants check an answer against its source.
 
 [Collections](collections/index.md)
 : A group of files you attach to a chatbot.
@@ -116,10 +118,12 @@ It determines how OCS handles transitions between states.
 : A knowledge base you attach to your chatbot — such as product documentation or FAQs — that it can reference when generating responses.
 
 [Speech Service Provider](team/speech_providers.md)
-: The account you configure with a voice service — such as ElevenLabs — so your chatbot can convert speech to text and text to speech.
+: The account you configure with a voice service, such as ElevenLabs.
+    It lets your chatbot convert speech to text and text to speech.
 
 [Tags](tags.md)
-: Labels applied to sessions or messages to categorize and organize interactions — for example, flagging conversations that need follow-up or segmenting sessions based on content.
+: Labels applied to sessions or messages to categorize and organize interactions.
+    For example, flag conversations that need follow-up or segment sessions by content.
 
 [Team](team/index.md)
 : The organizational unit in OCS.
@@ -134,4 +138,5 @@ Examples include scheduling reminders, performing calculations, and remembering 
 Use it to understand and debug unexpected chatbot behavior.
 
 [Versions](versioning.md)
-: Snapshots of your chatbot's configuration that let you publish a stable version to participants while you continue developing and testing changes in the background.
+: Snapshots of your chatbot's configuration.
+    They let you publish a stable version to participants while you keep developing and testing changes.

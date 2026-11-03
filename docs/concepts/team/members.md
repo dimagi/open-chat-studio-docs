@@ -1,6 +1,6 @@
 # Team Settings: Members
 
-The **Members & access** section of Team Settings is where Team Admins [invite people](#inviting-a-new-member), review who has access, and [control what each person can do](#editing-a-members-role).
+The **Members & access** section of Team Settings lets Team Admins [invite people](#inviting-a-new-member), review who has access, and [control what each person can do](#editing-a-members-role).
 Active members and pending invitations appear together in one table, so you always see the full picture of who can reach your team.
 
 ## The members table
@@ -14,11 +14,14 @@ Each row is either an active member or a pending invitation:
 
 ### Searching and filtering
 
-You can search by name or email, or filter by **Role** to see everyone with a particular [User Group](groups.md), or **Status** to show only **Active** members or only **Invited** people.
+You can search by name or email.
+You can also filter by **Role** to see everyone with a particular [User Group](groups.md).
+Filter by **Status** to show only **Active** members or only **Invited** people.
 
 ## Requiring two-factor authentication
 
-Selecting the **Require two-factor authentication** checkbox means every member of the team — including the admin who turned it on — must set up two-factor authentication before they can use OCS.
+Selecting the **Require two-factor authentication** checkbox means every member of the team must set up two-factor authentication before they can use OCS.
+This includes the admin who turned it on.
 Members of teams that haven't turned it on are unaffected.
 The setting is off by default.
 

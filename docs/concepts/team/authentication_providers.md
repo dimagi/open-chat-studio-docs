@@ -1,6 +1,7 @@
 # Authentication Providers
 
-Authentication Providers are used to authenticate with external services via HTTP API calls. They are setup in your [Team](index.md) settings so you can manage your authentication credentials for integrations.
+Authentication Providers are used to authenticate with external services via HTTP API calls.
+They are setup in your [Team](index.md) settings so you can manage your authentication credentials for integrations.
 
 These credentials are used by features like [Custom Actions](../llm_custom_action.md), the [HTTP Client](../../tech-hub/external-api-calls/http_client.md) in Python nodes, and [Document Sources](../collections/indexed_collections/document_sources.md).
 GitHub document sources need a Bearer Token provider, and Confluence document sources need a Basic Auth provider.
@@ -15,12 +16,14 @@ Basic Auth is a simple authentication scheme built into the HTTP protocol where 
 
 ### API Key
 
-API Key is a simple authentication scheme that involves sending a key with the request to authenticate the user. The key is sent in a header of the request. The name of the header can be customized when creating your Authentication Provider.
+API Key is a simple authentication scheme that involves sending a key with the request to authenticate the user.
+The key is sent in a header of the request.
+The name of the header can be customized when creating your Authentication Provider.
 
 ### Bearer Token
 
-Bearer Token is a type of access token that is sent with the request to authenticate the user. The token is sent in the
-Authorization header of the request.
+Bearer Token is a type of access token that is sent with the request to authenticate the user.
+The token is sent in the Authorization header of the request.
 
 ### CommCare
 
