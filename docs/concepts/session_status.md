@@ -1,6 +1,6 @@
 # Session Status
 
-Every [chat session](sessions.md) in Open Chat Studio (OCS) has a **status** that reflects where the participant is in their journey — from first contact through to a completed, reviewed conversation.
+Every [chat session](sessions.md) in Open Chat Studio (OCS) has a **status** that shows how far the conversation has progressed, from first contact to a completed, reviewed conversation.
 
 Understanding session status helps you:
 
@@ -21,7 +21,8 @@ Understanding session status helps you:
 
 ## How sessions move through statuses
 
-Sessions flow through statuses automatically. The path depends on how the participant arrived and what features are configured for your chatbot.
+Sessions move through statuses automatically.
+The path depends on how the participant arrived and what features are configured for your chatbot.
 
 ### Web invitation flow
 
@@ -30,7 +31,8 @@ Sessions flow through statuses automatically. The path depends on how the partic
     New invitations can no longer be created.
     See [Moving off the legacy web chat](../how-to/channels/deploy_public_link_channel.md#moving-off-the-legacy-web-chat).
 
-Used when participants arrive via an invitation link or the public web chat link. The path differs depending on whether the participant was invited by email or arrived via the public web chat link.
+Used when participants arrive via an invitation link or the public web chat link.
+The path differs depending on whether the participant was invited by email or arrived via the public web chat link.
 
 **Invitation email flow** — the session is created in `SETUP`, the email is sent, and the participant accepts consent on the invitation page:
 
@@ -59,17 +61,20 @@ stateDiagram-v2
 
 Used for [channels](channels.md) such as Telegram, WhatsApp, the web widget, and the API.
 
-- **If [conversational consent](consent.md) is disabled** (the common case): the session is created directly in `ACTIVE`. The early statuses are skipped entirely.
+- **If [conversational consent](consent.md) is disabled** (the common case): the session is created directly in `ACTIVE`.
+  The early statuses are skipped entirely.
 - **If conversational consent is enabled**: the chatbot guides the participant through a consent flow in the chat, moving through `SETUP → PENDING → ACTIVE`.
 
 !!! note
-    Messaging channel sessions do not typically reach `PENDING_REVIEW` or `COMPLETE` on their own. Those final (terminal) statuses are driven by the post-conversation review form or an explicit end-conversation action.
+    Messaging channel sessions do not typically reach `PENDING_REVIEW` or `COMPLETE` on their own.
+    Those final (terminal) statuses are driven by the post-conversation review form or an explicit end-conversation action.
 
 ## Reaching the terminal statuses
 
 ### PENDING_REVIEW
 
-A session moves to `PENDING_REVIEW` whenever the conversation ends. This can happen in several ways.
+A session moves to `PENDING_REVIEW` whenever the conversation ends.
+This can happen in several ways.
 
 **Participant actions:**
 
@@ -98,11 +103,14 @@ If the participant closes the browser without submitting, the session remains in
 
 !!! note "Public link sessions"
     The public link has no end-of-chat review, so a chatbot moved to it doesn't reach `COMPLETE` this way.
-    Its sessions end in `PENDING_REVIEW`, and move to `COMPLETE` only when the public link is disabled, regenerated, or deleted, which ends every open conversation on it.
+    Its sessions end in `PENDING_REVIEW`.
+    They move to `COMPLETE` only when the public link is disabled, regenerated, or deleted, which ends every open conversation on it.
 
 ### UNKNOWN
 
-No deliberate action places a session in `UNKNOWN`. It exists as a defensive fallback. If you see sessions with this status, they are in an unexpected state, and you should investigate.
+No deliberate action places a session in `UNKNOWN`.
+It exists as a fallback for unexpected states.
+If you see sessions with this status, investigate why they are in an unexpected state.
 
 ## Observing how a session ended
 
@@ -117,7 +125,9 @@ This lets you respond differently depending on who or what ended the conversatio
 | The Conversation is Ended by an Event | An "End the conversation" event action ended the session. |
 | The Conversation is Manually Ended by a User | A team member ended the session via the OCS admin. |
 
-The generic **Conversation End** trigger fires for all of the above. Use it when you want to take the same action regardless of how the session ended. See [Events](events.md) for more detail.
+The generic **Conversation End** trigger fires for all of the above.
+Use it when you want to take the same action regardless of how the session ended.
+See [Events](events.md) for more detail.
 
 ## Status and reporting
 
@@ -133,9 +143,14 @@ Only `COMPLETE` is considered fully done, meaning the participant has submitted 
 
 ## Things to keep in mind
 
-- **Status is managed automatically.** OCS transitions sessions through the flow. You do not need to set it manually.
-- **Channel sessions usually start in ACTIVE.** If you are wondering why a session is already active before any interaction, check whether [conversational consent](consent.md) is enabled on your chatbot.
-- **UNKNOWN is a fallback, not a destination.** If sessions are landing in `UNKNOWN`, something unexpected has occurred. Investigate rather than treating it as a normal terminal state.
+- **Status is managed automatically.**
+  OCS transitions sessions through the flow.
+  You do not need to set it manually.
+- **Channel sessions usually start in ACTIVE.**
+  If a session is already active before any interaction, check whether [conversational consent](consent.md) is enabled on your chatbot.
+- **UNKNOWN is a fallback status, not part of the normal flow.**
+  If sessions are landing in `UNKNOWN`, something unexpected has occurred.
+  Investigate rather than treating it as a normal terminal state.
 
 ## See also
 
