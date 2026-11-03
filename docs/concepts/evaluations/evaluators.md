@@ -97,6 +97,28 @@ It runs custom code against each message instead of an LLM prompt.
 
 See [Python Evaluator](../../tech-hub/evaluations/python_evaluator.md) for the function signature, arguments, and a worked example.
 
+## Evaluating part of a generation
+
+By default, an evaluator judges the chatbot's whole reply.
+An evaluator can instead target one part of what the chatbot did during generation.
+This is useful when you want to check a single node's output, a tool's return value, or the messages sent to a model.
+
+Each evaluator has three settings for this:
+
+- **Span**: the part to target.
+  The options are the whole reply (the default), a node, a tool call, or an LLM call.
+- **Span name**: which node, tool or LLM node to pick.
+  It is required when you choose a node, tool call or LLM call.
+- **Use span output as generated response**: when on, the evaluator judges the span's output instead of the bot's reply.
+
+The whole pipeline still runs.
+The evaluator judges the output of one part of that run.
+Existing evaluators keep working unchanged, because the defaults mean "the whole reply".
+
+For the matching rules, prompt variables, stored results and errors, see [Spans](../../tech-hub/evaluations/evaluator-reference.md#spans).
+Python evaluators receive the span as `kwargs["span"]`.
+See [Python Evaluator](../../tech-hub/evaluations/python_evaluator.md#span).
+
 ## Copying an evaluator
 
 Copy an evaluator to reuse its configuration as a starting point for a new one.

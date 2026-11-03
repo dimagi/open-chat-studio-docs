@@ -22,6 +22,7 @@ For where each value comes from, see [Dataset Structure](dataset-structure.md#da
     | `{participant_data.[key]}` | Any field from the participant's data, e.g. `{participant_data.name}` |
     | `{session_state.[key]}` | Any field from the session's state, e.g. `{session_state.step}` |
     | `{full_history}` | Complete conversation history as formatted text |
+    | `{span.input}`, `{span.output}`, `{span.error}` | The input, output and error of the selected [span](#spans). Only available when the evaluator selects a span. |
 
 === "Session level"
 
@@ -39,6 +40,84 @@ For where each value comes from, see [Dataset Structure](dataset-structure.md#da
 
 Python evaluators receive the same values as function arguments.
 See [Python Evaluator](python_evaluator.md).
+
+## Spans
+
+A span is one part of the chatbot's generation: a node, a tool call or an LLM call.
+An evaluator can target a span instead of the whole reply.
+For an overview, see [Evaluating part of a generation](../../concepts/evaluations/evaluators.md#evaluating-part-of-a-generation).
+
+### Settings
+
+| Setting | Description |
+|---|---|
+| **Span** | What to target: the whole reply (default), a node, a tool call or an LLM call. |
+| **Span name** | The node, tool or LLM node to pick. Required when **Span** is not the whole reply. |
+| **Use span output as generated response** | When on, the evaluator judges the span's output as `generated_response`. Requires a **Span** selection. |
+
+### Matching rules
+
+| Span | Matches |
+|---|---|
+| Tool call | Tool calls by tool name, across every node of the pipeline. |
+| LLM call | LLM calls by the name of the node the call ran in. |
+| Node | Pipeline nodes by name. If a node ran more than once, each run is a span. |
+
+The span's input and output depend on the type:
+
+- **Tool**: the output is the tool's return value.
+- **Node**: the output is the node's output.
+  The input is the output of the node run that fed it.
+  For a merge node, this is the output of the last branch to arrive.
+  The first node has no input.
+  Use `{input.content}` for the dataset input.
+- **LLM**: the input is the message list the model saw.
+
+### Prompt variables
+
+LLM evaluator prompts can use these variables:
+
+| Variable | Description |
+|---|---|
+| `{span.input}` | The span's input. |
+| `{span.output}` | The span's output. |
+| `{span.error}` | The span's error text, if any. |
+
+Only these three exact names are accepted.
+Sub-keys, indexes and format specs, such as `{span.output[0]}`, are rejected.
+If the name matches more than once, such as a node that ran twice or a tool called twice, the variables render as lists.
+The 10,000-character cap applies to these prompt variables.
+
+### Use span output as generated response
+
+With this setting on, `{generated_response}` contains the span's output instead of the bot's reply.
+When several spans match, the last match is used.
+The output is passed in full, with no character cap.
+
+The stored result keeps the bot's reply in `generated_response`.
+The results table and exports therefore still show what the bot said.
+The judged text is stored under `judged_response`.
+The per-result detail panel shows it as a **Judged response** block under the generated response, labelled with the evaluator's name.
+
+### Validation
+
+- A node, tool or LLM selector requires a **Span name**.
+- **Use span output as generated response** requires a selector.
+- An LLM evaluator prompt that references `{span.*}` without a selector is rejected.
+- Session-level evaluators cannot use a selector, because no generation runs.
+- An evaluation config with generation turned off refuses evaluators that use a selector.
+
+### Errors
+
+- If the name matches nothing, that message gets an error result that lists the available spans.
+  A typo therefore shows up on the first run.
+- If the matched span errored, the span is not judged and the result shows the span's error text.
+
+### Known limits
+
+- The available span names in the error come from the one generation that ran.
+  A tool the bot did not call that time is reported as unavailable.
+- An LLM selector on an agent node also lists the tool-request turns, which have an empty output, beside the final turn.
 
 ## Output validation
 

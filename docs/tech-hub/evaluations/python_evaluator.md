@@ -16,7 +16,7 @@ It should return a `dict` whose keys will become columns in the output table.
 | `context` | dict | Additional metadata and variables | `{'topic': 'math', 'difficulty': 'easy', 'user_id': '123'}` |
 | `full_history` | str | Complete conversation history | `"user: Hello\nassistant: Hi there!\nuser: What is 2+2?"` |
 | `generated_response` | str | AI-generated response being evaluated | `"The answer is 4. Is there anything else I can help with?"` |
-| `**kwargs` | dict | Catch-all for additional values passed by keyword — currently `participant_data` and `session_state` (see below) | `{'participant_data': {...}, 'session_state': {...}}` |
+| `**kwargs` | dict | Catch-all for additional values passed by keyword — currently `participant_data`, `session_state` and `span` (see below) | `{'participant_data': {...}, 'session_state': {...}, 'span': None}` |
 
 ### Participant data and session state
 
@@ -37,6 +37,35 @@ def main(input: dict, output: dict, context: dict, full_history: str, generated_
     Open Chat Studio checks that the positional arguments match the five listed above exactly.
     A function that declares either of them positionally is rejected.
     They are passed by keyword so that evaluators written before this feature keep working unchanged.
+
+### Span
+
+When the evaluator [targets a span](evaluator-reference.md#spans), `kwargs["span"]` describes it.
+It is a dict with these keys:
+
+| Key | Description |
+|-----|-------------|
+| `type` | The span type: `node`, `tool` or `llm`. |
+| `node` | The name of the node the span belongs to. |
+| `name` | The span name. |
+| `input` | The span's input. |
+| `output` | The span's output. |
+| `error` | The span's error text, if any. |
+
+If several spans match, `kwargs["span"]` is a list of these dicts.
+If the evaluator selects no span, it is `None`.
+
+```python
+def main(input: dict, output: dict, context: dict, full_history: str, generated_response: str, **kwargs) -> dict:
+    span = kwargs.get("span")
+    if span is None:
+        return {"has_span": False}
+    spans = span if isinstance(span, list) else [span]
+    return {"has_span": True, "last_output_length": len(str(spans[-1]["output"]))}
+```
+
+As with `participant_data` and `session_state`, don't add `span` to the parameter list.
+See [Use span output as generated response](evaluator-reference.md#use-span-output-as-generated-response) to judge the span's output as `generated_response`.
 
 ## Example
 
