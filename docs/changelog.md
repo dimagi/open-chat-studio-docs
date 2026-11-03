@@ -11,6 +11,10 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Nov 3, 2026
+* **NEW** Message-level evaluators can now judge what the chatbot did during generation, not only its reply. LLM evaluators get seven `{generation.*}` prompt variables (node outputs, pipeline path, message and session tags, participant data changes, LLM calls and tool calls), and Python evaluators get the same record as `kwargs["generation"]`. See the [evaluator reference](tech-hub/evaluations/evaluator-reference.md).
+* **CHANGE** Evaluation runs no longer save participant data changes to the team's shared "evaluations" participant, so a chatbot that sets a `name` key during an evaluation no longer renames that participant. Evaluators still see the change.
+
 ## Oct 28, 2026
 * **CHANGE** API validation errors for invalid items in a nested list field are now keyed by item index instead of returned as a list. For example, `{"messages": [{"timestamp": ["This field may not be null."]}]}` is now `{"messages": {"0": {"timestamp": ["This field may not be null."]}}}`. This affects 400 responses from endpoints that accept lists, such as the CommCare Connect messages endpoint, the OpenAI-compatible chat completions endpoint and the v1 and v2 write APIs. Successful responses are unchanged. See the [API documentation](api/index.md).
 
