@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Nov 3, 2026
+* **NEW** Evaluators can now judge one node, tool call or LLM call from the chatbot's generation instead of the whole reply, using the new **Span** and **Span name** settings. LLM evaluators get `{span.input}`, `{span.output}` and `{span.error}`, Python evaluators get `kwargs["span"]`, and a toggle can make the span's output the generated response being judged. See the [evaluator reference](tech-hub/evaluations/evaluator-reference.md).
+
 ## Oct 28, 2026
 * **CHANGE** API validation errors for invalid items in a nested list field are now keyed by item index instead of returned as a list. For example, `{"messages": [{"timestamp": ["This field may not be null."]}]}` is now `{"messages": {"0": {"timestamp": ["This field may not be null."]}}}`. This affects 400 responses from endpoints that accept lists, such as the CommCare Connect messages endpoint, the OpenAI-compatible chat completions endpoint and the v1 and v2 write APIs. Successful responses are unchanged. See the [API documentation](api/index.md).
 
