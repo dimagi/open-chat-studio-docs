@@ -1039,9 +1039,10 @@ AuthProviderDetail:
   - updated_at: string (required)
   - type: AuthProviderDetailTypeEnum (required)
   - name: string (required)
+  - extra_data: Unknown
 
 AuthProviderDetailTypeEnum:
-  - enum: [basic, api_key, bearer, commcare, oauth_client_credentials]
+  - enum: [basic, api_key, bearer, commcare, oauth_client_credentials, oauth_authorization_code]
 
 AuthProviderList:
   - cursor: string (required)
