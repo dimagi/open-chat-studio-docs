@@ -10,6 +10,7 @@ A [Custom Action](../llm_custom_action.md) lets a chatbot call an external HTTP 
 The Developers section lists every Custom Action registered for your team, and lets you add, edit, or run a manual health check on one.
 
 For the configuration steps, see the [Custom Action Tech Hub Guide](../../tech-hub/custom_action/index.md).
+The guide also covers adding an authentication provider and enabling actions on a chatbot.
 
 ## OAuth applications
 

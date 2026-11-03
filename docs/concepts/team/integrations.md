@@ -30,7 +30,7 @@ Each pill shows a live count of integrations in that category, including categor
 ## Adding an integration
 
 Click **Add integration** to open a single categorized dropdown.
-The table is grouped, and each group expands to the providers available in that category.
+The dropdown is grouped, and each group expands to the providers available in that category.
 For example, the **LLM & embedding** group lists OpenAI, Anthropic, Azure OpenAI, and the rest of the [supported LLM providers](llm_providers.md).
 Choosing an option takes you straight to that provider's configuration form.
 

@@ -22,8 +22,7 @@ It sets the context for the chatbot.
 Prompts can be as simple as a single question or as detailed as a conversation framework or role-play setup.
 Use [prompt variables](prompt_variables.md) to insert dynamic values into a prompt.
 
-**Example:** "You are a helpful assistant.
-Answer questions clearly and concisely."
+**Example:** "You are a helpful assistant. Answer questions clearly and concisely."
 
 ## Tokens
 

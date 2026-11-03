@@ -14,7 +14,7 @@ Common examples include:
 - A **customer support chatbot** that answers questions from your product documentation or FAQs
 - An **HR assistant** that looks up company policies from an internal wiki or handbook
 - A **research tool** that searches across uploaded reports, studies, or reference materials
-- An **onboarding guide** that teaches new participants from your own uploaded training content
+- An **onboarding guide** that helps new participants work through your own uploaded training content
 
 ## How it works
 
