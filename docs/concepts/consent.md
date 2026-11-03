@@ -17,7 +17,7 @@ When you [publish a version](versioning.md) of your chatbot, the wording of its 
 Editing your working consent form afterwards does not change what already-published versions show.
 Participants always see the wording that belongs to the version they are chatting with.
 
-To put revised wording in front of participants, edit the consent form and then publish a new version.
+To show revised wording to participants, edit the consent form and then publish a new version.
 Participants who consented to the old wording are asked to consent again.
 
 !!! note

@@ -21,12 +21,12 @@ You can review what changed and roll back to a previous version if needed.
 Once a version is created, it cannot be edited or modified.
 This ensures that the participants' experience remains stable even if chatbot editors are changing the unreleased version.
 
-### What is frozen — and what is live
+### What is fixed — and what is live
 
-Most of a published version's configuration is frozen at publish time.
+Most of a published version's configuration is fixed at publish time.
 
 One exception is **collection content**, which behaves as a live shared resource — updates reach the published chatbot without a republish.
-See [Collections and published chatbots](collections/index.md#collections-and-published-chatbots) for what is live and what is frozen, and how this affects drift detection.
+See [Collections and published chatbots](collections/index.md#collections-and-published-chatbots) for what is live and what is fixed, and how this affects drift detection.
 
 ## Chatting to the unreleased version
 To chat with the unreleased draft chatbot for testing, go to the chatbot home page.

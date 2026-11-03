@@ -7,7 +7,7 @@ There are two types of collections, depending on what you want to do:
 - **Want to send files to participants in a conversation?**
   Use a **[Media collection](./media_collections.md)** — share images, PDFs, video, or audio directly in the chat.
 - **Want your chatbot to answer questions using your documents?**
-  Use an **[Indexed collection](./indexed_collections/index.md)** — it searches your files and grounds its answers in that content (RAG).
+  Use an **[Indexed collection](./indexed_collections/index.md)** — it searches your files and bases its answers on that content (RAG).
   Keep it current automatically with [Document Sources](./indexed_collections/document_sources.md) that sync from GitHub or Confluence.
 
 ## Adding a collection to a chatbot
@@ -27,7 +27,7 @@ This applies whether you update a collection manually or via a [document-source]
 - Adding or removing files from a [media collection](./media_collections.md) takes effect for participants immediately.
 - [Document-source](./indexed_collections/document_sources.md) syncs to an [indexed collection](./indexed_collections/index.md) — for example, Confluence or GitHub syncs — are applied to the published chatbot as each sync completes.
 
-The collection *structure* of a published chatbot version — which collections are linked to which pipeline nodes — is still frozen at publish time.
+The collection *structure* of a published chatbot version — which collections are linked to which pipeline nodes — is still fixed at publish time.
 To change which collections a chatbot uses, you must publish a new version.
 
 !!! note "What this means for drift detection"
@@ -36,7 +36,7 @@ To change which collections a chatbot uses, you must publish a new version.
 
 !!! warning "Existing published chatbots"
     This live-collection behavior applies to chatbots republished after this change was introduced (2026-06-03).
-    Chatbots that were published before retain their previous frozen collection snapshot until the next time they are republished.
+    Chatbots that were published before retain their previous fixed collection snapshot until the next time they are republished.
 
 For more detail on versioning in general, see [Versioning](../versioning.md).
 

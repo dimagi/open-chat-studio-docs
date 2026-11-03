@@ -13,7 +13,7 @@ title: Large Language Model
 
 <small>The definition above was authored by the famous LLM that powers ChatGPT: GPT-4 developed by OpenAI.</small>
 
-When building chatbots, an LLM powers the chatbot's ability to understand and respond to participant inputs, effectively acting as the brain behind the chatbot.
+When building chatbots, an LLM powers the chatbot's ability to understand and respond to participant inputs.
 
 ## Prompt
 

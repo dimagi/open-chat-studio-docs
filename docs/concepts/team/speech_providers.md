@@ -48,7 +48,7 @@ OCS does not support creating custom voices directly — manage your voice libra
 ## intron.io
 
 intron.io is a text-to-speech platform specialising in African language voices.
-It provides synthetic voices across a wide range of African and international accents, making it a strong choice for teams serving African-language audiences.
+It provides synthetic voices across a wide range of African and international accents.
 
 ### Capabilities
 

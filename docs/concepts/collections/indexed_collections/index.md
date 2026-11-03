@@ -7,14 +7,14 @@ An indexed collection lets your chatbot search through your documents to find re
 Instead of relying on the AI's built-in knowledge, the chatbot retrieves answers from files you upload — such as PDFs, reports, or wiki pages.
 
 ## When should I use this?
-When you want your chatbot's responses to be grounded in your uploaded documents.
+When you want your chatbot's responses to be based on your uploaded documents.
 
 Common examples include:
 
 - A **customer support chatbot** that answers questions from your product documentation or FAQs
 - An **HR assistant** that looks up company policies from an internal wiki or handbook
 - A **research tool** that searches across uploaded reports, studies, or reference materials
-- An **onboarding guide** that walks new participants through your own uploaded training content
+- An **onboarding guide** that teaches new participants from your own uploaded training content
 
 ## How it works
 

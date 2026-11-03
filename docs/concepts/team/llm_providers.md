@@ -110,8 +110,8 @@ This means models available in Open Chat Studio may occasionally be deprecated o
 - **Deprecation**: When a model you are using is deprecated, you will receive an [in-app notification](../notifications.md) recommending that you switch to a replacement model.
   Your team receives this notification only once per deprecated model, not on every subsequent release.
   A deprecated model keeps working until it is removed.
-Your chatbots carry on responding, and you can still send test messages and publish new versions.
-Update your chatbot configuration at your earliest convenience.
+Your chatbots continue to respond, and you can still send test messages and publish new versions.
+Update your chatbot configuration soon.
   In the pipeline editor, each affected node is flagged with a [warning](../pipelines/nodes.md#node-warnings-and-errors).
   The warning names the deprecated model and the model to switch to, so you can see exactly what needs migrating.
 - **Removal**: When a model is fully removed from the platform, Open Chat Studio updates your chatbots and pipelines automatically.
