@@ -36,7 +36,7 @@ To change which collections a chatbot uses, you must publish a new version.
 
 !!! warning "Existing published chatbots"
     This live-collection behavior applies to chatbots republished after this change was introduced (2026-06-03).
-    Chatbots that were published before retain their previous fixed collection snapshot until the next time they are republished.
+    Chatbots that were published before keep the collection list they had at publish time until the next time they are republished.
 
 For more detail on versioning in general, see [Versioning](../versioning.md).
 
