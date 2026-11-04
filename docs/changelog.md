@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Nov 4, 2026
+* **BUG** Custom action health-check alerts and deprecated or removed model notices no longer involve archived chatbots. Scheduled health checks now only run for custom actions used by a chatbot that is not archived, and model notices no longer list an archived chatbot's pipeline. Notifications caused by a chatbot's own activity are unchanged. See [Custom Action Health Monitoring](tech-hub/custom_action/health_custom_action.md).
+
 ## Oct 28, 2026
 * **CHANGE** API validation errors for invalid items in a nested list field are now keyed by item index instead of returned as a list. For example, `{"messages": [{"timestamp": ["This field may not be null."]}]}` is now `{"messages": {"0": {"timestamp": ["This field may not be null."]}}}`. This affects 400 responses from endpoints that accept lists, such as the CommCare Connect messages endpoint, the OpenAI-compatible chat completions endpoint and the v1 and v2 write APIs. Successful responses are unchanged. See the [API documentation](api/index.md).
 
