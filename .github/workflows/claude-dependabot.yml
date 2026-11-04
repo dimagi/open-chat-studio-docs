@@ -4,9 +4,9 @@
 # for breaking changes and docs-build impact, and posts a single review
 # comment with a recommendation (APPROVE / REVIEW_NEEDED / HOLD).
 #
-# Triggered on: Dependabot PRs (opened, synchronize) — job only runs when the
-# PR author is dependabot[bot]; or workflow_dispatch with a required
-# pr_number input (manual run, e.g. for testing)
+# Triggered on: pull_request (opened, synchronize) — the job only runs when the actor is
+# dependabot[bot], so a human push to a Dependabot branch skips it; or workflow_dispatch
+# with a required pr_number input (manual run, e.g. for testing)
 # Requirements: ANTHROPIC_API_KEY must be set as a Dependabot secret (Dependabot PRs
 # cannot read Actions secrets) and as an Actions secret (for workflow_dispatch runs)
 #
