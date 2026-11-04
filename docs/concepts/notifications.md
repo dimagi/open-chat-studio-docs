@@ -1,8 +1,8 @@
 # Notifications
 
 Notifications let you know when something needs attention in your chatbots, without having to check on them yourself.
-Open Chat Studio (OCS) watches for problems like failed integrations, delivery errors, and deprecated models,
-and shows them in a bell-icon notification center and, optionally, by email.
+Open Chat Studio (OCS) watches for problems such as failed integrations, delivery errors, and deprecated models.
+It shows them in the notification center (the bell icon) and, optionally, by email.
 
 ## Why notifications exist
 

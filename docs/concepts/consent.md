@@ -8,7 +8,8 @@ Consent forms are displayed to participants before they start interacting with t
 !!! info "Using consent forms on WhatsApp, Telegram and other channels"
     If you deploy your chatbot on WhatsApp, Telegram, or any [channel](channels.md) other than Web, enable the **Conversational Consent** option to include a consent form.
 
-A default consent form is created for each team. You can customize this default form or create new forms by navigating to the "Consent Forms" section of Open Chat Studio.
+A default consent form is created for each team.
+You can customize this default form or create new forms by navigating to the **Consent Forms** section of Open Chat Studio.
 
 ## Consent forms and published versions
 
@@ -16,7 +17,8 @@ When you [publish a version](versioning.md) of your chatbot, the wording of its 
 Editing your working consent form afterwards does not change what already-published versions show.
 Participants always see the wording that belongs to the version they are chatting with.
 
-To put revised wording in front of participants, edit the consent form and then publish a new version. Participants who consented to the old wording are asked to consent again.
+To put revised wording in front of participants, edit the consent form and then publish a new version.
+Participants who consented to the old wording are asked to consent again.
 
 !!! note
     Versions published before September 2026 have no copy of the consent form.
