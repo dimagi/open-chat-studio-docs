@@ -26,6 +26,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       contents: read   # needed for checkout
       pages: write     # needed by actions/deploy-pages

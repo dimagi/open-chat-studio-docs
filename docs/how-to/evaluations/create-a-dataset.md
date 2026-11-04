@@ -44,9 +44,11 @@ Follow the steps for the evaluation level you chose. For how session data maps t
     1. Use the filters to narrow the list of sessions by details like chatbot, date range and version.
     2. Choose which sessions to clone:
         - **Selected only**: clone only the sessions you check in the table.
-        - **All matching filters**: clone every session that matches your current filters, up to 1,000 sessions. If more match, narrow your filters. The page warns you when you're over the limit.
+        - **All matching filters**: clone every session that matches your current filters. There is no limit on how many sessions this can match.
 
     Every message in the chosen sessions is cloned. To clone only the messages that match your filters, create the dataset first, then [add messages](#add-to-an-existing-dataset) with **Filtered messages only**.
+
+    While the clone runs, a progress bar shows how many sessions have been cloned.
 
 === "Session level"
 
@@ -58,9 +60,9 @@ Follow the steps for the evaluation level you chose. For how session data maps t
         - **All matching filters**: clone every session that matches your current filters. There is no limit on how many sessions this can match.
 
 !!! tip
-        To pick sessions that no one has reviewed yet, set the **Annotation Queue** filter to **Not in any queue**.
-        This filter is available only if your team has the human annotations feature flag.
-        See [Annotation Queues on the Sessions List](../../concepts/sessions.md#annotation-queues-on-the-sessions-list).  
+    To pick sessions that no one has reviewed yet, set the **Annotation Queue** filter to **Not in any queue**.
+    This filter is available only if your team has the human annotations feature flag.
+    See [Annotation Queues on the Sessions List](../../concepts/sessions.md#annotation-queues-on-the-sessions-list).
 
 ### Import from annotation queue
 
@@ -128,4 +130,6 @@ Follow the steps for your dataset's evaluation level.
 
 ## Next steps
 
-- Pair the dataset with evaluators and score it. See [Run an Evaluation](run-an-evaluation.md).
+- Pair the dataset with evaluators and score it.
+  See [Run an Evaluation](run-an-evaluation.md).
+- To keep a session-level dataset up to date from a live chatbot, see [Set Up a Real-Time LLM-as-a-Judge](realtime_llm_judge.md).

@@ -16,12 +16,14 @@ This is particularly useful for [LLM](llm.md)-based chatbots, because it helps t
 ## Best Practices
 - Relevance and Accuracy: Ensure the materials are relevant to the conversations your chatbot will engage in.
 
-- Organization and Structure: Well-organized Source Materials make it easier for the chatbot to retrieve and use the information. It's useful to structure your content in a clear, concise manner, with appropriate labels for different sections.
+- Organization and Structure: Well-organized Source Materials make it easier for the chatbot to retrieve and use the information.
+  Structure your content clearly and concisely, with labels for different sections.
 
 ## Deleting source material
 
 You can't delete a Source Material while a chatbot still references it, in either a [published version](versioning.md) or the working draft.
-Attempting to delete it shows a list of every chatbot that still references it, so you know what to update first. [Collections](./collections/index.md) are protected in the same way.
+Attempting to delete it shows a list of every chatbot that still references it, so you know what to update first.
+[Collections](./collections/index.md) are protected in the same way.
 
 To delete it, first clear the Source Material from each referencing [node](./pipelines/nodes.md), or delete the referencing chatbots, then try again.
 

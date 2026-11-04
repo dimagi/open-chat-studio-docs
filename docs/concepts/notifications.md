@@ -1,8 +1,8 @@
 # Notifications
 
 Notifications let you know when something needs attention in your chatbots, without having to check on them yourself.
-Open Chat Studio (OCS) watches for problems like failed integrations, delivery errors, and deprecated models,
-and shows them in a bell-icon notification center and, optionally, by email.
+Open Chat Studio (OCS) watches for problems such as failed integrations, delivery errors, and deprecated models.
+It shows them in the notification center (the bell icon) and, optionally, by email.
 
 ## Why notifications exist
 
@@ -44,6 +44,15 @@ Notifications belong to a [team](team/index.md), like most data in OCS, but the 
   For example, only users who can manage [Custom Actions](llm_custom_action.md) receive custom-action failure notifications;
   others, like message delivery failures, go to the whole team.
 
+## Slack notification channels
+
+Your team may also have its notifications posted to a Slack channel, in addition to the in-app and email notifications you receive.
+Team Admins set this up for the whole team, and each Slack channel receives notifications at or above a [severity level](#severity-levels) they choose.
+
+Your personal notification settings, including [Do Not Disturb](../how-to/manage_notifications.md#turn-on-do-not-disturb), don't change what the team's Slack channels receive.
+Slack channels also aren't limited to the members who would see a notification in OCS.
+A custom-action failure, for example, is posted to every Slack channel at or above its level, even though only some members receive it in the app.
+
 ## Reducing noise
 
 You can choose how you're notified, mute a repeating issue, or pause notifications for a whole team with [Do Not Disturb](../how-to/manage_notifications.md#turn-on-do-not-disturb).
@@ -54,6 +63,8 @@ To try notifications yourself, see the [Manage Notifications](../how-to/manage_n
 ## See also
 
 - [Manage Notifications](../how-to/manage_notifications.md)
+- [Team Settings: Notifications](team/notifications.md)
+- [Send Notifications to Slack](../how-to/send_notifications_to_slack.md)
 - [Custom Actions](llm_custom_action.md)
 - [Tools](tools/index.md)
 - [LLM Providers](team/llm_providers.md)

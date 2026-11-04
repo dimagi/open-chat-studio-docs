@@ -9,6 +9,7 @@ Build, deploy and monitor chatbots.
 Simplified per-tag references for LLM consumption:
 
 * [Channels](./channels.txt){:target="_blank"} — Trigger bot messages or deliver messages directly to users on a channel.
+* [Chatbot Triggers](./chatbot_triggers.txt){:target="_blank"} — Add, change and archive the triggers that run an action on a conversation event, after inactivity, or at a set time.
 * [Chatbots](./chatbots.txt){:target="_blank"} — List, retrieve and inspect chatbots (v2; formerly 'experiments').
 * [Consent Forms](./consent_forms.txt){:target="_blank"}
 * [Me](./me.txt){:target="_blank"} — Information about the authenticated user and the team the token is scoped to.
@@ -23,6 +24,20 @@ Simplified per-tag references for LLM consumption:
 | Method | Path | Summary |
 | --- | --- | --- |
 | POST | `/api/v2/trigger_bot/` | Trigger the bot to send a message to the user, or deliver a message directly |
+
+### Chatbot Triggers
+
+| Method | Path | Summary |
+| --- | --- | --- |
+| POST | `/api/v2/chatbots/{id}/scheduled-triggers/` | Add a Scheduled trigger |
+| PATCH | `/api/v2/chatbots/{id}/scheduled-triggers/{trigger_id}/` | Update a Scheduled trigger |
+| DELETE | `/api/v2/chatbots/{id}/scheduled-triggers/{trigger_id}/` | Archive a Scheduled trigger |
+| POST | `/api/v2/chatbots/{id}/static-triggers/` | Add a Static trigger |
+| PATCH | `/api/v2/chatbots/{id}/static-triggers/{trigger_id}/` | Update a Static trigger |
+| DELETE | `/api/v2/chatbots/{id}/static-triggers/{trigger_id}/` | Archive a Static trigger |
+| POST | `/api/v2/chatbots/{id}/timeout-triggers/` | Add a Timeout trigger |
+| PATCH | `/api/v2/chatbots/{id}/timeout-triggers/{trigger_id}/` | Update a Timeout trigger |
+| DELETE | `/api/v2/chatbots/{id}/timeout-triggers/{trigger_id}/` | Archive a Timeout trigger |
 
 ### Chatbots
 

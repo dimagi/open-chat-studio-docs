@@ -48,6 +48,11 @@ Do Not Disturb only affects your own notifications, not your teammates'.
 
 For example, you could keep in-app notifications on for everything, but only enable email for Error-level issues so you're not emailed about routine information.
 
+## Notifications in Slack
+
+Your team may also have its notifications posted to a Slack channel.
+See [Slack notification channels](../concepts/notifications.md#slack-notification-channels) for how your settings relate to it, or ask a Team Admin to set it up using [Send Notifications to Slack](send_notifications_to_slack.md).
+
 ## See also
 
 To learn more about how notifications are grouped, scoped, and delivered, see the [Notifications](../concepts/notifications.md) concept page.

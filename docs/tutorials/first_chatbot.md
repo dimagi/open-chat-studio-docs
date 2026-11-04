@@ -1,13 +1,18 @@
 # Create your first chatbot
 
-In this video, I walk you through the basic steps to set up your first [chatbot](../concepts/chatbots/index.md) in Open Chat Studio. We start by creating an [LLM provider](../concepts/team/llm_providers.md) — the AI service, such as OpenAI or Anthropic, that will power the chatbot's responses — for a [Team](../concepts/team/index.md); I chose Anthropic and entered my API key. I then created a chatbot and test it out.
+In this video, I walk you through the basic steps to set up your first [chatbot](../concepts/chatbots/index.md) in Open Chat Studio.
+We start by creating an [LLM provider](../concepts/team/llm_providers.md) for a [Team](../concepts/team/index.md).
+An LLM provider is the AI service, such as OpenAI or Anthropic, that will power the chatbot's responses.
+I chose Anthropic and entered my API key.
+I then created a chatbot and tested it.
 
-After testing the chatbot to ensure it functions correctly, I explain the importance of [versioning](../concepts/versioning.md) to maintain a stable participant experience while making updates.
+After testing the chatbot to ensure it functions correctly, I explain the importance of [versioning](../concepts/versioning.md).
+Versioning maintains a stable participant experience while you make updates.
 
 I encourage you to follow along and create your own chatbot using these steps.
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/32924312accf43dd822ed51266a89232?sid=d647d8fc-fe1c-46d5-b3c7-ec4ac56cfd85" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
-## Your next step
+## Next steps
 
 Configure the basics for your [LLM Node](configure_llm_node.md).
