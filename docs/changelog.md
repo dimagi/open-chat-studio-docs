@@ -26,6 +26,7 @@ hide:
 
 ## Oct 23, 2026
 * **NEW** Added v2 API endpoints to create, update and archive a chatbot's static, timeout and scheduled triggers (`/api/v2/chatbots/{id}/static-triggers/`, `timeout-triggers/` and `scheduled-triggers/`). Changes apply to the working version, and requests are validated the same way as the trigger forms in the web app. Chatbot inspect now also lists scheduled triggers. See the [API documentation](api/index.md).
+* **BUG** Fixed chatbot replies in the web app that showed sub-bullets indented by two or three spaces as separate numbered items. These sub-bullets now display as nested lists, matching the chat widget.
 
 ## Oct 21, 2026
 * **NEW** Added an **Un-archive** button to the detail page of an archived chatbot, which restores the chatbot and all its versions. Reconnecting channels is optional and off by default; channels claimed by another chatbot while it was archived, and Slack channels, must be reconnected by hand. Scheduled messages deleted at archive time cannot be restored. See [Archiving a chatbot](concepts/channels.md#archiving-a-chatbot).
