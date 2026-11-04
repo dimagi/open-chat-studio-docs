@@ -32,7 +32,6 @@ When you run a manual check, the result appears right away.
 A check also runs when you create a Custom Action.
 Manual checks and checks on creation run for any Custom Action, including unused ones, and record the resulting status.
 The team is notified only when the status changes to Down for a Custom Action that a chatbot can call.
-If a check records Down for an unused Custom Action and a chatbot later starts using it, no notification is sent unless the status first changes to Up and then back to Down.
 
 ## Health status values
 
@@ -44,7 +43,7 @@ A Custom Action can report one of the following states:
     - the health check endpoint has not been configured for the Custom Action
     - the Custom Action was recently created and the automatic health check task has not yet run
 
-For a Custom Action that no chatbot can call, the status shown is the result of the last check that ran, which may be out of date. Run a manual check to refresh it.
+For a Custom Action that no chatbot uses, the status shown is the result of the last check that ran, which may be out of date. Run a manual check to refresh it.
 
 !!! tip "Troubleshooting"
     If a Custom Action shows as "Down" or is not behaving as expected, verify that:
