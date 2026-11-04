@@ -13,7 +13,7 @@ Commands live in `.claude/commands/`, agents in `.claude/agents/` ([background](
 | File | Actions UI name | Purpose | Command / Instruction Spec | Subagent |
 |---|---|---|---|---|
 | `claude.yml` | Claude Code | Freeform `@claude` assistant for issue/PR conversations | none — freeform prompt taken from the mention itself | none |
-| `claude-dependabot.yml` | Claude Dependabot PR Review | Flags breaking changes / build impact in Dependabot PRs | none — freeform inline prompt in the workflow | none |
+| `claude-dependabot.yml` | Claude Dependabot PR Review | Flags breaking changes / build impact in Dependabot PRs | [`dependabot-review-prompt.md`](../templates/dependabot-review-prompt.md) rendered into the workflow's `prompt:` | none |
 | `claude-review.yml` | PR Review | Automated documentation review on PRs (skips Dependabot PRs and PRs labelled `automated`) | [`/review-pr`](../../.claude/commands/review-pr.md) | [`documentation-pr-reviewer`](../../.claude/agents/documentation-pr-reviewer.md) |
 | `claude-changelog-review.yml` | Changelog PR Review | **Comment-only** (enforced by the workflow's tools) review of the `Changelog + Docs` PRs that `update-changelog.yml` opens as `ocs-agent` | [`/review-changelog-pr REPO PR_NUMBER BASE_REF`](../../.claude/commands/review-changelog-pr.md) | none — the command does the work itself |
 | `release.yml` | Weekly Release Summary | Drafts a GitHub release from the changelog | [`/create-release <tag> <title>`](../../.claude/commands/create-release.md) | none — the command does the work itself |
@@ -34,7 +34,9 @@ Add a subagent only to keep verbose reading out of the main context, to enforce 
 
 ## Security: Permissions & Tool Allowlists
 
-Every workflow uses a `permissions:` block and Claude's `--allowedTools`. Some also use an installation access token for the `ocs-agent` GitHub App; the rest use the default `GITHUB_TOKEN`. A workflow that uses the app lists it under `Requirements` in its header comment. See best practices for using them in [AGENTS.md](AGENTS.md) in this directory.
+Every workflow uses a `permissions:` block and Claude's `--allowedTools`.
+
+Workflows pass one of three tokens to `claude-code-action`: an installation token for the `ocs-agent` GitHub App, the default `GITHUB_TOKEN` `(github_token: ${{ github.token }})`, or none, in which case the action exchanges the job's OIDC token (`id-token: write`) for a Claude GitHub App token. The header comment of each workflow names the one it uses. See best practices in [AGENTS.md](AGENTS.md) in this directory.
 
 ### Command and agent tool frontmatter
 

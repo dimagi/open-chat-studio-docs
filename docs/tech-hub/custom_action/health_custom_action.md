@@ -5,6 +5,10 @@ Open Chat Studio regularly checks whether each Custom Action is available so you
 ## How Custom Action health checks work
 
 Automatic checks run once every hour.
+They cover only Custom Actions that a chatbot can call: the action must be used in the pipeline of at least one chatbot that is not archived.
+In the chatbot's working version, at least one of the operations selected on the node must still be allowed on the Custom Action.
+Custom Actions used only by archived chatbots, or not used at all, are not checked automatically.
+
 If a check finds that a previously working Custom Action has gone down,
 a [notification](../../concepts/notifications.md) is sent to team members who can manage Custom Actions.
 
@@ -25,6 +29,9 @@ This is useful when:
 - the automatic check shows that a service is down and you want to verify that it is back online
 
 When you run a manual check, the result appears right away.
+A check also runs when you create a Custom Action.
+Manual checks and checks on creation run for any Custom Action, including unused ones, and record the resulting status.
+The team is notified only when the status changes to Down for a Custom Action that a chatbot can call.
 
 ## Health status values
 
@@ -35,6 +42,8 @@ A Custom Action can report one of the following states:
 - **Unknown**: no health check has completed yet. This can occur when:
     - the health check endpoint has not been configured for the Custom Action
     - the Custom Action was recently created and the automatic health check task has not yet run
+
+For a Custom Action that no chatbot uses, the status shown is the result of the last check that ran, which may be out of date. Run a manual check to refresh it.
 
 !!! tip "Troubleshooting"
     If a Custom Action shows as "Down" or is not behaving as expected, verify that:

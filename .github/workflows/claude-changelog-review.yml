@@ -75,7 +75,7 @@ jobs:
           persist-credentials: false
 
       - name: Changelog and User Docs PR Review
-        uses: anthropics/claude-code-action@v1.0.245
+        uses: anthropics/claude-code-action@v1.0.264
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           github_token: ${{ github.token }}

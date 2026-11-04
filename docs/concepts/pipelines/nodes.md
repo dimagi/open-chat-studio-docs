@@ -40,7 +40,7 @@ A conversational node using AI models. You can configure:
 - A [history setting](history.md) for conversation memory
 - [Temperature and effort parameters](../../how-to/adjust_llm_node_model_parameters.md) to shape output style and depth
 - [Tools](../tools/index.md) for additional actions
-- [Collections](../collections/index.md) for indexed collections to ground responses in your documents (RAG), or media collections to send files to participants.
+- [Collections](../collections/index.md) for indexed collections to ground responses in your documents (RAG), or media collections to send files to participants. For indexed collections, the **Generate Citations** setting controls whether answers [show source links](../collections/indexed_collections/citations.md).
 - [Metadata filters](../../how-to/filter_collection_search_by_metadata.md) to limit an indexed collection search to rows with matching metadata
 - [Custom Actions](../llm_custom_action.md) to connect to external systems and retrieve information or complete tasks
 
