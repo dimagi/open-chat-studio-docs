@@ -20,6 +20,10 @@ It has built-in support for the following providers, each offering a range of mo
 * [Voyage AI (embedding only)](https://docs.voyageai.com/docs/embeddings)
 * [LiteLLM](https://docs.litellm.ai/docs/simple_proxy) (bring your own proxy)
 
+## LLM Models
+
+Each provider comes with its most commonly used models already available in OCS — models that power chatbot conversations, and embedding models used for searching.
+
 Once a provider is saved, its edit page splits into tabs:
 
 - **Configuration** — where credentials live, along with their [verification state](#credential-verification).
@@ -41,7 +45,7 @@ Embedding models show no pricing.
 A chat model with no rate shows **No pricing configured**.
 
 Prices start from OCS's global rates. Your team can override them for its own contracts or negotiated rates, without affecting other teams.
-See [Set or Override Model Pricing](../../how-to/set_model_pricing.md).
+See [Review Models and Manage Pricing](../../how-to/set_model_pricing.md) for how to read the tab, filter it, and set prices.
 
 If a model you need isn't pre-configured, see [Add a Custom LLM Model](../../how-to/add_custom_llm_model.md) for how to add one.
 
