@@ -93,12 +93,12 @@ When uploading a CSV, you can populate the history column automatically from the
 
 ### Formula characters in exports and uploads
 
-Spreadsheet applications such as Excel and Google Sheets treat a cell that starts with `=`, `+`, `-`, `@`, a tab, or a carriage return as a formula.
+Spreadsheet applications such as Excel and Google Sheets can run a cell that starts with `=`, `+`, `-`, or `@` as a formula, and a leading tab or carriage return can hide one.
 To prevent this, CSV downloads of datasets and evaluation results prefix any such cell with an apostrophe (`'`).
 Results downloads also apply this to header cells, because evaluator field names and context keys are user-defined.
 
 On upload, one leading apostrophe is removed from any cell whose remainder starts with one of those characters.
-For dataset uploads (create from CSV, and update), this covers input, output, history, context, participant data, and session state values.
+For dataset uploads (**Upload CSV file** when creating a dataset, and **Upload CSV** when adding to one), this covers input, output, history, context, participant data, and session state values.
 For results uploads, it covers the mapped evaluator columns and their column names.
 A download followed by an upload therefore leaves the data unchanged.
 A stored value that already starts with an apostrophe, such as `'=x`, is exported as `''=x` and restored to `'=x`.
