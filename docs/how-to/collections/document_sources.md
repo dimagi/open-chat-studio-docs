@@ -20,7 +20,7 @@ This guide covers adding a source, running [syncs](../../concepts/collections/in
 3. In **Auth provider**, choose the authentication provider.
    The list shows only providers of the type this source accepts.
 4. Fill in the source fields.
-   The [reference](../../tech-hub/collections/document_sources.md) describes every field for [GitHub](../../tech-hub/collections/document_sources.md#github) and [Confluence](../../tech-hub/collections/document_sources.md#confluence).
+   The reference pages describe every field for [GitHub](../../tech-hub/collections/github_document_source.md) and [Confluence](../../tech-hub/collections/confluence_document_source.md).
 5. Turn on **Auto Sync** if OCS should also sync the source once a week (Sundays at 00:00 UTC).
 6. Click **Save**.
 

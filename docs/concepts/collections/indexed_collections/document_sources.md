@@ -32,8 +32,8 @@ To add a document source, see [Set Up and Manage Document Sources](../../../how-
 
 ## Supported sources
 
-- **[GitHub](../../../tech-hub/collections/document_sources.md#github)**: files from a repository, filtered by branch, folder, and file name pattern.
-- **[Confluence](../../../tech-hub/collections/document_sources.md#confluence)**: pages from a Confluence site, selected by space, label, query, or page ID.
+- **[GitHub](../../../tech-hub/collections/github_document_source.md)**: files from a repository, filtered by branch, folder, and file name pattern.
+- **[Confluence](../../../tech-hub/collections/confluence_document_source.md)**: pages from a Confluence site, selected by space, label, query, or page ID.
 
 See the [Document Sources reference](../../../tech-hub/collections/document_sources.md) for what each source needs and how it behaves.
 
@@ -50,12 +50,10 @@ A *sync* is one run that fetches content from the source and updates the collect
 
 ## Syncs and published chatbots
 
-!!! note "Document-source updates reach published chatbots automatically"
-    When a sync updates the collection's content, the changes apply to your published chatbot without a republish.
-    See [Collections and published chatbots](../index.md#collections-and-published-chatbots).
+A sync reaches your published chatbot without a republish.
+See [Collections and published chatbots](../index.md#collections-and-published-chatbots).
 
-[Snapshots](./index.md#snapshots) are different.
-A snapshot is a fixed copy of a collection, so syncs never change it.
+[Snapshots](./index.md#snapshots) are different: a snapshot is a fixed copy of a collection, so syncs never change it.
 
 ## See also
 

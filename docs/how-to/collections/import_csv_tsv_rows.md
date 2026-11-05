@@ -50,11 +50,9 @@ The collection's **Index Inspector** page (the search icon) doesn't show the row
 
 ## Limits
 
-- A single import can hold up to 10,000 rows.
-- Each row can be at most 2,000 tokens once rendered as `column: value` lines.
-
+An import is limited by its number of rows and by the size of each row once rendered as `column: value` lines.
 Both limits are checked when you preview the file, so an oversized row is reported before indexing starts.
-Self-hosted operators who need different limits can override the application settings — see [Local Index Optimization](../../tech-hub/collections/local-index-optimization.md#csvtsv-row-import-limits).
+See [CSV/TSV row import limits](../../tech-hub/collections/local-index-optimization.md#csvtsv-row-import-limits) for the values and how self-hosted operators change them.
 
 ## Common issues
 
