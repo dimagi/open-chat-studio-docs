@@ -20,10 +20,6 @@ It has built-in support for the following providers, each offering a range of mo
 * [Voyage AI (embedding only)](https://docs.voyageai.com/docs/embeddings)
 * [LiteLLM](https://docs.litellm.ai/docs/simple_proxy) (bring your own proxy)
 
-## LLM Models
-
-Each provider comes with its most commonly used models already available in OCS — models that power chatbot conversations, and embedding models used for searching.
-
 Once a provider is saved, its edit page splits into tabs:
 
 - **Configuration** — where credentials live, along with their [verification state](#credential-verification).
