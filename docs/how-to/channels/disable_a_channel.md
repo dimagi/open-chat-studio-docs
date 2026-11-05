@@ -48,6 +48,6 @@ Nothing that happened while the channel was off is replayed:
 - [Channels][disabling-concept] — what disabling does and why you might use it
 - [Deploying your chatbot to different channels][deploy]
 
-[disabling-concept]: ../concepts/channels.md#disabling-a-channel
+[disabling-concept]: ../../concepts/channels.md#disabling-a-channel
 [deploy]: ./deploy_to_different_channels.md
 [public-link]: ./deploy_public_link_channel.md

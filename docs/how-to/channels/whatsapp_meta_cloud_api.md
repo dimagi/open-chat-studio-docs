@@ -122,7 +122,7 @@ Before connecting OCS to Meta, you need to configure a messaging provider in OCS
 
 To add the provider in OCS:
 
-1. Navigate to your **Team Settings → [Integrations](../concepts/team/integrations.md)** in OCS.
+1. Navigate to your **Team Settings → [Integrations](../../concepts/team/integrations.md)** in OCS.
 2. Click **Add integration**, then choose **Meta Cloud API** from the **Messaging** group.
 3. Fill in the form with the values gathered above:
     - **Name** — a label to identify this provider (e.g., `My WhatsApp Business`)
@@ -215,7 +215,7 @@ The **Template Language Code** field in the Meta Cloud API provider form tells O
 
 To update the language code:
 
-1. Navigate to **Team Settings → [Integrations](../concepts/team/integrations.md)** in OCS and filter by **Messaging**.
+1. Navigate to **Team Settings → [Integrations](../../concepts/team/integrations.md)** in OCS and filter by **Messaging**.
 2. Click **Edit** on your Meta Cloud API provider.
 3. Update the **Template Language Code** field.
 4. Click **Save**.
@@ -321,6 +321,6 @@ If the chatbot is not reaching participants after the 24-hour service window exp
 
 ## See also
 
-- [Messaging providers](../concepts/team/messaging_providers.md)
-- [Deploy your chatbot to different platforms](deploy_to_different_channels.md)
+- [Messaging providers](../../concepts/team/messaging_providers.md)
+- [Deploy your chatbot to different channels](deploy_to_different_channels.md)
 - [Meta WhatsApp Business Platform documentation](https://developers.facebook.com/docs/whatsapp/cloud-api)

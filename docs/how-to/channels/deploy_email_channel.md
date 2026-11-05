@@ -27,15 +27,15 @@ Replying to a chatbot email continues the same conversation session. Sending a f
 
 ## Customizing the outbound subject
 
-When the chatbot starts a new email thread (for example, via the [Trigger bot Message](https://www.openchatstudio.com/api/v1/docs/#tag/Channels/operation/trigger_bot_message) API), the subject line defaults to "New message". To override this, set an `email_subject` value in [session state](../tech-hub/python_node.md#session-state) before the email is sent — for example from a pipeline's Python node, or via the `session_data` parameter when triggering the chatbot. Inbound reply threads always reuse the subject of the original email and are unaffected by this value.
+When the chatbot starts a new email thread (for example, via the [Trigger bot Message](https://www.openchatstudio.com/api/v1/docs/#tag/Channels/operation/trigger_bot_message) API), the subject line defaults to "New message". To override this, set an `email_subject` value in [session state](../../tech-hub/python_node.md#session-state) before the email is sent — for example from a pipeline's Python node, or via the `session_data` parameter when triggering the chatbot. Inbound reply threads always reuse the subject of the original email and are unaffected by this value.
 
 ## File attachments
 
-The email channel supports bidirectional file attachments. For a comparison of file support across all channels, see [channel file support](../concepts/channels.md#file-support).
+The email channel supports bidirectional file attachments. For a comparison of file support across all channels, see [channel file support](../../concepts/channels.md#file-support).
 
 ### Inbound attachments (participant to chatbot)
 
-When a participant emails files to the chatbot, each attachment is saved and made available to the LLM or pipeline as a file record. Attachments behave like files uploaded through any other channel: they appear in the `attachments` list in the pipeline's [temporary state](../tech-hub/python_node.md#attachments) and are passed to the LLM for processing.
+When a participant emails files to the chatbot, each attachment is saved and made available to the LLM or pipeline as a file record. Attachments behave like files uploaded through any other channel: they appear in the `attachments` list in the pipeline's [temporary state](../../tech-hub/python_node.md#attachments) and are passed to the LLM for processing.
 
 The following attachments are rejected automatically:
 
@@ -49,11 +49,11 @@ Rejection notes are inserted inline into the participants's message so the chatb
 
 ### Outbound attachments (chatbot to participant)
 
-Files produced by the pipeline are sent as MIME attachments in the same threaded reply as the chatbot's text response. From a Python node, call `add_file_attachment()` to attach a file — see the [Python Node documentation](../tech-hub/python_node.md#python_node.add_file_attachment) for the full API reference and example.
+Files produced by the pipeline are sent as MIME attachments in the same threaded reply as the chatbot's text response. From a Python node, call `add_file_attachment()` to attach a file — see the [Python Node documentation](../../tech-hub/python_node.md#python_node.add_file_attachment) for the full API reference and example.
 
 If a pipeline-produced file cannot be sent as an attachment (for example, it exceeds the size limit or is a denylisted type), the email body will contain an inline download link for that file instead.
 
 ## See also
 
 - [Deploy your chatbot to different channels](deploy_to_different_channels.md)
-- [Python Node documentation](../tech-hub/python_node.md)
+- [Python Node documentation](../../tech-hub/python_node.md)

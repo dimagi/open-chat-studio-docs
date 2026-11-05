@@ -2,14 +2,16 @@
 
 ## Overview
 
-Chat sessions in Open Chat Studio define the scope of conversations between a participant and a chatbot within a specific channel. Sessions are isolated, ensuring data privacy and contextual continuity for the duration of an interaction.
+Chat sessions in Open Chat Studio define the scope of conversations between a participant and a chatbot within a specific channel.
+Sessions are isolated, which keeps data private and preserves context for the duration of an interaction.
 
 ## Session Scope
 
 A session is uniquely defined by:
 
 - **Participant**: The individual engaging with the chatbot.
-- **Channel**: The platform through which the chat occurs (e.g., WhatsApp, Telegram, Web, Slack). See [channels](channels.md).
+- **Channel**: The platform through which the chat occurs (e.g., WhatsApp, Telegram, Web, Slack).
+  See [channels](channels.md).
 - **Chatbot**: The specific chatbot handling the conversation.
 
 Each session is independent, meaning:
@@ -19,12 +21,14 @@ Each session is independent, meaning:
 - **Multi-Session Channels**: Channels such as **Web**, **API**, and **Slack** allow multiple active sessions per participant, enabling parallel conversations.
 - **Single-Session Channels**: Platforms like **WhatsApp**, **Telegram**, and **SureAdhere** support only one active session per participant at a time.
 
-Every session has a status that tracks the progress of the conversation. See [Session Status](session_status.md).
+Every session has a status that tracks the progress of the conversation.
+See [Session Status](session_status.md).
 
 ## History Management
 
 - As conversations progress, all previous messages within a session are stored as `history`, regardless of how the [pipeline](pipelines/index.md) is configured.
-- What subset of that stored history reaches an [LLM node](pipelines/nodes.md#llm-node), and whether it is summarized or trimmed as it grows, is controlled per node. See [Conversation History](pipelines/history.md) for how this works.
+- What subset of that stored history reaches an [LLM node](pipelines/nodes.md#llm-node), and whether it is summarized or trimmed as it grows, is controlled per node.
+  See [Conversation History](pipelines/history.md) for how this works.
 
 ## Participant Data
 
@@ -52,7 +56,8 @@ For task-focused details, see [How to reset sessions](../how-to/reset_sessions.m
 ## Annotation Queues on the Sessions List
 
 The sessions list shows which [annotation queues](annotations/queues.md) each session is in, so you don't need to open the session.
-The **Annotation Queues** column shows one badge per queue, in the format `Queue · Status`, where the status is the session's item status in that queue.
+The **Annotation Queues** column shows one badge per queue, in the format `Queue · Status`.
+The status is the session's item status in that queue.
 Queues of every status appear, and only session-level items count.
 
 To filter by membership, use the **Annotation Queue** filter:
@@ -75,9 +80,22 @@ The sessions CSV export has a matching **Annotation Queues** column after **Sess
 Columns after it move one position to the right.
 The header is always present so the layout is stable, but cells are empty for teams without the feature flag.
 
+## Tags on the Sessions List
+
+The **Tags** column shows only [tags](tags.md) applied to the session itself, followed by a tag icon (:fontawesome-solid-tags:).
+A session whose tags are all on individual messages shows just the icon.
+Open the session to see the tags on its messages.
+
+To find sessions by tag, use the **Tags** filter.
+It matches sessions that carry the tag on the session itself or on any of the messages in the session.
+
+Tags come from people, pipeline nodes and [tag rules](evaluations/tag_rules.md), which tag sessions or messages automatically when an LLM evaluator's output meets a condition.
+For example, filter by a `goal-not-met` tag to review only the sessions an evaluation flagged, instead of reading every result.
+
 ## See also
 
 - [Session Status](session_status.md)
+- [Tags](tags.md)
 - [Participant Data](participant_data.md)
 - [Channels](channels.md)
 - [Conversation History](pipelines/history.md)

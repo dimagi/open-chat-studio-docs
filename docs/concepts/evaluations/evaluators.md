@@ -15,10 +15,10 @@ Evaluators with the wrong mode for a dataset are hidden when you set up an evalu
 
 ### LLM evaluator
 The LLM Evaluator uses language models to evaluate responses based on a custom prompt.
-Use it as an [LLM-as-judge](../../how-to/evaluations/realtime_llm_judge.md) to evaluate the performance of a chatbot.
+Use it as an [LLM-as-a-judge](../../how-to/evaluations/realtime_llm_judge.md) to evaluate the performance of a chatbot.
 It can also assess the properties of both the participant's and the chatbot's messages.
 
-For the how-to guide, see [Set Up a Real-Time LLM Judge](../../how-to/evaluations/realtime_llm_judge.md).
+For the how-to guide, see [Set Up a Real-Time LLM-as-a-Judge](../../how-to/evaluations/realtime_llm_judge.md).
 
 **Example prompt:**
 

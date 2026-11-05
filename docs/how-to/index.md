@@ -21,7 +21,7 @@ Here you’ll find answers to “How do I...?” types of questions. These guide
 
     [:octicons-arrow-right-24: Add a knowledge base](./add_a_knowledge_base.md)
 
-    [:octicons-arrow-right-24: Add a message provider as a channel](./deploy_to_different_channels.md)  
+    [:octicons-arrow-right-24: Add a message provider as a channel](./channels/deploy_to_different_channels.md)  
 
 </div>
 

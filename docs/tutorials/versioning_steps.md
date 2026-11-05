@@ -72,7 +72,7 @@ The reverted configuration becomes your new unreleased version, which you can ed
 
 ## Next steps
 
-[Deploy your chatbot to a channel](../how-to/deploy_to_different_channels.md) so participants can use the published version.
+[Deploy your chatbot to a channel](../how-to/channels/deploy_to_different_channels.md) so participants can use the published version.
 
 ## See also
 

@@ -1,4 +1,4 @@
-# Data & Migration
+# Team Settings: Data & Migration
 
 The **Data & migration** section of Team Settings is where Team Admins [export the team's files](#downloading-team-files), prepare a [migration to another OCS instance](#migrating-to-another-instance), and [delete the team](#deleting-a-team).
 

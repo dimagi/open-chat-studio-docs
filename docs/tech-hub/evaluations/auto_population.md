@@ -10,7 +10,7 @@ Auto-population keeps a [session-level dataset](../../concepts/evaluations/datas
 
     See [Evaluation Datasets](../../concepts/evaluations/dataset.md#evaluation-levels) for an overview of session-level vs. message-level datasets.
 
-For a step-by-step setup that combines auto-population with an evaluator, see [Set Up a Real-Time LLM Judge](../../how-to/evaluations/realtime_llm_judge.md).
+For a step-by-step setup that combines auto-population with an evaluator, see [Set Up a Real-Time LLM-as-a-Judge](../../how-to/evaluations/realtime_llm_judge.md).
 
 ## How ingestion works
 
@@ -33,5 +33,5 @@ An automatic run is skipped if the config has no evaluators, or if every evaluat
 
 ## See also
 
-- [Set Up a Real-Time LLM Judge](../../how-to/evaluations/realtime_llm_judge.md): a worked setup that uses auto-population.
+- [Set Up a Real-Time LLM-as-a-Judge](../../how-to/evaluations/realtime_llm_judge.md): a worked setup that uses auto-population.
 - [Run an Evaluation](../../how-to/evaluations/run-an-evaluation.md): how full and delta runs appear in the runs list.

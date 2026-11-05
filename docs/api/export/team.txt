@@ -1039,9 +1039,10 @@ AuthProviderDetail:
   - updated_at: string (required)
   - type: AuthProviderDetailTypeEnum (required)
   - name: string (required)
+  - extra_data: Unknown
 
 AuthProviderDetailTypeEnum:
-  - enum: [basic, api_key, bearer, commcare, oauth_client_credentials]
+  - enum: [basic, api_key, bearer, commcare, oauth_client_credentials, oauth_authorization_code]
 
 AuthProviderList:
   - cursor: string (required)
@@ -1682,6 +1683,7 @@ NodeDetail:
   - position_x: number
   - position_y: number
   - is_archived: boolean
+  - archived_with_pipeline: boolean
   - working_version: integer
   - pipeline: integer (required)
   - llm_provider: integer
