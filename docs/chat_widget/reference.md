@@ -49,6 +49,30 @@ open-chat-studio-widget {
 -   :simple-css:{ .sm .middle } See [CSS Styling](styling.md) for more customization options.
 </div>
 
+## :material-theme-light-dark: Theme {#theme}
+
+The widget ships with a light theme and a dark theme. Set the `theme` attribute to `"dark"` to use the dark theme for the launch button and the chat window:
+
+```html
+<open-chat-studio-widget
+  chatbot-id="your-chatbot-id"
+  theme="dark">
+</open-chat-studio-widget>
+```
+
+Embedded widgets default to `"light"`, so existing embeds keep their current appearance until you set the attribute. The widget does not follow the visitor's operating system preference on its own. To match it, read `prefers-color-scheme` on your page and set the attribute from JavaScript:
+
+```javascript
+const widget = document.querySelector('open-chat-studio-widget');
+const scheme = window.matchMedia('(prefers-color-scheme: dark)');
+widget.theme = scheme.matches ? 'dark' : 'light';
+scheme.addEventListener('change', (event) => {
+  widget.theme = event.matches ? 'dark' : 'light';
+});
+```
+
+Each theme is a set of default values for the widget's CSS variables. Variables you set on the element yourself override the theme's defaults, so you can start from the dark theme and adjust individual colours. See [Dark theme](styling.md#dark-theme) for details. Requires widget **0.14.0+**.
+
 ## :material-shield-key: Embed Authentication {#embed-authentication}
 Secure your embedded widgets with authentication keys for controlled access to specific channels.
 
@@ -745,6 +769,7 @@ console.log(version); // "0.13.0"
 | `icon-url` | `string` | Optional | OCS default logo | Valid URL | Custom icon for the chat button | `"https://yoursite.com/chat-icon.svg"` |
 | `visible` | `boolean` | Optional | `false` | `true` \| `false` | Show widget immediately on page load | `"true"` to auto-open |
 | `position` | `string` | Optional | `"right"` | `"left"` \| `"center"` \| `"right"` | Initial widget position on screen | `"left"` for left side placement |
+| `theme` | `string` | Optional | `"light"` | `"light"` \| `"dark"` | Colour [theme](#theme) for the launch button and chat window. Requires widget **0.14.0+** | `"dark"` for the dark theme |
 | `header-text` | `string` | Optional | `undefined` | Max 100 chars | **⚠️ DEPRECATED:** Text displayed in chat window header. Use `branding.headerText` in translations instead | `"Customer Support"` |
 
 ### User Management
