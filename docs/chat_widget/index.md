@@ -6,7 +6,7 @@ The Open Chat Studio Widget is a customizable chat component that you embed dire
 
 - **Easy Integration**: Add to any website with just a few lines of code
 - **Flexible Embedding**: Choose between widget component or iframe methods
-- **Custom Styling**: Match your brand with CSS variables and custom themes
+- **Custom Styling**: Match your brand with CSS variables, and choose a light or dark theme
 - **Welcome Messages**: Greet users with personalized messages
 - **Starter Questions**: Guide users with pre-defined clickable questions
 - **File Uploads**: Allow users to attach files to their messages
