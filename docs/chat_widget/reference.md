@@ -49,6 +49,30 @@ open-chat-studio-widget {
 -   :simple-css:{ .sm .middle } See [CSS Styling](styling.md) for more customization options.
 </div>
 
+## :material-theme-light-dark: Theme {#theme}
+
+The widget ships with a light theme and a dark theme. Set the `theme` attribute to `"dark"` to use the dark theme for the launch button and the chat window:
+
+```html
+<open-chat-studio-widget
+  chatbot-id="your-chatbot-id"
+  theme="dark">
+</open-chat-studio-widget>
+```
+
+Embedded widgets default to `"light"`, so existing embeds keep their current appearance until you set the attribute. The widget does not follow the visitor's operating system preference on its own. To match it, read `prefers-color-scheme` on your page and set the attribute from JavaScript:
+
+```javascript
+const widget = document.querySelector('open-chat-studio-widget');
+const scheme = window.matchMedia('(prefers-color-scheme: dark)');
+widget.theme = scheme.matches ? 'dark' : 'light';
+scheme.addEventListener('change', (event) => {
+  widget.theme = event.matches ? 'dark' : 'light';
+});
+```
+
+Each theme is a set of default values for the widget's CSS variables. Variables you set on the element yourself override the theme's defaults, so you can start from the dark theme and adjust individual colours. See [Dark theme](styling.md#dark-theme) for details. Requires widget **0.14.0+**.
+
 ## :material-shield-key: Embed Authentication {#embed-authentication}
 Secure your embedded widgets with authentication keys for controlled access to specific channels.
 
@@ -407,6 +431,15 @@ Files are validated on upload by their contents, not just their extension — if
 5. Error messages appear for unsupported file types or files exceeding size limits
 6. Files are uploaded when the message is sent
 
+### Downloading Chatbot Attachments
+
+When the chatbot attaches a file to a message, the widget shows the file in the chat.
+If the attachment has a download URL, the widget renders it as a button.
+Clicking the button downloads the file.
+Attachments without a download URL show the file name as plain text.
+
+If a download fails, the widget shows an error message in the chat and the conversation continues.
+
 See [CSS Styling](styling.md#file-attachments) for customization options
 
 ## :material-translate: Internationalization {#internationalization}
@@ -459,6 +492,7 @@ Provide translations as a flat JSON object that uses dot-notation keys. These ke
   "attach.add": "Attach files",
   "attach.remove": "Remove file",
   "attach.success": "File attached",
+  "attach.download": "Download",
   "status.starting": "Starting chat...",
   "status.typing": "Preparing response",
   "status.uploading": "Uploading",
@@ -473,6 +507,7 @@ Provide translations as a flat JSON object that uses dot-notation keys. These ke
   "error.unsupportedType": "Unsupported file type",
   "error.connection": "Connection error. Please try again.",
   "error.sessionExpired": "Session expired. Please start a new chat.",
+  "error.download": "Download failed. Please try again.",
   "branding.poweredBy": "Powered by",
   "branding.buttonText": "",
   "branding.headerText": "",
@@ -496,6 +531,7 @@ Use the following reference when creating or updating translation bundles (mirro
   - `attach.add` — Adds file attachments.
   - `attach.remove` — Removes a pending attachment.
   - `attach.success` — Upload queued confirmation.
+  - `attach.download` — Label for the button that downloads a bot attachment.
 - **status**
   - `status.starting` — Shown while the session initializes.
   - `status.typing` — Typing indicator text (previously `typingIndicatorText`).
@@ -514,6 +550,7 @@ Use the following reference when creating or updating translation bundles (mirro
   - `error.unsupportedType` — Unsupported file format.
   - `error.connection` — Generic connection failure.
   - `error.sessionExpired` — Session expiration prompt.
+  - `error.download` — Error shown in the chat when an attachment download fails.
 - **branding**
   - `branding.poweredBy` — Footer "Powered by" label.
   - `branding.buttonText` — Optional launcher text override; leave blank to use widget props.
@@ -732,6 +769,7 @@ console.log(version); // "0.13.0"
 | `icon-url` | `string` | Optional | OCS default logo | Valid URL | Custom icon for the chat button | `"https://yoursite.com/chat-icon.svg"` |
 | `visible` | `boolean` | Optional | `false` | `true` \| `false` | Show widget immediately on page load | `"true"` to auto-open |
 | `position` | `string` | Optional | `"right"` | `"left"` \| `"center"` \| `"right"` | Initial widget position on screen | `"left"` for left side placement |
+| `theme` | `string` | Optional | `"light"` | `"light"` \| `"dark"` | Colour [theme](#theme) for the launch button and chat window. Requires widget **0.14.0+** | `"dark"` for the dark theme |
 | `header-text` | `string` | Optional | `undefined` | Max 100 chars | **⚠️ DEPRECATED:** Text displayed in chat window header. Use `branding.headerText` in translations instead | `"Customer Support"` |
 
 ### User Management
