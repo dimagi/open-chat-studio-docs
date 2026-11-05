@@ -414,7 +414,7 @@ If the attachment has a download URL, the widget renders it as a button.
 Clicking the button downloads the file.
 Attachments without a download URL show the file name as plain text.
 
-If a download fails, the widget shows an error message in the chat and the session continues.
+If a download fails, the widget shows an error message in the chat and the conversation continues.
 
 See [CSS Styling](styling.md#file-attachments) for customization options
 
