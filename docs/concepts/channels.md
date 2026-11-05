@@ -132,6 +132,22 @@ OCS skips any channel whose identifier another chatbot now uses, and it always s
 To reconnect a skipped channel, free its identifier on the other chatbot if needed, then add the channel again.
 See [Deploying your chatbot to different channels](../how-to/channels/deploy_to_different_channels.md).
 
+### Pipeline archiving
+
+Archiving a chatbot also archives its pipeline.
+Un-archiving the chatbot restores the pipeline and its nodes.
+
+A pipeline stays live in these cases:
+
+- Another live chatbot still uses it.
+- A static trigger (event) starts it.
+
+An archived pipeline no longer appears in **Event Pipelines**.
+The pipeline builder of an archived chatbot still opens, but it is read-only.
+
+!!! note
+    Chatbots archived before Nov 5, 2026 keep their pipeline unarchived.
+
 ## See also
 
 - [Disable a channel](../how-to/channels/disable_a_channel.md)
