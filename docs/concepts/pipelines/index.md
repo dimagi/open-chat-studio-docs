@@ -2,11 +2,13 @@
 
 ## What is a Pipeline?
 
-A **pipeline** is a visual workflow in Open Chat Studio (OCS) that defines how a chatbot processes messages and generates responses. Each step in the pipeline does one specific job, and the steps are connected together to create a complete conversation flow.
+A **pipeline** is a visual workflow in Open Chat Studio (OCS) that defines how a chatbot processes messages and generates responses.
+Each step in the pipeline does one specific job, and the steps are connected together to create a complete conversation flow.
 
 ## What is a Node?
 
-Each step in the pipeline is called a **node**. A node performs one specific task, such as:
+Each step in the pipeline is called a **node**.
+A node performs one specific task, such as:
 
 - Calling a [large language model (LLM)](../llm.md) to generate a response ([LLM node](nodes.md#llm-node))
 - Running custom logic or code ([Python node](nodes.md#python-node))
@@ -52,10 +54,12 @@ Breaking work into separate nodes lets you:
 
 Common node types include:
 
-- **[LLM Node](nodes.md#llm-node)** — Processes messages using an AI model. Handles natural conversations, answering questions, and generating responses.
+- **[LLM Node](nodes.md#llm-node)** — Processes messages using an AI model.
+  Handles natural conversations, answering questions, and generating responses.
   Conversation memory is controlled by the [history setting](history.md).
 
-- **[Routing Nodes](nodes.md#routing-nodes)** — Chooses the path the conversation takes, based on message content or on data already known about the participant. Useful for directing different types of questions to different handling logic, or routing on participant attributes like subscription tier.
+- **[Routing Nodes](nodes.md#routing-nodes)** — Chooses the path the conversation takes, based on message content or on data already known about the participant.
+  Useful for directing different types of questions to different handling logic, or routing on participant attributes like subscription tier.
   See [Router Nodes](router_nodes.md) for the two router types.
 
 - **[Python Node](nodes.md#python-node)** — Runs custom code to handle complex logic, fetch data from external systems, process attachments, or manipulate participant data.
@@ -78,9 +82,12 @@ When a participant sends a message, OCS processes the pipeline in repeating pass
 
 **Plan** → **Execute** → **Update** → Repeat
 
-1. **Plan**: Identify which nodes are ready to run. On the first pass, this is the node(s) directly connected to the participant's input. On later passes, any node whose dependencies have been satisfied is ready.
+1. **Plan**: Identify which nodes are ready to run.
+   On the first pass, this is the node(s) directly connected to the participant's input.
+   On later passes, any node whose dependencies have been satisfied is ready.
 
-2. **Execute**: Run all ready nodes in parallel. Each node processes independently — it cannot see the results of other nodes running in the same pass.
+2. **Execute**: Run all ready nodes in parallel.
+   Each node processes independently — it cannot see the results of other nodes running in the same pass.
 
 3. **Update**: Share the results from all nodes so they're available for the next step.
 
@@ -88,14 +95,16 @@ This repeats until all nodes have completed or a maximum step limit is reached.
 
 !!! tip "Running nodes in parallel"
 
-  Because multiple nodes can execute in the same pass, pipelines naturally support parallel processing. See [Parallel Pipelines](./parallel.md) for details.
+    Because multiple nodes can execute in the same pass, pipelines naturally support parallel processing.
+    See [Parallel Pipelines](./parallel.md) for details.
 
 ## Asking the Assistant About a Pipeline
 
 !!! tip "Chat widget context"
 
     When you view a pipeline in OCS, the in-app chat widget automatically receives its structure (nodes and connections) and event trigger data as context.
-    You can ask the assistant about the pipeline you are editing, for example what a node does or how the flow is connected. The context updates automatically as you make changes to the pipeline.
+    You can ask the assistant about the pipeline you are editing, for example what a node does or how the flow is connected.
+    The context updates automatically as you make changes to the pipeline.
 
 ## Next steps
 

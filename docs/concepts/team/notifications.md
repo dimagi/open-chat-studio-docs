@@ -1,6 +1,7 @@
 # Team Settings: Notifications
 
-The **Notifications** section of Team Settings is where Team Admins set up [notification channels](#notification-channels), so the team's Open Chat Studio (OCS) [notifications](../notifications.md) are posted to Slack.
+The **Notifications** section of Team Settings lets Team Admins set up [notification channels](#notification-channels).
+The team's Open Chat Studio (OCS) [notifications](../notifications.md) are then posted to Slack.
 Slack posts are sent in addition to in-app and email notifications, which are still delivered if a Slack post fails.
 
 Use it when people on your team need to see important events, such as errors, without opening OCS or checking their email.

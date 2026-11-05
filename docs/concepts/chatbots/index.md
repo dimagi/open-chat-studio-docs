@@ -1,6 +1,7 @@
 # Chatbots
 
-A chatbot in Open Chat Studio is the bot configuration that participants interact with. It defines the conversational experience, while the underlying [pipeline](../pipelines/index.md) controls how messages are processed and responses are generated.
+A chatbot in Open Chat Studio is the bot configuration that participants interact with.
+It defines the conversational experience, while the underlying [pipeline](../pipelines/index.md) controls how messages are processed and responses are generated.
 
 Chatbots can connect to one or more [channels](../channels.md) and use [LLMs](../llm.md) to generate responses.
 They can also include supporting logic such as [routing](../pipelines/router_nodes.md), [participant data](../participant_data.md), or [custom actions](../llm_custom_action.md).

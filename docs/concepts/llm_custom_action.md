@@ -1,6 +1,7 @@
 # Custom Action
 
-A Custom Action lets your chatbot use another service during a conversation, so it can look up information or complete a task for the participant.
+A Custom Action lets your chatbot use another service during a conversation.
+The chatbot can then look up information or complete a task for the participant.
 
 For example, a chatbot can:
 

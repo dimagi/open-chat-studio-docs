@@ -13,7 +13,7 @@ title: Large Language Model
 
 <small>The definition above was authored by the famous LLM that powers ChatGPT: GPT-4 developed by OpenAI.</small>
 
-When building chatbots, an LLM powers the chatbot's ability to understand and respond to participant inputs, effectively acting as the brain behind the chatbot.
+When building chatbots, an LLM powers the chatbot's ability to understand and respond to participant inputs.
 
 ## Prompt
 
@@ -58,7 +58,9 @@ A high temperature produces more varied and imaginative ones.
 It is used by [reasoning models](../how-to/choose_llm_model.md) that work through problems step-by-step.
 You set it as a level: `low`, `medium`, `high`, or `max`.
 
-These two parameters serve different purposes: temperature changes how varied the wording is, and effort changes how much reasoning goes into the answer.
+These two parameters serve different purposes.
+Temperature changes how creative or varied the responses are.
+Effort changes how much reasoning goes into the answer.
 
 ## See also
 

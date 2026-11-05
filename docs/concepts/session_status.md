@@ -1,6 +1,7 @@
 # Session Status
 
-Every [chat session](sessions.md) in Open Chat Studio (OCS) has a **status** that shows how far the conversation has progressed, from first contact to a completed, reviewed conversation.
+Every [chat session](sessions.md) in Open Chat Studio (OCS) has a **status** that shows how far the conversation has progressed.
+The statuses run from first contact to a completed, reviewed conversation.
 
 Understanding session status helps you:
 
@@ -114,7 +115,7 @@ If you see sessions with this status, investigate why they are in an unexpected 
 
 ## Observing how a session ended
 
-Regardless of what ends a session — participant, chatbot, admin, API caller, or event — you can attach further actions to the conversation-end event using [static triggers](events.md#static-events).
+Whatever ends a session (participant, chatbot, admin, API caller, or event), you can attach further actions to the conversation-end event using [static triggers](events.md#static-events).
 This lets you respond differently depending on who or what ended the conversation.
 
 | Trigger type | Fires when |

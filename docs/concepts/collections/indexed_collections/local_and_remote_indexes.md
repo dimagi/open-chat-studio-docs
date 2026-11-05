@@ -3,7 +3,8 @@ title: Local and Remote Indexes
 ---
 # Local and Remote Indexes
 
-An [indexed collection](./index.md) stores its files in an index that the chatbot searches. In OCS, there are two types of indexes:
+An [indexed collection](./index.md) stores its files in an index that the chatbot searches.
+In OCS, there are two types of indexes:
 
 - [Remote Index](#remote-index)
 - [Local Index](#local-index)
@@ -20,7 +21,8 @@ An [indexed collection](./index.md) stores its files in an index that the chatbo
 | **Best for** | Getting started quickly | More control, or more than 2 collections |
 
 !!! tip "Start with a Remote Index"
-    If you are new to indexed collections, start with a **Remote Index**. Switch to a Local Index if you need more than 2 collections or want to [choose a specific embedding model](../../../tech-hub/collections/local-index-optimization.md#choosing-an-embedding-model) for your content type.
+    If you are new to indexed collections, start with a **Remote Index**.
+    Switch to a Local Index if you need more than 2 collections or want to [choose a specific embedding model](../../../tech-hub/collections/local-index-optimization.md#choosing-an-embedding-model) for your content type.
 
 ## Remote Index
 Remote indexes are hosted and managed by your LLM provider, which indexes your uploaded files and chooses the embedding model.
@@ -32,7 +34,8 @@ Remote indexes are hosted and managed by your LLM provider, which indexes your u
 
     When using remote (OpenAI-hosted) indexed collections, you can select a **maximum of 2 collections** when configuring a LLM node.
 
-    The limit comes from OpenAI's API, although it's not specifically documented. Local indexes are not affected.
+    The limit comes from OpenAI's API, although it's not specifically documented.
+    Local indexes are not affected.
 
 ### Supported file types
 Remote indexes accept the same file types as [local indexes](#indexing-options).
@@ -45,11 +48,14 @@ This message comes directly from your LLM provider.
 
 !!! note "Provider error messages are shown as-is"
     OCS doesn't filter or mask the provider's error message.
-    Some providers redact sensitive details automatically — OpenAI, for example, masks your API key in its own error message — but not every provider does.
+    Some providers redact sensitive details automatically, but not every provider does.
+    OpenAI, for example, masks your API key in its own error message.
 
 ## Local Index
 
-Local indexes are hosted and managed by OCS. When you create one, you choose the embedding model. See [Local Index Optimization](../../../tech-hub/collections/local-index-optimization.md#choosing-an-embedding-model) for guidance.
+Local indexes are hosted and managed by OCS.
+When you create one, you choose the embedding model.
+See [Local Index Optimization](../../../tech-hub/collections/local-index-optimization.md#choosing-an-embedding-model) for guidance.
 
 ### Indexing Options
 
@@ -57,11 +63,13 @@ Local indexes are hosted and managed by OCS. When you create one, you choose the
 - **Supported file types**: txt, md, pdf, doc, docx, pptx, html, json, and common code files (c, cs, cpp, java, php, py, rb, tex, css, js, sh, ts)
 - **Supported embedding models**: The embedding models available for the LLM provider you select.
 
-`.csv` and `.tsv` files are not accepted through regular file upload. Add them through [Importing CSV/TSV rows](#importing-csvtsv-rows) instead.
+`.csv` and `.tsv` files are not accepted through regular file upload.
+Add them through [Importing CSV/TSV rows](#importing-csvtsv-rows) instead.
 
 ### Chunking and Optimization
 
-OCS breaks uploaded documents into smaller parts called **chunks**. The default settings work well for most use cases.
+OCS breaks uploaded documents into smaller parts called **chunks**.
+The default settings work well for most use cases.
 For chunk size, chunk overlap and embedding model selection, see [Local Index Optimization](../../../tech-hub/collections/local-index-optimization.md).
 
 ### Importing CSV/TSV rows
