@@ -7,7 +7,7 @@ You configure providers from **Team Settings → [Integrations](../concepts/team
 ## Prerequisites
 
 You cannot create a provider without a valid API key.
-The API key lets Open Chat Studio connect securely to your account with the provider.
+The API key lets Open Chat Studio (OCS) connect securely to your account with the provider.
 You must:
 
 1. Have an active account with the provider (OpenAI, Anthropic, Google, etc.)
@@ -29,7 +29,7 @@ You must:
     Open Chat Studio appends it if it's missing, so `https://litellm.example.com` is saved as `https://litellm.example.com/v1`.
 
 After saving, the provider page shows a **Models** tab listing the models it supports.
-Each model shows its price per million tokens and its context size, which is the model's [max token limit](../concepts/llm.md#max-token-limit).  
+Each LLM model shows its price per million tokens and its context size, which is the model's [max token limit](../concepts/llm.md#max-token-limit).
 See [LLM Models](../concepts/team/llm_providers.md#llm-models) for how to filter the list.
 If your provider, such as LiteLLM, has no pre-configured models, [add a custom model](../how-to/add_custom_llm_model.md).
 
@@ -45,9 +45,9 @@ See [Credential Verification](../concepts/team/llm_providers.md#credential-verif
 
 After adding a provider and models, it's recommended to:
 
-1. Create a test chatbot
-2. Configure it to use your new provider/model
-3. Send a test message to verify everything works correctly
+1. Create a [test chatbot](first_chatbot.md)
+2. [Configure it](configure_llm_node.md#step-2-choose-a-model) to use your new provider/model
+3. [Send a test message](configure_llm_node.md#step-8-save-and-test) to verify everything works correctly
 
 ## Next steps
 

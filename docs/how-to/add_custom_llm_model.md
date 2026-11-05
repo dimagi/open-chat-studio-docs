@@ -11,11 +11,15 @@ If a model isn't pre-configured for your provider, add it yourself directly in O
 
 1. Go to your team's **LLM and Embedding Model Service Providers** settings
 2. Edit the provider you want to add the model to
-3. On the **Models** tab, click :material-plus-box: to add a custom model
-4. Enter the model name, using the exact format from the provider's API
-5. Save the provider
+3. On the **Models** tab, click **Add custom model**
+4. Enter the model **Name**, using the exact format from the provider's API
+5. Enter the **Max token limit**, which is the model's context size
+6. Optionally, enter the **Input price** and **Output price** in dollars per 1M tokens. Leave them blank to add pricing later
+7. Click **Save**
 
-The new model is now available when configuring chatbots and pipelines that use this provider. It appears alongside the provider's built-in models on the [Models tab](../concepts/team/llm_providers.md#llm-models), filtered by the same chat/embedding role.
+The new model is now available when configuring chatbots and pipelines that use this provider. It appears alongside the provider's built-in models on the [Models tab](../concepts/team/llm_providers.md#llm-models), with a **custom** badge.
+
+A custom model with no price shows **No pricing configured**. Use **Set pricing** on its row to add one later; see [Set or Override Model Pricing](set_model_pricing.md).
 
 ## Model naming conventions
 

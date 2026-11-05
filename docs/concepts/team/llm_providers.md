@@ -35,6 +35,14 @@ On the **Models** tab, filter pills (**All**, **Chat**, **Embedding**, and **Cus
 Each pill shows a live count of the models matching that filter.
 Use **Add custom model** to add a model that isn't pre-configured.
 
+Each model also lists its **Pricing per 1M** tokens and its **Context** size (see [Max Token Limit](../llm.md#max-token-limit)).
+Pricing is in US dollars and shows each rate the model has: input, output, and where set, cached input and cache write.
+Embedding models show no pricing.
+A chat model with no rate shows **No pricing configured**.
+
+Prices start from OCS's global rates. Your team can override them for its own contracts or negotiated rates, without affecting other teams.
+See [Set or Override Model Pricing](../../how-to/set_model_pricing.md).
+
 If a model you need isn't pre-configured, see [Add a Custom LLM Model](../../how-to/add_custom_llm_model.md) for how to add one.
 
 !!! note "LiteLLM has no pre-configured models"
