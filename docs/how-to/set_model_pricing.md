@@ -1,48 +1,50 @@
-# Set or Override Model Pricing
+# Review Models and Manage Pricing
 
-The **Models** tab shows a price for each chat model. Prices start from OCS's global rates. You can set a price for a model that has none, or override a global price with your team's own rate. An override applies only to your team.
+The **Models** tab on an LLM provider's edit page lists the models the provider can run, with their prices and context sizes. Prices start from OCS's global rates. You can set a price for a model that has none, or override a global price with your team's own rate. An override applies only to your team.
 
 ## Prerequisites
 
 - A [configured LLM provider](../tutorials/configure_llm_providers.md) in your team
-- Permission to change LLM provider models
 
-## Steps
+## Review the models
 
 1. Go to your team's **LLM and Embedding Model Service Providers** settings.
 2. Edit the provider, then open the **Models** tab.
-3. On the model's row, click :material-pencil: to override the price. For a model showing **No pricing configured**, click **Set pricing** instead.
-4. Enter one or more rates in dollars per 1M tokens:
-    - **Input price**
-    - **Output price**
-    - **Cached input price**
-5. Click **Save override**.
 
-Enter at least one rate. Rates accept up to five decimal places. A blank field keeps the global rate for that item.
+![Edit LLM Service Provider shows models with pricing](../assets/images/LLM_models_with_pricing.png)
 
-The row now shows your rates, with a badge naming the source. The **manual** badge, or a tooltip reading "Custom pricing override set for this team", marks a price your team entered.
+- Prices are in dollars per 1M tokens. A chat model with no price shows **No pricing configured**, and embedding models show no price.
+- **Context** is the model's [max token limit](../concepts/llm.md#max-token-limit).
+- A **custom** badge marks a model your team added. It appears under both the **Chat** and **Custom** filters.
+- Deprecated models are hidden until you tick **Show deprecated**. The filter counts then include them.
+- If your team has several providers of the same type, such as two Anthropic providers, they share the same models and prices. A price you set on one applies to all of them.
 
-!!! note "Cache write rates"
+## Set or override a price
 
-    A model's cache write rate appears on its row when one exists, but you can't set or override it from this form.
+1. On the model's row, click :material-pencil:. For a model showing **No pricing configured**, click **Set pricing** instead.
+2. Enter at least one of **Input price**, **Output price** and **Cached input price**, in dollars per 1M tokens. A blank field keeps the global rate. Rates accept up to five decimal places.
+3. Click **Save override**.
+
+The row shows your rates with a **manual** badge, which marks a price your team entered. You can't set the cache write rate from this form.
+
+For example, if your team has a discounted contract with its LLM vendor, override the model's input and output rates with your contracted ones.
 
 ## Revert to the global price
 
-To remove your override, click :material-undo: on the model's row and confirm. The row returns to the global rates.
+Click :material-undo: on the model's row and confirm. The row returns to the global rates.
 
-This button appears only on a model that has both a team override and a global rate. A custom model has no global rate, so it has no revert button. To remove its price, [delete the model](#delete-a-custom-model) and add it again.
+The button appears only when the model has both a team override and a global rate. A custom model has no global rate, so it has no revert button.
 
 ## Delete a custom model
 
 Click :material-delete: on a custom model's row and confirm. Built-in models can't be deleted.
 
-## Limits
+## Common issues
 
-- Deprecated models show their price but have no override, **Set pricing**, or revert buttons.
-- Embedding models show no price.
-- Every provider of the same type in your team shows the same model list, so an override on one applies to all of them.
+- **A model has no pencil button.** Deprecated and embedding models can't be given prices.
+- **A model is missing from the list.** Tick **Show deprecated** and check the filter. If it was never pre-configured, [add a custom model](add_custom_llm_model.md).
 
 ## See also
 
-- [LLM Service Providers](../concepts/team/llm_providers.md#llm-models) — how the Models tab works
+- [Choose an LLM Model for Your Chatbot](choose_llm_model.md) — pick a model once you've compared prices and context sizes
 - [Add a Custom LLM Model](add_custom_llm_model.md)

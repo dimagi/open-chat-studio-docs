@@ -19,7 +19,7 @@ If a model isn't pre-configured for your provider, add it yourself directly in O
 
 The new model is now available when configuring chatbots and pipelines that use this provider. It appears alongside the provider's built-in models on the [Models tab](../concepts/team/llm_providers.md#llm-models), with a **custom** badge.
 
-A custom model with no price shows **No pricing configured**. Use **Set pricing** on its row to add one later; see [Set or Override Model Pricing](set_model_pricing.md).
+A custom model with no price shows **No pricing configured**. Use **Set pricing** on its row to add one later; see [Review Models and Manage Pricing](set_model_pricing.md).
 
 ## Model naming conventions
 
