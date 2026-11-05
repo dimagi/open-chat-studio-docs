@@ -22,7 +22,7 @@ There are two types of collections, depending on what you want to do:
 ## Collections and published chatbots
 
 Collection content is a **live shared resource**: updates to your files in a collection reach your published chatbot automatically, without a republish.
-This applies whether you update a collection manually or via a [document-source](../../how-to/document_sources.md) sync.
+This applies whether you update a collection manually or via a [document-source](../../how-to/collections/document_sources.md) sync.
 
 - Adding or removing files from a [media collection](./media_collections.md) takes effect for participants immediately.
 - [Document-source](./indexed_collections/document_sources.md) syncs to an [indexed collection](./indexed_collections/index.md) — for example, Confluence or GitHub syncs — are applied to the published chatbot as each sync completes.

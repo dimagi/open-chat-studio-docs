@@ -28,7 +28,7 @@ Common examples include:
 
 You can use both in the same indexed collection, and both count toward the same file limit.
 To upload files, see [adding a collection to a chatbot](../index.md#adding-a-collection-to-a-chatbot).
-To add a document source, see [Set Up and Manage Document Sources](../../../how-to/document_sources.md).
+To add a document source, see [Set Up and Manage Document Sources](../../../how-to/collections/document_sources.md).
 
 ## Supported sources
 
@@ -59,5 +59,5 @@ A snapshot is a fixed copy of a collection, so syncs never change it.
 
 ## See also
 
-- [Set Up and Manage Document Sources](../../../how-to/document_sources.md): add a source, run syncs, and read sync logs.
+- [Set Up and Manage Document Sources](../../../how-to/collections/document_sources.md): add a source, run syncs, and read sync logs.
 - [Document Sources reference](../../../tech-hub/collections/document_sources.md): configuration fields, authentication, and troubleshooting for each source type.

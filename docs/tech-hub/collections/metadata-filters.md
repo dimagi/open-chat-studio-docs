@@ -4,7 +4,7 @@ title: Metadata Filters Reference
 # Metadata Filters Reference
 
 This page describes how the **Metadata Filters** setting of the LLM node changes collection search.
-For setup steps, see [Filter Collection Search by Metadata](../../how-to/filter_collection_search_by_metadata.md).
+For setup steps, see [Filter Collection Search by Metadata](../../how-to/collections/filter_collection_search_by_metadata.md).
 
 ## Settings
 

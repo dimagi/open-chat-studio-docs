@@ -4,14 +4,14 @@ title: Filter Collection Search by Metadata
 # Filter Collection Search by Metadata
 
 Metadata filters limit an LLM node's collection search to rows whose metadata matches values you set.
-Use them when several chatbots share one [indexed collection](../concepts/collections/indexed_collections/index.md) and each chatbot should see only its own content.
+Use them when several chatbots share one [indexed collection](../../concepts/collections/indexed_collections/index.md) and each chatbot should see only its own content.
 
 ## Prerequisites
 
-- An [indexed collection](../concepts/collections/indexed_collections/index.md) with a [local index](../concepts/collections/indexed_collections/local_and_remote_indexes.md#local-index).
+- An [indexed collection](../../concepts/collections/indexed_collections/index.md) with a [local index](../../concepts/collections/indexed_collections/local_and_remote_indexes.md#local-index).
   Remote (OpenAI-hosted) indexes ignore metadata filters.
 - Rows that carry metadata. Rows [imported from a CSV or TSV file](import_csv_tsv_rows.md) carry the columns you chose to store as metadata.
-- A chatbot with an [LLM node](../concepts/pipelines/nodes.md#llm-node) that is linked to the collection.
+- A chatbot with an [LLM node](../../concepts/pipelines/nodes.md#llm-node) that is linked to the collection.
 
 ## Add metadata filters
 
@@ -52,4 +52,4 @@ The chatbot's search returns only rows whose `district` metadata is `Khayelitsha
   Use a local index instead.
 - **Results differ from an unfiltered search.**
   Filtered searches match on words only and do not search by meaning.
-  See [Metadata Filters Reference](../tech-hub/collections/metadata-filters.md#how-filtered-search-works).
+  See [Metadata Filters Reference](../../tech-hub/collections/metadata-filters.md#how-filtered-search-works).

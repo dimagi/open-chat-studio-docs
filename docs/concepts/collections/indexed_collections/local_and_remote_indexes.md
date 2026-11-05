@@ -87,4 +87,4 @@ When a chatbot searches the collection, each matching row comes back with its ro
     Row import works for local indexes only.
     Remote (OpenAI) indexes don't offer the **Import CSV/TSV rows** option.
 
-See [Import CSV/TSV Rows into a Collection](../../../how-to/import_csv_tsv_rows.md) for step-by-step instructions.
+See [Import CSV/TSV Rows into a Collection](../../../how-to/collections/import_csv_tsv_rows.md) for step-by-step instructions.

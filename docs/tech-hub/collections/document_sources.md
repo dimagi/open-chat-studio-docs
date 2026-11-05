@@ -5,7 +5,7 @@ description: Configuration, authentication, sync behavior, and troubleshooting f
 # Document Sources Reference
 
 Fields, authentication, sync behavior, and troubleshooting for GitHub and Confluence [document sources](../../concepts/collections/indexed_collections/document_sources.md).
-To add a source or read its sync log, follow the guide to [set up and manage document sources](../../how-to/document_sources.md).
+To add a source or read its sync log, follow the guide to [set up and manage document sources](../../how-to/collections/document_sources.md).
 
 ## Quick reference
 
@@ -97,7 +97,7 @@ OCS refuses to save the source if none or more than one is filled in.
 ### The source shows "Last Sync (with errors)" and the sync log says Failed
 
 The sync stopped before it finished.
-[Read the sync log](../../how-to/document_sources.md#read-the-sync-log) to see the error message.
+[Read the sync log](../../how-to/collections/document_sources.md#read-the-sync-log) to see the error message.
 Common causes:
 
 - The authentication provider's credentials have expired or been revoked.
@@ -112,8 +112,8 @@ Common causes:
 ### The sync log says "Completed with errors"
 
 Some files failed and the rest synced normally.
-[Read the sync log](../../how-to/document_sources.md#read-the-sync-log) to see each failed file and the reason, for example a file type OCS can't parse.
-Fix the cause, then [retry the failed files](../../how-to/document_sources.md#retry-failed-files).
+[Read the sync log](../../how-to/collections/document_sources.md#read-the-sync-log) to see each failed file and the reason, for example a file type OCS can't parse.
+Fix the cause, then [retry the failed files](../../how-to/collections/document_sources.md#retry-failed-files).
 
 ### Pages or files are missing from the collection
 
@@ -126,4 +126,4 @@ Fix the cause, then [retry the failed files](../../how-to/document_sources.md#re
 ## See also
 
 - [Document Sources](../../concepts/collections/indexed_collections/document_sources.md): the concept and when to use it.
-- [Set Up and Manage Document Sources](../../how-to/document_sources.md): add a source and read the sync log.
+- [Set Up and Manage Document Sources](../../how-to/collections/document_sources.md): add a source and read the sync log.

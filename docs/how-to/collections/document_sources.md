@@ -3,14 +3,14 @@ title: Set Up and Manage Document Sources
 ---
 # Set Up and Manage Document Sources
 
-[Document sources](../concepts/collections/indexed_collections/document_sources.md) fetch and index content from GitHub or Confluence, so your [indexed collection](../concepts/collections/indexed_collections/index.md) stays current without manual uploads.
+[Document sources](../../concepts/collections/indexed_collections/document_sources.md) fetch and index content from GitHub or Confluence, so your [indexed collection](../../concepts/collections/indexed_collections/index.md) stays current without manual uploads.
 This guide covers adding a source, running syncs, and reading the sync status and logs.
 
 ## Prerequisites
 
-- An [indexed collection](../concepts/collections/indexed_collections/index.md).
+- An [indexed collection](../../concepts/collections/indexed_collections/index.md).
   You can't add document sources to a media collection.
-- An [authentication provider](../concepts/team/authentication_providers.md) of the type your source needs: Bearer Token for GitHub, Basic Auth for Confluence.
+- An [authentication provider](../../concepts/team/authentication_providers.md) of the type your source needs: Bearer Token for GitHub, Basic Auth for Confluence.
 - The details of the source content to load, such as a GitHub repository URL or a Confluence space key.
 
 ## Set up a document source
@@ -20,7 +20,7 @@ This guide covers adding a source, running syncs, and reading the sync status an
 3. In **Auth provider**, choose the authentication provider.
    The list shows only providers of the type this source accepts.
 4. Fill in the source fields.
-   The [reference](../tech-hub/collections/document_sources.md) describes every field for [GitHub](../tech-hub/collections/document_sources.md#github) and [Confluence](../tech-hub/collections/document_sources.md#confluence).
+   The [reference](../../tech-hub/collections/document_sources.md) describes every field for [GitHub](../../tech-hub/collections/document_sources.md#github) and [Confluence](../../tech-hub/collections/document_sources.md#confluence).
 5. Turn on **Auto Sync** if OCS should also sync the source once a week (Sundays at 00:00 UTC).
 6. Click **Save**.
 
@@ -77,9 +77,9 @@ If files still show a failed status in the file list, click **Retry Failed Uploa
 - **The Add Document Source button is disabled.**
   The collection has reached its 1000-file limit.
 - **The sync failed, or files or pages are missing.**
-  Check the message in **View Error**, then see [Troubleshooting](../tech-hub/collections/document_sources.md#troubleshooting).
+  Check the message in **View Error**, then see [Troubleshooting](../../tech-hub/collections/document_sources.md#troubleshooting).
 
 ## See also
 
-- [Document Sources reference](../tech-hub/collections/document_sources.md): fields, authentication, and sync behavior for each source.
-- [Authentication Providers](../concepts/team/authentication_providers.md): create the credentials a source needs.
+- [Document Sources reference](../../tech-hub/collections/document_sources.md): fields, authentication, and sync behavior for each source.
+- [Authentication Providers](../../concepts/team/authentication_providers.md): create the credentials a source needs.

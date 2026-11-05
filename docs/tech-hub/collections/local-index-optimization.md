@@ -48,7 +48,7 @@ You can't change these values per source.
 
 Importing a `.csv` or `.tsv` file as individual rows is an alternative to chunking.
 It's available for local indexes only.
-See [Importing CSV/TSV rows](../../concepts/collections/indexed_collections/local_and_remote_indexes.md#importing-csvtsv-rows) for the concept, and [Import CSV/TSV Rows into a Collection](../../how-to/import_csv_tsv_rows.md) for the steps.
+See [Importing CSV/TSV rows](../../concepts/collections/indexed_collections/local_and_remote_indexes.md#importing-csvtsv-rows) for the concept, and [Import CSV/TSV Rows into a Collection](../../how-to/collections/import_csv_tsv_rows.md) for the steps.
 
 Three limits apply to a row import:
 
