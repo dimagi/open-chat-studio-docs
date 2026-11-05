@@ -20,8 +20,6 @@ To add a source or read its sync log, follow the guide to [set up and manage doc
 These rules apply to every document source type.
 For when syncs start and what they change, see [How syncing works](../../concepts/collections/indexed_collections/document_sources.md#how-syncing-works).
 
-- **One sync at a time.** If a sync is running, a second request is refused with a message.
-  A sync that has run for more than two hours is treated as stalled, and the next request replaces it.
 - **Removed files.** A sync removes any previously synced file that the source no longer returns.
   This includes a file the source now skips, for example because it became empty, too large, or restricted.
   A file that failed to process is not treated as removed.

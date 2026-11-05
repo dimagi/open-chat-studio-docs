@@ -21,12 +21,11 @@ This guide covers adding a source, running [syncs](../../concepts/collections/in
    The list shows only providers of the type this source accepts.
 4. Fill in the source fields.
    The reference pages describe every field for [GitHub](../../tech-hub/collections/github_document_source.md) and [Confluence](../../tech-hub/collections/confluence_document_source.md).
-5. Turn on **Auto Sync** if OCS should also sync the source once a week (Sundays at 00:00 UTC).
+5. Turn on **Auto Sync** if OCS should sync the source once a week (Sundays at 00:00 UTC).
 6. Click **Save**.
 
 A sync starts right away.
 The source appears above the **Files** list with a status line, and the files appear as they sync.
-You don't need to refresh the page.
 
 For example, a support team can add a GitHub source with the file pattern `*.md` and the path filter `docs/`.
 The chatbot then answers from the repository's documentation, and each weekly sync picks up edits.
@@ -37,8 +36,8 @@ Each source has icon buttons beside its name.
 
 | Button | What it does |
 |--------|--------------|
-| Circular arrows (**Sync Document Source**) | Starts a sync now. It is hidden while a sync is running. |
-| Pencil | Opens the source's fields. Saving starts a sync, unless one is already running. |
+| Circular arrows (**Sync Document Source**) | Starts a sync now. |
+| Pencil | Opens the source's fields. Saving starts a sync. |
 | List (**View Sync Logs**) | Opens the sync log. |
 | Trash | Deletes the source and the files it synced, after you confirm. |
 
@@ -72,9 +71,6 @@ If files still show a failed status in the file list, click **Retry Failed Uploa
 
 ## Common issues
 
-- **A sync is already in progress.**
-  Wait for it to finish, then try again.
-  If you save changes to a source during a sync, OCS keeps them and applies them in the next sync.
 - **The Add Document Source button is disabled.**
   The collection has reached its 1000-file limit.
 - **The sync failed, or files or pages are missing.**
