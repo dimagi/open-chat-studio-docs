@@ -45,7 +45,7 @@ Embedding models show no pricing.
 A chat model with no rate shows **No pricing configured**.
 
 Prices start from OCS's global rates. Your team can override them for its own contracts or negotiated rates, without affecting other teams.
-See [Review Models and Manage Pricing](../../how-to/set_model_pricing.md) for how to read the tab, filter it, and set prices.
+See [Review Models and Manage Pricing](../../how-to/review_models_and_manage_pricing.md) for how to read the tab, filter it, and set prices.
 
 If a model you need isn't pre-configured, see [Add a Custom LLM Model](../../how-to/add_custom_llm_model.md) for how to add one.
 

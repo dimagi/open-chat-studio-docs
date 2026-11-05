@@ -36,7 +36,7 @@ The model you choose determines which AI provider is used. For the full list of 
 
 Your team must have credentials configured for a provider before you can use its models. If the model you want is not listed, check with your team administrator or see the guide for [configuring LLM providers](../tutorials/configure_llm_providers.md).
 
-Different providers may offer the same underlying model type but with different pricing, speed, and availability. If your preferred model is unavailable or too slow, try the equivalent model from another provider.
+Different providers may offer the same underlying model type but with different pricing, speed, and availability. To compare prices and context sizes, see [Review Models and Manage Pricing](review_models_and_manage_pricing.md). If your preferred model is unavailable or too slow, try the equivalent model from another provider.
 
 ## See also
 
