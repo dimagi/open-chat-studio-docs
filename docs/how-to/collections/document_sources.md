@@ -38,7 +38,7 @@ Each source has icon buttons beside its name.
 | Button | What it does |
 |--------|--------------|
 | Circular arrows (**Sync Document Source**) | Starts a sync now. It is hidden while a sync is running. |
-| Pencil | Opens the source's fields. Saving starts a sync. |
+| Pencil | Opens the source's fields. Saving starts a sync, unless one is already running. |
 | List (**View Sync Logs**) | Opens the sync log. |
 | Trash | Deletes the source and the files it synced, after you confirm. |
 

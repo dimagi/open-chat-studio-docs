@@ -23,7 +23,7 @@ Enter your Atlassian username as the **username** and an Atlassian API key as th
 | **Label** | Load pages that have this label. |
 | **CQL Query** | Load pages that match this Confluence Query Language query. |
 | **Page IDs** | Load only these pages. Enter comma-separated numeric IDs. |
-| **Max Pages** | The most pages a sync fetches. Accepts 1 to 10000. Defaults to 1000. Pages that are skipped (empty, restricted, or not current) still count toward it. |
+| **Max Pages** | The most pages a sync loads. Accepts 1 to 10000. Defaults to 1000. Pages that are skipped (empty, restricted, or not current) still count toward it. |
 
 Fill in exactly one of **Space Key**, **Label**, **CQL Query**, and **Page IDs**.
 OCS refuses to save the source if none or more than one is filled in.
@@ -35,7 +35,7 @@ OCS refuses to save the source if none or more than one is filled in.
 - Pages with a read restriction are skipped, whether the restriction is on the page or inherited from a parent page.
   If OCS can't read a page's restrictions, it treats the page as restricted.
 - Pages that Confluence reports as forbidden or not found (HTTP 403 or 404) are skipped without an error.
-- When a space, label, or query matches more pages than **Max Pages**, the sync stops at the limit.
+- When a space, label, or query matches more pages than **Max Pages**, the sync stops loading pages at the limit.
   OCS shows no warning or error, so pages beyond the limit are silently missing.
 
 ## See also
