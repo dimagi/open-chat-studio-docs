@@ -78,5 +78,6 @@ If files still show a failed status in the file list, click **Retry Failed Uploa
 
 ## See also
 
-- [Document Sources reference](../../tech-hub/collections/document_sources.md): fields, authentication, and sync behavior for each source.
+- [Document Sources reference](../../tech-hub/collections/document_sources.md): sync behavior shared by all sources, and troubleshooting.  
+- [GitHub](../../tech-hub/collections/github_document_source.md) and [Confluence](../../tech-hub/collections/confluence_document_source.md) references: fields and authentication for each source.  
 - [Authentication Providers](../../concepts/team/authentication_providers.md): create the credentials a source needs.

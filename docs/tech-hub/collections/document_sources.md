@@ -58,7 +58,9 @@ Fix the cause, then [retry the failed files](../../how-to/collections/document_s
 
 ### Pages or files are missing from the collection
 
-- **Confluence:** see which pages are skipped in [Confluence behavior](confluence_document_source.md#behavior).
+- **Confluence:** OCS skips pages that are empty, archived or trashed, restricted (including restrictions inherited from a parent page), or that the credentials can't access.
+  Pages beyond **Max Pages** are also left out.
+  See [Confluence behavior](confluence_document_source.md#behavior).
 - **GitHub:** see which files are skipped in [GitHub behavior](github_document_source.md#behavior).
 - Check that the sync log shows the expected **Added** count.
 

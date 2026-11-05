@@ -6,7 +6,7 @@ title: GitHub Document Source Reference
 Authentication, configuration fields, and behavior of the GitHub [document source](../../concepts/collections/indexed_collections/document_sources.md).
 Use it to check why a repository file is or is not synced.
 
-Loads files from a repository on `github.com`.
+OCS oads files from a repository on `github.com`.
 
 ## Authentication
 
