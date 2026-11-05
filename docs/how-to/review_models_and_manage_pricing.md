@@ -4,7 +4,7 @@ The **Models** tab on an LLM provider's edit page lists the models the provider 
 
 ## Prerequisites
 
-- A [configured LLM provider](../tutorials/configure_llm_providers.md) in your team
+- A [configured LLM provider](../tutorials/configure_llm_providers.md) in your team, already saved. The **Models** tab appears only once the provider exists
 
 ## Review the models
 
@@ -16,16 +16,16 @@ The **Models** tab on an LLM provider's edit page lists the models the provider 
 - Prices are in dollars per 1M tokens. A chat model with no price shows **No pricing configured**, and embedding models show no price.
 - **Context** is the model's [max token limit](../concepts/llm.md#max-token-limit).
 - A **custom** badge marks a model your team added. It appears under both the **Chat** and **Custom** filters.
-- Deprecated models are hidden until you tick **Show deprecated**. The filter counts then include them.
+- Deprecated models are hidden until you tick **Show deprecated**, next to the filters. Its number is how many are hidden, and the filter counts then include them.
 - If your team has several providers of the same type, such as two Anthropic providers, they share the same models and prices. A price you set on one applies to all of them.
 
 ## Set or override a price
 
-1. On the model's row, click :material-pencil:. For a model showing **No pricing configured**, click **Set pricing** instead.
+1. On the model's row, click :material-pencil:. For a model showing **No pricing configured**, you can also click **Set pricing**.
 2. Enter at least one of **Input price**, **Output price** and **Cached input price**, in dollars per 1M tokens. A blank field keeps the global rate. Rates accept up to five decimal places.
 3. Click **Save override**.
 
-The row shows your rates with a **manual** badge, which marks a price your team entered. You can't set the cache write rate from this form.
+The row shows your rates with a **manual** badge. A badge on a row means the price isn't the default one, for example your override or an imported rate. You can't set the cache write rate from this form.
 
 For example, if your team has a discounted contract with its LLM vendor, override the model's input and output rates with your contracted ones.
 
