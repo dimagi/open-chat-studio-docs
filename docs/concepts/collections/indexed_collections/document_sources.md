@@ -5,7 +5,7 @@ title: Document Sources
 
 A document source is a saved set of instructions that tells OCS where to read content from, for example GitHub or Confluence.
 You add one or more document sources to an [indexed collection](./index.md).
-OCS reads the matching content, splits it into chunks and indexes it, which is the same processing applied to files you upload yourself.
+OCS reads the matching content, splits it into [chunks](../../../tech-hub/collections/local-index-optimization.md#chunking-and-optimization) and indexes it, which is the same processing applied to files you upload yourself.
 Document sources work with both [local and remote indexes](./local_and_remote_indexes.md).
 
 ## When should I use this?

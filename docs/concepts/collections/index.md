@@ -12,7 +12,7 @@ There are two types of collections, depending on what you want to do:
 
 ## Adding a collection to a chatbot
 
-1. Navigate to the **Collections** section in the sidebar, click "Add new", and choose a collection type: [Media Collection](./media_collections.md) or [Indexed Collection (RAG)](./indexed_collections/index.md).
+1. Navigate to the **Collections** section in the sidebar, click **Add new**, and choose a collection type: [Media Collection](./media_collections.md) or [Indexed Collection (RAG)](./indexed_collections/index.md).
 2. Once the collection is created, you will be able to upload files to it.
 3. For indexed collections, you'll also need to choose between a Remote and a Local index before uploading — see [Which should I use?](./indexed_collections/local_and_remote_indexes.md#which-should-i-use).
 4. After your collection has been created, you can link it to any [LLM node][llm_node].
@@ -39,5 +39,11 @@ To change which collections a chatbot uses, you must publish a new version.
     Chatbots that were published before keep the collection list they had at publish time until the next time they are republished.
 
 For more detail on versioning in general, see [Versioning](../versioning.md).
+
+## See also
+
+- [Media Collections](./media_collections.md): send files to participants in a conversation.
+- [Indexed Collections](./indexed_collections/index.md): let the chatbot answer from your documents.
+- [Document Sources](./indexed_collections/document_sources.md): keep an indexed collection in sync with GitHub or Confluence.
 
 [llm_node]: ../pipelines/nodes.md#llm-node

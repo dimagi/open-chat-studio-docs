@@ -53,3 +53,9 @@ The chatbot's search returns only rows whose `district` metadata is `Khayelitsha
 - **Results differ from an unfiltered search.**
   Filtered searches match on words only and do not search by meaning.
   See [Metadata Filters Reference](../../tech-hub/collections/metadata-filters.md#how-filtered-search-works).
+
+## See also
+
+- [Metadata Filters Reference](../../tech-hub/collections/metadata-filters.md): how filtered search works and what happens when no row matches.
+- [Import CSV/TSV Rows into a Collection](import_csv_tsv_rows.md): add rows that carry metadata.
+- [Indexed Collections](../../concepts/collections/indexed_collections/index.md): how indexed collections work.

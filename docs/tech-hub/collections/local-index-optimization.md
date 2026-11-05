@@ -4,6 +4,7 @@ title: Local Index Optimization
 # Local Index Optimization
 
 This page covers advanced configuration options for [indexed collections](../../concepts/collections/indexed_collections/index.md).
+Use it to tune how OCS indexes your files, which affects how accurately the chatbot finds relevant content.
 
 ## Choosing an Embedding Model
 
@@ -59,3 +60,9 @@ Three limits apply to a row import:
 | `COLLECTION_FILE_MAX_METADATA_COLUMNS` | 16 | Maximum number of columns that can be kept as metadata per row |
 
 These are constants in the application settings, not environment variables, so self-hosted operators who need different limits must override the settings values in their deployment.
+
+## See also
+
+- [Local and Remote Indexes](../../concepts/collections/indexed_collections/local_and_remote_indexes.md): choose where your files are indexed.
+- [Document Sources Reference](document_sources.md): sync behavior for files from GitHub or Confluence.
+- [Import CSV/TSV Rows into a Collection](../../how-to/collections/import_csv_tsv_rows.md): the steps for a row import.

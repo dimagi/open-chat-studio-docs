@@ -4,7 +4,7 @@ title: Set Up and Manage Document Sources
 # Set Up and Manage Document Sources
 
 [Document sources](../../concepts/collections/indexed_collections/document_sources.md) fetch and index content from GitHub or Confluence, so your [indexed collection](../../concepts/collections/indexed_collections/index.md) stays current without manual uploads.
-This guide covers adding a source, running syncs, and reading the sync status and logs.
+This guide covers adding a source, running [syncs](../../concepts/collections/indexed_collections/document_sources.md#how-syncing-works), and reading the sync status and logs.
 
 ## Prerequisites
 

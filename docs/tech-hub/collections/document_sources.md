@@ -94,7 +94,7 @@ OCS refuses to save the source if none or more than one is filled in.
 
 ## Troubleshooting
 
-### The source shows "Last Sync (with errors)" and the sync log says Failed
+### The source shows **Last Sync (with errors)** and the sync log says **Failed**
 
 The sync stopped before it finished.
 [Read the sync log](../../how-to/collections/document_sources.md#read-the-sync-log) to see the error message.
@@ -109,7 +109,7 @@ Common causes:
 - GitHub or Confluence returned a rate limit or server error.
   Wait, then start the sync again.
 
-### The sync log says "Completed with errors"
+### The sync log says **Completed with errors**
 
 Some files failed and the rest synced normally.
 [Read the sync log](../../how-to/collections/document_sources.md#read-the-sync-log) to see each failed file and the reason, for example a file type OCS can't parse.
