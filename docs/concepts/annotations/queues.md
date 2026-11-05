@@ -1,10 +1,12 @@
 # Annotation Queues
 
-An **annotation queue** is the central object in the annotations system. It defines what to review (the sessions), how to review it (the schema fields), who reviews it (the assignees), and how many reviews each session needs.
+An **annotation queue** is the central object in the annotations system.
+It defines which sessions to review, the schema fields reviewers fill in, who reviews, and how many reviews each session needs.
 
 ## Schema Fields
 
-Before creating a queue, you need to decide what fields reviewers will fill in. You add them in the **Schema Fields** section of the queue form.
+Before creating a queue, you need to decide what fields reviewers will fill in.
+You add them in the **Schema Fields** section of the queue form.
 
 ### Field Types
 
@@ -35,25 +37,37 @@ The labels appear only in the annotation form and the aggregate scores.
 
 Each field card in the **Schema Fields** section has a drag handle and up/down buttons (▲▼) for reordering.
 
-The order you set is used everywhere fields are displayed: the annotation form, the annotations list on an item, CSV and JSONL exports, the aggregate scores panel, and the summary column in the queue's items table.
+The order you set is used everywhere fields are displayed:
+
+- The annotation form
+- The annotations list on an item
+- CSV and JSONL exports
+- The aggregate scores panel
+- The summary column in the queue's items table
 
 Once an item in the queue has a submitted review, the schema fields lock because changing them would invalidate earlier annotations.
 The queue form shows a banner saying the schema structure is locked.
 You can no longer add or remove a field or change its name, type, description or options.
 You can still change whether each field is **Required**, and reordering is not affected by the lock.
-Annotations are stored by field name, so changing the display order doesn't change what was recorded, and you can keep reordering fields at any time, including after the lock.
+Annotations are stored by field name, so changing the display order doesn't change what was recorded.
+You can keep reordering fields at any time, including after the lock.
 
-A queue that has never been saved since field ordering was introduced has no order of its own, and its fields keep appearing as they did before. Open the queue's form and save it to give it an explicit order.
+A queue that has never been saved since field ordering was introduced has no order of its own.
+Its fields keep appearing as they did before.
+Open the queue's form and save it to give it an explicit order.
 
 !!! tip "Keyboard and screen reader support"
     Use the up/down buttons instead of dragging if you prefer not to use drag-and-drop.
 
 ## Queue Settings
 
-A queue has a name, an optional description, schema fields, and a **Num reviews required**. To set one up, see [Create an Annotation Queue and Add Sessions](../../how-to/annotations/create-a-queue.md).
+A queue has a name, an optional description, schema fields, and a **Num reviews required**.
+To set one up, see [Create an Annotation Queue and Add Sessions](../../how-to/annotations/create-a-queue.md).
 
 !!! tip "Multiple reviews"
-    Set **Num reviews required** to more than 1 when you want several reviewers to annotate the same session independently, for example to measure inter-rater agreement or to get a consensus rating. A session is marked **Completed** only when it has received the required number of reviews.
+    Set **Num reviews required** to more than 1 when you want several reviewers to annotate the same session independently.
+    For example, use it to measure inter-rater agreement or to get a consensus rating.
+    A session is marked **Completed** only when it has received the required number of reviews.
 
 ### Queue Status
 
@@ -63,9 +77,14 @@ Only **Active** queues are offered when you add a session from a session's detai
 
 ## Adding Sessions
 
-Each session you add to a queue becomes an item in its **Items** table. You can add sessions from a filterable session selector, by importing the sessions of an [evaluation dataset](../evaluations/dataset.md), or from a session's detail page. Sessions already in the queue are skipped. For the steps, see [Create an Annotation Queue and Add Sessions](../../how-to/annotations/create-a-queue.md#add-sessions-to-the-queue).
+Each session you add to a queue becomes an item in its **Items** table.
+You can add sessions from a filterable session selector, by importing the sessions of an [evaluation dataset](../evaluations/dataset.md), or from a session's detail page.
+Sessions already in the queue are skipped.
+For the steps, see [Create an Annotation Queue and Add Sessions](../../how-to/annotations/create-a-queue.md#add-sessions-to-the-queue).
 
-Sessions already in a queue are marked on the sessions list, and the **Annotation Queue** filter there can pick out sessions that are in no queue. See [Annotation Queues on the Sessions List](../sessions.md#annotation-queues-on-the-sessions-list).
+Sessions already in a queue are marked on the sessions list.
+The **Annotation Queue** filter there can also pick out sessions that are in no queue.
+See [Annotation Queues on the Sessions List](../sessions.md#annotation-queues-on-the-sessions-list).
 
 ## Monitoring Progress
 
@@ -81,7 +100,8 @@ The queue list shows the same review count for every queue.
 ## Aggregate Scores
 
 Aggregate scores summarise reviewers' answers for each field across the whole queue.
-They appear in the **Aggregate Scores** card on the queue detail page once the first annotation is submitted, with one panel per field in the queue's [field order](#field-order).
+They appear in the **Aggregate Scores** card on the queue detail page once the first annotation is submitted.
+The card has one panel per field, in the queue's [field order](#field-order).
 **Text** fields have no aggregate.
 
 ### What Each Panel Shows
@@ -110,15 +130,24 @@ All items count, including flagged ones and items still **In Progress**.
 
 ### When Aggregates Update
 
-Aggregates are recalculated when a reviewer submits or edits an annotation, when someone marks or clears an authoritative annotation, and when a change to **Num reviews required** clears authoritative annotations.
+Aggregates are recalculated when:
+
+- A reviewer submits or edits an annotation.
+- Someone marks or clears an authoritative annotation.
+- A change to **Num reviews required** clears authoritative annotations.
 
 ## Exporting Results
 
-You can export all submitted annotations from the queue detail page as CSV or JSONL. Each reviewer's answers appear side by side, and flagged items are always included. To export, see [Export Annotations](../../how-to/annotations/export-annotations.md). For the file contents, see [Annotation Export Format](../../tech-hub/annotations/export-format.md).
+You can export all submitted annotations from the queue detail page as CSV or JSONL.
+Each reviewer's answers appear side by side, and flagged items are always included.
+To export, see [Export Annotations](../../how-to/annotations/export-annotations.md).
+For the file contents, see [Annotation Export Format](../../tech-hub/annotations/export-format.md).
 
 ## Managing Assignees
 
-Use **Manage Assignees** on the queue detail page to add or remove reviewers. Assignees receive access to the queue and can see it in their annotation queue list.
+Use **Manage Assignees** on the queue detail page to add or remove reviewers.
+Assignees receive access to the queue and can see it in their annotation queue list.
 
 !!! note
-    If a queue has no assignees, any team member with annotation access can annotate items in it. Once assignees are added, only they can submit annotations.
+    If a queue has no assignees, any team member with annotation access can annotate items in it.
+    Once assignees are added, only they can submit annotations.

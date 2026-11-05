@@ -1,6 +1,7 @@
 # Parallel Pipelines
 
-Nodes in a pipeline can run in parallel, allowing multiple operations to proceed simultaneously. This follows directly from [how a pipeline runs](index.md#how-a-pipeline-runs): every node whose dependencies are satisfied executes in the same pass.
+Nodes in a pipeline can run in parallel, allowing multiple operations to proceed simultaneously.
+This follows directly from [how a pipeline runs](index.md#how-a-pipeline-runs): every node whose dependencies are satisfied executes in the same pass.
 
 ```mermaid
 flowchart LR
@@ -22,7 +23,8 @@ flowchart LR
 
 ## Dangling nodes
 
-Nodes without connected outputs (dangling nodes) are supported and will execute in turn. The outputs of these nodes will still be recorded in the pipeline state.
+Nodes without connected outputs (dangling nodes) are supported and will execute in turn.
+The outputs of these nodes will still be recorded in the pipeline state.
 
 ```mermaid
 flowchart LR
@@ -62,17 +64,20 @@ See this pattern used in the Workflow Cookbook: [Router for classification](../.
 
 ## Which input a node receives
 
-A node runs once for every time an upstream branch reaches it. Each run has:
+A node runs once for every time an upstream branch reaches it.
+Each run has:
 
 * **`input`** — the output that arrived most recently, i.e. from the branch that triggered this run.
-* **`node_inputs`** — every output that has arrived so far, oldest first. On a node where branches merge this list grows with each run, which is how a node sees more than one branch at once.
+* **`node_inputs`** — every output that has arrived so far, oldest first.
+  On a node where branches merge this list grows with each run, which is how a node sees more than one branch at once.
 
 Inputs are ordered by when they arrived, not by the order the connections were drawn.
 Redrawing the same graph does not change what a node receives.
 
 !!! note "Reading the other branches"
 
-    `node_inputs` is available to the [Python node](../../tech-hub/python_node.md#additional-keyword-arguments) as a keyword argument, and to the template and email nodes as `{{ node_inputs }}`. A Python node can also read any completed node by name with `get_node_output("Node Name")`.
+    `node_inputs` is available to the [Python node](../../tech-hub/python_node.md#additional-keyword-arguments) as a keyword argument, and to the template and email nodes as `{{ node_inputs }}`.
+    A Python node can also read any completed node by name with `get_node_output("Node Name")`.
     This is the most explicit option when you know which branches you are merging.
 
 ## Uneven branches
@@ -95,11 +100,14 @@ The execution steps are as follows:
 2. `NodeC` and `NodeD` in parallel
 3. `NodeD`
 
-`NodeD` runs twice. The first time it runs, only `NodeB` has reached it, so `NodeB`'s output is its `input` and its single `node_inputs` entry. By the second run `NodeC` has finished, so `NodeC`'s output becomes the `input` and `node_inputs` holds both.
+`NodeD` runs twice.
+The first time it runs, only `NodeB` has reached it, so `NodeB`'s output is its `input` and its single `node_inputs` entry.
+By the second run `NodeC` has finished, so `NodeC`'s output becomes the `input` and `node_inputs` holds both.
 
 To understand why this happens, see [how a pipeline runs](index.md#how-a-pipeline-runs).
 
-If `NodeD` needs to see both `NodeB` and `NodeC` before it does its real work — merging both branches exactly once, rather than running twice — write that logic in a Python node using the `require_node_outputs` or `wait_for_next_input` utility functions.
+Suppose `NodeD` must see both `NodeB` and `NodeC` before doing its work, merging both branches once instead of running twice.
+In that case, write the logic in a Python node using the `require_node_outputs` or `wait_for_next_input` utility functions.
 The same functions handle the related case where a branch is optional and may not run at all.
 See [Merging Parallel Branches](../../tech-hub/merging_parallel_branches.md) for worked examples of both.
 

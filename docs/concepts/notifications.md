@@ -27,8 +27,8 @@ The notification list shows how many times an issue has recurred, such as `×3`,
 
 ## Severity levels
 
-Every notification is **Info**, **Warning**, or **Error** —
-from general information up to a critical issue that needs your attention.
+Every notification is **Info**, **Warning**, or **Error**.
+The levels run from general information up to a critical issue that needs your attention.
 
 You can require a minimum severity before something reaches your notification list or your inbox.
 See the [Manage Notifications](../how-to/manage_notifications.md#set-your-notification-preferences) how-to guide for setting your preferences.
@@ -38,11 +38,11 @@ See the [Manage Notifications](../how-to/manage_notifications.md#set-your-notifi
 Notifications belong to a [team](team/index.md), like most data in OCS, but the notification list you see is personal to you:
 
 - The bell and list show notifications from every team you belong to, so you don't need to switch teams to stay informed.
-- Whether a notification is read, unread, or muted is tracked per user —
-  marking one as read doesn't affect your teammates' view of the same event.
+- Whether a notification is read, unread, or muted is tracked per user.
+  Marking one as read doesn't affect your teammates' view of the same event.
 - Some notifications only go to team members who could act on them.
-  For example, only users who can manage [Custom Actions](llm_custom_action.md) receive custom-action failure notifications;
-  others, like message delivery failures, go to the whole team.
+  For example, only users who can manage [Custom Actions](llm_custom_action.md) receive custom-action failure notifications.
+  Others, like message delivery failures, go to the whole team.
 
 ## Slack notification channels
 
@@ -51,9 +51,10 @@ Team Admins set this up for the whole team, and each Slack channel receives noti
 
 Your personal notification settings, including [Do Not Disturb](../how-to/manage_notifications.md#turn-on-do-not-disturb), don't change what the team's Slack channels receive.
 Slack channels also aren't limited to the members who would see a notification in OCS.
-A custom-action failure, for example, is posted to every Slack channel at or above its level, even though only some members receive it in the app.
+A custom-action failure, for example, is posted to every Slack channel at or above its level.
+Only some members receive it in the app.
 
-## Reducing noise
+## Reducing unwanted notifications
 
 You can choose how you're notified, mute a repeating issue, or pause notifications for a whole team with [Do Not Disturb](../how-to/manage_notifications.md#turn-on-do-not-disturb).
 These settings are personal and don't affect what your teammates see.

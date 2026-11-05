@@ -1,6 +1,7 @@
 # Team Settings: Developers
 
-The **Developers** section of Team Settings groups the tools your team uses to extend and integrate with Open Chat Studio: [Custom actions](#custom-actions) and [OAuth applications](#oauth-applications).
+The **Developers** section of Team Settings groups the tools your team uses to extend and integrate with Open Chat Studio.
+These are [Custom actions](#custom-actions) and [OAuth applications](#oauth-applications).
 Both are available only to **Team Admins** and **Super Admins** — see [User Groups](groups.md) for what each role can access.
 
 ## Custom actions
@@ -8,7 +9,8 @@ Both are available only to **Team Admins** and **Super Admins** — see [User Gr
 A [Custom Action](../llm_custom_action.md) lets a chatbot call an external HTTP service during a conversation, using an OpenAPI schema you provide.
 The Developers section lists every Custom Action registered for your team, and lets you add, edit, or run a manual health check on one.
 
-For the configuration steps — including how to add an authentication provider and enable actions on a chatbot — see the [Custom Action Tech Hub Guide](../../tech-hub/custom_action/index.md).
+For the configuration steps, see the [Custom Action Tech Hub Guide](../../tech-hub/custom_action/index.md).
+The guide also covers adding an authentication provider and enabling actions on a chatbot.
 
 ## OAuth applications
 
@@ -21,7 +23,8 @@ Registering an application gives you a **client ID** and **client secret**, whic
 When you register an application, you choose one of two grant types:
 
 - **Authorization code** — for applications that act on behalf of a signed-in user, who interactively grants permission.
-- **Client credentials** — for server-side or automated integrations that call the API without a user present. You can also restrict which chatbots a client-credentials application is allowed to access.
+- **Client credentials** — for server-side or automated integrations that call the API without a user present.
+  You can also restrict which chatbots a client-credentials application is allowed to access.
 
 !!! note "Global applications"
     Applications registered from Team Settings always belong to your team, and every token they issue is scoped to it.

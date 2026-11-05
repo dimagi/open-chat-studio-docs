@@ -7,7 +7,7 @@ Linking a channel lets participants chat directly on a platform they already use
     Open Chat Studio (OCS) uses "channel" and "platform" interchangeably.
     You'll mostly see "channel" in these docs, but some parts of the OCS UI use the label **Platform** for the same thing.
 
-Some channels work out of the box.
+Some channels need no extra setup.
 Others require you to first [configure a messaging provider][1], the account that handles message delivery for that platform.
 Once a channel is linked to your chatbot, participants can start communicating with it through that platform.
 
@@ -91,7 +91,8 @@ Files can come from a [media collection](collections/media_collections.md) (thro
 - A file over 2.5 MB is sent as a download link in the message text instead.
 - If a reply has more than 10 files or more than 15 MB of files in total, the files that exceed the limit are sent as download links in the message text.
 - Attachments expire after 90 days.
-- Participants on an app version that cannot show attachments see "Your version of the app is too old to see this message. Please update your Android app." in place of any message that has attachments.
+- Participants on an app version that cannot show attachments see this text in place of any message that has attachments:
+  "Your version of the app is too old to see this message. Please update your Android app."
 
 ## Disabling a channel
 

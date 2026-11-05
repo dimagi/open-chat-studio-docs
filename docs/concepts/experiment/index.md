@@ -1,6 +1,8 @@
 # Experiments (Deprecated feature)
 
-An Experiment was the original name for a chatbot in Open Chat Studio. The UI now uses the term [Chatbots](../chatbots/index.md) throughout. You may still see "Experiment" in older parts of the interface, API responses, or documentation.
+An Experiment was the original name for a chatbot in Open Chat Studio.
+The UI now uses the term [Chatbots](../chatbots/index.md) throughout.
+You may still see "Experiment" in older parts of the interface, API responses, or documentation.
 
 ## Historical Notes
 
@@ -16,7 +18,8 @@ There were three different types of chatbots that you could build in Open Chat S
 
 #### Base language model
 
-This kind of chatbot is the most commonly used and simple to configure. It is backed the standard language model APIs such as the OpenAI [chat completions API][1], Anthropic [messages API][2] or Google [Gemini API][3].
+This kind of chatbot is the most commonly used and simple to configure.
+It is backed the standard language model APIs such as the OpenAI [chat completions API][1], Anthropic [messages API][2] or Google [Gemini API][3].
 
 Chatbots configured this way have all the basic features, such as [memory](../pipelines/history.md) and [source material](../source_material.md).
 They can also use advanced features such as Scheduling and [Reminders](../../how-to/reminders.md).
@@ -24,22 +27,29 @@ They can also use advanced features such as Scheduling and [Reminders](../../how
 #### Assistant
 
 !!! warning "Removed"
-    Assistant-type chatbots have been [removed](../assistants.md) — OpenAI retired the Assistants API on 26 August 2026. See the [migration guide](../../how-to/assistants_migration.md) if you still need to move a chatbot off this type.
+    Assistant-type chatbots have been [removed](../assistants.md) — OpenAI retired the Assistants API on 26 August 2026.
+    See the [migration guide](../../how-to/assistants_migration.md) if you still need to move a chatbot off this type.
 
-Assistant chatbots made use of OpenAI [Assistants][4]. The main advantage of using Assistants was that your chatbot got access to the OpenAI tools:
+Assistant chatbots made use of OpenAI [Assistants][4].
+The main advantage of using Assistants was that your chatbot got access to the OpenAI tools:
 
 ##### Code Interpreter
-This allowed the chatbot to write and execute code to accomplish tasks. An [LLM node](../pipelines/nodes.md#llm-node) offers the same capability as a builtin tool.
+This allowed the chatbot to write and execute code to accomplish tasks.
+An [LLM node](../pipelines/nodes.md#llm-node) offers the same capability as a builtin tool.
 
 For more information see the [OpenAI docs][5].
 
 ##### File Search
-This allowed the chatbot to search and reference information provided in uploaded files. [Indexed Collections][indexed-collections] replace it.
+This allowed the chatbot to search and reference information provided in uploaded files.
+[Indexed Collections][indexed-collections] replace it.
 
 For more information see the [OpenAI docs][6].
 
 #### Pipeline
-[Pipelines](../pipelines/index.md) allow you to create more complex chatbots by defining a ‘graph’ (in the computer science sense) of nodes. You can think of this graph as a workflow that flows from input to output. Each message to the chatbot is processed by the graph to produce a final output. A single response from the chatbot will be one successful path through the graph from the input node to the output node.
+[Pipelines](../pipelines/index.md) allow you to create more complex chatbots by defining a ‘graph’ (in the computer science sense) of nodes.
+You can think of this graph as a workflow that flows from input to output.
+Each message to the chatbot is processed by the graph to produce a final output.
+A single response from the chatbot will be one successful path through the graph from the input node to the output node.
 
 This can be useful if you want to build a complex chatbot that performs different tasks depending on the participant’s request.
 A single chatbot prompt that performs several functions generally works poorly.

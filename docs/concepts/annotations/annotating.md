@@ -1,7 +1,8 @@
 # Annotating
 
 Reviewers work through a queue one session at a time.
-Once you add a session to a queue, OCS calls it an **item**: the queue's **Items** table lists it, and its status shows its review progress.
+Once you add a session to a queue, OCS calls it an **item**.
+The queue's **Items** table lists it, and its status shows its review progress.
 Reviewers submit an annotation, edit it, skip the item or flag it.
 This page explains how an item moves between statuses and how conflicting reviews are resolved.
 For the steps a reviewer follows, see [Annotate Queue Items](../../how-to/annotations/annotate-items.md).
@@ -31,11 +32,14 @@ See [Flagging Items](#flagging-items).
 | **Flagged** | Marked for follow-up; left out of the annotation sequence until unflagged |
 
 !!! note "Single vs multi-reviewer queues"
-    On single-reviewer queues (the default, **Num reviews required = 1**), the first submitted annotation is automatically marked as authoritative and the item moves straight to **Completed**. The authoritative workflow below only applies to queues configured with **Num reviews required > 1**.
+    On single-reviewer queues (the default, **Num reviews required = 1**), the first submitted annotation is automatically marked as authoritative.
+    The item then moves straight to **Completed**.
+    The authoritative workflow below only applies to queues configured with **Num reviews required > 1**.
 
 ## Resolving Multi-Reviewer Conflicts
 
-When a multi-reviewer queue collects all required reviews for an item, the item enters **Awaiting resolution** until a reviewer picks one annotation as the authoritative answer.
+When a multi-reviewer queue collects all required reviews for an item, the item enters **Awaiting resolution**.
+It stays there until a reviewer picks one annotation as the authoritative answer.
 Only one annotation per item can be authoritative, and choosing a different one replaces the earlier choice.
 Clearing the choice returns the item to **Awaiting resolution**.
 

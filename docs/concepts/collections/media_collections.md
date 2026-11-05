@@ -21,15 +21,19 @@ When you want your chatbot to be able to send multimedia files to participants.
 **Audio**
 .mp3, .wav
 
-Once a collection is linked, your chatbot will be able to send one or more files from it to participants — either as a download link or directly — depending on the specific channel’s support for the file type and file size.
+Once a collection is linked, your chatbot can send one or more of its files to participants.
+Files are sent either as a download link or directly, depending on the channel's support for the file type and file size.
 
 !!! note "Changes take effect on published chatbots immediately"
-    Adding, removing, or replacing files in a media collection is reflected in the published chatbot without requiring a republish. See [Collections and published chatbots](index.md#collections-and-published-chatbots) for more detail.
+    Adding, removing, or replacing files in a media collection is reflected in the published chatbot without requiring a republish.
+    See [Collections and published chatbots](index.md#collections-and-published-chatbots) for more detail.
 
 ## How does it work?
 ### How does the chatbot know when to attach a file?
 
-When you create a collection and upload files to it, you'll be prompted to add a summary for each file. These summaries are included in the system prompt when you link a collection to your chatbot. This allows the chatbot to accurately determine when a particular file is relevant to a conversation.
+When you create a collection and upload files to it, you'll be prompted to add a summary for each file.
+These summaries are included in the system prompt when you link a collection to your chatbot.
+This allows the chatbot to accurately determine when a particular file is relevant to a conversation.
 
 Additionally, OCS automatically provides the chatbot with a tool that enables it to attach files to its responses.
 
@@ -52,7 +56,8 @@ You are a friendly assistant. Here’s some files that you can attach to your re
 
 ## How are attachments sent?
 
-Whenever your chatbot references a file, it is sent to the participant as an attachment. Depending on the channel, attachments are delivered in different ways.
+Whenever your chatbot references a file, it is sent to the participant as an attachment.
+Depending on the channel, attachments are delivered in different ways.
 
 ### Web channels
 
@@ -60,7 +65,9 @@ Attachments are directly downloadable by clicking on them.
 
 ### Multimedia-unsupported channels
 
-By default, attachments are sent as download links appended to the chatbot’s message. The participant will see the file name and a corresponding download link at the end of the message. These channels do not yet support sending multimedia files:
+By default, attachments are sent as download links appended to the chatbot’s message.
+The participant will see the file name and a corresponding download link at the end of the message.
+These channels do not yet support sending multimedia files:
 
 * Telegram
 * WhatsApp (Turn.io provider)
@@ -70,10 +77,14 @@ By default, attachments are sent as download links appended to the chatbot’s m
 
 ### Multimedia-supported channels
 
-Channels that support sending multimedia files will receive each attachment as a separate message, following the chatbot’s initial response. If a file type is not supported by the channel, or the file size exceeds the allowed limit, a download link will be appended to the chatbot’s message instead. These channels support sending multimedia files:
+Channels that support sending multimedia files will receive each attachment as a separate message, following the chatbot’s initial response.
+If a file type is not supported by the channel, or the file size exceeds the allowed limit, a download link will be appended to the chatbot’s message instead.
+These channels support sending multimedia files:
 
 * API — see the [API documentation](https://openchatstudio.com/api/v1/docs/#tag/Channels/operation/new_api_message) for more information
 * WhatsApp (Twilio Provider) — consult the [Twilio docs][twilio_docs] for supported file types.
-* CommCare Connect — attachments are delivered in the Connect app with the message, not as a separate message. Files over 2.5 MB, or beyond 10 files or 15 MB in one reply, are sent as download links. See [CommCare Connect attachments](../channels.md#commcare-connect-attachments).
+* CommCare Connect — attachments are delivered in the Connect app with the message, not as a separate message.
+  Files over 2.5 MB, or beyond 10 files or 15 MB in one reply, are sent as download links.
+  See [CommCare Connect attachments](../channels.md#commcare-connect-attachments).
 
 [twilio_docs]: https://www.twilio.com/docs/whatsapp/guidance-whatsapp-media-messages

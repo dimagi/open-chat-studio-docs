@@ -3,7 +3,9 @@
 Router nodes are decision points in your pipeline.
 Instead of following one fixed path, a router chooses a path based on the participant's message or on participant data your system already holds.
 
-A router evaluates a condition, chooses one of its configured paths, and passes the input unchanged to the node on that path. This allows your chatbot to adapt in real time. What the router evaluates depends on its type — see [Router Types](#router-types) below.
+A router evaluates a condition, chooses one of its configured paths, and passes the input unchanged to the node on that path.
+This allows your chatbot to adapt in real time.
+What the router evaluates depends on its type — see [Router Types](#router-types) below.
 
 For example:
 
@@ -15,23 +17,32 @@ For example:
 
 1. **Linked Downstream Node**: Any node that appears after the current node in the pipeline flow.
 
-2. **Conversation Context**: The information a router evaluates to make its decision. For an [LLM Router](#llm-router-node), this is the participant's current message and, when enabled by the [History setting](history.md), the configured conversation history. A [Static Router](#static-router-node) does not evaluate the message or history.
+2. **Conversation Context**: The information a router evaluates to make its decision.
+   For an [LLM Router](#llm-router-node), this is the participant's current message and, when enabled by the [History setting](history.md), the configured conversation history.
+   A [Static Router](#static-router-node) does not evaluate the message or history.
    It looks up a value already stored as data (see [Router Types](#router-types)).
 
-3. **Default Path**: The fallback route (marked with a blue *). If the router cannot confidently decide where to send the participant, it follows this path to prevent the conversation from breaking. [Read more about the default output](../../how-to/routers/index.md#the-default-output).
+3. **Default Path**: The fallback route (marked with a blue *).
+   If the router cannot confidently decide where to send the participant, it follows this path to prevent the conversation from breaking.
+   [Read more about the default output](../../how-to/routers/index.md#the-default-output).
 
 ## Router Types
 
-There are two distinct ways to route a conversation in OCS. The choice depends on whether you are routing based on what the participant means or what the system knows.
+There are two distinct ways to route a conversation in OCS.
+The choice depends on whether you are routing based on what the participant means or what the system knows.
 
 ### LLM Router Node
 
 The LLM Router uses an AI model, specifically a [large language model (LLM)](../llm.md), to read the incoming message and classify its intent.
 
-- **How it works**: It acts as a classifier. You provide a prompt that tells the LLM how to categorize a message (for example, "If the participant is angry, output `ESCALATE`").
+- **How it works**: It acts as a classifier.
+  You provide a prompt that tells the LLM how to categorize a message (for example, "If the participant is angry, output `ESCALATE`").
 - **Best for**: Handling unpredictable participant text.
-- You define output keywords for your downstream paths. If the LLM outputs `BILLING`, the conversation follows the path labeled `BILLING` to the next downstream node.
-- If the model returns no classification at all, the router follows the [Default Path](../../how-to/routers/index.md#the-default-output) instead of failing the participant's turn. This can happen if the model declines to answer, the provider blocks the reply, or it never calls the classification tool. It is rare in practice.
+- You define output keywords for your downstream paths.
+  If the LLM outputs `BILLING`, the conversation follows the path labeled `BILLING` to the next downstream node.
+- If the model returns no classification at all, the router follows the [Default Path](../../how-to/routers/index.md#the-default-output) instead of failing the participant's turn.
+  This can happen if the model declines to answer, the provider blocks the reply, or it never calls the classification tool.
+  It is rare in practice.
 
 !!! tip "For configuration steps"
 
@@ -41,7 +52,8 @@ See a working example in the [Chatbot Workflow Cookbook](../../how-to/workflow_c
 
 ### Static Router Node
 
-The Static Router does not use an AI model and does not read the participant's message. Instead, it looks up a specific value stored in your [data source](../../how-to/routers/static_router.md#supported-data-sources).
+The Static Router does not use an AI model and does not read the participant's message.
+Instead, it looks up a specific value stored in your [data source](../../how-to/routers/static_router.md#supported-data-sources).
 
 - **How it works**: It checks a pre-existing key or tag, such as participant profile data or session information, and follows the matching path.
 - **Best for**: Routing based on known attributes like preferred language, subscription tier, or VIP status.
