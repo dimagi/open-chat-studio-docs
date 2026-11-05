@@ -67,6 +67,10 @@ Click **Download results** on a run page to download that run, or **Download Lat
 The downloaded file has an **Applied Tags** column, which lists the tags that [tag rules](add-tag-rules.md) applied to each row.
 The run page does not show tags.
 
+In the CSV, cells that start with `=`, `+`, `-`, `@`, a tab, or a carriage return are prefixed with an apostrophe so spreadsheet applications show them as text.
+Uploading the file again removes the apostrophe.
+See [Formula characters in exports and uploads](../../tech-hub/evaluations/dataset-structure.md#formula-characters-in-exports-and-uploads).
+
 ## Correct results
 
 To update results with values from a CSV file, for example after a human reviews them, open a completed run and click **Edit results**. Use **Download Template** to get a file in the expected format, edit it, and upload it. Map each CSV column to an evaluator output, or choose **Skip this column**, then click **Upload Results**. Existing results are updated, new rows are added, and the run's aggregates are recalculated.
