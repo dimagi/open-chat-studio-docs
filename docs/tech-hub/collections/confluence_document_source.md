@@ -33,8 +33,22 @@ OCS refuses to save the source if none or more than one is filled in.
 - When a space, label, or query matches more pages than **Max Pages**, the sync stops at the limit.
   OCS shows no warning or error, so pages beyond the limit are silently missing.
 
+## Troubleshooting
+
+### Pages are missing from the collection
+
+OCS skips a page when it:
+
+- has no text
+- is not current, for example an archived or trashed page
+- has a read restriction, including one inherited from a parent page
+- is forbidden or not found for the credentials (HTTP 403 or 404)
+
+If the source matches more pages than **Max Pages**, the extra pages are left out.
+Raise **Max Pages** or use a narrower **Space Key**, **Label**, or **CQL Query**.
+
 ## See also
 
-- [Document Sources Reference](document_sources.md): behavior shared by all sources, and troubleshooting, including missing pages.
+- [Document Sources Reference](document_sources.md): behavior shared by all sources, and troubleshooting for failed syncs.
 - [Set Up and Manage Document Sources](../../how-to/collections/document_sources.md): add a source and read the sync log.
 - [Document Sources](../../concepts/collections/indexed_collections/document_sources.md): the concept and when to use it.

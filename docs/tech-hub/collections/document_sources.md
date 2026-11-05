@@ -5,7 +5,7 @@ description: Shared sync behavior and troubleshooting for GitHub and Confluence 
 # Document Sources Reference
 
 Sync behavior shared by all [document sources](../../concepts/collections/indexed_collections/document_sources.md), and troubleshooting for GitHub and Confluence sources.
-Use it to understand what a sync changes and why a sync fails or files are missing.
+Use it to understand what a sync changes and why a sync fails.
 To add a source or read its sync log, follow the guide to [set up and manage document sources](../../how-to/collections/document_sources.md).
 
 ## Quick reference
@@ -20,6 +20,8 @@ To add a source or read its sync log, follow the guide to [set up and manage doc
 These rules apply to every document source type.
 For when syncs start and what they change, see [How syncing works](../../concepts/collections/indexed_collections/document_sources.md#how-syncing-works).
 
+- **One sync at a time.** If a sync is running, a second request is refused with a message.
+  A sync that has run for more than two hours is treated as stalled, and the next request replaces it.
 - **Removed files.** A sync removes any previously synced file that the source no longer returns.
   This includes a file the source now skips, for example because it became empty, too large, or restricted.
   A file that failed to process is not treated as removed.
@@ -27,11 +29,6 @@ For when syncs start and what they change, see [How syncing works](../../concept
   See [Chunking and Optimization](local-index-optimization.md#chunking-and-optimization) for the values.
 - **File limit.** A sync does not check the collection's 1000-file limit, so it can take a collection past it.
 - **Failure details.** The sync log lists at most 50 failed files per sync, followed by a count of the rest.
-
-## Source references
-
-- [GitHub](github_document_source.md): files from a repository on `github.com`.
-- [Confluence](confluence_document_source.md): pages from an Atlassian Confluence Cloud site.
 
 ## Troubleshooting
 
@@ -43,10 +40,8 @@ Common causes:
 
 - The authentication provider's credentials have expired or been revoked.
   Update the provider.
-- The repository URL, branch, space key, or site URL has changed.
+- The source's settings no longer match its content, for example a renamed repository, branch, space, or site.
   Edit the source.
-- GitHub truncated the listing of a very large repository.
-  Sync a smaller repository or branch.
 - GitHub or Confluence returned a rate limit or server error.
   Wait, then start the sync again.
 
@@ -55,14 +50,6 @@ Common causes:
 Some files failed and the rest synced normally.
 [Read the sync log](../../how-to/collections/document_sources.md#read-the-sync-log) to see each failed file and the reason, for example a file type OCS can't parse.
 Fix the cause, then [retry the failed files](../../how-to/collections/document_sources.md#retry-failed-files).
-
-### Pages or files are missing from the collection
-
-- **Confluence:** OCS skips pages that are empty, archived or trashed, restricted (including restrictions inherited from a parent page), or that the credentials can't access.
-  Pages beyond **Max Pages** are also left out.
-  See [Confluence behavior](confluence_document_source.md#behavior).
-- **GitHub:** see which files are skipped in [GitHub behavior](github_document_source.md#behavior).
-- Check that the sync log shows the expected **Added** count.
 
 ## See also
 

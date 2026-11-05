@@ -73,11 +73,13 @@ If files still show a failed status in the file list, click **Retry Failed Uploa
 
 - **The Add Document Source button is disabled.**
   The collection has reached its 1000-file limit.
-- **The sync failed, or files or pages are missing.**
+- **The sync failed.**
   Check the message in **View Error**, then see [Troubleshooting](../../tech-hub/collections/document_sources.md#troubleshooting).
+- **Files or pages are missing.**
+  See the troubleshooting for [GitHub](../../tech-hub/collections/github_document_source.md#files-are-missing-from-the-collection) or [Confluence](../../tech-hub/collections/confluence_document_source.md#pages-are-missing-from-the-collection).
 
 ## See also
 
-- [Document Sources reference](../../tech-hub/collections/document_sources.md): sync behavior shared by all sources, and troubleshooting.  
-- [GitHub](../../tech-hub/collections/github_document_source.md) and [Confluence](../../tech-hub/collections/confluence_document_source.md) references: fields and authentication for each source.  
+- [Document Sources reference](../../tech-hub/collections/document_sources.md): sync behavior shared by all sources, and troubleshooting.
+- [GitHub](../../tech-hub/collections/github_document_source.md) and [Confluence](../../tech-hub/collections/confluence_document_source.md) references: fields and authentication for each source.
 - [Authentication Providers](../../concepts/team/authentication_providers.md): create the credentials a source needs.

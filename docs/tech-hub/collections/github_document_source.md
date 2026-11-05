@@ -4,9 +4,8 @@ title: GitHub Document Source Reference
 # GitHub Document Source Reference
 
 Authentication, configuration fields, and behavior of the GitHub [document source](../../concepts/collections/indexed_collections/document_sources.md).
-Use it to check why a repository file is or is not synced.
 
-OCS oads files from a repository on `github.com`.
+OCS loads files from a repository on `github.com`.
 
 ## Authentication
 
@@ -28,13 +27,24 @@ File patterns match against the full path of each file, including folders.
 
 - Files larger than 50 MB (the default maximum file size) are skipped without an error.
 - Empty files are skipped without an error.
-- If GitHub truncates the file listing for a very large repository, the sync fails and the collection stays as it was.
-  Narrowing **Path Filter** doesn't help, because the truncation happens before filtering.
 - A network error, rate limit, or server error from GitHub fails the sync instead of skipping a file.
   Existing files are kept.
 
+## Troubleshooting
+
+### Files are missing from the collection
+
+Check that the files match **File Pattern** and **Path Filter**, and that the [Behavior](#behavior) rules don't skip them.
+
+### The sync fails on a very large repository
+
+GitHub truncates the file listing for a very large repository.
+The sync fails and the collection stays as it was.
+Narrowing **Path Filter** doesn't help, because the truncation happens before filtering.
+Sync a smaller repository or branch.
+
 ## See also
 
-- [Document Sources Reference](document_sources.md): behavior shared by all sources, and troubleshooting.
+- [Document Sources Reference](document_sources.md): behavior shared by all sources, and troubleshooting for failed syncs.
 - [Set Up and Manage Document Sources](../../how-to/collections/document_sources.md): add a source and read the sync log.
 - [Document Sources](../../concepts/collections/indexed_collections/document_sources.md): the concept and when to use it.
