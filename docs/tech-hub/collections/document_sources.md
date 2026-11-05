@@ -60,10 +60,8 @@ Fix the cause, then [retry the failed files](../../how-to/collections/document_s
 
 ### Pages or files are missing from the collection
 
-- **Confluence:** the source may have more pages than **Max Pages**.
-  Raise the limit or use a narrower **Space Key**, **Label**, or **CQL Query**.
-  Also check whether the pages are restricted, archived, or not visible to the authentication provider's account.
-- **GitHub:** check that the files match **File Pattern** and **Path Filter**, and that none is empty or over 50 MB.
+- **Confluence:** see which pages are skipped in [Confluence behavior](confluence_document_source.md#behavior).
+- **GitHub:** see which files are skipped in [GitHub behavior](github_document_source.md#behavior).
 - Check that the sync log shows the expected **Added** count.
 
 ## See also
