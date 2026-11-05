@@ -1683,6 +1683,7 @@ NodeDetail:
   - position_x: number
   - position_y: number
   - is_archived: boolean
+  - archived_with_pipeline: boolean
   - working_version: integer
   - pipeline: integer (required)
   - llm_provider: integer
