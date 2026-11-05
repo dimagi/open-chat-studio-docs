@@ -43,7 +43,7 @@ A *sync* is one run that fetches content from the source and updates the collect
 
 - OCS starts a sync when you save a new or edited document source.
 - You can start a sync at any time from the document source on the collection page.
-- If you turn on **Auto Sync**, OCS also syncs the source once a week.
+- If you turn on **Auto Sync**, OCS also syncs the source once a week, on Sundays at 00:00 UTC.
 - Each sync adds new files, updates changed files, and removes files that no longer exist in the source.
 - If one file can't be processed, only that file is skipped.
   The remaining files still sync and stay searchable.

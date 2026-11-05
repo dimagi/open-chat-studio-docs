@@ -21,7 +21,9 @@ For when syncs start and what they change, see [How syncing works](../../concept
 
 - **One sync at a time.** If a sync is running, a second request is refused with a message.
   A sync that has run for more than two hours is treated as stalled, and the next request replaces it.
-- **Removed files.** A file that failed to process is not treated as removed.
+- **Removed files.** A sync removes any previously synced file that the source no longer returns.
+  This includes a file the source now skips, for example because it became empty, too large, or restricted.
+  A file that failed to process is not treated as removed.
 - **Chunking.** Synced files use a fixed chunk size and overlap that you can't change per source, in both local and remote indexes.
   See [Chunking and Optimization](local-index-optimization.md#chunking-and-optimization) for the values.
 - **File limit.** A sync does not check the collection's 1000-file limit, so it can take a collection past it.
@@ -42,7 +44,7 @@ The token needs read access to the repository's contents.
 |-------|-------------|
 | **Repository URL** | The repository address, for example `https://github.com/user/repo`. Only `https://github.com` URLs are accepted. |
 | **Branch** | The branch to sync from. Defaults to `main`. |
-| **File Pattern** | Comma-separated patterns to include, for example `*.md, *.txt`. Prefix a pattern with `!` to exclude matches, for example `!test_*`. Defaults to `*.md`. |
+| **File Pattern** | Comma-separated patterns to include, for example `*.md, *.txt`. Prefix a pattern with `!` to exclude matches, for example `!test_*`. Defaults to `*.md`. If you clear the field, no files match. |
 | **Path Filter** | An optional path prefix, for example `docs/`. Only files whose full path starts with it are loaded. |
 
 File patterns match against the full path of each file, including folders.
@@ -58,7 +60,7 @@ File patterns match against the full path of each file, including folders.
 
 ## Confluence
 
-Loads pages from an Atlassian Confluence site.
+Loads pages from an Atlassian Confluence Cloud site.
 OCS indexes each page as text converted from the page's HTML.
 
 ### Authentication
@@ -75,7 +77,7 @@ Enter your Atlassian username as the **username** and an Atlassian API key as th
 | **Label** | Load pages that have this label. |
 | **CQL Query** | Load pages that match this Confluence Query Language query. |
 | **Page IDs** | Load only these pages. Enter comma-separated numeric IDs. |
-| **Max Pages** | The most pages a sync loads. Accepts 1 to 10000. Defaults to 1000. |
+| **Max Pages** | The most pages a sync fetches. Accepts 1 to 10000. Defaults to 1000. Pages that are skipped (empty, restricted, or not current) still count toward it. |
 
 Fill in exactly one of **Space Key**, **Label**, **CQL Query**, and **Page IDs**.
 OCS refuses to save the source if none or more than one is filled in.
@@ -83,6 +85,10 @@ OCS refuses to save the source if none or more than one is filled in.
 ### Behavior
 
 - Pages with no text are skipped without an error.
+- Pages that are not current (for example archived or trashed pages) are skipped.
+- Pages with a read restriction are skipped, whether the restriction is on the page or inherited from a parent page.
+  If OCS can't read a page's restrictions, it treats the page as restricted.
+- Pages that Confluence reports as forbidden or not found (HTTP 403 or 404) are skipped without an error.
 - When a space, label, or query matches more pages than **Max Pages**, the sync stops at the limit.
   OCS shows no warning or error, so pages beyond the limit are silently missing.
 
@@ -113,6 +119,7 @@ Fix the cause, then [retry the failed files](../../how-to/document_sources.md#re
 
 - **Confluence:** the source may have more pages than **Max Pages**.
   Raise the limit or use a narrower **Space Key**, **Label**, or **CQL Query**.
+  Also check whether the pages are restricted, archived, or not visible to the authentication provider's account.
 - **GitHub:** check that the files match **File Pattern** and **Path Filter**, and that none is empty or over 50 MB.
 - Check that the sync log shows the expected **Added** count.
 

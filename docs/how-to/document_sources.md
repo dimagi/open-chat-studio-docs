@@ -21,7 +21,7 @@ This guide covers adding a source, running syncs, and reading the sync status an
    The list shows only providers of the type this source accepts.
 4. Fill in the source fields.
    The [reference](../tech-hub/collections/document_sources.md) describes every field for [GitHub](../tech-hub/collections/document_sources.md#github) and [Confluence](../tech-hub/collections/document_sources.md#confluence).
-5. Turn on **Auto Sync** if OCS should also sync the source once a week.
+5. Turn on **Auto Sync** if OCS should also sync the source once a week (Sundays at 00:00 UTC).
 6. Click **Save**.
 
 A sync starts right away.
@@ -47,7 +47,7 @@ Each source has icon buttons beside its name.
 The line under the source name shows the state of the latest sync:
 
 - **Not yet synced**: no sync has succeeded yet, including when the first sync failed.
-- **Syncing**: a sync is running, with the date of the previous sync.
+- **Syncing**: a sync is running. After the first successful sync, the line also shows the date of the previous sync.
 - **Last Sync**: the last sync finished without errors.
 - **Last Sync (with errors)**: the last sync failed, or finished but some files failed.
   The red dot is the same for both, so open the sync log to tell them apart.
@@ -73,6 +73,9 @@ If files still show a failed status in the file list, click **Retry Failed Uploa
 
 - **A sync is already in progress.**
   Wait for it to finish, then try again.
+  If you save changes to a source during a sync, OCS keeps them and applies them in the next sync.
+- **The Add Document Source button is disabled.**
+  The collection has reached its 1000-file limit.
 - **The sync failed, or files or pages are missing.**
   Check the message in **View Error**, then see [Troubleshooting](../tech-hub/collections/document_sources.md#troubleshooting).
 
