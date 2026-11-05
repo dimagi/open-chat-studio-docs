@@ -30,7 +30,8 @@ When at least one filter is set, the search differs from an unfiltered search:
 - **Words split on punctuation.**
   OCS splits the query into words at punctuation.
 - **Queries without searchable words.**
-  If the query is empty, contains only punctuation, or contains only stopwords, the search returns the first matching rows in the order they were indexed.
+  If the query is empty or has only punctuation or stopwords, the search returns the first matching rows.
+  The rows come back in the order they were indexed.
 - **Reranking still runs.**
   OCS reranks the filtered results.
 
