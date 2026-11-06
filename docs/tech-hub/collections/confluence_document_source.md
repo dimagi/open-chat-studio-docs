@@ -37,14 +37,16 @@ OCS refuses to save the source if none or more than one is filled in.
 
 ### Pages are missing from the collection
 
-OCS also skips a page when it:
+OCS skips a page when it:
 
 - is not current, for example an archived or trashed page
 - has a read restriction, including one inherited from a parent page
 - is forbidden or not found for the credentials (HTTP 403 or 404)
 
 Pages with no text and pages beyond **Max Pages** are left out too, as described under [Behavior](#behavior).
-To load pages beyond the limit, raise **Max Pages** or use a narrower **Space Key**, **Label**, or **CQL Query**.
+To load pages beyond the limit, raise **Max Pages**.  
+Changing to a narrower **Space Key**, **Label**, or **CQL Query** can remove previously synced pages that the new selector no longer returns.
+Saving the change starts a sync, which applies the removal.  
 
 ## See also
 

@@ -71,8 +71,6 @@ If files still show a failed status in the file list, click **Retry Failed Uploa
 
 ## Common issues
 
-- **The Add Document Source button is disabled.**
-  The collection has reached its 1000-file limit.
 - **The sync failed.**
   Check the message in **View Error**, then see [Troubleshooting](../../tech-hub/collections/document_sources.md#troubleshooting).
 - **Files or pages are missing.**
