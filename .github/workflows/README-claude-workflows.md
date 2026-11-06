@@ -25,7 +25,7 @@ Commands live in `.claude/commands/`, agents in `.claude/agents/` ([background](
 Each automation has up to three layers. Each has one job and only the access that job needs.
 
 - **Workflow:** decides whether to run and what the job may touch. It does deterministic checks in code, then sets permissions and tool and turn limits.
-- **Command:** the main agent's prompt. It fetches the input, calls the subagent if there is one, and posts or commits the result.
+- **Command:** the main agent's prompt. It fetches the input, calls the subagent if there is one, and posts or commits the result, or hands the result to a later job that does.
 - **Subagent:** optional. It does the focused work with fewer tools than the command. See [Command and agent tool frontmatter](#command-and-agent-tool-frontmatter) for how to restrict its tools.
 
 The workflow's tool grant, not the command, is the security boundary. Run outside its workflow, a command has whatever tools that session allows, so the limits and untrusted-input handling described in the command do not hold.
