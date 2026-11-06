@@ -4,7 +4,7 @@ title: Metadata Filters Reference
 # Metadata Filters Reference
 
 This page describes how the **Metadata Filters** setting of the LLM node changes collection search.
-For setup steps, see [Filter Collection Search by Metadata](../../how-to/filter_collection_search_by_metadata.md).
+For setup steps, see [Filter Collection Search by Metadata](../../how-to/collections/filter_collection_search_by_metadata.md).
 
 ## Settings
 
@@ -30,7 +30,8 @@ When at least one filter is set, the search differs from an unfiltered search:
 - **Words split on punctuation.**
   OCS splits the query into words at punctuation.
 - **Queries without searchable words.**
-  If the query is empty, contains only punctuation, or contains only stopwords, the search returns the first matching rows in the order they were indexed.
+  If the query is empty or has only punctuation or stopwords, the search returns the first matching rows.
+  The rows come back in the order they were indexed.
 - **Reranking still runs.**
   OCS reranks the filtered results.
 

@@ -3,14 +3,14 @@ title: Set Up and Manage Document Sources
 ---
 # Set Up and Manage Document Sources
 
-[Document sources](../concepts/collections/indexed_collections/document_sources.md) fetch and index content from GitHub or Confluence, so your [indexed collection](../concepts/collections/indexed_collections/index.md) stays current without manual uploads.
-This guide covers adding a source, running syncs, and reading the sync status and logs.
+[Document sources](../../concepts/collections/indexed_collections/document_sources.md) fetch and index content from GitHub or Confluence, so your [indexed collection](../../concepts/collections/indexed_collections/index.md) stays current without manual uploads.
+This guide covers adding a source, running [syncs](../../concepts/collections/indexed_collections/document_sources.md#how-syncing-works), and reading the sync status and logs.
 
 ## Prerequisites
 
-- An [indexed collection](../concepts/collections/indexed_collections/index.md).
+- An [indexed collection](../../concepts/collections/indexed_collections/index.md).
   You can't add document sources to a media collection.
-- An [authentication provider](../concepts/team/authentication_providers.md) of the type your source needs: Bearer Token for GitHub, Basic Auth for Confluence.
+- An [authentication provider](../../concepts/team/authentication_providers.md) of the type your source needs: Bearer Token for GitHub, Basic Auth for Confluence.
 - The details of the source content to load, such as a GitHub repository URL or a Confluence space key.
 
 ## Set up a document source
@@ -20,13 +20,12 @@ This guide covers adding a source, running syncs, and reading the sync status an
 3. In **Auth provider**, choose the authentication provider.
    The list shows only providers of the type this source accepts.
 4. Fill in the source fields.
-   The [reference](../tech-hub/collections/document_sources.md) describes every field for [GitHub](../tech-hub/collections/document_sources.md#github) and [Confluence](../tech-hub/collections/document_sources.md#confluence).
-5. Turn on **Auto Sync** if OCS should also sync the source once a week.
+   The reference pages describe every field for [GitHub](../../tech-hub/collections/github_document_source.md) and [Confluence](../../tech-hub/collections/confluence_document_source.md).
+5. Turn on **Auto Sync** if OCS should sync the source once a week (Sundays at 00:00 UTC).
 6. Click **Save**.
 
 A sync starts right away.
 The source appears above the **Files** list with a status line, and the files appear as they sync.
-You don't need to refresh the page.
 
 For example, a support team can add a GitHub source with the file pattern `*.md` and the path filter `docs/`.
 The chatbot then answers from the repository's documentation, and each weekly sync picks up edits.
@@ -37,7 +36,7 @@ Each source has icon buttons beside its name.
 
 | Button | What it does |
 |--------|--------------|
-| Circular arrows (**Sync Document Source**) | Starts a sync now. It is hidden while a sync is running. |
+| Circular arrows (**Sync Document Source**) | Starts a sync now. |
 | Pencil | Opens the source's fields. Saving starts a sync. |
 | List (**View Sync Logs**) | Opens the sync log. |
 | Trash | Deletes the source and the files it synced, after you confirm. |
@@ -47,7 +46,8 @@ Each source has icon buttons beside its name.
 The line under the source name shows the state of the latest sync:
 
 - **Not yet synced**: no sync has succeeded yet, including when the first sync failed.
-- **Syncing**: a sync is running, with the date of the previous sync.
+- **Syncing**: a sync is running.
+  After the first successful sync, the line also shows the date of the previous sync.
 - **Last Sync**: the last sync finished without errors.
 - **Last Sync (with errors)**: the last sync failed, or finished but some files failed.
   The red dot is the same for both, so open the sync log to tell them apart.
@@ -71,12 +71,13 @@ If files still show a failed status in the file list, click **Retry Failed Uploa
 
 ## Common issues
 
-- **A sync is already in progress.**
-  Wait for it to finish, then try again.
-- **The sync failed, or files or pages are missing.**
-  Check the message in **View Error**, then see [Troubleshooting](../tech-hub/collections/document_sources.md#troubleshooting).
+- **The sync failed.**
+  Check the message in **View Error**, then see [Troubleshooting](../../tech-hub/collections/document_sources.md#troubleshooting).
+- **Files or pages are missing.**
+  See the troubleshooting for [GitHub](../../tech-hub/collections/github_document_source.md#files-are-missing-from-the-collection) or [Confluence](../../tech-hub/collections/confluence_document_source.md#pages-are-missing-from-the-collection).
 
 ## See also
 
-- [Document Sources reference](../tech-hub/collections/document_sources.md): fields, authentication, and sync behavior for each source.
-- [Authentication Providers](../concepts/team/authentication_providers.md): create the credentials a source needs.
+- [Document Sources reference](../../tech-hub/collections/document_sources.md): sync behavior shared by all sources, and troubleshooting.
+- [GitHub](../../tech-hub/collections/github_document_source.md) and [Confluence](../../tech-hub/collections/confluence_document_source.md) references: fields and authentication for each source.
+- [Authentication Providers](../../concepts/team/authentication_providers.md): create the credentials a source needs.

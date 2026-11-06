@@ -5,7 +5,7 @@ title: Document Sources
 
 A document source is a saved set of instructions that tells OCS where to read content from, for example GitHub or Confluence.
 You add one or more document sources to an [indexed collection](./index.md).
-OCS reads the matching content, splits it into chunks and indexes it, which is the same processing applied to files you upload yourself.
+OCS reads the matching content, splits it into [chunks](../../../tech-hub/collections/local-index-optimization.md#chunking-and-optimization) and indexes it, which is the same processing applied to files you upload yourself.
 Document sources work with both [local and remote indexes](./local_and_remote_indexes.md).
 
 ## When should I use this?
@@ -28,12 +28,12 @@ Common examples include:
 
 You can use both in the same indexed collection, and both count toward the same file limit.
 To upload files, see [adding a collection to a chatbot](../index.md#adding-a-collection-to-a-chatbot).
-To add a document source, see [Set Up and Manage Document Sources](../../../how-to/document_sources.md).
+To add a document source, see [Set Up and Manage Document Sources](../../../how-to/collections/document_sources.md).
 
 ## Supported sources
 
-- **[GitHub](../../../tech-hub/collections/document_sources.md#github)**: files from a repository, filtered by branch, folder, and file name pattern.
-- **[Confluence](../../../tech-hub/collections/document_sources.md#confluence)**: pages from a Confluence site, selected by space, label, query, or page ID.
+- **[GitHub](../../../tech-hub/collections/github_document_source.md)**: files from a repository, filtered by branch, folder, and file pattern matched against the full path.
+- **[Confluence](../../../tech-hub/collections/confluence_document_source.md)**: pages from a Confluence site, selected by space, label, query, or page ID.
 
 See the [Document Sources reference](../../../tech-hub/collections/document_sources.md) for what each source needs and how it behaves.
 
@@ -43,21 +43,19 @@ A *sync* is one run that fetches content from the source and updates the collect
 
 - OCS starts a sync when you save a new or edited document source.
 - You can start a sync at any time from the document source on the collection page.
-- If you turn on **Auto Sync**, OCS also syncs the source once a week.
+- If you turn on **Auto Sync**, OCS also syncs the source once a week, on Sundays at 00:00 UTC.
 - Each sync adds new files, updates changed files, and removes files that no longer exist in the source.
 - If one file can't be processed, only that file is skipped.
   The remaining files still sync and stay searchable.
 
 ## Syncs and published chatbots
 
-!!! note "Document-source updates reach published chatbots automatically"
-    When a sync updates the collection's content, the changes apply to your published chatbot without a republish.
-    See [Collections and published chatbots](../index.md#collections-and-published-chatbots).
+A sync reaches your published chatbot without a republish.
+See [Collections and published chatbots](../index.md#collections-and-published-chatbots).
 
-[Snapshots](./index.md#snapshots) are different.
-A snapshot is a fixed copy of a collection, so syncs never change it.
+[Snapshots](./index.md#snapshots) are different: a snapshot is a fixed copy of a collection, so syncs never change it.
 
 ## See also
 
-- [Set Up and Manage Document Sources](../../../how-to/document_sources.md): add a source, run syncs, and read sync logs.
+- [Set Up and Manage Document Sources](../../../how-to/collections/document_sources.md): add a source, run syncs, and read sync logs.
 - [Document Sources reference](../../../tech-hub/collections/document_sources.md): configuration fields, authentication, and troubleshooting for each source type.
