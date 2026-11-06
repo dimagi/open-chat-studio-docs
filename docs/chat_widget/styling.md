@@ -19,7 +19,34 @@ open-chat-studio-widget {
 }
 ```
 
-The following tables contain the full list of CSS variables that are available.
+The following tables contain the full list of CSS variables that are available. The values shown are the defaults for the light theme.
+
+## Dark theme
+
+Setting `theme="dark"` on the widget element (see the [theme reference](reference.md#theme)) replaces the default values of the colour variables below with a dark palette and sets `color-scheme: dark`, so form controls and scrollbars render in their dark variants. Size and font variables are unchanged.
+
+A variable you set on the element takes precedence over the theme's defaults, so the same CSS works with either theme:
+
+```html
+<open-chat-studio-widget chatbot-id="your-chatbot-id" theme="dark"></open-chat-studio-widget>
+```
+
+```css
+open-chat-studio-widget {
+    /* Overrides the dark theme's default for this variable only */
+    --send-button-bg-color: #7c3aed;
+}
+```
+
+To give a variable a different value per theme, scope the rule on the attribute:
+
+```css
+open-chat-studio-widget[theme="dark"] {
+    --send-button-bg-color: #7c3aed;
+}
+```
+
+Requires widget **0.14.0+**.
 
 ## Launch button
 
