@@ -22,40 +22,19 @@ ${PR_BODY}
 
 Update the main changelog at `${CHANGELOG_FILE}`.
 
-**Structure:**
-- Organized by **dates** (e.g., "Oct 22, 2025"), newest first
-- Entries use TYPE prefixes: **NEW**, **CHANGE**, **BUG**, **MIGRATION**
-- Format: `* **[TYPE]** [Description]`
-
-**Steps:**
-1. Read `${CHANGELOG_FILE}` to understand the current structure
-2. Read the PR title and description to understand what changed
-3. Pick the type:
+1. Read the file and its most recent entries.
+2. If the PR has no effect on users, skip the rest of this task.
+3. Choose the type prefix:
    - **NEW**: new features or functionality
    - **CHANGE**: modifications to existing features
    - **BUG**: bug fixes
    - **MIGRATION**: migration-related or breaking changes
-4. Write a one-line entry of 1-2 sentences, under 700 characters (markdownlint fails at 750); put detail in the docs and link to it
-5. Format the merged date as "MMM D, YYYY" with no leading zero on single-digit days (e.g., "Oct 9, 2025")
-6. If a section for that date exists, add the entry to it; otherwise create a new date section at the top, keeping reverse chronological order
+4. Choose the section: the PR's merged date, written like the existing date headings. If that section exists, use it. Otherwise add it in reverse chronological order.
+5. Focus on user-facing changes. Leave out internal implementation details unless they affect users.
+6. Write one entry for this PR the way the existing entries are written: same structure, length, tone and links.
+7. Add it as a bullet in that section.
 
-**Format:**
-
-```markdown
-## Oct 22, 2026
-* **NEW** Added support for parallel pipeline execution.
-* **BUG** Fixed issue with session timeout handling.
-```
-
-**Guidelines:**
-- Be concise but informative
-- Focus on user-facing changes
-- Use active voice (e.g., "Added support for..." not "Support was added for...")
-- No mannered prose: no metaphor or flourish where a literal phrase states it directly
-- Don't include internal implementation details unless they affect users
-- Match the style and tone of existing changelog entries
-- If the PR is purely internal or a refactor with no user impact, skip the changelog entry
-- **However:** Still proceed to Task 2 to check if documentation updates are needed
+Whether or not you skipped, continue to Task 2.
 
 ### Task 2: Update Documentation
 
