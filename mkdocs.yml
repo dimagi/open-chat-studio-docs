@@ -145,6 +145,7 @@ nav:
       - Manage Notifications: how-to/manage_notifications.md
       - Send Notifications to Slack: how-to/send_notifications_to_slack.md
       - Find Where a Provider Is Used: how-to/find_provider_usages.md
+      - Review Chatbot Adoption with the Engagement Dashboard: how-to/engagement_dashboard.md
     - Annotations:
       - Create a Queue and Add Sessions: how-to/annotations/create-a-queue.md
       - Annotate Queue Items: how-to/annotations/annotate-items.md
