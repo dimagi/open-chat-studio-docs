@@ -36,9 +36,10 @@ Render prompt templates with `envsubst` limited to named variables, such as `env
 Guidance, not requirements:
 
 - If Claude edits files, check the changed paths after the Claude step and fail the job on any path outside the expected set (count a rename as a delete plus an add).
-- If the workflow reads untrusted content, prefer not to give the Claude job a write token or a push step. Run the push, PR and comment steps in a separate job with its own token and no Claude step. Workflows that need write access by design, such as `claude.yml`, can keep it.
+- If the workflow reads untrusted content, avoid giving the Claude job a write token or a push step. Run the push, PR-creation and comment steps in a separate job with its own token and no Claude step. Workflows that need write access by design, such as `claude.yml`, can keep it.
 
 Use these `claude_args` flags:
+
 - `--allowedTools` lists tools Claude can execute without prompting for permission. Claude does not have access to execute arbitrary Bash commands by default so they must be explicitly listed.
 - `--max-turns` (optional) limits the number of conversation turns. If you set it, use about 1.5-2x the highest `num_turns` seen across recent successful runs (find it in the raw job log). Re-check it if a run ends early with no result.
 - Keep each `--allowedTools` / `--disallowedTools` value on one line, as in the action's configuration docs
