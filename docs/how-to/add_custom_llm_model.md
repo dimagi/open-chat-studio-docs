@@ -14,7 +14,8 @@ If a model isn't pre-configured for your provider, add it yourself directly in O
 3. On the **Models** tab, click **Add custom model**
 4. Enter the model **Name**, using the exact format from the provider's API
 5. Enter the **Max token limit**, which is the model's context size
-6. Optionally, enter the **Input price** and **Output price** in dollars per 1M tokens. Leave them blank to add pricing later
+6. Optionally, enter the **Input price ($ / 1M tokens)** and **Output price ($ / 1M tokens)**.
+   Leave them blank to [set pricing later](review_models_and_manage_pricing.md#set-or-override-pricing).
 7. Click **Save**
 
 The new model is now available when configuring chatbots and pipelines that use this provider. It appears alongside the provider's built-in models on the [Models tab](../concepts/team/llm_providers.md#llm-models), with a **custom** badge.
@@ -33,7 +34,7 @@ Find current model names in [OpenAI's model documentation](https://platform.open
 
 ### Anthropic models
 
-For Anthropic (Claude) models, use the exact name from the "Claude API" column in their documentation — for example, `claude-sonnet-4-6`,`claude-3-5-sonnet-20241022`.
+For Anthropic (Claude) models, use the exact name from the "Claude API" column in their documentation — for example, `claude-sonnet-4-6`, `claude-3-5-sonnet-20241022`.
 
 Find current model names in [Anthropic's model documentation](https://docs.anthropic.com/en/docs/about-claude/models).
 
