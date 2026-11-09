@@ -1,7 +1,7 @@
 # Review Models and Manage Pricing
 
 Use the **Models** tab on an [LLM provider's edit page](../concepts/team/llm_providers.md#provider-edit-page-tabs) to compare the pricing and context size of the models the provider can run.
-Pricing starts from OCS's global pricing.
+Global pricing is the default price OCS sets for each model.
 If your team pays different prices, or a model has no pricing, you can set your own.
 These prices apply only to your team.
 
@@ -17,7 +17,7 @@ Review the models to compare pricing and context sizes before you [choose a mode
 1. Go to your team's **LLM and Embedding Model Service Providers** settings.
 2. Edit the provider, then open the **Models** tab.
 
-![Edit LLM Service Provider shows models with pricing](../assets/images/LLM_models_with_pricing.png)
+![Models tab listing each model's role, price per 1M tokens, and context size](../assets/images/LLM_models_with_pricing.png)
 
 - The **Role** column shows whether a model is a chat or an embedding model.
   The filter pills (**All**, **Chat**, **Embedding**, and **Custom**) narrow the list.
@@ -25,6 +25,9 @@ Review the models to compare pricing and context sizes before you [choose a mode
   Each price the model has is labeled **in**, **out**, **cached**, or **cache-write**.
   A chat model with no pricing shows **No pricing configured**, so [set pricing](#set-or-override-pricing) to add it.
   Embedding models show a dash instead of prices.
+  A **manual** badge next to the prices means they were entered by hand, which includes prices your team set with [Set or override pricing](#set-or-override-pricing).
+  A row that shows prices but no badge uses the standard global pricing.
+  A row showing **No pricing configured** has no prices yet, so it needs [pricing set](#set-or-override-pricing).
 - **Context** is the model's [max token limit](../concepts/llm.md#max-token-limit).
 
 ## Set or override pricing
@@ -52,13 +55,6 @@ The row returns to the global pricing.
 The icon appears only when the model has both a team override and global pricing.
 A [custom model](#work-with-custom-models) has no global pricing, so it has no revert icon.
 
-## Check whether a model has a team override
-
-Use the badge to check whether a model's prices are your team's own or the global ones.
-A **manual** badge next to a model's prices marks pricing your team set with [Set or override pricing](#set-or-override-pricing).
-Its tooltip reads "Custom pricing override set for this team".
-A row with no badge uses the global pricing.
-
 ## Work with custom models
 
 Custom models behave differently from pre-configured ones in the ways listed below.
@@ -78,16 +74,18 @@ They stay hidden until you select the **Show deprecated** checkbox.
 
 For why models are deprecated, see [Model Lifecycle and Deprecation](../concepts/team/llm_providers.md#model-lifecycle-and-deprecation).
 
-## Why do two providers show the same models and prices?
-
-The tab says "Shared by every *type* provider on this team".
-If your team has several providers of the same type, such as two Anthropic providers, they share the same models and prices.
-A price you set on one applies to all of them.
-
 ## Common issues
 
 - **A model has no pencil icon.**
   [Deprecated](#find-deprecated-models) and embedding models can't be given pricing.
+- **The prices differ from what my provider charges.**
+  The prices shown are rates configured in OCS, not the amounts your provider actually charges.
+  To verify your charges, check your provider's billing information.
+  If your team pays different rates, [override the pricing](#set-or-override-pricing).
+- **Two providers show the same models and prices.**
+  Providers of the same type share models and prices.
+  The tab says, for example, "Shared by every Anthropic provider on this team", using the provider's type.
+  A price you set on one provider applies to all providers of that type.
 
 ## See also
 

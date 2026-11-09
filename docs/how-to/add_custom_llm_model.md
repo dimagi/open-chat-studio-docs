@@ -15,13 +15,11 @@ If a model isn't pre-configured for your provider, add it yourself directly in O
 4. Enter the model **Name**, using the exact format from the provider's API
 5. Enter the **Max token limit**, which is the model's context size
 6. Optionally, enter the **Input price ($ / 1M tokens)** and **Output price ($ / 1M tokens)**.
-   Leave them blank to [set pricing later](review_models_and_manage_pricing.md#set-or-override-pricing).
+   This form has no cached input price.
+   Leave the prices blank, or add a cached input price later, to [set pricing afterwards](review_models_and_manage_pricing.md#set-or-override-pricing).
 7. Click **Save**
 
 The new model is now available when configuring chatbots and pipelines that use this provider. It appears alongside the provider's built-in models on the [Models tab](../concepts/team/llm_providers.md#llm-models), with a **custom** badge.
-
-A custom model with no price shows **No pricing configured**. Use **Set pricing** on its row to add one later; see [Review Models and Manage Pricing](review_models_and_manage_pricing.md).
-
 ## Model naming conventions
 
 **Important**: Model names must match the exact format used by the provider's API. Use lowercase with hyphens as specified by the provider.
