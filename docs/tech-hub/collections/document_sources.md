@@ -90,7 +90,7 @@ OCS refuses to save the source if none or more than one is filled in.
 ## Google Docs
 
 Loads Google Docs documents.
-OCS reads each document through the Google Docs API and indexes it as normalized text.
+OCS reads each document through the Google Docs API and converts it to markdown for indexing.
 
 ### Authentication
 
@@ -99,8 +99,9 @@ OCS refreshes the access token when it expires.
 
 ### Configuration
 
-Provide the URL of the Google Doc.
-OCS validates the URL when you save the source.
+| Field | Description |
+|-------|-------------|
+| **Document URL** | Example `https://docs.google.com/document/d/.../edit`. |
 
 ### Behavior
 
