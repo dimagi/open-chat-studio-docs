@@ -11,6 +11,10 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Nov 10, 2026
+* **NEW** Added Google Docs as a document source for indexed collections. Google Docs sources connect through an OAuth Authorization Code authentication provider, index document tabs, paragraphs, lists and tables, and re-sync when a document's content or title changes. See [Google Docs document sources](tech-hub/collections/document_sources.md#google-docs).
+* **NEW** Added support for Anthropic's **Claude Fable 5.2** and MiniMax's **MiniMax-M3.1-Flash** models, which can now be selected in chatbots and pipelines. Both have a 1,000,000-token context window. Reasoning effort can't be set for MiniMax-M3.1-Flash, so it runs at MiniMax's default effort of `max`.
+
 ## Nov 5, 2026
 * **CHANGE** Archiving a chatbot now also archives its pipeline, and un-archiving the chatbot restores it. A pipeline that another live chatbot uses, or that a static trigger starts, stays live. The pipeline builder of an archived chatbot opens read-only. See [Pipeline archiving](concepts/channels.md#pipeline-archiving).
 

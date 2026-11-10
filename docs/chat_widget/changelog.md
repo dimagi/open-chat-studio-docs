@@ -31,6 +31,12 @@ Check your current HTML implementation and compare it with the [latest propertie
     sunset date shown on each entry, and may stop working. Upgrade to a supported version
     to stay current — see the [Quick Upgrade Steps](#quick-upgrade-steps) above.
 
+### v0.14.0 (2026-09-16)
+
+* Let participants download files that the chatbot attaches to a message. Each attachment with a download link appears as a button in the message, and clicking it saves the file. If a download fails, the widget shows an error in the chat and the conversation continues. Adds the `attach.download` and `error.download` translation keys. See [Downloading Chatbot Attachments](reference.md#downloading-chatbot-attachments).
+* Add a dark theme. Set `theme="dark"` on the widget element to switch the launch button and chat window to dark colours. Embedded widgets default to `"light"`, so existing embeds are unchanged. Any CSS variables you already set on the element still apply on top of the dark defaults. See [Theme](reference.md#theme) and [CSS Styling](styling.md#dark-theme).
+* Show a generic send error to participants on the team's block list. Previously, a blocked participant's session was ended and the widget started a new chat; it now shows "Something went wrong." in the chat and keeps the session open. The same applies to file uploads from a blocked participant. The widget never shows the server's reason for the refusal.
+
 ### v0.13.0 (2026-09-16)
 
 * Render messages typed by the participant as plain text. Markdown and HTML in a user message now appear exactly as typed instead of being formatted, so the `--code-bg-user-color`, `--code-border-user-color` and `--code-text-user-color` CSS properties no longer have any effect. Bot, system and welcome messages still render markdown as before.
