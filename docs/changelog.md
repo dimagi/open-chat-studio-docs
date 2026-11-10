@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Nov 10, 2026
+* **NEW** Added Google Docs as a document source for indexed collections. Google Docs sources connect through an OAuth Authorization Code authentication provider, index document tabs, paragraphs, lists and tables, and re-sync when a document's content or title changes. See [Google Docs document sources](tech-hub/collections/document_sources.md#google-docs).
+
 ## Nov 4, 2026
 * **BUG** Custom Action health-check alerts and deprecated or removed model notices no longer include archived chatbots. Hourly health checks now run only for Custom Actions used by a chatbot that is not archived. Manual checks still run for any Custom Action, but the team is notified of a failure only if a chatbot that is not archived uses the action. Model notices no longer list the pipeline of an archived chatbot as a standalone pipeline. See [Custom Action Health Monitoring](tech-hub/custom_action/health_custom_action.md).
 

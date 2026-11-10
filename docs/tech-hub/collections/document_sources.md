@@ -1,10 +1,10 @@
 ---
 title: Document Sources Reference
-description: Configuration, authentication, sync behavior, and troubleshooting for GitHub and Confluence document sources
+description: Configuration, authentication, sync behavior, and troubleshooting for GitHub, Confluence, and Google Docs document sources
 ---
 # Document Sources Reference
 
-Fields, authentication, sync behavior, and troubleshooting for GitHub and Confluence [document sources](../../concepts/collections/indexed_collections/document_sources.md).
+Fields, authentication, sync behavior, and troubleshooting for GitHub, Confluence, and Google Docs [document sources](../../concepts/collections/indexed_collections/document_sources.md).
 To add a source or read its sync log, follow the guide to [set up and manage document sources](../../how-to/document_sources.md).
 
 ## Quick reference
@@ -13,6 +13,7 @@ To add a source or read its sync log, follow the guide to [set up and manage doc
 |--------|-------------------------|--------------------------|--------------------------------------------------------------------------|
 | [GitHub](#github) | [Bearer Token](../../concepts/team/authentication_providers.md#bearer-token) | Its content hash (`sha`) changes | File path in the repository, linked to a download copy stored in OCS |
 | [Confluence](#confluence) | [Basic Auth](../../concepts/team/authentication_providers.md#basic-auth) | The page's last-modified time changes | Page title, linked to the Confluence page |
+| [Google Docs](#google-docs) | [OAuth Authorization Code](../../concepts/team/authentication_providers.md#oauth-authorization-code) | The document's content or title changes | — |
 
 ## Shared behavior
 
@@ -85,6 +86,27 @@ OCS refuses to save the source if none or more than one is filled in.
 - Pages with no text are skipped without an error.
 - When a space, label, or query matches more pages than **Max Pages**, the sync stops at the limit.
   OCS shows no warning or error, so pages beyond the limit are silently missing.
+
+## Google Docs
+
+Loads Google Docs documents.
+OCS reads each document through the Google Docs API and indexes it as normalized text.
+
+### Authentication
+
+Use an OAuth Authorization Code [authentication provider](../../concepts/team/authentication_providers.md#oauth-authorization-code).
+OCS refreshes the access token when it expires.
+
+### Configuration
+
+Provide the URL of the Google Doc.
+OCS validates the URL when you save the source.
+
+### Behavior
+
+- The text includes all document tabs, paragraphs, lists, and tables.
+- OCS identifies each document by its Google document ID, so renaming a document does not create a duplicate.
+- A document is re-synced when its content or title changes.
 
 ## Troubleshooting
 
