@@ -4,7 +4,7 @@ description: Shared sync behavior and troubleshooting for GitHub, Confluence, an
 ---
 # Document Sources Reference
 
-Sync behavior shared by all [document sources](../../concepts/collections/indexed_collections/document_sources.md), and troubleshooting for GitHub and Confluence sources.
+Sync behavior shared by all [document sources](../../concepts/collections/indexed_collections/document_sources.md), and troubleshooting.
 Use it to understand what a sync changes and why a sync fails.
 To add a source or read its sync log, follow the guide to [set up and manage document sources](../../how-to/collections/document_sources.md).
 

@@ -10,7 +10,7 @@ This guide covers adding a source, running [syncs](../../concepts/collections/in
 
 - An [indexed collection](../../concepts/collections/indexed_collections/index.md).
   You can't add document sources to a media collection.
-- An [authentication provider](../concepts/team/authentication_providers.md) of the type your source needs: Bearer Token for GitHub, Basic Auth for Confluence.
+- An [authentication provider](../../concepts/team/authentication_providers.md) of the type your source needs: Bearer Token for GitHub, Basic Auth for Confluence, OAuth Authorization Code for Google Docs.
 - The details of the source content to load, such as a GitHub repository URL or a Confluence space key.
 
 ## Set up a document source
@@ -20,7 +20,7 @@ This guide covers adding a source, running [syncs](../../concepts/collections/in
 3. In **Auth provider**, choose the authentication provider.
    The list shows only providers of the type this source accepts.
 4. Fill in the source fields.
-   The [reference](../tech-hub/collections/document_sources.md) describes every field for [GitHub](../tech-hub/collections/document_sources.md#github) and [Confluence](../tech-hub/collections/document_sources.md#confluence).
+   The [reference](../../tech-hub/collections/document_sources.md) describes every field for [GitHub](../../tech-hub/collections/github_document_source.md), [Confluence](../../tech-hub/collections/confluence_document_source.md) and [Google Docs](../../tech-hub/collections/document_sources.md).
 5. Turn on **Auto Sync** if OCS should also sync the source once a week.
 6. Click **Save**.
 
