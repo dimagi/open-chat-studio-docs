@@ -31,6 +31,10 @@ Check your current HTML implementation and compare it with the [latest propertie
     sunset date shown on each entry, and may stop working. Upgrade to a supported version
     to stay current — see the [Quick Upgrade Steps](#quick-upgrade-steps) above.
 
+### Unreleased
+
+* Tell participants on the team's block list that they are blocked. Previously, the widget showed the generic "Something went wrong." error when a blocked participant sent a message or uploaded a file.
+
 ### v0.14.0 (2026-09-16)
 
 * Let participants download files that the chatbot attaches to a message. Each attachment with a download link appears as a button in the message, and clicking it saves the file. If a download fails, the widget shows an error in the chat and the conversation continues. Adds the `attach.download` and `error.download` translation keys. See [Downloading Chatbot Attachments](reference.md#downloading-chatbot-attachments).
