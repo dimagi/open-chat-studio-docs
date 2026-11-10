@@ -1,6 +1,6 @@
 ---
 title: Document Sources Reference
-description: Shared sync behavior and troubleshooting for GitHub and Confluence document sources
+description: Shared sync behavior and troubleshooting for GitHub, Confluence, and Google Docs document sources
 ---
 # Document Sources Reference
 
@@ -14,6 +14,7 @@ To add a source or read its sync log, follow the guide to [set up and manage doc
 |--------|-------------------------|--------------------------|--------------------------------------------------------------------------|
 | [GitHub](github_document_source.md) | [Bearer Token](../../concepts/team/authentication_providers.md#bearer-token) | Its content hash (`sha`) changes | File path in the repository, linked to a download copy stored in OCS |
 | [Confluence](confluence_document_source.md) | [Basic Auth](../../concepts/team/authentication_providers.md#basic-auth) | The page's last-modified time changes | Page title, linked to the Confluence page |
+| [Google Docs](#google-docs) | [OAuth Authorization Code](../../concepts/team/authentication_providers.md#oauth-authorization-code) | The document's content or title changes | Document name, linked to the URL |
 
 ## Shared behavior
 
@@ -29,6 +30,28 @@ For when syncs start and what they change, see [How syncing works](../../concept
   See [Chunking and Optimization](local-index-optimization.md#chunking-and-optimization) for the values.
 - **File limit.** A sync does not check the collection's 1000-file limit, so it can take a collection past it.
 - **Failure details.** The sync log lists at most 50 failed files per sync, followed by a count of the rest.
+
+## Google Docs
+
+Loads Google Docs documents.
+OCS reads each document through the Google Docs API and converts it to markdown for indexing.
+
+### Authentication
+
+Use an OAuth Authorization Code [authentication provider](../../concepts/team/authentication_providers.md#oauth-authorization-code).
+OCS refreshes the access token when it expires.
+
+### Configuration
+
+| Field | Description |
+|-------|-------------|
+| **Document URL** | Example `https://docs.google.com/document/d/.../edit`. |
+
+### Behavior
+
+- The text includes all document tabs, paragraphs, lists, and tables.
+- OCS identifies each document by its Google document ID, so renaming a document does not create a duplicate.
+- A document is re-synced when its content or title changes.
 
 ## Troubleshooting
 

@@ -34,6 +34,7 @@ To add a document source, see [Set Up and Manage Document Sources](../../../how-
 
 - **[GitHub](../../../tech-hub/collections/github_document_source.md)**: files from a repository, filtered by branch, folder, and file pattern matched against the full path.
 - **[Confluence](../../../tech-hub/collections/confluence_document_source.md)**: pages from a Confluence site, selected by space, label, query, or page ID.
+- **[Google Docs](../../../tech-hub/collections/document_sources.md#google-docs)**: Google Docs documents, including their tabs, lists, and tables.
 
 See the [Document Sources reference](../../../tech-hub/collections/document_sources.md) for what each source needs and how it behaves.
 

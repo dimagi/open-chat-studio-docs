@@ -3,25 +3,25 @@ title: Set Up and Manage Document Sources
 ---
 # Set Up and Manage Document Sources
 
-[Document sources](../../concepts/collections/indexed_collections/document_sources.md) fetch and index content from GitHub or Confluence, so your [indexed collection](../../concepts/collections/indexed_collections/index.md) stays current without manual uploads.
+[Document sources](../../concepts/collections/indexed_collections/document_sources.md) fetch and index content from GitHub, Confluence, or Google Docs, so your [indexed collection](../../concepts/collections/indexed_collections/index.md) stays current without manual uploads.
 This guide covers adding a source, running [syncs](../../concepts/collections/indexed_collections/document_sources.md#how-syncing-works), and reading the sync status and logs.
 
 ## Prerequisites
 
 - An [indexed collection](../../concepts/collections/indexed_collections/index.md).
   You can't add document sources to a media collection.
-- An [authentication provider](../../concepts/team/authentication_providers.md) of the type your source needs: Bearer Token for GitHub, Basic Auth for Confluence.
+- An [authentication provider](../concepts/team/authentication_providers.md) of the type your source needs: Bearer Token for GitHub, Basic Auth for Confluence.
 - The details of the source content to load, such as a GitHub repository URL or a Confluence space key.
 
 ## Set up a document source
 
 1. Open your indexed collection from **Collections** in the sidebar.
-2. Click **Add Document Source** and choose **GitHub Repository** or **Confluence**.
+2. Click **Add Document Source** and choose the source type, for example **GitHub Repository** or **Confluence**.
 3. In **Auth provider**, choose the authentication provider.
    The list shows only providers of the type this source accepts.
 4. Fill in the source fields.
-   The reference pages describe every field for [GitHub](../../tech-hub/collections/github_document_source.md) and [Confluence](../../tech-hub/collections/confluence_document_source.md).
-5. Turn on **Auto Sync** if OCS should sync the source once a week (Sundays at 00:00 UTC).
+   The [reference](../tech-hub/collections/document_sources.md) describes every field for [GitHub](../tech-hub/collections/document_sources.md#github) and [Confluence](../tech-hub/collections/document_sources.md#confluence).
+5. Turn on **Auto Sync** if OCS should also sync the source once a week.
 6. Click **Save**.
 
 A sync starts right away.

@@ -4,7 +4,7 @@ Authentication Providers are used to authenticate with external services via HTT
 They are setup in your [Team](index.md) settings so you can manage your authentication credentials for integrations.
 
 These credentials are used by features like [Custom Actions](../llm_custom_action.md), the [HTTP Client](../../tech-hub/external-api-calls/http_client.md) in Python nodes, and [Document Sources](../collections/indexed_collections/document_sources.md).
-GitHub document sources need a Bearer Token provider, and Confluence document sources need a Basic Auth provider.
+GitHub document sources need a Bearer Token provider, Confluence document sources need a Basic Auth provider, and Google Docs document sources need an OAuth Authorization Code provider.
 
 ## Authentication Provider Types
 
@@ -24,6 +24,12 @@ The name of the header can be customized when creating your Authentication Provi
 
 Bearer Token is a type of access token that is sent with the request to authenticate the user.
 The token is sent in the Authorization header of the request.
+
+### OAuth Authorization Code
+
+OAuth Authorization Code lets OCS access a service on your behalf after you grant permission on the service's sign-in page.
+OCS refreshes the access token when it expires.
+[Google Docs document sources](../../tech-hub/collections/document_sources.md#google-docs) use this type.
 
 ### CommCare
 
