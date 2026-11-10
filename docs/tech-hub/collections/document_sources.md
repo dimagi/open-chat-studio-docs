@@ -13,7 +13,7 @@ To add a source or read its sync log, follow the guide to [set up and manage doc
 |--------|-------------------------|--------------------------|--------------------------------------------------------------------------|
 | [GitHub](#github) | [Bearer Token](../../concepts/team/authentication_providers.md#bearer-token) | Its content hash (`sha`) changes | File path in the repository, linked to a download copy stored in OCS |
 | [Confluence](#confluence) | [Basic Auth](../../concepts/team/authentication_providers.md#basic-auth) | The page's last-modified time changes | Page title, linked to the Confluence page |
-| [Google Docs](#google-docs) | [OAuth Authorization Code](../../concepts/team/authentication_providers.md#oauth-authorization-code) | The document's content or title changes | — |
+| [Google Docs](#google-docs) | [OAuth Authorization Code](../../concepts/team/authentication_providers.md#oauth-authorization-code) | The document's content or title changes | Document name, linked to the URL |
 
 ## Shared behavior
 
