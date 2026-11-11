@@ -35,74 +35,30 @@ The following variables are currently supported:
 [participant_data]: ../concepts/participant_data.md
 [prompt_caching]: https://platform.openai.com/docs/guides/prompt-caching
 
-## Nested data access
+## Accessing a single value
 
-The following prompt variables allow referencing specific parts of the data:
+`{participant_data}`, `{temp_state}`, and `{session_state}` can each hold many values.
+Instead of inserting the whole object into your prompt, you can insert one value from it.
+For example, you can insert only the participant's name, or only the first item in a list.
+See [Nested data access](../tech-hub/prompt_variables.md#nested-data-access) for the syntax.
 
-* `{participant_data}`
-* `{temp_state}`
-* `{session_state}`
+## Accessing remote context
 
-Subsets of the data can be accessed using dot notation, which separates each level of nesting with a period.
-For example, if you have a participant data object that looks like this:
+Remote context is data that your website or app sends to OCS with each participant message.
+For example, it can include the page the participant is viewing.
+You can send it through the Chat API or the chat widget.
+OCS stores it in the session state, so your prompt can read it through `{session_state}`.
+See [Remote context](../tech-hub/prompt_variables.md#remote-context) for how to send and read it.
 
-```json
-{
-  "name": "John Doe",
-  "address": {
-    "street": "123 Main St"
-  },
-  "tasks": [
-    {
-      "name": "Fix the roof"
-    }
-  ]
-}
-```
+## Prompt variables and template variables
 
-You can access specific parts of the data using the following prompt variables:
-
-```text
-{participant_data.name}
-{participant_data.address.street}
-{participant_data.tasks[0].name}  # lists are zero-indexed
-```
-
-## Accessing Remote Context
-
-When using API integrations that pass context with messages, you can access this contextual information in your prompts using the session state variable:
-
-```text
-{session_state.remote_context}
-```
-
-For example, if an API client sends a message with context like this:
-
-```json
-{
-  "page_url": "https://example.com/products/widget-x",
-  "product_id": "widget-x",
-  "category": "gadgets",
-  "user_segment": "premium"
-}
-```
-
-You can access specific values in your prompts:
-
-```text
-Current page: {session_state.remote_context.page_url}
-Product ID: {session_state.remote_context.product_id}
-User segment: {session_state.remote_context.user_segment}
-```
-
-!!! note "Remote Context Availability"
-
-    The `remote_context` key in session state is only populated when explicitly provided via the API when sending messages.
-    If no context is passed, this key is not present in the session state.
-    See the [Chat API documentation](../api/v1/chat.txt) for details on passing context with messages.
+Prompt variables use single braces and work in LLM node and Router node prompts.
+The Render a Template and Send an Email nodes use a different syntax with double braces and a different set of variables.
+See [Prompt variables vs. template variables](../tech-hub/prompt_variables.md#prompt-variables-vs-template-variables) for a comparison.
 
 ## See also
 
+- [Prompt Variables Reference](../tech-hub/prompt_variables.md)
 - [Participant Data](participant_data.md)
 - [Source Material](source_material.md)
 - [Large Language Models](llm.md)
