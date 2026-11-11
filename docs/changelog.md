@@ -16,7 +16,7 @@ hide:
 * **NEW** Added support for Anthropic's **Claude Fable 5.2** and MiniMax's **MiniMax-M3.1-Flash** models, which can now be selected in chatbots and pipelines. Both have a 1,000,000-token context window. Reasoning effort can't be set for MiniMax-M3.1-Flash, so it runs at MiniMax's default effort of `max`.
 
 ## Nov 5, 2026
-* **CHANGE** Archiving a chatbot now also archives its pipeline, and un-archiving the chatbot restores it. A pipeline that another live chatbot uses, or that a static trigger starts, stays live. The pipeline builder of an archived chatbot opens read-only. See [Pipeline archiving](concepts/channels.md#pipeline-archiving).
+* **CHANGE** Archiving a chatbot now also archives its pipeline, and un-archiving the chatbot restores it. A pipeline that another live chatbot uses, or that a static trigger starts, stays live. The pipeline builder of an archived chatbot opens read-only. See [Pipeline archiving](concepts/channels.md#archiving-a-chatbot).
 
 ## Nov 4, 2026
 * **BUG** Custom Action health-check alerts and deprecated or removed model notices no longer include archived chatbots. Hourly health checks now run only for Custom Actions used by a chatbot that is not archived. Manual checks still run for any Custom Action, but the team is notified of a failure only if a chatbot that is not archived uses the action. Model notices no longer list the pipeline of an archived chatbot as a standalone pipeline. See [Custom Action Health Monitoring](tech-hub/custom_action/health_custom_action.md).
