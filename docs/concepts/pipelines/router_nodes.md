@@ -38,6 +38,8 @@ The LLM Router uses an AI model, specifically a [large language model (LLM)](../
 - **How it works**: It acts as a classifier.
   You provide a prompt that tells the LLM how to categorize a message (for example, "If the participant is angry, output `ESCALATE`").
 - **Best for**: Handling unpredictable participant text.
+- Your prompt can include participant data, session state, and the list of output keywords.
+  See [Variables you can use in the prompt](../../how-to/routers/llm_router.md#variables-you-can-use-in-the-prompt).
 - You define output keywords for your downstream paths.
   If the LLM outputs `BILLING`, the conversation follows the path labeled `BILLING` to the next downstream node.
 - If the model returns no classification at all, the router follows the [Default Path](../../how-to/routers/index.md#the-default-output) instead of failing the participant's turn.
