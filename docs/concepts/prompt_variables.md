@@ -18,7 +18,7 @@ The following variables are currently supported:
 - `{temp_state}` - Access to the pipeline temporary state.
   See [Temporary State](../tech-hub/python_node.md#temporary-state).
 - `{session_state}` - Access to the session state.
-  See [Session State](../tech-hub/python_node.md#session-state)
+  See [Session State](../tech-hub/python_node.md#session-state).
 
 !!! info "Localizing injected datetime"
 
@@ -35,20 +35,12 @@ The following variables are currently supported:
 [participant_data]: ../concepts/participant_data.md
 [prompt_caching]: https://platform.openai.com/docs/guides/prompt-caching
 
-## Accessing a single value
+## Using one value from your data
 
-`{participant_data}`, `{temp_state}`, and `{session_state}` can each hold many values.
-Instead of inserting the whole object into your prompt, you can insert one value from it.
-For example, you can insert only the participant's name, or only the first item in a list.
+You don't have to insert everything stored in `{participant_data}`, `{session_state}` or `{temp_state}` into a prompt.
+You can insert just the part you need, such as the participant's name.
+This keeps the prompt short and gives the model only relevant information.
 See [Nested data access](../tech-hub/prompt_variables.md#nested-data-access) for the syntax.
-
-## Accessing remote context
-
-Remote context is data that your website or app sends to OCS with each participant message.
-For example, it can include the page the participant is viewing.
-You can send it through the Chat API or the chat widget.
-OCS stores it in the session state, so your prompt can read it through `{session_state}`.
-See [Remote context](../tech-hub/prompt_variables.md#remote-context) for how to send and read it.
 
 ## Using variables in other nodes
 
@@ -59,6 +51,12 @@ If a variable does not work, check that you are using the syntax for that node.
 - **LLM node prompts:** All the variables on this page.
 - **Router node prompts:** Only some of them. See [Variables you can use in the prompt](../how-to/routers/llm_router.md#variables-you-can-use-in-the-prompt).
 - **Render a Template and Send an Email nodes:** Not supported. These nodes use a different syntax and variables. See [Prompt variables vs. template variables](../tech-hub/prompt_variables.md#prompt-variables-vs-template-variables).
+
+## Accessing remote context
+
+Your website or app can send extra information with each participant message for your prompts to use.
+This is an advanced feature for developers.
+See [Remote context](../tech-hub/prompt_variables.md#remote-context) for how to send and read it.
 
 ## See also
 
