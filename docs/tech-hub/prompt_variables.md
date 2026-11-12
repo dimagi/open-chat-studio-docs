@@ -92,7 +92,8 @@ Use the syntax and variables that match the field you are editing.
 
 | Where you write it | Syntax | Example | Reference |
 |---|---|---|---|
-| LLM node prompt, Router node prompt | Single braces | `{participant_data.name}` | This page and [Prompt Variables](../concepts/prompt_variables.md) |
+| LLM node prompt | Single braces | `{participant_data.name}` | This page and [Prompt Variables](../concepts/prompt_variables.md) |
+| Router node prompt | Single braces | `{participant_data.name}` | This page and [Variables you can use in the prompt](../how-to/routers/llm_router.md#variables-you-can-use-in-the-prompt) |
 | Render a Template node, Send an Email node | Jinja2, double braces | `{{ participant_data.name }}` | [Render a Template and Send an Email Nodes](template_and_email_nodes.md) |
 | LLM evaluator prompt | Single braces | `{input.content}` | [Evaluator Reference](evaluations/evaluator-reference.md#template-variables) |
 

@@ -9,15 +9,15 @@ These variables are predefined and look like this:
 
 The following variables are currently supported:
 
-- `{source_material}` - The [source material](../how-to/add_a_knowledge_base.md) linked to your chatbot.
 - `{participant_data}` - Information specific to this participant, chatbot and channel.
   See [participant data][participant_data] for details.
 - `{current_datetime}` - This refers to the date and time at which the response is generated.
-- `{media}` - (pipelines only) This refers to the linked [media collection](./collections/media_collections.md).
 - `{collection_index_summaries}` - This refers to the [indexed collections](./collections/indexed_collections/index.md).
-- `{temp_state}` - (pipelines only) Access to the pipeline temporary state.
+- `{source_material}` - The [source material](../how-to/add_a_knowledge_base.md) linked to your chatbot.
+- `{media}` - This refers to the linked [media collection](./collections/media_collections.md).
+- `{temp_state}` - Access to the pipeline temporary state.
   See [Temporary State](../tech-hub/python_node.md#temporary-state).
-- `{session_state}` - (pipelines only) Access to the session state.
+- `{session_state}` - Access to the session state.
   See [Session State](../tech-hub/python_node.md#session-state)
 
 !!! info "Localizing injected datetime"
@@ -50,16 +50,18 @@ You can send it through the Chat API or the chat widget.
 OCS stores it in the session state, so your prompt can read it through `{session_state}`.
 See [Remote context](../tech-hub/prompt_variables.md#remote-context) for how to send and read it.
 
-## Prompt variables and template variables
+## Using variables in other nodes
 
-Prompt variables use single braces and work in LLM node and Router node prompts.
-The Render a Template and Send an Email nodes use a different syntax with double braces and a different set of variables.
-See [Prompt variables vs. template variables](../tech-hub/prompt_variables.md#prompt-variables-vs-template-variables) for a comparison.
+Prompt variables, such as `{participant_data}`, only work in some nodes.
+Other nodes that insert data into text use a different syntax and different variables.
+If a variable does not work, check that you are using the syntax for that node.
+
+- **LLM node prompts:** All the variables on this page.
+- **Router node prompts:** Only some of them. See [Variables you can use in the prompt](../how-to/routers/llm_router.md#variables-you-can-use-in-the-prompt).
+- **Render a Template and Send an Email nodes:** Not supported. These nodes use a different syntax and variables. See [Prompt variables vs. template variables](../tech-hub/prompt_variables.md#prompt-variables-vs-template-variables).
 
 ## See also
 
 - [Prompt Variables Reference](../tech-hub/prompt_variables.md)
 - [Participant Data](participant_data.md)
-- [Source Material](source_material.md)
-- [Large Language Models](llm.md)
 - [Node Types](pipelines/nodes.md#llm-node)
