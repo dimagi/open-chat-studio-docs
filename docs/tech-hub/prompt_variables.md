@@ -11,8 +11,8 @@ For the list of available prompt variables and what each one contains, see [Prom
 The following prompt variables hold structured data, so you can reference a single value inside them instead of inserting the whole object:
 
 - `{participant_data}` — see [Participant Data](../concepts/participant_data.md)
-- `{temp_state}` (pipelines only) — see [Temporary State](python_node.md#temporary-state)
-- `{session_state}` (pipelines only) — see [Session State](python_node.md#session-state)
+- `{temp_state}` — see [Temporary State](python_node.md#temporary-state)
+- `{session_state}` — see [Session State](python_node.md#session-state)
 
 Use dot notation to access nested values.
 Separate each level of nesting with a period.
@@ -42,6 +42,19 @@ You can access specific values with these prompt variables:
 
 To access an item in a list, put its position in square brackets.
 The first item is `[0]`, the second is `[1]`, and so on.
+
+## Prompt variables vs. template variables
+
+OCS uses two different variable syntaxes, depending on where you write the text.
+Each place has its own set of variables, and the sets are not interchangeable.
+Use the syntax and variables that match the field you are editing.
+
+| Where you write it | Syntax | Example | Reference |
+|---|---|---|---|
+| LLM node prompt | Single braces | `{participant_data.name}` | This page and [Prompt Variables](../concepts/prompt_variables.md) |
+| Router node prompt | Single braces | `{participant_data.name}` | This page and [Variables you can use in the prompt](../how-to/routers/llm_router.md#variables-you-can-use-in-the-prompt) |
+| Render a Template node, Send an Email node | Jinja2, double braces | `{{ participant_data.name }}` | [Render a Template and Send an Email Nodes](template_and_email_nodes.md) |
+| LLM evaluator prompt | Single braces | `{input.content}` | [Evaluator Reference](evaluations/evaluator-reference.md#template-variables) |
 
 ## Remote context
 
@@ -83,19 +96,6 @@ User segment: {session_state.remote_context.user_segment}
 
     The `remote_context` key is only present in session state when context is sent with a message.
     If no context is sent, the key does not exist.
-
-## Prompt variables vs. template variables
-
-OCS uses two different variable syntaxes, depending on where you write the text.
-Each place has its own set of variables, and the sets are not interchangeable.
-Use the syntax and variables that match the field you are editing.
-
-| Where you write it | Syntax | Example | Reference |
-|---|---|---|---|
-| LLM node prompt | Single braces | `{participant_data.name}` | This page and [Prompt Variables](../concepts/prompt_variables.md) |
-| Router node prompt | Single braces | `{participant_data.name}` | This page and [Variables you can use in the prompt](../how-to/routers/llm_router.md#variables-you-can-use-in-the-prompt) |
-| Render a Template node, Send an Email node | Jinja2, double braces | `{{ participant_data.name }}` | [Render a Template and Send an Email Nodes](template_and_email_nodes.md) |
-| LLM evaluator prompt | Single braces | `{input.content}` | [Evaluator Reference](evaluations/evaluator-reference.md#template-variables) |
 
 ## See also
 
