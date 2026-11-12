@@ -40,11 +40,11 @@ To ensure reliable routing, write your prompt as a classifier. Its goal is to re
 
 The router prompt accepts a smaller set of [prompt variables](../../concepts/prompt_variables.md) than an LLM node does.
 Use single braces, for example `{routes_list}`.
-The variables work in the prompt and in the additional context field.
+The variables work in the **Additional Context** field and in the prompt.
 
 - `{participant_data}`: Information about the participant.
-- `{temp_state}`: The pipeline temporary state.
-- `{session_state}`: The session state.
+- `{temp_state}`: The [pipeline temporary state](../../tech-hub/python_node.md#temporary-state).
+- `{session_state}`: The [session state](../../tech-hub/python_node.md#session-state).
 - `{routes}`: One line per output keyword, with its description when you have entered one.
 - `{routes_list}`: The output keywords only, separated by commas.
 

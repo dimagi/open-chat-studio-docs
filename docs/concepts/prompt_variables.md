@@ -1,23 +1,23 @@
 # Prompt Variables
 
-Prompt variables make your [prompt](llm.md#prompt) dynamic or tailored to the [participant](./participant_data.md) by injecting data into placeholders.
-These variables are predefined and look like this:
+Prompt variables insert data into your chatbot's [prompt](llm.md#prompt), so its responses can use information about the [participant](./participant_data.md) and your content.
+You write a variable in curly braces, and OCS replaces it with its current value when the chatbot responds:
 
 ```text
 {variable}
 ```
 
-The following variables are currently supported:
+OCS supports these variables:
 
-- `{participant_data}` - Information specific to this participant, chatbot and channel.
-  See [participant data][participant_data] for details.
-- `{current_datetime}` - This refers to the date and time at which the response is generated.
-- `{collection_index_summaries}` - This refers to the [indexed collections](./collections/indexed_collections/index.md).
+- `{participant_data}` - Information stored about this participant, chatbot and channel.
+  See [participant data](./participant_data.md).
+- `{current_datetime}` - The date and time when the response is generated.
+- `{collection_index_summaries}` - The name and summary of each [indexed collection](./collections/indexed_collections/index.md) linked to your chatbot.
 - `{source_material}` - The [source material](../how-to/add_a_knowledge_base.md) linked to your chatbot.
-- `{media}` - This refers to the linked [media collection](./collections/media_collections.md).
-- `{temp_state}` - Access to the pipeline temporary state.
+- `{media}` - The files in the linked [media collection](./collections/media_collections.md).
+- `{temp_state}` - Data kept only for the current pipeline run.
   See [Temporary State](../tech-hub/python_node.md#temporary-state).
-- `{session_state}` - Access to the session state.
+- `{session_state}` - Data kept for the whole session.
   See [Session State](../tech-hub/python_node.md#session-state).
 
 !!! info "Localizing injected datetime"
@@ -25,15 +25,12 @@ The following variables are currently supported:
     The injected datetime is localized to the participant's timezone if it exists in their participant data.
     When a participant uses the web UI, their browser's timezone is automatically saved to their participant data.
 
-!!! info "A note on prompt caching"
+!!! tip "Lower cost with prompt caching"
 
-    Some [LLM providers](team/llm_providers.md), like OpenAI, use a technique called [prompt caching][prompt_caching] to reduce latency and costs.
-    This happens automatically.
-    However, caching is only effective for static data, which is data that does not change.
-    To benefit from caching, place prompt variables near the end of your prompt whenever possible.
-
-[participant_data]: ../concepts/participant_data.md
-[prompt_caching]: https://platform.openai.com/docs/guides/prompt-caching
+    Place prompt variables near the end of your prompt.
+    Some [LLM providers](team/llm_providers.md), like OpenAI, reuse the unchanged start of a prompt to reduce latency and cost.
+    This is called [prompt caching](https://platform.openai.com/docs/guides/prompt-caching) and happens automatically.
+    A variable whose value changes stops that reuse for everything after it, so put changing data last.
 
 ## Using one value from your data
 
@@ -50,7 +47,7 @@ If a variable does not work, check that you are using the syntax for that node.
 
 - **LLM node prompts:** All the variables on this page.
 - **Router node prompts:** Only some of them. See [Variables you can use in the prompt](../how-to/routers/llm_router.md#variables-you-can-use-in-the-prompt).
-- **Render a Template and Send an Email nodes:** Not supported. These nodes use a different syntax and variables. See [Prompt variables vs. template variables](../tech-hub/prompt_variables.md#prompt-variables-vs-template-variables).
+- **Render a Template and Send an Email nodes:** Not supported. They use a different syntax. See [Prompt variables vs. template variables](../tech-hub/prompt_variables.md#prompt-variables-vs-template-variables).
 
 ## Accessing remote context
 
