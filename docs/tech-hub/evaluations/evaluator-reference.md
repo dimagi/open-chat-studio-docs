@@ -45,7 +45,7 @@ See [Python Evaluator](python_evaluator.md).
 ### Generation variables
 
 A message-level evaluator can judge what the chatbot did, not only what it said.
-When the generation step is enabled, OCS keeps a generation record of what the chatbot did while producing the response.
+When **Run generation step before evaluation** is enabled on the [evaluation](../../how-to/evaluations/run-an-evaluation.md), OCS keeps a generation record of what the chatbot did while producing the response.
 The record covers every node's output, the path the pipeline took, the tags added, the change to participant data, and the LLM and tool calls.
 
 | Variable | Contents |
