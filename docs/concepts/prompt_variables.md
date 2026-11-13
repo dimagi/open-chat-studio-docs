@@ -41,13 +41,9 @@ See [Nested data access](../tech-hub/prompt_variables.md#nested-data-access) for
 
 ## Using variables in other nodes
 
-Prompt variables, such as `{participant_data}`, only work in some nodes.
-Other nodes that insert data into text use a different syntax and different variables.
-If a variable does not work, check that you are using the syntax for that node.
-
-- **LLM node prompts:** All the variables on this page.
-- **Router node prompts:** Only some of them. See [Variables you can use in the prompt](../how-to/routers/llm_router.md#variables-you-can-use-in-the-prompt).
-- **Render a Template and Send an Email nodes:** Not supported. They use a different syntax. See [Prompt variables vs. template variables](../tech-hub/prompt_variables.md#prompt-variables-vs-template-variables).
+All the variables on this page work in LLM node prompts.
+Router prompts accept only some of them, and other nodes use a different syntax.
+If a variable does not work, see [Prompt variables vs. template variables](../tech-hub/prompt_variables.md#prompt-variables-vs-template-variables) for the syntax each node uses.
 
 ## Accessing remote context
 

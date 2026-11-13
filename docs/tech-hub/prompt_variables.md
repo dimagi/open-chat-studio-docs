@@ -56,7 +56,7 @@ Use the syntax and variables that match the field you are editing.
 
 - **LLM node prompt:** Single braces, for example `{participant_data.name}`.
   See [Prompt Variables](../concepts/prompt_variables.md).
-- **Router node prompt:** Single braces, with fewer variables available.
+- **Router node prompt:** Single braces, with fewer variables available, plus the router-only `{routes}` and `{routes_list}`.
   See [Variables you can use in the prompt](../how-to/routers/llm_router.md#variables-you-can-use-in-the-prompt).
 - **Render a Template and Send an Email nodes:** Jinja2 syntax with double braces, for example `{{ participant_data.name }}`.
   See [Render a Template and Send an Email Nodes](template_and_email_nodes.md).
