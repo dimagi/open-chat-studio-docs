@@ -13,28 +13,36 @@ Users can be put in one or multiple groups.
 
 ## Permissions Table
 
-| Permission                                       | Super Admin         | Team Admin | Chatbot Admin    | Chat Viewer | Analysis Admin | Analysis User | Event Admin | Annotation Reviewer |
-|-------------------------------------------------|--------------------|------------|-----------------|-------------|---------------|--------------|-------------|---------------------|
-| **Can See Experiments**                         | ✅                 | ❌         | ✅              | ❌          | ❌            | ❌           | ❌          | ❌                  |
-| **Can View Safety Layers, Source Material, Consent Forms** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
-| **Can See Tags**                                 | ✅                 | ❌         | ✅              | ❌          | ❌            | ❌           | ❌          | ❌                  |
-| **Can Access Prompt Builder**                   | ✅                 | ✅         | ✅              | ✅          | ✅            | ✅           | ✅          | ❌                  |
-| **Can View Graphs/Download Files**              | ✅                 | ❌         | ❌              | ✅          | ❌            | ❌           | ❌          | ❌                  |
-| **Can Invite Participants**                     | ✅                 | ❌         | ✅              | ❌          | ❌            | ❌           | ❌          | ❌                  |
-| **Can Export Chat Transcripts**                 | ✅                 | ❌         | ✅              | ❌          | ❌            | ❌           | ❌          | ❌                  |
-| **Can Manage Files**                            | ✅                 | ❌         | ❌              | ❌          | ❌            | ❌           | ❌          | ❌                  |
-| **Create and Manage Experiment Events**         | ✅                 | ❌         | ❌              | ❌          | ❌            | ❌           | ✅          | ❌                  |
-| **Create and Manage Pipelines**                 | ✅                 | ❌         | ✅              | ❌          | ❌            | ❌           | ❌          | ❌                  |
-| **Can View Assigned Annotation Queues**         | ✅                 | ❌         | ❌              | ❌          | ❌            | ❌           | ❌          | ✅                  |
-| **Can View and Change Annotation Queue Items**  | ✅                 | ❌         | ❌              | ❌          | ❌            | ❌           | ❌          | ✅                  |
-| **Can Add Annotations**                         | ✅                 | ❌         | ❌              | ❌          | ❌            | ❌           | ❌          | ✅                  |
-| **Can View Annotation Aggregate Results**       | ✅                 | ❌         | ❌              | ❌          | ❌            | ❌           | ❌          | ✅                  |
-| **Can Manage Annotation Queues**                | ✅                 | ❌         | ❌              | ❌          | ❌            | ❌           | ❌          | ❌                  |
-| **Additional Notes**                         | **Full Access, Default Role** | - | - | **View-only access to files** | - | - | - | **Annotation queues only; cannot manage queues, add sessions, export results, or access other app areas** |
+| Permission | Super Admin | Team Admin | Chatbot Admin | Chat Viewer | Event Admin | Evaluation Admin | Annotation Reviewer |
+|---|---|---|---|---|---|---|---|
+| **Can See Chatbots** | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ |
+| **Can View Sessions and Transcripts** | ✅ | ❌ | ✅ | ✅ | ❌ | ❌ | ✅ |
+| **Can View Source Material and Consent Forms** | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ |
+| **Can See Tags** | ✅ | ❌ | ✅ | ✅ | ❌ | ❌ | ✅ |
+| **Can Access Prompt Builder** | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ |
+| **Can View and Download Files** | ✅ | ❌ | ✅ | ✅ | ❌ | ❌ | ✅ |
+| **Can Invite Participants** | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ |
+| **Can Export Chat Transcripts** | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ |
+| **Can Manage Files** | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| **Create and Manage Chatbot Events** | ✅ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ |
+| **Create and Manage Pipelines** | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ |
+| **Create and Manage Evaluations** | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ |
+| **Can View Assigned Annotation Queues** | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ✅ |
+| **Can View and Change Annotation Queue Items** | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ✅ |
+| **Can Add Annotations** | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ✅ |
+| **Can View Annotation Aggregate Results** | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ✅ |
+| **Can Manage Annotation Queues** | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ |
+| **Manage Team Members and Settings** | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| **Manage Custom Actions** | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| **Manage Service Providers** | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| **Manage OAuth Applications and Notification Channels** | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| **Additional Notes** | **Full Access, Default Role** | - | - | **View-only access to sessions and files** | - | - | **Annotation queues plus Chat Viewer access; cannot manage queues, add sessions, or export results** |
 
 **Can Manage Files** covers adding, changing, and deleting files — for example, in [collections](../collections/index.md) — and only **Super Admin** grants it.
 A role with view-only file access, such as **Chat Viewer**, can see and download files but not add, change, or delete them.
+Every team member can open the dashboard.
 
 ## See also
+
 - [Members & access](members.md)
 - [Team Settings](index.md)
