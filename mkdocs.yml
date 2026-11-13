@@ -9,13 +9,11 @@ theme:
   custom_dir: overrides
   features:
     - header.autohide
-    - navigation.expand
     - navigation.footer
     - navigation.indexes
     - navigation.instant
     - navigation.instant.prefetch
     - navigation.instant.progress
-    - navigation.sections
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.tracking
