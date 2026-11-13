@@ -27,7 +27,7 @@ Only the settings drawn from a fixed set of values appear. A free-text setting (
 
 GET /api/v2/chatbots/
   Summary: List Chatbots
-  Description: List the chatbots belonging to the API key's team.
+  Description: List the chatbots belonging to the API key's team. A machine (client-credentials) token lists only the chatbots its application is authorised for.
   Parameters:
     - cursor (query, string (optional)): The pagination cursor value.
     - page_size (query, integer (optional)): Number of results to return per page.
@@ -66,6 +66,7 @@ GET /api/v2/chatbots/{id}/
     200:
       Content: application/json
       Schema: Chatbot
+    403: The caller is authenticated but not authorised to read this chatbot: either its role lacks permission to view chatbots, or it is a machine (client-credentials) token whose application is not authorised for this chatbot. Retrying will not help; the application's chatbot list has to change.
   Security:
     OAuth2
       - Required scopes: chatbots:read
@@ -125,6 +126,7 @@ GET /api/v2/chatbots/{id}/inspect/
     200:
       Content: application/json
       Schema: ChatbotInspect
+    403: The caller is authenticated but not authorised to read this chatbot: either its role lacks permission to view chatbots, or it is a machine (client-credentials) token whose application is not authorised for this chatbot. Retrying will not help; the application's chatbot list has to change.
   Security:
     OAuth2
       - Required scopes: chatbots:read
