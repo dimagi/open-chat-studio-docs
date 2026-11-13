@@ -6,5 +6,8 @@ To get started, you will need an API key, which you can generate by going to you
 
 See the [API documentation][api-docs] for more details.
 
+When you send a message through the Chat API, you can include a `context` object.
+Your chatbot's prompts can read this data as [remote context](prompt_variables.md#remote-context).
+
 [profile-page]: https://openchatstudio.com/users/profile/
 [api-docs]: https://openchatstudio.com/api/docs/

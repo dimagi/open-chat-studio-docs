@@ -36,6 +36,21 @@ To ensure reliable routing, write your prompt as a classifier. Its goal is to re
 - Clear Examples: Provide 2-3 "golden examples" for each path to increase accuracy for edge cases
   - Example Prompt: "If they mention password reset, output `SETTINGS`."
 
+### Variables you can use in the prompt
+
+The router prompt accepts a smaller set of [prompt variables](../../concepts/prompt_variables.md) than an LLM node does.
+Use single braces, for example `{routes_list}`.
+The variables work in the **Additional Context** field and in the prompt.
+
+- `{participant_data}`: Information about the participant.
+- `{temp_state}`: The [pipeline temporary state](../../tech-hub/python_node.md#temporary-state).
+- `{session_state}`: The [session state](../../tech-hub/python_node.md#session-state).
+- `{routes}`: One line per output keyword, with its description when you have entered one.
+- `{routes_list}`: The output keywords only, separated by commas.
+
+Other prompt variables, such as `{source_material}` and `{current_datetime}`, are not available in a router prompt.
+For the syntax to read a single value, see [Prompt Variables Reference](../../tech-hub/prompt_variables.md#nested-data-access).
+
 ## Technical Performance: History
 We strongly recommend using [Node history](../../concepts/pipelines/history.md#node) for an LLM Router.
 

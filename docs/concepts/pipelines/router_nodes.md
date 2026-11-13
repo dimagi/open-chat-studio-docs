@@ -40,6 +40,8 @@ The LLM Router uses an AI model, specifically a [large language model (LLM)](../
 - **Best for**: Handling unpredictable participant text.
 - You define output keywords for your downstream paths.
   If the LLM outputs `BILLING`, the conversation follows the path labeled `BILLING` to the next downstream node.
+- Your prompt can include participant data, session state, and the list of output keywords.
+  See [Variables you can use in the prompt](../../how-to/routers/llm_router.md#variables-you-can-use-in-the-prompt).
 - If the model returns no classification at all, the router follows the [Default Path](../../how-to/routers/index.md#the-default-output) instead of failing the participant's turn.
   This can happen if the model declines to answer, the provider blocks the reply, or it never calls the classification tool.
   It is rare in practice.

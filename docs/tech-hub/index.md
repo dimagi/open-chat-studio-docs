@@ -17,6 +17,7 @@ You need Super Admin, Pipeline, Experiment, or Team Administrator roles to acces
 - **[Python Node](python_node.md)** — Write custom Python code inside a Pipeline to perform logic, process data, manage session state, and make HTTP requests to external services.
 - **[Merging Parallel Branches](merging_parallel_branches.md)** — Python node patterns for merging pipeline branches predictably, including branches that run an uneven number of times or run conditionally.
 - **[Render a Template and Send an Email Nodes](template_and_email_nodes.md)** — Full Jinja2 variable reference, recipient field syntax, and examples for the Render a Template and Send an Email pipeline nodes.
+- **[Prompt Variables Reference](prompt_variables.md)** — Dot notation for reading single values from prompt variables, reading remote context sent from your website or app, and how prompt variables differ from Jinja2 template variables.
 - **[Tools Reference](tools.md)** — Full argument reference for all built-in tools and the LLM provider tools supported. For a conceptual overview, see [Tools Concepts](../concepts/tools/index.md).
 - **[Evaluations](evaluations/index.md)** — Reference for advanced features of Evaluations — a testing system for measuring chatbot performance against different metrics.
 - **[Annotations](annotations/export-format.md)** — Reference for the CSV and JSONL files exported from an annotation queue.
