@@ -20,10 +20,12 @@ It has built-in support for the following providers, each offering a range of mo
 * [Voyage AI (embedding only)](https://docs.voyageai.com/docs/embeddings)
 * [LiteLLM](https://docs.litellm.ai/docs/simple_proxy) (bring your own proxy)
 
+## Provider Edit Page Tabs
+
 Once a provider is saved, its edit page splits into tabs:
 
 - **Configuration** — where credentials live, along with their [verification state](#credential-verification).
-- **Models** — every model available for this provider.
+- **Models** — every model available for this provider, with its price and context size (see [Review Models and Manage Pricing](../../how-to/review_models_and_manage_pricing.md)).
 - **Usages** — everywhere in your team that references this provider (see [Find Where a Provider Is Used](../../how-to/find_provider_usages.md)).
 
 ## LLM Models
@@ -31,9 +33,9 @@ Once a provider is saved, its edit page splits into tabs:
 Each provider comes with its most commonly used models already available in OCS.
 These include models that power chatbot conversations and embedding models used for searching [knowledge bases](../collections/indexed_collections/index.md).
 
-On the **Models** tab, filter pills (**All**, **Chat**, **Embedding**, and **Custom**) narrow the list to one kind of model at a time.
-Each pill shows a live count of the models matching that filter.
-Use **Add custom model** to add a model that isn't pre-configured.
+The **Models** tab shows each model's price and context size, so you can compare cost before choosing a model.
+Prices start from OCS's global rates, and your team can override them for its own negotiated rates without affecting other teams.
+See [Review Models and Manage Pricing](../../how-to/review_models_and_manage_pricing.md) to filter the list, read prices, and set your own.
 
 If a model you need isn't pre-configured, see [Add a Custom LLM Model](../../how-to/add_custom_llm_model.md) for how to add one.
 
