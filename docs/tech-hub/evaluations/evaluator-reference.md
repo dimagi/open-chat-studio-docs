@@ -22,6 +22,7 @@ For where each value comes from, see [Dataset Structure](dataset-structure.md#da
     | `{participant_data.[key]}` | Any field from the participant's data, e.g. `{participant_data.name}` |
     | `{session_state.[key]}` | Any field from the session's state, e.g. `{session_state.step}` |
     | `{full_history}` | Complete conversation history as formatted text |
+    | `{generation.node_outputs}`, `{generation.path}`, and five more | What the chatbot did during the generation step. See [Generation variables](#generation-variables). |
 
 === "Session level"
 
@@ -36,9 +37,61 @@ For where each value comes from, see [Dataset Structure](dataset-structure.md#da
     | `{session_state.[key]}` | Any field from the session's state, e.g. `{session_state.step}` |
 
     Generation is not available for session-level datasets, so `{generated_response}` does not apply in session-level prompts.
+    A session-level evaluator can reference `{generation.*}` variables, but they are always empty.
 
 Python evaluators receive the same values as function arguments.
 See [Python Evaluator](python_evaluator.md).
+
+### Generation variables
+
+A message-level evaluator can judge what the chatbot did, not only what it said.
+When **Run generation step before evaluation** is enabled on the [evaluation](../../how-to/evaluations/run-an-evaluation.md), OCS keeps a generation record of what the chatbot did while producing the response.
+The record covers every node's output, the path the pipeline took, the tags added, the change to participant data, and the LLM and tool calls.
+
+| Variable | Contents |
+|---|---|
+| `{generation.node_outputs}` | The output of every node. |
+| `{generation.path}` | The path the pipeline took. |
+| `{generation.message_tags}` | The tags put on the reply. |
+| `{generation.session_tags}` | The tags put on the session. |
+| `{generation.participant_data_diff}` | The change made to participant data. |
+| `{generation.llm_calls}` | The LLM calls, each with its full message list. |
+| `{generation.tool_calls}` | The tool calls, in the order they started. |
+
+Each variable renders as JSON and is capped at 10,000 characters.
+The cap applies to each variable separately, so all seven together can reach about 70,000 characters.
+
+Node names come from the pipeline graph.
+If a node has no name, the raw node ID is used.
+
+!!! tip
+    `{generation.llm_calls}` carries the full message list of each call, so it usually reaches the cap.
+    Judge prompts work better with `{generation.tool_calls}` and `{generation.node_outputs}`.
+
+#### Validation
+
+The values are pre-rendered JSON, so sub-keys and indexes are not supported.
+The evaluator form accepts exactly the seven names above and rejects anything else under `generation`.
+For example, it rejects `{generation.tags}`, `{generation.tool_calls[0]}`, and any conversion or format spec such as `{generation.llm_calls!s:>60000}`.
+The error message lists the valid names.
+The seven variables appear in the evaluator form's hints and autocomplete.
+
+#### Behavior and limits
+
+- If a generation fails part-way, the record still includes the calls captured before the error.
+- Tools that return a LangGraph `Command`, such as the participant-data and session-state tools, record their tool message as the output.
+- An LLM turn that only requests tools has an empty `output`.
+  The tool call appears in `{generation.tool_calls}`.
+- Calls made outside any node, such as replies for interrupts and errors, are not in the record.
+- A node that LangGraph retries is recorded once per attempt.
+- A history-summarization call inside a node looks like the node's own call.
+
+#### Participant data during evaluation runs
+
+Evaluators see the change a chatbot makes to participant data, but an evaluation run does not save it.
+Evaluation runs no longer write participant data to the team's shared "evaluations" participant.
+Session tags and session state still persist to the temporary evaluation session.
+Participants renamed by evaluation runs before this change keep the name.
 
 ## Output validation
 
