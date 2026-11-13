@@ -83,8 +83,13 @@ The chunk text is the file name followed by one `column: value` line for every c
 The columns you tick are also stored as metadata on the row's chunk.
 When a chatbot searches the collection, each matching row comes back with its row number and its metadata.
 
-!!! note "Local indexes only"
-    Row import works for local indexes only.
-    Remote (OpenAI) indexes don't offer the **Import CSV/TSV rows** option.
+Row import works for local indexes only.
+Remote (OpenAI) indexes don't offer the **Import CSV/TSV rows** option.
 
-See [Import CSV/TSV Rows into a Collection](../../../how-to/import_csv_tsv_rows.md) for step-by-step instructions.
+See [Import CSV/TSV Rows into a Collection](../../../how-to/collections/import_csv_tsv_rows.md) for step-by-step instructions.
+
+## See also
+
+- [Indexed Collections](./index.md): how indexed collections work.
+- [Local Index Optimization](../../../tech-hub/collections/local-index-optimization.md): embedding models, chunking, and row import limits.
+- [Document Sources](./document_sources.md): sync files from GitHub or Confluence.

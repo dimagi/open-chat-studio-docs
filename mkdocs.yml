@@ -79,6 +79,9 @@ plugins:
       how-to/disable_a_channel.md: how-to/channels/disable_a_channel.md
       how-to/turnio_whatsapp.md: how-to/channels/turnio_whatsapp.md
       how-to/whatsapp_meta_cloud_api.md: how-to/channels/whatsapp_meta_cloud_api.md
+      how-to/document_sources.md: how-to/collections/document_sources.md
+      how-to/filter_collection_search_by_metadata.md: how-to/collections/filter_collection_search_by_metadata.md
+      how-to/import_csv_tsv_rows.md: how-to/collections/import_csv_tsv_rows.md
 - macros:
     render_by_default: false
     force_render_paths: chat_widget/styling.md
@@ -117,15 +120,12 @@ nav:
       - Search and Get Prompt Help in the Pipeline Editor: how-to/pipeline_editor_search_and_prompt_help.md
       - how-to/workflow_cookbook.md
       - how-to/add_a_knowledge_base.md
-      - Import CSV/TSV Rows into a Collection: how-to/import_csv_tsv_rows.md
       - Router Nodes:
         - how-to/routers/index.md
         - Configure LLM Router: how-to/routers/llm_router.md
         - Configure Static Router: how-to/routers/static_router.md
       - Send an Email: how-to/send_email_node.md
       - Schedule Reminders: how-to/reminders.md
-      - Set Up and Manage Document Sources: how-to/document_sources.md
-      - Filter Collection Search by Metadata: how-to/filter_collection_search_by_metadata.md
     - Channels & Deployment:
       - how-to/channels/deploy_to_different_channels.md
       - how-to/channels/disable_a_channel.md
@@ -146,6 +146,10 @@ nav:
       - Manage Notifications: how-to/manage_notifications.md
       - Send Notifications to Slack: how-to/send_notifications_to_slack.md
       - Find Where a Provider Is Used: how-to/find_provider_usages.md
+    - Collections:
+      - Set Up and Manage Document Sources: how-to/collections/document_sources.md
+      - Import CSV/TSV Rows into a Collection: how-to/collections/import_csv_tsv_rows.md
+      - Filter Collection Search by Metadata: how-to/collections/filter_collection_search_by_metadata.md
     - Annotations:
       - Create a Queue and Add Sessions: how-to/annotations/create-a-queue.md
       - Annotate Queue Items: how-to/annotations/annotate-items.md
@@ -235,7 +239,9 @@ nav:
     - Collections:
       - tech-hub/collections/index.md
       - Local Index Optimization: tech-hub/collections/local-index-optimization.md
-      - Document Sources Reference: tech-hub/collections/document_sources.md
+      - Document Sources: tech-hub/collections/document_sources.md
+      - GitHub Document Source: tech-hub/collections/github_document_source.md
+      - Confluence Document Source: tech-hub/collections/confluence_document_source.md
       - Metadata Filters Reference: tech-hub/collections/metadata-filters.md
     - Evaluations:
       - tech-hub/evaluations/index.md

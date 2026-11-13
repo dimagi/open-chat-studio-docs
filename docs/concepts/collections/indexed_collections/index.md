@@ -31,7 +31,7 @@ Add the `{collection_index_summaries}` [prompt variable](../../prompt_variables.
 ### Limiting the search to matching metadata
 
 If several chatbots share one collection, you can set **Metadata Filters** on the LLM node so each chatbot searches only rows whose metadata matches.
-See [Filter Collection Search by Metadata](../../../how-to/filter_collection_search_by_metadata.md).
+See [Filter Collection Search by Metadata](../../../how-to/collections/filter_collection_search_by_metadata.md).
 
 ### Showing source links
 

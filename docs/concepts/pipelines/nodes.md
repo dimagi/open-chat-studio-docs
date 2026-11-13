@@ -10,10 +10,10 @@ graph LR
   B --> C@{ shape: stadium, label: "Output (i.e. LLM response)" };
 ```
 
-!!! note Examples
+For examples, see:
 
-    1. See a [simple example](./index.md#a-simple-example) of a pipeline with one node.
-    2. See [chatbot workflow cookbook](../../how-to/workflow_cookbook.md) for examples of pipelines using different combinations of these node types.
+1. A [simple example](./index.md#a-simple-example) of a pipeline with one node.
+2. The [chatbot workflow cookbook](../../how-to/workflow_cookbook.md), which has pipelines using different combinations of these node types.
 
 ## Node Warnings and Errors
 
@@ -47,7 +47,7 @@ You can configure:
 - [Tools](../tools/index.md) for additional actions
 - [Collections](../collections/index.md) for indexed collections to base responses on your documents (RAG), or media collections to send files to participants.
   For indexed collections, the **Generate Citations** setting controls whether answers [show source links](../collections/indexed_collections/citations.md).
-- [Metadata filters](../../how-to/filter_collection_search_by_metadata.md) to limit an indexed collection search to rows with matching metadata
+- [Metadata filters](../../how-to/collections/filter_collection_search_by_metadata.md) to limit an indexed collection search to rows with matching metadata
 - [Custom Actions](../llm_custom_action.md) to connect to external systems and retrieve information or complete tasks
 
 See [Configure an LLM Node](../../tutorials/configure_llm_node.md) for a step-by-step tutorial on setting one up.
