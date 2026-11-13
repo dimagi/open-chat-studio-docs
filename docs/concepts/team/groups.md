@@ -30,7 +30,7 @@ Users can be put in one or multiple groups.
 | **Can Add Annotations**                         | ✅                 | ❌         | ❌              | ❌          | ❌            | ❌           | ❌          | ✅                  |
 | **Can View Annotation Aggregate Results**       | ✅                 | ❌         | ❌              | ❌          | ❌            | ❌           | ❌          | ✅                  |
 | **Can Manage Annotation Queues**                | ✅                 | ❌         | ❌              | ❌          | ❌            | ❌           | ❌          | ❌                  |
-| **Additional Notes**                         | **Full Access, Default Role** | - | **Cannot see sessions** | **View-only access to files** | - | - | - | **Annotation queues only; cannot manage queues, add sessions, export results, or access other app areas** |
+| **Additional Notes**                         | **Full Access, Default Role** | - | - | **View-only access to files** | - | - | - | **Annotation queues only; cannot manage queues, add sessions, export results, or access other app areas** |
 
 **Can Manage Files** covers adding, changing, and deleting files — for example, in [collections](../collections/index.md) — and only **Super Admin** grants it.
 A role with view-only file access, such as **Chat Viewer**, can see and download files but not add, change, or delete them.
