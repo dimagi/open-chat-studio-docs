@@ -7,7 +7,7 @@ description: Technical guides for developers and administrators configuring Open
 
 The Tech Hub contains in-depth technical documentation for advanced users and developers. Topics here cover configuration, code examples, and API references that go beyond standard chatbot setup.
 
-You need Super Admin, Pipeline, Experiment, or Team Administrator roles to access most of these features.
+You need the Super Admin, Chatbot Admin, or Team Admin role to access most of these features.
 
 ## What's covered here
 
