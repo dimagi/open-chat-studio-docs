@@ -8,8 +8,8 @@ Read-only, team-scoped endpoints for the Open Chat Studio data sync/export. **Un
 
 Simplified per-tag references for LLM consumption:
 
-* [Manifest](./manifest.txt){:target="_blank"}
-* [Team](./team.txt){:target="_blank"}
+* [Manifest](./manifest.txt){:target="_blank"} — Discover the export surface before authenticating: resource call order, per-model config and a schema checksum.
+* [Team](./team.txt){:target="_blank"} — Export the team resolved from the API key and every resource nested under it, paginated by `updated_at`.
 
 ## Endpoints
 

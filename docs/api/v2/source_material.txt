@@ -2,6 +2,7 @@ API: Open Chat Studio v2
 Description: Build, deploy and monitor chatbots.
 
 TAG: Source Material
+Description: List, create, update and archive the source material that pipeline nodes draw on.
 
 ENDPOINTS:
 
