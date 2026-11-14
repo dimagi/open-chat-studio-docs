@@ -2,6 +2,7 @@ API: Open Chat Studio export
 Description: Read-only, team-scoped endpoints for the Open Chat Studio data sync/export. **Unversioned and intended only for OCS export** — it carries no backwards-compatibility guarantee and may change without notice.
 
 TAG: Manifest
+Description: Discover the export surface before authenticating: resource call order, per-model config and a schema checksum.
 
 ENDPOINTS:
 

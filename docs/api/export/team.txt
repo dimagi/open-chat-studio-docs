@@ -2,6 +2,7 @@ API: Open Chat Studio export
 Description: Read-only, team-scoped endpoints for the Open Chat Studio data sync/export. **Unversioned and intended only for OCS export** — it carries no backwards-compatibility guarantee and may change without notice.
 
 TAG: Team
+Description: Export the team resolved from the API key and every resource nested under it, paginated by `updated_at`.
 
 ENDPOINTS:
 
@@ -1511,6 +1512,7 @@ ExperimentDetail:
   - name: string (required)
   - description: string
   - seed_message: string
+  - unavailable_message: string
   - public_id: string
   - conversational_consent_enabled: boolean
   - voice_response_behaviour: Unknown
