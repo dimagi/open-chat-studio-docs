@@ -9,13 +9,11 @@ theme:
   custom_dir: overrides
   features:
     - header.autohide
-    - navigation.expand
     - navigation.footer
     - navigation.indexes
     - navigation.instant
     - navigation.instant.prefetch
     - navigation.instant.progress
-    - navigation.sections
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.tracking
@@ -163,22 +161,23 @@ nav:
     - concepts/index.md
     - Chatbots:
       - concepts/chatbots/index.md
-      - concepts/sessions.md
-      - concepts/session_status.md
       - concepts/llm.md
-      - concepts/participant_data.md
-      - concepts/prompt_variables.md
-      - concepts/source_material.md
-      - concepts/versioning.md
-      - concepts/llm_custom_action.md
-      - concepts/consent.md
+      - concepts/sessions.md
       - concepts/channels.md
-      - concepts/events.md
-      - concepts/tags.md
-      - concepts/tracing.md
-      - concepts/notifications.md
-      - concepts/tools/index.md
-      - Experiments: concepts/experiment/index.md
+      - concepts/participant_data.md
+      - concepts/session_status.md
+      - Behavior and Content:
+        - concepts/prompt_variables.md
+        - concepts/consent.md
+        - concepts/source_material.md
+        - concepts/tools/index.md
+        - concepts/events.md
+        - concepts/llm_custom_action.md
+      - Management and Monitoring:
+        - concepts/versioning.md
+        - concepts/tags.md
+        - concepts/tracing.md
+        - concepts/notifications.md
     - Pipelines:
       - concepts/pipelines/index.md
       - Node Types: concepts/pipelines/nodes.md
@@ -216,40 +215,45 @@ nav:
       - concepts/annotations/index.md
       - concepts/annotations/queues.md
       - Annotating: concepts/annotations/annotating.md
-    - OpenAI Assistants (Removed): concepts/assistants.md
+    - Deprecated:
+      - Experiments: concepts/experiment/index.md
+      - OpenAI Assistants (Removed): concepts/assistants.md
   - Tech Hub:
     - tech-hub/index.md
-    - Tools Reference: tech-hub/tools.md
-    - Ending Sessions from a Chatbot: tech-hub/ending_sessions.md
-    - Legacy Web Chat Retirement: tech-hub/legacy_web_chat_retirement.md
-    - Python Node: tech-hub/python_node.md
-    - Merging Parallel Branches: tech-hub/merging_parallel_branches.md
-    - Render a Template and Send an Email Nodes: tech-hub/template_and_email_nodes.md
-    - Call External APIs:
-      - tech-hub/external-api-calls/index.md
-      - HTTP Client: tech-hub/external-api-calls/http_client.md
-    - Custom Actions:
-      - tech-hub/custom_action/index.md
-      - Custom Action Health: tech-hub/custom_action/health_custom_action.md
-      - Custom Action Testing: tech-hub/custom_action/test_custom_action.md
+    - Pipeline Building:
+      - Tools Reference: tech-hub/tools.md
+      - Render a Template and Send an Email Nodes: tech-hub/template_and_email_nodes.md
+      - Ending Sessions from a Chatbot: tech-hub/ending_sessions.md
+      - Python Node: tech-hub/python_node.md
+      - Merging Parallel Branches: tech-hub/merging_parallel_branches.md
     - Collections:
       - tech-hub/collections/index.md
       - Local Index Optimization: tech-hub/collections/local-index-optimization.md
       - Document Sources Reference: tech-hub/collections/document_sources.md
       - Metadata Filters Reference: tech-hub/collections/metadata-filters.md
+    - Annotations:
+      - Export Format: tech-hub/annotations/export-format.md
     - Evaluations:
       - tech-hub/evaluations/index.md
       - Dataset Structure: tech-hub/evaluations/dataset-structure.md
       - Evaluator Reference: tech-hub/evaluations/evaluator-reference.md
-      - Python Evaluator: tech-hub/evaluations/python_evaluator.md
       - Auto-Population Rules: tech-hub/evaluations/auto_population.md
-    - Annotations:
-      - Export Format: tech-hub/annotations/export-format.md
+      - Python Evaluator: tech-hub/evaluations/python_evaluator.md
+    - Integrations:
+      - Call External APIs:
+        - tech-hub/external-api-calls/index.md
+        - HTTP Client: tech-hub/external-api-calls/http_client.md
+      - Custom Actions:
+        - tech-hub/custom_action/index.md
+        - Custom Action Health: tech-hub/custom_action/health_custom_action.md
+        - Custom Action Testing: tech-hub/custom_action/test_custom_action.md
     - OCS API:
       - api/index.md
       - api/getting_started_with_oauth.md
       - API Access: tech-hub/api_access.md
-    - Migrate a Team to Another Instance: tech-hub/migrate_team.md
+    - Operations:
+      - Migrate a Team to Another Instance: tech-hub/migrate_team.md
+      - Legacy Web Chat Retirement: tech-hub/legacy_web_chat_retirement.md
   - Chat Widget:
     - chat_widget/index.md
     - chat_widget/reference.md
