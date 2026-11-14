@@ -122,6 +122,7 @@ nav:
         - how-to/routers/index.md
         - Configure LLM Router: how-to/routers/llm_router.md
         - Configure Static Router: how-to/routers/static_router.md
+        - Tag a Router's Route: how-to/routers/tag_router_routes.md
       - Send an Email: how-to/send_email_node.md
       - Schedule Reminders: how-to/reminders.md
       - Set Up and Manage Document Sources: how-to/document_sources.md
@@ -141,6 +142,8 @@ nav:
     - Sessions & Data:
       - Reset Sessions: how-to/reset_sessions.md
       - Download Team Files: how-to/download_team_files.md
+      - Create and Manage Tags: how-to/manage_tags.md
+      - Tag a Node's Output Messages: how-to/tag_node_output.md
     - Monitoring & Debugging:
       - Configure Langfuse Trace Sampling: how-to/configure_langfuse_trace_sampling.md
       - Manage Notifications: how-to/manage_notifications.md
