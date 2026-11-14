@@ -164,7 +164,6 @@ nav:
       - concepts/llm.md
       - concepts/sessions.md
       - concepts/channels.md
-      - Conversation History: concepts/pipelines/history.md
       - concepts/participant_data.md
       - concepts/session_status.md
       - Behavior and Content:
@@ -183,6 +182,7 @@ nav:
       - concepts/pipelines/index.md
       - Node Types: concepts/pipelines/nodes.md
       - Router Nodes: concepts/pipelines/router_nodes.md
+      - Conversation History: concepts/pipelines/history.md
       - concepts/pipelines/parallel.md
     - Team Settings:
       - concepts/team/index.md
@@ -215,7 +215,7 @@ nav:
       - concepts/annotations/index.md
       - concepts/annotations/queues.md
       - Annotating: concepts/annotations/annotating.md
-    - Depricated:
+    - Deprecated:
       - Experiments: concepts/experiment/index.md
       - OpenAI Assistants (Removed): concepts/assistants.md
   - Tech Hub:
@@ -251,7 +251,7 @@ nav:
       - api/index.md
       - api/getting_started_with_oauth.md
       - API Access: tech-hub/api_access.md
-    - Administration:
+    - Operations:
       - Migrate a Team to Another Instance: tech-hub/migrate_team.md
       - Legacy Web Chat Retirement: tech-hub/legacy_web_chat_retirement.md
   - Chat Widget:
