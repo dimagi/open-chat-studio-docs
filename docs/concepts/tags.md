@@ -6,17 +6,20 @@ They help you find the conversations and replies that matter without reading eve
 ## What you can do with tags
 
 - **Review the replies on one topic.**
-  Set a [node](pipelines/nodes.md) to tag the replies that refer participants to the clinic with `clinic-referral`, then read them together to check the advice is safe and clear.
+  Set the [node](pipelines/nodes.md) that writes your clinic referrals to tag its replies `clinic-referral`.
+  Then read the tagged replies together to check the advice is safe and clear.
   See [Tag a Node's Output Messages](../how-to/tag_node_output.md).
 - **See which path a router chose.**
   Tag each route of a [router](pipelines/router_nodes.md), then find the messages that fell back to the default route.
   See [Tag a Router's Route](../how-to/routers/tag_router_routes.md).
 - **Flag a message or conversation yourself.**
   Mark a complaint, or a session that needs a person to follow up.
-  See [Create and Manage Tags](../how-to/manage_tags.md#tag-a-message-or-session-by-hand).
+  See [Create and Manage Tags](../how-to/manage_tags.md#how-do-i-tag-a-message-or-session-by-hand).
 - **Let an evaluation flag problems for you.**
-  A tag rule can add a tag such as `goal-not-met` to the sessions that score badly, so you can skip the rest.
+  A tag rule can add a tag to the sessions or messages that score badly, so you review only those.
   See [Tag Rules](evaluations/tag_rules.md).
+- **Tag with your own rules (advanced).**
+  A [Python node](pipelines/nodes.md#python-node) can add tags from code.
 
 After you tag, use the **Tags** filter on the sessions list to see only the conversations you want.
 See [Tags on the Sessions List](sessions.md#tags-on-the-sessions-list).
@@ -41,9 +44,10 @@ Hover over a tag to see who added it, for example "Added by Participant".
 OCS adds some tags itself, called system tags.
 For example, each chatbot reply carries a version tag such as `v3`, or `v3-unreleased` for an unpublished version.
 Router [route tags](../how-to/routers/tag_router_routes.md) are system tags too.
-System tags appear in a different colour, and you cannot select, edit or delete them yourself.
+System tags appear in a different color, and you cannot select, edit or delete them yourself.
 
 ## See also
 
 - [Sessions](sessions.md)
 - [Create and Manage Tags](../how-to/manage_tags.md)
+- [Python node utility functions](../tech-hub/python_node.md#utility-functions) `add_message_tag` and `add_session_tag`

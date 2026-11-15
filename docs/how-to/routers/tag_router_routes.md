@@ -2,7 +2,7 @@
 
 This guide shows you how to tag a router's output message with the route it chose.
 Route tags help you review how participants move through your chatbot.
-It applies to both the **LLM Router** and **Static Router** nodes.
+This applies to both the **LLM Router** and **Static Router** nodes.
 
 For background on message tags, see [Tags](../../concepts/tags.md#message-tags-and-session-tags).
 
@@ -13,21 +13,23 @@ With tagging on, each of those messages carries the tag `health_triage:CLINIC`.
 
 - A chatbot with a [router node](../../concepts/pipelines/router_nodes.md).
 
-## Turn on route tagging
+## How do I turn on route tagging?
 
 1. Open your chatbot and view the **Pipeline** workflow.
-2. Open the router node's settings.
-3. Turn on **Tag Output Message**.
+2. Click the node edit button (or the **Advanced** link) to open the router node's settings.
+3. In the **Advanced Settings**, turn on **Tag Output Message**.
+   It is in the same place for the **LLM Router** and the **Static Router**.
 4. Close the settings dialog to save your changes.
+5. [Create and publish a version](../../tutorials/versioning_steps.md) of your chatbot.
 
-## Check the tag name
+## What is the name of a route tag?
 
 OCS builds the tag name as `<node_name>:<route_name>`.
 For the router above, a message routed to `CLINIC` gets `health_triage:CLINIC`.
 Use a descriptive node name, such as `symptom_router`, because the node name is part of every tag.
 
-If the router uses its [default output](index.md#the-default-output), OCS adds `:default` to the end, for example `health_triage:GENERAL:default`.
-The router uses its default output when nothing matched or an error occurred.
+If the router falls back to its [Default Output](index.md#the-default-output), OCS adds `:default` to the end.
+For example, if the Default Output is `GENERAL`, the tag is `health_triage:GENERAL:default`.
 This makes fallback routes easy to filter for when you review tags.
 
 Tags longer than 100 characters are cut to 100 characters when saved.
@@ -43,6 +45,9 @@ To list sessions with the tag, see [Tags on the Sessions List](../../concepts/se
 
 - **A router tag is missing.**
   Check that **Tag Output Message** is turned on for that router.
+- **Filtering by `:default` misses some fallback messages.**
+  A long node or route name can push the tag past 100 characters, and the cut removes `:default`.
+  Shorten the node or route names so the full tag fits.
 
 ## See also
 
