@@ -1,6 +1,6 @@
 ---
 name: docs-pre-review
-description: Use when the user asks to review the current branch, says "review this branch", or wants a review and there is no PR for the branch.
+description: Use when the user asks to review the current branch, says "review this branch", or wants a review and there is no PR for the branch. Finds scope creep, page-type violations and inaccurate claims before reviewers see them, and drafts the PR title and description. Read-only.
 ---
 
 # Pre-PR Branch Review of Docs
