@@ -5,7 +5,8 @@ They can't reliably tell you whether a clinician would trust the advice, or whet
 For that, people who know the subject need to read the conversations and record their judgment.
 
 **Annotations** are how you collect that judgment in Open Chat Studio (OCS).
-You choose the conversations to review, write the questions reviewers answer about each one, and assign the reviewers.
+In OCS, a **[session](../sessions.md)** is a conversation thread between a participant and your chatbot on a specific channel.
+You choose the sessions to review, write the questions reviewers answer about each one, and assign the reviewers.
 OCS tracks progress, summarises the answers, and lets you export them.
 Other AI tools call this *human evaluation* or *data labeling*, and the results are often used as *ground truth*.
 
@@ -18,7 +19,6 @@ Other AI tools call this *human evaluation* or *data labeling*, and the results 
 
 ## How It Works
 
-In OCS, each conversation between a participant and your chatbot is a **session**.
 You collect the sessions to review in an **annotation queue**.
 For each queue, you write the questions reviewers answer, such as "How helpful was the chatbot, from 1 to 5?"
 Each question is a field, and you add them under **Schema Fields** when you create the queue.
@@ -46,7 +46,7 @@ This table lists OCS terms and maps these to the terminology other AI evaluation
 
 | OCS term | What it is | Also called |
 |----------|------------|-------------|
-| **Session** | One conversation between a participant and your chatbot. | Conversation, sample, record |
+| **Session** | A conversation thread between a participant and your chatbot on a specific channel. | Conversation, sample, record |
 | **[Annotation queue](queues.md)** | A list of sessions to review, the questions to answer, and the people who answer them. The queue also tracks its review progress. | Labeling project |
 | **Item** | A session once it is in a queue. The queue's **Items** table lists it, and its status shows its review progress. See [Item Status Lifecycle](annotating.md#item-status-lifecycle). | Task, example |
 | **[Schema fields](queues.md#schema-fields)** | The questions reviewers answer, such as a rating from 1 to 5, a choice from a list, or a free-text comment. | Rubric, labeling schema, score configuration |

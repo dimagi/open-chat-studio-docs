@@ -7,7 +7,7 @@ Sessions are isolated, which keeps data private and preserves context for the du
 
 ## Sessions and Messages
 
-A **session** is a whole conversation between one participant and one chatbot on a channel.
+A **session** is a conversation thread between a participant and your chatbot on a specific channel.
 A **message** is one piece of content within it: a human message from the participant, or an AI response from the chatbot.
 
 ## Session Scope
