@@ -5,6 +5,7 @@ Knowing whether it works well is harder.
 
 **Evaluations** let you check this systematically.
 You run your chatbot against a set of sample conversations.
+In OCS, a [session](../sessions.md) is a conversation thread between a participant and your chatbot on a specific channel.
 You then score the results against criteria you define, such as accuracy, tone, or whether it stayed on topic.
 
 Running evaluations regularly warns you early when a change to a prompt, model or pipeline makes responses worse.
