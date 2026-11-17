@@ -138,7 +138,7 @@ Each team has its own chatbots, data, and settings.
 Examples include scheduling reminders, performing calculations, and remembering information about a participant across sessions.
 
 [Tracing](tracing.md)
-: A record of every conversation turn showing what the chatbot received, what it returned, and how long it took.
+: A record of each time the chatbot responds to a message, showing what it received, what it returned, and how long it took.
 Use it to understand and debug unexpected chatbot behavior.
 
 [Versions](versioning.md)

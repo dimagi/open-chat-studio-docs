@@ -1,6 +1,7 @@
 # Evaluation Datasets
 
 An evaluation needs example conversations to test against.
+In OCS, a conversation between a participant and a chatbot is called a [session](../sessions.md).
 A **dataset** is that set of messages or sessions, and it is what the [evaluators](./evaluators.md) score.
 
 A small set of realistic examples tells you more about your chatbot than scoring everything that exists.
@@ -22,7 +23,7 @@ A participant has this conversation with a clinic's appointment chatbot:
 A dataset can store this conversation in two ways, depending on its [evaluation level](#evaluation-levels).
 
 In a **message-level** dataset, the conversation becomes two rows.
-Each row holds one Human/AI message pair, the participant's message and the chatbot's reply, with the earlier turns as history:
+Each row holds one Human/AI message pair, the participant's message and the chatbot's response, with the earlier messages as history:
 
 | Row | Human Message | AI Message | History |
 |---|---|---|---|
@@ -43,7 +44,7 @@ When you create a dataset, you choose its **Evaluation level**.
 | Level | Each row is | Use it to judge |
 |---|---|---|
 | **Message level** | A single Human/AI message pair | Individual responses, for accuracy, tone or correctness |
-| **Session level** | An entire conversation | Overall quality, goal completion, or coherence across turns |
+| **Session level** | An entire conversation | Overall quality, goal completion, or coherence across messages |
 
 Choose **message level** if you want to:
 
