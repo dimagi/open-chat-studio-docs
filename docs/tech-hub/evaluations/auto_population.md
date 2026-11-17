@@ -29,7 +29,7 @@ Each automatic run scores only the rows added in that ingestion cycle, producing
 
 Manual filter-import and CSV-import paths do not trigger automatic evaluation runs — only the auto-population path does.
 
-An automatic run is skipped if the config has no evaluators, or if every evaluator on it is [archived](../../concepts/evaluations/evaluators.md#archiving-evaluators), since it would produce no results. The skip is only recorded in the server log; nothing is shown in the app.
+An automatic run is skipped if the evaluation has no evaluators, or if every evaluator on it is [archived](../../concepts/evaluations/evaluators.md#archiving-evaluators), since it would produce no results. The skip is only recorded in the server log; nothing is shown in the app.
 
 ## See also
 

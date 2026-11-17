@@ -57,8 +57,8 @@ OCS fetches the content and keeps it in sync.
 The chatbot then answers from current documentation without you re-uploading files.
 
 [Evaluations](evaluations/index.md)
-: A built-in testing system that runs your chatbot against sample conversations.
-It scores the responses against criteria you define, such as accuracy, tone, or staying on topic.
+: A built-in testing system that scores your chatbot's responses to sample conversations.
+It checks them against criteria you define, such as accuracy, tone, or staying on topic.
 
 [Events](events.md)
 : Automated actions that fire when something happens in a chatbot session, after a period of inactivity, or at a scheduled date and time.
