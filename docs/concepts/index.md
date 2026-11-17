@@ -78,6 +78,10 @@ OCS lets you choose from a range of models and configure how they behave.
 [LLM Service Provider](team/llm_providers.md)
 : The account you configure with an LLM service — such as OpenAI, Anthropic, or Google — so your chatbots can use its models.
 
+[Message](sessions.md#sessions-and-messages)
+: One piece of content sent in a conversation, either a human message from the participant or an AI response from the chatbot.
+A conversation is built from these messages, one after another.
+
 [Messaging Provider](team/messaging_providers.md)
 : A provider account you configure for a messaging service, such as Twilio, Turn.io, or Slack.
 Some channels require it to send and receive messages for your chatbot.
