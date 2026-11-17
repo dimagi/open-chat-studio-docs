@@ -2,7 +2,7 @@
 
 A dataset of example conversations is useful only once it has been scored, and an **evaluator** does the scoring.
 An evaluator looks at each message and, optionally, your chatbot's generated response to it.
-It outputs a judgment on whatever matters for your use case, such as whether the response was accurate, on-topic or polite.
+It outputs a score for whatever matters for your use case, such as whether the response was accurate, on-topic or polite.
 
 You can run several evaluators over the same [dataset](dataset.md) at once.
 A single evaluation run can then check multiple things, such as accuracy, tone and safety, without re-running your chatbot for each one.
@@ -14,8 +14,8 @@ Evaluators with the wrong mode for a dataset are hidden when you set up an evalu
 ## Evaluator types
 
 ### LLM evaluator
-The LLM Evaluator uses language models to evaluate responses based on a custom prompt.
-Use it as an [LLM-as-a-judge](../../how-to/evaluations/realtime_llm_judge.md) to evaluate the performance of a chatbot.
+The LLM evaluator uses a language model to evaluate responses against criteria you write in a prompt.
+This technique is known as LLM-as-a-judge.
 It can also assess the properties of both the participant's and the chatbot's messages.
 
 For the how-to guide, see [Set Up a Real-Time LLM-as-a-Judge](../../how-to/evaluations/realtime_llm_judge.md).
@@ -82,10 +82,8 @@ See [Output validation](../../tech-hub/evaluations/evaluator-reference.md#output
 |-------------|------|-------------|
 | expected_helpfulness | integer | The helpfulness, on a scale of 1-5, of the expected assistant message |
 | actual_helpfulness | integer | The helpfulness, on a scale of 1-5, of the actual assistant message |
-| user_sentiment | choice | The sentiment of the user message (options: positive, neutral, negative) |
-| confidence_score | float | Confidence in the evaluation, from 0.0 to 1.0 |
 | user_sentiment | choice | The sentiment of the participant's message (options: positive, neutral, negative) |
-| confidence_score | float | Confidence in the evaluation, from 0.0 to 1.0 |
+| confidence_score | float | Confidence in the score, from 0.0 to 1.0 |
 | answered_question | binary | Whether the assistant message answered the participant's question (labels: Answered, Not answered) |
 
 See [Tag Rules](./tag_rules.md) to automatically tag sessions or messages based on these output values.
@@ -108,7 +106,7 @@ Copy an evaluator to reuse its configuration as a starting point for a new one.
 The copy is named `<name> (copy)`.
 It has the same type, prompt, output schema, evaluation mode, provider, model, and [tag rules](./tag_rules.md) as the original.
 
-The copy starts active and is not part of any evaluation config.
+The copy starts active and is not used in any evaluation.
 Results and aggregates are not copied.
 
 You can also copy an archived evaluator.
@@ -132,15 +130,15 @@ An **Archived** badge marks them in the evaluator list and in the evaluations ta
 
 Archived evaluators are excluded from new work:
 
-- They don't appear in the evaluator picker when you create a new evaluation config.
+- They don't appear in the evaluator picker when you create a new evaluation.
 - They are skipped by every new run, including automatic delta runs triggered when a dataset is appended.
 
-The one exception is editing an evaluation config that already uses an archived evaluator.
-In that case, the picker still shows the config's own archived evaluators, with an *(archived)* suffix on the name.
-You can untick one to remove it and still edit the rest of the config.
-Archived evaluators that aren't already on the config are not offered.
+The one exception is editing an evaluation that already uses an archived evaluator.
+In that case, the picker still shows the evaluation's own archived evaluators, with an *(archived)* suffix on the name.
+You can untick one to remove it and still edit the rest of the evaluation.
+Archived evaluators that aren't already on the evaluation are not offered.
 
-Running a config whose evaluators are all archived is refused with an error, since it would produce no results.
+Running an evaluation whose evaluators are all archived is refused with an error, since it would produce no results.
 
 An archived evaluator cannot be deleted while its results exist, so the **Delete** action is not shown for it.
 Use **Unarchive** to restore it instead.
