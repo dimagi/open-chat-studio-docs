@@ -11,10 +11,10 @@ Simplified per-tag references for LLM consumption:
 * [Channels](./channels.txt){:target="_blank"} — Trigger bot messages or deliver messages directly to users on a channel.
 * [Chatbot Triggers](./chatbot_triggers.txt){:target="_blank"} — Add, change and archive the triggers that run an action on a conversation event, after inactivity, or at a set time.
 * [Chatbots](./chatbots.txt){:target="_blank"} — List, retrieve and inspect chatbots (v2; formerly 'experiments').
-* [Consent Forms](./consent_forms.txt){:target="_blank"}
+* [Consent Forms](./consent_forms.txt){:target="_blank"} — List, create, update and archive the consent forms a chatbot shows before a conversation starts.
 * [Me](./me.txt){:target="_blank"} — Information about the authenticated user and the team the token is scoped to.
 * [Pipelines](./pipelines.txt){:target="_blank"} — Discover the node types a pipeline may contain and the resource ids it may reference, and edit a chatbot's pipeline a node at a time.
-* [Source Material](./source_material.txt){:target="_blank"}
+* [Source Material](./source_material.txt){:target="_blank"} — List, create, update and archive the source material that pipeline nodes draw on.
 * [Usage](./usage.txt){:target="_blank"} — Inspect team usage and activity data (message counts, and more).
 
 ## Endpoints
