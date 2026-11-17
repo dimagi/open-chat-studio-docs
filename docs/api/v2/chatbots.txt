@@ -285,10 +285,10 @@ ChatbotDetail:
   - echo_transcript: boolean (required)
   - trace_provider_id: integer (required)
   - trace_sample_rate: number (required)
-  - debug_mode_enabled: boolean (required)
   - conversational_consent_enabled: boolean (required)
   - consent_form_id: integer (required)
   - seed_message: string (required)
+  - unavailable_message: string (required)
   - file_uploads_enabled: boolean (required)
 
 ChatbotInspect:
@@ -348,10 +348,10 @@ InspectScheduledTrigger:
 
 InspectSettings:
   - seed_message: string (required)
+  - unavailable_message: string (required)
   - conversational_consent_enabled: boolean (required)
   - voice_response_behaviour: string (required)
   - echo_transcript: boolean (required)
-  - debug_mode_enabled: boolean (required)
   - file_uploads_enabled: boolean (required)
 
 InspectStaticTrigger:
@@ -388,10 +388,10 @@ PatchedChatbotWrite:
   - echo_transcript: boolean
   - trace_provider_id: integer
   - trace_sample_rate: number
-  - debug_mode_enabled: boolean
   - conversational_consent_enabled: boolean
   - consent_form_id: integer
   - seed_message: string
+  - unavailable_message: string
   - file_uploads_enabled: boolean
 
 PatchedPublishVersion:
