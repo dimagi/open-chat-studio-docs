@@ -100,7 +100,7 @@ This lets you retry a failed action without waiting for the event to fire again.
 
 ## See also
 
-- [Chat Sessions](sessions.md)
+- [Sessions](sessions.md)
 - [Session Status](session_status.md)
 - [Versioning](versioning.md)
 - [Participant Data](participant_data.md)

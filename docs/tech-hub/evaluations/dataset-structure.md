@@ -19,7 +19,7 @@ Each dataset row contains the following fields. Not all fields are populated for
 
 ### Message-level datasets
 
-When cloning into a message-level dataset, or importing from an annotation queue into one, session chat messages are paired into (human, AI) pairs and mapped to dataset fields as follows:
+When cloning into a message-level dataset, or importing from an annotation queue into one, session messages are paired into message pairs (a human message and an AI message) and mapped to dataset fields as follows:
 
 | Session Data | Dataset Field | Description |
 |---|---|---|

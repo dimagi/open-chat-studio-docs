@@ -56,5 +56,5 @@ Use this when your integration controls when conversations should restart.
 
 ## Related concepts
 
-- [Chat Sessions](../concepts/sessions.md)
+- [Sessions](../concepts/sessions.md)
 - [Session Status](../concepts/session_status.md#pending_review)

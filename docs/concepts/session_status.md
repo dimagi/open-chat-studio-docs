@@ -155,7 +155,7 @@ Only `COMPLETE` is considered fully done, meaning the participant has submitted 
 
 ## See also
 
-- [Chat Sessions](sessions.md)
+- [Sessions](sessions.md)
 - [Events](events.md)
 - [Consent Forms](consent.md)
 - [Ending sessions from a chatbot](../tech-hub/ending_sessions.md)

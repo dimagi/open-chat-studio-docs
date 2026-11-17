@@ -138,7 +138,7 @@ See [Deploying your chatbot to different channels](../how-to/channels/deploy_to_
 - [Disable a channel](../how-to/channels/disable_a_channel.md)
 - [Deploying your chatbot to different channels](../how-to/channels/deploy_to_different_channels.md)
 - [Deploy your chatbot with a public link][public-link-howto]
-- [Chat Sessions](sessions.md)
+- [Sessions](sessions.md)
 - [Versioning](versioning.md)
 
 [1]: ./team/messaging_providers.md

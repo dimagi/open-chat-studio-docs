@@ -28,6 +28,6 @@ The setting is versioned, so it reaches participants on the published chatbot on
 
 ## See also
 
-- [Chat Sessions](../sessions.md)
+- [Sessions](../sessions.md)
 - [Versioning](../versioning.md)
 - [Consent Forms](../consent.md)
