@@ -117,6 +117,6 @@ OCS provides a default based on the LLM provider default (this varies by model a
 
 ### Adaptive thinking
 
-When enabled, the model dynamically allocates its reasoning budget per message rather than spending a fixed amount every time — guided by the [effort level](#effort-reasoning-effort) you set. Easy turns finish quickly; complex ones get more thinking tokens.
+When enabled, the model dynamically allocates its reasoning budget per message rather than spending a fixed amount every time — guided by the [effort level](#effort-reasoning-effort) you set. Simple messages finish quickly; complex ones get more thinking tokens.
 
 Refer to [Claude documentation for more on adaptive thinking and what models support it](https://platform.claude.com/docs/en/build-with-claude/adaptive-thinking).
