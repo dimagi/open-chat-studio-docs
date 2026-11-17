@@ -56,9 +56,17 @@ They let your chatbot look up information or complete tasks, such as checking an
 OCS fetches the content and keeps it in sync.
 The chatbot then answers from current documentation without you re-uploading files.
 
+[Evaluation Dataset](evaluations/dataset.md)
+: A collection of test cases that evaluators score.
+Each row is a message pair or a session, depending on the dataset's evaluation level.
+
 [Evaluations](evaluations/index.md)
 : A built-in testing system that scores your chatbot's responses to sample conversations.
 It checks them against criteria you define, such as accuracy, tone, or staying on topic.
+
+[Evaluator](evaluations/evaluators.md)
+: The automated judge in an evaluation.
+It scores each row of a dataset against your criteria.
 
 [Events](events.md)
 : Automated actions that fire when something happens in a chatbot session, after a period of inactivity, or at a scheduled date and time.
