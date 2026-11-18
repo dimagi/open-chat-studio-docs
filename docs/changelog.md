@@ -14,6 +14,7 @@ hide:
 ## Nov 18, 2026
 * **NEW** Added support for OpenAI's **gpt-6.2-astra** and **gpt-6.2-sol** models on OpenAI and Azure OpenAI. Both have a 1,050,000-token context window.
 * **CHANGE** Removed MiniMax's `MiniMax-M2.7` model, which MiniMax retired on Nov 18, 2026. Chatbots, pipelines and evaluators using it were switched to MiniMax-M3 automatically, and affected teams were notified. See [Model Lifecycle and Deprecation](concepts/team/llm_providers.md#model-lifecycle-and-deprecation).
+* **BUG** Fixed a server error when uploading chat files with long names that contain several dots, such as `V.R_Valid_..._1787295174.xlsm`. The original file name is still shown to users.
 
 ## Nov 10, 2026
 * **NEW** Added Google Docs as a document source for indexed collections. Google Docs sources connect through an OAuth Authorization Code authentication provider, index document tabs, paragraphs, lists and tables, and re-sync when a document's content or title changes. See [Google Docs document sources](tech-hub/collections/document_sources.md#google-docs).
