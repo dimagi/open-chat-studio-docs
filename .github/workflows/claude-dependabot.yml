@@ -124,7 +124,7 @@ jobs:
       # For Claude max-turns, measured a max of about 35, so set as 70 below
       - name: Run Claude Dependabot Analysis
         id: claude_review
-        uses: anthropics/claude-code-action@v1.0.264
+        uses: anthropics/claude-code-action@v1.0.267
         timeout-minutes: 10
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}

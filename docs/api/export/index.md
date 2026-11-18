@@ -8,8 +8,8 @@ Read-only, team-scoped endpoints for the Open Chat Studio data sync/export. **Un
 
 Simplified per-tag references for LLM consumption:
 
-* [Manifest](./manifest.txt){:target="_blank"}
-* [Team](./team.txt){:target="_blank"}
+* [Manifest](./manifest.txt){:target="_blank"} — Discover the export surface before authenticating: resource call order, per-model config and a schema checksum.
+* [Team](./team.txt){:target="_blank"} — Export the team resolved from the API key and every resource nested under it, paginated by `updated_at`.
 
 ## Endpoints
 
@@ -59,6 +59,7 @@ Simplified per-tag references for LLM consumption:
 | GET | `/api/export/llm_provider_models/` | Llm Provider Models |
 | GET | `/api/export/llm_providers/` | Llm Providers |
 | GET | `/api/export/messaging_providers/` | Messaging Providers |
+| GET | `/api/export/moderation_providers/` | Moderation Providers |
 | GET | `/api/export/notification_event_types/` | Notification Event Types |
 | GET | `/api/export/notification_events/` | Notification Events |
 | GET | `/api/export/participant_data/` | Participant Data |
@@ -77,6 +78,7 @@ Simplified per-tag references for LLM consumption:
 | GET | `/api/export/synthetic_voices/` | Synthetic Voices |
 | GET | `/api/export/tags/` | Tags |
 | GET | `/api/export/team/` | Team |
+| GET | `/api/export/team_settings/` | Team Settings |
 | GET | `/api/export/timeout_triggers/` | Timeout Triggers |
 | GET | `/api/export/trace_providers/` | Trace Providers |
 | GET | `/api/export/traces/` | Traces |

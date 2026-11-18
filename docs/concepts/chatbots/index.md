@@ -15,6 +15,17 @@ Use the resources below to learn how to create a chatbot and how its pipeline wo
 - :material-chat-question:{ .lg .middle } [__What is a Pipeline?__](../pipelines/index.md#what-is-a-pipeline)
 - :material-whatsapp:{ .lg .middle } [__Deploying your bot__](../../how-to/channels/deploy_to_different_channels.md)
 
+## Unavailable message
+
+Sometimes a chatbot cannot reply, for example when its LLM provider is down or rejects the configured API key.
+Participants then get a default error reply: "Sorry, something went wrong while processing your message. Please try again later".
+
+Set **Unavailable Message** on the chatbot's **Settings** tab to send your own text after that reply, such as when to try again or another way to get help.
+It is sent on every channel.
+Errors the participant can fix, such as an unsupported file type, keep their own message.
+
+The setting is versioned, so it reaches participants on the published chatbot once you [publish a new version](../versioning.md).
+
 ## See also
 
 - [Chat Sessions](../sessions.md)

@@ -69,7 +69,7 @@ jobs:
 
       - name: Run Claude Code
         id: claude
-        uses: anthropics/claude-code-action@v1.0.264
+        uses: anthropics/claude-code-action@v1.0.267
         timeout-minutes: 15
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}

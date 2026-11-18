@@ -38,7 +38,7 @@ Tokens are important because they determine the cost and the processing complexi
 
 Every AI model has a maximum token limit — also called its **context window**.
 Max Token Limit is a fixed property of the model.
-It is listed next to each model name on the [team's LLM providers](team/llm_providers.md) page.
+It is shown as **Context** for each model on the **Models** tab of a [provider's edit page](team/llm_providers.md#provider-edit-page-tabs).
 
 The context window is the total number of tokens the model can work with in one turn.
 Your prompt, the conversation history, and the model's reply all share the same budget.
