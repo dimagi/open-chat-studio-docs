@@ -5,9 +5,10 @@ Knowing whether it works well is harder.
 
 **Evaluations** let you check this systematically.
 You start with a set of sample conversations.
-In OCS, a [session](../sessions.md) is a conversation thread between a participant and your chatbot on a specific channel.
-You then score your chatbot's responses to them against criteria you define, such as accuracy, tone, or whether it stayed on topic.
-The responses are either the ones already stored with the conversations or fresh ones your chatbot generates.
+You then score them against criteria you define, such as accuracy, tone, or whether it stayed on topic.
+You can score individual responses, or whole conversations, such as whether the participant got a booking (see [evaluation levels](./dataset.md#evaluation-levels)).
+For individual responses, you can score the ones already stored with the conversations or fresh ones your chatbot generates.
+Whole conversations are scored as stored.
 
 Running evaluations regularly warns you early when a change to a prompt, model or pipeline makes responses worse.
 It also gives you proof when a change makes them better.
@@ -27,9 +28,6 @@ flowchart LR
 - **[Evaluators](./evaluators.md)**: score each row, using an LLM prompt or Python code.
   Several evaluators can run on the same dataset.
 - **[Tag rules](./tag_rules.md)**: tag rows whose scores meet a condition, such as a low rating, so you can find them quickly.
-
-In the app, an **evaluation** is the saved pairing of a dataset with the evaluators that score it.
-Each time you run it, OCS records an **evaluation run**.
 
 ## Example
 

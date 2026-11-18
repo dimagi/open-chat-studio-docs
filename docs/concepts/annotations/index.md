@@ -5,8 +5,7 @@ They can't reliably tell you whether a clinician would trust the advice, or whet
 For that, people who know the subject need to read the conversations and record their judgment.
 
 **Annotations** are how you collect that judgment in Open Chat Studio (OCS).
-In OCS, a **[session](../sessions.md)** is a conversation thread between a participant and your chatbot on a specific channel.
-You choose the sessions to review, write the questions reviewers answer about each one, and assign the reviewers.
+You choose the [sessions](../sessions.md) to review, write the questions reviewers answer about each one, and assign the reviewers.
 OCS tracks progress, summarises the answers, and lets you export them.
 Other AI tools call this *human evaluation* or *data labeling*, and the results are often used as *ground truth*.
 
@@ -20,6 +19,7 @@ Other AI tools call this *human evaluation* or *data labeling*, and the results 
 ## How It Works
 
 You collect the sessions to review in an **annotation queue**.
+A session is a conversation thread between a participant and your chatbot.
 For each queue, you write the questions reviewers answer, such as "How helpful was the chatbot, from 1 to 5?"
 Each question is a field, and you add them under **Schema Fields** when you create the queue.
 Every reviewer answers the same fields for every session, so their answers can be compared and summarised.

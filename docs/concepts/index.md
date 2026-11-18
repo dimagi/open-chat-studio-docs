@@ -61,12 +61,11 @@ The chatbot then answers from current documentation without you re-uploading fil
 Each row is a message pair or a session, depending on the dataset's evaluation level.
 
 [Evaluations](evaluations/index.md)
-: A built-in testing system that scores your chatbot's responses to sample conversations.
+: A built-in testing system that scores your chatbot's individual responses or whole conversations.
 It checks them against criteria you define, such as accuracy, tone, or staying on topic.
 
 [Evaluator](evaluations/evaluators.md)
-: The automated judge in an evaluation.
-It scores each row of a dataset against your criteria.
+: Scores each row of a dataset against criteria you define, using an LLM prompt or Python code.  
 
 [Events](events.md)
 : Automated actions that fire when something happens in a chatbot session, after a period of inactivity, or at a scheduled date and time.
@@ -86,8 +85,9 @@ OCS lets you choose from a range of models and configure how they behave.
 [LLM Service Provider](team/llm_providers.md)
 : The account you configure with an LLM service — such as OpenAI, Anthropic, or Google — so your chatbots can use its models.
 
-[Message](sessions.md#sessions-and-messages)
-: One piece of content sent in a conversation, either a human message from the participant or an AI response from the chatbot.
+[Message](sessions.md#messages)
+: One piece of content sent in a conversation, either a human message from the participant or an AI message from the chatbot.
+A Human/AI message pair is a human message together with the AI message that answers it.
 A conversation is built from these messages, one after another.
 
 [Messaging Provider](team/messaging_providers.md)

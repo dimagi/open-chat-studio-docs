@@ -1,8 +1,8 @@
 # Evaluation Datasets
 
 An evaluation needs example conversations to test against.
-In OCS, a [session](../sessions.md) is a conversation thread between a participant and your chatbot on a specific channel.
 A **dataset** is that set of messages or sessions, and it is what the [evaluators](./evaluators.md) score.
+In OCS, a [session](../sessions.md) is a conversation thread between a participant and your chatbot on a specific channel.
 
 A small set of realistic examples tells you more about your chatbot than scoring everything that exists.
 You can build a dataset from real conversations your chatbot has already had.
