@@ -2,17 +2,12 @@
 
 ## Overview
 
-Sessions in Open Chat Studio define the scope of conversations between a participant and a chatbot within a specific channel.
+In OCS, a session is a conversation thread between a participant and your chatbot on a specific channel.
 Sessions are isolated, which keeps data private and preserves context for the duration of a conversation.
-
-## Sessions and Messages
-
-A **session** is a conversation thread between a participant and your chatbot on a specific channel.
-A **message** is one piece of content within it: a human message from the participant, or an AI response from the chatbot.
 
 ## Session Scope
 
-Every session belongs to one:
+A session is uniquely defined by:
 
 - **Participant**: The individual engaging with the chatbot.
 - **Channel**: The platform through which the chat occurs (e.g., WhatsApp, Telegram, Web, Slack).
@@ -28,6 +23,10 @@ Each session is independent, meaning:
 
 Every session has a status that tracks the progress of the conversation.
 See [Session Status](session_status.md).
+
+## Messages
+
+A **message** is one piece of content within a [session](#overview): a human message from the participant, or an AI message from the chatbot.
 
 ## History Management
 
