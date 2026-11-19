@@ -83,7 +83,7 @@ Use this method to write individual test cases by hand for a **message-level** d
 
 1. Enter the human message and the AI response. Both are required.
 2. Optionally, enter the history: previous turns that provide context for this message pair. Each line must start with `user:` or `assistant:`. See [History Syntax](../../tech-hub/evaluations/dataset-structure.md#history-syntax).
-3. Optionally, enter context, [participant data](../../concepts/participant_data.md) or [session state](../../tech-hub/python_node.md#session-state) as JSON.
+3. Optionally, enter context, [participant data](../../concepts/participant_data.md) or [session state](../../concepts/pipelines/state.md#session-state) as JSON.
 4. Click **Add Message Pair**.
 
 Repeat for each test case. Pairs you have added are listed below the form, where you can edit or delete them before you create the dataset.
