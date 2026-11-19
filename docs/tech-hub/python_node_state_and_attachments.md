@@ -4,14 +4,17 @@ This page covers how [Python node](python_node.md) code works with [pipeline sta
 Read it when you need the default and reserved keys, the functions that read and write state, or how to read the contents of an attachment.
 For what state is and when to use each kind, see [Pipeline State](../concepts/pipelines/state.md).
 
-- [Temporary state](#temporary-state): default keys and an example of the state dictionary.
 - [Session state](#session-state): the functions that read and write it.
+- [Temporary state](#temporary-state): default keys and an example of the state dictionary.
 - [Attachments](#attachments): the fields on an attachment, and how to read its contents with `read_text()` or `read_bytes()`.
 
-## Temporary State
-The Python node can access and modify the temporary state of the pipeline. The temporary state is a dictionary that is unique to each run of the pipeline (each new message from the participant) and is not stored between sessions.
+## Session State
 
-The temporary state can be accessed and modified using the [get_temp_state_key](python_node.md#python_node.get_temp_state_key) and [set_temp_state_key](python_node.md#python_node.set_temp_state_key) utility functions. <!-- markdownlint-disable-line MD051 -->
+Python node code reads and changes [session state](../concepts/pipelines/state.md#session-state) with the [get_session_state_key](python_node.md#python_node.get_session_state_key) and [set_session_state_key](python_node.md#python_node.set_session_state_key) utility functions. <!-- markdownlint-disable-line MD051 -->
+
+## Temporary State
+
+Python node code reads and changes [temporary state](../concepts/pipelines/state.md#temporary-state) with the [get_temp_state_key](python_node.md#python_node.get_temp_state_key) and [set_temp_state_key](python_node.md#python_node.set_temp_state_key) utility functions. <!-- markdownlint-disable-line MD051 -->
 
 Temporary state contains the following keys by default. These keys can not be modified or deleted:
 
@@ -37,11 +40,6 @@ Here is an example of a temporary state dictionary:
     "my_custom_key": "my_custom_value",
 }
 ```
-
-## Session State
-The Python node can also access and modify the state of the participant's session. This state is a dictionary that is scoped to each session that the participant might have with the chatbot.
-
-The session state can be accessed and modified using the [get_session_state_key](python_node.md#python_node.get_session_state_key) and [set_session_state_key](python_node.md#python_node.set_session_state_key) utility functions. <!-- markdownlint-disable-line MD051 -->
 
 ## Attachments
 

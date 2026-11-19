@@ -13,19 +13,9 @@ OCS has three places, and they differ in how long the value lasts:
 
 | Store | Lasts for | Use it for |
 |---|---|---|
-| Temporary state | One pipeline run, which is one participant message | Passing a value from one node to a later node while the current message is processed |
 | Session state | One [session](../sessions.md) | Remembering a value across the messages of a single conversation |
+| Temporary state | One pipeline run, which is one participant message | Passing a value from one node to a later node while the current message is processed |
 | [Participant data](../participant_data.md) | All of a participant's sessions with the chatbot | Facts about the participant that should survive a new session, such as language or name |
-
-## Temporary State
-
-Temporary state exists for a single pipeline run.
-A new participant message starts a new run, with a fresh temporary state, so nothing carries over to the next message.
-
-OCS fills it with the participant's message, the outputs of earlier nodes, and any attachments the participant sent.
-Nodes can add their own values.
-
-Use temporary state for values that only matter while one message is processed, such as a classification result that a later router uses to choose a route.
 
 ## Session State
 
@@ -39,17 +29,29 @@ For information about the participant that should last beyond the session, use [
 Session state can also be set from outside the pipeline.
 You can supply it with the `session_data` parameter when you trigger a bot message through the API, and when you [create evaluation test cases](../../how-to/evaluations/create-a-dataset.md).
 
+## Temporary State
+
+Temporary state exists for a single pipeline run.
+A new participant message starts a new run, with a fresh temporary state, so nothing carries over to the next message.
+
+OCS fills it with the participant's message, the outputs of earlier nodes, and any attachments the participant sent.
+The Python node can add its own values.
+
+Use temporary state for values that only matter while one message is processed, such as a classification result that a later router uses to choose a route.
+
 ## Where You Can Use State
 
-| Where | Temporary state | Session state |
+| Where | Session state | Temporary state |
 |---|---|---|
 | [Python node](nodes.md#python-node) | Read and write | Read and write |
 | [Static Router](router_nodes.md#static-router-node) | Read, to choose a route | Read, to choose a route |
-| [Prompts](../prompt_variables.md) | Insert with `{temp_state}` | Insert with `{session_state}` |
-| [Render Template and Send Email nodes](../../tech-hub/template_and_email_nodes.md) | Insert with `{{ temp_state }}` | Insert with `{{ session_state }}` |
+| [LLM node tools](../tools/index.md) | Read and write, if the session state tools are enabled | Not available |
+| [Prompts](../prompt_variables.md) | Insert with `{session_state}` | Insert with `{temp_state}` |
+| [Render Template and Send Email nodes](../../tech-hub/template_and_email_nodes.md) | Insert with `{{ session_state }}` | Insert with `{{ temp_state }}` |
 
-Only the Python node can write state during a run.
-The other nodes read it.
+Only the Python node can write temporary state.
+Session state can also be written by the LLM node's session state tools.
+Everything else reads state.
 
 ## Learn More
 
