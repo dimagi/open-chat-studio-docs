@@ -94,6 +94,44 @@ Files can come from a [media collection](collections/media_collections.md) (thro
 - Participants on an app version that cannot show attachments see this text in place of any message that has attachments:
   "Your version of the app is too old to see this message. Please update your Android app."
 
+### CommCare Connect cards
+
+A card is a small, self-contained interactive web page, such as a chart, a visual summary, or a tap-through checklist.
+The CommCare Connect app shows a card inline in the chat, with the reply text as the caption.
+
+!!! note
+    Card support in the Android app is in a prototype build.
+
+To let a chatbot send cards, add the [Attach Card (CommCare Connect)](tools/index.md#attach-card-commcare-connect) tool to an LLM node.
+Then ask the chatbot for something visual, such as a chart.
+
+#### How a card is detected
+
+Open Chat Studio treats a reply as a card when it has an attachment named exactly `index.html`.
+Detection uses only the file name, so a card attached any other way is sent the same way.
+This includes a card from a media collection or from a Python node that calls `add_file_attachment`.
+
+- Attachments whose file types the app can serve to a card are sent with the card.
+- Any other attachments follow in a second, normal message.
+- On channels other than CommCare Connect, the card arrives as an ordinary HTML file attachment named `index.html`.
+
+#### Limits on card HTML
+
+The tool accepts one self-contained HTML document per card, and at most one card per reply.
+The tool rejects HTML that:
+
+- Is over the size limit.
+- Loads resources from the network. W3C namespace URIs, such as the SVG namespace, are allowed.
+- Uses `vh` units or `position: fixed`.
+
+The tool returns each problem to the LLM so that it can fix the HTML.
+These checks cannot catch a script that hangs.
+
+#### Inspecting a sent card
+
+Downloads of the HTML from Open Chat Studio are served as file downloads, so the HTML never runs on the Open Chat Studio domain.
+The transcript view lists attachments and lets staff download them, so you can inspect a sent card there.
+
 ## Disabling a channel
 
 Every linked channel has an **Enabled** toggle.

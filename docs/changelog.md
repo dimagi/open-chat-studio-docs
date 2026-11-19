@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Nov 19, 2026
+* **NEW** Added the **Attach Card (CommCare Connect)** tool, which lets chatbots send cards: small interactive HTML pages, such as charts or checklists, that the CommCare Connect app shows inline in the chat. On other channels the card arrives as an `index.html` file attachment. See [CommCare Connect cards](concepts/channels.md#commcare-connect-cards).
+
 ## Nov 18, 2026
 * **NEW** Added support for OpenAI's **gpt-6.2-astra** and **gpt-6.2-sol** models on OpenAI and Azure OpenAI. Both have a 1,050,000-token context window.
 * **CHANGE** Removed MiniMax's `MiniMax-M2.7` model, which MiniMax retired on Nov 18, 2026. Chatbots, pipelines and evaluators using it were switched to MiniMax-M3 automatically, and affected teams were notified. See [Model Lifecycle and Deprecation](concepts/team/llm_providers.md#model-lifecycle-and-deprecation).
