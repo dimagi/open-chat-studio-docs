@@ -2,28 +2,19 @@
 
 Since this PR modifies main app files, update the **main changelog** at `${MAIN_CHANGELOG}`.
 
-**Main Changelog Structure:**
-- The main changelog is organized by **dates** (e.g., "Oct 22, 2025")
-- Entries use TYPE prefixes: **NEW**, **CHANGE**, **BUG**, **MIGRATION**
-- Format: * **[TYPE]** [Description]
+**Steps:**
 
-**Steps for Main Changelog:**
-1. Read `${MAIN_CHANGELOG}` to understand the current structure
-2. Analyze the PR title and description to understand what changed
-3. Determine the appropriate changelog type:
-   - **NEW**: New features or functionality
-   - **CHANGE**: Modifications to existing features
-   - **BUG**: Bug fixes
-   - **MIGRATION**: Migration-related changes or breaking changes
-4. Write a one-line changelog entry of 1-2 sentences, under 700 characters; put detail in the docs and link to it
-5. Format the merged date as "MMM D, YYYY" with no leading zero on single-digit days (e.g., "Oct 9, 2025", "Oct 22, 2025")
-6. **Date sections must be in reverse chronological order (newest dates at the top)**
-7. If a section for that date already exists, add your entry to it; otherwise create a new date section at the top
+1. If the PR has no effect on users, skip the rest of Task 1.
+2. Analyze the PR title and description to understand what changed.
+3. Read the file, starting with the most recent entries.
+4. Choose the type prefix:
+   - **NEW**: new features or functionality
+   - **CHANGE**: modifications to existing features
+   - **BUG**: bug fixes
+   - **MIGRATION**: migration-related or breaking changes
+5. Choose the section: the PR's merged date, written as `MMM D, YYYY` with no leading zero on the day (for example, `Nov 5, 2026`). If that section exists, use it. Otherwise add it in reverse chronological order.
+6. Focus on user-facing changes. Leave out internal implementation details unless they affect users.
+7. Write one entry for this PR the way the existing entries are written: same structure, length, tone and links.
+8. Add it as a bullet in that section.
 
-**Main Changelog Format:**
-
-```markdown
-## Oct 22, 2025
-* **NEW** Added support for parallel pipeline execution.
-* **BUG** Fixed issue with session timeout handling.
-```
+Whether or not you skipped, continue to Task 2.
