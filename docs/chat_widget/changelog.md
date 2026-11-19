@@ -34,6 +34,8 @@ Check your current HTML implementation and compare it with the [latest propertie
 ### Unreleased
 
 * Tell participants on the team's block list that they are blocked. Previously, the widget showed the generic "Something went wrong." error when a blocked participant sent a message or uploaded a file.
+* Add the `show-new-chat-button` attribute for kiosk mode. When set to `"true"`, a "Start new chat" button appears beside the message input once the conversation has messages, so participants can start over without waiting for the session to end. Clicking it opens the same confirmation dialog as the header button in standard mode. The attribute defaults to `false`, so existing kiosk embeds are unchanged.
+* Fix: a file upload that finished after the participant started a new chat no longer sends the previous message into the new chat.
 
 ### v0.14.0 (2026-09-16)
 

@@ -334,6 +334,38 @@ When enabled:
 !!! tip "Tell users why"
     Pair `disabled` with a [banner](#banner) so users understand why they can't send messages, for example to display your support hours or an outage notice.
 
+## :material-plus-circle-outline: Kiosk Mode: New Chat Button {#kiosk-new-chat-button}
+
+Kiosk mode (`mode="kiosk"`) is the mode used by the chatbot's public link page.
+By default, a kiosk user can start over only after the server ends the session.
+Set `show-new-chat-button="true"` to show a "Start new chat" button beside the message input.
+Clicking it opens the same confirmation dialog as the header button in standard mode.
+Confirming clears the conversation, and a new session starts with the next message.
+
+```html
+<div style="position: relative; height: 600px;">
+  <open-chat-studio-widget
+   chatbot-id="your-chatbot-id"
+   mode="kiosk"
+   show-new-chat-button="true">
+  </open-chat-studio-widget>
+</div>
+```
+
+The button appears only when all of these are true:
+
+- The conversation has messages.
+- The session is not bound to the host page, that is, you did not set a specific `session-id`.
+- The widget is not in [read-only mode](#read-only-mode).
+- The conversation is not closed. After the session ends, the existing "Start new chat" restart button replaces it.
+
+The button is disabled while files upload or a session starts.
+It stays enabled while the widget waits for a reply, so users can abandon a stalled reply.
+
+!!! note "Embed kiosk widgets in a positioned container"
+    In kiosk mode, the confirmation dialog overlay covers the chat area instead of the whole page.
+    Place the widget inside a container with `position: relative` so the overlay is positioned correctly.
+
 ## :material-bullhorn: Banner {#banner}
 
 Display an always-visible notice above the chat history to communicate information that shouldn't scroll away with the conversation. Banners are useful for:
@@ -789,6 +821,7 @@ console.log(version); // "0.13.0"
 | `allow-full-screen` | `boolean` | Optional | `true` | `true` \| `false` | Enable fullscreen mode button | `"false"` to hide fullscreen option |
 | `allow-attachments` | `boolean` | Optional | `false` | `true` \| `false` | Enable file upload functionality<br/>**Limits:** 50MB per file, 50MB total per message | `"true"` to enable file uploads |
 | `disabled` | `boolean` | Optional | `false` | `true` \| `false` | Puts the widget into [read-only mode](#read-only-mode): history stays visible, but the composer, send controls, and starter questions are disabled or hidden | `"true"` to make the widget read-only |
+| `show-new-chat-button` | `boolean` | Optional | `false` | `true` \| `false` | In kiosk mode (`mode="kiosk"`), shows a "Start new chat" button beside the message input. See [Kiosk mode: new chat button](#kiosk-new-chat-button). Has no effect outside kiosk mode | `"true"` to show the button |
 
 ### Banner Notice
 
