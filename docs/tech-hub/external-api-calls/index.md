@@ -183,7 +183,7 @@ Instructions:
 2. **Set appropriate timeouts**: Prevent requests from hanging indefinitely
 3. **Use Authentication Providers**: Never hardcode API keys in your Python code
 4. **Validate user input**: Sanitize any user input used in API calls
-5. **Store results in temp state**: Use `set_temp_state_key()` to make API data available to LLM prompts
+5. **Store results in [temporary state](../../concepts/pipelines/state.md#temporary-state)**: Use `set_temp_state_key()` to make API data available to LLM prompts
 6. **Check status codes**: Always verify the response status before processing data
 7. **Provide user feedback**: Return meaningful messages when API calls fail
 

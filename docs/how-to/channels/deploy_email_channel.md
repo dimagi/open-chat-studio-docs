@@ -27,7 +27,7 @@ Replying to a chatbot email continues the same conversation session. Sending a f
 
 ## Customizing the outbound subject
 
-When the chatbot starts a new email thread (for example, via the [Trigger bot Message](https://www.openchatstudio.com/api/v1/docs/#tag/Channels/operation/trigger_bot_message) API), the subject line defaults to "New message". To override this, set an `email_subject` value in [session state](../../tech-hub/python_node.md#session-state) before the email is sent — for example from a pipeline's Python node, or via the `session_data` parameter when triggering the chatbot. Inbound reply threads always reuse the subject of the original email and are unaffected by this value.
+When the chatbot starts a new email thread (for example, via the [Trigger bot Message](https://www.openchatstudio.com/api/v1/docs/#tag/Channels/operation/trigger_bot_message) API), the subject line defaults to "New message". To override this, set an `email_subject` value in [session state](../../concepts/pipelines/state.md#session-state) before the email is sent — for example from a pipeline's Python node, or via the `session_data` parameter when triggering the chatbot. Inbound reply threads always reuse the subject of the original email and are unaffected by this value.
 
 ## File attachments
 
@@ -35,7 +35,7 @@ The email channel supports bidirectional file attachments. For a comparison of f
 
 ### Inbound attachments (participant to chatbot)
 
-When a participant emails files to the chatbot, each attachment is saved and made available to the LLM or pipeline as a file record. Attachments behave like files uploaded through any other channel: they appear in the `attachments` list in the pipeline's [temporary state](../../tech-hub/python_node.md#attachments) and are passed to the LLM for processing.
+When a participant emails files to the chatbot, each attachment is saved and made available to the LLM or pipeline as a file record. Attachments behave like files uploaded through any other channel: they appear in the `attachments` list in the pipeline's [temporary state](../../tech-hub/python_node_state_and_attachments.md#attachments) and are passed to the LLM for processing.
 
 The following attachments are rejected automatically:
 
