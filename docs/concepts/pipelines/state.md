@@ -1,58 +1,89 @@
 # Pipeline State
 
-A pipeline is a series of separate [nodes](nodes.md), and each node receives only the output of the node before it.
+**State** is data that the nodes in a [pipeline](index.md) read and write so they can share information.
+Examples are a symptom the participant reported, how urgent a message is, or the language they speak.
+Read this page to decide where to keep each piece of data.
+
+## Why Pipelines Need State
+
+A pipeline is a series of separate [nodes](nodes.md).
+Each node receives only the output of the node before it.
 That is not enough for many chatbots.
-A router may need to know what an earlier node decided, a later message may need to know what the participant said earlier, and a prompt may need a value that no node passed along.
 
-**State** solves this.
-It is data that nodes read and write so they can share values: a flag set early in the pipeline, a count that grows over the conversation, or a choice the participant made last week.
-State is your own data. It is not the [session status](../session_status.md), which OCS sets to show how far a session has progressed.
+- A [router](router_nodes.md) may need to know what an earlier node decided.
+- A later node may need to know what the participant said earlier.
+- A prompt may need information that no node passed along.
 
-Read this page to decide where to keep a value.
-OCS has three places, and they differ in how long the value lasts:
+## Where to Keep Data
 
-| Store | Lasts for | Use it for |
-|---|---|---|
-| Temporary state | One pipeline run, which is one participant message | Passing a value from one node to a later node while the current message is processed |
-| Session state | One [session](../sessions.md) | Remembering a value across the messages of a single conversation |
-| [Participant data](../participant_data.md) | All of a participant's sessions with the chatbot | Facts about the participant that should survive a new session, such as language or name |
+OCS has three places to keep data.
+They differ in how long the data lasts.
 
-## Temporary State
+- **[Session state](#session-state)** lasts for one [session](../sessions.md).
+  Use it to remember information across all the messages of a single conversation.
+- **[Temporary state](#temporary-state)** lasts for one pipeline run, which processes one human message.
+  Use it to pass data from one node to a later node while the current human message is processed.
+- **[Participant data](../participant_data.md)** lasts across sessions with the same participant, channel and chatbot.
+  Use it for facts that should survive a new session, such as language or name.
 
-Temporary state exists for a single pipeline run.
-A new participant message starts a new run, with a fresh temporary state, so nothing carries over to the next message.
+Each place lasts longer than the one inside it:
 
-OCS fills it with the participant's message, the outputs of earlier nodes, and any attachments the participant sent.
-Nodes can add their own values.
+```mermaid
+flowchart TB
+    subgraph PD["Participant data:<br/>sessions with the same participant, channel and chatbot"]
+        subgraph SS["Session state:<br/>one session"]
+            subgraph TS["Temporary state:<br/>one human message"]
+                N["Nodes read and write data"]
+            end
+        end
+    end
+```
 
-Use temporary state for values that only matter while one message is processed, such as a classification result that a later router uses to choose a route.
+## Example: a Clinic Check-In Chatbot
+
+A chatbot checks in with patients after a clinic visit.
+It uses all three places:
+
+- **Participant data** holds the patient's preferred language.
+- **Session state** holds the symptoms reported so far in this check-in.
+- **Temporary state** holds the urgency of the current human message, either "routine" or "urgent".
+
+The data changes like this:
+
+1. In the first human message, the patient reports a symptom.
+   A node rates it "urgent" and stores that in temporary state.
+   A router reads the urgency and sends the message to the referral node.
+   The same node adds the symptom to session state.
+2. After the AI message is sent, the temporary state is discarded.
+   The reported symptom stays.
+3. In the second human message, temporary state starts empty, so a node must rate this message again.
+   The earlier symptom is still in session state, so the final summary can include both.
+4. A month later the patient starts a new check-in, which is a new session, for example after a session reset.
+   The symptom list starts empty, but the preferred language is still there.
 
 ## Session State
 
-Session state belongs to one [session](../sessions.md).
-It keeps its values from message to message until the session ends.
-A participant who starts a new session starts with empty session state.
+A new session starts with empty session state, unless you supply it.
+Session state is not shared between sessions, including parallel sessions on channels such as Web and Slack.
 
-Use session state for conversation-level progress, such as which step of a form the participant has reached.
-For information about the participant that should last beyond the session, use [participant data](../participant_data.md).
+You can supply session state when you start a chat session or trigger a chatbot message through the API, and when you [create evaluation test cases](../../how-to/evaluations/create-a-dataset.md).
 
-Session state can also be set from outside the pipeline.
-You can supply it with the `session_data` parameter when you trigger a bot message through the API, and when you [create evaluation test cases](../../how-to/evaluations/create-a-dataset.md).
+## Temporary State
+
+OCS fills temporary state with the human message, the outputs of earlier nodes, and any attachments the participant sent.
+Nothing carries over to the next human message.
 
 ## Where You Can Use State
 
-| Where | Temporary state | Session state |
-|---|---|---|
-| [Python node](nodes.md#python-node) | Read and write | Read and write |
-| [Static Router](router_nodes.md#static-router-node) | Read, to choose a route | Read, to choose a route |
-| [Prompts](../prompt_variables.md) | Insert with `{temp_state}` | Insert with `{session_state}` |
-| [Render Template and Send Email nodes](../../tech-hub/template_and_email_nodes.md) | Insert with `{{ temp_state }}` | Insert with `{{ session_state }}` |
+- **[LLM node tools](../tools/index.md#session)** read and write session state, if the session state tools are enabled.
+  They cannot use temporary state.
+- **[Prompts](../prompt_variables.md)** can insert both session state and temporary state.
+- **[Static Router](router_nodes.md#static-router-node)** reads either one to choose a route.
+- **[Render Template and Send Email nodes](../../tech-hub/template_and_email_nodes.md)** can insert both into the text they produce.
 
-Only the Python node can write state during a run.
-The other nodes read it.
+## See also
 
-## Learn More
-
+- [Python Node](../../tech-hub/python_node.md) — write code that reads and writes state.
 - [Python Node State and Attachments](../../tech-hub/python_node_state_and_attachments.md) — default keys, reserved keys, and the functions that read and write state in code.
-- [Configure a Static Router](../../how-to/routers/static_router.md) — route on a state value.
+- [Configure a Static Router](../../how-to/routers/static_router.md) — route on state data.
 - [Prompt Variables](../prompt_variables.md) — insert state into a prompt.

@@ -123,7 +123,7 @@ Increments a numeric counter stored in [participant data](../concepts/participan
 
 ### Set session state key
 
-Allows the chatbot to set a key-value pair in the [session state](../concepts/pipelines/state.md#session-state). Session state persists for the duration of the session and is useful in pipeline configurations for passing data across conversation turns.
+Allows the chatbot to set a key-value pair in the [session state](../concepts/pipelines/state.md#session-state).
 
 - Name: `set-session-state-key`
 - Arguments:

@@ -12,8 +12,8 @@ Both nodes evaluate templates against the same context dictionary. All keys list
 |-------------------------|-----------------|--------------------------------------------------------------------------------|
 | `input`                 | String          | The current input to the node                                                  |
 | `node_inputs`           | List of strings | All inputs to the node — same as `[input]` except in [parallel branches](../concepts/pipelines/parallel.md) |
-| `temp_state`            | Dict            | [Temporary state](../concepts/pipelines/state.md#temporary-state) for this pipeline run — reset on each new message              |
-| `session_state`         | Dict            | [Session state](../concepts/pipelines/state.md#session-state) for the participant's current session                               |
+| `session_state`         | Dict            | [Session state](../concepts/pipelines/state.md#session-state) for the current session                               |
+| `temp_state`            | Dict            | [Temporary state](../concepts/pipelines/state.md#temporary-state) for this pipeline run              |
 | `participant_details`   | Dict            | Contains `identifier` and `platform` for the current participant               |
 | `participant_data`      | Dict            | Persistent key-value data stored against the participant                       |
 | `participant_schedules` | List            | Scheduled messages associated with the participant                             |

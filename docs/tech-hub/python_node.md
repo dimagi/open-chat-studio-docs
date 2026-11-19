@@ -2,7 +2,7 @@
 The Python node allows the chatbot builder to execute custom Python code to perform logic, data processing, or other tasks.
 It provides the following:
 
- - [utility functions](#utility-functions) to interact with participant data and pipeline state ([temporary](python_node_state_and_attachments.md#temporary-state) and [session state](python_node_state_and_attachments.md#session-state))
+ - [utility functions](#utility-functions) to interact with participant data and pipeline state ([session](python_node_state_and_attachments.md#session-state) and [temporary state](python_node_state_and_attachments.md#temporary-state))
  - [attachments](python_node_state_and_attachments.md#attachments): file uploads of the [supported file types](python_node_state_and_attachments.md#supported-file-types)
  - ability to call [external APIs](./external-api-calls/http_client.md)
 
@@ -47,10 +47,10 @@ The Python node provides a set of utility functions that can be used to interact
 ### ::: python_node.append_to_participant_data_key
 ### ::: python_node.increment_participant_data_key
 ### ::: python_node.get_participant_schedules
-### ::: python_node.get_temp_state_key
-### ::: python_node.set_temp_state_key
 ### ::: python_node.get_session_state_key
 ### ::: python_node.set_session_state_key
+### ::: python_node.get_temp_state_key
+### ::: python_node.set_temp_state_key
 ### ::: python_node.get_selected_route
 ### ::: python_node.get_node_path
 ### ::: python_node.get_all_routes
@@ -83,5 +83,5 @@ The captured output is joined into a single string and attached to the node's tr
 
 ## State and Attachments
 
-Python node code can read and change the pipeline's [temporary state](python_node_state_and_attachments.md#temporary-state) and the participant's [session state](python_node_state_and_attachments.md#session-state), and read files the participant uploaded as [attachments](python_node_state_and_attachments.md#attachments).
+Python node code can read and change the participant's [session state](python_node_state_and_attachments.md#session-state) and the pipeline's [temporary state](python_node_state_and_attachments.md#temporary-state), and read files the participant uploaded as [attachments](python_node_state_and_attachments.md#attachments).
 See [Python Node State and Attachments](python_node_state_and_attachments.md).
