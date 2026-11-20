@@ -68,6 +68,7 @@ Remove all mannered prose before committing.
 - `/review-pr` — Launches the `documentation-pr-reviewer` agent with PR context.
 - `documentation-pr-reviewer` agent — Specialised reviewer for docs PRs.
 - `zensical-technical-writer` agent — For creating and updating non-trivial doc work.
+- `/docs-pre-review` — Finds scope creep, page-type violations and inaccurate claims on a branch before the PR is opened, and drafts the PR title and description.
 
 ## Changelog
 
