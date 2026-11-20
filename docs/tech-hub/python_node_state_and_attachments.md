@@ -12,14 +12,6 @@ For what state is and where to keep data, see [Pipeline State](../concepts/pipel
 
 Python node code reads and changes [session state](../concepts/pipelines/state.md#session-state) with the [get_session_state_key](python_node.md#python_node.get_session_state_key) and [set_session_state_key](python_node.md#python_node.set_session_state_key) utility functions. <!-- markdownlint-disable-line MD051 -->
 
-These keys are reserved and read-only.
-`set_session_state_key` raises an error if you set one of them:
-
-- `user_input`
-- `outputs`
-- `attachments`
-- `remote_context`: filled with the [context passed through the API](../concepts/prompt_variables.md#accessing-remote-context).
-
 ## Temporary State
 
 Python node code reads and changes [temporary state](../concepts/pipelines/state.md#temporary-state) with the [get_temp_state_key](python_node.md#python_node.get_temp_state_key) and [set_temp_state_key](python_node.md#python_node.set_temp_state_key) utility functions. <!-- markdownlint-disable-line MD051 -->
@@ -33,7 +25,7 @@ Temporary state contains the following keys by default. These keys can not be mo
 | `attachments` | A list of attachments passed in by the participant. See [Attachments](#attachments) |
 
 In addition to these keys, the temporary state can also contain custom keys, each with its own data.
-The Python node sets them, and the Python node and the [Static Router](../concepts/pipelines/router_nodes.md#static-router-node) read them.
+Only the Python node can set them. Other nodes can read them; see [Where You Can Use State](../concepts/pipelines/state.md#where-you-can-use-state).
 
 Here is an example of a temporary state dictionary:
 

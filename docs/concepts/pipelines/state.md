@@ -51,9 +51,10 @@ It uses all three places:
 The data changes like this:
 
 1. In the first human message, the patient reports a symptom.
-   A node rates it "urgent" and stores that in temporary state.
-   A router reads the urgency and sends the message to the referral node.
-   The same node adds the symptom to session state.
+   A Python node rates it "urgent" and stores that in temporary state.
+   A Static Router reads the urgency and sends the message to the referral branch.
+   The Python node also adds the symptom to session state.
+
 2. After the AI message is sent, the temporary state is discarded.
    The reported symptom stays.
 3. In the second human message, temporary state starts empty, so a node must rate this message again.
@@ -66,7 +67,7 @@ The data changes like this:
 A new session starts with empty session state, unless you supply it.
 Session state is not shared between sessions, including parallel sessions on channels such as Web and Slack.
 
-You can supply session state when you start a chat session or trigger a chatbot message through the API, and when you [create evaluation test cases](../../how-to/evaluations/create-a-dataset.md).
+You can supply session state through the `session_data` parameter when you start a chat session or [trigger a bot message](https://www.openchatstudio.com/api/v1/docs/#tag/Channels/operation/trigger_bot_message) through the API, and when you [create evaluation test cases](../../how-to/evaluations/create-a-dataset.md).
 
 ## Temporary State
 
@@ -76,7 +77,6 @@ Nothing carries over to the next human message.
 ## Where You Can Use State
 
 - **[LLM node tools](../tools/index.md#session)** read and write session state, if the session state tools are enabled.
-  They cannot use temporary state.
 - **[Prompts](../prompt_variables.md)** can insert both session state and temporary state.
 - **[Static Router](router_nodes.md#static-router-node)** reads either one to choose a route.
 - **[Render Template and Send Email nodes](../../tech-hub/template_and_email_nodes.md)** can insert both into the text they produce.
