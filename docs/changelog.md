@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Nov 20, 2026
+* **BUG** Fixed follow-up messages sent by events (such as a timeout nudge), manually started sessions and broadcasts being tagged with the unreleased version (`vN-unreleased`) and traced against it. These messages now use the chatbot's published version, or the working version if no version is published.
+
 ## Nov 19, 2026
 * **NEW** Added the **Attach Card (CommCare Connect)** tool, which lets chatbots send cards: small interactive HTML pages, such as charts or checklists, that the CommCare Connect app shows inline in the chat. On other channels the card arrives as an `index.html` file attachment. Inline display needs a prototype build of the Connect Android app. See [CommCare Connect cards](concepts/channels.md#commcare-connect-cards).
 
