@@ -16,7 +16,7 @@ Natural language filtering is available on the following tables:
 
 ## How to use it
 
-1. Open any supported table (for example, navigate to a chatbot's **Sessions** tab).
+1. Open any supported table, for example the **All Sessions** screen (see [Find and Review Sessions](all_sessions.md)) or a chatbot's **Sessions** tab.
 2. Locate the natural language input field at the top of the filter area.
 3. Type a plain-English description of the records you want to see. For example:
 

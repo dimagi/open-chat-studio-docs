@@ -62,7 +62,7 @@ Follow the steps for the evaluation level you chose. For how session data maps t
 !!! tip
     To pick sessions that no one has reviewed yet, set the **Annotation Queue** filter to **Not in any queue**.
     This filter is available only if your team has the human annotations feature flag.
-    See [Annotation Queues on the Sessions List](../../concepts/sessions.md#annotation-queues-on-the-sessions-list).
+    See [Filter by annotation queue](../all_sessions.md#filter-by-annotation-queue).
 
 ### Import from annotation queue
 

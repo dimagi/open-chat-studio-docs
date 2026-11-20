@@ -82,9 +82,9 @@ You can add sessions from a filterable session selector, by importing the sessio
 Sessions already in the queue are skipped.
 For the steps, see [Create an Annotation Queue and Add Sessions](../../how-to/annotations/create-a-queue.md#add-sessions-to-the-queue).
 
-Sessions already in a queue are marked on the sessions list.
+Sessions already in a queue are marked on the **All Sessions** screen.
 The **Annotation Queue** filter there can also pick out sessions that are in no queue.
-See [Annotation Queues on the Sessions List](../sessions.md#annotation-queues-on-the-sessions-list).
+See [Filter by annotation queue](../../how-to/all_sessions.md#filter-by-annotation-queue).
 
 ## Monitoring Progress
 

@@ -78,7 +78,7 @@ Example rules using the output schema from Step 3:
 | `quality_score` | `low-quality` | range `1..2` |
 
 With these rules, sessions where the goal was not met, or where quality scored 1 or 2, are tagged after each evaluation run.
-Filter the [sessions list](../../concepts/sessions.md#tags-on-the-sessions-list) by tag to follow up on them first.
+[Filter the **All Sessions** screen by tag](../find_sessions_by_tag.md) to follow up on them first.
 
 ## Step 5: Create an evaluation with auto-run turned on
 
@@ -101,7 +101,7 @@ After setup, confirm the pipeline is running end to end:
 
 1. **New sessions appear in the dataset** — once a new session matches the rule's filter, the dataset row count should increase within the [polling interval](../../tech-hub/evaluations/auto_population.md#how-ingestion-works).
 2. **Delta runs appear in the run table** — each ingestion cycle that adds new sessions should produce a corresponding delta run entry.
-3. **Tags appear on matching sessions** — if you configured tag rules, use the **Tags** filter on the [sessions list](../../concepts/sessions.md#tags-on-the-sessions-list) to check that sessions meeting the conditions are tagged.
+3. **Tags appear on matching sessions** — if you configured tag rules, use the [**Tags** filter](../find_sessions_by_tag.md) on the **All Sessions** screen to check that sessions meeting the conditions are tagged.
 
 If sessions are not appearing, verify that the [auto-population rule](../../tech-hub/evaluations/auto_population.md) is still enabled.
 

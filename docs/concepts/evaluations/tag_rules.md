@@ -7,7 +7,7 @@ For example, you could flag every session with negative sentiment, or every resp
 Your team can then go directly to the conversations that need attention instead of reviewing everything.
 
 The tags are saved on the session or message in OCS, not only in the evaluation results.
-You can filter the [sessions list](../sessions.md#tags-on-the-sessions-list) by tag at any time.
+You can [filter the **All Sessions** screen by tag](../../how-to/find_sessions_by_tag.md) at any time.
 In session mode the tags also appear in its **Tags** column.
 In message mode they appear on the message in the session view.
 

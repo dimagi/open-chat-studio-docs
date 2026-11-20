@@ -64,9 +64,9 @@ Existing results are not tagged until you run the evaluation again.
 
 See [How tag rules work](../../concepts/evaluations/tag_rules.md#how-tag-rules-work) for whether each tag is added to a message or a session.
 
-To find the tagged conversations, go to the sessions list and use the **Tags** filter.
+To find the tagged conversations, go to the **All Sessions** screen and use the **Tags** filter.
 In message mode the **Tags** column of a matching session can be empty, because the tag is on a message.
-See [Tags on the Sessions List](../../concepts/sessions.md#tags-on-the-sessions-list).
+See [Find Sessions by Tag](../find_sessions_by_tag.md).
 
 ## Common issues
 
