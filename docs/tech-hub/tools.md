@@ -123,7 +123,7 @@ Increments a numeric counter stored in [participant data](../concepts/participan
 
 ### Set session state key
 
-Allows the chatbot to set a key-value pair in the [session state](../concepts/sessions.md). Session state persists for the duration of the session and is useful in pipeline configurations for passing data across conversation turns.
+Allows the chatbot to set a key-value pair in the [session state](../concepts/pipelines/state.md#session-state).
 
 - Name: `set-session-state-key`
 - Arguments:
@@ -132,7 +132,7 @@ Allows the chatbot to set a key-value pair in the [session state](../concepts/se
 
 ### Get session state key
 
-Allows the chatbot to retrieve a value from the [session state](../concepts/sessions.md).
+Allows the chatbot to retrieve a value from the [session state](../concepts/pipelines/state.md#session-state).
 
 - Name: `get-session-state`
 - Arguments:
@@ -140,7 +140,7 @@ Allows the chatbot to retrieve a value from the [session state](../concepts/sess
 
 ### Append to session state
 
-Appends a value to [session state](../concepts/sessions.md) at a specific key. Converts any existing value to a list and appends the new value to the end.
+Appends a value to [session state](../concepts/pipelines/state.md#session-state) at a specific key. Converts any existing value to a list and appends the new value to the end.
 
 - Name: `append-to-session-state`
 - Arguments:
@@ -149,7 +149,7 @@ Appends a value to [session state](../concepts/sessions.md) at a specific key. C
 
 ### Increment session state counter
 
-Increments a numeric counter stored in [session state](../concepts/sessions.md). The counter is stored under the key `_counter_{counter_name}`.
+Increments a numeric counter stored in [session state](../concepts/pipelines/state.md#session-state). The counter is stored under the key `_counter_{counter_name}`.
 
 - Name: `increment-session-state-counter`
 - Arguments:

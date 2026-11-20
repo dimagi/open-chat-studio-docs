@@ -13,7 +13,7 @@ Each dataset row contains the following fields. Not all fields are populated for
 - **Context** (`context`): Additional metadata and context variables that can be accessed individually in evaluators (e.g. `context.topic`, `context.current_datetime`) (optional)
 - **History** (`history`): Previous conversation messages for context (optional)
 - **Participant Data** (`participant_data`): Information about the participant that can be accessed during evaluation (optional)
-- **Session State** (`session_state`): Session-specific state data that can be accessed during evaluation (optional)
+- **[Session State](../../concepts/pipelines/state.md#session-state)** (`session_state`): Session-specific state data that can be accessed during evaluation (optional)
 
 ## Cloning Field Mappings
 
@@ -76,7 +76,7 @@ An example structure:
 
 ### Dot-notation for nested fields
 
-When including [participant_data](../../concepts/participant_data.md) or [session_state](../python_node.md#session-state) in your CSV, use dot notation to specify nested keys. For example:
+When including [participant_data](../../concepts/participant_data.md) or [session_state](../../concepts/pipelines/state.md#session-state) in your CSV, use dot notation to specify nested keys. For example:
 
 - `participant_data.name` — sets the participant's name
 - `participant_data.age` — sets the participant's age

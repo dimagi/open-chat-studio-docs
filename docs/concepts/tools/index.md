@@ -66,13 +66,13 @@ Read and write data within the current session, or manage the session lifecycle.
 Data stored here is available only for the duration of the session.
 See [Sessions](../sessions.md) for more information.
 
-- **[Set session state key](../../tech-hub/tools.md#set-session-state-key)** — Stores a key-value pair (a named value) in the session state.
+- **[Set session state key](../../tech-hub/tools.md#set-session-state-key)** — Stores a key-value pair (a named value) in the [session state](../pipelines/state.md#session-state).
   It persists for the duration of the current session.
   Useful in [pipelines](../pipelines/index.md) where one part of the conversation needs to pass information to another.
-- **[Get session state key](../../tech-hub/tools.md#get-session-state-key)** — Retrieves a value previously stored in session state during the current session.
-- **[Append to session state](../../tech-hub/tools.md#append-to-session-state)** — Adds a value to a list in the session state.
+- **[Get session state key](../../tech-hub/tools.md#get-session-state-key)** — Retrieves a value previously stored in [session state](../pipelines/state.md#session-state) during the current session.
+- **[Append to session state](../../tech-hub/tools.md#append-to-session-state)** — Adds a value to a list in the [session state](../pipelines/state.md#session-state).
   Use this to track items within a single session — for example, a list of topics discussed so far.
-- **[Increment session state counter](../../tech-hub/tools.md#increment-session-state-counter)** — Increments a numeric counter stored in session state.
+- **[Increment session state counter](../../tech-hub/tools.md#increment-session-state-counter)** — Increments a numeric counter stored in [session state](../pipelines/state.md#session-state).
   Use this to count events within a single session.
 - **[End session](../../tech-hub/tools.md#end-session)** — Marks the current session as complete.
   After this, any new message from the participant will begin a fresh session.

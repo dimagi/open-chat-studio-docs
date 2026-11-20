@@ -178,6 +178,6 @@ Pipelines can call external APIs directly from a [Python node][python] using the
 [python]: ../tech-hub/python_node.md
 [router_nodes]: ../concepts/pipelines/router_nodes.md
 [prompt_vars]: ../concepts/prompt_variables.md
-[temp_state]: ../tech-hub/python_node.md#temporary-state
-[attachments]: ../tech-hub/python_node.md#attachments
-[code_node_supported_file_types]: ../tech-hub/python_node.md#supported-file-types
+[temp_state]: ../tech-hub/python_node_state_and_attachments.md#temporary-state
+[attachments]: ../tech-hub/python_node_state_and_attachments.md#attachments
+[code_node_supported_file_types]: ../tech-hub/python_node_state_and_attachments.md#supported-file-types

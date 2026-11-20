@@ -487,7 +487,7 @@ When checking response status codes:
 
 5. **Limit data size**: Be mindful of the size of data you're requesting or sending.
 
-6. **Cache when appropriate**: If making repeated requests for the same data, consider caching results in session state.
+6. **Cache when appropriate**: If making repeated requests for the same data, consider caching results in [session state](../../concepts/pipelines/state.md#session-state).
 
 ## Troubleshooting
 

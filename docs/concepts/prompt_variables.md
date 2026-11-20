@@ -15,10 +15,10 @@ The following variables are currently supported:
 - `{current_datetime}` - This refers to the date and time at which the response is generated.
 - `{media}` - (pipelines only) This refers to the linked [media collection](./collections/media_collections.md).
 - `{collection_index_summaries}` - This refers to the [indexed collections](./collections/indexed_collections/index.md).
+- `{session_state}` - (pipelines only) Access to the pipeline session state.
+  See [Session State](pipelines/state.md#session-state)
 - `{temp_state}` - (pipelines only) Access to the pipeline temporary state.
-  See [Temporary State](../tech-hub/python_node.md#temporary-state).
-- `{session_state}` - (pipelines only) Access to the session state.
-  See [Session State](../tech-hub/python_node.md#session-state)
+  See [Temporary State](pipelines/state.md#temporary-state).
 
 !!! info "Localizing injected datetime"
 
@@ -40,8 +40,8 @@ The following variables are currently supported:
 The following prompt variables allow referencing specific parts of the data:
 
 * `{participant_data}`
-* `{temp_state}`
 * `{session_state}`
+* `{temp_state}`
 
 Subsets of the data can be accessed using dot notation, which separates each level of nesting with a period.
 For example, if you have a participant data object that looks like this:
