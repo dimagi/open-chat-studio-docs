@@ -53,5 +53,6 @@ Sampling only affects new turns. Traces recorded before the change keep whatever
 ## See also
 
 - [Tracing](../concepts/tracing.md) — how builtin and Langfuse tracing work
+- [Configure Chatbot Settings](configure_chatbot_settings.md) — other settings on the chatbot **Settings** tab
 - [Teams](../concepts/team/index.md) — team-level configuration, including tracing providers
 - [Chatbots API (v2)](../api/v2/index.md) — the `trace_sample_rate` field is also available when creating or updating a chatbot through the API

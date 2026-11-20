@@ -147,13 +147,8 @@ See [Disable a channel](../how-to/channels/disable_a_channel.md) for how to turn
 
 ## Archiving a chatbot
 
-Archiving a chatbot releases the identifiers that connect it to its channels, such as a Telegram bot token.
-While the chatbot is archived, another chatbot can use those identifiers.
-
-When you un-archive the chatbot, you can choose to reconnect its channels.
-OCS skips any channel whose identifier another chatbot now uses, and it always skips Slack channels.
-To reconnect a skipped channel, free its identifier on the other chatbot if needed, then add the channel again.
-See [Deploying your chatbot to different channels](../how-to/channels/deploy_to_different_channels.md).
+Archiving a chatbot releases the identifiers that connect it to its channels, such as a Telegram bot token, so another chatbot can use them.
+See [Archive and un-archive a chatbot](../how-to/configure_chatbot_settings.md#archive-and-un-archive-a-chatbot) for the steps and for how channels are reconnected.
 
 ## See also
 

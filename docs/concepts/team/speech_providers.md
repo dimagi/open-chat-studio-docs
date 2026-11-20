@@ -96,3 +96,7 @@ MiniMax provides text-to-speech only — it does not offer speech-to-text.
 
 When you create a MiniMax provider, OCS automatically seeds its built-in MiniMax voices, so they are ready to select in your chatbots.
 Voice seeding is idempotent: saving or re-saving the provider will not create duplicate voices.
+
+## See also
+
+- [Set up voice replies](../../how-to/configure_chatbot_settings.md#set-up-voice-replies) — choose a provider, voice and response type for a chatbot

@@ -34,6 +34,7 @@ Some common elements you may want to include in a consent form are:
 
 ## See also
 
+- [Chatbot settings](chatbots/index.md#consent) — where to select a consent form and turn on conversational consent
 - [Versioning](versioning.md)
 - [Channels](channels.md)
 - [Session Status](session_status.md)

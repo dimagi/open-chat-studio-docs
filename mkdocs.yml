@@ -108,6 +108,7 @@ nav:
     - how-to/index.md
     - FAQ: how-to/faq.md
     - Building Chatbots:
+      - Configure Chatbot Settings: how-to/configure_chatbot_settings.md
       - Choose an LLM Model: how-to/choose_llm_model.md
       - Adjust LLM Node Model Parameters: how-to/adjust_llm_node_model_parameters.md
       - Add a Custom LLM Model: how-to/add_custom_llm_model.md
