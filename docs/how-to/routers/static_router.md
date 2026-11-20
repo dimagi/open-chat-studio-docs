@@ -4,11 +4,14 @@ The Static Router directs messages using specific data values already stored in 
 
 ## Supported Data Sources
 
-The router can inspect data from three primary sources:
+The router can inspect data from three places.
+You choose one with the **Data Source** setting:
 
-* [Participant Data](../../concepts/participant_data.md) - Persistent data stored with the participant (for example, language)
-* [Session State](../../concepts/pipelines/state.md#session-state) - Data stored for the current chat session
-* [Temporary State](../../concepts/pipelines/state.md#temporary-state) - Data that exists only for the current pipeline execution
+* [Participant Data](../../concepts/participant_data.md) - Lasts across sessions (for example, language)
+* [Session State](../../concepts/pipelines/state.md#session-state) - Lasts for one session
+* [Temporary State](../../concepts/pipelines/state.md#temporary-state) - Lasts for one pipeline run
+
+See [Pipeline State](../../concepts/pipelines/state.md) for when to use each.
 
 ## Configuration: Keys and Paths
 You manage your router node through the Advanced Settings.
