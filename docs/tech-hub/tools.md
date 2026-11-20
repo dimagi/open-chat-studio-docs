@@ -27,6 +27,7 @@ To instruct the model to use a specific tool, refer to it by its tool name in yo
 | [Append to session state](#append-to-session-state) | `append-to-session-state` | Appends a value to a list in session state |
 | [Increment session state counter](#increment-session-state-counter) | `increment-session-state-counter` | Increments a counter in session state |
 | [End session](#end-session) | `end-session` | Marks the current session as complete |
+| [Attach card](#attach-card) | `attach-card` | Attaches an interactive HTML card to the reply |
 
 ### LLM provider tools
 
@@ -161,6 +162,35 @@ Ends the current chat [session](../concepts/sessions.md). The session is marked 
 
 - Name: `end-session`
 - Arguments: (none)
+
+### Attach card
+
+Allows the chatbot to attach a card to its reply: one self-contained HTML page that the CommCare Connect app shows inline in the chat, with the reply text as the caption.
+On other channels the card is sent as an ordinary file attachment named `index.html`.
+See [CommCare Connect cards](../concepts/channels.md#commcare-connect-cards).
+In the tool list this tool is labelled **Attach Card (CommCare Connect)**.
+
+- Name: `attach-card`
+- Arguments:
+    - `html`: The complete, self-contained HTML document of the card.
+
+The tool attaches at most one card per reply. It rejects HTML that:
+
+- Is 2.5 MB or larger.
+- Loads anything from the network, through an `http://`, `https://` or protocol-relative (`//`) URL. XML namespace URIs, such as the SVG namespace `http://www.w3.org/2000/svg`, are allowed.
+- Uses `vh` units or `position: fixed`. The card's height is measured from its content.
+
+The tool returns each problem to the LLM so that it can fix the HTML and try again.
+These checks cannot detect a script that never finishes, so ask for small, finite scripts.
+
+#### How a card is detected
+
+The CommCare Connect channel sends a reply as a card when the reply has an attachment named exactly `index.html`.
+Detection uses only the file name, so a card attached another way, such as from a [media collection](../concepts/collections/media_collections.md) or from a [Python node](../concepts/pipelines/nodes.md#python-node) that calls [`add_file_attachment`](python_node.md#python_node.add_file_attachment), is sent the same way.
+
+Other attachments in the reply are sent with the card when their extension is one of:
+`html`, `css`, `js`, `mjs`, `json`, `txt`, `svg`, `png`, `jpg`, `jpeg`, `gif`, `webp`, `mp3`, `m4a`, `ogg`, `wav`, `mp4`, `webm`, `woff`, `woff2`, `ttf`.
+Attachments with any other extension are sent in a second, ordinary message.
 
 ## Internal tools
 

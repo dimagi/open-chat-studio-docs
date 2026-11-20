@@ -94,6 +94,28 @@ Files can come from a [media collection](collections/media_collections.md) (thro
 - Participants on an app version that cannot show attachments see this text in place of any message that has attachments:
   "Your version of the app is too old to see this message. Please update your Android app."
 
+### CommCare Connect cards
+
+A card is a small, self-contained interactive web page, such as a chart, a visual summary, or a tap-through checklist.
+The CommCare Connect app shows a card inline in the chat, with the reply text as the caption.
+
+!!! note
+    Card support in the Android app is in a prototype build.
+
+To let a chatbot send cards, add the [Attach card](../tech-hub/tools.md#attach-card) tool to an LLM node.
+Then ask the chatbot for something visual, such as a chart.
+
+- Any reply with an attachment named `index.html` is sent as a card, whichever way the file was attached.
+- Other files in the reply that the card can use, such as images and stylesheets, are sent with the card. The rest follow in a second, ordinary message.
+- On other channels, the card arrives as an ordinary file attachment named `index.html`.
+- Participants on an app version that cannot show cards see this text in its place:
+  "This message contains a card that your version of the app cannot show. Please update your Android app."
+
+The transcript view lists attachments and lets users download them, so you can inspect a sent card there.
+Downloads are served as files, so the card's HTML never runs on the Open Chat Studio site.
+
+See [Attach card](../tech-hub/tools.md#attach-card) in the Tools Reference for the file types sent with a card and the limits on card HTML.
+
 ## Disabling a channel
 
 Every linked channel has an **Enabled** toggle.
