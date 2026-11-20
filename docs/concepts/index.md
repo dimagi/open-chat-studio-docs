@@ -56,9 +56,16 @@ They let your chatbot look up information or complete tasks, such as checking an
 OCS fetches the content and keeps it in sync.
 The chatbot then answers from current documentation without you re-uploading files.
 
+[Evaluation Dataset](evaluations/dataset.md)
+: A collection of test cases that evaluators score.
+Each row is a message pair or a session, depending on the dataset's evaluation level.
+
 [Evaluations](evaluations/index.md)
-: A built-in testing system that runs your chatbot against sample conversations.
-It scores the responses against criteria you define, such as accuracy, tone, or staying on topic.
+: A built-in testing system that scores your chatbot's individual responses or whole conversations.
+It checks them against criteria you define, such as accuracy, tone, or staying on topic.
+
+[Evaluator](evaluations/evaluators.md)
+: Scores each row of a dataset against criteria you define, using an LLM prompt or Python code.  
 
 [Events](events.md)
 : Automated actions that fire when something happens in a chatbot session, after a period of inactivity, or at a scheduled date and time.
@@ -77,6 +84,11 @@ OCS lets you choose from a range of models and configure how they behave.
 
 [LLM Service Provider](team/llm_providers.md)
 : The account you configure with an LLM service — such as OpenAI, Anthropic, or Google — so your chatbots can use its models.
+
+[Message](sessions.md#messages)
+: One piece of content sent in a conversation, either a human message from the participant or an AI message from the chatbot.
+A Human/AI message pair is a human message together with the AI message that answers it.
+A conversation is built from these messages, one after another.
 
 [Messaging Provider](team/messaging_providers.md)
 : A provider account you configure for a messaging service, such as Twilio, Turn.io, or Slack.
@@ -134,7 +146,7 @@ Each team has its own chatbots, data, and settings.
 Examples include scheduling reminders, performing calculations, and remembering information about a participant across sessions.
 
 [Tracing](tracing.md)
-: A record of every conversation turn showing what the chatbot received, what it returned, and how long it took.
+: A record of each time the chatbot responds to a message, showing what it received, what it returned, and how long it took.
 Use it to understand and debug unexpected chatbot behavior.
 
 [Versions](versioning.md)

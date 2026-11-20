@@ -80,7 +80,7 @@ The seven variables appear in the evaluator form's hints and autocomplete.
 
 - If a generation fails part-way, the record still includes the calls captured before the error.
 - Tools that return a LangGraph `Command`, such as the participant-data and session-state tools, record their tool message as the output.
-- An LLM turn that only requests tools has an empty `output`.
+- An LLM call that only requests tools has an empty `output`.
   The tool call appears in `{generation.tool_calls}`.
 - Calls made outside any node, such as replies for interrupts and errors, are not in the record.
 - A node that LangGraph retries is recorded once per attempt.

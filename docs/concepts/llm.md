@@ -40,7 +40,7 @@ Every AI model has a maximum token limit — also called its **context window**.
 Max Token Limit is a fixed property of the model.
 It is shown as **Context** for each model on the **Models** tab of a [provider's edit page](team/llm_providers.md#provider-edit-page-tabs).
 
-The context window is the total number of tokens the model can work with in one turn.
+The context window is the total number of tokens the model can work with in a single request.
 Your prompt, the conversation history, and the model's reply all share the same budget.
 When the budget runs out, the request may be truncated or fail.
 See [Conversation History](pipelines/history.md) for how nodes limit the history they send.

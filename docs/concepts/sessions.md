@@ -1,9 +1,9 @@
-# Chat Sessions
+# Sessions
 
 ## Overview
 
-Chat sessions in Open Chat Studio define the scope of conversations between a participant and a chatbot within a specific channel.
-Sessions are isolated, which keeps data private and preserves context for the duration of an interaction.
+In OCS, a session is a conversation thread between a participant and your chatbot on a specific channel.
+Sessions are isolated, which keeps data private and preserves context for the duration of a conversation.
 
 ## Session Scope
 
@@ -23,6 +23,10 @@ Each session is independent, meaning:
 
 Every session has a status that tracks the progress of the conversation.
 See [Session Status](session_status.md).
+
+## Messages
+
+A **message** is one piece of content within a [session](#overview): a human message from the participant, or an AI message from the chatbot.
 
 ## History Management
 
@@ -90,7 +94,7 @@ To find sessions by tag, use the **Tags** filter.
 It matches sessions that carry the tag on the session itself or on any of the messages in the session.
 
 Tags come from people, pipeline nodes and [tag rules](evaluations/tag_rules.md), which tag sessions or messages automatically when an LLM evaluator's output meets a condition.
-For example, filter by a `goal-not-met` tag to review only the sessions an evaluation flagged, instead of reading every result.
+For example, filter by a `goal-not-met` tag to review only the sessions an evaluation tagged, instead of reading every result.
 
 ## See also
 
