@@ -102,35 +102,19 @@ The CommCare Connect app shows a card inline in the chat, with the reply text as
 !!! note
     Card support in the Android app is in a prototype build.
 
-To let a chatbot send cards, add the [Attach Card (CommCare Connect)](tools/index.md#attach-card-commcare-connect) tool to an LLM node.
+To let a chatbot send cards, add the [Attach card](../tech-hub/tools.md#attach-card) tool to an LLM node.
 Then ask the chatbot for something visual, such as a chart.
 
-#### How a card is detected
+- Any reply with an attachment named `index.html` is sent as a card, whichever way the file was attached.
+- Other files in the reply that the card can use, such as images and stylesheets, are sent with the card. The rest follow in a second, ordinary message.
+- On other channels, the card arrives as an ordinary file attachment named `index.html`.
+- Participants on an app version that cannot show cards see this text in its place:
+  "This message contains a card that your version of the app cannot show. Please update your Android app."
 
-Open Chat Studio treats a reply as a card when it has an attachment named exactly `index.html`.
-Detection uses only the file name, so a card attached any other way is sent the same way.
-This includes a card from a media collection or from a Python node that calls `add_file_attachment`.
+The transcript view lists attachments and lets users download them, so you can inspect a sent card there.
+Downloads are served as files, so the card's HTML never runs on the Open Chat Studio site.
 
-- Attachments whose file types the app can serve to a card are sent with the card.
-- Any other attachments follow in a second, normal message.
-- On channels other than CommCare Connect, the card arrives as an ordinary HTML file attachment named `index.html`.
-
-#### Limits on card HTML
-
-The tool accepts one self-contained HTML document per card, and at most one card per reply.
-The tool rejects HTML that:
-
-- Is over the size limit.
-- Loads resources from the network. W3C namespace URIs, such as the SVG namespace, are allowed.
-- Uses `vh` units or `position: fixed`.
-
-The tool returns each problem to the LLM so that it can fix the HTML.
-These checks cannot catch a script that hangs.
-
-#### Inspecting a sent card
-
-Downloads of the HTML from Open Chat Studio are served as file downloads, so the HTML never runs on the Open Chat Studio domain.
-The transcript view lists attachments and lets staff download them, so you can inspect a sent card there.
+See [Attach card](../tech-hub/tools.md#attach-card) in the Tools Reference for the file types sent with a card and the limits on card HTML.
 
 ## Disabling a channel
 
