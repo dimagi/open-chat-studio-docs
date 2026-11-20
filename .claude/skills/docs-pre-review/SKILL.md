@@ -30,10 +30,12 @@ Identify:
 
 Check for:
  - **Scope Creep**: changes unrelated to the main theme.
- - **Large PR**: more than 7 files changed, or more than 2 new pages.
+ - **Large PR**: more than 7 changed files under `docs/` or more than 2 new pages. Exclude `docs/api/` and image assets from the count.
  - **Page-type contract**: using `.claude/checklists/page-type-contract.md` to identify if pages are not following contract.
- - **Inaccuracy**: of user-facing features against the OCS source code: https://github.com/dimagi/open-chat-studio. If you cannot check a claim against the source, list it as unverified in the report. Do not guess.
- - **Quality**: using `.claude/checklists/doc-self-review.md`.
+ - **Inaccuracy**: claims about user-facing features that the branch adds or changes, checked against the OCS source code at https://github.com/dimagi/open-chat-studio (use `gh api` or WebFetch on `raw.githubusercontent.com`). If you cannot check a claim against the source, list it as unverified in the report. Do not guess.
+ - **Consistency**: for each feature the branch adds or changes, compare its description on every changed page against the changelog entries for that feature (`docs/changelog.md`, `docs/chat_widget/changelog.md`). Flag differences in behavior, naming, defaults or availability. Report the conflict without deciding which side is right. Flag a new feature that has no changelog entry.
+ - **Duplication**: content that repeats another existing page. Search `docs/` for the same topic, and recommend merging or linking.
+ - **Quality**: using `.claude/checklists/doc-self-review.md`, skipping the items already covered by **Page-type contract** and **Duplication**.
  - **Commits**: clear messages, logical history, squash/fixup candidates.
 
  Only report feedback that is noteworthy and actionable.
