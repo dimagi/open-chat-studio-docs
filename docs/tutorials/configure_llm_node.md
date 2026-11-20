@@ -83,7 +83,7 @@ For example, tag the replies of a node that handles billing questions with `bill
 2. Enter the tag, up to 100 characters.
 
 Every reply from this node now carries the tag.
-To see it, open a [session list](../concepts/sessions.md#tags-on-the-sessions-list).
+To see it, open a session's [**Session Transcript**](../how-to/all_sessions.md#open-a-session-transcript).
 
 See [Tags](../concepts/tags.md) for the other ways tags are added.
 

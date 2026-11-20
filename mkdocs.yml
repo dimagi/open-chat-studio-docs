@@ -137,6 +137,8 @@ nav:
       - Filter Tables with Natural Language: how-to/nl_filter.md
       - Find Objects: how-to/global_search.md
     - Sessions & Data:
+      - Find and Review Sessions: how-to/all_sessions.md
+      - Find Sessions by Tag: how-to/find_sessions_by_tag.md
       - Reset Sessions: how-to/reset_sessions.md
       - Download Team Files: how-to/download_team_files.md
     - Monitoring & Debugging:
