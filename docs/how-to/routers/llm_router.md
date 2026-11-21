@@ -46,4 +46,4 @@ You can choose a cheaper model if the complexity of classification of the messag
 
 ## Route Tagging
 
-See [Route Tagging details](index.md#route-tagging-observability)
+See [Tag a Router's Route](tag_router_routes.md).

@@ -76,7 +76,7 @@ See [Prompt variables](../concepts/prompt_variables.md) for the full list of sup
 
 ## Step 5: Add a message tag (optional)
 
-A [message tag](../concepts/tags.md#message-tags) labels the reply this node sends, so you can find and review those messages later.
+A [message tag](../concepts/tags.md#message-tags-and-session-tags) labels the reply this node sends, so you can find and review those messages later.
 For example, tag the replies of a node that handles billing questions with `billing`.
 
 1. In the LLM node settings, find the **Message Tag** field.
