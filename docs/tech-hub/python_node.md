@@ -2,9 +2,9 @@
 The Python node allows the chatbot builder to execute custom Python code to perform logic, data processing, or other tasks.
 It provides the following:
 
- - [utility functions](#utility-functions) to interact with participant data and pipeline state ([session](python_node_state_and_attachments.md#session-state) and [temporary state](python_node_state_and_attachments.md#temporary-state))
- - [attachments](python_node_state_and_attachments.md#attachments): file uploads of the [supported file types](python_node_state_and_attachments.md#supported-file-types)
- - ability to call [external APIs](./external-api-calls/http_client.md)
+- [utility functions](#utility-functions) to interact with participant data and pipeline state ([session](python_node_state_and_attachments.md#session-state) and [temporary state](python_node_state_and_attachments.md#temporary-state))
+- [attachments](python_node_state_and_attachments.md#attachments): file uploads of the [supported file types](python_node_state_and_attachments.md#supported-file-types)
+- ability to call [external APIs](./external-api-calls/http_client.md)
 
 ## The Code
 
@@ -80,6 +80,10 @@ def main(input, **kwargs) -> str:
 ```
 
 The captured output is joined into a single string and attached to the node's trace entry. This is useful for inspecting intermediate values without affecting the node's return value.
+
+## HTTP Client
+
+The Python node provides an `http` global that enables secure HTTP requests to external APIs. See the [HTTP Client](./external-api-calls/http_client.md) page for full documentation.
 
 ## State and Attachments
 

@@ -16,7 +16,7 @@ The following variables are currently supported:
 - `{media}` - (pipelines only) This refers to the linked [media collection](./collections/media_collections.md).
 - `{collection_index_summaries}` - This refers to the [indexed collections](./collections/indexed_collections/index.md).
 - `{session_state}` - (pipelines only) Access to the pipeline session state.
-  See [Session State](pipelines/state.md#session-state)
+  See [Session State](pipelines/state.md#session-state).
 - `{temp_state}` - (pipelines only) Access to the pipeline temporary state.
   See [Temporary State](pipelines/state.md#temporary-state).
 

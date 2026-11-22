@@ -54,7 +54,6 @@ The data changes like this:
    A Python node rates it "urgent" and stores that in temporary state.
    A Static Router reads the urgency and sends the message to the referral branch.
    The Python node also adds the symptom to session state.
-
 2. After the AI message is sent, the temporary state is discarded.
    The reported symptom stays.
 3. In the second human message, temporary state starts empty, so a node must rate this message again.
@@ -67,7 +66,8 @@ The data changes like this:
 A new session starts with empty session state, unless you supply it.
 Session state is not shared between sessions, including parallel sessions on channels such as Web and Slack.
 
-You can supply session state through the `session_data` parameter when you start a chat session or [trigger a bot message](https://www.openchatstudio.com/api/v1/docs/#tag/Channels/operation/trigger_bot_message) through the API, and when you [create evaluation test cases](../../how-to/evaluations/create-a-dataset.md).
+You can supply session state when you start a session through the API, and when you [create evaluation test cases](../../how-to/evaluations/create-a-dataset.md).
+For the API parameter, see [Python Node State and Attachments](../../tech-hub/python_node_state_and_attachments.md#session-state).
 
 ## Temporary State
 

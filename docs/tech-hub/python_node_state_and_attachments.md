@@ -4,19 +4,17 @@ This page covers how [Python node](python_node.md) code works with [pipeline sta
 Read it when you need the default and reserved keys, the functions that read and write state, or how to read the contents of an attachment.
 For what state is and where to keep data, see [Pipeline State](../concepts/pipelines/state.md).
 
-- [Session state](#session-state): the functions that read and write it.
-- [Temporary state](#temporary-state): default keys and an example of the state dictionary.
-- [Attachments](#attachments): the fields on an attachment, and how to read its contents with `read_text()` or `read_bytes()`.
-
 ## Session State
 
 Python node code reads and changes [session state](../concepts/pipelines/state.md#session-state) with the [get_session_state_key](python_node.md#python_node.get_session_state_key) and [set_session_state_key](python_node.md#python_node.set_session_state_key) utility functions. <!-- markdownlint-disable-line MD051 -->
+
+To supply session state from outside the pipeline, pass the `session_data` parameter when you start a chat session or [trigger a bot message](https://www.openchatstudio.com/api/v1/docs/#tag/Channels/operation/trigger_bot_message) through the API.
 
 ## Temporary State
 
 Python node code reads and changes [temporary state](../concepts/pipelines/state.md#temporary-state) with the [get_temp_state_key](python_node.md#python_node.get_temp_state_key) and [set_temp_state_key](python_node.md#python_node.set_temp_state_key) utility functions. <!-- markdownlint-disable-line MD051 -->
 
-Temporary state contains the following keys by default. These keys can not be modified or deleted:
+Temporary state contains the following keys by default. These keys cannot be modified or deleted:
 
 | Key           | Description                                                                  |
 |---------------|------------------------------------------------------------------------------|
@@ -70,6 +68,7 @@ content = attachment.read_text()
 ```
 
 ### Supported File Types
+
 The Python node currently only supports reading the contents of the following file types:
 
 - Text-based formats (TXT, CSV, HTML, JSON, XML, etc.)
