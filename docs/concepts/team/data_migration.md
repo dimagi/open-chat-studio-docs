@@ -17,16 +17,37 @@ See [Migrate a Team to Another OCS Instance](../../tech-hub/migrate_team.md) for
 
 ## Deleting a team
 
-Team Admins can permanently delete a team from the **Danger Zone** card, which contains the **Delete Team** action.
-Deletion is a cascade delete: removing the team also removes everything that belongs to it.
+Team Admins can delete a team from the **Danger Zone** card, which contains the **Delete Team** action.
+The team is disabled immediately and permanently deleted after a 30-day grace period.
+Permanent deletion removes everything that belongs to the team, including its traces, evaluation messages, event actions, and its remote OpenAI vector stores and uploaded files (best effort).
 
 To prevent accidental deletion, OCS asks the Team Admin to confirm by typing the team's name (not its slug).
-The Team Admin also chooses an email address to notify when deletion finishes.
-Deletion runs in the background, so this email is the only indication that it has completed.
+The Team Admin also chooses an email address to notify.
+That address receives an email when the deletion is scheduled and another when it completes.
+
+### While deletion is pending
+
+- **Pages:** Team members see a "scheduled for deletion" page.
+  People outside the team see the team as nonexistent.
+- **Chatbots:** Chatbots stop responding on every channel and send no reply, even if the channel has a "disabled" message configured.
+- **API:** Every API request for the team, including the export API, is refused with a 403 error.
+- **Background work:** Scheduled messages, evaluations, dataset auto-population, document sync, and custom action health checks are paused.
+- **Team switcher:** The team appears as "(pending deletion)".
+- **Invitations and OAuth:** Invitations to the team return a 404 error, and the OAuth authorize page does not offer the team.
+
+### Cancel a deletion
+
+A Team Admin or superuser can cancel the deletion during the grace period.
+On the pending deletion page, select **Cancel deletion and restore team**.
+OCS restores the team as it was before deletion was scheduled.
 
 !!! warning
-    Deleting a team cannot be undone.
-    To keep a copy of the team's files, [download them](#downloading-team-files) before deleting.
+    After the grace period ends, deletion cannot be undone.
+    To keep a copy of the team's files, [download them](#downloading-team-files) before deleting the team. Exports are not available while deletion is pending.
+
+!!! note "Self-hosted operators"
+    Set the grace period with the `TEAM_DELETION_GRACE_PERIOD_DAYS` setting (default 30).
+    A daily Celery beat task performs the final deletion, so Celery beat must be running for deletions to complete.
 
 ## See also
 
