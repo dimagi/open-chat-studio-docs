@@ -39,6 +39,7 @@ Simplified per-tag references for LLM consumption:
 | GET | `/api/export/collections/` | Collections |
 | GET | `/api/export/consent_forms/` | Consent Forms |
 | GET | `/api/export/custom_action_operations/` | Custom Action Operations |
+| GET | `/api/export/custom_action_requests/` | Custom Action Requests |
 | GET | `/api/export/custom_actions/` | Custom Actions |
 | GET | `/api/export/custom_tagged_items/` | Custom Tagged Items |
 | GET | `/api/export/dataset_auto_population_rules/` | Dataset Auto Population Rules |

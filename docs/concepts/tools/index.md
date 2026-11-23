@@ -84,6 +84,14 @@ See [Sessions](../sessions.md) for more information.
 - **[Calculator](../../tech-hub/tools.md#calculator)** — Performs reliable mathematical calculations.
   Use this when your chatbot needs to compute values accurately rather than relying on the language model's estimation.
 
+### Cards
+
+- **[Attach card](../../tech-hub/tools.md#attach-card)** — Lets the LLM write a card: a small, self-contained interactive HTML page, such as a chart or a tap-through checklist.
+  The tool appears in the tool list as **Attach Card (CommCare Connect)**.
+  On the CommCare Connect channel, the app shows the card inline in the chat, with the reply text as the caption.
+  On other channels, the card arrives as an HTML file attachment named `index.html`.
+  See [CommCare Connect cards](../channels.md#commcare-connect-cards).
+
 ## LLM provider tools
 
 Some [LLM providers](../team/llm_providers.md) offer their own built-in tools — such as web search or code execution — that run inside the provider's infrastructure.

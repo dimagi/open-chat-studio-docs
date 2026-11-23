@@ -11,12 +11,24 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Nov 20, 2026
+* **BUG** Fixed follow-up messages sent by events (such as a timeout nudge), manually started sessions and broadcasts being tagged with the unreleased version (`vN-unreleased`) and traced against it. These messages now use the chatbot's published version, or the working version if no version is published.
+
+## Nov 19, 2026
+* **NEW** Added the **Attach Card (CommCare Connect)** tool, which lets chatbots send cards: small interactive HTML pages, such as charts or checklists, that the CommCare Connect app shows inline in the chat. On other channels the card arrives as an `index.html` file attachment. Inline display needs a prototype build of the Connect Android app. See [CommCare Connect cards](concepts/channels.md#commcare-connect-cards).
+
+## Nov 18, 2026
+* **NEW** Added support for OpenAI's **gpt-6.2-astra** and **gpt-6.2-sol** models on OpenAI and Azure OpenAI. Both have a 1,050,000-token context window.
+* **CHANGE** Removed MiniMax's `MiniMax-M2.7` model, which MiniMax retired on Nov 18, 2026. Chatbots, pipelines and evaluators using it were switched to MiniMax-M3 automatically, and affected teams were notified. See [Model Lifecycle and Deprecation](concepts/team/llm_providers.md#model-lifecycle-and-deprecation).
+* **BUG** Fixed a server error when uploading chat files with long names that contain several dots, such as `V.R_Valid_..._1787295174.xlsm`. The original file name is still shown to users.
+
 ## Nov 10, 2026
 * **NEW** Added Google Docs as a document source for indexed collections. Google Docs sources connect through an OAuth Authorization Code authentication provider, index document tabs, paragraphs, lists and tables, and re-sync when a document's content or title changes. See [Google Docs document sources](tech-hub/collections/document_sources.md#google-docs).
 * **NEW** Added support for Anthropic's **Claude Fable 5.2** and MiniMax's **MiniMax-M3.1-Flash** models, which can now be selected in chatbots and pipelines. Both have a 1,000,000-token context window. Reasoning effort can't be set for MiniMax-M3.1-Flash, so it runs at MiniMax's default effort of `max`.
 
 ## Nov 5, 2026
 * **CHANGE** Archiving a chatbot now also archives its pipeline, and un-archiving the chatbot restores it. A pipeline that another live chatbot uses, or that a static trigger starts, stays live. The pipeline builder of an archived chatbot opens read-only. See [Archiving a chatbot](concepts/channels.md#archiving-a-chatbot).
+* **CHANGE** The embed code for the chat widget now uses widget version 0.14.0, which adds a dark theme, lets participants download files the chatbot attaches to a message, and shows a generic send error to blocked participants instead of ending the session. Embedded-widget channels on an older version show an update badge, and teams with these channels receive an in-app notification about the release. Existing embeds keep the light theme. See the [Chat Widget changelog](chat_widget/changelog.md).
 
 ## Nov 4, 2026
 * **BUG** Custom Action health-check alerts and deprecated or removed model notices no longer include archived chatbots. Hourly health checks now run only for Custom Actions used by a chatbot that is not archived. Manual checks still run for any Custom Action, but the team is notified of a failure only if a chatbot that is not archived uses the action. Model notices no longer list the pipeline of an archived chatbot as a standalone pipeline. See [Custom Action Health Monitoring](tech-hub/custom_action/health_custom_action.md).
