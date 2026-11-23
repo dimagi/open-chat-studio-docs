@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Nov 23, 2026
+* **NEW** The trace detail page now has a **Custom Action Requests** section listing each HTTP request a Custom Action made during the turn, with its status, method, URL, duration, and the request and response headers and bodies. Credentials are shown as `[REDACTED]`, including when an API echoes them back. Teams with a Langfuse provider also see each request as a `custom_action_request` event on the tool span. See [Custom Action Requests](concepts/tracing.md#custom-action-requests).
+
 ## Nov 20, 2026
 * **BUG** Fixed follow-up messages sent by events (such as a timeout nudge), manually started sessions and broadcasts being tagged with the unreleased version (`vN-unreleased`) and traced against it. These messages now use the chatbot's published version, or the working version if no version is published.
 
