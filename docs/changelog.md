@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Nov 23, 2026
+* **CHANGE** Deleting a team now disables it straight away and permanently deletes it 30 days later. While deletion is pending, members see a "scheduled for deletion" page, chatbots stop replying on every channel, API requests are refused, and scheduled messages, evaluations and document syncs are paused. A Team Admin can cancel the deletion from the pending page to restore the team. See [Deleting a team](concepts/team/data_migration.md#deleting-a-team).
+
 ## Nov 20, 2026
 * **BUG** Fixed follow-up messages sent by events (such as a timeout nudge), manually started sessions and broadcasts being tagged with the unreleased version (`vN-unreleased`) and traced against it. These messages now use the chatbot's published version, or the working version if no version is published.
 
