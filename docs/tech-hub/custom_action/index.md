@@ -81,7 +81,7 @@ Failure notifications report calls made by chatbots. To monitor whether the serv
 
 ## Inspecting requests
 
-To debug a call, open the trace for the bot message.
+To debug a call, open the trace for the chatbot message.
 The **Custom Action Requests** section lists each HTTP request the action made, with redacted headers and bodies.
 See [Custom Action requests](../../concepts/tracing.md#custom-action-requests).
 

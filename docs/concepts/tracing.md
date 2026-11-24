@@ -78,7 +78,7 @@ The AI response row shows it at the end of the trace.
 The trace detail page includes a **Custom Action Requests** section.
 It lists every HTTP request that a [Custom Action](../tech-hub/custom_action/index.md) made during the turn.
 Use it to debug a Custom Action that returns errors or unexpected data.
-You can open the trace from the trace link on a bot message in a session.
+You can open the trace from the trace link on a chatbot message in a session.
 
 Each request shows:
 
@@ -104,7 +104,7 @@ Credentials are never stored in the request log:
 
 - Headers added by the Custom Action's [authentication provider](team/authentication_providers.md) show as `[REDACTED]`.
 - Any header whose name looks like a credential, such as cookies, API keys, and tokens, also shows as `[REDACTED]`.
-- The authentication provider's credential is removed from the URL, the request and response bodies, and the error text.
+- The authentication provider's credential is replaced with `[REDACTED]` in the URL, the request and response bodies, and the error text.
   An API that echoes the token back does not expose it.
 
 #### Limits
