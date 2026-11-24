@@ -177,6 +177,7 @@ nav:
         - concepts/versioning.md
         - concepts/tags.md
         - concepts/tracing.md
+        - Langfuse Tracing: concepts/langfuse_tracing.md
         - concepts/notifications.md
     - Pipelines:
       - concepts/pipelines/index.md

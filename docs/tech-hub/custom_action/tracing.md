@@ -42,7 +42,7 @@ Open Chat Studio redacts the credentials that the Custom Action's authentication
 
 ## Langfuse events
 
-If your team has a [Langfuse tracing provider](../../concepts/tracing.md#langfuse-external-tracing), each request is also sent to Langfuse as a `custom_action_request` event on the tool span.
+If your team has a [Langfuse tracing provider](../../concepts/langfuse_tracing.md), each request is also sent to Langfuse as a `custom_action_request` event on the tool span.
 The event contains the same redacted record shown on the trace detail page.
 
 ## See also

@@ -3,10 +3,9 @@
 Tracing records what a chatbot did on each conversation turn.
 Chatbot developers use traces to find out why a chatbot gave a particular answer and to debug turns that went wrong.
 
-Open Chat Studio (OCS) records a trace for every turn, with no setup.
+Open Chat Studio records a trace for every turn, with no setup.
 These docs call this builtin tracing; it is not a setting you turn on.
-
-For more detail inside a turn, you can also connect an external provider (see [Langfuse External Tracing](#langfuse-external-tracing)).
+For more detail inside a turn, you can also connect an external provider (see [Langfuse Tracing](langfuse_tracing.md)).
 
 ## Builtin Tracing
 
@@ -19,6 +18,9 @@ Each trace captures:
 - Participant data changes — what the turn added, removed, or modified
 - Performance metrics — LLM usage for the turn
 - [Custom Action requests](#custom-action-requests) — the HTTP requests a Custom Action made
+
+Builtin tracing does not record individual LLM calls, other tool calls, or retrieval steps.
+To see those, use [Langfuse Tracing](langfuse_tracing.md).
 
 ### Traces List
 
@@ -59,41 +61,10 @@ The section is hidden when nothing changed.
 The trace detail page lists the HTTP requests a [Custom Action](../tech-hub/custom_action/index.md) made, so you can debug one that returns errors or unexpected data.
 See [Custom Action Tracing](../tech-hub/custom_action/tracing.md).
 
-## Langfuse External Tracing
-
-Builtin tracing records top-level information and Custom Action requests only.
-It does not include individual LLM calls, other tool calls, or retrieval steps.
-Each of those steps is a span, one step within a trace.
-
-[Langfuse][langfuse] is an optional external tracing provider that records spans.
-When Langfuse is configured for a chatbot, OCS sends detailed trace data to Langfuse and adds span-level information to the trace detail page.
-
-Tracing begins automatically with the next conversation after you configure a Langfuse provider.
-
-### Spans on the trace detail page
-
-With Langfuse configured, the trace detail page adds a **Langfuse Trace** panel and a **View in Langfuse** link to the same trace in Langfuse.
-The panel lists every span in the turn on the left.
-Select a span to see its input and output on the right, as readable text or raw JSON.
-It opens on the first span with an error, or on the first span if none has an error, so the likely cause is visible first.
-
-If a trace has no Langfuse data, or Langfuse can't be reached, the page says so and the rest of the page still works.
-
-### Trace Sampling
-
-A high-traffic chatbot can send a lot of trace volume to Langfuse.
-Trace sampling sends only a fraction of turns, set as a sample rate from `0.0` to `1.0`.
-For example, `0.1` sends roughly 1 in 10 turns.
-Set a team-wide rate on the Langfuse provider (**Sample Rate**), and override it for one chatbot in its settings (**Trace sample rate**).
-Builtin tracing still records every turn, because sampling only affects what is sent to Langfuse.
-
-For the steps, see [Configure Langfuse Trace Sampling](../how-to/configure_langfuse_trace_sampling.md).
-
 ## See also
 
+- [Langfuse Tracing](langfuse_tracing.md)
 - [Configure Langfuse Trace Sampling](../how-to/configure_langfuse_trace_sampling.md)
 - [Sessions](sessions.md)
 - [Participant Data](participant_data.md)
 - [Notifications](notifications.md)
-
-[langfuse]: https://langfuse.com/docs
