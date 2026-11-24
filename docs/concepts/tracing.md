@@ -51,12 +51,10 @@ If no participant data changed during the turn, this section is not shown.
 
 The top of the trace detail page shows summary cards with resource usage for each pipeline execution:
 
-| Card | Description |
-|--------|-------------|
-| **Total latency** | How long the turn took, with the trace status |
-| **Tokens** | Total tokens used, split into input (prompt) and output (completion) tokens, with a breakdown per model |
-| **LLM turns** | Number of LLM calls made during the turn |
-| **Tool calls** | Number of individual tool invocations (each call counted separately) |
+- **Total latency**: how long the turn took, with the trace status.
+- **Tokens**: total tokens used, split into input (prompt) and output (completion) tokens, with a breakdown per model.
+- **LLM turns**: the number of LLM calls made during the turn.
+- **Tool calls**: the number of individual tool invocations, with each call counted separately.
 
 Metrics are collected across all [LLM nodes](pipelines/nodes.md#llm-node) and [LLM router nodes](pipelines/router_nodes.md#llm-router-node) in the [pipeline](pipelines/index.md).
 Pipelines that contain neither an LLM node nor an LLM router node display "—" for all metrics.
@@ -69,53 +67,17 @@ For each conversation turn, the input message row shows the participant data at 
 The AI response row shows it at the end of the trace.
 
 !!! note
-    Builtin tracing records top-level information only, plus [custom action requests](#custom-action-requests).
+    Builtin tracing records top-level information only, plus [Custom Action requests](#custom-action-requests).
     It does not include span-level detail, such as individual LLM calls, other tool calls, and retrieval steps.
     To see spans, configure a [Langfuse](#langfuse-external-tracing) provider.
 
 ### Custom Action Requests
 
-The trace detail page includes a **Custom Action Requests** section.
-It lists every HTTP request that a [Custom Action](../tech-hub/custom_action/index.md) made during the turn.
+When a chatbot calls a [Custom Action](../tech-hub/custom_action/index.md), the trace detail page lists the HTTP requests it made in a **Custom Action Requests** section.
 Use it to debug a Custom Action that returns errors or unexpected data.
-You can open the trace from the trace link on a chatbot message in a session.
+Credentials are redacted.
 
-Each request shows:
-
-- The response status
-- The HTTP method and URL
-- The duration
-- The Custom Action and operation that made the request
-
-Expand a request to see its request and response headers and bodies.
-If the call failed, the expanded request also shows the error.
-
-Open Chat Studio logs every attempt as a separate request.
-This includes retries after a `429` (too many requests) response, and transport errors that produced no response.
-A request whose response returned `200` but whose body could not be read is marked as failed.
-Requests from a turn that failed are kept.
-
-The section is hidden when the trace has no Custom Action requests.
-If you delete a Custom Action later, its requests stay on the trace page with a fallback label in place of the action name.
-
-#### Credential redaction
-
-Credentials are never stored in the request log:
-
-- Headers added by the Custom Action's [authentication provider](team/authentication_providers.md) show as `[REDACTED]`.
-- Any header whose name looks like a credential, such as cookies, API keys, and tokens, also shows as `[REDACTED]`.
-- The authentication provider's credential is replaced with `[REDACTED]` in the URL, the request and response bodies, and the error text.
-  An API that echoes the token back does not expose it.
-
-#### Limits
-
-- Bodies longer than 10,000 characters are truncated.
-- Attachment downloads are not logged.
-
-#### Langfuse events
-
-If your team has a Langfuse tracing provider, each request is also sent to Langfuse as a `custom_action_request` event on the tool span.
-The event contains the same redacted record shown on the trace detail page.
+For what each request shows, how credentials are redacted, and limits, see [Custom Action Tracing](../tech-hub/custom_action/tracing.md).
 
 ## Langfuse External Tracing
 
