@@ -16,13 +16,13 @@ A trace's detail page shows:
 - Token usage, LLM calls, and tool calls — what the turn used and where, so you can find expensive or looping turns.
 - Session and participant data — their state at the time of the turn, so you can see what the chatbot knew when it answered.
 - Changes — what the turn added, removed, or modified in the data, so you can find unexpected updates.
-- [Custom Action requests](#custom-action-requests) — the HTTP requests a Custom Action made, so you can debug one that returns errors or unexpected data.
+- [Custom Action requests](../tech-hub/custom_action/tracing.md) — the HTTP requests a Custom Action made, so you can debug one that returns errors or unexpected data.
 
 Usage figures cover all [LLM nodes](pipelines/nodes.md#llm-node) and [LLM router nodes](pipelines/router_nodes.md#llm-router-node) in the [pipeline](pipelines/index.md).
 A pipeline with neither shows "—" for all of them.
 Token counts come from the model provider, so a turn that fails partway may show partial or empty values.
 
-Builtin tracing does not record individual LLM calls, other tool calls, or retrieval steps.
+Builtin tracing does not record the detail of individual LLM calls, tool calls, or retrieval steps.  
 To see those, use [Langfuse Tracing](langfuse_tracing.md).
 
 ### Traces List
@@ -41,11 +41,6 @@ You can reach a single trace or a filtered list from several places:
 - The trace detail page has links to the session's, chatbot's, and participant's traces.
 
 Trace links appear only for users with permission to view traces.
-
-### Custom Action Requests
-
-The trace detail page lists the HTTP requests a [Custom Action](../tech-hub/custom_action/index.md) made.
-See [Custom Action Tracing](../tech-hub/custom_action/tracing.md).
 
 ## See also
 

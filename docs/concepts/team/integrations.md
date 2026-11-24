@@ -1,7 +1,7 @@
 # Team Settings: Integrations
 
 You manage every external service your team connects to in one place: the **Integrations** table in Team Settings.
-The services include [LLM models](./llm_providers.md), [speech](./speech_providers.md), [messaging](./messaging_providers.md), [authentication](./authentication_providers.md), and [tracing](../tracing.md).
+The services include [LLM models](./llm_providers.md), [speech](./speech_providers.md), [messaging](./messaging_providers.md), [authentication](./authentication_providers.md), and [tracing](../langfuse_tracing.md).
 
 ## The Integrations table
 
@@ -41,7 +41,7 @@ For provider-specific setup steps, supported services, models, and credential ve
 - [Speech Service Providers](speech_providers.md)
 - [Messaging Providers](messaging_providers.md)
 - [Authentication Providers](authentication_providers.md)
-- [Tracing Providers](../tracing.md)
+- [Tracing Providers](../langfuse_tracing.md)
 
 ## See also
 

@@ -10,7 +10,8 @@ Langfuse also records each step inside a turn, called a span.
 A span is one LLM call, tool call, or retrieval step.
 
 When Langfuse is configured for a chatbot, Open Chat Studio sends detailed trace data to Langfuse and adds span-level information to the trace detail page.
-Tracing begins automatically with the next conversation after you configure a Langfuse provider.
+Choosing the trace provider is a chatbot setting, so it takes effect for participants only after you publish a version that includes it.
+Editing the provider itself, such as its team-wide sample rate, applies to new conversation turns straight away.
 
 ## Spans on the Trace Detail Page
 
@@ -27,6 +28,7 @@ A high-traffic chatbot can send a lot of trace volume to Langfuse.
 Trace sampling sends only a fraction of turns, set as a sample rate from `0.0` to `1.0`.
 For example, `0.1` sends roughly 1 in 10 turns.
 Set a team-wide rate on the Langfuse provider (**Sample Rate**), and override it for one chatbot in its settings (**Trace sample rate**).
+A blank chatbot rate inherits the provider's rate, and `0.0` turns off Langfuse for that chatbot.
 Builtin tracing still records every turn, because sampling only affects what is sent to Langfuse.
 
 For the steps, see [Configure Langfuse Trace Sampling](../how-to/configure_langfuse_trace_sampling.md).

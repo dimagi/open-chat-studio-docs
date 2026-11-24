@@ -15,7 +15,7 @@ Use this when you want every chatbot on the team to send a reduced, consistent f
 
 1. Go to **Team Settings → [Integrations](../concepts/team/integrations.md)** and filter by **Tracing**.
 2. Select the Langfuse provider you want to update.
-3. Set the **Sample rate** field to a decimal between `0.0` and `1.0`.
+3. Set the **Sample Rate** field to a decimal between `0.0` and `1.0`.
 4. Save the provider.
 
 If no rate is set at either level, every turn is sent to Langfuse, the same as before this feature existed.
@@ -28,8 +28,9 @@ Use this when a single chatbot needs a different rate than the team default — 
 2. Go to the chatbot's settings.
 3. Set the **Trace sample rate** field to a decimal between `0.0` and `1.0`.
 4. Save.
+5. If the chatbot has a published version, publish a new version. Participants chat with the published version, which keeps the rate it had when it was published.
 
-Leave **Trace sample rate** blank to inherit the team-wide **Sample rate** from the chatbot's [trace provider](../concepts/team/integrations.md).
+Leave **Trace sample rate** blank to inherit the team-wide **Sample Rate** from the chatbot's [trace provider](../concepts/team/integrations.md).
 
 !!! tip "Turning off Langfuse tracing for one chatbot"
     Setting **Trace sample rate** to exactly `0.0` stops Langfuse traces for that chatbot completely, without removing the provider or affecting other chatbots. Builtin tracing keeps recording every turn for that chatbot as usual.
@@ -40,7 +41,8 @@ A chatbot handles 100,000 conversation turns a day, and the team's Langfuse plan
 
 ## Expected outcome
 
-New conversation turns immediately follow the updated rate — there's no delay before it takes effect. Turns that aren't sampled still appear in the builtin [traces list](../concepts/tracing.md#traces-list); they just won't have Langfuse span data or a **View in Langfuse** link on their trace detail page.
+New conversation turns follow the updated provider rate straight away.
+A chatbot's **Trace sample rate** applies to the version it was saved in, so it reaches live chats once you publish that version. Turns that aren't sampled still appear in the builtin [traces list](../concepts/tracing.md#traces-list); they just won't have Langfuse span data or a **View in Langfuse** link on their trace detail page.
 
 ## Common issues
 
@@ -52,6 +54,7 @@ Sampling only affects new turns. Traces recorded before the change keep whatever
 
 ## See also
 
-- [Tracing](../concepts/tracing.md) — how builtin and Langfuse tracing work
+- [Langfuse Tracing](../concepts/langfuse_tracing.md) — what Langfuse adds and how sampling works
+- [Tracing](../concepts/tracing.md) — what builtin tracing records
 - [Teams](../concepts/team/index.md) — team-level configuration, including tracing providers
 - [Chatbots API (v2)](../api/v2/index.md) — the `trace_sample_rate` field is also available when creating or updating a chatbot through the API
