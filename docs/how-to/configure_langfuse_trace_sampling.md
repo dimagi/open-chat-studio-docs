@@ -36,11 +36,11 @@ Leave **Trace sample rate** blank to inherit the team-wide **Sample rate** from 
 
 ### Example
 
-A chatbot handles 100,000 conversation turns a day, and the team's Langfuse plan is priced by trace volume. Setting that chatbot's **Trace sample rate** to `0.1` sends detailed span data to Langfuse for roughly 1 in 10 turns — cutting Langfuse volume by 90% — while every turn still appears in the Open Chat Studio [trace table](../concepts/tracing.md#trace-table) through builtin tracing.
+A chatbot handles 100,000 conversation turns a day, and the team's Langfuse plan is priced by trace volume. Setting that chatbot's **Trace sample rate** to `0.1` sends detailed span data to Langfuse for roughly 1 in 10 turns — cutting Langfuse volume by 90% — while every turn still appears in the Open Chat Studio [traces list](../concepts/tracing.md#traces-list) through builtin tracing.
 
 ## Expected outcome
 
-New conversation turns immediately follow the updated rate — there's no delay before it takes effect. Turns that aren't sampled still appear in the builtin [trace table](../concepts/tracing.md#trace-table); they just won't have Langfuse span data or a **View in Langfuse** link on their trace detail page.
+New conversation turns immediately follow the updated rate — there's no delay before it takes effect. Turns that aren't sampled still appear in the builtin [traces list](../concepts/tracing.md#traces-list); they just won't have Langfuse span data or a **View in Langfuse** link on their trace detail page.
 
 ## Common issues
 
