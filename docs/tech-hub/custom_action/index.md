@@ -79,6 +79,12 @@ The notification names the HTTP method and operation, includes the error message
 
 Failure notifications report calls made by chatbots. To monitor whether the service is reachable, see [Health checks](#health-checks).
 
+## Inspecting requests
+
+To debug a call, open the trace for the chatbot message.
+The **Custom Action Requests** section lists each HTTP request the action made, with redacted headers and bodies.
+See [Custom Action requests](../../concepts/tracing.md#custom-action-requests).
+
 ## Health checks
 
 Open Chat Studio checks Custom Actions every hour, and you can run a check on demand. See [Custom Action Health Monitoring](./health_custom_action.md) for health statuses, manual checks and troubleshooting.
