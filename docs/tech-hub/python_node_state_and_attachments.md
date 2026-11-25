@@ -1,0 +1,83 @@
+# Python Node State and Attachments
+
+This page covers how [Python node](python_node.md) code works with [pipeline state](../concepts/pipelines/state.md) and with files the participant uploads.
+Read it when you need the default and reserved keys, the functions that read and write state, or how to read the contents of an attachment.
+For what state is and where to keep data, see [Pipeline State](../concepts/pipelines/state.md).
+
+## Session State
+
+Python node code reads and changes [session state](../concepts/pipelines/state.md#session-state) with the [get_session_state_key](python_node.md#python_node.get_session_state_key) and [set_session_state_key](python_node.md#python_node.set_session_state_key) utility functions. <!-- markdownlint-disable-line MD051 -->
+
+To supply session state from outside the pipeline, pass the `session_data` parameter when you [start a chat session](https://www.openchatstudio.com/api/v1/docs/#tag/Chat/operation/chat_start_session) or [trigger a bot message](https://www.openchatstudio.com/api/v1/docs/#tag/Channels/operation/trigger_bot_message) through the API.
+
+## Temporary State
+
+Python node code reads and changes [temporary state](../concepts/pipelines/state.md#temporary-state) with the [get_temp_state_key](python_node.md#python_node.get_temp_state_key) and [set_temp_state_key](python_node.md#python_node.set_temp_state_key) utility functions. <!-- markdownlint-disable-line MD051 -->
+
+Temporary state contains the following keys by default. These keys cannot be modified or deleted:
+
+| Key           | Description                                                                  |
+|---------------|------------------------------------------------------------------------------|
+| `user_input`  | The human message from the participant                                       |
+| `outputs`     | The outputs of the nodes that have run, by node name                         |
+| `attachments` | A list of attachments passed in by the participant. See [Attachments](#attachments) |
+
+In addition to these keys, the temporary state can also contain custom keys, each with its own data.
+Only Python node code can set them, with `set_temp_state_key`.
+Other nodes can read them. See [Where You Can Use State](../concepts/pipelines/state.md#where-you-can-use-state).
+
+Here is an example of a temporary state dictionary:
+
+```python
+{
+    "user_input": "Please help me with my problem",
+    "outputs": {
+        "Assistant": "I'm here to help! What can I do for you?"
+    },
+    "attachments": [
+        Attachment(...),
+    ],
+    "my_custom_key": "my_custom_value",
+}
+```
+
+## Attachments
+
+Part of the temporary state is a list of attachments. Attachments are files that the participant has uploaded to the chatbot. Each attachment has the following fields:
+
+| Field                 | Description                                                           |
+|-----------------------|-----------------------------------------------------------------------|
+| `name`                | The name of the file                                                  |
+| `size`                | The size of the file in bytes                                         |
+| `content_type`        | The MIME type of the file                                             |
+| `read_bytes()`        | Reads the attachment content as bytes.                                |
+| `read_text()`         | Reads the attachment content as text.                                 |
+
+!!! warning "`upload_to_assistant` has been removed"
+    The `upload_to_assistant` field no longer exists on `Attachment`, following the removal of [OpenAI Assistants](../concepts/assistants.md) from Open Chat Studio.
+    If your Python node code reads or assigns it, remove that code — it will now raise an error at runtime.
+
+Here is an example of an attachment object:
+
+```python
+attachment = Attachment(
+    name="proposal.pdf",
+    size=1234,
+    content_type="application/pdf",
+)
+content = attachment.read_text()
+```
+
+### Supported File Types
+
+The Python node currently only supports reading the contents of the following file types:
+
+- Text-based formats (TXT, CSV, HTML, JSON, XML, etc.)
+- PDF
+- DOCX
+- XLSX
+- XLS
+- Outlook
+- PPTX
+
+Other file types can still be uploaded as attachments, but the Python Node is not able to read their contents using the `read_text()` method on the attachment.

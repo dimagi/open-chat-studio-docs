@@ -183,6 +183,7 @@ nav:
       - Node Types: concepts/pipelines/nodes.md
       - Router Nodes: concepts/pipelines/router_nodes.md
       - Conversation History: concepts/pipelines/history.md
+      - Pipeline State: concepts/pipelines/state.md
       - concepts/pipelines/parallel.md
     - Team Settings:
       - concepts/team/index.md
@@ -225,6 +226,7 @@ nav:
       - Render a Template and Send an Email Nodes: tech-hub/template_and_email_nodes.md
       - Ending Sessions from a Chatbot: tech-hub/ending_sessions.md
       - Python Node: tech-hub/python_node.md
+      - Python Node State and Attachments: tech-hub/python_node_state_and_attachments.md
       - Merging Parallel Branches: tech-hub/merging_parallel_branches.md
     - Collections:
       - tech-hub/collections/index.md
