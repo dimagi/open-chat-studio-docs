@@ -1,13 +1,14 @@
 # Pipeline State
 
 **State** is data that the nodes in a [pipeline](index.md) read and write so they can share information.
-Examples are a symptom the participant reported, how urgent a message is, or the language they speak.
 Read this page to decide where to keep each piece of data.
+
+Examples are a symptom the participant reported, how urgent a message is, or the language they speak.
 
 ## Why Pipelines Need State
 
 A pipeline is a series of separate [nodes](nodes.md).
-Each node receives only the output of the node before it.
+Each node's input is the output of the node before it.
 That is not enough for many chatbots.
 
 - A [router](router_nodes.md) may need to know what an earlier node decided.
@@ -56,7 +57,8 @@ The data changes like this:
    The Python node also adds the symptom to session state.
 2. After the AI message is sent, the temporary state is discarded.
    The reported symptom stays.
-3. In the second human message, temporary state starts empty, so a node must rate this message again.
+3. In the second human message, temporary state holds only the new message's data.
+   The earlier urgency value is gone, so a node must rate this message again.
    The earlier symptom is still in session state, so the final summary can include both.
 4. A month later the patient starts a new check-in, which is a new session, for example after a session reset.
    The symptom list starts empty, but the preferred language is still there.
@@ -64,7 +66,7 @@ The data changes like this:
 ## Session State
 
 A new session starts with empty session state, unless you supply it.
-Session state is not shared between sessions, including parallel sessions on channels such as Web and Slack.
+Session state is not shared between sessions.
 
 You can supply session state when you start a session through the API, and when you [create evaluation test cases](../../how-to/evaluations/create-a-dataset.md).
 For the API parameter, see [Python Node State and Attachments](../../tech-hub/python_node_state_and_attachments.md#session-state).

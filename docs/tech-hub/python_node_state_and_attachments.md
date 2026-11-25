@@ -8,7 +8,7 @@ For what state is and where to keep data, see [Pipeline State](../concepts/pipel
 
 Python node code reads and changes [session state](../concepts/pipelines/state.md#session-state) with the [get_session_state_key](python_node.md#python_node.get_session_state_key) and [set_session_state_key](python_node.md#python_node.set_session_state_key) utility functions. <!-- markdownlint-disable-line MD051 -->
 
-To supply session state from outside the pipeline, pass the `session_data` parameter when you start a chat session or [trigger a bot message](https://www.openchatstudio.com/api/v1/docs/#tag/Channels/operation/trigger_bot_message) through the API.
+To supply session state from outside the pipeline, pass the `session_data` parameter when you [start a chat session](https://www.openchatstudio.com/api/v1/docs/#tag/Chat/operation/chat_start_session) or [trigger a bot message](https://www.openchatstudio.com/api/v1/docs/#tag/Channels/operation/trigger_bot_message) through the API.
 
 ## Temporary State
 
@@ -23,7 +23,8 @@ Temporary state contains the following keys by default. These keys cannot be mod
 | `attachments` | A list of attachments passed in by the participant. See [Attachments](#attachments) |
 
 In addition to these keys, the temporary state can also contain custom keys, each with its own data.
-Only the Python node can set them. Other nodes can read them; see [Where You Can Use State](../concepts/pipelines/state.md#where-you-can-use-state).
+Only Python node code can set them, with `set_temp_state_key`.
+Other nodes can read them. See [Where You Can Use State](../concepts/pipelines/state.md#where-you-can-use-state).
 
 Here is an example of a temporary state dictionary:
 
