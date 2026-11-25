@@ -87,7 +87,7 @@ Unlike most other nodes, its output **replaces** the input: downstream nodes rec
 
 Sometimes the model returns no structured data for part of the input.
 This happens if it refuses, the provider blocks the reply, or it never calls the required tool.
-The node skips that part instead of failing the conversation turn.
+The node skips that part instead of failing the whole response.
 If nothing at all could be extracted, the node outputs an empty JSON object (`{}`).
 This is rare in practice.
 

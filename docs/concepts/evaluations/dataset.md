@@ -2,6 +2,7 @@
 
 An evaluation needs example conversations to test against.
 A **dataset** is that set of messages or sessions, and it is what the [evaluators](./evaluators.md) score.
+In OCS, a [session](../sessions.md) is a conversation thread between a participant and your chatbot on a specific channel.
 
 A small set of realistic examples tells you more about your chatbot than scoring everything that exists.
 You can build a dataset from real conversations your chatbot has already had.
@@ -22,7 +23,7 @@ A participant has this conversation with a clinic's appointment chatbot:
 A dataset can store this conversation in two ways, depending on its [evaluation level](#evaluation-levels).
 
 In a **message-level** dataset, the conversation becomes two rows.
-Each row holds one Human/AI message pair, the participant's message and the chatbot's reply, with the earlier turns as history:
+Each row holds one Human/AI message pair, the participant's message and the chatbot's response, with the earlier messages as history:
 
 | Row | Human Message | AI Message | History |
 |---|---|---|---|
@@ -43,7 +44,7 @@ When you create a dataset, you choose its **Evaluation level**.
 | Level | Each row is | Use it to judge |
 |---|---|---|
 | **Message level** | A single Human/AI message pair | Individual responses, for accuracy, tone or correctness |
-| **Session level** | An entire conversation | Overall quality, goal completion, or coherence across turns |
+| **Session level** | An entire conversation | Overall quality, goal completion, or coherence across messages |
 
 Choose **message level** if you want to:
 
@@ -53,7 +54,7 @@ Choose **message level** if you want to:
 Choose **session level** if you want to:
 
 - Judge whether whole conversations went well.
-- Add new conversations from a live chatbot automatically.
+- Add new sessions from a live chatbot automatically.
 
 You cannot change the level after the dataset is created.
 Each evaluator is also set to message or session level, and you can only use evaluators set to the same level as the dataset.
@@ -66,7 +67,7 @@ Which methods are available depends on the evaluation level.
 | Method | Message level | Session level | Use it when |
 |---|---|---|---|
 | [Clone from sessions](../../how-to/evaluations/create-a-dataset.md#clone-from-sessions) | Yes | Yes | You want to test against real past conversations. Cloned rows keep a link to their original session. |
-| [Import from an annotation queue](../../how-to/evaluations/create-a-dataset.md#import-from-annotation-queue) | When creating the dataset only | Yes | Your team has already curated conversations for [human review](../annotations/queues.md) and you want to score the same set automatically. |
+| [Import from an annotation queue](../../how-to/evaluations/create-a-dataset.md#import-from-annotation-queue) | When creating the dataset only | Yes | Your team has already curated sessions for [human review](../annotations/queues.md) and you want to score the same set automatically. |
 | [Create rows manually](../../how-to/evaluations/create-a-dataset.md#create-manually) | Yes | No | You want to write targeted test cases or edge cases that have not happened yet. |
 | [Upload a CSV](../../how-to/evaluations/create-a-dataset.md#upload-csv-file) | Yes | No | You have an existing test suite or data from another tool. |
 | [Auto-population rules](../../tech-hub/evaluations/auto_population.md) | No | Yes | You want new sessions from a live chatbot added continuously. See [Set Up a Real-Time LLM-as-a-Judge](../../how-to/evaluations/realtime_llm_judge.md). |

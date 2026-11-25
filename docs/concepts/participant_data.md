@@ -83,6 +83,6 @@ It comes from the participant's browser and helps localize date and time values 
 ## See also
 
 - [Prompt Variables](prompt_variables.md)
-- [Chat Sessions](sessions.md)
+- [Sessions](sessions.md)
 - [Events](events.md)
 - [Tools](tools/index.md)

@@ -47,6 +47,6 @@ To find sessions by tag, see [Tags on the Sessions List](sessions.md#tags-on-the
 
 ## See also
 
-- [Chat Sessions](sessions.md)
+- [Sessions](sessions.md)
 - [Tag Rules](evaluations/tag_rules.md)
 - [Python Node utility functions](../tech-hub/python_node.md#utility-functions)

@@ -4,8 +4,11 @@ Building a chatbot is the easy part.
 Knowing whether it works well is harder.
 
 **Evaluations** let you check this systematically.
-You run your chatbot against a set of sample conversations.
-You then score the results against criteria you define, such as accuracy, tone, or whether it stayed on topic.
+You start with a set of sample conversations.
+You then score them against criteria you define, such as accuracy, tone, or whether it stayed on topic.
+You can score individual responses, or whole conversations, such as whether the participant got a booking (see [evaluation levels](./dataset.md#evaluation-levels)).
+For individual responses, you can score the ones already stored with the conversations or fresh ones your chatbot generates.
+Whole conversations are scored as stored.
 
 Running evaluations regularly warns you early when a change to a prompt, model or pipeline makes responses worse.
 It also gives you proof when a change makes them better.

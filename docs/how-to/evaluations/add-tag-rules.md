@@ -89,7 +89,7 @@ See [Tags on the Sessions List](../../concepts/sessions.md#tags-on-the-sessions-
       This is the most common cause.
       It happens to rows that were added manually or from a CSV file.
       It also happens to cloned rows you edited, because editing breaks the link to the original session.
-      In message mode, a cloned human message with no AI reply is not tagged either.
+      In message mode, a cloned human message with no AI response is not tagged either.
 - **A tag someone added by hand disappeared.**
   After each run, OCS removes a rule's tag from any row in the run that no longer meets the condition.
   This includes tags a person added by hand.
