@@ -170,7 +170,7 @@ For the exact steps, see [Configure Langfuse Trace Sampling](../how-to/configure
 ## See also
 
 - [Configure Langfuse Trace Sampling](../how-to/configure_langfuse_trace_sampling.md)
-- [Chat Sessions](sessions.md)
+- [Sessions](sessions.md)
 - [Participant Data](participant_data.md)
 - [Notifications](notifications.md)
 

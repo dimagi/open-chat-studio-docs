@@ -82,7 +82,7 @@ Sessions already in the dataset are skipped.
 Use this method to write individual test cases by hand for a **message-level** dataset. This is useful for testing specific behaviors or edge cases that have not appeared in real conversations yet.
 
 1. Enter the human message and the AI response. Both are required.
-2. Optionally, enter the history: previous turns that provide context for this message pair. Each line must start with `user:` or `assistant:`. See [History Syntax](../../tech-hub/evaluations/dataset-structure.md#history-syntax).
+2. Optionally, enter the history: previous messages that provide context for this message pair. Each line must start with `user:` or `assistant:`. See [History Syntax](../../tech-hub/evaluations/dataset-structure.md#history-syntax).
 3. Optionally, enter context, [participant data](../../concepts/participant_data.md) or [session state](../../tech-hub/python_node.md#session-state) as JSON.
 4. Click **Add Message Pair**.
 
