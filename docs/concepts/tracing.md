@@ -13,7 +13,7 @@ A trace's detail page shows:
 
 - Input and output — the participant's message and the chatbot's reply, so you can see what the chatbot was asked and what it said.
 - Latency — how long the turn took, so you can spot slow turns.
-- Token usage, LLM calls, and tool calls — what the turn used and where, so you can find expensive or looping turns.
+- Token usage and cost, LLM calls, and tool calls — what the turn used and where, so you can find expensive or looping turns.
 - Session and participant data — their state at the time of the turn, so you can see what the chatbot knew when it answered.
 - Changes — what the turn added, removed, or modified in the data, so you can find unexpected updates.
 - [Custom Action requests](../tech-hub/custom_action/tracing.md) — the HTTP requests a Custom Action made, so you can debug one that returns errors or unexpected data.
@@ -27,20 +27,20 @@ To see those, use [Langfuse Tracing](langfuse_tracing.md).
 
 ### Traces List
 
-**Traces**, listed under **Chatbots** in the navigation menu, opens a list of every trace recorded for your team.
+**:fontawesome-solid-magnifying-glass-location: Traces**, listed under **:fontawesome-solid-comments: Chatbots** in the navigation menu, opens a list of every trace recorded for your team.
 Use it to find a conversation turn that went wrong, or to compare how a chatbot, session, or participant behaved across turns.
 Filters narrow the list.
 You can also describe a filter in plain English (see [Filtering Tables with Natural Language](../how-to/nl_filter.md)).
 
 You can reach a single trace or a filtered list from several places:
 
-- The **View Traces** button on a session's transcript page opens the list already filtered to that session.
-- On a session's **Messages** tab, hover over a message and select its Open Chat Studio trace icon to open that message's trace.
+- The **:fontawesome-solid-bars-staggered: View Traces** button on a session's transcript page opens the list already filtered to that session.
+- On a session's **Messages** tab, hover over a message and select its Open Chat Studio trace icon (:fontawesome-solid-diagram-project:) to open that message's trace.
   The icon is greyed out when no trace was recorded for the message.
 - On the chatbot list, select a chatbot's **Trends (last 24h)** chart to open the list filtered to that chatbot.
 - The trace detail page has links to the session's, chatbot's, and participant's traces.
 
-Trace links appear only for users with permission to view traces.
+The **:fontawesome-solid-bars-staggered: View Traces** button and the message trace icons (:fontawesome-solid-diagram-project:) appear only for users with permission to view traces.
 
 ## See also
 
