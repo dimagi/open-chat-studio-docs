@@ -177,6 +177,7 @@ nav:
         - concepts/versioning.md
         - concepts/tags.md
         - concepts/tracing.md
+        - Langfuse Tracing: concepts/langfuse_tracing.md
         - concepts/notifications.md
     - Pipelines:
       - concepts/pipelines/index.md
@@ -247,6 +248,7 @@ nav:
         - tech-hub/custom_action/index.md
         - Custom Action Health: tech-hub/custom_action/health_custom_action.md
         - Custom Action Testing: tech-hub/custom_action/test_custom_action.md
+        - Custom Action Tracing: tech-hub/custom_action/tracing.md
     - OCS API:
       - api/index.md
       - api/getting_started_with_oauth.md

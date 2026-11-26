@@ -79,11 +79,11 @@ The notification names the HTTP method and operation, includes the error message
 
 Failure notifications report calls made by chatbots. To monitor whether the service is reachable, see [Health checks](#health-checks).
 
-## Inspecting requests
+## Tracing
 
-To debug a call, open the trace for the chatbot message.
-The **Custom Action Requests** section lists each HTTP request the action made, with redacted headers and bodies.
-See [Custom Action requests](../../concepts/tracing.md#custom-action-requests).
+To debug a Custom Action call, open the trace for the chatbot message.
+The trace detail page lists each HTTP request the Custom Action made, with credentials redacted.
+See [Custom Action Tracing](./tracing.md).
 
 ## Health checks
 
