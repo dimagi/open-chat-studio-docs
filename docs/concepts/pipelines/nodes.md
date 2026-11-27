@@ -47,6 +47,7 @@ You can configure:
 - [Tools](../tools/index.md) for additional actions
 - [Collections](../collections/index.md) for indexed collections to base responses on your documents (RAG), or media collections to send files to participants.
   For indexed collections, the **Generate Citations** setting controls whether answers [show source links](../collections/indexed_collections/citations.md).
+- A **Message Tag** to [tag every reply from the node](../../how-to/tag_node_output.md)
 - [Metadata filters](../../how-to/filter_collection_search_by_metadata.md) to limit an indexed collection search to rows with matching metadata
 - [Custom Actions](../llm_custom_action.md) to connect to external systems and retrieve information or complete tasks
 
@@ -66,6 +67,7 @@ You write a template that mixes fixed text with placeholders.
 At runtime, the node fills in the placeholders using information about the current message, the participant, and the pipeline state.
 
 Use this node to reformat a previous node's output, build a prompt for a downstream LLM node, or compose a personalized message.
+It has a **Message Tag** field to [tag the messages it produces](../../how-to/tag_node_output.md).
 
 See the [Render a Template and Send an Email Node](../../tech-hub/template_and_email_nodes.md#render-a-template-node) reference for the full variable list and template syntax.
 
@@ -112,6 +114,7 @@ Execute custom Python code for logic, data processing, or external API calls.
 - **[Attachments](../../tech-hub/python_node.md#attachments)** — access files uploaded by the participant and read their contents (text, PDF, DOCX, XLSX, and others — see [supported file types](../../tech-hub/python_node.md#supported-file-types)).
 - **[HTTP client](../../tech-hub/external-api-calls/http_client.md)** — make secure HTTP requests to external APIs using the built-in `http` global.
 - **[Debugging](../../tech-hub/python_node.md#debugging-with-print)** — use `print()` to capture diagnostic output, visible in the trace detail view.
+- **[Message Tag](../../how-to/tag_node_output.md)** — a field that tags every message the node produces.
 
 See the [Python Node](../../tech-hub/python_node.md) page for full documentation.
 
