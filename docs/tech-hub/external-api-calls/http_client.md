@@ -187,7 +187,7 @@ http.get("https://example.com", auth="my auth provider")
     Authentication provider names are case-insensitive. `auth="My-Provider"`, `auth="my-provider"`, and `auth="MY-PROVIDER"` will all match the same configured provider.
 
 !!! note
-    Headers from the Authentication Provider take precedence over headers you pass. This includes the `User-Agent` header: when you use `auth`, the request is sent with the User-Agent `OpenChatStudio (+<site URL>)` even if you set your own. See [User-Agent header](../../concepts/team/authentication_providers.md#user-agent-header).
+    Headers from the Authentication Provider take precedence over headers you pass. This includes the `User-Agent` header: when you use `auth`, the request is sent with the default User-Agent `OpenChatStudio (+<site URL>)` even if you set your own. The default is replaced if the instance sets `OUTBOUND_USER_AGENT`, or if the provider is an API Key provider with `User-Agent` as its header name. See [User-Agent header](../../concepts/team/authentication_providers.md#user-agent-header).
 
 ## Complete Examples
 

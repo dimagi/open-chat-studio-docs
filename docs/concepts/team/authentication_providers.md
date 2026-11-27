@@ -8,9 +8,14 @@ GitHub document sources need a Bearer Token provider, Confluence document source
 
 ## User-Agent header
 
-Requests made with an Authentication Provider send the User-Agent header `OpenChatStudio (+<site URL>)`, where `<site URL>` is the address of the Open Chat Studio instance.
+By default, requests made with an Authentication Provider send the User-Agent header `OpenChatStudio (+<site URL>)`, where `<site URL>` is the address of the Open Chat Studio instance.
 This lets the external service identify requests from Open Chat Studio.
-Self-hosted instances can change it with the `OUTBOUND_USER_AGENT` setting.
+
+The default is replaced when:
+
+- a self-hosted instance sets the `OUTBOUND_USER_AGENT` setting
+- a Custom Action's OpenAPI spec declares a `User-Agent` header parameter
+- an API Key provider uses `User-Agent` as its header name, in which case the key is sent as the User-Agent
 
 ## Authentication Provider Types
 
