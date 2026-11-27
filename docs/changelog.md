@@ -11,6 +11,9 @@ hide:
 
     Looking for older entries? See the [GitHub release notes](https://github.com/dimagi/open-chat-studio-docs/releases).
 
+## Nov 27, 2026
+* **CHANGE** API Key authentication providers now reject a header name that is not a valid HTTP header name, such as one with spaces or colons, and the `Host` and `Transfer-Encoding` headers. Typing a space in the **Header Name** field enters a hyphen. Existing providers with an invalid name show an error when a request is made. Requests made with an authentication provider now send the User-Agent `OpenChatStudio (+<site URL>)` by default. See [Authentication Providers](concepts/team/authentication_providers.md#api-key).
+
 ## Nov 23, 2026
 * **NEW** The trace detail page now has a **Custom Action Requests** section listing each HTTP request a Custom Action made during the turn, with its status, method, URL, duration, and the request and response headers and bodies. Credentials are shown as `[REDACTED]`, including when an API echoes them back. Teams with a Langfuse provider also see each request as a `custom_action_request` event on the tool span. See [Custom Action Tracing](tech-hub/custom_action/tracing.md).
 
