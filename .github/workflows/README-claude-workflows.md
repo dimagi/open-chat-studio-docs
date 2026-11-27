@@ -1,8 +1,11 @@
 # GitHub Automation with Claude
 
-For engineers responsible for extending, debugging, or operating the GitHub workflows. The main OCS project has similar workflows, see [the developer guide on GitHub automation with Claude](https://developers.openchatstudio.com/developer_guides/claude_github_automation/).
+For engineers responsible for extending, debugging, or operating the GitHub workflows.
+These workflows use [`anthropics/claude-code-action`](https://github.com/anthropics/claude-code-action) to run [Claude Code inside GitHub Actions](https://code.claude.com/docs/en/github-actions).
 
-These workflows use [`anthropics/claude-code-action`](https://github.com/anthropics/claude-code-action) to run [Claude Code inside GitHub Actions](https://code.claude.com/docs/en/github-actions). If you're writing or reviewing one of these workflows, start from [AGENTS.md](AGENTS.md) in this directory.
+The main OCS project has similar workflows, see [the developer guide on GitHub automation with Claude](https://developers.openchatstudio.com/developer_guides/claude_github_automation/).
+
+If you're writing or reviewing one of these workflows, start from [AGENTS.md](AGENTS.md) in this directory.
 
 ## GitHub workflows
 
@@ -25,33 +28,57 @@ Commands live in `.claude/commands/`, agents in `.claude/agents/` ([background](
 Each automation has up to three layers. Each has one job and only the access that job needs.
 
 - **Workflow:** decides whether to run and what the job may touch. It does deterministic checks in code, then sets permissions and tool and turn limits.
-- **Command:** the main agent's prompt. It fetches the input, calls the subagent if there is one, and posts or commits the result.
-- **Subagent:** optional. It does the focused work with fewer tools than the command. See [Command and agent tool frontmatter](#command-and-agent-tool-frontmatter) for how to restrict its tools.
+- **Command:** the main Claude agent's prompt. It fetches the input, calls the subagent if there is one, and posts or commits the result.
+- **Subagent:** optional. It does the focused work with fewer tools than the command. Add one only to keep verbose reading out of the main context, to enforce a tool limit, or to get an independent review in a fresh context. See [Tool access in commands and subagents](#tool-access-in-commands-and-subagents) for how to restrict its tools.
 
-The workflow's tool grant, not the command, is the security boundary. Run outside its workflow, a command has whatever tools that session allows, so the limits and untrusted-input handling described in the command do not hold.
-
-Add a subagent only to keep verbose reading out of the main context, to enforce a tool limit, or to get an independent review in a fresh context.
-
-## Security: Permissions & Tool Allowlists
+## Security
 
 Every workflow uses a `permissions:` block and Claude's `--allowedTools`.
 
-Workflows pass one of three tokens to `claude-code-action`: an installation token for the `ocs-agent` GitHub App, the default `GITHUB_TOKEN` `(github_token: ${{ github.token }})`, or none, in which case the action exchanges the job's OIDC token (`id-token: write`) for a Claude GitHub App token. The header comment of each workflow names the one it uses. See best practices in [AGENTS.md](AGENTS.md) in this directory.
+### Authentication tokens
 
-### Command and agent tool frontmatter
+Workflows pass one of three tokens to `claude-code-action`: an installation token for the `ocs-agent` GitHub App, the default `GITHUB_TOKEN` `(github_token: ${{ github.token }})`, or none, in which case the action exchanges the job's OIDC token (`id-token: write`) for a Claude GitHub App token.
+The header comment of each workflow names the one it uses.
 
-The commands and subagents in the table carry their own tool frontmatter in their `.md` files, and the two kinds behave differently:
+### Allowed tools in claude_args
 
-- A Claude subagent's `tools:` ([reference](https://code.claude.com/docs/en/sub-agents)) is the flag for restricting tool availability. Omitting `tools:` inherits every tool available to subagents, so a subagent meant to be narrow has to list them explicitly.
-- A Claude command's `allowed-tools:` ([reference](https://code.claude.com/docs/en/skills#frontmatter-reference)) lists tools that run without a permission prompt. It does not restrict which tools are available. Keep it no wider than the workflow grant to Claude via `claude_args`.
+The `--allowedTools` and `--disallowedTools` values in each workflow's `claude_args` set which tools Claude can run in CI.
+The workflow's allowed tools, not the command, are the security boundary.
+Run outside its workflow, a command has whatever tools that session allows, so the limits and untrusted-input handling described in the command do not hold.
 
-When adding or changing a command or agent, check that the workflow's `claude_args` still covers what it needs. A tool an agent's `tools:` names that neither the action's base set nor `claude_args` covers is dead on arrival, and shows up as a silently truncated result rather than an error — see [Troubleshooting](#troubleshooting).
+The action always includes its own base set of GitHub tools, and `--allowedTools` adds to that set.
+
+For formatting rules, such as one line per flag and one `WebFetch` entry per domain, see [AGENTS.md](AGENTS.md).
+
+### Tool access in commands and subagents
+
+The commands and subagents in the table carry their own tool frontmatter in their `.md` files, and the two kinds behave differently.
+
+#### Skipping prompts for a command's tools
+
+A Claude command's `allowed-tools:` ([reference](https://code.claude.com/docs/en/skills#frontmatter-reference)) lists tools that run without a permission prompt.
+It does not restrict which tools are available.
+Keep it no wider than the workflow's [allowed tools in `claude_args`](#allowed-tools-in-claude_args).
+
+#### Restricting a subagent's tools
+
+A Claude subagent's `tools:` ([reference](https://code.claude.com/docs/en/sub-agents)) is the flag for restricting tool availability.
+Omitting `tools:` inherits every tool available to subagents, so a subagent meant to be narrow has to list them explicitly.
+
+List `WebFetch` in a subagent's `tools:` as a bare name, without a domain.
+In the workflow's `--allowedTools`, allow only the domains the agent needs as permission rules ([reference](https://code.claude.com/docs/en/permissions)), with one `WebFetch(domain:...)` entry per domain, as described in [AGENTS.md](AGENTS.md).
+
+#### Checking claude_args allows what the frontmatter needs
+
+When adding or changing a command or agent, check that the workflow's [allowed tools in `claude_args`](#allowed-tools-in-claude_args) still cover what it needs.
+A tool an agent's `tools:` names that neither the action's base set nor `claude_args` covers is not available to the agent.
+It shows up as a silently truncated result rather than an error — see [Troubleshooting](#troubleshooting).
 
 ## GitHub labels used by these workflows
 
 The `automated` label exists so bot-authored docs PRs don't loop back into the AI review in `claude-review.yml`. It's applied by both `update-changelog.yml` and the unrelated, non-Claude `update-api-docs.yml` — removing the label from a PR created by either one makes it eligible for the AI review. The `Changelog + Docs` PRs get `claude-changelog-review.yml` instead.
 
-## Fork Limitations
+## Fork limitations
 
 Engineers contributing from a fork may trigger these workflows by opening a pull request (or commenting on one) against this repo.
 
@@ -63,7 +90,7 @@ GitHub gives a `pull_request` run from a fork no secrets and a read-only `permis
 
 Issues that can show up on any of these workflows. For workflow-specific troubleshooting, see that workflow's own doc (e.g. [README-changelog-automation.md](README-changelog-automation.md#troubleshooting) for `update-changelog.yml`).
 
-- **Run fails immediately in the `claude-code-action` step for forked repos:** See [Fork Limitations](#fork-limitations) above.
+- **Run fails immediately in the `claude-code-action` step for forked repos:** See [Fork limitations](#fork-limitations) above.
 - **Output looks incomplete, or a step Claude should have taken didn't happen:** A denied tool call doesn't fail the run — it's silently skipped and Claude continues without it. Check the run transcript for denied calls; that's the usual cause of a truncated-looking result.
 - **Authentication or permission failures:** Verify `ANTHROPIC_API_KEY` is valid. If the workflow uses the `ocs-agent` GitHub App (check its header comment), also verify the GitHub app's private key matches `OCS_AGENT_PRIVATE_KEY` and the app is still installed on every repo the workflow's token requests — token minting fails if any of them is missing from the installation.
 - **Output quality needs improvement:** Comment on the generated PR with `@claude` and specify what to revise.
