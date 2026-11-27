@@ -1,5 +1,5 @@
 ---
-allowed-tools: Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),mcp__github_inline_comment__create_inline_comment,WebFetch(domain:github.com,domain:raw.githubusercontent.com)
+allowed-tools: Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),mcp__github_inline_comment__create_inline_comment,WebFetch(domain:github.com),WebFetch(domain:raw.githubusercontent.com)
 description: Review a pull request for changes to documentation
 ---
 

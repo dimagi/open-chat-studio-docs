@@ -9,7 +9,7 @@ description: |-
   assistant: "I'll use the Task tool to launch the documentation-pr-reviewer agent to thoroughly review your documentation PR."
   <commentary>The user is requesting a review of documentation changes, which is exactly when the documentation-pr-reviewer agent should be used.</commentary>
   </example>
-tools: Read, Glob, Grep, WebFetch(domain:github.com,domain:raw.githubusercontent.com)
+tools: Read, Glob, Grep, WebFetch
 model: sonnet
 ---
 

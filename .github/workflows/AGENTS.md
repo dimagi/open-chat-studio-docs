@@ -1,4 +1,4 @@
-# GitHub Workflows Guidelines
+# GitHub Actions Workflows Guidelines
 
 ## Security First
 
@@ -15,7 +15,7 @@
 - By default, the token inherits all of the installation's permissions, so explicitly list the permissions that are required for the action.
 - The workflow's `permissions:` block only governs the default GITHUB_TOKEN. Wherever a step uses the `ocs-agent` token instead, that token's own permissions apply — the `permissions:` block has no effect on it.
 
-## Workflows using `claude-code-action`
+## GitHub Action workflows using `claude-code-action`
 
 Many workflows use [`anthropics/claude-code-action`](https://github.com/anthropics/claude-code-action).
 
@@ -27,12 +27,13 @@ Do deterministic checks (trigger, base branch, changed paths) in shell or `if:` 
 
 Use these `claude_args` flags:
 - `--allowedTools` lists tools Claude can execute without prompting for permission. Claude does not have access to execute arbitrary Bash commands by default so they must be explicitly listed.
-- `--max-turns` limits the number of conversation turns. Set it to about 1.5-2x the highest `num_turns` seen across recent successful runs (find it in the raw job log). Re-check it if a run ends early with no result.
 - Keep each `--allowedTools` / `--disallowedTools` value on one line, as in the action's configuration docs
 - Give each domain its own `WebFetch` entry (`WebFetch(domain:github.com),WebFetch(domain:pypi.org)`); the action splits tool lists on every comma, so `WebFetch(domain:a,domain:b)` breaks into fragments.
+- `--max-turns` limits the number of conversation turns. Set it to about 1.5-2x the highest `num_turns` seen across recent successful runs (find it in the raw job log). Re-check it if a run ends early with no result.
 
 ### References
 
+- [README-claude-workflows.md](README-claude-workflows.md) — workflow, command and subagent design, and how command and agent frontmatter interacts with `claude_args`
 - [`claude-code-action` security.md](https://github.com/anthropics/claude-code-action/blob/main/docs/security.md) — actor checks, bot triggers, prompt injection and forks
 - [Claude Code CLI reference](https://code.claude.com/docs/en/cli-reference) — flags `claude_args` passes through
 
