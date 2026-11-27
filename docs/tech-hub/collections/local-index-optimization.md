@@ -4,10 +4,12 @@ title: Local Index Optimization
 # Local Index Optimization
 
 This page covers advanced configuration options for [indexed collections](../../concepts/collections/indexed_collections/index.md).
+Use it to tune how OCS indexes your files, which affects how accurately the chatbot finds relevant content.
 
 ## Choosing an Embedding Model
 
-An embedding model converts your documents into a numeric form so the chatbot can search by *meaning* instead of exact keywords. It finds related content even when a participant uses different words.
+An embedding model converts your documents into a numeric form so the chatbot can search by *meaning* instead of exact keywords.
+It finds related content even when a participant uses different words.
 You choose the model when you create a local index, and it affects how relevant the retrieved content is.
 
 Different embedding models have different strengths:
@@ -22,9 +24,11 @@ If you are unsure which to choose, use the provider's default, which suits gener
 ## Chunking and Optimization
 
 !!! info
-    Chunk size and overlap apply to remote indexes too. For a remote index, OCS passes them to the provider when it adds the files.
+    Chunk size and overlap apply to remote indexes too.
+    For a remote index, OCS passes them to the provider when it adds the files.
 
-OCS breaks each document uploaded to a local index into smaller parts called **chunks**, converts each chunk into a vector and stores it in the index.
+OCS breaks each document uploaded to a local index into smaller parts called **chunks**.
+It converts each chunk into a vector and stores it in the index.
 The default chunking strategy works well in most cases.
 If needed, you can customise it per set of uploaded files:
 
@@ -38,7 +42,8 @@ You can't change these values per source.
 
 ### Guidelines
 
-- **Short documents or FAQs**: Use smaller chunks (e.g. 256–512 tokens) with low overlap. Each answer fits in one chunk, so large chunks add noise.
+- **Short documents or FAQs**: Use smaller chunks (e.g. 256–512 tokens) with low overlap.
+  Each answer fits in one chunk, so large chunks add noise.
 - **Long technical documents or reports**: Use larger chunks (e.g. 512–1024 tokens) with moderate overlap (10–20%) to preserve context across sections.
 - **Structured data (tables, forms)**: Experiment with overlap settings — tables often lose meaning when split mid-row.
 
@@ -48,7 +53,7 @@ You can't change these values per source.
 
 Importing a `.csv` or `.tsv` file as individual rows is an alternative to chunking.
 It's available for local indexes only.
-See [Importing CSV/TSV rows](../../concepts/collections/indexed_collections/local_and_remote_indexes.md#importing-csvtsv-rows) for the concept, and [Import CSV/TSV Rows into a Collection](../../how-to/import_csv_tsv_rows.md) for the steps.
+See [Importing CSV/TSV rows](../../concepts/collections/indexed_collections/local_and_remote_indexes.md#importing-csvtsv-rows) for the concept, and [Import CSV/TSV Rows into a Collection](../../how-to/collections/import_csv_tsv_rows.md) for the steps.
 
 Three limits apply to a row import:
 
@@ -58,4 +63,11 @@ Three limits apply to a row import:
 | `COLLECTION_ROW_IMPORT_MAX_ROW_TOKENS` | 2,000 | Maximum tokens allowed per rendered row before it's rejected |
 | `COLLECTION_FILE_MAX_METADATA_COLUMNS` | 16 | Maximum number of columns that can be kept as metadata per row |
 
-These are constants in the application settings, not environment variables, so self-hosted operators who need different limits must override the settings values in their deployment.
+These are constants in the application settings, not environment variables.
+Self-hosted operators who need different limits must override the settings values in their deployment.
+
+## See also
+
+- [Local and Remote Indexes](../../concepts/collections/indexed_collections/local_and_remote_indexes.md): choose where your files are indexed.
+- [Document Sources Reference](document_sources.md): sync behavior for files from GitHub or Confluence.
+- [Import CSV/TSV Rows into a Collection](../../how-to/collections/import_csv_tsv_rows.md): the steps for a row import.
