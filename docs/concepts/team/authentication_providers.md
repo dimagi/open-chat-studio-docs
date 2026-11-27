@@ -6,6 +6,12 @@ They are setup in your [Team](index.md) settings so you can manage your authenti
 These credentials are used by features like [Custom Actions](../llm_custom_action.md), the [HTTP Client](../../tech-hub/external-api-calls/http_client.md) in Python nodes, and [Document Sources](../collections/indexed_collections/document_sources.md).
 GitHub document sources need a Bearer Token provider, Confluence document sources need a Basic Auth provider, and Google Docs document sources need an OAuth Authorization Code provider.
 
+## User-Agent header
+
+Requests made with an Authentication Provider send the User-Agent header `OpenChatStudio (+<site URL>)`, where `<site URL>` is the address of the Open Chat Studio instance.
+This lets the external service identify requests from Open Chat Studio.
+Self-hosted instances can change it with the `OUTBOUND_USER_AGENT` setting.
+
 ## Authentication Provider Types
 
 Select the type that matches the API service you will be using.
@@ -19,6 +25,11 @@ Basic Auth is a simple authentication scheme built into the HTTP protocol where 
 API Key is a simple authentication scheme that involves sending a key with the request to authenticate the user.
 The key is sent in a header of the request.
 The name of the header can be customized when creating your Authentication Provider.
+The header name must be a valid HTTP header name: letters, digits and the characters `` !#$%&'*+-.^_`|~ ``, with no spaces, colons or other separators.
+`Host` and `Transfer-Encoding` can't be used.
+Typing a space in the **Header Name** field enters a hyphen, so `X Api Key` becomes `X-Api-Key`. Pasted text is not changed.
+
+A provider saved with an invalid header name before this check was added fails each request with an error that names the problem. Edit the provider and correct the header name to fix it.
 
 ### Bearer Token
 
