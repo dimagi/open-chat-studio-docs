@@ -223,6 +223,7 @@ nav:
     - tech-hub/index.md
     - Pipeline Building:
       - Tools Reference: tech-hub/tools.md
+      - Prompt Variables Reference: tech-hub/prompt_variables.md
       - Render a Template and Send an Email Nodes: tech-hub/template_and_email_nodes.md
       - Ending Sessions from a Chatbot: tech-hub/ending_sessions.md
       - Python Node: tech-hub/python_node.md
