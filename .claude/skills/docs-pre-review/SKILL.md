@@ -1,6 +1,8 @@
 ---
 name: docs-pre-review
 description: Use before opening a PR, when the user asks to review or check the current branch or their docs changes ("review this branch", "is this ready for a PR"). Read-only. Finds scope creep, page-type violations, inaccurate claims and duplication, and drafts the PR title and description.
+allowed-tools: Read,Grep,Glob,Bash(git fetch:*),Bash(git diff:*),Bash(git log:*),Bash(git status:*),WebFetch(domain:github.com),WebFetch(domain:raw.githubusercontent.com)
+disallowed-tools: Edit,Write,NotebookEdit,Bash(curl:*),Bash(wget:*),Bash(gh:*),Bash(git clone:*)
 ---
 
 # Pre-PR Branch Review of OCS Docs
