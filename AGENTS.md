@@ -66,9 +66,9 @@ Remove all mannered prose before committing.
 - `/create-release <tag> <title>` — Drafts a GitHub release.
 - `/write-docs` — Launches `zensical-technical-writer` agent with proper context.
 - `/review-pr` — Launches the `documentation-pr-reviewer` agent with PR context.
+- `/docs-pre-review` — Read-only review of a branch before the PR is opened. Skill in `.claude/skills/`.
 - `documentation-pr-reviewer` agent — Specialised reviewer for docs PRs.
 - `zensical-technical-writer` agent — For creating and updating non-trivial doc work.
-- `/docs-pre-review` — Read-only review of a branch before the PR is opened.
 
 ## Changelog
 
